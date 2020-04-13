@@ -213,8 +213,46 @@ export class InputfieldComponent extends AbstractComponent<InputfieldInputData, 
                              text="${this.label}"
                           ></component-typography>
                        </effect-visible>
+                       ${this.inputfieldType == InputfieldType.FILE
+                          ? html`
+                               <component-grid-container
+                                  .gridTemplateRows="${['auto']}"
+                                  .gridTemplateColumns="${['1fr', 'auto']}"
+                               >
+                                  <component-flex-container
+                                     .containerClazzes="${[ContainerClazzValues.CONTAINER_100]}"
+                                     itemFlexBasisValue="100%"
+                                  >
+                                     <component-typography
+                                        .typographyType="${TypographyType.SUBTITLE1}"
+                                        text="${this.assistiveText}"
+                                     ></component-typography>
+                                     <component-typography
+                                        .typographyType="${TypographyType.SUBTITLE2}"
+                                        text="${this.infoText}"
+                                     ></component-typography
+                                  ></component-flex-container>
+                                  <componetn-container>
+                                     <component-icon
+                                        .rendered="${!this.checked}"
+                                        icon="attachment"
+                                        .clickable="${true}"
+                                        @component-icon-click="
+                                          ${() => this.inputElemet?.click()}
+                                          "
+                                     ></component-icon>
+                                  </componetn-container>
+                               </component-grid-container>
 
-                       ${this.inputfieldType == InputfieldType.COMBOBOX
+                               <input
+                                  id="inputElement"
+                                  class="slider"
+                                  name="${this.name}"
+                                  type="${this.inputfieldType}"
+                                  value="${this.prepareValue(this.value)}"
+                               />
+                            `
+                          : this.inputfieldType == InputfieldType.COMBOBOX
                           ? html`
                                <select
                                   id="selectElement"
@@ -292,33 +330,33 @@ ${this.value}</textarea
                                </component-grid-container>
                             `
                           : html`
-                              <div class="slidecontainer">
-                               <input
-                                  id="inputElement"
-                                  class="slider"
-                                  name="${this.name}"
-                                  type="${this.inputfieldType}"
-                                  value="${this.prepareValue(this.value)}"
-                                  placeholder="${BasicService.getUniqueInstance().isBlank(this.placeholder) &&
-                                  !this.showLabelText()
-                                     ? this.label
-                                     : this.placeholder}"
-                                  size="${this.size}"
-                                  minlength="${this.minlength}"
-                                  maxlength="${this.maxlength}"
-                                  min="${this.min}"
-                                  max="${this.max}"
-                                  step="${this.step}"
-                                  ?required="${this.required}"
-                                  ?disabled="${this.disabled}"
-                                  ?checked="${this.checked}"
-                                  ?multiple="${this.multiple}"
-                                  @keyup="${this.keyup}"
-                                  @change="${(event: Event) => this.change(event)}"
-                                  @focus="${(event: Event) => this.focused(event)}"
-                                  @focusout="${(event: Event) => this.focusout(event)}"
-                               />
-                              </div> 
+                               <div class="slidecontainer">
+                                  <input
+                                     id="inputElement"
+                                     class="slider"
+                                     name="${this.name}"
+                                     type="${this.inputfieldType}"
+                                     value="${this.prepareValue(this.value)}"
+                                     placeholder="${BasicService.getUniqueInstance().isBlank(this.placeholder) &&
+                                     !this.showLabelText()
+                                        ? this.label
+                                        : this.placeholder}"
+                                     size="${this.size}"
+                                     minlength="${this.minlength}"
+                                     maxlength="${this.maxlength}"
+                                     min="${this.min}"
+                                     max="${this.max}"
+                                     step="${this.step}"
+                                     ?required="${this.required}"
+                                     ?disabled="${this.disabled}"
+                                     ?checked="${this.checked}"
+                                     ?multiple="${this.multiple}"
+                                     @keyup="${this.keyup}"
+                                     @change="${(event: Event) => this.change(event)}"
+                                     @focus="${(event: Event) => this.focused(event)}"
+                                     @focusout="${(event: Event) => this.focusout(event)}"
+                                  />
+                               </div>
                             `}</component-flex-container
                     >
                     <component-icon
