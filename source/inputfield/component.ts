@@ -95,6 +95,7 @@ export class InputfieldComponent extends AbstractComponent<InputfieldInputData, 
    static EVENT_ON_FOCUS_OUT: string = 'component-inputfield-focus-out';
 
    static EVENT_ON_FOCUS: string = 'component-inputfield-focus';
+   static EVENT_ON_FILE_SELECTED: string = 'component-inputfield-file';
 
    static EVENT_CHANGE: string = 'component-inputfield-change';
 
@@ -252,7 +253,39 @@ export class InputfieldComponent extends AbstractComponent<InputfieldInputData, 
 ${this.value}</textarea
                                >
                             `
-                          : this.inputfieldType == InputfieldType.CHECKBOX
+                            : this.inputfieldType == InputfieldType.FILE
+                            ? html`
+                                 <component-grid-container
+                                    .gridTemplateRows="${['auto']}"
+                                    .gridTemplateColumns="${['1fr', 'auto']}"
+                                 >
+                                    <component-flex-container
+                                       .containerClazzes="${[ContainerClazzValues.CONTAINER_100]}"
+                                       itemFlexBasisValue="100%"
+                                    >
+                                       <component-typography
+                                          .typographyType="${TypographyType.SUBTITLE1}"
+                                          text="${this.assistiveText}"
+                                       ></component-typography>
+                                       <component-typography
+                                          .typographyType="${TypographyType.SUBTITLE2}"
+                                          text="${this.infoText}"
+                                       ></component-typography
+                                    ></component-flex-container>
+                                    <componetn-container>
+                                       <component-icon
+                                          .rendered="${!this.checked}"
+                                          @component-icon-click="
+                                          ${(event: Event) => this.fileUpload(event)}
+                                          "
+                                          icon="attachment"
+                                          .clickable="${true}"
+                                       ></component-icon>
+                                       
+                                    </componetn-container>
+                                 </component-grid-container>
+                              `
+                              : this.inputfieldType == InputfieldType.CHECKBOX
                           ? html`
                                <component-grid-container
                                   .gridTemplateRows="${['auto']}"
@@ -367,6 +400,13 @@ ${this.value}</textarea
       inputDataChangedEvent.element = this.inputElemet;
       inputDataChangedEvent.outputData = this.getOutputData();
       this.dispatchSimpleCustomEvent(InputfieldComponent.EVENT_CHANGE, inputDataChangedEvent);
+   }
+
+   private fileUpload(event: Event){
+      console.log('event: '.concat(JSON.stringify(event)));
+      this.oldValue = this.value;
+      this.selected = true;
+      this.dispatchSimpleCustomEvent(InputfieldComponent.EVENT_ON_FILE_SELECTED, this.getOutputData());
    }
 
    async keyup() {
