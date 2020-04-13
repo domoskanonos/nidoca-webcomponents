@@ -1,0 +1,10 @@
+.tab, ::slotted(.tab) {
+    cursor: pointer;
+}
+
+.tabStyles{
+    float: left;
+    padding: 0 15px;
+    margin: 0px auto;
+    text-align: center;
+}
