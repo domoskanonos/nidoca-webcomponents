@@ -1,113 +1,111 @@
 @font-face {
-    font-family: 'Main Font';
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu4mxK.woff2) format('woff2');
-    /**src: url(fonts/roboto-regular.woff2) format('woff2');**/
+   font-family: 'Main Font';
+   font-style: normal;
+   font-weight: 400;
+   font-display: swap;
+   src: url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu4mxK.woff2) format('woff2');
 }
 
 @font-face {
-    font-family: 'Material Icons';
-    font-style: normal;
-    font-weight: 400;
-    src: url(https://fonts.gstatic.com/s/materialicons/v48/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2) format('woff2');
+   font-family: 'Material Icons';
+   font-style: normal;
+   font-weight: 400;
+   src: url(https://fonts.gstatic.com/s/materialicons/v48/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2) format('woff2');
 }
 
 :root {
-    --space-little: 2pt;
-    --space-small: 4pt;
-    --space-medium: 8pt;
-    --space-normal: 12pt;
-    --space-big: 16pt;
-    --space-max: 32pt;
+   --space-little: 2pt;
+   --space-small: 4pt;
+   --space-medium: 8pt;
+   --space-normal: 12pt;
+   --space-big: 16pt;
+   --space-max: 32pt;
 
-    --font-family: 'Main Font';
-    --letter-spacing: 1pt;
-    --font-size: 1.0em;
+   --font-family: 'Main Font';
+   --letter-spacing: 1pt;
+   --font-size: 1em;
 
-    --menu-size: 275px;
+   --menu-size: 275px;
 
-    --icon-size: 24px;
-    --icon-size-space: 48px;
+   --icon-size: 24px;
+   --icon-size-space: 48px;
 
-    --menubar-height: 60px;
-    --toolbar-height: 50px;
+   --menubar-height: 60px;
+   --toolbar-height: 50px;
 
-    --line-height-small: 24px;
-    --line-height: 24px;
-    --line-height-large: 36px;
-    --line-height-big: 60px;
-    --line-height-massiv: 72px;
+   --line-height-small: 24px;
+   --line-height: 24px;
+   --line-height-large: 36px;
+   --line-height-big: 60px;
+   --line-height-massiv: 72px;
 
-    --app-color-success: #22bb33;
-    --app-color-error: #b00020;
-    --app-error-warning: #ffcc00;
-    --app-color-info: #40a6ce;
-    --app-color-primary: #303F9F;
-    --app-color-secondary: #3F51B5;
-    --app-color-surface: #009688;
-    --app-color-background: #ffffff;
+   --app-color-success: #22bb33;
+   --app-color-error: #b00020;
+   --app-error-warning: #ffcc00;
+   --app-color-info: #40a6ce;
+   --app-color-primary: #303f9f;
+   --app-color-secondary: #3f51b5;
+   --app-color-surface: #009688;
+   --app-color-background: #ffffff;
 
-    --app-color-on-success: #000000;
-    --app-color-on-error: #b00020;
-    --app-error-on-warning: #000000;
-    --app-color-on-info: #ffffff;
-    --app-color-on-disabled: #cccccc;
+   --app-color-on-success: #000000;
+   --app-color-on-error: #b00020;
+   --app-error-on-warning: #000000;
+   --app-color-on-info: #ffffff;
+   --app-color-on-disabled: #cccccc;
 
-    --app-color-on-primary: #ffffff;
-    --app-color-on-secondary: #ffffff;
-    --app-color-on-surface: #FFFFFF;
-    --app-color-on-background: #202124;
+   --app-color-on-primary: #ffffff;
+   --app-color-on-secondary: #ffffff;
+   --app-color-on-surface: #ffffff;
+   --app-color-on-background: #202124;
 
-    --app-color-border: #ebebeb;
+   --app-color-border: #ebebeb;
 }
 
 * {
-    padding: 0;
-    margin: 0;
-    word-wrap: break-word;
-    box-sizing: border-box;
-    text-rendering: optimizelegibility;
-    font-family: var(--font-family);
-    font-size: var(--font-size);
-    fx-font-family: var(--font-family);
-    letter-spacing: var(--letter-spacing);
-    text-decoration: none;
-    line-height: normal;
+   padding: 0;
+   margin: 0;
+   word-wrap: break-word;
+   box-sizing: border-box;
+   text-rendering: optimizelegibility;
+   font-family: var(--font-family);
+   font-size: var(--font-size);
+   fx-font-family: var(--font-family);
+   letter-spacing: var(--letter-spacing);
+   text-decoration: none;
+   line-height: normal;
 }
 
 @media (max-width: 1280px) {
-    :root {
-        --space-little: 2pt;
-        --space-small: 4pt;
-        --space-medium: 8pt;
-        --space-normal: 12pt;
-        --space-big: 16pt;
-        --space-max: 32pt;
-        --font-size: 0.95em;
-    }
+   :root {
+      --space-little: 2pt;
+      --space-small: 4pt;
+      --space-medium: 8pt;
+      --space-normal: 12pt;
+      --space-big: 16pt;
+      --space-max: 32pt;
+      --font-size: 0.95em;
+   }
 
-    body {
-        padding-left: var(--space-little);
-        padding-right: var(--space-little);
-    }
+   body {
+      padding-left: var(--space-little);
+      padding-right: var(--space-little);
+   }
 }
 
 @media (orientation: portrait) {
-    :root {
-        --space-little: 2pt;
-        --space-small: 4pt;
-        --space-medium: 8pt;
-        --space-normal: 12pt;
-        --space-big: 16pt;
-        --space-max: 32pt;
-        --font-size: 0.9em;
-    }
+   :root {
+      --space-little: 2pt;
+      --space-small: 4pt;
+      --space-medium: 8pt;
+      --space-normal: 12pt;
+      --space-big: 16pt;
+      --space-max: 32pt;
+      --font-size: 0.9em;
+   }
 
-    body {
-        padding-left: var(--space-little);
-        padding-right: var(--space-little);
-    }
-
+   body {
+      padding-left: var(--space-little);
+      padding-right: var(--space-little);
+   }
 }
