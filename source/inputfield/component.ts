@@ -20,6 +20,7 @@ import {
 import { NotifyType } from '../meta-data/notify-type';
 import { ContainerClazzValues } from '../flex-container/component';
 import { TextColorClazz } from '../effect-color/component';
+import {GridAlignContent, GridJustifyContent} from '../grid-container/component';
 
 const componentCSS = require('./component.css');
 
@@ -35,7 +36,6 @@ export enum InputfieldType {
    MONTH = 'month',
    NUMBER = 'number',
    PASSWORD = 'password',
-   RADIO = 'radio',
    RANGE = 'range',
    SEARCH = 'search',
    TEL = 'tel',
@@ -197,6 +197,8 @@ export class InputfieldComponent extends AbstractComponent<InputfieldInputData, 
                  <component-grid-container
                     .gridTemplateRows="${['auto']}"
                     .gridTemplateColumns="${['auto', '1fr', 'auto', 'auto']}"
+                    gridAlignContent="${GridAlignContent.CENTER}"
+                    gridJustifyContent="${GridJustifyContent.CENTER}"
                  >
                     <component-icon
                        .rendered="${BasicService.getUniqueInstance().isNotBlank(this.leadingIcon)}"
@@ -232,7 +234,7 @@ export class InputfieldComponent extends AbstractComponent<InputfieldInputData, 
                                         text="${this.infoText}"
                                      ></component-typography
                                   ></component-flex-container>
-                                  <componetn-container>
+                                  <component-container>
                                      <component-icon
                                         .rendered="${!this.checked}"
                                         icon="attachment"
@@ -241,16 +243,16 @@ export class InputfieldComponent extends AbstractComponent<InputfieldInputData, 
                                           ${() => this.inputElemet?.click()}
                                           "
                                      ></component-icon>
-                                  </componetn-container>
+                                  </component-container>
                                </component-grid-container>
-
-                               <input
-                                  id="inputElement"
-                                  class="slider"
-                                  name="${this.name}"
-                                  type="${this.inputfieldType}"
-                                  value="${this.prepareValue(this.value)}"
-                               />
+                               <effect-visible visibleType="${VisibleType.HIDE}">
+                                  <input
+                                     id="inputElement"
+                                     class="slider"
+                                     name="${this.name}"
+                                     type="${this.inputfieldType}"
+                                     value="${this.prepareValue(this.value)}"
+                               /></effect-visible>
                             `
                           : this.inputfieldType == InputfieldType.COMBOBOX
                           ? html`
@@ -550,7 +552,6 @@ ${this.value}</textarea
          case InputfieldType.FILE:
          case InputfieldType.HIDDEN:
          case InputfieldType.MONTH:
-         case InputfieldType.RADIO:
          case InputfieldType.RANGE:
          case InputfieldType.SEARCH:
          case InputfieldType.TEL:

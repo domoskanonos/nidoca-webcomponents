@@ -1,9 +1,26 @@
 import { css, customElement, html, property, unsafeCSS } from 'lit-element';
 import { AbstractComponent, AbstractInputData } from '../abstract-component/component';
 import { BasicService } from '@domoskanonos/frontend-basis';
-import { FlexContainerInputData } from '..';
 
 const componentCSS = require('./component.css');
+
+export class GridJustifyContent {
+   static START = 'start';
+   static END = 'end';
+   static CENTER = 'center';
+   static SPACE_BETWEEN = 'space-between';
+   static SPACE_AROUND = 'space-around';
+   static SPACE_EVENLY = 'space-evenly';
+}
+
+export class GridAlignContent {
+   static START = 'start';
+   static END = 'end';
+   static CENTER = 'center';
+   static SPACE_BETWEEN = 'space-between';
+   static SPACE_AROUND = 'space-around';
+   static SPACE_EVENLY = 'space-evenly';
+}
 
 export class GridContainerInputData extends AbstractInputData {
    gridTemplateRows: string[] = [];
@@ -26,13 +43,21 @@ export class GridComponent extends AbstractComponent<GridContainerInputData, und
    gridTemplateColumns: string[] = [];
 
    @property()
+   gridJustifyContent: string = '';
+
+   @property()
+   gridAlignContent: string = '';
+
+   @property()
    height: string = 'min-content';
 
    render() {
       return html`
          <div
             class="GRID_CONTAINER"
-            style="${this.toGridTemplateRowsStyle(this.gridTemplateRows)}${this.toGridTemplateColumnsStyle(
+            style="${this.toGridJustifyContet(this.gridJustifyContent)}${this.toGridAlignContent(
+               this.gridAlignContent
+            )}${this.toGridTemplateRowsStyle(this.gridTemplateRows)}${this.toGridTemplateColumnsStyle(
                this.gridTemplateColumns
             )}${this.toHeightStyle(this.height)}"
          >
@@ -84,5 +109,17 @@ export class GridComponent extends AbstractComponent<GridContainerInputData, und
 
    private toHeightStyle(height: string) {
       return height.length > 0 ? 'height:'.concat(height).concat(';') : '';
+   }
+
+   private toGridJustifyContet(gridJustifyContent: string) {
+      return BasicService.getUniqueInstance().isNotBlank(gridJustifyContent)
+         ? 'justify-content:'.concat(gridJustifyContent).concat(';')
+         : '';
+   }
+
+   private toGridAlignContent(gridAlignContent: string) {
+      return BasicService.getUniqueInstance().isNotBlank(gridAlignContent)
+         ? 'align-content:'.concat(gridAlignContent).concat(';')
+         : '';
    }
 }
