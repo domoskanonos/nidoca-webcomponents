@@ -59,7 +59,7 @@ export class PageInputComponent extends PageAbstract {
                >
                   <component-form>
                      <component-inputfield
-                        .inputfieldType="ButtonType"
+                        .inputfieldType="${InputfieldType.COMBOBOX}"
                         .options="${InputfieldComponent.enumToComboboxItems(ButtonType)}"
                         label="buttonType"
                         value="${this.type}"

@@ -5,7 +5,10 @@
    font-family: inherit;
 }
 
+
 .CONTAINED {
+   background-color: var(--app-color-primary);
+   color: var(--app-color-on-primary);
 }
 
 .OUTLINED {

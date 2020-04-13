@@ -40,8 +40,8 @@ export class ButtonComponent extends AbstractComponent<ButtonInputData, undefine
 
    render() {
       return html`
-         <effect-ripple @click="${this.clicked}">
-            <div class="BUTTON ${this.buttonType}">
+         <div class="BUTTON ${this.buttonType}">
+            <effect-ripple @click="${this.clicked}">
                <component-grid-container .gridTemplateRows="${['auto']}" .gridTemplateColumns="${['auto', '1fr']}"
                   ><component-icon
                      .rendered="${BasicService.getUniqueInstance().isNotBlank(this.leadingIcon)}"
@@ -51,10 +51,9 @@ export class ButtonComponent extends AbstractComponent<ButtonInputData, undefine
                   <component-container>
                      <component-typography text="${this.text}"></component-typography>
                      <slot></slot>
-                  </component-container>
-               </component-grid-container>
-            </div>
-         </effect-ripple>
+                  </component-container> </component-grid-container
+            ></effect-ripple>
+         </div>
       `;
    }
 

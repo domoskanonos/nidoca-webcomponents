@@ -1,4 +1,5 @@
 import { css, customElement, html, LitElement, property, query, unsafeCSS } from 'lit-element';
+import { ButtonComponent } from '..';
 
 const componentCSS = require('./component.css');
 
@@ -46,13 +47,12 @@ export class RippleComponent extends LitElement {
       console.log('start ripple effect...');
       if (this.rippleElement != null) {
          if (this.rippleContainerElement != null) {
-            const { scrollWidth: scrollWidthContainer, scrollHeight: scrollHeightContainer } = this.rippleContainerElement;
-            const ripleSize = Math.max(scrollWidthContainer, scrollHeightContainer);
-            const minSize = Math.min(scrollWidthContainer, scrollHeightContainer);
-            // ripple must be a square with side of max dimention size of element
-            this.rippleElement.style.width = this.rippleElement.style.height = `${ripleSize}px`;
-            this.rippleElement.style.left = `${event.offsetX - minSize}px`;
-            this.rippleElement.style.top = `${event.offsetY - minSize}px`;
+            let scrollWidthContainer: number = this.rippleContainerElement.scrollWidth;
+            let scrollHeightContainer: number = this.rippleContainerElement.scrollHeight;
+            this.rippleElement.style.width = (scrollWidthContainer * 2).toString().concat('px');
+            this.rippleElement.style.height = (scrollHeightContainer * 2).toString().concat('px');
+            this.rippleElement.style.left = (event.offsetX - scrollWidthContainer).toString().concat('px');
+            this.rippleElement.style.top = (event.clientY - scrollHeightContainer).toString().concat('px');
             this.rippleElement.classList.add('animate');
          }
       }
