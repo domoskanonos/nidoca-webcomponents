@@ -292,8 +292,10 @@ ${this.value}</textarea
                                </component-grid-container>
                             `
                           : html`
+                              <div class="slidecontainer">
                                <input
                                   id="inputElement"
+                                  class="slider"
                                   name="${this.name}"
                                   type="${this.inputfieldType}"
                                   value="${this.prepareValue(this.value)}"
@@ -316,6 +318,7 @@ ${this.value}</textarea
                                   @focus="${(event: Event) => this.focused(event)}"
                                   @focusout="${(event: Event) => this.focusout(event)}"
                                />
+                              </div> 
                             `}</component-flex-container
                     >
                     <component-icon
