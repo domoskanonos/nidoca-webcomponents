@@ -11,6 +11,7 @@ import './page-get-started';
 import './page-input.ts';
 import './page-bars.ts';
 import './page-primary-title.ts';
+import './page-button.ts';
 import './page-layout.ts';
 import './page-icon.ts';
 import './page-card.ts';
@@ -81,6 +82,8 @@ export class ShowcaseApp extends AbstractApp {
             `;
            case 'pageicon':
                return html`<page-icon></page-icon>`;
+           case 'pagebutton':
+               return html`<page-button></page-button>`;
            case 'pagecard':
                return html`<page-card></page-card>`;
            case 'pageprimarytitle':

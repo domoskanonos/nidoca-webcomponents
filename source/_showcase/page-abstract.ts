@@ -51,10 +51,16 @@ export abstract class PageAbstract extends BasisTemplate {
             <component-navigation-link
                slot="links"
                icon=""
+               text="${I18nService.getUniqueInstance().getValue('pagebutton')}"
+               href="pagebutton"
+            ></component-navigation-link>
+            <component-navigation-link
+               slot="links"
+               icon=""
                text="${I18nService.getUniqueInstance().getValue('pagetypography')}"
                href="pagetypography"
             ></component-navigation-link>
-             <component-navigation-link
+            <component-navigation-link
                slot="links"
                icon=""
                text="${I18nService.getUniqueInstance().getValue('Grid')}"

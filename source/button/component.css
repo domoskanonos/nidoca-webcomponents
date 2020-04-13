@@ -1,24 +1,22 @@
-button {
-    cursor: pointer;
-    border: none;
-
-
-    text-transform: uppercase;
-    box-sizing: border-box;
-    font-family: inherit;
-    padding: var(--space-medium) var(--space-normal);
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-items: center;
+.BUTTON {
+   cursor: pointer;
+   text-transform: uppercase;
+   box-sizing: border-box;
+   font-family: inherit;
 }
 
-button.disabled {
-    opacity: 0.5;
+.CONTAINED {
+}
+
+.OUTLINED {
+}
+
+.TEXT {
 }
 
 @media only screen and (orientation: portrait) {
-    button, .btn {
-        width:100%;
-    }
+   button,
+   .btn {
+      width: 100%;
+   }
 }
