@@ -1,21 +1,21 @@
-import { css, customElement, html, property, unsafeCSS } from 'lit-element';
+import { css, customElement, html, property, unsafeCSS, LitElement } from 'lit-element';
 import { AbstractComponent, AbstractInputData } from '../abstract-component/component';
 
 const componentCSS = require('./component.css');
 
-export class ContainerInputData extends AbstractInputData {
-   componentIdentifier = ContainerComponent.IDENTIFIER;
-   rendered: boolean = true;
-   cssStyle: string = '';
-}
+// export class ContainerInputData extends AbstractInputData {
+//    componentIdentifier = ContainerComponent.IDENTIFIER;
+//    rendered: boolean = true;
+//    cssStyle: string = '';
+// }
 
-@customElement('component-container')
-export class ContainerComponent extends AbstractComponent<ContainerInputData, undefined> {
+// @customElement('component-container')
+export class ContainerComponent extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;
 
-   static IDENTIFIER: string = 'ContainerComponent';
+   // static IDENTIFIER: string = 'ContainerComponent';
 
    @property()
    rendered: boolean = true;
@@ -32,7 +32,7 @@ export class ContainerComponent extends AbstractComponent<ContainerInputData, un
    }
 
    getDefaultInputData(): any {
-      return <ContainerInputData>{};
+      // return <ContainerInputData>{};
    }
 
    getOutputData(): undefined {
@@ -40,7 +40,7 @@ export class ContainerComponent extends AbstractComponent<ContainerInputData, un
    }
 
    protected inputDataChanged() {
-      this.rendered = this.inputData.rendered;
-      this.cssStyle = this.inputData.cssStyle;
+      //this.rendered = this.inputData.rendered;
+      //this.cssStyle = this.inputData.cssStyle;
    }
 }
