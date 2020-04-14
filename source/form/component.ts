@@ -1,6 +1,6 @@
-import { css, customElement, html, property, query, unsafeCSS } from 'lit-element';
+import { css, customElement, html, property, query, unsafeCSS, LitElement } from 'lit-element';
 import { InputfieldComponent, InputfieldType } from '../inputfield/component';
-import { AbstractComponent, AbstractInputData } from '../abstract-component/component';
+import { AbstractInputData } from '../abstract-component/component';
 import { ButtonInputData } from '../button/component';
 import { guard } from 'lit-html/directives/guard';
 import { repeat } from 'lit-html/directives/repeat';
@@ -23,7 +23,7 @@ export class FormComponentInputData extends AbstractInputData {
 }
 
 @customElement('component-form')
-export class FormComponent extends AbstractComponent<FormComponentInputData, FormComponentOutputData> {
+export class FormComponent extends LitElement {
    static IDENTIFIER: string = 'FormComponent';
 
    static EVENT_SUBMIT_BUTTON: string = 'component-form-submit-button-click';
@@ -133,16 +133,12 @@ export class FormComponent extends AbstractComponent<FormComponentInputData, For
       return outputData;
    }
 
-   inputDataChanged(): void {
-      this.buttonInputDatas = this.inputData.buttonInputDatas !== undefined ? this.inputData.buttonInputDatas : [];
-   }
-
    private formButtonClicked(event: CustomEvent) {
       console.log('formButton clicked: ' + event.detail);
       let buttonIdentifier = event.detail;
       switch (buttonIdentifier) {
          case 'submitButton':
-            this.dispatchSimpleCustomEvent(FormComponent.EVENT_SUBMIT_BUTTON, this.getOutputData());
+            //this.dispatchSimpleCustomEvent(FormComponent.EVENT_SUBMIT_BUTTON, this.getOutputData());
             break;
       }
    }

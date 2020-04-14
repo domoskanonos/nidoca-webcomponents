@@ -1,5 +1,5 @@
-import { css, customElement, html, property, unsafeCSS } from 'lit-element';
-import { AbstractComponent, AbstractInputData } from '../abstract-component/component';
+import { css, customElement, html, property, unsafeCSS, LitElement } from 'lit-element';
+import { AbstractInputData } from '../abstract-component/component';
 import { BasicService } from '@domoskanonos/frontend-basis';
 import { ElementState } from '..';
 
@@ -27,7 +27,7 @@ export class EventIconClickData {
 }
 
 @customElement('component-icon')
-export class IconComponent extends AbstractComponent<IconInputData, any> {
+export class IconComponent extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;
@@ -95,36 +95,17 @@ export class IconComponent extends AbstractComponent<IconInputData, any> {
          : html``;
    }
 
-   inputDataChanged() {
-      let defaultData = new IconInputData();
-      this.icon = BasicService.getUniqueInstance().getValue(this.inputData.icon, defaultData.icon);
-      this.size = BasicService.getUniqueInstance().getValue(this.inputData.size, defaultData.size);
-      this.sizeUnit = BasicService.getUniqueInstance().getValue(this.inputData.sizeUnit, defaultData.sizeUnit);
-      this.withIconSpace = BasicService.getUniqueInstance().getValue(this.inputData.withIconSpace, defaultData.withIconSpace);
-      this.title = BasicService.getUniqueInstance().getValue(this.inputData.title, defaultData.title);
-      this.color = BasicService.getUniqueInstance().getValue(this.inputData.color, defaultData.color);
-      this.clazz = BasicService.getUniqueInstance().getValue(this.inputData.color, defaultData.clazz);
-      this.clickable = BasicService.getUniqueInstance().getValue(this.inputData.clickable, defaultData.clickable);
-      this.clickData = BasicService.getUniqueInstance().getValue(this.inputData.clickData, defaultData.clickData);
-      this.elementState = BasicService.getUniqueInstance().getValue(this.inputData.elementState, defaultData.elementState);
-      this.rendered = BasicService.getUniqueInstance().getValue(this.inputData.rendered, defaultData.rendered);
-   }
-
-   getOutputData(): any {
-      return this.clickData;
-   }
-
    getEventList(): string[] {
       return [IconComponent.EVENT_CLICK];
    }
 
    async clicked() {
       if (this.clickable) {
-         this.dispatchSimpleCustomEvent(IconComponent.EVENT_CLICK, <EventIconClickData>{
-            clickData: this.clickData,
-            clickable: this.clickable,
-            icon: this.icon
-         });
+         // this.dispatchSimpleCustomEvent(IconComponent.EVENT_CLICK, <EventIconClickData>{
+         //    clickData: this.clickData,
+         //    clickable: this.clickable,
+         //    icon: this.icon
+         // });
       }
    }
 

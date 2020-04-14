@@ -1,5 +1,6 @@
 import { css, customElement, html, property, unsafeCSS } from 'lit-element';
-import { AbstractComponent, AbstractInputData } from '../abstract-component/component';
+import { LitElement } from 'lit-element';
+import { AbstractInputData } from '../abstract-component/component';
 import { BasicService } from '@domoskanonos/frontend-basis';
 
 const componentCSS = require('./component.css');
@@ -16,7 +17,7 @@ export class ButtonInputData extends AbstractInputData {
 }
 
 @customElement('component-button')
-export class ButtonComponent extends AbstractComponent<ButtonInputData, undefined> {
+export class ButtonComponent extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;
@@ -33,10 +34,6 @@ export class ButtonComponent extends AbstractComponent<ButtonInputData, undefine
 
    @property()
    text: string = '';
-
-   protected inputDataChanged() {
-      this.text = BasicService.getUniqueInstance().getValue(this.inputData.text, '');
-   }
 
    render() {
       return html`
@@ -58,10 +55,6 @@ export class ButtonComponent extends AbstractComponent<ButtonInputData, undefine
    }
 
    async clicked() {
-      this.dispatchSimpleCustomEvent(ButtonComponent.EVENT_CLICK, this);
-   }
-
-   getOutputData(): any {
-      return undefined;
+      // this.dispatchSimpleCustomEvent(ButtonComponent.EVENT_CLICK, this); Need to discuss
    }
 }

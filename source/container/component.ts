@@ -1,15 +1,8 @@
 import { css, customElement, html, property, unsafeCSS, LitElement } from 'lit-element';
-import { AbstractComponent, AbstractInputData } from '../abstract-component/component';
 
 const componentCSS = require('./component.css');
 
-// export class ContainerInputData extends AbstractInputData {
-//    componentIdentifier = ContainerComponent.IDENTIFIER;
-//    rendered: boolean = true;
-//    cssStyle: string = '';
-// }
-
-// @customElement('component-container')
+@customElement('component-container')
 export class ContainerComponent extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
@@ -32,15 +25,6 @@ export class ContainerComponent extends LitElement {
    }
 
    getDefaultInputData(): any {
-      // return <ContainerInputData>{};
-   }
-
-   getOutputData(): undefined {
-      return undefined;
-   }
-
-   protected inputDataChanged() {
-      //this.rendered = this.inputData.rendered;
-      //this.cssStyle = this.inputData.cssStyle;
+      //return <ContainerInputData>{};
    }
 }

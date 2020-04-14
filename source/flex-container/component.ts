@@ -1,7 +1,7 @@
-import { css, customElement, html, property, query, unsafeCSS } from 'lit-element';
+import { css, customElement, html, property, query, unsafeCSS, LitElement } from 'lit-element';
 import { repeat } from 'lit-html/directives/repeat';
 import { guard } from 'lit-html/directives/guard';
-import { AbstractComponent, AbstractInputData } from '../abstract-component/component';
+import { AbstractInputData } from '../abstract-component/component';
 import { ComponentLoader } from '../abstract/component-loader';
 import { BasicService } from '@domoskanonos/frontend-basis';
 
@@ -103,7 +103,7 @@ export class FlexContainerInputData extends AbstractInputData {
 }
 
 @customElement('component-flex-container')
-export class FlexComponent extends AbstractComponent<FlexContainerInputData, undefined> {
+export class FlexComponent extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;
@@ -237,37 +237,6 @@ export class FlexComponent extends AbstractComponent<FlexContainerInputData, und
          .concat(flexBasisValue)
          .concat(';max-width: ')
          .concat(flexBasisValue);
-   }
-
-   inputDataChanged() {
-      let defaultData: FlexContainerInputData = new FlexContainerInputData();
-      this.containerClazzes = BasicService.getUniqueInstance().getValue(
-         this.inputData.containerClazzes,
-         defaultData.containerClazzes
-      );
-      this.cssStyle = BasicService.getUniqueInstance().getValue(this.inputData.cssStyle, defaultData.cssStyle);
-      this.flexDirection = BasicService.getUniqueInstance().getValue(this.inputData.flexDirection, defaultData.flexDirection);
-      this.flexWrap = BasicService.getUniqueInstance().getValue(this.inputData.flexWrap, defaultData.flexWrap);
-      this.flexJustifyContent = BasicService.getUniqueInstance().getValue(
-         this.inputData.flexJustifyContent,
-         defaultData.flexJustifyContent
-      );
-      this.alignItems = BasicService.getUniqueInstance().getValue(this.inputData.alignItems, defaultData.alignItems);
-      this.alignContent = BasicService.getUniqueInstance().getValue(this.inputData.alignContent, defaultData.alignContent);
-      this.itemClazzes = BasicService.getUniqueInstance().getValue(this.inputData.itemClazzes, defaultData.itemClazzes);
-      this.itemFlexBasisValue = BasicService.getUniqueInstance().getValue(
-         this.inputData.itemFlexBasisValue,
-         defaultData.itemFlexBasisValue
-      );
-      this.itemFlexBasisValues = BasicService.getUniqueInstance().getValue(
-         this.inputData.itemFlexBasisValues,
-         defaultData.itemFlexBasisValues
-      );
-      this.inputDataItems = BasicService.getUniqueInstance().getValue(this.inputData.inputDataItems, defaultData.inputDataItems);
-   }
-
-   getOutputData(): undefined {
-      return undefined;
    }
 
    private createItem(componentInputData: AbstractInputData, index: number) {

@@ -1,5 +1,5 @@
-import { css, customElement, html, property, unsafeCSS } from 'lit-element';
-import {AbstractComponent, AbstractInputData} from '../abstract-component/component';
+import { css, customElement, html, property, unsafeCSS, LitElement } from 'lit-element';
+import { AbstractInputData} from '../abstract-component/component';
 import {BorderType, SpacerAlignment, SpacerSize} from '..';
 import {BasicService} from '@domoskanonos/frontend-basis';
 
@@ -11,7 +11,7 @@ export class DividerInputData extends AbstractInputData {
 }
 
 @customElement('component-divider')
-export class DividerComponent extends AbstractComponent<DividerInputData, undefined> {
+export class DividerComponent extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;
@@ -32,13 +32,5 @@ export class DividerComponent extends AbstractComponent<DividerInputData, undefi
 
    getDefaultInputData(): any {
       return <DividerInputData>{};
-   }
-
-   getOutputData(): undefined {
-      return undefined;
-   }
-
-   protected inputDataChanged() {
-      this.spacerSize = BasicService.getUniqueInstance().getValue(this.inputData.spacerSize, this.spacerSize);
    }
 }

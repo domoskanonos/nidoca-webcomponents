@@ -1,7 +1,7 @@
-import { css, customElement, html, property, unsafeCSS } from 'lit-element';
+import { css, customElement, html, property, unsafeCSS, LitElement } from 'lit-element';
 import { NavigationComponent } from '../navigation/component';
 import { ComponentLoader } from '../abstract/component-loader';
-import { AbstractComponent, AbstractInputData } from '../abstract-component/component';
+import { AbstractInputData } from '../abstract-component/component';
 import { BasicService } from '@domoskanonos/frontend-basis';
 
 const componentCSS = require('./component.css');
@@ -12,7 +12,7 @@ export class ContentSliderInputData extends AbstractInputData {
 }
 
 @customElement('component-content-slider')
-export class ContentSliderComponent extends AbstractComponent<ContentSliderInputData, undefined> {
+export class ContentSliderComponent extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;
@@ -43,7 +43,7 @@ export class ContentSliderComponent extends AbstractComponent<ContentSliderInput
       `;
    }
 
-   iconClicked(event: CustomEvent) {
+   iconClicked() {
       console.log('content slider current state, open= ' + this.open);
       this.open = !this.open;
 
@@ -52,8 +52,8 @@ export class ContentSliderComponent extends AbstractComponent<ContentSliderInput
       };
 
       console.log('content slider new state, open= ' + this.open);
-
-      this.dispatchCompoundCustomEvent(ContentSliderComponent.EVENT_CONTENT_SLIDER_CLICK, event, contentSliderData);
+      // Need to check
+      // this.dispatchCompoundCustomEvent(ContentSliderComponent.EVENT_CONTENT_SLIDER_CLICK, event, contentSliderData);
    }
 
    getDefaultInputData(): ContentSliderInputData {
@@ -62,14 +62,5 @@ export class ContentSliderComponent extends AbstractComponent<ContentSliderInput
          open: true,
          componentInputData: new NavigationComponent().getDefaultInputData()
       };
-   }
-
-   protected inputDataChanged(): void {
-      this.open = this.inputData.open;
-      this.componentInputData = BasicService.getUniqueInstance().getValue(this.inputData.componentInputData, AbstractInputData.prototype);
-   }
-
-   getOutputData(): undefined {
-      return undefined;
    }
 }

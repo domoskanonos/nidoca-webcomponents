@@ -1,5 +1,5 @@
-import { css, customElement, html, property, unsafeCSS } from 'lit-element';
-import { AbstractComponent, AbstractInputData } from '../abstract-component/component';
+import { css, customElement, html, property, unsafeCSS, LitElement } from 'lit-element';
+import { AbstractInputData } from '../abstract-component/component';
 import { BasicService } from '@domoskanonos/frontend-basis';
 
 const componentCSS = require('./component.css');
@@ -29,7 +29,7 @@ export class GridContainerInputData extends AbstractInputData {
 }
 
 @customElement('component-grid-container')
-export class GridComponent extends AbstractComponent<GridContainerInputData, undefined> {
+export class GridComponent extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;
@@ -64,23 +64,6 @@ export class GridComponent extends AbstractComponent<GridContainerInputData, und
             <slot></slot>
          </div>
       `;
-   }
-
-   getOutputData(): undefined {
-      return undefined;
-   }
-
-   protected inputDataChanged(): void {
-      let defaultData: GridContainerInputData = new GridContainerInputData();
-      this.gridTemplateRows = BasicService.getUniqueInstance().getValue(
-         this.inputData.gridTemplateRows,
-         defaultData.gridTemplateRows
-      );
-      this.gridTemplateColumns = BasicService.getUniqueInstance().getValue(
-         this.inputData.gridTemplateColumns,
-         defaultData.gridTemplateColumns
-      );
-      this.height = BasicService.getUniqueInstance().getValue(this.inputData.height, defaultData.height);
    }
 
    private toGridTemplateRowsStyle(gridTemplateRows: string[]) {

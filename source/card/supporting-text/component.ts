@@ -1,5 +1,5 @@
-import {css, customElement, html, property, unsafeCSS} from 'lit-element';
-import {AbstractComponent, AbstractInputData} from "../..";
+import {css, customElement, html, property, unsafeCSS, LitElement} from 'lit-element';
+import {AbstractInputData} from "../..";
 
 const componentCSS = require('./component.css');
 
@@ -7,7 +7,7 @@ export class CardSupportingTextInputData extends AbstractInputData {
 }
 
 @customElement('component-card-supporting-text')
-export class CardSupportingTextComponent extends AbstractComponent<CardSupportingTextInputData, undefined> {
+export class CardSupportingTextComponent extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;
@@ -21,12 +21,4 @@ export class CardSupportingTextComponent extends AbstractComponent<CardSupportin
    getDefaultInputData(): CardSupportingTextInputData {
       return <CardSupportingTextInputData>{};
    }
-
-   getOutputData(): undefined {
-      return undefined;
-   }
-
-   protected inputDataChanged() {
-   }
-   
 }

@@ -1,7 +1,7 @@
 import { repeat } from 'lit-html/directives/repeat';
 import { guard } from 'lit-html/directives/guard';
-import { css, customElement, html, property, query, unsafeCSS } from 'lit-element';
-import { AbstractComponent, AbstractInputData } from '../abstract-component/component';
+import { css, customElement, html, property, query, unsafeCSS, LitElement } from 'lit-element';
+import { AbstractInputData } from '../abstract-component/component';
 import { KeyValueData } from '../form/component';
 import { TypographyType } from '../typography/component';
 import { BasicService } from '@domoskanonos/frontend-basis';
@@ -83,7 +83,7 @@ export class InputfieldDataChangeEvent {
 }
 
 @customElement('component-inputfield')
-export class InputfieldComponent extends AbstractComponent<InputfieldInputData, KeyValueData> {
+export class InputfieldComponent extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;
@@ -409,26 +409,26 @@ ${this.value}</textarea
       inputDataChangedEvent.type = this.inputfieldType;
       inputDataChangedEvent.element = this.inputElemet;
       inputDataChangedEvent.outputData = this.getOutputData();
-      this.dispatchSimpleCustomEvent(InputfieldComponent.EVENT_CHANGE, inputDataChangedEvent);
+      // this.dispatchSimpleCustomEvent(InputfieldComponent.EVENT_CHANGE, inputDataChangedEvent);
    }
 
    async keyup() {
       //this.updateInfoText();
-      this.dispatchSimpleCustomEvent(InputfieldComponent.EVENT_KEY_UP_CHANGE, this.getOutputData());
+      // this.dispatchSimpleCustomEvent(InputfieldComponent.EVENT_KEY_UP_CHANGE, this.getOutputData());
    }
 
    async focused(event: Event) {
       console.log('event: '.concat(JSON.stringify(event)));
       this.oldValue = this.value;
       this.selected = true;
-      this.dispatchSimpleCustomEvent(InputfieldComponent.EVENT_ON_FOCUS, this.getOutputData());
+      // this.dispatchSimpleCustomEvent(InputfieldComponent.EVENT_ON_FOCUS, this.getOutputData());
    }
 
    async focusout(event: Event) {
       console.log('event: '.concat(JSON.stringify(event)));
       this.selected = false;
       this.validate();
-      this.dispatchSimpleCustomEvent(InputfieldComponent.EVENT_ON_FOCUS_OUT, this.getOutputData());
+      // this.dispatchSimpleCustomEvent(InputfieldComponent.EVENT_ON_FOCUS_OUT, this.getOutputData());
    }
 
    async change(event: Event) {
@@ -436,7 +436,7 @@ ${this.value}</textarea
       inputDataChangedEvent.type = this.inputfieldType;
       inputDataChangedEvent.element = <HTMLInputElement>event.target;
       inputDataChangedEvent.outputData = this.getOutputData();
-      this.dispatchSimpleCustomEvent(InputfieldComponent.EVENT_CHANGE, inputDataChangedEvent);
+      // this.dispatchSimpleCustomEvent(InputfieldComponent.EVENT_CHANGE, inputDataChangedEvent);
    }
 
    public isValid(): boolean {
@@ -498,24 +498,6 @@ ${this.value}</textarea
 
    getEventList(): string[] {
       return [InputfieldComponent.EVENT_KEY_UP_CHANGE, InputfieldComponent.EVENT_CHANGE];
-   }
-
-   protected inputDataChanged() {
-      let defaultData = new InputfieldInputData();
-      this.name = BasicService.getUniqueInstance().getValue(this.inputData.name, defaultData.name);
-      this.value = BasicService.getUniqueInstance().getValue(this.inputData.value, defaultData.value);
-      this.inputfieldType = BasicService.getUniqueInstance().getValue(this.inputData.inputfieldType, defaultData.inputfieldType);
-      this.placeholder = BasicService.getUniqueInstance().getValue(this.inputData.placeholder, defaultData.placeholder);
-      this.maxlength = BasicService.getUniqueInstance().getValue(this.inputData.maxlength, defaultData.maxlength);
-      this.size = BasicService.getUniqueInstance().getValue(this.inputData.size, defaultData.size);
-      this.min = BasicService.getUniqueInstance().getValue(this.inputData.min, defaultData.min);
-      this.max = BasicService.getUniqueInstance().getValue(this.inputData.max, defaultData.max);
-      this.label = BasicService.getUniqueInstance().getValue(this.inputData.labelText, this.label);
-      this.infoText = BasicService.getUniqueInstance().getValue(this.inputData.infoText, this.infoText);
-      this.assistiveText = BasicService.getUniqueInstance().getValue(this.inputData.assistiveText, this.assistiveText);
-      this.errorText = BasicService.getUniqueInstance().getValue(this.inputData.errorText, this.errorText);
-      this.leadingIcon = BasicService.getUniqueInstance().getValue(this.inputData.leadingIcon, this.leadingIcon);
-      this.trailingIcon = BasicService.getUniqueInstance().getValue(this.inputData.trailingIcon, this.trailingIcon);
    }
 
    private prepareValue(value: any): any {

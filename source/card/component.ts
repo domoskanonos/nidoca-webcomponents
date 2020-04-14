@@ -1,5 +1,6 @@
 import { css, customElement, html, property, unsafeCSS } from 'lit-element';
-import { AbstractComponent, AbstractInputData } from '../abstract-component/component';
+import { LitElement } from 'lit-element';
+import { AbstractInputData } from '../abstract-component/component';
 import { FlexComponent, RichMediaComponent, PrimaryTitleComponent, TypographyComponent, CardPrimaryTitleComponent } from '..';
 import { SlotService } from '@domoskanonos/frontend-basis';
 
@@ -10,7 +11,7 @@ export class CardInputData extends AbstractInputData {
 }
 
 @customElement('component-card')
-export class CardComponent extends AbstractComponent<CardInputData, undefined> {
+export class CardComponent extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;
@@ -26,15 +27,5 @@ export class CardComponent extends AbstractComponent<CardInputData, undefined> {
             <slot></slot>
          </div>
       `;
-   }
-
-   getDefaultInputData(): CardInputData {
-      return new CardInputData();
-   }
-
-   protected inputDataChanged() {}
-
-   getOutputData(): undefined {
-      return undefined;
    }
 }
