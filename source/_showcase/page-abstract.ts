@@ -8,7 +8,6 @@ export abstract class PageAbstract extends BasisTemplate {
          <component-top-app-bar>
             <component-spacer slot="leftComponents" clazz="mediumPaddingLeft"></component-spacer>
             <component-icon slot="leftComponents" icon="menu" clickable="true"></component-icon>
-            <component-icon slot="rightComponents" icon="search" clickable="true"></component-icon>
          </component-top-app-bar>
       `;
    }
@@ -19,7 +18,7 @@ export abstract class PageAbstract extends BasisTemplate {
             <component-navigation-link icon="" text="Introduction" href="introduction"></component-navigation-link>
             <component-navigation-link slot="links" icon="" text="Get started" href="getStarted"></component-navigation-link>
 
-            <component-navigation-section slot="links" text="Komponenten"></component-navigation-section>
+            
 
             <component-navigation-link
                slot="links"
@@ -33,7 +32,8 @@ export abstract class PageAbstract extends BasisTemplate {
                text="Einstellungen"
                href="settings"
             ></component-navigation-link>
-            <component-navigation-link
+            <component-divider slot="links"></component-divider>
+ <component-navigation-section slot="links" text="Komponenten"></component-navigation-section>           <component-navigation-link
                slot="links"
                icon=""
                text="${I18nService.getUniqueInstance().getValue('pagelayout')}"
@@ -57,14 +57,13 @@ export abstract class PageAbstract extends BasisTemplate {
                text="${I18nService.getUniqueInstance().getValue('Grid')}"
                href="grid"
             ></component-navigation-link>
-            <component-divider slot="links"></component-divider>
             <component-navigation-link
                slot="links"
                icon=""
                text="${I18nService.getUniqueInstance().getValue('pageinput')}"
                href="pageinput"
-            ></component-navigation-link>
-            <component-navigation-link
+            ></component-navigation-link
+            ><component-navigation-link
                slot="links"
                icon=""
                text="${I18nService.getUniqueInstance().getValue('pagebars')}"
@@ -117,6 +116,15 @@ export abstract class PageAbstract extends BasisTemplate {
                icon=""
                text="${I18nService.getUniqueInstance().getValue('pageprimarytitle')}"
                href="pageprimarytitle"
+            ></component-navigation-link>
+            <component-divider slot="links"></component-divider>
+            <component-navigation-section slot="links" text="Effekte"></component-navigation-section>
+
+            <component-navigation-link
+               slot="links"
+               icon=""
+               text="${I18nService.getUniqueInstance().getValue('pagecolor')}"
+               href="pagecolor"
             ></component-navigation-link>
          </component-navigation>
       `;
