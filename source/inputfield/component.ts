@@ -20,7 +20,7 @@ import {
 import { NotifyType } from '../meta-data/notify-type';
 import { ContainerClazzValues } from '../flex-container/component';
 import { TextColorClazz } from '../effect-color/component';
-import {GridAlignContent, GridJustifyContent} from '../grid-container/component';
+import { GridAlignContent, GridJustifyContent } from '../grid-container/component';
 
 const componentCSS = require('./component.css');
 
@@ -462,17 +462,16 @@ ${this.value}</textarea
 
    getOutputData(): KeyValueData {
       let outputValue: any = this.oldValue;
-      if (this.selectElemet != null) {
-         //BEi einer selektierung, was ist mit mehreren ?
-         outputValue = this.selectElemet.value;
-         /*
+      if (this.selectElemet != null && this.multiple) {
          outputValue = [];
          for (let i = 0, len = this.selectElemet.options.length; i < len; i++) {
             let opt: HTMLOptionElement = this.selectElemet.options[i];
             if (opt.selected) {
                outputValue.push(opt.value);
             }
-         }*/
+         }
+      } else if (this.selectElemet != null) {
+         outputValue = this.selectElemet.value;
       } else if (this.inputElemet != null) {
          if (this.inputElemet.validationMessage.length == 0) {
             outputValue = this.inputElemet.value;

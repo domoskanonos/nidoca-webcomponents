@@ -26,7 +26,7 @@ export class ContainerComponent extends AbstractComponent<ContainerInputData, un
    render() {
       return this.rendered
          ? html`
-              <span style="${this.cssStyle}"><slot></slot></span>
+              <slot style="${this.cssStyle}"></slot>
            `
          : html``;
    }

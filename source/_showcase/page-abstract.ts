@@ -27,21 +27,12 @@ export abstract class PageAbstract extends BasisTemplate {
                text="Dashboard"
                href="dashboard"
             ></component-navigation-link>
-            <component-navigation-link slot="links" icon="face" text="Users" href="users"></component-navigation-link>
             <component-navigation-link
                slot="links"
                icon="settings_applications"
-               text="Einstell ungenasiodjsiodjdsj idojsdoisduiodu"
+               text="Einstellungen"
                href="settings"
             ></component-navigation-link>
-            <component-navigation-link
-               slot="links"
-               icon=""
-               text="Change Password"
-               href="changepassword"
-            ></component-navigation-link>
-            <component-navigation-link slot="links" icon="" text="Register" href="register"></component-navigation-link>
-            <component-navigation-link slot="links" icon="" text="Abmelden" href="logout"></component-navigation-link>
             <component-navigation-link
                slot="links"
                icon=""
