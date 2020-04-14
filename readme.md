@@ -1,9 +1,23 @@
-WC-Atomic ist ein leichtgewichtiges Komponentenframework basierend auf Typescript, Lit-Element und Webcomponents
+# WC-Atomic Framework (wc-atomic)
 
-Es ist ein Open Source Project und kann frei verwendet werden.
+## Introduction
 
-Es lähnt sich an den Style Richtlinien von Google Material Designs an.
+wc-atomic is a lightweight ui-framework based on
+[webcomponents](https://www.webcomponents.org/),
+[typescript](https://www.typescriptlang.org/)
+and [litelement](https://lit-element.polymer-project.org/).
 
-Showcase Page: wc-atomic.de
+visit showcase page: [wc-atomic.de](wc-atomic.de)
 
+## Installation:
+
+Installation is simple with [npm](https://www.npmjs.com/package/@domoskanonos/wc-atomic):
+
+    npm i @domoskanonos/wc-atomic
+
+or refer directly in package.json:
+
+    "dependencies": {
+        "@domoskanonos/wc-atomic": "latest",
+    }
 
