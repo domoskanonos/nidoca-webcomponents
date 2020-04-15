@@ -1,12 +1,9 @@
 import { css, customElement, html, query, unsafeCSS, LitElement } from 'lit-element';
-import { AbstractInputData } from '../abstract-component/component';
 import { TabContentComponent } from './tab-content/component';
 import { TabComponent } from './tab/component';
 
 const componentCSS = require('./component.css');
 
-export class TabsInputData extends AbstractInputData {
-}
 
 @customElement('component-tabs')
 export class TabsComponent extends LitElement {
@@ -36,10 +33,6 @@ export class TabsComponent extends LitElement {
          </component-grid-container>
          </div>
       `;
-   }
-
-   getDefaultInputData(): any {
-      return <TabsInputData>{};
    }
 
    private tabClicked(event: CustomEvent): void {

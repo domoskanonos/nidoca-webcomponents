@@ -1,19 +1,12 @@
-import { css, customElement, html, property, unsafeCSS } from 'lit-element';
-import { AbstractComponent, AbstractInputData } from '../../abstract-component/component';
+import {css, customElement, html, LitElement, property, unsafeCSS} from 'lit-element';
 import { BasicService } from '@domoskanonos/frontend-basis';
-import { AlignContent, AlignItems, BorderType, FlexJustifyContent, FlexWrap } from '../..';
-import { ContainerClazzValues } from '../../flex-container/component';
+import { BorderType } from '../..';
+
 
 const componentCSS = require('./component.css');
 
-export class ListItemInputData extends AbstractInputData {
-   index: number = -1;
-   selected: boolean = false;
-   selectMode: boolean = false;
-}
-
 @customElement('component-list-item')
-export class ListItemComponent extends AbstractComponent<ListItemInputData, undefined> {
+export class ListItemComponent extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;
@@ -61,14 +54,4 @@ export class ListItemComponent extends AbstractComponent<ListItemInputData, unde
       }
    }
 
-   getOutputData(): undefined {
-      return undefined;
-   }
-
-   protected inputDataChanged() {
-      let defaultData: ListItemInputData = new ListItemInputData();
-      this.selectMode = BasicService.getUniqueInstance().getValue(this.inputData.selectMode, defaultData.selectMode);
-      this.selected = BasicService.getUniqueInstance().getValue(this.inputData.selected, defaultData.selected);
-      this.index = BasicService.getUniqueInstance().getValue(this.inputData.index, defaultData.index);
-   }
 }

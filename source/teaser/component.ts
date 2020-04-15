@@ -1,16 +1,11 @@
 import { css, customElement, html, property, query, unsafeCSS, LitElement } from 'lit-element';
 import { guard } from 'lit-html/directives/guard';
 import { repeat } from 'lit-html/directives/repeat';
-import { AbstractInputData } from '../abstract-component/component';
-import { TeaserElementComponent, TeaserElementInputData } from './teaser-element/component';
+import { TeaserElementComponent } from './teaser-element/component';
 import { TeaserElementMenuComponent } from './teaser-menu-element/component';
-import { BasicService } from '@domoskanonos/frontend-basis';
 
 const componentCSS = require('./component.css');
 
-export class TeaserContainerInputData extends AbstractInputData {
-   items?: TeaserElementInputData[];
-}
 
 @customElement('component-teaser')
 export class TeaserComponent extends LitElement {
@@ -21,7 +16,7 @@ export class TeaserComponent extends LitElement {
    static IDENTIFIER: string = 'TeaserComponent';
 
    @property()
-   items: TeaserElementInputData[] = [];
+   items: TeaserElementComponent[] = [];
 
    @query('#contentSlotElement')
    contentSlotElement: HTMLSlotElement | undefined;
@@ -121,7 +116,7 @@ export class TeaserComponent extends LitElement {
       //}
    }
 
-   selectShadowDomItem(item: TeaserElementInputData) {
+   selectShadowDomItem(item: TeaserElementComponent) {
       console.log('item clicked, state=' + item.selected + JSON.stringify(item));
 
       this.items.forEach((value) => {
@@ -134,15 +129,4 @@ export class TeaserComponent extends LitElement {
       console.log('item clicked, after state=' + item.selected);
    }
 
-   getDefaultInputData(): TeaserContainerInputData {
-      return <TeaserContainerInputData>{
-         componentIdentifier: TeaserComponent.IDENTIFIER,
-         items: [
-            new TeaserElementComponent().getDefaultInputData(),
-            new TeaserElementComponent().getDefaultInputData(),
-            new TeaserElementComponent().getDefaultInputData(),
-            new TeaserElementComponent().getDefaultInputData()
-         ]
-      };
-   }
 }

@@ -1,12 +1,9 @@
-import { css, customElement, html, property, query, unsafeCSS } from 'lit-element';
-import { AbstractComponent, AbstractInputData } from '../abstract-component/component';
-import { InputfieldType, IconInputData, KeyValueData, InputfieldComponent } from '..';
+import {css, customElement, html, LitElement, property, query, unsafeCSS} from 'lit-element';
+import { InputfieldType, InputfieldComponent } from '..';
 import { EventIconClickData } from '../icon/component';
 import { BasicService } from '@domoskanonos/frontend-basis';
 
 const componentCSS = require('./component.css');
-
-export class SearchBarInputData extends AbstractInputData {}
 
 export class SearchBarState {
    static NORMAL: string = 'NORMAL';
@@ -19,7 +16,7 @@ export class SearchBarOutputData {
 }
 
 @customElement('component-search-bar')
-export class SearchBarComponent extends AbstractComponent<SearchBarInputData, SearchBarOutputData> {
+export class SearchBarComponent extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;
@@ -72,8 +69,6 @@ export class SearchBarComponent extends AbstractComponent<SearchBarInputData, Se
       }
       return searchBarOutputData;
    }
-
-   protected inputDataChanged() {}
 
    private textfieldIconClicked(event: CustomEvent) {
       let data: EventIconClickData = event.detail;

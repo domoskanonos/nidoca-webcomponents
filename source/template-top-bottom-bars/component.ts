@@ -1,13 +1,9 @@
 import {css, html, property, query, TemplateResult, unsafeCSS, LitElement} from 'lit-element';
 
-import {AbstractInputData} from '../abstract-component/component';
-import {IconInputData} from '../icon/component';
 import { BasicService } from '@domoskanonos/frontend-basis';
+import {IconComponent} from "..";
 
 const componentCSS = require('./component.css');
-
-export class TopBottomTemplateInputData extends AbstractInputData {
-}
 
 export abstract class TopBottomTemplate extends LitElement {
    static styles = css`
@@ -63,14 +59,9 @@ export abstract class TopBottomTemplate extends LitElement {
       return undefined;
    }
 
-   getDefaultInputData(): TopBottomTemplateInputData {
-      return <TopBottomTemplateInputData>{
-         componentIdentifier: TopBottomTemplate.IDENTIFIER,
-      };
-   }
 
    menuItemClicked(event: CustomEvent) {
-      let id: IconInputData = event.detail;
+      let id: IconComponent = event.detail;
       if (BasicService.getUniqueInstance().isEqual(id.icon, this.menuSwitchIcon)) {
          console.log('menuItemClicked...');
          this.toogleMenu();

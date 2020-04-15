@@ -1,5 +1,4 @@
 import { css, customElement, html, property, unsafeCSS, LitElement } from 'lit-element';
-import { AbstractInputData } from '../abstract-component/component';
 import { BasicService } from '@domoskanonos/frontend-basis';
 
 const componentCSS = require('./component.css');
@@ -22,11 +21,6 @@ export class GridAlignContent {
    static SPACE_EVENLY = 'space-evenly';
 }
 
-export class GridContainerInputData extends AbstractInputData {
-   gridTemplateRows: string[] = [];
-   gridTemplateColumns: string[] = [];
-   height: string = '';
-}
 
 @customElement('component-grid-container')
 export class GridComponent extends LitElement {

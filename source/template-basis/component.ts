@@ -1,13 +1,9 @@
 import { css, html, property, query, TemplateResult, unsafeCSS, LitElement } from 'lit-element';
 
-import { AbstractInputData } from '../abstract-component/component';
-import { IconInputData } from '../icon/component';
 import { BasicService } from '@domoskanonos/frontend-basis';
-import { BorderType, ColorScheme } from '..';
+import {BorderType, ColorScheme, IconComponent} from '..';
 
 const componentCSS = require('./component.css');
-
-export class BasisTemplateInputData extends AbstractInputData {}
 
 export abstract class BasisTemplate extends LitElement {
    static styles = css`
@@ -66,7 +62,7 @@ export abstract class BasisTemplate extends LitElement {
    }
 
    menuItemClicked(event: CustomEvent) {
-      let id: IconInputData = event.detail;
+      let id: IconComponent = event.detail;
       if (BasicService.getUniqueInstance().isEqual(id.icon, this.menuSwitchIcon)) {
          console.log('menuItemClicked...');
          this.toogleMenu();

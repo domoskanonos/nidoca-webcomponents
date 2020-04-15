@@ -30,8 +30,6 @@ export class ColorEffect extends LitElement {
       ${unsafeCSS(componentCSS)}
    `;
 
-   static IDENTIFIER: string = 'ColorComponent';
-
    @property()
    colorScheme: string = ColorScheme.BACKGROUND_COLOR;
 

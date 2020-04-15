@@ -1,16 +1,12 @@
-import { css, customElement, html, property, unsafeCSS, query } from 'lit-element';
-import { AbstractComponent, AbstractInputData } from '../../abstract-component/component';
+import {css, customElement, html, property, unsafeCSS, query, LitElement} from 'lit-element';
 import { ListItemComponent } from '../item/component';
 import { BasicService } from '@domoskanonos/frontend-basis';
 
 const componentCSS = require('./component.css');
 
-export class ListInputData extends AbstractInputData {
-   selectMode: boolean = false;
-}
 
 @customElement('component-list')
-export class ListComponent extends AbstractComponent<ListInputData, number[]> {
+export class ListComponent extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;
@@ -79,11 +75,6 @@ export class ListComponent extends AbstractComponent<ListInputData, number[]> {
          }
       }
       return selection;
-   }
-
-   protected inputDataChanged() {
-      let defaultData: ListInputData = new ListInputData();
-      this.selectMode = BasicService.getUniqueInstance().getValue(this.inputData.selectMode, defaultData.selectMode);
    }
 
 }

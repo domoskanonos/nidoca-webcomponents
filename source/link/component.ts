@@ -1,16 +1,8 @@
-import { css, customElement, html, property, unsafeCSS } from 'lit-element';
-import { AbstractComponent, AbstractInputData } from '../abstract-component/component';
-import { TypographyInputData, TypographyType } from '..';
+import {css, customElement, html, LitElement, property, unsafeCSS} from 'lit-element';
+import { TypographyType } from '..';
 import { BasicService } from '@domoskanonos/frontend-basis';
-import { EventIconClickData } from '../icon/component';
 
 const componentCSS = require('./component.css');
-
-export class LinkInputData extends AbstractInputData {
-   text?: string = '';
-   target?: string = '';
-   href?: string = '';
-}
 
 export class TargetType {
    static BLANK: string = '_blank';
@@ -20,7 +12,7 @@ export class TargetType {
 }
 
 @customElement('component-link')
-export class LinkComponent extends AbstractComponent<LinkInputData, undefined> {
+export class LinkComponent extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;
@@ -50,14 +42,4 @@ export class LinkComponent extends AbstractComponent<LinkInputData, undefined> {
            `;
    }
 
-   protected inputDataChanged() {
-      let defaultData: LinkInputData = new LinkInputData();
-      this.href = BasicService.getUniqueInstance().getValue(this.inputData.href, defaultData.href);
-      this.target = BasicService.getUniqueInstance().getValue(this.inputData.target, defaultData.target);
-      this.text = BasicService.getUniqueInstance().getValue(this.inputData.text, defaultData.text);
-   }
-
-   getOutputData(): undefined {
-      return undefined;
-   }
 }

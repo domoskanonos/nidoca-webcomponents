@@ -1,7 +1,5 @@
-import { css, customElement, html, property, unsafeCSS } from 'lit-element';
-import { AbstractComponent } from '../../abstract-component/component';
-import { LinkInputData } from '../../link/component';
-import { BasicService } from '@domoskanonos/frontend-basis';
+import {css, customElement, html, LitElement, property, unsafeCSS} from 'lit-element';
+
 import {
    AlignContent,
    AlignItems,
@@ -17,7 +15,7 @@ import { ContainerClazzValues } from '../../flex-container/component';
 const componentCSS = require('./component.css');
 
 @customElement('component-navigation-section')
-export class NavigationSectionComponent extends AbstractComponent<LinkInputData, any> {
+export class NavigationSectionComponent extends LitElement {
 
    static styles = css`
       ${unsafeCSS(componentCSS)}
@@ -52,9 +50,4 @@ export class NavigationSectionComponent extends AbstractComponent<LinkInputData,
          : html``;
    }
 
-   getOutputData(): any {
-      return {};
-   }
-
-   protected inputDataChanged() {}
 }

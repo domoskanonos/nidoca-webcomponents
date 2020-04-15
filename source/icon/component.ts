@@ -1,24 +1,7 @@
 import { css, customElement, html, property, unsafeCSS, LitElement } from 'lit-element';
-import { AbstractInputData } from '../abstract-component/component';
 import { BasicService } from '@domoskanonos/frontend-basis';
-import { ElementState } from '..';
 
 const componentCSS = require('./component.css');
-
-export class IconInputData extends AbstractInputData {
-   componentIdentifier = IconComponent.IDENTIFIER;
-   icon: string = '';
-   size: number = 24;
-   sizeUnit: string = 'px';
-   withIconSpace: boolean = true;
-   title: string = '';
-   color: string = '';
-   clazz: string = '';
-   clickable: boolean = false;
-   clickData?: any;
-   elementState: string = ElementState.ACTIVE_UNFOCUSED;
-   rendered: boolean = true;
-}
 
 export class EventIconClickData {
    icon: string = '';
@@ -37,37 +20,34 @@ export class IconComponent extends LitElement {
    static EVENT_CLICK: string = 'component-icon-click';
 
    @property()
-   icon: string = new IconInputData().icon;
+   icon: string = '';
 
    @property()
-   color: string = new IconInputData().color;
+   color: string = '';
 
    @property()
-   clazz: string = new IconInputData().clazz;
+   clazz: string = '';
 
    @property()
-   size: number = new IconInputData().size;
+   size: number = 24;
 
    @property()
-   sizeUnit: string = new IconInputData().sizeUnit;
+   sizeUnit: string = 'px';
 
    @property()
-   withIconSpace: boolean = new IconInputData().withIconSpace;
+   withIconSpace: boolean = true;
 
    @property()
-   title: string = new IconInputData().title;
+   title: string = '';
 
    @property()
-   clickable: boolean = new IconInputData().clickable;
+   clickable: boolean = false;
 
    @property()
    clickData: any;
 
    @property()
-   elementState: string = new IconInputData().elementState;
-
-   @property()
-   rendered: boolean = new IconInputData().rendered;
+   rendered: boolean = true;
 
    render() {
       return this.rendered
@@ -85,7 +65,7 @@ export class IconComponent extends LitElement {
                          .concat('px;')
                     : ''}"
                  ><i
-                    class="material-icons ${this.elementState}"
+                    class="material-icons"
                     style="${this.color.length > 0 ? 'color: '.concat(this.color).concat(';') : ''} ${this.size != undefined
                        ? 'font-size: ' + this.size.toString().concat(this.sizeUnit.concat(';'))
                        : ''}"

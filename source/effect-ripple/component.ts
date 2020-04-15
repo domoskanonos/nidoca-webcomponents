@@ -1,5 +1,4 @@
 import { css, customElement, html, LitElement, property, query, unsafeCSS } from 'lit-element';
-import { ButtonComponent } from '..';
 
 const componentCSS = require('./component.css');
 

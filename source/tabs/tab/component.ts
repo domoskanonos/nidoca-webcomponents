@@ -1,14 +1,8 @@
 import { css, customElement, html, property, unsafeCSS, LitElement } from 'lit-element';
-import { AbstractInputData } from '../../abstract-component/component';
 import { BasicService, I18nService } from '@domoskanonos/frontend-basis';
 import { BorderType, TypographyType } from '../..';
 
 const componentCSS = require('./component.css');
-
-export class TabInputData extends AbstractInputData {
-   selected: boolean = false;
-   text: string = '';
-}
 
 @customElement('component-tab')
 export class TabComponent extends LitElement {

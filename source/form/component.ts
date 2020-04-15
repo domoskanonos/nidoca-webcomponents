@@ -1,10 +1,9 @@
 import { css, customElement, html, property, query, unsafeCSS, LitElement } from 'lit-element';
 import { InputfieldComponent, InputfieldType } from '../inputfield/component';
-import { AbstractInputData } from '../abstract-component/component';
-import { ButtonInputData } from '../button/component';
 import { guard } from 'lit-html/directives/guard';
 import { repeat } from 'lit-html/directives/repeat';
-import { ComponentLoader } from '../abstract/component-loader';
+import { ButtonComponent } from '..';
+import { BasicService } from '@domoskanonos/frontend-basis';
 
 const componentCSS = require('./component.css');
 
@@ -18,10 +17,6 @@ export class FormComponentOutputData {
    formData: FormData = FormData.prototype;
 }
 
-export class FormComponentInputData extends AbstractInputData {
-   buttonInputDatas?: ButtonInputData[];
-}
-
 @customElement('component-form')
 export class FormComponent extends LitElement {
    static IDENTIFIER: string = 'FormComponent';
@@ -33,7 +28,7 @@ export class FormComponent extends LitElement {
    `;
 
    @property()
-   buttonInputDatas: ButtonInputData[] = [];
+   buttons: ButtonComponent[] = [];
 
    @query('#slotElement')
    slotElement: HTMLSlotElement | undefined;
@@ -49,16 +44,15 @@ export class FormComponent extends LitElement {
             <div class="errorMessages">
                <slot name="errorMessages"></slot>
             </div>
-
             <slot id="slotElement" @slotchange="${(event: Event) => this.slotChanged(event)}"></slot>
             ${guard(
-               this.buttonInputDatas,
+               this.buttons,
                () =>
                   html`
                      ${repeat(
-                        this.buttonInputDatas,
-                        (buttonInputData) => html`
-                           ${ComponentLoader.getUniqueInstance().createComponentFromInputData(buttonInputData)}
+                        this.buttons,
+                        (buttons) => html`
+                           ${buttons}
                         `
                      )}
                   `
@@ -138,7 +132,11 @@ export class FormComponent extends LitElement {
       let buttonIdentifier = event.detail;
       switch (buttonIdentifier) {
          case 'submitButton':
-            BasicService.getUniqueInstance().dispatchSimpleCustomEvent(this, FormComponent.EVENT_SUBMIT_BUTTON, this.getOutputData());
+            BasicService.getUniqueInstance().dispatchSimpleCustomEvent(
+               this,
+               FormComponent.EVENT_SUBMIT_BUTTON,
+               this.getOutputData()
+            );
             break;
       }
    }

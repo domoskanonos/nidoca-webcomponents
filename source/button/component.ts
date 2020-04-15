@@ -1,15 +1,7 @@
 import { css, customElement, html, property, unsafeCSS } from 'lit-element';
 import { LitElement } from 'lit-element';
-import { AbstractInputData } from '../abstract-component/component';
 import { BasicService } from '@domoskanonos/frontend-basis';
-import {
-   AlignContent,
-   AlignItems,
-   ContainerClazzValues,
-   FlexDirection,
-   FlexJustifyContent,
-   FlexWrap
-} from '../flex-container/component';
+import { AlignItems, ContainerClazzValues, FlexWrap } from '../flex-container/component';
 import { BorderType, ColorScheme } from '..';
 
 const componentCSS = require('./component.css');
@@ -20,18 +12,11 @@ export class ButtonType {
    static TEXT = 'TEXT';
 }
 
-export class ButtonInputData extends AbstractInputData {
-   text?: string;
-   leadingIcon: string = '';
-}
-
 @customElement('component-button')
 export class ButtonComponent extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;
-
-   static IDENTIFIER: string = 'ButtonComponent';
 
    static EVENT_CLICK: string = 'component-button-clicked';
 
@@ -39,7 +24,7 @@ export class ButtonComponent extends LitElement {
    buttonType: ButtonType = ButtonType.CONTAINED;
 
    @property()
-   leadingIcon: string = new ButtonInputData().leadingIcon;
+   leadingIcon: string = '';
 
    @property()
    text: string = '';
