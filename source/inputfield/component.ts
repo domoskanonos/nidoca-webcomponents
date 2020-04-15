@@ -45,8 +45,6 @@ export class InputfieldComponent extends LitElement {
       ${unsafeCSS(componentCSS)}
    `;
 
-   static IDENTIFIER: string = 'TextfieldComponent';
-
    static EVENT_KEY_UP_CHANGE: string = 'component-inputfield-keyup';
 
    static EVENT_ON_FOCUS_OUT: string = 'component-inputfield-focus-out';

@@ -10,8 +10,6 @@ export class TabContentComponent extends LitElement {
       ${unsafeCSS(componentCSS)}
    `;
 
-   static IDENTIFIER: string = 'TabContentComponent';
-
    @property()
    selected: boolean = false;
 

@@ -17,8 +17,6 @@ export class LinkComponent extends LitElement {
       ${unsafeCSS(componentCSS)}
    `;
 
-   static IDENTIFIER: string = 'LinkComponent';
-
    static EVENT_CLICK: string = 'component-link-click';
 
    @property()

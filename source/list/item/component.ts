@@ -11,8 +11,6 @@ export class ListItemComponent extends LitElement {
       ${unsafeCSS(componentCSS)}
    `;
 
-   static IDENTIFIER: string = 'ListItemComponent';
-
    static EVENT_LIST_ITEM_CLICKED: string = 'component-list-item-clicked';
    static EVENT_LIST_ITEM_SELECT: string = 'component-list-item-select';
    static EVENT_LIST_ITEM_UNSELECT: string = 'component-list-item-unselect';

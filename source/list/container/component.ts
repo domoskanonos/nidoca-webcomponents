@@ -11,8 +11,6 @@ export class ListComponent extends LitElement {
       ${unsafeCSS(componentCSS)}
    `;
 
-   static IDENTIFIER: string = 'ListComponent';
-
    static EVENT_SELECTION_CHANGED: string = 'component-list-selection-changed';
 
    static EVENT_SELECTION_MODE_CHANGED: string = 'component-list-selection-mode-changed';

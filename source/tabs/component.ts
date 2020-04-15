@@ -11,8 +11,6 @@ export class TabsComponent extends LitElement {
       ${unsafeCSS(componentCSS)}
    `;
 
-   static IDENTIFIER: string = 'TabsComponent';
-
    @query('#tabSlot')
    tabSlot: HTMLSlotElement | undefined;
 

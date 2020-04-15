@@ -28,8 +28,6 @@ export class GridComponent extends LitElement {
       ${unsafeCSS(componentCSS)}
    `;
 
-   static IDENTIFIER: string = 'GridComponent';
-
    @property()
    gridTemplateRows: string[] = [];
 

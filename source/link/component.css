@@ -1,10 +1,6 @@
 :host,
 ::slotted(:host) {
-  height: unset;
-  line-height: unset;
-  float: left;
-  display: inline;
-  white-space: nowrap;
+  display: contents;
 }
 a {
   color: inherit;

@@ -1,4 +1,4 @@
-# WC-Atomic Framework (wc-atomic)
+# WC-Atomic Framework (wc-atomic-core)
 
 ## Introduction
 

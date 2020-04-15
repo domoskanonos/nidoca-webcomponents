@@ -26,9 +26,6 @@ export class TypographyComponent extends LitElement {
       ${unsafeCSS(componentCSS)}
    `;
 
-   static IDENTIFIER: string = 'Typography';
-
-
    @property()
    typographyType: string = TypographyType.BODY1;
 

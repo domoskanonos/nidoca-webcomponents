@@ -13,8 +13,6 @@ export class TeaserElementComponent extends LitElement {
       ${unsafeCSS(componentCSS)}
    `;
 
-   static IDENTIFIER: string = 'TeaserElementComponent';
-
    @property()
    selected: boolean = false;
 

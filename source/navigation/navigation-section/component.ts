@@ -21,8 +21,6 @@ export class NavigationSectionComponent extends LitElement {
       ${unsafeCSS(componentCSS)}
    `;
 
-   static IDENTIFIER: string = 'NavigationSectionComponent';
-
    @property()
    text: string = '';
 
