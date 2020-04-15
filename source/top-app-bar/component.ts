@@ -1,5 +1,5 @@
-import { css, customElement, html, property, unsafeCSS } from 'lit-element';
-import { AbstractComponent, AbstractInputData } from '../abstract-component/component';
+import { css, customElement, html, property, unsafeCSS, LitElement } from 'lit-element';
+import { AbstractInputData } from '../abstract-component/component';
 import { ComponentLoader } from '../abstract/component-loader';
 import { guard } from 'lit-html/directives/guard';
 import { repeat } from 'lit-html/directives/repeat';
@@ -14,7 +14,7 @@ export class TopAppBarInputData extends AbstractInputData {
 }
 
 @customElement('component-top-app-bar')
-export class TopAppBarComponent extends AbstractComponent<TopAppBarInputData, undefined> {
+export class TopAppBarComponent extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;
@@ -87,15 +87,5 @@ export class TopAppBarComponent extends AbstractComponent<TopAppBarInputData, un
             </div>
          </div>
       `;
-   }
-
-   getOutputData(): any {
-      return undefined;
-   }
-
-   protected inputDataChanged() {
-      this.leftInputData = BasicService.getUniqueInstance().getValue(this.inputData.leftInputData, []);
-      this.mainInputData = BasicService.getUniqueInstance().getValue(this.inputData.mainInputData, []);
-      this.rightInputData = BasicService.getUniqueInstance().getValue(this.inputData.rightInputData, []);
    }
 }

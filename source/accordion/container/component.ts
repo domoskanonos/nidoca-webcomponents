@@ -1,7 +1,8 @@
 import { css, customElement, html, property, unsafeCSS } from 'lit-element';
 import { repeat } from 'lit-html/directives/repeat';
 import { guard } from 'lit-html/directives/guard';
-import { AbstractComponent, AbstractInputData } from '../../abstract-component/component';
+import { AbstractInputData } from '../../abstract-component/component';
+import { LitElement } from 'lit-element';
 import { AccordionItemComponent, AccordionItemInputData } from '../item/component';
 import { BasicService } from '@domoskanonos/frontend-basis';
 
@@ -12,7 +13,7 @@ export class AccordionInputData extends AbstractInputData {
 }
 
 @customElement('component-accordion')
-export class AccordionComponent extends AbstractComponent<AccordionInputData, any> {
+export class AccordionComponent extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;
@@ -40,13 +41,5 @@ export class AccordionComponent extends AbstractComponent<AccordionInputData, an
             <slot></slot>
          </div>
       `;
-   }
-
-   getOutputData(): any {
-      return {};
-   }
-
-   protected inputDataChanged() {
-      this.items = BasicService.getUniqueInstance().getValue(this.inputData.items, []);
    }
 }

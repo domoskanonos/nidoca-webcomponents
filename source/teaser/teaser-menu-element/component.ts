@@ -1,7 +1,7 @@
-import { css, customElement, html, property, unsafeCSS } from 'lit-element';
+import { css, customElement, html, property, unsafeCSS, LitElement } from 'lit-element';
 import { BasicService } from '@domoskanonos/frontend-basis';
 
-import { AbstractComponent, AbstractInputData } from '../../abstract-component/component';
+import { AbstractInputData } from '../../abstract-component/component';
 
 const componentCSS = require('./component.css');
 
@@ -10,7 +10,7 @@ export class TeaserMenuElementInputData extends AbstractInputData {
 }
 
 @customElement('component-teaser-menu-element')
-export class TeaserElementMenuComponent extends AbstractComponent<TeaserMenuElementInputData, TeaserElementMenuComponent> {
+export class TeaserElementMenuComponent extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;
@@ -31,7 +31,7 @@ export class TeaserElementMenuComponent extends AbstractComponent<TeaserMenuElem
    menuElementClicked() {
       console.log('teaser menu element clicked');
       this.selected = true;
-      this.dispatchSimpleCustomEvent(TeaserElementMenuComponent.EVENT_TEASER_MENU_ELEMENT_CLICK, this.getOutputData());
+      BasicService.getUniqueInstance().dispatchSimpleCustomEvent(this, TeaserElementMenuComponent.EVENT_TEASER_MENU_ELEMENT_CLICK, this.getOutputData());
    }
 
    getDefaultInputData(): TeaserMenuElementInputData {
@@ -39,13 +39,5 @@ export class TeaserElementMenuComponent extends AbstractComponent<TeaserMenuElem
          componentIdentifier: TeaserElementMenuComponent.IDENTIFIER,
          selected: false
       };
-   }
-
-   getOutputData(): TeaserElementMenuComponent {
-      return this;
-   }
-
-   protected inputDataChanged() {
-      this.selected = BasicService.getUniqueInstance().getValue(this.inputData.selected, false);
    }
 }

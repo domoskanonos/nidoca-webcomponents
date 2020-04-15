@@ -1,5 +1,5 @@
-import { css, customElement, html, property, unsafeCSS } from 'lit-element';
-import { AbstractComponent, AbstractInputData } from '../../abstract-component/component';
+import { css, customElement, html, property, unsafeCSS, LitElement } from 'lit-element';
+import { AbstractInputData } from '../../abstract-component/component';
 import { BasicService, I18nService } from '@domoskanonos/frontend-basis';
 import { BorderType, TypographyType } from '../..';
 
@@ -11,7 +11,7 @@ export class TabInputData extends AbstractInputData {
 }
 
 @customElement('component-tab')
-export class TabComponent extends AbstractComponent<TabInputData, TabComponent> {
+export class TabComponent extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;
@@ -51,14 +51,8 @@ export class TabComponent extends AbstractComponent<TabInputData, TabComponent> 
       return this;
    }
 
-   protected inputDataChanged() {
-      let defaultData: TabInputData = new TabInputData();
-      this.selected = BasicService.getUniqueInstance().getValue(this.inputData.selected, defaultData.selected);
-      this.text = BasicService.getUniqueInstance().getValue(this.inputData.text, defaultData.text);
-   }
-
    private tabClicked(): void {
       console.log('tab clicked.');
-      this.dispatchSimpleCustomEvent(TabComponent.EVENT_CLICK, this.getOutputData());
+      BasicService.getUniqueInstance().dispatchSimpleCustomEvent(this, TabComponent.EVENT_CLICK);
    }
 }

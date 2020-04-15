@@ -146,7 +146,7 @@ export abstract class AbstractComponent<INPUT_DATA extends AbstractInputData, OU
    }
 
    protected dispatchCompoundCustomEvent(eventName: string, childEvent: CustomEvent, data?: any) {
-      this.dispatchSimpleCustomEvent(eventName, {
+      BasicService.getUniqueInstance().dispatchSimpleCustomEvent(this, eventName, {
          data,
          childData: childEvent.detail
       });

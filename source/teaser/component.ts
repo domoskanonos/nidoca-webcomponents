@@ -1,7 +1,7 @@
-import { css, customElement, html, property, query, unsafeCSS } from 'lit-element';
+import { css, customElement, html, property, query, unsafeCSS, LitElement } from 'lit-element';
 import { guard } from 'lit-html/directives/guard';
 import { repeat } from 'lit-html/directives/repeat';
-import { AbstractComponent, AbstractInputData } from '../abstract-component/component';
+import { AbstractInputData } from '../abstract-component/component';
 import { TeaserElementComponent, TeaserElementInputData } from './teaser-element/component';
 import { TeaserElementMenuComponent } from './teaser-menu-element/component';
 import { BasicService } from '@domoskanonos/frontend-basis';
@@ -13,7 +13,7 @@ export class TeaserContainerInputData extends AbstractInputData {
 }
 
 @customElement('component-teaser')
-export class TeaserComponent extends AbstractComponent<TeaserContainerInputData, undefined> {
+export class TeaserComponent extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;
@@ -83,7 +83,7 @@ export class TeaserComponent extends AbstractComponent<TeaserContainerInputData,
    selectSlotItem(teaserElementMenuComponent: TeaserElementMenuComponent) {
       console.log('teaserElementMenuComponent clicked');
       //this.slotService.setProperty(this.menuSlotElement, 'selected', false, TeaserElementMenuComponent, null);
-      teaserElementMenuComponent.inputData.selected = true;
+      //teaserElementMenuComponent.inputData.selected = true;
       teaserElementMenuComponent.selected = true;
 
       //let indexOf: number = this.slotService.indexOf(this.menuSlotElement, teaserElementMenuComponent);
@@ -144,32 +144,5 @@ export class TeaserComponent extends AbstractComponent<TeaserContainerInputData,
             new TeaserElementComponent().getDefaultInputData()
          ]
       };
-   }
-
-   getOutputData(): undefined {
-      return undefined;
-   }
-
-   protected inputDataChanged() {
-      this.items = BasicService.getUniqueInstance().getValue(this.inputData.items, []);
-      if (this.items.length > 0) {
-         this.selectShadowDomItem(this.items[0]);
-      }
-
-      if (this.contentSlotElement != null) {
-         console.log('BBBBBBBB');
-
-         let contentSlotelements: Element[] = this.contentSlotElement.assignedElements();
-         for (let index = 0; index < contentSlotelements.length; index++) {
-            let element: Element = contentSlotelements[index];
-
-            console.log('cccccccccccccccccccccc' + element);
-
-            if (element instanceof TeaserElementComponent) {
-               console.log('slotted teaserElementComponent found.');
-               element.selected = false;
-            }
-         }
-      }
    }
 }

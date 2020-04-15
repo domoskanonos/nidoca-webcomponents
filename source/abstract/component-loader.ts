@@ -1,4 +1,5 @@
-import { AbstractComponent, AbstractInputData } from '../abstract-component/component';
+import { LitElement } from 'lit-element';
+import { AbstractInputData } from '../abstract-component/component';
 import { ButtonComponent } from '../button/component';
 import { CodeComponent } from '../code/component';
 import { RichMediaComponent } from '../rich-media/component';
@@ -34,16 +35,16 @@ export class ComponentLoader {
       return ComponentLoader.uniqueInstance;
    }
 
-   public createComponentFromInputData(componentInputData: AbstractInputData): AbstractComponent<AbstractInputData, any> {
+   public createComponentFromInputData(componentInputData: AbstractInputData): LitElement {
       let component = this.createComponent(componentInputData.componentIdentifier);
-      component.inputData = componentInputData;
+      //component.inputData = componentInputData;
       return component;
    }
 
-   public createComponent(componentIdentifier: string): AbstractComponent<AbstractInputData, any> {
+   public createComponent(componentIdentifier: string): LitElement {
       console.log('create component, identifier=' + componentIdentifier);
 
-      let component: AbstractComponent<any, any> | undefined = undefined;
+      let component: LitElement | undefined = undefined;
 
       switch (componentIdentifier) {
          case FlexComponent.IDENTIFIER:

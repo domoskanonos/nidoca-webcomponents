@@ -1,5 +1,5 @@
-import {css, customElement, html, property, unsafeCSS} from 'lit-element';
-import {AbstractComponent, AbstractInputData} from '../abstract-component/component';
+import {css, customElement, html, property, unsafeCSS, LitElement} from 'lit-element';
+import {AbstractInputData} from '../abstract-component/component';
 
 const componentCSS = require('./component.css');
 
@@ -9,7 +9,7 @@ export class DialogInputData extends AbstractInputData {
 }
 
 @customElement('component-dialog')
-export class DialogComponent extends AbstractComponent<DialogInputData, any> {
+export class DialogComponent extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;
@@ -35,13 +35,5 @@ export class DialogComponent extends AbstractComponent<DialogInputData, any> {
 
    getDefaultInputData(): DialogInputData {
       return DialogInputData.prototype;
-   }
-
-   inputDataChanged() {
-      this.show = this.inputData.show;
-   }
-
-   getOutputData(): any {
-      return undefined;
    }
 }

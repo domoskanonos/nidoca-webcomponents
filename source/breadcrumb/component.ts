@@ -1,5 +1,5 @@
-import { css, customElement, html, property, unsafeCSS } from 'lit-element';
-import { AbstractComponent, AbstractInputData } from '../abstract-component/component';
+import { css, customElement, html, property, unsafeCSS, LitElement } from 'lit-element';
+import { AbstractInputData } from '../abstract-component/component';
 import { LinkComponent, LinkInputData } from '../link/component';
 import { guard } from 'lit-html/directives/guard';
 import { repeat } from 'lit-html/directives/repeat';
@@ -12,7 +12,7 @@ export class BreadcrumbInputData extends AbstractInputData {
 }
 
 @customElement('component-breadcrumb')
-export class BreadcrumbComponent extends AbstractComponent<BreadcrumbInputData, undefined> {
+export class BreadcrumbComponent extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;
@@ -44,14 +44,6 @@ export class BreadcrumbComponent extends AbstractComponent<BreadcrumbInputData, 
             )}
          </component-flex-container>
       `;
-   }
-
-   getOutputData(): undefined {
-      return undefined;
-   }
-
-   inputDataChanged() {
-      this.links = BasicService.getUniqueInstance().getValue(this.inputData.links, []);
    }
 
    getDefaultInputData(): BreadcrumbInputData {

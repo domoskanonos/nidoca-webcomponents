@@ -1,5 +1,5 @@
-import { css, customElement, html, property, unsafeCSS } from 'lit-element';
-import { AbstractComponent, AbstractInputData } from '../../abstract-component/component';
+import { css, customElement, html, property, unsafeCSS, LitElement } from 'lit-element';
+import { AbstractInputData } from '../../abstract-component/component';
 import { TabInputData, VisibleType } from '../..';
 import { BasicService } from '@domoskanonos/frontend-basis';
 
@@ -10,7 +10,7 @@ export class TabContentInputData extends AbstractInputData {
 }
 
 @customElement('component-tab-content')
-export class TabContentComponent extends AbstractComponent<TabContentInputData, undefined> {
+export class TabContentComponent extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;
@@ -26,14 +26,5 @@ export class TabContentComponent extends AbstractComponent<TabContentInputData, 
             <slot></slot>
          </effect-visible>
       `;
-   }
-
-   getOutputData(): undefined {
-      return undefined;
-   }
-
-   protected inputDataChanged() {
-      let defaultData: TabContentInputData = new TabContentInputData();
-      this.selected = BasicService.getUniqueInstance().getValue(this.inputData.selected, defaultData.selected);
    }
 }

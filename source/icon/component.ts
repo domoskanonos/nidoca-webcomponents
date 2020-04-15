@@ -1,5 +1,5 @@
-import { css, customElement, html, property, unsafeCSS } from 'lit-element';
-import { AbstractComponent, AbstractInputData } from '../abstract-component/component';
+import { css, customElement, html, property, unsafeCSS, LitElement } from 'lit-element';
+import { AbstractInputData } from '../abstract-component/component';
 import { BasicService } from '@domoskanonos/frontend-basis';
 import { ElementState } from '..';
 
@@ -27,7 +27,7 @@ export class EventIconClickData {
 }
 
 @customElement('component-icon')
-export class IconComponent extends AbstractComponent<IconInputData, any> {
+export class IconComponent extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;
@@ -77,41 +77,23 @@ export class IconComponent extends AbstractComponent<IconInputData, any> {
                  title="${this.title}"
                  @click="${this.clicked}"
                  style="${this.withIconSpace && this.size != undefined
-              ? 'height:'
-                  .concat((this.size * 2).toString())
-                  .concat('px;')
-                  .concat('width:')
-                  .concat((this.size * 2).toString())
-                  .concat('px;')
-              : ''}"
+                    ? 'height:'
+                         .concat((this.size * 2).toString())
+                         .concat('px;')
+                         .concat('width:')
+                         .concat((this.size * 2).toString())
+                         .concat('px;')
+                    : ''}"
                  ><i
                     class="material-icons ${this.elementState}"
                     style="${this.color.length > 0 ? 'color: '.concat(this.color).concat(';') : ''} ${this.size != undefined
-              ? 'font-size: ' + this.size.toString().concat(this.sizeUnit.concat(';'))
-              : ''}"
-                    >${this.icon}</i>
+                       ? 'font-size: ' + this.size.toString().concat(this.sizeUnit.concat(';'))
+                       : ''}"
+                    >${this.icon}</i
+                 >
               </span>
            `
          : html``;
-   }
-
-   inputDataChanged() {
-      let defaultData = new IconInputData();
-      this.icon = BasicService.getUniqueInstance().getValue(this.inputData.icon, defaultData.icon);
-      this.size = BasicService.getUniqueInstance().getValue(this.inputData.size, defaultData.size);
-      this.sizeUnit = BasicService.getUniqueInstance().getValue(this.inputData.sizeUnit, defaultData.sizeUnit);
-      this.withIconSpace = BasicService.getUniqueInstance().getValue(this.inputData.withIconSpace, defaultData.withIconSpace);
-      this.title = BasicService.getUniqueInstance().getValue(this.inputData.title, defaultData.title);
-      this.color = BasicService.getUniqueInstance().getValue(this.inputData.color, defaultData.color);
-      this.clazz = BasicService.getUniqueInstance().getValue(this.inputData.color, defaultData.clazz);
-      this.clickable = BasicService.getUniqueInstance().getValue(this.inputData.clickable, defaultData.clickable);
-      this.clickData = BasicService.getUniqueInstance().getValue(this.inputData.clickData, defaultData.clickData);
-      this.elementState = BasicService.getUniqueInstance().getValue(this.inputData.elementState, defaultData.elementState);
-      this.rendered = BasicService.getUniqueInstance().getValue(this.inputData.rendered, defaultData.rendered);
-   }
-
-   getOutputData(): any {
-      return this.clickData;
    }
 
    getEventList(): string[] {
@@ -120,12 +102,11 @@ export class IconComponent extends AbstractComponent<IconInputData, any> {
 
    async clicked() {
       if (this.clickable) {
-         this.dispatchSimpleCustomEvent(IconComponent.EVENT_CLICK, <EventIconClickData>{
+         BasicService.getUniqueInstance().dispatchSimpleCustomEvent(this, IconComponent.EVENT_CLICK, <EventIconClickData>{
             clickData: this.clickData,
             clickable: this.clickable,
             icon: this.icon
          });
       }
    }
-
 }

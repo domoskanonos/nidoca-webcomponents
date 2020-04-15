@@ -18,7 +18,7 @@ import {FlexDirection,FlexWrap,FlexJustifyContent,AlignItems,AlignContent,FlexCo
 import {GridContainerInputData,GridComponent} from './grid-container/component';
 import {KeyValueData,FormComponentOutputData,FormComponentInputData,FormComponent} from './form/component';
 import {ChipInputData,ChipComponent} from './chip/component';
-import {ContainerInputData,ContainerComponent} from './container/component';
+import {ContainerComponent} from './container/component';
 import {RippleComponent} from './effect-ripple/component';
 import {VisibleType, VisibleEffect} from './effect-visible/component';
 import {HoverComponent} from './effect-hover/component';
@@ -76,7 +76,7 @@ export {CardPrimaryTitleInputData,CardPrimaryTitleComponent} from './card/primar
 export {ElementListInputData,ElementListComponent} from './element-list/component';
 export {CardSupportingTextInputData,CardSupportingTextComponent} from './card/supporting-text/component';
 export {CardInputData,CardComponent} from './card/component';
-export {ContainerInputData,ContainerComponent} from './container/component';
+export {ContainerComponent} from './container/component';
 export {CodeInputData,CodeComponent} from './code/component';
 export {ContentSliderInputData,ContentSliderComponent} from './content-slider/component';
 export {DividerInputData,DividerComponent} from './divider/component';

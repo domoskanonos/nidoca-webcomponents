@@ -1,5 +1,5 @@
-import { css, customElement, html, property, unsafeCSS } from 'lit-element';
-import { AbstractComponent, AbstractInputData } from '../abstract-component/component';
+import { css, customElement, html, property, unsafeCSS, LitElement } from 'lit-element';
+import { AbstractInputData } from '../abstract-component/component';
 import { ImgSliderComponent, ImgSliderInputData } from '../img-slider/component';
 import { RichMediaInputData } from '../rich-media/component';
 import { BasicService } from '@domoskanonos/frontend-basis';
@@ -12,7 +12,7 @@ export class ImgSliderSelectorInputData extends AbstractInputData {
 }
 
 @customElement('component-rich-media-slider-selector')
-export class ImgSliderSelectorComponent extends AbstractComponent<ImgSliderSelectorInputData, undefined> {
+export class ImgSliderSelectorComponent extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;
@@ -52,28 +52,13 @@ export class ImgSliderSelectorComponent extends AbstractComponent<ImgSliderSelec
       `;
    }
 
-   inputDataChanged() {
-      if (this.inputData.imgSlider != undefined) {
-         this.maxHeight = BasicService.getUniqueInstance().getValue(this.inputData.imgSlider.maxSize, 1);
-         this.sliderType = BasicService.getUniqueInstance().getValue(this.inputData.imgSlider.sliderType, 1);
-         this.imgs = BasicService.getUniqueInstance().getValue(this.inputData.imgSlider.imgs, []);
-         if (this.imgs !== undefined && this.imgs.length > 0) {
-            this.selectedImg = BasicService.getUniqueInstance().getValue(this.imgs[0], new RichMediaInputData());
-         }
-      }
-   }
-
    getDefaultInputData(): ImgSliderSelectorInputData {
       return <ImgSliderSelectorInputData>{
          componentIdentifier: ImgSliderSelectorComponent.IDENTIFIER,
          imgSlider: new ImgSliderComponent().getDefaultInputData()
       };
    }
-
-   getOutputData(): undefined {
-      return undefined;
-   }
-
+   
    sliderItemClicked(event: CustomEvent) {
       let img: RichMediaInputData = <RichMediaInputData>event.detail;
       this.selectedImg = img;

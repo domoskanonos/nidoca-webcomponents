@@ -1,5 +1,5 @@
-import { css, customElement, html, property, unsafeCSS } from 'lit-element';
-import { AbstractComponent, AbstractInputData } from '../abstract-component/component';
+import { css, customElement, html, property, unsafeCSS, LitElement } from 'lit-element';
+import { AbstractInputData } from '../abstract-component/component';
 import { IconInputData } from '../icon/component';
 import {TypographyInputData, TypographyType} from '../typography/component';
 import { BasicService } from '@domoskanonos/frontend-basis';
@@ -17,7 +17,7 @@ export class IconWithTextInputData extends AbstractInputData {
 }
 
 @customElement('component-icon-with-text')
-export class IconWithTextComponent extends AbstractComponent<IconWithTextInputData, any> {
+export class IconWithTextComponent extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;
@@ -52,18 +52,5 @@ export class IconWithTextComponent extends AbstractComponent<IconWithTextInputDa
             <component-typography .typographyType="${TypographyType.OVERLINE}" text="${this.text}"></component-typography>
          </component-toolbar>
       `;
-   }
-
-   inputDataChanged() {
-      let defaultData: IconWithTextInputData = new IconWithTextInputData();
-      this.icon = BasicService.getUniqueInstance().getValue(this.inputData.elementState, defaultData.icon);
-      this.elementState = BasicService.getUniqueInstance().getValue(this.inputData.elementState, defaultData.elementState);
-      this.cssStyle = BasicService.getUniqueInstance().getValue(this.inputData.cssStyle, defaultData.cssStyle);
-      this.clickable = BasicService.getUniqueInstance().getValue(this.inputData.clickable, defaultData.clickable);
-      this.text = BasicService.getUniqueInstance().getValue(this.inputData.text, defaultData.text);
-   }
-
-   getOutputData(): any {
-      return undefined;
    }
 }

@@ -1,6 +1,6 @@
-import { css, html, property, query, TemplateResult, unsafeCSS } from 'lit-element';
+import { css, html, property, query, TemplateResult, unsafeCSS, LitElement } from 'lit-element';
 
-import { AbstractComponent, AbstractInputData } from '../abstract-component/component';
+import { AbstractInputData } from '../abstract-component/component';
 import { IconInputData } from '../icon/component';
 import { BasicService } from '@domoskanonos/frontend-basis';
 import { BorderType, ColorScheme } from '..';
@@ -9,7 +9,7 @@ const componentCSS = require('./component.css');
 
 export class BasisTemplateInputData extends AbstractInputData {}
 
-export abstract class BasisTemplate extends AbstractComponent<BasisTemplateInputData, undefined> {
+export abstract class BasisTemplate extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;
@@ -63,12 +63,6 @@ export abstract class BasisTemplate extends AbstractComponent<BasisTemplateInput
 
    public getOutputData(): undefined {
       return undefined;
-   }
-
-   getDefaultInputData(): BasisTemplateInputData {
-      return <BasisTemplateInputData>{
-         componentIdentifier: BasisTemplate.IDENTIFIER
-      };
    }
 
    menuItemClicked(event: CustomEvent) {

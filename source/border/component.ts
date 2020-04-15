@@ -1,5 +1,6 @@
 import { css, customElement, html, property, unsafeCSS } from 'lit-element';
-import { AbstractComponent, AbstractInputData } from '../abstract-component/component';
+import { LitElement } from 'lit-element';
+import { AbstractInputData } from '../abstract-component/component';
 import { BasicService } from '@domoskanonos/frontend-basis';
 
 export class BorderType {
@@ -22,7 +23,7 @@ export class BorderInputData extends AbstractInputData {
 const componentCSS = require('./component.css');
 
 @customElement('component-border')
-export class BorderComponent extends AbstractComponent<BorderInputData, undefined> {
+export class BorderComponent extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;
@@ -36,14 +37,5 @@ export class BorderComponent extends AbstractComponent<BorderInputData, undefine
       return html`
          <slot class="BORDER ${this.borderType}"></slot>
       `;
-   }
-
-   getOutputData(): undefined {
-      return undefined;
-   }
-
-   protected inputDataChanged() {
-      let defaultData: BorderInputData = new BorderInputData();
-      this.borderType = BasicService.getUniqueInstance().getValue(this.inputData.borderType, defaultData.borderType);
    }
 }

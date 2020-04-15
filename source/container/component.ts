@@ -1,21 +1,14 @@
-import { css, customElement, html, property, unsafeCSS } from 'lit-element';
-import { AbstractComponent, AbstractInputData } from '../abstract-component/component';
+import { css, customElement, html, property, unsafeCSS, LitElement } from 'lit-element';
 
 const componentCSS = require('./component.css');
 
-export class ContainerInputData extends AbstractInputData {
-   componentIdentifier = ContainerComponent.IDENTIFIER;
-   rendered: boolean = true;
-   cssStyle: string = '';
-}
-
 @customElement('component-container')
-export class ContainerComponent extends AbstractComponent<ContainerInputData, undefined> {
+export class ContainerComponent extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;
 
-   static IDENTIFIER: string = 'ContainerComponent';
+   // static IDENTIFIER: string = 'ContainerComponent';
 
    @property()
    rendered: boolean = true;
@@ -32,15 +25,6 @@ export class ContainerComponent extends AbstractComponent<ContainerInputData, un
    }
 
    getDefaultInputData(): any {
-      return <ContainerInputData>{};
-   }
-
-   getOutputData(): undefined {
-      return undefined;
-   }
-
-   protected inputDataChanged() {
-      this.rendered = this.inputData.rendered;
-      this.cssStyle = this.inputData.cssStyle;
+      //return <ContainerInputData>{};
    }
 }
