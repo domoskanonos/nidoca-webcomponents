@@ -1,23 +1,15 @@
 import {customElement, html, TemplateResult} from 'lit-element';
-import {AbstractApp} from '../abstract-component/component';
 import {RouterService} from '@domoskanonos/frontend-basis';
 import {I18nService} from "@domoskanonos/frontend-basis/source/i18n-service";
 import messageDE from './message-de.json';
 import messageEN from './message-en.json';
-import messageDEUser from './message-user-de.json';
 
 import './page-introduction';
 import './page-get-started';
 import './page-input.ts';
-import './page-bars.ts';
-import './page-primary-title.ts';
 import './page-button.ts';
 import './page-layout.ts';
 import './page-icon.ts';
-import './page-card.ts';
-import './page-cc.ts';
-import './page-element-list';
-import './page-table.ts';
 import './page-img.ts';
 import './page-form.ts';
 import './page-typography.ts';
@@ -26,11 +18,10 @@ import './showcase-app.ts';
 import {
     HttpClientService,
 } from "@domoskanonos/frontend-basis/source/http-client-service";
-import {PageRegister} from "./page-register";
-import {PageChangePassword} from "./change-password";
 import {PageSettings} from "./page-settings";
 import {PageColor} from "./page-color";
 import {PageGrid} from "./page-grid";
+import {AbstractApp} from "../abstract-app";
 
 
 
@@ -41,8 +32,6 @@ export class ShowcaseApp extends AbstractApp {
         I18nService.getUniqueInstance().saveData(messageDE);
         I18nService.getUniqueInstance().saveData(messageEN, 'en-EN');
 
-        I18nService.getUniqueInstance().addData(messageDEUser);
-        I18nService.getUniqueInstance().addData(messageEN, 'en-EN');
 
         let config = HttpClientService.getUniqueInstance().config;
         config.baseURL = 'http://v220190910399797452.supersrv.de:8099';
@@ -55,14 +44,6 @@ export class ShowcaseApp extends AbstractApp {
       console.log('current path: '.concat(path));
        switch (path) {
            case 'login':
-           case 'register':
-               return html`
-               ${new PageRegister()}
-            `;
-           case 'changepassword':
-               return html`
-               ${new PageChangePassword()}
-            `;
            case 'settings':
                return html`
                ${new PageSettings()}

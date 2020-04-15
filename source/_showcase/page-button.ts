@@ -1,4 +1,4 @@
-import { customElement, html, property, query, TemplateResult } from 'lit-element';
+import { customElement, html, property, TemplateResult } from 'lit-element';
 import { PageAbstract } from './page-abstract';
 import { InputfieldComponent, InputfieldType } from '../inputfield/component';
 import { ButtonType, TypographyType } from '..';

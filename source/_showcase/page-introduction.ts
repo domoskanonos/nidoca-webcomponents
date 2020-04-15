@@ -6,9 +6,7 @@ import {
    FlexDirection,
    FlexJustifyContent,
    FlexWrap,
-   RichMediaInputData,
    SpacerSize,
-   TypographyInputData,
    TypographyType
 } from '..';
 import { SpacerAlignment } from '../spacer/component';
@@ -86,99 +84,8 @@ export class PageIntroduction extends PageAbstract {
             <component-typography .typographyType="${TypographyType.H4}">Installation und Quelldateien</component-typography>
             <component-spacer spacerSize="${SpacerSize.MEDIUM}" alignment="${SpacerAlignment.HORIZONTAL}"></component-spacer>
 
-            <component-flex-container
-               .containerClazzes="${["CONTAINER_100"]}"
-               itemFlexBasisValue="33.3%"
-               
-            >
-               <component-card>
-                  <component-card-primary-title>
-                     <component-primary-title
-                        .richMedia="${<RichMediaInputData>{ src: 'https://picsum.photos/50/50' }}"
-                        .primaryTitle="${<TypographyInputData>{
-                           typographyType: TypographyType.H4,
-                           text: 'Installation'
-                        }}"
-                        .secondaryTitle="${<TypographyInputData>{
-                           typographyType: TypographyType.SUBTITLE2,
-                           text: 'für Node JS and npm'
-                        }}"
-                     ></component-primary-title>
-                  </component-card-primary-title>
-                  <component-card-supporting-text>
-                     <component-code>npm install -g @domoskanonos/wc-atomic</component-code>
-                  </component-card-supporting-text>
-
-                  <component-card-actions>
-                     <component-flex-container>
-                        <component-toolbar .flexJustifyContent="${FlexJustifyContent.FLEX_END}">
-                           <component-icon icon="favorite_border"></component-icon>
-                           <component-icon icon="star_border"></component-icon>
-                           <component-icon icon="star_border"></component-icon>
-                        </component-toolbar>
-                     </component-flex-container>
-                  </component-card-actions>
-               </component-card>
-
-               <component-card>
-                  <component-card-primary-title>
-                     <component-primary-title
-                        .richMedia="${<RichMediaInputData>{ src: 'https://picsum.photos/50/50' }}"
-                        .primaryTitle="${<TypographyInputData>{
-                           typographyType: TypographyType.H4,
-                           text: 'Referenzieren'
-                        }}"
-                        .secondaryTitle="${<TypographyInputData>{
-                           typographyType: TypographyType.SUBTITLE2,
-                           text: 'Als Abhängigkeit in die package.json eintragen'
-                        }}"
-                     ></component-primary-title>
-                  </component-card-primary-title>
-                  <component-card-supporting-text>
-                     <component-code>"dependencies": { ..., "@domoskanonos/frontend-basis": "*" }</component-code>
-                  </component-card-supporting-text>
-
-                  <component-card-actions>
-                     <component-flex-container>
-                        <component-toolbar .flexJustifyContent="${FlexJustifyContent.FLEX_END}">
-                           <component-icon icon="favorite_border"></component-icon>
-                           <component-icon icon="star_border"></component-icon>
-                           <component-icon icon="star_border"></component-icon>
-                        </component-toolbar>
-                     </component-flex-container>
-                  </component-card-actions>
-               </component-card>
-
-               <component-card>
-                  <component-card-primary-title>
-                     <component-primary-title
-                        .primaryTitle="${<TypographyInputData>{
-                           typographyType: TypographyType.H4,
-                           text: 'Quelldateien'
-                        }}"
-                        .secondaryTitle="${<TypographyInputData>{
-                           typographyType: TypographyType.SUBTITLE2,
-                           text: 'Quelldateien als Open Source auf Github'
-                        }}"
-                     ></component-primary-title>
-                  </component-card-primary-title>
-                  <component-card-supporting-text>
-                     <component-link href="https://github.com/domoskanonos/wc-atomic"
-                        >https://github.com/domoskanonos/wc-atomic</component-link
-                     >
-                  </component-card-supporting-text>
-
-                  <component-card-actions>
-                     <component-flex-container>
-                        <component-toolbar .flexJustifyContent="${FlexJustifyContent.FLEX_END}">
-                           <component-icon icon="favorite_border"></component-icon>
-                           <component-icon icon="star_border"></component-icon>
-                           <component-icon icon="star_border"></component-icon>
-                        </component-toolbar>
-                     </component-flex-container>
-                  </component-card-actions>
-               </component-card>
-            </component-flex-container>
+            
+    
          </component-flex-container>
       `;
    }

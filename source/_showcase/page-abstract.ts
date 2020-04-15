@@ -1,5 +1,5 @@
 import { html, TemplateResult } from 'lit-element';
-import { BasisTemplate, TypographyType } from '../index';
+import { BasisTemplate } from '../index';
 import { I18nService } from '@domoskanonos/frontend-basis';
 
 export abstract class PageAbstract extends BasisTemplate {
@@ -17,9 +17,6 @@ export abstract class PageAbstract extends BasisTemplate {
          <component-navigation>
             <component-navigation-link icon="" text="Introduction" href="introduction"></component-navigation-link>
             <component-navigation-link slot="links" icon="" text="Get started" href="getStarted"></component-navigation-link>
-
-            
-
             <component-navigation-link
                slot="links"
                icon="dashboard"
