@@ -1,84 +1,108 @@
-import { customElement, html, TemplateResult } from 'lit-element';
+import { customElement, html, property, TemplateResult } from 'lit-element';
 import { PageAbstract } from './page-abstract';
-import {TypographyType} from '../typography/component';
-import { SimpleTableRowData } from '../simple-table/component';
-import { AlignItems, FlexJustifyContent } from '../flex-container/component';
-import {SpacerAlignment, SpacerSize} from '..';
+import { TypographyType } from '../typography/component';
+import { ContainerClazzValues, ItemClazzValues } from '../flex-container/component';
+import { InputfieldComponent, InputfieldType } from '..';
 import { I18nService } from '@domoskanonos/frontend-basis';
+import { PreviewFormatterService } from './preview-formatter';
 
 @customElement('page-typography')
 export class PageTypographyComponent extends PageAbstract {
+   @property()
+   typographyType: string = TypographyType.BODY1;
+
+   @property()
+   text: string = 'Lorem ipsum dolor sit amet';
+
    getMainComponent(): TemplateResult {
       return html`
-         <component-flex-container .containerClazzes="${["CONTAINER_75"]}" itemFlexBasisValue="100%">
-            <component-flex-container
-               .containerClazzes="${["CONTAINER_100"]}"
-               .flexJustifyContent="${FlexJustifyContent.FLEX_START}"
-               .alignItems="${AlignItems.CENTER}"
-            >
-               <component-icon
-                  .clickable="false"
-                  icon="font_download"
-                  color="#25498d"
-                  iconSize="96"
-                  .withIconSpace="${false}"
-               ></component-icon>
+         <component-flex-container
+            .containerClazzes="${[
+               ContainerClazzValues.CONTAINER_50,
+               ContainerClazzValues.TABLET_MAX_WIDTH,
+               ContainerClazzValues.SMARTPHONE_MAX_WIDTH,
+               ContainerClazzValues.SMARTPHONE_HORIZONTAL_PADDING,
+               ContainerClazzValues.TABLET_HORIZONTAL_PADDING
+            ]}"
+            .itemClazzes="${[ItemClazzValues.KEYLINE_ALIGNMENT_HORIZONTAL, ItemClazzValues.KEYLINE_SIZE_MEDIUM]}"
+            itemFlexBasisValue="100%"
+         >
+            <component-typography .typographyType="${TypographyType.H1}" text="Typography Types"></component-typography>
+            <component-typography
+               .typographyType="${TypographyType.BODY1}"
+               text="Typograpy Types allow users to switch between different text styles and sizes."
+            ></component-typography>
+            <component-typography .typographyType="${TypographyType.H4}" text="Interactive demo"></component-typography>
+            <component-typography
+               .typographyType="${TypographyType.BODY1}"
+               text="This demo lets you preview the typography component, its variations, and configuration options."
+            ></component-typography>
 
-               <component-typography .typographyType="${TypographyType.H2}">Typography</component-typography>
-            </component-flex-container>
-            <component-spacer spacerSize="${SpacerSize.MEDIUM}" alignment="${SpacerAlignment.HORIZONTAL}"></component-spacer>
+            <component-tabs>
+               <component-tab
+                  slot="tab"
+                  .selected="${true}"
+                  text="${I18nService.getUniqueInstance().getValue('demo')}"
+               ></component-tab>
+               <component-tab slot="tab" text="${I18nService.getUniqueInstance().getValue('source')}"></component-tab>
+               <component-tab-content slot="tabContent" .selected="${true}"
+                  ><component-flex-container
+                     .containerClazzes="${[
+                        ContainerClazzValues.CONTAINER_100,
+                        ContainerClazzValues.TABLET_MAX_WIDTH,
+                        ContainerClazzValues.SMARTPHONE_MAX_WIDTH
+                     ]}"
+                     .itemClazzes="${[ItemClazzValues.KEYLINE_ALIGNMENT_BOTH, ItemClazzValues.KEYLINE_SIZE_MEDIUM]}"
+                     itemFlexBasisValue="50%"
+                  >
+                     <component-form>
+                        <component-inputfield
+                           .inputfieldType="${InputfieldType.COMBOBOX}"
+                           .options="${InputfieldComponent.enumToComboboxItems(TypographyType)}"
+                           label="typographyType"
+                           value="${this.typographyType}"
+                           @component-inputfield-change="${(event: CustomEvent) => this.changeTypographyType(event)}"
+                        ></component-inputfield>
 
-            <component-typography .typographyType="${TypographyType.H4}">Types of Typography</component-typography>
-            <component-spacer spacerSize="${SpacerSize.MEDIUM}" alignment="${SpacerAlignment.HORIZONTAL}"></component-spacer>
+                        <component-inputfield
+                           .inputfieldType="${InputfieldType.TEXTAREA}"
+                           label="Text"
+                           value="${this.text}"
+                           @component-inputfield-keyup="${(event: CustomEvent) => this.changeText(event)}"
+                        ></component-inputfield>
+                     </component-form>
 
-            <component-simple-table
-               .headers="${[I18nService.getUniqueInstance().getValue('typographyType'), I18nService.getUniqueInstance().getValue('typographyTypeDescription')]}"
-               .rows="${[
-                  <SimpleTableRowData>{ columns: ['H1', 'Headline'] },
-                  <SimpleTableRowData>{ columns: ['H2', 'Headline'] },
-                  <SimpleTableRowData>{ columns: ['H3', 'Headline'] },
-                  <SimpleTableRowData>{ columns: ['H4', 'Headline'] },
-                  <SimpleTableRowData>{ columns: ['H5', 'Headline'] },
-                  <SimpleTableRowData>{ columns: ['H6', 'Headline'] },
-                  <SimpleTableRowData>{ columns: ['SUBTITLE1', ''] },
-                  <SimpleTableRowData>{ columns: ['SUBTITLE2', ''] },
-                  <SimpleTableRowData>{ columns: ['BODY1', 'long-form writing text'] },
-                  <SimpleTableRowData>{ columns: ['BODY2', 'long-form writing text'] },
-                  <SimpleTableRowData>{ columns: ['BUTTON', ''] },
-                  <SimpleTableRowData>{ columns: ['CAPTION', ''] },
-                  <SimpleTableRowData>{ columns: ['OVERLINE', ''] }
-               ]}"
-            >
-            </component-simple-table>
-         
-         
-         <component-flex-container .containerClazzes="${["CONTAINER_100"]}" itemFlexBasisValue="100%">
-
-            <component-typography .typographyType="${TypographyType.H1}">Headline 1</component-typography>
-            <component-typography .typographyType="${TypographyType.H2}">Headline 2</component-typography>
-            <component-typography .typographyType="${TypographyType.H3}">Headline 3</component-typography>
-            <component-typography .typographyType="${TypographyType.H4}">Headline 4</component-typography>
-            <component-typography .typographyType="${TypographyType.H5}">Headline 5</component-typography>
-            <component-typography .typographyType="${TypographyType.H6}">Headline 6</component-typography>
-            <component-typography .typographyType="${TypographyType.SUBTITLE1}">Subtitle 1</component-typography>
-            <component-typography .typographyType="${TypographyType.SUBTITLE2}">Subtitle 2</component-typography>
-            <component-typography .typographyType="${TypographyType.BODY1}" text=""
-               >Body 1. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos blanditiis tenetur unde suscipit, quam
-               beatae rerum inventore consectetur</component-typography
-            >
-            <component-typography .typographyType="${TypographyType.BODY2}"
-               >Body 2. Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate aliquid ad quas sunt voluptatum
-               officia dolorum cumque, possimus nihil molestias sapiente necessitatibus dolor saepe inventore, soluta id
-               accusantium voluptas beatae.</component-typography
-            >
-            <component-typography .typographyType="${TypographyType.BUTTON}">BUTTON TEXT</component-typography>
-            <component-typography .typographyType="${TypographyType.CAPTION}">Caption text</component-typography>
-            <component-typography .typographyType="${TypographyType.OVERLINE}">OVERLINE TEXT</component-typography>
-          
-          </component-flex-container>  
-            
+                     <component-typography typographyType="${this.typographyType}" text="${this.text}">
+                     </component-typography> </component-flex-container
+               ></component-tab-content>
+               <component-tab-content slot="tabContent"
+                  ><component-code
+                     code="${PreviewFormatterService.getUniqueInstance().format(
+                        '<component-typography '
+                           .concat(
+                              PreviewFormatterService.getUniqueInstance().property2String(this.typographyType, TypographyType)
+                           )
+                           .concat(' text="')
+                           .concat(this.text)
+                           .concat('"></component-typography>')
+                     )}"
+                  >
+                  </component-code
+               ></component-tab-content>
+            </component-tabs>
          </component-flex-container>
-         
       `;
+   }
+
+   private changeTypographyType(event: CustomEvent) {
+      let typographyType: string = (<any>TypographyType)[event.detail.outputData.value];
+      console.log('change buttonType: {}', typographyType);
+      this.typographyType = typographyType;
+   }
+
+   private changeText(event: CustomEvent) {
+      let text: string = (<any>TypographyType)[event.detail.outputData.value];
+      console.log('change buttonType: {}', text);
+      this.text = text;
    }
 }

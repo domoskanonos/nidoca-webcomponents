@@ -50,7 +50,7 @@ export abstract class PageAbstract extends BasisTemplate {
 
             <component-navigation-link
                slot="links"
-               icon=""
+               icon="input"
                text="${I18nService.getUniqueInstance().getValue('pageinput')}"
                href="pageinput"
             ></component-navigation-link
@@ -68,9 +68,9 @@ export abstract class PageAbstract extends BasisTemplate {
             ></component-navigation-link>
             <component-navigation-link
                slot="links"
-               icon=""
-               text="${I18nService.getUniqueInstance().getValue('pageimg')}"
-               href="pageimg"
+               icon="image"
+               text="${I18nService.getUniqueInstance().getValue('pagerichmedia')}"
+               href="pagerichmedia"
             ></component-navigation-link>
             <component-divider slot="links"></component-divider>
             <component-navigation-section slot="links" text="Effekte"></component-navigation-section>

@@ -1,5 +1,15 @@
 {
   "pagegetstarted": "Get started",
   "pageintroduction": "Introduction",
-  "pageimprint": "Imprint"
+  "pagegrid": "Grid-Layout",
+  "pagelayout": "Float-Layout",
+  "pagetypography": "Typography",
+  "pageinput": "Inputfields",
+  "pagebutton": "Buttons",
+  "pageicon": "Icons",
+  "pagecolor": "Color Schemes",
+  "pagerichmedia": "Medien",
+  "pageimprint": "Imprint",
+  "demo": "Demo",
+  "source": "Source"
 }

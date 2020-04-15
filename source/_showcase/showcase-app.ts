@@ -15,7 +15,7 @@ import './page-input.ts';
 import './page-button.ts';
 import './page-layout.ts';
 import './page-icon.ts';
-import './page-img.ts';
+import './page-rich-media.ts';
 import './page-form.ts';
 import './page-typography.ts';
 import './showcase-app.ts';
@@ -56,9 +56,9 @@ export class ShowcaseApp extends AbstractApp {
             return html`
                <page-table></page-table>
             `;
-         case 'pageimg':
+         case 'pagerichmedia':
             return html`
-               <page-img></page-img>
+               <page-rich-media></page-rich-media>
             `;
          case 'pageinput':
             return html`

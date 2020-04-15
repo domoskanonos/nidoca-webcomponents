@@ -31,7 +31,10 @@ export class PageGetStarted extends PageAbstract {
 
             <component-typography .typographyType="${TypographyType.H4}" text="Installation"></component-typography>
             <component-typography .typographyType="${TypographyType.BODY1}">
-               Installation is simple with npm:
+               Installation is simple with
+               <component-link href="https://www.npmjs.com/package/@domoskanonos/wc-atomic" target="${TargetType.BLANK}"
+                  >npm</component-link
+               >:
                <component-spacer spacerSize="${SpacerSize.MEDIUM}" spacerAlignment="${SpacerAlignment.VERTICAL}">
                </component-spacer>
                <component-code code="npm i @domoskanonos/wc-atomic"></component-code>
@@ -46,10 +49,10 @@ export class PageGetStarted extends PageAbstract {
             <component-typography .typographyType="${TypographyType.H4}" text="Basic Template"></component-typography>
             <component-typography .typographyType="${TypographyType.BODY1}">
                You can also use the ready-made basic template, which you can find here:
-               <component-link href="https://github.com/domoskanonos/wc-atomictemplate" target="${TargetType.BLANK}"
+               <component-link href="https://github.com/domoskanonos/wc-atomic-template" target="${TargetType.BLANK}"
                   >basic template</component-link
-               > .
-               It contains a basic set of files on which you can build your application.
+               >
+               . It contains a basic set of files on which you can build your application.
             </component-typography>
          </component-flex-container>
       `;
