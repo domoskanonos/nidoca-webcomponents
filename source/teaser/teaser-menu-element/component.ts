@@ -31,7 +31,7 @@ export class TeaserElementMenuComponent extends LitElement {
    menuElementClicked() {
       console.log('teaser menu element clicked');
       this.selected = true;
-      //this.dispatchSimpleCustomEvent(TeaserElementMenuComponent.EVENT_TEASER_MENU_ELEMENT_CLICK, this.getOutputData());
+      BasicService.getUniqueInstance().dispatchSimpleCustomEvent(this, TeaserElementMenuComponent.EVENT_TEASER_MENU_ELEMENT_CLICK, this.getOutputData());
    }
 
    getDefaultInputData(): TeaserMenuElementInputData {

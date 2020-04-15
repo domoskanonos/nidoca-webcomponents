@@ -409,26 +409,26 @@ ${this.value}</textarea
       inputDataChangedEvent.type = this.inputfieldType;
       inputDataChangedEvent.element = this.inputElemet;
       inputDataChangedEvent.outputData = this.getOutputData();
-      // this.dispatchSimpleCustomEvent(InputfieldComponent.EVENT_CHANGE, inputDataChangedEvent);
+      BasicService.getUniqueInstance().dispatchSimpleCustomEvent(this, InputfieldComponent.EVENT_CHANGE, inputDataChangedEvent);
    }
 
    async keyup() {
       //this.updateInfoText();
-      // this.dispatchSimpleCustomEvent(InputfieldComponent.EVENT_KEY_UP_CHANGE, this.getOutputData());
+      BasicService.getUniqueInstance().dispatchSimpleCustomEvent(this, InputfieldComponent.EVENT_KEY_UP_CHANGE, this.getOutputData());
    }
 
    async focused(event: Event) {
       console.log('event: '.concat(JSON.stringify(event)));
       this.oldValue = this.value;
       this.selected = true;
-      // this.dispatchSimpleCustomEvent(InputfieldComponent.EVENT_ON_FOCUS, this.getOutputData());
+      BasicService.getUniqueInstance().dispatchSimpleCustomEvent(this, InputfieldComponent.EVENT_ON_FOCUS, this.getOutputData());
    }
 
    async focusout(event: Event) {
       console.log('event: '.concat(JSON.stringify(event)));
       this.selected = false;
       this.validate();
-      // this.dispatchSimpleCustomEvent(InputfieldComponent.EVENT_ON_FOCUS_OUT, this.getOutputData());
+      BasicService.getUniqueInstance().dispatchSimpleCustomEvent(this, InputfieldComponent.EVENT_ON_FOCUS_OUT, this.getOutputData());
    }
 
    async change(event: Event) {
@@ -436,7 +436,7 @@ ${this.value}</textarea
       inputDataChangedEvent.type = this.inputfieldType;
       inputDataChangedEvent.element = <HTMLInputElement>event.target;
       inputDataChangedEvent.outputData = this.getOutputData();
-      // this.dispatchSimpleCustomEvent(InputfieldComponent.EVENT_CHANGE, inputDataChangedEvent);
+      BasicService.getUniqueInstance().dispatchSimpleCustomEvent(this, InputfieldComponent.EVENT_CHANGE, inputDataChangedEvent);
    }
 
    public isValid(): boolean {

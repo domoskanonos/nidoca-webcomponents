@@ -145,6 +145,6 @@ export class ImgSliderComponent extends AbstractComponent<ImgSliderInputData, un
    }
 
    private clicked(item: RichMediaInputData) {
-      this.dispatchSimpleCustomEvent(ImgSliderComponent.EVENT_CLICK, item);
+      BasicService.getUniqueInstance().dispatchSimpleCustomEvent(this, ImgSliderComponent.EVENT_CLICK, item);
    }
 }

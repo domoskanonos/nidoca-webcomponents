@@ -47,8 +47,12 @@ export class TabComponent extends LitElement {
       `;
    }
 
+   getOutputData(): TabComponent {
+      return this;
+   }
+
    private tabClicked(): void {
       console.log('tab clicked.');
-      //this.dispatchSimpleCustomEvent(TabComponent.EVENT_CLICK, this.getOutputData());
+      BasicService.getUniqueInstance().dispatchSimpleCustomEvent(this, TabComponent.EVENT_CLICK);
    }
 }

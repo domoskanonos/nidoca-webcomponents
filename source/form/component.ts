@@ -138,7 +138,7 @@ export class FormComponent extends LitElement {
       let buttonIdentifier = event.detail;
       switch (buttonIdentifier) {
          case 'submitButton':
-            //this.dispatchSimpleCustomEvent(FormComponent.EVENT_SUBMIT_BUTTON, this.getOutputData());
+            BasicService.getUniqueInstance().dispatchSimpleCustomEvent(this, FormComponent.EVENT_SUBMIT_BUTTON, this.getOutputData());
             break;
       }
    }

@@ -77,19 +77,20 @@ export class IconComponent extends LitElement {
                  title="${this.title}"
                  @click="${this.clicked}"
                  style="${this.withIconSpace && this.size != undefined
-              ? 'height:'
-                  .concat((this.size * 2).toString())
-                  .concat('px;')
-                  .concat('width:')
-                  .concat((this.size * 2).toString())
-                  .concat('px;')
-              : ''}"
+                    ? 'height:'
+                         .concat((this.size * 2).toString())
+                         .concat('px;')
+                         .concat('width:')
+                         .concat((this.size * 2).toString())
+                         .concat('px;')
+                    : ''}"
                  ><i
                     class="material-icons ${this.elementState}"
                     style="${this.color.length > 0 ? 'color: '.concat(this.color).concat(';') : ''} ${this.size != undefined
-              ? 'font-size: ' + this.size.toString().concat(this.sizeUnit.concat(';'))
-              : ''}"
-                    >${this.icon}</i>
+                       ? 'font-size: ' + this.size.toString().concat(this.sizeUnit.concat(';'))
+                       : ''}"
+                    >${this.icon}</i
+                 >
               </span>
            `
          : html``;
@@ -101,12 +102,11 @@ export class IconComponent extends LitElement {
 
    async clicked() {
       if (this.clickable) {
-         // this.dispatchSimpleCustomEvent(IconComponent.EVENT_CLICK, <EventIconClickData>{
-         //    clickData: this.clickData,
-         //    clickable: this.clickable,
-         //    icon: this.icon
-         // });
+         BasicService.getUniqueInstance().dispatchSimpleCustomEvent(this, IconComponent.EVENT_CLICK, <EventIconClickData>{
+            clickData: this.clickData,
+            clickable: this.clickable,
+            icon: this.icon
+         });
       }
    }
-
 }

@@ -55,6 +55,6 @@ export class ButtonComponent extends LitElement {
    }
 
    async clicked() {
-      // this.dispatchSimpleCustomEvent(ButtonComponent.EVENT_CLICK, this); Need to discuss
+      BasicService.getUniqueInstance().dispatchSimpleCustomEvent(this, ButtonComponent.EVENT_CLICK, this);
    }
 }
