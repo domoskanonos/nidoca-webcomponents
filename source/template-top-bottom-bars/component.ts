@@ -1,6 +1,6 @@
-import {css, html, property, query, TemplateResult, unsafeCSS} from 'lit-element';
+import {css, html, property, query, TemplateResult, unsafeCSS, LitElement} from 'lit-element';
 
-import {AbstractComponent, AbstractInputData} from '../abstract-component/component';
+import {AbstractInputData} from '../abstract-component/component';
 import {IconInputData} from '../icon/component';
 import { BasicService } from '@domoskanonos/frontend-basis';
 
@@ -9,7 +9,7 @@ const componentCSS = require('./component.css');
 export class TopBottomTemplateInputData extends AbstractInputData {
 }
 
-export abstract class TopBottomTemplate extends AbstractComponent<TopBottomTemplateInputData, undefined> {
+export abstract class TopBottomTemplate extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;

@@ -1,5 +1,5 @@
-import {css, customElement, html, property, unsafeCSS} from 'lit-element';
-import {AbstractComponent, AbstractInputData} from '../abstract-component/component';
+import {css, customElement, html, property, unsafeCSS, LitElement} from 'lit-element';
+import {AbstractInputData} from '../abstract-component/component';
 import {BasicService} from '@domoskanonos/frontend-basis';
 import {ElementState} from "..";
 
@@ -31,7 +31,7 @@ export class TypographyInputData extends AbstractInputData {
 const componentCSS = require('./component.css');
 
 @customElement('component-typography')
-export class TypographyComponent extends AbstractComponent<TypographyInputData, undefined> {
+export class TypographyComponent extends LitElement {
 
    static styles = css`
       ${unsafeCSS(componentCSS)}
@@ -60,18 +60,5 @@ export class TypographyComponent extends AbstractComponent<TypographyInputData, 
             ${this.text}<slot></slot>
          </span>
       `;
-   }
-
-   getOutputData(): undefined {
-      return undefined;
-   }
-
-   protected inputDataChanged() {
-      let defaultData: TypographyInputData = new TypographyInputData();
-      this.text = BasicService.getUniqueInstance().getValue(this.inputData.text, defaultData.text);
-      this.typographyType = BasicService.getUniqueInstance().getValue(this.inputData.typographyType, defaultData.typographyType);
-      this.elementState = BasicService.getUniqueInstance().getValue(this.inputData.elementState, defaultData.elementState);
-      this.cssStyle = BasicService.getUniqueInstance().getValue(this.inputData.cssStyle, defaultData.cssStyle);
-      this.clazz = BasicService.getUniqueInstance().getValue(this.inputData.clazz, defaultData.clazz);
    }
 }

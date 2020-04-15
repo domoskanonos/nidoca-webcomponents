@@ -1,5 +1,5 @@
-import { css, customElement, html, property, unsafeCSS } from 'lit-element';
-import { AbstractComponent, AbstractInputData } from '../abstract-component/component';
+import { css, customElement, html, property, unsafeCSS, LitElement } from 'lit-element';
+import { AbstractInputData } from '../abstract-component/component';
 import {TypographyInputData} from "../typography/component";
 import { BasicService } from '@domoskanonos/frontend-basis';
 
@@ -11,7 +11,7 @@ export class TextWithHeaderInputData extends AbstractInputData {
 }
 
 @customElement('component-typography-with-header')
-export class TextWithHeaderComponent extends AbstractComponent<TextWithHeaderInputData, undefined> {
+export class TextWithHeaderComponent extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;
@@ -37,14 +37,5 @@ export class TextWithHeaderComponent extends AbstractComponent<TextWithHeaderInp
          headerInputData: new TypographyInputData(),
          textInputData: new TypographyInputData()
       };
-   }
-
-   getOutputData(): any {
-      return undefined;
-   }
-
-   protected inputDataChanged() {
-      this.headerInputData = BasicService.getUniqueInstance().getValue(this.inputData.headerInputData, new TypographyInputData());
-      this.textInputData = BasicService.getUniqueInstance().getValue(this.inputData.textInputData, new TypographyInputData());
    }
 }
