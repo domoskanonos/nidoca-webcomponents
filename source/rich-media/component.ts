@@ -1,5 +1,5 @@
-import { css, customElement, html, property, unsafeCSS } from 'lit-element';
-import { AbstractComponent, AbstractInputData } from '../abstract-component/component';
+import { css, customElement, html, property, unsafeCSS, LitElement } from 'lit-element';
+import { AbstractInputData } from '../abstract-component/component';
 import { BasicService } from '@domoskanonos/frontend-basis';
 
 const componentCSS = require('./component.css');
@@ -18,7 +18,7 @@ export class RichMediaType extends AbstractInputData {
 
 
 @customElement('component-rich-media')
-export class RichMediaComponent extends AbstractComponent<RichMediaInputData, undefined> {
+export class RichMediaComponent extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;
@@ -49,18 +49,7 @@ export class RichMediaComponent extends AbstractComponent<RichMediaInputData, un
       };
    }
 
-   protected inputDataChanged() {
-      this.src = BasicService.getUniqueInstance().getValue(this.inputData.src, '');
-      this.text = BasicService.getUniqueInstance().getValue(this.inputData.text, '');
-      this.cssStyle = BasicService.getUniqueInstance().getValue(this.inputData.cssStyle, '');
-      this.clazz = BasicService.getUniqueInstance().getValue(this.inputData.clazz, '');
-   }
-
    render() {
       return this.rendered ? html`<span class="${this.clazz}"><img src="${this.src}" style="${this.cssStyle}"/></span>` : html``;
-   }
-
-   getOutputData(): undefined {
-      return undefined;
    }
 }

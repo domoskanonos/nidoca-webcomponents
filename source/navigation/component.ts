@@ -1,5 +1,5 @@
-import { css, customElement, html, property, unsafeCSS } from 'lit-element';
-import { AbstractComponent, AbstractInputData } from '../abstract-component/component';
+import { css, customElement, html, property, unsafeCSS, LitElement } from 'lit-element';
+import { AbstractInputData } from '../abstract-component/component';
 import { guard } from 'lit-html/directives/guard';
 import { ComponentLoader } from '../abstract/component-loader';
 import { repeat } from 'lit-html/directives/repeat';
@@ -17,7 +17,7 @@ export class NavigationInputData extends AbstractInputData {
 }
 
 @customElement('component-navigation')
-export class NavigationComponent extends AbstractComponent<NavigationInputData, any> {
+export class NavigationComponent extends LitElement {
    @property()
    clazz: string = '';
 
@@ -93,17 +93,6 @@ export class NavigationComponent extends AbstractComponent<NavigationInputData, 
             <slot name="contentAfter"></slot>
          </div>
       `;
-   }
-
-   protected inputDataChanged() {
-      this.clazz = BasicService.getUniqueInstance().getValue(this.inputData.clazz, '');
-      this.links = BasicService.getUniqueInstance().getValue(this.inputData.links, []);
-      this.contentBefore = BasicService.getUniqueInstance().getValue(this.inputData.contentBefore, []);
-      this.contentAfter = BasicService.getUniqueInstance().getValue(this.inputData.contentAfter, []);
-   }
-
-   getOutputData(): any {
-      return undefined;
    }
 
    private clickedMenuItem(linkItem: NavigationLinkInputData) {

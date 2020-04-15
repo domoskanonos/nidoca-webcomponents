@@ -1,5 +1,5 @@
-import { css, customElement, html, property, unsafeCSS } from 'lit-element';
-import { AbstractComponent, AbstractInputData } from '../abstract-component/component';
+import { css, customElement, html, property, unsafeCSS, LitElement } from 'lit-element';
+import { AbstractInputData } from '../abstract-component/component';
 import { TypographyInputData, TypographyType } from '..';
 import { BasicService } from '@domoskanonos/frontend-basis';
 import { EventIconClickData } from '../icon/component';
@@ -20,7 +20,7 @@ export class TargetType {
 }
 
 @customElement('component-link')
-export class LinkComponent extends AbstractComponent<LinkInputData, undefined> {
+export class LinkComponent extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;
@@ -48,16 +48,5 @@ export class LinkComponent extends AbstractComponent<LinkInputData, undefined> {
          : html`
               <span style="cursor:pointer;">${this.text}</span>
            `;
-   }
-
-   protected inputDataChanged() {
-      let defaultData: LinkInputData = new LinkInputData();
-      this.href = BasicService.getUniqueInstance().getValue(this.inputData.href, defaultData.href);
-      this.target = BasicService.getUniqueInstance().getValue(this.inputData.target, defaultData.target);
-      this.text = BasicService.getUniqueInstance().getValue(this.inputData.text, defaultData.text);
-   }
-
-   getOutputData(): undefined {
-      return undefined;
    }
 }

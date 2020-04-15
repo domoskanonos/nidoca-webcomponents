@@ -1,5 +1,5 @@
-import { css, customElement, html, unsafeCSS, property } from 'lit-element';
-import { AbstractComponent, AbstractInputData } from '../../abstract-component/component';
+import { css, customElement, html, unsafeCSS, property, LitElement } from 'lit-element';
+import { AbstractInputData } from '../../abstract-component/component';
 import { BasicService, RouterService } from '@domoskanonos/frontend-basis';
 import { AlignContent, AlignItems, FlexDirection, FlexJustifyContent, FlexWrap, SpacerAlignment, SpacerSize } from '../..';
 import { ContainerClazzValues } from '../../flex-container/component';
@@ -14,7 +14,7 @@ export class NavigationLinkInputData extends AbstractInputData {
 }
 
 @customElement('component-navigation-link')
-export class NavigationLinkComponent extends AbstractComponent<NavigationLinkInputData, any> {
+export class NavigationLinkComponent extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;
@@ -59,17 +59,6 @@ export class NavigationLinkComponent extends AbstractComponent<NavigationLinkInp
               </div>
            `
          : html``;
-   }
-
-   protected inputDataChanged() {
-      this.icon = BasicService.getUniqueInstance().getValue(this.inputData.icon, '');
-      this.text = BasicService.getUniqueInstance().getValue(this.inputData.text, '');
-      this.href = BasicService.getUniqueInstance().getValue(this.inputData.href, '');
-      this.rendered = BasicService.getUniqueInstance().getValue(this.inputData.rendered, true);
-   }
-
-   getOutputData(): any {
-      return {};
    }
 
    private linkClicked() {

@@ -1,8 +1,8 @@
-import { css, customElement, html, property, unsafeCSS } from 'lit-element';
+import { css, customElement, html, property, unsafeCSS, LitElement } from 'lit-element';
 import { repeat } from 'lit-html/directives/repeat';
 import { guard } from 'lit-html/directives/guard';
 import { RichMediaComponent, RichMediaInputData } from '../rich-media/component';
-import { AbstractComponent, AbstractInputData } from '../abstract-component/component';
+import { AbstractInputData } from '../abstract-component/component';
 import { BasicService } from '@domoskanonos/frontend-basis';
 
 const componentCSS = require('./component.css');
@@ -25,7 +25,7 @@ export class ImgSliderInputData extends AbstractInputData {
 }
 
 @customElement('component-rich-media-slider')
-export class ImgSliderComponent extends AbstractComponent<ImgSliderInputData, undefined> {
+export class ImgSliderComponent extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;
@@ -67,16 +67,6 @@ export class ImgSliderComponent extends AbstractComponent<ImgSliderInputData, un
             )}
          </div>
       `;
-   }
-
-   inputDataChanged(): void {
-      this.imgs = BasicService.getUniqueInstance().getValue(this.inputData.imgs, []);
-      this.sliderType = BasicService.getUniqueInstance().getValue(this.inputData.sliderType, 1);
-      this.maxSize = BasicService.getUniqueInstance().getValue(this.inputData.maxSize, 1);
-   }
-
-   getOutputData(): undefined {
-      return undefined;
    }
 
    getDefaultInputData(): ImgSliderInputData {
