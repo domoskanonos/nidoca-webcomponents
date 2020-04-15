@@ -1,5 +1,5 @@
-import { css, customElement, html, property, unsafeCSS } from 'lit-element';
-import { AbstractComponent, AbstractInputData } from '../../abstract-component/component';
+import { css, customElement, html, property, unsafeCSS, LitElement } from 'lit-element';
+import { AbstractInputData } from '../../abstract-component/component';
 import { ComponentLoader } from '../../abstract/component-loader';
 import { BasicService } from '@domoskanonos/frontend-basis';
 
@@ -15,7 +15,7 @@ export class TeaserElementInputData extends AbstractInputData {
 }
 
 @customElement('component-teaser-element')
-export class TeaserElementComponent extends AbstractComponent<TeaserElementInputData, undefined> {
+export class TeaserElementComponent extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;
@@ -75,15 +75,5 @@ export class TeaserElementComponent extends AbstractComponent<TeaserElementInput
          foregroundContent: [],
          backgroundContent: []
       };
-   }
-
-   getOutputData(): undefined {
-      return undefined;
-   }
-
-   protected inputDataChanged() {
-      this.selected = BasicService.getUniqueInstance().getValue(this.inputData.selected, false);
-      this.foregroundContent = BasicService.getUniqueInstance().getValue(this.inputData.foregroundContent, []);
-      this.backgroundContent = BasicService.getUniqueInstance().getValue(this.inputData.backgroundContent, []);
    }
 }

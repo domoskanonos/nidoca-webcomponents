@@ -1,5 +1,5 @@
-import { css, customElement, html, query, unsafeCSS } from 'lit-element';
-import { AbstractComponent, AbstractInputData } from '../abstract-component/component';
+import { css, customElement, html, query, unsafeCSS, LitElement } from 'lit-element';
+import { AbstractInputData } from '../abstract-component/component';
 import { TabContentComponent } from './tab-content/component';
 import { TabComponent } from './tab/component';
 
@@ -9,7 +9,7 @@ export class TabsInputData extends AbstractInputData {
 }
 
 @customElement('component-tabs')
-export class TabsComponent extends AbstractComponent<TabsInputData, undefined> {
+export class TabsComponent extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;
@@ -41,12 +41,6 @@ export class TabsComponent extends AbstractComponent<TabsInputData, undefined> {
    getDefaultInputData(): any {
       return <TabsInputData>{};
    }
-
-   getOutputData(): undefined {
-      return undefined;
-   }
-
-   protected inputDataChanged() {}
 
    private tabClicked(event: CustomEvent): void {
       let clickedTab: TabComponent = event.detail;
