@@ -1,131 +1,59 @@
 import { customElement, html, TemplateResult } from 'lit-element';
-import {HttpClientService, SecureService, I18nService} from '@domoskanonos/frontend-basis';
-import {ElementState, FlexJustifyContent, SpacerSize, TopBottomTemplate, TypographyType} from '..';
+import { I18nService, LanguageKey } from '@domoskanonos/frontend-basis';
+import { PageAbstract } from './page-abstract';
+import { AlignItems, FlexJustifyContent, KeyValueData, SpacerAlignment, SpacerSize, TypographyType } from '..';
+import { ContainerClazzValues } from '../flex-container/component';
 
 @customElement('page-settings')
-export class PageSettings extends TopBottomTemplate {
-   getTopContent(): TemplateResult {
-      return html`
-         <component-top-app-bar>
-            <component-icon slot="leftComponents" icon="menu" clickable="true"></component-icon>
-            <component-spacer slot="leftComponents" spacerSize="${SpacerSize.SMALL}"></component-spacer>
-            <component-typography slot="leftComponents" .typographyType="${TypographyType.H6}">Einstellungen</component-typography>
-            <component-authenticated-icon
-               .isAuthenticated="${SecureService.getUniqueInstance().isAuthenticated()}"
-               loginPage="#login"
-               logoutPage="#logout"
-               slot="rightComponents"
-            ></component-authenticated-icon>
-         </component-top-app-bar>
-      `;
-   }
-
+export class PageSettings extends PageAbstract {
    getMainComponent(): TemplateResult {
       return html`
-         <component-typography .typographyType="${TypographyType.H4}">Settings</component-typography>
-         <component-form>
-            <component-i18n-selector></component-i18n-selector>
-         </component-form>
-      `;
-   }
-
-   getBottomContent(): TemplateResult {
-      return html`
-         <component-bottom-app-bar .flexJustifyContent="${FlexJustifyContent.SPACE_AROUND}">
-            <component-icon-with-text .clickable="${true}" .elementState="${ElementState.ACTIVE_UNFOCUSED}" icon="home" text="Home"></component-icon-with-text>
-            <component-icon-with-text icon="home" text="Home"></component-icon-with-text>
-            <component-icon-with-text icon="home" text="Home"></component-icon-with-text>
-            <component-icon-with-text icon="home" text="Home"></component-icon-with-text>
-            <component-icon-with-text icon="home" text="Home"></component-icon-with-text>
-            <component-icon-with-text icon="home" text="Home"></component-icon-with-text>
-         </component-bottom-app-bar>
-      `;
-   }
-
-   getLeftComponent(): TemplateResult {
-      return html`
-         <component-navigation>
-            <component-navigation-link icon="" text="Introduction" href="#introduction"></component-navigation-link>
-            <component-navigation-link slot="links" icon="" text="Get started" href="#getStarted"></component-navigation-link>
-            <component-navigation-section slot="links">
-               <component-typography slot="section" text="Komponenten"></component-typography>
-               <component-navigation-link icon="dashboard" text="Dashboard" href="#dashboard"></component-navigation-link>
-               <component-navigation-link icon="face" text="Users" href="#users"></component-navigation-link>
-               <component-navigation-link
-                  icon="settings_applications"
-                  text="Einstellungen"
-                  href="#settings"
-               ></component-navigation-link>
-               <component-navigation-link
-                  slot="links"
-                  icon=""
-                  text="Change Password"
-                  href="#changepassword"
-               ></component-navigation-link>
-               <component-navigation-link icon="" text="Register" href="#register"></component-navigation-link>
-               <component-navigation-link icon="" text="Abmelden" href="#logout"></component-navigation-link>
-               <component-navigation-link
-                  icon=""
-                  text="${I18nService.getUniqueInstance().getValue('pagelayout')}"
-                  href="pagelayout"
-               ></component-navigation-link>
-               <component-navigation-link
-                  icon=""
-                  text="${I18nService.getUniqueInstance().getValue('pagetypography')}"
-                  href="pagetypography"
-               ></component-navigation-link>
-               <component-navigation-link
-                  icon=""
-                  text="${I18nService.getUniqueInstance().getValue('pageinput')}"
-                  href="pageinput"
-               ></component-navigation-link>
-               <component-navigation-link
-                  icon=""
-                  text="${I18nService.getUniqueInstance().getValue('pagebars')}"
-                  href="pagebars"
-               ></component-navigation-link>
-               <component-navigation-link
-                  icon=""
-                  text="${I18nService.getUniqueInstance().getValue('pageicon')}"
-                  href="pageicon"
-               ></component-navigation-link>
-               <component-navigation-link
-                  icon="table_chart"
-                  text="${I18nService.getUniqueInstance().getValue('pagetable')}"
-                  href="pagetable"
-               ></component-navigation-link>
-               <component-navigation-link
-                  icon=""
-                  text="${I18nService.getUniqueInstance().getValue('pageimg')}"
-                  href="pageimg"
-               ></component-navigation-link>
-               <component-navigation-link
-                  icon=""
-                  text="${I18nService.getUniqueInstance().getValue('pageelementlist')}"
-                  href="pageelementlist"
-               ></component-navigation-link>
-               <component-navigation-link
-                  icon=""
-                  text="${I18nService.getUniqueInstance().getValue('pageform')}"
-                  href="pageform"
-               ></component-navigation-link>
-               <component-navigation-link
-                  icon=""
-                  text="${I18nService.getUniqueInstance().getValue('pagecc')}"
-                  href="pagecc"
-               ></component-navigation-link>
-               <component-navigation-link
-                  icon=""
-                  text="${I18nService.getUniqueInstance().getValue('pagecard')}"
-                  href="pagecard"
-               ></component-navigation-link>
-               <component-navigation-link
-                  icon=""
-                  text="${I18nService.getUniqueInstance().getValue('pageprimarytitle')}"
-                  href="pageprimarytitle"
-               ></component-navigation-link>
-            </component-navigation-section>
-         </component-navigation>
+         <component-spacer spacerSize="${SpacerSize.LITTLE}"></component-spacer>
+         <component-flex-container
+            .containerClazzes="${[
+               ContainerClazzValues.CONTAINER_50,
+               ContainerClazzValues.SMARTPHONE_MAX_WIDTH,
+               ContainerClazzValues.SMARTPHONE_HORIZONTAL_PADDING
+            ]}"
+            itemFlexBasisValue="auto"
+            .flexJustifyContent="${FlexJustifyContent.FLEX_START}"
+            .alignItems="${AlignItems.CENTER}"
+         >
+            <component-icon .withIconSpace="${false}" icon="settings"></component-icon>
+            <component-spacer spacerSize="${SpacerSize.SMALL}" spacerAlignment="${SpacerAlignment.HORIZONTAL}"></component-spacer>
+            <component-typography .typographyType="${TypographyType.H4}"
+               >${I18nService.getUniqueInstance().getValue('settings')}</component-typography
+            >
+         </component-flex-container>
+         <component-divider spacerSize="${SpacerSize.LITTLE}"></component-divider>
+         <component-flex-container
+            .containerClazzes="${[
+               ContainerClazzValues.CONTAINER_50,
+               ContainerClazzValues.SMARTPHONE_MAX_WIDTH,
+               ContainerClazzValues.SMARTPHONE_HORIZONTAL_PADDING
+            ]}"
+            itemFlexBasisValue="100%"
+            .flexJustifyContent="${FlexJustifyContent.FLEX_START}"
+            .alignItems="${AlignItems.CENTER}"
+         >
+            <component-typography .typographyType="${TypographyType.H6}"
+               >${I18nService.getUniqueInstance().getValue('settings_language')}</component-typography
+            >
+            <component-i18n-selector
+               label="${I18nService.getUniqueInstance().getValue('component_i18n_label')}"
+               langKey="${I18nService.getUniqueInstance().getLanguage()}"
+               .languages="${[
+                  <KeyValueData>{
+                     key: LanguageKey.DE,
+                     value: I18nService.getUniqueInstance().getValue('component_i18n_de')
+                  },
+                  <KeyValueData>{
+                     key: LanguageKey.EN,
+                     value: I18nService.getUniqueInstance().getValue('component_i18n_en')
+                  }
+               ]}"
+            ></component-i18n-selector>
+         </component-flex-container>
       `;
    }
 }

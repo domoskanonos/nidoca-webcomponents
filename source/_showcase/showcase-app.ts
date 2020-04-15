@@ -29,8 +29,7 @@ import {
 import {PageRegister} from "./page-register";
 import {PageChangePassword} from "./change-password";
 import {PageSettings} from "./page-settings";
-import {PageUsers} from "./page-users";
-import {PageUser} from "./page-user";
+import {PageColor} from "./page-color";
 import {PageGrid} from "./page-grid";
 
 
@@ -72,13 +71,9 @@ export class ShowcaseApp extends AbstractApp {
                return html`
                ${new PageGrid()}
             `;
-           case 'users':
+           case 'pagecolor':
                return html`
-               ${new PageUsers()}
-            `;
-           case 'useredit':
-               return html`
-               ${new PageUser()}
+               ${new PageColor()}
             `;
            case 'pageicon':
                return html`<page-icon></page-icon>`;

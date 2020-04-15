@@ -3,15 +3,15 @@
    text-transform: uppercase;
    box-sizing: border-box;
    font-family: inherit;
+   min-height: var(--line-height-large);
 }
 
 
 .CONTAINED {
-   background-color: var(--app-color-primary);
-   color: var(--app-color-on-primary);
 }
 
 .OUTLINED {
+   background-color: var(--app-color-background);
 }
 
 .TEXT {

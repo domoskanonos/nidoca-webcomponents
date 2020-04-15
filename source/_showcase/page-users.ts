@@ -14,7 +14,7 @@ import {
 } from "..";
 
 
-@customElement('page-users')
+@customElement('page-colors')
 export class PageUsers extends PageAbstract {
 
    getTopContent(): TemplateResult {

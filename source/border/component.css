@@ -1,44 +1,46 @@
-:host, *{
-    box-sizing: border-box;
+:host,
+* {
+   box-sizing: border-box;
 }
 .BORDER {
-    border-color: var(--app-color-border);
+   border-color: var(--app-color-border);
 }
 
 slot {
-    display: block;
+   display: block;
 }
 
 .ALL {
-    border-width: thin;
+   border-width: thin;
+   border-style: solid;
 }
 
 .HORIZONTAL,
 .TOP {
-    border-top-width: thin;
-    border-top-style: solid;
+   border-top-width: thin;
+   border-top-style: solid;
 }
 
 .HORIZONTAL,
 .BOTTOM {
-    border-bottom-width: thin;
-    border-bottom-style: solid;
+   border-bottom-width: thin;
+   border-bottom-style: solid;
 }
 
 .VERTICAL,
 .LEFT {
-    border-left-width: thin;
-    border-left-style: solid;
+   border-left-width: thin;
+   border-left-style: solid;
 }
 
 .VERTICAL,
 .RIGHT {
-    border-right-width: thin;
-    border-right-style: solid;
+   border-right-width: thin;
+   border-right-style: solid;
 }
 
 .BOTTOM_SELECTED {
-    border-bottom-width: thick;
-    border-bottom-style: solid;
-    border-color: var(--app-color-primary);
+   border-bottom-width: thick;
+   border-bottom-style: solid;
+   border-color: var(--app-color-primary);
 }
