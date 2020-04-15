@@ -68,5 +68,4 @@ export class SimpleTableComponent extends LitElement {
          </div>
       `;
     }
-
 }

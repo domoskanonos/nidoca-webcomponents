@@ -62,14 +62,6 @@ export class SearchBarComponent extends LitElement {
       `;
    }
 
-   getOutputData(): SearchBarOutputData {
-      let searchBarOutputData = new SearchBarOutputData();
-      if (this.inputfieldComponent != null && this.inputfieldComponent.inputElemet != null) {
-         searchBarOutputData.value = this.inputfieldComponent.inputElemet.value;
-      }
-      return searchBarOutputData;
-   }
-
    private textfieldIconClicked(event: CustomEvent) {
       let data: EventIconClickData = event.detail;
       switch (data.icon) {
