@@ -1,7 +1,7 @@
 import { customElement, html, property, TemplateResult } from 'lit-element';
 import { PageAbstract } from './page-abstract';
-import { InputfieldComponent, InputfieldInputData, InputfieldType } from '../inputfield/component';
-import { FlexDirection, TypographyType } from '..';
+import { InputfieldComponent, InputfieldType } from '../inputfield/component';
+import { TypographyType } from '..';
 import { ContainerClazzValues, ItemClazzValues } from '../flex-container/component';
 import { I18nService } from '@domoskanonos/frontend-basis';
 

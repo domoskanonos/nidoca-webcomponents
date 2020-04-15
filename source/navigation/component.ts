@@ -1,20 +1,11 @@
-import { css, customElement, html, property, unsafeCSS, LitElement } from 'lit-element';
-import { AbstractInputData } from '../abstract-component/component';
+import { css, customElement, html, LitElement, property, unsafeCSS } from 'lit-element';
 import { guard } from 'lit-html/directives/guard';
-import { ComponentLoader } from '../abstract/component-loader';
 import { repeat } from 'lit-html/directives/repeat';
 import { RouterService } from '@domoskanonos/frontend-basis';
-import { NavigationLinkInputData } from './navigation-link/component';
 import { BasicService } from '@domoskanonos/frontend-basis';
+import { NavigationLinkComponent } from './navigation-link/component';
 
 const componentCSS = require('./component.css');
-
-export class NavigationInputData extends AbstractInputData {
-   clazz?: string;
-   links?: NavigationLinkInputData[];
-   contentBefore?: AbstractInputData[];
-   contentAfter?: AbstractInputData[];
-}
 
 @customElement('component-navigation')
 export class NavigationComponent extends LitElement {
@@ -22,34 +13,19 @@ export class NavigationComponent extends LitElement {
    clazz: string = '';
 
    @property()
-   links: NavigationLinkInputData[] = [];
+   links: NavigationLinkComponent[] = [];
 
    @property()
-   contentBefore: AbstractInputData[] = [];
+   contentBefore: LitElement[] = [];
 
    @property()
-   contentAfter: AbstractInputData[] = [];
+   contentAfter: LitElement[] = [];
 
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;
 
    static IDENTIFIER: string = 'NavigationComponent';
-
-   getDefaultInputData(): NavigationInputData {
-      return <NavigationInputData>{
-         componentIdentifier: NavigationComponent.IDENTIFIER,
-         links: [
-            { text: 'Homepage', href: '#', icon: 'icon-home' },
-            { text: 'Get started', href: '#get-started', iconClazz: '' },
-            { text: 'Form', href: '#form', iconClazz: '' },
-            { text: 'Media', href: '#media', iconClazz: '' },
-            { text: 'Komponenten', href: '#c', iconClazz: '' },
-            { text: 'Komplexe Komponenten', href: '#cc', iconClazz: '' },
-            { text: 'Dynamische Komponenten', href: '#dc', iconClazz: '' }
-         ]
-      };
-   }
 
    render() {
       return html`
@@ -60,8 +36,8 @@ export class NavigationComponent extends LitElement {
                   html`
                      ${repeat(
                         this.contentBefore,
-                        (inputData) => html`
-                           ${ComponentLoader.getUniqueInstance().createComponentFromInputData(inputData)}
+                        (components) => html`
+                           ${components}
                         `
                      )}
                   `
@@ -84,8 +60,8 @@ export class NavigationComponent extends LitElement {
                   html`
                      ${repeat(
                         this.contentAfter,
-                        (inputData) => html`
-                           ${ComponentLoader.getUniqueInstance().createComponentFromInputData(inputData)}
+                        (components) => html`
+                           ${components}
                         `
                      )}
                   `
@@ -95,7 +71,7 @@ export class NavigationComponent extends LitElement {
       `;
    }
 
-   private clickedMenuItem(linkItem: NavigationLinkInputData) {
-       RouterService.getUniqueInstance().navigate(BasicService.getUniqueInstance().getValue(linkItem.href, ''));
+   private clickedMenuItem(linkItem: NavigationLinkComponent) {
+      RouterService.getUniqueInstance().navigate(BasicService.getUniqueInstance().getValue(linkItem.href, ''));
    }
 }

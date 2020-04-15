@@ -1,28 +1,13 @@
 import { css, customElement, html, property, unsafeCSS } from 'lit-element';
 import { LitElement } from 'lit-element';
-import { AbstractInputData } from '../../abstract-component/component';
-import { ComponentLoader } from '../../abstract/component-loader';
-import { TypographyInputData } from '../../typography/component';
-import { BasicService } from '@domoskanonos/frontend-basis';
 
 const componentCSS = require('./component.css');
-
-export class AccordionItemInputData extends AbstractInputData {
-   header?: string;
-   componentData?: AbstractInputData;
-   stateClazz?: string;
-}
 
 @customElement('component-accordion-item')
 export class AccordionItemComponent extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;
-
-   static IDENTIFIER: string = 'AccordionItemComponent';
-
-   @property()
-   componentData: AbstractInputData | undefined;
 
    @property()
    header: string = '';
@@ -41,12 +26,7 @@ export class AccordionItemComponent extends LitElement {
                                  icon="${this.stateClazz == 'closed' ? 'keyboard_arrow_down' : 'keyboard_arrow_up'}"
                               ></component-icon>
                            </div>
-                           <div class="accordionContent ${this.stateClazz}">
-                              ${
-                                 this.componentData != undefined
-                                    ? ComponentLoader.getUniqueInstance().createComponentFromInputData(this.componentData)
-                                    : ''
-                              }
+                           <div class="accordionContent ${this.stateClazz}">      
                                 <slot></slot>                           
                            </div>
                         </div>
@@ -64,14 +44,4 @@ export class AccordionItemComponent extends LitElement {
       console.log('accordion clicked, after state=' + this.stateClazz);
       //this.reqUpdate();
    }
-
-   getDefaultInputData(): AccordionItemInputData {
-      return <AccordionItemInputData>{
-         componentIdentifier: AccordionItemComponent.IDENTIFIER,
-         header: 'Mein Accordion',
-         componentData: TypographyInputData.prototype,
-         stateClazz: 'closed'
-      };
-   }
-
 }

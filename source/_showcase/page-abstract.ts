@@ -1,5 +1,5 @@
 import { html, TemplateResult } from 'lit-element';
-import { BasisTemplate, TypographyType } from '../index';
+import { BasisTemplate } from '../index';
 import { I18nService } from '@domoskanonos/frontend-basis';
 
 export abstract class PageAbstract extends BasisTemplate {
@@ -15,48 +15,39 @@ export abstract class PageAbstract extends BasisTemplate {
    getLeftComponent(): TemplateResult {
       return html`
          <component-navigation>
-            <component-navigation-link icon="" text="Introduction" href="introduction"></component-navigation-link>
-            <component-navigation-link slot="links" icon="" text="Get started" href="getStarted"></component-navigation-link>
-
-            
-
             <component-navigation-link
                slot="links"
-               icon="dashboard"
-               text="Dashboard"
+               icon="arrow_forward_ios"
+               text="${I18nService.getUniqueInstance().getValue('pageintroduction')}"
                href="dashboard"
             ></component-navigation-link>
             <component-navigation-link
                slot="links"
-               icon="settings_applications"
-               text="Einstellungen"
-               href="settings"
+               icon="build"
+               text="${I18nService.getUniqueInstance().getValue('pagegetstarted')}"
+               href="getStarted"
             ></component-navigation-link>
             <component-divider slot="links"></component-divider>
- <component-navigation-section slot="links" text="Komponenten"></component-navigation-section>           <component-navigation-link
+            <component-navigation-section slot="links" text="Komponenten"></component-navigation-section>
+            <component-navigation-link
                slot="links"
-               icon=""
+               icon="grid_on"
+               text="${I18nService.getUniqueInstance().getValue('pagegrid')}"
+               href="grid"
+            ></component-navigation-link>
+            <component-navigation-link
+               slot="links"
+               icon="dashboard"
                text="${I18nService.getUniqueInstance().getValue('pagelayout')}"
                href="pagelayout"
             ></component-navigation-link>
             <component-navigation-link
                slot="links"
-               icon=""
-               text="${I18nService.getUniqueInstance().getValue('pagebutton')}"
-               href="pagebutton"
-            ></component-navigation-link>
-            <component-navigation-link
-               slot="links"
-               icon=""
+               icon="title"
                text="${I18nService.getUniqueInstance().getValue('pagetypography')}"
                href="pagetypography"
             ></component-navigation-link>
-            <component-navigation-link
-               slot="links"
-               icon=""
-               text="${I18nService.getUniqueInstance().getValue('Grid')}"
-               href="grid"
-            ></component-navigation-link>
+
             <component-navigation-link
                slot="links"
                icon=""
@@ -66,10 +57,10 @@ export abstract class PageAbstract extends BasisTemplate {
             ><component-navigation-link
                slot="links"
                icon=""
-               text="${I18nService.getUniqueInstance().getValue('pagebars')}"
-               href="pagebars"
-            ></component-navigation-link>
-            <component-navigation-link
+               text="${I18nService.getUniqueInstance().getValue('pagebutton')}"
+               href="pagebutton"
+            ></component-navigation-link
+            ><component-navigation-link
                slot="links"
                icon=""
                text="${I18nService.getUniqueInstance().getValue('pageicon')}"
@@ -77,54 +68,24 @@ export abstract class PageAbstract extends BasisTemplate {
             ></component-navigation-link>
             <component-navigation-link
                slot="links"
-               icon="table_chart"
-               text="${I18nService.getUniqueInstance().getValue('pagetable')}"
-               href="pagetable"
-            ></component-navigation-link>
-            <component-navigation-link
-               slot="links"
                icon=""
                text="${I18nService.getUniqueInstance().getValue('pageimg')}"
                href="pageimg"
             ></component-navigation-link>
-            <component-navigation-link
-               slot="links"
-               icon=""
-               text="${I18nService.getUniqueInstance().getValue('pageelementlist')}"
-               href="pageelementlist"
-            ></component-navigation-link>
-            <component-navigation-link
-               slot="links"
-               icon=""
-               text="${I18nService.getUniqueInstance().getValue('pageform')}"
-               href="pageform"
-            ></component-navigation-link>
-            <component-navigation-link
-               slot="links"
-               icon=""
-               text="${I18nService.getUniqueInstance().getValue('pagecc')}"
-               href="pagecc"
-            ></component-navigation-link>
-            <component-navigation-link
-               slot="links"
-               icon=""
-               text="${I18nService.getUniqueInstance().getValue('pagecard')}"
-               href="pagecard"
-            ></component-navigation-link>
-            <component-navigation-link
-               slot="links"
-               icon=""
-               text="${I18nService.getUniqueInstance().getValue('pageprimarytitle')}"
-               href="pageprimarytitle"
-            ></component-navigation-link>
             <component-divider slot="links"></component-divider>
             <component-navigation-section slot="links" text="Effekte"></component-navigation-section>
-
             <component-navigation-link
                slot="links"
                icon=""
                text="${I18nService.getUniqueInstance().getValue('pagecolor')}"
                href="pagecolor"
+            ></component-navigation-link>
+            <component-divider slot="links"></component-divider>
+            <component-navigation-link
+               slot="links"
+               icon="info"
+               text="${I18nService.getUniqueInstance().getValue('pageimprint')}"
+               href="pageimprint"
             ></component-navigation-link>
          </component-navigation>
       `;

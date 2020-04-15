@@ -1,5 +1,4 @@
-import {css, customElement, html, property, unsafeCSS} from 'lit-element';
-import {AbstractComponent, AbstractInputData} from '../abstract-component/component';
+import { css, customElement, html, LitElement, property, unsafeCSS } from 'lit-element';
 import { BasicService } from '@domoskanonos/frontend-basis';
 
 const componentCSS = require('./component.css');
@@ -19,13 +18,8 @@ export class SpacerSize {
    static MAX: string = 'spaceMax';
 }
 
-export class SpacerInputData extends AbstractInputData {
-   spacerSize: string = SpacerSize.ZERO;
-   spacerAlignment: string = SpacerAlignment.BOTH;
-}
-
 @customElement('component-spacer')
-export class SpacerComponent extends AbstractComponent<SpacerInputData, undefined> {
+export class SpacerComponent extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;
@@ -45,14 +39,5 @@ export class SpacerComponent extends AbstractComponent<SpacerInputData, undefine
       return html`
          <span class="spacer ${this.spacerSize} ${this.spacerAlignment}" style="${this.cssStyle}"><slot></slot></span>
       `;
-   }
-
-   getOutputData(): undefined {
-      return undefined;
-   }
-
-   protected inputDataChanged() {
-      this.spacerSize = BasicService.getUniqueInstance().getValue(this.inputData.spacerSize, SpacerSize.ZERO);
-      this.spacerAlignment = BasicService.getUniqueInstance().getValue(this.inputData.spacerAlignment, SpacerAlignment.BOTH);
    }
 }

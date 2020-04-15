@@ -1,23 +1,10 @@
 import { repeat } from 'lit-html/directives/repeat';
 import { guard } from 'lit-html/directives/guard';
 import { css, customElement, html, property, query, unsafeCSS, LitElement } from 'lit-element';
-import { AbstractInputData } from '../abstract-component/component';
 import { KeyValueData } from '../form/component';
 import { TypographyType } from '../typography/component';
 import { BasicService } from '@domoskanonos/frontend-basis';
-import {
-   AlignContent,
-   AlignItems,
-   BorderType,
-   ElementState,
-   FlexDirection,
-   FlexJustifyContent,
-   FlexWrap,
-   SpacerAlignment,
-   SpacerSize,
-   VisibleType
-} from '..';
-import { NotifyType } from '../meta-data/notify-type';
+import { BorderType, FlexJustifyContent, SpacerAlignment, SpacerSize, VisibleType } from '..';
 import { ContainerClazzValues } from '../flex-container/component';
 import { TextColorClazz } from '../effect-color/component';
 import { GridAlignContent, GridJustifyContent } from '../grid-container/component';
@@ -46,36 +33,6 @@ export enum InputfieldType {
    COMBOBOX = 'combobox'
 }
 
-export class InputfieldInputData extends AbstractInputData {
-   componentIdentifier = InputfieldComponent.IDENTIFIER;
-   inputfieldType: string = InputfieldType.TEXT;
-   name: string = '';
-   value: any = '';
-   placeholder: string = '';
-   label: string = '';
-   required: boolean = false;
-   disabled: boolean = false;
-   checked: boolean = false;
-   multiple: boolean = false;
-   maxlength: number = 255; //InputfieldType.TEXT
-   minlength?: number; //InputfieldType.TEXT
-   min?: number;
-   max?: number;
-   step?: number;
-   size?: number;
-   labelText: string = '';
-   infoText: string = '';
-   errorText: string = '';
-   assistiveText: string = '';
-   leadingIcon: string = '';
-   trailingIcon: string = '';
-   leadingIconClickable: boolean = false;
-   trailingIconClickable: boolean = false;
-   options: KeyValueData[] = [];
-}
-
-//inputBoxInputData: InputBoxInputData = new InputBoxInputData();
-
 export class InputfieldDataChangeEvent {
    type?: string;
    outputData?: KeyValueData;
@@ -88,8 +45,6 @@ export class InputfieldComponent extends LitElement {
       ${unsafeCSS(componentCSS)}
    `;
 
-   static IDENTIFIER: string = 'TextfieldComponent';
-
    static EVENT_KEY_UP_CHANGE: string = 'component-inputfield-keyup';
 
    static EVENT_ON_FOCUS_OUT: string = 'component-inputfield-focus-out';
@@ -99,73 +54,73 @@ export class InputfieldComponent extends LitElement {
    static EVENT_CHANGE: string = 'component-inputfield-change';
 
    @property()
-   name: string = new InputfieldInputData().name;
+   name: string = '';
 
    @property()
-   value: any = new InputfieldInputData().value;
+   value: any;
 
    @property()
-   oldValue: string = new InputfieldInputData().value;
+   oldValue: any;
 
    @property()
-   inputfieldType: string = new InputfieldInputData().inputfieldType;
+   inputfieldType: string = InputfieldType.TEXT;
 
    @property()
-   placeholder: string = new InputfieldInputData().placeholder;
+   placeholder: string = '';
 
    @property()
-   required: boolean = new InputfieldInputData().required;
+   required: boolean = false;
 
    @property()
-   disabled: boolean = new InputfieldInputData().disabled;
+   disabled: boolean = false;
 
    @property()
-   checked: boolean = new InputfieldInputData().checked;
+   checked: boolean = false;
 
    @property()
-   multiple: boolean = new InputfieldInputData().multiple;
+   multiple: boolean = false;
 
    @property()
-   maxlength: number | undefined = new InputfieldInputData().maxlength;
+   maxlength: number | undefined;
 
    @property()
-   minlength: number | undefined = new InputfieldInputData().minlength;
+   minlength: number | undefined;
 
    @property()
-   min: number | undefined = new InputfieldInputData().min;
+   min: number | undefined;
 
    @property()
-   max: number | undefined = new InputfieldInputData().max;
+   max: number | undefined;
 
    @property()
-   step: number | undefined = new InputfieldInputData().step;
+   step: number | undefined;
 
    @property()
-   size: number | undefined = new InputfieldInputData().size;
+   size: number | undefined;
 
    @property()
-   label: string = new InputfieldInputData().labelText;
+   label: string = '';
 
    @property()
-   assistiveText: string = new InputfieldInputData().assistiveText;
+   assistiveText: string = '';
 
    @property()
-   infoText: string = new InputfieldInputData().infoText;
+   infoText: string = '';
 
    @property()
-   errorText: string = new InputfieldInputData().errorText;
+   errorText: string = '';
 
    @property()
-   leadingIcon: string = new InputfieldInputData().leadingIcon;
+   leadingIcon: string = '';
 
    @property()
-   trailingIcon: string = new InputfieldInputData().trailingIcon;
+   trailingIcon: string = '';
 
    @property()
-   leadingIconClickable: boolean = new InputfieldInputData().leadingIconClickable;
+   leadingIconClickable: boolean = false;
 
    @property()
-   trailingIconClickable: boolean = new InputfieldInputData().trailingIconClickable;
+   trailingIconClickable: boolean = false;
 
    @property()
    selected: boolean = false;
@@ -414,7 +369,11 @@ ${this.value}</textarea
 
    async keyup() {
       //this.updateInfoText();
-      BasicService.getUniqueInstance().dispatchSimpleCustomEvent(this, InputfieldComponent.EVENT_KEY_UP_CHANGE, this.getOutputData());
+      BasicService.getUniqueInstance().dispatchSimpleCustomEvent(
+         this,
+         InputfieldComponent.EVENT_KEY_UP_CHANGE,
+         this.getOutputData()
+      );
    }
 
    async focused(event: Event) {
@@ -428,7 +387,11 @@ ${this.value}</textarea
       console.log('event: '.concat(JSON.stringify(event)));
       this.selected = false;
       this.validate();
-      BasicService.getUniqueInstance().dispatchSimpleCustomEvent(this, InputfieldComponent.EVENT_ON_FOCUS_OUT, this.getOutputData());
+      BasicService.getUniqueInstance().dispatchSimpleCustomEvent(
+         this,
+         InputfieldComponent.EVENT_ON_FOCUS_OUT,
+         this.getOutputData()
+      );
    }
 
    async change(event: Event) {

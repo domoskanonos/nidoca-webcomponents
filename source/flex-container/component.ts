@@ -1,8 +1,6 @@
 import { css, customElement, html, property, query, unsafeCSS, LitElement } from 'lit-element';
 import { repeat } from 'lit-html/directives/repeat';
 import { guard } from 'lit-html/directives/guard';
-import { AbstractInputData } from '../abstract-component/component';
-import { ComponentLoader } from '../abstract/component-loader';
 import { BasicService } from '@domoskanonos/frontend-basis';
 
 const componentCSS = require('./component.css');
@@ -88,20 +86,6 @@ export class AlignContent {
    static UNSAFE = 'unsafe';
 }
 
-export class FlexContainerInputData extends AbstractInputData {
-   containerClazzes: string[] = [ContainerClazzValues.CONTAINER_100];
-   cssStyle: string = '';
-   flexDirection: string = FlexDirection.ROW;
-   flexWrap: string = FlexWrap.WRAP;
-   flexJustifyContent: string = FlexJustifyContent.FLEX_START;
-   alignItems: string = AlignItems.STRETCH;
-   alignContent: string = AlignContent.STRETCH;
-   itemClazzes: string[] = [];
-   itemFlexBasisValue: string = 'auto';
-   itemFlexBasisValues: string[] = [];
-   inputDataItems: AbstractInputData[] = [];
-}
-
 @customElement('component-flex-container')
 export class FlexComponent extends LitElement {
    static styles = css`
@@ -111,10 +95,10 @@ export class FlexComponent extends LitElement {
    static IDENTIFIER: string = 'FlexComponent';
 
    @property()
-   containerClazzes: string[] = new FlexContainerInputData().containerClazzes;
+   containerClazzes: string[] = [];
 
    @property()
-   cssStyle: string = new FlexContainerInputData().cssStyle;
+   cssStyle: string = '';
 
    @property()
    flexDirection: string = FlexDirection.ROW;
@@ -132,16 +116,13 @@ export class FlexComponent extends LitElement {
    alignContent: string = AlignContent.STRETCH;
 
    @property()
-   itemClazzes: string[] = new FlexContainerInputData().itemClazzes;
+   itemClazzes: string[] = [];
 
    @property()
-   itemFlexBasisValue: string = new FlexContainerInputData().itemFlexBasisValue;
+   itemFlexBasisValue: string = 'auto';
 
    @property()
-   itemFlexBasisValues: string[] = new FlexContainerInputData().itemFlexBasisValues;
-
-   @property()
-   inputDataItems: AbstractInputData[] = new FlexContainerInputData().inputDataItems;
+   itemFlexBasisValues: string[] = [];
 
    @query('#slotElement')
    slotElement: HTMLSlotElement | undefined;
@@ -153,18 +134,6 @@ export class FlexComponent extends LitElement {
             style="flex-direction: ${this.flexDirection}; flex-wrap: ${this.flexWrap}; justify-content: ${this
                .flexJustifyContent}; align-items: ${this.alignItems}; align-content: ${this.alignContent}; ${this.cssStyle}"
          >
-            ${guard(
-               this.inputDataItems,
-               () =>
-                  html`
-                     ${repeat(
-                        this.inputDataItems,
-                        (componentInputData, index) => html`
-                           ${this.createItem(componentInputData, index)}
-                        `
-                     )}
-                  `
-            )}
             <slot id="slotElement" @slotchange="${(event: Event) => this.slotChanged(event)}"></slot>
          </div>
       `;
@@ -237,12 +206,6 @@ export class FlexComponent extends LitElement {
          .concat(flexBasisValue)
          .concat(';max-width: ')
          .concat(flexBasisValue);
-   }
-
-   private createItem(componentInputData: AbstractInputData, index: number) {
-      let abstractComponent = ComponentLoader.getUniqueInstance().createComponentFromInputData(componentInputData);
-      this.changeItemStyle(abstractComponent, index);
-      return abstractComponent;
    }
 
    toContainerClazzesString(containerClazzeses: string[]) {

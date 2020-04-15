@@ -1,16 +1,8 @@
-import { css, customElement, html, property, unsafeCSS, LitElement } from 'lit-element';
-import { AbstractInputData } from '../abstract-component/component';
-import { TypographyInputData, TypographyType } from '..';
+import {css, customElement, html, LitElement, property, unsafeCSS} from 'lit-element';
+import { TypographyType } from '..';
 import { BasicService } from '@domoskanonos/frontend-basis';
-import { EventIconClickData } from '../icon/component';
 
 const componentCSS = require('./component.css');
-
-export class LinkInputData extends AbstractInputData {
-   text?: string = '';
-   target?: string = '';
-   href?: string = '';
-}
 
 export class TargetType {
    static BLANK: string = '_blank';
@@ -24,8 +16,6 @@ export class LinkComponent extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;
-
-   static IDENTIFIER: string = 'LinkComponent';
 
    static EVENT_CLICK: string = 'component-link-click';
 

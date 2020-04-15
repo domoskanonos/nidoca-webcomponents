@@ -1,24 +1,15 @@
-import { css, customElement, html, property, unsafeCSS, LitElement } from 'lit-element';
-import { AbstractInputData } from '../../abstract-component/component';
+import {css, customElement, html, LitElement, property, unsafeCSS} from 'lit-element';
 import { BasicService } from '@domoskanonos/frontend-basis';
-import { AlignContent, AlignItems, BorderType, FlexJustifyContent, FlexWrap } from '../..';
-import { ContainerClazzValues } from '../../flex-container/component';
+import { BorderType } from '../..';
+
 
 const componentCSS = require('./component.css');
-
-export class ListItemInputData extends AbstractInputData {
-   index: number = -1;
-   selected: boolean = false;
-   selectMode: boolean = false;
-}
 
 @customElement('component-list-item')
 export class ListItemComponent extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;
-
-   static IDENTIFIER: string = 'ListItemComponent';
 
    static EVENT_LIST_ITEM_CLICKED: string = 'component-list-item-clicked';
    static EVENT_LIST_ITEM_SELECT: string = 'component-list-item-select';

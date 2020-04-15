@@ -8,8 +8,6 @@ export class ContainerComponent extends LitElement {
       ${unsafeCSS(componentCSS)}
    `;
 
-   // static IDENTIFIER: string = 'ContainerComponent';
-
    @property()
    rendered: boolean = true;
 
@@ -22,9 +20,5 @@ export class ContainerComponent extends LitElement {
               <slot style="${this.cssStyle}"></slot>
            `
          : html``;
-   }
-
-   getDefaultInputData(): any {
-      //return <ContainerInputData>{};
    }
 }

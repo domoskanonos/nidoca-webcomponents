@@ -3,7 +3,7 @@ import { PageAbstract } from './page-abstract';
 import {TypographyType} from '../typography/component';
 import { SimpleTableRowData } from '../simple-table/component';
 import { AlignItems, FlexJustifyContent } from '../flex-container/component';
-import {ElementState, SpacerAlignment, SpacerSize} from '..';
+import {SpacerAlignment, SpacerSize} from '..';
 import { I18nService } from '@domoskanonos/frontend-basis';
 
 @customElement('page-typography')
@@ -21,7 +21,6 @@ export class PageTypographyComponent extends PageAbstract {
                   icon="font_download"
                   color="#25498d"
                   iconSize="96"
-                  elementState="${ElementState.ACTIVE_FOCUSED}"
                   .withIconSpace="${false}"
                ></component-icon>
 

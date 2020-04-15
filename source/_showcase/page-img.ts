@@ -1,7 +1,5 @@
 import { customElement, html, TemplateResult } from 'lit-element';
 import { PageAbstract } from './page-abstract';
-import { InputfieldComponent } from '../inputfield/component';
-import {RichMediaComponent, RichMediaInputData} from "../rich-media/component";
 import {TypographyType} from "../typography/component";
 
 @customElement('page-img')

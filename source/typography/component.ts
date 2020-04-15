@@ -1,7 +1,4 @@
 import {css, customElement, html, property, unsafeCSS, LitElement} from 'lit-element';
-import {AbstractInputData} from '../abstract-component/component';
-import {BasicService} from '@domoskanonos/frontend-basis';
-import {ElementState} from "..";
 
 export class TypographyType {
    static H1: string = 'H1';
@@ -19,14 +16,6 @@ export class TypographyType {
    static OVERLINE: string = 'OVERLINE';
 }
 
-export class TypographyInputData extends AbstractInputData {
-   componentIdentifier = TypographyComponent.IDENTIFIER;
-   typographyType: string = TypographyType.H2;
-   elementState: string = ElementState.DEFAULT;
-   text: string = '';
-   clazz: string = '';
-   cssStyle: string = '';
-}
 
 const componentCSS = require('./component.css');
 
@@ -36,11 +25,6 @@ export class TypographyComponent extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;
-
-   static IDENTIFIER: string = 'Typography';
-
-   @property()
-   elementState: string = ElementState.DEFAULT;
 
    @property()
    typographyType: string = TypographyType.BODY1;
@@ -56,7 +40,7 @@ export class TypographyComponent extends LitElement {
 
    render() {
       return html`
-         <span class="${this.typographyType} ${this.clazz} ${this.elementState}" style="${this.cssStyle}">
+         <span class="${this.typographyType} ${this.clazz}" style="${this.cssStyle}">
             ${this.text}<slot></slot>
          </span>
       `;

@@ -1,17 +1,9 @@
 import { css, customElement, html, unsafeCSS, property, LitElement } from 'lit-element';
-import { AbstractInputData } from '../../abstract-component/component';
 import { BasicService, RouterService } from '@domoskanonos/frontend-basis';
 import { AlignContent, AlignItems, FlexDirection, FlexJustifyContent, FlexWrap, SpacerAlignment, SpacerSize } from '../..';
 import { ContainerClazzValues } from '../../flex-container/component';
 
 const componentCSS = require('./component.css');
-
-export class NavigationLinkInputData extends AbstractInputData {
-   icon?: string = '';
-   text: string = '';
-   href: string = '';
-   rendered: boolean = true;
-}
 
 @customElement('component-navigation-link')
 export class NavigationLinkComponent extends LitElement {

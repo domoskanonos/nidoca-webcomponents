@@ -1,17 +1,8 @@
 import { css, customElement, html, property, unsafeCSS, LitElement } from 'lit-element';
-import { AbstractInputData } from '../abstract-component/component';
-import { ComponentLoader } from '../abstract/component-loader';
 import { guard } from 'lit-html/directives/guard';
 import { repeat } from 'lit-html/directives/repeat';
-import { BasicService } from '@domoskanonos/frontend-basis';
 
 const componentCSS = require('./component.css');
-
-export class TopAppBarInputData extends AbstractInputData {
-   leftInputData: AbstractInputData[] = [];
-   mainInputData: AbstractInputData[] = [];
-   rightInputData: AbstractInputData[] = [];
-}
 
 @customElement('component-top-app-bar')
 export class TopAppBarComponent extends LitElement {
@@ -22,13 +13,13 @@ export class TopAppBarComponent extends LitElement {
    static IDENTIFIER: string = 'ToolbarComponent';
 
    @property()
-   leftInputData: AbstractInputData[] = [];
+   leftComponents: LitElement[] = [];
 
    @property()
-   mainInputData: AbstractInputData[] = [];
+   mainComponents: LitElement[] = [];
 
    @property()
-   rightInputData: AbstractInputData[] = [];
+   rightComponents: LitElement[] = [];
 
    constructor() {
       super();
@@ -39,13 +30,13 @@ export class TopAppBarComponent extends LitElement {
          <div class="topappbar">
             <div class="left">
                ${guard(
-                  this.leftInputData,
+                  this.leftComponents,
                   () =>
                      html`
                         ${repeat(
-                           this.leftInputData,
-                           (inputData) => html`
-                              ${ComponentLoader.getUniqueInstance().createComponentFromInputData(inputData)}
+                           this.leftComponents,
+                           (component) => html`
+                              ${component}
                            `
                         )}
                      `
@@ -55,13 +46,13 @@ export class TopAppBarComponent extends LitElement {
 
             <div class="center">
                ${guard(
-                  this.mainInputData,
+                  this.mainComponents,
                   () =>
                      html`
                         ${repeat(
-                           this.mainInputData,
-                           (inputData) => html`
-                              ${ComponentLoader.getUniqueInstance().createComponentFromInputData(inputData)}
+                           this.mainComponents,
+                           (component) => html`
+                              ${component}
                            `
                         )}
                      `
@@ -69,13 +60,13 @@ export class TopAppBarComponent extends LitElement {
             </div>
             <div class="right">
                ${guard(
-                  this.rightInputData,
+                  this.rightComponents,
                   () =>
                      html`
                         ${repeat(
-                           this.rightInputData,
-                           (inputData) => html`
-                              ${ComponentLoader.getUniqueInstance().createComponentFromInputData(inputData)}
+                           this.rightComponents,
+                           (component) => html`
+                              ${component}
                            `
                         )}
                      `

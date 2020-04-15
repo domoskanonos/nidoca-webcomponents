@@ -1,21 +1,15 @@
-import { css, customElement, html, property, unsafeCSS, query, LitElement } from 'lit-element';
-import { AbstractInputData } from '../../abstract-component/component';
+import {css, customElement, html, property, unsafeCSS, query, LitElement} from 'lit-element';
 import { ListItemComponent } from '../item/component';
 import { BasicService } from '@domoskanonos/frontend-basis';
 
 const componentCSS = require('./component.css');
 
-export class ListInputData extends AbstractInputData {
-   selectMode: boolean = false;
-}
 
 @customElement('component-list')
 export class ListComponent extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;
-
-   static IDENTIFIER: string = 'ListComponent';
 
    static EVENT_SELECTION_CHANGED: string = 'component-list-selection-changed';
 

@@ -4,7 +4,6 @@ import {InputfieldComponent, InputfieldType} from '../inputfield/component';
 import {
    AlignContent,
    AlignItems,
-   ElementState,
    FlexDirection,
    FlexJustifyContent,
    FlexWrap,
@@ -21,9 +20,6 @@ export class PageIconComponent extends PageAbstract {
 
    @property()
    iconSize: number = 96;
-
-   @property()
-   elementState: string = ElementState.ACTIVE_FOCUSED;
 
    @property()
    color: string = '';
@@ -45,7 +41,6 @@ export class PageIconComponent extends PageAbstract {
                icon="thumb_up_alt"
                color="#25498d"
                iconSize="96"
-               elementState="${ElementState.ACTIVE_UNFOCUSED}"
                .withIconSpace="${false}"
             ></component-icon>
 
@@ -93,12 +88,7 @@ export class PageIconComponent extends PageAbstract {
                      @component-inputfield-change="${(event: CustomEvent) => (this.iconSize = event.detail.outputData.value)}"
                   ></component-inputfield>
 
-                  <component-combobox
-                     @component-inputfield-change="${(event: CustomEvent) => (this.elementState = event.detail.value)}"
-                     label="Status"
-                     selectedValue="${this.elementState}"
-                     .options="${InputfieldComponent.clazzToComboboxItems(ElementState)}"
-                  ></component-combobox>
+                 
                </component-form>
 
                <component-flex-container .containerClazzes="${["CONTAINER_100"]}">
@@ -247,13 +237,12 @@ export class PageIconComponent extends PageAbstract {
                   icon="${this.icon}"
                   color="${this.color}"
                   .size="${this.iconSize}"
-                  .elementState="${this.elementState}"
                ></component-icon>
             </component-flex-container>
 
             <component-code
                >&lt;component-icon .clickable="${this.clickable}" icon="${this.icon}" color="${this.color}"
-               .size="${this.iconSize}" .elementState="$&#123;ElementState.${this.elementState}&#125;" &gt;&lt;/component-icon&gt;
+               .size="${this.iconSize}" &gt;&lt;/component-icon&gt;
             </component-code>
          </component-flex-container>
 

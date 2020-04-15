@@ -2,7 +2,7 @@
    "name": "@domoskanonos/wc-atomic",
    "version": "1.0.334",
    "license": "ISC",
-   "description": "",
+   "description": "wc-atomic framework (wc-atomic-core)",
    "main": "source/index.js",
    "types": "source/index.d.ts",
    "module": "source/index.d.js",
@@ -36,7 +36,7 @@
       "@domoskanonos/frontend-basis": "^1.0.172",
       "@domoskanonos/ts-word2image": "1.0.1"
    },
-   "author": "",
+   "author": "Dominik Bruhn",
    "scripts": {
       "start": "./node_modules/.bin/webpack-dev-server --config webpack.dev.js --open",
       "build_typescript": "tsc -p ./",

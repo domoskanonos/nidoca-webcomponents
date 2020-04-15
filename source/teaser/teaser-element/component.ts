@@ -1,18 +1,11 @@
 import { css, customElement, html, property, unsafeCSS, LitElement } from 'lit-element';
-import { AbstractInputData } from '../../abstract-component/component';
-import { ComponentLoader } from '../../abstract/component-loader';
-import { BasicService } from '@domoskanonos/frontend-basis';
+
 
 import { repeat } from 'lit-html/directives/repeat';
 import { guard } from 'lit-html/directives/guard';
 
 const componentCSS = require('./component.css');
 
-export class TeaserElementInputData extends AbstractInputData {
-   selected?: boolean;
-   backgroundContent?: AbstractInputData[];
-   foregroundContent?: AbstractInputData[];
-}
 
 @customElement('component-teaser-element')
 export class TeaserElementComponent extends LitElement {
@@ -20,16 +13,14 @@ export class TeaserElementComponent extends LitElement {
       ${unsafeCSS(componentCSS)}
    `;
 
-   static IDENTIFIER: string = 'TeaserElementComponent';
-
    @property()
    selected: boolean = false;
 
    @property()
-   foregroundContent: AbstractInputData[] = [];
+   foregroundContent: LitElement[] = [];
 
    @property()
-   backgroundContent: AbstractInputData[] = [];
+   backgroundContent: LitElement[] = [];
 
    render() {
       return html`
@@ -42,7 +33,7 @@ export class TeaserElementComponent extends LitElement {
                         ${repeat(
                            this.backgroundContent,
                            (item) => html`
-                              ${ComponentLoader.getUniqueInstance().createComponentFromInputData(item)}
+                              ${item}
                            `
                         )}
                      `
@@ -57,7 +48,7 @@ export class TeaserElementComponent extends LitElement {
                         ${repeat(
                            this.foregroundContent,
                            (item) => html`
-                              ${ComponentLoader.getUniqueInstance().createComponentFromInputData(item)}
+                              ${item}
                            `
                         )}
                      `
@@ -68,12 +59,4 @@ export class TeaserElementComponent extends LitElement {
       `;
    }
 
-   getDefaultInputData(): TeaserElementInputData {
-      return <TeaserElementInputData>{
-         componentIdentifier: TeaserElementComponent.IDENTIFIER,
-         selected: false,
-         foregroundContent: [],
-         backgroundContent: []
-      };
-   }
 }

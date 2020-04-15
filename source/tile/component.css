@@ -1,7 +1,0 @@
-
-.tile,::slotted(.tile) {
-   box-sizing: border-box;
-   background-color: var(--app-color-surface);
-   color: var(--app-color-on-surface);
-   overflow: hidden;
-}

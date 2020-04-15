@@ -1,6 +1,5 @@
-import { css, customElement, html, property, unsafeCSS, LitElement } from 'lit-element';
-import { LinkInputData } from '../../link/component';
-import { BasicService } from '@domoskanonos/frontend-basis';
+import {css, customElement, html, LitElement, property, unsafeCSS} from 'lit-element';
+
 import {
    AlignContent,
    AlignItems,
@@ -21,8 +20,6 @@ export class NavigationSectionComponent extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;
-
-   static IDENTIFIER: string = 'NavigationSectionComponent';
 
    @property()
    text: string = '';
