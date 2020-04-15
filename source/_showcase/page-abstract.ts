@@ -17,7 +17,7 @@ export abstract class PageAbstract extends BasisTemplate {
          <component-navigation>
             <component-navigation-link
                slot="links"
-               icon="dashboard"
+               icon="arrow_forward_ios"
                text="${I18nService.getUniqueInstance().getValue('pageintroduction')}"
                href="dashboard"
             ></component-navigation-link>
@@ -31,20 +31,19 @@ export abstract class PageAbstract extends BasisTemplate {
             <component-navigation-section slot="links" text="Komponenten"></component-navigation-section>
             <component-navigation-link
                slot="links"
-               icon=""
-               text="${I18nService.getUniqueInstance().getValue('pagelayout')}"
-               href="pagelayout"
-            ></component-navigation-link
-            ><component-navigation-link
-               slot="links"
-               icon=""
+               icon="grid_on"
                text="${I18nService.getUniqueInstance().getValue('pagegrid')}"
                href="grid"
             ></component-navigation-link>
-
             <component-navigation-link
                slot="links"
-               icon=""
+               icon="dashboard"
+               text="${I18nService.getUniqueInstance().getValue('pagelayout')}"
+               href="pagelayout"
+            ></component-navigation-link>
+            <component-navigation-link
+               slot="links"
+               icon="title"
                text="${I18nService.getUniqueInstance().getValue('pagetypography')}"
                href="pagetypography"
             ></component-navigation-link>
@@ -80,6 +79,13 @@ export abstract class PageAbstract extends BasisTemplate {
                icon=""
                text="${I18nService.getUniqueInstance().getValue('pagecolor')}"
                href="pagecolor"
+            ></component-navigation-link>
+            <component-divider slot="links"></component-divider>
+            <component-navigation-link
+               slot="links"
+               icon="info"
+               text="${I18nService.getUniqueInstance().getValue('pageimprint')}"
+               href="pageimprint"
             ></component-navigation-link>
          </component-navigation>
       `;
