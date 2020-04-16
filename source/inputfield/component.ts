@@ -292,7 +292,7 @@ ${this.value}</textarea
                                <div class="slidecontainer">
                                   <input
                                      id="inputElement"
-                                     class="slider"
+                                     class="sliders"
                                      name="${this.name}"
                                      type="${this.inputfieldType}"
                                      value="${this.prepareValue(this.value)}"
