@@ -19,7 +19,6 @@ export class TabsComponent extends LitElement {
 
    render() {
       return html`
-      <div class="test">
          <component-grid-container
             @component-tab-click="${(event: CustomEvent) => this.tabClicked(event)}"
             .gridTemplateRows="${['auto', 'auto']}"
@@ -29,7 +28,7 @@ export class TabsComponent extends LitElement {
             <slot id="tabContentSlot" name="tabContent"></slot>
             
          </component-grid-container>
-         </div>
+      
       `;
    }
 
