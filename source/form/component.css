@@ -10,10 +10,6 @@ form {
     box-sizing: border-box;
 }
 
-.errorMessages {
-    color: var(--app-color-error);
-}
-
 @media only screen and (orientation: portrait) {
     form {
     }

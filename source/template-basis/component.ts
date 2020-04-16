@@ -1,32 +1,32 @@
-import { css, html, property, query, TemplateResult, unsafeCSS, LitElement } from 'lit-element';
+import {css, html, property, query, TemplateResult, unsafeCSS, LitElement} from 'lit-element';
 
-import { BasicService } from '@domoskanonos/frontend-basis';
+import {BasicService} from '@domoskanonos/frontend-basis';
 import {BorderType, ColorScheme, IconComponent} from '..';
 
 const componentCSS = require('./component.css');
 
 export abstract class BasisTemplate extends LitElement {
-   static styles = css`
+    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;
 
-   static IDENTIFIER: string = 'DefaultTemplate';
+    static IDENTIFIER: string = 'DefaultTemplate';
 
-   @property()
-   menuSwitchIcon = 'menu';
+    @property()
+    menuSwitchIcon = 'menu';
 
-   @property()
-   menuCss: string = 'menuClosed basicShadow';
+    @property()
+    menuCss: string = 'menuClosed basicShadow';
 
-   @query('#top')
-   private topElement: HTMLElement | undefined;
-   @query('#left')
-   private leftElement: HTMLElement | undefined;
-   @query('#main')
-   private mainElement: HTMLElement | undefined;
+    @query('#top')
+    private topElement: HTMLElement | undefined;
+    @query('#left')
+    private leftElement: HTMLElement | undefined;
+    @query('#main')
+    private mainElement: HTMLElement | undefined;
 
-   render() {
-      return html`
+    render() {
+        return html`
          <div class="container" @component-icon-click="${this.menuItemClicked}">
             <top id="top" class="${this.menuCss}">
                <effect-color colorScheme="${ColorScheme.PRIMARY_COLOR}">
@@ -47,33 +47,27 @@ export abstract class BasisTemplate extends LitElement {
             </div>
          </div>
       `;
-   }
+    }
 
-   abstract getMainComponent(): TemplateResult;
+    abstract getMainComponent(): TemplateResult;
 
-   abstract getLeftComponent(): TemplateResult;
+    abstract getLeftComponent(): TemplateResult;
 
-   abstract getTopContent(): TemplateResult;
+    abstract getTopContent(): TemplateResult;
 
-   protected inputDataChanged(): void {}
+    menuItemClicked(event: CustomEvent) {
+        let id: IconComponent = event.detail;
+        if (BasicService.getUniqueInstance().isEqual(id.icon, this.menuSwitchIcon)) {
+            console.log('menuItemClicked...');
+            this.toogleMenu();
+        }
+    }
 
-   public getOutputData(): undefined {
-      return undefined;
-   }
-
-   menuItemClicked(event: CustomEvent) {
-      let id: IconComponent = event.detail;
-      if (BasicService.getUniqueInstance().isEqual(id.icon, this.menuSwitchIcon)) {
-         console.log('menuItemClicked...');
-         this.toogleMenu();
-      }
-   }
-
-   private toogleMenu(): void {
-      if (this.menuCss.indexOf('menuClosed') == -1) {
-         this.menuCss = 'menuClosed basicShadow';
-      } else {
-         this.menuCss = 'basicShadow';
-      }
-   }
+    private toogleMenu(): void {
+        if (this.menuCss.indexOf('menuClosed') == -1) {
+            this.menuCss = 'menuClosed basicShadow';
+        } else {
+            this.menuCss = 'basicShadow';
+        }
+    }
 }

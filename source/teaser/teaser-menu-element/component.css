@@ -1,7 +1,7 @@
 .menuItem, ::slotted(.menuItem) {
   background-attachment: scroll;
   background-clip: border-box;
-  background-color: var(--app-color-secondary);
+  background-color: var(--app-color-background);
   background-image: none;
   background-origin: padding-box;
   background-position-x: 0%;

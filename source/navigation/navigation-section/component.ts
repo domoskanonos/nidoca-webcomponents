@@ -1,4 +1,4 @@
-import {css, customElement, html, LitElement, property, unsafeCSS} from 'lit-element';
+import { css, customElement, html, LitElement, property, unsafeCSS } from 'lit-element';
 
 import {
    AlignContent,
@@ -16,7 +16,6 @@ const componentCSS = require('./component.css');
 
 @customElement('component-navigation-section')
 export class NavigationSectionComponent extends LitElement {
-
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;
@@ -47,5 +46,4 @@ export class NavigationSectionComponent extends LitElement {
            `
          : html``;
    }
-
 }

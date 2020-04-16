@@ -56,8 +56,8 @@
     top: var(--menubar-height);
     left: 0;
     overflow-x: hidden;
-
-
+    color: var(--app-color);
+    background-color: var(--app-color-background);
 }
 
 #left.menuClosed {

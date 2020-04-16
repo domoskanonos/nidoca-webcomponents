@@ -1,53 +1,8 @@
-:root, * {
-
-   --app-color-background: #233333;
-   --app-color-on-background: #233333;
-
-}
-
 slot {
    width: 100%;
    height: 100%;
 }
 
-* {
-   color: var(--app-color-on-background);
-   background-color: var(--app-color-background);
-}
-
-a,
-::slotted(a),
-slot {
-   color: green;
-}
-
-.BACKGROUND_COLOR,
-::slotted(.BACKGROUND_COLOR) {
-   display: inline-block;
-   color: var(--app-color-on-background);
-   background-color: var(--app-color-background);
-}
-
-.SURFACE_COLOR,
-::slotted(.SURFACE_COLOR) {
-   display: inline-block;
-   color: var(--app-color-on-surface);
-   background-color: var(--app-color-surface);
-}
-
-.SECONDARY_COLOR,
-::slotted(.SECONDARY_COLOR) {
-   display: inline-block;
-   color: var(--app-color-on-secondary);
-   background-color: var(--app-color-secondary);
-}
-
-.PRIMARY_COLOR,
-::slotted(.PRIMARY_COLOR) {
-   display: inline-block;
-   color: var(--app-color-on-primary);
-   background-color: var(--app-color-primary);
-}
 
 .SUCCESS,
 ::slotted(.SUCCESS) {
@@ -78,22 +33,6 @@ slot {
    background-color: var(--app-color-error);
 }
 
-select {
-   color: green;
-}
-
 .BACKGROUND_WARNING {
    background-color: var(--app-error-warning);
-}
-
-.active-focused {
-   opacity: 1;
-}
-
-.active {
-   opacity: 0.7;
-}
-
-.inactive {
-   opacity: 0.5;
 }

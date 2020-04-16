@@ -1,5 +1,5 @@
-import {css, customElement, html, LitElement, property, unsafeCSS} from 'lit-element';
-import {BasicService} from '@domoskanonos/frontend-basis';
+import { css, customElement, html, LitElement, property, unsafeCSS } from 'lit-element';
+import { BasicService } from '@domoskanonos/frontend-basis';
 
 export class ColorScheme {
    static PRIMARY_COLOR: string = 'PRIMARY_COLOR';
@@ -48,14 +48,48 @@ export class ColorEffect extends LitElement {
 
    render() {
       return html`
+         ${this.createSchemaStyle()}
+
          <slot
             class="${this.colorScheme} ${this.textColorClazz} ${this.backgroundColorClazz}"
             style="${BasicService.getUniqueInstance().isNotBlank(this.textColor)
-          ? 'color: '.concat(this.textColor).concat(';')
-          : ''}${BasicService.getUniqueInstance().isNotBlank(this.backgroundColor)
-          ? 'background-color: '.concat(this.backgroundColor).concat(';')
-          : ''}"
+               ? 'color: '.concat(this.textColor).concat(';')
+               : ''}${BasicService.getUniqueInstance().isNotBlank(this.backgroundColor)
+               ? 'background-color: '.concat(this.backgroundColor).concat(';')
+               : ''}"
          ></slot>
+      `;
+   }
+
+   private createSchemaStyle() {
+
+      let color = 'var(--app-color)';
+      let colorActive = 'var(--app-color-active)';
+      let backgroundColor = 'var(--app-color-background)';
+      let backgroundColorHover = 'var(--app-color-background-hover)';
+
+
+      switch (this.colorScheme) {
+
+          case ColorScheme.PRIMARY_COLOR :
+              color = 'var(--app-color-primary)';
+              colorActive = 'var(--app-color-primary-active)';
+              backgroundColor = 'var(--app-color-primary-background)';
+              backgroundColorHover = 'var(--app-color-primary-background-hover)';
+                            break
+
+      }
+
+      return html`
+         <style>
+            :root,
+            * {
+               --app-color: ${color};
+               --app-color-background: ${backgroundColor};
+               --app-color-background-hover: ${backgroundColorHover};
+               --app-color-active: ${colorActive};
+            }
+         </style>
       `;
    }
 }
