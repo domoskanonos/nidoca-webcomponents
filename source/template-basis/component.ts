@@ -16,7 +16,7 @@ export abstract class BasisTemplate extends LitElement {
     menuSwitchIcon = 'menu';
 
     @property()
-    menuCss: string = 'menuClosed basicShadow';
+    menuCss: string = 'basicShadow';
 
     @query('#top')
     private topElement: HTMLElement | undefined;
@@ -29,14 +29,14 @@ export abstract class BasisTemplate extends LitElement {
         return html`
          <div class="container" @component-icon-click="${this.menuItemClicked}">
             <top id="top" class="${this.menuCss}">
-               <effect-color colorScheme="${ColorScheme.PRIMARY_COLOR}">
+               <effect-color colorScheme="${ColorScheme.PRIMARY_SCHEME}">
                   <component-border borderType="${BorderType.BOTTOM}">
                      ${this.getTopContent()}
                   </component-border>
                </effect-color>
             </top>
             <div id="left" class="${this.menuCss}">
-               <effect-color colorScheme="${ColorScheme.PRIMARY_COLOR}"
+               <effect-color colorScheme="${ColorScheme.PRIMARY_SCHEME}"
                   ><component-border borderType="${BorderType.RIGHT}">
                      ${this.getLeftComponent()}
                   </component-border></effect-color

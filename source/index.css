@@ -46,13 +46,25 @@
    --app-color-border: #ebebeb;
 
    --app-color-primary: #FFFFFF;
-   --app-color-primary-active: #303f9f;
-   --app-color-primary-background: #000000;
-   --app-color-primary-background-hover: green;
+   --app-color-primary-active: #E5E5E5;
+   --app-color-primary-background: #6200EE;
+   --app-color-primary-background-hover: #3700B3;
    --app-color-primary-border: #ebebeb;
 
+   --app-color-secondary: #FFFFFF;
+   --app-color-secondary-active: #303f9f;
+   --app-color-secondary-background: #002522;
+   --app-color-secondary-background-hover: #018786;
+   --app-color-secondary-border: #ebebeb;
+
+   --app-color-surface: #FFFFFF;
+   --app-color-surface-active: #303f9f;
+   --app-color-surface-background: #000000;
+   --app-color-surface-background-hover: #018786;
+   --app-color-surface-border: #ebebeb;
+
    --app-color-success: #22bb33;
-   --app-color-error: #b00020;
+   --app-color-error: #B00020;
    --color-warning: #ffcc00;
    --app-color-info: #40a6ce;
 

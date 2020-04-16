@@ -33,7 +33,7 @@ export class ButtonComponent extends LitElement {
       return html`
          <div class="BUTTON ${this.buttonType}">
             <effect-color
-               colorScheme="${this.buttonType == ButtonType.CONTAINED ? ColorScheme.PRIMARY_COLOR : ColorScheme.BACKGROUND_COLOR}"
+               colorScheme="${this.buttonType == ButtonType.CONTAINED ? ColorScheme.PRIMARY_SCHEME : ColorScheme.DEFAULT_SCHEME}"
                ;
             >
                <component-border borderType="${BorderType.ALL}">

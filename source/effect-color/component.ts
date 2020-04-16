@@ -2,10 +2,10 @@ import { css, customElement, html, LitElement, property, unsafeCSS } from 'lit-e
 import { BasicService } from '@domoskanonos/frontend-basis';
 
 export class ColorScheme {
-   static PRIMARY_COLOR: string = 'PRIMARY_COLOR';
-   static SECONDARY_COLOR: string = 'SECONDARY_COLOR';
-   static SURFACE_COLOR: string = 'SURFACE_COLOR';
-   static BACKGROUND_COLOR: string = 'BACKGROUND_COLOR';
+   static DEFAULT_SCHEME: string = 'BACKGROUND_COLOR';
+   static PRIMARY_SCHEME: string = 'PRIMARY_COLOR';
+   static SECONDARY_SCHEME: string = 'SECONDARY_COLOR';
+   static SURFACE_SCHEME: string = 'SURFACE_COLOR';
 }
 
 export class TextColorClazz {
@@ -31,7 +31,7 @@ export class ColorEffect extends LitElement {
    `;
 
    @property()
-   colorScheme: string = ColorScheme.BACKGROUND_COLOR;
+   colorScheme: string = ColorScheme.DEFAULT_SCHEME;
 
    @property()
    textColorClazz: string = TextColorClazz.DEFAULT;
@@ -67,11 +67,23 @@ export class ColorEffect extends LitElement {
       let backgroundColorHover = 'var(--app-color-background-hover)';
 
       switch (this.colorScheme) {
-         case ColorScheme.PRIMARY_COLOR:
+         case ColorScheme.PRIMARY_SCHEME:
             color = 'var(--app-color-primary)';
             colorActive = 'var(--app-color-primary-active)';
             backgroundColor = 'var(--app-color-primary-background)';
             backgroundColorHover = 'var(--app-color-primary-background-hover)';
+            break;
+         case ColorScheme.SECONDARY_SCHEME:
+            color = 'var(--app-color-secondary)';
+            colorActive = 'var(--app-color-secondary-active)';
+            backgroundColor = 'var(--app-color-secondary-background)';
+            backgroundColorHover = 'var(--app-color-secondary-background-hover)';
+            break;
+         case ColorScheme.SURFACE_SCHEME:
+            color = 'var(--app-color-surface)';
+            colorActive = 'var(--app-color-surface-active)';
+            backgroundColor = 'var(--app-color-surface-background)';
+            backgroundColorHover = 'var(--app-color-surface-background-hover)';
             break;
       }
 

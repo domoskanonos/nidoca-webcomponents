@@ -9,7 +9,7 @@ import { BackgroundColorClazz, TextColorClazz } from '../effect-color/component'
 @customElement('page-color')
 export class PageColor extends PageAbstract {
    @property()
-   colorScheme: string = ColorScheme.BACKGROUND_COLOR;
+   colorScheme: string = ColorScheme.DEFAULT_SCHEME;
 
    @property()
    textColorClazz: string = TextColorClazz.DEFAULT;

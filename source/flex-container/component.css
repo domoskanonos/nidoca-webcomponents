@@ -1,7 +1,5 @@
 :host, *,
 ::slotted(*) {
-    background-color: var(--app-color-background);
-    color: var(--app-color);
     box-sizing: border-box;
 }
 

@@ -1,6 +1,4 @@
 import { css, customElement, html, property, query, unsafeCSS, LitElement } from 'lit-element';
-import { repeat } from 'lit-html/directives/repeat';
-import { guard } from 'lit-html/directives/guard';
 import { BasicService } from '@domoskanonos/frontend-basis';
 
 const componentCSS = require('./component.css');

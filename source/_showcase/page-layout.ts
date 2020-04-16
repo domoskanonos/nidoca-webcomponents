@@ -20,7 +20,7 @@ export class PageLayoutComponent extends PageAbstract {
    containerClazzes: string[] = [ContainerClazzValues.CONTAINER_100];
 
    @property()
-   colorScheme: string = ColorScheme.SECONDARY_COLOR;
+   colorScheme: string = ColorScheme.SECONDARY_SCHEME;
 
    @property()
    itemClazzes: string[] = [ItemClazzValues.TABLET_MAX_WIDTH, ItemClazzValues.SMARTPHONE_MAX_WIDTH];
