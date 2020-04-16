@@ -14,7 +14,6 @@ export class TextColorClazz {
    static ERROR: string = 'ERROR';
    static WARNING: string = 'WARNING';
    static INFO: string = 'INFO';
-   static ACTIVE: string = 'ACTIVE';
 }
 
 export class BackgroundColorClazz {
@@ -62,22 +61,42 @@ export class ColorEffect extends LitElement {
    }
 
    private createSchemaStyle() {
-
       let color = 'var(--app-color)';
       let colorActive = 'var(--app-color-active)';
       let backgroundColor = 'var(--app-color-background)';
       let backgroundColorHover = 'var(--app-color-background-hover)';
 
-
       switch (this.colorScheme) {
+         case ColorScheme.PRIMARY_COLOR:
+            color = 'var(--app-color-primary)';
+            colorActive = 'var(--app-color-primary-active)';
+            backgroundColor = 'var(--app-color-primary-background)';
+            backgroundColorHover = 'var(--app-color-primary-background-hover)';
+            break;
+      }
 
-          case ColorScheme.PRIMARY_COLOR :
-              color = 'var(--app-color-primary)';
-              colorActive = 'var(--app-color-primary-active)';
-              backgroundColor = 'var(--app-color-primary-background)';
-              backgroundColorHover = 'var(--app-color-primary-background-hover)';
-                            break
+      switch (this.backgroundColorClazz) {
+         case BackgroundColorClazz.ERROR:
+            backgroundColor = 'var(--app-color-error)';
+            break;
+         case BackgroundColorClazz.WARNING:
+            backgroundColor = 'var(--app-color-warning)';
+            break;
+      }
 
+      switch (this.textColorClazz) {
+         case TextColorClazz.SUCCESS:
+            color = 'var(--app-color-success)';
+            break;
+         case TextColorClazz.INFO:
+            color = 'var(--app-color-info)';
+            break;
+         case TextColorClazz.WARNING:
+            color = 'var(--app-color-warning)';
+            break;
+         case TextColorClazz.ERROR:
+            color = 'var(--app-color-error)';
+            break;
       }
 
       return html`
