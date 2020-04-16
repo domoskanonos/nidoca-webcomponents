@@ -12,6 +12,7 @@ import './page-imprint';
 import './page-color.ts';
 import './page-grid.ts';
 import './page-input.ts';
+import './page-transition.ts';
 import './page-button.ts';
 import './page-layout.ts';
 import './page-icon.ts';
@@ -51,6 +52,10 @@ export class ShowcaseApp extends AbstractApp {
          case 'pagebutton':
             return html`
                <page-button></page-button>
+            `;
+         case 'pagetransition':
+            return html`
+               <page-transition></page-transition>
             `;
          case 'pagetable':
             return html`

@@ -11,7 +11,7 @@ import {KeyValueData,FormComponentOutputData,FormComponent} from './form/compone
 import {ContainerComponent} from './container/component';
 import {RippleComponent} from './effect-ripple/component';
 import {VisibleType, VisibleEffect} from './effect-visible/component';
-import {HoverComponent} from './effect-hover/component';
+import {HoverComponent} from './effect-transition/component';
 import {IconComponent} from './icon/component';
 import {RichMediaType,RichMediaComponent} from './rich-media/component';
 import {
@@ -54,7 +54,7 @@ export {KeyValueData,FormComponentOutputData,FormComponent} from './form/compone
 export {ContainerComponent} from './container/component';
 export {RippleComponent} from './effect-ripple/component';
 export {VisibleType, VisibleEffect} from './effect-visible/component';
-export {HoverComponent} from './effect-hover/component';
+export {HoverComponent} from './effect-transition/component';
 export {IconComponent} from './icon/component';
 export {RichMediaType,RichMediaComponent} from './rich-media/component';
 export {
