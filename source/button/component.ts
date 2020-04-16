@@ -2,7 +2,7 @@ import { css, customElement, html, property, unsafeCSS } from 'lit-element';
 import { LitElement } from 'lit-element';
 import { BasicService } from '@domoskanonos/frontend-basis';
 import { AlignItems, ContainerClazzValues, FlexWrap } from '../flex-container/component';
-import { BorderType, ColorScheme } from '..';
+import { BorderType, ColorScheme, TypographyType } from '..';
 
 const componentCSS = require('./component.css');
 
@@ -34,27 +34,34 @@ export class ButtonComponent extends LitElement {
          <div class="BUTTON ${this.buttonType}">
             <effect-color
                colorScheme="${this.buttonType == ButtonType.CONTAINED ? ColorScheme.PRIMARY_SCHEME : ColorScheme.DEFAULT_SCHEME}"
-               ;
             >
-               <component-border borderType="${BorderType.ALL}">
-                  <component-flex-container
-                     .containerClazzes="${[ContainerClazzValues.CONTAINER_100]}"
-                     alignItems="${AlignItems.CENTER}"
-                     flexWrap="${FlexWrap.NO_WRAP}"
-                  >
-                     <component-icon
-                        .rendered="${BasicService.getUniqueInstance().isNotBlank(this.leadingIcon)}"
-                        icon="${this.leadingIcon}"
-                     >
-                     </component-icon>
-                     <component-container>
-                        <component-typography text="${this.text}"></component-typography>
-                        <slot></slot>
-                     </component-container>
-                  </component-flex-container>
-               </component-border>
+               ${this.buttonType == ButtonType.TEXT
+                  ? html`
+                       <component-typography
+                          .typographyType="${TypographyType.OVERLINE}"
+                          text="${this.text}"
+                       ></component-typography>
+                    `
+                  : html`
+                       <component-container>
+                          <component-border borderType="${BorderType.ALL}">
+                             <component-flex-container
+                                .containerClazzes="${[ContainerClazzValues.CONTAINER_100]}"
+                                alignItems="${AlignItems.CENTER}"
+                                flexWrap="${FlexWrap.NO_WRAP}"
+                             >
+                                <component-icon
+                                   .rendered="${BasicService.getUniqueInstance().isNotBlank(this.leadingIcon)}"
+                                   icon="${this.leadingIcon}"
+                                >
+                                </component-icon>
+                                <component-typography text="${this.text}"></component-typography>
+                                <slot></slot>
+                             </component-flex-container>
+                          </component-border>
+                       </component-container>
+                    `}
             </effect-color>
-            <effect-ripple @click="${this.clicked}"> </effect-ripple>
          </div>
       `;
    }

@@ -1,7 +1,6 @@
 .rippleContainer {
-    display: inline-block;
     position: relative;
-    overflow: hidden;
+    display: inline-block;
 }
 
 .ripple {
