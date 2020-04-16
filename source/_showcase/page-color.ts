@@ -4,15 +4,28 @@ import { ButtonType, ColorScheme, InputfieldComponent, InputfieldType, Typograph
 import { I18nService } from '@domoskanonos/frontend-basis';
 import { ContainerClazzValues, ItemClazzValues } from '../flex-container/component';
 import { PreviewFormatterService } from './preview-formatter';
+import { BackgroundColorClazz, TextColorClazz } from '../effect-color/component';
 
 @customElement('page-color')
 export class PageColor extends PageAbstract {
    @property()
    colorScheme: string = ColorScheme.BACKGROUND_COLOR;
 
+   @property()
+   textColorClazz: string = TextColorClazz.DEFAULT;
+
+   @property()
+   backgroundColorClazz: string = BackgroundColorClazz.DEFAULT;
+
+   @property()
+   textColor: string = '';
+
+   @property()
+   backgroundColor: string = '';
+
    getMainComponent(): TemplateResult {
       return html`
-         <effect-color colorScheme="${this.colorScheme}">
+         <effect-color colorScheme="${this.colorScheme}" textColorClazz="${this.textColorClazz}" backgroundColorClazz="${this.backgroundColorClazz}">
             <component-flex-container
                .containerClazzes="${[
                   ContainerClazzValues.CONTAINER_50,
@@ -60,7 +73,20 @@ export class PageColor extends PageAbstract {
                               value="${this.colorScheme}"
                               @component-inputfield-change="${(event: CustomEvent) => this.changeColorScheme(event)}"
                            ></component-inputfield>
-
+                           <component-inputfield
+                              .inputfieldType="${InputfieldType.COMBOBOX}"
+                              .options="${InputfieldComponent.enumToComboboxItems(TextColorClazz)}"
+                              label="textColorClazz"
+                              value="${this.textColorClazz}"
+                              @component-inputfield-change="${(event: CustomEvent) => this.changeTextColorClazz(event)}"
+                           ></component-inputfield
+                           ><component-inputfield
+                              .inputfieldType="${InputfieldType.COMBOBOX}"
+                              .options="${InputfieldComponent.enumToComboboxItems(BackgroundColorClazz)}"
+                              label="backgroundColorClazz"
+                              value="${this.backgroundColorClazz}"
+                              @component-inputfield-change="${(event: CustomEvent) => this.changeBackgroundColorClazz(event)}"
+                           ></component-inputfield>
                            <component-link href="https://material.io/design/iconography/system-icons.html#design-principles"
                               >Google Material Design Richtlinien</component-link
                            >
@@ -91,5 +117,17 @@ export class PageColor extends PageAbstract {
       let colorScheme: string = (<any>ColorScheme)[event.detail.outputData.value];
       console.log('change colorScheme: {}', colorScheme);
       this.colorScheme = colorScheme;
+   }
+
+   private changeTextColorClazz(event: CustomEvent) {
+      let textColorClazz: string = (<any>TextColorClazz)[event.detail.outputData.value];
+      console.log('change textColorClazz: {}', textColorClazz);
+      this.textColorClazz = textColorClazz;
+   }
+
+   private changeBackgroundColorClazz(event: CustomEvent) {
+      let backgroundColorClazz: string = (<any>BackgroundColorClazz)[event.detail.outputData.value];
+      console.log('change backgroundColorClazz: {}', backgroundColorClazz);
+      this.backgroundColorClazz = backgroundColorClazz;
    }
 }

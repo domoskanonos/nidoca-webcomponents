@@ -19,7 +19,8 @@ export class TextColorClazz {
 
 export class BackgroundColorClazz {
    static DEFAULT: string = 'DEFAULT';
-   static ERROR: string = 'ERROR';
+   static ERROR: string = 'BACKGROUND_ERROR';
+   static WARNING: string = 'BACKGROUND_WARNING';
 }
 
 const componentCSS = require('./component.css');

@@ -79,8 +79,16 @@ export class PageLayoutComponent extends PageAbstract {
                <component-tab slot="tab" text="${I18nService.getUniqueInstance().getValue('source')}"></component-tab>
                <component-tab-content slot="tabContent" .selected="${true}">
                   <component-flex-container
-                     .containerClazzes="${[ContainerClazzValues.CONTAINER_100]}"
-                     .itemClazzes="${[ItemClazzValues.KEYLINE_SIZE_MEDIUM]}"
+                     .containerClazzes="${[
+                        ContainerClazzValues.CONTAINER_100,
+                        ContainerClazzValues.SMARTPHONE_HORIZONTAL_PADDING,
+                        ContainerClazzValues.TABLET_HORIZONTAL_PADDING
+                     ]}"
+                     .itemClazzes="${[
+                        ItemClazzValues.KEYLINE_SIZE_MEDIUM,
+                        ItemClazzValues.SMARTPHONE_MAX_WIDTH,
+                        ItemClazzValues.TABLET_MAX_WIDTH
+                     ]}"
                      .itemFlexBasisValues="${['50%', '50%']}"
                   >
                      <component-container cssStyle="height:500px;">
