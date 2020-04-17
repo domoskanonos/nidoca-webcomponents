@@ -56,7 +56,7 @@ export abstract class PageAbstract extends BasisTemplate {
             ></component-navigation-link>
             <component-navigation-link
                slot="links"
-               icon="input"
+               icon="dynamic_feed"
                text="${I18nService.getUniqueInstance().getValue('pagetransition')}"
                href="pagetransition"
             ></component-navigation-link
