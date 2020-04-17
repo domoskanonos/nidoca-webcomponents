@@ -7,7 +7,7 @@ import { BasicService } from '@domoskanonos/frontend-basis';
 import { BorderType, FlexJustifyContent, SpacerAlignment, SpacerSize, VisibleType } from '..';
 import { ContainerClazzValues } from '../flex-container/component';
 import { TextColorClazz } from '../effect-color/component';
-import { GridAlignContent, GridJustifyContent } from '../grid-container/component';
+import { GridAlignItems, GridJustifyItems } from '../grid-container/component';
 
 const componentCSS = require('./component.css');
 
@@ -152,8 +152,6 @@ export class InputfieldComponent extends LitElement {
                  <component-grid-container
                     .gridTemplateRows="${['auto']}"
                     .gridTemplateColumns="${['auto', '1fr', 'auto', 'auto']}"
-                    gridAlignContent="${GridAlignContent.CENTER}"
-                    gridJustifyContent="${GridJustifyContent.CENTER}"
                  >
                     <component-icon
                        .rendered="${BasicService.getUniqueInstance().isNotBlank(this.leadingIcon)}"

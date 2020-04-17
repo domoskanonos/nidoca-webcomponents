@@ -17,7 +17,6 @@ import './page-button.ts';
 import './page-layout.ts';
 import './page-icon.ts';
 import './page-rich-media.ts';
-import './page-form.ts';
 import './page-typography.ts';
 import './showcase-app.ts';
 

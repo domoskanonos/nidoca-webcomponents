@@ -3,24 +3,19 @@ import { BasicService } from '@domoskanonos/frontend-basis';
 
 const componentCSS = require('./component.css');
 
-export class GridJustifyContent {
+export class GridJustifyItems {
    static START = 'start';
    static END = 'end';
    static CENTER = 'center';
-   static SPACE_BETWEEN = 'space-between';
-   static SPACE_AROUND = 'space-around';
-   static SPACE_EVENLY = 'space-evenly';
+   static STRETCH = 'stretch';
 }
 
-export class GridAlignContent {
+export class GridAlignItems {
    static START = 'start';
    static END = 'end';
    static CENTER = 'center';
-   static SPACE_BETWEEN = 'space-between';
-   static SPACE_AROUND = 'space-around';
-   static SPACE_EVENLY = 'space-evenly';
+   static STRETCH = 'stretch';
 }
-
 
 @customElement('component-grid-container')
 export class GridComponent extends LitElement {
@@ -35,10 +30,10 @@ export class GridComponent extends LitElement {
    gridTemplateColumns: string[] = [];
 
    @property()
-   gridJustifyContent: string = '';
+   gridJustifyItems: string = '';
 
    @property()
-   gridAlignContent: string = '';
+   gridAlignItems: string = '';
 
    @property()
    height: string = 'min-content';
@@ -47,8 +42,8 @@ export class GridComponent extends LitElement {
       return html`
          <div
             class="GRID_CONTAINER"
-            style="${this.toGridJustifyContet(this.gridJustifyContent)}${this.toGridAlignContent(
-               this.gridAlignContent
+            style="${this.toGridJustifyItems(this.gridJustifyItems)}${this.toGridAlignItems(
+               this.gridAlignItems
             )}${this.toGridTemplateRowsStyle(this.gridTemplateRows)}${this.toGridTemplateColumnsStyle(
                this.gridTemplateColumns
             )}${this.toHeightStyle(this.height)}"
@@ -86,15 +81,13 @@ export class GridComponent extends LitElement {
       return height.length > 0 ? 'height:'.concat(height).concat(';') : '';
    }
 
-   private toGridJustifyContet(gridJustifyContent: string) {
-      return BasicService.getUniqueInstance().isNotBlank(gridJustifyContent)
-         ? 'justify-content:'.concat(gridJustifyContent).concat(';')
+   private toGridJustifyItems(gridJustifyItems: string) {
+      return BasicService.getUniqueInstance().isNotBlank(gridJustifyItems)
+         ? 'justify-items:'.concat(gridJustifyItems).concat(';')
          : '';
    }
 
-   private toGridAlignContent(gridAlignContent: string) {
-      return BasicService.getUniqueInstance().isNotBlank(gridAlignContent)
-         ? 'align-content:'.concat(gridAlignContent).concat(';')
-         : '';
+   private toGridAlignItems(gridAlignItems: string) {
+      return BasicService.getUniqueInstance().isNotBlank(gridAlignItems) ? 'align-items:'.concat(gridAlignItems).concat(';') : '';
    }
 }
