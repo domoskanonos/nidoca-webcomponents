@@ -17,7 +17,7 @@ import { PreviewFormatterService } from './preview-formatter';
 @customElement('page-layout')
 export class PageLayoutComponent extends PageAbstract {
    @property()
-   containerClazzes: string[] = [ContainerClazzValues.CONTAINER_100];
+   containerClazzes: string[] = [ContainerClazzValues.CONTAINER_WIDTH_100];
 
    @property()
    colorScheme: string = ColorScheme.SECONDARY_SCHEME;
@@ -50,7 +50,7 @@ export class PageLayoutComponent extends PageAbstract {
       return html`
          <component-flex-container
             .containerClazzes="${[
-               ContainerClazzValues.CONTAINER_50,
+               ContainerClazzValues.CONTAINER_WIDTH_50,
                ContainerClazzValues.TABLET_MAX_WIDTH,
                ContainerClazzValues.SMARTPHONE_MAX_WIDTH,
                ContainerClazzValues.SMARTPHONE_HORIZONTAL_PADDING,
@@ -80,7 +80,7 @@ export class PageLayoutComponent extends PageAbstract {
                <component-tab-content slot="tabContent" .selected="${true}">
                   <component-flex-container
                      .containerClazzes="${[
-                        ContainerClazzValues.CONTAINER_100,
+                        ContainerClazzValues.CONTAINER_WIDTH_100,
                         ContainerClazzValues.SMARTPHONE_HORIZONTAL_PADDING,
                         ContainerClazzValues.TABLET_HORIZONTAL_PADDING
                      ]}"

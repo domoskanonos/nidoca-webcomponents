@@ -6,7 +6,7 @@ import { ContainerClazzValues } from '../flex-container/component';
 export class pagerichmediaComponent extends PageAbstract {
    getMainComponent(): TemplateResult {
       return html`
-         <component-flex-container .containerClazzes="${[ContainerClazzValues.CONTAINER_50]}">
+         <component-flex-container .containerClazzes="${[ContainerClazzValues.CONTAINER_WIDTH_50]}">
             <iframe
                width="560"
                height="315"

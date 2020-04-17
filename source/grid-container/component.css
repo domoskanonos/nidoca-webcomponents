@@ -1,6 +1,8 @@
 *,
 ::slotted(*) {
    box-sizing: border-box;
+   color: inherit;
+   background-color: inherit;
 }
 
 .GRID_CONTAINER,

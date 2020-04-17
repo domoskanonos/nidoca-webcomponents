@@ -26,7 +26,7 @@ export class PageInputComponent extends PageAbstract {
       return html`
          <component-flex-container
             .containerClazzes="${[
-               ContainerClazzValues.CONTAINER_50,
+               ContainerClazzValues.CONTAINER_WIDTH_50,
                ContainerClazzValues.TABLET_MAX_WIDTH,
                ContainerClazzValues.SMARTPHONE_MAX_WIDTH,
                ContainerClazzValues.SMARTPHONE_HORIZONTAL_PADDING,
@@ -56,7 +56,7 @@ export class PageInputComponent extends PageAbstract {
             <component-tab slot="tab" text="${I18nService.getUniqueInstance().getValue('source')}"></component-tab>
             <component-tab-content slot="tabContent" .selected="${true}"><component-flex-container
             .containerClazzes="${[
-         ContainerClazzValues.CONTAINER_50,
+         ContainerClazzValues.CONTAINER_WIDTH_50,
          ContainerClazzValues.TABLET_MAX_WIDTH,
          ContainerClazzValues.SMARTPHONE_MAX_WIDTH,
          ContainerClazzValues.SMARTPHONE_HORIZONTAL_PADDING,

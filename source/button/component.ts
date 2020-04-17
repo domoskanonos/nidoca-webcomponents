@@ -1,14 +1,13 @@
 import { css, customElement, html, property, unsafeCSS } from 'lit-element';
 import { LitElement } from 'lit-element';
 import { BasicService } from '@domoskanonos/frontend-basis';
-import { AlignItems, ContainerClazzValues, FlexWrap } from '../flex-container/component';
+import { AlignContent, AlignItems, ContainerClazzValues, FlexJustifyContent, FlexWrap } from '../flex-container/component';
 import { BorderType, ColorScheme, TypographyType } from '..';
 
 const componentCSS = require('./component.css');
 
 export class ButtonType {
    static CONTAINED = 'CONTAINED';
-   static OUTLINED = 'OUTLINED';
    static TEXT = 'TEXT';
 }
 
@@ -43,23 +42,20 @@ export class ButtonComponent extends LitElement {
                        ></component-typography>
                     `
                   : html`
-                       <component-container>
-                          <component-border borderType="${BorderType.ALL}">
-                             <component-flex-container
-                                .containerClazzes="${[ContainerClazzValues.CONTAINER_100]}"
-                                alignItems="${AlignItems.CENTER}"
-                                flexWrap="${FlexWrap.NO_WRAP}"
-                             >
-                                <component-icon
-                                   .rendered="${BasicService.getUniqueInstance().isNotBlank(this.leadingIcon)}"
-                                   icon="${this.leadingIcon}"
-                                >
-                                </component-icon>
-                                <component-typography text="${this.text}"></component-typography>
-                                <slot></slot>
-                             </component-flex-container>
-                          </component-border>
-                       </component-container>
+                       <component-flex-container
+                          .containerClazzes="${[ContainerClazzValues.CONTAINER_WIDTH_AUTO, ContainerClazzValues.HOVER, ContainerClazzValues.MAX_HEIGHT]}"
+                          flexWrap="${FlexWrap.NO_WRAP}"
+                          .flexJustifyContent="${FlexJustifyContent.CENTER}"
+                          .alignItems="${AlignItems.STRETCH}"
+                       >
+                          <component-icon
+                             .rendered="${BasicService.getUniqueInstance().isNotBlank(this.leadingIcon)}"
+                             icon="${this.leadingIcon}"
+                          >
+                          </component-icon>
+                          <component-typography text="${this.text}"></component-typography>
+                          <slot></slot>
+                       </component-flex-container>
                     `}
             </effect-color>
          </div>

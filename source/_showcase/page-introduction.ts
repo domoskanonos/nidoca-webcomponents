@@ -8,7 +8,7 @@ export class PageIntroduction extends PageAbstract {
     getMainComponent(): TemplateResult {
         return html`
          <component-flex-container
-            .containerClazzes="${[ContainerClazzValues.CONTAINER_100]}"
+            .containerClazzes="${[ContainerClazzValues.CONTAINER_WIDTH_100]}"
             .direction="${FlexDirection.ROW}"
             .wrap="${FlexWrap.WRAP}"
             .flexJustifyContent="${FlexJustifyContent.CENTER}"
@@ -16,7 +16,7 @@ export class PageIntroduction extends PageAbstract {
             .alignContent="${AlignContent.FLEX_START}"
             itemFlexBasisValue="50%"
          >
-            <component-flex-container .containerClazzes="${[ContainerClazzValues.CONTAINER_75]}" itemFlexBasisValue="100%">
+            <component-flex-container .containerClazzes="${[ContainerClazzValues.CONTAINER_WIDTH_75]}" itemFlexBasisValue="100%">
                <component-typography .typographyType="${TypographyType.H2}">WC-Atomic</component-typography>
                <component-typography .typographyType="${TypographyType.H6}"
                   >Erstelle wunderbare PWA Single Page Anwendungen</component-typography
@@ -32,7 +32,7 @@ export class PageIntroduction extends PageAbstract {
          </component-flex-container>
 
          <component-flex-container
-            .containerClazzes="${[ContainerClazzValues.CONTAINER_100]}"
+            .containerClazzes="${[ContainerClazzValues.CONTAINER_WIDTH_100]}"
             .direction="${FlexDirection.ROW}"
             .wrap="${FlexWrap.WRAP}"
             .flexJustifyContent="${FlexJustifyContent.CENTER}"
@@ -44,7 +44,7 @@ export class PageIntroduction extends PageAbstract {
             <component-rich-media src="https://picsum.photos/550/400" text="Mein Bild"></component-rich-media>
             <component-rich-media src="https://picsum.photos/600/400" text="Mein Bild"></component-rich-media>
 
-            <component-flex-container .containerClazzes="${['CONTAINER_75']}" itemFlexBasisValue="100%">
+            <component-flex-container .containerClazzes="${['CONTAINER_WIDTH_75']}" itemFlexBasisValue="100%">
                <component-typography .typographyType="${TypographyType.H4}">Bildquelle</component-typography>
                <component-typography .typographyType="${TypographyType.BODY1}">
                   Die hier abgebildeten Fotos stammen von:

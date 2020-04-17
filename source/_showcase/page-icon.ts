@@ -32,7 +32,7 @@ export class PageIconComponent extends PageAbstract {
          <component-spacer clazz="mediumPaddingTop"></component-spacer>
 
          <component-flex-container
-            .containerClazzes="${["CONTAINER_75"]}"
+            .containerClazzes="${["CONTAINER_WIDTH_75"]}"
             .flexJustifyContent="${FlexJustifyContent.FLEX_START}"
             .alignItems="${AlignItems.CENTER}"
          >
@@ -47,7 +47,7 @@ export class PageIconComponent extends PageAbstract {
             <component-typography type="${TypographyType.H2}">Icon Component</component-typography>
          </component-flex-container>
 
-         <component-flex-container .containerClazzes="${["CONTAINER_75"]}" itemFlexBasisValue="50%">
+         <component-flex-container .containerClazzes="${["CONTAINER_WIDTH_75"]}" itemFlexBasisValue="50%">
             <component-flex-container  itemFlexBasisValue="100%">
                <component-spacer spacerSize="${SpacerSize.MEDIUM}" alignment="${SpacerAlignment.HORIZONTAL}"></component-spacer>
                <component-typography type="${TypographyType.BODY1}"
@@ -64,7 +64,7 @@ export class PageIconComponent extends PageAbstract {
                   >
                </component-typography>
             </component-flex-container>
-            <component-flex-container .containerClazzes="${["CONTAINER_100"]}" itemFlexBasisValue="100%">
+            <component-flex-container .containerClazzes="${["CONTAINER_WIDTH_100"]}" itemFlexBasisValue="100%">
                <component-form>
                   <component-inputfield
                      label="Klickbar ?"
@@ -91,7 +91,7 @@ export class PageIconComponent extends PageAbstract {
                  
                </component-form>
 
-               <component-flex-container .containerClazzes="${["CONTAINER_100"]}">
+               <component-flex-container .containerClazzes="${["CONTAINER_WIDTH_100"]}">
                   <component-icon
                      icon="sports_motorsports"
                      clickable="true"
@@ -246,7 +246,7 @@ export class PageIconComponent extends PageAbstract {
             </component-code>
          </component-flex-container>
 
-         <component-flex-container .containerClazzes="${["CONTAINER_75"]}"> </component-flex-container>
+         <component-flex-container .containerClazzes="${["CONTAINER_WIDTH_75"]}"> </component-flex-container>
       `;
    }
 }

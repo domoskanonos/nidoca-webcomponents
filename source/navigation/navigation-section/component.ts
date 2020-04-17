@@ -30,7 +30,7 @@ export class NavigationSectionComponent extends LitElement {
       return this.rendered
          ? html`
               <component-flex-container
-                 .containerClazzes="${[ContainerClazzValues.CONTAINER_100]}"
+                 .containerClazzes="${[ContainerClazzValues.CONTAINER_WIDTH_100]}"
                  .itemClazzes="${[]}"
                  .flexDirection="${FlexDirection.ROW}"
                  .flexWrap="${FlexWrap.NO_WRAP}"

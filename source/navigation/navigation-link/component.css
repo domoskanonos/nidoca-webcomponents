@@ -4,9 +4,9 @@
 
 ::slotted(.navItem.selected),
 .navItem.selected,
-::slotted(.navItem.hover),
+::slotted(.navItem:hover),
 .navItem:hover,
-::slotted(.navItem.active),
+::slotted(.navItem:active),
 .navItem:active {
    color: var(--app-color);
    background-color: var(--app-color-background-hover);

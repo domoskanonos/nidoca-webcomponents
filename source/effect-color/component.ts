@@ -50,7 +50,6 @@ export class ColorEffect extends LitElement {
          ${this.createSchemaStyle()}
 
          <slot
-            class="${this.colorScheme} ${this.textColorClazz} ${this.backgroundColorClazz}"
             style="${BasicService.getUniqueInstance().isNotBlank(this.textColor)
                ? 'color: '.concat(this.textColor).concat(';')
                : ''}${BasicService.getUniqueInstance().isNotBlank(this.backgroundColor)

@@ -28,7 +28,7 @@ export class PageColor extends PageAbstract {
          <effect-color colorScheme="${this.colorScheme}" textColorClazz="${this.textColorClazz}" backgroundColorClazz="${this.backgroundColorClazz}">
             <component-flex-container
                .containerClazzes="${[
-                  ContainerClazzValues.CONTAINER_50,
+                  ContainerClazzValues.CONTAINER_WIDTH_50,
                   ContainerClazzValues.TABLET_MAX_WIDTH,
                   ContainerClazzValues.SMARTPHONE_MAX_WIDTH,
                   ContainerClazzValues.SMARTPHONE_HORIZONTAL_PADDING,
@@ -58,7 +58,7 @@ export class PageColor extends PageAbstract {
                   <component-tab-content slot="tabContent" .selected="${true}"
                      ><component-flex-container
                         .containerClazzes="${[
-                           ContainerClazzValues.CONTAINER_100,
+                           ContainerClazzValues.CONTAINER_WIDTH_100,
                            ContainerClazzValues.TABLET_MAX_WIDTH,
                            ContainerClazzValues.SMARTPHONE_MAX_WIDTH
                         ]}"

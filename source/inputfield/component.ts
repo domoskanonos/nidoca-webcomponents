@@ -161,7 +161,7 @@ export class InputfieldComponent extends LitElement {
                        .clickable="${this.leadingIconClickable}"
                     ></component-icon>
                     <component-flex-container
-                       .containerClazzes="${[ContainerClazzValues.CONTAINER_100]}"
+                       .containerClazzes="${[ContainerClazzValues.CONTAINER_WIDTH_100]}"
                        itemFlexBasisValue="100%"
                     >
                        <effect-visible visibleType="${this.showLabelText() ? VisibleType.NORMAL : VisibleType.INVISIBLE}">
@@ -177,7 +177,7 @@ export class InputfieldComponent extends LitElement {
                                   .gridTemplateColumns="${['1fr', 'auto']}"
                                >
                                   <component-flex-container
-                                     .containerClazzes="${[ContainerClazzValues.CONTAINER_100]}"
+                                     .containerClazzes="${[ContainerClazzValues.CONTAINER_WIDTH_100]}"
                                      itemFlexBasisValue="100%"
                                   >
                                      <component-typography
@@ -254,7 +254,7 @@ ${this.value}</textarea
                                   .gridTemplateColumns="${['1fr', 'auto']}"
                                >
                                   <component-flex-container
-                                     .containerClazzes="${[ContainerClazzValues.CONTAINER_100]}"
+                                     .containerClazzes="${[ContainerClazzValues.CONTAINER_WIDTH_100]}"
                                      itemFlexBasisValue="100%"
                                   >
                                      <component-typography
@@ -326,7 +326,7 @@ ${this.value}</textarea
               <effect-visible visibleType="${this.showAdditionalTextContainer() ? VisibleType.NORMAL : VisibleType.HIDE}">
                  <component-spacer spacerSize="${SpacerSize.SMALL}" alignment="${SpacerAlignment.VERTICAL}"></component-spacer>
                  <component-flex-container
-                    .containerClazzes="${[ContainerClazzValues.CONTAINER_100]}"
+                    .containerClazzes="${[ContainerClazzValues.CONTAINER_WIDTH_100]}"
                     itemFlexBasisValue="auto"
                     flexJustifyContent="${FlexJustifyContent.SPACE_BETWEEN}"
                  >

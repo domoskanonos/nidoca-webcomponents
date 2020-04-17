@@ -9,7 +9,7 @@ export class PageGetStarted extends PageAbstract {
       return html`
          <component-flex-container
             .containerClazzes="${[
-               ContainerClazzValues.CONTAINER_50,
+               ContainerClazzValues.CONTAINER_WIDTH_50,
                ContainerClazzValues.TABLET_MAX_WIDTH,
                ContainerClazzValues.SMARTPHONE_MAX_WIDTH,
                ContainerClazzValues.SMARTPHONE_HORIZONTAL_PADDING,

@@ -1,0 +1,5 @@
+:host, *,
+::slotted(*) {
+    color: var(--app-color);
+    background-color: var(--app-color-background);
+}

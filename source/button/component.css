@@ -6,14 +6,20 @@
    min-height: var(--line-height-large);
 }
 
-.CONTAINED {
-}
-
-.OUTLINED {
-
+::slotted(.CONTAINED.selected),
+.CONTAINED.selected,
+::slotted(.CONTAINED:hover),
+.CONTAINED:hover,
+::slotted(.CONTAINED:active),
+.CONTAINED:active {
+   color: var(--app-color);
+   background-color: var(--app-color-background-hover);
 }
 
 .TEXT {
+   text-align: center;
+   vertical-align: center;
+   line-height: var(--line-height-large);
 }
 
 @media only screen and (orientation: portrait) {
