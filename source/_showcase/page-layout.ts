@@ -173,7 +173,7 @@ export class PageLayoutComponent extends PageAbstract {
                </component-tab-content>
                <component-tab-content slot="tabContent"
                   ><component-code
-                     code="${PreviewFormatterService.getUniqueInstance().format(
+                     code="${
                         '<component-flex-container'
                            .concat(
                               PreviewFormatterService.getUniqueInstance().propertyArray2String(
@@ -204,7 +204,7 @@ export class PageLayoutComponent extends PageAbstract {
                                     PreviewFormatterService.getUniqueInstance().property2String(this.alignContent, AlignContent)
                                  )
                                  .concat('></component-flex-container>')
-                           )
+                           
                      )}"
                   >
                   </component-code

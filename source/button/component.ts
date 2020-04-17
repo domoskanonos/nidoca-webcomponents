@@ -30,39 +30,28 @@ export class ButtonComponent extends LitElement {
 
    render() {
       return html`
-         <div class="BUTTON ${this.buttonType}">
-            <effect-color
-               colorScheme="${this.buttonType == ButtonType.CONTAINED ? ColorScheme.PRIMARY_SCHEME : ColorScheme.DEFAULT_SCHEME}"
+         <component-flex-container
+            class="BUTTON ${this.buttonType}"
+            @click="${() => {
+               this.clicked();
+            }}"
+            .containerClazzes="${[ContainerClazzValues.CONTAINER_WIDTH_AUTO]}"
+            flexWrap="${FlexWrap.NO_WRAP}"
+            .flexJustifyContent="${FlexJustifyContent.CENTER}"
+            .alignItems="${AlignItems.CENTER}"
+         >
+            <component-icon
+               .rendered="${BasicService.getUniqueInstance().isNotBlank(this.leadingIcon)}"
+               icon="${this.leadingIcon}"
             >
-               ${this.buttonType == ButtonType.TEXT
-                  ? html`
-                       <component-typography
-                          .typographyType="${TypographyType.OVERLINE}"
-                          text="${this.text}"
-                       ></component-typography>
-                    `
-                  : html`
-                       <component-flex-container
-                          .containerClazzes="${[ContainerClazzValues.CONTAINER_WIDTH_AUTO, ContainerClazzValues.HOVER, ContainerClazzValues.MAX_HEIGHT]}"
-                          flexWrap="${FlexWrap.NO_WRAP}"
-                          .flexJustifyContent="${FlexJustifyContent.CENTER}"
-                          .alignItems="${AlignItems.STRETCH}"
-                       >
-                          <component-icon
-                             .rendered="${BasicService.getUniqueInstance().isNotBlank(this.leadingIcon)}"
-                             icon="${this.leadingIcon}"
-                          >
-                          </component-icon>
-                          <component-typography text="${this.text}"></component-typography>
-                          <slot></slot>
-                       </component-flex-container>
-                    `}
-            </effect-color>
-         </div>
+            </component-icon>
+            <component-typography text="${this.text}" typographyType="${TypographyType.BUTTON}"></component-typography>
+            <slot></slot>
+         </component-flex-container>
       `;
    }
 
-   async clicked() {
+   clicked() {
       BasicService.getUniqueInstance().dispatchSimpleCustomEvent(this, ButtonComponent.EVENT_CLICK, this);
    }
 }

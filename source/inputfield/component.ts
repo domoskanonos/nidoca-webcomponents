@@ -134,6 +134,9 @@ export class InputfieldComponent extends LitElement {
    @query('#selectElement')
    selectElemet: HTMLSelectElement | undefined;
 
+   @query('#textareaElement')
+   textareaElement: HTMLTextAreaElement | undefined;
+
    protected firstUpdated(_changedProperties: Map<PropertyKey, unknown>): void {
       super.firstUpdated(_changedProperties);
       //this.updateInfoText();
@@ -423,31 +426,34 @@ ${this.value}</textarea
 
    getOutputData(): KeyValueData {
       let outputValue: any = this.oldValue;
-      if (this.selectElemet != null && this.multiple) {
-         outputValue = [];
-         for (let i = 0, len = this.selectElemet.options.length; i < len; i++) {
-            let opt: HTMLOptionElement = this.selectElemet.options[i];
-            if (opt.selected) {
-               outputValue.push(opt.value);
+
+      switch (this.inputfieldType) {
+         case InputfieldType.COMBOBOX:
+            if (this.selectElemet != null && this.multiple) {
+               outputValue = [];
+               for (let i = 0, len = this.selectElemet.options.length; i < len; i++) {
+                  let opt: HTMLOptionElement = this.selectElemet.options[i];
+                  if (opt.selected) {
+                     outputValue.push(opt.value);
+                  }
+               }
+            } else if (this.selectElemet != null) {
+               outputValue = this.selectElemet.value;
             }
-         }
-      } else if (this.selectElemet != null) {
-         outputValue = this.selectElemet.value;
-      } else if (this.inputElemet != null) {
-         if (this.inputElemet.validationMessage.length == 0) {
-            outputValue = this.inputElemet.value;
-            switch (this.inputfieldType) {
-               case InputfieldType.CHECKBOX:
-                  outputValue = this.checked;
-                  break;
-               case InputfieldType.DATETIME_LOCAL:
-               case InputfieldType.DATE:
-                  outputValue = this.inputElemet?.valueAsDate;
-                  break;
-               default:
-                  break;
-            }
-         }
+            break;
+         case InputfieldType.CHECKBOX:
+            outputValue = this.checked;
+            break;
+         case InputfieldType.DATETIME_LOCAL:
+         case InputfieldType.DATE:
+            outputValue = this.inputElemet?.valueAsDate;
+            break;
+         case InputfieldType.TEXTAREA:
+            outputValue = this.textareaElement?.value;
+            break;
+         default:
+            outputValue = this.inputElemet?.value;
+            break;
       }
 
       return <KeyValueData>{

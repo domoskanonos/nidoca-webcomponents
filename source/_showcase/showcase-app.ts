@@ -10,6 +10,7 @@ import './page-introduction';
 import './page-get-started';
 import './page-imprint';
 import './page-color.ts';
+import './page-code.ts';
 import './page-grid.ts';
 import './page-input.ts';
 import './page-transition.ts';
@@ -59,6 +60,10 @@ export class ShowcaseApp extends AbstractApp {
          case 'pagetable':
             return html`
                <page-table></page-table>
+            `;
+         case 'pagecode':
+            return html`
+               <page-code></page-code>
             `;
          case 'pagerichmedia':
             return html`

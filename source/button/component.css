@@ -3,7 +3,9 @@
    text-transform: uppercase;
    box-sizing: border-box;
    font-family: inherit;
-   min-height: var(--line-height-large);
+   text-align: center;
+   vertical-align: center;
+   line-height: var(--line-height-large);
 }
 
 ::slotted(.CONTAINED.selected),
@@ -12,14 +14,16 @@
 .CONTAINED:hover,
 ::slotted(.CONTAINED:active),
 .CONTAINED:active {
-   color: var(--app-color);
    background-color: var(--app-color-background-hover);
 }
 
-.TEXT {
-   text-align: center;
-   vertical-align: center;
-   line-height: var(--line-height-large);
+::slotted(.TEXT.selected),
+.TEXT.selected,
+::slotted(.TEXT:hover),
+.TEXT:hover,
+::slotted(.TEXT:active),
+.TEXT:active {
+   color: var(--app-color-active);
 }
 
 @media only screen and (orientation: portrait) {

@@ -19,23 +19,23 @@ export class RichMediaComponent extends LitElement {
    src: string = '';
 
    @property()
-   clazz: string = '';
-
-   @property()
-   cssStyle: string = '';
-
-   @property()
-   text: string = '';
-
-   @property()
-   rendered: boolean = true;
+   richMediaType: string = RichMediaType.IMG;
 
    render() {
-      return this.rendered
+      return this.richMediaType == RichMediaType.IMG
          ? html`
-              <span class="${this.clazz}"><img src="${this.src}" style="${this.cssStyle}"/></span>
+              <span><img src="${this.src}"/></span>
            `
-         : html``;
+         : html`
+              <iframe
+                 width="560"
+                 height="315"
+                 src="${this.src}"
+                 frameborder="0"
+                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                 allowfullscreen
+              ></iframe>
+           `;
    }
 
    getOutputData(): undefined {

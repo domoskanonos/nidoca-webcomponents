@@ -5,6 +5,7 @@
   "pagelayout": "Float-Layout",
   "pagetypography": "Typography",
   "pageinput": "Inputfields",
+  "pagecode": "Quelltext",
   "pagebutton": "Buttons",
   "pagetransition": "Animation/Transition",
   "pageicon": "Icons",

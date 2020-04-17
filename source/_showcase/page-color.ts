@@ -99,11 +99,11 @@ export class PageColor extends PageAbstract {
                   >
                   <component-tab-content slot="tabContent"
                      ><component-code
-                        code="${PreviewFormatterService.getUniqueInstance().format(
+                        code="${
                            '<effect-color '
                               .concat(PreviewFormatterService.getUniqueInstance().property2String(this.colorScheme, ColorScheme))
-                              .concat(' leadingIcon="sentiment_satisfied_alt" text="Mein&nbsp;Button"></effect-color>')
-                        )}"
+                              .concat(' leadingIcon="sentiment_satisfied_alt" text="Mein&nbsp;Button"></effect-color>'
+                     )}"
                      >
                      </component-code
                   ></component-tab-content>

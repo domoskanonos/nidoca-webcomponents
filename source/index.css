@@ -41,14 +41,15 @@
 
    --app-color: #000000;
    --app-color-active: #303f9f;
+
    --app-color-background: #ffffff;
-   --app-color-background-hover: #d42626;
+   --app-color-background-hover: #afa8a8;
    --app-color-border: #ebebeb;
 
    --app-color-primary: #FFFFFF;
    --app-color-primary-active: #E5E5E5;
-   --app-color-primary-background: #6200EE;
-   --app-color-primary-background-hover: #3700B3;
+   --app-color-primary-background: #303F9F;
+   --app-color-primary-background-hover: #293aa3;
    --app-color-primary-border: #ebebeb;
 
    --app-color-secondary: #FFFFFF;

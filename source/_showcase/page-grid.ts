@@ -97,7 +97,7 @@ export class PageGrid extends PageAbstract {
                >
                <component-tab-content slot="tabContent"
                   ><component-code
-                     code="${PreviewFormatterService.getUniqueInstance().format(
+                     code="${
                         '<component-grid-container '
                            .concat(
                               PreviewFormatterService.getUniqueInstance().property2String(this.gridJustifyItems, GridJustifyItems)
@@ -109,7 +109,7 @@ export class PageGrid extends PageAbstract {
                            .concat(JSON.stringify(this.gridTemplateRows))
                            .concat('}" .gridTemplateColumns="${')
                            .concat(JSON.stringify(this.gridTemplateColumns))
-                           .concat('}"></component-grid-container>')
+                           .concat('}"></component-grid-container>'
                      )}"
                   ></component-code>
                </component-tab-content>

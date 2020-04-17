@@ -1,13 +1,13 @@
 import { customElement, html, property, TemplateResult } from 'lit-element';
 import { PageAbstract } from './page-abstract';
 import { InputfieldComponent, InputfieldType } from '../inputfield/component';
-import {ButtonType, ColorScheme, TypographyType} from '..';
+import { ButtonType, ColorScheme, TypographyType } from '..';
 import { ContainerClazzValues, ItemClazzValues } from '../flex-container/component';
 import { I18nService } from '@domoskanonos/frontend-basis';
 import { PreviewFormatterService } from './preview-formatter';
 
 @customElement('page-button')
-export class PageInputComponent extends PageAbstract {
+export class PageButton extends PageAbstract {
    @property()
    buttonType: string = ButtonType.CONTAINED;
 
@@ -66,7 +66,7 @@ export class PageInputComponent extends PageAbstract {
                         <component-inputfield
                            .inputfieldType="${InputfieldType.CHECKBOX}"
                            label="Trailing Icon"
-                           assistiveText="Es besteht die Möglichkeit an jedes Eingabefeld links ein Icon zu plazieren."
+                           assistiveText="Es besteht die Möglichkeit an jeden Button links ein Icon zu plazieren."
                            .checked="${this.showLeadingIcon}"
                            @component-inputfield-change="${() => this.switchLeadingIcon()}"
                         ></component-inputfield>
@@ -80,11 +80,9 @@ export class PageInputComponent extends PageAbstract {
                ></component-tab-content>
                <component-tab-content slot="tabContent"
                   ><component-code
-                     code="${PreviewFormatterService.getUniqueInstance().format(
-                        '<component-button '
-                           .concat(PreviewFormatterService.getUniqueInstance().property2String(this.buttonType, ButtonType))
-                           .concat(' leadingIcon="sentiment_satisfied_alt" text="Mein&nbsp;Button"></component-button>')
-                     )}"
+                     code="${'<component-button '
+                        .concat(PreviewFormatterService.getUniqueInstance().property2String(this.buttonType, ButtonType))
+                        .concat(' leadingIcon="sentiment_satisfied_alt" text="Mein&nbsp;Button"></component-button>')}"
                   >
                   </component-code
                ></component-tab-content>
