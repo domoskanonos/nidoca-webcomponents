@@ -268,22 +268,24 @@ ${this.value}</textarea
                                      ></component-typography
                                   ></component-flex-container>
                                   <componetn-container>
-                                     <component-icon
-                                        .rendered="${!this.checked}"
-                                        @component-icon-click="${() => {
-                                           this.switchChecked();
-                                        }}"
-                                        icon="toggle_off"
-                                        .clickable="${true}"
-                                     ></component-icon>
-                                     <component-icon
-                                        .rendered="${this.checked}"
-                                        @component-icon-click="${() => {
-                                           this.switchChecked();
-                                        }}"
-                                        icon="toggle_on"
-                                        .clickable="${true}"
-                                     ></component-icon>
+                                     <effect-visible visibleType="${this.checked ? VisibleType.HIDE : VisibleType.NORMAL}">
+                                        <component-icon
+                                           @component-icon-click="${() => {
+                                              this.switchChecked();
+                                           }}"
+                                           icon="toggle_off"
+                                           .clickable="${true}"
+                                        ></component-icon>
+                                     </effect-visible>
+                                     <effect-visible visibleType="${this.checked ? VisibleType.NORMAL : VisibleType.HIDE}">
+                                        <component-icon
+                                           @component-icon-click="${() => {
+                                              this.switchChecked();
+                                           }}"
+                                           icon="toggle_on"
+                                           .clickable="${true}"
+                                        ></component-icon>
+                                     </effect-visible>
                                   </componetn-container>
                                </component-grid-container>
                             `

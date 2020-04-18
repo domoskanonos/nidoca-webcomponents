@@ -1,17 +1,16 @@
 import { customElement, html, property, TemplateResult } from 'lit-element';
 import { PageAbstract } from './page-abstract';
 import { InputfieldType } from '../inputfield/component';
-import { IconComponent, TypographyType } from '..';
+import { FlexJustifyContent, IconComponent, TargetType, TypographyType } from '..';
 import { ContainerClazzValues, ItemClazzValues } from '../flex-container/component';
 import { I18nService } from '@domoskanonos/frontend-basis';
 
 @customElement('page-icon')
 export class PageIconComponent extends PageAbstract {
-
-    constructor() {
-        super();
-        this.navigationTitle = I18nService.getUniqueInstance().getValue('pageicon');
-    }
+   constructor() {
+      super();
+      this.navigationTitle = I18nService.getUniqueInstance().getValue('pageicon');
+   }
 
    @property()
    icon: string = 'thumb_up_alt';
@@ -24,6 +23,9 @@ export class PageIconComponent extends PageAbstract {
 
    @property()
    clickable: boolean = false;
+
+   @property()
+   withIconSpace: boolean = true;
 
    getMainComponent(): TemplateResult {
       return html`
@@ -38,24 +40,20 @@ export class PageIconComponent extends PageAbstract {
             .itemClazzes="${[ItemClazzValues.KEYLINE_ALIGNMENT_HORIZONTAL, ItemClazzValues.KEYLINE_SIZE_MEDIUM]}"
             itemFlexBasisValue="100%"
          >
-            <component-typography .typographyType="${TypographyType.H1}" text="Icons"></component-typography>
+            <component-typography .typographyType="${TypographyType.H1}" text="<component-icon>"></component-typography>
             <component-typography type="${TypographyType.BODY1}"
                ><i>Icon Component</i> ist eine Komponente mit der man die Google Material Icons in seine Anwendung integrieren
-               kann. Sie basiert auf den Google Material Design Richtlinien:
-               <component-link href="https://material.io/design/iconography/system-icons.html#design-principles"
-                  >Google Material Design Richtlinien</component-link
+               kann. Icons die klickbar sind, werfen ein <i>@component-icon-click</i> Event. Eine Übersicht aller Icons kannst du
+               hier finden :
+               <component-link href="https://material.io/resources/icons/?style=baseline" target="${TargetType.BLANK}"
+                  >Google Material Icons</component-link
                >
             </component-typography>
-            <component-typography type="${TypographyType.BODY1}"
-               >Eine Übersicht aller Icons kannst du hier finden :
-               <component-link href="https://material.io/resources/icons/?style=baseline">Google Material Icons</component-link>
+            <component-typography .typographyType="${TypographyType.H4}" text="Interaktive demo"></component-typography>
+            <component-typography .typographyType="${TypographyType.BODY1}">
+               Für alle Icons können sie verschiedene Eigenschaften ändern. Auf dieser Demoseite können Sie die verschiedenen
+               Eigenschaften kombinieren und sich das Ergebnis anschauen, sowie den zugehörigen Quelltext kopieren und nutzen.
             </component-typography>
-
-            <component-typography .typographyType="${TypographyType.H4}" text="Interactive demo"></component-typography>
-            <component-typography
-               .typographyType="${TypographyType.BODY1}"
-               text="This demo lets you preview the button component, its variations, and configuration options. Each tab displays a different type of button."
-            ></component-typography>
 
             <component-tabs>
                <component-tab
@@ -71,15 +69,29 @@ export class PageIconComponent extends PageAbstract {
                         ContainerClazzValues.TABLET_MAX_WIDTH,
                         ContainerClazzValues.SMARTPHONE_MAX_WIDTH
                      ]}"
-                     .itemClazzes="${[ItemClazzValues.KEYLINE_ALIGNMENT_BOTH, ItemClazzValues.KEYLINE_SIZE_MEDIUM]}"
-                     itemFlexBasisValue="50%"
+                     .itemClazzes="${[
+                        ItemClazzValues.KEYLINE_ALIGNMENT_BOTH,
+                        ItemClazzValues.KEYLINE_SIZE_MEDIUM,
+                        ItemClazzValues.SMARTPHONE_MAX_WIDTH
+                     ]}"
+                     .itemFlexBasisValues="${['50%', 'auto']}"
+                     .flexJustifyContent="${FlexJustifyContent.SPACE_AROUND}"
                   >
                      <component-form>
                         <component-inputfield
                            label="Klickbar ?"
+                           assistiveText="Sie können das Icon klickbar machen."
+                           infoText="Klickbare Icons werfen ein Event: @component-icon-click"
                            .inputfieldType="${InputfieldType.CHECKBOX}"
                            @component-inputfield-change="${(event: CustomEvent) =>
                               (this.clickable = event.detail.outputData.value)}"
+                        ></component-inputfield>
+                        <component-inputfield
+                           label="Icon-Rahmen"
+                           assistiveText="Sie können das Icon mit einem unsichtbarenRahmen versehen."
+                           .inputfieldType="${InputfieldType.CHECKBOX}"
+                           @component-inputfield-change="${(event: CustomEvent) =>
+                              (this.withIconSpace = event.detail.outputData.value)}"
                         ></component-inputfield>
                         <component-inputfield
                            label="Farbe"

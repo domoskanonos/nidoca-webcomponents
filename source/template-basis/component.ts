@@ -16,7 +16,7 @@ export abstract class BasisTemplate extends LitElement {
     menuSwitchIcon = 'menu';
 
     @property()
-    menuCss: string = 'basicShadow';
+    menuCss: string = 'menuClosed basicShadow';
 
     @query('#top')
     private topElement: HTMLElement | undefined;

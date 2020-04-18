@@ -19,7 +19,7 @@
    line-height: normal;
    white-space: normal;
    word-wrap: normal;
-   word-break: break-all;
+   word-break: break-word;
 }
 
 .H1,
