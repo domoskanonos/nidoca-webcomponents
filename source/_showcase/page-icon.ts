@@ -40,7 +40,7 @@ export class PageIconComponent extends PageAbstract {
             .itemClazzes="${[ItemClazzValues.KEYLINE_ALIGNMENT_HORIZONTAL, ItemClazzValues.KEYLINE_SIZE_MEDIUM]}"
             itemFlexBasisValue="100%"
          >
-            <component-typography .typographyType="${TypographyType.H1}" text="<component-icon>"></component-typography>
+            <component-typography .typographyType="${TypographyType.H1}" text="<component-icon/>"></component-typography>
             <component-typography type="${TypographyType.BODY1}"
                ><i>Icon Component</i> ist eine Komponente mit der man die Google Material Icons in seine Anwendung integrieren
                kann. Icons die klickbar sind, werfen ein <i>@component-icon-click</i> Event. Eine Übersicht aller Icons kannst du
