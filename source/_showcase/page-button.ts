@@ -8,6 +8,12 @@ import { PreviewFormatterService } from './preview-formatter';
 
 @customElement('page-button')
 export class PageButton extends PageAbstract {
+
+    constructor() {
+        super();
+        this.navigationTitle = I18nService.getUniqueInstance().getValue('pagebutton');
+    }
+
    @property()
    buttonType: string = ButtonType.CONTAINED;
 

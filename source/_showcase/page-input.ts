@@ -7,6 +7,11 @@ import { I18nService } from '@domoskanonos/frontend-basis';
 
 @customElement('page-inputfield')
 export class PageInputComponent extends PageAbstract {
+   constructor() {
+      super();
+      this.navigationTitle = I18nService.getUniqueInstance().getValue('pageinput');
+   }
+
    @property()
    type: string = InputfieldType.TEXT;
 

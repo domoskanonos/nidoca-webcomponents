@@ -9,6 +9,11 @@ import { CodeFormatter } from '../code/component';
 
 @customElement('page-code')
 export class PageCode extends PageAbstract {
+    constructor() {
+        super();
+        this.navigationTitle = I18nService.getUniqueInstance().getValue('pagecode');
+    }
+
    @property()
    codeFormatter: string = CodeFormatter.HTML;
 

@@ -6,7 +6,12 @@ import { I18nService } from '@domoskanonos/frontend-basis';
 import { PreviewFormatterService } from './preview-formatter';
 
 @customElement('page-rich-media')
-export class pagerichmediaComponent extends PageAbstract {
+export class pagerichmedia extends PageAbstract {
+   constructor() {
+      super();
+      this.navigationTitle = I18nService.getUniqueInstance().getValue('pagerichmedia');
+   }
+
    @property()
    src: string = 'https://picsum.photos/400/400';
 

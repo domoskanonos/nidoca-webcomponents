@@ -2,9 +2,16 @@ import { customElement, html, property, TemplateResult } from 'lit-element';
 import { PageAbstract } from './page-abstract';
 import { TransitionType } from '../effect-transition/component';
 import { ButtonType, InputfieldComponent, InputfieldType } from '..';
+import {I18nService} from "@domoskanonos/frontend-basis";
 
 @customElement('page-transition')
 export class TransitionPage extends PageAbstract {
+
+   constructor() {
+      super();
+      this.navigationTitle = I18nService.getUniqueInstance().getValue('pagetransition');
+   }
+
    @property()
    transitionType: string = TransitionType.LEFT;
 

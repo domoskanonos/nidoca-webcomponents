@@ -8,6 +8,12 @@ import { PreviewFormatterService } from './preview-formatter';
 
 @customElement('page-grid')
 export class PageGrid extends PageAbstract {
+
+    constructor() {
+        super();
+        this.navigationTitle = I18nService.getUniqueInstance().getValue('pagegrid');
+    }
+
    @property()
    gridJustifyItems: string = GridJustifyItems.START;
 

@@ -7,7 +7,13 @@ import { I18nService } from '@domoskanonos/frontend-basis';
 import { PreviewFormatterService } from './preview-formatter';
 
 @customElement('page-typography')
-export class PageTypographyComponent extends PageAbstract {
+export class PageTypography extends PageAbstract {
+
+    constructor() {
+        super();
+        this.navigationTitle = I18nService.getUniqueInstance().getValue('pagetypography');
+    }
+
    @property()
    typographyType: string = TypographyType.BODY1;
 

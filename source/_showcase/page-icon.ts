@@ -1,23 +1,18 @@
 import { customElement, html, property, TemplateResult } from 'lit-element';
 import { PageAbstract } from './page-abstract';
-import { InputfieldComponent, InputfieldType } from '../inputfield/component';
-import {
-   AlignContent,
-   AlignItems,
-   FlexDirection,
-   FlexJustifyContent,
-   FlexWrap,
-   IconComponent,
-   SpacerAlignment,
-   SpacerSize,
-   TypographyType
-} from '..';
-import { PreviewFormatterService } from './preview-formatter';
+import { InputfieldType } from '../inputfield/component';
+import { IconComponent, TypographyType } from '..';
 import { ContainerClazzValues, ItemClazzValues } from '../flex-container/component';
 import { I18nService } from '@domoskanonos/frontend-basis';
 
 @customElement('page-icon')
 export class PageIconComponent extends PageAbstract {
+
+    constructor() {
+        super();
+        this.navigationTitle = I18nService.getUniqueInstance().getValue('pageicon');
+    }
+
    @property()
    icon: string = 'thumb_up_alt';
 

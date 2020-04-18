@@ -94,7 +94,7 @@ export class ShowcaseApp extends AbstractApp {
                <page-get-started></page-get-started>
             `;
          case '':
-         case 'dashboard':
+         case 'introduction':
          default:
             return html`
                <page-introduction></page-introduction>

@@ -16,6 +16,11 @@ import { PreviewFormatterService } from './preview-formatter';
 
 @customElement('page-layout')
 export class PageLayoutComponent extends PageAbstract {
+   constructor() {
+      super();
+      this.navigationTitle = I18nService.getUniqueInstance().getValue('pagelayout');
+   }
+
    @property()
    containerClazzes: string[] = [ContainerClazzValues.CONTAINER_WIDTH_100];
 
@@ -59,7 +64,10 @@ export class PageLayoutComponent extends PageAbstract {
             .itemClazzes="${[ItemClazzValues.KEYLINE_ALIGNMENT_HORIZONTAL, ItemClazzValues.KEYLINE_SIZE_MEDIUM]}"
             itemFlexBasisValue="100%"
          >
-            <component-typography .typographyType="${TypographyType.H1}" text="Layout System"></component-typography>
+            <component-typography
+               .typographyType="${TypographyType.H1}"
+               text="${I18nService.getUniqueInstance().getValue('pagelayout')}"
+            ></component-typography>
             <component-typography
                .typographyType="${TypographyType.BODY1}"
                text="Positionieren und Ausrichten von Elementen"
@@ -173,39 +181,37 @@ export class PageLayoutComponent extends PageAbstract {
                </component-tab-content>
                <component-tab-content slot="tabContent"
                   ><component-code
-                     code="${
-                        '<component-flex-container'
-                           .concat(
-                              PreviewFormatterService.getUniqueInstance().propertyArray2String(
-                                 this.containerClazzes,
-                                 ContainerClazzValues
+                     code="${'<component-flex-container'
+                        .concat(
+                           PreviewFormatterService.getUniqueInstance().propertyArray2String(
+                              this.containerClazzes,
+                              ContainerClazzValues
+                           )
+                        )
+                        .concat(PreviewFormatterService.getUniqueInstance().property2String(this.colorScheme, ColorScheme))
+                        .concat(
+                           PreviewFormatterService.getUniqueInstance().propertyArray2String(this.itemClazzes, ItemClazzValues)
+                        )
+                        .concat(
+                           'itemFlexBasisValue="'
+                              .concat(this.itemFlexBasisValue)
+                              .concat('"')
+                              .concat(
+                                 PreviewFormatterService.getUniqueInstance().property2String(this.flexDirection, FlexDirection)
                               )
-                           )
-                           .concat(PreviewFormatterService.getUniqueInstance().property2String(this.colorScheme, ColorScheme))
-                           .concat(
-                              PreviewFormatterService.getUniqueInstance().propertyArray2String(this.itemClazzes, ItemClazzValues)
-                           )
-                           .concat(
-                              'itemFlexBasisValue="'
-                                 .concat(this.itemFlexBasisValue)
-                                 .concat('"')
-                                 .concat(
-                                    PreviewFormatterService.getUniqueInstance().property2String(this.flexDirection, FlexDirection)
+                              .concat(PreviewFormatterService.getUniqueInstance().property2String(this.flexWrap, FlexWrap))
+                              .concat(
+                                 PreviewFormatterService.getUniqueInstance().property2String(
+                                    this.flexJustifyContent,
+                                    FlexJustifyContent
                                  )
-                                 .concat(PreviewFormatterService.getUniqueInstance().property2String(this.flexWrap, FlexWrap))
-                                 .concat(
-                                    PreviewFormatterService.getUniqueInstance().property2String(
-                                       this.flexJustifyContent,
-                                       FlexJustifyContent
-                                    )
-                                 )
-                                 .concat(PreviewFormatterService.getUniqueInstance().property2String(this.alignItems, AlignItems))
-                                 .concat(
-                                    PreviewFormatterService.getUniqueInstance().property2String(this.alignContent, AlignContent)
-                                 )
-                                 .concat('></component-flex-container>')
-                           
-                     )}"
+                              )
+                              .concat(PreviewFormatterService.getUniqueInstance().property2String(this.alignItems, AlignItems))
+                              .concat(
+                                 PreviewFormatterService.getUniqueInstance().property2String(this.alignContent, AlignContent)
+                              )
+                              .concat('></component-flex-container>')
+                        )}"
                   >
                   </component-code
                ></component-tab-content>

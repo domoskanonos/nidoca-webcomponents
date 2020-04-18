@@ -8,6 +8,12 @@ import { BackgroundColorClazz, TextColorClazz } from '../effect-color/component'
 
 @customElement('page-color')
 export class PageColor extends PageAbstract {
+
+    constructor() {
+        super();
+        this.navigationTitle = I18nService.getUniqueInstance().getValue('pagecolor');
+    }
+
    @property()
    colorScheme: string = ColorScheme.DEFAULT_SCHEME;
 
@@ -92,7 +98,6 @@ export class PageColor extends PageAbstract {
                            >
 
                            <component-button buttonType="${ButtonType.CONTAINED}">ButtonType.CONTAINED</component-button>
-                           <component-button buttonType="${ButtonType.OUTLINED}">ButtonType.CONTAINED</component-button>
                            <component-button buttonType="${ButtonType.TEXT}">ButtonType.CONTAINED</component-button>
                         </component-form>
                      </component-flex-container></component-tab-content

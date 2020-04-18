@@ -1,14 +1,21 @@
-import {customElement, html, TemplateResult} from 'lit-element';
-import {PageAbstract} from './page-abstract';
-import {AlignContent, AlignItems, FlexDirection, FlexJustifyContent, FlexWrap, SpacerSize, TypographyType} from '..';
-import {ContainerClazzValues} from '../flex-container/component';
+import { customElement, html, TemplateResult } from 'lit-element';
+import { PageAbstract } from './page-abstract';
+import { AlignContent, AlignItems, FlexDirection, FlexJustifyContent, FlexWrap, SpacerSize, TypographyType } from '..';
+import { ContainerClazzValues, ItemClazzValues } from '../flex-container/component';
+import { I18nService } from '@domoskanonos/frontend-basis';
 
 @customElement('page-introduction')
 export class PageIntroduction extends PageAbstract {
-    getMainComponent(): TemplateResult {
-        return html`
+   constructor() {
+      super();
+      this.navigationTitle = I18nService.getUniqueInstance().getValue('pageintroduction');
+   }
+
+   getMainComponent(): TemplateResult {
+      return html`
          <component-flex-container
             .containerClazzes="${[ContainerClazzValues.CONTAINER_WIDTH_100]}"
+            .itemClazzes="${[ItemClazzValues.SMARTPHONE_MAX_WIDTH]}"
             .direction="${FlexDirection.ROW}"
             .wrap="${FlexWrap.WRAP}"
             .flexJustifyContent="${FlexJustifyContent.CENTER}"
@@ -33,6 +40,7 @@ export class PageIntroduction extends PageAbstract {
 
          <component-flex-container
             .containerClazzes="${[ContainerClazzValues.CONTAINER_WIDTH_100]}"
+            .itemClazzes="${[ItemClazzValues.SMARTPHONE_MAX_WIDTH]}"
             .direction="${FlexDirection.ROW}"
             .wrap="${FlexWrap.WRAP}"
             .flexJustifyContent="${FlexJustifyContent.CENTER}"
@@ -53,5 +61,5 @@ export class PageIntroduction extends PageAbstract {
             </component-flex-container>
          </component-flex-container>
       `;
-    }
+   }
 }

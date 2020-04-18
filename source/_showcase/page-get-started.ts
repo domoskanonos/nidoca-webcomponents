@@ -2,10 +2,17 @@ import { customElement, html, TemplateResult } from 'lit-element';
 import { PageAbstract } from './page-abstract';
 import { SpacerAlignment, SpacerSize, TargetType, TypographyType } from '..';
 import { ContainerClazzValues, ItemClazzValues } from '../flex-container/component';
+import {I18nService} from "@domoskanonos/frontend-basis";
 
 @customElement('page-get-started')
 export class PageGetStarted extends PageAbstract {
-   getMainComponent(): TemplateResult {
+
+    constructor() {
+        super();
+        this.navigationTitle = I18nService.getUniqueInstance().getValue('pagegetstarted');
+    }
+
+    getMainComponent(): TemplateResult {
       return html`
          <component-flex-container
             .containerClazzes="${[
