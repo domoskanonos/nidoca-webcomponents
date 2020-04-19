@@ -9,10 +9,10 @@ import { CodeFormatter } from '../code/component';
 
 @customElement('page-code')
 export class PageCode extends PageAbstract {
-    constructor() {
-        super();
-        this.navigationTitle = I18nService.getUniqueInstance().getValue('pagecode');
-    }
+   constructor() {
+      super();
+      this.navigationTitle = I18nService.getUniqueInstance().getValue('pagecode');
+   }
 
    @property()
    codeFormatter: string = CodeFormatter.HTML;
@@ -33,16 +33,12 @@ export class PageCode extends PageAbstract {
             .itemClazzes="${[ItemClazzValues.KEYLINE_ALIGNMENT_HORIZONTAL, ItemClazzValues.KEYLINE_SIZE_MEDIUM]}"
             itemFlexBasisValue="100%"
          >
-            <component-typography .typographyType="${TypographyType.H1}" text="Code"></component-typography>
-            <component-typography
-               .typographyType="${TypographyType.BODY1}"
-               text="Code shows formatted code."
-            ></component-typography>
-            <component-typography .typographyType="${TypographyType.H4}" text="Interactive demo"></component-typography>
-            <component-typography
-               .typographyType="${TypographyType.BODY1}"
-               text="This demo lets you preview the button component, its variations, and configuration options. Each tab displays a different type of button."
-            ></component-typography>
+            <component-typography .typographyType="${TypographyType.H1}" text="<component-code/>"></component-typography>
+            <component-typography .typographyType="${TypographyType.BODY1}"
+               ><i>Code Component</i> ist eine Komponente mit der man Quelltext darstellen kann.</component-typography
+            >
+            <component-typography .typographyType="${TypographyType.H4}" text="Interaktive Demo"></component-typography>
+            <component-typography .typographyType="${TypographyType.BODY1}" text=""></component-typography>
 
             <component-tabs>
                <component-tab

@@ -1,7 +1,7 @@
 import { customElement, html, property, TemplateResult } from 'lit-element';
 import { PageAbstract } from './page-abstract';
 import { InputfieldType } from '../inputfield/component';
-import { FlexJustifyContent, IconComponent, TargetType, TypographyType } from '..';
+import { ColorScheme, FlexJustifyContent, IconComponent, TargetType, TypographyType } from '..';
 import { ContainerClazzValues, ItemClazzValues } from '../flex-container/component';
 import { I18nService } from '@domoskanonos/frontend-basis';
 
@@ -83,6 +83,7 @@ export class PageIconComponent extends PageAbstract {
                            assistiveText="Sie können das Icon klickbar machen."
                            infoText="Klickbare Icons werfen ein Event: @component-icon-click"
                            .inputfieldType="${InputfieldType.CHECKBOX}"
+                           .checked="${this.clickable}"
                            @component-inputfield-change="${(event: CustomEvent) =>
                               (this.clickable = event.detail.outputData.value)}"
                         ></component-inputfield>
@@ -90,6 +91,7 @@ export class PageIconComponent extends PageAbstract {
                            label="Icon-Rahmen"
                            assistiveText="Sie können das Icon mit einem unsichtbarenRahmen versehen."
                            .inputfieldType="${InputfieldType.CHECKBOX}"
+                           .checked="${this.withIconSpace}"
                            @component-inputfield-change="${(event: CustomEvent) =>
                               (this.withIconSpace = event.detail.outputData.value)}"
                         ></component-inputfield>
@@ -240,12 +242,15 @@ export class PageIconComponent extends PageAbstract {
                         </component-flex-container>
                      </component-form>
 
-                     <component-icon
-                        .clickable="${this.clickable}"
-                        icon="${this.icon}"
-                        color="${this.color}"
-                        .size="${this.iconSize}"
-                     ></component-icon> </component-flex-container
+                     <effect-color colorScheme="${ColorScheme.PRIMARY_SCHEME}">
+                        <component-icon
+                           .clickable="${this.clickable}"
+                           icon="${this.icon}"
+                           color="${this.color}"
+                           .size="${this.iconSize}"
+                           .withIconSpace="${this.withIconSpace}"
+                        ></component-icon>
+                     </effect-color> </component-flex-container
                ></component-tab-content>
                <component-tab-content slot="tabContent"
                   ><component-code

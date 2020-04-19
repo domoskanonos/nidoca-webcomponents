@@ -1,9 +1,8 @@
-import {html, property, TemplateResult} from 'lit-element';
+import { html, property, TemplateResult } from 'lit-element';
 import { BasisTemplate, TypographyType } from '../index';
 import { I18nService } from '@domoskanonos/frontend-basis';
 
 export abstract class PageAbstract extends BasisTemplate {
-
    @property()
    navigationTitle: string = '';
 
@@ -81,18 +80,6 @@ export abstract class PageAbstract extends BasisTemplate {
             ></component-navigation-link>
             <component-navigation-link
                slot="links"
-               icon="code"
-               text="${I18nService.getUniqueInstance().getValue('pagecode')}"
-               href="pagecode"
-            ></component-navigation-link>
-            <component-navigation-link
-               slot="links"
-               icon="dynamic_feed"
-               text="${I18nService.getUniqueInstance().getValue('pagetransition')}"
-               href="pagetransition"
-            ></component-navigation-link
-            ><component-navigation-link
-               slot="links"
                icon=""
                text="${I18nService.getUniqueInstance().getValue('pagebutton')}"
                href="pagebutton"
@@ -109,8 +96,20 @@ export abstract class PageAbstract extends BasisTemplate {
                text="${I18nService.getUniqueInstance().getValue('pagerichmedia')}"
                href="pagerichmedia"
             ></component-navigation-link>
+            <component-navigation-link
+               slot="links"
+               icon="code"
+               text="${I18nService.getUniqueInstance().getValue('pagecode')}"
+               href="pagecode"
+            ></component-navigation-link>
             <component-divider slot="links"></component-divider>
             <component-navigation-section slot="links" text="Effekte"></component-navigation-section>
+            <component-navigation-link
+               slot="links"
+               icon="dynamic_feed"
+               text="${I18nService.getUniqueInstance().getValue('pagetransition')}"
+               href="pagetransition"
+            ></component-navigation-link>
             <component-navigation-link
                slot="links"
                icon=""
