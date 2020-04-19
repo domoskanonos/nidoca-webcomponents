@@ -33,7 +33,7 @@ export class PageCode extends PageAbstract {
             .itemClazzes="${[ItemClazzValues.KEYLINE_ALIGNMENT_HORIZONTAL, ItemClazzValues.KEYLINE_SIZE_MEDIUM]}"
             itemFlexBasisValue="100%"
          >
-            <component-typography .typographyType="${TypographyType.H1}" text="<component-code/>"></component-typography>
+            <component-typography .typographyType="${TypographyType.H2}" text="<component-code/>"></component-typography>
             <component-typography .typographyType="${TypographyType.BODY1}"
                ><i>Code Component</i> ist eine Komponente mit der man Quelltext darstellen kann.</component-typography
             >

@@ -33,7 +33,7 @@ export class PageButton extends PageAbstract {
             .itemClazzes="${[ItemClazzValues.KEYLINE_ALIGNMENT_HORIZONTAL, ItemClazzValues.KEYLINE_SIZE_MEDIUM]}"
             itemFlexBasisValue="100%"
          >
-            <component-typography .typographyType="${TypographyType.H1}" text="Buttons"></component-typography>
+            <component-typography .typographyType="${TypographyType.H2}" text="<component-button/>"></component-typography>
             <component-typography
                .typographyType="${TypographyType.BODY1}"
                text="Buttons allow users to take actions, and make choices, with a single tap."

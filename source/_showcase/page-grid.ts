@@ -39,7 +39,7 @@ export class PageGrid extends PageAbstract {
             .itemClazzes="${[ItemClazzValues.KEYLINE_ALIGNMENT_HORIZONTAL, ItemClazzValues.KEYLINE_SIZE_MEDIUM]}"
             itemFlexBasisValue="100%"
          >
-            <component-typography .typographyType="${TypographyType.H1}" text="Grid Layout"></component-typography>
+            <component-typography .typographyType="${TypographyType.H2}" text="<component-grid-container/>"></component-typography>
             <component-typography
                .typographyType="${TypographyType.BODY1}"
                text="CSS-Rasterlayout ist das leistungsstärkste in CSS verfügbare Layoutsystem. 

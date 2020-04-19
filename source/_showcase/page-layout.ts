@@ -65,8 +65,8 @@ export class PageLayoutComponent extends PageAbstract {
             itemFlexBasisValue="100%"
          >
             <component-typography
-               .typographyType="${TypographyType.H1}"
-               text="${I18nService.getUniqueInstance().getValue('pagelayout')}"
+               .typographyType="${TypographyType.H2}"
+               text="<component-flex-container/>"
             ></component-typography>
             <component-typography
                .typographyType="${TypographyType.BODY1}"
