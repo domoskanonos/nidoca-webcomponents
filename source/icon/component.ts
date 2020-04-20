@@ -49,7 +49,7 @@ export class IconComponent extends LitElement {
     render() {
         return html`
          <span
-            class="icon-container ${this.clazz} ${this.clickable ? 'clickable' : ''}"
+            class="icon-container ${this.clazz} ${this.clickable ? 'clickable' : ''} ${this.withIconSpace ? 'round' : ''}"
             title="${this.title}"
             @click="${this.clicked}"
             style="${this.withIconSpace && this.size != undefined
