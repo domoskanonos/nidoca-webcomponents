@@ -565,6 +565,15 @@ ${this.value}</textarea
       );
    }
 
+   static enumGetKeyFromValue(enumeration: any, value: string): string {
+      for (const key of Object.keys(enumeration)) {
+         if (enumeration[key] == value) {
+            return key;
+         }
+      }
+      return '';
+   }
+
    static enumToComboboxItems(enumeration: any): KeyValueData[] {
       let options: KeyValueData[] = [];
       Object.keys(enumeration).forEach((key) => {

@@ -16,7 +16,7 @@ export class BoxComponent extends LitElement {
 
    render() {
       return html`
-         <div style="height:${this.height}; width:${this.width};">
+         <div style="height:${this.height}; width:${this.width}; overflow: auto;">
             <slot></slot>
          </div>
       `;

@@ -1,21 +1,22 @@
 import { customElement, html, property, TemplateResult } from 'lit-element';
 import { PageAbstract } from './page-abstract';
 import { ContainerClazzValues, ItemClazzValues } from '../flex-container/component';
-import { ColorScheme, InputfieldType, TypographyType } from '..';
+import { ColorScheme, InputfieldComponent, InputfieldType, RichMediaType, SpacerAlignment, SpacerSize, TypographyType } from '..';
 import { I18nService } from '@domoskanonos/frontend-basis';
+import { GridAlignItems } from '../grid-container/component';
 
-@customElement('page-box')
-export class PageBox extends PageAbstract {
-
-    constructor() {
-        super();
-        this.navigationTitle = 'BoxComponent'
-    }
-    @property()
-   height: string = '50vmin';
+@customElement('page-spacer')
+export class PageSpacer extends PageAbstract {
+   constructor() {
+      super();
+      this.navigationTitle = 'SpacerComponent';
+   }
 
    @property()
-   width: string = '50vmin';
+   spacerSize: string = SpacerSize.MEDIUM;
+
+   @property()
+   spacerAlignment: string = SpacerAlignment.BOTH;
 
    getMainComponent(): TemplateResult {
       return html`
@@ -30,18 +31,12 @@ export class PageBox extends PageAbstract {
             .itemClazzes="${[ItemClazzValues.KEYLINE_ALIGNMENT_HORIZONTAL, ItemClazzValues.KEYLINE_SIZE_MEDIUM]}"
             itemFlexBasisValue="100%"
          >
-            <component-typography .typographyType="${TypographyType.H2}" text="<component-box/>"></component-typography>
+            <component-typography .typographyType="${TypographyType.H2}" text="<component-spacer/>"></component-typography>
             <component-typography .typographyType="${TypographyType.BODY1}"
-               ><i>BoxComponent</i> wird im Zusammenspiel mit den beiden Komponenten <i>FlexComponent</i> und
-               <i>GridComponent</i> für die Positionerung und das Layouting der Anwendung verwendet.<br /><br />
-               Sie wird eingesetzt um Inhalte auf eine bestimmte Höhe und Breite einzuschränken. In der Regel wird dann innherhalb
-               eine <i>GridComponent</i> oder eine <i>FlexComponent</i> verwendet um die Unterkomponenten weiter zu
-               strukturieren.<br /><br />
-               Es gibt zwei Attribute mit der man die Höhe und die Breite der Komponente ändern kann. Es wir empfohlen Breite und
-               Höhe in Abhängigkeit der Viewport Größe zu definieren, also die Masseinheiten <i>vw, vh, vmin, vmax</i> anstelle
-               von <i>px, em, %</i> zu verwenden. Das hat den Vorteil das die Box auch auf Tablets und Smartphones der Größe
-               entsprechend dargestellt wird.</component-typography
-            >
+               ><i>SpacerComponent</i> wird eingesetzt um zwischen einzelnen Komponenten Abstand zu erzeugen. Dabei kann man
+               horizontalen, bzw. vertikalen Abstand erzeugen, oder auch eine Art unsichtbaren Rahmen um einzelne Elemente
+               erzeugen.
+            </component-typography>
             <component-typography .typographyType="${TypographyType.H4}" text="Interaktive Demo"></component-typography>
             <component-typography .typographyType="${TypographyType.BODY1}" text=""></component-typography>
 
@@ -64,30 +59,38 @@ export class PageBox extends PageAbstract {
                   >
                      <component-form>
                         <component-inputfield
-                           .inputfieldType="${InputfieldType.TEXT}"
-                           label="Höhe der Box"
-                           value="${this.height}"
-                           @component-inputfield-keyup="${(event: CustomEvent) => (this.height = event.detail.value)}"
+                           .inputfieldType="${InputfieldType.COMBOBOX}"
+                           label="Ausrichtung"
+                           .options="${InputfieldComponent.enumToComboboxItems(SpacerAlignment)}"
+                           value="${InputfieldComponent.enumGetKeyFromValue(SpacerAlignment, this.spacerAlignment)}"
+                           @component-inputfield-change="${(event: CustomEvent) =>
+                              (this.spacerAlignment = (<any>SpacerAlignment)[event.detail.outputData.value])}"
                         ></component-inputfield>
                         <component-inputfield
-                           .inputfieldType="${InputfieldType.TEXT}"
-                           label="Breite der Box"
-                           value="${this.width}"
-                           @component-inputfield-keyup="${(event: CustomEvent) => (this.width = event.detail.value)}"
+                           .inputfieldType="${InputfieldType.COMBOBOX}"
+                           label="Größe Abstand"
+                           .options="${InputfieldComponent.enumToComboboxItems(SpacerSize)}"
+                           value="${InputfieldComponent.enumGetKeyFromValue(SpacerSize, this.spacerSize)}"
+                           @component-inputfield-change="${(event: CustomEvent) =>
+                              (this.spacerSize = (<any>SpacerSize)[event.detail.outputData.value])}"
                         ></component-inputfield>
                      </component-form>
                      <effect-color colorScheme="${ColorScheme.PRIMARY_SCHEME}">
-                        <component-box height="${this.height}" width="${this.width}"> </component-box>
+                        <component-box width="min-content" height="min-content">
+                           <component-spacer spacerAlignment="${this.spacerAlignment}" spacerSize="${this.spacerSize}">
+                              <component-rich-media src="https://picsum.photos/200/200"></component-rich-media>
+                           </component-spacer>
+                        </component-box>
                      </effect-color>
                   </component-flex-container>
                </component-tab-content>
                <component-tab-content slot="tabContent"
                   ><component-code
-                     code="${'<component-box height="'
-                        .concat(this.height)
-                        .concat('" width="')
-                        .concat(this.width)
-                        .concat('"></component-box>')}"
+                     code="${'<component-spacer spacerAlignment="'
+                        .concat(this.spacerAlignment)
+                        .concat('" spacerSize="')
+                        .concat(this.spacerSize)
+                        .concat('"></component-spacer>')}"
                   >
                   </component-code
                ></component-tab-content>

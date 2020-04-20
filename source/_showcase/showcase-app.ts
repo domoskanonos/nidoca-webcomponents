@@ -13,6 +13,7 @@ import './page-color.ts';
 import './page-code.ts';
 import './page-grid.ts';
 import './page-input.ts';
+import './page-spacer.ts';
 import './page-transition.ts';
 import './page-button.ts';
 import './page-layout.ts';
@@ -69,6 +70,10 @@ export class ShowcaseApp extends AbstractApp {
          case 'pagecode':
             return html`
                <page-code></page-code>
+            `;
+         case 'pagespacer':
+            return html`
+               <page-spacer></page-spacer>
             `;
          case 'pagerichmedia':
             return html`

@@ -1,16 +1,15 @@
 import { css, customElement, html, LitElement, property, unsafeCSS } from 'lit-element';
-import { BasicService } from '@domoskanonos/frontend-basis';
 
 const componentCSS = require('./component.css');
 
 export class SpacerAlignment {
-   static BOTH: string = '';
+   static BOTH: string = 'both';
    static HORIZONTAL: string = 'horizontalAlignment';
    static VERTICAL: string = 'verticalAlignment';
 }
 
 export class SpacerSize {
-   static ZERO: string = '';
+   static ZERO: string = 'spacerZero';
    static LITTLE: string = 'spaceLittle';
    static SMALL: string = 'spaceSmall';
    static MEDIUM: string = 'spaceMedium';
@@ -27,9 +26,6 @@ export class SpacerComponent extends LitElement {
    static IDENTIFIER: string = 'SpacerComponent';
 
    @property()
-   cssStyle: string = '';
-
-   @property()
    spacerSize: string = SpacerSize.ZERO;
 
    @property()
@@ -37,7 +33,7 @@ export class SpacerComponent extends LitElement {
 
    render() {
       return html`
-         <span class="spacer ${this.spacerSize} ${this.spacerAlignment}" style="${this.cssStyle}"><slot></slot></span>
+         <span class="spacer ${this.spacerSize} ${this.spacerAlignment}"><slot></slot></span>
       `;
    }
 }
