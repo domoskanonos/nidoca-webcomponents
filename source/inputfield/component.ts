@@ -156,16 +156,18 @@ export class InputfieldComponent extends LitElement {
                     .gridTemplateRows="${['auto']}"
                     .gridTemplateColumns="${['auto', '1fr', 'auto', 'auto']}"
                  >
-                    <component-icon
-                       .rendered="${BasicService.getUniqueInstance().isNotBlank(this.leadingIcon)}"
-                       icon="${this.leadingIcon}"
-                       .clickable="${this.leadingIconClickable}"
-                    ></component-icon>
+                    <effect-visible
+                       visibleType="${BasicService.getUniqueInstance().isNotBlank(this.leadingIcon)
+                          ? VisibleType.NORMAL
+                          : VisibleType.HIDE}"
+                    >
+                       <component-icon icon="${this.leadingIcon}" .clickable="${this.leadingIconClickable}"></component-icon>
+                    </effect-visible>
                     <component-flex-container
                        .containerClazzes="${[ContainerClazzValues.CONTAINER_WIDTH_100]}"
                        itemFlexBasisValue="100%"
                     >
-                       <effect-visible visibleType="${this.showLabelText() ? VisibleType.NORMAL : VisibleType.INVISIBLE}">
+                       <effect-visible visibleType="${this.showLabelText() ? VisibleType.NORMAL : VisibleType.HIDE}">
                           <component-typography
                              .typographyType="${TypographyType.OVERLINE}"
                              text="${this.label}"
@@ -191,14 +193,15 @@ export class InputfieldComponent extends LitElement {
                                      ></component-typography
                                   ></component-flex-container>
                                   <component-container>
-                                     <component-icon
-                                        .rendered="${!this.checked}"
-                                        icon="attachment"
-                                        .clickable="${true}"
-                                        @component-icon-click="
+                                     <effect-visible visibleType="${!this.checked ? VisibleType.NORMAL : VisibleType.HIDE}">
+                                        <component-icon
+                                           icon="attachment"
+                                           .clickable="${true}"
+                                           @component-icon-click="
                                           ${() => this.inputElemet?.click()}
                                           "
-                                     ></component-icon>
+                                        ></component-icon>
+                                     </effect-visible>
                                   </component-container>
                                </component-grid-container>
                                <effect-visible visibleType="${VisibleType.HIDE}">
@@ -319,11 +322,13 @@ ${this.value}</textarea
                                </div>
                             `}</component-flex-container
                     >
-                    <component-icon
-                       .rendered="${BasicService.getUniqueInstance().isNotBlank(this.trailingIcon)}"
-                       icon="${this.trailingIcon}"
-                       .clickable="${this.trailingIconClickable}"
-                    ></component-icon>
+                    <effect-visible
+                       visibleType="${BasicService.getUniqueInstance().isNotBlank(this.trailingIcon)
+                          ? VisibleType.NORMAL
+                          : VisibleType.HIDE}"
+                    >
+                       <component-icon icon="${this.trailingIcon}" .clickable="${this.trailingIconClickable}"></component-icon>
+                    </effect-visible>
                  </component-grid-container>
               </component-border>
               <effect-visible visibleType="${this.showAdditionalTextContainer() ? VisibleType.NORMAL : VisibleType.HIDE}">
