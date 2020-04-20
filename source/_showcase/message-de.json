@@ -4,6 +4,7 @@
   "pagegrid": "Grid-Layout",
   "pagelayout": "Float-Layout",
   "pagetypography": "Typography",
+  "pagebox": "Box",
   "pageinput": "Inputfields",
   "pagecode": "Quelltext",
   "pagebutton": "Buttons",

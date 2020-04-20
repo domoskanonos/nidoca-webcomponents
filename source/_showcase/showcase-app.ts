@@ -16,6 +16,7 @@ import './page-input.ts';
 import './page-transition.ts';
 import './page-button.ts';
 import './page-layout.ts';
+import './page-box.ts';
 import './page-icon.ts';
 import './page-rich-media.ts';
 import './page-typography.ts';
@@ -37,9 +38,13 @@ export class ShowcaseApp extends AbstractApp {
       let path = RouterService.getUniqueInstance().getCurrentPage();
       console.log('current path: '.concat(path));
       switch (path) {
-         case 'grid':
+         case 'pagegrid':
             return html`
                <page-grid></page-grid>
+            `;
+         case 'pagebox':
+            return html`
+               <page-box></page-box>
             `;
          case 'pagecolor':
             return html`

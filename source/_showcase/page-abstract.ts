@@ -55,13 +55,19 @@ export abstract class PageAbstract extends BasisTemplate {
             <component-navigation-section slot="links" text="Komponenten"></component-navigation-section>
             <component-navigation-link
                slot="links"
-               icon="grid_on"
-               text="${I18nService.getUniqueInstance().getValue('pagegrid')}"
-               href="grid"
+               icon="check_box_outline_blank"
+               text="${I18nService.getUniqueInstance().getValue('pagebox')}"
+               href="pagebox"
             ></component-navigation-link>
             <component-navigation-link
                slot="links"
-               icon="introduction"
+               icon="grid_on"
+               text="${I18nService.getUniqueInstance().getValue('pagegrid')}"
+               href="pagegrid"
+            ></component-navigation-link>
+            <component-navigation-link
+               slot="links"
+               icon="dashboard"
                text="${I18nService.getUniqueInstance().getValue('pagelayout')}"
                href="pagelayout"
             ></component-navigation-link>
