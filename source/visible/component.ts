@@ -8,7 +8,7 @@ export class VisibleType {
    static NORMAL: string = 'NORMAL';
 }
 
-@customElement('effect-visible')
+@customElement('component-visible')
 export class VisibleEffect extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}

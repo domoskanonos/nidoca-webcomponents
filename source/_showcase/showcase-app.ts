@@ -12,7 +12,10 @@ import './page-imprint';
 import './page-color.ts';
 import './page-code.ts';
 import './page-grid.ts';
+import './page-dialog.ts';
+import './page-border.ts';
 import './page-input.ts';
+import './page-visible.ts';
 import './page-spacer.ts';
 import './page-transition.ts';
 import './page-button.ts';
@@ -50,6 +53,14 @@ export class ShowcaseApp extends AbstractApp {
          case 'pagecolor':
             return html`
                <page-color></page-color>
+            `;
+         case 'pageborder':
+            return html`
+               <page-border></page-border>
+            `;
+         case 'pagedialog':
+            return html`
+               <page-dialog></page-dialog>
             `;
          case 'pageicon':
             return html`
@@ -98,6 +109,10 @@ export class ShowcaseApp extends AbstractApp {
          case 'pageimprint':
             return html`
                <page-imprint></page-imprint>
+            `;
+         case 'pagevisible':
+            return html`
+               <page-visible></page-visible>
             `;
          case 'getStarted':
             return html`

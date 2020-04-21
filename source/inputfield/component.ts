@@ -156,23 +156,23 @@ export class InputfieldComponent extends LitElement {
                     .gridTemplateRows="${['auto']}"
                     .gridTemplateColumns="${['auto', '1fr', 'auto', 'auto']}"
                  >
-                    <effect-visible
+                    <component-visible
                        visibleType="${BasicService.getUniqueInstance().isNotBlank(this.leadingIcon)
                           ? VisibleType.NORMAL
                           : VisibleType.HIDE}"
                     >
                        <component-icon icon="${this.leadingIcon}" .clickable="${this.leadingIconClickable}"></component-icon>
-                    </effect-visible>
+                    </component-visible>
                     <component-flex-container
                        .containerClazzes="${[ContainerClazzValues.CONTAINER_WIDTH_100]}"
                        itemFlexBasisValue="100%"
                     >
-                       <effect-visible visibleType="${this.showLabelText() ? VisibleType.NORMAL : VisibleType.HIDE}">
+                       <component-visible visibleType="${this.showLabelText() ? VisibleType.NORMAL : VisibleType.HIDE}">
                           <component-typography
                              .typographyType="${TypographyType.OVERLINE}"
                              text="${this.label}"
                           ></component-typography>
-                       </effect-visible>
+                       </component-visible>
                        ${this.inputfieldType == InputfieldType.FILE
                           ? html`
                                <component-grid-container
@@ -193,7 +193,7 @@ export class InputfieldComponent extends LitElement {
                                      ></component-typography
                                   ></component-flex-container>
                                   <component-container>
-                                     <effect-visible visibleType="${!this.checked ? VisibleType.NORMAL : VisibleType.HIDE}">
+                                     <component-visible visibleType="${!this.checked ? VisibleType.NORMAL : VisibleType.HIDE}">
                                         <component-icon
                                            icon="attachment"
                                            .clickable="${true}"
@@ -201,17 +201,17 @@ export class InputfieldComponent extends LitElement {
                                           ${() => this.inputElemet?.click()}
                                           "
                                         ></component-icon>
-                                     </effect-visible>
+                                     </component-visible>
                                   </component-container>
                                </component-grid-container>
-                               <effect-visible visibleType="${VisibleType.HIDE}">
+                               <component-visible visibleType="${VisibleType.HIDE}">
                                   <input
                                      id="inputElement"
                                      class="slider"
                                      name="${this.name}"
                                      type="${this.inputfieldType}"
                                      value="${this.prepareValue(this.value)}"
-                               /></effect-visible>
+                               /></component-visible>
                             `
                           : this.inputfieldType == InputfieldType.COMBOBOX
                           ? html`
@@ -271,7 +271,7 @@ ${this.value}</textarea
                                      ></component-typography
                                   ></component-flex-container>
                                   <componetn-container>
-                                     <effect-visible visibleType="${this.checked ? VisibleType.HIDE : VisibleType.NORMAL}">
+                                     <component-visible visibleType="${this.checked ? VisibleType.HIDE : VisibleType.NORMAL}">
                                         <component-icon
                                            @component-icon-click="${() => {
                                               this.switchChecked();
@@ -279,8 +279,8 @@ ${this.value}</textarea
                                            icon="toggle_off"
                                            .clickable="${true}"
                                         ></component-icon>
-                                     </effect-visible>
-                                     <effect-visible visibleType="${this.checked ? VisibleType.NORMAL : VisibleType.HIDE}">
+                                     </component-visible>
+                                     <component-visible visibleType="${this.checked ? VisibleType.NORMAL : VisibleType.HIDE}">
                                         <component-icon
                                            @component-icon-click="${() => {
                                               this.switchChecked();
@@ -288,7 +288,7 @@ ${this.value}</textarea
                                            icon="toggle_on"
                                            .clickable="${true}"
                                         ></component-icon>
-                                     </effect-visible>
+                                     </component-visible>
                                   </componetn-container>
                                </component-grid-container>
                             `
@@ -322,16 +322,16 @@ ${this.value}</textarea
                                </div>
                             `}</component-flex-container
                     >
-                    <effect-visible
+                    <component-visible
                        visibleType="${BasicService.getUniqueInstance().isNotBlank(this.trailingIcon)
                           ? VisibleType.NORMAL
                           : VisibleType.HIDE}"
                     >
                        <component-icon icon="${this.trailingIcon}" .clickable="${this.trailingIconClickable}"></component-icon>
-                    </effect-visible>
+                    </component-visible>
                  </component-grid-container>
               </component-border>
-              <effect-visible visibleType="${this.showAdditionalTextContainer() ? VisibleType.NORMAL : VisibleType.HIDE}">
+              <component-visible visibleType="${this.showAdditionalTextContainer() ? VisibleType.NORMAL : VisibleType.HIDE}">
                  <component-spacer spacerSize="${SpacerSize.SMALL}" alignment="${SpacerAlignment.VERTICAL}"></component-spacer>
                  <component-flex-container
                     .containerClazzes="${[ContainerClazzValues.CONTAINER_WIDTH_100]}"
@@ -347,7 +347,7 @@ ${this.value}</textarea
                        text="${this.infoText}"
                     ></component-typography>
                  </component-flex-container>
-              </effect-visible>
+              </component-visible>
               <component-spacer spacerSize="${SpacerSize.SMALL}" alignment="${SpacerAlignment.VERTICAL}"></component-spacer>
               <effect-color textColorClazz="${TextColorClazz.ERROR}">
                  <component-typography

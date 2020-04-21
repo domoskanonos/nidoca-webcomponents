@@ -15,9 +15,9 @@ export class TabContentComponent extends LitElement {
 
    render() {
       return html`
-         <effect-visible visibleType="${this.selected ? VisibleType.NORMAL : VisibleType.HIDE}">
+         <component-visible visibleType="${this.selected ? VisibleType.NORMAL : VisibleType.HIDE}">
             <slot></slot>
-         </effect-visible>
+         </component-visible>
       `;
    }
 }

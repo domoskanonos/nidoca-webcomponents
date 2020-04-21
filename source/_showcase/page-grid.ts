@@ -15,10 +15,10 @@ export class PageGrid extends PageAbstract {
     }
 
    @property()
-   gridJustifyItems: string = GridJustifyItems.START;
+   gridJustifyItems: string = GridJustifyItems.CENTER;
 
    @property()
-   gridAlignItems: string = GridAlignItems.START;
+   gridAlignItems: string = GridAlignItems.CENTER;
 
    @property()
    gridTemplateRows: string[] = ['1fr', '1fr', '1fr'];

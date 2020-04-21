@@ -1,5 +1,17 @@
-:root, * {
+.NAVIGATION {
     color: var(--app-color);
     background-color: var(--app-color-background);
+    height: 100vh;
+    width: var(--menu-size);
+    transition: left 0.25s linear;
+    position: fixed;
+    z-index: 1;
+    top: var(--menubar-height);
+    left: 0;
+    overflow-x: hidden;
 }
 
+.CLOSED {
+    left: calc(-1 * var(--menu-size));
+    transition: left 0.25s linear;
+}

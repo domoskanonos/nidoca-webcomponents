@@ -1,98 +1,80 @@
-import {AccordionComponent} from './accordion/container/component';
-import {ColorScheme, ColorEffect} from './effect-color/component';
-import {BoxComponent} from './box/component';
-import {BorderType, BorderComponent} from './border/component';
-import {AccordionItemComponent} from './accordion/item/component';
-import {ButtonType, ButtonComponent} from './button/component';
-import {CodeComponent} from './code/component';
-import {DividerComponent} from './divider/component';
-import {
-    FlexDirection,
-    FlexWrap,
-    FlexJustifyContent,
-    AlignItems,
-    AlignContent,
-    FlexComponent
-} from './flex-container/component';
-import {GridComponent} from './grid-container/component';
-import {KeyValueData, FormComponentOutputData, FormComponent} from './form/component';
-import {ContainerComponent} from './container/component';
-import {RippleComponent} from './effect-ripple/component';
-import {VisibleType, VisibleEffect} from './effect-visible/component';
-import {TransitionType, TransitionComponent} from './effect-transition/component';
-import {IconComponent} from './icon/component';
-import {RichMediaType, RichMediaComponent} from './rich-media/component';
-import {
-    InputfieldType,
-    InputfieldDataChangeEvent,
-    InputfieldComponent
-} from './inputfield/component';
-import {TargetType, LinkComponent} from './link/component';
-import {ListComponent} from './list/container/component';
-import {ListItemComponent} from './list/item/component';
-import {TopAppBarComponent} from './top-app-bar/component';
-import {NavigationComponent} from './navigation/component';
-import {SearchBarComponent} from './search-bar/component';
-import {NavigationLinkComponent} from './navigation/navigation-link/component';
-import {NavigationSectionComponent} from './navigation/navigation-section/component';
-import {SimpleTableRowData, SimpleTableComponent} from './simple-table/component';
-import {SpacerAlignment, SpacerSize, SpacerComponent} from './spacer/component';
-import {TabsComponent} from './tabs/component';
-import {TabComponent} from './tabs/tab/component';
-import {TabContentComponent} from './tabs/tab-content/component';
-import {TeaserComponent} from './teaser/component';
-import {TeaserElementComponent} from './teaser/teaser-element/component';
-import {TeaserElementMenuComponent} from './teaser/teaser-menu-element/component';
-import {BasisTemplate} from './template-basis/component';
-import {TopBottomTemplate} from './template-top-bottom-bars/component';
-import {TypographyType, TypographyComponent} from './typography/component';
-import {DialogComponent} from './dialog/component';
+import { AccordionComponent } from './accordion/container/component';
+import { ColorScheme, ColorEffect } from './effect-color/component';
+import { BoxComponent } from './box/component';
+import { BorderType, BorderComponent } from './border/component';
+import { AccordionItemComponent } from './accordion/item/component';
+import { ButtonType, ButtonComponent } from './button/component';
+import { CodeComponent } from './code/component';
+import { DividerComponent } from './divider/component';
+import { FlexDirection, FlexWrap, FlexJustifyContent, AlignItems, AlignContent, FlexComponent } from './flex-container/component';
+import { GridComponent } from './grid-container/component';
+import { KeyValueData, FormComponentOutputData, FormComponent } from './form/component';
+import { ContainerComponent } from './container/component';
+import { RippleComponent } from './effect-ripple/component';
+import { VisibleType, VisibleEffect } from './visible/component';
+import { TransitionType, TransitionComponent } from './effect-transition/component';
+import { IconComponent } from './icon/component';
+import { RichMediaType, RichMediaComponent } from './rich-media/component';
+import { InputfieldType, InputfieldDataChangeEvent, InputfieldComponent } from './inputfield/component';
+import { TargetType, LinkComponent } from './link/component';
+import { ListComponent } from './list/container/component';
+import { ListItemComponent } from './list/item/component';
+import { TopAppBarComponent } from './top-app-bar/component';
+import { NavigationComponent } from './navigation/component';
+import { SearchBarComponent } from './search-bar/component';
+import { NavigationLinkComponent } from './navigation/navigation-link/component';
+import { NavigationSectionComponent } from './navigation/navigation-section/component';
+import { SimpleTableRowData, SimpleTableComponent } from './simple-table/component';
+import { SpacerAlignment, SpacerSize, SpacerComponent } from './spacer/component';
+import { TabsComponent } from './tabs/component';
+import { TabComponent } from './tabs/tab/component';
+import { TabContentComponent } from './tabs/tab-content/component';
+import { TeaserComponent } from './teaser/component';
+import { TeaserElementComponent } from './teaser/teaser-element/component';
+import { TeaserElementMenuComponent } from './teaser/teaser-menu-element/component';
+import { BasisTemplate } from './template-basis/component';
+import { TopBottomTemplate } from './template-top-bottom-bars/component';
+import { TypographyType, TypographyComponent } from './typography/component';
+import { DialogComponent } from './dialog/component';
 
-
-export {AccordionComponent} from './accordion/container/component';
-export {ColorScheme, ColorEffect} from './effect-color/component';
-export {BorderType, BorderComponent} from './border/component';
-export {BoxComponent} from './box/component';
-export {AccordionItemComponent} from './accordion/item/component';
-export {ButtonType, ButtonComponent} from './button/component';
-export {CodeComponent} from './code/component';
-export {DividerComponent} from './divider/component';
-export {
-    FlexDirection, FlexWrap, FlexJustifyContent, AlignItems, AlignContent, FlexComponent
-} from './flex-container/component';
-export {GridComponent} from './grid-container/component';
-export {KeyValueData, FormComponentOutputData, FormComponent} from './form/component';
-export {ContainerComponent} from './container/component';
-export {RippleComponent} from './effect-ripple/component';
-export {VisibleType, VisibleEffect} from './effect-visible/component';
-export {TransitionType, TransitionComponent} from './effect-transition/component';
-export {IconComponent} from './icon/component';
-export {RichMediaType, RichMediaComponent} from './rich-media/component';
-export {
-    InputfieldType,
-    InputfieldDataChangeEvent,
-    InputfieldComponent
-} from './inputfield/component';
-export {TargetType, LinkComponent} from './link/component';
-export {ListComponent} from './list/container/component';
-export {ListItemComponent} from './list/item/component';
-export {TopAppBarComponent} from './top-app-bar/component';
-export {NavigationComponent} from './navigation/component';
-export {SearchBarComponent} from './search-bar/component';
-export {NavigationLinkComponent} from './navigation/navigation-link/component';
-export {NavigationSectionComponent} from './navigation/navigation-section/component';
-export {SimpleTableRowData, SimpleTableComponent} from './simple-table/component';
-export {SpacerAlignment, SpacerSize, SpacerComponent} from './spacer/component';
-export {TabsComponent} from './tabs/component';
-export {TabComponent} from './tabs/tab/component';
-export {TabContentComponent} from './tabs/tab-content/component';
-export {TeaserComponent} from './teaser/component';
-export {TeaserElementComponent} from './teaser/teaser-element/component';
-export {TeaserElementMenuComponent} from './teaser/teaser-menu-element/component';
-export {BasisTemplate} from './template-basis/component';
-export {TopBottomTemplate} from './template-top-bottom-bars/component';
-export {TypographyType, TypographyComponent} from './typography/component';
-export {DialogComponent} from './dialog/component';
+export { AccordionComponent } from './accordion/container/component';
+export { ColorScheme, ColorEffect } from './effect-color/component';
+export { BorderType, BorderComponent } from './border/component';
+export { BoxComponent } from './box/component';
+export { AccordionItemComponent } from './accordion/item/component';
+export { ButtonType, ButtonComponent } from './button/component';
+export { CodeComponent } from './code/component';
+export { DividerComponent } from './divider/component';
+export { FlexDirection, FlexWrap, FlexJustifyContent, AlignItems, AlignContent, FlexComponent } from './flex-container/component';
+export { GridComponent } from './grid-container/component';
+export { KeyValueData, FormComponentOutputData, FormComponent } from './form/component';
+export { ContainerComponent } from './container/component';
+export { RippleComponent } from './effect-ripple/component';
+export { VisibleType, VisibleEffect } from './visible/component';
+export { TransitionType, TransitionComponent } from './effect-transition/component';
+export { IconComponent } from './icon/component';
+export { RichMediaType, RichMediaComponent } from './rich-media/component';
+export { InputfieldType, InputfieldDataChangeEvent, InputfieldComponent } from './inputfield/component';
+export { TargetType, LinkComponent } from './link/component';
+export { ListComponent } from './list/container/component';
+export { ListItemComponent } from './list/item/component';
+export { TopAppBarComponent } from './top-app-bar/component';
+export { NavigationComponent } from './navigation/component';
+export { SearchBarComponent } from './search-bar/component';
+export { NavigationLinkComponent } from './navigation/navigation-link/component';
+export { NavigationSectionComponent } from './navigation/navigation-section/component';
+export { SimpleTableRowData, SimpleTableComponent } from './simple-table/component';
+export { SpacerAlignment, SpacerSize, SpacerComponent } from './spacer/component';
+export { TabsComponent } from './tabs/component';
+export { TabComponent } from './tabs/tab/component';
+export { TabContentComponent } from './tabs/tab-content/component';
+export { TeaserComponent } from './teaser/component';
+export { TeaserElementComponent } from './teaser/teaser-element/component';
+export { TeaserElementMenuComponent } from './teaser/teaser-menu-element/component';
+export { BasisTemplate } from './template-basis/component';
+export { TopBottomTemplate } from './template-top-bottom-bars/component';
+export { TypographyType, TypographyComponent } from './typography/component';
+export { DialogComponent } from './dialog/component';
 
 //Auskommentieren bei erstellen neuer Version auf NPM, nach auskommentieren nochmal ts in js bauen
 import './_showcase/showcase-app';

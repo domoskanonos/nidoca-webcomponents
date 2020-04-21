@@ -1,6 +1,15 @@
 import { css, customElement, html, unsafeCSS, property, LitElement } from 'lit-element';
 import { BasicService, RouterService } from '@domoskanonos/frontend-basis';
-import { AlignContent, AlignItems, FlexDirection, FlexJustifyContent, FlexWrap, SpacerAlignment, SpacerSize } from '../..';
+import {
+   AlignContent,
+   AlignItems,
+   FlexDirection,
+   FlexJustifyContent,
+   FlexWrap,
+   SpacerAlignment,
+   SpacerSize,
+   TypographyType
+} from '../..';
 import { ContainerClazzValues } from '../../flex-container/component';
 
 const componentCSS = require('./component.css');
@@ -10,8 +19,6 @@ export class NavigationLinkComponent extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;
-
-   static IDENTIFIER: string = 'NavigationLinkComponent';
 
    @property()
    icon: string = '';
@@ -45,16 +52,12 @@ export class NavigationLinkComponent extends LitElement {
                        .itemFlexBasisValues="${['20%', '80%']}"
                     >
                        <component-icon icon="${this.icon}" .withIconSpace="${false}"></component-icon>
-                       <component-typography>${this.text}</component-typography>
+                       <component-typography typographyType="${TypographyType.BODY2}">${this.text}</component-typography>
                     </component-flex-container>
                  </component-spacer>
               </div>
            `
          : html``;
-   }
-
-   getOutputData(): any {
-      return {};
    }
 
    private linkClicked() {

@@ -40,7 +40,7 @@ export class NavigationSectionComponent extends LitElement {
                  itemFlexBasisValue="80%"
               >
                  <component-spacer spacerSize="${SpacerSize.MEDIUM}" spacerAlignment="${SpacerAlignment.VERTICAL}">
-                    <component-typography .typographyType="${TypographyType.CAPTION}" text="${this.text}"></component-typography>
+                    <component-typography .typographyType="${TypographyType.BODY1}" text="${this.text}"></component-typography>
                  </component-spacer>
               </component-flex-container>
            `
