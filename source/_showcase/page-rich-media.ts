@@ -65,7 +65,8 @@ export class pagerichmedia extends PageAbstract {
                            label="richMediaType"
                            .options="${InputfieldComponent.enumToComboboxItems(RichMediaType)}"
                            value="${this.richMediaType}"
-                           @component-inputfield-change="${(event: CustomEvent) => this.changeRichMediaType(event)}"
+                           @component-inputfield-change="${(event: CustomEvent) =>
+                              (this.richMediaType = (<any>RichMediaType)[event.detail.outputData.value])}"
                         ></component-inputfield>
                         <component-inputfield
                            .inputfieldType="${InputfieldType.TEXT}"
@@ -92,10 +93,5 @@ export class pagerichmedia extends PageAbstract {
             </component-tabs>
          </component-flex-container>
       `;
-   }
-   private changeRichMediaType(event: CustomEvent) {
-      let richMediaType: string = (<any>RichMediaType)[event.detail.outputData.value];
-      console.log('change richMediaType: {}', richMediaType);
-      this.richMediaType = richMediaType;
    }
 }

@@ -8,11 +8,10 @@ import { PreviewFormatterService } from './preview-formatter';
 
 @customElement('page-grid')
 export class PageGrid extends PageAbstract {
-
-    constructor() {
-        super();
-        this.navigationTitle = I18nService.getUniqueInstance().getValue('pagegrid');
-    }
+   constructor() {
+      super();
+      this.navigationTitle = I18nService.getUniqueInstance().getValue('pagegrid');
+   }
 
    @property()
    gridJustifyItems: string = GridJustifyItems.CENTER;
@@ -39,20 +38,21 @@ export class PageGrid extends PageAbstract {
             .itemClazzes="${[ItemClazzValues.KEYLINE_ALIGNMENT_HORIZONTAL, ItemClazzValues.KEYLINE_SIZE_MEDIUM]}"
             itemFlexBasisValue="100%"
          >
-            <component-typography .typographyType="${TypographyType.H2}" text="<component-grid-container/>"></component-typography>
             <component-typography
-               .typographyType="${TypographyType.BODY1}"
-               text="CSS-Rasterlayout ist das leistungsstärkste in CSS verfügbare Layoutsystem. 
-                        Es ist ein 2-dimensionales System, d.h. es kann sowohl Spalten als auch Zeilen verarbeiten,
-                        im Gegensatz zu Flexbox, das weitgehend ein 1-dimensionales System ist. Sie arbeiten mit Grid-Layout,
-                        indem Sie CSS-Regeln sowohl auf ein übergeordnetes Element (das zum Grid-Container wird) als auch auf die untergeordneten Elemente dieses Elements (die zu Grid-Elementen werden) anwenden."
+               .typographyType="${TypographyType.H2}"
+               text="<component-grid-container/>"
             ></component-typography>
-            <component-typography .typographyType="${TypographyType.H4}" text="Interactive demo"></component-typography>
-            <component-typography
-               .typographyType="${TypographyType.BODY1}"
-               text="This demo lets you preview the grid layout component, its variations, and configuration options."
-            ></component-typography>
-
+            <component-typography .typographyType="${TypographyType.BODY1}"
+               ><i>GridContainerComponent</i> ist die Umsetzung des CSS Grid-Layouts (<i>display:grid</i>), eines der
+               leistungsstärkste in CSS verfügbare Layoutsystem. <br />
+               Es ist ein 2-dimensionales System, d.h. es kann sowohl Spalten als auch Zeilen verarbeiten. Im Gegensatz zum
+               Flex-Layout (display:flex), welches weitgehend ein 1-dimensionales System ist.</component-typography
+            >
+            <component-typography .typographyType="${TypographyType.H4}" text="Interaktive Demo"></component-typography>
+            <component-typography .typographyType="${TypographyType.BODY1}"
+               >Hier können Sie die Komponente ausführlich testen. Anschließend können Sie den zugehörigen Quellcode unter
+               <i>Code</i> begutachten</component-typography
+            >
             <component-tabs>
                <component-tab
                   slot="tab"
@@ -67,7 +67,12 @@ export class PageGrid extends PageAbstract {
                         ContainerClazzValues.TABLET_MAX_WIDTH,
                         ContainerClazzValues.SMARTPHONE_MAX_WIDTH
                      ]}"
-                     .itemClazzes="${[ItemClazzValues.KEYLINE_ALIGNMENT_BOTH, ItemClazzValues.KEYLINE_SIZE_MEDIUM]}"
+                     .itemClazzes="${[
+                        ItemClazzValues.KEYLINE_ALIGNMENT_BOTH,
+                        ItemClazzValues.KEYLINE_SIZE_MEDIUM,
+                        ItemClazzValues.SMARTPHONE_MAX_WIDTH,
+                        ItemClazzValues.TABLET_MAX_WIDTH
+                     ]}"
                      itemFlexBasisValue="50%"
                   >
                      <component-form>
@@ -75,14 +80,14 @@ export class PageGrid extends PageAbstract {
                            .inputfieldType="${InputfieldType.COMBOBOX}"
                            .options="${InputfieldComponent.enumToComboboxItems(GridJustifyItems)}"
                            label="gridJustifyItems"
-                           value="${this.gridJustifyItems}"
+                           value="${InputfieldComponent.enumGetKeyFromValue(GridJustifyItems, this.gridJustifyItems)}"
                            @component-inputfield-change="${(event: CustomEvent) => this.changeGridJustifyContent(event)}"
                         ></component-inputfield>
                         <component-inputfield
                            .inputfieldType="${InputfieldType.COMBOBOX}"
                            .options="${InputfieldComponent.enumToComboboxItems(GridAlignItems)}"
                            label="gridAlignItems"
-                           value="${this.gridAlignItems}"
+                           value="${InputfieldComponent.enumGetKeyFromValue(GridAlignItems, this.gridAlignItems)}"
                            @component-inputfield-change="${(event: CustomEvent) => this.changeGridAlignContent(event)}"
                         ></component-inputfield>
                      </component-form>
@@ -103,20 +108,16 @@ export class PageGrid extends PageAbstract {
                >
                <component-tab-content slot="tabContent"
                   ><component-code
-                     code="${
-                        '<component-grid-container '
-                           .concat(
-                              PreviewFormatterService.getUniqueInstance().property2String(this.gridJustifyItems, GridJustifyItems)
-                           )
-                           .concat(
-                              PreviewFormatterService.getUniqueInstance().property2String(this.gridAlignItems, GridAlignItems)
-                           )
-                           .concat(' .gridTemplateRows="${')
-                           .concat(JSON.stringify(this.gridTemplateRows))
-                           .concat('}" .gridTemplateColumns="${')
-                           .concat(JSON.stringify(this.gridTemplateColumns))
-                           .concat('}"></component-grid-container>'
-                     )}"
+                     code="${'<component-grid-container '
+                        .concat(
+                           PreviewFormatterService.getUniqueInstance().property2String(this.gridJustifyItems, GridJustifyItems)
+                        )
+                        .concat(PreviewFormatterService.getUniqueInstance().property2String(this.gridAlignItems, GridAlignItems))
+                        .concat(' .gridTemplateRows="${')
+                        .concat(JSON.stringify(this.gridTemplateRows))
+                        .concat('}" .gridTemplateColumns="${')
+                        .concat(JSON.stringify(this.gridTemplateColumns))
+                        .concat('}"></component-grid-container>')}"
                   ></component-code>
                </component-tab-content>
             </component-tabs>

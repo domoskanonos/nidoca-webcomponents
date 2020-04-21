@@ -50,7 +50,12 @@ export class TransitionPage extends PageAbstract {
                         ContainerClazzValues.TABLET_MAX_WIDTH,
                         ContainerClazzValues.SMARTPHONE_MAX_WIDTH
                      ]}"
-                     .itemClazzes="${[ItemClazzValues.KEYLINE_ALIGNMENT_BOTH, ItemClazzValues.KEYLINE_SIZE_MEDIUM]}"
+                     .itemClazzes="${[
+                        ItemClazzValues.KEYLINE_ALIGNMENT_BOTH,
+                        ItemClazzValues.KEYLINE_SIZE_MEDIUM,
+                        ItemClazzValues.SMARTPHONE_MAX_WIDTH,
+                        ItemClazzValues.TABLET_MAX_WIDTH
+                     ]}"
                      itemFlexBasisValue="50%"
                   >
                      <component-form>
