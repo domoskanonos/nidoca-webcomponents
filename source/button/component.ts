@@ -17,7 +17,7 @@ export class ButtonComponent extends LitElement {
       ${unsafeCSS(componentCSS)}
    `;
 
-   static EVENT_CLICK: string = 'component-button-clicked';
+   static EVENT_CLICK: string = 'component-button-click';
 
    @property()
    buttonType: ButtonType = ButtonType.CONTAINED;

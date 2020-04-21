@@ -1,46 +1,47 @@
 :host,
 ::slotted(:host) {
+   font-size: 0;
 }
 
 .spacer,
 ::slotted(.spacer) {
-    box-sizing: border-box;
-    display: block;
+   box-sizing: border-box;
+   display: block;
 }
 
 .horizontalAlignment,
 ::slotted(.horizontalAlignment) {
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
+   padding-top: 0 !important;
+   padding-bottom: 0 !important;
 }
 
 .verticalAlignment,
 ::slotted(.verticalAlignment) {
-    padding-left: 0 !important;
-    padding-right: 0 !important;
+   padding-left: 0 !important;
+   padding-right: 0 !important;
 }
 
 .spaceLittle,
 ::slotted(.spaceLittle) {
-    padding: var(--space-little);
+   padding: var(--space-little);
 }
 
 .spaceSmall,
 ::slotted(.spaceSmall) {
-    padding: var(--space-small);
+   padding: var(--space-small);
 }
 
 .spaceMedium,
 ::slotted(.spaceMedium) {
-    padding: var(--space-medium);
+   padding: var(--space-medium);
 }
 
 .spaceBig,
 ::slotted(.spaceBig) {
-    padding: var(--space-big);
+   padding: var(--space-big);
 }
 
 .spaceMax,
 ::slotted(.spaceMax) {
-    padding: var(--space-max);
+   padding: var(--space-max);
 }

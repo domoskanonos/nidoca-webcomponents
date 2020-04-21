@@ -1,4 +1,5 @@
 import { css, customElement, html, property, unsafeCSS, LitElement } from 'lit-element';
+import { TransitionType, VisibleType } from '..';
 
 const componentCSS = require('./component.css');
 
@@ -13,15 +14,19 @@ export class DialogComponent extends LitElement {
 
    render() {
       return html`
-         <div class="${!this.show ? 'hide' : ''} fullScreen opacScreen"></div>
-         <div class="${!this.show ? 'hide' : ''} fullScreen wrapperOutside">
-            <div class="wrapperInside">
-               <!-- Dialog -->
-               <div class="dialogContainer">
-                  <slot></slot>
+         <component-visible visibleType="${this.show ? VisibleType.NORMAL : VisibleType.HIDE}">
+            <div class="fullScreen opacScreen"></div>
+            <div class="fullScreen wrapperOutside">
+               <div class="wrapperInside">
+                  <!-- Dialog -->
+                  <effect-transition .transitionType="${TransitionType.SLIDE_CENTER}">
+                     <div class="dialogContainer">
+                        <slot></slot>
+                     </div>
+                  </effect-transition>
                </div>
             </div>
-         </div>
+         </component-visible>
       `;
    }
 }

@@ -29,7 +29,7 @@ export class TransitionPage extends PageAbstract {
             .itemClazzes="${[ItemClazzValues.KEYLINE_ALIGNMENT_HORIZONTAL, ItemClazzValues.KEYLINE_SIZE_MEDIUM]}"
             itemFlexBasisValue="100%"
          >
-            <component-typography .typographyType="${TypographyType.H2}" text="<component-transition/>"></component-typography>
+            <component-typography .typographyType="${TypographyType.H2}" text="<effect-transition/>"></component-typography>
             <component-typography .typographyType="${TypographyType.BODY1}"
                ><i>TransitionComponent</i> ist eine Komponente mit der man Inhalte anmutig einblenden kann.</component-typography
             >
@@ -63,16 +63,16 @@ export class TransitionPage extends PageAbstract {
                         ></component-inputfield>
                      </component-form>
 
-                     <component-transition transitionType="${this.transitionType}">
+                     <effect-transition transitionType="${this.transitionType}">
                         <component-rich-media src="https://picsum.photos/400/400"></component-rich-media>
-                     </component-transition>
+                     </effect-transition>
                   </component-flex-container>
                </component-tab-content>
                <component-tab-content slot="tabContent"
                   ><component-code
-                     code="${'<component-transition '
+                     code="${'<effect-transition '
                         .concat(PreviewFormatterService.getUniqueInstance().property2String(this.transitionType, TransitionType))
-                        .concat(' code="<HTML></HTML>"></component-code>')}"
+                        .concat(' ></effect-transition>')}"
                   >
                   </component-code
                ></component-tab-content>
@@ -86,5 +86,4 @@ export class TransitionPage extends PageAbstract {
       console.log('change transitionType: {}', transitionType);
       this.transitionType = transitionType;
    }
-
 }

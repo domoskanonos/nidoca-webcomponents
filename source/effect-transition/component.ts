@@ -15,7 +15,7 @@ export class TransitionType {
     static SLIDE_BOTTOM = 'SLIDE_BOTTOM';
 }
 
-@customElement('component-transition')
+@customElement('effect-transition')
 export class TransitionComponent extends LitElement {
     @property()
     transitionType: TransitionType = TransitionType.CENTER;

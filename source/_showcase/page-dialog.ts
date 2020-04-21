@@ -6,6 +6,7 @@ import {
    ColorScheme,
    InputfieldComponent,
    InputfieldType,
+   SpacerSize,
    TransitionType,
    TypographyType,
    VisibleType
@@ -23,7 +24,7 @@ export class PageDialog extends PageAbstract {
    }
 
    @property()
-   borderType: string = BorderType.ALL;
+   showDialog: boolean = false;
 
    getMainComponent(): TemplateResult {
       return html`
@@ -66,27 +67,26 @@ export class PageDialog extends PageAbstract {
                      .itemClazzes="${[ItemClazzValues.KEYLINE_ALIGNMENT_BOTH, ItemClazzValues.KEYLINE_SIZE_MEDIUM]}"
                      itemFlexBasisValue="100%"
                   >
-                     <component-form>
-                        <component-inputfield
-                           .inputfieldType="${InputfieldType.COMBOBOX}"
-                           .options="${InputfieldComponent.enumToComboboxItems(BorderType)}"
-                           label="VisibleType"
-                           value="${this.borderType}"
-                           @component-inputfield-change="${(event: CustomEvent) =>
-                              (this.borderType = (<any>BorderType)[event.detail.outputData.value])}"
-                        ></component-inputfield>
-                     </component-form>
-
-                     <component-border borderType="${this.borderType}">
-                        <component-rich-media src="https://picsum.photos/400/400"></component-rich-media>
-                     </component-border>
+                     <component-button
+                        text="Zeige Dialog"
+                        @component-button-click="${() => {
+                           this.showDialog = true;
+                        }}"
+                     >
+                     </component-button>
+                     <component-dialog .show="${this.showDialog}">
+                      <component-button
+                        text="Dialog schließen"
+                        @component-button-click="${() => {
+                           this.showDialog = false;
+                        }}"
+                     >
+                     </component-dialog>
                   </component-flex-container>
                </component-tab-content>
                <component-tab-content slot="tabContent"
                   ><component-code
-                     code="${'<component-border '
-                        .concat(PreviewFormatterService.getUniqueInstance().property2String(this.borderType, BorderType))
-                        .concat('></component-border>')}"
+                     code="${'<component-dialog .show="'.concat(this.showDialog).concat('"></component-dialog>')}"
                   >
                   </component-code
                ></component-tab-content>
