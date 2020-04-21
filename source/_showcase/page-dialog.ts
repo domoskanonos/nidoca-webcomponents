@@ -86,7 +86,7 @@ export class PageDialog extends PageAbstract {
                </component-tab-content>
                <component-tab-content slot="tabContent"
                   ><component-code
-                     code="${'<component-dialog .show="'.concat(this.showDialog).concat('"></component-dialog>')}"
+                     code="${'<component-dialog .show="'.concat(String(this.showDialog)).concat('"></component-dialog>')}"
                   >
                   </component-code
                ></component-tab-content>
