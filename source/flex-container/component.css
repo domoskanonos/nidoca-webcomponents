@@ -60,32 +60,32 @@
    overflow: hidden;
 }
 
-.PADDING_LITTLE,
-::slotted(.PADDING_LITTLE) {
+.KEYLINE_SIZE_LITTLE,
+::slotted(.KEYLINE_SIZE_LITTLE) {
    padding-right: var(--space-little);
    padding-bottom: var(--space-little);
 }
 
-.PADDING_SMALL,
-::slotted(.PADDING_SMALL) {
+.KEYLINE_SIZE_SMALL,
+::slotted(.KEYLINE_SIZE_SMALL) {
    padding-right: var(--space-small);
    padding-bottom: var(--space-small);
 }
 
-.PADDING_MEDIUM,
-::slotted(.PADDING_MEDIUM) {
+.KEYLINE_SIZE_MEDIUM,
+::slotted(.KEYLINE_SIZE_MEDIUM) {
    padding-right: var(--space-medium);
    padding-bottom: var(--space-medium);
 }
 
-.PADDING_BIG,
-::slotted(.PADDING_BIG) {
+.KEYLINE_SIZE_BIG,
+::slotted(.KEYLINE_SIZE_BIG) {
    padding-right: var(--space-big);
    padding-bottom: var(--space-big);
 }
 
-.PADDING_MAX,
-::slotted(.PADDING_MAX) {
+.KEYLINE_SIZE_MAX,
+::slotted(.KEYLINE_SIZE_MAX) {
    padding-right: var(--space-max);
    padding-bottom: var(--space-max);
 }
@@ -100,8 +100,8 @@
    padding-bottom: 0;
 }
 
-.PADDING_ALIGNMENT_BOTH,
-::slotted(.PADDING_ALIGNMENT_BOTH) {
+.KEYLINE_SIZE_ALIGNMENT_BOTH,
+::slotted(.KEYLINE_SIZE_ALIGNMENT_BOTH) {
    padding: 0;
 }
 
