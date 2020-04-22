@@ -38,7 +38,7 @@ export class PageBorder extends PageAbstract {
             .itemProperties="${[ItemProperties.KEYLINE_ALIGNMENT_HORIZONTAL, ItemProperties.KEYLINE_SIZE_MEDIUM]}"
             itemFlexBasisValue="100%"
          >
-            <component-typography .typographyType="${TypographyType.H1}" text="BorderComponent"></component-typography>
+            <component-typography .typographyType="${TypographyType.H2}" text="<component-border/>"></component-typography>
             <component-typography .typographyType="${TypographyType.BODY1}">
                <i>BorderComponent</i> ist eine Komponente mit der man um Inhaltselemente einen Rahmen legen kann. Dabei kann der
                Rahmen das Element komplett einfassen, oder auch nur einzelne Seiten.

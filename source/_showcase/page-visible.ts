@@ -38,7 +38,7 @@ export class PageVisible extends PageAbstract {
             .itemProperties="${[ItemProperties.KEYLINE_ALIGNMENT_HORIZONTAL, ItemProperties.KEYLINE_SIZE_MEDIUM]}"
             itemFlexBasisValue="100%"
          >
-            <component-typography .typographyType="${TypographyType.H1}" text="VisibleComponent"></component-typography>
+            <component-typography .typographyType="${TypographyType.H2}" text="<component-visible/>"></component-typography>
             <component-typography .typographyType="${TypographyType.BODY1}">
                <i>VisibleComponent</i> ist eine Komponente deren einzige Aufgabe es ist Komponenten sichtbar und unsichtbar zu machen.
                Dabei kann man noch entscheiden ob der eigentliche Platz der Komponente bestehen bleibt (<i>invisible</i>) oder

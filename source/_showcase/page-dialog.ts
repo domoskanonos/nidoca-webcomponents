@@ -39,16 +39,11 @@ export class PageDialog extends PageAbstract {
             .itemProperties="${[ItemProperties.KEYLINE_ALIGNMENT_HORIZONTAL, ItemProperties.KEYLINE_SIZE_MEDIUM]}"
             itemFlexBasisValue="100%"
          >
-            <component-typography .typographyType="${TypographyType.H1}" text="DialogComponent"></component-typography>
+            <component-typography .typographyType="${TypographyType.H2}" text="<component-dialog/>"></component-typography>
             <component-typography .typographyType="${TypographyType.BODY1}">
-               <i>BorderComponent</i> ist eine Komponente mit der man um Inhaltselemente einen Rahmen legen kann. Dabei kann der
-               Rahmen das Element komplett einfassen, oder auch nur einzelne Seiten.
+               <i>DialogComponent</i> ist eine Komponente um Inhalte im Vordergrund darzustellen. Der restliche Hintergrund wird ausgegraut.
             </component-typography>
             <component-typography .typographyType="${TypographyType.H4}" text="Interaktive Demo"></component-typography>
-            <component-typography
-               .typographyType="${TypographyType.BODY1}"
-               text="Hier kannst du die einzelnen Auswahlmöglichkeiten der Komponente ausprobieren."
-            ></component-typography>
 
             <component-tabs>
                <component-tab

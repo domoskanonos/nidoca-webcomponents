@@ -10,8 +10,8 @@ import {
    FlexWrap,
    ItemProperties
 } from '../flex-container/component';
-import { ButtonType, ColorScheme, InputfieldComponent, InputfieldType, SpacerSize, TypographyType } from '..';
-import { BasicService, I18nService } from '@domoskanonos/frontend-basis';
+import { ColorScheme, InputfieldComponent, InputfieldType, TypographyType } from '..';
+import { I18nService } from '@domoskanonos/frontend-basis';
 import { PreviewFormatterService } from './preview-formatter';
 
 @customElement('page-layout')
@@ -22,16 +22,10 @@ export class PageLayoutComponent extends PageAbstract {
    }
 
    @property()
-   containerProperties: string[] = [ContainerProperties.CONTAINER_WIDTH_100];
+   containerProperties: string[] = [ContainerProperties.CONTAINER_WIDTH_100, ContainerProperties.CONTAINER_HEIGHT_100];
 
    @property()
    colorScheme: string = ColorScheme.PRIMARY_SCHEME;
-
-   @property()
-   itemProperties: string[] = [ItemProperties.TABLET_MAX_WIDTH, ItemProperties.SMARTPHONE_MAX_WIDTH];
-
-   @property()
-   itemFlexBasisValue: string = 'auto';
 
    @property()
    flexDirection: string = FlexDirection.ROW;
@@ -40,13 +34,19 @@ export class PageLayoutComponent extends PageAbstract {
    flexWrap: string = FlexWrap.WRAP;
 
    @property()
-   flexJustifyContent: string = FlexJustifyContent.FLEX_START;
+   flexJustifyContent: string = FlexJustifyContent.CENTER;
 
    @property()
-   alignItems: string = AlignItems.STRETCH;
+   alignContent: string = AlignContent.CENTER;
 
    @property()
-   alignContent: string = AlignContent.STRETCH;
+   itemProperties: string[] = [ItemProperties.KEYLINE_SIZE_MEDIUM];
+
+   @property()
+   itemFlexBasisValue: string = 'auto';
+
+   @property()
+   alignItems: string = AlignItems.START;
 
    @query('#sample-flex-container')
    flexContainer: FlexComponent | undefined;
@@ -135,8 +135,46 @@ export class PageLayoutComponent extends PageAbstract {
 
                         <component-inputfield
                            .inputfieldType="${InputfieldType.COMBOBOX}"
+                           .options="${InputfieldComponent.enumToComboboxItems(FlexWrap)}"
+                           label="FlexWrap"
+                           .value="${InputfieldComponent.enumGetKeyFromValue(FlexWrap, this.flexWrap)}"
+                           @component-inputfield-change="${(event: CustomEvent) => this.changeFlexWrap(event)}"
+                        ></component-inputfield>
+
+                        <component-inputfield
+                           .inputfieldType="${InputfieldType.COMBOBOX}"
+                           .options="${InputfieldComponent.enumToComboboxItems(FlexJustifyContent)}"
+                           label="FlexJustifyContent"
+                           .value="${InputfieldComponent.enumGetKeyFromValue(FlexJustifyContent, this.flexJustifyContent)}"
+                           @component-inputfield-change="${(event: CustomEvent) => this.changeFlexJustify(event)}"
+                        ></component-inputfield>
+
+                        <component-inputfield
+                           .inputfieldType="${InputfieldType.COMBOBOX}"
+                           .options="${InputfieldComponent.enumToComboboxItems(AlignItems)}"
+                           label="AlignItems"
+                           .value="${InputfieldComponent.enumGetKeyFromValue(AlignItems, this.alignItems)}"
+                           @component-inputfield-change="${(event: CustomEvent) => this.changeAlignItems(event)}"
+                        ></component-inputfield>
+
+                        <component-inputfield
+                           .inputfieldType="${InputfieldType.COMBOBOX}"
+                           .options="${InputfieldComponent.enumToComboboxItems(AlignContent)}"
+                           label="AlignContent"
+                           .value="${InputfieldComponent.enumGetKeyFromValue(AlignContent, this.alignContent)}"
+                           @component-inputfield-change="${(event: CustomEvent) => this.changeAlignContent(event)}"
+                        ></component-inputfield>
+
+                        <component-inputfield
+                           label="Standartgröße der einzelnen Inhaltselemente"
+                           value="${this.itemFlexBasisValue}"
+                           @component-inputfield-change="${(event: CustomEvent) => this.changeItemFlexBasis(event)}"
+                        ></component-inputfield>
+
+                        <component-inputfield
+                           .inputfieldType="${InputfieldType.COMBOBOX}"
                            .options="${InputfieldComponent.enumToComboboxItems(ContainerProperties)}"
-                           label="Attribute für den Container"
+                           label="Eigenschaften des Container"
                            .value="${this.containerProperties}"
                            size="10"
                            multiple="true"
@@ -147,50 +185,12 @@ export class PageLayoutComponent extends PageAbstract {
                         <component-inputfield
                            .inputfieldType="${InputfieldType.COMBOBOX}"
                            .options="${InputfieldComponent.enumToComboboxItems(ItemProperties)}"
-                           label="Attribute für Inhaltselemente"
+                           label="Eigenschaften der Inhaltselemente"
                            .value="${this.itemProperties}"
                            size="10"
                            multiple="true"
                            @component-inputfield-change="${(event: CustomEvent) =>
                               (this.itemProperties = event.detail.outputData.value)}"
-                        ></component-inputfield>
-
-                        <component-inputfield
-                           .inputfieldType="${InputfieldType.COMBOBOX}"
-                           .options="${InputfieldComponent.enumToComboboxItems(FlexWrap)}"
-                           label="FlexWrap"
-                           value="${this.flexWrap}"
-                           @component-inputfield-change="${(event: CustomEvent) => this.changeFlexWrap(event)}"
-                        ></component-inputfield>
-
-                        <component-inputfield
-                           .inputfieldType="${InputfieldType.COMBOBOX}"
-                           .options="${InputfieldComponent.enumToComboboxItems(FlexJustifyContent)}"
-                           label="FlexJustifyContent"
-                           value="${this.flexJustifyContent}"
-                           @component-inputfield-change="${(event: CustomEvent) => this.changeFlexJustify(event)}"
-                        ></component-inputfield>
-
-                        <component-inputfield
-                           .inputfieldType="${InputfieldType.COMBOBOX}"
-                           .options="${InputfieldComponent.enumToComboboxItems(AlignItems)}"
-                           label="AlignItems"
-                           value="${this.alignItems}"
-                           @component-inputfield-change="${(event: CustomEvent) => this.changeAlignItems(event)}"
-                        ></component-inputfield>
-
-                        <component-inputfield
-                           .inputfieldType="${InputfieldType.COMBOBOX}"
-                           .options="${InputfieldComponent.enumToComboboxItems(AlignContent)}"
-                           label="AlignContent"
-                           value="${this.alignContent}"
-                           @component-inputfield-change="${(event: CustomEvent) => this.changeAlignContent(event)}"
-                        ></component-inputfield>
-
-                        <component-inputfield
-                           label="itemFlexBasisValue"
-                           value="${this.itemFlexBasisValue}"
-                           @component-inputfield-change="${(event: CustomEvent) => this.changeItemFlexBasis(event)}"
                         ></component-inputfield>
                      </component-form>
                   </component-flex-container>

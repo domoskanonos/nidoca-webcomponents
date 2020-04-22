@@ -14,7 +14,7 @@ export class TransitionPage extends PageAbstract {
    }
 
    @property()
-   transitionType: string = TransitionType.LEFT;
+   transitionType: string = TransitionType.SLIDE_CENTER;
 
    getMainComponent(): TemplateResult {
       return html`
