@@ -19,7 +19,7 @@ import './page-visible.ts';
 import './page-spacer.ts';
 import './page-transition.ts';
 import './page-button.ts';
-import './page-layout.ts';
+import './page-flex.ts';
 import './page-box.ts';
 import './page-icon.ts';
 import './page-rich-media.ts';

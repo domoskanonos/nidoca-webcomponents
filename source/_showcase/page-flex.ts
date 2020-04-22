@@ -25,7 +25,7 @@ export class PageLayoutComponent extends PageAbstract {
    containerClazzes: string[] = [ContainerClazzValues.CONTAINER_WIDTH_100];
 
    @property()
-   colorScheme: string = ColorScheme.SECONDARY_SCHEME;
+   colorScheme: string = ColorScheme.PRIMARY_SCHEME;
 
    @property()
    itemClazzes: string[] = [ItemClazzValues.TABLET_MAX_WIDTH, ItemClazzValues.SMARTPHONE_MAX_WIDTH];
@@ -68,15 +68,20 @@ export class PageLayoutComponent extends PageAbstract {
                .typographyType="${TypographyType.H2}"
                text="<component-flex-container/>"
             ></component-typography>
-            <component-typography
-               .typographyType="${TypographyType.BODY1}"
-               text="Positionieren und Ausrichten von Elementen"
-            ></component-typography>
-            <component-typography .typographyType="${TypographyType.H4}" text="Interactive demo"></component-typography>
             <component-typography .typographyType="${TypographyType.BODY1}"
-               >Die Komponente <i>component-flex-container</i> basiert auf dem CSS Flexbox Layout Modell (display: flex). Auf
-               dieser Seite können Sie diese Komponente und deren Eigenschaften ausführlich testen.</component-typography
+               ><i>component-flex-container</i> basiert auf dem CSS Flexbox Layout (display: flex). Das Layout zielt darauf ab,
+               eine effiziente Möglichkeit zur Anordnung, Ausrichtung und Raumverteilung von Elementen zu bieten.<br />
+               Es wird dem Grid Layout bevorzugt, wenn die Anzahl der Elemente unbekannt oder dynamisch ist. Dabei versucht der
+               Kontainer die Breite, Höhe und die Reihenfolge seiner Gegenstände so zu verändern, dass der verfügbare Raum
+               bestmöglich ausgefüllt wird. <br />
+               Im Gegensatz zum vertikal basiertem Block-Layout und dem horizontal basiertem Inline-Layout ist es
+               richtungsunabhängig.</component-typography
             >
+            <component-typography .typographyType="${TypographyType.H4}" text="Interaktive Demo"></component-typography>
+            <component-typography .typographyType="${TypographyType.BODY1}"
+               >Die Komponente <i>component-flex-container</i> bietet zahlreiche Anpassungsmöglichkeiten, welche du hier
+               ausprobieren kannst. Anschließend kannst du dir den enstsprechenden Quellcode angucken.
+            </component-typography>
 
             <component-tabs>
                <component-tab
@@ -99,8 +104,8 @@ export class PageLayoutComponent extends PageAbstract {
                      ]}"
                      .itemFlexBasisValues="${['50%', '50%']}"
                   >
-                     <component-container cssStyle="height:500px;">
-                        <effect-color colorScheme="${this.colorScheme}">
+                     <effect-color colorScheme="${this.colorScheme}">
+                        <component-box height="350px" width="350px">
                            <component-flex-container
                               id="sample-flex-container"
                               .containerClazzes="${this.containerClazzes}"
@@ -117,9 +122,8 @@ export class PageLayoutComponent extends PageAbstract {
                               ${this.createImg(50, 100)} ${this.createImg(100, 50)} ${this.createImg(75, 50)}
                               ${this.createImg(75, 75)} ${this.createImg(75, 50)} ${this.createImg(75, 50)}
                            </component-flex-container>
-                        </effect-color>
-                     </component-container>
-
+                        </component-box>
+                     </effect-color>
                      <component-form>
                         <component-inputfield
                            .inputfieldType="${InputfieldType.COMBOBOX}"
@@ -132,11 +136,23 @@ export class PageLayoutComponent extends PageAbstract {
                         <component-inputfield
                            .inputfieldType="${InputfieldType.COMBOBOX}"
                            .options="${InputfieldComponent.enumToComboboxItems(ContainerClazzValues)}"
-                           label="ContainerClazzValues"
-                           value="${this.containerClazzes}"
+                           label="Attribute für den Container"
+                           .value="${this.containerClazzes}"
                            size="10"
                            multiple="true"
-                           @component-inputfield-change="${(event: CustomEvent) => this.changeContainerClazzes(event)}"
+                           @component-inputfield-change="${(event: CustomEvent) =>
+                              (this.containerClazzes = event.detail.outputData.value)}"
+                        ></component-inputfield>
+
+                        <component-inputfield
+                           .inputfieldType="${InputfieldType.COMBOBOX}"
+                           .options="${InputfieldComponent.enumToComboboxItems(ItemClazzValues)}"
+                           label="Attribute für Inhaltselemente"
+                           .value="${this.itemClazzes}"
+                           size="10"
+                           multiple="true"
+                           @component-inputfield-change="${(event: CustomEvent) =>
+                              (this.itemClazzes = event.detail.outputData.value)}"
                         ></component-inputfield>
 
                         <component-inputfield
@@ -244,13 +260,11 @@ export class PageLayoutComponent extends PageAbstract {
       this.itemFlexBasisValue = event.detail.outputData.value;
    }
 
-   private changeContainerClazzes(event: CustomEvent) {
-      this.containerClazzes = event.detail.outputData.value;
-   }
-
    private createImg(width: number, height: number) {
       return html`
-         <component-rich-media src="https://picsum.photos/${width}/${height}" text="Mein Bild"></component-rich-media>
+         <effect-color colorScheme="${ColorScheme.SURFACE_SCHEME}">
+            <component-box width="${width}px" height="${height}px"></component-box>
+         </effect-color>
       `;
    }
 }

@@ -24,11 +24,15 @@
    height: min-content;
 }
 
+.CONTAINER_HEIGHT_100,
+::slotted(.CONTAINER_HEIGHT_100) {
+   height: 100%;
+}
+
 .CONTAINER_WIDTH_AUTO,
 ::slotted(.CONTAINER_WIDTH_AUTO) {
    width: auto;
 }
-
 
 .CONTAINER_WIDTH_100,
 ::slotted(.CONTAINER_WIDTH_100) {
