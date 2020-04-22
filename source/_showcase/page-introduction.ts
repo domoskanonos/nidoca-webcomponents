@@ -10,7 +10,7 @@ import {
    SpacerSize,
    TypographyType
 } from '..';
-import { ContainerClazzValues, ItemClazzValues } from '../flex-container/component';
+import { ContainerProperties, ItemProperties } from '../flex-container/component';
 import { I18nService } from '@domoskanonos/frontend-basis';
 
 @customElement('page-introduction')
@@ -23,8 +23,8 @@ export class PageIntroduction extends PageAbstract {
    getMainComponent(): TemplateResult {
       return html`
          <component-flex-container
-            .containerClazzes="${[ContainerClazzValues.CONTAINER_WIDTH_100]}"
-            .itemClazzes="${[ItemClazzValues.SMARTPHONE_MAX_WIDTH]}"
+            .containerProperties="${[ContainerProperties.CONTAINER_WIDTH_100]}"
+            .itemProperties="${[ItemProperties.SMARTPHONE_MAX_WIDTH]}"
             .direction="${FlexDirection.ROW}"
             .wrap="${FlexWrap.WRAP}"
             .flexJustifyContent="${FlexJustifyContent.CENTER}"
@@ -34,7 +34,7 @@ export class PageIntroduction extends PageAbstract {
          >
             <component-spacer spacerSize="${SpacerSize.BIG}" spacerAlignment="${SpacerAlignment.VERTICAL}"
                ><component-flex-container
-                  .containerClazzes="${[ContainerClazzValues.CONTAINER_WIDTH_75]}"
+                  .containerProperties="${[ContainerProperties.CONTAINER_WIDTH_75]}"
                   itemFlexBasisValue="100%"
                >
                   <component-typography .typographyType="${TypographyType.H2}">WC-Atomic</component-typography>
@@ -52,8 +52,8 @@ export class PageIntroduction extends PageAbstract {
          </component-flex-container>
 
          <component-flex-container
-            .containerClazzes="${[ContainerClazzValues.CONTAINER_WIDTH_100]}"
-            .itemClazzes="${[ItemClazzValues.SMARTPHONE_MAX_WIDTH]}"
+            .containerProperties="${[ContainerProperties.CONTAINER_WIDTH_100]}"
+            .itemProperties="${[ItemProperties.SMARTPHONE_MAX_WIDTH]}"
             .direction="${FlexDirection.ROW}"
             .wrap="${FlexWrap.WRAP}"
             .flexJustifyContent="${FlexJustifyContent.CENTER}"
@@ -65,7 +65,7 @@ export class PageIntroduction extends PageAbstract {
             <component-rich-media src="https://picsum.photos/550/400" text="Mein Bild"></component-rich-media>
             <component-rich-media src="https://picsum.photos/600/400" text="Mein Bild"></component-rich-media>
             <component-spacer spacerSize="${SpacerSize.BIG}" spacerAlignment="${SpacerAlignment.VERTICAL}">
-               <component-flex-container .containerClazzes="${['CONTAINER_WIDTH_75']}" itemFlexBasisValue="100%">
+               <component-flex-container .containerProperties="${['CONTAINER_WIDTH_75']}" itemFlexBasisValue="100%">
                   <component-typography .typographyType="${TypographyType.H4}">Bildquelle</component-typography>
                   <component-typography .typographyType="${TypographyType.BODY1}">
                      Die hier abgebildeten Fotos stammen von:

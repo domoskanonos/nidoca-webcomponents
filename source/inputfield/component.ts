@@ -5,7 +5,7 @@ import { KeyValueData } from '../form/component';
 import { TypographyType } from '../typography/component';
 import { BasicService } from '@domoskanonos/frontend-basis';
 import { BorderType, FlexJustifyContent, SpacerAlignment, SpacerSize, VisibleType } from '..';
-import { ContainerClazzValues } from '../flex-container/component';
+import { ContainerProperties } from '../flex-container/component';
 import { TextColorClazz } from '../effect-color/component';
 import { GridAlignItems, GridJustifyItems } from '../grid-container/component';
 
@@ -164,7 +164,7 @@ export class InputfieldComponent extends LitElement {
                        <component-icon icon="${this.leadingIcon}" .clickable="${this.leadingIconClickable}"></component-icon>
                     </component-visible>
                     <component-flex-container
-                       .containerClazzes="${[ContainerClazzValues.CONTAINER_WIDTH_100]}"
+                       .containerProperties="${[ContainerProperties.CONTAINER_WIDTH_100]}"
                        itemFlexBasisValue="100%"
                     >
                        <component-visible visibleType="${this.showLabelText() ? VisibleType.NORMAL : VisibleType.HIDE}">
@@ -180,7 +180,7 @@ export class InputfieldComponent extends LitElement {
                                   .gridTemplateColumns="${['1fr', 'auto']}"
                                >
                                   <component-flex-container
-                                     .containerClazzes="${[ContainerClazzValues.CONTAINER_WIDTH_100]}"
+                                     .containerProperties="${[ContainerProperties.CONTAINER_WIDTH_100]}"
                                      itemFlexBasisValue="100%"
                                   >
                                      <component-typography
@@ -258,7 +258,7 @@ ${this.value}</textarea
                                   .gridTemplateColumns="${['1fr', 'auto']}"
                                >
                                   <component-flex-container
-                                     .containerClazzes="${[ContainerClazzValues.CONTAINER_WIDTH_100]}"
+                                     .containerProperties="${[ContainerProperties.CONTAINER_WIDTH_100]}"
                                      itemFlexBasisValue="100%"
                                   >
                                      <component-typography
@@ -334,7 +334,7 @@ ${this.value}</textarea
               <component-visible visibleType="${this.showAdditionalTextContainer() ? VisibleType.NORMAL : VisibleType.HIDE}">
                  <component-spacer spacerSize="${SpacerSize.SMALL}" alignment="${SpacerAlignment.VERTICAL}"></component-spacer>
                  <component-flex-container
-                    .containerClazzes="${[ContainerClazzValues.CONTAINER_WIDTH_100]}"
+                    .containerProperties="${[ContainerProperties.CONTAINER_WIDTH_100]}"
                     itemFlexBasisValue="auto"
                     flexJustifyContent="${FlexJustifyContent.SPACE_BETWEEN}"
                  >

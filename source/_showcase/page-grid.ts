@@ -2,7 +2,7 @@ import { customElement, html, property, TemplateResult } from 'lit-element';
 import { PageAbstract } from './page-abstract';
 import { ButtonType, ColorScheme, InputfieldComponent, InputfieldType, TypographyType } from '..';
 import { GridAlignItems, GridJustifyItems } from '../grid-container/component';
-import { ContainerClazzValues, ItemClazzValues } from '../flex-container/component';
+import { ContainerProperties, ItemProperties } from '../flex-container/component';
 import { I18nService } from '@domoskanonos/frontend-basis';
 import { PreviewFormatterService } from './preview-formatter';
 
@@ -28,14 +28,14 @@ export class PageGrid extends PageAbstract {
    getMainComponent(): TemplateResult {
       return html`
          <component-flex-container
-            .containerClazzes="${[
-               ContainerClazzValues.CONTAINER_WIDTH_50,
-               ContainerClazzValues.TABLET_MAX_WIDTH,
-               ContainerClazzValues.SMARTPHONE_MAX_WIDTH,
-               ContainerClazzValues.SMARTPHONE_HORIZONTAL_PADDING,
-               ContainerClazzValues.TABLET_HORIZONTAL_PADDING
+            .containerProperties="${[
+               ContainerProperties.CONTAINER_WIDTH_50,
+               ContainerProperties.TABLET_MAX_WIDTH,
+               ContainerProperties.SMARTPHONE_MAX_WIDTH,
+               ContainerProperties.SMARTPHONE_HORIZONTAL_PADDING,
+               ContainerProperties.TABLET_HORIZONTAL_PADDING
             ]}"
-            .itemClazzes="${[ItemClazzValues.KEYLINE_ALIGNMENT_HORIZONTAL, ItemClazzValues.KEYLINE_SIZE_MEDIUM]}"
+            .itemProperties="${[ItemProperties.KEYLINE_ALIGNMENT_HORIZONTAL, ItemProperties.KEYLINE_SIZE_MEDIUM]}"
             itemFlexBasisValue="100%"
          >
             <component-typography
@@ -62,16 +62,16 @@ export class PageGrid extends PageAbstract {
                <component-tab slot="tab" text="${I18nService.getUniqueInstance().getValue('source')}"></component-tab>
                <component-tab-content slot="tabContent" .selected="${true}"
                   ><component-flex-container
-                     .containerClazzes="${[
-                        ContainerClazzValues.CONTAINER_WIDTH_100,
-                        ContainerClazzValues.TABLET_MAX_WIDTH,
-                        ContainerClazzValues.SMARTPHONE_MAX_WIDTH
+                     .containerProperties="${[
+                        ContainerProperties.CONTAINER_WIDTH_100,
+                        ContainerProperties.TABLET_MAX_WIDTH,
+                        ContainerProperties.SMARTPHONE_MAX_WIDTH
                      ]}"
-                     .itemClazzes="${[
-                        ItemClazzValues.KEYLINE_ALIGNMENT_BOTH,
-                        ItemClazzValues.KEYLINE_SIZE_MEDIUM,
-                        ItemClazzValues.SMARTPHONE_MAX_WIDTH,
-                        ItemClazzValues.TABLET_MAX_WIDTH
+                     .itemProperties="${[
+                        ItemProperties.KEYLINE_ALIGNMENT_BOTH,
+                        ItemProperties.KEYLINE_SIZE_MEDIUM,
+                        ItemProperties.SMARTPHONE_MAX_WIDTH,
+                        ItemProperties.TABLET_MAX_WIDTH
                      ]}"
                      itemFlexBasisValue="50%"
                   >

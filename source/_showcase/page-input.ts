@@ -2,7 +2,7 @@ import { customElement, html, property, TemplateResult } from 'lit-element';
 import { PageAbstract } from './page-abstract';
 import { InputfieldComponent, InputfieldType } from '../inputfield/component';
 import { TypographyType } from '..';
-import { ContainerClazzValues, ItemClazzValues } from '../flex-container/component';
+import { ContainerProperties, ItemProperties } from '../flex-container/component';
 import { I18nService } from '@domoskanonos/frontend-basis';
 
 @customElement('page-inputfield')
@@ -30,14 +30,14 @@ export class PageInputComponent extends PageAbstract {
    getMainComponent(): TemplateResult {
       return html`
          <component-flex-container
-            .containerClazzes="${[
-               ContainerClazzValues.CONTAINER_WIDTH_50,
-               ContainerClazzValues.TABLET_MAX_WIDTH,
-               ContainerClazzValues.SMARTPHONE_MAX_WIDTH,
-               ContainerClazzValues.SMARTPHONE_HORIZONTAL_PADDING,
-               ContainerClazzValues.TABLET_HORIZONTAL_PADDING
+            .containerProperties="${[
+               ContainerProperties.CONTAINER_WIDTH_50,
+               ContainerProperties.TABLET_MAX_WIDTH,
+               ContainerProperties.SMARTPHONE_MAX_WIDTH,
+               ContainerProperties.SMARTPHONE_HORIZONTAL_PADDING,
+               ContainerProperties.TABLET_HORIZONTAL_PADDING
             ]}"
-            .itemClazzes="${[ItemClazzValues.KEYLINE_ALIGNMENT_HORIZONTAL, ItemClazzValues.KEYLINE_SIZE_MEDIUM]}"
+            .itemProperties="${[ItemProperties.KEYLINE_ALIGNMENT_HORIZONTAL, ItemProperties.KEYLINE_SIZE_MEDIUM]}"
             itemFlexBasisValue="100%"
          >
             <component-typography .typographyType="${TypographyType.H2}" text="<component-inputfield/>"></component-typography>
@@ -61,14 +61,14 @@ export class PageInputComponent extends PageAbstract {
             <component-tab slot="tab" text="${I18nService.getUniqueInstance().getValue('source')}"></component-tab>
             <component-tab-content slot="tabContent" .selected="${true}"
                ><component-flex-container
-                  .containerClazzes="${[
-                     ContainerClazzValues.CONTAINER_WIDTH_50,
-                     ContainerClazzValues.TABLET_MAX_WIDTH,
-                     ContainerClazzValues.SMARTPHONE_MAX_WIDTH,
-                     ContainerClazzValues.SMARTPHONE_HORIZONTAL_PADDING,
-                     ContainerClazzValues.TABLET_HORIZONTAL_PADDING
+                  .containerProperties="${[
+                     ContainerProperties.CONTAINER_WIDTH_50,
+                     ContainerProperties.TABLET_MAX_WIDTH,
+                     ContainerProperties.SMARTPHONE_MAX_WIDTH,
+                     ContainerProperties.SMARTPHONE_HORIZONTAL_PADDING,
+                     ContainerProperties.TABLET_HORIZONTAL_PADDING
                   ]}"
-                  .itemClazzes="${[ItemClazzValues.KEYLINE_ALIGNMENT_BOTH, ItemClazzValues.KEYLINE_SIZE_MEDIUM]}"
+                  .itemProperties="${[ItemProperties.KEYLINE_ALIGNMENT_BOTH, ItemProperties.KEYLINE_SIZE_MEDIUM]}"
                   itemFlexBasisValue="50%"
                >
                   <component-form>

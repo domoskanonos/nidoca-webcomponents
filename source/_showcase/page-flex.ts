@@ -3,12 +3,12 @@ import { PageAbstract } from './page-abstract';
 import {
    AlignContent,
    AlignItems,
-   ContainerClazzValues,
+   ContainerProperties,
    FlexComponent,
    FlexDirection,
    FlexJustifyContent,
    FlexWrap,
-   ItemClazzValues
+   ItemProperties
 } from '../flex-container/component';
 import { ButtonType, ColorScheme, InputfieldComponent, InputfieldType, SpacerSize, TypographyType } from '..';
 import { BasicService, I18nService } from '@domoskanonos/frontend-basis';
@@ -22,13 +22,13 @@ export class PageLayoutComponent extends PageAbstract {
    }
 
    @property()
-   containerClazzes: string[] = [ContainerClazzValues.CONTAINER_WIDTH_100];
+   containerProperties: string[] = [ContainerProperties.CONTAINER_WIDTH_100];
 
    @property()
    colorScheme: string = ColorScheme.PRIMARY_SCHEME;
 
    @property()
-   itemClazzes: string[] = [ItemClazzValues.TABLET_MAX_WIDTH, ItemClazzValues.SMARTPHONE_MAX_WIDTH];
+   itemProperties: string[] = [ItemProperties.TABLET_MAX_WIDTH, ItemProperties.SMARTPHONE_MAX_WIDTH];
 
    @property()
    itemFlexBasisValue: string = 'auto';
@@ -54,14 +54,14 @@ export class PageLayoutComponent extends PageAbstract {
    getMainComponent(): TemplateResult {
       return html`
          <component-flex-container
-            .containerClazzes="${[
-               ContainerClazzValues.CONTAINER_WIDTH_50,
-               ContainerClazzValues.TABLET_MAX_WIDTH,
-               ContainerClazzValues.SMARTPHONE_MAX_WIDTH,
-               ContainerClazzValues.SMARTPHONE_HORIZONTAL_PADDING,
-               ContainerClazzValues.TABLET_HORIZONTAL_PADDING
+            .containerProperties="${[
+               ContainerProperties.CONTAINER_WIDTH_50,
+               ContainerProperties.TABLET_MAX_WIDTH,
+               ContainerProperties.SMARTPHONE_MAX_WIDTH,
+               ContainerProperties.SMARTPHONE_HORIZONTAL_PADDING,
+               ContainerProperties.TABLET_HORIZONTAL_PADDING
             ]}"
-            .itemClazzes="${[ItemClazzValues.KEYLINE_ALIGNMENT_HORIZONTAL, ItemClazzValues.KEYLINE_SIZE_MEDIUM]}"
+            .itemProperties="${[ItemProperties.KEYLINE_ALIGNMENT_HORIZONTAL, ItemProperties.KEYLINE_SIZE_MEDIUM]}"
             itemFlexBasisValue="100%"
          >
             <component-typography
@@ -92,15 +92,15 @@ export class PageLayoutComponent extends PageAbstract {
                <component-tab slot="tab" text="${I18nService.getUniqueInstance().getValue('source')}"></component-tab>
                <component-tab-content slot="tabContent" .selected="${true}">
                   <component-flex-container
-                     .containerClazzes="${[
-                        ContainerClazzValues.CONTAINER_WIDTH_100,
-                        ContainerClazzValues.SMARTPHONE_HORIZONTAL_PADDING,
-                        ContainerClazzValues.TABLET_HORIZONTAL_PADDING
+                     .containerProperties="${[
+                        ContainerProperties.CONTAINER_WIDTH_100,
+                        ContainerProperties.SMARTPHONE_HORIZONTAL_PADDING,
+                        ContainerProperties.TABLET_HORIZONTAL_PADDING
                      ]}"
-                     .itemClazzes="${[
-                        ItemClazzValues.KEYLINE_SIZE_MEDIUM,
-                        ItemClazzValues.SMARTPHONE_MAX_WIDTH,
-                        ItemClazzValues.TABLET_MAX_WIDTH
+                     .itemProperties="${[
+                        ItemProperties.KEYLINE_SIZE_MEDIUM,
+                        ItemProperties.SMARTPHONE_MAX_WIDTH,
+                        ItemProperties.TABLET_MAX_WIDTH
                      ]}"
                      .itemFlexBasisValues="${['50%', '50%']}"
                   >
@@ -108,9 +108,9 @@ export class PageLayoutComponent extends PageAbstract {
                         <component-box height="350px" width="350px">
                            <component-flex-container
                               id="sample-flex-container"
-                              .containerClazzes="${this.containerClazzes}"
+                              .containerProperties="${this.containerProperties}"
                               colorScheme="${this.colorScheme}"
-                              .itemClazzes="${this.itemClazzes}"
+                              .itemProperties="${this.itemProperties}"
                               itemFlexBasisValue="${this.itemFlexBasisValue}"
                               .flexDirection="${this.flexDirection}"
                               .flexWrap="${this.flexWrap}"
@@ -135,24 +135,24 @@ export class PageLayoutComponent extends PageAbstract {
 
                         <component-inputfield
                            .inputfieldType="${InputfieldType.COMBOBOX}"
-                           .options="${InputfieldComponent.enumToComboboxItems(ContainerClazzValues)}"
+                           .options="${InputfieldComponent.enumToComboboxItems(ContainerProperties)}"
                            label="Attribute für den Container"
-                           .value="${this.containerClazzes}"
+                           .value="${this.containerProperties}"
                            size="10"
                            multiple="true"
                            @component-inputfield-change="${(event: CustomEvent) =>
-                              (this.containerClazzes = event.detail.outputData.value)}"
+                              (this.containerProperties = event.detail.outputData.value)}"
                         ></component-inputfield>
 
                         <component-inputfield
                            .inputfieldType="${InputfieldType.COMBOBOX}"
-                           .options="${InputfieldComponent.enumToComboboxItems(ItemClazzValues)}"
+                           .options="${InputfieldComponent.enumToComboboxItems(ItemProperties)}"
                            label="Attribute für Inhaltselemente"
-                           .value="${this.itemClazzes}"
+                           .value="${this.itemProperties}"
                            size="10"
                            multiple="true"
                            @component-inputfield-change="${(event: CustomEvent) =>
-                              (this.itemClazzes = event.detail.outputData.value)}"
+                              (this.itemProperties = event.detail.outputData.value)}"
                         ></component-inputfield>
 
                         <component-inputfield
@@ -200,13 +200,13 @@ export class PageLayoutComponent extends PageAbstract {
                      code="${'<component-flex-container'
                         .concat(
                            PreviewFormatterService.getUniqueInstance().propertyArray2String(
-                              this.containerClazzes,
-                              ContainerClazzValues
+                              this.containerProperties,
+                              ContainerProperties
                            )
                         )
                         .concat(PreviewFormatterService.getUniqueInstance().property2String(this.colorScheme, ColorScheme))
                         .concat(
-                           PreviewFormatterService.getUniqueInstance().propertyArray2String(this.itemClazzes, ItemClazzValues)
+                           PreviewFormatterService.getUniqueInstance().propertyArray2String(this.itemProperties, ItemProperties)
                         )
                         .concat(
                            'itemFlexBasisValue="'

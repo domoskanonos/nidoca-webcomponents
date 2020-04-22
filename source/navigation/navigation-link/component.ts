@@ -10,7 +10,7 @@ import {
    SpacerSize,
    TypographyType
 } from '../..';
-import { ContainerClazzValues } from '../../flex-container/component';
+import { ContainerProperties } from '../../flex-container/component';
 
 const componentCSS = require('./component.css');
 
@@ -42,8 +42,8 @@ export class NavigationLinkComponent extends LitElement {
                  <component-spacer spacerSize="${SpacerSize.SMALL}" spacerAlignment="${SpacerAlignment.VERTICAL}">
                     <component-flex-container
                        @click="${() => this.linkClicked()}"
-                       .containerClazzes="${[ContainerClazzValues.CONTAINER_WIDTH_100]}"
-                       .itemClazzes="${[]}"
+                       .containerProperties="${[ContainerProperties.CONTAINER_WIDTH_100]}"
+                       .itemProperties="${[]}"
                        .flexDirection="${FlexDirection.ROW}"
                        .flexWrap="${FlexWrap.NO_WRAP}"
                        .flexJustifyContent="${FlexJustifyContent.FLEX_END}"

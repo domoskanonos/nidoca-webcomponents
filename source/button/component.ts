@@ -1,7 +1,7 @@
 import { css, customElement, html, property, unsafeCSS } from 'lit-element';
 import { LitElement } from 'lit-element';
 import { BasicService } from '@domoskanonos/frontend-basis';
-import { AlignContent, AlignItems, ContainerClazzValues, FlexJustifyContent, FlexWrap } from '../flex-container/component';
+import { AlignContent, AlignItems, ContainerProperties, FlexJustifyContent, FlexWrap } from '../flex-container/component';
 import { BorderType, ColorScheme, TypographyType } from '..';
 
 const componentCSS = require('./component.css');
@@ -35,7 +35,7 @@ export class ButtonComponent extends LitElement {
             @click="${() => {
                this.clicked();
             }}"
-            .containerClazzes="${[ContainerClazzValues.CONTAINER_WIDTH_AUTO]}"
+            .containerProperties="${[ContainerProperties.CONTAINER_WIDTH_AUTO]}"
             flexWrap="${FlexWrap.NO_WRAP}"
             .flexJustifyContent="${FlexJustifyContent.CENTER}"
             .alignItems="${AlignItems.CENTER}"
