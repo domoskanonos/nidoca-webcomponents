@@ -69,16 +69,7 @@ export class PageTabs extends PageAbstract {
                            (this.tabType = (<any>TabType)[event.detail.outputData.value])}"
                      ></component-inputfield>
                   </component-form>
-                  <component-flex-container
-                     .containerProperties="${[ContainerProperties.CONTAINER_WIDTH_100, ContainerProperties.CONTAINER_HEIGHT_100]}"
-                     .itemProperties="${[ItemProperties.KEYLINE_SIZE_MEDIUM]}"
-                     itemFlexBasisValue="auto"
-                     .flexDirection="${FlexDirection.COLUMN}"
-                     .flexWrap="${FlexWrap.WRAP}"
-                     .flexJustifyContent="${FlexJustifyContent.CENTER}"
-                     .alignItems="${AlignItems.CENTER}"
-                     .alignContent="${AlignContent.CENTER}"
-                  >
+                  
                      <effect-color
                         .colorScheme="${ColorScheme.PRIMARY_SCHEME}"
                         leadingIcon="sentiment_satisfied_alt"
@@ -93,7 +84,7 @@ export class PageTabs extends PageAbstract {
                            </component-tabs>
                         </component-box>
                      </effect-color>
-                  </component-flex-container></component-tab-content
+                  </component-tab-content
                >
                <component-tab-content slot="tabContent"
                   ><component-code>
