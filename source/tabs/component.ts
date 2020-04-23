@@ -1,15 +1,22 @@
-import { css, customElement, html, query, unsafeCSS, LitElement } from 'lit-element';
+import { css, customElement, html, query, unsafeCSS, LitElement, property } from 'lit-element';
 import { TabContentComponent } from './tab-content/component';
 import { TabComponent } from './tab/component';
 
 const componentCSS = require('./component.css');
 
+export class TabType {
+   static NORMAL: string = 'NORMAL';
+   static FULL_WIDTH: string = 'FULL_WIDTH';
+}
 
 @customElement('component-tabs')
 export class TabsComponent extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;
+
+   @property()
+   tabType: string = TabType.NORMAL;
 
    @query('#tabSlot')
    tabSlot: HTMLSlotElement | undefined;
@@ -24,16 +31,19 @@ export class TabsComponent extends LitElement {
             .gridTemplateRows="${['auto', 'auto']}"
             .gridTemplateColumns="${['auto']}"
          >
-            <slot id="tabSlot" name="tab"></slot>
+            <slot id="tabSlot" name="tab" class="${this.tabType}"></slot>
             <slot id="tabContentSlot" name="tabContent"></slot>
-            
          </component-grid-container>
-      
       `;
    }
 
    private tabClicked(event: CustomEvent): void {
       let clickedTab: TabComponent = event.detail;
+
+      if (clickedTab.selected) {
+         return;
+      }
+
       let tabIndex: number = 0;
       if (this.tabSlot != null) {
          let assignedElements: Element[] = this.tabSlot.assignedElements();

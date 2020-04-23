@@ -28,10 +28,10 @@ export class PageGetStarted extends PageAbstract {
             <component-typography .typographyType="${TypographyType.H1}" text="Get started"></component-typography>
             <component-typography .typographyType="${TypographyType.BODY1}">
                wc-atomic is a lightweight ui-framework based on
-               <component-link href="https://www.webcomponents.org/" target="${TargetType.BLANK}">webcomponents</component-link>,
-               <component-link href="https://www.typescriptlang.org/" target="${TargetType.BLANK}">typescript</component-link>
+               <component-link href="https://www.webcomponents.org/" targetType="${TargetType.BLANK}">webcomponents</component-link>,
+               <component-link href="https://www.typescriptlang.org/" targetType="${TargetType.BLANK}">typescript</component-link>
                and
-               <component-link href="https://lit-element.polymer-project.org/" target="${TargetType.BLANK}"
+               <component-link href="https://lit-element.polymer-project.org/" targetType="${TargetType.BLANK}"
                   >litelement</component-link
                >
             </component-typography>
@@ -39,7 +39,7 @@ export class PageGetStarted extends PageAbstract {
             <component-typography .typographyType="${TypographyType.H4}" text="Installation"></component-typography>
             <component-typography .typographyType="${TypographyType.BODY1}">
                Installation is simple with
-               <component-link href="https://www.npmjs.com/package/@domoskanonos/wc-atomic" target="${TargetType.BLANK}"
+               <component-link href="https://www.npmjs.com/package/@domoskanonos/wc-atomic" targetType="${TargetType.BLANK}"
                   >npm</component-link
                >:
                <component-spacer spacerSize="${SpacerSize.MEDIUM}" spacerAlignment="${SpacerAlignment.VERTICAL}">
@@ -56,7 +56,7 @@ export class PageGetStarted extends PageAbstract {
             <component-typography .typographyType="${TypographyType.H4}" text="Basic Template"></component-typography>
             <component-typography .typographyType="${TypographyType.BODY1}">
                You can also use the ready-made basic template, which you can find here:
-               <component-link href="https://github.com/domoskanonos/wc-atomic-template" target="${TargetType.BLANK}"
+               <component-link href="https://github.com/domoskanonos/wc-atomic-template" targetType="${TargetType.BLANK}"
                   >basic template</component-link
                >
                . It contains a basic set of files on which you can build your application.

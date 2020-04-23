@@ -45,7 +45,7 @@ export class PageIconComponent extends PageAbstract {
                ><i>Icon Component</i> ist eine Komponente mit der man die Google Material Icons in seine Anwendung integrieren
                kann. Icons die klickbar sind, werfen ein <i>@component-icon-click</i> Event. Eine Übersicht aller Icons kannst du
                hier finden :
-               <component-link href="https://material.io/resources/icons/?style=baseline" target="${TargetType.BLANK}"
+               <component-link href="https://material.io/resources/icons/?style=baseline" targetType="${TargetType.BLANK}"
                   >Google Material Icons</component-link
                >
             </component-typography>

@@ -107,7 +107,7 @@ export class PageColor extends PageAbstract {
                         code="${
                            '<effect-color '
                               .concat(PreviewFormatterService.getUniqueInstance().property2String(this.colorScheme, ColorScheme))
-                              .concat(' leadingIcon="sentiment_satisfied_alt" text="Mein&nbsp;Button"></effect-color>'
+                              .concat('"></effect-color>'
                      )}"
                      >
                      </component-code

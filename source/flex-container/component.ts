@@ -102,9 +102,6 @@ export class FlexComponent extends LitElement {
    itemProperties: string[] = [];
 
    @property()
-   cssStyle: string = '';
-
-   @property()
    flexDirection: string = FlexDirection.ROW;
 
    @property()
@@ -133,7 +130,7 @@ export class FlexComponent extends LitElement {
          <div
             class="${this.toContainerPropertiesString(this.containerProperties)}"
             style="flex-direction: ${this.flexDirection}; flex-wrap: ${this.flexWrap}; justify-content: ${this
-               .flexJustifyContent}; align-items: ${this.alignItems}; align-content: ${this.alignContent}; ${this.cssStyle}"
+               .flexJustifyContent}; align-items: ${this.alignItems}; align-content: ${this.alignContent};"
          >
             <slot id="slotElement" @slotchange="${(event: Event) => this.slotChanged(event)}"></slot>
          </div>
@@ -171,9 +168,7 @@ export class FlexComponent extends LitElement {
       let classList = element.classList;
       classList.value = '';
       classList.add('FLEX_ITEM');
-      console.log(classList);
       this.itemProperties.forEach((clazz) => {
-         console.log(clazz);
          classList.add(clazz);
       });
 

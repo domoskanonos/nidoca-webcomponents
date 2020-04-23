@@ -15,6 +15,11 @@ import './page-grid.ts';
 import './page-dialog.ts';
 import './page-border.ts';
 import './page-input.ts';
+import './page-link.ts';
+import './page-table.ts';
+import './page-accordion.ts';
+import './page-tabs.ts';
+import './page-divider.ts';
 import './page-visible.ts';
 import './page-spacer.ts';
 import './page-transition.ts';
@@ -65,6 +70,26 @@ export class ShowcaseApp extends AbstractApp {
          case 'pageicon':
             return html`
                <page-icon></page-icon>
+            `;
+         case 'pagedivider':
+            return html`
+               <page-divider></page-divider>
+            `;
+         case 'pageaccordion':
+            return html`
+               <page-accordion></page-accordion>
+            `;
+         case 'pagetabs':
+            return html`
+               <page-tabs></page-tabs>
+            `;
+         case 'pagelink':
+            return html`
+               <page-link></page-link>
+            `;
+         case 'pagetable':
+            return html`
+               <page-table></page-table>
             `;
          case 'pagebutton':
             return html`

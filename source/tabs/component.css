@@ -1,13 +1,18 @@
 slot {
-    display: inline;
-    
+   display: inline;
 }
 
-#tabSlot{
-    margin: 0px auto;
-    text-align: center;
-    width: 100% !important;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+#tabSlot {
+   margin: 0px auto;
+   text-align: center;
+   width: 100% !important;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.FULL_WIDTH {
+}
+
+.NORMAL {
 }
