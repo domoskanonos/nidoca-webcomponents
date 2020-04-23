@@ -99,9 +99,9 @@ export class PageGrid extends PageAbstract {
                            .gridTemplateRows="${this.gridTemplateRows}"
                            .gridTemplateColumns="${this.gridTemplateColumns}"
                         >
-                           ${this.createImg(50, 50)} ${this.createImg(75, 50)} ${this.createImg(50, 75)}
-                           ${this.createImg(50, 100)} ${this.createImg(100, 50)} ${this.createImg(75, 50)}
-                           ${this.createImg(75, 75)} ${this.createImg(75, 50)} ${this.createImg(75, 50)}
+                           ${this.createImg(7, 7)} ${this.createImg(9, 7)} ${this.createImg(7, 9)} ${this.createImg(7, 12)}
+                           ${this.createImg(12, 7)} ${this.createImg(9, 7)} ${this.createImg(9, 9)} ${this.createImg(9, 7)}
+                           ${this.createImg(9, 7)}
                         </component-grid-container>
                      </effect-color>
                   </component-flex-container></component-tab-content
@@ -139,7 +139,9 @@ export class PageGrid extends PageAbstract {
 
    private createImg(width: number, height: number) {
       return html`
-         <component-rich-media src="https://picsum.photos/${width}/${height}" text="Mein Bild"></component-rich-media>
+         <effect-color colorScheme="${ColorScheme.SURFACE_SCHEME}">
+            <component-box width="${width}vmin" height="${height}vmin"></component-box>
+         </effect-color>
       `;
    }
 }

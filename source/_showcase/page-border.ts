@@ -1,19 +1,10 @@
 import { customElement, html, property, TemplateResult } from 'lit-element';
 import { PageAbstract } from './page-abstract';
-import {
-   BorderType,
-   ButtonType,
-   ColorScheme,
-   InputfieldComponent,
-   InputfieldType,
-   TransitionType,
-   TypographyType,
-   VisibleType
-} from '..';
+import { BorderType, InputfieldComponent, InputfieldType, TypographyType } from '..';
 import { I18nService } from '@domoskanonos/frontend-basis';
 import { ContainerProperties, ItemProperties } from '../flex-container/component';
 import { PreviewFormatterService } from './preview-formatter';
-import { BackgroundColorClazz, TextColorClazz } from '../effect-color/component';
+import { BorderSize } from '../border/component';
 
 @customElement('page-border')
 export class PageBorder extends PageAbstract {
@@ -24,6 +15,9 @@ export class PageBorder extends PageAbstract {
 
    @property()
    borderType: string = BorderType.ALL;
+
+   @property()
+   borderSize: string = BorderSize.MEDIUM;
 
    getMainComponent(): TemplateResult {
       return html`
@@ -75,10 +69,18 @@ export class PageBorder extends PageAbstract {
                            @component-inputfield-change="${(event: CustomEvent) =>
                               (this.borderType = (<any>BorderType)[event.detail.outputData.value])}"
                         ></component-inputfield>
+                        <component-inputfield
+                           .inputfieldType="${InputfieldType.COMBOBOX}"
+                           .options="${InputfieldComponent.enumToComboboxItems(BorderSize)}"
+                           label="BorderSize"
+                           value="${this.borderSize}"
+                           @component-inputfield-change="${(event: CustomEvent) =>
+                              (this.borderSize = (<any>BorderSize)[event.detail.outputData.value])}"
+                        ></component-inputfield>
                      </component-form>
 
-                     <component-border borderType="${this.borderType}">
-                        <component-rich-media src="https://dummyimage.com/400x400/ffffff/ffffff"></component-rich-media>
+                     <component-border borderType="${this.borderType}" borderSize="${this.borderSize}">
+                        <component-rich-media src="https://dummyimage.com/300x300/ffffff/ffffff"></component-rich-media>
                      </component-border>
                   </component-flex-container>
                </component-tab-content>
@@ -86,6 +88,7 @@ export class PageBorder extends PageAbstract {
                   ><component-code
                      code="${'<component-border '
                         .concat(PreviewFormatterService.getUniqueInstance().property2String(this.borderType, BorderType))
+                        .concat(PreviewFormatterService.getUniqueInstance().property2String(this.borderSize, BorderSize))
                         .concat('></component-border>')}"
                   >
                   </component-code

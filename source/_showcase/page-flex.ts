@@ -105,7 +105,7 @@ export class PageLayoutComponent extends PageAbstract {
                      .itemFlexBasisValues="${['50%', '50%']}"
                   >
                      <effect-color colorScheme="${this.colorScheme}">
-                        <component-box height="350px" width="350px">
+                        <component-box height="40vmin" width="40vmin">
                            <component-flex-container
                               id="sample-flex-container"
                               .containerProperties="${this.containerProperties}"
@@ -118,9 +118,9 @@ export class PageLayoutComponent extends PageAbstract {
                               .alignItems="${this.alignItems}"
                               .alignContent="${this.alignContent}"
                            >
-                              ${this.createImg(50, 50)} ${this.createImg(75, 50)} ${this.createImg(50, 75)}
-                              ${this.createImg(50, 100)} ${this.createImg(100, 50)} ${this.createImg(75, 50)}
-                              ${this.createImg(75, 75)} ${this.createImg(75, 50)} ${this.createImg(75, 50)}
+                              ${this.createImg(5, 5)} ${this.createImg(7, 5)} ${this.createImg(5, 7)}
+                              ${this.createImg(5, 10)} ${this.createImg(10, 5)} ${this.createImg(7, 5)}
+                              ${this.createImg(7, 7)} ${this.createImg(7, 5)} ${this.createImg(7, 5)}
                            </component-flex-container>
                         </component-box>
                      </effect-color>
@@ -263,7 +263,7 @@ export class PageLayoutComponent extends PageAbstract {
    private createImg(width: number, height: number) {
       return html`
          <effect-color colorScheme="${ColorScheme.SURFACE_SCHEME}">
-            <component-box width="${width}px" height="${height}px"></component-box>
+            <component-box width="${width}vmin" height="${height}vmin"></component-box>
          </effect-color>
       `;
    }

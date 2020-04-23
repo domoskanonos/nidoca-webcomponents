@@ -51,7 +51,10 @@ export abstract class PageAbstract extends BasisTemplate {
             href="getStarted"
          ></component-navigation-link>
          <component-divider slot="links"></component-divider>
-         <component-navigation-section slot="links" text="Layout"></component-navigation-section>
+         <component-navigation-section
+            slot="links"
+            text="${I18nService.getUniqueInstance().getValue('sectionstructure')}"
+         ></component-navigation-section>
          <component-navigation-link
             slot="links"
             icon="check_box_outline_blank"
@@ -82,7 +85,7 @@ export abstract class PageAbstract extends BasisTemplate {
             text="${I18nService.getUniqueInstance().getValue('pagevisible')}"
             href="pagevisible"
          ></component-navigation-link>
-          <component-navigation-link
+         <component-navigation-link
             slot="links"
             icon=""
             text="${I18nService.getUniqueInstance().getValue('pageaccordion')}"

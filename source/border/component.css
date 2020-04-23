@@ -12,37 +12,43 @@ slot {
    display: inline-block;
 }
 
-.ALL {
+.THIN {
    border-width: thin;
+}
+
+.MEDIUM {
+   border-width: 2px;
+}
+
+.THICK {
+   border-width: 4px;
+}
+
+.ALL {
    border-style: solid;
 }
 
 .HORIZONTAL,
 .TOP {
-   border-top-width: thin;
    border-top-style: solid;
 }
 
 .HORIZONTAL,
 .BOTTOM {
-   border-bottom-width: thin;
    border-bottom-style: solid;
 }
 
 .VERTICAL,
 .LEFT {
-   border-left-width: thin;
    border-left-style: solid;
 }
 
 .VERTICAL,
 .RIGHT {
-   border-right-width: thin;
    border-right-style: solid;
 }
 
 .BOTTOM_SELECTED {
-   border-bottom-width: thick;
    border-bottom-style: solid;
    border-color: var(--app-color-active);
 }

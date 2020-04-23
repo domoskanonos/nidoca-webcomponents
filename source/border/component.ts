@@ -13,6 +13,12 @@ export class BorderType {
    static BOTTOM_SELECTED: string = 'BOTTOM_SELECTED';
 }
 
+export class BorderSize {
+   static THIN: string = 'THIN';
+   static MEDIUM: string = 'MEDIUM';
+   static THICK: string = 'THICK';
+}
+
 const componentCSS = require('./component.css');
 
 @customElement('component-border')
@@ -24,9 +30,12 @@ export class BorderComponent extends LitElement {
    @property()
    borderType: string = BorderType.ALL;
 
+   @property()
+   borderSize: string = BorderSize.THIN;
+
    render() {
       return html`
-         <slot class="BORDER ${this.borderType}"></slot>
+         <slot class="BORDER ${this.borderType}  ${this.borderSize}"></slot>
       `;
    }
 }
