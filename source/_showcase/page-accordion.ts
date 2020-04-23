@@ -47,24 +47,17 @@ export class PageAccordion extends PageAbstract {
                      .itemProperties="${[ItemProperties.KEYLINE_ALIGNMENT_BOTH, ItemProperties.KEYLINE_SIZE_MEDIUM]}"
                      itemFlexBasisValue="100%"
                   >
-                     <component-tabs>
-                        <component-tab slot="tab" .selected="${true}" text="Tab 1"></component-tab>
-                        <component-tab slot="tab" text="Tab 2"></component-tab>
-                        <component-tab-content slot="tabContent" .selected="${true}">Inhalt 1</component-tab-content>
-                        <component-tab-content slot="tabContent">Inhalt 2</component-tab-content>
-                     </component-tabs>
+                     <component-accordion>
+                       
+                       
+                     </component-accordion>
                   </component-flex-container></component-tab-content
                >
                <component-tab-content slot="tabContent"
                   ><component-code>
-                     ${'<component-tabs>\n' +
-                        '<component-tab slot="tab" .selected="${true}" text="Tab 1"></component-tab>\n' +
-                        '<component-tab slot="tab" text="Tab 2"></component-tab>\n' +
-                        '<component-tab-content slot="tabContent" .selected="${true}">Inhalt 1</component-tab-content>\n' +
-                        '<component-tab-content slot="tabContent">Inhalt 2</component-tab-content>\n' +
-                        '</component-tabs>'}
-                  </component-code></component-tab-content
-               >
+                     
+                  </component-code>
+                  </component-tab-content>
             </component-tabs>
          </component-flex-container>
       `;
