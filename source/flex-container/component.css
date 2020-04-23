@@ -93,6 +93,7 @@
 .KEYLINE_ALIGNMENT_HORIZONTAL,
 ::slotted(.KEYLINE_ALIGNMENT_HORIZONTAL) {
    padding-right: 0;
+   overflow: scroll;
 }
 
 .KEYLINE_ALIGNMENT_VERTICAL,
