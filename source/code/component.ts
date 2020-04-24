@@ -22,7 +22,7 @@ export class CodeComponent extends LitElement {
     render() {
         return html`
          <pre>
-                <code>${this.format(this.code)}<slot></slot></code>
+                <code>${this.format(this.code)}<component-icon class="icon-position" icon="file_copy"><slot></slot></code>
             </pre>
       `;
     }
