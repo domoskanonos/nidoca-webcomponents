@@ -76,7 +76,7 @@ export class PageBox extends PageAbstract {
                            @component-inputfield-keyup="${(event: CustomEvent) => (this.width = event.detail.value)}"
                         ></component-inputfield>
                      </component-form>
-                     <effect-color colorScheme="${ColorScheme.PRIMARY_SCHEME}">
+                     <effect-color backgroundColor="var(--app-color-primary-background)">
                         <component-box height="${this.height}" width="${this.width}"> </component-box>
                      </effect-color>
                   </component-flex-container>

@@ -9,7 +9,6 @@ import messageEN from './message-en.json';
 import './page-introduction';
 import './page-get-started';
 import './page-imprint';
-import './page-color.ts';
 import './page-code.ts';
 import './page-grid.ts';
 import './page-dialog.ts';
@@ -54,10 +53,6 @@ export class ShowcaseApp extends AbstractApp {
          case 'pagebox':
             return html`
                <page-box></page-box>
-            `;
-         case 'pagecolor':
-            return html`
-               <page-color></page-color>
             `;
          case 'pageborder':
             return html`

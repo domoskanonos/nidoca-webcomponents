@@ -25,9 +25,6 @@ export class PageLayoutComponent extends PageAbstract {
    containerProperties: string[] = [ContainerProperties.CONTAINER_WIDTH_100, ContainerProperties.CONTAINER_HEIGHT_100];
 
    @property()
-   colorScheme: string = ColorScheme.PRIMARY_SCHEME;
-
-   @property()
    flexDirection: string = FlexDirection.ROW;
 
    @property()
@@ -104,26 +101,24 @@ export class PageLayoutComponent extends PageAbstract {
                      ]}"
                      .itemFlexBasisValues="${['50%', '50%']}"
                   >
-                     <effect-color colorScheme="${this.colorScheme}">
-                        <component-box height="40vmin" width="40vmin">
-                           <component-flex-container
-                              id="sample-flex-container"
-                              .containerProperties="${this.containerProperties}"
-                              colorScheme="${this.colorScheme}"
-                              .itemProperties="${this.itemProperties}"
-                              itemFlexBasisValue="${this.itemFlexBasisValue}"
-                              .flexDirection="${this.flexDirection}"
-                              .flexWrap="${this.flexWrap}"
-                              .flexJustifyContent="${this.flexJustifyContent}"
-                              .alignItems="${this.alignItems}"
-                              .alignContent="${this.alignContent}"
-                           >
-                              ${this.createImg(5, 5)} ${this.createImg(7, 5)} ${this.createImg(5, 7)}
-                              ${this.createImg(5, 10)} ${this.createImg(10, 5)} ${this.createImg(7, 5)}
-                              ${this.createImg(7, 7)} ${this.createImg(7, 5)} ${this.createImg(7, 5)}
-                           </component-flex-container>
-                        </component-box>
-                     </effect-color>
+                     <component-box height="40vmin" width="40vmin">
+                        <component-flex-container
+                           id="sample-flex-container"
+                           .containerProperties="${this.containerProperties}"
+                           .itemProperties="${this.itemProperties}"
+                           itemFlexBasisValue="${this.itemFlexBasisValue}"
+                           .flexDirection="${this.flexDirection}"
+                           .flexWrap="${this.flexWrap}"
+                           .flexJustifyContent="${this.flexJustifyContent}"
+                           .alignItems="${this.alignItems}"
+                           .alignContent="${this.alignContent}"
+                        >
+                           ${this.createImg(5, 5)} ${this.createImg(7, 5)} ${this.createImg(5, 7)} ${this.createImg(5, 10)}
+                           ${this.createImg(10, 5)} ${this.createImg(7, 5)} ${this.createImg(7, 7)} ${this.createImg(7, 5)}
+                           ${this.createImg(7, 5)}
+                        </component-flex-container>
+                     </component-box>
+
                      <component-form>
                         <component-inputfield
                            .inputfieldType="${InputfieldType.COMBOBOX}"
@@ -204,7 +199,6 @@ export class PageLayoutComponent extends PageAbstract {
                               ContainerProperties
                            )
                         )
-                        .concat(PreviewFormatterService.getUniqueInstance().property2String(this.colorScheme, ColorScheme))
                         .concat(
                            PreviewFormatterService.getUniqueInstance().propertyArray2String(this.itemProperties, ItemProperties)
                         )
@@ -262,7 +256,7 @@ export class PageLayoutComponent extends PageAbstract {
 
    private createImg(width: number, height: number) {
       return html`
-         <effect-color colorScheme="${ColorScheme.SURFACE_SCHEME}">
+         <effect-color backgroundColor="var(--app-color-secondary-background)">
             <component-box width="${width}vmin" height="${height}vmin"></component-box>
          </effect-color>
       `;

@@ -347,7 +347,7 @@ ${this.value}</textarea
                  </component-flex-container>
               </component-visible>
               <component-spacer spacerSize="${SpacerSize.SMALL}" alignment="${SpacerAlignment.VERTICAL}"></component-spacer>
-              <effect-color textColorClazz="${TextColorClazz.ERROR}">
+              <effect-color color="var(--app-color-error)">
                  <component-typography
                     .typographyType="${TypographyType.OVERLINE}"
                     text="${this.errorText}"

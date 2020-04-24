@@ -1,9 +1,8 @@
 import { customElement, html, property, TemplateResult } from 'lit-element';
 import { PageAbstract } from './page-abstract';
 import { ContainerProperties, ItemProperties } from '../flex-container/component';
-import { ColorScheme, InputfieldComponent, InputfieldType, RichMediaType, SpacerAlignment, SpacerSize, TypographyType } from '..';
+import { InputfieldComponent, InputfieldType, SpacerAlignment, SpacerSize, TypographyType } from '..';
 import { I18nService } from '@domoskanonos/frontend-basis';
-import { GridAlignItems } from '../grid-container/component';
 
 @customElement('page-spacer')
 export class PageSpacer extends PageAbstract {
@@ -75,7 +74,7 @@ export class PageSpacer extends PageAbstract {
                               (this.spacerSize = (<any>SpacerSize)[event.detail.outputData.value])}"
                         ></component-inputfield>
                      </component-form>
-                     <effect-color colorScheme="${ColorScheme.PRIMARY_SCHEME}">
+                     <effect-color backgroundColor="var(--app-color-primary-background)">
                         <component-box width="min-content" height="min-content">
                            <component-spacer spacerAlignment="${this.spacerAlignment}" spacerSize="${this.spacerSize}">
                               <component-rich-media src="https://picsum.photos/200/200"></component-rich-media>

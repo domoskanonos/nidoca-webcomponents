@@ -173,12 +173,6 @@ export abstract class PageAbstract extends BasisTemplate {
             text="${I18nService.getUniqueInstance().getValue('pagetransition')}"
             href="pagetransition"
          ></component-navigation-link>
-         <component-navigation-link
-            slot="links"
-            icon=""
-            text="${I18nService.getUniqueInstance().getValue('pagecolor')}"
-            href="pagecolor"
-         ></component-navigation-link>
          <component-divider slot="links"></component-divider>
          <component-navigation-link
             slot="links"

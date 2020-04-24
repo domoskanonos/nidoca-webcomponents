@@ -1,6 +1,6 @@
 import { customElement, html, property, TemplateResult } from 'lit-element';
 import { PageAbstract } from './page-abstract';
-import { ButtonType, ColorScheme, InputfieldComponent, InputfieldType, TypographyType } from '..';
+import { InputfieldComponent, InputfieldType, TypographyType } from '..';
 import { GridAlignItems, GridJustifyItems } from '../grid-container/component';
 import { ContainerProperties, ItemProperties } from '../flex-container/component';
 import { I18nService } from '@domoskanonos/frontend-basis';
@@ -92,7 +92,7 @@ export class PageGrid extends PageAbstract {
                         ></component-inputfield>
                      </component-form>
 
-                     <effect-color colorScheme="${ColorScheme.PRIMARY_SCHEME}">
+                     <effect-color backgroundColor="var(--app-color-primary-background)">
                         <component-grid-container
                            gridJustifyItems="${this.gridJustifyItems}"
                            gridAlignItems="${this.gridAlignItems}"
@@ -139,7 +139,7 @@ export class PageGrid extends PageAbstract {
 
    private createImg(width: number, height: number) {
       return html`
-         <effect-color colorScheme="${ColorScheme.SURFACE_SCHEME}">
+         <effect-color backgroundColor="var(--app-color-secondary-background)">
             <component-box width="${width}vmin" height="${height}vmin"></component-box>
          </effect-color>
       `;
