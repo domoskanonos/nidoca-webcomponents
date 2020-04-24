@@ -5,7 +5,7 @@
    background-color: inherit;
 }
 .BORDER {
-   border-color: var(--app-color-border);
+   border-color: var(--app-color-surface-background);
 }
 
 slot {

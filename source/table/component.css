@@ -8,16 +8,16 @@ td, th {
     padding: var(--space-small);
     box-sizing: border-box;
     text-align: left;
-    border-bottom: 1px solid var(--app-color-border);
-    border-left: 1px solid var(--app-color-border);
+    border-bottom: 1px solid var(--app-color-surface-background);
+    border-left: 1px solid var(--app-color-surface-background);
 }
 
 tr > td:last-of-type, th:last-of-type {
-    border-right: 1px solid var(--app-color-border);
+    border-right: 1px solid var(--app-color-surface-background);
 }
 
 th {
-    border-top: 1px solid var(--app-color-border);
+    border-top: 1px solid var(--app-color-surface-background);
     background-color: var(--app-color-background);
     color: var(--app-color);
 }

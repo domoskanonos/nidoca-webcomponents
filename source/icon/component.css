@@ -41,5 +41,5 @@
 
 .border:hover {
    border-radius: 50%;
-   background-color: var(--app-color-border);
+   background-color: var(--app-color-surface-background);
 }

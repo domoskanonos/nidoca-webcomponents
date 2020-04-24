@@ -1,7 +1,13 @@
 import { css, customElement, html, property, unsafeCSS, LitElement } from 'lit-element';
-import {BorderType, SpacerAlignment, SpacerSize} from '..';
+import { BorderType, SpacerAlignment, SpacerSize } from '..';
 
 const componentCSS = require('./component.css');
+
+export class DividerType {
+   static THIN: string = 'THIN';
+   static MEDIUM: string = 'MEDIUM';
+   static THICK: string = 'THICK';
+}
 
 @customElement('component-divider')
 export class DividerComponent extends LitElement {
@@ -10,15 +16,11 @@ export class DividerComponent extends LitElement {
    `;
 
    @property()
-   spacerSize: SpacerSize = SpacerSize.MEDIUM;
+   dividerType: string = DividerType.THIN;
 
    render() {
       return html`
-         <component-border borderType="${BorderType.BOTTOM}">
-            <component-spacer spacerSize="${this.spacerSize}" spacerAlignment="${SpacerAlignment.BOTH}"> </component-spacer>
-         </component-border>
-         <component-spacer spacerSize="${this.spacerSize}" spacerAlignment="${SpacerAlignment.BOTH}"> </component-spacer>
+         <div class="DIVIDER ${this.dividerType}"></div>
       `;
    }
-
 }

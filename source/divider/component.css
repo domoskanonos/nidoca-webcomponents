@@ -1,3 +1,17 @@
-div, ::slotted(.div) {
-    width: 100%;
+.DIVIDER,
+::slotted(.DIVIDER) {
+   width: 100%;
+   background-color: var(--app-color-surface-background-light);
+}
+
+.THIN {
+   height: 1px;
+}
+
+.MEDIUM {
+   height: 2px;
+}
+
+.THICK {
+   height: 4px;
 }

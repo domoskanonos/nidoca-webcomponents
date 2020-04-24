@@ -9,5 +9,5 @@
 ::slotted(.navItem:active),
 .navItem:active {
    color: var(--app-color-primary-light);
-   background-color: var(--app-color-primary-background-light);
+   background-color: var(--app-color-primary-background-dark);
 }

@@ -1,20 +1,9 @@
 import { customElement, html, property, TemplateResult } from 'lit-element';
 import { PageAbstract } from './page-abstract';
-import {
-   BorderType,
-   ButtonType,
-   ColorScheme,
-   InputfieldComponent,
-   InputfieldType,
-   SpacerSize,
-   TransitionType,
-   TypographyType,
-   VisibleType
-} from '..';
+import { AlignContent, AlignItems, FlexDirection, FlexJustifyContent, FlexWrap, TypographyType } from '..';
 import { I18nService } from '@domoskanonos/frontend-basis';
 import { ContainerProperties, ItemProperties } from '../flex-container/component';
-import { PreviewFormatterService } from './preview-formatter';
-import { BackgroundColorClazz, TextColorClazz } from '../effect-color/component';
+import { GridAlignItems, GridJustifyItems } from '../grid-container/component';
 
 @customElement('page-dialog')
 export class PageDialog extends PageAbstract {
@@ -41,7 +30,8 @@ export class PageDialog extends PageAbstract {
          >
             <component-typography .typographyType="${TypographyType.H2}" text="<component-dialog/>"></component-typography>
             <component-typography .typographyType="${TypographyType.BODY1}">
-               <i>DialogComponent</i> ist eine Komponente um Inhalte im Vordergrund darzustellen. Der restliche Hintergrund wird ausgegraut.
+               <i>DialogComponent</i> ist eine Komponente um Inhalte im Vordergrund darzustellen. Der restliche Hintergrund wird
+               ausgegraut.
             </component-typography>
             <component-typography .typographyType="${TypographyType.H4}" text="Interaktive Demo"></component-typography>
 
@@ -70,12 +60,28 @@ export class PageDialog extends PageAbstract {
                      >
                      </component-button>
                      <component-dialog .show="${this.showDialog}">
-                      <component-button
-                        text="Dialog schließen"
-                        @component-button-click="${() => {
-                           this.showDialog = false;
-                        }}"
-                     >
+                        <component-flex-container
+                           .containerProperties="${[
+                              ContainerProperties.CONTAINER_WIDTH_100,
+                              ContainerProperties.CONTAINER_HEIGHT_100
+                           ]}"
+                           .itemProperties="${[ItemProperties.KEYLINE_SIZE_MEDIUM]}"
+                           itemFlexBasisValue="100%"
+                           .flexDirection="${FlexDirection.ROW}"
+                           .flexWrap="${FlexWrap.WRAP}"
+                           .flexJustifyContent="${FlexJustifyContent.CENTER}"
+                           .alignItems="${AlignItems.START}"
+                           .alignContent="${AlignContent.CENTER}"
+                        >
+                           <component-rich-media src="https://picsum.photos/200/200"></component-rich-media>
+                           <component-button
+                              text="Dialog schließen"
+                              @component-button-click="${() => {
+                                 this.showDialog = false;
+                              }}"
+                           >
+                           </component-button>
+                        </component-flex-container>
                      </component-dialog>
                   </component-flex-container>
                </component-tab-content>

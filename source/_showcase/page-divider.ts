@@ -4,6 +4,7 @@ import { InputfieldComponent, InputfieldType, TargetType, TypographyType } from 
 import { I18nService } from '@domoskanonos/frontend-basis';
 import { ContainerProperties, ItemProperties } from '../flex-container/component';
 import { PreviewFormatterService } from './preview-formatter';
+import { DividerType } from '../divider/component';
 
 @customElement('page-divider')
 export class PageDivider extends PageAbstract {
@@ -13,13 +14,7 @@ export class PageDivider extends PageAbstract {
    }
 
    @property()
-   targetType: string = TargetType.BLANK;
-
-   @property()
-   href: string = '';
-
-   @property()
-   text: string = 'Link';
+   dividerType: string = DividerType.THIN;
 
    getMainComponent(): TemplateResult {
       return html`
@@ -34,15 +29,10 @@ export class PageDivider extends PageAbstract {
             .itemProperties="${[ItemProperties.KEYLINE_ALIGNMENT_HORIZONTAL, ItemProperties.KEYLINE_SIZE_MEDIUM]}"
             itemFlexBasisValue="100%"
          >
-            <component-typography .typographyType="${TypographyType.H2}" text="<component-link/>"></component-typography>
+            <component-typography .typographyType="${TypographyType.H2}" text="<component-divider/>"></component-typography>
             <component-typography
                .typographyType="${TypographyType.BODY1}"
-               text="Einfacher Link um innerhalb der Seite, oder auf externe Seiten zu verweisen."
-            ></component-typography>
-            <component-typography .typographyType="${TypographyType.H4}" text="Interaktive Demo"></component-typography>
-            <component-typography
-               .typographyType="${TypographyType.BODY1}"
-               text="Hier können Sie die Komponente ausführlich testen. Anschließend können Sie den zugehörigen Quellcode unter anschauen"
+               text="Divider trennt Abschnitte"
             ></component-typography>
 
             <component-tabs>
@@ -60,34 +50,26 @@ export class PageDivider extends PageAbstract {
                         ContainerProperties.SMARTPHONE_MAX_WIDTH
                      ]}"
                      .itemProperties="${[ItemProperties.KEYLINE_ALIGNMENT_BOTH, ItemProperties.KEYLINE_SIZE_MEDIUM]}"
-                     itemFlexBasisValue="50%"
+                     itemFlexBasisValue="100%"
                   >
                      <component-form>
                         <component-inputfield
                            .inputfieldType="${InputfieldType.COMBOBOX}"
-                           .options="${InputfieldComponent.enumToComboboxItems(TargetType)}"
-                           label="TargetType"
-                           .value="${InputfieldComponent.enumGetKeyFromValue(TargetType, this.targetType)}"
+                           .options="${InputfieldComponent.enumToComboboxItems(DividerType)}"
+                           label="Trenner Typ:"
+                           .value="${InputfieldComponent.enumGetKeyFromValue(DividerType, this.dividerType)}"
                            @component-inputfield-change="${(event: CustomEvent) =>
-                              (this.targetType = (<any>TargetType)[event.detail.outputData.value])}"
+                              (this.dividerType = (<any>DividerType)[event.detail.outputData.value])}"
                         ></component-inputfield>
                      </component-form>
-                     
-                     <component-divider></component-divider>
-                     
-                     
-                     
-                  </component-flex-container></component-tab-content
-               >
+
+                     <component-divider dividerType="${this.dividerType}"></component-divider> </component-flex-container
+               ></component-tab-content>
                <component-tab-content slot="tabContent"
                   ><component-code
                      code="${'<component-divider '
-                        .concat(PreviewFormatterService.getUniqueInstance().property2String(this.targetType, TargetType))
-                        .concat(' href="')
-                        .concat(this.href)
-                        .concat('" text="')
-                        .concat(this.text)
-                        .concat('"></component-link>')}"
+                        .concat(PreviewFormatterService.getUniqueInstance().property2String(this.dividerType, DividerType))
+                        .concat('"></component-divider>')}"
                   >
                   </component-code
                ></component-tab-content>

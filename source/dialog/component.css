@@ -11,7 +11,7 @@
 .opacScreen {
     z-index: 20;
     opacity: .85;
-    background-color: var(--app-color-border);
+    background-color: var(--app-color-surface-background);
 }
 
 .wrapperOutside {
