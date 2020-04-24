@@ -153,6 +153,7 @@ export class InputfieldComponent extends LitElement {
                     : BorderType.BOTTOM}"
               >
                  <component-grid-container
+                    class="INPUTCONTAINER"
                     .gridTemplateRows="${['auto']}"
                     .gridTemplateColumns="${['auto', '1fr', 'auto', 'auto']}"
                  >
@@ -167,7 +168,7 @@ export class InputfieldComponent extends LitElement {
                        .containerProperties="${[ContainerProperties.CONTAINER_WIDTH_100]}"
                        itemFlexBasisValue="100%"
                     >
-                       <component-visible visibleType="${this.showLabelText() ? VisibleType.NORMAL : VisibleType.HIDE}">
+                       <component-visible visibleType="${this.showLabelText() ? VisibleType.NORMAL : VisibleType.INVISIBLE}">
                           <component-typography
                              .typographyType="${TypographyType.OVERLINE}"
                              text="${this.label}"
@@ -281,7 +282,7 @@ ${this.value}</textarea
                                         ></component-icon>
                                      </component-visible>
                                      <component-visible visibleType="${this.checked ? VisibleType.NORMAL : VisibleType.HIDE}">
-                                        <component-icon
+                                        <component-icon color="var(--app-color-primary-background)"
                                            @component-icon-click="${() => {
                                               this.switchChecked();
                                            }}"
@@ -293,33 +294,30 @@ ${this.value}</textarea
                                </component-grid-container>
                             `
                           : html`
-                               <div class="slidecontainer">
-                                  <input
-                                     id="inputElement"
-                                     class="sliders"
-                                     name="${this.name}"
-                                     type="${this.inputfieldType}"
-                                     value="${this.prepareValue(this.value)}"
-                                     placeholder="${BasicService.getUniqueInstance().isBlank(this.placeholder) &&
-                                     !this.showLabelText()
-                                        ? this.label
-                                        : this.placeholder}"
-                                     size="${this.size}"
-                                     minlength="${this.minlength}"
-                                     maxlength="${this.maxlength}"
-                                     min="${this.min}"
-                                     max="${this.max}"
-                                     step="${this.step}"
-                                     ?required="${this.required}"
-                                     ?disabled="${this.disabled}"
-                                     ?checked="${this.checked}"
-                                     ?multiple="${this.multiple}"
-                                     @keyup="${this.keyup}"
-                                     @change="${(event: Event) => this.change(event)}"
-                                     @focus="${(event: Event) => this.focused(event)}"
-                                     @focusout="${(event: Event) => this.focusout(event)}"
-                                  />
-                               </div>
+                               <input
+                                  id="inputElement"
+                                  name="${this.name}"
+                                  type="${this.inputfieldType}"
+                                  value="${this.prepareValue(this.value)}"
+                                  placeholder="${BasicService.getUniqueInstance().isBlank(this.placeholder) &&
+                                  !this.showLabelText()
+                                     ? this.label
+                                     : this.placeholder}"
+                                  size="${this.size}"
+                                  minlength="${this.minlength}"
+                                  maxlength="${this.maxlength}"
+                                  min="${this.min}"
+                                  max="${this.max}"
+                                  step="${this.step}"
+                                  ?required="${this.required}"
+                                  ?disabled="${this.disabled}"
+                                  ?checked="${this.checked}"
+                                  ?multiple="${this.multiple}"
+                                  @keyup="${this.keyup}"
+                                  @change="${(event: Event) => this.change(event)}"
+                                  @focus="${(event: Event) => this.focused(event)}"
+                                  @focusout="${(event: Event) => this.focusout(event)}"
+                               />
                             `}</component-flex-container
                     >
                     <component-visible

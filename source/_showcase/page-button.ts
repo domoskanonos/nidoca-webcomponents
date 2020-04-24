@@ -15,7 +15,7 @@ export class PageButton extends PageAbstract {
     }
 
    @property()
-   buttonType: string = ButtonType.CONTAINED;
+   buttonType: string = ButtonType.PRIMARY;
 
    @property()
    showLeadingIcon: boolean = true;

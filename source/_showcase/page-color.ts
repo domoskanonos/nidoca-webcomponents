@@ -97,8 +97,8 @@ export class PageColor extends PageAbstract {
                               >Google Material Design Richtlinien</component-link
                            >
 
-                           <component-button buttonType="${ButtonType.CONTAINED}">ButtonType.CONTAINED</component-button>
-                           <component-button buttonType="${ButtonType.TEXT}">ButtonType.CONTAINED</component-button>
+                           <component-button buttonType="${ButtonType.PRIMARY}">ButtonType.PRIMARY</component-button>
+                           <component-button buttonType="${ButtonType.TEXT}">ButtonType.PRIMARY</component-button>
                         </component-form>
                      </component-flex-container></component-tab-content
                   >

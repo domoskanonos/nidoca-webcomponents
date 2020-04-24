@@ -1,10 +1,17 @@
-.tab, ::slotted(.tab) {
-    cursor: pointer;
+.tab,
+::slotted(.tab) {
+   cursor: pointer;
+   border-bottom-style: solid;
+   border-width: 3px;
 }
 
-.tabStyles{
-    float: left;
-    padding: 0 15px;
-    margin: 0px auto;
-    text-align: center;
+.SELECTED {
+   border-color: var(--app-color-primary-background);
+}
+
+.tabStyles {
+   float: left;
+   padding: 0 15px;
+   margin: 0px auto;
+   text-align: center;
 }

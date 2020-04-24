@@ -8,22 +8,29 @@
    line-height: var(--line-height-large);
 }
 
-::slotted(.CONTAINED.selected),
-.CONTAINED.selected,
-::slotted(.CONTAINED:hover),
-.CONTAINED:hover,
-::slotted(.CONTAINED:active),
-.CONTAINED:active {
-   background-color: var(--app-color-background-hover);
+
+.PRIMARY {
+   background-color: var(--app-color-primary-background);
+   color: var(--app-color-primary);
+}
+::slotted(.PRIMARY:hover),
+.PRIMARY:hover,
+::slotted(.PRIMARY:active),
+.PRIMARY:active {
+   background-color: var(--app-color-primary-background-dark);
+   color: var(--app-color-primary-dark);
 }
 
-::slotted(.TEXT.selected),
-.TEXT.selected,
-::slotted(.TEXT:hover),
-.TEXT:hover,
-::slotted(.TEXT:active),
-.TEXT:active {
-   color: var(--app-color-active);
+.SECONDARY {
+   background-color: var(--app-color-secondary-background);
+   color: var(--app-color-secondary);
+}
+::slotted(.SECONDARY:hover),
+.SECONDARY:hover,
+::slotted(.SECONDARY:active),
+.SECONDARY:active {
+   background-color: var(--app-color-secondary-background-dark);
+   color: var(--app-color-secondary-dark);
 }
 
 @media only screen and (orientation: portrait) {

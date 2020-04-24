@@ -32,20 +32,16 @@ export abstract class BasisTemplate extends LitElement {
       return html`
          <div class="container" @component-icon-click="${this.menuItemClicked}">
             <top id="top" class="${this.menuCss}">
-               <effect-color colorScheme="${ColorScheme.PRIMARY_SCHEME}">
-                  <component-border borderType="${BorderType.BOTTOM}">
-                     ${this.getTopContent()}
-                  </component-border>
-               </effect-color>
+               <component-border borderType="${BorderType.BOTTOM}">
+                  ${this.getTopContent()}
+               </component-border>
             </top>
             <div id="left" class="${this.menuCss}">
-               <effect-color colorScheme="${ColorScheme.PRIMARY_SCHEME}"
-                  ><component-border borderType="${BorderType.RIGHT}">
-                     <component-navigation .closed="${this.navigationClosed}">
-                        ${this.getLeftNavigationContent()}
-                     </component-navigation>
-                  </component-border></effect-color
-               >
+               <component-border borderType="${BorderType.RIGHT}">
+                  <component-navigation .closed="${this.navigationClosed}">
+                     ${this.getLeftNavigationContent()}
+                  </component-navigation>
+               </component-border>
             </div>
             <div id="main" class="${this.menuCss}">
                ${this.getMainComponent()}

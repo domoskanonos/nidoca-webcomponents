@@ -69,23 +69,16 @@ export class PageTabs extends PageAbstract {
                            (this.tabType = (<any>TabType)[event.detail.outputData.value])}"
                      ></component-inputfield>
                   </component-form>
-                  
-                     <effect-color
-                        .colorScheme="${ColorScheme.PRIMARY_SCHEME}"
-                        leadingIcon="sentiment_satisfied_alt"
-                        text="Mein&nbsp;Button"
-                     >
-                        <component-box height="50vmin" width="50vmin">
-                           <component-tabs tabType="${this.tabType}">
-                              <component-tab slot="tab" .selected="${true}" text="Tab 1"></component-tab>
-                              <component-tab slot="tab" text="Tab 2"></component-tab>
-                              <component-tab-content slot="tabContent" .selected="${true}">Inhalt 1</component-tab-content>
-                              <component-tab-content slot="tabContent">Inhalt 2</component-tab-content>
-                           </component-tabs>
-                        </component-box>
-                     </effect-color>
-                  </component-tab-content
-               >
+
+                  <component-box height="50vmin" width="50vmin">
+                     <component-tabs tabType="${this.tabType}">
+                        <component-tab slot="tab" .selected="${true}" text="Tab 1"></component-tab>
+                        <component-tab slot="tab" text="Tab 2"></component-tab>
+                        <component-tab-content slot="tabContent" .selected="${true}">Inhalt 1</component-tab-content>
+                        <component-tab-content slot="tabContent">Inhalt 2</component-tab-content>
+                     </component-tabs>
+                  </component-box>
+               </component-tab-content>
                <component-tab-content slot="tabContent"
                   ><component-code>
                      ${'<component-tabs '

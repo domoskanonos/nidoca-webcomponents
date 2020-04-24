@@ -21,19 +21,16 @@ export class TabComponent extends LitElement {
    render() {
       return html`
          <div class="tabStyles">
-            <span class="tab" @click="${() => this.tabClicked()}">
-               <component-border borderType="${this.selected ? BorderType.BOTTOM_SELECTED : BorderType.BOTTOM}">
-                  ${BasicService.getUniqueInstance().isNotBlank(this.text)
-                     ? html`
-                          <component-typography
-                             .typographyType="${TypographyType.OVERLINE}"
-                             text="${this.text}"
-                          ></component-typography>
-                       `
-                     : html``}
-
-                  <slot></slot>
-               </component-border>
+            <span class="tab ${this.selected ? 'SELECTED' : ''}" @click="${() => this.tabClicked()}">
+               ${BasicService.getUniqueInstance().isNotBlank(this.text)
+                  ? html`
+                       <component-typography
+                          .typographyType="${TypographyType.OVERLINE}"
+                          text="${this.text}"
+                       ></component-typography>
+                    `
+                  : html``}
+               <slot></slot>
             </span>
          </div>
       `;

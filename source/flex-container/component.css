@@ -57,7 +57,7 @@
 .FLEX_ITEM,
 ::slotted(.FLEX_ITEM) {
    box-sizing: border-box;
-   overflow: hidden;
+   overflow: auto;
 }
 
 .KEYLINE_SIZE_LITTLE,
@@ -93,7 +93,6 @@
 .KEYLINE_ALIGNMENT_HORIZONTAL,
 ::slotted(.KEYLINE_ALIGNMENT_HORIZONTAL) {
    padding-right: 0;
-   overflow: scroll;
 }
 
 .KEYLINE_ALIGNMENT_VERTICAL,

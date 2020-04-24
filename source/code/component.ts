@@ -1,45 +1,49 @@
-import {css, customElement, html, property, unsafeCSS, LitElement} from 'lit-element';
+import { css, customElement, html, property, unsafeCSS, LitElement } from 'lit-element';
+import { BasicService } from '@domoskanonos/frontend-basis';
 
 const componentCSS = require('./component.css');
 
 export class CodeFormatter {
-    static NONE = 'NONE';
-    static HTML = 'HTML';
+   static NONE = 'NONE';
+   static HTML = 'HTML';
 }
 
 @customElement('component-code')
 export class CodeComponent extends LitElement {
-    static styles = css`
+   static styles = css`
       ${unsafeCSS(componentCSS)}
    `;
 
-    @property()
-    codeFormatter: string = CodeFormatter.NONE;
+   @property()
+   codeFormatter: string = CodeFormatter.NONE;
 
-    @property()
-    code: string = '';
+   @property()
+   code: string = '';
 
-    render() {
-        return html`
+   render() {
+      return html`
          <pre>
-                <code>${this.format(this.code)}<component-icon class="icon-position" icon="file_copy"><slot></slot></code>
+                <code>${this.format(
+                   this.code
+                )}<component-icon class="icon-position" @component-icon-click="${BasicService.getUniqueInstance().copyToClipboard(
+         this.code
+      )}" clickable="true" icon="file_copy"><slot></slot></code>
             </pre>
       `;
-    }
+   }
 
-    private format(code: string) {
-        console.log("format code.");
+   private format(code: string) {
+      console.log('format code.');
 
-        code = code.trim();
+      code = code.trim();
 
-        switch (this.codeFormatter) {
-            case CodeFormatter.HTML:
-                let html: string = '';
-                html = code;
-                return html;
-
-        }
-        return code;
-    }
+      switch (this.codeFormatter) {
+         case CodeFormatter.HTML:
+            let html: string = '';
+            html = code;
+            return html;
+      }
+      return code;
+   }
 
 }

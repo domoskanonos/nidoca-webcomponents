@@ -8,6 +8,6 @@
 .navItem:hover,
 ::slotted(.navItem:active),
 .navItem:active {
-   color: var(--app-color);
-   background-color: var(--app-color-background-hover);
+   color: var(--app-color-primary-light);
+   background-color: var(--app-color-primary-background-light);
 }
