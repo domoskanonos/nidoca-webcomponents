@@ -2,6 +2,4 @@
 *,
 ::slotted(*) {
    box-sizing: border-box;
-   color: var(--app-color);
-   background-color: var(--app-color-background);
 }

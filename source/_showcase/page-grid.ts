@@ -92,18 +92,17 @@ export class PageGrid extends PageAbstract {
                         ></component-inputfield>
                      </component-form>
 
-                     <effect-color backgroundColor="var(--app-color-primary-background)">
-                        <component-grid-container
-                           gridJustifyItems="${this.gridJustifyItems}"
-                           gridAlignItems="${this.gridAlignItems}"
-                           .gridTemplateRows="${this.gridTemplateRows}"
-                           .gridTemplateColumns="${this.gridTemplateColumns}"
-                        >
-                           ${this.createImg(7, 7)} ${this.createImg(9, 7)} ${this.createImg(7, 9)} ${this.createImg(7, 12)}
-                           ${this.createImg(12, 7)} ${this.createImg(9, 7)} ${this.createImg(9, 9)} ${this.createImg(9, 7)}
-                           ${this.createImg(9, 7)}
-                        </component-grid-container>
-                     </effect-color>
+                     <component-grid-container
+                        style="background-color: var(--app-color-primary-background);"
+                        gridJustifyItems="${this.gridJustifyItems}"
+                        gridAlignItems="${this.gridAlignItems}"
+                        .gridTemplateRows="${this.gridTemplateRows}"
+                        .gridTemplateColumns="${this.gridTemplateColumns}"
+                     >
+                        ${this.createBox(7, 7)} ${this.createBox(9, 7)} ${this.createBox(7, 9)} ${this.createBox(7, 12)}
+                        ${this.createBox(12, 7)} ${this.createBox(9, 7)} ${this.createBox(9, 9)} ${this.createBox(9, 7)}
+                        ${this.createBox(9, 7)}
+                     </component-grid-container>
                   </component-flex-container></component-tab-content
                >
                <component-tab-content slot="tabContent"
@@ -137,11 +136,13 @@ export class PageGrid extends PageAbstract {
       this.gridAlignItems = gridAlignItems;
    }
 
-   private createImg(width: number, height: number) {
+   private createBox(width: number, height: number) {
       return html`
-         <effect-color backgroundColor="var(--app-color-secondary-background)">
-            <component-box width="${width}vmin" height="${height}vmin"></component-box>
-         </effect-color>
+         <component-box
+            style="background-color: var(--app-color-surface-background);"
+            width="${width}vmin"
+            height="${height}vmin"
+         ></component-box>
       `;
    }
 }

@@ -6,8 +6,6 @@ import { TypographyType } from '../typography/component';
 import { BasicService } from '@domoskanonos/frontend-basis';
 import { BorderType, FlexJustifyContent, SpacerAlignment, SpacerSize, VisibleType } from '..';
 import { ContainerProperties } from '../flex-container/component';
-import { TextColorClazz } from '../effect-color/component';
-import { GridAlignItems, GridJustifyItems } from '../grid-container/component';
 
 const componentCSS = require('./component.css');
 

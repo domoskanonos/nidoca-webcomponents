@@ -1,7 +1,7 @@
 import { customElement, html, property, TemplateResult } from 'lit-element';
 import { PageAbstract } from './page-abstract';
 import { InputfieldType } from '../inputfield/component';
-import { ColorScheme, FlexJustifyContent, IconComponent, TargetType, TypographyType } from '..';
+import { FlexJustifyContent, IconComponent, TargetType, TypographyType } from '..';
 import { ContainerProperties, ItemProperties } from '../flex-container/component';
 import { I18nService } from '@domoskanonos/frontend-basis';
 
@@ -242,15 +242,13 @@ export class PageIconComponent extends PageAbstract {
                         </component-flex-container>
                      </component-form>
 
-                     <effect-color colorScheme="${ColorScheme.PRIMARY_SCHEME}">
-                        <component-icon
-                           .clickable="${this.clickable}"
-                           icon="${this.icon}"
-                           color="${this.color}"
-                           .size="${this.iconSize}"
-                           .withIconSpace="${this.withIconSpace}"
-                        ></component-icon>
-                     </effect-color> </component-flex-container
+                     <component-icon
+                        .clickable="${this.clickable}"
+                        icon="${this.icon}"
+                        color="${this.color}"
+                        .size="${this.iconSize}"
+                        .withIconSpace="${this.withIconSpace}"
+                     ></component-icon> </component-flex-container
                ></component-tab-content>
                <component-tab-content slot="tabContent"
                   ><component-code

@@ -1,17 +1,10 @@
 import { customElement, html, property, TemplateResult } from 'lit-element';
 import { PageAbstract } from './page-abstract';
 import {
-   AlignContent,
-   AlignItems,
-   ColorScheme,
-   FlexDirection,
-   FlexJustifyContent,
-   FlexWrap,
    InputfieldComponent,
    InputfieldType,
    SpacerAlignment,
    SpacerSize,
-   TargetType,
    TypographyType
 } from '..';
 import { I18nService } from '@domoskanonos/frontend-basis';

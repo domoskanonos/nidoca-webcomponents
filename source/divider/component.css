@@ -1,7 +1,7 @@
 .DIVIDER,
 ::slotted(.DIVIDER) {
    width: 100%;
-   background-color: var(--app-color-surface-background-light);
+   background-color: #000000;
 }
 
 .THIN {

@@ -74,13 +74,17 @@ export class PageSpacer extends PageAbstract {
                               (this.spacerSize = (<any>SpacerSize)[event.detail.outputData.value])}"
                         ></component-inputfield>
                      </component-form>
-                     <effect-color backgroundColor="var(--app-color-primary-background)">
-                        <component-box width="min-content" height="min-content">
+                     <component-container>
+                        <component-box
+                           style="background-color: var(--app-color-primary-background);"
+                           width="min-content"
+                           height="min-content"
+                        >
                            <component-spacer spacerAlignment="${this.spacerAlignment}" spacerSize="${this.spacerSize}">
                               <component-rich-media src="https://picsum.photos/200/200"></component-rich-media>
                            </component-spacer>
                         </component-box>
-                     </effect-color>
+                     </component-container>
                   </component-flex-container>
                </component-tab-content>
                <component-tab-content slot="tabContent"

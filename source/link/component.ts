@@ -28,8 +28,8 @@ export class LinkComponent extends LitElement {
 
    render() {
       return html`
-         <a href="${this.href}" targetType="${this.targetType}"
-            ><component-typography .typographyType="${TypographyType.BUTTON}">${this.text}<slot></slot></component-typography
+         <a href="${this.href}" target="${this.targetType}"
+            ><component-typography .typographyType="${TypographyType.BODY1}">${this.text}<slot></slot></component-typography
          ></a>
       `;
    }

@@ -1,18 +1,17 @@
 import { customElement, html, property, TemplateResult } from 'lit-element';
 import { PageAbstract } from './page-abstract';
 import { InputfieldComponent, InputfieldType } from '../inputfield/component';
-import { ButtonType, ColorScheme, TypographyType } from '..';
+import { ButtonType, TypographyType } from '..';
 import { ContainerProperties, ItemProperties } from '../flex-container/component';
 import { I18nService } from '@domoskanonos/frontend-basis';
 import { PreviewFormatterService } from './preview-formatter';
 
 @customElement('page-button')
 export class PageButton extends PageAbstract {
-
-    constructor() {
-        super();
-        this.navigationTitle = I18nService.getUniqueInstance().getValue('pagebutton');
-    }
+   constructor() {
+      super();
+      this.navigationTitle = I18nService.getUniqueInstance().getValue('pagebutton');
+   }
 
    @property()
    buttonType: string = ButtonType.PRIMARY;
@@ -59,7 +58,7 @@ export class PageButton extends PageAbstract {
                         ContainerProperties.SMARTPHONE_MAX_WIDTH
                      ]}"
                      .itemProperties="${[ItemProperties.KEYLINE_ALIGNMENT_BOTH, ItemProperties.KEYLINE_SIZE_MEDIUM]}"
-                     itemFlexBasisValue="50%"
+                     itemFlexBasisValue="100%"
                   >
                      <component-form>
                         <component-inputfield

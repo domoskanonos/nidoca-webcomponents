@@ -16,6 +16,9 @@ export class PageDivider extends PageAbstract {
    @property()
    dividerType: string = DividerType.THIN;
 
+   @property()
+   opacity: number = 1.0;
+
    getMainComponent(): TemplateResult {
       return html`
          <component-flex-container
@@ -30,10 +33,10 @@ export class PageDivider extends PageAbstract {
             itemFlexBasisValue="100%"
          >
             <component-typography .typographyType="${TypographyType.H2}" text="<component-divider/>"></component-typography>
-            <component-typography
-               .typographyType="${TypographyType.BODY1}"
-               text="Divider trennt Abschnitte"
-            ></component-typography>
+            <component-typography .typographyType="${TypographyType.BODY1}"
+               ><i>BoxComponent</i> trennt Inhaltselemente voneinander und dient als visueller Trenner. Man kann zwischen
+               verschiedener Dicke des Trenners und der Transparenz wählen.</component-typography
+            >
 
             <component-tabs>
                <component-tab
@@ -54,6 +57,16 @@ export class PageDivider extends PageAbstract {
                   >
                      <component-form>
                         <component-inputfield
+                           .inputfieldType="${InputfieldType.NUMBER}"
+                           step="0.1"
+                           min="0.0"
+                           max="1.0"
+                           label="Transpazenz (Wert zwischen 0.0-1.0)"
+                           .value="${this.opacity}"
+                           @component-inputfield-change="${(event: CustomEvent) =>
+                              (this.opacity = event.detail.outputData.value)}"
+                        ></component-inputfield>
+                        <component-inputfield
                            .inputfieldType="${InputfieldType.COMBOBOX}"
                            .options="${InputfieldComponent.enumToComboboxItems(DividerType)}"
                            label="Trenner Typ:"
@@ -63,13 +76,19 @@ export class PageDivider extends PageAbstract {
                         ></component-inputfield>
                      </component-form>
 
-                     <component-divider dividerType="${this.dividerType}"></component-divider> </component-flex-container
+                     <component-divider
+                        dividerType="${this.dividerType}"
+                        .opacity="${this.opacity}"
+                     ></component-divider> </component-flex-container
                ></component-tab-content>
                <component-tab-content slot="tabContent"
                   ><component-code
                      code="${'<component-divider '
                         .concat(PreviewFormatterService.getUniqueInstance().property2String(this.dividerType, DividerType))
-                        .concat('"></component-divider>')}"
+                        .concat('opacity="')
+                        .concat(String(this.opacity))
+                        .concat('"')
+                        .concat('></component-divider>')}"
                   >
                   </component-code
                ></component-tab-content>

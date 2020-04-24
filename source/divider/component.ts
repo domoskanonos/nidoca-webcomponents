@@ -18,9 +18,12 @@ export class DividerComponent extends LitElement {
    @property()
    dividerType: string = DividerType.THIN;
 
+   @property()
+   opacity: number = 1.0;
+
    render() {
       return html`
-         <div class="DIVIDER ${this.dividerType}"></div>
+         <div class="DIVIDER ${this.dividerType}" style="opacity: ${this.opacity};"></div>
       `;
    }
 }

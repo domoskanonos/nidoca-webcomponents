@@ -1,5 +1,4 @@
 import { AccordionComponent } from './accordion/container/component';
-import { ColorScheme, ColorEffect } from './effect-color/component';
 import { BoxComponent } from './box/component';
 import { BorderType, BorderComponent } from './border/component';
 import { AccordionItemComponent } from './accordion/item/component';
@@ -35,7 +34,6 @@ import { TypographyType, TypographyComponent } from './typography/component';
 import { DialogComponent } from './dialog/component';
 
 export { AccordionComponent } from './accordion/container/component';
-export { ColorScheme, ColorEffect } from './effect-color/component';
 export { BorderType, BorderComponent } from './border/component';
 export { BoxComponent } from './box/component';
 export { AccordionItemComponent } from './accordion/item/component';

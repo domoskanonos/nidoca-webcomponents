@@ -28,6 +28,8 @@
    top: var(--menubar-height);
    left: 0;
    overflow-x: hidden;
+   background-color: var(--app-color-primary-background);
+   color: var(--app-color-primary);
 }
 
 #left.menuClosed {

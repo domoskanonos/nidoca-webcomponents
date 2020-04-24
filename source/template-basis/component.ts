@@ -1,7 +1,7 @@
 import { css, html, property, query, TemplateResult, unsafeCSS, LitElement } from 'lit-element';
 
 import { BasicService } from '@domoskanonos/frontend-basis';
-import { BorderType, ColorScheme, IconComponent } from '..';
+import { BorderType, IconComponent } from '..';
 
 const componentCSS = require('./component.css');
 

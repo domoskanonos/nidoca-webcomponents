@@ -4,7 +4,7 @@ table, ::slotted(table) {
 }
 
 td, th {
-    vertical-align: top;
+    vertical-align: center;
     padding: var(--space-small);
     box-sizing: border-box;
     text-align: left;
@@ -18,6 +18,6 @@ tr > td:last-of-type, th:last-of-type {
 
 th {
     border-top: 1px solid var(--app-color-surface-background);
-    background-color: var(--app-color-background);
+    background-color: var(--app-color-surface-background-dark);
     color: var(--app-color);
 }

@@ -1,6 +1,7 @@
 import { html, property, TemplateResult } from 'lit-element';
 import { BasisTemplate, TypographyType } from '../index';
 import { I18nService } from '@domoskanonos/frontend-basis';
+import { DividerType } from '../divider/component';
 
 export abstract class PageAbstract extends BasisTemplate {
    @property()
@@ -50,7 +51,7 @@ export abstract class PageAbstract extends BasisTemplate {
             text="${I18nService.getUniqueInstance().getValue('pagegetstarted')}"
             href="getStarted"
          ></component-navigation-link>
-         <component-divider slot="links"></component-divider>
+         <component-divider slot="links" .dividerType="${DividerType.THIN}" opacity="0.2"></component-divider>
          <component-navigation-section
             slot="links"
             text="${I18nService.getUniqueInstance().getValue('sectionstructure')}"
@@ -165,7 +166,7 @@ export abstract class PageAbstract extends BasisTemplate {
             text="${I18nService.getUniqueInstance().getValue('pagetable')}"
             href="pagetable"
          ></component-navigation-link>
-         <component-divider slot="links"></component-divider>
+         <component-divider slot="links" .dividerType="${DividerType.THIN}" opacity="0.2"></component-divider>
          <component-navigation-section slot="links" text="Effekte"></component-navigation-section>
          <component-navigation-link
             slot="links"
@@ -173,7 +174,7 @@ export abstract class PageAbstract extends BasisTemplate {
             text="${I18nService.getUniqueInstance().getValue('pagetransition')}"
             href="pagetransition"
          ></component-navigation-link>
-         <component-divider slot="links"></component-divider>
+         <component-divider slot="links" .dividerType="${DividerType.THIN}" opacity="0.2"></component-divider>
          <component-navigation-link
             slot="links"
             icon="info"

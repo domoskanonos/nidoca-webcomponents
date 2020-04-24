@@ -2,18 +2,14 @@ import { customElement, html, property, TemplateResult } from 'lit-element';
 import { PageAbstract } from './page-abstract';
 import {
    BorderType,
-   ButtonType,
-   ColorScheme,
    InputfieldComponent,
    InputfieldType,
-   TransitionType,
    TypographyType,
    VisibleType
 } from '..';
 import { I18nService } from '@domoskanonos/frontend-basis';
 import { ContainerProperties, ItemProperties } from '../flex-container/component';
 import { PreviewFormatterService } from './preview-formatter';
-import { BackgroundColorClazz, TextColorClazz } from '../effect-color/component';
 
 @customElement('page-visible')
 export class PageVisible extends PageAbstract {

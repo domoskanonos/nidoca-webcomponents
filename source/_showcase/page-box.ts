@@ -1,17 +1,16 @@
 import { customElement, html, property, TemplateResult } from 'lit-element';
 import { PageAbstract } from './page-abstract';
 import { ContainerProperties, ItemProperties } from '../flex-container/component';
-import { ColorScheme, InputfieldType, TypographyType } from '..';
+import { InputfieldType, TypographyType } from '..';
 import { I18nService } from '@domoskanonos/frontend-basis';
 
 @customElement('page-box')
 export class PageBox extends PageAbstract {
-
-    constructor() {
-        super();
-        this.navigationTitle = 'BoxComponent'
-    }
-    @property()
+   constructor() {
+      super();
+      this.navigationTitle = 'BoxComponent';
+   }
+   @property()
    height: string = '50vmin';
 
    @property()

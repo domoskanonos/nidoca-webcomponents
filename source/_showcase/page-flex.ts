@@ -10,7 +10,7 @@ import {
    FlexWrap,
    ItemProperties
 } from '../flex-container/component';
-import { ColorScheme, InputfieldComponent, InputfieldType, TypographyType } from '..';
+import { InputfieldComponent, InputfieldType, TypographyType } from '..';
 import { I18nService } from '@domoskanonos/frontend-basis';
 import { PreviewFormatterService } from './preview-formatter';
 
@@ -101,7 +101,7 @@ export class PageLayoutComponent extends PageAbstract {
                      ]}"
                      .itemFlexBasisValues="${['50%', '50%']}"
                   >
-                     <component-box height="40vmin" width="40vmin">
+                     <component-box style="background-color: var(--app-color-primary-background);" height="40vmin" width="40vmin">
                         <component-flex-container
                            id="sample-flex-container"
                            .containerProperties="${this.containerProperties}"
@@ -113,9 +113,9 @@ export class PageLayoutComponent extends PageAbstract {
                            .alignItems="${this.alignItems}"
                            .alignContent="${this.alignContent}"
                         >
-                           ${this.createImg(5, 5)} ${this.createImg(7, 5)} ${this.createImg(5, 7)} ${this.createImg(5, 10)}
-                           ${this.createImg(10, 5)} ${this.createImg(7, 5)} ${this.createImg(7, 7)} ${this.createImg(7, 5)}
-                           ${this.createImg(7, 5)}
+                           ${this.createBox(5, 5)} ${this.createBox(7, 5)} ${this.createBox(5, 7)} ${this.createBox(5, 10)}
+                           ${this.createBox(10, 5)} ${this.createBox(7, 5)} ${this.createBox(7, 7)} ${this.createBox(7, 5)}
+                           ${this.createBox(7, 5)}
                         </component-flex-container>
                      </component-box>
 
@@ -254,11 +254,13 @@ export class PageLayoutComponent extends PageAbstract {
       this.itemFlexBasisValue = event.detail.outputData.value;
    }
 
-   private createImg(width: number, height: number) {
+   private createBox(width: number, height: number) {
       return html`
-         <effect-color backgroundColor="var(--app-color-secondary-background)">
-            <component-box width="${width}vmin" height="${height}vmin"></component-box>
-         </effect-color>
+         <component-box
+            style="background-color: var(--app-color-surface-background);"
+            width="${width}vmin"
+            height="${height}vmin"
+         ></component-box>
       `;
    }
 }

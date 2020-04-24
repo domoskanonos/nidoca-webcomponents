@@ -1,7 +1,5 @@
 .NAVIGATION {
-    background-color: var(--app-color-primary-background);
-    color: var(--app-color-primary);
-    height: 100vh;
+    height: 100%;
     width: var(--menu-size);
     transition: left 0.25s linear;
     position: fixed;
