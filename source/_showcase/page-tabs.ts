@@ -14,8 +14,6 @@ import { PreviewFormatterService } from './preview-formatter';
 
 @customElement('page-tabs')
 export class PageTabs extends PageAbstract {
-   @property()
-   tabType: string = TabType.NORMAL;
 
    constructor() {
       super();
@@ -52,19 +50,9 @@ export class PageTabs extends PageAbstract {
                      spacerSize="${SpacerSize.MEDIUM}"
                      spacerAlignment="${SpacerAlignment.VERTICAL}"
                   ></component-spacer>
-                  <component-form>
-                     <component-inputfield
-                        .inputfieldType="${InputfieldType.COMBOBOX}"
-                        .options="${InputfieldComponent.enumToComboboxItems(TabType)}"
-                        label="TabType"
-                        .value="${InputfieldComponent.enumGetKeyFromValue(TabType, this.tabType)}"
-                        @component-inputfield-change="${(event: CustomEvent) =>
-                           (this.tabType = (<any>TabType)[event.detail.outputData.value])}"
-                     ></component-inputfield>
-                  </component-form>
 
                   <component-box height="50vmin" width="50vmin">
-                     <component-tabs tabType="${this.tabType}">
+                     <component-tabs>
                         <component-tab slot="tab" .selected="${true}" text="Tab 1"></component-tab>
                         <component-tab slot="tab" text="Tab 2"></component-tab>
                         <component-tab-content slot="tabContent" .selected="${true}">Inhalt 1</component-tab-content>
@@ -75,7 +63,6 @@ export class PageTabs extends PageAbstract {
                <component-tab-content slot="tabContent"
                   ><component-code>
                      ${'<component-tabs '
-                        .concat(PreviewFormatterService.getUniqueInstance().property2String(this.tabType, TabType))
                         .concat(
                            '>\n' +
                               '<component-tab slot="tab" .selected="${true}" text="Tab 1"></component-tab>\n' +

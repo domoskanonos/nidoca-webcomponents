@@ -4,25 +4,47 @@ import { TabComponent } from './tab/component';
 
 const componentCSS = require('./component.css');
 
-export class TabType {
-   static NORMAL: string = 'NORMAL';
-   static FULL_WIDTH: string = 'FULL_WIDTH';
-}
-
 @customElement('component-tabs')
 export class TabsComponent extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;
 
-   @property()
-   tabType: string = TabType.NORMAL;
-
    @query('#tabSlot')
    tabSlot: HTMLSlotElement | undefined;
 
    @query('#tabContentSlot')
    tabContentSlot: HTMLSlotElement | undefined;
+
+   protected firstUpdated(_changedProperties: Map<PropertyKey, unknown>): void {
+      super.firstUpdated(_changedProperties);
+      this.changeSelectedTabStyle();
+   }
+
+   protected update(changedProperties: Map<PropertyKey, unknown>): void {
+      super.update(changedProperties);
+      if (changedProperties.get('tabType') != undefined) {
+         this.changeSelectedTabStyle();
+      }
+   }
+
+   private changeSelectedTabStyle() {
+      if (this.tabSlot != null) {
+         let assignedElements: Element[] = this.tabSlot.assignedElements();
+         console.log(assignedElements.length);
+         let length: number = assignedElements.length;
+         let widthPerTab = 100 / length;
+         for (let index = 0; index < assignedElements.length; index++) {
+            let element: Element = assignedElements[index];
+            if (element instanceof TabComponent) {
+               element.style.width = String(widthPerTab).concat('%');
+               if (element.selected) {
+                  element.classList.add('SELECTED');
+               }
+            }
+         }
+      }
+   }
 
    render() {
       return html`
@@ -31,7 +53,7 @@ export class TabsComponent extends LitElement {
             .gridTemplateRows="${['auto', 'auto']}"
             .gridTemplateColumns="${['auto']}"
          >
-            <slot id="tabSlot" name="tab" class="${this.tabType}"></slot>
+            <slot id="tabSlot" name="tab"></slot>
             <slot id="tabContentSlot" name="tabContent"></slot>
          </component-grid-container>
       `;
@@ -53,8 +75,10 @@ export class TabsComponent extends LitElement {
                if (element == clickedTab) {
                   tabIndex = index;
                   element.selected = true;
+                  element.classList.add('SELECTED');
                } else {
                   element.selected = false;
+                  element.classList.remove('SELECTED');
                }
             }
          }

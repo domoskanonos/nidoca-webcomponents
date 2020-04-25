@@ -1,6 +1,6 @@
 import { css, customElement, html, property, unsafeCSS, LitElement } from 'lit-element';
-import { BasicService, I18nService } from '@domoskanonos/frontend-basis';
-import { BorderType, TypographyType } from '../..';
+import { BasicService } from '@domoskanonos/frontend-basis';
+import { TypographyType } from '../..';
 
 const componentCSS = require('./component.css');
 
@@ -20,19 +20,14 @@ export class TabComponent extends LitElement {
 
    render() {
       return html`
-         <div class="tabStyles">
-            <span class="tab ${this.selected ? 'SELECTED' : ''}" @click="${() => this.tabClicked()}">
-               ${BasicService.getUniqueInstance().isNotBlank(this.text)
-                  ? html`
-                       <component-typography
-                          .typographyType="${TypographyType.OVERLINE}"
-                          text="${this.text}"
-                       ></component-typography>
-                    `
-                  : html``}
-               <slot></slot>
-            </span>
-         </div>
+         <span class="tab ${this.selected ? 'SELECTED' : ''}" @click="${() => this.tabClicked()}">
+            ${BasicService.getUniqueInstance().isNotBlank(this.text)
+               ? html`
+                    <component-typography .typographyType="${TypographyType.OVERLINE}" text="${this.text}"></component-typography>
+                 `
+               : html``}
+            <slot></slot>
+         </span>
       `;
    }
 
