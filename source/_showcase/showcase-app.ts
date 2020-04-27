@@ -15,6 +15,7 @@ import './page-dialog.ts';
 import './page-border.ts';
 import './page-input.ts';
 import './page-link.ts';
+import './page-list.ts';
 import './page-table.ts';
 import './page-accordion.ts';
 import './page-tabs.ts';
@@ -89,6 +90,10 @@ export class ShowcaseApp extends AbstractApp {
          case 'pagebutton':
             return html`
                <page-button></page-button>
+            `;
+         case 'pagelist':
+            return html`
+               <page-list></page-list>
             `;
          case 'pagetransition':
             return html`

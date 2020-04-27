@@ -1,7 +1,7 @@
 import { customElement, html, property, TemplateResult } from 'lit-element';
 import { PageAbstract } from './page-abstract';
 import { ContainerProperties, ItemProperties } from '../flex-container/component';
-import { InputfieldType, TypographyType } from '..';
+import { InputfieldType, SpacerAlignment, SpacerSize, TypographyType } from '..';
 import { I18nService } from '@domoskanonos/frontend-basis';
 
 @customElement('page-box')
@@ -75,12 +75,21 @@ export class PageBox extends PageAbstract {
                            @component-inputfield-keyup="${(event: CustomEvent) => (this.width = event.detail.value)}"
                         ></component-inputfield>
                      </component-form>
-                     <effect-color backgroundColor="var(--app-color-primary-background)">
-                        <component-box height="${this.height}" width="${this.width}"> </component-box>
-                     </effect-color>
+                     <component-container>
+                        <component-box
+                           style="background-color: var(--app-color-primary-background);"
+                           height="${this.height}"
+                           width="${this.width}"
+                        >
+                        </component-box>
+                     </component-container>
                   </component-flex-container>
                </component-tab-content>
-               <component-tab-content slot="tabContent"
+               <component-tab-content slot="tabContent">
+                  <component-spacer
+                     spacerSize="${SpacerSize.MEDIUM}"
+                     spacerAlignment="${SpacerAlignment.VERTICAL}"
+                  ></component-spacer
                   ><component-code
                      code="${'<component-box height="'
                         .concat(this.height)

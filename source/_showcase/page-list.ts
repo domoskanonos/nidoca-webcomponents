@@ -1,18 +1,19 @@
 import { customElement, html, TemplateResult } from 'lit-element';
 import { PageAbstract } from './page-abstract';
 
-@customElement('page-cc')
-export class PageElementList extends PageAbstract {
+@customElement('page-list')
+export class PageList extends PageAbstract {
    getMainComponent(): TemplateResult {
       return html`
          
          <component-list>
-               <component-list-item clazz="PRIMARY_COLOR">guzguz
-                  <component-spacer clazz="mediumPaddingLeft"></component-spacer>
+               <component-list-item>
+               
+               
                   <component-typography>Lorem Ipsum Dolorem</component-typography>
                </component-list-item>
                <component-list-item>
-                  <component-spacer clazz="mediumPaddingLeft"></component-spacer>
+                  
                   <component-typography>Lorem Ipsum Dolorem</component-typography>
                </component-list-item>
                <component-list-item>

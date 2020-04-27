@@ -19,7 +19,10 @@ export class PageIconComponent extends PageAbstract {
    iconSize: number = 96;
 
    @property()
-   color: string = '';
+   color: string = '#ffffff';
+
+   @property()
+   backgroundColor: string = '#0d47a1';
 
    @property()
    clickable: boolean = false;
@@ -97,10 +100,17 @@ export class PageIconComponent extends PageAbstract {
                         ></component-inputfield>
                         <component-inputfield
                            label="Farbe"
+                           value="${this.color}"
                            .inputfieldType="${InputfieldType.COLOR}"
                            @component-inputfield-change="${(event: CustomEvent) => (this.color = event.detail.outputData.value)}"
                         ></component-inputfield>
-
+                        <component-inputfield
+                           label="Hintegrundfarbe"
+                           .inputfieldType="${InputfieldType.COLOR}"
+                           value="${this.backgroundColor}"
+                           @component-inputfield-change="${(event: CustomEvent) =>
+                              (this.backgroundColor = event.detail.outputData.value)}"
+                        ></component-inputfield>
                         <component-inputfield
                            .required="${true}"
                            label="Größe"
@@ -246,6 +256,7 @@ export class PageIconComponent extends PageAbstract {
                         .clickable="${this.clickable}"
                         icon="${this.icon}"
                         color="${this.color}"
+                        backgroundColor="${this.backgroundColor}"
                         .size="${this.iconSize}"
                         .withIconSpace="${this.withIconSpace}"
                      ></component-icon> </component-flex-container
