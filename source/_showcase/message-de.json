@@ -24,5 +24,30 @@
    "pagerichmedia": "Medien",
    "pageimprint": "Imprint",
    "demo": "Demo",
-   "source": "Source"
+   "source": "Source",
+   "pageborder_typoh4": "Interaktive Demo",
+   "pageborder_body":"Hier kannst du die einzelnen Auswahlmöglichkeiten der Komponente ausprobieren.",
+   "pagebox_desc":"<i>BoxComponent</i> wird im Zusammenspiel mit den beiden Komponenten <i>FlexComponent</i> und
+   <i>GridComponent</i> für die Positionerung und das Layouting der Anwendung verwendet.<br /><br />
+   Sie wird eingesetzt um Inhalte auf eine bestimmte Höhe und Breite einzuschränken. In der Regel wird dann innherhalb
+   eine <i>GridComponent</i> oder eine <i>FlexComponent</i> verwendet um die Unterkomponenten weiter zu
+   strukturieren.<br /><br />
+   Es gibt zwei Attribute mit der man die Höhe und die Breite der Komponente ändern kann. Es wir empfohlen Breite und
+   Höhe in Abhängigkeit der Viewport Größe zu definieren, also die Masseinheiten <i>vw, vh, vmin, vmax</i> anstelle
+   von <i>px, em, %</i> zu verwenden. Das hat den Vorteil das die Box auch auf Tablets und Smartphones der Größe
+   entsprechend dargestellt wird.",
+   "pagebutton_single_tap":"Buttons allow users to take actions, and make choices, with a single tap.",
+   "pagebutton_var":"This demo lets you preview the button component, its variations, and configuration options. Each tab displays a different type of button.",
+   "pagebutton_label":"buttonType",
+   "pagebutton_trail_icon":"Trailing Icon",
+   "pagebutton_trail_text":"Es besteht die Möglichkeit an jedes Eingabefeld links ein Icon zu plazieren.",
+   "pagebutton_main":"Mein Button",
+   "pagebutton_leading_icon":"showLeadingIcon",
+   "pagecard_planet":"Our Changing Planet",
+   "pagecard_text":"Visit ten places on our planet that are undergoing the biggest changes today.",
+   "pagesubtitle1":"Subtitle 1",
+   "page_restaurant":"420 Kalorien gegessen",
+   "page_text_primary":"Title goes here",
+   "page_text_secondary":"Secondary text",
+   "pagecode_body":"ist eine Komponente mit der man Quelltext darstellen kann."
 }

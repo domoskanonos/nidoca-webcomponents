@@ -31,17 +31,9 @@ export class PageBox extends PageAbstract {
          >
             <component-typography .typographyType="${TypographyType.H2}" text="<component-box/>"></component-typography>
             <component-typography .typographyType="${TypographyType.BODY1}"
-               ><i>BoxComponent</i> wird im Zusammenspiel mit den beiden Komponenten <i>FlexComponent</i> und
-               <i>GridComponent</i> für die Positionerung und das Layouting der Anwendung verwendet.<br /><br />
-               Sie wird eingesetzt um Inhalte auf eine bestimmte Höhe und Breite einzuschränken. In der Regel wird dann innherhalb
-               eine <i>GridComponent</i> oder eine <i>FlexComponent</i> verwendet um die Unterkomponenten weiter zu
-               strukturieren.<br /><br />
-               Es gibt zwei Attribute mit der man die Höhe und die Breite der Komponente ändern kann. Es wir empfohlen Breite und
-               Höhe in Abhängigkeit der Viewport Größe zu definieren, also die Masseinheiten <i>vw, vh, vmin, vmax</i> anstelle
-               von <i>px, em, %</i> zu verwenden. Das hat den Vorteil das die Box auch auf Tablets und Smartphones der Größe
-               entsprechend dargestellt wird.</component-typography
+               >${I18nService.getUniqueInstance().getValue('pagebox_desc')}</component-typography
             >
-            <component-typography .typographyType="${TypographyType.H4}" text="Interaktive Demo"></component-typography>
+            <component-typography .typographyType="${TypographyType.H4}" text="${I18nService.getUniqueInstance().getValue('pageborder_typoh4')}"></component-typography>
             <component-typography .typographyType="${TypographyType.BODY1}" text=""></component-typography>
 
             <component-tabs>

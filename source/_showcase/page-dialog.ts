@@ -42,7 +42,7 @@ export class PageDialog extends PageAbstract {
                <i>DialogComponent</i> ist eine Komponente um Inhalte im Vordergrund darzustellen. Der restliche Hintergrund wird
                ausgegraut.
             </component-typography>
-            <component-typography .typographyType="${TypographyType.H4}" text="Interaktive Demo"></component-typography>
+            <component-typography .typographyType="${TypographyType.H4}" text="${I18nService.getUniqueInstance().getValue('pageborder_typoh4')}"></component-typography>
 
             <component-tabs>
                <component-tab

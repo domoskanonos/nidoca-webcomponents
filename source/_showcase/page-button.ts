@@ -35,12 +35,12 @@ export class PageButton extends PageAbstract {
             <component-typography .typographyType="${TypographyType.H2}" text="<component-button/>"></component-typography>
             <component-typography
                .typographyType="${TypographyType.BODY1}"
-               text="Buttons allow users to take actions, and make choices, with a single tap."
+               text="${I18nService.getUniqueInstance().getValue('pagebutton_single_tap')}"
             ></component-typography>
-            <component-typography .typographyType="${TypographyType.H4}" text="Interactive demo"></component-typography>
+            <component-typography .typographyType="${TypographyType.H4}" text="${I18nService.getUniqueInstance().getValue('pageborder_typoh4')}"></component-typography>
             <component-typography
                .typographyType="${TypographyType.BODY1}"
-               text="This demo lets you preview the button component, its variations, and configuration options. Each tab displays a different type of button."
+               text="${I18nService.getUniqueInstance().getValue('pagebutton_var')}"
             ></component-typography>
 
             <component-tabs>
@@ -71,7 +71,7 @@ export class PageButton extends PageAbstract {
                         <component-inputfield
                            .inputfieldType="${InputfieldType.CHECKBOX}"
                            label="Trailing Icon"
-                           assistiveText="Es besteht die Möglichkeit an jeden Button links ein Icon zu plazieren."
+                           assistiveText="${I18nService.getUniqueInstance().getValue('pagebutton_trail_text')}"
                            .checked="${this.showLeadingIcon}"
                            @component-inputfield-change="${() => this.switchLeadingIcon()}"
                         ></component-inputfield>
