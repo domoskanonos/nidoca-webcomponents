@@ -23,11 +23,9 @@ export class CodeComponent extends LitElement {
    render() {
       return html`
          <pre>
-                <code>${this.format(
-                   this.code
-                )}<component-icon class="icon-position" @component-icon-click="${BasicService.getUniqueInstance().copyToClipboard(
-         this.code
-      )}" clickable="true" icon="file_copy"><slot></slot></code>
+                <code>${this.format(this.code)}<component-icon class="icon-position" @component-icon-click="${() => {
+         BasicService.getUniqueInstance().copyToClipboard(this.code);
+      }}" clickable="true" icon="file_copy"><slot></slot></code>
             </pre>
       `;
    }
@@ -45,5 +43,4 @@ export class CodeComponent extends LitElement {
       }
       return code;
    }
-
 }

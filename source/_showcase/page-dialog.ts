@@ -1,6 +1,15 @@
 import { customElement, html, property, TemplateResult } from 'lit-element';
 import { PageAbstract } from './page-abstract';
-import { AlignContent, AlignItems, FlexDirection, FlexJustifyContent, FlexWrap, TypographyType } from '..';
+import {
+   AlignContent,
+   AlignItems,
+   FlexDirection,
+   FlexJustifyContent,
+   FlexWrap,
+   SpacerAlignment,
+   SpacerSize,
+   TypographyType
+} from '..';
 import { I18nService } from '@domoskanonos/frontend-basis';
 import { ContainerProperties, ItemProperties } from '../flex-container/component';
 import { GridAlignItems, GridJustifyItems } from '../grid-container/component';
@@ -42,8 +51,12 @@ export class PageDialog extends PageAbstract {
                   text="${I18nService.getUniqueInstance().getValue('demo')}"
                ></component-tab>
                <component-tab slot="tab" text="${I18nService.getUniqueInstance().getValue('source')}"></component-tab>
-               <component-tab-content slot="tabContent" .selected="${true}"
-                  ><component-flex-container
+               <component-tab-content slot="tabContent" .selected="${true}">
+                  <component-spacer
+                     spacerSize="${SpacerSize.MEDIUM}"
+                     spacerAlignment="${SpacerAlignment.VERTICAL}"
+                  ></component-spacer>
+                  <component-flex-container
                      .containerProperties="${[
                         ContainerProperties.CONTAINER_WIDTH_100,
                         ContainerProperties.TABLET_MAX_WIDTH,
@@ -86,6 +99,10 @@ export class PageDialog extends PageAbstract {
                   </component-flex-container>
                </component-tab-content>
                <component-tab-content slot="tabContent"
+                  ><component-spacer
+                     spacerSize="${SpacerSize.MEDIUM}"
+                     spacerAlignment="${SpacerAlignment.VERTICAL}"
+                  ></component-spacer
                   ><component-code
                      code="${'<component-dialog .show="'.concat(String(this.showDialog)).concat('"></component-dialog>')}"
                   >

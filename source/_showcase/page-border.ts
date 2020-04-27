@@ -1,6 +1,6 @@
 import { customElement, html, property, TemplateResult } from 'lit-element';
 import { PageAbstract } from './page-abstract';
-import { BorderType, InputfieldComponent, InputfieldType, TypographyType } from '..';
+import {BorderType, InputfieldComponent, InputfieldType, SpacerAlignment, SpacerSize, TypographyType} from '..';
 import { I18nService } from '@domoskanonos/frontend-basis';
 import { ContainerProperties, ItemProperties } from '../flex-container/component';
 import { PreviewFormatterService } from './preview-formatter';
@@ -37,8 +37,7 @@ export class PageBorder extends PageAbstract {
          >
             <component-typography .typographyType="${TypographyType.H2}" text="<component-border/>"></component-typography>
             <component-typography .typographyType="${TypographyType.BODY1}">
-               <i>BorderComponent</i> ist eine Komponente mit der man um Inhaltselemente einen Rahmen legen kann. Dabei kann der
-               Rahmen das Element komplett einfassen, oder auch nur einzelne Seiten.
+               ${I18nService.getUniqueInstance().getValue('page_border_description')}
             </component-typography>
             <component-typography .typographyType="${TypographyType.H4}" text="Interaktive Demo"></component-typography>
             <component-typography
@@ -101,6 +100,10 @@ export class PageBorder extends PageAbstract {
                   </component-flex-container>
                </component-tab-content>
                <component-tab-content slot="tabContent"
+                  ><component-spacer
+                     spacerSize="${SpacerSize.MEDIUM}"
+                     spacerAlignment="${SpacerAlignment.VERTICAL}"
+                  ></component-spacer
                   ><component-code
                      code="${'<component-border '
                         .concat(PreviewFormatterService.getUniqueInstance().property2String(this.borderType, BorderType))

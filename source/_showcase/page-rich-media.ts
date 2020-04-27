@@ -1,7 +1,7 @@
 import { customElement, html, property, TemplateResult } from 'lit-element';
 import { PageAbstract } from './page-abstract';
 import { ContainerProperties, ItemProperties } from '../flex-container/component';
-import { ButtonType, InputfieldComponent, InputfieldType, RichMediaType, TypographyType } from '..';
+import { ButtonType, InputfieldComponent, InputfieldType, RichMediaType, SpacerAlignment, SpacerSize, TypographyType } from '..';
 import { I18nService } from '@domoskanonos/frontend-basis';
 import { PreviewFormatterService } from './preview-formatter';
 
@@ -50,13 +50,22 @@ export class pagerichmedia extends PageAbstract {
                ></component-tab>
                <component-tab slot="tab" text="${I18nService.getUniqueInstance().getValue('source')}"></component-tab>
                <component-tab-content slot="tabContent" .selected="${true}"
+                  ><component-spacer
+                     spacerSize="${SpacerSize.MEDIUM}"
+                     spacerAlignment="${SpacerAlignment.VERTICAL}"
+                  ></component-spacer
                   ><component-flex-container
                      .containerProperties="${[
                         ContainerProperties.CONTAINER_WIDTH_100,
                         ContainerProperties.TABLET_MAX_WIDTH,
                         ContainerProperties.SMARTPHONE_MAX_WIDTH
                      ]}"
-                     .itemProperties="${[ItemProperties.KEYLINE_ALIGNMENT_BOTH, ItemProperties.KEYLINE_SIZE_MEDIUM]}"
+                     .itemProperties="${[
+                        ItemProperties.KEYLINE_ALIGNMENT_BOTH,
+                        ItemProperties.KEYLINE_SIZE_MEDIUM,
+                        ItemProperties.SMARTPHONE_MAX_WIDTH,
+                        ItemProperties.TABLET_MAX_WIDTH
+                     ]}"
                      itemFlexBasisValue="50%"
                   >
                      <component-form>
@@ -81,6 +90,10 @@ export class pagerichmedia extends PageAbstract {
                      ></component-rich-media> </component-flex-container
                ></component-tab-content>
                <component-tab-content slot="tabContent"
+                  ><component-spacer
+                     spacerSize="${SpacerSize.MEDIUM}"
+                     spacerAlignment="${SpacerAlignment.VERTICAL}"
+                  ></component-spacer
                   ><component-code
                      code="${'<component-rich-media '
                         .concat(PreviewFormatterService.getUniqueInstance().property2String(this.richMediaType, RichMediaType))

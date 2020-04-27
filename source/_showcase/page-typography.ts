@@ -2,17 +2,16 @@ import { customElement, html, property, TemplateResult } from 'lit-element';
 import { PageAbstract } from './page-abstract';
 import { TypographyType } from '../typography/component';
 import { ContainerProperties, ItemProperties } from '../flex-container/component';
-import { InputfieldComponent, InputfieldType } from '..';
+import { InputfieldComponent, InputfieldType, SpacerAlignment, SpacerSize } from '..';
 import { I18nService } from '@domoskanonos/frontend-basis';
 import { PreviewFormatterService } from './preview-formatter';
 
 @customElement('page-typography')
 export class PageTypography extends PageAbstract {
-
-    constructor() {
-        super();
-        this.navigationTitle = I18nService.getUniqueInstance().getValue('pagetypography');
-    }
+   constructor() {
+      super();
+      this.navigationTitle = I18nService.getUniqueInstance().getValue('pagetypography');
+   }
 
    @property()
    typographyType: string = TypographyType.BODY1;
@@ -52,6 +51,10 @@ export class PageTypography extends PageAbstract {
                ></component-tab>
                <component-tab slot="tab" text="${I18nService.getUniqueInstance().getValue('source')}"></component-tab>
                <component-tab-content slot="tabContent" .selected="${true}"
+                  ><component-spacer
+                     spacerSize="${SpacerSize.MEDIUM}"
+                     spacerAlignment="${SpacerAlignment.VERTICAL}"
+                  ></component-spacer
                   ><component-flex-container
                      .containerProperties="${[
                         ContainerProperties.CONTAINER_WIDTH_100,
@@ -82,16 +85,16 @@ export class PageTypography extends PageAbstract {
                      </component-typography> </component-flex-container
                ></component-tab-content>
                <component-tab-content slot="tabContent"
+                  ><component-spacer
+                     spacerSize="${SpacerSize.MEDIUM}"
+                     spacerAlignment="${SpacerAlignment.VERTICAL}"
+                  ></component-spacer
                   ><component-code
-                     code="${
-                        '<component-typography '
-                           .concat(
-                              PreviewFormatterService.getUniqueInstance().property2String(this.typographyType, TypographyType)
-                           )
-                           .concat(' text="')
-                           .concat(this.text)
-                           .concat('"></component-typography>'
-                     )}"
+                     code="${'<component-typography '
+                        .concat(PreviewFormatterService.getUniqueInstance().property2String(this.typographyType, TypographyType))
+                        .concat(' text="')
+                        .concat(this.text)
+                        .concat('"></component-typography>')}"
                   >
                   </component-code
                ></component-tab-content>

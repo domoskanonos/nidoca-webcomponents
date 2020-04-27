@@ -2,17 +2,16 @@ import { customElement, html, TemplateResult } from 'lit-element';
 import { PageAbstract } from './page-abstract';
 import { SpacerAlignment, SpacerSize, TargetType, TypographyType } from '..';
 import { ContainerProperties, ItemProperties } from '../flex-container/component';
-import {I18nService} from "@domoskanonos/frontend-basis";
+import { I18nService } from '@domoskanonos/frontend-basis';
 
 @customElement('page-get-started')
 export class PageGetStarted extends PageAbstract {
+   constructor() {
+      super();
+      this.navigationTitle = I18nService.getUniqueInstance().getValue('pagegetstarted');
+   }
 
-    constructor() {
-        super();
-        this.navigationTitle = I18nService.getUniqueInstance().getValue('pagegetstarted');
-    }
-
-    getMainComponent(): TemplateResult {
+   getMainComponent(): TemplateResult {
       return html`
          <component-flex-container
             .containerProperties="${[
@@ -28,7 +27,9 @@ export class PageGetStarted extends PageAbstract {
             <component-typography .typographyType="${TypographyType.H1}" text="Get started"></component-typography>
             <component-typography .typographyType="${TypographyType.BODY1}">
                wc-atomic is a lightweight ui-framework based on
-               <component-link href="https://www.webcomponents.org/" targetType="${TargetType.BLANK}">webcomponents</component-link>,
+               <component-link href="https://www.webcomponents.org/" targetType="${TargetType.BLANK}"
+                  >webcomponents</component-link
+               >,
                <component-link href="https://www.typescriptlang.org/" targetType="${TargetType.BLANK}">typescript</component-link>
                and
                <component-link href="https://lit-element.polymer-project.org/" targetType="${TargetType.BLANK}"
@@ -50,7 +51,7 @@ export class PageGetStarted extends PageAbstract {
                or refer directly in package.json:
                <component-spacer spacerSize="${SpacerSize.MEDIUM}" spacerAlignment="${SpacerAlignment.VERTICAL}">
                </component-spacer>
-               <component-code>"dependencies": { "@domoskanonos/wc-atomic": "latest",... }</component-code>
+               <component-code code="${'"dependencies": { "@domoskanonos/wc-atomic": "latest",... }'}"></component-code>
             </component-typography>
 
             <component-typography .typographyType="${TypographyType.H4}" text="Basic Template"></component-typography>

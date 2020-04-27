@@ -88,6 +88,10 @@ export class PageSpacer extends PageAbstract {
                   </component-flex-container>
                </component-tab-content>
                <component-tab-content slot="tabContent"
+                  ><component-spacer
+                     spacerSize="${SpacerSize.MEDIUM}"
+                     spacerAlignment="${SpacerAlignment.VERTICAL}"
+                  ></component-spacer
                   ><component-code
                      code="${'<component-spacer spacerAlignment="'
                         .concat(this.spacerAlignment)

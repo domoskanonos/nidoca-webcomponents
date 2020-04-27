@@ -1,6 +1,6 @@
 import { customElement, html, TemplateResult } from 'lit-element';
 import { PageAbstract } from './page-abstract';
-import { TypographyType } from '..';
+import { SpacerAlignment, SpacerSize, TypographyType } from '..';
 import { I18nService } from '@domoskanonos/frontend-basis';
 import { ContainerProperties, ItemProperties } from '../flex-container/component';
 
@@ -47,28 +47,22 @@ export class PageAccordion extends PageAbstract {
                      .itemProperties="${[ItemProperties.KEYLINE_ALIGNMENT_BOTH, ItemProperties.KEYLINE_SIZE_MEDIUM]}"
                      itemFlexBasisValue="100%"
                   >
-                     
-                     
-                     
                      <component-accordion>
-                    <component-accordion-item header="1">
-                        <component-typography .typographyType="${TypographyType.H2}" text="1"></component-typography>
-                    </component-accordion-item> 
-                    <component-accordion-item header="2">
-                        <component-typography .typographyType="${TypographyType.H2}" text="2"></component-typography>
-                    </component-accordion-item> 
-
-                </component-accordion>
-                     
-                     
-                     
-                  </component-flex-container></component-tab-content
-               >
-               <component-tab-content slot="tabContent"
-                  ><component-code>
-                     
-                  </component-code>
-                  </component-tab-content>
+                        <component-accordion-item header="1">
+                           <component-typography .typographyType="${TypographyType.H2}" text="1"></component-typography>
+                        </component-accordion-item>
+                        <component-accordion-item header="2">
+                           <component-typography .typographyType="${TypographyType.H2}" text="2"></component-typography>
+                        </component-accordion-item>
+                     </component-accordion> </component-flex-container
+               ></component-tab-content>
+               <component-tab-content slot="tabContent">
+                  <component-spacer
+                     spacerSize="${SpacerSize.MEDIUM}"
+                     spacerAlignment="${SpacerAlignment.VERTICAL}"
+                  ></component-spacer
+                  ><component-code> </component-code>
+               </component-tab-content>
             </component-tabs>
          </component-flex-container>
       `;

@@ -1,7 +1,7 @@
 import { customElement, html, property, TemplateResult } from 'lit-element';
 import { PageAbstract } from './page-abstract';
 import { TransitionType } from '../effect-transition/component';
-import { InputfieldComponent, InputfieldType, TypographyType } from '..';
+import { InputfieldComponent, InputfieldType, SpacerAlignment, SpacerSize, TypographyType } from '..';
 import { I18nService } from '@domoskanonos/frontend-basis';
 import { PreviewFormatterService } from './preview-formatter';
 import { ContainerProperties, ItemProperties } from '../flex-container/component';
@@ -44,6 +44,10 @@ export class TransitionPage extends PageAbstract {
                ></component-tab>
                <component-tab slot="tab" text="${I18nService.getUniqueInstance().getValue('source')}"></component-tab>
                <component-tab-content slot="tabContent" .selected="${true}"
+                  ><component-spacer
+                     spacerSize="${SpacerSize.MEDIUM}"
+                     spacerAlignment="${SpacerAlignment.VERTICAL}"
+                  ></component-spacer
                   ><component-flex-container
                      .containerProperties="${[
                         ContainerProperties.CONTAINER_WIDTH_100,
@@ -74,6 +78,10 @@ export class TransitionPage extends PageAbstract {
                   </component-flex-container>
                </component-tab-content>
                <component-tab-content slot="tabContent"
+                  ><component-spacer
+                     spacerSize="${SpacerSize.MEDIUM}"
+                     spacerAlignment="${SpacerAlignment.VERTICAL}"
+                  ></component-spacer
                   ><component-code
                      code="${'<effect-transition '
                         .concat(PreviewFormatterService.getUniqueInstance().property2String(this.transitionType, TransitionType))
