@@ -19,6 +19,13 @@ export class BorderSize {
    static THICK: string = 'THICK';
 }
 
+export class ShadowType {
+   static NONE: string = 'NONE';
+   static KEY_LIGHT: string = 'KEY_LIGHT';
+   static AMBIENT_LIGHT: string = 'AMBIENT_LIGHT';
+   static COMBINED: string = 'COMBINED';
+}
+
 const componentCSS = require('./component.css');
 
 @customElement('component-border')
@@ -33,9 +40,12 @@ export class BorderComponent extends LitElement {
    @property()
    borderSize: string = BorderSize.THIN;
 
+   @property()
+   shadowType: string = ShadowType.NONE;
+
    render() {
       return html`
-         <slot class="BORDER ${this.borderType}  ${this.borderSize}"></slot>
+         <slot class="BORDER ${this.borderType}  ${this.borderSize} ${this.shadowType}"></slot>
       `;
    }
 }

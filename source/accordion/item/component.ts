@@ -19,7 +19,7 @@ export class AccordionItemComponent extends LitElement {
       return html`<div class="accordion">
                            <div
                               class="accordionHeader" 
-                              @click="${() => this.toogle()}"
+                              @click="${() => this.toggle()}"
                            >
                               <component-typography text="${this.header}"></component-typography>
                               <component-icon style="float:right;"
@@ -34,7 +34,7 @@ export class AccordionItemComponent extends LitElement {
       `;
    }
 
-   async toogle() {
+   toggle() {
       console.log('accordion clicked, state=' + this.stateClazz);
       if ('open' == this.stateClazz) {
          this.stateClazz = 'closed';

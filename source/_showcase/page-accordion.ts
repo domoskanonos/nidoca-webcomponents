@@ -47,10 +47,21 @@ export class PageAccordion extends PageAbstract {
                      .itemProperties="${[ItemProperties.KEYLINE_ALIGNMENT_BOTH, ItemProperties.KEYLINE_SIZE_MEDIUM]}"
                      itemFlexBasisValue="100%"
                   >
+                     
+                     
+                     
                      <component-accordion>
-                       
-                       
-                     </component-accordion>
+                    <component-accordion-item header="1">
+                        <component-typography .typographyType="${TypographyType.H2}" text="1"></component-typography>
+                    </component-accordion-item> 
+                    <component-accordion-item header="2">
+                        <component-typography .typographyType="${TypographyType.H2}" text="2"></component-typography>
+                    </component-accordion-item> 
+
+                </component-accordion>
+                     
+                     
+                     
                   </component-flex-container></component-tab-content
                >
                <component-tab-content slot="tabContent"
