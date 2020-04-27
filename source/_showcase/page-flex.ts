@@ -74,7 +74,7 @@ export class PageLayoutComponent extends PageAbstract {
                Im Gegensatz zum vertikal basiertem Block-Layout und dem horizontal basiertem Inline-Layout ist es
                richtungsunabhängig.</component-typography
             >
-            <component-typography .typographyType="${TypographyType.H4}" text="Interaktive Demo"></component-typography>
+            <component-typography .typographyType="${TypographyType.H4}" text="${I18nService.getUniqueInstance().getValue('pageborder_typoh4')}"></component-typography>
             <component-typography .typographyType="${TypographyType.BODY1}"
                >Die Komponente <i>component-flex-container</i> bietet zahlreiche Anpassungsmöglichkeiten, welche du hier
                ausprobieren kannst. Anschließend kannst du dir den enstsprechenden Quellcode angucken.

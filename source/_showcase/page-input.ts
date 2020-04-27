@@ -45,7 +45,7 @@ export class PageInputComponent extends PageAbstract {
                .typographyType="${TypographyType.BODY1}"
                text="Text fields let users enter and edit text."
             ></component-typography>
-            <component-typography .typographyType="${TypographyType.H4}" text="Interactive demo"></component-typography>
+            <component-typography .typographyType="${TypographyType.H4}" text="${I18nService.getUniqueInstance().getValue('pageborder_typoh4')}"></component-typography>
             <component-typography
                .typographyType="${TypographyType.BODY1}"
                text="This demo lets you preview the text field component, its variations, and configuration options. Each tab displays a different type of text field."
