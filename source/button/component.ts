@@ -2,7 +2,7 @@ import { css, customElement, html, property, unsafeCSS } from 'lit-element';
 import { LitElement } from 'lit-element';
 import { BasicService } from '@domoskanonos/frontend-basis';
 import { AlignItems, ContainerProperties, FlexJustifyContent, FlexWrap } from '../flex-container/component';
-import {SpacerSize, TypographyType, VisibleType} from '..';
+import { SpacerSize, TypographyType, VisibleType } from '..';
 
 const componentCSS = require('./component.css');
 
@@ -47,7 +47,10 @@ export class ButtonComponent extends LitElement {
             >
                <component-icon icon="${this.leadingIcon}"> </component-icon>
             </component-visible>
-            <component-spacer spacerSize="${SpacerSize.MEDIUM}"></component-spacer>
+            <component-visible
+               visibleType="${BasicService.getUniqueInstance().isBlank(this.leadingIcon) ? VisibleType.NORMAL : VisibleType.HIDE}"
+               ><component-spacer spacerSize="${SpacerSize.MEDIUM}"></component-spacer
+            ></component-visible>
             <component-typography text="${this.text}" typographyType="${TypographyType.BUTTON}"></component-typography>
             <component-spacer spacerSize="${SpacerSize.MEDIUM}"></component-spacer>
             <slot></slot>
