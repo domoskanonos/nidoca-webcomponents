@@ -65,7 +65,7 @@ export class PageBorder extends PageAbstract {
                         <component-inputfield
                            .inputfieldType="${InputfieldType.COMBOBOX}"
                            .options="${InputfieldComponent.enumToComboboxItems(BorderType)}"
-                           label="VisibleType"
+                           label="${I18nService.getUniqueInstance().getValue('pageborder_visible')}"
                            value="${this.borderType}"
                            @component-inputfield-change="${(event: CustomEvent) =>
                               (this.borderType = (<any>BorderType)[event.detail.outputData.value])}"
@@ -73,7 +73,7 @@ export class PageBorder extends PageAbstract {
                         <component-inputfield
                            .inputfieldType="${InputfieldType.COMBOBOX}"
                            .options="${InputfieldComponent.enumToComboboxItems(BorderSize)}"
-                           label="BorderSize"
+                           label="${I18nService.getUniqueInstance().getValue('pageborder_size')}"
                            value="${this.borderSize}"
                            @component-inputfield-change="${(event: CustomEvent) =>
                               (this.borderSize = (<any>BorderSize)[event.detail.outputData.value])}"
@@ -82,7 +82,7 @@ export class PageBorder extends PageAbstract {
                         <component-inputfield
                            .inputfieldType="${InputfieldType.COMBOBOX}"
                            .options="${InputfieldComponent.enumToComboboxItems(ShadowType)}"
-                           label="ShadowType"
+                           label="${I18nService.getUniqueInstance().getValue('pageborder_shadow')}"
                            value="${this.shadowType}"
                            @component-inputfield-change="${(event: CustomEvent) =>
                               (this.shadowType = (<any>ShadowType)[event.detail.outputData.value])}"

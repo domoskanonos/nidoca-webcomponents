@@ -66,18 +66,11 @@ export class PageLayoutComponent extends PageAbstract {
                text="<component-flex-container/>"
             ></component-typography>
             <component-typography .typographyType="${TypographyType.BODY1}"
-               ><i>component-flex-container</i> basiert auf dem CSS Flexbox Layout (display: flex). Das Layout zielt darauf ab,
-               eine effiziente Möglichkeit zur Anordnung, Ausrichtung und Raumverteilung von Elementen zu bieten.<br />
-               Es wird dem Grid Layout bevorzugt, wenn die Anzahl der Elemente unbekannt oder dynamisch ist. Dabei versucht der
-               Kontainer die Breite, Höhe und die Reihenfolge seiner Gegenstände so zu verändern, dass der verfügbare Raum
-               bestmöglich ausgefüllt wird. <br />
-               Im Gegensatz zum vertikal basiertem Block-Layout und dem horizontal basiertem Inline-Layout ist es
-               richtungsunabhängig.</component-typography
+               ><i>component-flex-container</i> ${I18nService.getUniqueInstance().getValue('pageflex_body')}</component-typography
             >
             <component-typography .typographyType="${TypographyType.H4}" text="${I18nService.getUniqueInstance().getValue('pageborder_typoh4')}"></component-typography>
             <component-typography .typographyType="${TypographyType.BODY1}"
-               >Die Komponente <i>component-flex-container</i> bietet zahlreiche Anpassungsmöglichkeiten, welche du hier
-               ausprobieren kannst. Anschließend kannst du dir den enstsprechenden Quellcode angucken.
+               >Die Komponente <i>component-flex-container</i>${I18nService.getUniqueInstance().getValue('pageflex_body1')}
             </component-typography>
 
             <component-tabs>
@@ -127,7 +120,7 @@ export class PageLayoutComponent extends PageAbstract {
                         <component-inputfield
                            .inputfieldType="${InputfieldType.COMBOBOX}"
                            .options="${InputfieldComponent.enumToComboboxItems(FlexDirection)}"
-                           label="FlexDirection"
+                           label="${I18nService.getUniqueInstance().getValue('pageflex_direction')}"
                            value="${this.flexDirection}"
                            @component-inputfield-change="${(event: CustomEvent) => this.changeFlexDirection(event)}"
                         ></component-inputfield>
@@ -135,7 +128,7 @@ export class PageLayoutComponent extends PageAbstract {
                         <component-inputfield
                            .inputfieldType="${InputfieldType.COMBOBOX}"
                            .options="${InputfieldComponent.enumToComboboxItems(FlexWrap)}"
-                           label="FlexWrap"
+                           label="${I18nService.getUniqueInstance().getValue('pageflex_wrap')}"
                            .value="${InputfieldComponent.enumGetKeyFromValue(FlexWrap, this.flexWrap)}"
                            @component-inputfield-change="${(event: CustomEvent) => this.changeFlexWrap(event)}"
                         ></component-inputfield>
@@ -143,7 +136,7 @@ export class PageLayoutComponent extends PageAbstract {
                         <component-inputfield
                            .inputfieldType="${InputfieldType.COMBOBOX}"
                            .options="${InputfieldComponent.enumToComboboxItems(FlexJustifyContent)}"
-                           label="FlexJustifyContent"
+                           label="${I18nService.getUniqueInstance().getValue('pageflex_justify')}"
                            .value="${InputfieldComponent.enumGetKeyFromValue(FlexJustifyContent, this.flexJustifyContent)}"
                            @component-inputfield-change="${(event: CustomEvent) => this.changeFlexJustify(event)}"
                         ></component-inputfield>
@@ -151,7 +144,7 @@ export class PageLayoutComponent extends PageAbstract {
                         <component-inputfield
                            .inputfieldType="${InputfieldType.COMBOBOX}"
                            .options="${InputfieldComponent.enumToComboboxItems(AlignItems)}"
-                           label="AlignItems"
+                           label="${I18nService.getUniqueInstance().getValue('pageflex_align')}"
                            .value="${InputfieldComponent.enumGetKeyFromValue(AlignItems, this.alignItems)}"
                            @component-inputfield-change="${(event: CustomEvent) => this.changeAlignItems(event)}"
                         ></component-inputfield>
@@ -159,13 +152,13 @@ export class PageLayoutComponent extends PageAbstract {
                         <component-inputfield
                            .inputfieldType="${InputfieldType.COMBOBOX}"
                            .options="${InputfieldComponent.enumToComboboxItems(AlignContent)}"
-                           label="AlignContent"
+                           label="${I18nService.getUniqueInstance().getValue('pageflex_align_content')}"
                            .value="${InputfieldComponent.enumGetKeyFromValue(AlignContent, this.alignContent)}"
                            @component-inputfield-change="${(event: CustomEvent) => this.changeAlignContent(event)}"
                         ></component-inputfield>
 
                         <component-inputfield
-                           label="Standartgröße der einzelnen Inhaltselemente"
+                           label="${I18nService.getUniqueInstance().getValue('pageflex_standard')}"
                            value="${this.itemFlexBasisValue}"
                            @component-inputfield-change="${(event: CustomEvent) => this.changeItemFlexBasis(event)}"
                         ></component-inputfield>
@@ -173,7 +166,7 @@ export class PageLayoutComponent extends PageAbstract {
                         <component-inputfield
                            .inputfieldType="${InputfieldType.COMBOBOX}"
                            .options="${InputfieldComponent.enumToComboboxItems(ContainerProperties)}"
-                           label="Eigenschaften des Container"
+                           label="${I18nService.getUniqueInstance().getValue('pageflex_continer')}"
                            .value="${this.containerProperties}"
                            size="10"
                            multiple="true"
@@ -184,7 +177,7 @@ export class PageLayoutComponent extends PageAbstract {
                         <component-inputfield
                            .inputfieldType="${InputfieldType.COMBOBOX}"
                            .options="${InputfieldComponent.enumToComboboxItems(ItemProperties)}"
-                           label="Eigenschaften der Inhaltselemente"
+                           label="${I18nService.getUniqueInstance().getValue('pageflex_inhault')}"
                            .value="${this.itemProperties}"
                            size="10"
                            multiple="true"
