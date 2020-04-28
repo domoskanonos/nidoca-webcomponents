@@ -1,23 +1,22 @@
-.accordion {
-    border-bottom: 1px solid black;
-
+.ACCORDION_ITEM {
 }
 
-.accordionHeader:hover {
+.ACCORDION_HEADER:hover {
 }
-.accordionHeader {
-    line-height: var(--line-height-big);
-    cursor: pointer;
+.ACCORDION_HEADER {
+   cursor: pointer;
 }
+
 component-typography {
-    padding-left: var(--space-small);
+   padding-left: var(--space-small);
 }
 component-icon {
-    padding-right: var(--space-small);
+   padding-right: var(--space-small);
 }
+
 .accordionContent.closed {
-    display: none;
+   display: none;
 }
 .accordionContent.open {
-    display: initial;
+   display: initial;
 }

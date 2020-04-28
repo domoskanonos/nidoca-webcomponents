@@ -1,5 +1,7 @@
 import { css, customElement, html, property, unsafeCSS } from 'lit-element';
 import { LitElement } from 'lit-element';
+import { BorderType } from '../..';
+import { GridAlignItems, GridJustifyItems } from '../../grid-container/component';
 
 const componentCSS = require('./component.css');
 
@@ -16,20 +18,27 @@ export class AccordionItemComponent extends LitElement {
    stateClazz: string = 'closed';
 
    render() {
-      return html`<div class="accordion">
-                           <div
-                              class="accordionHeader" 
-                              @click="${() => this.toggle()}"
-                           >
-                              <component-typography text="${this.header}"></component-typography>
-                              <component-icon style="float:right;"
-                                 icon="${this.stateClazz == 'closed' ? 'keyboard_arrow_down' : 'keyboard_arrow_up'}"
-                              ></component-icon>
-                           </div>
-                           <div class="accordionContent ${this.stateClazz}">      
-                                <slot></slot>                           
-                           </div>
-                        </div>
+      return html`
+         <div class="ACCORDION_ITEM">
+            <component-border borderType="${BorderType.ALL}">
+               <component-grid-container class="ACCORDION_HEADER"
+                  @click="${() => this.toggle()}"
+                  .gridJustifyItems="${GridJustifyItems.CENTER}"
+                  .gridAlignItems="${GridAlignItems.CENTER}"
+                  .gridTemplateRows="${['1fr']}"
+                  .gridTemplateColumns="${['1fr', '1fr']}"
+               >
+                  <component-typography text="${this.header}"></component-typography>
+                  <component-icon
+                     style="float:right;"
+                     icon="${this.stateClazz == 'closed' ? 'keyboard_arrow_down' : 'keyboard_arrow_up'}"
+                  ></component-icon>
+               </component-grid-container>
+
+               <div class="accordionContent ${this.stateClazz}">
+                  <slot></slot>
+               </div>
+            </component-border>
          </div>
       `;
    }
