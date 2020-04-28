@@ -1,7 +1,7 @@
 import { customElement, html, property, TemplateResult } from 'lit-element';
 import { PageAbstract } from './page-abstract';
 import { InputfieldComponent, InputfieldType } from '../inputfield/component';
-import { ButtonType, TypographyType } from '..';
+import { ButtonType, SpacerAlignment, SpacerSize, TypographyType } from '..';
 import { ContainerProperties, ItemProperties } from '../flex-container/component';
 import { I18nService } from '@domoskanonos/frontend-basis';
 import { PreviewFormatterService } from './preview-formatter';
@@ -33,11 +33,15 @@ export class PageButton extends PageAbstract {
             itemFlexBasisValue="100%"
          >
             <component-typography .typographyType="${TypographyType.H2}" text="<component-button/>"></component-typography>
+            <component-typography .typographyType="${TypographyType.BODY1}">
+               ${I18nService.getUniqueInstance().getValue(
+                  'pagebutton_description_1'
+               )}<i>@component-button-click</i>${I18nService.getUniqueInstance().getValue('pagebutton_description_2')}
+            </component-typography>
             <component-typography
-               .typographyType="${TypographyType.BODY1}"
-               text="${I18nService.getUniqueInstance().getValue('pagebutton_single_tap')}"
+               .typographyType="${TypographyType.H4}"
+               text="${I18nService.getUniqueInstance().getValue('pageborder_typoh4')}"
             ></component-typography>
-            <component-typography .typographyType="${TypographyType.H4}" text="${I18nService.getUniqueInstance().getValue('pageborder_typoh4')}"></component-typography>
             <component-typography
                .typographyType="${TypographyType.BODY1}"
                text="${I18nService.getUniqueInstance().getValue('pagebutton_var')}"
@@ -64,7 +68,7 @@ export class PageButton extends PageAbstract {
                         <component-inputfield
                            .inputfieldType="${InputfieldType.COMBOBOX}"
                            .options="${InputfieldComponent.enumToComboboxItems(ButtonType)}"
-                           label="buttonType"
+                           label="${I18nService.getUniqueInstance().getValue('pagebutton_buttontype')}"
                            value="${this.buttonType}"
                            @component-inputfield-change="${(event: CustomEvent) => this.changeButtonType(event)}"
                         ></component-inputfield>
@@ -84,6 +88,10 @@ export class PageButton extends PageAbstract {
                      ></component-button> </component-flex-container
                ></component-tab-content>
                <component-tab-content slot="tabContent"
+                  ><component-spacer
+                     spacerSize="${SpacerSize.MEDIUM}"
+                     spacerAlignment="${SpacerAlignment.VERTICAL}"
+                  ></component-spacer
                   ><component-code
                      code="${'<component-button '
                         .concat(PreviewFormatterService.getUniqueInstance().property2String(this.buttonType, ButtonType))
