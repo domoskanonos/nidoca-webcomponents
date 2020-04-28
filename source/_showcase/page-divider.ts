@@ -34,8 +34,7 @@ export class PageDivider extends PageAbstract {
          >
             <component-typography .typographyType="${TypographyType.H2}" text="<component-divider/>"></component-typography>
             <component-typography .typographyType="${TypographyType.BODY1}"
-               ><i>BoxComponent</i> trennt Inhaltselemente voneinander und dient als visueller Trenner. Man kann zwischen
-               verschiedener Dicke des Trenners und der Transparenz wählen.</component-typography
+               ><i>BoxComponent</i> ${I18nService.getUniqueInstance().getValue('pagedivider_text')}</component-typography
             >
 
             <component-tabs>
@@ -61,7 +60,7 @@ export class PageDivider extends PageAbstract {
                            step="0.1"
                            min="0.0"
                            max="1.0"
-                           label="Transpazenz (Wert zwischen 0.0-1.0)"
+                           label="${I18nService.getUniqueInstance().getValue('pagediider_label')}"
                            .value="${this.opacity}"
                            @component-inputfield-change="${(event: CustomEvent) =>
                               (this.opacity = event.detail.outputData.value)}"

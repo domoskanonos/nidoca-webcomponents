@@ -56,13 +56,13 @@ export class PageBox extends PageAbstract {
                      <component-form>
                         <component-inputfield
                            .inputfieldType="${InputfieldType.TEXT}"
-                           label="Höhe der Box"
+                           label="${I18nService.getUniqueInstance().getValue('pagebox_text')}"
                            value="${this.height}"
                            @component-inputfield-keyup="${(event: CustomEvent) => (this.height = event.detail.value)}"
                         ></component-inputfield>
                         <component-inputfield
                            .inputfieldType="${InputfieldType.TEXT}"
-                           label="Breite der Box"
+                           label="${I18nService.getUniqueInstance().getValue('pagebox_test1')}"
                            value="${this.width}"
                            @component-inputfield-keyup="${(event: CustomEvent) => (this.width = event.detail.value)}"
                         ></component-inputfield>

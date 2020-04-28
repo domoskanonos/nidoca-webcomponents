@@ -43,14 +43,11 @@ export class PageGrid extends PageAbstract {
                text="<component-grid-container/>"
             ></component-typography>
             <component-typography .typographyType="${TypographyType.BODY1}"
-               ><i>GridContainerComponent</i> ist die Umsetzung des CSS Grid-Layouts (<i>display:grid</i>), eines der
-               leistungsstärkste in CSS verfügbare Layoutsystem. <br />
-               Es ist ein 2-dimensionales System, d.h. es kann sowohl Spalten als auch Zeilen verarbeiten. Im Gegensatz zum
-               Flex-Layout (display:flex), welches weitgehend ein 1-dimensionales System ist.</component-typography
+               ><i>GridContainerComponent</i>${I18nService.getUniqueInstance().getValue('pagegrid_body')}</component-typography
             >
-            <component-typography .typographyType="${TypographyType.H4}" text="Interaktive Demo"></component-typography>
+            <component-typography .typographyType="${TypographyType.H4}" text="${I18nService.getUniqueInstance().getValue('pageborder_typoh4')}"></component-typography>
             <component-typography .typographyType="${TypographyType.BODY1}"
-               >Hier können Sie die Komponente ausführlich testen. Anschließend können Sie den zugehörigen Quellcode unter
+               >${I18nService.getUniqueInstance().getValue('pagegrid_body1')}
                <i>Code</i> begutachten</component-typography
             >
             <component-tabs>
