@@ -19,6 +19,7 @@ import './page-list.ts';
 import './page-table.ts';
 import './page-accordion.ts';
 import './page-tabs.ts';
+import './page-ripple.ts';
 import './page-divider.ts';
 import './page-visible.ts';
 import './page-spacer.ts';
@@ -74,6 +75,10 @@ export class ShowcaseApp extends AbstractApp {
          case 'pageaccordion':
             return html`
                <page-accordion></page-accordion>
+            `;
+         case 'pageripple':
+            return html`
+               <page-ripple></page-ripple>
             `;
          case 'pagetabs':
             return html`

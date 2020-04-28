@@ -6,15 +6,12 @@ import { I18nService } from '@domoskanonos/frontend-basis';
 import { PreviewFormatterService } from './preview-formatter';
 import { ContainerProperties, ItemProperties } from '../flex-container/component';
 
-@customElement('page-transition')
-export class TransitionPage extends PageAbstract {
+@customElement('page-ripple')
+export class RipplePage extends PageAbstract {
    constructor() {
       super();
-      this.navigationTitle = 'TransitionEffect';
+      this.navigationTitle = 'RippleEffect';
    }
-
-   @property()
-   transitionType: string = TransitionType.SLIDE_CENTER;
 
    getMainComponent(): TemplateResult {
       return html`
@@ -29,9 +26,9 @@ export class TransitionPage extends PageAbstract {
             .itemProperties="${[ItemProperties.KEYLINE_ALIGNMENT_HORIZONTAL, ItemProperties.KEYLINE_SIZE_MEDIUM]}"
             itemFlexBasisValue="100%"
          >
-            <component-typography .typographyType="${TypographyType.H2}" text="<effect-transition/>"></component-typography>
+            <component-typography .typographyType="${TypographyType.H2}" text="<effect-ripple/>"></component-typography>
             <component-typography .typographyType="${TypographyType.BODY1}"
-               ><i>TransitionComponent</i> ist eine Komponente mit der man Inhalte anmutig einblenden kann.</component-typography
+               ><i>RippleComponent</i> ist eine Komponente mit der man Inhalte anmutig einblenden kann.</component-typography
             >
             <component-typography .typographyType="${TypographyType.H4}" text="Interaktive Demo"></component-typography>
             <component-typography .typographyType="${TypographyType.BODY1}" text=""></component-typography>
@@ -62,19 +59,10 @@ export class TransitionPage extends PageAbstract {
                      ]}"
                      itemFlexBasisValue="50%"
                   >
-                     <component-form>
-                        <component-inputfield
-                           .inputfieldType="${InputfieldType.COMBOBOX}"
-                           .options="${InputfieldComponent.enumToComboboxItems(TransitionType)}"
-                           label="buttonType"
-                           value="${this.transitionType}"
-                           @component-inputfield-change="${(event: CustomEvent) => this.changeTransitionType(event)}"
-                        ></component-inputfield>
-                     </component-form>
 
-                     <effect-transition transitionType="${this.transitionType}">
+                     <effect-ripple>
                         <component-rich-media src="https://picsum.photos/400/400"></component-rich-media>
-                     </effect-transition>
+                     </effect-ripple>
                   </component-flex-container>
                </component-tab-content>
                <component-tab-content slot="tabContent"
@@ -83,9 +71,8 @@ export class TransitionPage extends PageAbstract {
                      spacerAlignment="${SpacerAlignment.VERTICAL}"
                   ></component-spacer
                   ><component-code
-                     code="${'<effect-transition '
-                        .concat(PreviewFormatterService.getUniqueInstance().property2String(this.transitionType, TransitionType))
-                        .concat(' ></effect-transition>')}"
+                     code="${'<effect-ripple '
+                        .concat(' ></effect-ripple>')}"
                   >
                   </component-code
                ></component-tab-content>
@@ -94,9 +81,4 @@ export class TransitionPage extends PageAbstract {
       `;
    }
 
-   private changeTransitionType(event: CustomEvent) {
-      let transitionType: string = (<any>TransitionType)[event.detail.outputData.value];
-      console.log('change transitionType: {}', transitionType);
-      this.transitionType = transitionType;
-   }
 }

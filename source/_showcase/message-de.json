@@ -85,5 +85,6 @@
    "pageicon_body4":"Sie können das Icon klickbar machen.",
    "pageicon_body5":"Klickbare Icons werfen ein Event: @component-icon-click",
    "pageicon_body6":"Icon-Rahmen",
-   "pageicon_body7":"Sie können das Icon mit einem unsichtbarenRahmen versehen."
+   "pageicon_body7":"Sie können das Icon mit einem unsichtbarenRahmen versehen.",
+   "pageripple":"Ripple"
 }

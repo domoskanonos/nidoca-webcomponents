@@ -24,10 +24,8 @@ export class PageButton extends PageAbstract {
          <component-flex-container
             .containerProperties="${[
                ContainerProperties.CONTAINER_WIDTH_50,
-               ContainerProperties.TABLET_MAX_WIDTH,
                ContainerProperties.SMARTPHONE_MAX_WIDTH,
                ContainerProperties.SMARTPHONE_HORIZONTAL_PADDING,
-               ContainerProperties.TABLET_HORIZONTAL_PADDING
             ]}"
             .itemProperties="${[ItemProperties.KEYLINE_ALIGNMENT_HORIZONTAL, ItemProperties.KEYLINE_SIZE_MEDIUM]}"
             itemFlexBasisValue="100%"

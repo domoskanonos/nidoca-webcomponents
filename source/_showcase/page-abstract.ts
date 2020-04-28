@@ -160,7 +160,7 @@ export abstract class PageAbstract extends BasisTemplate {
             text="${I18nService.getUniqueInstance().getValue('pagetabs')}"
             href="pagetabs"
          ></component-navigation-link>
-           <component-navigation-link
+         <component-navigation-link
             slot="links"
             icon=""
             text="${I18nService.getUniqueInstance().getValue('pagelist')}"
@@ -179,6 +179,12 @@ export abstract class PageAbstract extends BasisTemplate {
             icon="dynamic_feed"
             text="${I18nService.getUniqueInstance().getValue('pagetransition')}"
             href="pagetransition"
+         ></component-navigation-link>
+         <component-navigation-link
+            slot="links"
+            icon=""
+            text="${I18nService.getUniqueInstance().getValue('pageripple')}"
+            href="pageripple"
          ></component-navigation-link>
          <component-divider slot="links" .dividerType="${DividerType.THIN}" opacity="0.2"></component-divider>
          <component-navigation-link
