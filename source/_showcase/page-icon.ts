@@ -45,17 +45,14 @@ export class PageIconComponent extends PageAbstract {
          >
             <component-typography .typographyType="${TypographyType.H2}" text="<component-icon/>"></component-typography>
             <component-typography type="${TypographyType.BODY1}"
-               ><i>Icon Component</i> ist eine Komponente mit der man die Google Material Icons in seine Anwendung integrieren
-               kann. Icons die klickbar sind, werfen ein <i>@component-icon-click</i> Event. Eine Übersicht aller Icons kannst du
-               hier finden :
+               ><i>Icon Component</i> ${I18nService.getUniqueInstance().getValue('pageicon_body2')}
                <component-link href="https://material.io/resources/icons/?style=baseline" targetType="${TargetType.BLANK}"
-                  >Google Material Icons</component-link
+                  >${I18nService.getUniqueInstance().getValue('pageicon_label1')}</component-link
                >
             </component-typography>
-            <component-typography .typographyType="${TypographyType.H4}" text="Interaktive demo"></component-typography>
+            <component-typography .typographyType="${TypographyType.H4}" text="${I18nService.getUniqueInstance().getValue('pageborder_typoh4')}"></component-typography>
             <component-typography .typographyType="${TypographyType.BODY1}">
-               Für alle Icons können sie verschiedene Eigenschaften ändern. Auf dieser Demoseite können Sie die verschiedenen
-               Eigenschaften kombinieren und sich das Ergebnis anschauen, sowie den zugehörigen Quelltext kopieren und nutzen.
+              ${I18nService.getUniqueInstance().getValue('pageicon_body3')}
             </component-typography>
 
             <component-tabs>
@@ -82,17 +79,17 @@ export class PageIconComponent extends PageAbstract {
                   >
                      <component-form>
                         <component-inputfield
-                           label="Klickbar ?"
-                           assistiveText="Sie können das Icon klickbar machen."
-                           infoText="Klickbare Icons werfen ein Event: @component-icon-click"
+                           label="${I18nService.getUniqueInstance().getValue('pageicon_label2')}"
+                           assistiveText="${I18nService.getUniqueInstance().getValue('pageicon_body4')}"
+                           infoText="${I18nService.getUniqueInstance().getValue('pageicon_body5')}"
                            .inputfieldType="${InputfieldType.CHECKBOX}"
                            .checked="${this.clickable}"
                            @component-inputfield-change="${(event: CustomEvent) =>
                               (this.clickable = event.detail.outputData.value)}"
                         ></component-inputfield>
                         <component-inputfield
-                           label="Icon-Rahmen"
-                           assistiveText="Sie können das Icon mit einem unsichtbarenRahmen versehen."
+                           label="${I18nService.getUniqueInstance().getValue('pageicon_body6')}"
+                           assistiveText="${I18nService.getUniqueInstance().getValue('pageicon_body7')}"
                            .inputfieldType="${InputfieldType.CHECKBOX}"
                            .checked="${this.withIconSpace}"
                            @component-inputfield-change="${(event: CustomEvent) =>
