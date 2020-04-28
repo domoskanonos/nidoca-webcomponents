@@ -23,7 +23,7 @@ export class ListComponent extends LitElement {
 
    render() {
       return html`
-         <component-border borderType="${BorderType.BOTTOM}">
+         <component-border .borderProperties="${[BorderType.FULL_WIDTH, BorderType.BOTTOM]}">
             <slot
                class="LIST_SLOT"
                id="slotElement"

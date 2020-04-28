@@ -12,6 +12,10 @@ slot {
    display: inline-block;
 }
 
+.FULL_WIDTH {
+   width: 100%;
+}
+
 .THIN {
    border-width: thin;
 }

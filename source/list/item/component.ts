@@ -25,14 +25,15 @@ export class ListItemComponent extends LitElement {
 
    render() {
       return html`
-         <component-grid-container .gridTemplateRows="${['1fr']}" .gridTemplateColumns="${['auto', '1fr']}">
-            <component-icon
-               .rendered="${this.selectMode}"
-               @click="${() => this.switchSelected()}"
-               icon="${this.selected ? 'check_box' : 'check_box_outline_blank'}"
-            ></component-icon>
-            <slot class="LIST_ITEM_SLOT" @click="${() => this.itemClicked()}"></slot>
-         </component-grid-container>
+         <component-border .borderProperties="${[BorderType.FULL_WIDTH, BorderType.BOTTOM]}">
+            <component-grid-container .gridTemplateRows="${['1fr']}" .gridTemplateColumns="${['auto', '1fr']}">
+               <component-icon
+                  .rendered="${this.selectMode}"
+                  @click="${() => this.switchSelected()}"
+                  icon="${this.selected ? 'check_box' : 'check_box_outline_blank'}"
+               ></component-icon>
+               <slot class="LIST_ITEM_SLOT" @click="${() => this.itemClicked()}"></slot> </component-grid-container
+         ></component-border>
       `;
    }
 

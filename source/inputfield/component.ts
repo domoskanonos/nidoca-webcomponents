@@ -144,11 +144,14 @@ export class InputfieldComponent extends LitElement {
       return this.inputfieldType != InputfieldType.HIDDEN
          ? html`
               <component-border
-                 borderType="${this.showSelectedBorder()
-                    ? BorderType.BOTTOM_SELECTED
-                    : this.showBorder()
-                    ? BorderType.BOTTOM
-                    : BorderType.BOTTOM}"
+                 .borderProperties="${[
+                    BorderType.FULL_WIDTH,
+                    this.showSelectedBorder()
+                       ? BorderType.BOTTOM_SELECTED
+                       : this.showBorder()
+                       ? BorderType.BOTTOM
+                       : BorderType.NONE
+                 ]}"
               >
                  <component-grid-container
                     class="INPUTCONTAINER"
@@ -280,7 +283,8 @@ ${this.value}</textarea
                                         ></component-icon>
                                      </component-visible>
                                      <component-visible visibleType="${this.checked ? VisibleType.NORMAL : VisibleType.HIDE}">
-                                        <component-icon color="var(--app-color-primary-background)"
+                                        <component-icon
+                                           color="var(--app-color-primary-background)"
                                            @component-icon-click="${() => {
                                               this.switchChecked();
                                            }}"

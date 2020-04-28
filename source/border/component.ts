@@ -11,6 +11,7 @@ export class BorderType {
    static TOP: string = 'TOP';
    static BOTTOM: string = 'BOTTOM';
    static BOTTOM_SELECTED: string = 'BOTTOM_SELECTED';
+   static FULL_WIDTH: string = 'FULL_WIDTH';
 }
 
 export class BorderSize {
@@ -35,7 +36,11 @@ export class BorderComponent extends LitElement {
    `;
 
    @property()
-   borderType: string = BorderType.ALL;
+   borderProperties: string[] = [BorderType.NONE];
+
+   //deprecated use borderProperties
+   @property()
+   borderType: string = BorderType.NONE;
 
    @property()
    borderSize: string = BorderSize.THIN;
@@ -45,7 +50,18 @@ export class BorderComponent extends LitElement {
 
    render() {
       return html`
-         <slot class="BORDER ${this.borderType} ${this.borderSize} ${this.shadowType}"></slot>
+         <slot
+            class="${this.toBorderPropertiesString(this.borderProperties)} ${this.borderType} ${this.borderSize} ${this
+               .shadowType}"
+         ></slot>
       `;
+   }
+
+   toBorderPropertiesString(borderPropertieses: string[]) {
+      let borderClazzString: string = 'BORDER';
+      borderPropertieses.forEach((clazz) => {
+         borderClazzString = borderClazzString.concat(' ').concat(clazz);
+      });
+      return borderClazzString;
    }
 }
