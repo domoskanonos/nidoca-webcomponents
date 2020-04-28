@@ -1,27 +1,44 @@
-.rippleContainer {
-    position: relative;
-    display: inline-block;
+:root {
+   --ripple-background: var(--app-color-background);
+   --ripple-opacity: 0.3;
+   --ripple-duration: 600ms;
+   --ripple-easing: linear;
+
+   --y: 0;
+   --x: 0;
+   --d: 0;
+   --t: 0;
+   --s: 0;
+   --o: 0;
 }
 
-.ripple {
-    opacity: 0;
-    transform: scale(0);
-    background: rgba(0, 0, 0, 0.5);
-    border-radius: 50%;
-    position: absolute;
+*,
+*::before,
+*::after {
+   box-sizing: inherit;
 }
 
-.animate {
-    animation: ripple-mo 0.5s cubic-bezier(0, 0, 0.2, 1);
+[anim='ripple'] {
+   position: relative;
+   overflow: hidden;
 }
 
-@keyframes ripple-mo {
-    0% {
-        transform: scale(0);
-        opacity: 1;
-    }
-    100% {
-        transform: scale(1);
-        opacity: 0;
-    }
+[anim='ripple']:before {
+   content: '';
+   position: absolute;
+   display: block;
+   background: var(--ripple-background, white);
+   border-radius: 50%;
+   pointer-events: none;
+   top: calc(var(--y) * 1px);
+   left: calc(var(--x) * 1px);
+   width: calc(var(--d) * 1px);
+   height: calc(var(--d) * 1px);
+   opacity: calc(var(--o, 1) * var(--ripple-opacity, 0.3));
+   -webkit-transition: calc(var(--t, 0) * var(--ripple-duration, 600ms)) var(--ripple-easing, linear);
+   transition: calc(var(--t, 0) * var(--ripple-duration, 600ms)) var(--ripple-easing, linear);
+   -webkit-transform: translate(-50%, -50%) scale(var(--s, 1));
+   transform: translate(-50%, -50%) scale(var(--s, 1));
+   -webkit-transform-origin: center;
+   transform-origin: center;
 }
