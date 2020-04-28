@@ -1,5 +1,2 @@
 TODO:
-- Toolbar überarbeiten: Horizontal and vertical toolbar app footer dann löschen
-- Kein Card Element um die ganzen default forms
-- Auto Resize von FlexContainer nur mit flag
-- Rich Media mit Video
+- Border Type 100% width und BorderType in BorderProperties oder ähnliches  style="width: 100%;" an Slot Element funktioniert

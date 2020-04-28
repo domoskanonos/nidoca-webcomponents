@@ -45,7 +45,7 @@ export class BorderComponent extends LitElement {
 
    render() {
       return html`
-         <slot class="BORDER ${this.borderType}  ${this.borderSize} ${this.shadowType}"></slot>
+         <slot class="BORDER ${this.borderType} ${this.borderSize} ${this.shadowType}"></slot>
       `;
    }
 }

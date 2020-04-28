@@ -1,9 +1,9 @@
-import {css, customElement, html, property, unsafeCSS, query, LitElement} from 'lit-element';
+import { css, customElement, html, property, unsafeCSS, query, LitElement } from 'lit-element';
 import { ListItemComponent } from '../item/component';
 import { BasicService } from '@domoskanonos/frontend-basis';
+import { BorderType } from '../..';
 
 const componentCSS = require('./component.css');
-
 
 @customElement('component-list')
 export class ListComponent extends LitElement {
@@ -23,13 +23,14 @@ export class ListComponent extends LitElement {
 
    render() {
       return html`
-         <div class="list">
+         <component-border borderType="${BorderType.BOTTOM}">
             <slot
+               class="LIST_SLOT"
                id="slotElement"
                @component-list-item-select="${(event: CustomEvent) => this.listItemSelected(event)}"
                @component-list-item-unselect="${(event: CustomEvent) => this.listItemUnSelected(event)}"
             ></slot>
-         </div>
+         </component-border>
       `;
    }
 
@@ -51,9 +52,9 @@ export class ListComponent extends LitElement {
    resetSelectionMode(): void {
       this.selectMode = false;
       BasicService.getUniqueInstance().dispatchSimpleCustomEvent(
-          this,
-          ListComponent.EVENT_SELECTION_MODE_CHANGED,
-          this.selectMode
+         this,
+         ListComponent.EVENT_SELECTION_MODE_CHANGED,
+         this.selectMode
       );
    }
 
@@ -74,5 +75,4 @@ export class ListComponent extends LitElement {
       }
       return selection;
    }
-
 }

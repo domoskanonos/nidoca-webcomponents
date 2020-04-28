@@ -1,14 +1,9 @@
 :host {
-   width: 100%;
-   min-width: 100%;
 }
 
-slot {
-   display: inline-block;
-}
-
-.listItem,
-::slotted(.listItem) {
-   overflow: hidden;
-   box-sizing: border-box;
+.LIST_ITEM_SLOT {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr;
+    width: 100%;
 }

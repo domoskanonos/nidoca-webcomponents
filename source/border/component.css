@@ -50,5 +50,5 @@ slot {
 
 .BOTTOM_SELECTED {
    border-bottom-style: solid;
-   border-color: var(--app-color-active);
+   border-color: var(--app-color-primary);
 }
