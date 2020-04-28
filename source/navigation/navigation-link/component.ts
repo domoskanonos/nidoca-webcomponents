@@ -35,29 +35,27 @@ export class NavigationLinkComponent extends LitElement {
    render() {
       return this.rendered
          ? html`
-              <effect-ripple>
-                 <div
-                    class="navItem"
-                    class="${RouterService.getUniqueInstance().getPath() == this.href ? 'navItem selected' : 'navItem'}"
-                 >
-                    <component-spacer spacerSize="${SpacerSize.SMALL}" spacerAlignment="${SpacerAlignment.VERTICAL}">
-                       <component-flex-container
-                          @click="${() => this.linkClicked()}"
-                          .containerProperties="${[ContainerProperties.CONTAINER_WIDTH_100]}"
-                          .itemProperties="${[]}"
-                          .flexDirection="${FlexDirection.ROW}"
-                          .flexWrap="${FlexWrap.NO_WRAP}"
-                          .flexJustifyContent="${FlexJustifyContent.FLEX_END}"
-                          .alignItems="${AlignItems.CENTER}"
-                          .alignContent="${AlignContent.FLEX_START}"
-                          .itemFlexBasisValues="${['20%', '80%']}"
-                       >
-                          <component-icon icon="${this.icon}" .withIconSpace="${false}"></component-icon>
-                          <component-typography typographyType="${TypographyType.BODY2}">${this.text}</component-typography>
-                       </component-flex-container>
-                    </component-spacer>
-                 </div></effect-ripple
+              <div
+                 class="navItem"
+                 class="${RouterService.getUniqueInstance().getPath() == this.href ? 'navItem selected' : 'navItem'}"
               >
+                 <component-spacer spacerSize="${SpacerSize.SMALL}" spacerAlignment="${SpacerAlignment.VERTICAL}">
+                    <component-flex-container
+                       @click="${() => this.linkClicked()}"
+                       .containerProperties="${[ContainerProperties.CONTAINER_WIDTH_100]}"
+                       .itemProperties="${[]}"
+                       .flexDirection="${FlexDirection.ROW}"
+                       .flexWrap="${FlexWrap.NO_WRAP}"
+                       .flexJustifyContent="${FlexJustifyContent.FLEX_END}"
+                       .alignItems="${AlignItems.CENTER}"
+                       .alignContent="${AlignContent.FLEX_START}"
+                       .itemFlexBasisValues="${['20%', '80%']}"
+                    >
+                       <component-icon icon="${this.icon}" .withIconSpace="${false}"></component-icon>
+                       <component-typography typographyType="${TypographyType.BODY2}">${this.text}</component-typography>
+                    </component-flex-container>
+                 </component-spacer>
+              </div>
            `
          : html``;
    }
