@@ -12,12 +12,6 @@
    display: flex;
 }
 
-::slotted(.HOVER:hover),
-.HOVER:hover {
-   color: var(--app-color);
-   background-color: var(--app-color-background-hover);
-}
-
 .CONTAINER_WIDTH_MIN_CONTENT,
 ::slotted(.CONTAINER_WIDTH_MIN_CONTENT) {
    width: min-content;
@@ -92,12 +86,12 @@
 
 .KEYLINE_ALIGNMENT_HORIZONTAL,
 ::slotted(.KEYLINE_ALIGNMENT_HORIZONTAL) {
-   padding-right: 0;
+   padding-bottom: 0;
 }
 
 .KEYLINE_ALIGNMENT_VERTICAL,
 ::slotted(.KEYLINE_ALIGNMENT_VERTICAL) {
-   padding-bottom: 0;
+   padding-right: 0;
 }
 
 .KEYLINE_SIZE_ALIGNMENT_BOTH,

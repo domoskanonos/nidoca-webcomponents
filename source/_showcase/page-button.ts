@@ -56,12 +56,8 @@ export class PageButton extends PageAbstract {
                <component-tab slot="tab" text="${I18nService.getUniqueInstance().getValue('source')}"></component-tab>
                <component-tab-content slot="tabContent" .selected="${true}"
                   ><component-flex-container
-                     .containerProperties="${[
-                        ContainerProperties.CONTAINER_WIDTH_100,
-                        ContainerProperties.TABLET_MAX_WIDTH,
-                        ContainerProperties.SMARTPHONE_MAX_WIDTH
-                     ]}"
-                     .itemProperties="${[ItemProperties.KEYLINE_ALIGNMENT_BOTH, ItemProperties.KEYLINE_SIZE_MEDIUM]}"
+                     .containerProperties="${[ContainerProperties.CONTAINER_WIDTH_100, ContainerProperties.SMARTPHONE_MAX_WIDTH]}"
+                     .itemProperties="${[ItemProperties.KEYLINE_ALIGNMENT_VERTICAL, ItemProperties.KEYLINE_SIZE_ZERO]}"
                      itemFlexBasisValue="100%"
                   >
                      <component-form>
@@ -74,8 +70,8 @@ export class PageButton extends PageAbstract {
                         ></component-inputfield>
                         <component-inputfield
                            .inputfieldType="${InputfieldType.CHECKBOX}"
-                           label="Trailing Icon"
-                           assistiveText="${I18nService.getUniqueInstance().getValue('pagebutton_trail_text')}"
+                           label="${I18nService.getUniqueInstance().getValue('pagebutton_leading_label')}"
+                           assistiveText="${I18nService.getUniqueInstance().getValue('pagebutton_leading_text')}"
                            .checked="${this.showLeadingIcon}"
                            @component-inputfield-change="${() => this.switchLeadingIcon()}"
                         ></component-inputfield>
@@ -84,7 +80,7 @@ export class PageButton extends PageAbstract {
                      <component-button
                         buttonType="${this.buttonType}"
                         leadingIcon="${this.showLeadingIcon ? 'sentiment_satisfied_alt' : ''}"
-                        text="Mein Button"
+                        text="${I18nService.getUniqueInstance().getValue('pagebutton_button_text')}"
                      ></component-button> </component-flex-container
                ></component-tab-content>
                <component-tab-content slot="tabContent"
@@ -95,7 +91,9 @@ export class PageButton extends PageAbstract {
                   ><component-code
                      code="${'<component-button '
                         .concat(PreviewFormatterService.getUniqueInstance().property2String(this.buttonType, ButtonType))
-                        .concat(' leadingIcon="sentiment_satisfied_alt" text="Mein&nbsp;Button"></component-button>')}"
+                        .concat(' leadingIcon="sentiment_satisfied_alt" text="')
+                        .concat(I18nService.getUniqueInstance().getValue('pagebutton_button_text'))
+                        .concat('"></component-button>')}"
                   >
                   </component-code
                ></component-tab-content>
