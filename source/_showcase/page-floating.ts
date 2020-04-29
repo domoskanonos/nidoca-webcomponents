@@ -66,27 +66,27 @@ export class PageFloating extends PageAbstract {
                   >
                      <component-form>
                         <component-inputfield
-                           .inputfieldType="${InputfieldType.NUMBER}"
+                           .inputfieldType="${InputfieldType.TEXT}"
                            label="${I18nService.getUniqueInstance().getValue('pagefloating_left_label')}"
-                           .checked="${this.left}"
+                           .value="${this.left}"
                            @component-inputfield-change="${(event: CustomEvent) => (this.left = event.detail.value)}"
                         ></component-inputfield>
                           <component-inputfield
-                           .inputfieldType="${InputfieldType.NUMBER}"
+                           .inputfieldType="${InputfieldType.TEXT}"
                            label="${I18nService.getUniqueInstance().getValue('pagefloating_right_label')}"
-                           .checked="${this.right}"
+                           .value="${this.right}"
                            @component-inputfield-change="${(event: CustomEvent) => (this.right = event.detail.value)}"
                         ></component-inputfield>
                           <component-inputfield
-                           .inputfieldType="${InputfieldType.NUMBER}"
+                           .inputfieldType="${InputfieldType.TEXT}"
                            label="${I18nService.getUniqueInstance().getValue('pagefloating_top_label')}"
-                           .checked="${this.top}"
+                           .value="${this.top}"
                            @component-inputfield-change="${(event: CustomEvent) => (this.top = event.detail.value)}"
                         ></component-inputfield>
                           <component-inputfield
-                           .inputfieldType="${InputfieldType.NUMBER}"
+                           .inputfieldType="${InputfieldType.TEXT}"
                            label="${I18nService.getUniqueInstance().getValue('pagefloating_bottom_label')}"
-                           .checked="${this.bottom}"
+                           .value="${this.bottom}"
                            @component-inputfield-change="${(event: CustomEvent) => (this.bottom = event.detail.value)}"
                         ></component-inputfield>
   

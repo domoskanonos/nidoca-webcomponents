@@ -123,5 +123,9 @@
    "pageicon_body6": "Icon-Rahmen",
    "pageicon_body7": "Sie können das Icon mit einem unsichtbarenRahmen versehen.",
    "pageripple": "Ripple",
-   "pagefloating": "FloatingComponent"
+   "pagefloating": "Floating",
+   "pagefloating_left_label": "Abstand Links",
+   "pagefloating_right_label": "Abstand Rechts",
+   "pagefloating_top_label": "Abstand Oben",
+   "pagefloating_bottom_label": "Abstand Unten"
 }

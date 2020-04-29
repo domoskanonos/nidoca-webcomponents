@@ -47,6 +47,26 @@ export class PageLayoutComponent extends PageAbstract {
 
    getMainComponent(): TemplateResult {
       return html`
+         <component-floating-container top="200px" left="50%">
+            <component-box height="30vmin" width="30vmin">
+               <component-flex-container
+                  style="background-color: var(--app-color-primary-background);"
+                  .containerProperties="${this.containerProperties}"
+                  .itemProperties="${this.itemProperties}"
+                  itemFlexBasisValue="${this.itemFlexBasisValue}"
+                  .flexDirection="${this.flexDirection}"
+                  .flexWrap="${this.flexWrap}"
+                  .flexJustifyContent="${this.flexJustifyContent}"
+                  .alignItems="${this.alignItems}"
+                  .alignContent="${this.alignContent}"
+               >
+                  ${this.createBox(3, 3)} ${this.createBox(6, 3)} ${this.createBox(3, 6)} ${this.createBox(3, 6)}
+                  ${this.createBox(6, 3)} ${this.createBox(6, 3)} ${this.createBox(6, 6)} ${this.createBox(6, 3)}
+                  ${this.createBox(6, 3)}
+               </component-flex-container>
+            </component-box>
+         </component-floating-container>
+
          <component-flex-container
             .containerProperties="${[
                ContainerProperties.CONTAINER_WIDTH_50,
@@ -86,30 +106,11 @@ export class PageLayoutComponent extends PageAbstract {
                      spacerAlignment="${SpacerAlignment.VERTICAL}"
                   ></component-spacer>
                   <component-flex-container
-                     .containerProperties="${[
-                        ContainerProperties.CONTAINER_WIDTH_100
-                     ]}"
+                     .containerProperties="${[ContainerProperties.CONTAINER_WIDTH_100]}"
                      .itemProperties="${[ItemProperties.KEYLINE_SIZE_MEDIUM]}"
                      .itemFlexBasisValues="${['auto', '100%', '100%']}"
                      .flexJustifyContent="${FlexJustifyContent.CENTER}"
                   >
-                     <component-box height="30vmin" width="30vmin">
-                        <component-flex-container
-                           style="background-color: var(--app-color-primary-background);"
-                           .containerProperties="${this.containerProperties}"
-                           .itemProperties="${this.itemProperties}"
-                           itemFlexBasisValue="${this.itemFlexBasisValue}"
-                           .flexDirection="${this.flexDirection}"
-                           .flexWrap="${this.flexWrap}"
-                           .flexJustifyContent="${this.flexJustifyContent}"
-                           .alignItems="${this.alignItems}"
-                           .alignContent="${this.alignContent}"
-                        >
-                           ${this.createBox(3, 3)} ${this.createBox(6, 3)} ${this.createBox(3, 6)} ${this.createBox(3, 6)}
-                           ${this.createBox(6, 3)} ${this.createBox(6, 3)} ${this.createBox(6, 6)} ${this.createBox(6, 3)}
-                           ${this.createBox(6, 3)}
-                        </component-flex-container>
-                     </component-box>
                      <component-typography .typographyType="${TypographyType.H4}"
                         >${I18nService.getUniqueInstance().getValue('pageflex_demo_properties')}</component-typography
                      >
