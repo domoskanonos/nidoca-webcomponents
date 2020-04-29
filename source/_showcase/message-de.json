@@ -52,6 +52,7 @@
    "page_dialog": "ist eine Komponente um Inhalte im Vordergrund darzustellen. Der restliche Hintergrund wird ausgegraut.",
    "pagedivider_text": "trennt Inhaltselemente voneinander und dient als visueller Trenner. Man kann zwischen verschiedener Dicke des Trenners und der Transparenz wählen.",
    "pagediider_label": "Transpazenz (Wert zwischen 0.0-1.0)",
+   "pageflex_demo_properties": "Eigenschaften",
    "pageflex_body": "basiert auf dem CSS Flexbox Layout (display: flex). Das Layout zielt darauf ab, eine effiziente Möglichkeit zur Anordnung, Ausrichtung und Raumverteilung von Elementen zu bieten. Es wird dem Grid Layout bevorzugt, wenn die Anzahl der Elemente unbekannt oder dynamisch ist. Dabei versucht der Container die Breite, Höhe und die Reihenfolge seiner Gegenstände so zu verändern, dass der verfügbare Raum bestmöglich ausgefüllt wird. Im Gegensatz zum vertikal basiertem Block-Layout und dem horizontal basiertem Inline-Layout ist es richtungsunabhängig.",
    "pageflex_body1": "Hier kannst du die zahlreichen Anpassungsmöglichkeiten ausprobieren. Anschließend kannst du dir den enstsprechenden Quelltext angucken.",
    "pageflex_direction": "FlexDirection",

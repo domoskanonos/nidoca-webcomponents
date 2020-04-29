@@ -95,12 +95,6 @@ export class FlexComponent extends LitElement {
    static IDENTIFIER: string = 'FlexComponent';
 
    @property()
-   containerProperties: string[] = [];
-
-   @property()
-   itemProperties: string[] = [];
-
-   @property()
    flexDirection: string = FlexDirection.ROW;
 
    @property()
@@ -114,6 +108,12 @@ export class FlexComponent extends LitElement {
 
    @property()
    alignContent: string = AlignContent.FLEX_START;
+
+   @property()
+   containerProperties: string[] = [];
+
+   @property()
+   itemProperties: string[] = [];
 
    @property()
    itemFlexBasisValue: string = 'auto';
