@@ -94,8 +94,6 @@
    }
 
    body {
-      padding-left: var(--space-little);
-      padding-right: var(--space-little);
    }
 }
 
@@ -111,7 +109,5 @@
    }
 
    body {
-      padding-left: var(--space-little);
-      padding-right: var(--space-little);
    }
 }

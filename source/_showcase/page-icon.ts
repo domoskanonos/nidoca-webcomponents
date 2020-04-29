@@ -50,7 +50,7 @@ export class PageIconComponent extends PageAbstract {
                   >${I18nService.getUniqueInstance().getValue('pageicon_label1')}</component-link
                >
             </component-typography>
-            <component-typography .typographyType="${TypographyType.H4}" text="${I18nService.getUniqueInstance().getValue('pageborder_typoh4')}"></component-typography>
+            <component-typography .typographyType="${TypographyType.H4}" text="${I18nService.getUniqueInstance().getValue('interactive_demo')}"></component-typography>
             <component-typography .typographyType="${TypographyType.BODY1}">
               ${I18nService.getUniqueInstance().getValue('pageicon_body3')}
             </component-typography>

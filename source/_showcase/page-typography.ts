@@ -37,7 +37,7 @@ export class PageTypography extends PageAbstract {
                .typographyType="${TypographyType.BODY1}"
                text="Typograpy Types allow users to switch between different text styles and sizes."
             ></component-typography>
-            <component-typography .typographyType="${TypographyType.H4}" text="${I18nService.getUniqueInstance().getValue('pageborder_typoh4')}"></component-typography>
+            <component-typography .typographyType="${TypographyType.H4}" text="${I18nService.getUniqueInstance().getValue('interactive_demo')}"></component-typography>
             <component-typography
                .typographyType="${TypographyType.BODY1}"
                text="This demo lets you preview the typography component, its variations, and configuration options."

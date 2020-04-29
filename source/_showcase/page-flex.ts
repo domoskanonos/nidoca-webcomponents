@@ -68,7 +68,10 @@ export class PageLayoutComponent extends PageAbstract {
             <component-typography .typographyType="${TypographyType.BODY1}"
                ><i>component-flex-container</i> ${I18nService.getUniqueInstance().getValue('pageflex_body')}</component-typography
             >
-            <component-typography .typographyType="${TypographyType.H4}" text="${I18nService.getUniqueInstance().getValue('pageborder_typoh4')}"></component-typography>
+            <component-typography
+               .typographyType="${TypographyType.H4}"
+               text="${I18nService.getUniqueInstance().getValue('interactive_demo')}"
+            ></component-typography>
             <component-typography .typographyType="${TypographyType.BODY1}"
                >Die Komponente <i>component-flex-container</i>${I18nService.getUniqueInstance().getValue('pageflex_body1')}
             </component-typography>
