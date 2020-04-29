@@ -37,12 +37,12 @@ export class PageLink extends PageAbstract {
             <component-typography .typographyType="${TypographyType.H2}" text="<component-link/>"></component-typography>
             <component-typography
                .typographyType="${TypographyType.BODY1}"
-               text="Einfacher Link um innerhalb der Seite, oder auf externe Seiten zu verweisen."
+               text="${I18nService.getUniqueInstance().getValue('pagelink_body')}"
             ></component-typography>
-            <component-typography .typographyType="${TypographyType.H4}" text="Interaktive Demo"></component-typography>
+            <component-typography .typographyType="${TypographyType.H4}" text="${I18nService.getUniqueInstance().getValue('pageborder_typoh4')}"></component-typography>
             <component-typography
                .typographyType="${TypographyType.BODY1}"
-               text="Hier können Sie die Komponente ausführlich testen. Anschließend können Sie den zugehörigen Quellcode unter anschauen"
+               text="${I18nService.getUniqueInstance().getValue('pagelink_body1')}"
             ></component-typography>
 
             <component-tabs>

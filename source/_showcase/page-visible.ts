@@ -30,11 +30,9 @@ export class PageVisible extends PageAbstract {
          >
             <component-typography .typographyType="${TypographyType.H2}" text="<component-visible/>"></component-typography>
             <component-typography .typographyType="${TypographyType.BODY1}">
-               <i>VisibleComponent</i> ist eine Komponente deren einzige Aufgabe es ist Komponenten sichtbar und unsichtbar zu
-               machen. Dabei kann man noch entscheiden ob der eigentliche Platz der Komponente bestehen bleibt (<i>invisible</i>)
-               oder nicht (<i>hide</i>).
+               <i>VisibleComponent</i> ${I18nService.getUniqueInstance().getValue('pagevisible_body')} (<i>hide</i>).
             </component-typography>
-            <component-typography .typographyType="${TypographyType.H4}" text="Interaktive Demo"></component-typography>
+            <component-typography .typographyType="${TypographyType.H4}" text="${I18nService.getUniqueInstance().getValue('pageborder_typoh4')}"></component-typography>
             <component-typography .typographyType="${TypographyType.BODY1}" text=""></component-typography>
 
             <component-tabs>

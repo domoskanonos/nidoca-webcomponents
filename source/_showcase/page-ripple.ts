@@ -28,9 +28,9 @@ export class RipplePage extends PageAbstract {
          >
             <component-typography .typographyType="${TypographyType.H2}" text="<effect-ripple/>"></component-typography>
             <component-typography .typographyType="${TypographyType.BODY1}"
-               ><i>RippleComponent</i> ist eine Komponente mit der man Inhalte anmutig einblenden kann.</component-typography
+               ><i>RippleComponent</i> ${I18nService.getUniqueInstance().getValue('pageripple_text')}</component-typography
             >
-            <component-typography .typographyType="${TypographyType.H4}" text="Interaktive Demo"></component-typography>
+            <component-typography .typographyType="${TypographyType.H4}" text="${I18nService.getUniqueInstance().getValue('pageborder_typoh4')}"></component-typography>
             <component-typography .typographyType="${TypographyType.BODY1}" text=""></component-typography>
 
             <component-tabs>
