@@ -34,12 +34,12 @@ export class pagerichmedia extends PageAbstract {
             <component-typography .typographyType="${TypographyType.H2}" text="<component-rich-media/>"></component-typography>
             <component-typography
                .typographyType="${TypographyType.BODY1}"
-               text="Die Komponente RichMediaComponent wird dazu verwenden, Bilder und Videos darzustellen."
+               text="${I18nService.getUniqueInstance().getValue('pagerich_text')}"
             ></component-typography>
-            <component-typography .typographyType="${TypographyType.H4}" text="Interaktive Demo"></component-typography>
+            <component-typography .typographyType="${TypographyType.H4}" text="${I18nService.getUniqueInstance().getValue('pageborder_typoh4')}"></component-typography>
             <component-typography
                .typographyType="${TypographyType.BODY1}"
-               text="Hier können Sie die Komponente ausführlich testen. Anschließend können Sie den zugehörigen Quellcode unter 'Code' begutachten"
+               text="${I18nService.getUniqueInstance().getValue('pagerich_text1')}"
             ></component-typography>
 
             <component-tabs>
@@ -81,7 +81,7 @@ export class pagerichmedia extends PageAbstract {
                            .inputfieldType="${InputfieldType.TEXT}"
                            label="Link"
                            value="${this.src}"
-                           assistiveText="Geben Sie hier den Link ihres Bildes oder Videos ein"
+                           assistiveText="${I18nService.getUniqueInstance().getValue('pagerich_text2')}"
                         ></component-inputfield>
                      </component-form>
                      <component-rich-media

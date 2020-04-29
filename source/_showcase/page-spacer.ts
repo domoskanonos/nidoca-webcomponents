@@ -32,11 +32,9 @@ export class PageSpacer extends PageAbstract {
          >
             <component-typography .typographyType="${TypographyType.H2}" text="<component-spacer/>"></component-typography>
             <component-typography .typographyType="${TypographyType.BODY1}"
-               ><i>SpacerComponent</i> wird eingesetzt um zwischen einzelnen Komponenten Abstand zu erzeugen. Dabei kann man
-               horizontalen, bzw. vertikalen Abstand erzeugen, oder auch eine Art unsichtbaren Rahmen um einzelne Elemente
-               erzeugen.
+               ><i>SpacerComponent</i> ${I18nService.getUniqueInstance().getValue('pagespacer_text')}
             </component-typography>
-            <component-typography .typographyType="${TypographyType.H4}" text="Interaktive Demo"></component-typography>
+            <component-typography .typographyType="${TypographyType.H4}" text="${I18nService.getUniqueInstance().getValue('pageborder_typoh4')}"></component-typography>
             <component-typography .typographyType="${TypographyType.BODY1}" text=""></component-typography>
 
             <component-tabs>
@@ -59,7 +57,7 @@ export class PageSpacer extends PageAbstract {
                      <component-form>
                         <component-inputfield
                            .inputfieldType="${InputfieldType.COMBOBOX}"
-                           label="Ausrichtung"
+                           label="${I18nService.getUniqueInstance().getValue('pagespacer_label')}"
                            .options="${InputfieldComponent.enumToComboboxItems(SpacerAlignment)}"
                            value="${InputfieldComponent.enumGetKeyFromValue(SpacerAlignment, this.spacerAlignment)}"
                            @component-inputfield-change="${(event: CustomEvent) =>
@@ -67,7 +65,7 @@ export class PageSpacer extends PageAbstract {
                         ></component-inputfield>
                         <component-inputfield
                            .inputfieldType="${InputfieldType.COMBOBOX}"
-                           label="Größe Abstand"
+                           label="${I18nService.getUniqueInstance().getValue('pagespacer_label1')}"
                            .options="${InputfieldComponent.enumToComboboxItems(SpacerSize)}"
                            value="${InputfieldComponent.enumGetKeyFromValue(SpacerSize, this.spacerSize)}"
                            @component-inputfield-change="${(event: CustomEvent) =>

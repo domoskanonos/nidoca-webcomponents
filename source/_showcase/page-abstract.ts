@@ -98,7 +98,7 @@ export abstract class PageAbstract extends BasisTemplate {
             text="${I18nService.getUniqueInstance().getValue('pagedivider')}"
             href="pagedivider"
          ></component-navigation-link>
-         <component-navigation-section slot="links" text="Komponenten"></component-navigation-section>
+         <component-navigation-section slot="links" text="${I18nService.getUniqueInstance().getValue('pageabstract_komp')}"></component-navigation-section>
          <component-navigation-link
             slot="links"
             icon="title"
@@ -173,7 +173,7 @@ export abstract class PageAbstract extends BasisTemplate {
             href="pagetable"
          ></component-navigation-link>
          <component-divider slot="links" .dividerType="${DividerType.THIN}" opacity="0.2"></component-divider>
-         <component-navigation-section slot="links" text="Effekte"></component-navigation-section>
+         <component-navigation-section slot="links" text="${I18nService.getUniqueInstance().getValue('pageabstract_eff')}"></component-navigation-section>
          <component-navigation-link
             slot="links"
             icon="dynamic_feed"

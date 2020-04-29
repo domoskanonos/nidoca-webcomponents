@@ -29,7 +29,7 @@ export class PageAccordion extends PageAbstract {
                .typographyType="${TypographyType.BODY1}"
                text="Komponente um Inhalte zu seperieren."
             ></component-typography>
-            <component-typography .typographyType="${TypographyType.H4}" text="Demo"></component-typography>
+            <component-typography .typographyType="${TypographyType.H4}" text="${I18nService.getUniqueInstance().getValue('demo')}"></component-typography>
             <component-tabs>
                <component-tab
                   slot="tab"

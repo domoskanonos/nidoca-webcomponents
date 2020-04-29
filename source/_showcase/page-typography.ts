@@ -35,12 +35,12 @@ export class PageTypography extends PageAbstract {
             <component-typography .typographyType="${TypographyType.H2}" text="<component-typography/>"></component-typography>
             <component-typography
                .typographyType="${TypographyType.BODY1}"
-               text="Typograpy Types allow users to switch between different text styles and sizes."
+               text="${I18nService.getUniqueInstance().getValue('pagetopology_text1')}"
             ></component-typography>
             <component-typography .typographyType="${TypographyType.H4}" text="${I18nService.getUniqueInstance().getValue('pageborder_typoh4')}"></component-typography>
             <component-typography
                .typographyType="${TypographyType.BODY1}"
-               text="This demo lets you preview the typography component, its variations, and configuration options."
+               text="${I18nService.getUniqueInstance().getValue('pagetopology_text2')}"
             ></component-typography>
 
             <component-tabs>
@@ -68,14 +68,14 @@ export class PageTypography extends PageAbstract {
                         <component-inputfield
                            .inputfieldType="${InputfieldType.COMBOBOX}"
                            .options="${InputfieldComponent.enumToComboboxItems(TypographyType)}"
-                           label="typographyType"
+                           label="${I18nService.getUniqueInstance().getValue('pagetopology_type')}"
                            value="${this.typographyType}"
                            @component-inputfield-change="${(event: CustomEvent) => this.changeTypographyType(event)}"
                         ></component-inputfield>
 
                         <component-inputfield
                            .inputfieldType="${InputfieldType.TEXTAREA}"
-                           label="Text"
+                           label="${I18nService.getUniqueInstance().getValue('pagetopology_text_label')}"
                            value="${this.text}"
                            @component-inputfield-keyup="${(event: CustomEvent) => this.changeText(event)}"
                         ></component-inputfield>
