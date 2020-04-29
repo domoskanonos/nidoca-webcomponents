@@ -17,7 +17,6 @@ export class ContainerProperties {
    static SMARTPHONE_VERTICAL_PADDING = 'SMARTPHONE_VERTICAL_PADDING';
    static TABLET_HORIZONTAL_PADDING = 'TABLET_HORIZONTAL_PADDING';
    static TABLET_VERTICAL_PADDING = 'TABLET_VERTICAL_PADDING';
-   static HOVER = 'HOVER';
 }
 
 export class ItemProperties {

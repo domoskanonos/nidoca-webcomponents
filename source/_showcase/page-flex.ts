@@ -45,9 +45,6 @@ export class PageLayoutComponent extends PageAbstract {
    @property()
    alignItems: string = AlignItems.START;
 
-   @query('#sample-flex-container')
-   flexContainer: FlexComponent | undefined;
-
    getMainComponent(): TemplateResult {
       return html`
          <component-flex-container
@@ -95,15 +92,14 @@ export class PageLayoutComponent extends PageAbstract {
                         ContainerProperties.TABLET_HORIZONTAL_PADDING
                      ]}"
                      .itemProperties="${[
-                        ItemProperties.KEYLINE_SIZE_MEDIUM,
-                        ItemProperties.SMARTPHONE_MAX_WIDTH,
-                        ItemProperties.TABLET_MAX_WIDTH
+                        ItemProperties.KEYLINE_SIZE_MEDIUM
                      ]}"
-                     .itemFlexBasisValues="${['50%', '50%']}"
+                     .itemFlexBasisValues="auto"
+                     .flexJustifyContent="${FlexJustifyContent.CENTER}"
                   >
-                     <component-box style="background-color: var(--app-color-primary-background);" height="40vmin" width="40vmin">
+                     <component-box height="30vmin" width="30vmin">
                         <component-flex-container
-                           id="sample-flex-container"
+                           style="background-color: var(--app-color-primary-background);"
                            .containerProperties="${this.containerProperties}"
                            .itemProperties="${this.itemProperties}"
                            itemFlexBasisValue="${this.itemFlexBasisValue}"
@@ -113,9 +109,9 @@ export class PageLayoutComponent extends PageAbstract {
                            .alignItems="${this.alignItems}"
                            .alignContent="${this.alignContent}"
                         >
-                           ${this.createBox(5, 5)} ${this.createBox(7, 5)} ${this.createBox(5, 7)} ${this.createBox(5, 10)}
-                           ${this.createBox(10, 5)} ${this.createBox(7, 5)} ${this.createBox(7, 7)} ${this.createBox(7, 5)}
-                           ${this.createBox(7, 5)}
+                           ${this.createBox(3, 3)} ${this.createBox(6, 3)} ${this.createBox(3, 6)} ${this.createBox(3, 6)}
+                           ${this.createBox(6, 3)} ${this.createBox(6, 3)} ${this.createBox(6, 6)} ${this.createBox(6, 3)}
+                           ${this.createBox(6, 3)}
                         </component-flex-container>
                      </component-box>
 
@@ -169,7 +165,7 @@ export class PageLayoutComponent extends PageAbstract {
                         <component-inputfield
                            .inputfieldType="${InputfieldType.COMBOBOX}"
                            .options="${InputfieldComponent.enumToComboboxItems(ContainerProperties)}"
-                           label="${I18nService.getUniqueInstance().getValue('pageflex_continer')}"
+                           label="${I18nService.getUniqueInstance().getValue('pageflex_container')}"
                            .value="${this.containerProperties}"
                            size="10"
                            multiple="true"
@@ -180,7 +176,7 @@ export class PageLayoutComponent extends PageAbstract {
                         <component-inputfield
                            .inputfieldType="${InputfieldType.COMBOBOX}"
                            .options="${InputfieldComponent.enumToComboboxItems(ItemProperties)}"
-                           label="${I18nService.getUniqueInstance().getValue('pageflex_inhault')}"
+                           label="${I18nService.getUniqueInstance().getValue('pageflex_content')}"
                            .value="${this.itemProperties}"
                            size="10"
                            multiple="true"
