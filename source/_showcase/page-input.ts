@@ -4,6 +4,7 @@ import { InputfieldComponent, InputfieldType } from '../inputfield/component';
 import { BorderType, SpacerAlignment, SpacerSize, TypographyType } from '..';
 import { ContainerProperties, ItemProperties } from '../flex-container/component';
 import { I18nService } from '@domoskanonos/frontend-basis';
+import { GridAlignItems, GridJustifyItems } from '../grid-container/component';
 
 @customElement('page-inputfield')
 export class PageInputComponent extends PageAbstract {
@@ -45,7 +46,10 @@ export class PageInputComponent extends PageAbstract {
                .typographyType="${TypographyType.BODY1}"
                text="Text fields let users enter and edit text."
             ></component-typography>
-            <component-typography .typographyType="${TypographyType.H4}" text="${I18nService.getUniqueInstance().getValue('interactive_demo')}"></component-typography>
+            <component-typography
+               .typographyType="${TypographyType.H4}"
+               text="${I18nService.getUniqueInstance().getValue('interactive_demo')}"
+            ></component-typography>
             <component-typography
                .typographyType="${TypographyType.BODY1}"
                text="This demo lets you preview the text field component, its variations, and configuration options. Each tab displays a different type of text field."
@@ -70,8 +74,40 @@ export class PageInputComponent extends PageAbstract {
                         ItemProperties.SMARTPHONE_MAX_WIDTH,
                         ItemProperties.TABLET_MAX_WIDTH
                      ]}"
-                     itemFlexBasisValue="50%"
-                  >
+                     itemFlexBasisValue="100%"
+                     ><component-flex-container
+                        .containerProperties="${[
+                           ContainerProperties.CONTAINER_WIDTH_75,
+                           ContainerProperties.TABLET_MAX_WIDTH,
+                           ContainerProperties.SMARTPHONE_MAX_WIDTH
+                        ]}"
+                        .itemProperties="${[
+                           ItemProperties.SMARTPHONE_MAX_WIDTH,
+                           ItemProperties.TABLET_MAX_WIDTH
+                        ]}"
+                        itemFlexBasisValue="100%"
+                        ><component-spacer
+                           spacerSize="${SpacerSize.MEDIUM}"
+                           spacerAlignment="${SpacerAlignment.VERTICAL}"
+                        ></component-spacer
+                        ><component-border .borderProperties="${[BorderType.FULL_WIDTH, BorderType.ALL]}"
+                           ><component-spacer spacerSize="${SpacerSize.MEDIUM}" spacerAlignment="${SpacerAlignment.BOTH}"
+                              ><component-form>
+                                 <component-inputfield
+                                    name="username"
+                                    .inputfieldType="${this.type}"
+                                    label="${this.type.toLocaleUpperCase()}"
+                                    trailingIcon="${this.showTrailingIcon ? 'account_circle' : ''}"
+                                    leadingIcon="${this.showLeadingIcon ? 'account_circle' : ''}"
+                                    assistiveText="assistiveText"
+                                    infoText="infoText"
+                                    required="true"
+                                 ></component-inputfield> </component-form></component-spacer
+                        ></component-border>
+                     </component-flex-container>
+                     <component-typography .typographyType="${TypographyType.H4}"
+                        >${I18nService.getUniqueInstance().getValue('pageflex_demo_properties')}</component-typography
+                     >
                      <component-form>
                         <component-inputfield
                            .inputfieldType="${InputfieldType.COMBOBOX}"
@@ -93,18 +129,6 @@ export class PageInputComponent extends PageAbstract {
                            assistiveText="Es besteht die Möglichkeit an jedes Eingabefeld links ein Icon zu plazieren."
                            .checked="${this.showLeadingIcon}"
                            @component-inputfield-change="${() => this.switchLeadingIcon()}"
-                        ></component-inputfield>
-                     </component-form>
-                     <component-form>
-                        <component-inputfield
-                           name="username"
-                           .inputfieldType="${this.type}"
-                           label="${this.type.toLocaleUpperCase()}"
-                           trailingIcon="${this.showTrailingIcon ? 'account_circle' : ''}"
-                           leadingIcon="${this.showLeadingIcon ? 'account_circle' : ''}"
-                           assistiveText="assistiveText"
-                           infoText="infoText"
-                           required="true"
                         ></component-inputfield>
                      </component-form> </component-flex-container
                ></component-tab-content>

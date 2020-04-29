@@ -349,12 +349,11 @@ ${this.value}</textarea
                  </component-flex-container>
               </component-visible>
               <component-spacer spacerSize="${SpacerSize.SMALL}" alignment="${SpacerAlignment.VERTICAL}"></component-spacer>
-              <effect-color color="var(--app-color-error)">
-                 <component-typography
-                    .typographyType="${TypographyType.OVERLINE}"
-                    text="${this.errorText}"
-                 ></component-typography>
-              </effect-color>
+              <component-typography
+                 style="color:var(--app-color-error)"
+                 .typographyType="${TypographyType.OVERLINE}"
+                 text="${this.errorText}"
+              ></component-typography>
            `
          : html`
               <input
