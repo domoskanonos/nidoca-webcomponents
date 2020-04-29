@@ -2,9 +2,9 @@
     height: 100%;
     width: var(--menu-size);
     transition: left 0.25s linear;
-    position: fixed;
+    position: relative;
     z-index: 1;
-    top: var(--menubar-height);
+    top: 0;
     left: 0;
     overflow-x: hidden;
 }
