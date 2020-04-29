@@ -266,7 +266,7 @@ export class PageIconComponent extends PageAbstract {
                         .concat(this.icon)
                         .concat('" color="')
                         .concat(this.color)
-                        .concat('"\n .size="')
+                        .concat('"\n size="')
                         .concat(String(this.iconSize))
                         .concat('"></component-icon>')}"
                   >

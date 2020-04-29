@@ -1,6 +1,7 @@
 .FLOATING {
+   display: flex;
    position: fixed;
-   width: 300px;
-   height: 100px;
+   width: auto;
+   height: auto;
    background: red;
 }

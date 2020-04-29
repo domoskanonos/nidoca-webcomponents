@@ -13,7 +13,16 @@ export class PageFloating extends PageAbstract {
    }
 
    @property()
-   top: number = 0;
+   left: string = '250px';
+
+   @property()
+   top: string = 'auto';
+
+   @property()
+   right: string = 'auto';
+
+   @property()
+   bottom: string = 'auto';
 
    getMainComponent(): TemplateResult {
       return html`
@@ -58,15 +67,44 @@ export class PageFloating extends PageAbstract {
                      <component-form>
                         <component-inputfield
                            .inputfieldType="${InputfieldType.NUMBER}"
+                           label="${I18nService.getUniqueInstance().getValue('pagefloating_left_label')}"
+                           .checked="${this.left}"
+                           @component-inputfield-change="${(event: CustomEvent) => (this.left = event.detail.value)}"
+                        ></component-inputfield>
+                          <component-inputfield
+                           .inputfieldType="${InputfieldType.NUMBER}"
+                           label="${I18nService.getUniqueInstance().getValue('pagefloating_right_label')}"
+                           .checked="${this.right}"
+                           @component-inputfield-change="${(event: CustomEvent) => (this.right = event.detail.value)}"
+                        ></component-inputfield>
+                          <component-inputfield
+                           .inputfieldType="${InputfieldType.NUMBER}"
                            label="${I18nService.getUniqueInstance().getValue('pagefloating_top_label')}"
                            .checked="${this.top}"
                            @component-inputfield-change="${(event: CustomEvent) => (this.top = event.detail.value)}"
                         ></component-inputfield>
+                          <component-inputfield
+                           .inputfieldType="${InputfieldType.NUMBER}"
+                           label="${I18nService.getUniqueInstance().getValue('pagefloating_bottom_label')}"
+                           .checked="${this.bottom}"
+                           @component-inputfield-change="${(event: CustomEvent) => (this.bottom = event.detail.value)}"
+                        ></component-inputfield>
+  
                      </component-form>
-
                      <component-floating-container
+                        left="${this.left}"
+                        right="${this.right}"
                         top="${this.top}"
-                     ></component-floating-container> </component-flex-container
+                        bottom="${this.bottom}"
+                     >
+                        <component-icon
+                           .clickable="false"
+                           icon="add"
+                           color="var(--app-primary-color)"
+                           size="96"
+                           clickable="true"
+                        ></component-icon>
+                     </component-floating-container> </component-flex-container
                ></component-tab-content>
                <component-tab-content slot="tabContent"
                   ><component-spacer

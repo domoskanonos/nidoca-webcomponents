@@ -9,35 +9,35 @@ export class FloatingComponent extends LitElement {
    `;
 
    @property()
-   left: number = 0;
+   left: string = 'auto';
 
    @property()
-   top: number = 0;
+   top: string = 'auto';
 
    @property()
-   right: number = 0;
+   right: string = 'auto';
 
    @property()
-   bottom: number = 0;
+   bottom: string = 'auto';
 
    render() {
       return html`
-         <span class="FLOATING" style="${this.toPositionStyle(this.left, this.right, this.top, this.bottom)}"></span>
+         <slot class="FLOATING" style="${this.toPositionStyle(this.left, this.right, this.top, this.bottom)}"></slot>
       `;
    }
 
-   private toPositionStyle(left: number, right: number, top: number, bottom: number) {
+   private toPositionStyle(left: string, right: string, top: string, bottom: string) {
       return 'left:'
-         .concat(String(left))
+         .concat(left)
          .concat(';')
          .concat('right:')
-         .concat(String(right))
+         .concat(right)
          .concat(';')
          .concat('top:')
-         .concat(String(top))
+         .concat(top)
          .concat(';')
          .concat('bottom:')
-         .concat(String(bottom))
+         .concat(bottom)
          .concat(';');
    }
 }
