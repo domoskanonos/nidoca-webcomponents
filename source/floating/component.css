@@ -1,7 +1,6 @@
 .FLOATING {
+   position: fixed;
    display: inline;
-   position: relative;
-   width: auto;
-   height: auto;
-   background: red;
+   background-color: inherit;
+   color: inherit;
 }

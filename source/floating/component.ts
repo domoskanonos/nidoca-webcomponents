@@ -9,6 +9,12 @@ export class FloatingComponent extends LitElement {
    `;
 
    @property()
+   height: string = 'auto';
+
+   @property()
+   width: string = 'auto';
+
+   @property()
    left: string = 'auto';
 
    @property()
@@ -22,12 +28,21 @@ export class FloatingComponent extends LitElement {
 
    render() {
       return html`
-         <slot class="FLOATING" style="${this.toPositionStyle(this.left, this.right, this.top, this.bottom)}"></slot>
+         <slot
+            class="FLOATING"
+            style="${this.toStyle(this.height, this.width, this.left, this.right, this.top, this.bottom)}"
+         ></slot>
       `;
    }
 
-   private toPositionStyle(left: string, right: string, top: string, bottom: string) {
-      return 'left:'
+   private toStyle(height: string, width: string, left: string, right: string, top: string, bottom: string) {
+      return 'height:'
+         .concat(height)
+         .concat(';')
+         .concat('width:')
+         .concat(width)
+         .concat(';')
+         .concat('left:')
          .concat(left)
          .concat(';')
          .concat('right:')
