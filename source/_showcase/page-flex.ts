@@ -52,7 +52,7 @@ export class PageLayoutComponent extends PageAbstract {
             top="var(--menubar-height)"
             width="100%"
             style="background-color: var(--app-color-surface-background);"
-         >
+         ><component-spacer spacerSize="${SpacerSize.BIG}" spacerAlignment="${SpacerAlignment.VERTICAL}">
             <component-grid-container
                .gridJustifyItems="${GridJustifyItems.CENTER}"
                .gridAlignItems="${GridAlignItems.CENTER}"
@@ -77,7 +77,9 @@ export class PageLayoutComponent extends PageAbstract {
                   </component-flex-container>
                </component-box></component-grid-container
             >
+            </component-spacer>
          </component-floating-container>
+         <component-spacer spacerSize="${SpacerSize.BIG}" spacerAlignment="${SpacerAlignment.VERTICAL}"></component-spacer>
          <component-spacer spacerSize="${SpacerSize.BIG}" spacerAlignment="${SpacerAlignment.VERTICAL}"></component-spacer>
          <component-spacer spacerSize="${SpacerSize.BIG}" spacerAlignment="${SpacerAlignment.VERTICAL}"></component-spacer>
          <component-spacer spacerSize="${SpacerSize.BIG}" spacerAlignment="${SpacerAlignment.VERTICAL}"></component-spacer>
