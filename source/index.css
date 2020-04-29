@@ -14,8 +14,8 @@
 }
 
 :root {
-   --space-little: 0.25vmin;
-   --space-small: 0.5vmin;
+   --space-little: 0.5vmin;
+   --space-small: 0.75vmin;
    --space-medium: 1vmin;
    --space-normal: 1.5vmin;
    --space-big: 2vmin;

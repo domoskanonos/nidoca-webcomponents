@@ -98,6 +98,12 @@ export abstract class PageAbstract extends BasisTemplate {
             text="${I18nService.getUniqueInstance().getValue('pagedivider')}"
             href="pagedivider"
          ></component-navigation-link>
+         <component-navigation-link
+            slot="links"
+            icon=""
+            text="${I18nService.getUniqueInstance().getValue('pagefloating')}"
+            href="pagefloating"
+         ></component-navigation-link>
          <component-navigation-section slot="links" text="Komponenten"></component-navigation-section>
          <component-navigation-link
             slot="links"

@@ -1,6 +1,7 @@
 import { AccordionComponent } from './accordion/container/component';
 import { BoxComponent } from './box/component';
 import { BorderType, BorderComponent } from './border/component';
+import { FloatingComponent } from './floating/component';
 import { AccordionItemComponent } from './accordion/item/component';
 import { ButtonType, ButtonComponent } from './button/component';
 import { CodeComponent } from './code/component';
@@ -35,6 +36,7 @@ import { DialogComponent } from './dialog/component';
 
 export { AccordionComponent } from './accordion/container/component';
 export { BorderType, BorderComponent } from './border/component';
+export { FloatingComponent } from './floating/component';
 export { BoxComponent } from './box/component';
 export { AccordionItemComponent } from './accordion/item/component';
 export { ButtonType, ButtonComponent } from './button/component';

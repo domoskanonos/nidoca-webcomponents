@@ -1,6 +1,6 @@
 import { customElement, html, property, TemplateResult } from 'lit-element';
 import { PageAbstract } from './page-abstract';
-import { TypographyType } from '..';
+import { SpacerAlignment, SpacerSize, TypographyType } from '..';
 import { I18nService } from '@domoskanonos/frontend-basis';
 import { ContainerProperties, ItemProperties } from '../flex-container/component';
 
@@ -66,11 +66,18 @@ export class PageTable extends PageAbstract {
                      ]}"
                      .itemProperties="${[ItemProperties.KEYLINE_ALIGNMENT_BOTH, ItemProperties.KEYLINE_SIZE_MEDIUM]}"
                      itemFlexBasisValue="100%"
-                  >
+                     ><component-spacer
+                        spacerSize="${SpacerSize.MEDIUM}"
+                        spacerAlignment="${SpacerAlignment.VERTICAL}"
+                     ></component-spacer>
                      <component-table .headers="${this.headers}" .rows="${this.rows}">
                      </component-table> </component-flex-container
                ></component-tab-content>
                <component-tab-content slot="tabContent"
+                  ><component-spacer
+                     spacerSize="${SpacerSize.MEDIUM}"
+                     spacerAlignment="${SpacerAlignment.VERTICAL}"
+                  ></component-spacer
                   ><component-code
                      code="${'<component-table .headers="${'
                         .concat(JSON.stringify(this.headers))

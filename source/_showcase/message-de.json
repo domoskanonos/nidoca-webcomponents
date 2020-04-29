@@ -87,5 +87,6 @@
    "pageicon_body5": "Klickbare Icons werfen ein Event: @component-icon-click",
    "pageicon_body6": "Icon-Rahmen",
    "pageicon_body7": "Sie können das Icon mit einem unsichtbarenRahmen versehen.",
-   "pageripple": "Ripple"
+   "pageripple": "Ripple",
+   "pagefloating": "FloatingComponent"
 }
