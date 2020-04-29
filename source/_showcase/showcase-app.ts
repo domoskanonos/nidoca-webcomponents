@@ -18,6 +18,7 @@ import './page-link.ts';
 import './page-list.ts';
 import './page-table.ts';
 import './page-accordion.ts';
+import './page-floating.ts';
 import './page-tabs.ts';
 import './page-ripple.ts';
 import './page-divider.ts';
@@ -59,6 +60,10 @@ export class ShowcaseApp extends AbstractApp {
          case 'pageborder':
             return html`
                <page-border></page-border>
+            `;
+         case 'pagefloating':
+            return html`
+               <page-floating></page-floating>
             `;
          case 'pagedialog':
             return html`

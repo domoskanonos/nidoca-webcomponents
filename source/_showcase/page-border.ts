@@ -38,7 +38,7 @@ export class PageBorder extends PageAbstract {
             <component-typography .typographyType="${TypographyType.H2}" text="<component-border/>"></component-typography>
             <component-typography .typographyType="${TypographyType.BODY1}">
                ${I18nService.getUniqueInstance().getValue('page_border_description')}
-            <component-typography .typographyType="${TypographyType.H4}" text="${I18nService.getUniqueInstance().getValue('pageborder_typoh4')}"></component-typography>
+            <component-typography .typographyType="${TypographyType.H4}" text="${I18nService.getUniqueInstance().getValue('interactive_demo')}"></component-typography>
             <component-typography
                .typographyType="${TypographyType.BODY1}"
                text="${I18nService.getUniqueInstance().getValue('pageborder_body')}"

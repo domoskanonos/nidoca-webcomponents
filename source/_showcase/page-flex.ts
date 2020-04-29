@@ -37,16 +37,13 @@ export class PageLayoutComponent extends PageAbstract {
    alignContent: string = AlignContent.CENTER;
 
    @property()
-   itemProperties: string[] = [ItemProperties.KEYLINE_SIZE_MEDIUM];
+   itemProperties: string[] = [];
 
    @property()
    itemFlexBasisValue: string = 'auto';
 
    @property()
    alignItems: string = AlignItems.START;
-
-   @query('#sample-flex-container')
-   flexContainer: FlexComponent | undefined;
 
    getMainComponent(): TemplateResult {
       return html`
@@ -68,9 +65,12 @@ export class PageLayoutComponent extends PageAbstract {
             <component-typography .typographyType="${TypographyType.BODY1}"
                ><i>component-flex-container</i> ${I18nService.getUniqueInstance().getValue('pageflex_body')}</component-typography
             >
-            <component-typography .typographyType="${TypographyType.H4}" text="${I18nService.getUniqueInstance().getValue('pageborder_typoh4')}"></component-typography>
+            <component-typography
+               .typographyType="${TypographyType.H4}"
+               text="${I18nService.getUniqueInstance().getValue('interactive_demo')}"
+            ></component-typography>
             <component-typography .typographyType="${TypographyType.BODY1}"
-               >Die Komponente <i>component-flex-container</i>${I18nService.getUniqueInstance().getValue('pageflex_body1')}
+               >${I18nService.getUniqueInstance().getValue('pageflex_body1')}
             </component-typography>
 
             <component-tabs>
@@ -87,20 +87,15 @@ export class PageLayoutComponent extends PageAbstract {
                   ></component-spacer>
                   <component-flex-container
                      .containerProperties="${[
-                        ContainerProperties.CONTAINER_WIDTH_100,
-                        ContainerProperties.SMARTPHONE_HORIZONTAL_PADDING,
-                        ContainerProperties.TABLET_HORIZONTAL_PADDING
+                        ContainerProperties.CONTAINER_WIDTH_100
                      ]}"
-                     .itemProperties="${[
-                        ItemProperties.KEYLINE_SIZE_MEDIUM,
-                        ItemProperties.SMARTPHONE_MAX_WIDTH,
-                        ItemProperties.TABLET_MAX_WIDTH
-                     ]}"
-                     .itemFlexBasisValues="${['50%', '50%']}"
+                     .itemProperties="${[ItemProperties.KEYLINE_SIZE_MEDIUM]}"
+                     .itemFlexBasisValues="${['auto', '100%', '100%']}"
+                     .flexJustifyContent="${FlexJustifyContent.CENTER}"
                   >
-                     <component-box style="background-color: var(--app-color-primary-background);" height="40vmin" width="40vmin">
+                     <component-box height="30vmin" width="30vmin">
                         <component-flex-container
-                           id="sample-flex-container"
+                           style="background-color: var(--app-color-primary-background);"
                            .containerProperties="${this.containerProperties}"
                            .itemProperties="${this.itemProperties}"
                            itemFlexBasisValue="${this.itemFlexBasisValue}"
@@ -110,81 +105,85 @@ export class PageLayoutComponent extends PageAbstract {
                            .alignItems="${this.alignItems}"
                            .alignContent="${this.alignContent}"
                         >
-                           ${this.createBox(5, 5)} ${this.createBox(7, 5)} ${this.createBox(5, 7)} ${this.createBox(5, 10)}
-                           ${this.createBox(10, 5)} ${this.createBox(7, 5)} ${this.createBox(7, 7)} ${this.createBox(7, 5)}
-                           ${this.createBox(7, 5)}
+                           ${this.createBox(3, 3)} ${this.createBox(6, 3)} ${this.createBox(3, 6)} ${this.createBox(3, 6)}
+                           ${this.createBox(6, 3)} ${this.createBox(6, 3)} ${this.createBox(6, 6)} ${this.createBox(6, 3)}
+                           ${this.createBox(6, 3)}
                         </component-flex-container>
                      </component-box>
+                     <component-typography .typographyType="${TypographyType.H4}"
+                        >${I18nService.getUniqueInstance().getValue('pageflex_demo_properties')}</component-typography
+                     >
+                     <component-box height="350px" width="100%">
+                        <component-form>
+                           <component-inputfield
+                              .inputfieldType="${InputfieldType.COMBOBOX}"
+                              .options="${InputfieldComponent.enumToComboboxItems(FlexDirection)}"
+                              label="${I18nService.getUniqueInstance().getValue('pageflex_direction')}"
+                              value="${this.flexDirection}"
+                              @component-inputfield-change="${(event: CustomEvent) => this.changeFlexDirection(event)}"
+                           ></component-inputfield>
 
-                     <component-form>
-                        <component-inputfield
-                           .inputfieldType="${InputfieldType.COMBOBOX}"
-                           .options="${InputfieldComponent.enumToComboboxItems(FlexDirection)}"
-                           label="${I18nService.getUniqueInstance().getValue('pageflex_direction')}"
-                           value="${this.flexDirection}"
-                           @component-inputfield-change="${(event: CustomEvent) => this.changeFlexDirection(event)}"
-                        ></component-inputfield>
+                           <component-inputfield
+                              .inputfieldType="${InputfieldType.COMBOBOX}"
+                              .options="${InputfieldComponent.enumToComboboxItems(FlexWrap)}"
+                              label="${I18nService.getUniqueInstance().getValue('pageflex_wrap')}"
+                              .value="${InputfieldComponent.enumGetKeyFromValue(FlexWrap, this.flexWrap)}"
+                              @component-inputfield-change="${(event: CustomEvent) => this.changeFlexWrap(event)}"
+                           ></component-inputfield>
 
-                        <component-inputfield
-                           .inputfieldType="${InputfieldType.COMBOBOX}"
-                           .options="${InputfieldComponent.enumToComboboxItems(FlexWrap)}"
-                           label="${I18nService.getUniqueInstance().getValue('pageflex_wrap')}"
-                           .value="${InputfieldComponent.enumGetKeyFromValue(FlexWrap, this.flexWrap)}"
-                           @component-inputfield-change="${(event: CustomEvent) => this.changeFlexWrap(event)}"
-                        ></component-inputfield>
+                           <component-inputfield
+                              .inputfieldType="${InputfieldType.COMBOBOX}"
+                              .options="${InputfieldComponent.enumToComboboxItems(FlexJustifyContent)}"
+                              label="${I18nService.getUniqueInstance().getValue('pageflex_justify')}"
+                              .value="${InputfieldComponent.enumGetKeyFromValue(FlexJustifyContent, this.flexJustifyContent)}"
+                              @component-inputfield-change="${(event: CustomEvent) => this.changeFlexJustify(event)}"
+                           ></component-inputfield>
 
-                        <component-inputfield
-                           .inputfieldType="${InputfieldType.COMBOBOX}"
-                           .options="${InputfieldComponent.enumToComboboxItems(FlexJustifyContent)}"
-                           label="${I18nService.getUniqueInstance().getValue('pageflex_justify')}"
-                           .value="${InputfieldComponent.enumGetKeyFromValue(FlexJustifyContent, this.flexJustifyContent)}"
-                           @component-inputfield-change="${(event: CustomEvent) => this.changeFlexJustify(event)}"
-                        ></component-inputfield>
+                           <component-inputfield
+                              .inputfieldType="${InputfieldType.COMBOBOX}"
+                              .options="${InputfieldComponent.enumToComboboxItems(AlignItems)}"
+                              label="${I18nService.getUniqueInstance().getValue('pageflex_align')}"
+                              .value="${InputfieldComponent.enumGetKeyFromValue(AlignItems, this.alignItems)}"
+                              @component-inputfield-change="${(event: CustomEvent) => this.changeAlignItems(event)}"
+                           ></component-inputfield>
 
-                        <component-inputfield
-                           .inputfieldType="${InputfieldType.COMBOBOX}"
-                           .options="${InputfieldComponent.enumToComboboxItems(AlignItems)}"
-                           label="${I18nService.getUniqueInstance().getValue('pageflex_align')}"
-                           .value="${InputfieldComponent.enumGetKeyFromValue(AlignItems, this.alignItems)}"
-                           @component-inputfield-change="${(event: CustomEvent) => this.changeAlignItems(event)}"
-                        ></component-inputfield>
+                           <component-inputfield
+                              .inputfieldType="${InputfieldType.COMBOBOX}"
+                              .options="${InputfieldComponent.enumToComboboxItems(AlignContent)}"
+                              label="${I18nService.getUniqueInstance().getValue('pageflex_align_content')}"
+                              .value="${InputfieldComponent.enumGetKeyFromValue(AlignContent, this.alignContent)}"
+                              @component-inputfield-change="${(event: CustomEvent) => this.changeAlignContent(event)}"
+                           ></component-inputfield>
 
-                        <component-inputfield
-                           .inputfieldType="${InputfieldType.COMBOBOX}"
-                           .options="${InputfieldComponent.enumToComboboxItems(AlignContent)}"
-                           label="${I18nService.getUniqueInstance().getValue('pageflex_align_content')}"
-                           .value="${InputfieldComponent.enumGetKeyFromValue(AlignContent, this.alignContent)}"
-                           @component-inputfield-change="${(event: CustomEvent) => this.changeAlignContent(event)}"
-                        ></component-inputfield>
+                           <component-inputfield
+                              label="${I18nService.getUniqueInstance().getValue('pageflex_standard')}"
+                              value="${this.itemFlexBasisValue}"
+                              @component-inputfield-change="${(event: CustomEvent) => this.changeItemFlexBasis(event)}"
+                           ></component-inputfield>
 
-                        <component-inputfield
-                           label="${I18nService.getUniqueInstance().getValue('pageflex_standard')}"
-                           value="${this.itemFlexBasisValue}"
-                           @component-inputfield-change="${(event: CustomEvent) => this.changeItemFlexBasis(event)}"
-                        ></component-inputfield>
+                           <component-inputfield
+                              .inputfieldType="${InputfieldType.COMBOBOX}"
+                              .options="${InputfieldComponent.enumToComboboxItems(ContainerProperties)}"
+                              label="${I18nService.getUniqueInstance().getValue('pageflex_container')}"
+                              .value="${this.containerProperties}"
+                              size="10"
+                              multiple="true"
+                              @component-inputfield-change="${(event: CustomEvent) =>
+                                 (this.containerProperties = event.detail.outputData.value)}"
+                           ></component-inputfield>
 
-                        <component-inputfield
-                           .inputfieldType="${InputfieldType.COMBOBOX}"
-                           .options="${InputfieldComponent.enumToComboboxItems(ContainerProperties)}"
-                           label="${I18nService.getUniqueInstance().getValue('pageflex_continer')}"
-                           .value="${this.containerProperties}"
-                           size="10"
-                           multiple="true"
-                           @component-inputfield-change="${(event: CustomEvent) =>
-                              (this.containerProperties = event.detail.outputData.value)}"
-                        ></component-inputfield>
-
-                        <component-inputfield
-                           .inputfieldType="${InputfieldType.COMBOBOX}"
-                           .options="${InputfieldComponent.enumToComboboxItems(ItemProperties)}"
-                           label="${I18nService.getUniqueInstance().getValue('pageflex_inhault')}"
-                           .value="${this.itemProperties}"
-                           size="10"
-                           multiple="true"
-                           @component-inputfield-change="${(event: CustomEvent) =>
-                              (this.itemProperties = event.detail.outputData.value)}"
-                        ></component-inputfield>
-                     </component-form>
+                           <component-inputfield
+                              .inputfieldType="${InputfieldType.COMBOBOX}"
+                              .options="${InputfieldComponent.enumToComboboxItems(ItemProperties)}"
+                              label="${I18nService.getUniqueInstance().getValue('pageflex_content')}"
+                              .value="${this.itemProperties}"
+                              size="10"
+                              multiple="true"
+                              @component-inputfield-change="${(event: CustomEvent) =>
+                                 (this.itemProperties = event.detail.outputData.value)}"
+                           ></component-inputfield>
+                        </component-form>
+                     </component-box>
                   </component-flex-container>
                </component-tab-content>
                <component-tab-content slot="tabContent"

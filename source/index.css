@@ -14,12 +14,12 @@
 }
 
 :root {
-   --space-little: 2pt;
-   --space-small: 4pt;
-   --space-medium: 8pt;
-   --space-normal: 12pt;
-   --space-big: 16pt;
-   --space-max: 32pt;
+   --space-little: 0.5vmin;
+   --space-small: 0.75vmin;
+   --space-medium: 1vmin;
+   --space-normal: 1.5vmin;
+   --space-big: 2vmin;
+   --space-max: 3vmin;
 
    --font-family: 'Main Font';
    --letter-spacing: 1pt;
@@ -84,34 +84,18 @@
 
 @media (max-width: 1280px) {
    :root {
-      --space-little: 2pt;
-      --space-small: 4pt;
-      --space-medium: 8pt;
-      --space-normal: 12pt;
-      --space-big: 16pt;
-      --space-max: 32pt;
       --font-size: 0.95em;
    }
 
    body {
-      padding-left: var(--space-little);
-      padding-right: var(--space-little);
    }
 }
 
 @media (orientation: portrait) {
    :root {
-      --space-little: 2pt;
-      --space-small: 4pt;
-      --space-medium: 8pt;
-      --space-normal: 12pt;
-      --space-big: 16pt;
-      --space-max: 32pt;
       --font-size: 0.95em;
    }
 
    body {
-      padding-left: var(--space-little);
-      padding-right: var(--space-little);
    }
 }

@@ -41,7 +41,7 @@ export class PageDialog extends PageAbstract {
             <component-typography .typographyType="${TypographyType.BODY1}">
                <i>DialogComponent</i>${I18nService.getUniqueInstance().getValue('page_dialog')}
             </component-typography>
-            <component-typography .typographyType="${TypographyType.H4}" text="${I18nService.getUniqueInstance().getValue('pageborder_typoh4')}"></component-typography>
+            <component-typography .typographyType="${TypographyType.H4}" text="${I18nService.getUniqueInstance().getValue('interactive_demo')}"></component-typography>
 
             <component-tabs>
                <component-tab

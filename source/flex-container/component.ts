@@ -17,7 +17,6 @@ export class ContainerProperties {
    static SMARTPHONE_VERTICAL_PADDING = 'SMARTPHONE_VERTICAL_PADDING';
    static TABLET_HORIZONTAL_PADDING = 'TABLET_HORIZONTAL_PADDING';
    static TABLET_VERTICAL_PADDING = 'TABLET_VERTICAL_PADDING';
-   static HOVER = 'HOVER';
 }
 
 export class ItemProperties {
@@ -96,12 +95,6 @@ export class FlexComponent extends LitElement {
    static IDENTIFIER: string = 'FlexComponent';
 
    @property()
-   containerProperties: string[] = [];
-
-   @property()
-   itemProperties: string[] = [];
-
-   @property()
    flexDirection: string = FlexDirection.ROW;
 
    @property()
@@ -115,6 +108,12 @@ export class FlexComponent extends LitElement {
 
    @property()
    alignContent: string = AlignContent.FLEX_START;
+
+   @property()
+   containerProperties: string[] = [];
+
+   @property()
+   itemProperties: string[] = [];
 
    @property()
    itemFlexBasisValue: string = 'auto';
