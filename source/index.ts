@@ -1,3 +1,4 @@
+import { AbstractApp } from './abstract-app';
 import { AccordionComponent } from './accordion/container/component';
 import { BoxComponent } from './box/component';
 import { BorderType, BorderComponent } from './border/component';
@@ -34,6 +35,7 @@ import { TopBottomTemplate } from './template-top-bottom-bars/component';
 import { TypographyType, TypographyComponent } from './typography/component';
 import { DialogComponent } from './dialog/component';
 
+export { AbstractApp } from './abstract-app';
 export { AccordionComponent } from './accordion/container/component';
 export { BorderType, BorderComponent } from './border/component';
 export { FloatingComponent } from './floating/component';
@@ -71,5 +73,5 @@ export { TypographyType, TypographyComponent } from './typography/component';
 export { DialogComponent } from './dialog/component';
 
 //Auskommentieren bei erstellen neuer Version auf NPM, nach auskommentieren nochmal ts in js bauen
-import './_showcase/showcase-app';
-import './index.css';
+//import './_showcase/showcase-app';
+//import './index.css';
