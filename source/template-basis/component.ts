@@ -54,7 +54,7 @@ export abstract class BasisTemplate extends LitElement {
                ${this.getTopContent()}
             </component-border>
          </top>
-         <div id="main" class="${this.menuCss}">
+         <div id="main" class="${this.menuCss} body-opacity">
             ${this.getMainComponent()}
          </div>
       `;

@@ -23,11 +23,19 @@
 @media screen and (min-width: 521px) {
    #main {
       transition: margin-left 0.25s linear;
-      margin-left: var(--menu-size);
+      /* margin-left: var(--menu-size); */
+   }
+
+   #main.body-opacity{
+      opacity: 0.5;
    }
 
    #main.menuClosed {
       margin-left: 0;
       transition: margin-left 0.25s linear;
+      opacity: 1;
+      background: #fff;
    }
+
+   
 }
