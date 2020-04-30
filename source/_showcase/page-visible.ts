@@ -4,6 +4,7 @@ import { BorderType, InputfieldComponent, InputfieldType, SpacerAlignment, Space
 import { I18nService } from '@domoskanonos/frontend-basis';
 import { ContainerProperties, ItemProperties } from '../flex-container/component';
 import { PreviewFormatterService } from './preview-formatter';
+import { GridAlignItems, GridJustifyItems } from '../grid-container/component';
 
 @customElement('page-visible')
 export class PageVisible extends PageAbstract {
@@ -30,9 +31,12 @@ export class PageVisible extends PageAbstract {
          >
             <component-typography .typographyType="${TypographyType.H2}" text="<component-visible/>"></component-typography>
             <component-typography .typographyType="${TypographyType.BODY1}">
-               <i>VisibleComponent</i> ${I18nService.getUniqueInstance().getValue('pagevisible_body')} (<i>hide</i>).
+               <i>VisibleComponent</i> ${I18nService.getUniqueInstance().getValue('pagevisible_body')}
             </component-typography>
-            <component-typography .typographyType="${TypographyType.H4}" text="${I18nService.getUniqueInstance().getValue('pageborder_typoh4')}"></component-typography>
+            <component-typography
+               .typographyType="${TypographyType.H4}"
+               text="${I18nService.getUniqueInstance().getValue('interactive_demo')}"
+            ></component-typography>
             <component-typography .typographyType="${TypographyType.BODY1}" text=""></component-typography>
 
             <component-tabs>
@@ -52,22 +56,38 @@ export class PageVisible extends PageAbstract {
                      .itemProperties="${[ItemProperties.KEYLINE_ALIGNMENT_BOTH, ItemProperties.KEYLINE_SIZE_MEDIUM]}"
                      itemFlexBasisValue="100%"
                   >
+                     <component-spacer
+                        spacerSize="${SpacerSize.MEDIUM}"
+                        spacerAlignment="${SpacerAlignment.VERTICAL}"
+                     ></component-spacer>
+                     <component-grid-container
+                        .gridJustifyItems="${GridJustifyItems.CENTER}"
+                        .gridAlignItems="${GridAlignItems.CENTER}"
+                        .gridTemplateRows="${['1fr']}"
+                        .gridTemplateColumns="${['1fr']}"
+                     >
+                        <component-container>
+                           <component-border borderType="${BorderType.ALL}">
+                              <component-visible visibleType="${this.visibleType}">
+                                 <component-box
+                                    style="background-color: var(--app-color-primary-background);"
+                                    width="200px"
+                                    height="200px"
+                                 ></component-box>
+                              </component-visible>
+                           </component-border>
+                        </component-container>
+                     </component-grid-container>
                      <component-form>
                         <component-inputfield
                            .inputfieldType="${InputfieldType.COMBOBOX}"
                            .options="${InputfieldComponent.enumToComboboxItems(VisibleType)}"
-                           label="VisibleType"
+                           label="${I18nService.getUniqueInstance().getValue('pagevisible_visibletype')}"
                            value="${this.visibleType}"
                            @component-inputfield-change="${(event: CustomEvent) =>
                               (this.visibleType = (<any>VisibleType)[event.detail.outputData.value])}"
                         ></component-inputfield>
                      </component-form>
-
-                     <component-border borderType="${BorderType.ALL}">
-                        <component-visible visibleType="${this.visibleType}">
-                           <component-rich-media src="https://picsum.photos/400/400"></component-rich-media>
-                        </component-visible>
-                     </component-border>
                   </component-flex-container>
                </component-tab-content>
                <component-tab-content slot="tabContent"
