@@ -133,7 +133,7 @@ export class PageLayoutComponent extends PageAbstract {
                      .containerProperties="${[ContainerProperties.CONTAINER_WIDTH_100]}"
                      .itemProperties="${[ItemProperties.KEYLINE_SIZE_MEDIUM]}"
                      .itemFlexBasisValues="${['auto', '100%', '100%']}"
-                     .flexJustifyContent="${FlexJustifyContent.CENTER}"
+                     .flexJustifyContent="${FlexJustifyContent.FLEX_START}"
                   >
                      <component-typography .typographyType="${TypographyType.H4}"
                         >${I18nService.getUniqueInstance().getValue('pageflex_demo_properties')}</component-typography
