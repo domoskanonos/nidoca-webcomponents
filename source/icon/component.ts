@@ -1,5 +1,6 @@
 import { css, customElement, html, property, unsafeCSS, LitElement } from 'lit-element';
 import { BasicService } from '@domoskanonos/frontend-basis';
+import { ShadowType } from '../border/component';
 
 const componentCSS = require('./component.css');
 
@@ -9,13 +10,19 @@ export class EventIconClickData {
    clickable: boolean = false;
 }
 
+export class IconShadowType {
+   static NONE = 'NONE';
+   static DEFAULT_SHADOW = 'DEFAULT_SHADOW';
+   static SHADOW_1 = 'SHADOW_1';
+   static SHADOW_2 = 'SHADOW_2';
+   static SHADOW_3 = 'SHADOW_3';
+}
+
 @customElement('component-icon')
 export class IconComponent extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;
-
-   static IDENTIFIER: string = 'IconComponent';
 
    static EVENT_CLICK: string = 'component-icon-click';
 
@@ -28,8 +35,9 @@ export class IconComponent extends LitElement {
    @property()
    backgroundColor: string = '';
 
+
    @property()
-   clazz: string = '';
+   iconShadowType: string = ShadowType.NONE;
 
    @property()
    size: number = 24;
@@ -44,6 +52,9 @@ export class IconComponent extends LitElement {
    withIconSpace: boolean = true;
 
    @property()
+   round: boolean = false;
+
+   @property()
    clickable: boolean = false;
 
    @property()
@@ -52,7 +63,9 @@ export class IconComponent extends LitElement {
    render() {
       return html`
          <span
-            class="icon-container ${this.clazz} ${this.clickable ? 'clickable' : ''} ${this.withIconSpace ? 'round' : ''}"
+            class="icon-container ${this.iconShadowType} ${this.clickable ? 'clickable' : ''} ${this.round
+               ? 'ROUND'
+               : ''}"
             title="${this.title}"
             @click="${this.clicked}"
             style="${this.backgroundColor ? 'background-color:'.concat(this.backgroundColor).concat(';') : ''} ${this

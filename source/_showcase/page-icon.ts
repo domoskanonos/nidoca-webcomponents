@@ -1,9 +1,11 @@
 import { customElement, html, property, TemplateResult } from 'lit-element';
 import { PageAbstract } from './page-abstract';
-import { InputfieldType } from '../inputfield/component';
+import { InputfieldComponent, InputfieldType } from '../inputfield/component';
 import { FlexJustifyContent, IconComponent, TargetType, TypographyType } from '..';
 import { ContainerProperties, ItemProperties } from '../flex-container/component';
 import { I18nService } from '@domoskanonos/frontend-basis';
+import { IconShadowType } from '../icon/component';
+import { PreviewFormatterService } from './preview-formatter';
 
 @customElement('page-icon')
 export class PageIconComponent extends PageAbstract {
@@ -30,6 +32,12 @@ export class PageIconComponent extends PageAbstract {
    @property()
    withIconSpace: boolean = true;
 
+   @property()
+   round: boolean = true;
+
+   @property()
+   iconShadowType: string = IconShadowType.DEFAULT_SHADOW;
+
    getMainComponent(): TemplateResult {
       return html`
          <component-flex-container
@@ -50,9 +58,12 @@ export class PageIconComponent extends PageAbstract {
                   >${I18nService.getUniqueInstance().getValue('pageicon_label1')}</component-link
                >
             </component-typography>
-            <component-typography .typographyType="${TypographyType.H4}" text="${I18nService.getUniqueInstance().getValue('interactive_demo')}"></component-typography>
+            <component-typography
+               .typographyType="${TypographyType.H4}"
+               text="${I18nService.getUniqueInstance().getValue('interactive_demo')}"
+            ></component-typography>
             <component-typography .typographyType="${TypographyType.BODY1}">
-              ${I18nService.getUniqueInstance().getValue('pageicon_body3')}
+               ${I18nService.getUniqueInstance().getValue('pageicon_body3')}
             </component-typography>
 
             <component-tabs>
@@ -94,6 +105,21 @@ export class PageIconComponent extends PageAbstract {
                            .checked="${this.withIconSpace}"
                            @component-inputfield-change="${(event: CustomEvent) =>
                               (this.withIconSpace = event.detail.outputData.value)}"
+                        ></component-inputfield>
+                        <component-inputfield
+                           label="${I18nService.getUniqueInstance().getValue('pageicon_property_round_label')}"
+                           assistiveText="${I18nService.getUniqueInstance().getValue('pageicon_property_round_assitive_text')}"
+                           .inputfieldType="${InputfieldType.CHECKBOX}"
+                           .checked="${this.round}"
+                           @component-inputfield-change="${(event: CustomEvent) => (this.round = event.detail.outputData.value)}"
+                        ></component-inputfield>
+                        <component-inputfield
+                           .inputfieldType="${InputfieldType.COMBOBOX}"
+                           .options="${InputfieldComponent.enumToComboboxItems(IconShadowType)}"
+                           label="${I18nService.getUniqueInstance().getValue('pageicon_iconShadowType')}"
+                           .value="${InputfieldComponent.enumGetKeyFromValue(IconShadowType, this.iconShadowType)}"
+                           @component-inputfield-change="${(event: CustomEvent) =>
+                              (this.iconShadowType = (<any>IconShadowType)[event.detail.outputData.value])}"
                         ></component-inputfield>
                         <component-inputfield
                            label="Farbe"
@@ -256,6 +282,8 @@ export class PageIconComponent extends PageAbstract {
                         backgroundColor="${this.backgroundColor}"
                         .size="${this.iconSize}"
                         .withIconSpace="${this.withIconSpace}"
+                        .round="${this.round}"
+                        iconShadowType="${this.iconShadowType}"
                      ></component-icon> </component-flex-container
                ></component-tab-content>
                <component-tab-content slot="tabContent"
@@ -264,11 +292,15 @@ export class PageIconComponent extends PageAbstract {
                         .concat(this.clickable ? 'true' : 'false')
                         .concat('" icon="')
                         .concat(this.icon)
+                        .concat('" round="')
+                        .concat(String(this.round))
                         .concat('" color="')
                         .concat(this.color)
                         .concat('"\n size="')
                         .concat(String(this.iconSize))
-                        .concat('"></component-icon>')}"
+                        .concat('"')
+                        .concat(PreviewFormatterService.getUniqueInstance().property2String(this.iconShadowType, IconShadowType))
+                        .concat('></component-icon>')}"
                   >
                   </component-code
                ></component-tab-content>
