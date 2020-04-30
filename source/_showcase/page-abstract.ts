@@ -82,7 +82,7 @@ export abstract class PageAbstract extends BasisTemplate {
          ></component-navigation-link>
          <component-navigation-link
             slot="links"
-            icon="dynamic_feed"
+            icon="visibility"
             text="${I18nService.getUniqueInstance().getValue('pagevisible')}"
             href="pagevisible"
          ></component-navigation-link>
