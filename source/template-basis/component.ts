@@ -34,30 +34,28 @@ export abstract class BasisTemplate extends LitElement {
 
    render() {
       return html`
-         <div class="container" @component-icon-click="${this.menuItemClicked}">
-            <top id="top" class="${this.menuCss}">
-               <component-border borderType="${BorderType.BOTTOM}">
-                  ${this.getTopContent()}
-               </component-border>
-            </top>
-            <div id="left" class="${this.menuCss}">
-               <component-border borderType="${BorderType.RIGHT}">
-                  <component-navigation .closed="${this.navigationClosed}" navigationType="${this.navigationType}">
-                     ${this.getLeftNavigationContent()}
-                     <component-inputfield slot="contentBefore"
-                        .inputfieldType="${InputfieldType.COMBOBOX}"
-                        .options="${InputfieldComponent.enumToComboboxItems(NavigationType)}"
-                        label="${I18nService.getUniqueInstance().getValue('navigationType')}"
-                        value="${this.navigationType}"
-                        @component-inputfield-change="${(event: CustomEvent) =>
-                           (this.navigationType = (<any>NavigationType)[event.detail.outputData.value])}"
-                     ></component-inputfield>
-                  </component-navigation>
-               </component-border>
-            </div>
-            <div id="main" class="${this.menuCss}">
-               ${this.getMainComponent()}
-            </div>
+         <component-border borderType="${BorderType.RIGHT}">
+            <component-navigation .closed="${this.navigationClosed}" navigationType="${this.navigationType}">
+               ${this.getLeftNavigationContent()}
+               <component-inputfield
+                  slot="contentBefore"
+                  .inputfieldType="${InputfieldType.COMBOBOX}"
+                  .options="${InputfieldComponent.enumToComboboxItems(NavigationType)}"
+                  label="${I18nService.getUniqueInstance().getValue('navigationType')}"
+                  value="${this.navigationType}"
+                  @component-inputfield-change="${(event: CustomEvent) =>
+                     (this.navigationType = (<any>NavigationType)[event.detail.outputData.value])}"
+               ></component-inputfield>
+            </component-navigation>
+         </component-border>
+
+         <top id="top" class="${this.menuCss}" @component-icon-click="${this.menuItemClicked}">
+            <component-border borderType="${BorderType.BOTTOM}">
+               ${this.getTopContent()}
+            </component-border>
+         </top>
+         <div id="main" class="${this.menuCss}">
+            ${this.getMainComponent()}
          </div>
       `;
    }
