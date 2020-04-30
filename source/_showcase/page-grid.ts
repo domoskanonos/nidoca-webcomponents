@@ -1,6 +1,6 @@
 import { customElement, html, property, TemplateResult } from 'lit-element';
 import { PageAbstract } from './page-abstract';
-import { InputfieldComponent, InputfieldType, TypographyType } from '..';
+import { InputfieldComponent, InputfieldType, SpacerAlignment, SpacerSize, TypographyType } from '..';
 import { GridAlignItems, GridJustifyItems } from '../grid-container/component';
 import { ContainerProperties, ItemProperties } from '../flex-container/component';
 import { I18nService } from '@domoskanonos/frontend-basis';
@@ -45,10 +45,12 @@ export class PageGrid extends PageAbstract {
             <component-typography .typographyType="${TypographyType.BODY1}"
                ><i>GridContainerComponent</i>${I18nService.getUniqueInstance().getValue('pagegrid_body')}</component-typography
             >
-            <component-typography .typographyType="${TypographyType.H4}" text="${I18nService.getUniqueInstance().getValue('interactive_demo')}"></component-typography>
+            <component-typography
+               .typographyType="${TypographyType.H4}"
+               text="${I18nService.getUniqueInstance().getValue('interactive_demo')}"
+            ></component-typography>
             <component-typography .typographyType="${TypographyType.BODY1}"
-               >${I18nService.getUniqueInstance().getValue('pagegrid_body1')}
-               <i>Code</i> begutachten</component-typography
+               >${I18nService.getUniqueInstance().getValue('pagegrid_body1')}</component-typography
             >
             <component-tabs>
                <component-tab
@@ -70,8 +72,31 @@ export class PageGrid extends PageAbstract {
                         ItemProperties.SMARTPHONE_MAX_WIDTH,
                         ItemProperties.TABLET_MAX_WIDTH
                      ]}"
-                     itemFlexBasisValue="50%"
-                  >
+                     itemFlexBasisValue="100%"
+                     ><component-spacer
+                        spacerSize="${SpacerSize.MEDIUM}"
+                        spacerAlignment="${SpacerAlignment.VERTICAL}"
+                     ></component-spacer>
+                     <component-grid-container
+                        .gridJustifyItems="${GridJustifyItems.CENTER}"
+                        .gridAlignItems="${GridAlignItems.CENTER}"
+                        .gridTemplateRows="${['1fr']}"
+                        .gridTemplateColumns="${['1fr']}"
+                     >
+                        <component-box height="auto" width="50vmin">
+                           <component-grid-container
+                              style="background-color: var(--app-color-primary-background);"
+                              gridJustifyItems="${this.gridJustifyItems}"
+                              gridAlignItems="${this.gridAlignItems}"
+                              .gridTemplateRows="${this.gridTemplateRows}"
+                              .gridTemplateColumns="${this.gridTemplateColumns}"
+                           >
+                              ${this.createBox(8, 8)} ${this.createBox(9, 8)} ${this.createBox(8, 9)} ${this.createBox(8, 12)}
+                              ${this.createBox(12, 8)} ${this.createBox(9, 8)} ${this.createBox(9, 9)} ${this.createBox(9, 8)}
+                              ${this.createBox(9, 8)}
+                           </component-grid-container>
+                        </component-box>
+                     </component-grid-container>
                      <component-form>
                         <component-inputfield
                            .inputfieldType="${InputfieldType.COMBOBOX}"
@@ -87,21 +112,8 @@ export class PageGrid extends PageAbstract {
                            value="${InputfieldComponent.enumGetKeyFromValue(GridAlignItems, this.gridAlignItems)}"
                            @component-inputfield-change="${(event: CustomEvent) => this.changeGridAlignContent(event)}"
                         ></component-inputfield>
-                     </component-form>
-
-                     <component-grid-container
-                        style="background-color: var(--app-color-primary-background);"
-                        gridJustifyItems="${this.gridJustifyItems}"
-                        gridAlignItems="${this.gridAlignItems}"
-                        .gridTemplateRows="${this.gridTemplateRows}"
-                        .gridTemplateColumns="${this.gridTemplateColumns}"
-                     >
-                        ${this.createBox(7, 7)} ${this.createBox(9, 7)} ${this.createBox(7, 9)} ${this.createBox(7, 12)}
-                        ${this.createBox(12, 7)} ${this.createBox(9, 7)} ${this.createBox(9, 9)} ${this.createBox(9, 7)}
-                        ${this.createBox(9, 7)}
-                     </component-grid-container>
-                  </component-flex-container></component-tab-content
-               >
+                     </component-form> </component-flex-container
+               ></component-tab-content>
                <component-tab-content slot="tabContent"
                   ><component-code
                      code="${'<component-grid-container '

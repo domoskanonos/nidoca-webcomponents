@@ -31,9 +31,22 @@ export class PageBox extends PageAbstract {
          >
             <component-typography .typographyType="${TypographyType.H2}" text="<component-box/>"></component-typography>
             <component-typography .typographyType="${TypographyType.BODY1}"
-               >${I18nService.getUniqueInstance().getValue('pagebox_desc')}</component-typography
-            >
-            <component-typography .typographyType="${TypographyType.H4}" text="${I18nService.getUniqueInstance().getValue('interactive_demo')}"></component-typography>
+               ><i>BoxComponent</i>${I18nService.getUniqueInstance().getValue(
+                  'pagebox_description_1'
+               )}<i>FlexComponent</i>${I18nService.getUniqueInstance().getValue(
+                  'pagebox_description_2'
+               )}<i>GridComponent</i>${I18nService.getUniqueInstance().getValue(
+                  'pagebox_description_3'
+               )}<br />${I18nService.getUniqueInstance().getValue('pagebox_description_4')}
+               <i>vw, vh, vmin, vmax</i>
+               ${I18nService.getUniqueInstance().getValue('pagebox_description_5')}
+               <i>px, em, %</i>
+               ${I18nService.getUniqueInstance().getValue('pagebox_description_6')}
+            </component-typography>
+            <component-typography
+               .typographyType="${TypographyType.H4}"
+               text="${I18nService.getUniqueInstance().getValue('interactive_demo')}"
+            ></component-typography>
             <component-typography .typographyType="${TypographyType.BODY1}" text=""></component-typography>
 
             <component-tabs>
