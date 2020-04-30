@@ -3,6 +3,7 @@ import { PageAbstract } from './page-abstract';
 import { ContainerProperties, ItemProperties } from '../flex-container/component';
 import { InputfieldComponent, InputfieldType, SpacerAlignment, SpacerSize, TypographyType } from '..';
 import { I18nService } from '@domoskanonos/frontend-basis';
+import { GridAlignItems, GridJustifyItems } from '../grid-container/component';
 
 @customElement('page-spacer')
 export class PageSpacer extends PageAbstract {
@@ -34,7 +35,10 @@ export class PageSpacer extends PageAbstract {
             <component-typography .typographyType="${TypographyType.BODY1}"
                ><i>SpacerComponent</i> ${I18nService.getUniqueInstance().getValue('pagespacer_text')}
             </component-typography>
-            <component-typography .typographyType="${TypographyType.H4}" text="${I18nService.getUniqueInstance().getValue('pageborder_typoh4')}"></component-typography>
+            <component-typography
+               .typographyType="${TypographyType.H4}"
+               text="${I18nService.getUniqueInstance().getValue('interactive_demo')}"
+            ></component-typography>
             <component-typography .typographyType="${TypographyType.BODY1}" text=""></component-typography>
 
             <component-tabs>
@@ -54,6 +58,33 @@ export class PageSpacer extends PageAbstract {
                      .itemProperties="${[ItemProperties.KEYLINE_ALIGNMENT_BOTH, ItemProperties.KEYLINE_SIZE_MEDIUM]}"
                      itemFlexBasisValue="100%"
                   >
+                     <component-spacer
+                        spacerSize="${SpacerSize.MEDIUM}"
+                        spacerAlignment="${SpacerAlignment.VERTICAL}"
+                     ></component-spacer>
+                     <component-grid-container
+                        .gridJustifyItems="${GridJustifyItems.CENTER}"
+                        .gridAlignItems="${GridAlignItems.CENTER}"
+                        .gridTemplateRows="${['1fr']}"
+                        .gridTemplateColumns="${['1fr']}"
+                     >
+                        <component-container>
+                           <component-box
+                              style="background-color: var(--app-color-primary-background);"
+                              width="min-content"
+                              height="min-content"
+                           >
+                              <component-spacer spacerAlignment="${this.spacerAlignment}" spacerSize="${this.spacerSize}">
+                                 <component-box
+                                    style="background-color: var(--app-color-surface-background);"
+                                    width="200px"
+                                    height="200px"
+                                 ></component-box>
+                              </component-spacer>
+                           </component-box>
+                        </component-container>
+                     </component-grid-container>
+
                      <component-form>
                         <component-inputfield
                            .inputfieldType="${InputfieldType.COMBOBOX}"
@@ -72,17 +103,6 @@ export class PageSpacer extends PageAbstract {
                               (this.spacerSize = (<any>SpacerSize)[event.detail.outputData.value])}"
                         ></component-inputfield>
                      </component-form>
-                     <component-container>
-                        <component-box
-                           style="background-color: var(--app-color-primary-background);"
-                           width="min-content"
-                           height="min-content"
-                        >
-                           <component-spacer spacerAlignment="${this.spacerAlignment}" spacerSize="${this.spacerSize}">
-                              <component-rich-media src="https://picsum.photos/200/200"></component-rich-media>
-                           </component-spacer>
-                        </component-box>
-                     </component-container>
                   </component-flex-container>
                </component-tab-content>
                <component-tab-content slot="tabContent"

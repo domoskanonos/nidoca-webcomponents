@@ -41,7 +41,7 @@
    "pagerich_text1": "Hier können Sie die Komponente ausführlich testen. Anschließend können Sie den zugehörigen Quellcode unter 'Code' begutachten",
    "pagerich_text2": "Geben Sie hier den Link ihres Bildes oder Videos ein",
    "pageripple_text": "ist eine Komponente mit der man Inhalte anmutig einblenden kann",
-   "pagespacer_text": "wird eingesetzt um zwischen einzelnen Komponenten Abstand zu erzeugen. Dabei kann man horizontalen, bzw. vertikalen Abstand erzeugen, oder auch eine Art unsichtbaren Rahmen um einzelne Elemente erzeugen.",
+   "pagespacer_text": "wird eingesetzt um zwischen einzelnen Komponenten Abstand zu erzeugen. Abstand kann um eine gesamte Komponente, oder nur in horizontaler, bzw. vertikaler Richtung erzeugt werden.",
    "pagespacer_label": "Ausrichtung",
    "pagespacer_label1": "Größe Abstand",
    "Headline": "Headline",
