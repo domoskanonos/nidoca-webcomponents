@@ -1,7 +1,7 @@
 import { css, html, property, query, TemplateResult, unsafeCSS, LitElement } from 'lit-element';
 
 import { BasicService, I18nService } from '@domoskanonos/frontend-basis';
-import { BorderType, IconComponent, InputfieldComponent, InputfieldType } from '..';
+import { BorderType, IconComponent, InputfieldComponent, InputfieldType, NavigationComponent } from '..';
 import { NavigationType } from '../navigation/component';
 
 const componentCSS = require('./component.css');
@@ -78,6 +78,8 @@ export abstract class BasisTemplate extends LitElement {
       if (this.menuCss.indexOf('menuClosed') == -1) {
          this.menuCss = 'menuClosed basicShadow';
          this.navigationClosed = true;
+      } else if (this.navigationType == NavigationType.PERMANENT) {
+         this.menuCss = 'permanent-top permanent-main';
       } else {
          this.menuCss = 'basicShadow';
          this.navigationClosed = false;
