@@ -20,22 +20,36 @@
    margin-left: 0;
 }
 
+#main.body-opacity{
+   opacity: 0.5;
+   transition: all 0.35s ease;
+}
+
+#main.menuClosed {
+   margin-left: 0;
+   opacity: 1;
+   background: #fff;
+   transition: all 0.35s ease;
+}
+
+.permanent-main{
+   width: calc(100vw - var(--menu-size)) !important;
+   position: relative;
+   float: right;
+   transition: all 0.35s ease;
+}
+
+#main{
+   width: 100%;
+}
+
 @media screen and (min-width: 521px) {
    #main {
       transition: margin-left 0.25s linear;
-      /* margin-left: var(--menu-size); */
+      margin-left: var(--menu-size); 
    }
 
-   #main.body-opacity{
-      opacity: 0.5;
-   }
-
-   #main.menuClosed {
-      margin-left: 0;
-      transition: margin-left 0.25s linear;
-      opacity: 1;
-      background: #fff;
-   }
+  
 
    
 }
