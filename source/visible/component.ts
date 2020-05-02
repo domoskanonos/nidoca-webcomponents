@@ -1,4 +1,4 @@
-import {css, customElement, html, LitElement, property, unsafeCSS} from 'lit-element';
+import { css, customElement, html, LitElement, property, unsafeCSS } from 'lit-element';
 
 const componentCSS = require('./component.css');
 
@@ -19,7 +19,7 @@ export class VisibleEffect extends LitElement {
 
    render() {
       return html`
-         <div class="${this.visibleType}"><slot></slot></div>
+         <slot class="${this.visibleType}"></slot>
       `;
    }
 }

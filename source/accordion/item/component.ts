@@ -1,7 +1,8 @@
 import { css, customElement, html, property, unsafeCSS } from 'lit-element';
 import { LitElement } from 'lit-element';
-import { BorderType, VisibleType } from '../..';
+import { BorderType, SpacerAlignment, SpacerSize, VisibleType } from '../..';
 import { GridAlignItems, GridJustifyItems } from '../../grid-container/component';
+import { BasicService } from '@domoskanonos/frontend-basis';
 
 const componentCSS = require('./component.css');
 
@@ -10,6 +11,8 @@ export class AccordionItemComponent extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;
+
+   static EVENT_CLICK: string = 'component-accordion-item-click';
 
    @property()
    header: string = '';
@@ -20,22 +23,23 @@ export class AccordionItemComponent extends LitElement {
    render() {
       return html`
          <div class="ACCORDION_ITEM">
-            <component-border borderType="${BorderType.ALL}">
+            <component-border .borderProperties="${[BorderType.ALL, BorderType.FULL_WIDTH]}">
                <component-grid-container
                   class="ACCORDION_HEADER"
                   @click="${() => this.toggle()}"
                   .gridJustifyItems="${GridJustifyItems.STRETCH}"
                   .gridAlignItems="${GridAlignItems.CENTER}"
                   .gridTemplateRows="${['1fr']}"
-                  .gridTemplateColumns="${['1fr', 'auto']}"
-               >
+                  .gridTemplateColumns="${['auto', '1fr', 'auto']}"
+                  ><component-spacer
+                     spacerSize="${SpacerSize.MEDIUM}"
+                     spacerAlignment="${SpacerAlignment.HORIZONTAL}"
+                  ></component-spacer>
                   <component-typography text="${this.header}"></component-typography>
                   <component-icon icon="${this.showTabContent ? 'keyboard_arrow_down' : 'keyboard_arrow_up'}"></component-icon>
                </component-grid-container>
                <component-visible visibleType="${this.showTabContent ? VisibleType.NORMAL : VisibleType.HIDE}">
-                  <div class="accordionContent">
-                     <slot></slot>
-                  </div>
+                  <slot></slot>
                </component-visible>
             </component-border>
          </div>
@@ -46,5 +50,6 @@ export class AccordionItemComponent extends LitElement {
       console.log('accordion clicked, state=' + this.showTabContent);
       this.showTabContent = Boolean(!this.showTabContent);
       console.log('accordion clicked, after state=' + this.showTabContent);
+      BasicService.getUniqueInstance().dispatchSimpleCustomEvent(this, AccordionItemComponent.EVENT_CLICK, this);
    }
 }

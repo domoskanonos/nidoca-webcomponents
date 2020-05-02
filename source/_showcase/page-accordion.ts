@@ -47,7 +47,7 @@ export class PageAccordion extends PageAbstract {
                         ContainerProperties.TABLET_MAX_WIDTH,
                         ContainerProperties.SMARTPHONE_MAX_WIDTH
                      ]}"
-                     .itemProperties="${[ItemProperties.KEYLINE_ALIGNMENT_BOTH, ItemProperties.KEYLINE_SIZE_MEDIUM]}"
+                     .itemProperties="${[]}"
                      itemFlexBasisValue="100%"
                   >
                      <component-spacer
