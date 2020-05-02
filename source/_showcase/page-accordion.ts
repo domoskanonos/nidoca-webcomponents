@@ -29,7 +29,10 @@ export class PageAccordion extends PageAbstract {
                .typographyType="${TypographyType.BODY1}"
                text="Komponente um Inhalte zu seperieren."
             ></component-typography>
-            <component-typography .typographyType="${TypographyType.H4}" text="${I18nService.getUniqueInstance().getValue('demo')}"></component-typography>
+            <component-typography
+               .typographyType="${TypographyType.H4}"
+               text="${I18nService.getUniqueInstance().getValue('demo')}"
+            ></component-typography>
             <component-tabs>
                <component-tab
                   slot="tab"
@@ -47,12 +50,16 @@ export class PageAccordion extends PageAbstract {
                      .itemProperties="${[ItemProperties.KEYLINE_ALIGNMENT_BOTH, ItemProperties.KEYLINE_SIZE_MEDIUM]}"
                      itemFlexBasisValue="100%"
                   >
-                     <component-accordion>
-                        <component-accordion-item header="1">
-                           <component-typography .typographyType="${TypographyType.H2}" text="1"></component-typography>
+                     <component-spacer
+                        spacerSize="${SpacerSize.MEDIUM}"
+                        spacerAlignment="${SpacerAlignment.VERTICAL}"
+                     ></component-spacer
+                     ><component-accordion>
+                        <component-accordion-item header="${I18nService.getUniqueInstance().getValue('pageaccordion_header_1')}">
+                           <component-rich-media src="https://picsum.photos/400/400"></component-rich-media>
                         </component-accordion-item>
-                        <component-accordion-item header="2">
-                           <component-typography .typographyType="${TypographyType.H2}" text="2"></component-typography>
+                        <component-accordion-item header="${I18nService.getUniqueInstance().getValue('pageaccordion_header_2')}">
+                           <component-rich-media src="https://picsum.photos/400/400"></component-rich-media>
                         </component-accordion-item>
                      </component-accordion> </component-flex-container
                ></component-tab-content>
@@ -61,7 +68,7 @@ export class PageAccordion extends PageAbstract {
                      spacerSize="${SpacerSize.MEDIUM}"
                      spacerAlignment="${SpacerAlignment.VERTICAL}"
                   ></component-spacer
-                  ><component-code> </component-code>
+                  ><component-code code=""> </component-code>
                </component-tab-content>
             </component-tabs>
          </component-flex-container>

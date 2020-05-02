@@ -1,5 +1,5 @@
 import { AbstractApp } from './abstract-app';
-import { AccordionComponent } from './accordion/container/component';
+import { AccordionComponent } from './accordion/component';
 import { BoxComponent } from './box/component';
 import { BorderType, BorderComponent } from './border/component';
 import { FloatingComponent } from './floating/component';
@@ -36,7 +36,7 @@ import { TypographyType, TypographyComponent } from './typography/component';
 import { DialogComponent } from './dialog/component';
 
 export { AbstractApp } from './abstract-app';
-export { AccordionComponent } from './accordion/container/component';
+export { AccordionComponent } from './accordion/component';
 export { BorderType, BorderComponent } from './border/component';
 export { FloatingComponent } from './floating/component';
 export { BoxComponent } from './box/component';

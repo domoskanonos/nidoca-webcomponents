@@ -1,6 +1,6 @@
 import { css, customElement, html, property, unsafeCSS } from 'lit-element';
 import { LitElement } from 'lit-element';
-import { BorderType } from '../..';
+import { BorderType, VisibleType } from '../..';
 import { GridAlignItems, GridJustifyItems } from '../../grid-container/component';
 
 const componentCSS = require('./component.css');
@@ -15,42 +15,36 @@ export class AccordionItemComponent extends LitElement {
    header: string = '';
 
    @property()
-   stateClazz: string = 'closed';
+   showTabContent: boolean = false;
 
    render() {
       return html`
          <div class="ACCORDION_ITEM">
             <component-border borderType="${BorderType.ALL}">
-               <component-grid-container class="ACCORDION_HEADER"
+               <component-grid-container
+                  class="ACCORDION_HEADER"
                   @click="${() => this.toggle()}"
-                  .gridJustifyItems="${GridJustifyItems.CENTER}"
+                  .gridJustifyItems="${GridJustifyItems.STRETCH}"
                   .gridAlignItems="${GridAlignItems.CENTER}"
                   .gridTemplateRows="${['1fr']}"
-                  .gridTemplateColumns="${['1fr', '1fr']}"
+                  .gridTemplateColumns="${['1fr', 'auto']}"
                >
                   <component-typography text="${this.header}"></component-typography>
-                  <component-icon
-                     style="float:right;"
-                     icon="${this.stateClazz == 'closed' ? 'keyboard_arrow_down' : 'keyboard_arrow_up'}"
-                  ></component-icon>
+                  <component-icon icon="${this.showTabContent ? 'keyboard_arrow_down' : 'keyboard_arrow_up'}"></component-icon>
                </component-grid-container>
-
-               <div class="accordionContent ${this.stateClazz}">
-                  <slot></slot>
-               </div>
+               <component-visible visibleType="${this.showTabContent ? VisibleType.NORMAL : VisibleType.HIDE}">
+                  <div class="accordionContent">
+                     <slot></slot>
+                  </div>
+               </component-visible>
             </component-border>
          </div>
       `;
    }
 
    toggle() {
-      console.log('accordion clicked, state=' + this.stateClazz);
-      if ('open' == this.stateClazz) {
-         this.stateClazz = 'closed';
-      } else {
-         this.stateClazz = 'open';
-      }
-      console.log('accordion clicked, after state=' + this.stateClazz);
-      //this.reqUpdate();
+      console.log('accordion clicked, state=' + this.showTabContent);
+      this.showTabContent = Boolean(!this.showTabContent);
+      console.log('accordion clicked, after state=' + this.showTabContent);
    }
 }

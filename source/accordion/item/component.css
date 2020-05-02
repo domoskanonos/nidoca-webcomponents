@@ -1,8 +1,3 @@
-.ACCORDION_ITEM {
-}
-
-.ACCORDION_HEADER:hover {
-}
 .ACCORDION_HEADER {
    cursor: pointer;
 }
@@ -10,13 +5,4 @@
 component-typography {
    padding-left: var(--space-small);
 }
-component-icon {
-   padding-right: var(--space-small);
-}
 
-.accordionContent.closed {
-   display: none;
-}
-.accordionContent.open {
-   display: initial;
-}
