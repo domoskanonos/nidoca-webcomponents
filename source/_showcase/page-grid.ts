@@ -115,6 +115,10 @@ export class PageGrid extends PageAbstract {
                      </component-form> </component-flex-container
                ></component-tab-content>
                <component-tab-content slot="tabContent"
+                  ><component-spacer
+                     spacerSize="${SpacerSize.MEDIUM}"
+                     spacerAlignment="${SpacerAlignment.VERTICAL}"
+                  ></component-spacer
                   ><component-code
                      code="${'<component-grid-container '
                         .concat(

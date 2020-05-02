@@ -51,7 +51,7 @@ export class TabsComponent extends LitElement {
          <component-grid-container
             @component-tab-click="${(event: CustomEvent) => this.tabClicked(event)}"
             .gridTemplateRows="${['auto', 'auto']}"
-            .gridTemplateColumns="${['auto']}"
+            .gridTemplateColumns="${['100%']}"
          >
             <slot id="tabSlot" name="tab"></slot>
             <slot id="tabContentSlot" name="tabContent"></slot>

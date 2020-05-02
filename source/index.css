@@ -23,7 +23,7 @@
 
    --font-family: 'Main Font';
    --letter-spacing: 1pt;
-   --font-size: 1em;
+   --font-size: 1.1em;
 
    --menu-size: 275px;
 
@@ -84,7 +84,7 @@
 
 @media (max-width: 1280px) {
    :root {
-      --font-size: 0.95em;
+      --font-size: 1.05em;
    }
 
    body {
@@ -93,7 +93,7 @@
 
 @media (orientation: portrait) {
    :root {
-      --font-size: 0.95em;
+      --font-size: 1em;
    }
 
    body {
