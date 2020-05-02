@@ -4,6 +4,7 @@ import { InputfieldComponent, InputfieldType } from '../inputfield/component';
 import { ButtonType, SpacerAlignment, SpacerSize, TypographyType } from '..';
 import { ContainerProperties, ItemProperties } from '../flex-container/component';
 import { I18nService } from '@domoskanonos/frontend-basis';
+import { IconShadowType } from '../icon/component';
 
 @customElement('page-floating')
 export class PageFloating extends PageAbstract {
@@ -19,13 +20,13 @@ export class PageFloating extends PageAbstract {
    width: string = 'auto';
 
    @property()
-   left: string = '250px';
+   left: string = 'auto';
 
    @property()
    top: string = 'auto';
 
    @property()
-   right: string = 'auto';
+   right: string = '20px';
 
    @property()
    bottom: string = 'auto';
@@ -41,11 +42,13 @@ export class PageFloating extends PageAbstract {
             width="${this.width}"
          >
             <component-icon
-               .clickable="false"
-               icon="add"
-               color="var(--app-primary-color)"
-               size="96"
                clickable="true"
+               icon="thumb_up_alt"
+               round="true"
+               color="#ffffff"
+               backgroundColor="#0d47a1"
+               size="36"
+               .iconShadowType="${IconShadowType.DEFAULT_SHADOW}"
             ></component-icon>
          </component-floating-container>
          <component-flex-container
@@ -68,10 +71,9 @@ export class PageFloating extends PageAbstract {
                .typographyType="${TypographyType.H4}"
                text="${I18nService.getUniqueInstance().getValue('interactive_demo')}"
             ></component-typography>
-            <component-typography
-               .typographyType="${TypographyType.BODY1}"
-               text="${I18nService.getUniqueInstance().getValue('pagebutton_var')}"
-            ></component-typography>
+            <component-typography .typographyType="${TypographyType.BODY1}">
+               ${I18nService.getUniqueInstance().getValue('pagefloating_demo_description')}
+            </component-typography>
 
             <component-tabs>
                <component-tab
@@ -91,25 +93,25 @@ export class PageFloating extends PageAbstract {
                            .inputfieldType="${InputfieldType.TEXT}"
                            label="${I18nService.getUniqueInstance().getValue('pagefloating_height_label')}"
                            .value="${this.height}"
-                           @component-inputfield-change="${(event: CustomEvent) => (this.height = event.detail.value)}"
+                           @component-inputfield-change="${(event: CustomEvent) => (this.height = event.detail.outputData.value)}"
                         ></component-inputfield>
                         <component-inputfield
                            .inputfieldType="${InputfieldType.TEXT}"
                            label="${I18nService.getUniqueInstance().getValue('pagefloating_width_label')}"
                            .value="${this.width}"
-                           @component-inputfield-change="${(event: CustomEvent) => (this.width = event.detail.value)}"
+                           @component-inputfield-change="${(event: CustomEvent) => (this.width = event.detail.outputData.value)}"
                         ></component-inputfield>
                         <component-inputfield
                            .inputfieldType="${InputfieldType.TEXT}"
                            label="${I18nService.getUniqueInstance().getValue('pagefloating_left_label')}"
                            .value="${this.left}"
-                           @component-inputfield-change="${(event: CustomEvent) => (this.left = event.detail.value)}"
+                           @component-inputfield-change="${(event: CustomEvent) => (this.left = event.detail.outputData.value)}"
                         ></component-inputfield>
                         <component-inputfield
                            .inputfieldType="${InputfieldType.TEXT}"
                            label="${I18nService.getUniqueInstance().getValue('pagefloating_right_label')}"
                            .value="${this.right}"
-                           @component-inputfield-change="${(event: CustomEvent) => (this.right = event.detail.value)}"
+                           @component-inputfield-change="${(event: CustomEvent) => (this.right = event.detail.outputData.value)}"
                         ></component-inputfield>
                         <component-inputfield
                            .inputfieldType="${InputfieldType.TEXT}"

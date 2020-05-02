@@ -15,6 +15,7 @@ export class AccordionComponent extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;
+
    @property()
    accordionType: string = AccordionType.SINGLE;
 
@@ -38,7 +39,7 @@ export class AccordionComponent extends LitElement {
                for (let index = 0; index < assignedElements.length; index++) {
                   let element: Element = assignedElements[index];
                   if (element instanceof AccordionItemComponent && element != accordionItemComponent) {
-                     element.showTabContent = false;
+                     element.opened = false;
                   }
                }
             }

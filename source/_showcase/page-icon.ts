@@ -288,7 +288,7 @@ export class PageIconComponent extends PageAbstract {
                ></component-tab-content>
                <component-tab-content slot="tabContent"
                   ><component-code
-                     code="${'<component-icon .clickable="'
+                     code="${'<component-icon clickable="'
                         .concat(this.clickable ? 'true' : 'false')
                         .concat('" icon="')
                         .concat(this.icon)
@@ -296,6 +296,8 @@ export class PageIconComponent extends PageAbstract {
                         .concat(String(this.round))
                         .concat('" color="')
                         .concat(this.color)
+                        .concat('" backgroundColor="')
+                        .concat(this.backgroundColor)
                         .concat('"\n size="')
                         .concat(String(this.iconSize))
                         .concat('"')

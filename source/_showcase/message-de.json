@@ -1,5 +1,6 @@
 {
    "sectionstructure": "Struktur",
+   "sectionstyling": "Gestaltung",
    "pagegetstarted": "Get started",
    "pageintroduction": "Einführung",
    "pagebox": "Box",
@@ -21,6 +22,7 @@
    "pageaccordion": "Akkordion",
    "pageaccordion_header_1": "Akkordeon 1",
    "pageaccordion_header_2": "Akkordeon 2",
+   "pageaccordion_accordiontype_label": "Akkordeontyp",
    "pageborder": "Border",
    "pagedialog": "Dialog",
    "pagerichmedia": "Medien",
@@ -133,8 +135,12 @@
    "pageicon_body7": "Sie können das Icon mit einem unsichtbarenRahmen versehen.",
    "pageripple": "Ripple",
    "pagefloating": "Floating",
+   "pagefloating_height_label": "Höhe",
+   "pagefloating_width_label": "Breite",
    "pagefloating_left_label": "Abstand Links",
    "pagefloating_right_label": "Abstand Rechts",
    "pagefloating_top_label": "Abstand Oben",
-   "pagefloating_bottom_label": "Abstand Unten"
+   "pagefloating_bottom_label": "Abstand Unten",
+   "pagefloating_description": " ist für Inhalte, welche an einer fixen Position auf dem Bildschirm dargestellt werden sollen.",
+   "pagefloating_demo_description" : "Hier kannst die einzelnen Attribute verändern und deren Auswirkungen auf das Icon oben rechts am Bildschirm begutachten"
 }

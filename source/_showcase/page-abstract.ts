@@ -76,6 +76,16 @@ export abstract class PageAbstract extends BasisTemplate {
          ></component-navigation-link>
          <component-navigation-link
             slot="links"
+            icon=""
+            text="${I18nService.getUniqueInstance().getValue('pagefloating')}"
+            href="pagefloating"
+         ></component-navigation-link>
+         <component-navigation-section
+            slot="links"
+            text="${I18nService.getUniqueInstance().getValue('sectionstyling')}"
+         ></component-navigation-section>
+         <component-navigation-link
+            slot="links"
             icon="title"
             text="${I18nService.getUniqueInstance().getValue('pagespacer')}"
             href="pagespacer"
@@ -89,23 +99,19 @@ export abstract class PageAbstract extends BasisTemplate {
          <component-navigation-link
             slot="links"
             icon=""
-            text="${I18nService.getUniqueInstance().getValue('pageaccordion')}"
-            href="pageaccordion"
-         ></component-navigation-link>
-         <component-navigation-link
-            slot="links"
-            icon=""
             text="${I18nService.getUniqueInstance().getValue('pagedivider')}"
             href="pagedivider"
          ></component-navigation-link>
-         <component-navigation-section slot="links" text="${I18nService.getUniqueInstance().getValue('pageabstract_komp')}"></component-navigation-section>
          <component-navigation-link
             slot="links"
             icon=""
-            text="${I18nService.getUniqueInstance().getValue('pagefloating')}"
-            href="pagefloating"
+            text="${I18nService.getUniqueInstance().getValue('pageaccordion')}"
+            href="pageaccordion"
          ></component-navigation-link>
-         <component-navigation-section slot="links" text="Komponenten"></component-navigation-section>
+         <component-navigation-section
+            slot="links"
+            text="${I18nService.getUniqueInstance().getValue('pageabstract_komp')}"
+         ></component-navigation-section>
          <component-navigation-link
             slot="links"
             icon="title"
@@ -180,7 +186,10 @@ export abstract class PageAbstract extends BasisTemplate {
             href="pagetable"
          ></component-navigation-link>
          <component-divider slot="links" .dividerType="${DividerType.THIN}" opacity="0.2"></component-divider>
-         <component-navigation-section slot="links" text="${I18nService.getUniqueInstance().getValue('pageabstract_eff')}"></component-navigation-section>
+         <component-navigation-section
+            slot="links"
+            text="${I18nService.getUniqueInstance().getValue('pageabstract_eff')}"
+         ></component-navigation-section>
          <component-navigation-link
             slot="links"
             icon="dynamic_feed"

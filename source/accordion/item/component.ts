@@ -18,7 +18,7 @@ export class AccordionItemComponent extends LitElement {
    header: string = '';
 
    @property()
-   showTabContent: boolean = false;
+   opened: boolean = false;
 
    render() {
       return html`
@@ -36,9 +36,9 @@ export class AccordionItemComponent extends LitElement {
                      spacerAlignment="${SpacerAlignment.HORIZONTAL}"
                   ></component-spacer>
                   <component-typography text="${this.header}"></component-typography>
-                  <component-icon icon="${this.showTabContent ? 'keyboard_arrow_down' : 'keyboard_arrow_up'}"></component-icon>
+                  <component-icon icon="${this.opened ? 'keyboard_arrow_down' : 'keyboard_arrow_up'}"></component-icon>
                </component-grid-container>
-               <component-visible visibleType="${this.showTabContent ? VisibleType.NORMAL : VisibleType.HIDE}">
+               <component-visible visibleType="${this.opened ? VisibleType.NORMAL : VisibleType.HIDE}">
                   <slot></slot>
                </component-visible>
             </component-border>
@@ -47,9 +47,9 @@ export class AccordionItemComponent extends LitElement {
    }
 
    toggle() {
-      console.log('accordion clicked, state=' + this.showTabContent);
-      this.showTabContent = Boolean(!this.showTabContent);
-      console.log('accordion clicked, after state=' + this.showTabContent);
+      console.log('accordion clicked, state=' + this.opened);
+      this.opened = Boolean(!this.opened);
+      console.log('accordion clicked, after state=' + this.opened);
       BasicService.getUniqueInstance().dispatchSimpleCustomEvent(this, AccordionItemComponent.EVENT_CLICK, this);
    }
 }

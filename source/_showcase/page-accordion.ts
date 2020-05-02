@@ -1,11 +1,15 @@
-import { customElement, html, TemplateResult } from 'lit-element';
+import { customElement, html, property, TemplateResult } from 'lit-element';
 import { PageAbstract } from './page-abstract';
-import { SpacerAlignment, SpacerSize, TypographyType } from '..';
+import { ButtonType, FlexWrap, InputfieldComponent, InputfieldType, SpacerAlignment, SpacerSize, TypographyType } from '..';
 import { I18nService } from '@domoskanonos/frontend-basis';
 import { ContainerProperties, ItemProperties } from '../flex-container/component';
+import { AccordionType } from '../accordion/component';
 
 @customElement('page-accordion')
 export class PageAccordion extends PageAbstract {
+   @property()
+   accordionType: string = AccordionType.SINGLE;
+
    constructor() {
       super();
       this.navigationTitle = I18nService.getUniqueInstance().getValue('pageaccordion');
@@ -25,10 +29,11 @@ export class PageAccordion extends PageAbstract {
             itemFlexBasisValue="100%"
          >
             <component-typography .typographyType="${TypographyType.H2}" text="<component-accordion/>"></component-typography>
-            <component-typography
-               .typographyType="${TypographyType.BODY1}"
-               text="Komponente um Inhalte zu seperieren."
-            ></component-typography>
+            <component-typography .typographyType="${TypographyType.BODY1}">
+               <i>AccordionComponent</i> wird zum seperieren von Inhalten verwendet. Dabei kann man zwischen zwei Modi auswählen:
+               SINGLE, MULTI Modus SINGLE führt dazu das immer nur ein Akkordeonelement ausgeklappt ist und die anderen
+               automatisch geschlossen werden. Modus MULIT erlaubt es mehrere Akkordeonelemente gleichzeitig aufklappen zu können.
+            </component-typography>
             <component-typography
                .typographyType="${TypographyType.H4}"
                text="${I18nService.getUniqueInstance().getValue('demo')}"
@@ -50,16 +55,26 @@ export class PageAccordion extends PageAbstract {
                      .itemProperties="${[]}"
                      itemFlexBasisValue="100%"
                   >
+                     <component-form>
+                        <component-inputfield
+                           .inputfieldType="${InputfieldType.COMBOBOX}"
+                           .options="${InputfieldComponent.enumToComboboxItems(AccordionType)}"
+                           label="${I18nService.getUniqueInstance().getValue('pageaccordion_accordiontype_label')}"
+                           .value="${InputfieldComponent.enumGetKeyFromValue(AccordionType, this.accordionType)}"
+                           @component-inputfield-change="${(event: CustomEvent) =>
+                              (this.accordionType = (<any>AccordionType)[event.detail.outputData.value])}"
+                        ></component-inputfield>
+                     </component-form>
                      <component-spacer
                         spacerSize="${SpacerSize.MEDIUM}"
                         spacerAlignment="${SpacerAlignment.VERTICAL}"
                      ></component-spacer
-                     ><component-accordion>
+                     ><component-accordion accordionType="${this.accordionType}">
                         <component-accordion-item header="${I18nService.getUniqueInstance().getValue('pageaccordion_header_1')}">
-                           <component-rich-media src="https://picsum.photos/400/400"></component-rich-media>
+                           <component-rich-media src="https://picsum.photos/400/100"></component-rich-media>
                         </component-accordion-item>
                         <component-accordion-item header="${I18nService.getUniqueInstance().getValue('pageaccordion_header_2')}">
-                           <component-rich-media src="https://picsum.photos/400/400"></component-rich-media>
+                           <component-rich-media src="https://picsum.photos/400/100"></component-rich-media>
                         </component-accordion-item>
                      </component-accordion> </component-flex-container
                ></component-tab-content>
@@ -68,8 +83,7 @@ export class PageAccordion extends PageAbstract {
                      spacerSize="${SpacerSize.MEDIUM}"
                      spacerAlignment="${SpacerAlignment.VERTICAL}"
                   ></component-spacer
-                  ><component-code>
-                  </component-code>
+                  ><component-code> </component-code>
                </component-tab-content>
             </component-tabs>
          </component-flex-container>
