@@ -68,7 +68,8 @@ export class PageAccordion extends PageAbstract {
                      spacerSize="${SpacerSize.MEDIUM}"
                      spacerAlignment="${SpacerAlignment.VERTICAL}"
                   ></component-spacer
-                  ><component-code code=""> </component-code>
+                  ><component-code>
+                  </component-code>
                </component-tab-content>
             </component-tabs>
          </component-flex-container>
