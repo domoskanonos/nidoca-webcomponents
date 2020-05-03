@@ -23,7 +23,7 @@ export abstract class BasisTemplate extends LitElement {
    navigationClosed: boolean = true;
 
    @property()
-   navigationType: string = NavigationType.PERMANENT;
+   navigationType: string = NavigationType.DISMISSIBLE;
 
    @query('#top')
    private topElement: HTMLElement | undefined;
@@ -71,6 +71,9 @@ export abstract class BasisTemplate extends LitElement {
          this.navigationClosed = true;
       } else if (this.navigationType == NavigationType.PERMANENT) {
          this.menuCss = 'permanent-top permanent-main';
+         this.navigationClosed = false;
+      }else if (this.navigationType == NavigationType.DISMISSIBLE) {
+         this.menuCss = 'dismissible-main';
          this.navigationClosed = false;
       } else {
          this.menuCss = 'basicShadow';
