@@ -80,6 +80,12 @@ export abstract class PageAbstract extends BasisTemplate {
             text="${I18nService.getUniqueInstance().getValue('pagefloating')}"
             href="pagefloating"
          ></component-navigation-link>
+         <component-navigation-link
+            slot="links"
+            icon=""
+            text="${I18nService.getUniqueInstance().getValue('pagedialog')}"
+            href="pagedialog"
+         ></component-navigation-link>
          <component-navigation-section
             slot="links"
             text="${I18nService.getUniqueInstance().getValue('sectionstyling')}"
@@ -105,8 +111,20 @@ export abstract class PageAbstract extends BasisTemplate {
          <component-navigation-link
             slot="links"
             icon=""
+            text="${I18nService.getUniqueInstance().getValue('pageborder')}"
+            href="pageborder"
+         ></component-navigation-link>
+         <component-navigation-link
+            slot="links"
+            icon=""
             text="${I18nService.getUniqueInstance().getValue('pageaccordion')}"
             href="pageaccordion"
+         ></component-navigation-link>
+         <component-navigation-link
+            slot="links"
+            icon=""
+            text="${I18nService.getUniqueInstance().getValue('pagetabs')}"
+            href="pagetabs"
          ></component-navigation-link>
          <component-navigation-section
             slot="links"
@@ -117,19 +135,6 @@ export abstract class PageAbstract extends BasisTemplate {
             icon="title"
             text="${I18nService.getUniqueInstance().getValue('pagetypography')}"
             href="pagetypography"
-         ></component-navigation-link>
-
-         <component-navigation-link
-            slot="links"
-            icon=""
-            text="${I18nService.getUniqueInstance().getValue('pageborder')}"
-            href="pageborder"
-         ></component-navigation-link>
-         <component-navigation-link
-            slot="links"
-            icon=""
-            text="${I18nService.getUniqueInstance().getValue('pagedialog')}"
-            href="pagedialog"
          ></component-navigation-link>
          <component-navigation-link
             slot="links"
@@ -167,12 +172,7 @@ export abstract class PageAbstract extends BasisTemplate {
             text="${I18nService.getUniqueInstance().getValue('pagelink')}"
             href="pagelink"
          ></component-navigation-link>
-         <component-navigation-link
-            slot="links"
-            icon=""
-            text="${I18nService.getUniqueInstance().getValue('pagetabs')}"
-            href="pagetabs"
-         ></component-navigation-link>
+
          <component-navigation-link
             slot="links"
             icon=""

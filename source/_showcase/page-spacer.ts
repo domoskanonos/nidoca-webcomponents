@@ -13,6 +13,9 @@ export class PageSpacer extends PageAbstract {
    }
 
    @property()
+   size: string = '';
+
+   @property()
    spacerSize: string = SpacerSize.MEDIUM;
 
    @property()
@@ -74,7 +77,11 @@ export class PageSpacer extends PageAbstract {
                               width="min-content"
                               height="min-content"
                            >
-                              <component-spacer spacerAlignment="${this.spacerAlignment}" spacerSize="${this.spacerSize}">
+                              <component-spacer
+                                 spacerAlignment="${this.spacerAlignment}"
+                                 spacerSize="${this.spacerSize}"
+                                 size="${this.size}"
+                              >
                                  <component-box
                                     style="background-color: var(--app-color-surface-background);"
                                     width="200px"
@@ -85,7 +92,13 @@ export class PageSpacer extends PageAbstract {
                         </component-container>
                      </component-grid-container>
 
-                     <component-form>
+                     <component-form
+                        ><component-inputfield
+                           .inputfieldType="${InputfieldType.TEXT}"
+                           label="${I18nService.getUniqueInstance().getValue('pagespacer_size_label')}"
+                           .value="${this.size}"
+                           @component-inputfield-change="${(event: CustomEvent) => (this.size = event.detail.outputData.value)}"
+                        ></component-inputfield>
                         <component-inputfield
                            .inputfieldType="${InputfieldType.COMBOBOX}"
                            label="${I18nService.getUniqueInstance().getValue('pagespacer_label')}"
@@ -115,6 +128,8 @@ export class PageSpacer extends PageAbstract {
                         .concat(this.spacerAlignment)
                         .concat('" spacerSize="')
                         .concat(this.spacerSize)
+                        .concat('" size="')
+                        .concat(this.size)
                         .concat('"></component-spacer>')}"
                   >
                   </component-code

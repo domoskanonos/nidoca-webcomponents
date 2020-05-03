@@ -79,18 +79,8 @@ export class PageLayoutComponent extends PageAbstract {
             >
             </component-spacer>
          </component-floating-container>
-         <component-spacer spacerSize="${SpacerSize.BIG}" spacerAlignment="${SpacerAlignment.VERTICAL}"></component-spacer>
-         <component-spacer spacerSize="${SpacerSize.BIG}" spacerAlignment="${SpacerAlignment.VERTICAL}"></component-spacer>
-         <component-spacer spacerSize="${SpacerSize.BIG}" spacerAlignment="${SpacerAlignment.VERTICAL}"></component-spacer>
-         <component-spacer spacerSize="${SpacerSize.BIG}" spacerAlignment="${SpacerAlignment.VERTICAL}"></component-spacer>
-         <component-spacer spacerSize="${SpacerSize.BIG}" spacerAlignment="${SpacerAlignment.VERTICAL}"></component-spacer>
-         <component-spacer spacerSize="${SpacerSize.BIG}" spacerAlignment="${SpacerAlignment.VERTICAL}"></component-spacer>
-         <component-spacer spacerSize="${SpacerSize.BIG}" spacerAlignment="${SpacerAlignment.VERTICAL}"></component-spacer>
-         <component-spacer spacerSize="${SpacerSize.BIG}" spacerAlignment="${SpacerAlignment.VERTICAL}"></component-spacer>
-         <component-spacer spacerSize="${SpacerSize.BIG}" spacerAlignment="${SpacerAlignment.VERTICAL}"></component-spacer>
-         <component-spacer spacerSize="${SpacerSize.BIG}" spacerAlignment="${SpacerAlignment.VERTICAL}"></component-spacer>
-         <component-spacer spacerSize="${SpacerSize.BIG}" spacerAlignment="${SpacerAlignment.VERTICAL}"></component-spacer>
-         <component-spacer spacerSize="${SpacerSize.MEDIUM}" spacerAlignment="${SpacerAlignment.VERTICAL}"></component-spacer>
+         <component-spacer size="22vmin" spacerAlignment="${SpacerAlignment.VERTICAL}"></component-spacer>
+
          <component-flex-container
             .containerProperties="${[
                ContainerProperties.CONTAINER_WIDTH_50,

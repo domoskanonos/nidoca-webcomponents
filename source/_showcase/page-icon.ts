@@ -1,11 +1,12 @@
 import { customElement, html, property, TemplateResult } from 'lit-element';
 import { PageAbstract } from './page-abstract';
 import { InputfieldComponent, InputfieldType } from '../inputfield/component';
-import { FlexJustifyContent, IconComponent, TargetType, TypographyType } from '..';
+import { FlexJustifyContent, IconComponent, SpacerAlignment, SpacerSize, TargetType, TypographyType } from '..';
 import { ContainerProperties, ItemProperties } from '../flex-container/component';
 import { I18nService } from '@domoskanonos/frontend-basis';
 import { IconShadowType } from '../icon/component';
 import { PreviewFormatterService } from './preview-formatter';
+import { GridAlignItems, GridJustifyItems } from '../grid-container/component';
 
 @customElement('page-icon')
 export class PageIconComponent extends PageAbstract {
@@ -18,7 +19,10 @@ export class PageIconComponent extends PageAbstract {
    icon: string = 'thumb_up_alt';
 
    @property()
-   iconSize: number = 96;
+   size: number = 128;
+
+   @property()
+   sizeUnit: string = 'px';
 
    @property()
    color: string = '#ffffff';
@@ -40,6 +44,31 @@ export class PageIconComponent extends PageAbstract {
 
    getMainComponent(): TemplateResult {
       return html`
+         <component-floating-container
+            top="var(--menubar-height)"
+            width="100%"
+            style="background-color: var(--app-color-surface-background);"
+            ><component-spacer spacerSize="${SpacerSize.BIG}" spacerAlignment="${SpacerAlignment.VERTICAL}">
+               <component-grid-container
+                  .gridJustifyItems="${GridJustifyItems.CENTER}"
+                  .gridAlignItems="${GridAlignItems.CENTER}"
+                  .gridTemplateRows="${['1fr']}"
+                  .gridTemplateColumns="${['1fr']}"
+               >
+                  <component-icon
+                     .clickable="${this.clickable}"
+                     icon="${this.icon}"
+                     color="${this.color}"
+                     backgroundColor="${this.backgroundColor}"
+                     .size="${this.size}"
+                     .withIconSpace="${this.withIconSpace}"
+                     .round="${this.round}"
+                     iconShadowType="${this.iconShadowType}"
+                  ></component-icon>
+               </component-grid-container>
+            </component-spacer>
+         </component-floating-container>
+
          <component-flex-container
             .containerProperties="${[
                ContainerProperties.CONTAINER_WIDTH_50,
@@ -51,7 +80,12 @@ export class PageIconComponent extends PageAbstract {
             .itemProperties="${[ItemProperties.KEYLINE_ALIGNMENT_HORIZONTAL, ItemProperties.KEYLINE_SIZE_MEDIUM]}"
             itemFlexBasisValue="100%"
          >
-            <component-typography .typographyType="${TypographyType.H2}" text="<component-icon/>"></component-typography>
+            <component-spacer
+               size="${String(this.size).concat(this.sizeUnit)}"
+               spacerAlignment="${SpacerAlignment.VERTICAL}"
+            ></component-spacer>
+            <component-spacer spacerSize="${SpacerSize.MEDIUM}" spacerAlignment="${SpacerAlignment.VERTICAL}"></component-spacer>
+            <component-typography .typographyType=" ${TypographyType.H2}" text="<component-icon/>"></component-typography>
             <component-typography type="${TypographyType.BODY1}"
                ><i>Icon Component</i> ${I18nService.getUniqueInstance().getValue('pageicon_body2')}
                <component-link href="https://material.io/resources/icons/?style=baseline" targetType="${TargetType.BLANK}"
@@ -139,11 +173,10 @@ export class PageIconComponent extends PageAbstract {
                            label="Größe"
                            .inputfieldType="${InputfieldType.NUMBER}"
                            min="18"
-                           max="256"
+                           max="128"
                            step="1"
-                           value="${this.iconSize}"
-                           @component-inputfield-change="${(event: CustomEvent) =>
-                              (this.iconSize = event.detail.outputData.value)}"
+                           value="${this.size}"
+                           @component-inputfield-change="${(event: CustomEvent) => (this.size = event.detail.outputData.value)}"
                         ></component-inputfield>
                         <component-flex-container .containerProperties="${[ContainerProperties.CONTAINER_WIDTH_100]}">
                            <component-icon
@@ -273,18 +306,7 @@ export class PageIconComponent extends PageAbstract {
                               }}"
                            ></component-icon>
                         </component-flex-container>
-                     </component-form>
-
-                     <component-icon
-                        .clickable="${this.clickable}"
-                        icon="${this.icon}"
-                        color="${this.color}"
-                        backgroundColor="${this.backgroundColor}"
-                        .size="${this.iconSize}"
-                        .withIconSpace="${this.withIconSpace}"
-                        .round="${this.round}"
-                        iconShadowType="${this.iconShadowType}"
-                     ></component-icon> </component-flex-container
+                     </component-form> </component-flex-container
                ></component-tab-content>
                <component-tab-content slot="tabContent"
                   ><component-code
@@ -299,7 +321,7 @@ export class PageIconComponent extends PageAbstract {
                         .concat('" backgroundColor="')
                         .concat(this.backgroundColor)
                         .concat('"\n size="')
-                        .concat(String(this.iconSize))
+                        .concat(String(this.size))
                         .concat('"')
                         .concat(PreviewFormatterService.getUniqueInstance().property2String(this.iconShadowType, IconShadowType))
                         .concat('></component-icon>')}"
