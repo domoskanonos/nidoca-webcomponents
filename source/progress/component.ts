@@ -13,8 +13,12 @@ export class ProgressComponent extends LitElement {
 
    render() {
       return html`
-         <component-border .borderProperties="${[BorderType.NONE, BorderType.FULL_WIDTH]}" shadowType="${ShadowType.KEY_LIGHT}">
-            <div class="PROGRESS"></div>
+         <component-border .borderProperties="${[BorderType.NONE, BorderType.FULL_WIDTH]}">
+            <progress class="PROGRESS"/>
+           
+         </component-border>
+         <component-border .borderProperties="${[BorderType.NONE, BorderType.FULL_WIDTH]}">
+            <progress class="PROGRESS-CIRCULAR"/>
          </component-border>
       `;
    }
