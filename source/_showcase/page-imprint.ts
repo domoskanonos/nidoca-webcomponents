@@ -3,14 +3,14 @@ import { PageAbstract } from './page-abstract';
 import { TypographyType } from '../typography/component';
 import { ContainerProperties, ItemProperties } from '../flex-container/component';
 import { SpacerAlignment, SpacerSize, TargetType } from '..';
-import {I18nService} from "@domoskanonos/frontend-basis";
+import { I18nService } from '@domoskanonos/frontend-basis';
 
 @customElement('page-imprint')
 export class PageImprintComponent extends PageAbstract {
-    constructor() {
-        super();
-        this.navigationTitle = I18nService.getUniqueInstance().getValue('pageimprint');
-    }
+   constructor() {
+      super();
+      this.navigationTitle = I18nService.getUniqueInstance().getValue('pageimprint');
+   }
 
    getMainComponent(): TemplateResult {
       return html`

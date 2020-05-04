@@ -3,7 +3,6 @@ import { VisibleType } from '../..';
 
 const componentCSS = require('./component.css');
 
-
 @customElement('component-tab-content')
 export class TabContentComponent extends LitElement {
    static styles = css`

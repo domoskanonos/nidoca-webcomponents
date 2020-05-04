@@ -4,6 +4,7 @@ import { ContainerProperties, ItemProperties } from '../flex-container/component
 import { ButtonType, InputfieldComponent, InputfieldType, RichMediaType, SpacerAlignment, SpacerSize, TypographyType } from '..';
 import { I18nService } from '@domoskanonos/frontend-basis';
 import { PreviewFormatterService } from './preview-formatter';
+import { RichMediaProperties } from '../rich-media/component';
 
 @customElement('page-rich-media')
 export class pagerichmedia extends PageAbstract {
@@ -14,9 +15,13 @@ export class pagerichmedia extends PageAbstract {
 
    @property()
    src: string = 'https://picsum.photos/400/400';
+   //src: string = 'https://www.youtube.com/embed/gG_JWPF99vA?list=WL';
 
    @property()
    richMediaType: string = RichMediaType.IMG;
+
+   @property()
+   richMediaProperties: RichMediaProperties[] = [];
 
    getMainComponent(): TemplateResult {
       return html`
@@ -34,12 +39,15 @@ export class pagerichmedia extends PageAbstract {
             <component-typography .typographyType="${TypographyType.H2}" text="<component-rich-media/>"></component-typography>
             <component-typography
                .typographyType="${TypographyType.BODY1}"
-               text="${I18nService.getUniqueInstance().getValue('pagerich_text')}"
+               text="${I18nService.getUniqueInstance().getValue('pagerich_description')}"
             ></component-typography>
-            <component-typography .typographyType="${TypographyType.H4}" text="${I18nService.getUniqueInstance().getValue('pageborder_typoh4')}"></component-typography>
+            <component-typography
+               .typographyType="${TypographyType.H4}"
+               text="${I18nService.getUniqueInstance().getValue('interactive_demo')}"
+            ></component-typography>
             <component-typography
                .typographyType="${TypographyType.BODY1}"
-               text="${I18nService.getUniqueInstance().getValue('pagerich_text1')}"
+               text="${I18nService.getUniqueInstance().getValue('pagerich_description_demo')}"
             ></component-typography>
 
             <component-tabs>
@@ -79,14 +87,25 @@ export class pagerichmedia extends PageAbstract {
                         ></component-inputfield>
                         <component-inputfield
                            .inputfieldType="${InputfieldType.TEXT}"
-                           label="Link"
+                           label="${I18nService.getUniqueInstance().getValue('pagerich_link_label')}"
                            value="${this.src}"
-                           assistiveText="${I18nService.getUniqueInstance().getValue('pagerich_text2')}"
+                           assistiveText="${I18nService.getUniqueInstance().getValue('pagerich_assistive_text_link')}"
+                        ></component-inputfield>
+                        <component-inputfield
+                           .inputfieldType="${InputfieldType.COMBOBOX}"
+                           .options="${InputfieldComponent.enumToComboboxItems(RichMediaProperties)}"
+                           label="${I18nService.getUniqueInstance().getValue('pagerich_richMediaProperties_label')}"
+                           .value="${this.richMediaProperties}"
+                           size="10"
+                           multiple="true"
+                           @component-inputfield-change="${(event: CustomEvent) =>
+                              (this.richMediaProperties = event.detail.outputData.value)}"
                         ></component-inputfield>
                      </component-form>
                      <component-rich-media
                         richMediaType="${this.richMediaType}"
                         src="${this.src}"
+                        .richMediaProperties="${this.richMediaProperties}"
                      ></component-rich-media> </component-flex-container
                ></component-tab-content>
                <component-tab-content slot="tabContent"

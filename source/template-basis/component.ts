@@ -72,7 +72,7 @@ export abstract class BasisTemplate extends LitElement {
       } else if (this.navigationType == NavigationType.PERMANENT) {
          this.menuCss = 'permanent-top permanent-main';
          this.navigationClosed = false;
-      }else if (this.navigationType == NavigationType.DISMISSIBLE) {
+      } else if (this.navigationType == NavigationType.DISMISSIBLE) {
          this.menuCss = 'dismissible-main';
          this.navigationClosed = false;
       } else {

@@ -39,7 +39,10 @@ export class PageLink extends PageAbstract {
                .typographyType="${TypographyType.BODY1}"
                text="${I18nService.getUniqueInstance().getValue('pagelink_body')}"
             ></component-typography>
-            <component-typography .typographyType="${TypographyType.H4}" text="${I18nService.getUniqueInstance().getValue('pageborder_typoh4')}"></component-typography>
+            <component-typography
+               .typographyType="${TypographyType.H4}"
+               text="${I18nService.getUniqueInstance().getValue('pageborder_typoh4')}"
+            ></component-typography>
             <component-typography
                .typographyType="${TypographyType.BODY1}"
                text="${I18nService.getUniqueInstance().getValue('pagelink_body1')}"

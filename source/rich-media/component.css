@@ -1,4 +1,5 @@
-:host, span {
+:host,
+span {
    margin: 0;
    padding: 0;
    font-size: 0;
@@ -6,50 +7,44 @@
    line-height: 0;
 }
 
-img {
+img,
+iframe {
    box-sizing: border-box;
    height: auto;
    width: auto;
 }
 
-.clickable {
+.CLICKABLE {
    cursor: pointer;
 }
 
-.zoomImageWrapped {
+.ZOOM_WRAPPED {
    overflow: hidden;
 }
-.zoomImageWrapped img:hover {
+.ZOOM_WRAPPED img:hover {
    transform: scale(1.1, 1.1);
    transition: transform 0.5s;
 }
 
-.imageWidthHundred {
+.FULL_WIDTH {
    box-sizing: border-box;
 }
-.imageWidthHundred img {
+.FULL_WIDTH img,
+.FULL_WIDTH iframe {
    width: 100%;
 }
 
-.roundImage {
+.ROUND {
    display: block;
    margin-left: auto;
    margin-right: auto;
    width: 75%;
    box-sizing: border-box;
 }
-.roundImage img {
+.ROUND img,
+.ROUND iframe {
    padding: 0.25em;
    border-radius: 50%;
-   width: 100%;
-}
-
-.imageWithBorder img {
-   box-sizing: border-box;
-}
-.imageWithBorder img {
-   border: 0.1em solid var(--app-color-surface-background);
-   padding: 0.25em;
    width: 100%;
 }
 

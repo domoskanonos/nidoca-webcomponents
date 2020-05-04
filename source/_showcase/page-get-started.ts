@@ -24,7 +24,10 @@ export class PageGetStarted extends PageAbstract {
             .itemProperties="${[ItemProperties.KEYLINE_ALIGNMENT_HORIZONTAL, ItemProperties.KEYLINE_SIZE_MEDIUM]}"
             itemFlexBasisValue="100%"
          >
-            <component-typography .typographyType="${TypographyType.H1}" text="${I18nService.getUniqueInstance().getValue('pagegetstarted')}"></component-typography>
+            <component-typography
+               .typographyType="${TypographyType.H1}"
+               text="${I18nService.getUniqueInstance().getValue('pagegetstarted')}"
+            ></component-typography>
             <component-typography .typographyType="${TypographyType.BODY1}">
                wc-atomic is a lightweight ui-framework based on
                <component-link href="https://www.webcomponents.org/" targetType="${TargetType.BLANK}"
@@ -37,9 +40,12 @@ export class PageGetStarted extends PageAbstract {
                >
             </component-typography>
 
-            <component-typography .typographyType="${TypographyType.H4}" text="${I18nService.getUniqueInstance().getValue('page_get_init')}"></component-typography>
+            <component-typography
+               .typographyType="${TypographyType.H4}"
+               text="${I18nService.getUniqueInstance().getValue('page_get_init')}"
+            ></component-typography>
             <component-typography .typographyType="${TypographyType.BODY1}">
-            ${I18nService.getUniqueInstance().getValue('page_get_init_simple')}
+               ${I18nService.getUniqueInstance().getValue('page_get_init_simple')}
                <component-link href="https://www.npmjs.com/package/@domoskanonos/wc-atomic" targetType="${TargetType.BLANK}"
                   >npm</component-link
                >:

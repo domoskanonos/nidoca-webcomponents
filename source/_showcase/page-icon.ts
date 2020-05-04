@@ -19,7 +19,7 @@ export class PageIconComponent extends PageAbstract {
    icon: string = 'thumb_up_alt';
 
    @property()
-   size: number = 128;
+   size: number = 64;
 
    @property()
    sizeUnit: string = 'px';
@@ -81,15 +81,15 @@ export class PageIconComponent extends PageAbstract {
             itemFlexBasisValue="100%"
          >
             <component-spacer
-               size="${String(this.size).concat(this.sizeUnit)}"
+               size="${String(this.withIconSpace ? this.size * 1.5 : this.size).concat(this.sizeUnit)}"
                spacerAlignment="${SpacerAlignment.VERTICAL}"
             ></component-spacer>
             <component-spacer spacerSize="${SpacerSize.MEDIUM}" spacerAlignment="${SpacerAlignment.VERTICAL}"></component-spacer>
             <component-typography .typographyType=" ${TypographyType.H2}" text="<component-icon/>"></component-typography>
             <component-typography type="${TypographyType.BODY1}"
-               ><i>Icon Component</i> ${I18nService.getUniqueInstance().getValue('pageicon_body2')}
+               ><i>IconComponent</i> ${I18nService.getUniqueInstance().getValue('pageicon_description')}
                <component-link href="https://material.io/resources/icons/?style=baseline" targetType="${TargetType.BLANK}"
-                  >${I18nService.getUniqueInstance().getValue('pageicon_label1')}</component-link
+                  >${I18nService.getUniqueInstance().getValue('pageicon_link_google_material_icons')}</component-link
                >
             </component-typography>
             <component-typography
@@ -97,7 +97,7 @@ export class PageIconComponent extends PageAbstract {
                text="${I18nService.getUniqueInstance().getValue('interactive_demo')}"
             ></component-typography>
             <component-typography .typographyType="${TypographyType.BODY1}">
-               ${I18nService.getUniqueInstance().getValue('pageicon_body3')}
+               ${I18nService.getUniqueInstance().getValue('pageicon_description_demo')}
             </component-typography>
 
             <component-tabs>
@@ -119,7 +119,7 @@ export class PageIconComponent extends PageAbstract {
                         ItemProperties.KEYLINE_SIZE_MEDIUM,
                         ItemProperties.SMARTPHONE_MAX_WIDTH
                      ]}"
-                     .itemFlexBasisValues="${['50%', 'auto']}"
+                     itemFlexBasisValue="100%"
                      .flexJustifyContent="${FlexJustifyContent.SPACE_AROUND}"
                   >
                      <component-form>
@@ -127,7 +127,7 @@ export class PageIconComponent extends PageAbstract {
                            label="${I18nService.getUniqueInstance().getValue('pageicon_label2')}"
                            assistiveText="${I18nService.getUniqueInstance().getValue('pageicon_body4')}"
                            infoText="${I18nService.getUniqueInstance().getValue('pageicon_body5')}"
-                           .inputfieldType="${InputfieldType.CHECKBOX}"
+                           .inputfieldType="${InputfieldType.SWITCH}"
                            .checked="${this.clickable}"
                            @component-inputfield-change="${(event: CustomEvent) =>
                               (this.clickable = event.detail.outputData.value)}"
@@ -135,7 +135,7 @@ export class PageIconComponent extends PageAbstract {
                         <component-inputfield
                            label="${I18nService.getUniqueInstance().getValue('pageicon_body6')}"
                            assistiveText="${I18nService.getUniqueInstance().getValue('pageicon_body7')}"
-                           .inputfieldType="${InputfieldType.CHECKBOX}"
+                           .inputfieldType="${InputfieldType.SWITCH}"
                            .checked="${this.withIconSpace}"
                            @component-inputfield-change="${(event: CustomEvent) =>
                               (this.withIconSpace = event.detail.outputData.value)}"
@@ -143,7 +143,7 @@ export class PageIconComponent extends PageAbstract {
                         <component-inputfield
                            label="${I18nService.getUniqueInstance().getValue('pageicon_property_round_label')}"
                            assistiveText="${I18nService.getUniqueInstance().getValue('pageicon_property_round_assitive_text')}"
-                           .inputfieldType="${InputfieldType.CHECKBOX}"
+                           .inputfieldType="${InputfieldType.SWITCH}"
                            .checked="${this.round}"
                            @component-inputfield-change="${(event: CustomEvent) => (this.round = event.detail.outputData.value)}"
                         ></component-inputfield>
@@ -308,7 +308,11 @@ export class PageIconComponent extends PageAbstract {
                         </component-flex-container>
                      </component-form> </component-flex-container
                ></component-tab-content>
-               <component-tab-content slot="tabContent"
+               <component-tab-content slot="tabContent">
+                  <component-spacer
+                     spacerSize="${SpacerSize.MEDIUM}"
+                     spacerAlignment="${SpacerAlignment.VERTICAL}"
+                  ></component-spacer
                   ><component-code
                      code="${'<component-icon clickable="'
                         .concat(this.clickable ? 'true' : 'false')

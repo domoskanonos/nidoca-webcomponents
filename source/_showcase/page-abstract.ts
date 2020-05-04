@@ -82,7 +82,7 @@ export abstract class PageAbstract extends BasisTemplate {
          ></component-navigation-link>
          <component-navigation-link
             slot="links"
-            icon=""
+            icon="chat_bubble_outline"
             text="${I18nService.getUniqueInstance().getValue('pagedialog')}"
             href="pagedialog"
          ></component-navigation-link>
@@ -92,7 +92,7 @@ export abstract class PageAbstract extends BasisTemplate {
          ></component-navigation-section>
          <component-navigation-link
             slot="links"
-            icon="title"
+            icon="select_all"
             text="${I18nService.getUniqueInstance().getValue('pagespacer')}"
             href="pagespacer"
          ></component-navigation-link>
@@ -104,13 +104,13 @@ export abstract class PageAbstract extends BasisTemplate {
          ></component-navigation-link>
          <component-navigation-link
             slot="links"
-            icon=""
+            icon="remove"
             text="${I18nService.getUniqueInstance().getValue('pagedivider')}"
             href="pagedivider"
          ></component-navigation-link>
          <component-navigation-link
             slot="links"
-            icon=""
+            icon="border_outer"
             text="${I18nService.getUniqueInstance().getValue('pageborder')}"
             href="pageborder"
          ></component-navigation-link
@@ -122,7 +122,7 @@ export abstract class PageAbstract extends BasisTemplate {
          ></component-navigation-link>
          <component-navigation-link
             slot="links"
-            icon=""
+            icon="view_day"
             text="${I18nService.getUniqueInstance().getValue('pageaccordion')}"
             href="pageaccordion"
          ></component-navigation-link>
@@ -156,7 +156,7 @@ export abstract class PageAbstract extends BasisTemplate {
          ></component-navigation-link
          ><component-navigation-link
             slot="links"
-            icon=""
+            icon="sentiment_satisfied_alt"
             text="${I18nService.getUniqueInstance().getValue('pageicon')}"
             href="pageicon"
          ></component-navigation-link>

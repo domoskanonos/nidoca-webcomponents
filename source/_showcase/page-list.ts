@@ -70,7 +70,7 @@ export class PageList extends PageAbstract {
                         <component-inputfield
                            label="${I18nService.getUniqueInstance().getValue('pagelist_selection_mode_checkbox')}"
                            assistiveText="${I18nService.getUniqueInstance().getValue('pagelist_selection_mode_assistive_text')}"
-                           .inputfieldType="${InputfieldType.CHECKBOX}"
+                           .inputfieldType="${InputfieldType.SWITCH}"
                            .checked="${this.selectionMode}"
                            @component-inputfield-change="${(event: CustomEvent) =>
                               (this.selectionMode = event.detail.outputData.value)}"
@@ -92,36 +92,22 @@ export class PageList extends PageAbstract {
                                                 .gridTemplateRows="${['1fr']}"
                                                 .gridTemplateColumns="${['auto', '1fr', 'auto']}"
                                              >
-                                                <component-spacer
-                                                   spacerSize="${SpacerSize.MEDIUM}"
-                                                   spacerAlignment="${SpacerAlignment.BOTH}"
-                                                >
-                                                   <component-icon
-                                                      clickable="false"
-                                                      icon="thumb_up_alt"
-                                                      round="true"
-                                                      size="18"
-                                                      color="var(--app-color-surface)"
-                                                      backgroundColor="var(--app-color-surface-background)"
-                                                      .iconShadowType="${IconShadowType.DEFAULT_SHADOW}"
-                                                   ></component-icon>
-                                                </component-spacer>
+                                                <component-icon
+                                                   clickable="false"
+                                                   icon="thumb_up_alt"
+                                                   round="true"
+                                                   size="18"
+                                                   color="var(--app-color-surface)"
+                                                   backgroundColor="var(--app-color-surface-background)"
+                                                   .iconShadowType="${IconShadowType.DEFAULT_SHADOW}"
+                                                ></component-icon>
                                                 <component-spacer
                                                    spacerSize="${SpacerSize.MEDIUM}"
                                                    spacerAlignment="${SpacerAlignment.BOTH}"
                                                 >
                                                    <component-typography>Lorem Ipsum Dolorem</component-typography>
                                                 </component-spacer>
-                                                <component-spacer
-                                                   spacerSize="${SpacerSize.MEDIUM}"
-                                                   spacerAlignment="${SpacerAlignment.BOTH}"
-                                                >
-                                                   <component-icon
-                                                      clickable="false"
-                                                      icon="more_vert"
-                                                      round="true"
-                                                   ></component-icon>
-                                                </component-spacer>
+                                                <component-icon clickable="false" icon="more_vert" round="true"></component-icon>
                                              </component-grid-container>
                                           </component-list-item>
                                        `

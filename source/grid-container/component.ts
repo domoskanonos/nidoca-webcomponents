@@ -38,6 +38,9 @@ export class GridComponent extends LitElement {
    @property()
    height: string = 'min-content';
 
+   @property()
+   minHeight: string = 'min-content';
+
    render() {
       return html`
          <div
@@ -46,7 +49,7 @@ export class GridComponent extends LitElement {
                this.gridAlignItems
             )}${this.toGridTemplateRowsStyle(this.gridTemplateRows)}${this.toGridTemplateColumnsStyle(
                this.gridTemplateColumns
-            )}${this.toHeightStyle(this.height)}"
+            )}${this.toHeightStyle(this.height)}${this.toMinHeightStyle(this.minHeight)}"
          >
             <slot></slot>
          </div>
@@ -79,6 +82,10 @@ export class GridComponent extends LitElement {
 
    private toHeightStyle(height: string) {
       return height.length > 0 ? 'height:'.concat(height).concat(';') : '';
+   }
+
+   private toMinHeightStyle(minheight: string) {
+      return minheight.length > 0 ? 'min-height:'.concat(minheight).concat(';') : '';
    }
 
    private toGridJustifyItems(gridJustifyItems: string) {

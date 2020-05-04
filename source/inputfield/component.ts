@@ -4,13 +4,15 @@ import { css, customElement, html, property, query, unsafeCSS, LitElement } from
 import { KeyValueData } from '../form/component';
 import { TypographyType } from '../typography/component';
 import { BasicService } from '@domoskanonos/frontend-basis';
-import { BorderType, FlexJustifyContent, SpacerAlignment, SpacerSize, VisibleType } from '..';
+import { AlignContent, AlignItems, BorderType, FlexJustifyContent, SpacerAlignment, SpacerSize, VisibleType } from '..';
 import { ContainerProperties } from '../flex-container/component';
+import { GridAlignItems, GridJustifyItems } from '../grid-container/component';
 
 const componentCSS = require('./component.css');
 
 export enum InputfieldType {
    TEXTAREA = 'textarea',
+   SWITCH = 'SWITCH',
    CHECKBOX = 'checkbox',
    COLOR = 'color',
    DATE = 'date',
@@ -135,11 +137,6 @@ export class InputfieldComponent extends LitElement {
    @query('#textareaElement')
    textareaElement: HTMLTextAreaElement | undefined;
 
-   protected firstUpdated(_changedProperties: Map<PropertyKey, unknown>): void {
-      super.firstUpdated(_changedProperties);
-      //this.updateInfoText();
-   }
-
    render() {
       return this.inputfieldType != InputfieldType.HIDDEN
          ? html`
@@ -153,186 +150,210 @@ export class InputfieldComponent extends LitElement {
                        : BorderType.NONE
                  ]}"
               >
+              
+              <component-grid-container
+                    class="${this.toContainerClazz(this.inputfieldType)}"
+                    minHeight="56px"
+                    .gridJustifyItems="${GridJustifyItems.STRETCH}"
+                    .gridAlignItems="${GridAlignItems.CENTER}" 
+                    .gridTemplateRows="${['1fr']}"
+                    .gridTemplateColumns="${['1fr']}"
+                 >
+              <component-spacer size="4px;" spacerAlignment="${SpacerAlignment.VERTICAL}">
+              <component-spacer spacerSize="${SpacerSize.BIG}" spacerAlignment="${SpacerAlignment.HORIZONTAL}">
                  <component-grid-container
-                    class="INPUTCONTAINER"
+                    .gridJustifyItems="${GridJustifyItems.STRETCH}"
+                    .gridAlignItems="${GridAlignItems.CENTER}" 
                     .gridTemplateRows="${['auto']}"
                     .gridTemplateColumns="${['auto', '1fr', 'auto', 'auto']}"
                  >
                     <component-visible
-                       visibleType="${BasicService.getUniqueInstance().isNotBlank(this.leadingIcon)
-                          ? VisibleType.NORMAL
-                          : VisibleType.HIDE}"
+                                  visibleType="${
+                                     BasicService.getUniqueInstance().isNotBlank(this.leadingIcon)
+                                        ? VisibleType.NORMAL
+                                        : VisibleType.HIDE
+                                  }"
                     >
                        <component-icon icon="${this.leadingIcon}" .clickable="${this.leadingIconClickable}"></component-icon>
                     </component-visible>
                     <component-flex-container
-                       .containerProperties="${[ContainerProperties.CONTAINER_WIDTH_100]}"
+                       .containerProperties="${[
+                          ContainerProperties.CONTAINER_WIDTH_100,
+                          ContainerProperties.CONTAINER_HEIGHT_100
+                       ]}"
+                       .alignContent="${AlignContent.CENTER}"
                        itemFlexBasisValue="100%"
                     >
-                       <component-visible visibleType="${this.showLabelText() ? VisibleType.NORMAL : VisibleType.INVISIBLE}">
+                       <component-visible visibleType="${this.showLabelText() ? VisibleType.NORMAL : VisibleType.HIDE}">
                           <component-typography
                              .typographyType="${TypographyType.OVERLINE}"
                              text="${this.label}"
                           ></component-typography>
                        </component-visible>
-                       ${this.inputfieldType == InputfieldType.FILE
-                          ? html`
-                               <component-grid-container
-                                  .gridTemplateRows="${['auto']}"
-                                  .gridTemplateColumns="${['1fr', 'auto']}"
-                               >
-                                  <component-flex-container
-                                     .containerProperties="${[ContainerProperties.CONTAINER_WIDTH_100]}"
-                                     itemFlexBasisValue="100%"
+                       ${
+                          this.inputfieldType == InputfieldType.FILE
+                             ? html`
+                                  <component-grid-container
+                                     .gridTemplateRows="${['auto']}"
+                                     .gridTemplateColumns="${['1fr', 'auto']}"
                                   >
-                                     <component-typography
-                                        .typographyType="${TypographyType.SUBTITLE1}"
-                                        text="${this.assistiveText}"
-                                     ></component-typography>
-                                     <component-typography
-                                        .typographyType="${TypographyType.SUBTITLE2}"
-                                        text="${this.infoText}"
-                                     ></component-typography
-                                  ></component-flex-container>
-                                  <component-container>
-                                     <component-visible visibleType="${!this.checked ? VisibleType.NORMAL : VisibleType.HIDE}">
-                                        <component-icon
-                                           icon="attachment"
-                                           .clickable="${true}"
-                                           @component-icon-click="
+                                     <component-flex-container
+                                        .containerProperties="${[ContainerProperties.CONTAINER_WIDTH_100]}"
+                                        itemFlexBasisValue="100%"
+                                     >
+                                        <component-typography
+                                           .typographyType="${TypographyType.SUBTITLE1}"
+                                           text="${this.assistiveText}"
+                                        ></component-typography>
+                                        <component-typography
+                                           .typographyType="${TypographyType.SUBTITLE2}"
+                                           text="${this.infoText}"
+                                        ></component-typography
+                                     ></component-flex-container>
+                                     <component-container>
+                                        <component-visible visibleType="${!this.checked ? VisibleType.NORMAL : VisibleType.HIDE}">
+                                           <component-icon
+                                              icon="attachment"
+                                              .clickable="${true}"
+                                              @component-icon-click="
                                           ${() => this.inputElemet?.click()}
                                           "
-                                        ></component-icon>
-                                     </component-visible>
-                                  </component-container>
-                               </component-grid-container>
-                               <component-visible visibleType="${VisibleType.HIDE}">
+                                           ></component-icon>
+                                        </component-visible>
+                                     </component-container>
+                                  </component-grid-container>
+                                  <component-visible visibleType="${VisibleType.HIDE}">
+                                     <input
+                                        id="inputElement"
+                                        class="slider"
+                                        name="${this.name}"
+                                        type="${this.inputfieldType}"
+                                        value="${this.prepareValue(this.value)}"
+                                  /></component-visible>
+                               `
+                             : this.inputfieldType == InputfieldType.COMBOBOX
+                             ? html`
+                                  <select
+                                     id="selectElement"
+                                     ?required="${this.required}"
+                                     ?multiple="${this.multiple}"
+                                     name="${this.name}"
+                                     size="${this.size}"
+                                     @change="${(event: Event) => this.change(event)}"
+                                     @focus="${(event: Event) => this.focused(event)}"
+                                     @focusout="${(event: Event) => this.focusout(event)}"
+                                  >
+                                     ${guard(
+                                        [this.options],
+                                        () => html`
+                                           ${repeat(
+                                              this.options,
+                                              (option) => option.value,
+                                              (option) =>
+                                                 (option.key.length > 0 &&
+                                                    this.multiple &&
+                                                    this.value.indexOf(option.key) > -1) ||
+                                                 BasicService.getUniqueInstance().isEqual(this.value, option.key)
+                                                    ? html`
+                                                         <option value="${option.key}" selected>${option.value}</option>
+                                                      `
+                                                    : html`
+                                                         <option value="${option.key}">${option.value}</option>
+                                                      `
+                                           )}
+                                        `
+                                     )}
+                                  </select>
+                               `
+                             : this.inputfieldType == InputfieldType.TEXTAREA
+                             ? html`
+                                  <textarea id="textareaElement" name="${this.name}" @keyup="${this.keyup}" rows="${this.size}">
+${this.value}</textarea
+                                  >
+                               `
+                             : this.inputfieldType == InputfieldType.SWITCH
+                             ? html`
+                                  <component-grid-container
+                                     .gridTemplateRows="${['auto']}"
+                                     .gridTemplateColumns="${['1fr', 'auto']}"
+                                  >
+                                     <component-flex-container
+                                        .containerProperties="${[ContainerProperties.CONTAINER_WIDTH_100]}"
+                                        itemFlexBasisValue="100%"
+                                     >
+                                        <component-typography
+                                           .typographyType="${TypographyType.SUBTITLE1}"
+                                           text="${this.assistiveText}"
+                                        ></component-typography>
+                                        <component-typography
+                                           .typographyType="${TypographyType.SUBTITLE2}"
+                                           text="${this.infoText}"
+                                        ></component-typography
+                                     ></component-flex-container>
+                                     <componetn-container>
+                                        <component-visible visibleType="${this.checked ? VisibleType.HIDE : VisibleType.NORMAL}">
+                                           <component-icon
+                                              @component-icon-click="${() => {
+                                                 this.switchChecked();
+                                              }}"
+                                              icon="toggle_off"
+                                              .clickable="${true}"
+                                           ></component-icon>
+                                        </component-visible>
+                                        <component-visible visibleType="${this.checked ? VisibleType.NORMAL : VisibleType.HIDE}">
+                                           <component-icon
+                                              color="var(--app-color-primary-background)"
+                                              @component-icon-click="${() => {
+                                                 this.switchChecked();
+                                              }}"
+                                              icon="toggle_on"
+                                              .clickable="${true}"
+                                           ></component-icon>
+                                        </component-visible>
+                                     </componetn-container>
+                                  </component-grid-container>
+                               `
+                             : html`
                                   <input
                                      id="inputElement"
-                                     class="slider"
                                      name="${this.name}"
                                      type="${this.inputfieldType}"
                                      value="${this.prepareValue(this.value)}"
-                               /></component-visible>
-                            `
-                          : this.inputfieldType == InputfieldType.COMBOBOX
-                          ? html`
-                               <select
-                                  id="selectElement"
-                                  ?required="${this.required}"
-                                  ?multiple="${this.multiple}"
-                                  name="${this.name}"
-                                  size="${this.size}"
-                                  @change="${(event: Event) => this.change(event)}"
-                                  @focus="${(event: Event) => this.focused(event)}"
-                                  @focusout="${(event: Event) => this.focusout(event)}"
-                               >
-                                  ${guard(
-                                     [this.options],
-                                     () => html`
-                                        ${repeat(
-                                           this.options,
-                                           (option) => option.value,
-                                           (option) =>
-                                              (option.key.length > 0 && this.multiple && this.value.indexOf(option.key) > -1) ||
-                                              BasicService.getUniqueInstance().isEqual(this.value, option.key)
-                                                 ? html`
-                                                      <option value="${option.key}" selected>${option.value}</option>
-                                                   `
-                                                 : html`
-                                                      <option value="${option.key}">${option.value}</option>
-                                                   `
-                                        )}
-                                     `
-                                  )}
-                               </select>
-                            `
-                          : this.inputfieldType == InputfieldType.TEXTAREA
-                          ? html`
-                               <textarea id="textareaElement" name="${this.name}" @keyup="${this.keyup}" rows="${this.size}">
-${this.value}</textarea
-                               >
-                            `
-                          : this.inputfieldType == InputfieldType.CHECKBOX
-                          ? html`
-                               <component-grid-container
-                                  .gridTemplateRows="${['auto']}"
-                                  .gridTemplateColumns="${['1fr', 'auto']}"
-                               >
-                                  <component-flex-container
-                                     .containerProperties="${[ContainerProperties.CONTAINER_WIDTH_100]}"
-                                     itemFlexBasisValue="100%"
-                                  >
-                                     <component-typography
-                                        .typographyType="${TypographyType.SUBTITLE1}"
-                                        text="${this.assistiveText}"
-                                     ></component-typography>
-                                     <component-typography
-                                        .typographyType="${TypographyType.SUBTITLE2}"
-                                        text="${this.infoText}"
-                                     ></component-typography
-                                  ></component-flex-container>
-                                  <componetn-container>
-                                     <component-visible visibleType="${this.checked ? VisibleType.HIDE : VisibleType.NORMAL}">
-                                        <component-icon
-                                           @component-icon-click="${() => {
-                                              this.switchChecked();
-                                           }}"
-                                           icon="toggle_off"
-                                           .clickable="${true}"
-                                        ></component-icon>
-                                     </component-visible>
-                                     <component-visible visibleType="${this.checked ? VisibleType.NORMAL : VisibleType.HIDE}">
-                                        <component-icon
-                                           color="var(--app-color-primary-background)"
-                                           @component-icon-click="${() => {
-                                              this.switchChecked();
-                                           }}"
-                                           icon="toggle_on"
-                                           .clickable="${true}"
-                                        ></component-icon>
-                                     </component-visible>
-                                  </componetn-container>
-                               </component-grid-container>
-                            `
-                          : html`
-                               <input
-                                  id="inputElement"
-                                  name="${this.name}"
-                                  type="${this.inputfieldType}"
-                                  value="${this.prepareValue(this.value)}"
-                                  placeholder="${BasicService.getUniqueInstance().isBlank(this.placeholder) &&
-                                  !this.showLabelText()
-                                     ? this.label
-                                     : this.placeholder}"
-                                  size="${this.size}"
-                                  minlength="${this.minlength}"
-                                  maxlength="${this.maxlength}"
-                                  min="${this.min}"
-                                  max="${this.max}"
-                                  step="${this.step}"
-                                  ?required="${this.required}"
-                                  ?disabled="${this.disabled}"
-                                  ?checked="${this.checked}"
-                                  ?multiple="${this.multiple}"
-                                  @keyup="${this.keyup}"
-                                  @change="${(event: Event) => this.change(event)}"
-                                  @focus="${(event: Event) => this.focused(event)}"
-                                  @focusout="${(event: Event) => this.focusout(event)}"
-                               />
-                            `}</component-flex-container
+                                     placeholder="${BasicService.getUniqueInstance().isBlank(this.placeholder) &&
+                                     !this.showLabelText()
+                                        ? this.label
+                                        : this.placeholder}"
+                                     size="${this.size}"
+                                     minlength="${this.minlength}"
+                                     maxlength="${this.maxlength}"
+                                     min="${this.min}"
+                                     max="${this.max}"
+                                     step="${this.step}"
+                                     ?required="${this.required}"
+                                     ?disabled="${this.disabled}"
+                                     ?checked="${this.checked}"
+                                     ?multiple="${this.multiple}"
+                                     @keyup="${this.keyup}"
+                                     @change="${(event: Event) => this.change(event)}"
+                                     @focus="${(event: Event) => this.focused(event)}"
+                                     @focusout="${(event: Event) => this.focusout(event)}"
+                                  />
+                               `
+                       }</component-flex-container
                     >
                     <component-visible
-                       visibleType="${BasicService.getUniqueInstance().isNotBlank(this.trailingIcon)
-                          ? VisibleType.NORMAL
-                          : VisibleType.HIDE}"
+                       visibleType="${
+                          BasicService.getUniqueInstance().isNotBlank(this.trailingIcon) ? VisibleType.NORMAL : VisibleType.HIDE
+                       }"
                     >
                        <component-icon icon="${this.trailingIcon}" .clickable="${this.trailingIconClickable}"></component-icon>
                     </component-visible>
                  </component-grid-container>
+                 </component-spacer>                 </component-spacer>
+                 </component-grid-container>
               </component-border>
               <component-visible visibleType="${this.showAdditionalTextContainer() ? VisibleType.NORMAL : VisibleType.HIDE}">
-                 <component-spacer spacerSize="${SpacerSize.SMALL}" alignment="${SpacerAlignment.VERTICAL}"></component-spacer>
+                 <component-spacer spacerSize="${SpacerSize.LITTLE}" spacerAlignment="${SpacerAlignment.VERTICAL}">
                  <component-flex-container
                     .containerProperties="${[ContainerProperties.CONTAINER_WIDTH_100]}"
                     itemFlexBasisValue="auto"
@@ -348,7 +369,7 @@ ${this.value}</textarea
                     ></component-typography>
                  </component-flex-container>
               </component-visible>
-              <component-spacer spacerSize="${SpacerSize.SMALL}" alignment="${SpacerAlignment.VERTICAL}"></component-spacer>
+              </component-spacer>
               <component-typography
                  style="color:var(--app-color-error)"
                  .typographyType="${TypographyType.OVERLINE}"
@@ -375,7 +396,6 @@ ${this.value}</textarea
    }
 
    async keyup() {
-      //this.updateInfoText();
       BasicService.getUniqueInstance().dispatchSimpleCustomEvent(
          this,
          InputfieldComponent.EVENT_KEY_UP_CHANGE,
@@ -447,7 +467,7 @@ ${this.value}</textarea
                outputValue = this.selectElemet.value;
             }
             break;
-         case InputfieldType.CHECKBOX:
+         case InputfieldType.SWITCH:
             outputValue = this.checked;
             break;
          case InputfieldType.DATETIME_LOCAL:
@@ -466,10 +486,6 @@ ${this.value}</textarea
          key: this.name,
          value: outputValue
       };
-   }
-
-   getEventList(): string[] {
-      return [InputfieldComponent.EVENT_KEY_UP_CHANGE, InputfieldComponent.EVENT_CHANGE];
    }
 
    private prepareValue(value: any): any {
@@ -498,7 +514,7 @@ ${this.value}</textarea
          return;
       }
       switch (this.inputfieldType) {
-         case InputfieldType.CHECKBOX:
+         case InputfieldType.SWITCH:
          case InputfieldType.COLOR:
          case InputfieldType.DATE:
          case InputfieldType.DATETIME_LOCAL:
@@ -558,7 +574,7 @@ ${this.value}</textarea
             this.inputfieldType === InputfieldType.COMBOBOX ||
             this.inputfieldType === InputfieldType.TEXTAREA ||
             this.inputfieldType === InputfieldType.RANGE ||
-            this.inputfieldType === InputfieldType.CHECKBOX ||
+            this.inputfieldType === InputfieldType.SWITCH ||
             this.inputfieldType === InputfieldType.MONTH ||
             this.inputfieldType === InputfieldType.TIME ||
             this.inputfieldType === InputfieldType.WEEK ||
@@ -569,13 +585,30 @@ ${this.value}</textarea
       );
    }
 
-   static enumGetKeyFromValue(enumeration: any, value: string): string {
-      for (const key of Object.keys(enumeration)) {
-         if (enumeration[key] == value) {
-            return key;
-         }
+   private showAdditionalTextContainer() {
+      return this.inputfieldType != InputfieldType.SWITCH && (this.assistiveText.length > 0 || this.infoText.length > 0);
+   }
+
+   private toContainerClazz(inputfieldType: string) {
+      let retval: string = '';
+      switch (inputfieldType) {
+         case InputfieldType.TEXT:
+         case InputfieldType.NUMBER:
+         case InputfieldType.COMBOBOX:
+         case InputfieldType.COLOR:
+         case InputfieldType.TIME:
+         case InputfieldType.WEEK:
+         case InputfieldType.MONTH:
+         case InputfieldType.FILE:
+         case InputfieldType.DATETIME_LOCAL:
+         case InputfieldType.DATE:
+         case InputfieldType.EMAIL:
+         case InputfieldType.TEL:
+         case InputfieldType.TEXTAREA:
+            retval = retval.concat('FILLED');
+            break;
       }
-      return '';
+      return retval;
    }
 
    static enumToComboboxItems(enumeration: any): KeyValueData[] {
@@ -584,6 +617,15 @@ ${this.value}</textarea
          options.push(<KeyValueData>{ key: key, value: enumeration[key] });
       });
       return options;
+   }
+
+   static enumGetKeyFromValue(enumeration: any, value: string): string {
+      for (const key of Object.keys(enumeration)) {
+         if (enumeration[key] == value) {
+            return key;
+         }
+      }
+      return '';
    }
 
    static clazzToComboboxItems(clazz: any): KeyValueData[] {
@@ -608,9 +650,5 @@ ${this.value}</textarea
          options.push(<KeyValueData>{ key: value[keyFieldName], value: value[valueFieldName] });
       });
       return options;
-   }
-
-   private showAdditionalTextContainer() {
-      return this.inputfieldType != InputfieldType.CHECKBOX && (this.assistiveText.length > 0 || this.infoText.length > 0);
    }
 }

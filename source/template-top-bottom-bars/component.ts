@@ -1,7 +1,7 @@
-import {css, html, property, query, TemplateResult, unsafeCSS, LitElement} from 'lit-element';
+import { css, html, property, query, TemplateResult, unsafeCSS, LitElement } from 'lit-element';
 
 import { BasicService } from '@domoskanonos/frontend-basis';
-import {IconComponent} from "..";
+import { IconComponent } from '..';
 
 const componentCSS = require('./component.css');
 
@@ -52,13 +52,11 @@ export abstract class TopBottomTemplate extends LitElement {
 
    abstract getBottomContent(): TemplateResult;
 
-   protected inputDataChanged(): void {
-   }
+   protected inputDataChanged(): void {}
 
    public getOutputData(): undefined {
       return undefined;
    }
-
 
    menuItemClicked(event: CustomEvent) {
       let id: IconComponent = event.detail;
@@ -74,7 +72,5 @@ export abstract class TopBottomTemplate extends LitElement {
       } else {
          this.menuCss = 'basicShadow';
       }
-
    }
-
 }

@@ -52,31 +52,31 @@ export class PageLayoutComponent extends PageAbstract {
             top="var(--menubar-height)"
             width="100%"
             style="background-color: var(--app-color-surface-background);"
-         ><component-spacer spacerSize="${SpacerSize.BIG}" spacerAlignment="${SpacerAlignment.VERTICAL}">
-            <component-grid-container
-               .gridJustifyItems="${GridJustifyItems.CENTER}"
-               .gridAlignItems="${GridAlignItems.CENTER}"
-               .gridTemplateRows="${['1fr']}"
-               .gridTemplateColumns="${['1fr']}"
-            >
-               <component-box height="40vmin" width="40vmin">
-                  <component-flex-container
-                     style="background-color: var(--app-color-primary-background);"
-                     .containerProperties="${this.containerProperties}"
-                     .itemProperties="${this.itemProperties}"
-                     itemFlexBasisValue="${this.itemFlexBasisValue}"
-                     .flexDirection="${this.flexDirection}"
-                     .flexWrap="${this.flexWrap}"
-                     .flexJustifyContent="${this.flexJustifyContent}"
-                     .alignItems="${this.alignItems}"
-                     .alignContent="${this.alignContent}"
-                  >
-                     ${this.createBox(4, 4)} ${this.createBox(7, 4)} ${this.createBox(4, 7)} ${this.createBox(4, 7)}
-                     ${this.createBox(9, 5)} ${this.createBox(7, 5)} ${this.createBox(9, 7)} ${this.createBox(9, 5)}
-                     ${this.createBox(7, 4)}
-                  </component-flex-container>
-               </component-box></component-grid-container
-            >
+            ><component-spacer spacerSize="${SpacerSize.BIG}" spacerAlignment="${SpacerAlignment.VERTICAL}">
+               <component-grid-container
+                  .gridJustifyItems="${GridJustifyItems.CENTER}"
+                  .gridAlignItems="${GridAlignItems.CENTER}"
+                  .gridTemplateRows="${['1fr']}"
+                  .gridTemplateColumns="${['1fr']}"
+               >
+                  <component-box height="40vmin" width="40vmin">
+                     <component-flex-container
+                        style="background-color: var(--app-color-primary-background);"
+                        .containerProperties="${this.containerProperties}"
+                        .itemProperties="${this.itemProperties}"
+                        itemFlexBasisValue="${this.itemFlexBasisValue}"
+                        .flexDirection="${this.flexDirection}"
+                        .flexWrap="${this.flexWrap}"
+                        .flexJustifyContent="${this.flexJustifyContent}"
+                        .alignItems="${this.alignItems}"
+                        .alignContent="${this.alignContent}"
+                     >
+                        ${this.createBox(4, 4)} ${this.createBox(7, 4)} ${this.createBox(4, 7)} ${this.createBox(4, 7)}
+                        ${this.createBox(9, 5)} ${this.createBox(7, 5)} ${this.createBox(9, 7)} ${this.createBox(9, 5)}
+                        ${this.createBox(7, 4)}
+                     </component-flex-container>
+                  </component-box></component-grid-container
+               >
             </component-spacer>
          </component-floating-container>
          <component-spacer size="22vmin" spacerAlignment="${SpacerAlignment.VERTICAL}"></component-spacer>

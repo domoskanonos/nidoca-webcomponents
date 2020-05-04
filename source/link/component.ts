@@ -12,7 +12,6 @@ export class TargetType {
 
 @customElement('component-link')
 export class LinkComponent extends LitElement {
-
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;

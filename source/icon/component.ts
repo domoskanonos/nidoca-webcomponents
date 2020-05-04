@@ -35,7 +35,6 @@ export class IconComponent extends LitElement {
    @property()
    backgroundColor: string = '';
 
-
    @property()
    iconShadowType: string = ShadowType.NONE;
 
@@ -62,29 +61,28 @@ export class IconComponent extends LitElement {
 
    render() {
       return html`
-         <span
-            class="icon-container ${this.iconShadowType} ${this.clickable ? 'clickable' : ''} ${this.round
-               ? 'ROUND'
-               : ''}"
-            title="${this.title}"
-            @click="${this.clicked}"
-            style="${this.backgroundColor ? 'background-color:'.concat(this.backgroundColor).concat(';') : ''} ${this
-               .withIconSpace && this.size != undefined
-               ? 'height:'
-                    .concat((this.size * 2).toString())
-                    .concat('px;')
-                    .concat('width:')
-                    .concat((this.size * 2).toString())
-                    .concat('px;')
-               : ''}"
-            ><i
-               class="material-icons"
-               style="${this.color.length > 0 ? 'color: '.concat(this.color).concat(';') : ''} ${this.size != undefined
-                  ? 'font-size: ' + this.size.toString().concat(this.sizeUnit.concat(';'))
+         <component-spacer size="${this.withIconSpace ? String(this.size / 2).concat(this.sizeUnit) : '0px'}">
+            <span
+               class="icon-container ${this.iconShadowType} ${this.clickable ? 'clickable' : ''} ${this.round ? 'ROUND' : ''}"
+               title="${this.title}"
+               @click="${this.clicked}"
+               style="${this.backgroundColor ? 'background-color:'.concat(this.backgroundColor).concat(';') : ''} ${this.round
+                  ? 'height:'
+                       .concat((this.size * 2).toString())
+                       .concat('px;')
+                       .concat('width:')
+                       .concat((this.size * 2).toString())
+                       .concat('px;')
                   : ''}"
-               >${this.icon}</i
-            >
-         </span>
+               ><i
+                  class="material-icons"
+                  style="${this.color.length > 0 ? 'color: '.concat(this.color).concat(';') : ''} ${this.size != undefined
+                     ? 'font-size: ' + this.size.toString().concat(this.sizeUnit.concat(';'))
+                     : ''}"
+                  >${this.icon}</i
+               >
+            </span>
+         </component-spacer>
       `;
    }
 

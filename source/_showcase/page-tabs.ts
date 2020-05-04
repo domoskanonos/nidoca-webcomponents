@@ -1,17 +1,11 @@
 import { customElement, html, property, TemplateResult } from 'lit-element';
 import { PageAbstract } from './page-abstract';
-import {
-   SpacerAlignment,
-   SpacerSize,
-   TypographyType
-} from '..';
+import { SpacerAlignment, SpacerSize, TypographyType } from '..';
 import { I18nService } from '@domoskanonos/frontend-basis';
 import { ContainerProperties, ItemProperties } from '../flex-container/component';
 
-
 @customElement('page-tabs')
 export class PageTabs extends PageAbstract {
-
    constructor() {
       super();
       this.navigationTitle = I18nService.getUniqueInstance().getValue('pagetabs');
@@ -59,15 +53,14 @@ export class PageTabs extends PageAbstract {
                </component-tab-content>
                <component-tab-content slot="tabContent"
                   ><component-code>
-                     ${'<component-tabs '
-                        .concat(
-                           '>\n' +
-                              '<component-tab slot="tab" .selected="${true}" text="Tab 1"></component-tab>\n' +
-                              '<component-tab slot="tab" text="Tab 2"></component-tab>\n' +
-                              '<component-tab-content slot="tabContent" .selected="${true}">Inhalt 1</component-tab-content>\n' +
-                              '<component-tab-content slot="tabContent">Inhalt 2</component-tab-content>\n' +
-                              '</component-tabs>'
-                        )}
+                     ${'<component-tabs '.concat(
+                        '>\n' +
+                           '<component-tab slot="tab" .selected="${true}" text="Tab 1"></component-tab>\n' +
+                           '<component-tab slot="tab" text="Tab 2"></component-tab>\n' +
+                           '<component-tab-content slot="tabContent" .selected="${true}">Inhalt 1</component-tab-content>\n' +
+                           '<component-tab-content slot="tabContent">Inhalt 2</component-tab-content>\n' +
+                           '</component-tabs>'
+                     )}
                   </component-code></component-tab-content
                >
             </component-tabs>

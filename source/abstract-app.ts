@@ -1,7 +1,5 @@
-import {LitElement, TemplateResult} from 'lit-element';
-import {
-   RouterService,
-} from '@domoskanonos/frontend-basis';
+import { LitElement, TemplateResult } from 'lit-element';
+import { RouterService } from '@domoskanonos/frontend-basis';
 
 export class AppData {
    name?: string;
@@ -18,7 +16,7 @@ export abstract class AbstractApp extends LitElement {
 
    constructor() {
       super();
-      let titleTag = document.getElementsByTagName("TITLE")[0];
+      let titleTag = document.getElementsByTagName('TITLE')[0];
       titleTag.textContent = this.getAppTitle();
    }
 
@@ -41,8 +39,7 @@ export abstract class AbstractApp extends LitElement {
     * so you can catch all underlying events.
     *
     */
-   protected registerEventListener(): void {
-   }
+   protected registerEventListener(): void {}
 
    getDefaultInputData(): AppData {
       return <AppData>{};
@@ -52,6 +49,5 @@ export abstract class AbstractApp extends LitElement {
       return undefined;
    }
 
-   protected inputDataChanged(): void {
-   }
+   protected inputDataChanged(): void {}
 }

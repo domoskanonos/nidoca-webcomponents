@@ -1,3 +1,7 @@
+.FILLED {
+   background-color: var(--app-color-surface-background-light);
+}
+
 input,
 select,
 textarea {
@@ -67,12 +71,6 @@ input[type='range']::-moz-range-thumb {
    border-radius: 50%;
    background: var(--app-color-primary-background);
    cursor: pointer;
-}
-
-component-icon {
-   display: flex;
-   align-items: center;
-   justify-content: center;
 }
 
 input[type='datetime-local']::-webkit-calendar-picker-indicator,

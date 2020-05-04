@@ -25,7 +25,7 @@ export class PageButton extends PageAbstract {
             .containerProperties="${[
                ContainerProperties.CONTAINER_WIDTH_50,
                ContainerProperties.SMARTPHONE_MAX_WIDTH,
-               ContainerProperties.SMARTPHONE_HORIZONTAL_PADDING,
+               ContainerProperties.SMARTPHONE_HORIZONTAL_PADDING
             ]}"
             .itemProperties="${[ItemProperties.KEYLINE_ALIGNMENT_HORIZONTAL, ItemProperties.KEYLINE_SIZE_MEDIUM]}"
             itemFlexBasisValue="100%"
@@ -67,7 +67,7 @@ export class PageButton extends PageAbstract {
                            @component-inputfield-change="${(event: CustomEvent) => this.changeButtonType(event)}"
                         ></component-inputfield>
                         <component-inputfield
-                           .inputfieldType="${InputfieldType.CHECKBOX}"
+                           .inputfieldType="${InputfieldType.SWITCH}"
                            label="${I18nService.getUniqueInstance().getValue('pagebutton_leading_label')}"
                            assistiveText="${I18nService.getUniqueInstance().getValue('pagebutton_leading_text')}"
                            .checked="${this.showLeadingIcon}"

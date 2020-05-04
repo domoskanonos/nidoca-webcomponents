@@ -81,10 +81,7 @@ export class PageInputComponent extends PageAbstract {
                            ContainerProperties.TABLET_MAX_WIDTH,
                            ContainerProperties.SMARTPHONE_MAX_WIDTH
                         ]}"
-                        .itemProperties="${[
-                           ItemProperties.SMARTPHONE_MAX_WIDTH,
-                           ItemProperties.TABLET_MAX_WIDTH
-                        ]}"
+                        .itemProperties="${[ItemProperties.SMARTPHONE_MAX_WIDTH, ItemProperties.TABLET_MAX_WIDTH]}"
                         itemFlexBasisValue="100%"
                         ><component-spacer
                            spacerSize="${SpacerSize.MEDIUM}"
@@ -117,14 +114,14 @@ export class PageInputComponent extends PageAbstract {
                            @component-inputfield-change="${(event: CustomEvent) => this.changeType(event)}"
                         ></component-inputfield>
                         <component-inputfield
-                           .inputfieldType="${InputfieldType.CHECKBOX}"
+                           .inputfieldType="${InputfieldType.SWITCH}"
                            label="Trailing Icon"
                            assistiveText="Es besteht die Möglichkeit an jedes Eingabefeld rechts ein Icon zu plazieren."
                            .checked="${this.showTrailingIcon}"
                            @component-inputfield-change="${() => this.switchTrailingIcon()}"
                         ></component-inputfield>
                         <component-inputfield
-                           .inputfieldType="${InputfieldType.CHECKBOX}"
+                           .inputfieldType="${InputfieldType.SWITCH}"
                            label="Trailing Icon"
                            assistiveText="Es besteht die Möglichkeit an jedes Eingabefeld links ein Icon zu plazieren."
                            .checked="${this.showLeadingIcon}"

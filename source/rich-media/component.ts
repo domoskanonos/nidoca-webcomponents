@@ -7,13 +7,18 @@ export class RichMediaType {
    static MOVIE: string = 'MOVIE';
 }
 
+export enum RichMediaProperties {
+   ROUND = 'ROUND',
+   CLICKABLE = 'CLICKABLE',
+   ZOOM_WRAPPED = 'ZOOM_WRAPPED',
+   FULL_WIDTH = 'FULL_WIDTH'
+}
+
 @customElement('component-rich-media')
 export class RichMediaComponent extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;
-
-   static IDENTIFIER: string = 'ImgComponent';
 
    @property()
    src: string = '';
@@ -21,24 +26,31 @@ export class RichMediaComponent extends LitElement {
    @property()
    richMediaType: string = RichMediaType.IMG;
 
+   @property()
+   richMediaProperties: RichMediaProperties[] = [];
+
    render() {
       return this.richMediaType == RichMediaType.IMG
          ? html`
-              <span><img src="${this.src}"/></span>
+              <span class="${this.toRichMediaPropertiesString(this.richMediaProperties)}"><img src="${this.src}"/></span>
            `
          : html`
-              <iframe
-                 width="560"
-                 height="315"
-                 src="${this.src}"
-                 frameborder="0"
-                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                 allowfullscreen
-              ></iframe>
+              <span class="${this.toRichMediaPropertiesString(this.richMediaProperties)}">
+                 <iframe
+                    src="${this.src}"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                 ></iframe
+              ></span>
            `;
    }
 
-   getOutputData(): undefined {
-      return undefined;
+   private toRichMediaPropertiesString(richMediaProperties: RichMediaProperties[]) {
+      let richMediaPropertiesString: string = '';
+      richMediaProperties.forEach((propertie: RichMediaProperties) => {
+         richMediaPropertiesString = richMediaPropertiesString.concat(' ').concat(propertie);
+      });
+      return richMediaPropertiesString;
    }
 }

@@ -1,4 +1,4 @@
-import {css, customElement, html, property, unsafeCSS, LitElement} from 'lit-element';
+import { css, customElement, html, property, unsafeCSS, LitElement } from 'lit-element';
 
 export class TypographyType {
    static H1: string = 'H1';
@@ -16,12 +16,10 @@ export class TypographyType {
    static OVERLINE: string = 'OVERLINE';
 }
 
-
 const componentCSS = require('./component.css');
 
 @customElement('component-typography')
 export class TypographyComponent extends LitElement {
-
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;
@@ -40,9 +38,7 @@ export class TypographyComponent extends LitElement {
 
    render() {
       return html`
-         <span class="${this.typographyType} ${this.clazz}" style="${this.cssStyle}">
-            ${this.text}<slot></slot>
-         </span>
+         <span class="${this.typographyType} ${this.clazz}" style="${this.cssStyle}"> ${this.text}<slot></slot> </span>
       `;
    }
 }

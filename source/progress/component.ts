@@ -18,5 +18,4 @@ export class ProgressComponent extends LitElement {
          </component-border>
       `;
    }
-
 }

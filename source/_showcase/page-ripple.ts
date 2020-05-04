@@ -1,7 +1,7 @@
 import { customElement, html, property, TemplateResult } from 'lit-element';
 import { PageAbstract } from './page-abstract';
 import { TransitionType } from '../effect-transition/component';
-import {FlexJustifyContent, InputfieldComponent, InputfieldType, SpacerAlignment, SpacerSize, TypographyType} from '..';
+import { FlexJustifyContent, InputfieldComponent, InputfieldType, SpacerAlignment, SpacerSize, TypographyType } from '..';
 import { I18nService } from '@domoskanonos/frontend-basis';
 import { PreviewFormatterService } from './preview-formatter';
 import { ContainerProperties, ItemProperties } from '../flex-container/component';

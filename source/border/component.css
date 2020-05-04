@@ -54,7 +54,7 @@ slot {
 
 .BOTTOM_SELECTED {
    border-bottom-style: solid;
-   border-color: var(--app-color-primary);
+   border-color: var(--app-color-primary-background);
 }
 
 .KEY_LIGHT{

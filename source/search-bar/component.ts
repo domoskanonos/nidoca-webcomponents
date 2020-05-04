@@ -1,4 +1,4 @@
-import {css, customElement, html, LitElement, property, query, unsafeCSS} from 'lit-element';
+import { css, customElement, html, LitElement, property, query, unsafeCSS } from 'lit-element';
 import { InputfieldType, InputfieldComponent } from '..';
 import { EventIconClickData } from '../icon/component';
 import { BasicService } from '@domoskanonos/frontend-basis';
