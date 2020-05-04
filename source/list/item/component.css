@@ -1,9 +1,13 @@
-:host {
+.LIST_ITEM_SLOT {
+   display: grid;
+   grid-template-rows: 1fr;
+   grid-template-columns: 1fr;
 }
 
-.LIST_ITEM_SLOT {
-    display: grid;
-    grid-template-rows: 1fr;
-    grid-template-columns: 1fr;
-    width: 100%;
+.LIST_ITEM {
+   cursor: pointer;
+}
+
+.LIST_ITEM:hover {
+   background-color: var(--app-color-surface-background-light);
 }

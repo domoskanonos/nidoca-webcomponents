@@ -113,6 +113,12 @@ export abstract class PageAbstract extends BasisTemplate {
             icon=""
             text="${I18nService.getUniqueInstance().getValue('pageborder')}"
             href="pageborder"
+         ></component-navigation-link
+         ><component-navigation-link
+            slot="links"
+            icon=""
+            text="${I18nService.getUniqueInstance().getValue('pagechip')}"
+            href="pagechip"
          ></component-navigation-link>
          <component-navigation-link
             slot="links"
@@ -175,7 +181,7 @@ export abstract class PageAbstract extends BasisTemplate {
 
          <component-navigation-link
             slot="links"
-            icon=""
+            icon="view_headline"
             text="${I18nService.getUniqueInstance().getValue('pagelist')}"
             href="pagelist"
          ></component-navigation-link>
@@ -201,6 +207,12 @@ export abstract class PageAbstract extends BasisTemplate {
             icon=""
             text="${I18nService.getUniqueInstance().getValue('pageripple')}"
             href="pageripple"
+         ></component-navigation-link>
+         <component-navigation-link
+            slot="links"
+            icon=""
+            text="${I18nService.getUniqueInstance().getValue('pageprogress')}"
+            href="pageprogress"
          ></component-navigation-link>
          <component-divider slot="links" .dividerType="${DividerType.THIN}" opacity="0.2"></component-divider>
          <component-navigation-link

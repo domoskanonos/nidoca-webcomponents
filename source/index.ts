@@ -1,6 +1,8 @@
 import { AbstractApp } from './abstract-app';
 import { AccordionComponent } from './accordion/component';
 import { BoxComponent } from './box/component';
+import { ChipComponent } from './chip/component';
+import { ProgressComponent } from './progress/component';
 import { BorderType, BorderComponent } from './border/component';
 import { FloatingComponent } from './floating/component';
 import { AccordionItemComponent } from './accordion/item/component';
@@ -40,6 +42,8 @@ export { AccordionComponent } from './accordion/component';
 export { BorderType, BorderComponent } from './border/component';
 export { FloatingComponent } from './floating/component';
 export { BoxComponent } from './box/component';
+export { ChipComponent } from './chip/component';
+export { ProgressComponent } from './progress/component';
 export { AccordionItemComponent } from './accordion/item/component';
 export { ButtonType, ButtonComponent } from './button/component';
 export { CodeComponent } from './code/component';

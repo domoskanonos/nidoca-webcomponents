@@ -10,6 +10,8 @@ import './page-introduction';
 import './page-get-started';
 import './page-imprint';
 import './page-code.ts';
+import './page-chip.ts';
+import './page-progress.ts';
 import './page-grid.ts';
 import './page-dialog.ts';
 import './page-border.ts';
@@ -52,6 +54,14 @@ export class ShowcaseApp extends AbstractApp {
          case 'pagegrid':
             return html`
                <page-grid></page-grid>
+            `;
+         case 'pagechip':
+            return html`
+               <page-chip></page-chip>
+            `;
+         case 'pageprogress':
+            return html`
+               <page-progress></page-progress>
             `;
          case 'pagebox':
             return html`

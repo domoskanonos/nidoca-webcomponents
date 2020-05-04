@@ -1,6 +1,6 @@
 import { css, customElement, html, LitElement, property, unsafeCSS } from 'lit-element';
 import { BasicService } from '@domoskanonos/frontend-basis';
-import { BorderType } from '../..';
+import { VisibleType } from '../..';
 
 const componentCSS = require('./component.css');
 
@@ -15,38 +15,45 @@ export class ListItemComponent extends LitElement {
    static EVENT_LIST_ITEM_UNSELECT: string = 'component-list-item-unselect';
 
    @property()
-   index: number = -1;
-
-   @property()
-   selectMode: boolean = false;
+   selectionMode: boolean = false;
 
    @property()
    selected: boolean = false;
 
+   protected update(changedProperties: Map<PropertyKey, unknown>): void {
+      super.update(changedProperties);
+      if (changedProperties.get('selectionMode') != undefined) {
+         if (!this.selectionMode) {
+            this.selected = false;
+         }
+      }
+   }
+
    render() {
       return html`
-         <component-border .borderProperties="${[BorderType.FULL_WIDTH, BorderType.BOTTOM]}">
-            <component-grid-container .gridTemplateRows="${['1fr']}" .gridTemplateColumns="${['auto', '1fr']}">
-               <component-icon
-                  .rendered="${this.selectMode}"
-                  @click="${() => this.switchSelected()}"
-                  icon="${this.selected ? 'check_box' : 'check_box_outline_blank'}"
-               ></component-icon>
+         <effect-ripple>
+            <component-grid-container class="LIST_ITEM" .gridTemplateRows="${['1fr']}" .gridTemplateColumns="${['auto', '1fr']}">
+               <component-visible visibleType="${this.selectionMode ? VisibleType.NORMAL : VisibleType.HIDE}">
+                  <component-icon
+                     @click="${() => this.switchSelected()}"
+                     icon="${this.selected ? 'check_box' : 'check_box_outline_blank'}"
+                  ></component-icon>
+               </component-visible>
                <slot class="LIST_ITEM_SLOT" @click="${() => this.itemClicked()}"></slot> </component-grid-container
-         ></component-border>
+         ></effect-ripple>
       `;
    }
 
    itemClicked() {
-      BasicService.getUniqueInstance().dispatchSimpleCustomEvent(this, ListItemComponent.EVENT_LIST_ITEM_CLICKED, this.index);
+      BasicService.getUniqueInstance().dispatchSimpleCustomEvent(this, ListItemComponent.EVENT_LIST_ITEM_CLICKED, this);
    }
 
    switchSelected() {
-      this.selected = !this.selected;
+      this.selected = Boolean(!this.selected);
       if (this.selected) {
-         BasicService.getUniqueInstance().dispatchSimpleCustomEvent(this, ListItemComponent.EVENT_LIST_ITEM_SELECT, this.index);
+         BasicService.getUniqueInstance().dispatchSimpleCustomEvent(this, ListItemComponent.EVENT_LIST_ITEM_SELECT, this);
       } else {
-         BasicService.getUniqueInstance().dispatchSimpleCustomEvent(this, ListItemComponent.EVENT_LIST_ITEM_UNSELECT, this.index);
+         BasicService.getUniqueInstance().dispatchSimpleCustomEvent(this, ListItemComponent.EVENT_LIST_ITEM_UNSELECT, this);
       }
    }
 }

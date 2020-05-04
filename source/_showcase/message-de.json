@@ -15,6 +15,7 @@
    "pagedivider": "Teiler",
    "pagelink": "Links",
    "pagelist": "Listen",
+   "pagelist_description": " listet Inhalt vertikal auf. Man kann einzelne Inhalte selektieren und die Selektion in überliegenden Komponenten verwenden. Dazu werden mehrere Events für die Weiterverarbeitung geworfen. ",
    "pagebutton": "Buttons",
    "pagetransition": "Animation/Transition",
    "pageicon": "Icons",
@@ -143,5 +144,5 @@
    "pagefloating_top_label": "Abstand Oben",
    "pagefloating_bottom_label": "Abstand Unten",
    "pagefloating_description": " ist für Inhalte, welche an einer fixen Position auf dem Bildschirm dargestellt werden sollen.",
-   "pagefloating_demo_description" : "Hier kannst die einzelnen Attribute verändern und deren Auswirkungen auf das Icon oben rechts am Bildschirm begutachten"
+   "pagefloating_demo_description": "Hier kannst die einzelnen Attribute verändern und deren Auswirkungen auf das Icon oben rechts am Bildschirm begutachten"
 }
