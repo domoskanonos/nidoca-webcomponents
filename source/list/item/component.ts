@@ -32,7 +32,7 @@ export class ListItemComponent extends LitElement {
 
    render() {
       return html`
-         <effect-ripple>
+         <component-ripple>
             <component-grid-container
                class="LIST_ITEM"
                .gridJustifyItems="${GridJustifyItems.START}"
@@ -47,7 +47,7 @@ export class ListItemComponent extends LitElement {
                   ></component-icon>
                </component-visible>
                <slot class="LIST_ITEM_SLOT" @click="${() => this.itemClicked()}"></slot> </component-grid-container
-         ></effect-ripple>
+         ></component-ripple>
       `;
    }
 

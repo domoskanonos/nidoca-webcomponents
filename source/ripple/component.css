@@ -1,6 +1,6 @@
 :root {
-   --ripple-background: var(--app-color-background);
-   --ripple-opacity: 0.3;
+   --ripple-background: var(--app-color-surface-background-dark);
+   --ripple-opacity: 0.8;
    --ripple-duration: 600ms;
    --ripple-easing: linear;
 

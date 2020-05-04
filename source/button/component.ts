@@ -30,7 +30,7 @@ export class ButtonComponent extends LitElement {
 
    render() {
       return html`
-         <effect-ripple>
+         <component-ripple>
             <component-flex-container
                class="BUTTON ${this.buttonType}"
                @click="${() => {
@@ -58,7 +58,7 @@ export class ButtonComponent extends LitElement {
                <component-spacer spacerSize="${SpacerSize.MEDIUM}"></component-spacer>
                <slot></slot>
             </component-flex-container>
-         </effect-ripple>
+         </component-ripple>
       `;
    }
 

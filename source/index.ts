@@ -13,7 +13,7 @@ import { FlexDirection, FlexWrap, FlexJustifyContent, AlignItems, AlignContent, 
 import { GridComponent } from './grid-container/component';
 import { KeyValueData, FormComponentOutputData, FormComponent } from './form/component';
 import { ContainerComponent } from './container/component';
-import { RippleComponent } from './effect-ripple/component';
+import { RippleComponent } from './ripple/component';
 import { VisibleType, VisibleEffect } from './visible/component';
 import { TransitionType, TransitionComponent } from './effect-transition/component';
 import { IconComponent } from './icon/component';
@@ -52,7 +52,7 @@ export { FlexDirection, FlexWrap, FlexJustifyContent, AlignItems, AlignContent, 
 export { GridComponent } from './grid-container/component';
 export { KeyValueData, FormComponentOutputData, FormComponent } from './form/component';
 export { ContainerComponent } from './container/component';
-export { RippleComponent } from './effect-ripple/component';
+export { RippleComponent } from './ripple/component';
 export { VisibleType, VisibleEffect } from './visible/component';
 export { TransitionType, TransitionComponent } from './effect-transition/component';
 export { IconComponent } from './icon/component';

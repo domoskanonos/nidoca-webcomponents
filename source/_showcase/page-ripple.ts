@@ -1,7 +1,7 @@
 import { customElement, html, property, TemplateResult } from 'lit-element';
 import { PageAbstract } from './page-abstract';
 import { TransitionType } from '../effect-transition/component';
-import { InputfieldComponent, InputfieldType, SpacerAlignment, SpacerSize, TypographyType } from '..';
+import {FlexJustifyContent, InputfieldComponent, InputfieldType, SpacerAlignment, SpacerSize, TypographyType} from '..';
 import { I18nService } from '@domoskanonos/frontend-basis';
 import { PreviewFormatterService } from './preview-formatter';
 import { ContainerProperties, ItemProperties } from '../flex-container/component';
@@ -26,13 +26,10 @@ export class RipplePage extends PageAbstract {
             .itemProperties="${[ItemProperties.KEYLINE_ALIGNMENT_HORIZONTAL, ItemProperties.KEYLINE_SIZE_MEDIUM]}"
             itemFlexBasisValue="100%"
          >
-            <component-typography .typographyType="${TypographyType.H2}" text="<effect-ripple/>"></component-typography>
+            <component-typography .typographyType="${TypographyType.H2}" text="<component-ripple/>"></component-typography>
             <component-typography .typographyType="${TypographyType.BODY1}"
-               ><i>RippleComponent</i> ${I18nService.getUniqueInstance().getValue('pageripple_text')}</component-typography
+               ><i>RippleComponent</i> ${I18nService.getUniqueInstance().getValue('pageripple_description')}</component-typography
             >
-            <component-typography .typographyType="${TypographyType.H4}" text="${I18nService.getUniqueInstance().getValue('pageborder_typoh4')}"></component-typography>
-            <component-typography .typographyType="${TypographyType.BODY1}" text=""></component-typography>
-
             <component-tabs>
                <component-tab
                   slot="tab"
@@ -53,16 +50,15 @@ export class RipplePage extends PageAbstract {
                      ]}"
                      .itemProperties="${[
                         ItemProperties.KEYLINE_ALIGNMENT_BOTH,
-                        ItemProperties.KEYLINE_SIZE_MEDIUM,
                         ItemProperties.SMARTPHONE_MAX_WIDTH,
                         ItemProperties.TABLET_MAX_WIDTH
                      ]}"
-                     itemFlexBasisValue="50%"
+                     itemFlexBasisValue="auto"
+                     .flexJustifyContent="${FlexJustifyContent.CENTER}"
                   >
-
-                     <effect-ripple>
+                     <component-ripple>
                         <component-rich-media src="https://picsum.photos/400/400"></component-rich-media>
-                     </effect-ripple>
+                     </component-ripple>
                   </component-flex-container>
                </component-tab-content>
                <component-tab-content slot="tabContent"
@@ -71,8 +67,7 @@ export class RipplePage extends PageAbstract {
                      spacerAlignment="${SpacerAlignment.VERTICAL}"
                   ></component-spacer
                   ><component-code
-                     code="${'<effect-ripple '
-                        .concat(' ></effect-ripple>')}"
+                     code="${'<component-ripple><component-rich-media src="https://picsum.photos/400/400"></component-rich-media></component-ripple>'}"
                   >
                   </component-code
                ></component-tab-content>
@@ -80,5 +75,4 @@ export class RipplePage extends PageAbstract {
          </component-flex-container>
       `;
    }
-
 }

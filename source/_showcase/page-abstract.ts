@@ -204,7 +204,7 @@ export abstract class PageAbstract extends BasisTemplate {
          ></component-navigation-link>
          <component-navigation-link
             slot="links"
-            icon=""
+            icon="all_out"
             text="${I18nService.getUniqueInstance().getValue('pageripple')}"
             href="pageripple"
          ></component-navigation-link>

@@ -47,7 +47,7 @@
    "pagerich_text": "Die Komponente RichMediaComponent wird dazu verwenden, Bilder und Videos darzustellen.",
    "pagerich_text1": "Hier können Sie die Komponente ausführlich testen. Anschließend können Sie den zugehörigen Quellcode unter 'Code' begutachten",
    "pagerich_text2": "Geben Sie hier den Link ihres Bildes oder Videos ein",
-   "pageripple_text": "ist eine Komponente mit der man Inhalte anmutig einblenden kann",
+   "pageripple_description": " ist eine Komponente die durch einen Klick einen visuellen Ripple-Effekt auslöst, der dem Benutzer verdeutlicht das der Klick ausgefürt wird. Dabei umschließt sie den Inhalt auf den der Ripple-Effekt angewendet werden soll. Klicke unten auf das Bild um dir den Ripple-Effekt anzuschauen.",
    "pagespacer_text": "wird eingesetzt um zwischen einzelnen Komponenten Abstand zu erzeugen. Abstand kann um eine gesamte Komponente, oder nur in horizontaler, bzw. vertikaler Richtung erzeugt werden. Es gibt 5 vordefinierte Abstandgrößen oder die Möglichkeit eine variable Größe einzugeben.",
    "pagespacer_size_label": "Variabler Abstand",
    "pagespacer_label": "Ausrichtung",
