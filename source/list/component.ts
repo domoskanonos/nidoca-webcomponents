@@ -1,7 +1,5 @@
 import { css, customElement, html, property, unsafeCSS, query, LitElement } from 'lit-element';
-import { ListItemComponent } from '../item/component';
-import { BasicService } from '@domoskanonos/frontend-basis';
-import { BorderType } from '../..';
+import { ListItemComponent } from './item/component';
 
 const componentCSS = require('./component.css');
 

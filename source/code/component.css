@@ -17,7 +17,7 @@ code {
    border-radius: 0.375em;
    border: solid 1px var(--app-color-surface-background-dark);
    font-family: 'Courier New', monospace;
-   font-size: var(--font-size);
+   font-size: 0.85em;
    position: relative;
 }
 

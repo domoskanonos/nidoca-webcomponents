@@ -1,2 +1,3 @@
 TODO:
-- Border Type 100% width und BorderType in BorderProperties oder ähnliches  style="width: 100%;" an Slot Element funktioniert
+- Grid COntainer  column-gap:10px; row-gap: 10px;
+- Icon round und withiconspace getrennt

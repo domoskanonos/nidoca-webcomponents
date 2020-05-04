@@ -15,6 +15,8 @@
    "pagedivider": "Teiler",
    "pagelink": "Links",
    "pagelist": "Listen",
+   "pagelist_selection_mode_checkbox": "Auswahlmodus",
+   "pagelist_selection_mode_assistive_text": "Selektiere ein oder mehrere Elemente",
    "pagelist_description": " listet Inhalt vertikal auf. Man kann einzelne Inhalte selektieren und die Selektion in überliegenden Komponenten verwenden. Dazu werden mehrere Events für die Weiterverarbeitung geworfen. ",
    "pagebutton": "Buttons",
    "pagetransition": "Animation/Transition",

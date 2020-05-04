@@ -1,6 +1,7 @@
 import { css, customElement, html, LitElement, property, unsafeCSS } from 'lit-element';
 import { BasicService } from '@domoskanonos/frontend-basis';
 import { VisibleType } from '../..';
+import { GridAlignItems, GridJustifyItems } from '../../grid-container/component';
 
 const componentCSS = require('./component.css');
 
@@ -32,7 +33,13 @@ export class ListItemComponent extends LitElement {
    render() {
       return html`
          <effect-ripple>
-            <component-grid-container class="LIST_ITEM" .gridTemplateRows="${['1fr']}" .gridTemplateColumns="${['auto', '1fr']}">
+            <component-grid-container
+               class="LIST_ITEM"
+               .gridJustifyItems="${GridJustifyItems.START}"
+               .gridAlignItems="${GridAlignItems.CENTER}"
+               .gridTemplateRows="${['1fr']}"
+               .gridTemplateColumns="${['auto', '1fr']}"
+            >
                <component-visible visibleType="${this.selectionMode ? VisibleType.NORMAL : VisibleType.HIDE}">
                   <component-icon
                      @click="${() => this.switchSelected()}"

@@ -1,4 +1,6 @@
 import { customElement, html, property, TemplateResult } from 'lit-element';
+import { repeat } from 'lit-html/directives/repeat';
+import { guard } from 'lit-html/directives/guard';
 import { PageAbstract } from './page-abstract';
 import {
    AlignContent,
@@ -12,6 +14,7 @@ import {
 import { InputfieldType, SpacerAlignment, SpacerSize, TypographyType } from '..';
 import { I18nService } from '@domoskanonos/frontend-basis';
 import { IconShadowType } from '../icon/component';
+import { GridAlignItems, GridJustifyItems } from '../grid-container/component';
 
 @customElement('page-list')
 export class PageList extends PageAbstract {
@@ -23,7 +26,7 @@ export class PageList extends PageAbstract {
    @property()
    selectionMode: boolean = false;
 
-   //listItemContent: [] = ['','',''];
+   listItemContent: string[] = ['', '', ''];
 
    getMainComponent(): TemplateResult {
       return html`
@@ -42,11 +45,6 @@ export class PageList extends PageAbstract {
             <component-typography .typographyType="${TypographyType.BODY1}">
                <i>ListComponent</i>${I18nService.getUniqueInstance().getValue('pagelist_description')}
             </component-typography>
-            <component-typography
-               .typographyType="${TypographyType.H4}"
-               text="${I18nService.getUniqueInstance().getValue('interactive_demo')}"
-            ></component-typography>
-
             <component-tabs>
                <component-tab
                   slot="tab"
@@ -72,7 +70,6 @@ export class PageList extends PageAbstract {
                         <component-inputfield
                            label="${I18nService.getUniqueInstance().getValue('pagelist_selection_mode_checkbox')}"
                            assistiveText="${I18nService.getUniqueInstance().getValue('pagelist_selection_mode_assistive_text')}"
-                           infoText="${I18nService.getUniqueInstance().getValue('pagelist_selection_mode_info_text')}"
                            .inputfieldType="${InputfieldType.CHECKBOX}"
                            .checked="${this.selectionMode}"
                            @component-inputfield-change="${(event: CustomEvent) =>
@@ -80,26 +77,57 @@ export class PageList extends PageAbstract {
                         ></component-inputfield>
                      </component-form>
                      <component-list .selectionMode="${this.selectionMode}">
-                     
-                     
-                     
-                     
-                        <component-list-item>
-                           <component-icon
-                              clickable="false"
-                              icon="thumb_up_alt"
-                              round="true"
-                              color="#ffffff"
-                              backgroundColor="#0d47a1"
-                              size="32"
-                              .iconShadowType="${IconShadowType.DEFAULT_SHADOW}"
-                           ></component-icon>
-
-                           <component-typography>Lorem Ipsum Dolorem</component-typography>
-                        </component-list-item>
-                        
-                        
-                        
+                        ${guard(
+                           [this.selectionMode, this.listItemContent],
+                           () =>
+                              html`
+                                 ${repeat(
+                                    this.listItemContent,
+                                    (identifier: string) =>
+                                       html`
+                                          <component-list-item id="${identifier}">
+                                             <component-grid-container
+                                                .gridJustifyItems="${GridJustifyItems.START}"
+                                                .gridAlignItems="${GridAlignItems.CENTER}"
+                                                .gridTemplateRows="${['1fr']}"
+                                                .gridTemplateColumns="${['auto', '1fr', 'auto']}"
+                                             >
+                                                <component-spacer
+                                                   spacerSize="${SpacerSize.MEDIUM}"
+                                                   spacerAlignment="${SpacerAlignment.BOTH}"
+                                                >
+                                                   <component-icon
+                                                      clickable="false"
+                                                      icon="thumb_up_alt"
+                                                      round="true"
+                                                      size="18"
+                                                      color="var(--app-color-surface)"
+                                                      backgroundColor="var(--app-color-surface-background)"
+                                                      .iconShadowType="${IconShadowType.DEFAULT_SHADOW}"
+                                                   ></component-icon>
+                                                </component-spacer>
+                                                <component-spacer
+                                                   spacerSize="${SpacerSize.MEDIUM}"
+                                                   spacerAlignment="${SpacerAlignment.BOTH}"
+                                                >
+                                                   <component-typography>Lorem Ipsum Dolorem</component-typography>
+                                                </component-spacer>
+                                                <component-spacer
+                                                   spacerSize="${SpacerSize.MEDIUM}"
+                                                   spacerAlignment="${SpacerAlignment.BOTH}"
+                                                >
+                                                   <component-icon
+                                                      clickable="false"
+                                                      icon="more_vert"
+                                                      round="true"
+                                                   ></component-icon>
+                                                </component-spacer>
+                                             </component-grid-container>
+                                          </component-list-item>
+                                       `
+                                 )}
+                              `
+                        )}
                      </component-list>
                   </component-flex-container>
                </component-tab-content>
@@ -109,7 +137,9 @@ export class PageList extends PageAbstract {
                      spacerAlignment="${SpacerAlignment.VERTICAL}"
                   ></component-spacer
                   ><component-code
-                     code="${'<component-dialog .show="'.concat(String(this.selectionMode)).concat('"></component-dialog>')}"
+                     code="${'<component-list .selectionMode="${'
+                        .concat(String(this.selectionMode))
+                        .concat('}"><component-list-item></component-list-item></component-list>')}"
                   >
                   </component-code
                ></component-tab-content>
