@@ -1,6 +1,6 @@
 import { customElement, html, property, TemplateResult } from 'lit-element';
 import { PageAbstract } from './page-abstract';
-import { BorderType, InputfieldComponent, InputfieldType, SpacerAlignment, SpacerSize, TypographyType, VisibleType } from '..';
+import { BorderProperties, InputfieldComponent, InputfieldType, SpacerAlignment, SpacerSize, TypographyType, VisibleType } from '..';
 import { I18nService } from '@domoskanonos/frontend-basis';
 import { ContainerProperties, ItemProperties } from '../flex-container/component';
 import { PreviewFormatterService } from './preview-formatter';
@@ -67,7 +67,7 @@ export class PageVisible extends PageAbstract {
                         .gridTemplateColumns="${['1fr']}"
                      >
                         <component-container>
-                           <component-border borderType="${BorderType.ALL}">
+                           <component-border ..borderProperties="${[BorderProperties.ALL]}">
                               <component-visible visibleType="${this.visibleType}">
                                  <component-box
                                     style="background-color: var(--app-color-primary-background);"

@@ -1,5 +1,5 @@
 import { css, customElement, html, property, unsafeCSS, LitElement } from 'lit-element';
-import { BorderType, SpacerAlignment, SpacerSize } from '..';
+import { BorderProperties, SpacerAlignment, SpacerSize } from '..';
 
 const componentCSS = require('./component.css');
 

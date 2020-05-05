@@ -1,7 +1,7 @@
 import { css, customElement, html, property, unsafeCSS } from 'lit-element';
 import { LitElement } from 'lit-element';
 
-export class BorderType {
+export class BorderProperties {
    static NONE: string = 'NONE';
    static ALL: string = 'ALL';
    static ALL_ROUND: string = 'ALL_ROUND';
@@ -37,11 +37,7 @@ export class BorderComponent extends LitElement {
    `;
 
    @property()
-   borderProperties: string[] = [BorderType.NONE];
-
-   //deprecated use borderProperties
-   @property()
-   borderType: string = BorderType.NONE;
+   borderProperties: string[] = [BorderProperties.NONE];
 
    @property()
    borderSize: string = BorderSize.THIN;
@@ -52,7 +48,7 @@ export class BorderComponent extends LitElement {
    render() {
       return html`
          <slot
-            class="${this.toBorderPropertiesString(this.borderProperties)} ${this.borderType} ${this.borderSize} ${this
+            class="${this.toBorderPropertiesString(this.borderProperties)} ${this.borderSize} ${this
                .shadowType}"
          ></slot>
       `;

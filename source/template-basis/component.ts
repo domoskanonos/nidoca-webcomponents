@@ -1,7 +1,7 @@
 import { css, html, property, query, TemplateResult, unsafeCSS, LitElement } from 'lit-element';
 
 import { BasicService, I18nService } from '@domoskanonos/frontend-basis';
-import { BorderType, IconComponent, InputfieldComponent, InputfieldType, NavigationComponent } from '..';
+import { BorderProperties, IconComponent, InputfieldComponent, InputfieldType, NavigationComponent } from '..';
 import { NavigationType } from '../navigation/component';
 
 const componentCSS = require('./component.css');
@@ -34,14 +34,14 @@ export abstract class BasisTemplate extends LitElement {
 
    render() {
       return html`
-         <component-border borderType="${BorderType.RIGHT}">
+         <component-border ..borderProperties="${[BorderProperties.RIGHT]}">
             <component-navigation .closed="${this.navigationClosed}" navigationType="${this.navigationType}">
                ${this.getLeftNavigationContent()}
             </component-navigation>
          </component-border>
 
          <top id="top" class="${this.menuCss}" @component-icon-click="${this.menuItemClicked}">
-            <component-border borderType="${BorderType.BOTTOM}">
+            <component-border ..borderProperties="${[BorderProperties.BOTTOM]}">
                ${this.getTopContent()}
             </component-border>
          </top>

@@ -1,9 +1,12 @@
-import { css, customElement, html, unsafeCSS } from 'lit-element';
+import { css, customElement, html, property, unsafeCSS } from 'lit-element';
 import { LitElement } from 'lit-element';
-import { BorderType } from '..';
-import { ShadowType } from '../border/component';
 
 const componentCSS = require('./component.css');
+
+export enum ProgressType {
+   PROGRESS = 'PROGRESS',
+   PROGRESS_CIRCULAR = 'PROGRESS_CIRCULAR'
+}
 
 @customElement('component-progress')
 export class ProgressComponent extends LitElement {
@@ -11,15 +14,12 @@ export class ProgressComponent extends LitElement {
       ${unsafeCSS(componentCSS)}
    `;
 
+   @property()
+   progressType: ProgressType = ProgressType.PROGRESS;
+
    render() {
       return html`
-         <component-border .borderProperties="${[BorderType.NONE, BorderType.FULL_WIDTH]}">
-            <progress class="PROGRESS"/>
-           
-         </component-border>
-         <component-border .borderProperties="${[BorderType.NONE, BorderType.FULL_WIDTH]}">
-            <progress class="PROGRESS-CIRCULAR"/>
-         </component-border>
+         <progress class="${this.progressType}" />
       `;
    }
 }

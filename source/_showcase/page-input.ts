@@ -1,7 +1,7 @@
 import { customElement, html, property, TemplateResult } from 'lit-element';
 import { PageAbstract } from './page-abstract';
 import { InputfieldComponent, InputfieldType } from '../inputfield/component';
-import { BorderType, SpacerAlignment, SpacerSize, TypographyType } from '..';
+import { BorderProperties, SpacerAlignment, SpacerSize, TypographyType } from '..';
 import { ContainerProperties, ItemProperties } from '../flex-container/component';
 import { I18nService } from '@domoskanonos/frontend-basis';
 import { GridAlignItems, GridJustifyItems } from '../grid-container/component';
@@ -87,7 +87,7 @@ export class PageInputComponent extends PageAbstract {
                            spacerSize="${SpacerSize.MEDIUM}"
                            spacerAlignment="${SpacerAlignment.VERTICAL}"
                         ></component-spacer
-                        ><component-border .borderProperties="${[BorderType.FULL_WIDTH, BorderType.ALL]}"
+                        ><component-border .borderProperties="${[BorderProperties.FULL_WIDTH, BorderProperties.ALL]}"
                            ><component-spacer spacerSize="${SpacerSize.MEDIUM}" spacerAlignment="${SpacerAlignment.BOTH}"
                               ><component-form>
                                  <component-inputfield

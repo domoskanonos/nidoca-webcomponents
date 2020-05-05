@@ -4,7 +4,7 @@ import { css, customElement, html, property, query, unsafeCSS, LitElement } from
 import { KeyValueData } from '../form/component';
 import { TypographyType } from '../typography/component';
 import { BasicService } from '@domoskanonos/frontend-basis';
-import { AlignContent, AlignItems, BorderType, FlexJustifyContent, SpacerAlignment, SpacerSize, VisibleType } from '..';
+import { AlignContent, AlignItems, BorderProperties, FlexJustifyContent, SpacerAlignment, SpacerSize, VisibleType } from '..';
 import { ContainerProperties } from '../flex-container/component';
 import { GridAlignItems, GridJustifyItems } from '../grid-container/component';
 
@@ -142,12 +142,12 @@ export class InputfieldComponent extends LitElement {
          ? html`
               <component-border
                  .borderProperties="${[
-                    BorderType.FULL_WIDTH,
+                    BorderProperties.FULL_WIDTH,
                     this.showSelectedBorder()
-                       ? BorderType.BOTTOM_SELECTED
+                       ? BorderProperties.BOTTOM_SELECTED
                        : this.showBorder()
-                       ? BorderType.BOTTOM
-                       : BorderType.NONE
+                       ? BorderProperties.BOTTOM
+                       : BorderProperties.NONE
                  ]}"
               >
               

@@ -1,6 +1,6 @@
 import { customElement, html, property, TemplateResult } from 'lit-element';
 import { PageAbstract } from './page-abstract';
-import { BorderType, InputfieldComponent, InputfieldType, SpacerAlignment, SpacerSize, TypographyType } from '..';
+import { BorderProperties, InputfieldComponent, InputfieldType, SpacerAlignment, SpacerSize, TypographyType } from '..';
 import { I18nService } from '@domoskanonos/frontend-basis';
 import { ContainerProperties, ItemProperties } from '../flex-container/component';
 import { PreviewFormatterService } from './preview-formatter';
@@ -14,7 +14,7 @@ export class PageBorder extends PageAbstract {
    }
 
    @property()
-   borderType: string = BorderType.ALL;
+   borderProperties: string[] = [BorderProperties.ALL];
 
    @property()
    borderSize: string = BorderSize.MEDIUM;
@@ -63,15 +63,19 @@ export class PageBorder extends PageAbstract {
                      .itemProperties="${[ItemProperties.KEYLINE_ALIGNMENT_BOTH, ItemProperties.KEYLINE_SIZE_MEDIUM]}"
                      itemFlexBasisValue="100%"
                   >
-                     <component-form>
-                        <component-inputfield
+                     <component-form>           
+                         <component-inputfield
                            .inputfieldType="${InputfieldType.COMBOBOX}"
-                           .options="${InputfieldComponent.enumToComboboxItems(BorderType)}"
-                           label="${I18nService.getUniqueInstance().getValue('pageborder_visible')}"
-                           value="${this.borderType}"
+                           .options="${InputfieldComponent.enumToComboboxItems(BorderProperties)}"
+                           label="${I18nService.getUniqueInstance().getValue('pageborder_properties')}"
+                           .value="${this.borderProperties}"
+                           size="5"
+                           multiple="true"
                            @component-inputfield-change="${(event: CustomEvent) =>
-                              (this.borderType = (<any>BorderType)[event.detail.outputData.value])}"
+                              (this.borderProperties = event.detail.outputData.value)}"
                         ></component-inputfield>
+                        
+                        
                         <component-inputfield
                            .inputfieldType="${InputfieldType.COMBOBOX}"
                            .options="${InputfieldComponent.enumToComboboxItems(BorderSize)}"
@@ -92,7 +96,7 @@ export class PageBorder extends PageAbstract {
                      </component-form>
 
                      <component-border
-                        borderType="${this.borderType}"
+                        .borderProperties="${this.borderProperties}"
                         borderSize="${this.borderSize}"
                         shadowType="${this.shadowType}"
                      >
@@ -107,7 +111,9 @@ export class PageBorder extends PageAbstract {
                   ></component-spacer
                   ><component-code
                      code="${'<component-border '
-                        .concat(PreviewFormatterService.getUniqueInstance().property2String(this.borderType, BorderType))
+                        .concat(
+                           PreviewFormatterService.getUniqueInstance().property2String(this.borderProperties, BorderProperties)
+                        )
                         .concat(PreviewFormatterService.getUniqueInstance().property2String(this.borderSize, BorderSize))
                         .concat(PreviewFormatterService.getUniqueInstance().property2String(this.shadowType, ShadowType))
                         .concat('></component-border>')}"

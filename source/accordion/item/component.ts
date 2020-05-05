@@ -1,6 +1,6 @@
 import { css, customElement, html, property, unsafeCSS } from 'lit-element';
 import { LitElement } from 'lit-element';
-import { BorderType, SpacerAlignment, SpacerSize, VisibleType } from '../..';
+import { BorderProperties, SpacerAlignment, SpacerSize, VisibleType } from '../..';
 import { GridAlignItems, GridJustifyItems } from '../../grid-container/component';
 import { BasicService } from '@domoskanonos/frontend-basis';
 
@@ -23,7 +23,7 @@ export class AccordionItemComponent extends LitElement {
    render() {
       return html`
          <div class="ACCORDION_ITEM">
-            <component-border .borderProperties="${[BorderType.ALL, BorderType.FULL_WIDTH]}">
+            <component-border .borderProperties="${[BorderProperties.ALL, BorderProperties.FULL_WIDTH]}">
                <component-grid-container
                   class="ACCORDION_HEADER"
                   @click="${() => this.toggle()}"

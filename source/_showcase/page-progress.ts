@@ -1,8 +1,11 @@
 import { customElement, html, property, TemplateResult } from 'lit-element';
 import { PageAbstract } from './page-abstract';
 import { ContainerProperties, ItemProperties } from '../flex-container/component';
-import { InputfieldType, SpacerAlignment, SpacerSize, TypographyType } from '..';
+import { InputfieldComponent, InputfieldType, SpacerAlignment, SpacerSize, TypographyType } from '..';
 import { I18nService } from '@domoskanonos/frontend-basis';
+import { ProgressType } from '../progress/component';
+import { BorderSize } from '../border/component';
+import { PreviewFormatterService } from './preview-formatter';
 
 @customElement('page-progress')
 export class PageProgress extends PageAbstract {
@@ -10,6 +13,9 @@ export class PageProgress extends PageAbstract {
       super();
       this.navigationTitle = 'ProgressComponent';
    }
+
+   @property()
+   progressType: ProgressType = ProgressType.PROGRESS;
 
    getMainComponent(): TemplateResult {
       return html`
@@ -37,18 +43,33 @@ export class PageProgress extends PageAbstract {
                ></component-tab>
                <component-tab slot="tab" text="${I18nService.getUniqueInstance().getValue('source')}"></component-tab>
                <component-tab-content slot="tabContent" .selected="${true}">
+                  <component-form>
+                     <component-inputfield
+                        .inputfieldType="${InputfieldType.COMBOBOX}"
+                        .options="${InputfieldComponent.enumToComboboxItems(ProgressType)}"
+                        label="${I18nService.getUniqueInstance().getValue('pageprogress_progressType')}"
+                        .value="${InputfieldComponent.enumGetKeyFromValue(ProgressType, this.progressType)}"
+                        @component-inputfield-change="${(event: CustomEvent) =>
+                           (this.progressType = (<any>ProgressType)[event.detail.outputData.value])}"
+                     ></component-inputfield>
+                  </component-form>
                   <component-spacer
                      spacerSize="${SpacerSize.MEDIUM}"
                      spacerAlignment="${SpacerAlignment.VERTICAL}"
                   ></component-spacer>
-                  <component-progress></component-progress>
+                  <component-progress progressType="${this.progressType}"></component-progress>
                </component-tab-content>
                <component-tab-content slot="tabContent"
                   ><component-spacer
                      spacerSize="${SpacerSize.MEDIUM}"
                      spacerAlignment="${SpacerAlignment.VERTICAL}"
                   ></component-spacer
-                  ><component-code code="${'<component-progress></component-progress>'}"> </component-code
+                  ><component-code
+                     code="${'<component-progress .progressType=${ProgressType.'
+                        .concat(this.progressType)
+                        .concat('}"></component-progress>')}"
+                  >
+                  </component-code
                ></component-tab-content>
             </component-tabs>
          </component-flex-container>
