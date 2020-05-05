@@ -1,7 +1,7 @@
 import { css, html, property, query, TemplateResult, unsafeCSS, LitElement } from 'lit-element';
 
-import { BasicService, I18nService } from '@domoskanonos/frontend-basis';
-import { BorderProperties, IconComponent, InputfieldComponent, InputfieldType, NavigationComponent } from '..';
+import { BasicService } from '@domoskanonos/frontend-basis';
+import { BorderProperties, IconComponent } from '..';
 import { NavigationType } from '../navigation/component';
 
 const componentCSS = require('./component.css');
@@ -11,7 +11,6 @@ export abstract class BasisTemplate extends LitElement {
       ${unsafeCSS(componentCSS)}
    `;
 
-   static IDENTIFIER: string = 'DefaultTemplate';
 
    @property()
    menuSwitchIcon = 'menu';

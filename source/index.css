@@ -1,12 +1,4 @@
 @font-face {
-   font-family: 'Main Font';
-   font-style: normal;
-   font-weight: 400;
-   font-display: swap;
-   src: url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu4mxK.woff2) format('woff2');
-}
-
-@font-face {
    font-family: 'Material Icons';
    font-style: normal;
    font-weight: 400;
@@ -21,9 +13,9 @@
    --space-big: 2vmin;
    --space-max: 3vmin;
 
-   --font-family: 'Main Font';
+   --font-family: 'Roboto', sans-serif;
    --letter-spacing: 1pt;
-   --font-size: 1.1em;
+   --font-size: 1rem;
 
    --menu-size: 275px;
 
@@ -39,22 +31,22 @@
    --line-height-big: 60px;
    --line-height-massiv: 72px;
 
-   --app-color: #000000;
+   --app-color: #212121;
    --app-color-background: #ffffff;
 
    --app-color-primary: #ffffff;
-   --app-color-primary-background: #0d47a1;
+   --app-color-primary-background: #325278;
    --app-color-primary-light: #ffffff;
-   --app-color-primary-background-light: #5472d3;
+   --app-color-primary-background-light: #3f6796;
    --app-color-primary-dark: #ffffff;
-   --app-color-primary-background-dark: #002171;
+   --app-color-primary-background-dark: #253d59;
 
    --app-color-secondary: #ffffff;
-   --app-color-secondary-background: #b71c1c;
+   --app-color-secondary-background: #DD6F00;
    --app-color-secondary-light: #000000;
-   --app-color-secondary-background-light: #f05545;
+   --app-color-secondary-background-light: #FF972F;
    --app-color-secondary-dark: #ffffff;
-   --app-color-secondary-background-dark: #7f0000;
+   --app-color-secondary-background-dark: #C66300;
 
    --app-color-surface-background-dark: #d6d4d4;
    --app-color-surface-background: #e3e3e3;
@@ -82,18 +74,9 @@
    line-height: normal;
 }
 
-@media (max-width: 1280px) {
+@media (max-width: 768px),(orientation: portrait) {
    :root {
-      --font-size: 1.05em;
-   }
-
-   body {
-   }
-}
-
-@media (orientation: portrait) {
-   :root {
-      --font-size: 1em;
+      --font-size: .875rem;
    }
 
    body {

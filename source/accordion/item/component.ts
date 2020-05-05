@@ -8,6 +8,7 @@ const componentCSS = require('./component.css');
 
 @customElement('component-accordion-item')
 export class AccordionItemComponent extends LitElement {
+
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;

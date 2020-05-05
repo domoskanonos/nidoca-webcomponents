@@ -8,6 +8,8 @@
    left: 0;
    overflow-x: hidden;
    margin-top: var(--toolbar-height);
+   background-color: var(--app-color-primary-background);
+   color: var(--app-color-primary);
 }
 
 .CLOSED {
@@ -17,7 +19,6 @@
 
 .DISMISSIBLE {
    height: 100vh;
-   background-color: #0d47a1;
    width: var(--menu-size);
    transition: left 0.25s linear;
    /* position: absolute;
@@ -27,13 +28,11 @@
    top: 0px;
    overflow-x: hidden;
    margin: 0;
-   color: #fff;
    transition: all 0.15s ease;
    z-index: 11;
 }
 .PERMANENT {
    height: 100vh;
-   background-color: #0d47a1;
    width: var(--menu-size);
    transition: left 0.25s linear;
    /* position: absolute;
@@ -43,12 +42,10 @@
    top: 0px;
    overflow-x: hidden;
    margin: 0;
-   color: #fff;
    transition: all 0.35s ease;
 }
 .MODAL {
    height: 100vh;
-   background-color: #0d47a1;
    width: var(--menu-size);
    transition: left 0.25s linear;
    position: fixed;
@@ -57,5 +54,4 @@
    left: 0;
    overflow-x: hidden;
    margin: 0;
-   color: #fff;
 }

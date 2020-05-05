@@ -3,7 +3,7 @@ import { AccordionComponent } from './accordion/component';
 import { BoxComponent } from './box/component';
 import { ChipComponent } from './chip/component';
 import { ProgressComponent } from './progress/component';
-import { BorderProperties, BorderComponent } from './border/component';
+import { BorderProperties, BorderSize, BorderComponent } from './border/component';
 import { FloatingComponent } from './floating/component';
 import { AccordionItemComponent } from './accordion/item/component';
 import { ButtonType, ButtonComponent } from './button/component';
@@ -39,7 +39,7 @@ import { DialogComponent } from './dialog/component';
 
 export { AbstractApp } from './abstract-app';
 export { AccordionComponent } from './accordion/component';
-export { BorderProperties, BorderComponent } from './border/component';
+export { BorderProperties, BorderSize, BorderComponent } from './border/component';
 export { FloatingComponent } from './floating/component';
 export { BoxComponent } from './box/component';
 export { ChipComponent } from './chip/component';

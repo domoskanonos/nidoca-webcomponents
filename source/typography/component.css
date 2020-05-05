@@ -38,14 +38,14 @@
 }
 
 .H1 {
-   font-size: 9vmin;
+   font-size: 2.75rem;
    letter-spacing: -0.09375rem;
    font-weight: 300;
 }
 
 .H2,
 ::slotted(.H2) {
-   font-size: 3rem;
+   font-size: 2.5rem;
    vertical-align: top;
    font-weight: 300;
 }
@@ -85,12 +85,14 @@
    font-size: 1em;
    font-weight: 400;
    text-decoration-style: solid;
+   line-height: 1.5;
 }
 
 .BODY2 {
    font-size: 0.875rem;
    font-weight: 400;
    text-decoration-style: solid;
+   line-height: 1.5;
 }
 
 .BUTTON {
