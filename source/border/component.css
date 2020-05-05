@@ -32,6 +32,10 @@ slot {
    border-style: solid;
 }
 
+.ALL_ROUND {
+
+}
+
 .HORIZONTAL,
 .TOP {
    border-top-style: solid;

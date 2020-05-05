@@ -4,6 +4,7 @@ import { LitElement } from 'lit-element';
 export class BorderType {
    static NONE: string = 'NONE';
    static ALL: string = 'ALL';
+   static ALL_ROUND: string = 'ALL_ROUND';
    static HORIZONTAL: string = 'HORIZONTAL';
    static VERTICAL: string = 'VERTICAL';
    static LEFT: string = 'LEFT';
