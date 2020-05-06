@@ -33,7 +33,10 @@ slot {
 }
 
 .ALL_ROUND {
-
+   overflow: hidden;
+   border: 1px solid;
+   border-color: var(--app-color-surface-background);
+   border-radius: 10px;
 }
 
 .HORIZONTAL,

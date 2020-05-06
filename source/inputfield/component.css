@@ -29,6 +29,16 @@ input:focus,
 select:focus,
 textarea:focus {
    outline: none;
+   box-shadow: none;
+   background: var(--app-color-surface-background-light);
+}
+
+input:valid,
+select:valid,
+textarea:valid {
+   outline: none;
+   box-shadow: none;
+   background: var(--app-color-surface-background-light);
 }
 
 input[type='checkbox'] {
@@ -76,7 +86,11 @@ input[type='range']::-moz-range-thumb {
 input[type='datetime-local']::-webkit-calendar-picker-indicator,
 input[type='date']::-webkit-calendar-picker-indicator,
 input[type='month']::-webkit-calendar-picker-indicator,
-input[type='week']::-webkit-calendar-picker-indicator {
+input[type='week']::-webkit-calendar-picker-indicator,
+input[type='datetime-local']::-moz-calendar-picker-indicator,
+input[type='date']::-moz-calendar-picker-indicator,
+input[type='month']::-moz-calendar-picker-indicator,
+input[type='week']::-moz-calendar-picker-indicator {
    color: rgba(0, 0, 0, 0);
    opacity: 1;
    display: block;
@@ -95,6 +109,28 @@ select:-webkit-autofill,
 select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
    -webkit-text-fill-color: #000;
-   -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+   -webkit-box-shadow: 0 0 0px 1000px var(--app-color-surface-background-light) inset;
    transition: background-color 5000s ease-in-out 0s;
 }
+
+/* input[type="checkbox" i]:focus {
+   width: 20px !important;
+   height: 20px !important;
+   margin-right: 5px;
+   vertical-align: bottom;
+   background: red;
+   color: red;
+ } */
+ 
+ /* input[type='checkbox']:after {
+   content: "";
+   border-bottom: 10px solid red;
+   border-top: 10px solid red;
+   display: flex;
+   opacity: 1;
+ }
+ 
+ input[type='checkbox']:checked:after {
+   border-bottom: 10px solid blue;
+   border-top: 10px solid blue;
+ } */
