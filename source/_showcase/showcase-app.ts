@@ -35,7 +35,7 @@ import './page-rich-media.ts';
 import './page-typography.ts';
 import './showcase-app.ts';
 
-@customElement('showcase-app-root')
+@customElement('app-root')
 export class ShowcaseApp extends AbstractApp {
    async preRender(): Promise<void> {
       I18nService.getUniqueInstance().saveData(messageDE);
