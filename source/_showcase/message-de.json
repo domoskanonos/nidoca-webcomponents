@@ -150,5 +150,6 @@
    "pagechip": "Chip",
    "pageprogress": "Progress",
    "pageprogress_progressType": "Fortschrittsbalkentyp",
-   "pageprogress_description": " zeigt einen Fortschrittsbalken an. Der Benutzer kann zwischen einem kreisförmigen oder einen länglichen Balken wählen"
+   "pageprogress_description": " zeigt einen Fortschrittsbalken an. Der Benutzer kann zwischen einem kreisförmigen oder einen länglichen Balken wählen",
+   "pagewizard": "Wizard"
 }

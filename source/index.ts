@@ -1,6 +1,7 @@
 import { AbstractApp } from './abstract-app';
 import { AccordionComponent } from './accordion/component';
 import { BoxComponent } from './box/component';
+import { WizardStep, NidocaWizard } from './wizard/component';
 import { ChipComponent } from './chip/component';
 import { ProgressComponent } from './progress/component';
 import { BorderProperties, BorderSize, BorderComponent } from './border/component';
@@ -42,6 +43,7 @@ export { AccordionComponent } from './accordion/component';
 export { BorderProperties, BorderSize, BorderComponent } from './border/component';
 export { FloatingComponent } from './floating/component';
 export { BoxComponent } from './box/component';
+export { WizardStep, NidocaWizard } from './wizard/component';
 export { ChipComponent } from './chip/component';
 export { ProgressComponent } from './progress/component';
 export { AccordionItemComponent } from './accordion/item/component';
