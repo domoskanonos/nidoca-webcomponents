@@ -14,6 +14,7 @@ import './page-chip.ts';
 import './page-progress.ts';
 import './page-grid.ts';
 import './page-dialog.ts';
+import './page-wizard.ts';
 import './page-border.ts';
 import './page-input.ts';
 import './page-link.ts';
@@ -51,6 +52,10 @@ export class ShowcaseApp extends AbstractApp {
       let path = RouterService.getUniqueInstance().getCurrentPage();
       console.log('current path: '.concat(path));
       switch (path) {
+         case 'pagewizard':
+            return html`
+               <page-wizard></page-wizard>
+            `;
          case 'pagegrid':
             return html`
                <page-grid></page-grid>
