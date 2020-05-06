@@ -22,7 +22,7 @@
    --icon-size: 24px;
    --icon-size-space: 48px;
 
-   --menubar-height: 60px;
+   --menubar-height: var(--toolbar-height);
    --toolbar-height: 50px;
 
    --line-height-small: 24px;
