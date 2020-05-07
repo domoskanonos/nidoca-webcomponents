@@ -4,7 +4,7 @@
    transition: left 0.25s linear;
    position: fixed;
    z-index: 10;
-   top: 60px;
+   top: var(--toolbar-height);
    left: 0;
    overflow-x: hidden;
    margin-top: var(--toolbar-height);
