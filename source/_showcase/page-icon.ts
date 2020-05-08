@@ -51,7 +51,7 @@ export class PageIconComponent extends PageAbstract {
             ><nidoca-spacer spacerSize="${SpacerSize.BIG}" spacerAlignment="${SpacerAlignment.VERTICAL}">
                <nidoca-grid-container
                   .gridJustifyItems="${GridJustifyItems.CENTER}"
-                  .gridAlignItems="${GridFlexAlignItems.CENTER}"
+                  .gridAlignItems="${GridAlignItems.CENTER}"
                   .gridTemplateRows="${['1fr']}"
                   .gridTemplateColumns="${['1fr']}"
                >

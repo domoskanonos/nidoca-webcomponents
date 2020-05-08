@@ -62,7 +62,7 @@ export class PageVisible extends PageAbstract {
                      ></nidoca-spacer>
                      <nidoca-grid-container
                         .gridJustifyItems="${GridJustifyItems.CENTER}"
-                        .gridAlignItems="${GridFlexAlignItems.CENTER}"
+                        .gridAlignItems="${GridAlignItems.CENTER}"
                         .gridTemplateRows="${['1fr']}"
                         .gridTemplateColumns="${['1fr']}"
                      >

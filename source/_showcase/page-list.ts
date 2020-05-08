@@ -88,7 +88,7 @@ export class PageList extends PageAbstract {
                                           <nidoca-list-item id="${identifier}">
                                              <nidoca-grid-container
                                                 .gridJustifyItems="${GridJustifyItems.START}"
-                                                .gridAlignItems="${GridFlexAlignItems.CENTER}"
+                                                .gridAlignItems="${GridAlignItems.CENTER}"
                                                 .gridTemplateRows="${['1fr']}"
                                                 .gridTemplateColumns="${['auto', '1fr', 'auto']}"
                                              >

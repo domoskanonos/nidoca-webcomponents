@@ -155,7 +155,7 @@ export class InputfieldComponent extends LitElement {
                     class="${this.toContainerClazz(this.inputfieldType)}"
                     minHeight="56px"
                     .gridJustifyItems="${GridJustifyItems.STRETCH}"
-                    .gridAlignItems="${GridFlexAlignItems.CENTER}" 
+                    .gridAlignItems="${GridAlignItems.CENTER}" 
                     .gridTemplateRows="${['1fr']}"
                     .gridTemplateColumns="${['1fr']}"
                  >
@@ -163,7 +163,7 @@ export class InputfieldComponent extends LitElement {
               <nidoca-spacer spacerSize="${SpacerSize.BIG}" spacerAlignment="${SpacerAlignment.HORIZONTAL}">
                  <nidoca-grid-container
                     .gridJustifyItems="${GridJustifyItems.STRETCH}"
-                    .gridAlignItems="${GridFlexAlignItems.CENTER}" 
+                    .gridAlignItems="${GridAlignItems.CENTER}" 
                     .gridTemplateRows="${['auto']}"
                     .gridTemplateColumns="${['auto', '1fr', 'auto', 'auto']}"
                  >

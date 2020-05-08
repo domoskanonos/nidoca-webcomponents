@@ -17,7 +17,7 @@ export class PageGrid extends PageAbstract {
    gridJustifyItems: string = GridJustifyItems.CENTER;
 
    @property()
-   gridAlignItems: string = GridFlexAlignItems.CENTER;
+   gridAlignItems: string = GridAlignItems.CENTER;
 
    @property()
    gridTemplateRows: string[] = ['1fr', '1fr', '1fr'];
@@ -79,7 +79,7 @@ export class PageGrid extends PageAbstract {
                      ></nidoca-spacer>
                      <nidoca-grid-container
                         .gridJustifyItems="${GridJustifyItems.CENTER}"
-                        .gridAlignItems="${GridFlexAlignItems.CENTER}"
+                        .gridAlignItems="${GridAlignItems.CENTER}"
                         .gridTemplateRows="${['1fr']}"
                         .gridTemplateColumns="${['1fr']}"
                      >

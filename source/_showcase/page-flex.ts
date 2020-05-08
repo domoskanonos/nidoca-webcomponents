@@ -2,13 +2,12 @@ import { customElement, html, property, query, TemplateResult } from 'lit-elemen
 import { PageAbstract } from './page-abstract';
 import {
    FlexAlignContent,
-   FlexAlignItems,
    FlexContainerProperties,
-   FlexComponent,
    FlexDirection,
    FlexJustifyContent,
    FlexWrap,
-   FlexItemProperties
+   FlexItemProperties,
+   FlexAlignItems
 } from '../flex-container/component';
 import { InputfieldComponent, InputfieldType, SpacerAlignment, SpacerSize, TypographyType } from '..';
 import { I18nService } from '@domoskanonos/frontend-basis';
@@ -23,7 +22,10 @@ export class PageLayoutComponent extends PageAbstract {
    }
 
    @property()
-   flexContainerProperties: string[] = [FlexContainerProperties.CONTAINER_WIDTH_100, FlexContainerProperties.CONTAINER_HEIGHT_100];
+   flexContainerProperties: string[] = [
+      FlexContainerProperties.CONTAINER_WIDTH_100,
+      FlexContainerProperties.CONTAINER_HEIGHT_100
+   ];
 
    @property()
    flexDirection: string = FlexDirection.ROW;
@@ -55,7 +57,7 @@ export class PageLayoutComponent extends PageAbstract {
             ><nidoca-spacer spacerSize="${SpacerSize.BIG}" spacerAlignment="${SpacerAlignment.VERTICAL}">
                <nidoca-grid-container
                   .gridJustifyItems="${GridJustifyItems.CENTER}"
-                  .gridAlignItems="${GridFlexAlignItems.CENTER}"
+                  .gridFlexAlignItems="${GridAlignItems.CENTER}"
                   .gridTemplateRows="${['1fr']}"
                   .gridTemplateColumns="${['1fr']}"
                >
@@ -92,10 +94,7 @@ export class PageLayoutComponent extends PageAbstract {
             .flexItemProperties="${[FlexItemProperties.KEYLINE_ALIGNMENT_HORIZONTAL, FlexItemProperties.KEYLINE_SIZE_MEDIUM]}"
             flexItemBasisValue="100%"
          >
-            <nidoca-typography
-               .typographyType="${TypographyType.H2}"
-               text="<nidoca-flex-container/>"
-            ></nidoca-typography>
+            <nidoca-typography .typographyType="${TypographyType.H2}" text="<nidoca-flex-container/>"></nidoca-typography>
             <nidoca-typography .typographyType="${TypographyType.BODY1}"
                ><i>component-flex-container</i> ${I18nService.getUniqueInstance().getValue('pageflex_body')}</nidoca-typography
             >
@@ -108,17 +107,10 @@ export class PageLayoutComponent extends PageAbstract {
             </nidoca-typography>
 
             <nidoca-tabs>
-               <nidoca-tab
-                  slot="tab"
-                  .selected="${true}"
-                  text="${I18nService.getUniqueInstance().getValue('demo')}"
-               ></nidoca-tab>
+               <nidoca-tab slot="tab" .selected="${true}" text="${I18nService.getUniqueInstance().getValue('demo')}"></nidoca-tab>
                <nidoca-tab slot="tab" text="${I18nService.getUniqueInstance().getValue('source')}"></nidoca-tab>
                <nidoca-tab-content slot="tabContent" .selected="${true}"
-                  ><nidoca-spacer
-                     spacerSize="${SpacerSize.MEDIUM}"
-                     spacerAlignment="${SpacerAlignment.VERTICAL}"
-                  ></nidoca-spacer>
+                  ><nidoca-spacer spacerSize="${SpacerSize.MEDIUM}" spacerAlignment="${SpacerAlignment.VERTICAL}"></nidoca-spacer>
                   <nidoca-flex-container
                      .flexContainerProperties="${[FlexContainerProperties.CONTAINER_WIDTH_100]}"
                      .flexItemProperties="${[FlexItemProperties.KEYLINE_SIZE_MEDIUM]}"
@@ -156,18 +148,18 @@ export class PageLayoutComponent extends PageAbstract {
 
                         <nidoca-inputfield
                            .inputfieldType="${InputfieldType.COMBOBOX}"
-                           .options="${InputfieldComponent.enumToComboboxItems(AlignItems)}"
+                           .options="${InputfieldComponent.enumToComboboxItems(FlexAlignItems)}"
                            label="${I18nService.getUniqueInstance().getValue('pageflex_align')}"
-                           .value="${InputfieldComponent.enumGetKeyFromValue(AlignItems, this.flexAlignItems)}"
-                           @component-inputfield-change="${(event: CustomEvent) => this.changeAlignItems(event)}"
+                           .value="${InputfieldComponent.enumGetKeyFromValue(FlexAlignItems, this.flexAlignItems)}"
+                           @component-inputfield-change="${(event: CustomEvent) => this.changeFlexAlignItems(event)}"
                         ></nidoca-inputfield>
 
                         <nidoca-inputfield
                            .inputfieldType="${InputfieldType.COMBOBOX}"
-                           .options="${InputfieldComponent.enumToComboboxItems(AlignContent)}"
+                           .options="${InputfieldComponent.enumToComboboxItems(FlexAlignContent)}"
                            label="${I18nService.getUniqueInstance().getValue('pageflex_align_content')}"
-                           .value="${InputfieldComponent.enumGetKeyFromValue(AlignContent, this.flexAlignContent)}"
-                           @component-inputfield-change="${(event: CustomEvent) => this.changeAlignContent(event)}"
+                           .value="${InputfieldComponent.enumGetKeyFromValue(FlexAlignContent, this.flexAlignContent)}"
+                           @component-inputfield-change="${(event: CustomEvent) => this.changeFlexAlignContent(event)}"
                         ></nidoca-inputfield>
 
                         <nidoca-inputfield
@@ -201,10 +193,7 @@ export class PageLayoutComponent extends PageAbstract {
                   </nidoca-flex-container>
                </nidoca-tab-content>
                <nidoca-tab-content slot="tabContent"
-                  ><nidoca-spacer
-                     spacerSize="${SpacerSize.MEDIUM}"
-                     spacerAlignment="${SpacerAlignment.VERTICAL}"
-                  ></nidoca-spacer
+                  ><nidoca-spacer spacerSize="${SpacerSize.MEDIUM}" spacerAlignment="${SpacerAlignment.VERTICAL}"></nidoca-spacer
                   ><nidoca-code
                      code="${'<nidoca-flex-container'
                         .concat(
@@ -214,7 +203,10 @@ export class PageLayoutComponent extends PageAbstract {
                            )
                         )
                         .concat(
-                           PreviewFormatterService.getUniqueInstance().propertyArray2String(this.flexItemProperties, FlexItemProperties)
+                           PreviewFormatterService.getUniqueInstance().propertyArray2String(
+                              this.flexItemProperties,
+                              FlexItemProperties
+                           )
                         )
                         .concat(
                            'flexItemBasisValue="'
@@ -230,9 +222,14 @@ export class PageLayoutComponent extends PageAbstract {
                                     FlexJustifyContent
                                  )
                               )
-                              .concat(PreviewFormatterService.getUniqueInstance().property2String(this.flexAlignItems, FlexAlignItems))
                               .concat(
-                                 PreviewFormatterService.getUniqueInstance().property2String(this.flexAlignContent, FlexAlignContent)
+                                 PreviewFormatterService.getUniqueInstance().property2String(this.flexAlignItems, FlexAlignItems)
+                              )
+                              .concat(
+                                 PreviewFormatterService.getUniqueInstance().property2String(
+                                    this.flexAlignContent,
+                                    FlexAlignContent
+                                 )
                               )
                               .concat('></nidoca-flex-container>')
                         )}"
@@ -256,12 +253,12 @@ export class PageLayoutComponent extends PageAbstract {
       this.flexJustifyContent = (<any>FlexJustifyContent)[event.detail.outputData.value];
    }
 
-   private changeAlignItems(event: CustomEvent) {
-      this.flexAlignItems = (<any>AlignItems)[event.detail.outputData.value];
+   private changeFlexAlignItems(event: CustomEvent) {
+      this.flexAlignItems = (<any>FlexAlignItems)[event.detail.outputData.value];
    }
 
-   private changeAlignContent(event: CustomEvent) {
-      this.flexAlignContent = (<any>AlignContent)[event.detail.outputData.value];
+   private changeFlexAlignContent(event: CustomEvent) {
+      this.flexAlignContent = (<any>FlexAlignContent)[event.detail.outputData.value];
    }
 
    private changeItemFlexBasis(event: CustomEvent) {

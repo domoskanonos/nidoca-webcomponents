@@ -14,7 +14,11 @@ export class PreviewFormatterService {
    }
 
    property2String(property: any, type: any): string {
+      return '';
       let value = BasicService.getUniqueInstance().getEnumKey(property, type);
+      if(value == null){
+         value='';
+      }
       return value != null
          ? '\n.'
               .concat(type.name.charAt(0))
@@ -23,12 +27,12 @@ export class PreviewFormatterService {
               .concat('="${')
               .concat(type.name)
               .concat('.')
-              .concat(value)
               .concat('}"')
          : '';
    }
 
    propertyArray2String(properties: any[], type: any): string {
+      return '';
       let propertiesString = ``;
       let propertyIndex: number = 0;
       for (const property of properties) {
@@ -41,7 +45,6 @@ export class PreviewFormatterService {
             propertiesString = propertiesString
                .concat(type.name)
                .concat('\n.')
-               .concat(value);
          }
          propertyIndex++;
       }

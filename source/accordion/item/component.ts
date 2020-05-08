@@ -29,7 +29,7 @@ export class AccordionItemComponent extends LitElement {
                   class="ACCORDION_HEADER"
                   @click="${() => this.toggle()}"
                   .gridJustifyItems="${GridJustifyItems.STRETCH}"
-                  .gridAlignItems="${GridFlexAlignItems.CENTER}"
+                  .gridAlignItems="${GridAlignItems.CENTER}"
                   .gridTemplateRows="${['1fr']}"
                   .gridTemplateColumns="${['auto', '1fr', 'auto']}"
                   ><nidoca-spacer
