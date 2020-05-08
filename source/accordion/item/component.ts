@@ -6,7 +6,7 @@ import { BasicService } from '@domoskanonos/frontend-basis';
 
 const componentCSS = require('./component.css');
 
-@customElement('component-accordion-item')
+@customElement('nidoca-accordion-item')
 export class AccordionItemComponent extends LitElement {
 
    static styles = css`
@@ -24,25 +24,25 @@ export class AccordionItemComponent extends LitElement {
    render() {
       return html`
          <div class="ACCORDION_ITEM">
-            <component-border .borderProperties="${[BorderProperties.ALL, BorderProperties.FULL_WIDTH]}">
-               <component-grid-container
+            <nidoca-border .borderProperties="${[BorderProperties.ALL, BorderProperties.FULL_WIDTH]}">
+               <nidoca-grid-container
                   class="ACCORDION_HEADER"
                   @click="${() => this.toggle()}"
                   .gridJustifyItems="${GridJustifyItems.STRETCH}"
                   .gridAlignItems="${GridAlignItems.CENTER}"
                   .gridTemplateRows="${['1fr']}"
                   .gridTemplateColumns="${['auto', '1fr', 'auto']}"
-                  ><component-spacer
+                  ><nidoca-spacer
                      spacerSize="${SpacerSize.MEDIUM}"
                      spacerAlignment="${SpacerAlignment.HORIZONTAL}"
-                  ></component-spacer>
-                  <component-typography text="${this.header}"></component-typography>
-                  <component-icon icon="${this.opened ? 'keyboard_arrow_down' : 'keyboard_arrow_up'}"></component-icon>
-               </component-grid-container>
-               <component-visible visibleType="${this.opened ? VisibleType.NORMAL : VisibleType.HIDE}">
+                  ></nidoca-spacer>
+                  <nidoca-typography text="${this.header}"></nidoca-typography>
+                  <nidoca-icon icon="${this.opened ? 'keyboard_arrow_down' : 'keyboard_arrow_up'}"></nidoca-icon>
+               </nidoca-grid-container>
+               <nidoca-visible visibleType="${this.opened ? VisibleType.NORMAL : VisibleType.HIDE}">
                   <slot></slot>
-               </component-visible>
-            </component-border>
+               </nidoca-visible>
+            </nidoca-border>
          </div>
       `;
    }

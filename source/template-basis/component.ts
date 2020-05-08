@@ -32,13 +32,13 @@ export abstract class BasisTemplate extends LitElement {
 
    render() {
       return html`
-         <component-navigation .closed="${this.navigationClosed}" navigationType="${this.navigationType}">
+         <nidoca-navigation .closed="${this.navigationClosed}" navigationType="${this.navigationType}">
             ${this.getLeftNavigationContent()}
-         </component-navigation>
+         </nidoca-navigation>
          <top id="top" class="${this.menuCss}" @component-icon-click="${this.menuItemClicked}">
-            <component-border ..borderProperties="${[BorderProperties.BOTTOM]}">
+            <nidoca-border ..borderProperties="${[BorderProperties.BOTTOM]}">
                ${this.getTopContent()}
-            </component-border>
+            </nidoca-border>
          </top>
          <div id="main" class="${this.menuCss} body-opacity">
             ${this.getMainComponent()}

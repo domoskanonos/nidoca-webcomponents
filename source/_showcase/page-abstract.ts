@@ -9,22 +9,22 @@ export abstract class PageAbstract extends BasisTemplate {
 
    getTopContent(): TemplateResult {
       return html`
-         <component-top-app-bar>
+         <nidoca-top-app-bar>
             ${this.getTopLeftComponent()} ${this.getTopMainComponent()} ${this.getTopRightComponent()}
-         </component-top-app-bar>
+         </nidoca-top-app-bar>
       `;
    }
 
    getTopLeftComponent(): TemplateResult {
       return html`
-         <component-icon
+         <nidoca-icon
             title="${I18nService.getUniqueInstance().getValue('menu')}"
             slot="leftComponents"
             icon="menu"
             clickable="true"
-         ></component-icon>
-         <component-typography slot="leftComponents" .typographyType="${TypographyType.BODY1}"
-            >${this.navigationTitle}</component-typography
+         ></nidoca-icon>
+         <nidoca-typography slot="leftComponents" .typographyType="${TypographyType.BODY1}"
+            >${this.navigationTitle}</nidoca-typography
          >
       `;
    }
@@ -39,194 +39,194 @@ export abstract class PageAbstract extends BasisTemplate {
 
    getLeftNavigationContent(): TemplateResult {
       return html`
-         <component-navigation-link
+         <nidoca-navigation-link
             slot="links"
             icon="arrow_forward_ios"
             text="${I18nService.getUniqueInstance().getValue('pageintroduction')}"
             href="introduction"
-         ></component-navigation-link>
-         <component-navigation-link
+         ></nidoca-navigation-link>
+         <nidoca-navigation-link
             slot="links"
             icon="build"
             text="${I18nService.getUniqueInstance().getValue('pagegetstarted')}"
             href="getStarted"
-         ></component-navigation-link>
-         <component-divider slot="links" .dividerType="${DividerType.THIN}" opacity="0.2"></component-divider>
-         <component-navigation-section
+         ></nidoca-navigation-link>
+         <nidoca-divider slot="links" .dividerType="${DividerType.THIN}" opacity="0.2"></nidoca-divider>
+         <nidoca-navigation-section
             slot="links"
             text="${I18nService.getUniqueInstance().getValue('sectionstructure')}"
-         ></component-navigation-section>
-         <component-navigation-link
+         ></nidoca-navigation-section>
+         <nidoca-navigation-link
             slot="links"
             icon="check_box_outline_blank"
             text="${I18nService.getUniqueInstance().getValue('pagebox')}"
             href="pagebox"
-         ></component-navigation-link>
-         <component-navigation-link
+         ></nidoca-navigation-link>
+         <nidoca-navigation-link
             slot="links"
             icon="grid_on"
             text="${I18nService.getUniqueInstance().getValue('pagegrid')}"
             href="pagegrid"
-         ></component-navigation-link>
-         <component-navigation-link
+         ></nidoca-navigation-link>
+         <nidoca-navigation-link
             slot="links"
             icon="dashboard"
             text="${I18nService.getUniqueInstance().getValue('pagelayout')}"
             href="pagelayout"
-         ></component-navigation-link>
-         <component-navigation-link
+         ></nidoca-navigation-link>
+         <nidoca-navigation-link
             slot="links"
             icon=""
             text="${I18nService.getUniqueInstance().getValue('pagefloating')}"
             href="pagefloating"
-         ></component-navigation-link>
-         <component-navigation-link
+         ></nidoca-navigation-link>
+         <nidoca-navigation-link
             slot="links"
             icon="chat_bubble_outline"
             text="${I18nService.getUniqueInstance().getValue('pagedialog')}"
             href="pagedialog"
-         ></component-navigation-link>
-         <component-navigation-section
+         ></nidoca-navigation-link>
+         <nidoca-navigation-section
             slot="links"
             text="${I18nService.getUniqueInstance().getValue('sectionstyling')}"
-         ></component-navigation-section>
-         <component-navigation-link
+         ></nidoca-navigation-section>
+         <nidoca-navigation-link
             slot="links"
             icon="select_all"
             text="${I18nService.getUniqueInstance().getValue('pagespacer')}"
             href="pagespacer"
-         ></component-navigation-link>
-         <component-navigation-link
+         ></nidoca-navigation-link>
+         <nidoca-navigation-link
             slot="links"
             icon="visibility"
             text="${I18nService.getUniqueInstance().getValue('pagevisible')}"
             href="pagevisible"
-         ></component-navigation-link>
-         <component-navigation-link
+         ></nidoca-navigation-link>
+         <nidoca-navigation-link
             slot="links"
             icon="remove"
             text="${I18nService.getUniqueInstance().getValue('pagedivider')}"
             href="pagedivider"
-         ></component-navigation-link>
-         <component-navigation-link
+         ></nidoca-navigation-link>
+         <nidoca-navigation-link
             slot="links"
             icon="border_outer"
             text="${I18nService.getUniqueInstance().getValue('pageborder')}"
             href="pageborder"
-         ></component-navigation-link
-         ><component-navigation-link
+         ></nidoca-navigation-link
+         ><nidoca-navigation-link
             slot="links"
             icon=""
             text="${I18nService.getUniqueInstance().getValue('pagechip')}"
             href="pagechip"
-         ></component-navigation-link>
-         <component-navigation-link
+         ></nidoca-navigation-link>
+         <nidoca-navigation-link
             slot="links"
             icon="view_day"
             text="${I18nService.getUniqueInstance().getValue('pageaccordion')}"
             href="pageaccordion"
-         ></component-navigation-link>
-          <component-navigation-link
+         ></nidoca-navigation-link>
+          <nidoca-navigation-link
             slot="links"
             icon=""
             text="${I18nService.getUniqueInstance().getValue('pagewizard')}"
             href="pagewizard"
-         ></component-navigation-link>
-         <component-navigation-link
+         ></nidoca-navigation-link>
+         <nidoca-navigation-link
             slot="links"
             icon=""
             text="${I18nService.getUniqueInstance().getValue('pagetabs')}"
             href="pagetabs"
-         ></component-navigation-link>
-         <component-navigation-section
+         ></nidoca-navigation-link>
+         <nidoca-navigation-section
             slot="links"
             text="${I18nService.getUniqueInstance().getValue('pageabstract_komp')}"
-         ></component-navigation-section>
-         <component-navigation-link
+         ></nidoca-navigation-section>
+         <nidoca-navigation-link
             slot="links"
             icon="title"
             text="${I18nService.getUniqueInstance().getValue('pagetypography')}"
             href="pagetypography"
-         ></component-navigation-link>
-         <component-navigation-link
+         ></nidoca-navigation-link>
+         <nidoca-navigation-link
             slot="links"
             icon="input"
             text="${I18nService.getUniqueInstance().getValue('pageinput')}"
             href="pageinput"
-         ></component-navigation-link>
-         <component-navigation-link
+         ></nidoca-navigation-link>
+         <nidoca-navigation-link
             slot="links"
             icon=""
             text="${I18nService.getUniqueInstance().getValue('pagebutton')}"
             href="pagebutton"
-         ></component-navigation-link
-         ><component-navigation-link
+         ></nidoca-navigation-link
+         ><nidoca-navigation-link
             slot="links"
             icon="sentiment_satisfied_alt"
             text="${I18nService.getUniqueInstance().getValue('pageicon')}"
             href="pageicon"
-         ></component-navigation-link>
-         <component-navigation-link
+         ></nidoca-navigation-link>
+         <nidoca-navigation-link
             slot="links"
             icon="image"
             text="${I18nService.getUniqueInstance().getValue('pagerichmedia')}"
             href="pagerichmedia"
-         ></component-navigation-link>
-         <component-navigation-link
+         ></nidoca-navigation-link>
+         <nidoca-navigation-link
             slot="links"
             icon="code"
             text="${I18nService.getUniqueInstance().getValue('pagecode')}"
             href="pagecode"
-         ></component-navigation-link>
-         <component-navigation-link
+         ></nidoca-navigation-link>
+         <nidoca-navigation-link
             slot="links"
             icon=""
             text="${I18nService.getUniqueInstance().getValue('pagelink')}"
             href="pagelink"
-         ></component-navigation-link>
+         ></nidoca-navigation-link>
 
-         <component-navigation-link
+         <nidoca-navigation-link
             slot="links"
             icon="view_headline"
             text="${I18nService.getUniqueInstance().getValue('pagelist')}"
             href="pagelist"
-         ></component-navigation-link>
-         <component-navigation-link
+         ></nidoca-navigation-link>
+         <nidoca-navigation-link
             slot="links"
             icon=""
             text="${I18nService.getUniqueInstance().getValue('pagetable')}"
             href="pagetable"
-         ></component-navigation-link>
-         <component-divider slot="links" .dividerType="${DividerType.THIN}" opacity="0.2"></component-divider>
-         <component-navigation-section
+         ></nidoca-navigation-link>
+         <nidoca-divider slot="links" .dividerType="${DividerType.THIN}" opacity="0.2"></nidoca-divider>
+         <nidoca-navigation-section
             slot="links"
             text="${I18nService.getUniqueInstance().getValue('pageabstract_eff')}"
-         ></component-navigation-section>
-         <component-navigation-link
+         ></nidoca-navigation-section>
+         <nidoca-navigation-link
             slot="links"
             icon="dynamic_feed"
             text="${I18nService.getUniqueInstance().getValue('pagetransition')}"
             href="pagetransition"
-         ></component-navigation-link>
-         <component-navigation-link
+         ></nidoca-navigation-link>
+         <nidoca-navigation-link
             slot="links"
             icon="all_out"
             text="${I18nService.getUniqueInstance().getValue('pageripple')}"
             href="pageripple"
-         ></component-navigation-link>
-         <component-navigation-link
+         ></nidoca-navigation-link>
+         <nidoca-navigation-link
             slot="links"
             icon=""
             text="${I18nService.getUniqueInstance().getValue('pageprogress')}"
             href="pageprogress"
-         ></component-navigation-link>
-         <component-divider slot="links" .dividerType="${DividerType.THIN}" opacity="0.2"></component-divider>
-         <component-navigation-link
+         ></nidoca-navigation-link>
+         <nidoca-divider slot="links" .dividerType="${DividerType.THIN}" opacity="0.2"></nidoca-divider>
+         <nidoca-navigation-link
             slot="links"
             icon="info"
             text="${I18nService.getUniqueInstance().getValue('pageimprint')}"
             href="pageimprint"
-         ></component-navigation-link>
+         ></nidoca-navigation-link>
       `;
    }
 }

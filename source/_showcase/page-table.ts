@@ -19,20 +19,20 @@ export class PageTable extends PageAbstract {
       [
          'Haus',
          html`
-            <component-icon icon="home"></component-icon>
+            <nidoca-icon icon="home"></nidoca-icon>
          `
       ],
       [
          'Menü',
          html`
-            <component-icon icon="menu"></component-icon>
+            <nidoca-icon icon="menu"></nidoca-icon>
          `
       ]
    ];
 
    getMainComponent(): TemplateResult {
       return html`
-         <component-flex-container
+         <nidoca-flex-container
             .flexContainerProperties="${[
                FlexContainerProperties.CONTAINER_WIDTH_50,
                FlexContainerProperties.TABLET_MAX_WIDTH,
@@ -43,22 +43,22 @@ export class PageTable extends PageAbstract {
             .flexItemProperties="${[FlexItemProperties.KEYLINE_ALIGNMENT_HORIZONTAL, FlexItemProperties.KEYLINE_SIZE_MEDIUM]}"
             itemFlexBasisValue="100%"
          >
-            <component-typography .typographyType="${TypographyType.H2}" text="<component-table/>"></component-typography>
-            <component-typography
+            <nidoca-typography .typographyType="${TypographyType.H2}" text="<nidoca-table/>"></nidoca-typography>
+            <nidoca-typography
                .typographyType="${TypographyType.BODY1}"
                text="Eine einfache Tabelle zum Darstellen von Listeninhalten"
-            ></component-typography>
-            <component-typography .typographyType="${TypographyType.H4}" text="Beispiel"></component-typography>
+            ></nidoca-typography>
+            <nidoca-typography .typographyType="${TypographyType.H4}" text="Beispiel"></nidoca-typography>
 
-            <component-tabs>
-               <component-tab
+            <nidoca-tabs>
+               <nidoca-tab
                   slot="tab"
                   .selected="${true}"
                   text="${I18nService.getUniqueInstance().getValue('demo')}"
-               ></component-tab>
-               <component-tab slot="tab" text="${I18nService.getUniqueInstance().getValue('source')}"></component-tab>
-               <component-tab-content slot="tabContent" .selected="${true}"
-                  ><component-flex-container
+               ></nidoca-tab>
+               <nidoca-tab slot="tab" text="${I18nService.getUniqueInstance().getValue('source')}"></nidoca-tab>
+               <nidoca-tab-content slot="tabContent" .selected="${true}"
+                  ><nidoca-flex-container
                      .flexContainerProperties="${[
                         FlexContainerProperties.CONTAINER_WIDTH_100,
                         FlexContainerProperties.TABLET_MAX_WIDTH,
@@ -66,27 +66,27 @@ export class PageTable extends PageAbstract {
                      ]}"
                      .flexItemProperties="${[FlexItemProperties.KEYLINE_ALIGNMENT_BOTH, FlexItemProperties.KEYLINE_SIZE_MEDIUM]}"
                      itemFlexBasisValue="100%"
-                     ><component-spacer
+                     ><nidoca-spacer
                         spacerSize="${SpacerSize.MEDIUM}"
                         spacerAlignment="${SpacerAlignment.VERTICAL}"
-                     ></component-spacer>
-                     <component-table .headers="${this.headers}" .rows="${this.rows}">
-                     </component-table> </component-flex-container
-               ></component-tab-content>
-               <component-tab-content slot="tabContent"
-                  ><component-spacer
+                     ></nidoca-spacer>
+                     <nidoca-table .headers="${this.headers}" .rows="${this.rows}">
+                     </nidoca-table> </nidoca-flex-container
+               ></nidoca-tab-content>
+               <nidoca-tab-content slot="tabContent"
+                  ><nidoca-spacer
                      spacerSize="${SpacerSize.MEDIUM}"
                      spacerAlignment="${SpacerAlignment.VERTICAL}"
-                  ></component-spacer
-                  ><component-code
-                     code="${'<component-table .headers="${'
+                  ></nidoca-spacer
+                  ><nidoca-code
+                     code="${'<nidoca-table .headers="${'
                         .concat(JSON.stringify(this.headers))
-                        .concat('}" .rows="${'.concat(JSON.stringify(this.rows)).concat('}"> </component-table>'))}"
+                        .concat('}" .rows="${'.concat(JSON.stringify(this.rows)).concat('}"> </nidoca-table>'))}"
                   >
-                  </component-code
-               ></component-tab-content>
-            </component-tabs>
-         </component-flex-container>
+                  </nidoca-code
+               ></nidoca-tab-content>
+            </nidoca-tabs>
+         </nidoca-flex-container>
       `;
    }
 }

@@ -5,7 +5,7 @@ import { GridAlignItems, GridJustifyItems } from '../../grid-container/component
 
 const componentCSS = require('./component.css');
 
-@customElement('component-list-item')
+@customElement('nidoca-list-item')
 export class ListItemComponent extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
@@ -32,22 +32,22 @@ export class ListItemComponent extends LitElement {
 
    render() {
       return html`
-         <component-ripple>
-            <component-grid-container
+         <nidoca-ripple>
+            <nidoca-grid-container
                class="LIST_ITEM"
                .gridJustifyItems="${GridJustifyItems.START}"
                .gridAlignItems="${GridAlignItems.CENTER}"
                .gridTemplateRows="${['1fr']}"
                .gridTemplateColumns="${['auto', '1fr']}"
             >
-               <component-visible visibleType="${this.selectionMode ? VisibleType.NORMAL : VisibleType.HIDE}">
-                  <component-icon
+               <nidoca-visible visibleType="${this.selectionMode ? VisibleType.NORMAL : VisibleType.HIDE}">
+                  <nidoca-icon
                      @click="${() => this.switchSelected()}"
                      icon="${this.selected ? 'check_box' : 'check_box_outline_blank'}"
-                  ></component-icon>
-               </component-visible>
-               <slot class="LIST_ITEM_SLOT" @click="${() => this.itemClicked()}"></slot> </component-grid-container
-         ></component-ripple>
+                  ></nidoca-icon>
+               </nidoca-visible>
+               <slot class="LIST_ITEM_SLOT" @click="${() => this.itemClicked()}"></slot> </nidoca-grid-container
+         ></nidoca-ripple>
       `;
    }
 

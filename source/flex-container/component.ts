@@ -86,7 +86,7 @@ export class AlignContent {
    static UNSAFE = 'unsafe';
 }
 
-@customElement('component-flex-container')
+@customElement('nidoca-flex-container')
 export class FlexComponent extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}

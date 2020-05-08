@@ -22,7 +22,7 @@ export class PageCode extends PageAbstract {
 
    getMainComponent(): TemplateResult {
       return html`
-         <component-flex-container
+         <nidoca-flex-container
             .flexContainerProperties="${[
                FlexContainerProperties.CONTAINER_WIDTH_50,
                FlexContainerProperties.TABLET_MAX_WIDTH,
@@ -33,25 +33,25 @@ export class PageCode extends PageAbstract {
             .flexItemProperties="${[FlexItemProperties.KEYLINE_ALIGNMENT_HORIZONTAL, FlexItemProperties.KEYLINE_SIZE_MEDIUM]}"
             itemFlexBasisValue="100%"
          >
-            <component-typography .typographyType="${TypographyType.H2}" text="<component-code/>"></component-typography>
-            <component-typography .typographyType="${TypographyType.BODY1}"
-               ><i>Code Component</i> ${I18nService.getUniqueInstance().getValue('pagecode_body')}</component-typography
+            <nidoca-typography .typographyType="${TypographyType.H2}" text="<nidoca-code/>"></nidoca-typography>
+            <nidoca-typography .typographyType="${TypographyType.BODY1}"
+               ><i>Code Component</i> ${I18nService.getUniqueInstance().getValue('pagecode_body')}</nidoca-typography
             >
-            <component-typography
+            <nidoca-typography
                .typographyType="${TypographyType.H4}"
                text="${I18nService.getUniqueInstance().getValue('interactive_demo')}"
-            ></component-typography>
-            <component-typography .typographyType="${TypographyType.BODY1}" text=""></component-typography>
+            ></nidoca-typography>
+            <nidoca-typography .typographyType="${TypographyType.BODY1}" text=""></nidoca-typography>
 
-            <component-tabs>
-               <component-tab
+            <nidoca-tabs>
+               <nidoca-tab
                   slot="tab"
                   .selected="${true}"
                   text="${I18nService.getUniqueInstance().getValue('demo')}"
-               ></component-tab>
-               <component-tab slot="tab" text="${I18nService.getUniqueInstance().getValue('source')}"></component-tab>
-               <component-tab-content slot="tabContent" .selected="${true}"
-                  ><component-flex-container
+               ></nidoca-tab>
+               <nidoca-tab slot="tab" text="${I18nService.getUniqueInstance().getValue('source')}"></nidoca-tab>
+               <nidoca-tab-content slot="tabContent" .selected="${true}"
+                  ><nidoca-flex-container
                      .flexContainerProperties="${[
                         FlexContainerProperties.CONTAINER_WIDTH_100,
                         FlexContainerProperties.TABLET_MAX_WIDTH,
@@ -60,34 +60,34 @@ export class PageCode extends PageAbstract {
                      .flexItemProperties="${[FlexItemProperties.KEYLINE_ALIGNMENT_BOTH, FlexItemProperties.KEYLINE_SIZE_MEDIUM]}"
                      itemFlexBasisValue="50%"
                   >
-                     <component-form>
-                        <component-inputfield
+                     <nidoca-form>
+                        <nidoca-inputfield
                            .inputfieldType="${InputfieldType.COMBOBOX}"
                            .options="${InputfieldComponent.enumToComboboxItems(CodeFormatter)}"
                            label="CodeFormatter"
                            value="${this.codeFormatter}"
                            @component-inputfield-change="${(event: CustomEvent) => this.changeCodeFormatter(event)}"
-                        ></component-inputfield
-                        ><component-inputfield
+                        ></nidoca-inputfield
+                        ><nidoca-inputfield
                            .inputfieldType="${InputfieldType.TEXTAREA}"
                            label="Code"
                            value="${this.code}"
                            @component-inputfield-keyup="${(event: CustomEvent) => this.changeText(event)}"
-                        ></component-inputfield>
-                     </component-form>
-                     <component-code codeFormatter="${this.codeFormatter}" code="${this.code}"></component-code>
-                  </component-flex-container>
-               </component-tab-content>
-               <component-tab-content slot="tabContent"
-                  ><component-code
-                     code="${'<component-code '
+                        ></nidoca-inputfield>
+                     </nidoca-form>
+                     <nidoca-code codeFormatter="${this.codeFormatter}" code="${this.code}"></nidoca-code>
+                  </nidoca-flex-container>
+               </nidoca-tab-content>
+               <nidoca-tab-content slot="tabContent"
+                  ><nidoca-code
+                     code="${'<nidoca-code '
                         .concat(PreviewFormatterService.getUniqueInstance().property2String(this.codeFormatter, CodeFormatter))
-                        .concat(' code="<HTML></HTML>"></component-code>')}"
+                        .concat(' code="<HTML></HTML>"></nidoca-code>')}"
                   >
-                  </component-code
-               ></component-tab-content>
-            </component-tabs>
-         </component-flex-container>
+                  </nidoca-code
+               ></nidoca-tab-content>
+            </nidoca-tabs>
+         </nidoca-flex-container>
       `;
    }
 

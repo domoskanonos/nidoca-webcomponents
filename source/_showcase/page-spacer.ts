@@ -23,7 +23,7 @@ export class PageSpacer extends PageAbstract {
 
    getMainComponent(): TemplateResult {
       return html`
-         <component-flex-container
+         <nidoca-flex-container
             .flexContainerProperties="${[
                FlexContainerProperties.CONTAINER_WIDTH_50,
                FlexContainerProperties.TABLET_MAX_WIDTH,
@@ -34,25 +34,25 @@ export class PageSpacer extends PageAbstract {
             .flexItemProperties="${[FlexItemProperties.KEYLINE_ALIGNMENT_HORIZONTAL, FlexItemProperties.KEYLINE_SIZE_MEDIUM]}"
             itemFlexBasisValue="100%"
          >
-            <component-typography .typographyType="${TypographyType.H2}" text="<component-spacer/>"></component-typography>
-            <component-typography .typographyType="${TypographyType.BODY1}"
+            <nidoca-typography .typographyType="${TypographyType.H2}" text="<nidoca-spacer/>"></nidoca-typography>
+            <nidoca-typography .typographyType="${TypographyType.BODY1}"
                ><i>SpacerComponent</i> ${I18nService.getUniqueInstance().getValue('pagespacer_text')}
-            </component-typography>
-            <component-typography
+            </nidoca-typography>
+            <nidoca-typography
                .typographyType="${TypographyType.H4}"
                text="${I18nService.getUniqueInstance().getValue('interactive_demo')}"
-            ></component-typography>
-            <component-typography .typographyType="${TypographyType.BODY1}" text=""></component-typography>
+            ></nidoca-typography>
+            <nidoca-typography .typographyType="${TypographyType.BODY1}" text=""></nidoca-typography>
 
-            <component-tabs>
-               <component-tab
+            <nidoca-tabs>
+               <nidoca-tab
                   slot="tab"
                   .selected="${true}"
                   text="${I18nService.getUniqueInstance().getValue('demo')}"
-               ></component-tab>
-               <component-tab slot="tab" text="${I18nService.getUniqueInstance().getValue('source')}"></component-tab>
-               <component-tab-content slot="tabContent" .selected="${true}"
-                  ><component-flex-container
+               ></nidoca-tab>
+               <nidoca-tab slot="tab" text="${I18nService.getUniqueInstance().getValue('source')}"></nidoca-tab>
+               <nidoca-tab-content slot="tabContent" .selected="${true}"
+                  ><nidoca-flex-container
                      .flexContainerProperties="${[
                         FlexContainerProperties.CONTAINER_WIDTH_100,
                         FlexContainerProperties.TABLET_MAX_WIDTH,
@@ -61,81 +61,81 @@ export class PageSpacer extends PageAbstract {
                      .flexItemProperties="${[FlexItemProperties.KEYLINE_ALIGNMENT_BOTH, FlexItemProperties.KEYLINE_SIZE_MEDIUM]}"
                      itemFlexBasisValue="100%"
                   >
-                     <component-spacer
+                     <nidoca-spacer
                         spacerSize="${SpacerSize.MEDIUM}"
                         spacerAlignment="${SpacerAlignment.VERTICAL}"
-                     ></component-spacer>
-                     <component-grid-container
+                     ></nidoca-spacer>
+                     <nidoca-grid-container
                         .gridJustifyItems="${GridJustifyItems.CENTER}"
                         .gridAlignItems="${GridAlignItems.CENTER}"
                         .gridTemplateRows="${['1fr']}"
                         .gridTemplateColumns="${['1fr']}"
                      >
-                        <component-container>
-                           <component-box
+                        <nidoca-container>
+                           <nidoca-box
                               style="background-color: var(--app-color-primary-background);"
                               width="min-content"
                               height="min-content"
                            >
-                              <component-spacer
+                              <nidoca-spacer
                                  spacerAlignment="${this.spacerAlignment}"
                                  spacerSize="${this.spacerSize}"
                                  size="${this.size}"
                               >
-                                 <component-box
+                                 <nidoca-box
                                     style="background-color: var(--app-color-surface-background);"
                                     width="200px"
                                     height="200px"
-                                 ></component-box>
-                              </component-spacer>
-                           </component-box>
-                        </component-container>
-                     </component-grid-container>
+                                 ></nidoca-box>
+                              </nidoca-spacer>
+                           </nidoca-box>
+                        </nidoca-container>
+                     </nidoca-grid-container>
 
-                     <component-form
-                        ><component-inputfield
+                     <nidoca-form
+                        ><nidoca-inputfield
                            .inputfieldType="${InputfieldType.TEXT}"
                            label="${I18nService.getUniqueInstance().getValue('pagespacer_size_label')}"
                            .value="${this.size}"
                            @component-inputfield-change="${(event: CustomEvent) => (this.size = event.detail.outputData.value)}"
-                        ></component-inputfield>
-                        <component-inputfield
+                        ></nidoca-inputfield>
+                        <nidoca-inputfield
                            .inputfieldType="${InputfieldType.COMBOBOX}"
                            label="${I18nService.getUniqueInstance().getValue('pagespacer_label')}"
                            .options="${InputfieldComponent.enumToComboboxItems(SpacerAlignment)}"
                            value="${InputfieldComponent.enumGetKeyFromValue(SpacerAlignment, this.spacerAlignment)}"
                            @component-inputfield-change="${(event: CustomEvent) =>
                               (this.spacerAlignment = (<any>SpacerAlignment)[event.detail.outputData.value])}"
-                        ></component-inputfield>
-                        <component-inputfield
+                        ></nidoca-inputfield>
+                        <nidoca-inputfield
                            .inputfieldType="${InputfieldType.COMBOBOX}"
                            label="${I18nService.getUniqueInstance().getValue('pagespacer_label1')}"
                            .options="${InputfieldComponent.enumToComboboxItems(SpacerSize)}"
                            value="${InputfieldComponent.enumGetKeyFromValue(SpacerSize, this.spacerSize)}"
                            @component-inputfield-change="${(event: CustomEvent) =>
                               (this.spacerSize = (<any>SpacerSize)[event.detail.outputData.value])}"
-                        ></component-inputfield>
-                     </component-form>
-                  </component-flex-container>
-               </component-tab-content>
-               <component-tab-content slot="tabContent"
-                  ><component-spacer
+                        ></nidoca-inputfield>
+                     </nidoca-form>
+                  </nidoca-flex-container>
+               </nidoca-tab-content>
+               <nidoca-tab-content slot="tabContent"
+                  ><nidoca-spacer
                      spacerSize="${SpacerSize.MEDIUM}"
                      spacerAlignment="${SpacerAlignment.VERTICAL}"
-                  ></component-spacer
-                  ><component-code
-                     code="${'<component-spacer spacerAlignment="'
+                  ></nidoca-spacer
+                  ><nidoca-code
+                     code="${'<nidoca-spacer spacerAlignment="'
                         .concat(this.spacerAlignment)
                         .concat('" spacerSize="')
                         .concat(this.spacerSize)
                         .concat('" size="')
                         .concat(this.size)
-                        .concat('"></component-spacer>')}"
+                        .concat('"></nidoca-spacer>')}"
                   >
-                  </component-code
-               ></component-tab-content>
-            </component-tabs>
-         </component-flex-container>
+                  </nidoca-code
+               ></nidoca-tab-content>
+            </nidoca-tabs>
+         </nidoca-flex-container>
       `;
    }
 }

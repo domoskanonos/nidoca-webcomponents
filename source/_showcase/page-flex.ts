@@ -48,19 +48,19 @@ export class PageLayoutComponent extends PageAbstract {
 
    getMainComponent(): TemplateResult {
       return html`
-         <component-floating-container
+         <nidoca-floating-container
             top="var(--menubar-height)"
             width="100%"
             style="background-color: var(--app-color-surface-background);"
-            ><component-spacer spacerSize="${SpacerSize.BIG}" spacerAlignment="${SpacerAlignment.VERTICAL}">
-               <component-grid-container
+            ><nidoca-spacer spacerSize="${SpacerSize.BIG}" spacerAlignment="${SpacerAlignment.VERTICAL}">
+               <nidoca-grid-container
                   .gridJustifyItems="${GridJustifyItems.CENTER}"
                   .gridAlignItems="${GridAlignItems.CENTER}"
                   .gridTemplateRows="${['1fr']}"
                   .gridTemplateColumns="${['1fr']}"
                >
-                  <component-box height="40vmin" width="40vmin">
-                     <component-flex-container
+                  <nidoca-box height="40vmin" width="40vmin">
+                     <nidoca-flex-container
                         style="background-color: var(--app-color-primary-background);"
                         .flexContainerProperties="${this.flexContainerProperties}"
                         .flexItemProperties="${this.flexItemProperties}"
@@ -74,14 +74,14 @@ export class PageLayoutComponent extends PageAbstract {
                         ${this.createBox(4, 4)} ${this.createBox(7, 4)} ${this.createBox(4, 7)} ${this.createBox(4, 7)}
                         ${this.createBox(9, 5)} ${this.createBox(7, 5)} ${this.createBox(9, 7)} ${this.createBox(9, 5)}
                         ${this.createBox(7, 4)}
-                     </component-flex-container>
-                  </component-box></component-grid-container
+                     </nidoca-flex-container>
+                  </nidoca-box></nidoca-grid-container
                >
-            </component-spacer>
-         </component-floating-container>
-         <component-spacer size="22vmin" spacerAlignment="${SpacerAlignment.VERTICAL}"></component-spacer>
+            </nidoca-spacer>
+         </nidoca-floating-container>
+         <nidoca-spacer size="22vmin" spacerAlignment="${SpacerAlignment.VERTICAL}"></nidoca-spacer>
 
-         <component-flex-container
+         <nidoca-flex-container
             .flexContainerProperties="${[
                FlexContainerProperties.CONTAINER_WIDTH_50,
                FlexContainerProperties.TABLET_MAX_WIDTH,
@@ -92,91 +92,91 @@ export class PageLayoutComponent extends PageAbstract {
             .flexItemProperties="${[FlexItemProperties.KEYLINE_ALIGNMENT_HORIZONTAL, FlexItemProperties.KEYLINE_SIZE_MEDIUM]}"
             itemFlexBasisValue="100%"
          >
-            <component-typography
+            <nidoca-typography
                .typographyType="${TypographyType.H2}"
-               text="<component-flex-container/>"
-            ></component-typography>
-            <component-typography .typographyType="${TypographyType.BODY1}"
-               ><i>component-flex-container</i> ${I18nService.getUniqueInstance().getValue('pageflex_body')}</component-typography
+               text="<nidoca-flex-container/>"
+            ></nidoca-typography>
+            <nidoca-typography .typographyType="${TypographyType.BODY1}"
+               ><i>component-flex-container</i> ${I18nService.getUniqueInstance().getValue('pageflex_body')}</nidoca-typography
             >
-            <component-typography
+            <nidoca-typography
                .typographyType="${TypographyType.H4}"
                text="${I18nService.getUniqueInstance().getValue('interactive_demo')}"
-            ></component-typography>
-            <component-typography .typographyType="${TypographyType.BODY1}"
+            ></nidoca-typography>
+            <nidoca-typography .typographyType="${TypographyType.BODY1}"
                >${I18nService.getUniqueInstance().getValue('pageflex_body1')}
-            </component-typography>
+            </nidoca-typography>
 
-            <component-tabs>
-               <component-tab
+            <nidoca-tabs>
+               <nidoca-tab
                   slot="tab"
                   .selected="${true}"
                   text="${I18nService.getUniqueInstance().getValue('demo')}"
-               ></component-tab>
-               <component-tab slot="tab" text="${I18nService.getUniqueInstance().getValue('source')}"></component-tab>
-               <component-tab-content slot="tabContent" .selected="${true}"
-                  ><component-spacer
+               ></nidoca-tab>
+               <nidoca-tab slot="tab" text="${I18nService.getUniqueInstance().getValue('source')}"></nidoca-tab>
+               <nidoca-tab-content slot="tabContent" .selected="${true}"
+                  ><nidoca-spacer
                      spacerSize="${SpacerSize.MEDIUM}"
                      spacerAlignment="${SpacerAlignment.VERTICAL}"
-                  ></component-spacer>
-                  <component-flex-container
+                  ></nidoca-spacer>
+                  <nidoca-flex-container
                      .flexContainerProperties="${[FlexContainerProperties.CONTAINER_WIDTH_100]}"
                      .flexItemProperties="${[FlexItemProperties.KEYLINE_SIZE_MEDIUM]}"
                      .itemFlexBasisValues="${['auto', '100%', '100%']}"
                      .flexJustifyContent="${FlexJustifyContent.FLEX_START}"
                   >
-                     <component-typography .typographyType="${TypographyType.H4}"
-                        >${I18nService.getUniqueInstance().getValue('pageflex_demo_properties')}</component-typography
+                     <nidoca-typography .typographyType="${TypographyType.H4}"
+                        >${I18nService.getUniqueInstance().getValue('pageflex_demo_properties')}</nidoca-typography
                      >
 
-                     <component-form>
-                        <component-inputfield
+                     <nidoca-form>
+                        <nidoca-inputfield
                            .inputfieldType="${InputfieldType.COMBOBOX}"
                            .options="${InputfieldComponent.enumToComboboxItems(FlexDirection)}"
                            label="${I18nService.getUniqueInstance().getValue('pageflex_direction')}"
                            value="${this.flexDirection}"
                            @component-inputfield-change="${(event: CustomEvent) => this.changeFlexDirection(event)}"
-                        ></component-inputfield>
+                        ></nidoca-inputfield>
 
-                        <component-inputfield
+                        <nidoca-inputfield
                            .inputfieldType="${InputfieldType.COMBOBOX}"
                            .options="${InputfieldComponent.enumToComboboxItems(FlexWrap)}"
                            label="${I18nService.getUniqueInstance().getValue('pageflex_wrap')}"
                            .value="${InputfieldComponent.enumGetKeyFromValue(FlexWrap, this.flexWrap)}"
                            @component-inputfield-change="${(event: CustomEvent) => this.changeFlexWrap(event)}"
-                        ></component-inputfield>
+                        ></nidoca-inputfield>
 
-                        <component-inputfield
+                        <nidoca-inputfield
                            .inputfieldType="${InputfieldType.COMBOBOX}"
                            .options="${InputfieldComponent.enumToComboboxItems(FlexJustifyContent)}"
                            label="${I18nService.getUniqueInstance().getValue('pageflex_justify')}"
                            .value="${InputfieldComponent.enumGetKeyFromValue(FlexJustifyContent, this.flexJustifyContent)}"
                            @component-inputfield-change="${(event: CustomEvent) => this.changeFlexJustify(event)}"
-                        ></component-inputfield>
+                        ></nidoca-inputfield>
 
-                        <component-inputfield
+                        <nidoca-inputfield
                            .inputfieldType="${InputfieldType.COMBOBOX}"
                            .options="${InputfieldComponent.enumToComboboxItems(AlignItems)}"
                            label="${I18nService.getUniqueInstance().getValue('pageflex_align')}"
                            .value="${InputfieldComponent.enumGetKeyFromValue(AlignItems, this.alignItems)}"
                            @component-inputfield-change="${(event: CustomEvent) => this.changeAlignItems(event)}"
-                        ></component-inputfield>
+                        ></nidoca-inputfield>
 
-                        <component-inputfield
+                        <nidoca-inputfield
                            .inputfieldType="${InputfieldType.COMBOBOX}"
                            .options="${InputfieldComponent.enumToComboboxItems(AlignContent)}"
                            label="${I18nService.getUniqueInstance().getValue('pageflex_align_content')}"
                            .value="${InputfieldComponent.enumGetKeyFromValue(AlignContent, this.alignContent)}"
                            @component-inputfield-change="${(event: CustomEvent) => this.changeAlignContent(event)}"
-                        ></component-inputfield>
+                        ></nidoca-inputfield>
 
-                        <component-inputfield
+                        <nidoca-inputfield
                            label="${I18nService.getUniqueInstance().getValue('pageflex_standard')}"
                            value="${this.itemFlexBasisValue}"
                            @component-inputfield-change="${(event: CustomEvent) => this.changeItemFlexBasis(event)}"
-                        ></component-inputfield>
+                        ></nidoca-inputfield>
 
-                        <component-inputfield
+                        <nidoca-inputfield
                            .inputfieldType="${InputfieldType.COMBOBOX}"
                            .options="${InputfieldComponent.enumToComboboxItems(FlexContainerProperties)}"
                            label="${I18nService.getUniqueInstance().getValue('pageflex_container')}"
@@ -185,9 +185,9 @@ export class PageLayoutComponent extends PageAbstract {
                            multiple="true"
                            @component-inputfield-change="${(event: CustomEvent) =>
                               (this.flexContainerProperties = event.detail.outputData.value)}"
-                        ></component-inputfield>
+                        ></nidoca-inputfield>
 
-                        <component-inputfield
+                        <nidoca-inputfield
                            .inputfieldType="${InputfieldType.COMBOBOX}"
                            .options="${InputfieldComponent.enumToComboboxItems(FlexItemProperties)}"
                            label="${I18nService.getUniqueInstance().getValue('pageflex_content')}"
@@ -196,17 +196,17 @@ export class PageLayoutComponent extends PageAbstract {
                            multiple="true"
                            @component-inputfield-change="${(event: CustomEvent) =>
                               (this.flexItemProperties = event.detail.outputData.value)}"
-                        ></component-inputfield>
-                     </component-form>
-                  </component-flex-container>
-               </component-tab-content>
-               <component-tab-content slot="tabContent"
-                  ><component-spacer
+                        ></nidoca-inputfield>
+                     </nidoca-form>
+                  </nidoca-flex-container>
+               </nidoca-tab-content>
+               <nidoca-tab-content slot="tabContent"
+                  ><nidoca-spacer
                      spacerSize="${SpacerSize.MEDIUM}"
                      spacerAlignment="${SpacerAlignment.VERTICAL}"
-                  ></component-spacer
-                  ><component-code
-                     code="${'<component-flex-container'
+                  ></nidoca-spacer
+                  ><nidoca-code
+                     code="${'<nidoca-flex-container'
                         .concat(
                            PreviewFormatterService.getUniqueInstance().propertyArray2String(
                               this.flexContainerProperties,
@@ -234,13 +234,13 @@ export class PageLayoutComponent extends PageAbstract {
                               .concat(
                                  PreviewFormatterService.getUniqueInstance().property2String(this.alignContent, AlignContent)
                               )
-                              .concat('></component-flex-container>')
+                              .concat('></nidoca-flex-container>')
                         )}"
                   >
-                  </component-code
-               ></component-tab-content>
-            </component-tabs>
-         </component-flex-container>
+                  </nidoca-code
+               ></nidoca-tab-content>
+            </nidoca-tabs>
+         </nidoca-flex-container>
       `;
    }
 
@@ -270,11 +270,11 @@ export class PageLayoutComponent extends PageAbstract {
 
    private createBox(width: number, height: number) {
       return html`
-         <component-box
+         <nidoca-box
             style="background-color: var(--app-color-surface-background);"
             width="${width}vmin"
             height="${height}vmin"
-         ></component-box>
+         ></nidoca-box>
       `;
    }
 }

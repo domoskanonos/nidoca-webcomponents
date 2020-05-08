@@ -21,7 +21,7 @@ export class PageDivider extends PageAbstract {
 
    getMainComponent(): TemplateResult {
       return html`
-         <component-flex-container
+         <nidoca-flex-container
             .flexContainerProperties="${[
                FlexContainerProperties.CONTAINER_WIDTH_50,
                FlexContainerProperties.TABLET_MAX_WIDTH,
@@ -32,20 +32,20 @@ export class PageDivider extends PageAbstract {
             .flexItemProperties="${[FlexItemProperties.KEYLINE_ALIGNMENT_HORIZONTAL, FlexItemProperties.KEYLINE_SIZE_MEDIUM]}"
             itemFlexBasisValue="100%"
          >
-            <component-typography .typographyType="${TypographyType.H2}" text="<component-divider/>"></component-typography>
-            <component-typography .typographyType="${TypographyType.BODY1}"
-               ><i>BoxComponent</i> ${I18nService.getUniqueInstance().getValue('pagedivider_text')}</component-typography
+            <nidoca-typography .typographyType="${TypographyType.H2}" text="<nidoca-divider/>"></nidoca-typography>
+            <nidoca-typography .typographyType="${TypographyType.BODY1}"
+               ><i>BoxComponent</i> ${I18nService.getUniqueInstance().getValue('pagedivider_text')}</nidoca-typography
             >
 
-            <component-tabs>
-               <component-tab
+            <nidoca-tabs>
+               <nidoca-tab
                   slot="tab"
                   .selected="${true}"
                   text="${I18nService.getUniqueInstance().getValue('demo')}"
-               ></component-tab>
-               <component-tab slot="tab" text="${I18nService.getUniqueInstance().getValue('source')}"></component-tab>
-               <component-tab-content slot="tabContent" .selected="${true}"
-                  ><component-flex-container
+               ></nidoca-tab>
+               <nidoca-tab slot="tab" text="${I18nService.getUniqueInstance().getValue('source')}"></nidoca-tab>
+               <nidoca-tab-content slot="tabContent" .selected="${true}"
+                  ><nidoca-flex-container
                      .flexContainerProperties="${[
                         FlexContainerProperties.CONTAINER_WIDTH_100,
                         FlexContainerProperties.TABLET_MAX_WIDTH,
@@ -54,8 +54,8 @@ export class PageDivider extends PageAbstract {
                      .flexItemProperties="${[FlexItemProperties.KEYLINE_ALIGNMENT_BOTH, FlexItemProperties.KEYLINE_SIZE_MEDIUM]}"
                      itemFlexBasisValue="100%"
                   >
-                     <component-form>
-                        <component-inputfield
+                     <nidoca-form>
+                        <nidoca-inputfield
                            .inputfieldType="${InputfieldType.NUMBER}"
                            step="0.1"
                            min="0.0"
@@ -64,39 +64,39 @@ export class PageDivider extends PageAbstract {
                            .value="${this.opacity}"
                            @component-inputfield-change="${(event: CustomEvent) =>
                               (this.opacity = event.detail.outputData.value)}"
-                        ></component-inputfield>
-                        <component-inputfield
+                        ></nidoca-inputfield>
+                        <nidoca-inputfield
                            .inputfieldType="${InputfieldType.COMBOBOX}"
                            .options="${InputfieldComponent.enumToComboboxItems(DividerType)}"
                            label="Trenner Typ:"
                            .value="${InputfieldComponent.enumGetKeyFromValue(DividerType, this.dividerType)}"
                            @component-inputfield-change="${(event: CustomEvent) =>
                               (this.dividerType = (<any>DividerType)[event.detail.outputData.value])}"
-                        ></component-inputfield>
-                     </component-form>
+                        ></nidoca-inputfield>
+                     </nidoca-form>
 
-                     <component-divider
+                     <nidoca-divider
                         dividerType="${this.dividerType}"
                         .opacity="${this.opacity}"
-                     ></component-divider> </component-flex-container
-               ></component-tab-content>
-               <component-tab-content slot="tabContent"
-                  ><component-spacer
+                     ></nidoca-divider> </nidoca-flex-container
+               ></nidoca-tab-content>
+               <nidoca-tab-content slot="tabContent"
+                  ><nidoca-spacer
                      spacerSize="${SpacerSize.MEDIUM}"
                      spacerAlignment="${SpacerAlignment.VERTICAL}"
-                  ></component-spacer
-                  ><component-code
-                     code="${'<component-divider '
+                  ></nidoca-spacer
+                  ><nidoca-code
+                     code="${'<nidoca-divider '
                         .concat(PreviewFormatterService.getUniqueInstance().property2String(this.dividerType, DividerType))
                         .concat('opacity="')
                         .concat(String(this.opacity))
                         .concat('"')
-                        .concat('></component-divider>')}"
+                        .concat('></nidoca-divider>')}"
                   >
-                  </component-code
-               ></component-tab-content>
-            </component-tabs>
-         </component-flex-container>
+                  </nidoca-code
+               ></nidoca-tab-content>
+            </nidoca-tabs>
+         </nidoca-flex-container>
       `;
    }
 }

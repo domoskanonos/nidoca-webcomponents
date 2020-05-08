@@ -30,7 +30,7 @@ export class ShadowType {
 
 const componentCSS = require('./component.css');
 
-@customElement('component-border')
+@customElement('nidoca-border')
 export class BorderComponent extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}

@@ -18,7 +18,7 @@ export class PageBox extends PageAbstract {
 
    getMainComponent(): TemplateResult {
       return html`
-         <component-flex-container
+         <nidoca-flex-container
             .flexContainerProperties="${[
                FlexContainerProperties.CONTAINER_WIDTH_50,
                FlexContainerProperties.TABLET_MAX_WIDTH,
@@ -29,8 +29,8 @@ export class PageBox extends PageAbstract {
             .flexItemProperties="${[FlexItemProperties.KEYLINE_ALIGNMENT_HORIZONTAL, FlexItemProperties.KEYLINE_SIZE_MEDIUM]}"
             itemFlexBasisValue="100%"
          >
-            <component-typography .typographyType="${TypographyType.H2}" text="<component-box/>"></component-typography>
-            <component-typography .typographyType="${TypographyType.BODY1}"
+            <nidoca-typography .typographyType="${TypographyType.H2}" text="<nidoca-box/>"></nidoca-typography>
+            <nidoca-typography .typographyType="${TypographyType.BODY1}"
                ><i>BoxComponent</i>${I18nService.getUniqueInstance().getValue(
                   'pagebox_description_1'
                )}<i>FlexComponent</i>${I18nService.getUniqueInstance().getValue(
@@ -42,22 +42,22 @@ export class PageBox extends PageAbstract {
                ${I18nService.getUniqueInstance().getValue('pagebox_description_5')}
                <i>px, em, %</i>
                ${I18nService.getUniqueInstance().getValue('pagebox_description_6')}
-            </component-typography>
-            <component-typography
+            </nidoca-typography>
+            <nidoca-typography
                .typographyType="${TypographyType.H4}"
                text="${I18nService.getUniqueInstance().getValue('interactive_demo')}"
-            ></component-typography>
-            <component-typography .typographyType="${TypographyType.BODY1}" text=""></component-typography>
+            ></nidoca-typography>
+            <nidoca-typography .typographyType="${TypographyType.BODY1}" text=""></nidoca-typography>
 
-            <component-tabs>
-               <component-tab
+            <nidoca-tabs>
+               <nidoca-tab
                   slot="tab"
                   .selected="${true}"
                   text="${I18nService.getUniqueInstance().getValue('demo')}"
-               ></component-tab>
-               <component-tab slot="tab" text="${I18nService.getUniqueInstance().getValue('source')}"></component-tab>
-               <component-tab-content slot="tabContent" .selected="${true}"
-                  ><component-flex-container
+               ></nidoca-tab>
+               <nidoca-tab slot="tab" text="${I18nService.getUniqueInstance().getValue('source')}"></nidoca-tab>
+               <nidoca-tab-content slot="tabContent" .selected="${true}"
+                  ><nidoca-flex-container
                      .flexContainerProperties="${[
                         FlexContainerProperties.CONTAINER_WIDTH_100,
                         FlexContainerProperties.TABLET_MAX_WIDTH,
@@ -66,46 +66,46 @@ export class PageBox extends PageAbstract {
                      .flexItemProperties="${[FlexItemProperties.KEYLINE_ALIGNMENT_BOTH, FlexItemProperties.KEYLINE_SIZE_MEDIUM]}"
                      itemFlexBasisValue="100%"
                   >
-                     <component-form>
-                        <component-inputfield
+                     <nidoca-form>
+                        <nidoca-inputfield
                            .inputfieldType="${InputfieldType.TEXT}"
                            label="${I18nService.getUniqueInstance().getValue('pagebox_text')}"
                            value="${this.height}"
                            @component-inputfield-keyup="${(event: CustomEvent) => (this.height = event.detail.value)}"
-                        ></component-inputfield>
-                        <component-inputfield
+                        ></nidoca-inputfield>
+                        <nidoca-inputfield
                            .inputfieldType="${InputfieldType.TEXT}"
                            label="${I18nService.getUniqueInstance().getValue('pagebox_test1')}"
                            value="${this.width}"
                            @component-inputfield-keyup="${(event: CustomEvent) => (this.width = event.detail.value)}"
-                        ></component-inputfield>
-                     </component-form>
-                     <component-container>
-                        <component-box
+                        ></nidoca-inputfield>
+                     </nidoca-form>
+                     <nidoca-container>
+                        <nidoca-box
                            style="background-color: var(--app-color-primary-background);"
                            height="${this.height}"
                            width="${this.width}"
                         >
-                        </component-box>
-                     </component-container>
-                  </component-flex-container>
-               </component-tab-content>
-               <component-tab-content slot="tabContent">
-                  <component-spacer
+                        </nidoca-box>
+                     </nidoca-container>
+                  </nidoca-flex-container>
+               </nidoca-tab-content>
+               <nidoca-tab-content slot="tabContent">
+                  <nidoca-spacer
                      spacerSize="${SpacerSize.MEDIUM}"
                      spacerAlignment="${SpacerAlignment.VERTICAL}"
-                  ></component-spacer
-                  ><component-code
-                     code="${'<component-box height="'
+                  ></nidoca-spacer
+                  ><nidoca-code
+                     code="${'<nidoca-box height="'
                         .concat(this.height)
                         .concat('" width="')
                         .concat(this.width)
-                        .concat('"></component-box>')}"
+                        .concat('"></nidoca-box>')}"
                   >
-                  </component-code
-               ></component-tab-content>
-            </component-tabs>
-         </component-flex-container>
+                  </nidoca-code
+               ></nidoca-tab-content>
+            </nidoca-tabs>
+         </nidoca-flex-container>
       `;
    }
 }

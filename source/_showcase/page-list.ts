@@ -30,7 +30,7 @@ export class PageList extends PageAbstract {
 
    getMainComponent(): TemplateResult {
       return html`
-         <component-flex-container
+         <nidoca-flex-container
             .flexContainerProperties="${[
                FlexContainerProperties.CONTAINER_WIDTH_50,
                FlexContainerProperties.TABLET_MAX_WIDTH,
@@ -41,23 +41,23 @@ export class PageList extends PageAbstract {
             .flexItemProperties="${[FlexItemProperties.KEYLINE_ALIGNMENT_HORIZONTAL, FlexItemProperties.KEYLINE_SIZE_MEDIUM]}"
             itemFlexBasisValue="100%"
          >
-            <component-typography .typographyType="${TypographyType.H2}" text="<component-list/>"></component-typography>
-            <component-typography .typographyType="${TypographyType.BODY1}">
+            <nidoca-typography .typographyType="${TypographyType.H2}" text="<nidoca-list/>"></nidoca-typography>
+            <nidoca-typography .typographyType="${TypographyType.BODY1}">
                <i>ListComponent</i>${I18nService.getUniqueInstance().getValue('pagelist_description')}
-            </component-typography>
-            <component-tabs>
-               <component-tab
+            </nidoca-typography>
+            <nidoca-tabs>
+               <nidoca-tab
                   slot="tab"
                   .selected="${true}"
                   text="${I18nService.getUniqueInstance().getValue('demo')}"
-               ></component-tab>
-               <component-tab slot="tab" text="${I18nService.getUniqueInstance().getValue('source')}"></component-tab>
-               <component-tab-content slot="tabContent" .selected="${true}">
-                  <component-spacer
+               ></nidoca-tab>
+               <nidoca-tab slot="tab" text="${I18nService.getUniqueInstance().getValue('source')}"></nidoca-tab>
+               <nidoca-tab-content slot="tabContent" .selected="${true}">
+                  <nidoca-spacer
                      spacerSize="${SpacerSize.MEDIUM}"
                      spacerAlignment="${SpacerAlignment.VERTICAL}"
-                  ></component-spacer>
-                  <component-flex-container
+                  ></nidoca-spacer>
+                  <nidoca-flex-container
                      .flexContainerProperties="${[
                         FlexContainerProperties.CONTAINER_WIDTH_100,
                         FlexContainerProperties.TABLET_MAX_WIDTH,
@@ -66,17 +66,17 @@ export class PageList extends PageAbstract {
                      .flexItemProperties="${[FlexItemProperties.KEYLINE_ALIGNMENT_BOTH, FlexItemProperties.KEYLINE_SIZE_MEDIUM]}"
                      itemFlexBasisValue="100%"
                   >
-                     <component-form>
-                        <component-inputfield
+                     <nidoca-form>
+                        <nidoca-inputfield
                            label="${I18nService.getUniqueInstance().getValue('pagelist_selection_mode_checkbox')}"
                            assistiveText="${I18nService.getUniqueInstance().getValue('pagelist_selection_mode_assistive_text')}"
                            .inputfieldType="${InputfieldType.SWITCH}"
                            .checked="${this.selectionMode}"
                            @component-inputfield-change="${(event: CustomEvent) =>
                               (this.selectionMode = event.detail.outputData.value)}"
-                        ></component-inputfield>
-                     </component-form>
-                     <component-list .selectionMode="${this.selectionMode}">
+                        ></nidoca-inputfield>
+                     </nidoca-form>
+                     <nidoca-list .selectionMode="${this.selectionMode}">
                         ${guard(
                            [this.selectionMode, this.listItemContent],
                            () =>
@@ -85,14 +85,14 @@ export class PageList extends PageAbstract {
                                     this.listItemContent,
                                     (identifier: string) =>
                                        html`
-                                          <component-list-item id="${identifier}">
-                                             <component-grid-container
+                                          <nidoca-list-item id="${identifier}">
+                                             <nidoca-grid-container
                                                 .gridJustifyItems="${GridJustifyItems.START}"
                                                 .gridAlignItems="${GridAlignItems.CENTER}"
                                                 .gridTemplateRows="${['1fr']}"
                                                 .gridTemplateColumns="${['auto', '1fr', 'auto']}"
                                              >
-                                                <component-icon
+                                                <nidoca-icon
                                                    clickable="false"
                                                    icon="thumb_up_alt"
                                                    round="true"
@@ -100,37 +100,37 @@ export class PageList extends PageAbstract {
                                                    color="var(--app-color-surface)"
                                                    backgroundColor="var(--app-color-surface-background)"
                                                    .iconShadowType="${IconShadowType.DEFAULT_SHADOW}"
-                                                ></component-icon>
-                                                <component-spacer
+                                                ></nidoca-icon>
+                                                <nidoca-spacer
                                                    spacerSize="${SpacerSize.MEDIUM}"
                                                    spacerAlignment="${SpacerAlignment.BOTH}"
                                                 >
-                                                   <component-typography>Lorem Ipsum Dolorem</component-typography>
-                                                </component-spacer>
-                                                <component-icon clickable="false" icon="more_vert" round="true"></component-icon>
-                                             </component-grid-container>
-                                          </component-list-item>
+                                                   <nidoca-typography>Lorem Ipsum Dolorem</nidoca-typography>
+                                                </nidoca-spacer>
+                                                <nidoca-icon clickable="false" icon="more_vert" round="true"></nidoca-icon>
+                                             </nidoca-grid-container>
+                                          </nidoca-list-item>
                                        `
                                  )}
                               `
                         )}
-                     </component-list>
-                  </component-flex-container>
-               </component-tab-content>
-               <component-tab-content slot="tabContent"
-                  ><component-spacer
+                     </nidoca-list>
+                  </nidoca-flex-container>
+               </nidoca-tab-content>
+               <nidoca-tab-content slot="tabContent"
+                  ><nidoca-spacer
                      spacerSize="${SpacerSize.MEDIUM}"
                      spacerAlignment="${SpacerAlignment.VERTICAL}"
-                  ></component-spacer
-                  ><component-code
-                     code="${'<component-list .selectionMode="${'
+                  ></nidoca-spacer
+                  ><nidoca-code
+                     code="${'<nidoca-list .selectionMode="${'
                         .concat(String(this.selectionMode))
-                        .concat('}"><component-list-item></component-list-item></component-list>')}"
+                        .concat('}"><nidoca-list-item></nidoca-list-item></nidoca-list>')}"
                   >
-                  </component-code
-               ></component-tab-content>
-            </component-tabs>
-         </component-flex-container>
+                  </nidoca-code
+               ></nidoca-tab-content>
+            </nidoca-tabs>
+         </nidoca-flex-container>
       `;
    }
 }

@@ -10,7 +10,7 @@ export class TargetType {
    static TOP: string = '_top';
 }
 
-@customElement('component-link')
+@customElement('nidoca-link')
 export class LinkComponent extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
@@ -28,7 +28,7 @@ export class LinkComponent extends LitElement {
    render() {
       return html`
          <a href="${this.href}" target="${this.targetType}"
-            ><component-typography .typographyType="${TypographyType.BODY1}">${this.text}<slot></slot></component-typography
+            ><nidoca-typography .typographyType="${TypographyType.BODY1}">${this.text}<slot></slot></nidoca-typography
          ></a>
       `;
    }

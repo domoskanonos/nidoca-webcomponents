@@ -3,7 +3,7 @@ import { TransitionType, VisibleType } from '..';
 
 const componentCSS = require('./component.css');
 
-@customElement('component-dialog')
+@customElement('nidoca-dialog')
 export class DialogComponent extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
@@ -14,7 +14,7 @@ export class DialogComponent extends LitElement {
 
    render() {
       return html`
-         <component-visible visibleType="${this.show ? VisibleType.NORMAL : VisibleType.HIDE}">
+         <nidoca-visible visibleType="${this.show ? VisibleType.NORMAL : VisibleType.HIDE}">
             <div class="fullScreen opacScreen"></div>
             <div class="fullScreen wrapperOutside">
                <div class="wrapperInside">
@@ -26,7 +26,7 @@ export class DialogComponent extends LitElement {
                   </effect-transition>
                </div>
             </div>
-         </component-visible>
+         </nidoca-visible>
       `;
    }
 }

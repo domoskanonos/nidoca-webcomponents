@@ -8,7 +8,7 @@ export enum ProgressType {
    PROGRESS_CIRCULAR = 'PROGRESS_CIRCULAR'
 }
 
-@customElement('component-progress')
+@customElement('nidoca-progress')
 export class ProgressComponent extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}

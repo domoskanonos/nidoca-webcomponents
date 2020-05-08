@@ -15,7 +15,7 @@ export class SearchBarOutputData {
    value: string = '';
 }
 
-@customElement('component-search-bar')
+@customElement('nidoca-search-bar')
 export class SearchBarComponent extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
@@ -43,8 +43,8 @@ export class SearchBarComponent extends LitElement {
       return html`
          <div class="search-bar">
             <slot></slot>
-            <component-icon icon="search"></component-icon>
-            <component-inputfield
+            <nidoca-icon icon="search"></nidoca-icon>
+            <nidoca-inputfield
                id="inputfieldComponent"
                @component-inputfield-keyup="${() => this.textfieldKeyUp()}"
                @component-icon-click="${(event: CustomEvent) => {
@@ -57,7 +57,7 @@ export class SearchBarComponent extends LitElement {
                trailingIcon="${this.trailingIcon}"
                .leadingIconClickable="${true}"
                .trailingIconClickable="${true}"
-            ></component-inputfield>
+            ></nidoca-inputfield>
          </div>
       `;
    }

@@ -8,7 +8,7 @@ export class VisibleType {
    static NORMAL: string = 'NORMAL';
 }
 
-@customElement('component-visible')
+@customElement('nidoca-visible')
 export class VisibleEffect extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}

@@ -30,7 +30,7 @@ export class PageInputComponent extends PageAbstract {
 
    getMainComponent(): TemplateResult {
       return html`
-         <component-flex-container
+         <nidoca-flex-container
             .flexContainerProperties="${[
                FlexContainerProperties.CONTAINER_WIDTH_50,
                FlexContainerProperties.TABLET_MAX_WIDTH,
@@ -41,29 +41,29 @@ export class PageInputComponent extends PageAbstract {
             .flexItemProperties="${[FlexItemProperties.KEYLINE_ALIGNMENT_HORIZONTAL, FlexItemProperties.KEYLINE_SIZE_MEDIUM]}"
             itemFlexBasisValue="100%"
          >
-            <component-typography .typographyType="${TypographyType.H2}" text="<component-inputfield/>"></component-typography>
-            <component-typography
+            <nidoca-typography .typographyType="${TypographyType.H2}" text="<nidoca-inputfield/>"></nidoca-typography>
+            <nidoca-typography
                .typographyType="${TypographyType.BODY1}"
                text="Text fields let users enter and edit text."
-            ></component-typography>
-            <component-typography
+            ></nidoca-typography>
+            <nidoca-typography
                .typographyType="${TypographyType.H4}"
                text="${I18nService.getUniqueInstance().getValue('interactive_demo')}"
-            ></component-typography>
-            <component-typography
+            ></nidoca-typography>
+            <nidoca-typography
                .typographyType="${TypographyType.BODY1}"
                text="This demo lets you preview the text field component, its variations, and configuration options. Each tab displays a different type of text field."
-            ></component-typography>
+            ></nidoca-typography>
 
-            <component-tabs>
-               <component-tab
+            <nidoca-tabs>
+               <nidoca-tab
                   slot="tab"
                   .selected="${true}"
                   text="${I18nService.getUniqueInstance().getValue('demo')}"
-               ></component-tab>
-               <component-tab slot="tab" text="${I18nService.getUniqueInstance().getValue('source')}"></component-tab>
-               <component-tab-content slot="tabContent" .selected="${true}"
-                  ><component-flex-container
+               ></nidoca-tab>
+               <nidoca-tab slot="tab" text="${I18nService.getUniqueInstance().getValue('source')}"></nidoca-tab>
+               <nidoca-tab-content slot="tabContent" .selected="${true}"
+                  ><nidoca-flex-container
                      .flexContainerProperties="${[
                         FlexContainerProperties.SMARTPHONE_HORIZONTAL_PADDING,
                         FlexContainerProperties.TABLET_HORIZONTAL_PADDING
@@ -75,7 +75,7 @@ export class PageInputComponent extends PageAbstract {
                         FlexItemProperties.TABLET_MAX_WIDTH
                      ]}"
                      itemFlexBasisValue="100%"
-                     ><component-flex-container
+                     ><nidoca-flex-container
                         .flexContainerProperties="${[
                            FlexContainerProperties.CONTAINER_WIDTH_75,
                            FlexContainerProperties.TABLET_MAX_WIDTH,
@@ -83,14 +83,14 @@ export class PageInputComponent extends PageAbstract {
                         ]}"
                         .flexItemProperties="${[FlexItemProperties.SMARTPHONE_MAX_WIDTH, FlexItemProperties.TABLET_MAX_WIDTH]}"
                         itemFlexBasisValue="100%"
-                        ><component-spacer
+                        ><nidoca-spacer
                            spacerSize="${SpacerSize.MEDIUM}"
                            spacerAlignment="${SpacerAlignment.VERTICAL}"
-                        ></component-spacer
-                        ><component-border .borderProperties="${[BorderProperties.FULL_WIDTH, BorderProperties.ALL]}"
-                           ><component-spacer spacerSize="${SpacerSize.MEDIUM}" spacerAlignment="${SpacerAlignment.BOTH}"
-                              ><component-form>
-                                 <component-inputfield
+                        ></nidoca-spacer
+                        ><nidoca-border .borderProperties="${[BorderProperties.FULL_WIDTH, BorderProperties.ALL]}"
+                           ><nidoca-spacer spacerSize="${SpacerSize.MEDIUM}" spacerAlignment="${SpacerAlignment.BOTH}"
+                              ><nidoca-form>
+                                 <nidoca-inputfield
                                     name="username"
                                     .inputfieldType="${this.type}"
                                     label="${this.type.toLocaleUpperCase()}"
@@ -99,44 +99,44 @@ export class PageInputComponent extends PageAbstract {
                                     assistiveText="assistiveText"
                                     infoText="infoText"
                                     required="true"
-                                 ></component-inputfield> </component-form></component-spacer
-                        ></component-border>
-                     </component-flex-container>
-                     <component-typography .typographyType="${TypographyType.H4}"
-                        >${I18nService.getUniqueInstance().getValue('pageflex_demo_properties')}</component-typography
+                                 ></nidoca-inputfield> </nidoca-form></nidoca-spacer
+                        ></nidoca-border>
+                     </nidoca-flex-container>
+                     <nidoca-typography .typographyType="${TypographyType.H4}"
+                        >${I18nService.getUniqueInstance().getValue('pageflex_demo_properties')}</nidoca-typography
                      >
-                     <component-form>
-                        <component-inputfield
+                     <nidoca-form>
+                        <nidoca-inputfield
                            .inputfieldType="${InputfieldType.COMBOBOX}"
                            .options="${InputfieldComponent.enumToComboboxItems(InputfieldType)}"
                            label="Typ"
                            value="${this.type}"
                            @component-inputfield-change="${(event: CustomEvent) => this.changeType(event)}"
-                        ></component-inputfield>
-                        <component-inputfield
+                        ></nidoca-inputfield>
+                        <nidoca-inputfield
                            .inputfieldType="${InputfieldType.SWITCH}"
                            label="Trailing Icon"
                            assistiveText="Es besteht die Möglichkeit an jedes Eingabefeld rechts ein Icon zu plazieren."
                            .checked="${this.showTrailingIcon}"
                            @component-inputfield-change="${() => this.switchTrailingIcon()}"
-                        ></component-inputfield>
-                        <component-inputfield
+                        ></nidoca-inputfield>
+                        <nidoca-inputfield
                            .inputfieldType="${InputfieldType.SWITCH}"
                            label="Trailing Icon"
                            assistiveText="Es besteht die Möglichkeit an jedes Eingabefeld links ein Icon zu plazieren."
                            .checked="${this.showLeadingIcon}"
                            @component-inputfield-change="${() => this.switchLeadingIcon()}"
-                        ></component-inputfield>
-                     </component-form> </component-flex-container
-               ></component-tab-content>
-               <component-tab-content slot="tabContent">
-                  <component-spacer
+                        ></nidoca-inputfield>
+                     </nidoca-form> </nidoca-flex-container
+               ></nidoca-tab-content>
+               <nidoca-tab-content slot="tabContent">
+                  <nidoca-spacer
                      spacerSize="${SpacerSize.MEDIUM}"
                      spacerAlignment="${SpacerAlignment.VERTICAL}"
-                  ></component-spacer>
+                  ></nidoca-spacer>
 
-                  <component-code
-                     code="${'<component-inputfield '
+                  <nidoca-code
+                     code="${'<nidoca-inputfield '
                         .concat('label="')
                         .concat(this.type.toLocaleUpperCase())
                         .concat('" ')
@@ -149,11 +149,11 @@ export class PageInputComponent extends PageAbstract {
                         .concat('name="fieldName" ')
                         .concat('assistiveText="assistiveText" ')
                         .concat('infoText="infoText" ')
-                        .concat('required="true"></component-inputfield>')}"
-                  ></component-code>
-               </component-tab-content>
-            </component-tabs>
-         </component-flex-container>
+                        .concat('required="true"></nidoca-inputfield>')}"
+                  ></nidoca-code>
+               </nidoca-tab-content>
+            </nidoca-tabs>
+         </nidoca-flex-container>
       `;
    }
 

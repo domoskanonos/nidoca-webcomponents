@@ -23,7 +23,7 @@ export class PageLink extends PageAbstract {
 
    getMainComponent(): TemplateResult {
       return html`
-         <component-flex-container
+         <nidoca-flex-container
             .flexContainerProperties="${[
                FlexContainerProperties.CONTAINER_WIDTH_50,
                FlexContainerProperties.TABLET_MAX_WIDTH,
@@ -34,29 +34,29 @@ export class PageLink extends PageAbstract {
             .flexItemProperties="${[FlexItemProperties.KEYLINE_ALIGNMENT_HORIZONTAL, FlexItemProperties.KEYLINE_SIZE_MEDIUM]}"
             itemFlexBasisValue="100%"
          >
-            <component-typography .typographyType="${TypographyType.H2}" text="<component-link/>"></component-typography>
-            <component-typography
+            <nidoca-typography .typographyType="${TypographyType.H2}" text="<nidoca-link/>"></nidoca-typography>
+            <nidoca-typography
                .typographyType="${TypographyType.BODY1}"
                text="${I18nService.getUniqueInstance().getValue('pagelink_body')}"
-            ></component-typography>
-            <component-typography
+            ></nidoca-typography>
+            <nidoca-typography
                .typographyType="${TypographyType.H4}"
                text="${I18nService.getUniqueInstance().getValue('pageborder_typoh4')}"
-            ></component-typography>
-            <component-typography
+            ></nidoca-typography>
+            <nidoca-typography
                .typographyType="${TypographyType.BODY1}"
                text="${I18nService.getUniqueInstance().getValue('pagelink_body1')}"
-            ></component-typography>
+            ></nidoca-typography>
 
-            <component-tabs>
-               <component-tab
+            <nidoca-tabs>
+               <nidoca-tab
                   slot="tab"
                   .selected="${true}"
                   text="${I18nService.getUniqueInstance().getValue('demo')}"
-               ></component-tab>
-               <component-tab slot="tab" text="${I18nService.getUniqueInstance().getValue('source')}"></component-tab>
-               <component-tab-content slot="tabContent" .selected="${true}"
-                  ><component-flex-container
+               ></nidoca-tab>
+               <nidoca-tab slot="tab" text="${I18nService.getUniqueInstance().getValue('source')}"></nidoca-tab>
+               <nidoca-tab-content slot="tabContent" .selected="${true}"
+                  ><nidoca-flex-container
                      .flexContainerProperties="${[
                         FlexContainerProperties.CONTAINER_WIDTH_100,
                         FlexContainerProperties.TABLET_MAX_WIDTH,
@@ -65,33 +65,33 @@ export class PageLink extends PageAbstract {
                      .flexItemProperties="${[FlexItemProperties.KEYLINE_ALIGNMENT_BOTH, FlexItemProperties.KEYLINE_SIZE_MEDIUM]}"
                      itemFlexBasisValue="50%"
                   >
-                     <component-form>
-                        <component-inputfield
+                     <nidoca-form>
+                        <nidoca-inputfield
                            .inputfieldType="${InputfieldType.COMBOBOX}"
                            .options="${InputfieldComponent.enumToComboboxItems(TargetType)}"
                            label="TargetType"
                            .value="${InputfieldComponent.enumGetKeyFromValue(TargetType, this.targetType)}"
                            @component-inputfield-change="${(event: CustomEvent) =>
                               (this.targetType = (<any>TargetType)[event.detail.outputData.value])}"
-                        ></component-inputfield>
-                     </component-form>
-                     <component-link href="${this.href}" targetType="${this.targetType}">${this.text}</component-link>
-                  </component-flex-container></component-tab-content
+                        ></nidoca-inputfield>
+                     </nidoca-form>
+                     <nidoca-link href="${this.href}" targetType="${this.targetType}">${this.text}</nidoca-link>
+                  </nidoca-flex-container></nidoca-tab-content
                >
-               <component-tab-content slot="tabContent"
-                  ><component-code
-                     code="${'<component-link '
+               <nidoca-tab-content slot="tabContent"
+                  ><nidoca-code
+                     code="${'<nidoca-link '
                         .concat(PreviewFormatterService.getUniqueInstance().property2String(this.targetType, TargetType))
                         .concat(' href="')
                         .concat(this.href)
                         .concat('" text="')
                         .concat(this.text)
-                        .concat('"></component-link>')}"
+                        .concat('"></nidoca-link>')}"
                   >
-                  </component-code
-               ></component-tab-content>
-            </component-tabs>
-         </component-flex-container>
+                  </nidoca-code
+               ></nidoca-tab-content>
+            </nidoca-tabs>
+         </nidoca-flex-container>
       `;
    }
 }

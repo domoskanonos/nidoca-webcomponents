@@ -39,7 +39,7 @@ export class InputfieldDataChangeEvent {
    element?: HTMLInputElement;
 }
 
-@customElement('component-inputfield')
+@customElement('nidoca-inputfield')
 export class InputfieldComponent extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
@@ -140,7 +140,7 @@ export class InputfieldComponent extends LitElement {
    render() {
       return this.inputfieldType != InputfieldType.HIDDEN
          ? html`
-              <component-border
+              <nidoca-border
                  .borderProperties="${[
                     BorderProperties.FULL_WIDTH,
                     this.showSelectedBorder()
@@ -151,7 +151,7 @@ export class InputfieldComponent extends LitElement {
                  ]}"
               >
               
-              <component-grid-container
+              <nidoca-grid-container
                     class="${this.toContainerClazz(this.inputfieldType)}"
                     minHeight="56px"
                     .gridJustifyItems="${GridJustifyItems.STRETCH}"
@@ -159,24 +159,24 @@ export class InputfieldComponent extends LitElement {
                     .gridTemplateRows="${['1fr']}"
                     .gridTemplateColumns="${['1fr']}"
                  >
-              <component-spacer size="4px;" spacerAlignment="${SpacerAlignment.VERTICAL}">
-              <component-spacer spacerSize="${SpacerSize.BIG}" spacerAlignment="${SpacerAlignment.HORIZONTAL}">
-                 <component-grid-container
+              <nidoca-spacer size="4px;" spacerAlignment="${SpacerAlignment.VERTICAL}">
+              <nidoca-spacer spacerSize="${SpacerSize.BIG}" spacerAlignment="${SpacerAlignment.HORIZONTAL}">
+                 <nidoca-grid-container
                     .gridJustifyItems="${GridJustifyItems.STRETCH}"
                     .gridAlignItems="${GridAlignItems.CENTER}" 
                     .gridTemplateRows="${['auto']}"
                     .gridTemplateColumns="${['auto', '1fr', 'auto', 'auto']}"
                  >
-                    <component-visible
+                    <nidoca-visible
                                   visibleType="${
                                      BasicService.getUniqueInstance().isNotBlank(this.leadingIcon)
                                         ? VisibleType.NORMAL
                                         : VisibleType.HIDE
                                   }"
                     >
-                       <component-icon icon="${this.leadingIcon}" .clickable="${this.leadingIconClickable}"></component-icon>
-                    </component-visible>
-                    <component-flex-container
+                       <nidoca-icon icon="${this.leadingIcon}" .clickable="${this.leadingIconClickable}"></nidoca-icon>
+                    </nidoca-visible>
+                    <nidoca-flex-container
                        .flexContainerProperties="${[
                           FlexContainerProperties.CONTAINER_WIDTH_100,
                           FlexContainerProperties.CONTAINER_HEIGHT_100
@@ -184,52 +184,52 @@ export class InputfieldComponent extends LitElement {
                        .alignContent="${AlignContent.CENTER}"
                        itemFlexBasisValue="100%"
                     >
-                       <component-visible visibleType="${this.showLabelText() ? VisibleType.NORMAL : VisibleType.HIDE}">
-                          <component-typography
+                       <nidoca-visible visibleType="${this.showLabelText() ? VisibleType.NORMAL : VisibleType.HIDE}">
+                          <nidoca-typography
                              .typographyType="${TypographyType.OVERLINE}"
                              text="${this.label}"
-                          ></component-typography>
-                       </component-visible>
+                          ></nidoca-typography>
+                       </nidoca-visible>
                        ${
                           this.inputfieldType == InputfieldType.FILE
                              ? html`
-                                  <component-grid-container
+                                  <nidoca-grid-container
                                      .gridTemplateRows="${['auto']}"
                                      .gridTemplateColumns="${['1fr', 'auto']}"
                                   >
-                                     <component-flex-container
+                                     <nidoca-flex-container
                                         .flexContainerProperties="${[FlexContainerProperties.CONTAINER_WIDTH_100]}"
                                         itemFlexBasisValue="100%"
                                      >
-                                        <component-typography
+                                        <nidoca-typography
                                            .typographyType="${TypographyType.SUBTITLE1}"
                                            text="${this.assistiveText}"
-                                        ></component-typography>
-                                        <component-typography
+                                        ></nidoca-typography>
+                                        <nidoca-typography
                                            .typographyType="${TypographyType.SUBTITLE2}"
                                            text="${this.infoText}"
-                                        ></component-typography
-                                     ></component-flex-container>
-                                     <component-container>
-                                        <component-visible visibleType="${!this.checked ? VisibleType.NORMAL : VisibleType.HIDE}">
-                                           <component-icon
+                                        ></nidoca-typography
+                                     ></nidoca-flex-container>
+                                     <nidoca-container>
+                                        <nidoca-visible visibleType="${!this.checked ? VisibleType.NORMAL : VisibleType.HIDE}">
+                                           <nidoca-icon
                                               icon="attachment"
                                               .clickable="${true}"
                                               @component-icon-click="
                                           ${() => this.inputElemet?.click()}
                                           "
-                                           ></component-icon>
-                                        </component-visible>
-                                     </component-container>
-                                  </component-grid-container>
-                                  <component-visible visibleType="${VisibleType.HIDE}">
+                                           ></nidoca-icon>
+                                        </nidoca-visible>
+                                     </nidoca-container>
+                                  </nidoca-grid-container>
+                                  <nidoca-visible visibleType="${VisibleType.HIDE}">
                                      <input
                                         id="inputElement"
                                         class="slider"
                                         name="${this.name}"
                                         type="${this.inputfieldType}"
                                         value="${this.prepareValue(this.value)}"
-                                  /></component-visible>
+                                  /></nidoca-visible>
                                `
                              : this.inputfieldType == InputfieldType.COMBOBOX
                              ? html`
@@ -273,45 +273,45 @@ ${this.value}</textarea
                                `
                              : this.inputfieldType == InputfieldType.SWITCH
                              ? html`
-                                  <component-grid-container
+                                  <nidoca-grid-container
                                      .gridTemplateRows="${['auto']}"
                                      .gridTemplateColumns="${['1fr', 'auto']}"
                                   >
-                                     <component-flex-container
+                                     <nidoca-flex-container
                                         .flexContainerProperties="${[FlexContainerProperties.CONTAINER_WIDTH_100]}"
                                         itemFlexBasisValue="100%"
                                      >
-                                        <component-typography
+                                        <nidoca-typography
                                            .typographyType="${TypographyType.SUBTITLE1}"
                                            text="${this.assistiveText}"
-                                        ></component-typography>
-                                        <component-typography
+                                        ></nidoca-typography>
+                                        <nidoca-typography
                                            .typographyType="${TypographyType.SUBTITLE2}"
                                            text="${this.infoText}"
-                                        ></component-typography
-                                     ></component-flex-container>
+                                        ></nidoca-typography
+                                     ></nidoca-flex-container>
                                      <componetn-container>
-                                        <component-visible visibleType="${this.checked ? VisibleType.HIDE : VisibleType.NORMAL}">
-                                           <component-icon
+                                        <nidoca-visible visibleType="${this.checked ? VisibleType.HIDE : VisibleType.NORMAL}">
+                                           <nidoca-icon
                                               @component-icon-click="${() => {
                                                  this.switchChecked();
                                               }}"
                                               icon="toggle_off"
                                               .clickable="${true}"
-                                           ></component-icon>
-                                        </component-visible>
-                                        <component-visible visibleType="${this.checked ? VisibleType.NORMAL : VisibleType.HIDE}">
-                                           <component-icon
+                                           ></nidoca-icon>
+                                        </nidoca-visible>
+                                        <nidoca-visible visibleType="${this.checked ? VisibleType.NORMAL : VisibleType.HIDE}">
+                                           <nidoca-icon
                                               color="var(--app-color-primary-background)"
                                               @component-icon-click="${() => {
                                                  this.switchChecked();
                                               }}"
                                               icon="toggle_on"
                                               .clickable="${true}"
-                                           ></component-icon>
-                                        </component-visible>
+                                           ></nidoca-icon>
+                                        </nidoca-visible>
                                      </componetn-container>
-                                  </component-grid-container>
+                                  </nidoca-grid-container>
                                `
                              : html`
                                   <input
@@ -339,42 +339,42 @@ ${this.value}</textarea
                                      @focusout="${(event: Event) => this.focusout(event)}"
                                   />
                                `
-                       }</component-flex-container
+                       }</nidoca-flex-container
                     >
-                    <component-visible
+                    <nidoca-visible
                        visibleType="${
                           BasicService.getUniqueInstance().isNotBlank(this.trailingIcon) ? VisibleType.NORMAL : VisibleType.HIDE
                        }"
                     >
-                       <component-icon icon="${this.trailingIcon}" .clickable="${this.trailingIconClickable}"></component-icon>
-                    </component-visible>
-                 </component-grid-container>
-                 </component-spacer>                 </component-spacer>
-                 </component-grid-container>
-              </component-border>
-              <component-visible visibleType="${this.showAdditionalTextContainer() ? VisibleType.NORMAL : VisibleType.HIDE}">
-                 <component-spacer spacerSize="${SpacerSize.LITTLE}" spacerAlignment="${SpacerAlignment.VERTICAL}">
-                 <component-flex-container
+                       <nidoca-icon icon="${this.trailingIcon}" .clickable="${this.trailingIconClickable}"></nidoca-icon>
+                    </nidoca-visible>
+                 </nidoca-grid-container>
+                 </nidoca-spacer>                 </nidoca-spacer>
+                 </nidoca-grid-container>
+              </nidoca-border>
+              <nidoca-visible visibleType="${this.showAdditionalTextContainer() ? VisibleType.NORMAL : VisibleType.HIDE}">
+                 <nidoca-spacer spacerSize="${SpacerSize.LITTLE}" spacerAlignment="${SpacerAlignment.VERTICAL}">
+                 <nidoca-flex-container
                     .flexContainerProperties="${[FlexContainerProperties.CONTAINER_WIDTH_100]}"
                     itemFlexBasisValue="auto"
                     flexJustifyContent="${FlexJustifyContent.SPACE_BETWEEN}"
                  >
-                    <component-typography
+                    <nidoca-typography
                        .typographyType="${TypographyType.OVERLINE}"
                        text="${this.assistiveText}"
-                    ></component-typography>
-                    <component-typography
+                    ></nidoca-typography>
+                    <nidoca-typography
                        .typographyType="${TypographyType.OVERLINE}"
                        text="${this.infoText}"
-                    ></component-typography>
-                 </component-flex-container>
-              </component-visible>
-              </component-spacer>
-              <component-typography
+                    ></nidoca-typography>
+                 </nidoca-flex-container>
+              </nidoca-visible>
+              </nidoca-spacer>
+              <nidoca-typography
                  style="color:var(--app-color-error)"
                  .typographyType="${TypographyType.OVERLINE}"
                  text="${this.errorText}"
-              ></component-typography>
+              ></nidoca-typography>
            `
          : html`
               <input

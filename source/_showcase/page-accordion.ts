@@ -17,7 +17,7 @@ export class PageAccordion extends PageAbstract {
 
    getMainComponent(): TemplateResult {
       return html`
-         <component-flex-container
+         <nidoca-flex-container
             .flexContainerProperties="${[
                FlexContainerProperties.CONTAINER_WIDTH_50,
                FlexContainerProperties.TABLET_MAX_WIDTH,
@@ -28,25 +28,25 @@ export class PageAccordion extends PageAbstract {
             .flexItemProperties="${[FlexItemProperties.KEYLINE_ALIGNMENT_HORIZONTAL, FlexItemProperties.KEYLINE_SIZE_MEDIUM]}"
             itemFlexBasisValue="100%"
          >
-            <component-typography .typographyType="${TypographyType.H2}" text="<component-accordion/>"></component-typography>
-            <component-typography .typographyType="${TypographyType.BODY1}">
+            <nidoca-typography .typographyType="${TypographyType.H2}" text="<nidoca-accordion/>"></nidoca-typography>
+            <nidoca-typography .typographyType="${TypographyType.BODY1}">
                <i>AccordionComponent</i> wird zum seperieren von Inhalten verwendet. Dabei kann man zwischen zwei Modi auswählen:
                SINGLE, MULTI Modus SINGLE führt dazu das immer nur ein Akkordeonelement ausgeklappt ist und die anderen
                automatisch geschlossen werden. Modus MULIT erlaubt es mehrere Akkordeonelemente gleichzeitig aufklappen zu können.
-            </component-typography>
-            <component-typography
+            </nidoca-typography>
+            <nidoca-typography
                .typographyType="${TypographyType.H4}"
                text="${I18nService.getUniqueInstance().getValue('demo')}"
-            ></component-typography>
-            <component-tabs>
-               <component-tab
+            ></nidoca-typography>
+            <nidoca-tabs>
+               <nidoca-tab
                   slot="tab"
                   .selected="${true}"
                   text="${I18nService.getUniqueInstance().getValue('demo')}"
-               ></component-tab>
-               <component-tab slot="tab" text="${I18nService.getUniqueInstance().getValue('source')}"></component-tab>
-               <component-tab-content slot="tabContent" .selected="${true}"
-                  ><component-flex-container
+               ></nidoca-tab>
+               <nidoca-tab slot="tab" text="${I18nService.getUniqueInstance().getValue('source')}"></nidoca-tab>
+               <nidoca-tab-content slot="tabContent" .selected="${true}"
+                  ><nidoca-flex-container
                      .flexContainerProperties="${[
                         FlexContainerProperties.CONTAINER_WIDTH_100,
                         FlexContainerProperties.TABLET_MAX_WIDTH,
@@ -55,38 +55,38 @@ export class PageAccordion extends PageAbstract {
                      .flexItemProperties="${[]}"
                      itemFlexBasisValue="100%"
                   >
-                     <component-form>
-                        <component-inputfield
+                     <nidoca-form>
+                        <nidoca-inputfield
                            .inputfieldType="${InputfieldType.COMBOBOX}"
                            .options="${InputfieldComponent.enumToComboboxItems(AccordionType)}"
                            label="${I18nService.getUniqueInstance().getValue('pageaccordion_accordiontype_label')}"
                            .value="${InputfieldComponent.enumGetKeyFromValue(AccordionType, this.accordionType)}"
                            @component-inputfield-change="${(event: CustomEvent) =>
                               (this.accordionType = (<any>AccordionType)[event.detail.outputData.value])}"
-                        ></component-inputfield>
-                     </component-form>
-                     <component-spacer
+                        ></nidoca-inputfield>
+                     </nidoca-form>
+                     <nidoca-spacer
                         spacerSize="${SpacerSize.MEDIUM}"
                         spacerAlignment="${SpacerAlignment.VERTICAL}"
-                     ></component-spacer
-                     ><component-accordion accordionType="${this.accordionType}">
-                        <component-accordion-item header="${I18nService.getUniqueInstance().getValue('pageaccordion_header_1')}">
-                           <component-rich-media src="https://picsum.photos/400/100"></component-rich-media>
-                        </component-accordion-item>
-                        <component-accordion-item header="${I18nService.getUniqueInstance().getValue('pageaccordion_header_2')}">
-                           <component-rich-media src="https://picsum.photos/400/100"></component-rich-media>
-                        </component-accordion-item>
-                     </component-accordion> </component-flex-container
-               ></component-tab-content>
-               <component-tab-content slot="tabContent">
-                  <component-spacer
+                     ></nidoca-spacer
+                     ><nidoca-accordion accordionType="${this.accordionType}">
+                        <nidoca-accordion-item header="${I18nService.getUniqueInstance().getValue('pageaccordion_header_1')}">
+                           <nidoca-rich-media src="https://picsum.photos/400/100"></nidoca-rich-media>
+                        </nidoca-accordion-item>
+                        <nidoca-accordion-item header="${I18nService.getUniqueInstance().getValue('pageaccordion_header_2')}">
+                           <nidoca-rich-media src="https://picsum.photos/400/100"></nidoca-rich-media>
+                        </nidoca-accordion-item>
+                     </nidoca-accordion> </nidoca-flex-container
+               ></nidoca-tab-content>
+               <nidoca-tab-content slot="tabContent">
+                  <nidoca-spacer
                      spacerSize="${SpacerSize.MEDIUM}"
                      spacerAlignment="${SpacerAlignment.VERTICAL}"
-                  ></component-spacer
-                  ><component-code> </component-code>
-               </component-tab-content>
-            </component-tabs>
-         </component-flex-container>
+                  ></nidoca-spacer
+                  ><nidoca-code> </nidoca-code>
+               </nidoca-tab-content>
+            </nidoca-tabs>
+         </nidoca-flex-container>
       `;
    }
 }

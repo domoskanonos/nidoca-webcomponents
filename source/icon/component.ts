@@ -18,7 +18,7 @@ export class IconShadowType {
    static SHADOW_3 = 'SHADOW_3';
 }
 
-@customElement('component-icon')
+@customElement('nidoca-icon')
 export class IconComponent extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
@@ -61,7 +61,7 @@ export class IconComponent extends LitElement {
 
    render() {
       return html`
-         <component-spacer size="${this.withIconSpace ? String(this.size / 2).concat(this.sizeUnit) : '0px'}">
+         <nidoca-spacer size="${this.withIconSpace ? String(this.size / 2).concat(this.sizeUnit) : '0px'}">
             <span
                class="icon-container ${this.iconShadowType} ${this.clickable ? 'clickable' : ''} ${this.round ? 'ROUND' : ''}"
                title="${this.title}"
@@ -82,7 +82,7 @@ export class IconComponent extends LitElement {
                   >${this.icon}</i
                >
             </span>
-         </component-spacer>
+         </nidoca-spacer>
       `;
    }
 

@@ -26,7 +26,7 @@ export class PageDialog extends PageAbstract {
 
    getMainComponent(): TemplateResult {
       return html`
-         <component-flex-container
+         <nidoca-flex-container
             .flexContainerProperties="${[
                FlexContainerProperties.CONTAINER_WIDTH_50,
                FlexContainerProperties.TABLET_MAX_WIDTH,
@@ -37,28 +37,28 @@ export class PageDialog extends PageAbstract {
             .flexItemProperties="${[FlexItemProperties.KEYLINE_ALIGNMENT_HORIZONTAL, FlexItemProperties.KEYLINE_SIZE_MEDIUM]}"
             itemFlexBasisValue="100%"
          >
-            <component-typography .typographyType="${TypographyType.H2}" text="<component-dialog/>"></component-typography>
-            <component-typography .typographyType="${TypographyType.BODY1}">
+            <nidoca-typography .typographyType="${TypographyType.H2}" text="<nidoca-dialog/>"></nidoca-typography>
+            <nidoca-typography .typographyType="${TypographyType.BODY1}">
                <i>DialogComponent</i>${I18nService.getUniqueInstance().getValue('page_dialog')}
-            </component-typography>
-            <component-typography
+            </nidoca-typography>
+            <nidoca-typography
                .typographyType="${TypographyType.H4}"
                text="${I18nService.getUniqueInstance().getValue('interactive_demo')}"
-            ></component-typography>
+            ></nidoca-typography>
 
-            <component-tabs>
-               <component-tab
+            <nidoca-tabs>
+               <nidoca-tab
                   slot="tab"
                   .selected="${true}"
                   text="${I18nService.getUniqueInstance().getValue('demo')}"
-               ></component-tab>
-               <component-tab slot="tab" text="${I18nService.getUniqueInstance().getValue('source')}"></component-tab>
-               <component-tab-content slot="tabContent" .selected="${true}">
-                  <component-spacer
+               ></nidoca-tab>
+               <nidoca-tab slot="tab" text="${I18nService.getUniqueInstance().getValue('source')}"></nidoca-tab>
+               <nidoca-tab-content slot="tabContent" .selected="${true}">
+                  <nidoca-spacer
                      spacerSize="${SpacerSize.MEDIUM}"
                      spacerAlignment="${SpacerAlignment.VERTICAL}"
-                  ></component-spacer>
-                  <component-flex-container
+                  ></nidoca-spacer>
+                  <nidoca-flex-container
                      .flexContainerProperties="${[
                         FlexContainerProperties.CONTAINER_WIDTH_100,
                         FlexContainerProperties.TABLET_MAX_WIDTH,
@@ -67,15 +67,15 @@ export class PageDialog extends PageAbstract {
                      .flexItemProperties="${[FlexItemProperties.KEYLINE_ALIGNMENT_BOTH, FlexItemProperties.KEYLINE_SIZE_MEDIUM]}"
                      itemFlexBasisValue="100%"
                   >
-                     <component-button
+                     <nidoca-button
                         text="Zeige Dialog"
                         @component-button-click="${() => {
                            this.showDialog = true;
                         }}"
                      >
-                     </component-button>
-                     <component-dialog .show="${this.showDialog}">
-                        <component-flex-container
+                     </nidoca-button>
+                     <nidoca-dialog .show="${this.showDialog}">
+                        <nidoca-flex-container
                            .flexContainerProperties="${[
                               FlexContainerProperties.CONTAINER_WIDTH_100,
                               FlexContainerProperties.CONTAINER_HEIGHT_100
@@ -88,30 +88,30 @@ export class PageDialog extends PageAbstract {
                            .alignItems="${AlignItems.START}"
                            .alignContent="${AlignContent.CENTER}"
                         >
-                           <component-rich-media src="https://picsum.photos/200/200"></component-rich-media>
-                           <component-button
+                           <nidoca-rich-media src="https://picsum.photos/200/200"></nidoca-rich-media>
+                           <nidoca-button
                               text="Dialog schließen"
                               @component-button-click="${() => {
                                  this.showDialog = false;
                               }}"
                            >
-                           </component-button>
-                        </component-flex-container>
-                     </component-dialog>
-                  </component-flex-container>
-               </component-tab-content>
-               <component-tab-content slot="tabContent"
-                  ><component-spacer
+                           </nidoca-button>
+                        </nidoca-flex-container>
+                     </nidoca-dialog>
+                  </nidoca-flex-container>
+               </nidoca-tab-content>
+               <nidoca-tab-content slot="tabContent"
+                  ><nidoca-spacer
                      spacerSize="${SpacerSize.MEDIUM}"
                      spacerAlignment="${SpacerAlignment.VERTICAL}"
-                  ></component-spacer
-                  ><component-code
-                     code="${'<component-dialog .show="'.concat(String(this.showDialog)).concat('"></component-dialog>')}"
+                  ></nidoca-spacer
+                  ><nidoca-code
+                     code="${'<nidoca-dialog .show="'.concat(String(this.showDialog)).concat('"></nidoca-dialog>')}"
                   >
-                  </component-code
-               ></component-tab-content>
-            </component-tabs>
-         </component-flex-container>
+                  </nidoca-code
+               ></nidoca-tab-content>
+            </nidoca-tabs>
+         </nidoca-flex-container>
       `;
    }
 }

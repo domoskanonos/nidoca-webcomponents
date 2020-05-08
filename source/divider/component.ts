@@ -9,7 +9,7 @@ export class DividerType {
    static THICK: string = 'THICK';
 }
 
-@customElement('component-divider')
+@customElement('nidoca-divider')
 export class DividerComponent extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}

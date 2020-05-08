@@ -3,7 +3,7 @@ import { ListItemComponent } from './item/component';
 
 const componentCSS = require('./component.css');
 
-@customElement('component-list')
+@customElement('nidoca-list')
 export class ListComponent extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}

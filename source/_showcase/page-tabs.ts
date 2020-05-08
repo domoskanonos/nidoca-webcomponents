@@ -13,7 +13,7 @@ export class PageTabs extends PageAbstract {
 
    getMainComponent(): TemplateResult {
       return html`
-         <component-flex-container
+         <nidoca-flex-container
             .flexContainerProperties="${[
                FlexContainerProperties.CONTAINER_WIDTH_50,
                FlexContainerProperties.TABLET_MAX_WIDTH,
@@ -24,47 +24,47 @@ export class PageTabs extends PageAbstract {
             .flexItemProperties="${[FlexItemProperties.KEYLINE_ALIGNMENT_HORIZONTAL, FlexItemProperties.KEYLINE_SIZE_MEDIUM]}"
             itemFlexBasisValue="100%"
          >
-            <component-typography .typographyType="${TypographyType.H2}" text="<component-tabs/>"></component-typography>
-            <component-typography
+            <nidoca-typography .typographyType="${TypographyType.H2}" text="<nidoca-tabs/>"></nidoca-typography>
+            <nidoca-typography
                .typographyType="${TypographyType.BODY1}"
                text="Komponente um Inhalte zu seperieren."
-            ></component-typography>
-            <component-tabs>
-               <component-tab
+            ></nidoca-typography>
+            <nidoca-tabs>
+               <nidoca-tab
                   slot="tab"
                   .selected="${true}"
                   text="${I18nService.getUniqueInstance().getValue('demo')}"
-               ></component-tab>
-               <component-tab slot="tab" text="${I18nService.getUniqueInstance().getValue('source')}"></component-tab>
-               <component-tab-content slot="tabContent" .selected="${true}">
-                  <component-spacer
+               ></nidoca-tab>
+               <nidoca-tab slot="tab" text="${I18nService.getUniqueInstance().getValue('source')}"></nidoca-tab>
+               <nidoca-tab-content slot="tabContent" .selected="${true}">
+                  <nidoca-spacer
                      spacerSize="${SpacerSize.MEDIUM}"
                      spacerAlignment="${SpacerAlignment.VERTICAL}"
-                  ></component-spacer>
+                  ></nidoca-spacer>
 
-                  <component-box height="50vmin" width="50vmin">
-                     <component-tabs>
-                        <component-tab slot="tab" .selected="${true}" text="Tab 1"></component-tab>
-                        <component-tab slot="tab" text="Tab 2"></component-tab>
-                        <component-tab-content slot="tabContent" .selected="${true}">Inhalt 1</component-tab-content>
-                        <component-tab-content slot="tabContent">Inhalt 2</component-tab-content>
-                     </component-tabs>
-                  </component-box>
-               </component-tab-content>
-               <component-tab-content slot="tabContent"
-                  ><component-code>
-                     ${'<component-tabs '.concat(
+                  <nidoca-box height="50vmin" width="50vmin">
+                     <nidoca-tabs>
+                        <nidoca-tab slot="tab" .selected="${true}" text="Tab 1"></nidoca-tab>
+                        <nidoca-tab slot="tab" text="Tab 2"></nidoca-tab>
+                        <nidoca-tab-content slot="tabContent" .selected="${true}">Inhalt 1</nidoca-tab-content>
+                        <nidoca-tab-content slot="tabContent">Inhalt 2</nidoca-tab-content>
+                     </nidoca-tabs>
+                  </nidoca-box>
+               </nidoca-tab-content>
+               <nidoca-tab-content slot="tabContent"
+                  ><nidoca-code>
+                     ${'<nidoca-tabs '.concat(
                         '>\n' +
-                           '<component-tab slot="tab" .selected="${true}" text="Tab 1"></component-tab>\n' +
-                           '<component-tab slot="tab" text="Tab 2"></component-tab>\n' +
-                           '<component-tab-content slot="tabContent" .selected="${true}">Inhalt 1</component-tab-content>\n' +
-                           '<component-tab-content slot="tabContent">Inhalt 2</component-tab-content>\n' +
-                           '</component-tabs>'
+                           '<nidoca-tab slot="tab" .selected="${true}" text="Tab 1"></nidoca-tab>\n' +
+                           '<nidoca-tab slot="tab" text="Tab 2"></nidoca-tab>\n' +
+                           '<nidoca-tab-content slot="tabContent" .selected="${true}">Inhalt 1</nidoca-tab-content>\n' +
+                           '<nidoca-tab-content slot="tabContent">Inhalt 2</nidoca-tab-content>\n' +
+                           '</nidoca-tabs>'
                      )}
-                  </component-code></component-tab-content
+                  </nidoca-code></nidoca-tab-content
                >
-            </component-tabs>
-         </component-flex-container>
+            </nidoca-tabs>
+         </nidoca-flex-container>
       `;
    }
 }

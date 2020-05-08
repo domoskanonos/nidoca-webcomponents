@@ -17,7 +17,7 @@ export class SpacerSize {
    static MAX: string = 'spaceMax';
 }
 
-@customElement('component-spacer')
+@customElement('nidoca-spacer')
 export class SpacerComponent extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}

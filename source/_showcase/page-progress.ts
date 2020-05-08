@@ -19,7 +19,7 @@ export class PageProgress extends PageAbstract {
 
    getMainComponent(): TemplateResult {
       return html`
-         <component-flex-container
+         <nidoca-flex-container
             .flexContainerProperties="${[
                FlexContainerProperties.CONTAINER_WIDTH_50,
                FlexContainerProperties.TABLET_MAX_WIDTH,
@@ -30,49 +30,49 @@ export class PageProgress extends PageAbstract {
             .flexItemProperties="${[FlexItemProperties.KEYLINE_ALIGNMENT_HORIZONTAL, FlexItemProperties.KEYLINE_SIZE_MEDIUM]}"
             itemFlexBasisValue="100%"
          >
-            <component-typography .typographyType="${TypographyType.H2}" text="<component-progress/>"></component-typography>
-            <component-typography .typographyType="${TypographyType.BODY1}">
+            <nidoca-typography .typographyType="${TypographyType.H2}" text="<nidoca-progress/>"></nidoca-typography>
+            <nidoca-typography .typographyType="${TypographyType.BODY1}">
                <i>ProgressComponent</i>${I18nService.getUniqueInstance().getValue('pageprogress_description')}
-            </component-typography>
+            </nidoca-typography>
 
-            <component-tabs>
-               <component-tab
+            <nidoca-tabs>
+               <nidoca-tab
                   slot="tab"
                   .selected="${true}"
                   text="${I18nService.getUniqueInstance().getValue('demo')}"
-               ></component-tab>
-               <component-tab slot="tab" text="${I18nService.getUniqueInstance().getValue('source')}"></component-tab>
-               <component-tab-content slot="tabContent" .selected="${true}">
-                  <component-form>
-                     <component-inputfield
+               ></nidoca-tab>
+               <nidoca-tab slot="tab" text="${I18nService.getUniqueInstance().getValue('source')}"></nidoca-tab>
+               <nidoca-tab-content slot="tabContent" .selected="${true}">
+                  <nidoca-form>
+                     <nidoca-inputfield
                         .inputfieldType="${InputfieldType.COMBOBOX}"
                         .options="${InputfieldComponent.enumToComboboxItems(ProgressType)}"
                         label="${I18nService.getUniqueInstance().getValue('pageprogress_progressType')}"
                         .value="${InputfieldComponent.enumGetKeyFromValue(ProgressType, this.progressType)}"
                         @component-inputfield-change="${(event: CustomEvent) =>
                            (this.progressType = (<any>ProgressType)[event.detail.outputData.value])}"
-                     ></component-inputfield>
-                  </component-form>
-                  <component-spacer
+                     ></nidoca-inputfield>
+                  </nidoca-form>
+                  <nidoca-spacer
                      spacerSize="${SpacerSize.MEDIUM}"
                      spacerAlignment="${SpacerAlignment.VERTICAL}"
-                  ></component-spacer>
-                  <component-progress progressType="${this.progressType}"></component-progress>
-               </component-tab-content>
-               <component-tab-content slot="tabContent"
-                  ><component-spacer
+                  ></nidoca-spacer>
+                  <nidoca-progress progressType="${this.progressType}"></nidoca-progress>
+               </nidoca-tab-content>
+               <nidoca-tab-content slot="tabContent"
+                  ><nidoca-spacer
                      spacerSize="${SpacerSize.MEDIUM}"
                      spacerAlignment="${SpacerAlignment.VERTICAL}"
-                  ></component-spacer
-                  ><component-code
-                     code="${'<component-progress .progressType=${ProgressType.'
+                  ></nidoca-spacer
+                  ><nidoca-code
+                     code="${'<nidoca-progress .progressType=${ProgressType.'
                         .concat(this.progressType)
-                        .concat('}"></component-progress>')}"
+                        .concat('}"></nidoca-progress>')}"
                   >
-                  </component-code
-               ></component-tab-content>
-            </component-tabs>
-         </component-flex-container>
+                  </nidoca-code
+               ></nidoca-tab-content>
+            </nidoca-tabs>
+         </nidoca-flex-container>
       `;
    }
 }

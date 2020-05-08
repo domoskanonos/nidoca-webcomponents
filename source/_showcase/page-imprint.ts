@@ -14,7 +14,7 @@ export class PageImprintComponent extends PageAbstract {
 
    getMainComponent(): TemplateResult {
       return html`
-         <component-flex-container
+         <nidoca-flex-container
             .flexContainerProperties="${[
                FlexContainerProperties.CONTAINER_WIDTH_50,
                FlexContainerProperties.TABLET_MAX_WIDTH,
@@ -25,18 +25,18 @@ export class PageImprintComponent extends PageAbstract {
             .flexItemProperties="${[FlexItemProperties.KEYLINE_ALIGNMENT_HORIZONTAL, FlexItemProperties.KEYLINE_SIZE_ZERO]}"
             itemFlexBasisValue="100%"
          >
-            <component-typography .typographyType="${TypographyType.H1}" text="Imprint"></component-typography>
-            <component-typography .typographyType="${TypographyType.H4}">Site operator / responsible</component-typography>
-            <component-typography .typographyType="${TypographyType.BODY1}">Dominik Bruhn</component-typography>
-            <component-typography .typographyType="${TypographyType.BODY1}">Holzwickeder Straße 109c</component-typography>
-            <component-typography .typographyType="${TypographyType.BODY1}">44309 Dortmund</component-typography>
-            <component-spacer spacerSize="${SpacerSize.LITTLE}" spacerAlignment="${SpacerAlignment.VERTICAL}"> </component-spacer>
-            <component-typography .typographyType="${TypographyType.BODY1}">Germany</component-typography>
-            <component-spacer spacerSize="${SpacerSize.MEDIUM}" spacerAlignment="${SpacerAlignment.VERTICAL}"> </component-spacer>
-            <component-typography .typographyType="${TypographyType.BODY1}"
-               >dominikbruhn [at] googlemail.com</component-typography
+            <nidoca-typography .typographyType="${TypographyType.H1}" text="Imprint"></nidoca-typography>
+            <nidoca-typography .typographyType="${TypographyType.H4}">Site operator / responsible</nidoca-typography>
+            <nidoca-typography .typographyType="${TypographyType.BODY1}">Dominik Bruhn</nidoca-typography>
+            <nidoca-typography .typographyType="${TypographyType.BODY1}">Holzwickeder Straße 109c</nidoca-typography>
+            <nidoca-typography .typographyType="${TypographyType.BODY1}">44309 Dortmund</nidoca-typography>
+            <nidoca-spacer spacerSize="${SpacerSize.LITTLE}" spacerAlignment="${SpacerAlignment.VERTICAL}"> </nidoca-spacer>
+            <nidoca-typography .typographyType="${TypographyType.BODY1}">Germany</nidoca-typography>
+            <nidoca-spacer spacerSize="${SpacerSize.MEDIUM}" spacerAlignment="${SpacerAlignment.VERTICAL}"> </nidoca-spacer>
+            <nidoca-typography .typographyType="${TypographyType.BODY1}"
+               >dominikbruhn [at] googlemail.com</nidoca-typography
             >
-         </component-flex-container>
+         </nidoca-flex-container>
       `;
    }
 }

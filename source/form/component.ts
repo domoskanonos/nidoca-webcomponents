@@ -17,7 +17,7 @@ export class FormComponentOutputData {
    formData: FormData = FormData.prototype;
 }
 
-@customElement('component-form')
+@customElement('nidoca-form')
 export class FormComponent extends LitElement {
    static IDENTIFIER: string = 'FormComponent';
 

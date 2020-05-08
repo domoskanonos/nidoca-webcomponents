@@ -3,7 +3,7 @@ import { VisibleType } from '../..';
 
 const componentCSS = require('./component.css');
 
-@customElement('component-tab-content')
+@customElement('nidoca-tab-content')
 export class TabContentComponent extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
@@ -14,9 +14,9 @@ export class TabContentComponent extends LitElement {
 
    render() {
       return html`
-         <component-visible visibleType="${this.selected ? VisibleType.NORMAL : VisibleType.HIDE}">
+         <nidoca-visible visibleType="${this.selected ? VisibleType.NORMAL : VisibleType.HIDE}">
             <slot></slot>
-         </component-visible>
+         </nidoca-visible>
       `;
    }
 }

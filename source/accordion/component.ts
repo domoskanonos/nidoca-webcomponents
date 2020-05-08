@@ -9,7 +9,7 @@ export enum AccordionType {
     MULTI = 'MULTI'
 }
 
-@customElement('component-accordion')
+@customElement('nidoca-accordion')
 export class AccordionComponent extends LitElement {
     static styles = css`
       ${unsafeCSS(componentCSS)}
