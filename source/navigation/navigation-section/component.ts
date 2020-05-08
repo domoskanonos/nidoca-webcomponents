@@ -10,7 +10,7 @@ import {
    SpacerSize,
    TypographyType
 } from '../..';
-import { ContainerProperties } from '../../flex-container/component';
+import { FlexContainerProperties } from '../../flex-container/component';
 
 const componentCSS = require('./component.css');
 
@@ -30,8 +30,8 @@ export class NavigationSectionComponent extends LitElement {
       return this.rendered
          ? html`
               <component-flex-container
-                 .containerProperties="${[ContainerProperties.CONTAINER_WIDTH_100]}"
-                 .itemProperties="${[]}"
+                 .flexContainerProperties="${[FlexContainerProperties.CONTAINER_WIDTH_100]}"
+                 .flexItemProperties="${[]}"
                  .flexDirection="${FlexDirection.ROW}"
                  .flexWrap="${FlexWrap.NO_WRAP}"
                  .flexJustifyContent="${FlexJustifyContent.FLEX_END}"

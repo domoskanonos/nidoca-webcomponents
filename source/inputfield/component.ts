@@ -5,7 +5,7 @@ import { KeyValueData } from '../form/component';
 import { TypographyType } from '../typography/component';
 import { BasicService } from '@domoskanonos/frontend-basis';
 import { AlignContent, AlignItems, BorderProperties, FlexJustifyContent, SpacerAlignment, SpacerSize, VisibleType } from '..';
-import { ContainerProperties } from '../flex-container/component';
+import { FlexContainerProperties } from '../flex-container/component';
 import { GridAlignItems, GridJustifyItems } from '../grid-container/component';
 
 const componentCSS = require('./component.css');
@@ -177,9 +177,9 @@ export class InputfieldComponent extends LitElement {
                        <component-icon icon="${this.leadingIcon}" .clickable="${this.leadingIconClickable}"></component-icon>
                     </component-visible>
                     <component-flex-container
-                       .containerProperties="${[
-                          ContainerProperties.CONTAINER_WIDTH_100,
-                          ContainerProperties.CONTAINER_HEIGHT_100
+                       .flexContainerProperties="${[
+                          FlexContainerProperties.CONTAINER_WIDTH_100,
+                          FlexContainerProperties.CONTAINER_HEIGHT_100
                        ]}"
                        .alignContent="${AlignContent.CENTER}"
                        itemFlexBasisValue="100%"
@@ -198,7 +198,7 @@ export class InputfieldComponent extends LitElement {
                                      .gridTemplateColumns="${['1fr', 'auto']}"
                                   >
                                      <component-flex-container
-                                        .containerProperties="${[ContainerProperties.CONTAINER_WIDTH_100]}"
+                                        .flexContainerProperties="${[FlexContainerProperties.CONTAINER_WIDTH_100]}"
                                         itemFlexBasisValue="100%"
                                      >
                                         <component-typography
@@ -278,7 +278,7 @@ ${this.value}</textarea
                                      .gridTemplateColumns="${['1fr', 'auto']}"
                                   >
                                      <component-flex-container
-                                        .containerProperties="${[ContainerProperties.CONTAINER_WIDTH_100]}"
+                                        .flexContainerProperties="${[FlexContainerProperties.CONTAINER_WIDTH_100]}"
                                         itemFlexBasisValue="100%"
                                      >
                                         <component-typography
@@ -355,7 +355,7 @@ ${this.value}</textarea
               <component-visible visibleType="${this.showAdditionalTextContainer() ? VisibleType.NORMAL : VisibleType.HIDE}">
                  <component-spacer spacerSize="${SpacerSize.LITTLE}" spacerAlignment="${SpacerAlignment.VERTICAL}">
                  <component-flex-container
-                    .containerProperties="${[ContainerProperties.CONTAINER_WIDTH_100]}"
+                    .flexContainerProperties="${[FlexContainerProperties.CONTAINER_WIDTH_100]}"
                     itemFlexBasisValue="auto"
                     flexJustifyContent="${FlexJustifyContent.SPACE_BETWEEN}"
                  >

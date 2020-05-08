@@ -5,11 +5,11 @@ import { PageAbstract } from './page-abstract';
 import {
    AlignContent,
    AlignItems,
-   ContainerProperties,
+   FlexContainerProperties,
    FlexDirection,
    FlexJustifyContent,
    FlexWrap,
-   ItemProperties
+   FlexItemProperties
 } from '../flex-container/component';
 import { InputfieldType, SpacerAlignment, SpacerSize, TypographyType } from '..';
 import { I18nService } from '@domoskanonos/frontend-basis';
@@ -31,14 +31,14 @@ export class PageList extends PageAbstract {
    getMainComponent(): TemplateResult {
       return html`
          <component-flex-container
-            .containerProperties="${[
-               ContainerProperties.CONTAINER_WIDTH_50,
-               ContainerProperties.TABLET_MAX_WIDTH,
-               ContainerProperties.SMARTPHONE_MAX_WIDTH,
-               ContainerProperties.SMARTPHONE_HORIZONTAL_PADDING,
-               ContainerProperties.TABLET_HORIZONTAL_PADDING
+            .flexContainerProperties="${[
+               FlexContainerProperties.CONTAINER_WIDTH_50,
+               FlexContainerProperties.TABLET_MAX_WIDTH,
+               FlexContainerProperties.SMARTPHONE_MAX_WIDTH,
+               FlexContainerProperties.SMARTPHONE_HORIZONTAL_PADDING,
+               FlexContainerProperties.TABLET_HORIZONTAL_PADDING
             ]}"
-            .itemProperties="${[ItemProperties.KEYLINE_ALIGNMENT_HORIZONTAL, ItemProperties.KEYLINE_SIZE_MEDIUM]}"
+            .flexItemProperties="${[FlexItemProperties.KEYLINE_ALIGNMENT_HORIZONTAL, FlexItemProperties.KEYLINE_SIZE_MEDIUM]}"
             itemFlexBasisValue="100%"
          >
             <component-typography .typographyType="${TypographyType.H2}" text="<component-list/>"></component-typography>
@@ -58,12 +58,12 @@ export class PageList extends PageAbstract {
                      spacerAlignment="${SpacerAlignment.VERTICAL}"
                   ></component-spacer>
                   <component-flex-container
-                     .containerProperties="${[
-                        ContainerProperties.CONTAINER_WIDTH_100,
-                        ContainerProperties.TABLET_MAX_WIDTH,
-                        ContainerProperties.SMARTPHONE_MAX_WIDTH
+                     .flexContainerProperties="${[
+                        FlexContainerProperties.CONTAINER_WIDTH_100,
+                        FlexContainerProperties.TABLET_MAX_WIDTH,
+                        FlexContainerProperties.SMARTPHONE_MAX_WIDTH
                      ]}"
-                     .itemProperties="${[ItemProperties.KEYLINE_ALIGNMENT_BOTH, ItemProperties.KEYLINE_SIZE_MEDIUM]}"
+                     .flexItemProperties="${[FlexItemProperties.KEYLINE_ALIGNMENT_BOTH, FlexItemProperties.KEYLINE_SIZE_MEDIUM]}"
                      itemFlexBasisValue="100%"
                   >
                      <component-form>

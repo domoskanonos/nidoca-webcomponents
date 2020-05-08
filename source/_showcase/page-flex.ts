@@ -3,12 +3,12 @@ import { PageAbstract } from './page-abstract';
 import {
    AlignContent,
    AlignItems,
-   ContainerProperties,
+   FlexContainerProperties,
    FlexComponent,
    FlexDirection,
    FlexJustifyContent,
    FlexWrap,
-   ItemProperties
+   FlexItemProperties
 } from '../flex-container/component';
 import { InputfieldComponent, InputfieldType, SpacerAlignment, SpacerSize, TypographyType } from '..';
 import { I18nService } from '@domoskanonos/frontend-basis';
@@ -23,7 +23,7 @@ export class PageLayoutComponent extends PageAbstract {
    }
 
    @property()
-   containerProperties: string[] = [ContainerProperties.CONTAINER_WIDTH_100, ContainerProperties.CONTAINER_HEIGHT_100];
+   flexContainerProperties: string[] = [FlexContainerProperties.CONTAINER_WIDTH_100, FlexContainerProperties.CONTAINER_HEIGHT_100];
 
    @property()
    flexDirection: string = FlexDirection.ROW;
@@ -38,7 +38,7 @@ export class PageLayoutComponent extends PageAbstract {
    alignContent: string = AlignContent.SPACE_AROUND;
 
    @property()
-   itemProperties: string[] = [];
+   flexItemProperties: string[] = [];
 
    @property()
    itemFlexBasisValue: string = 'auto';
@@ -62,8 +62,8 @@ export class PageLayoutComponent extends PageAbstract {
                   <component-box height="40vmin" width="40vmin">
                      <component-flex-container
                         style="background-color: var(--app-color-primary-background);"
-                        .containerProperties="${this.containerProperties}"
-                        .itemProperties="${this.itemProperties}"
+                        .flexContainerProperties="${this.flexContainerProperties}"
+                        .flexItemProperties="${this.flexItemProperties}"
                         itemFlexBasisValue="${this.itemFlexBasisValue}"
                         .flexDirection="${this.flexDirection}"
                         .flexWrap="${this.flexWrap}"
@@ -82,14 +82,14 @@ export class PageLayoutComponent extends PageAbstract {
          <component-spacer size="22vmin" spacerAlignment="${SpacerAlignment.VERTICAL}"></component-spacer>
 
          <component-flex-container
-            .containerProperties="${[
-               ContainerProperties.CONTAINER_WIDTH_50,
-               ContainerProperties.TABLET_MAX_WIDTH,
-               ContainerProperties.SMARTPHONE_MAX_WIDTH,
-               ContainerProperties.SMARTPHONE_HORIZONTAL_PADDING,
-               ContainerProperties.TABLET_HORIZONTAL_PADDING
+            .flexContainerProperties="${[
+               FlexContainerProperties.CONTAINER_WIDTH_50,
+               FlexContainerProperties.TABLET_MAX_WIDTH,
+               FlexContainerProperties.SMARTPHONE_MAX_WIDTH,
+               FlexContainerProperties.SMARTPHONE_HORIZONTAL_PADDING,
+               FlexContainerProperties.TABLET_HORIZONTAL_PADDING
             ]}"
-            .itemProperties="${[ItemProperties.KEYLINE_ALIGNMENT_HORIZONTAL, ItemProperties.KEYLINE_SIZE_MEDIUM]}"
+            .flexItemProperties="${[FlexItemProperties.KEYLINE_ALIGNMENT_HORIZONTAL, FlexItemProperties.KEYLINE_SIZE_MEDIUM]}"
             itemFlexBasisValue="100%"
          >
             <component-typography
@@ -120,8 +120,8 @@ export class PageLayoutComponent extends PageAbstract {
                      spacerAlignment="${SpacerAlignment.VERTICAL}"
                   ></component-spacer>
                   <component-flex-container
-                     .containerProperties="${[ContainerProperties.CONTAINER_WIDTH_100]}"
-                     .itemProperties="${[ItemProperties.KEYLINE_SIZE_MEDIUM]}"
+                     .flexContainerProperties="${[FlexContainerProperties.CONTAINER_WIDTH_100]}"
+                     .flexItemProperties="${[FlexItemProperties.KEYLINE_SIZE_MEDIUM]}"
                      .itemFlexBasisValues="${['auto', '100%', '100%']}"
                      .flexJustifyContent="${FlexJustifyContent.FLEX_START}"
                   >
@@ -178,24 +178,24 @@ export class PageLayoutComponent extends PageAbstract {
 
                         <component-inputfield
                            .inputfieldType="${InputfieldType.COMBOBOX}"
-                           .options="${InputfieldComponent.enumToComboboxItems(ContainerProperties)}"
+                           .options="${InputfieldComponent.enumToComboboxItems(FlexContainerProperties)}"
                            label="${I18nService.getUniqueInstance().getValue('pageflex_container')}"
-                           .value="${this.containerProperties}"
+                           .value="${this.flexContainerProperties}"
                            size="10"
                            multiple="true"
                            @component-inputfield-change="${(event: CustomEvent) =>
-                              (this.containerProperties = event.detail.outputData.value)}"
+                              (this.flexContainerProperties = event.detail.outputData.value)}"
                         ></component-inputfield>
 
                         <component-inputfield
                            .inputfieldType="${InputfieldType.COMBOBOX}"
-                           .options="${InputfieldComponent.enumToComboboxItems(ItemProperties)}"
+                           .options="${InputfieldComponent.enumToComboboxItems(FlexItemProperties)}"
                            label="${I18nService.getUniqueInstance().getValue('pageflex_content')}"
-                           .value="${this.itemProperties}"
+                           .value="${this.flexItemProperties}"
                            size="10"
                            multiple="true"
                            @component-inputfield-change="${(event: CustomEvent) =>
-                              (this.itemProperties = event.detail.outputData.value)}"
+                              (this.flexItemProperties = event.detail.outputData.value)}"
                         ></component-inputfield>
                      </component-form>
                   </component-flex-container>
@@ -209,12 +209,12 @@ export class PageLayoutComponent extends PageAbstract {
                      code="${'<component-flex-container'
                         .concat(
                            PreviewFormatterService.getUniqueInstance().propertyArray2String(
-                              this.containerProperties,
-                              ContainerProperties
+                              this.flexContainerProperties,
+                              FlexContainerProperties
                            )
                         )
                         .concat(
-                           PreviewFormatterService.getUniqueInstance().propertyArray2String(this.itemProperties, ItemProperties)
+                           PreviewFormatterService.getUniqueInstance().propertyArray2String(this.flexItemProperties, FlexItemProperties)
                         )
                         .concat(
                            'itemFlexBasisValue="'

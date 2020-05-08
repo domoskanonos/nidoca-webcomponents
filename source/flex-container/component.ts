@@ -3,7 +3,7 @@ import { BasicService } from '@domoskanonos/frontend-basis';
 
 const componentCSS = require('./component.css');
 
-export class ContainerProperties {
+export class FlexContainerProperties {
    static CONTAINER_WIDTH_MIN_CONTENT = 'CONTAINER_WIDTH_MIN_CONTENT';
    static CONTAINER_WIDTH_AUTO = 'CONTAINER_WIDTH_AUTO';
    static CONTAINER_WIDTH_100 = 'CONTAINER_WIDTH_100';
@@ -19,7 +19,7 @@ export class ContainerProperties {
    static TABLET_VERTICAL_PADDING = 'TABLET_VERTICAL_PADDING';
 }
 
-export class ItemProperties {
+export class FlexItemProperties {
    static TABLET_MAX_WIDTH = 'TABLET_MAX_WIDTH';
    static SMARTPHONE_MAX_WIDTH = 'SMARTPHONE_MAX_WIDTH';
    static KEYLINE_ALIGNMENT_HORIZONTAL = 'KEYLINE_ALIGNMENT_HORIZONTAL';
@@ -110,10 +110,10 @@ export class FlexComponent extends LitElement {
    alignContent: string = AlignContent.FLEX_START;
 
    @property()
-   containerProperties: string[] = [];
+   flexContainerProperties: string[] = [];
 
    @property()
-   itemProperties: string[] = [];
+   flexItemProperties: string[] = [];
 
    @property()
    itemFlexBasisValue: string = 'auto';
@@ -127,7 +127,7 @@ export class FlexComponent extends LitElement {
    render() {
       return html`
          <div
-            class="${this.toContainerPropertiesString(this.containerProperties)}"
+            class="${this.toContainerPropertiesString(this.flexContainerProperties)}"
             style="flex-direction: ${this.flexDirection}; flex-wrap: ${this.flexWrap}; justify-content: ${this
                .flexJustifyContent}; align-items: ${this.alignItems}; align-content: ${this.alignContent};"
          >
@@ -141,7 +141,7 @@ export class FlexComponent extends LitElement {
       if (
          changedProperties.get('itemFlexBasisValue') != undefined ||
          changedProperties.get('itemFlexBasisValues') != undefined ||
-         changedProperties.get('itemProperties') != undefined
+         changedProperties.get('flexItemProperties') != undefined
       ) {
          this.changeSlotComponentsStyle(this.slotElement);
       }
@@ -167,7 +167,7 @@ export class FlexComponent extends LitElement {
       let classList = element.classList;
       classList.value = '';
       classList.add('FLEX_ITEM');
-      this.itemProperties.forEach((clazz) => {
+      this.flexItemProperties.forEach((clazz) => {
          classList.add(clazz);
       });
 
@@ -195,9 +195,9 @@ export class FlexComponent extends LitElement {
          .concat(flexBasisValue);
    }
 
-   toContainerPropertiesString(containerPropertieses: string[]) {
+   toContainerPropertiesString(flexContainerPropertieses: string[]) {
       let containerClazzString: string = 'FLEX_CONTAINER';
-      containerPropertieses.forEach((clazz) => {
+      flexContainerPropertieses.forEach((clazz) => {
          containerClazzString = containerClazzString.concat(' ').concat(clazz);
       });
       return containerClazzString;
