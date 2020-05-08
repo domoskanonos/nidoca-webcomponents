@@ -13,6 +13,7 @@ export class SpacerSize {
    static LITTLE: string = 'spaceLittle';
    static SMALL: string = 'spaceSmall';
    static MEDIUM: string = 'spaceMedium';
+   static NORMAL: string = 'spaceNormal';
    static BIG: string = 'spaceBig';
    static MAX: string = 'spaceMax';
 }
