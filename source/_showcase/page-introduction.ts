@@ -1,8 +1,8 @@
 import { customElement, html, TemplateResult } from 'lit-element';
 import { PageAbstract } from './page-abstract';
 import {
-   AlignContent,
-   AlignItems,
+   FlexAlignContent,
+   FlexAlignItems,
    ButtonType,
    FlexDirection,
    FlexJustifyContent,
@@ -36,9 +36,9 @@ export class PageIntroduction extends PageAbstract {
                   FlexContainerProperties.SMARTPHONE_HORIZONTAL_PADDING,
                   FlexContainerProperties.CONTAINER_HEIGHT_100
                ]}"
-               itemFlexBasisValue="auto"
+               flexItemBasisValue="auto"
                .flexJustifyContent="${FlexJustifyContent.SPACE_AROUND}"
-               .alignContent="${AlignContent.CENTER}"
+               .flexAlignContent="${FlexAlignContent.CENTER}"
             >
                <nidoca-typography .typographyType="${TypographyType.H1}">WC-Atomic</nidoca-typography>
                <nidoca-typography>
@@ -61,12 +61,12 @@ export class PageIntroduction extends PageAbstract {
                <nidoca-flex-container
                   .flexContainerProperties="${[FlexContainerProperties.CONTAINER_WIDTH_AUTO]}"
                   .flexItemProperties="${[FlexItemProperties.KEYLINE_SIZE_MEDIUM]}"
-                  itemFlexBasisValue="auto"
+                  flexItemBasisValue="auto"
                   .flexDirection="${FlexDirection.ROW}"
                   .flexWrap="${FlexWrap.WRAP}"
                   .flexJustifyContent="${FlexJustifyContent.FLEX_START}"
-                  .alignItems="${AlignItems.START}"
-                  .alignContent="${AlignContent.FLEX_START}"
+                  .flexAlignItems="${FlexAlignItems.START}"
+                  .flexAlignContent="${FlexAlignContent.FLEX_START}"
                >
                   <nidoca-button
                      .buttonType="${ButtonType.SECONDARY}"
@@ -86,15 +86,15 @@ export class PageIntroduction extends PageAbstract {
             .direction="${FlexDirection.ROW}"
             .wrap="${FlexWrap.WRAP}"
             .flexJustifyContent="${FlexJustifyContent.CENTER}"
-            .alignItems="${AlignItems.CENTER}"
-            .alignContent="${AlignContent.FLEX_START}"
-            itemFlexBasisValue="25%"
+            .flexAlignItems="${FlexAlignItems.CENTER}"
+            .flexAlignContent="${FlexAlignContent.FLEX_START}"
+            flexItemBasisValue="25%"
          >
             <nidoca-rich-media src="https://picsum.photos/500/400" text="Mein Bild"></nidoca-rich-media>
             <nidoca-rich-media src="https://picsum.photos/550/400" text="Mein Bild"></nidoca-rich-media>
             <nidoca-rich-media src="https://picsum.photos/600/400" text="Mein Bild"></nidoca-rich-media>
             <nidoca-spacer spacerSize="${SpacerSize.BIG}" spacerAlignment="${SpacerAlignment.VERTICAL}">
-               <nidoca-flex-container .flexContainerProperties="${['CONTAINER_WIDTH_75']}" itemFlexBasisValue="100%">
+               <nidoca-flex-container .flexContainerProperties="${['CONTAINER_WIDTH_75']}" flexItemBasisValue="100%">
                   <nidoca-typography .typographyType="${TypographyType.H4}">Bildquelle</nidoca-typography>
                   <nidoca-typography .typographyType="${TypographyType.BODY1}">
                      Die hier abgebildeten Fotos stammen von:

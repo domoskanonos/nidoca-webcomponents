@@ -1,7 +1,7 @@
 import { css, customElement, html, property, unsafeCSS } from 'lit-element';
 import { LitElement } from 'lit-element';
 import { BasicService } from '@domoskanonos/frontend-basis';
-import { AlignItems, FlexContainerProperties, FlexJustifyContent, FlexWrap } from '../flex-container/component';
+import { FlexAlignItems, FlexContainerProperties, FlexJustifyContent, FlexWrap } from '../flex-container/component';
 import { SpacerSize, TypographyType, VisibleType } from '..';
 
 const componentCSS = require('./component.css');
@@ -39,7 +39,7 @@ export class ButtonComponent extends LitElement {
                .flexContainerProperties="${[FlexContainerProperties.CONTAINER_WIDTH_AUTO]}"
                flexWrap="${FlexWrap.NO_WRAP}"
                .flexJustifyContent="${FlexJustifyContent.CENTER}"
-               .alignItems="${AlignItems.CENTER}"
+               .flexAlignItems="${FlexAlignItems.CENTER}"
             >
                <nidoca-visible
                   visibleType="${BasicService.getUniqueInstance().isNotBlank(this.leadingIcon)

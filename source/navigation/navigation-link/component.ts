@@ -1,8 +1,8 @@
 import { css, customElement, html, unsafeCSS, property, LitElement } from 'lit-element';
 import { BasicService, RouterService } from '@domoskanonos/frontend-basis';
 import {
-   AlignContent,
-   AlignItems,
+   FlexAlignContent,
+   FlexAlignItems,
    FlexDirection,
    FlexJustifyContent,
    FlexWrap,
@@ -47,9 +47,9 @@ export class NavigationLinkComponent extends LitElement {
                        .flexDirection="${FlexDirection.ROW}"
                        .flexWrap="${FlexWrap.NO_WRAP}"
                        .flexJustifyContent="${FlexJustifyContent.FLEX_END}"
-                       .alignItems="${AlignItems.CENTER}"
-                       .alignContent="${AlignContent.FLEX_START}"
-                       .itemFlexBasisValues="${['20%', '80%']}"
+                       .flexAlignItems="${FlexAlignItems.CENTER}"
+                       .flexAlignContent="${FlexAlignContent.FLEX_START}"
+                       .flexItemBasisValues="${['20%', '80%']}"
                     >
                        <nidoca-icon icon="${this.icon}" .withIconSpace="${false}"></nidoca-icon>
                        <nidoca-typography typographyType="${TypographyType.BODY2}">${this.text}</nidoca-typography>

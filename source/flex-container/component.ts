@@ -55,7 +55,7 @@ export class FlexJustifyContent {
    static SPACE_EVENLY = 'space-evenly';
 }
 
-export class AlignItems {
+export class FlexAlignItems {
    static FLEX_START = 'flex-start';
    static FLEX_END = 'flex-end';
    static CENTER = 'center';
@@ -69,7 +69,7 @@ export class AlignItems {
    static UNSAFE = 'unsafe';
 }
 
-export class AlignContent {
+export class FlexAlignContent {
    static FLEX_START = 'flex-start';
    static FLEX_END = 'flex-end';
    static CENTER = 'center';
@@ -104,10 +104,10 @@ export class FlexComponent extends LitElement {
    flexJustifyContent: string = FlexJustifyContent.FLEX_START;
 
    @property()
-   alignItems: string = AlignItems.FLEX_START;
+   flexAlignItems: string = FlexAlignItems.FLEX_START;
 
    @property()
-   alignContent: string = AlignContent.FLEX_START;
+   flexAlignContent: string = FlexAlignContent.FLEX_START;
 
    @property()
    flexContainerProperties: string[] = [];
@@ -116,10 +116,10 @@ export class FlexComponent extends LitElement {
    flexItemProperties: string[] = [];
 
    @property()
-   itemFlexBasisValue: string = 'auto';
+   flexItemBasisValue: string = 'auto';
 
    @property()
-   itemFlexBasisValues: string[] = [];
+   flexItemBasisValues: string[] = [];
 
    @query('#slotElement')
    slotElement: HTMLSlotElement | undefined;
@@ -129,7 +129,7 @@ export class FlexComponent extends LitElement {
          <div
             class="${this.toContainerPropertiesString(this.flexContainerProperties)}"
             style="flex-direction: ${this.flexDirection}; flex-wrap: ${this.flexWrap}; justify-content: ${this
-               .flexJustifyContent}; align-items: ${this.alignItems}; align-content: ${this.alignContent};"
+               .flexJustifyContent}; align-items: ${this.flexAlignItems}; align-content: ${this.flexAlignContent};"
          >
             <slot id="slotElement" @slotchange="${(event: Event) => this.slotChanged(event)}"></slot>
          </div>
@@ -139,8 +139,8 @@ export class FlexComponent extends LitElement {
    protected update(changedProperties: Map<PropertyKey, unknown>): void {
       super.update(changedProperties);
       if (
-         changedProperties.get('itemFlexBasisValue') != undefined ||
-         changedProperties.get('itemFlexBasisValues') != undefined ||
+         changedProperties.get('flexItemBasisValue') != undefined ||
+         changedProperties.get('flexItemBasisValues') != undefined ||
          changedProperties.get('flexItemProperties') != undefined
       ) {
          this.changeSlotComponentsStyle(this.slotElement);
@@ -188,7 +188,7 @@ export class FlexComponent extends LitElement {
    }
 
    private getFlexItemStyle(index: number): string {
-      let flexBasisValue = BasicService.getUniqueInstance().getValue(this.itemFlexBasisValues[index], this.itemFlexBasisValue);
+      let flexBasisValue = BasicService.getUniqueInstance().getValue(this.flexItemBasisValues[index], this.flexItemBasisValue);
       return 'flex-basis: '
          .concat(flexBasisValue)
          .concat(';max-width: ')

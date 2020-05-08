@@ -1,8 +1,8 @@
 import { customElement, html, property, TemplateResult } from 'lit-element';
 import { PageAbstract } from './page-abstract';
 import {
-   AlignContent,
-   AlignItems,
+   FlexAlignContent,
+   FlexAlignItems,
    FlexDirection,
    FlexJustifyContent,
    FlexWrap,
@@ -35,7 +35,7 @@ export class PageDialog extends PageAbstract {
                FlexContainerProperties.TABLET_HORIZONTAL_PADDING
             ]}"
             .flexItemProperties="${[FlexItemProperties.KEYLINE_ALIGNMENT_HORIZONTAL, FlexItemProperties.KEYLINE_SIZE_MEDIUM]}"
-            itemFlexBasisValue="100%"
+            flexItemBasisValue="100%"
          >
             <nidoca-typography .typographyType="${TypographyType.H2}" text="<nidoca-dialog/>"></nidoca-typography>
             <nidoca-typography .typographyType="${TypographyType.BODY1}">
@@ -65,7 +65,7 @@ export class PageDialog extends PageAbstract {
                         FlexContainerProperties.SMARTPHONE_MAX_WIDTH
                      ]}"
                      .flexItemProperties="${[FlexItemProperties.KEYLINE_ALIGNMENT_BOTH, FlexItemProperties.KEYLINE_SIZE_MEDIUM]}"
-                     itemFlexBasisValue="100%"
+                     flexItemBasisValue="100%"
                   >
                      <nidoca-button
                         text="Zeige Dialog"
@@ -81,12 +81,12 @@ export class PageDialog extends PageAbstract {
                               FlexContainerProperties.CONTAINER_HEIGHT_100
                            ]}"
                            .flexItemProperties="${[FlexItemProperties.KEYLINE_SIZE_MEDIUM]}"
-                           itemFlexBasisValue="100%"
+                           flexItemBasisValue="100%"
                            .flexDirection="${FlexDirection.ROW}"
                            .flexWrap="${FlexWrap.WRAP}"
                            .flexJustifyContent="${FlexJustifyContent.CENTER}"
-                           .alignItems="${AlignItems.START}"
-                           .alignContent="${AlignContent.CENTER}"
+                           .flexAlignItems="${FlexAlignItems.START}"
+                           .flexAlignContent="${FlexAlignContent.CENTER}"
                         >
                            <nidoca-rich-media src="https://picsum.photos/200/200"></nidoca-rich-media>
                            <nidoca-button

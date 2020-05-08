@@ -39,7 +39,7 @@ export class PageInputComponent extends PageAbstract {
                FlexContainerProperties.TABLET_HORIZONTAL_PADDING
             ]}"
             .flexItemProperties="${[FlexItemProperties.KEYLINE_ALIGNMENT_HORIZONTAL, FlexItemProperties.KEYLINE_SIZE_MEDIUM]}"
-            itemFlexBasisValue="100%"
+            flexItemBasisValue="100%"
          >
             <nidoca-typography .typographyType="${TypographyType.H2}" text="<nidoca-inputfield/>"></nidoca-typography>
             <nidoca-typography
@@ -74,7 +74,7 @@ export class PageInputComponent extends PageAbstract {
                         FlexItemProperties.SMARTPHONE_MAX_WIDTH,
                         FlexItemProperties.TABLET_MAX_WIDTH
                      ]}"
-                     itemFlexBasisValue="100%"
+                     flexItemBasisValue="100%"
                      ><nidoca-flex-container
                         .flexContainerProperties="${[
                            FlexContainerProperties.CONTAINER_WIDTH_75,
@@ -82,7 +82,7 @@ export class PageInputComponent extends PageAbstract {
                            FlexContainerProperties.SMARTPHONE_MAX_WIDTH
                         ]}"
                         .flexItemProperties="${[FlexItemProperties.SMARTPHONE_MAX_WIDTH, FlexItemProperties.TABLET_MAX_WIDTH]}"
-                        itemFlexBasisValue="100%"
+                        flexItemBasisValue="100%"
                         ><nidoca-spacer
                            spacerSize="${SpacerSize.MEDIUM}"
                            spacerAlignment="${SpacerAlignment.VERTICAL}"

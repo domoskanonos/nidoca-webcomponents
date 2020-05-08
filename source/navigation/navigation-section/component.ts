@@ -1,8 +1,8 @@
 import { css, customElement, html, LitElement, property, unsafeCSS } from 'lit-element';
 
 import {
-   AlignContent,
-   AlignItems,
+   FlexAlignContent,
+   FlexAlignItems,
    FlexDirection,
    FlexJustifyContent,
    FlexWrap,
@@ -35,9 +35,9 @@ export class NavigationSectionComponent extends LitElement {
                  .flexDirection="${FlexDirection.ROW}"
                  .flexWrap="${FlexWrap.NO_WRAP}"
                  .flexJustifyContent="${FlexJustifyContent.FLEX_END}"
-                 .alignItems="${AlignItems.CENTER}"
-                 .alignContent="${AlignContent.FLEX_START}"
-                 itemFlexBasisValue="80%"
+                 .flexAlignItems="${FlexAlignItems.CENTER}"
+                 .flexAlignContent="${FlexAlignContent.FLEX_START}"
+                 flexItemBasisValue="80%"
               >
                  <nidoca-spacer spacerSize="${SpacerSize.MEDIUM}" spacerAlignment="${SpacerAlignment.VERTICAL}">
                     <nidoca-typography .typographyType="${TypographyType.H6}" text="${this.text}"></nidoca-typography>

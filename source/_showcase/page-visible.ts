@@ -27,7 +27,7 @@ export class PageVisible extends PageAbstract {
                FlexContainerProperties.TABLET_HORIZONTAL_PADDING
             ]}"
             .flexItemProperties="${[FlexItemProperties.KEYLINE_ALIGNMENT_HORIZONTAL, FlexItemProperties.KEYLINE_SIZE_MEDIUM]}"
-            itemFlexBasisValue="100%"
+            flexItemBasisValue="100%"
          >
             <nidoca-typography .typographyType="${TypographyType.H2}" text="<nidoca-visible/>"></nidoca-typography>
             <nidoca-typography .typographyType="${TypographyType.BODY1}">
@@ -54,7 +54,7 @@ export class PageVisible extends PageAbstract {
                         FlexContainerProperties.SMARTPHONE_MAX_WIDTH
                      ]}"
                      .flexItemProperties="${[FlexItemProperties.KEYLINE_ALIGNMENT_BOTH, FlexItemProperties.KEYLINE_SIZE_MEDIUM]}"
-                     itemFlexBasisValue="100%"
+                     flexItemBasisValue="100%"
                   >
                      <nidoca-spacer
                         spacerSize="${SpacerSize.MEDIUM}"
@@ -62,7 +62,7 @@ export class PageVisible extends PageAbstract {
                      ></nidoca-spacer>
                      <nidoca-grid-container
                         .gridJustifyItems="${GridJustifyItems.CENTER}"
-                        .gridAlignItems="${GridAlignItems.CENTER}"
+                        .gridAlignItems="${GridFlexAlignItems.CENTER}"
                         .gridTemplateRows="${['1fr']}"
                         .gridTemplateColumns="${['1fr']}"
                      >

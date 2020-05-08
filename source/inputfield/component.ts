@@ -4,7 +4,7 @@ import { css, customElement, html, property, query, unsafeCSS, LitElement } from
 import { KeyValueData } from '../form/component';
 import { TypographyType } from '../typography/component';
 import { BasicService } from '@domoskanonos/frontend-basis';
-import { AlignContent, AlignItems, BorderProperties, FlexJustifyContent, SpacerAlignment, SpacerSize, VisibleType } from '..';
+import { FlexAlignContent, FlexAlignItems, BorderProperties, FlexJustifyContent, SpacerAlignment, SpacerSize, VisibleType } from '..';
 import { FlexContainerProperties } from '../flex-container/component';
 import { GridAlignItems, GridJustifyItems } from '../grid-container/component';
 
@@ -155,7 +155,7 @@ export class InputfieldComponent extends LitElement {
                     class="${this.toContainerClazz(this.inputfieldType)}"
                     minHeight="56px"
                     .gridJustifyItems="${GridJustifyItems.STRETCH}"
-                    .gridAlignItems="${GridAlignItems.CENTER}" 
+                    .gridAlignItems="${GridFlexAlignItems.CENTER}" 
                     .gridTemplateRows="${['1fr']}"
                     .gridTemplateColumns="${['1fr']}"
                  >
@@ -163,7 +163,7 @@ export class InputfieldComponent extends LitElement {
               <nidoca-spacer spacerSize="${SpacerSize.BIG}" spacerAlignment="${SpacerAlignment.HORIZONTAL}">
                  <nidoca-grid-container
                     .gridJustifyItems="${GridJustifyItems.STRETCH}"
-                    .gridAlignItems="${GridAlignItems.CENTER}" 
+                    .gridAlignItems="${GridFlexAlignItems.CENTER}" 
                     .gridTemplateRows="${['auto']}"
                     .gridTemplateColumns="${['auto', '1fr', 'auto', 'auto']}"
                  >
@@ -181,8 +181,8 @@ export class InputfieldComponent extends LitElement {
                           FlexContainerProperties.CONTAINER_WIDTH_100,
                           FlexContainerProperties.CONTAINER_HEIGHT_100
                        ]}"
-                       .alignContent="${AlignContent.CENTER}"
-                       itemFlexBasisValue="100%"
+                       .flexAlignContent="${FlexAlignContent.CENTER}"
+                       flexItemBasisValue="100%"
                     >
                        <nidoca-visible visibleType="${this.showLabelText() ? VisibleType.NORMAL : VisibleType.HIDE}">
                           <nidoca-typography
@@ -199,7 +199,7 @@ export class InputfieldComponent extends LitElement {
                                   >
                                      <nidoca-flex-container
                                         .flexContainerProperties="${[FlexContainerProperties.CONTAINER_WIDTH_100]}"
-                                        itemFlexBasisValue="100%"
+                                        flexItemBasisValue="100%"
                                      >
                                         <nidoca-typography
                                            .typographyType="${TypographyType.SUBTITLE1}"
@@ -279,7 +279,7 @@ ${this.value}</textarea
                                   >
                                      <nidoca-flex-container
                                         .flexContainerProperties="${[FlexContainerProperties.CONTAINER_WIDTH_100]}"
-                                        itemFlexBasisValue="100%"
+                                        flexItemBasisValue="100%"
                                      >
                                         <nidoca-typography
                                            .typographyType="${TypographyType.SUBTITLE1}"
@@ -356,7 +356,7 @@ ${this.value}</textarea
                  <nidoca-spacer spacerSize="${SpacerSize.LITTLE}" spacerAlignment="${SpacerAlignment.VERTICAL}">
                  <nidoca-flex-container
                     .flexContainerProperties="${[FlexContainerProperties.CONTAINER_WIDTH_100]}"
-                    itemFlexBasisValue="auto"
+                    flexItemBasisValue="auto"
                     flexJustifyContent="${FlexJustifyContent.SPACE_BETWEEN}"
                  >
                     <nidoca-typography

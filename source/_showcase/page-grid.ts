@@ -17,7 +17,7 @@ export class PageGrid extends PageAbstract {
    gridJustifyItems: string = GridJustifyItems.CENTER;
 
    @property()
-   gridAlignItems: string = GridAlignItems.CENTER;
+   gridAlignItems: string = GridFlexAlignItems.CENTER;
 
    @property()
    gridTemplateRows: string[] = ['1fr', '1fr', '1fr'];
@@ -36,7 +36,7 @@ export class PageGrid extends PageAbstract {
                FlexContainerProperties.TABLET_HORIZONTAL_PADDING
             ]}"
             .flexItemProperties="${[FlexItemProperties.KEYLINE_ALIGNMENT_HORIZONTAL, FlexItemProperties.KEYLINE_SIZE_MEDIUM]}"
-            itemFlexBasisValue="100%"
+            flexItemBasisValue="100%"
          >
             <nidoca-typography
                .typographyType="${TypographyType.H2}"
@@ -72,14 +72,14 @@ export class PageGrid extends PageAbstract {
                         FlexItemProperties.SMARTPHONE_MAX_WIDTH,
                         FlexItemProperties.TABLET_MAX_WIDTH
                      ]}"
-                     itemFlexBasisValue="100%"
+                     flexItemBasisValue="100%"
                      ><nidoca-spacer
                         spacerSize="${SpacerSize.MEDIUM}"
                         spacerAlignment="${SpacerAlignment.VERTICAL}"
                      ></nidoca-spacer>
                      <nidoca-grid-container
                         .gridJustifyItems="${GridJustifyItems.CENTER}"
-                        .gridAlignItems="${GridAlignItems.CENTER}"
+                        .gridAlignItems="${GridFlexAlignItems.CENTER}"
                         .gridTemplateRows="${['1fr']}"
                         .gridTemplateColumns="${['1fr']}"
                      >

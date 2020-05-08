@@ -22,7 +22,7 @@ export class PageGetStarted extends PageAbstract {
                FlexContainerProperties.TABLET_HORIZONTAL_PADDING
             ]}"
             .flexItemProperties="${[FlexItemProperties.KEYLINE_ALIGNMENT_HORIZONTAL, FlexItemProperties.KEYLINE_SIZE_MEDIUM]}"
-            itemFlexBasisValue="100%"
+            flexItemBasisValue="100%"
          >
             <nidoca-typography
                .typographyType="${TypographyType.H1}"

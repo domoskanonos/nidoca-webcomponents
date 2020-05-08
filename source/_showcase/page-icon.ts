@@ -51,7 +51,7 @@ export class PageIconComponent extends PageAbstract {
             ><nidoca-spacer spacerSize="${SpacerSize.BIG}" spacerAlignment="${SpacerAlignment.VERTICAL}">
                <nidoca-grid-container
                   .gridJustifyItems="${GridJustifyItems.CENTER}"
-                  .gridAlignItems="${GridAlignItems.CENTER}"
+                  .gridAlignItems="${GridFlexAlignItems.CENTER}"
                   .gridTemplateRows="${['1fr']}"
                   .gridTemplateColumns="${['1fr']}"
                >
@@ -78,7 +78,7 @@ export class PageIconComponent extends PageAbstract {
                FlexContainerProperties.TABLET_HORIZONTAL_PADDING
             ]}"
             .flexItemProperties="${[FlexItemProperties.KEYLINE_ALIGNMENT_HORIZONTAL, FlexItemProperties.KEYLINE_SIZE_MEDIUM]}"
-            itemFlexBasisValue="100%"
+            flexItemBasisValue="100%"
          >
             <nidoca-spacer
                size="${String(this.withIconSpace ? this.size * 1.5 : this.size).concat(this.sizeUnit)}"
@@ -119,7 +119,7 @@ export class PageIconComponent extends PageAbstract {
                         FlexItemProperties.KEYLINE_SIZE_MEDIUM,
                         FlexItemProperties.SMARTPHONE_MAX_WIDTH
                      ]}"
-                     itemFlexBasisValue="100%"
+                     flexItemBasisValue="100%"
                      .flexJustifyContent="${FlexJustifyContent.SPACE_AROUND}"
                   >
                      <nidoca-form>

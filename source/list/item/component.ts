@@ -36,7 +36,7 @@ export class ListItemComponent extends LitElement {
             <nidoca-grid-container
                class="LIST_ITEM"
                .gridJustifyItems="${GridJustifyItems.START}"
-               .gridAlignItems="${GridAlignItems.CENTER}"
+               .gridAlignItems="${GridFlexAlignItems.CENTER}"
                .gridTemplateRows="${['1fr']}"
                .gridTemplateColumns="${['auto', '1fr']}"
             >
