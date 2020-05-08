@@ -36,7 +36,8 @@ export class PageIntroduction extends PageAbstract {
                   ContainerProperties.SMARTPHONE_HORIZONTAL_PADDING,
                   ContainerProperties.CONTAINER_HEIGHT_100
                ]}"
-               itemFlexBasisValue="100%"
+               itemFlexBasisValue="auto"
+               .flexJustifyContent="${FlexJustifyContent.SPACE_AROUND}"
                .alignContent="${AlignContent.CENTER}"
             >
                <component-typography .typographyType="${TypographyType.H1}">WC-Atomic</component-typography>
