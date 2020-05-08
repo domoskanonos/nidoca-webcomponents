@@ -9,12 +9,12 @@ import { I18nService } from '@domoskanonos/frontend-basis';
 export class PageWizard extends PageAbstract {
    @property()
    wizardSteps: WizardStep[] = [
-      <WizardStep>{ title: 'Step 1', icon: '' },
-      <WizardStep>{ title: 'Step 2', icon: '' },
-      <WizardStep>{ title: 'Step 3', icon: '' },
-      <WizardStep>{ title: 'Step 4', icon: '' },
-      <WizardStep>{ title: 'Step 5', icon: '' },
-      <WizardStep>{ title: 'Step 6', icon: '' }
+      <WizardStep>{ title: 'Step 1', icon: 'account_box' },
+      <WizardStep>{ title: 'Step 2', icon: 'assignment' },
+      <WizardStep>{ title: 'Step 3', icon: 'cloud' },
+      <WizardStep>{ title: 'Step 4', icon: 'computer' },
+      <WizardStep>{ title: 'Step 5', icon: 'payment' },
+      <WizardStep>{ title: 'Step 6', icon: 'exit_to_app' }
    ];
 
    constructor() {

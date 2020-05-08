@@ -34,17 +34,21 @@ export class NidocaWizard extends LitElement {
                         (wizardStep: WizardStep) =>
                            html`
                               <div class="WIZARD_STEP">
-                                 <nidoca-icon
+                                 <div class="WIZARD_ICON">
+                                    <nidoca-icon
                                     icon="${wizardStep.icon}"
                                     clickable="true"
                                     @component-icon-click="${() => {
                                        this.selectedStep = wizardStep;
                                     }}"
                                  ></nidoca-icon>
-                                 <nidoca-typography
-                                    .typographyType="${TypographyType.OVERLINE}"
-                                    text="${wizardStep.title}"
-                                 ></nidoca-typography>
+                                 </div>
+                                 <div class="WIZARD_TITLE">
+                                    <nidoca-typography
+                                       .typographyType="${TypographyType.OVERLINE}"
+                                       text="${wizardStep.title}"
+                                    ></nidoca-typography>
+                                 </div>
                               </div>
                            `
                      )}
