@@ -13,11 +13,11 @@ visit showcase page: [nidoca.de](http://nidoca.de)
 
 Installation is simple with [npm](https://www.npmjs.com/package/@domoskanonos/nidoca-core):
 
-    npm i @domoskanonos/wc-atomic
+    npm i @domoskanonos/nidoca-core
 
 or refer directly in package.json:
 
     "dependencies": {
-        "@domoskanonos/wc-atomic": "latest",
+        "@domoskanonos/nidoca-core": "latest",
     }
 
