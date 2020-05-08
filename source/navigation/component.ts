@@ -8,7 +8,7 @@ export enum NavigationType {
    MODAL = 'MODAL'
 }
 
-@customElement('component-navigation')
+@customElement('nidoca-navigation')
 export class NavigationComponent extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}

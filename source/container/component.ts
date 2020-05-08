@@ -2,7 +2,7 @@ import { css, customElement, html, property, unsafeCSS, LitElement } from 'lit-e
 
 const componentCSS = require('./component.css');
 
-@customElement('component-container')
+@customElement('nidoca-container')
 export class ContainerComponent extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}

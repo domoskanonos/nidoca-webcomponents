@@ -4,7 +4,7 @@ import { repeat } from 'lit-html/directives/repeat';
 
 const componentCSS = require('./component.css');
 
-@customElement('component-top-app-bar')
+@customElement('nidoca-top-app-bar')
 export class TopAppBarComponent extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}

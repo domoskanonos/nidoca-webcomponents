@@ -17,7 +17,7 @@ export class GridAlignItems {
    static STRETCH = 'stretch';
 }
 
-@customElement('component-grid-container')
+@customElement('nidoca-grid-container')
 export class GridComponent extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}

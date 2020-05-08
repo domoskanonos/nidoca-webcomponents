@@ -36,6 +36,11 @@
    padding: var(--space-medium);
 }
 
+.spaceNormal,
+::slotted(.spaceNormal) {
+   padding: var(--space-normal);
+}
+
 .spaceBig,
 ::slotted(.spaceBig) {
    padding: var(--space-big);

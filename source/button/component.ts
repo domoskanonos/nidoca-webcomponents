@@ -1,7 +1,7 @@
 import { css, customElement, html, property, unsafeCSS } from 'lit-element';
 import { LitElement } from 'lit-element';
 import { BasicService } from '@domoskanonos/frontend-basis';
-import { AlignItems, ContainerProperties, FlexJustifyContent, FlexWrap } from '../flex-container/component';
+import { FlexAlignItems, FlexContainerProperties, FlexJustifyContent, FlexWrap } from '../flex-container/component';
 import { SpacerSize, TypographyType, VisibleType } from '..';
 
 const componentCSS = require('./component.css');
@@ -11,7 +11,7 @@ export class ButtonType {
    static SECONDARY = 'SECONDARY';
 }
 
-@customElement('component-button')
+@customElement('nidoca-button')
 export class ButtonComponent extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
@@ -30,35 +30,35 @@ export class ButtonComponent extends LitElement {
 
    render() {
       return html`
-         <component-ripple>
-            <component-flex-container
+         <nidoca-ripple>
+            <nidoca-flex-container
                class="BUTTON ${this.buttonType}"
                @click="${() => {
                   this.clicked();
                }}"
-               .containerProperties="${[ContainerProperties.CONTAINER_WIDTH_AUTO]}"
+               .flexContainerProperties="${[FlexContainerProperties.CONTAINER_WIDTH_AUTO]}"
                flexWrap="${FlexWrap.NO_WRAP}"
                .flexJustifyContent="${FlexJustifyContent.CENTER}"
-               .alignItems="${AlignItems.CENTER}"
+               .flexAlignItems="${FlexAlignItems.CENTER}"
             >
-               <component-visible
+               <nidoca-visible
                   visibleType="${BasicService.getUniqueInstance().isNotBlank(this.leadingIcon)
                      ? VisibleType.NORMAL
                      : VisibleType.HIDE}"
                >
-                  <component-icon icon="${this.leadingIcon}"> </component-icon>
-               </component-visible>
-               <component-visible
+                  <nidoca-icon icon="${this.leadingIcon}"> </nidoca-icon>
+               </nidoca-visible>
+               <nidoca-visible
                   visibleType="${BasicService.getUniqueInstance().isBlank(this.leadingIcon)
                      ? VisibleType.NORMAL
                      : VisibleType.HIDE}"
-                  ><component-spacer spacerSize="${SpacerSize.MEDIUM}"></component-spacer
-               ></component-visible>
-               <component-typography text="${this.text}" typographyType="${TypographyType.BUTTON}"></component-typography>
-               <component-spacer spacerSize="${SpacerSize.MEDIUM}"></component-spacer>
+                  ><nidoca-spacer spacerSize="${SpacerSize.MEDIUM}"></nidoca-spacer
+               ></nidoca-visible>
+               <nidoca-typography text="${this.text}" typographyType="${TypographyType.BUTTON}"></nidoca-typography>
+               <nidoca-spacer spacerSize="${SpacerSize.MEDIUM}"></nidoca-spacer>
                <slot></slot>
-            </component-flex-container>
-         </component-ripple>
+            </nidoca-flex-container>
+         </nidoca-ripple>
       `;
    }
 

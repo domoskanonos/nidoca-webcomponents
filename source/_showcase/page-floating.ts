@@ -2,7 +2,7 @@ import { customElement, html, property, TemplateResult } from 'lit-element';
 import { PageAbstract } from './page-abstract';
 import { InputfieldComponent, InputfieldType } from '../inputfield/component';
 import { ButtonType, SpacerAlignment, SpacerSize, TypographyType } from '..';
-import { ContainerProperties, ItemProperties } from '../flex-container/component';
+import { FlexContainerProperties, FlexItemProperties } from '../flex-container/component';
 import { I18nService } from '@domoskanonos/frontend-basis';
 import { IconShadowType } from '../icon/component';
 
@@ -33,7 +33,7 @@ export class PageFloating extends PageAbstract {
 
    getMainComponent(): TemplateResult {
       return html`
-         <component-floating-container
+         <nidoca-floating-container
             left="${this.left}"
             right="${this.right}"
             top="${this.top}"
@@ -41,7 +41,7 @@ export class PageFloating extends PageAbstract {
             height="${this.height}"
             width="${this.width}"
          >
-            <component-icon
+            <nidoca-icon
                clickable="true"
                icon="thumb_up_alt"
                round="true"
@@ -49,93 +49,93 @@ export class PageFloating extends PageAbstract {
                backgroundColor="#0d47a1"
                size="36"
                .iconShadowType="${IconShadowType.DEFAULT_SHADOW}"
-            ></component-icon>
-         </component-floating-container>
-         <component-flex-container
-            .containerProperties="${[
-               ContainerProperties.CONTAINER_WIDTH_50,
-               ContainerProperties.SMARTPHONE_MAX_WIDTH,
-               ContainerProperties.SMARTPHONE_HORIZONTAL_PADDING
+            ></nidoca-icon>
+         </nidoca-floating-container>
+         <nidoca-flex-container
+            .flexContainerProperties="${[
+               FlexContainerProperties.CONTAINER_WIDTH_50,
+               FlexContainerProperties.SMARTPHONE_MAX_WIDTH,
+               FlexContainerProperties.SMARTPHONE_HORIZONTAL_PADDING
             ]}"
-            .itemProperties="${[ItemProperties.KEYLINE_ALIGNMENT_HORIZONTAL, ItemProperties.KEYLINE_SIZE_MEDIUM]}"
-            itemFlexBasisValue="100%"
+            .flexItemProperties="${[FlexItemProperties.KEYLINE_ALIGNMENT_HORIZONTAL, FlexItemProperties.KEYLINE_SIZE_MEDIUM]}"
+            flexItemBasisValue="100%"
          >
-            <component-typography
+            <nidoca-typography
                .typographyType="${TypographyType.H2}"
-               text="<component-floating-container/>"
-            ></component-typography>
-            <component-typography .typographyType="${TypographyType.BODY1}">
+               text="<nidoca-floating-container/>"
+            ></nidoca-typography>
+            <nidoca-typography .typographyType="${TypographyType.BODY1}">
                <i>FloatingComponent</i>${I18nService.getUniqueInstance().getValue('pagefloating_description')}
-            </component-typography>
-            <component-typography
+            </nidoca-typography>
+            <nidoca-typography
                .typographyType="${TypographyType.H4}"
                text="${I18nService.getUniqueInstance().getValue('interactive_demo')}"
-            ></component-typography>
-            <component-typography .typographyType="${TypographyType.BODY1}">
+            ></nidoca-typography>
+            <nidoca-typography .typographyType="${TypographyType.BODY1}">
                ${I18nService.getUniqueInstance().getValue('pagefloating_demo_description')}
-            </component-typography>
+            </nidoca-typography>
 
-            <component-tabs>
-               <component-tab
+            <nidoca-tabs>
+               <nidoca-tab
                   slot="tab"
                   .selected="${true}"
                   text="${I18nService.getUniqueInstance().getValue('demo')}"
-               ></component-tab>
-               <component-tab slot="tab" text="${I18nService.getUniqueInstance().getValue('source')}"></component-tab>
-               <component-tab-content slot="tabContent" .selected="${true}"
-                  ><component-flex-container
-                     .containerProperties="${[ContainerProperties.CONTAINER_WIDTH_100, ContainerProperties.SMARTPHONE_MAX_WIDTH]}"
-                     .itemProperties="${[ItemProperties.KEYLINE_ALIGNMENT_VERTICAL, ItemProperties.KEYLINE_SIZE_ZERO]}"
-                     itemFlexBasisValue="100%"
+               ></nidoca-tab>
+               <nidoca-tab slot="tab" text="${I18nService.getUniqueInstance().getValue('source')}"></nidoca-tab>
+               <nidoca-tab-content slot="tabContent" .selected="${true}"
+                  ><nidoca-flex-container
+                     .flexContainerProperties="${[FlexContainerProperties.CONTAINER_WIDTH_100, FlexContainerProperties.SMARTPHONE_MAX_WIDTH]}"
+                     .flexItemProperties="${[FlexItemProperties.KEYLINE_ALIGNMENT_VERTICAL, FlexItemProperties.KEYLINE_SIZE_ZERO]}"
+                     flexItemBasisValue="100%"
                   >
-                     <component-form>
-                        <component-inputfield
+                     <nidoca-form>
+                        <nidoca-inputfield
                            .inputfieldType="${InputfieldType.TEXT}"
                            label="${I18nService.getUniqueInstance().getValue('pagefloating_height_label')}"
                            .value="${this.height}"
                            @component-inputfield-change="${(event: CustomEvent) => (this.height = event.detail.outputData.value)}"
-                        ></component-inputfield>
-                        <component-inputfield
+                        ></nidoca-inputfield>
+                        <nidoca-inputfield
                            .inputfieldType="${InputfieldType.TEXT}"
                            label="${I18nService.getUniqueInstance().getValue('pagefloating_width_label')}"
                            .value="${this.width}"
                            @component-inputfield-change="${(event: CustomEvent) => (this.width = event.detail.outputData.value)}"
-                        ></component-inputfield>
-                        <component-inputfield
+                        ></nidoca-inputfield>
+                        <nidoca-inputfield
                            .inputfieldType="${InputfieldType.TEXT}"
                            label="${I18nService.getUniqueInstance().getValue('pagefloating_left_label')}"
                            .value="${this.left}"
                            @component-inputfield-change="${(event: CustomEvent) => (this.left = event.detail.outputData.value)}"
-                        ></component-inputfield>
-                        <component-inputfield
+                        ></nidoca-inputfield>
+                        <nidoca-inputfield
                            .inputfieldType="${InputfieldType.TEXT}"
                            label="${I18nService.getUniqueInstance().getValue('pagefloating_right_label')}"
                            .value="${this.right}"
                            @component-inputfield-change="${(event: CustomEvent) => (this.right = event.detail.outputData.value)}"
-                        ></component-inputfield>
-                        <component-inputfield
+                        ></nidoca-inputfield>
+                        <nidoca-inputfield
                            .inputfieldType="${InputfieldType.TEXT}"
                            label="${I18nService.getUniqueInstance().getValue('pagefloating_top_label')}"
                            .value="${this.top}"
                            @component-inputfield-change="${(event: CustomEvent) => (this.top = event.detail.value)}"
-                        ></component-inputfield>
-                        <component-inputfield
+                        ></nidoca-inputfield>
+                        <nidoca-inputfield
                            .inputfieldType="${InputfieldType.TEXT}"
                            label="${I18nService.getUniqueInstance().getValue('pagefloating_bottom_label')}"
                            .value="${this.bottom}"
                            @component-inputfield-change="${(event: CustomEvent) => (this.bottom = event.detail.value)}"
-                        ></component-inputfield>
-                     </component-form> </component-flex-container
-               ></component-tab-content>
-               <component-tab-content slot="tabContent"
-                  ><component-spacer
+                        ></nidoca-inputfield>
+                     </nidoca-form> </nidoca-flex-container
+               ></nidoca-tab-content>
+               <nidoca-tab-content slot="tabContent"
+                  ><nidoca-spacer
                      spacerSize="${SpacerSize.MEDIUM}"
                      spacerAlignment="${SpacerAlignment.VERTICAL}"
-                  ></component-spacer
-                  ><component-code code="<component-floating-container></component-floating-container>"> </component-code
-               ></component-tab-content>
-            </component-tabs>
-         </component-flex-container>
+                  ></nidoca-spacer
+                  ><nidoca-code code="<nidoca-floating-container></nidoca-floating-container>"> </nidoca-code
+               ></nidoca-tab-content>
+            </nidoca-tabs>
+         </nidoca-flex-container>
       `;
    }
 }

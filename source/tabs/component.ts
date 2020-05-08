@@ -4,7 +4,7 @@ import { TabComponent } from './tab/component';
 
 const componentCSS = require('./component.css');
 
-@customElement('component-tabs')
+@customElement('nidoca-tabs')
 export class TabsComponent extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
@@ -48,14 +48,14 @@ export class TabsComponent extends LitElement {
 
    render() {
       return html`
-         <component-grid-container
+         <nidoca-grid-container
             @component-tab-click="${(event: CustomEvent) => this.tabClicked(event)}"
             .gridTemplateRows="${['auto', 'auto']}"
             .gridTemplateColumns="${['100%']}"
          >
             <slot id="tabSlot" name="tab"></slot>
             <slot id="tabContentSlot" name="tabContent"></slot>
-         </component-grid-container>
+         </nidoca-grid-container>
       `;
    }
 

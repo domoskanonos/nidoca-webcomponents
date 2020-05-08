@@ -4,7 +4,7 @@ import { TypographyType } from '../..';
 
 const componentCSS = require('./component.css');
 
-@customElement('component-tab')
+@customElement('nidoca-tab')
 export class TabComponent extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
@@ -23,7 +23,7 @@ export class TabComponent extends LitElement {
          <span class="tab ${this.selected ? 'SELECTED' : ''}" @click="${() => this.tabClicked()}">
             ${BasicService.getUniqueInstance().isNotBlank(this.text)
                ? html`
-                    <component-typography .typographyType="${TypographyType.OVERLINE}" text="${this.text}"></component-typography>
+                    <nidoca-typography .typographyType="${TypographyType.OVERLINE}" text="${this.text}"></nidoca-typography>
                  `
                : html``}
             <slot></slot>

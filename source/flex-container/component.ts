@@ -3,96 +3,94 @@ import { BasicService } from '@domoskanonos/frontend-basis';
 
 const componentCSS = require('./component.css');
 
-export class ContainerProperties {
-   static CONTAINER_WIDTH_MIN_CONTENT = 'CONTAINER_WIDTH_MIN_CONTENT';
-   static CONTAINER_WIDTH_AUTO = 'CONTAINER_WIDTH_AUTO';
-   static CONTAINER_WIDTH_100 = 'CONTAINER_WIDTH_100';
-   static CONTAINER_WIDTH_75 = 'CONTAINER_WIDTH_75';
-   static CONTAINER_WIDTH_50 = 'CONTAINER_WIDTH_50';
-   static CONTAINER_WIDTH_25 = 'CONTAINER_WIDTH_25';
-   static CONTAINER_HEIGHT_100 = 'CONTAINER_HEIGHT_100';
-   static TABLET_MAX_WIDTH = 'TABLET_MAX_WIDTH';
-   static SMARTPHONE_MAX_WIDTH = 'SMARTPHONE_MAX_WIDTH';
-   static SMARTPHONE_HORIZONTAL_PADDING = 'SMARTPHONE_HORIZONTAL_PADDING';
-   static SMARTPHONE_VERTICAL_PADDING = 'SMARTPHONE_VERTICAL_PADDING';
-   static TABLET_HORIZONTAL_PADDING = 'TABLET_HORIZONTAL_PADDING';
-   static TABLET_VERTICAL_PADDING = 'TABLET_VERTICAL_PADDING';
+export enum FlexContainerProperties {
+   CONTAINER_WIDTH_MIN_CONTENT = 'CONTAINER_WIDTH_MIN_CONTENT',
+   CONTAINER_WIDTH_AUTO = 'CONTAINER_WIDTH_AUTO',
+   CONTAINER_WIDTH_100 = 'CONTAINER_WIDTH_100',
+   CONTAINER_WIDTH_75 = 'CONTAINER_WIDTH_75',
+   CONTAINER_WIDTH_50 = 'CONTAINER_WIDTH_50',
+   CONTAINER_WIDTH_25 = 'CONTAINER_WIDTH_25',
+   CONTAINER_HEIGHT_100 = 'CONTAINER_HEIGHT_100',
+   TABLET_MAX_WIDTH = 'TABLET_MAX_WIDTH',
+   SMARTPHONE_MAX_WIDTH = 'SMARTPHONE_MAX_WIDTH',
+   SMARTPHONE_HORIZONTAL_PADDING = 'SMARTPHONE_HORIZONTAL_PADDING',
+   SMARTPHONE_VERTICAL_PADDING = 'SMARTPHONE_VERTICAL_PADDING',
+   TABLET_HORIZONTAL_PADDING = 'TABLET_HORIZONTAL_PADDING',
+   TABLET_VERTICAL_PADDING = 'TABLET_VERTICAL_PADDING'
 }
 
-export class ItemProperties {
-   static TABLET_MAX_WIDTH = 'TABLET_MAX_WIDTH';
-   static SMARTPHONE_MAX_WIDTH = 'SMARTPHONE_MAX_WIDTH';
-   static KEYLINE_ALIGNMENT_HORIZONTAL = 'KEYLINE_ALIGNMENT_HORIZONTAL';
-   static KEYLINE_ALIGNMENT_VERTICAL = 'KEYLINE_ALIGNMENT_VERTICAL';
-   static KEYLINE_ALIGNMENT_BOTH = 'KEYLINE_ALIGNMENT_BOTH';
-   static KEYLINE_SIZE_ZERO = 'KEYLINE_SIZE_ZERO';
-   static KEYLINE_SIZE_LITTLE = 'KEYLINE_SIZE_LITTLE';
-   static KEYLINE_SIZE_SMALL = 'KEYLINE_SIZE_SMALL';
-   static KEYLINE_SIZE_MEDIUM = 'KEYLINE_SIZE_MEDIUM';
-   static KEYLINE_SIZE_BIG = 'KEYLINE_SIZE_BIG';
-   static KEYLINE_SIZE_MAX = 'KEYLINE_SIZE_MAX';
+export enum FlexItemProperties {
+   TABLET_MAX_WIDTH = 'TABLET_MAX_WIDTH',
+   SMARTPHONE_MAX_WIDTH = 'SMARTPHONE_MAX_WIDTH',
+   KEYLINE_ALIGNMENT_HORIZONTAL = 'KEYLINE_ALIGNMENT_HORIZONTAL',
+   KEYLINE_ALIGNMENT_VERTICAL = 'KEYLINE_ALIGNMENT_VERTICAL',
+   KEYLINE_ALIGNMENT_BOTH = 'KEYLINE_ALIGNMENT_BOTH',
+   KEYLINE_SIZE_ZERO = 'KEYLINE_SIZE_ZERO',
+   KEYLINE_SIZE_LITTLE = 'KEYLINE_SIZE_LITTLE',
+   KEYLINE_SIZE_SMALL = 'KEYLINE_SIZE_SMALL',
+   KEYLINE_SIZE_MEDIUM = 'KEYLINE_SIZE_MEDIUM',
+   KEYLINE_SIZE_BIG = 'KEYLINE_SIZE_BIG',
+   KEYLINE_SIZE_MAX = 'KEYLINE_SIZE_MAX'
 }
 
-export class FlexDirection {
-   static ROW = 'row';
-   static ROW_REVERSE = 'rowData-reverse';
-   static COLUMN = 'column';
-   static COLUMN_REVERSE = 'column-reverse';
+export enum FlexDirection {
+   ROW = 'row',
+   ROW_REVERSE = 'rowData-reverse',
+   COLUMN = 'column',
+   COLUMN_REVERSE = 'column-reverse'
 }
 
-export class FlexWrap {
-   static WRAP = 'wrap';
-   static NO_WRAP = 'nowrap';
-   static WRAP_REVERSE = 'flexWrap-reverse';
+export enum FlexWrap {
+   WRAP = 'wrap',
+   NO_WRAP = 'nowrap',
+   WRAP_REVERSE = 'flexWrap-reverse'
 }
 
-export class FlexJustifyContent {
-   static FLEX_START = 'flex-start';
-   static FLEX_END = 'flex-end';
-   static CENTER = 'center';
-   static SPACE_BETWEEN = 'space-between';
-   static SPACE_AROUND = 'space-around';
-   static SPACE_EVENLY = 'space-evenly';
+export enum FlexJustifyContent {
+   FLEX_START = 'flex-start',
+   FLEX_END = 'flex-end',
+   CENTER = 'center',
+   SPACE_BETWEEN = 'space-between',
+   SPACE_AROUND = 'space-around',
+   SPACE_EVENLY = 'space-evenly'
 }
 
-export class AlignItems {
-   static FLEX_START = 'flex-start';
-   static FLEX_END = 'flex-end';
-   static CENTER = 'center';
-   static STRETCH = 'stretch';
-   static START = 'start';
-   static END = 'end';
-   static BASELINE = 'baseline';
-   static FIRST_BASELINE = 'first baseline';
-   static LAST_BASLINE = 'last baseline';
-   static SAFE = 'safe';
-   static UNSAFE = 'unsafe';
+export enum FlexAlignItems {
+   FLEX_START = 'flex-start',
+   FLEX_END = 'flex-end',
+   CENTER = 'center',
+   STRETCH = 'stretch',
+   START = 'start',
+   END = 'end',
+   BASELINE = 'baseline',
+   FIRST_BASELINE = 'first baseline',
+   LAST_BASLINE = 'last baseline',
+   SAFE = 'safe',
+   UNSAFE = 'unsafe'
 }
 
-export class AlignContent {
-   static FLEX_START = 'flex-start';
-   static FLEX_END = 'flex-end';
-   static CENTER = 'center';
-   static STRETCH = 'stretch';
-   static SPACE_AROUND = 'space-around';
-   static SPACE_EVENLY = 'space-evenly';
-   static SPACE_BETWEEN = 'space-between';
-   static START = 'start';
-   static END = 'end';
-   static BASELINE = 'baseline';
-   static FIRST_BASELINE = 'first baseline';
-   static LAST_BASLINE = 'last baseline';
-   static SAFE = 'safe';
-   static UNSAFE = 'unsafe';
+export enum FlexAlignContent {
+   FLEX_START = 'flex-start',
+   FLEX_END = 'flex-end',
+   CENTER = 'center',
+   STRETCH = 'stretch',
+   SPACE_AROUND = 'space-around',
+   SPACE_EVENLY = 'space-evenly',
+   SPACE_BETWEEN = 'space-between',
+   START = 'start',
+   END = 'end',
+   BASELINE = 'baseline',
+   FIRST_BASELINE = 'first baseline',
+   LAST_BASLINE = 'last baseline',
+   SAFE = 'safe',
+   UNSAFE = 'unsafe'
 }
 
-@customElement('component-flex-container')
+@customElement('nidoca-flex-container')
 export class FlexComponent extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;
-
-   static IDENTIFIER: string = 'FlexComponent';
 
    @property()
    flexDirection: string = FlexDirection.ROW;
@@ -104,22 +102,22 @@ export class FlexComponent extends LitElement {
    flexJustifyContent: string = FlexJustifyContent.FLEX_START;
 
    @property()
-   alignItems: string = AlignItems.FLEX_START;
+   flexAlignItems: string = FlexAlignItems.FLEX_START;
 
    @property()
-   alignContent: string = AlignContent.FLEX_START;
+   flexAlignContent: string = FlexAlignContent.FLEX_START;
 
    @property()
-   containerProperties: string[] = [];
+   flexContainerProperties: string[] = [];
 
    @property()
-   itemProperties: string[] = [];
+   flexItemProperties: string[] = [];
 
    @property()
-   itemFlexBasisValue: string = 'auto';
+   flexItemBasisValue: string = 'auto';
 
    @property()
-   itemFlexBasisValues: string[] = [];
+   flexItemBasisValues: string[] = [];
 
    @query('#slotElement')
    slotElement: HTMLSlotElement | undefined;
@@ -127,9 +125,9 @@ export class FlexComponent extends LitElement {
    render() {
       return html`
          <div
-            class="${this.toContainerPropertiesString(this.containerProperties)}"
+            class="${this.toContainerPropertiesString(this.flexContainerProperties)}"
             style="flex-direction: ${this.flexDirection}; flex-wrap: ${this.flexWrap}; justify-content: ${this
-               .flexJustifyContent}; align-items: ${this.alignItems}; align-content: ${this.alignContent};"
+               .flexJustifyContent}; align-items: ${this.flexAlignItems}; align-content: ${this.flexAlignContent};"
          >
             <slot id="slotElement" @slotchange="${(event: Event) => this.slotChanged(event)}"></slot>
          </div>
@@ -139,9 +137,9 @@ export class FlexComponent extends LitElement {
    protected update(changedProperties: Map<PropertyKey, unknown>): void {
       super.update(changedProperties);
       if (
-         changedProperties.get('itemFlexBasisValue') != undefined ||
-         changedProperties.get('itemFlexBasisValues') != undefined ||
-         changedProperties.get('itemProperties') != undefined
+         changedProperties.get('flexItemBasisValue') != undefined ||
+         changedProperties.get('flexItemBasisValues') != undefined ||
+         changedProperties.get('flexItemProperties') != undefined
       ) {
          this.changeSlotComponentsStyle(this.slotElement);
       }
@@ -167,7 +165,7 @@ export class FlexComponent extends LitElement {
       let classList = element.classList;
       classList.value = '';
       classList.add('FLEX_ITEM');
-      this.itemProperties.forEach((clazz) => {
+      this.flexItemProperties.forEach((clazz) => {
          classList.add(clazz);
       });
 
@@ -188,16 +186,16 @@ export class FlexComponent extends LitElement {
    }
 
    private getFlexItemStyle(index: number): string {
-      let flexBasisValue = BasicService.getUniqueInstance().getValue(this.itemFlexBasisValues[index], this.itemFlexBasisValue);
+      let flexBasisValue = BasicService.getUniqueInstance().getValue(this.flexItemBasisValues[index], this.flexItemBasisValue);
       return 'flex-basis: '
          .concat(flexBasisValue)
          .concat(';max-width: ')
          .concat(flexBasisValue);
    }
 
-   toContainerPropertiesString(containerPropertieses: string[]) {
+   toContainerPropertiesString(flexContainerPropertieses: string[]) {
       let containerClazzString: string = 'FLEX_CONTAINER';
-      containerPropertieses.forEach((clazz) => {
+      flexContainerPropertieses.forEach((clazz) => {
          containerClazzString = containerClazzString.concat(' ').concat(clazz);
       });
       return containerClazzString;

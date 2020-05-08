@@ -18,7 +18,7 @@ export class TypographyType {
 
 const componentCSS = require('./component.css');
 
-@customElement('component-typography')
+@customElement('nidoca-typography')
 export class TypographyComponent extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}

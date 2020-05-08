@@ -2,7 +2,7 @@ import { customElement, html, property, TemplateResult } from 'lit-element';
 import { PageAbstract } from './page-abstract';
 import { InputfieldComponent, InputfieldType } from '../inputfield/component';
 import { ButtonType, SpacerAlignment, SpacerSize, TypographyType } from '..';
-import { ContainerProperties, ItemProperties } from '../flex-container/component';
+import { FlexContainerProperties, FlexItemProperties } from '../flex-container/component';
 import { I18nService } from '@domoskanonos/frontend-basis';
 import { PreviewFormatterService } from './preview-formatter';
 
@@ -21,82 +21,82 @@ export class PageButton extends PageAbstract {
 
    getMainComponent(): TemplateResult {
       return html`
-         <component-flex-container
-            .containerProperties="${[
-               ContainerProperties.CONTAINER_WIDTH_50,
-               ContainerProperties.SMARTPHONE_MAX_WIDTH,
-               ContainerProperties.SMARTPHONE_HORIZONTAL_PADDING
+         <nidoca-flex-container
+            .flexContainerProperties="${[
+               FlexContainerProperties.CONTAINER_WIDTH_50,
+               FlexContainerProperties.SMARTPHONE_MAX_WIDTH,
+               FlexContainerProperties.SMARTPHONE_HORIZONTAL_PADDING
             ]}"
-            .itemProperties="${[ItemProperties.KEYLINE_ALIGNMENT_HORIZONTAL, ItemProperties.KEYLINE_SIZE_MEDIUM]}"
-            itemFlexBasisValue="100%"
+            .flexItemProperties="${[FlexItemProperties.KEYLINE_ALIGNMENT_HORIZONTAL, FlexItemProperties.KEYLINE_SIZE_MEDIUM]}"
+            flexItemBasisValue="100%"
          >
-            <component-typography .typographyType="${TypographyType.H2}" text="<component-button/>"></component-typography>
-            <component-typography .typographyType="${TypographyType.BODY1}">
+            <nidoca-typography .typographyType="${TypographyType.H2}" text="<nidoca-button/>"></nidoca-typography>
+            <nidoca-typography .typographyType="${TypographyType.BODY1}">
                ${I18nService.getUniqueInstance().getValue(
                   'pagebutton_description_1'
                )}<i>@component-button-click</i>${I18nService.getUniqueInstance().getValue('pagebutton_description_2')}
-            </component-typography>
-            <component-typography
+            </nidoca-typography>
+            <nidoca-typography
                .typographyType="${TypographyType.H4}"
                text="${I18nService.getUniqueInstance().getValue('interactive_demo')}"
-            ></component-typography>
-            <component-typography
+            ></nidoca-typography>
+            <nidoca-typography
                .typographyType="${TypographyType.BODY1}"
                text="${I18nService.getUniqueInstance().getValue('pagebutton_var')}"
-            ></component-typography>
+            ></nidoca-typography>
 
-            <component-tabs>
-               <component-tab
+            <nidoca-tabs>
+               <nidoca-tab
                   slot="tab"
                   .selected="${true}"
                   text="${I18nService.getUniqueInstance().getValue('demo')}"
-               ></component-tab>
-               <component-tab slot="tab" text="${I18nService.getUniqueInstance().getValue('source')}"></component-tab>
-               <component-tab-content slot="tabContent" .selected="${true}"
-                  ><component-flex-container
-                     .containerProperties="${[ContainerProperties.CONTAINER_WIDTH_100, ContainerProperties.SMARTPHONE_MAX_WIDTH]}"
-                     .itemProperties="${[ItemProperties.KEYLINE_ALIGNMENT_VERTICAL, ItemProperties.KEYLINE_SIZE_ZERO]}"
-                     itemFlexBasisValue="100%"
+               ></nidoca-tab>
+               <nidoca-tab slot="tab" text="${I18nService.getUniqueInstance().getValue('source')}"></nidoca-tab>
+               <nidoca-tab-content slot="tabContent" .selected="${true}"
+                  ><nidoca-flex-container
+                     .flexContainerProperties="${[FlexContainerProperties.CONTAINER_WIDTH_100, FlexContainerProperties.SMARTPHONE_MAX_WIDTH]}"
+                     .flexItemProperties="${[FlexItemProperties.KEYLINE_ALIGNMENT_VERTICAL, FlexItemProperties.KEYLINE_SIZE_ZERO]}"
+                     flexItemBasisValue="100%"
                   >
-                     <component-form>
-                        <component-inputfield
+                     <nidoca-form>
+                        <nidoca-inputfield
                            .inputfieldType="${InputfieldType.COMBOBOX}"
                            .options="${InputfieldComponent.enumToComboboxItems(ButtonType)}"
                            label="${I18nService.getUniqueInstance().getValue('pagebutton_buttontype')}"
                            value="${this.buttonType}"
                            @component-inputfield-change="${(event: CustomEvent) => this.changeButtonType(event)}"
-                        ></component-inputfield>
-                        <component-inputfield
+                        ></nidoca-inputfield>
+                        <nidoca-inputfield
                            .inputfieldType="${InputfieldType.SWITCH}"
                            label="${I18nService.getUniqueInstance().getValue('pagebutton_leading_label')}"
                            assistiveText="${I18nService.getUniqueInstance().getValue('pagebutton_leading_text')}"
                            .checked="${this.showLeadingIcon}"
                            @component-inputfield-change="${() => this.switchLeadingIcon()}"
-                        ></component-inputfield>
-                     </component-form>
+                        ></nidoca-inputfield>
+                     </nidoca-form>
 
-                     <component-button
+                     <nidoca-button
                         buttonType="${this.buttonType}"
                         leadingIcon="${this.showLeadingIcon ? 'sentiment_satisfied_alt' : ''}"
                         text="${I18nService.getUniqueInstance().getValue('pagebutton_button_text')}"
-                     ></component-button> </component-flex-container
-               ></component-tab-content>
-               <component-tab-content slot="tabContent"
-                  ><component-spacer
+                     ></nidoca-button> </nidoca-flex-container
+               ></nidoca-tab-content>
+               <nidoca-tab-content slot="tabContent"
+                  ><nidoca-spacer
                      spacerSize="${SpacerSize.MEDIUM}"
                      spacerAlignment="${SpacerAlignment.VERTICAL}"
-                  ></component-spacer
-                  ><component-code
-                     code="${'<component-button '
+                  ></nidoca-spacer
+                  ><nidoca-code
+                     code="${'<nidoca-button '
                         .concat(PreviewFormatterService.getUniqueInstance().property2String(this.buttonType, ButtonType))
                         .concat(' leadingIcon="sentiment_satisfied_alt" text="')
                         .concat(I18nService.getUniqueInstance().getValue('pagebutton_button_text'))
-                        .concat('"></component-button>')}"
+                        .concat('"></nidoca-button>')}"
                   >
-                  </component-code
-               ></component-tab-content>
-            </component-tabs>
-         </component-flex-container>
+                  </nidoca-code
+               ></nidoca-tab-content>
+            </nidoca-tabs>
+         </nidoca-flex-container>
       `;
    }
 

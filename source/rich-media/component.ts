@@ -14,7 +14,7 @@ export enum RichMediaProperties {
    FULL_WIDTH = 'FULL_WIDTH'
 }
 
-@customElement('component-rich-media')
+@customElement('nidoca-rich-media')
 export class RichMediaComponent extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}

@@ -8,7 +8,7 @@ export class CodeFormatter {
    static HTML = 'HTML';
 }
 
-@customElement('component-code')
+@customElement('nidoca-code')
 export class CodeComponent extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
@@ -23,7 +23,7 @@ export class CodeComponent extends LitElement {
    render() {
       return html`
          <pre>
-                <code>${this.format(this.code)}<component-icon class="icon-position" @component-icon-click="${() => {
+                <code>${this.format(this.code)}<nidoca-icon class="icon-position" @component-icon-click="${() => {
          BasicService.getUniqueInstance().copyToClipboard(this.code);
       }}" clickable="true" icon="file_copy"><slot></slot></code>
             </pre>

@@ -1,8 +1,8 @@
 import { css, customElement, html, unsafeCSS, property, LitElement } from 'lit-element';
 import { BasicService, RouterService } from '@domoskanonos/frontend-basis';
 import {
-   AlignContent,
-   AlignItems,
+   FlexAlignContent,
+   FlexAlignItems,
    FlexDirection,
    FlexJustifyContent,
    FlexWrap,
@@ -10,11 +10,11 @@ import {
    SpacerSize,
    TypographyType
 } from '../..';
-import { ContainerProperties } from '../../flex-container/component';
+import { FlexContainerProperties } from '../../flex-container/component';
 
 const componentCSS = require('./component.css');
 
-@customElement('component-navigation-link')
+@customElement('nidoca-navigation-link')
 export class NavigationLinkComponent extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
@@ -39,22 +39,22 @@ export class NavigationLinkComponent extends LitElement {
                  class="navItem"
                  class="${RouterService.getUniqueInstance().getPath() == this.href ? 'navItem selected' : 'navItem'}"
               >
-                 <component-spacer spacerSize="${SpacerSize.SMALL}" spacerAlignment="${SpacerAlignment.VERTICAL}">
-                    <component-flex-container
+                 <nidoca-spacer spacerSize="${SpacerSize.SMALL}" spacerAlignment="${SpacerAlignment.VERTICAL}">
+                    <nidoca-flex-container
                        @click="${() => this.linkClicked()}"
-                       .containerProperties="${[ContainerProperties.CONTAINER_WIDTH_100]}"
-                       .itemProperties="${[]}"
+                       .flexContainerProperties="${[FlexContainerProperties.CONTAINER_WIDTH_100]}"
+                       .flexItemProperties="${[]}"
                        .flexDirection="${FlexDirection.ROW}"
                        .flexWrap="${FlexWrap.NO_WRAP}"
                        .flexJustifyContent="${FlexJustifyContent.FLEX_END}"
-                       .alignItems="${AlignItems.CENTER}"
-                       .alignContent="${AlignContent.FLEX_START}"
-                       .itemFlexBasisValues="${['20%', '80%']}"
+                       .flexAlignItems="${FlexAlignItems.CENTER}"
+                       .flexAlignContent="${FlexAlignContent.FLEX_START}"
+                       .flexItemBasisValues="${['20%', '80%']}"
                     >
-                       <component-icon icon="${this.icon}" .withIconSpace="${false}"></component-icon>
-                       <component-typography typographyType="${TypographyType.BODY2}">${this.text}</component-typography>
-                    </component-flex-container>
-                 </component-spacer>
+                       <nidoca-icon icon="${this.icon}" .withIconSpace="${false}"></nidoca-icon>
+                       <nidoca-typography typographyType="${TypographyType.BODY2}">${this.text}</nidoca-typography>
+                    </nidoca-flex-container>
+                 </nidoca-spacer>
               </div>
            `
          : html``;

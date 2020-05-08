@@ -1,8 +1,8 @@
 import { css, customElement, html, LitElement, property, unsafeCSS } from 'lit-element';
 
 import {
-   AlignContent,
-   AlignItems,
+   FlexAlignContent,
+   FlexAlignItems,
    FlexDirection,
    FlexJustifyContent,
    FlexWrap,
@@ -10,11 +10,11 @@ import {
    SpacerSize,
    TypographyType
 } from '../..';
-import { ContainerProperties } from '../../flex-container/component';
+import { FlexContainerProperties } from '../../flex-container/component';
 
 const componentCSS = require('./component.css');
 
-@customElement('component-navigation-section')
+@customElement('nidoca-navigation-section')
 export class NavigationSectionComponent extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
@@ -29,20 +29,20 @@ export class NavigationSectionComponent extends LitElement {
    render() {
       return this.rendered
          ? html`
-              <component-flex-container
-                 .containerProperties="${[ContainerProperties.CONTAINER_WIDTH_100]}"
-                 .itemProperties="${[]}"
+              <nidoca-flex-container
+                 .flexContainerProperties="${[FlexContainerProperties.CONTAINER_WIDTH_100]}"
+                 .flexItemProperties="${[]}"
                  .flexDirection="${FlexDirection.ROW}"
                  .flexWrap="${FlexWrap.NO_WRAP}"
                  .flexJustifyContent="${FlexJustifyContent.FLEX_END}"
-                 .alignItems="${AlignItems.CENTER}"
-                 .alignContent="${AlignContent.FLEX_START}"
-                 itemFlexBasisValue="80%"
+                 .flexAlignItems="${FlexAlignItems.CENTER}"
+                 .flexAlignContent="${FlexAlignContent.FLEX_START}"
+                 flexItemBasisValue="80%"
               >
-                 <component-spacer spacerSize="${SpacerSize.MEDIUM}" spacerAlignment="${SpacerAlignment.VERTICAL}">
-                    <component-typography .typographyType="${TypographyType.H6}" text="${this.text}"></component-typography>
-                 </component-spacer>
-              </component-flex-container>
+                 <nidoca-spacer spacerSize="${SpacerSize.MEDIUM}" spacerAlignment="${SpacerAlignment.VERTICAL}">
+                    <nidoca-typography .typographyType="${TypographyType.H6}" text="${this.text}"></nidoca-typography>
+                 </nidoca-spacer>
+              </nidoca-flex-container>
            `
          : html``;
    }

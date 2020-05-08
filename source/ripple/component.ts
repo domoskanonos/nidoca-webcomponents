@@ -5,7 +5,7 @@ const componentCSS = require('./component.css');
 /**
  * check source: https://codepen.io/jakob-e/pen/XZoZWQ
  */
-@customElement('component-ripple')
+@customElement('nidoca-ripple')
 export class RippleComponent extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}

@@ -1,8 +1,8 @@
 import { customElement, html, TemplateResult } from 'lit-element';
 import { PageAbstract } from './page-abstract';
 import {
-   AlignContent,
-   AlignItems,
+   FlexAlignContent,
+   FlexAlignItems,
    ButtonType,
    FlexDirection,
    FlexJustifyContent,
@@ -12,7 +12,7 @@ import {
    TargetType,
    TypographyType
 } from '..';
-import { ContainerProperties, ItemProperties } from '../flex-container/component';
+import { FlexContainerProperties, FlexItemProperties } from '../flex-container/component';
 import { I18nService, RouterService } from '@domoskanonos/frontend-basis';
 
 @customElement('page-introduction')
@@ -24,84 +24,85 @@ export class PageIntroduction extends PageAbstract {
 
    getMainComponent(): TemplateResult {
       return html`
-         <component-box
+         <nidoca-box
             height="60vmin"
             width="100vw"
             style="color: var(--app-color-primary);background-color: var(--app-color-primary-background-light);"
          >
-            <component-flex-container
-               .containerProperties="${[
-                  ContainerProperties.CONTAINER_WIDTH_50,
-                  ContainerProperties.SMARTPHONE_MAX_WIDTH,
-                  ContainerProperties.SMARTPHONE_HORIZONTAL_PADDING,
-                  ContainerProperties.CONTAINER_HEIGHT_100
+            <nidoca-flex-container
+               .flexContainerProperties="${[
+                  FlexContainerProperties.CONTAINER_WIDTH_50,
+                  FlexContainerProperties.SMARTPHONE_MAX_WIDTH,
+                  FlexContainerProperties.SMARTPHONE_HORIZONTAL_PADDING,
+                  FlexContainerProperties.CONTAINER_HEIGHT_100
                ]}"
-               itemFlexBasisValue="100%"
-               .alignContent="${AlignContent.CENTER}"
+               flexItemBasisValue="auto"
+               .flexJustifyContent="${FlexJustifyContent.SPACE_AROUND}"
+               .flexAlignContent="${FlexAlignContent.CENTER}"
             >
-               <component-typography .typographyType="${TypographyType.H1}">WC-Atomic</component-typography>
-               <component-typography>
+               <nidoca-typography .typographyType="${TypographyType.H1}">WC-Atomic</nidoca-typography>
+               <nidoca-typography>
                   WC-Atomic ist ein leichtgewichtiges UI-Framework, das auf
-                  <component-link href="https://www.webcomponents.org/" targetType="${TargetType.BLANK}"
-                     >Webcomponents</component-link
+                  <nidoca-link href="https://www.webcomponents.org/" targetType="${TargetType.BLANK}"
+                     >Webcomponents</nidoca-link
                   >,
-                  <component-link href="https://www.typescriptlang.org/" targetType="${TargetType.BLANK}"
-                     >Typescript</component-link
+                  <nidoca-link href="https://www.typescriptlang.org/" targetType="${TargetType.BLANK}"
+                     >Typescript</nidoca-link
                   >
                   und
-                  <component-link href="https://lit-element.polymer-project.org/" targetType="${TargetType.BLANK}"
-                     >LitElement</component-link
+                  <nidoca-link href="https://lit-element.polymer-project.org/" targetType="${TargetType.BLANK}"
+                     >LitElement</nidoca-link
                   >
                   aufbaut.
-               </component-typography>
+               </nidoca-typography>
 
-               <component-spacer spacerSize="${SpacerSize.MEDIUM}"></component-spacer>
+               <nidoca-spacer spacerSize="${SpacerSize.MEDIUM}"></nidoca-spacer>
 
-               <component-flex-container
-                  .containerProperties="${[ContainerProperties.CONTAINER_WIDTH_AUTO]}"
-                  .itemProperties="${[ItemProperties.KEYLINE_SIZE_MEDIUM]}"
-                  itemFlexBasisValue="auto"
+               <nidoca-flex-container
+                  .flexContainerProperties="${[FlexContainerProperties.CONTAINER_WIDTH_AUTO]}"
+                  .flexItemProperties="${[FlexItemProperties.KEYLINE_SIZE_MEDIUM]}"
+                  flexItemBasisValue="auto"
                   .flexDirection="${FlexDirection.ROW}"
                   .flexWrap="${FlexWrap.WRAP}"
                   .flexJustifyContent="${FlexJustifyContent.FLEX_START}"
-                  .alignItems="${AlignItems.START}"
-                  .alignContent="${AlignContent.FLEX_START}"
+                  .flexAlignItems="${FlexAlignItems.START}"
+                  .flexAlignContent="${FlexAlignContent.FLEX_START}"
                >
-                  <component-button
+                  <nidoca-button
                      .buttonType="${ButtonType.SECONDARY}"
                      text="Installation"
                      @component-button-click="${() => {
                         RouterService.getUniqueInstance().navigate('getStarted');
                      }}"
-                  ></component-button>
-                  <component-button .buttonType="${ButtonType.SECONDARY}" text="Dokumentation"></component-button>
-               </component-flex-container>
-            </component-flex-container>
-         </component-box>
+                  ></nidoca-button>
+                  <nidoca-button .buttonType="${ButtonType.SECONDARY}" text="Dokumentation"></nidoca-button>
+               </nidoca-flex-container>
+            </nidoca-flex-container>
+         </nidoca-box>
 
-         <component-flex-container
-            .containerProperties="${[ContainerProperties.CONTAINER_WIDTH_100]}"
-            .itemProperties="${[ItemProperties.SMARTPHONE_MAX_WIDTH]}"
+         <nidoca-flex-container
+            .flexContainerProperties="${[FlexContainerProperties.CONTAINER_WIDTH_100]}"
+            .flexItemProperties="${[FlexItemProperties.SMARTPHONE_MAX_WIDTH]}"
             .direction="${FlexDirection.ROW}"
             .wrap="${FlexWrap.WRAP}"
             .flexJustifyContent="${FlexJustifyContent.CENTER}"
-            .alignItems="${AlignItems.CENTER}"
-            .alignContent="${AlignContent.FLEX_START}"
-            itemFlexBasisValue="25%"
+            .flexAlignItems="${FlexAlignItems.CENTER}"
+            .flexAlignContent="${FlexAlignContent.FLEX_START}"
+            flexItemBasisValue="25%"
          >
-            <component-rich-media src="https://picsum.photos/500/400" text="Mein Bild"></component-rich-media>
-            <component-rich-media src="https://picsum.photos/550/400" text="Mein Bild"></component-rich-media>
-            <component-rich-media src="https://picsum.photos/600/400" text="Mein Bild"></component-rich-media>
-            <component-spacer spacerSize="${SpacerSize.BIG}" spacerAlignment="${SpacerAlignment.VERTICAL}">
-               <component-flex-container .containerProperties="${['CONTAINER_WIDTH_75']}" itemFlexBasisValue="100%">
-                  <component-typography .typographyType="${TypographyType.H4}">Bildquelle</component-typography>
-                  <component-typography .typographyType="${TypographyType.BODY1}">
+            <nidoca-rich-media src="https://picsum.photos/500/400" text="Mein Bild"></nidoca-rich-media>
+            <nidoca-rich-media src="https://picsum.photos/550/400" text="Mein Bild"></nidoca-rich-media>
+            <nidoca-rich-media src="https://picsum.photos/600/400" text="Mein Bild"></nidoca-rich-media>
+            <nidoca-spacer spacerSize="${SpacerSize.BIG}" spacerAlignment="${SpacerAlignment.VERTICAL}">
+               <nidoca-flex-container .flexContainerProperties="${['CONTAINER_WIDTH_75']}" flexItemBasisValue="100%">
+                  <nidoca-typography .typographyType="${TypographyType.H4}">Bildquelle</nidoca-typography>
+                  <nidoca-typography .typographyType="${TypographyType.BODY1}">
                      Die hier abgebildeten Fotos stammen von:
-                     <component-link href="https://picsum.photos">https://picsum.photos</component-link></component-typography
+                     <nidoca-link href="https://picsum.photos">https://picsum.photos</nidoca-link></nidoca-typography
                   >
-               </component-flex-container></component-spacer
+               </nidoca-flex-container></nidoca-spacer
             >
-         </component-flex-container>
+         </nidoca-flex-container>
       `;
    }
 }

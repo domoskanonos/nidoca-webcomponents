@@ -1,7 +1,7 @@
 import { customElement, html, TemplateResult } from 'lit-element';
 import { PageAbstract } from './page-abstract';
 import { SpacerAlignment, SpacerSize, TargetType, TypographyType } from '..';
-import { ContainerProperties, ItemProperties } from '../flex-container/component';
+import { FlexContainerProperties, FlexItemProperties } from '../flex-container/component';
 import { I18nService } from '@domoskanonos/frontend-basis';
 
 @customElement('page-get-started')
@@ -13,62 +13,62 @@ export class PageGetStarted extends PageAbstract {
 
    getMainComponent(): TemplateResult {
       return html`
-         <component-flex-container
-            .containerProperties="${[
-               ContainerProperties.CONTAINER_WIDTH_50,
-               ContainerProperties.TABLET_MAX_WIDTH,
-               ContainerProperties.SMARTPHONE_MAX_WIDTH,
-               ContainerProperties.SMARTPHONE_HORIZONTAL_PADDING,
-               ContainerProperties.TABLET_HORIZONTAL_PADDING
+         <nidoca-flex-container
+            .flexContainerProperties="${[
+               FlexContainerProperties.CONTAINER_WIDTH_50,
+               FlexContainerProperties.TABLET_MAX_WIDTH,
+               FlexContainerProperties.SMARTPHONE_MAX_WIDTH,
+               FlexContainerProperties.SMARTPHONE_HORIZONTAL_PADDING,
+               FlexContainerProperties.TABLET_HORIZONTAL_PADDING
             ]}"
-            .itemProperties="${[ItemProperties.KEYLINE_ALIGNMENT_HORIZONTAL, ItemProperties.KEYLINE_SIZE_MEDIUM]}"
-            itemFlexBasisValue="100%"
+            .flexItemProperties="${[FlexItemProperties.KEYLINE_ALIGNMENT_HORIZONTAL, FlexItemProperties.KEYLINE_SIZE_MEDIUM]}"
+            flexItemBasisValue="100%"
          >
-            <component-typography
+            <nidoca-typography
                .typographyType="${TypographyType.H1}"
                text="${I18nService.getUniqueInstance().getValue('pagegetstarted')}"
-            ></component-typography>
-            <component-typography .typographyType="${TypographyType.BODY1}">
+            ></nidoca-typography>
+            <nidoca-typography .typographyType="${TypographyType.BODY1}">
                wc-atomic is a lightweight ui-framework based on
-               <component-link href="https://www.webcomponents.org/" targetType="${TargetType.BLANK}"
-                  >${I18nService.getUniqueInstance().getValue('page_get_webcomponent')}</component-link
+               <nidoca-link href="https://www.webcomponents.org/" targetType="${TargetType.BLANK}"
+                  >${I18nService.getUniqueInstance().getValue('page_get_webcomponent')}</nidoca-link
                >,
-               <component-link href="https://www.typescriptlang.org/" targetType="${TargetType.BLANK}">typescript</component-link>
+               <nidoca-link href="https://www.typescriptlang.org/" targetType="${TargetType.BLANK}">typescript</nidoca-link>
                and
-               <component-link href="https://lit-element.polymer-project.org/" targetType="${TargetType.BLANK}"
-                  >${I18nService.getUniqueInstance().getValue('page_get_litelement')}</component-link
+               <nidoca-link href="https://lit-element.polymer-project.org/" targetType="${TargetType.BLANK}"
+                  >${I18nService.getUniqueInstance().getValue('page_get_litelement')}</nidoca-link
                >
-            </component-typography>
+            </nidoca-typography>
 
-            <component-typography
+            <nidoca-typography
                .typographyType="${TypographyType.H4}"
                text="${I18nService.getUniqueInstance().getValue('page_get_init')}"
-            ></component-typography>
-            <component-typography .typographyType="${TypographyType.BODY1}">
+            ></nidoca-typography>
+            <nidoca-typography .typographyType="${TypographyType.BODY1}">
                ${I18nService.getUniqueInstance().getValue('page_get_init_simple')}
-               <component-link href="https://www.npmjs.com/package/@domoskanonos/wc-atomic" targetType="${TargetType.BLANK}"
-                  >npm</component-link
+               <nidoca-link href="https://www.npmjs.com/package/@domoskanonos/wc-atomic" targetType="${TargetType.BLANK}"
+                  >npm</nidoca-link
                >:
-               <component-spacer spacerSize="${SpacerSize.MEDIUM}" spacerAlignment="${SpacerAlignment.VERTICAL}">
-               </component-spacer>
-               <component-code code="npm i @domoskanonos/wc-atomic"></component-code>
-               <component-spacer spacerSize="${SpacerSize.MEDIUM}" spacerAlignment="${SpacerAlignment.VERTICAL}">
-               </component-spacer>
+               <nidoca-spacer spacerSize="${SpacerSize.MEDIUM}" spacerAlignment="${SpacerAlignment.VERTICAL}">
+               </nidoca-spacer>
+               <nidoca-code code="npm i @domoskanonos/wc-atomic"></nidoca-code>
+               <nidoca-spacer spacerSize="${SpacerSize.MEDIUM}" spacerAlignment="${SpacerAlignment.VERTICAL}">
+               </nidoca-spacer>
                ${I18nService.getUniqueInstance().getValue('page_get_text2')}
-               <component-spacer spacerSize="${SpacerSize.MEDIUM}" spacerAlignment="${SpacerAlignment.VERTICAL}">
-               </component-spacer>
-               <component-code code="${'"dependencies": { "@domoskanonos/wc-atomic": "latest",... }'}"></component-code>
-            </component-typography>
+               <nidoca-spacer spacerSize="${SpacerSize.MEDIUM}" spacerAlignment="${SpacerAlignment.VERTICAL}">
+               </nidoca-spacer>
+               <nidoca-code code="${'"dependencies": { "@domoskanonos/wc-atomic": "latest",... }'}"></nidoca-code>
+            </nidoca-typography>
 
-            <component-typography .typographyType="${TypographyType.H4}" text="Basic Template"></component-typography>
-            <component-typography .typographyType="${TypographyType.BODY1}">
+            <nidoca-typography .typographyType="${TypographyType.H4}" text="Basic Template"></nidoca-typography>
+            <nidoca-typography .typographyType="${TypographyType.BODY1}">
                ${I18nService.getUniqueInstance().getValue('page_get_text3')}
-               <component-link href="https://github.com/domoskanonos/wc-atomic-template" targetType="${TargetType.BLANK}"
-                  >${I18nService.getUniqueInstance().getValue('page_get_template')}</component-link
+               <nidoca-link href="https://github.com/domoskanonos/wc-atomic-template" targetType="${TargetType.BLANK}"
+                  >${I18nService.getUniqueInstance().getValue('page_get_template')}</nidoca-link
                >
                . ${I18nService.getUniqueInstance().getValue('page_get_text')}
-            </component-typography>
-         </component-flex-container>
+            </nidoca-typography>
+         </nidoca-flex-container>
       `;
    }
 }
