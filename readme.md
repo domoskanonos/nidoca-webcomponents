@@ -1,4 +1,4 @@
-# nidoca framework (wc-atomic-core)
+# nidoca framework (nidoca-core)
 
 ## Introduction
 
