@@ -11,7 +11,6 @@ export abstract class BasisTemplate extends LitElement {
       ${unsafeCSS(componentCSS)}
    `;
 
-
    @property()
    menuSwitchIcon = 'menu';
 
@@ -33,12 +32,9 @@ export abstract class BasisTemplate extends LitElement {
 
    render() {
       return html`
-         <component-border ..borderProperties="${[BorderProperties.RIGHT]}">
-            <component-navigation .closed="${this.navigationClosed}" navigationType="${this.navigationType}">
-               ${this.getLeftNavigationContent()}
-            </component-navigation>
-         </component-border>
-
+         <component-navigation .closed="${this.navigationClosed}" navigationType="${this.navigationType}">
+            ${this.getLeftNavigationContent()}
+         </component-navigation>
          <top id="top" class="${this.menuCss}" @component-icon-click="${this.menuItemClicked}">
             <component-border ..borderProperties="${[BorderProperties.BOTTOM]}">
                ${this.getTopContent()}
