@@ -1,19 +1,33 @@
 import { css, customElement, html, property, unsafeCSS, LitElement } from 'lit-element';
 
-export class TypographyType {
-   static H1: string = 'H1';
-   static H2: string = 'H2';
-   static H3: string = 'H3';
-   static H4: string = 'H4';
-   static H5: string = 'H5';
-   static H6: string = 'H6';
-   static SUBTITLE1: string = 'SUBTITLE1';
-   static SUBTITLE2: string = 'SUBTITLE2';
-   static BODY1: string = 'BODY1';
-   static BODY2: string = 'BODY2';
-   static BUTTON: string = 'BUTTON';
-   static CAPTION: string = 'CAPTION';
-   static OVERLINE: string = 'OVERLINE';
+export enum TypographyType {
+   H1 = 'H1',
+   H2 = 'H2',
+   H3 = 'H3',
+   H4 = 'H4',
+   H5 = 'H5',
+   H6 = 'H6',
+   SUBTITLE1 = 'SUBTITLE1',
+   SUBTITLE2 = 'SUBTITLE2',
+   BODY1 = 'BODY1',
+   BODY2 = 'BODY2',
+   BUTTON = 'BUTTON',
+   CAPTION = 'CAPTION',
+   OVERLINE = 'OVERLINE'
+}
+
+export enum TypographyAlignment {
+   JUSTIFY = 'text-align:justify;',
+   JUSTIFY_ALL = 'text-align:justify-all;',
+   LEFT = 'text-align: left;',
+   RIGHT = 'text-align: right;',
+   CENTER = 'text-align: center;',
+   START = 'text-align: start;',
+   END = 'text-align: end;',
+   MATCH_PARENT = 'text-align: match-parent;',
+   INHERIT = 'text-align: inherit;',
+   INITIAL = 'text-align: initial;',
+   UNSET = 'text-align: unset;'
 }
 
 const componentCSS = require('./component.css');
@@ -25,20 +39,17 @@ export class TypographyComponent extends LitElement {
    `;
 
    @property()
-   typographyType: string = TypographyType.BODY1;
+   typographyType: TypographyType = TypographyType.BODY1;
+
+   @property()
+   typographyAlignment: TypographyAlignment = TypographyAlignment.JUSTIFY;
 
    @property()
    text: string = '';
 
-   @property()
-   clazz: string = '';
-
-   @property()
-   cssStyle: string = '';
-
    render() {
       return html`
-         <span class="${this.typographyType} ${this.clazz}" style="${this.cssStyle}"> ${this.text}<slot></slot> </span>
+         <span class="TYPOGRAPHY ${this.typographyType}" style="${this.typographyAlignment}">${this.text}<slot></slot></span>
       `;
    }
 }

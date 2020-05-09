@@ -1,3 +1,3 @@
 TODO:
+- TypographyType Center block etc editierbar machen
 - Grid COntainer  column-gap:10px; row-gap: 10px;
-- Icon round und withiconspace getrennt

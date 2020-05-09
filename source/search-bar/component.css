@@ -1,8 +1,6 @@
 .search-bar {
    box-sizing: border-box;
    width: 100%;
-   height: var(--line-height-big);
-   line-height: var(--line-height-big);
    display: flex;
    flex-wrap: nowrap;
    justify-content: space-between;

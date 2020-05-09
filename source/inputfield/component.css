@@ -20,7 +20,6 @@ textarea {
 }
 
 select[multiple] {
-   margin-top: var(--line-height-large);
    line-height: unset;
    height: auto;
 }
