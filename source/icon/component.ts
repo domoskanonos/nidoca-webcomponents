@@ -4,12 +4,6 @@ import { ShadowType } from '../border/component';
 
 const componentCSS = require('./component.css');
 
-export class EventIconClickData {
-   icon: string = '';
-   clickData?: any;
-   clickable: boolean = false;
-}
-
 export class IconShadowType {
    static NONE = 'NONE';
    static DEFAULT_SHADOW = 'DEFAULT_SHADOW';
@@ -56,9 +50,6 @@ export class IconComponent extends LitElement {
    @property()
    clickable: boolean = false;
 
-   @property()
-   clickData: any;
-
    render() {
       return html`
          <nidoca-spacer size="${this.withIconSpace ? String(this.size / 2).concat(this.sizeUnit) : '0px'}">
@@ -92,11 +83,7 @@ export class IconComponent extends LitElement {
 
    async clicked() {
       if (this.clickable) {
-         BasicService.getUniqueInstance().dispatchSimpleCustomEvent(this, IconComponent.EVENT_CLICK, <EventIconClickData>{
-            clickData: this.clickData,
-            clickable: this.clickable,
-            icon: this.icon
-         });
+         BasicService.getUniqueInstance().dispatchSimpleCustomEvent(this, IconComponent.EVENT_CLICK, this);
       }
    }
 }
