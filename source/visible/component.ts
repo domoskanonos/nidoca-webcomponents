@@ -9,7 +9,7 @@ export enum VisibleType {
 }
 
 @customElement('nidoca-visible')
-export class VisibleEffect extends LitElement {
+export class NidocaVisible extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;

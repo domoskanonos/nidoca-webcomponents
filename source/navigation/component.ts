@@ -9,7 +9,8 @@ export enum NavigationType {
 }
 
 @customElement('nidoca-navigation')
-export class NavigationComponent extends LitElement {
+export class NidocaNavigation extends LitElement {
+
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;

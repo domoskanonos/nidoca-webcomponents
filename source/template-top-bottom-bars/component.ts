@@ -1,11 +1,11 @@
 import { css, html, property, query, TemplateResult, unsafeCSS, LitElement } from 'lit-element';
 
 import { BasicService } from '@domoskanonos/frontend-basis';
-import { IconComponent } from '..';
+import { NidocaIcon } from '..';
 
 const componentCSS = require('./component.css');
 
-export abstract class TopBottomTemplate extends LitElement {
+export abstract class NidocaTopBottomTemplate extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;
@@ -27,7 +27,7 @@ export abstract class TopBottomTemplate extends LitElement {
 
    render() {
       return html`
-         <div class="container" @component-icon-click="${this.menuItemClicked}">
+         <div class="container" @nidoca-icon-clicked="${this.menuItemClicked}">
             <div id="top" class="${this.menuCss}">
                ${this.getTopContent()}
             </div>
@@ -59,7 +59,7 @@ export abstract class TopBottomTemplate extends LitElement {
    }
 
    menuItemClicked(event: CustomEvent) {
-      let id: IconComponent = event.detail;
+      let id: NidocaIcon = event.detail;
       if (BasicService.getUniqueInstance().isEqual(id.icon, this.menuSwitchIcon)) {
          console.log('menuItemClicked...');
          this.toogleMenu();

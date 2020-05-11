@@ -31,7 +31,7 @@ export enum ShadowType {
 const componentCSS = require('./component.css');
 
 @customElement('nidoca-border')
-export class BorderComponent extends LitElement {
+export class NidocaBorder extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;

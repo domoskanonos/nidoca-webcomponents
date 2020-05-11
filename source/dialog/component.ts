@@ -4,7 +4,8 @@ import { TransitionType, VisibleType } from '..';
 const componentCSS = require('./component.css');
 
 @customElement('nidoca-dialog')
-export class DialogComponent extends LitElement {
+export class NidocaDialog extends LitElement {
+
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;
@@ -19,11 +20,11 @@ export class DialogComponent extends LitElement {
             <div class="fullScreen wrapperOutside">
                <div class="wrapperInside">
                   <!-- Dialog -->
-                  <effect-transition .transitionType="${TransitionType.SLIDE_CENTER}">
+                  <nidoca-transition .transitionType="${TransitionType.SLIDE_CENTER}">
                      <div class="dialogContainer">
                         <slot></slot>
                      </div>
-                  </effect-transition>
+                  </nidoca-transition>
                </div>
             </div>
          </nidoca-visible>

@@ -1,12 +1,12 @@
 import { repeat } from 'lit-html/directives/repeat';
 import { guard } from 'lit-html/directives/guard';
 import { css, customElement, html, property, query, unsafeCSS, LitElement } from 'lit-element';
-import { KeyValueData } from '../form/component';
 import { TypographyType } from '../typography/component';
 import { BasicService } from '@domoskanonos/frontend-basis';
 import { FlexAlignContent, FlexAlignItems, BorderProperties, FlexJustifyContent, SpacerAlignment, SpacerSize, VisibleType } from '..';
 import { FlexContainerProperties } from '../flex-container/component';
 import { GridAlignItems, GridJustifyItems } from '../grid-container/component';
+import {KeyValueData} from "../meta";
 
 const componentCSS = require('./component.css');
 
@@ -40,18 +40,10 @@ export class InputfieldDataChangeEvent {
 }
 
 @customElement('nidoca-inputfield')
-export class InputfieldComponent extends LitElement {
+export class NidocaInputfield extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;
-
-   static EVENT_KEY_UP_CHANGE: string = 'component-inputfield-keyup';
-
-   static EVENT_ON_FOCUS_OUT: string = 'component-inputfield-focus-out';
-
-   static EVENT_ON_FOCUS: string = 'component-inputfield-focus';
-
-   static EVENT_CHANGE: string = 'component-inputfield-change';
 
    @property()
    name: string = '';
@@ -215,7 +207,7 @@ export class InputfieldComponent extends LitElement {
                                            <nidoca-icon
                                               icon="attachment"
                                               .clickable="${true}"
-                                              @component-icon-click="
+                                              @nidoca-icon-clicked="
                                           ${() => this.inputElemet?.click()}
                                           "
                                            ></nidoca-icon>
@@ -293,7 +285,7 @@ ${this.value}</textarea
                                      <componetn-container>
                                         <nidoca-visible visibleType="${this.checked ? VisibleType.HIDE : VisibleType.NORMAL}">
                                            <nidoca-icon
-                                              @component-icon-click="${() => {
+                                              @nidoca-icon-clicked="${() => {
                                                  this.switchChecked();
                                               }}"
                                               icon="toggle_off"
@@ -303,7 +295,7 @@ ${this.value}</textarea
                                         <nidoca-visible visibleType="${this.checked ? VisibleType.NORMAL : VisibleType.HIDE}">
                                            <nidoca-icon
                                               color="var(--app-color-primary-background)"
-                                              @component-icon-click="${() => {
+                                              @nidoca-icon-clicked="${() => {
                                                  this.switchChecked();
                                               }}"
                                               icon="toggle_on"
@@ -392,13 +384,13 @@ ${this.value}</textarea
       inputDataChangedEvent.type = this.inputfieldType;
       inputDataChangedEvent.element = this.inputElemet;
       inputDataChangedEvent.outputData = this.getOutputData();
-      BasicService.getUniqueInstance().dispatchSimpleCustomEvent(this, InputfieldComponent.EVENT_CHANGE, inputDataChangedEvent);
+      BasicService.getUniqueInstance().dispatchSimpleCustomEvent(this, 'nidoca-event-inputfield-change', inputDataChangedEvent);
    }
 
    async keyup() {
       BasicService.getUniqueInstance().dispatchSimpleCustomEvent(
          this,
-         InputfieldComponent.EVENT_KEY_UP_CHANGE,
+         'nidoca-event-inputfield-keyup',
          this.getOutputData()
       );
    }
@@ -407,7 +399,7 @@ ${this.value}</textarea
       console.log('event: '.concat(JSON.stringify(event)));
       this.oldValue = this.value;
       this.selected = true;
-      BasicService.getUniqueInstance().dispatchSimpleCustomEvent(this, InputfieldComponent.EVENT_ON_FOCUS, this.getOutputData());
+      BasicService.getUniqueInstance().dispatchSimpleCustomEvent(this, 'nidoca-event-inputfield-focus', this.getOutputData());
    }
 
    async focusout(event: Event) {
@@ -416,7 +408,7 @@ ${this.value}</textarea
       this.validate();
       BasicService.getUniqueInstance().dispatchSimpleCustomEvent(
          this,
-         InputfieldComponent.EVENT_ON_FOCUS_OUT,
+         'nidoca-event-inputfield-focus-out',
          this.getOutputData()
       );
    }
@@ -426,7 +418,7 @@ ${this.value}</textarea
       inputDataChangedEvent.type = this.inputfieldType;
       inputDataChangedEvent.element = <HTMLInputElement>event.target;
       inputDataChangedEvent.outputData = this.getOutputData();
-      BasicService.getUniqueInstance().dispatchSimpleCustomEvent(this, InputfieldComponent.EVENT_CHANGE, inputDataChangedEvent);
+      BasicService.getUniqueInstance().dispatchSimpleCustomEvent(this, 'nidoca-event-inputfield-change', inputDataChangedEvent);
    }
 
    public isValid(): boolean {

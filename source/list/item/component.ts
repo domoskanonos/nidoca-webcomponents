@@ -6,14 +6,11 @@ import { GridAlignItems, GridJustifyItems } from '../../grid-container/component
 const componentCSS = require('./component.css');
 
 @customElement('nidoca-list-item')
-export class ListItemComponent extends LitElement {
+export class NidocaListItem extends LitElement {
+
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;
-
-   static EVENT_LIST_ITEM_CLICKED: string = 'component-list-item-clicked';
-   static EVENT_LIST_ITEM_SELECT: string = 'component-list-item-select';
-   static EVENT_LIST_ITEM_UNSELECT: string = 'component-list-item-unselect';
 
    @property()
    selectionMode: boolean = false;
@@ -52,15 +49,15 @@ export class ListItemComponent extends LitElement {
    }
 
    itemClicked() {
-      BasicService.getUniqueInstance().dispatchSimpleCustomEvent(this, ListItemComponent.EVENT_LIST_ITEM_CLICKED, this);
+      BasicService.getUniqueInstance().dispatchSimpleCustomEvent(this, 'nidoca-event-list-item-clicked', this);
    }
 
    switchSelected() {
       this.selected = Boolean(!this.selected);
       if (this.selected) {
-         BasicService.getUniqueInstance().dispatchSimpleCustomEvent(this, ListItemComponent.EVENT_LIST_ITEM_SELECT, this);
+         BasicService.getUniqueInstance().dispatchSimpleCustomEvent(this, 'nidoca-event-list-item-select', this);
       } else {
-         BasicService.getUniqueInstance().dispatchSimpleCustomEvent(this, ListItemComponent.EVENT_LIST_ITEM_UNSELECT, this);
+         BasicService.getUniqueInstance().dispatchSimpleCustomEvent(this, 'nidoca-event-list-item-unselect', this);
       }
    }
 }

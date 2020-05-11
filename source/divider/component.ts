@@ -1,5 +1,4 @@
 import { css, customElement, html, property, unsafeCSS, LitElement } from 'lit-element';
-import { BorderProperties, SpacerAlignment, SpacerSize } from '..';
 
 const componentCSS = require('./component.css');
 
@@ -10,7 +9,7 @@ export enum DividerType {
 }
 
 @customElement('nidoca-divider')
-export class DividerComponent extends LitElement {
+export class NidocaDivider extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;

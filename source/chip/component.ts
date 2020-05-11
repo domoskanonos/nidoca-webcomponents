@@ -4,7 +4,7 @@ import { LitElement } from 'lit-element';
 const componentCSS = require('./component.css');
 
 @customElement('nidoca-chip')
-export class ChipComponent extends LitElement {
+export class NidocaChip extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;

@@ -7,13 +7,11 @@ import { BasicService } from '@domoskanonos/frontend-basis';
 const componentCSS = require('./component.css');
 
 @customElement('nidoca-accordion-item')
-export class AccordionItemComponent extends LitElement {
+export class NidocaAccordionItem extends LitElement {
 
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;
-
-   static EVENT_CLICK: string = 'component-accordion-item-click';
 
    @property()
    header: string = '';
@@ -51,6 +49,7 @@ export class AccordionItemComponent extends LitElement {
       console.log('accordion clicked, state=' + this.opened);
       this.opened = Boolean(!this.opened);
       console.log('accordion clicked, after state=' + this.opened);
-      BasicService.getUniqueInstance().dispatchSimpleCustomEvent(this, AccordionItemComponent.EVENT_CLICK, this);
+      BasicService.getUniqueInstance().dispatchSimpleCustomEvent(this, 'nidoca-event-accordion-item-clicked', this);
    }
+
 }

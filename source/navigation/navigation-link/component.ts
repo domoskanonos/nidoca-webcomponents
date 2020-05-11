@@ -15,7 +15,7 @@ import { FlexContainerProperties } from '../../flex-container/component';
 const componentCSS = require('./component.css');
 
 @customElement('nidoca-navigation-link')
-export class NavigationLinkComponent extends LitElement {
+export class NidocaNavigationLink extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;

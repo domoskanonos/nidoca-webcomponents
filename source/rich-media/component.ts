@@ -15,7 +15,8 @@ export enum RichMediaProperties {
 }
 
 @customElement('nidoca-rich-media')
-export class RichMediaComponent extends LitElement {
+export class NidocaRichMedia extends LitElement {
+
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;

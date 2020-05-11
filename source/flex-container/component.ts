@@ -87,7 +87,7 @@ export enum FlexAlignContent {
 }
 
 @customElement('nidoca-flex-container')
-export class FlexComponent extends LitElement {
+export class NidocaFlex extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;

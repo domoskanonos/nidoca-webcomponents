@@ -6,17 +6,13 @@ const componentCSS = require('./component.css');
  * check source: https://codepen.io/jakob-e/pen/XZoZWQ
  */
 @customElement('nidoca-ripple')
-export class RippleComponent extends LitElement {
+export class NidocaRipple extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;
 
    @query('#rippleContainer')
    private rippleContainerElement: HTMLSpanElement | undefined;
-
-   protected firstUpdated(_changedProperties: PropertyValues): void {
-      super.firstUpdated(_changedProperties);
-   }
 
    render() {
       return html`

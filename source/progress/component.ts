@@ -9,7 +9,7 @@ export enum ProgressType {
 }
 
 @customElement('nidoca-progress')
-export class ProgressComponent extends LitElement {
+export class NidocaProgress extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;

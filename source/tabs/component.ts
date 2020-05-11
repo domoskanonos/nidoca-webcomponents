@@ -1,11 +1,11 @@
 import { css, customElement, html, query, unsafeCSS, LitElement, property } from 'lit-element';
-import { TabContentComponent } from './tab-content/component';
-import { TabComponent } from './tab/component';
+import { NidocaTabContent } from './tab-content/component';
+import { NidocaTab } from './tab/component';
 
 const componentCSS = require('./component.css');
 
 @customElement('nidoca-tabs')
-export class TabsComponent extends LitElement {
+export class NidocaTabs extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;
@@ -36,7 +36,7 @@ export class TabsComponent extends LitElement {
          let widthPerTab = 100 / length;
          for (let index = 0; index < assignedElements.length; index++) {
             let element: Element = assignedElements[index];
-            if (element instanceof TabComponent) {
+            if (element instanceof NidocaTab) {
                element.style.width = String(widthPerTab).concat('%');
                if (element.selected) {
                   element.classList.add('SELECTED');
@@ -60,7 +60,7 @@ export class TabsComponent extends LitElement {
    }
 
    private tabClicked(event: CustomEvent): void {
-      let clickedTab: TabComponent = event.detail;
+      let clickedTab: NidocaTab = event.detail;
 
       if (clickedTab.selected) {
          return;
@@ -71,7 +71,7 @@ export class TabsComponent extends LitElement {
          let assignedElements: Element[] = this.tabSlot.assignedElements();
          for (let index = 0; index < assignedElements.length; index++) {
             let element: Element = assignedElements[index];
-            if (element instanceof TabComponent) {
+            if (element instanceof NidocaTab) {
                if (element == clickedTab) {
                   tabIndex = index;
                   element.selected = true;
@@ -91,7 +91,7 @@ export class TabsComponent extends LitElement {
          let assignedElements: Element[] = this.tabContentSlot.assignedElements();
          for (let index = 0; index < assignedElements.length; index++) {
             let tabContentElement: Element = assignedElements[index];
-            if (tabContentElement instanceof TabContentComponent) {
+            if (tabContentElement instanceof NidocaTabContent) {
                if (tabIndex == tabContentIndex) {
                   tabContentElement.selected = true;
                } else {

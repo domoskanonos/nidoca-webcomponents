@@ -1,6 +1,6 @@
 import {css, customElement, html, property, query, unsafeCSS} from 'lit-element';
 import {LitElement} from 'lit-element';
-import {AccordionItemComponent} from './item/component';
+import {NidocaAccordionItem} from './item/component';
 
 const componentCSS = require('./component.css');
 
@@ -10,7 +10,8 @@ export enum AccordionType {
 }
 
 @customElement('nidoca-accordion')
-export class AccordionComponent extends LitElement {
+export class NidocaAccordion extends LitElement {
+
     static styles = css`
       ${unsafeCSS(componentCSS)}
    `;
@@ -23,21 +24,21 @@ export class AccordionComponent extends LitElement {
 
     render() {
         return html`
-         <div @component-accordion-item-click="${(event: CustomEvent) => this.accordionSwitched(event)}">
+         <div @nidoca-event-accordion-item-clicked="${(event: CustomEvent) => this.accordionSwitched(event)}">
             <slot id="accordionSlot"></slot>
          </div>
       `;
     }
 
     private accordionSwitched(event: CustomEvent) {
-        let accordionItemComponent: AccordionItemComponent = event.detail;
+        let accordionItemComponent: NidocaAccordionItem = event.detail;
         switch (this.accordionType) {
             case AccordionType.SINGLE:
                 if (this.accordionSlot != null) {
                     let assignedElements: Element[] = this.accordionSlot.assignedElements();
                     for (let index = 0; index < assignedElements.length; index++) {
                         let element: Element = assignedElements[index];
-                        if (element instanceof AccordionItemComponent && element != accordionItemComponent) {
+                        if (element instanceof NidocaAccordionItem && element != accordionItemComponent) {
                             element.opened = false;
                         }
                     }
@@ -47,4 +48,5 @@ export class AccordionComponent extends LitElement {
                 break;
         }
     }
+
 }

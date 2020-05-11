@@ -15,8 +15,8 @@ export enum TransitionType {
    SLIDE_BOTTOM = 'SLIDE_BOTTOM'
 }
 
-@customElement('effect-transition')
-export class TransitionComponent extends LitElement {
+@customElement('nidoca-transition')
+export class NidocaTransition extends LitElement {
    @property()
    transitionType: TransitionType = TransitionType.CENTER;
 

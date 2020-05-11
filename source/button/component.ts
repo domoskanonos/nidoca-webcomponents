@@ -12,12 +12,11 @@ export enum ButtonType {
 }
 
 @customElement('nidoca-button')
-export class ButtonComponent extends LitElement {
+export class NidocaButton extends LitElement {
+
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;
-
-   static EVENT_CLICK: string = 'component-button-click';
 
    @property()
    buttonType: ButtonType = ButtonType.PRIMARY;
@@ -63,6 +62,7 @@ export class ButtonComponent extends LitElement {
    }
 
    clicked() {
-      BasicService.getUniqueInstance().dispatchSimpleCustomEvent(this, ButtonComponent.EVENT_CLICK, this);
+      BasicService.getUniqueInstance().dispatchSimpleCustomEvent(this, 'nidoca-event-button-clicked', this);
    }
+
 }

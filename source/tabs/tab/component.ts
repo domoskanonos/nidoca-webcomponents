@@ -5,12 +5,10 @@ import { TypographyType } from '../..';
 const componentCSS = require('./component.css');
 
 @customElement('nidoca-tab')
-export class TabComponent extends LitElement {
+export class NidocaTab extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;
-
-   static EVENT_CLICK: string = 'component-tab-click';
 
    @property()
    selected: boolean = false;
@@ -31,12 +29,8 @@ export class TabComponent extends LitElement {
       `;
    }
 
-   getOutputData(): TabComponent {
-      return this;
-   }
-
    private tabClicked(): void {
       console.log('tab clicked.');
-      BasicService.getUniqueInstance().dispatchSimpleCustomEvent(this, TabComponent.EVENT_CLICK, this.getOutputData());
+      BasicService.getUniqueInstance().dispatchSimpleCustomEvent(this, 'nidoca-event-tab-clicked', this);
    }
 }

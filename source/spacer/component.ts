@@ -19,12 +19,10 @@ export enum SpacerSize {
 }
 
 @customElement('nidoca-spacer')
-export class SpacerComponent extends LitElement {
+export class NidocaSpacer extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;
-
-   static IDENTIFIER: string = 'SpacerComponent';
 
    @property()
    spacerSize: string = SpacerSize.ZERO;

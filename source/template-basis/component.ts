@@ -1,12 +1,13 @@
 import { css, html, property, query, TemplateResult, unsafeCSS, LitElement } from 'lit-element';
 
 import { BasicService } from '@domoskanonos/frontend-basis';
-import { BorderProperties, IconComponent } from '..';
+import { BorderProperties, NidocaIcon } from '..';
 import { NavigationType } from '../navigation/component';
 
 const componentCSS = require('./component.css');
 
-export abstract class BasisTemplate extends LitElement {
+export abstract class NidocaTemplate extends LitElement {
+
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;
@@ -35,7 +36,7 @@ export abstract class BasisTemplate extends LitElement {
          <nidoca-navigation .closed="${this.navigationClosed}" navigationType="${this.navigationType}">
             ${this.getLeftNavigationContent()}
          </nidoca-navigation>
-         <top id="top" class="${this.menuCss}" @component-icon-click="${this.menuItemClicked}">
+         <top id="top" class="${this.menuCss}" @nidoca-icon-clicked="${this.menuItemClicked}">
             <nidoca-border ..borderProperties="${[BorderProperties.BOTTOM]}">
                ${this.getTopContent()}
             </nidoca-border>
@@ -53,7 +54,7 @@ export abstract class BasisTemplate extends LitElement {
    abstract getTopContent(): TemplateResult;
 
    menuItemClicked(event: CustomEvent) {
-      let id: IconComponent = event.detail;
+      let id: NidocaIcon = event.detail;
       if (BasicService.getUniqueInstance().isEqual(id.icon, this.menuSwitchIcon)) {
          console.log('menuItemClicked...');
          this.toogleMenu();

@@ -1,34 +1,26 @@
-import { css, customElement, html, property, query, unsafeCSS, LitElement } from 'lit-element';
-import { InputfieldComponent, InputfieldType } from '../inputfield/component';
-import { guard } from 'lit-html/directives/guard';
-import { repeat } from 'lit-html/directives/repeat';
-import { ButtonComponent } from '..';
-import { BasicService } from '@domoskanonos/frontend-basis';
+import {css, customElement, html, LitElement, property, query, unsafeCSS} from 'lit-element';
+import {NidocaInputfield, InputfieldType} from '../inputfield/component';
+import {guard} from 'lit-html/directives/guard';
+import {repeat} from 'lit-html/directives/repeat';
+import {NidocaButton} from '..';
+import {BasicService} from '@domoskanonos/frontend-basis';
 
 const componentCSS = require('./component.css');
 
-export class KeyValueData {
-   key: string = '';
-   value: any;
-}
-
-export class FormComponentOutputData {
+export class NidocaFormOutputData {
    jsonObject: any;
    formData: FormData = FormData.prototype;
 }
 
 @customElement('nidoca-form')
-export class FormComponent extends LitElement {
-   static IDENTIFIER: string = 'FormComponent';
-
-   static EVENT_SUBMIT_BUTTON: string = 'component-form-submit-button-click';
+export class NidocaForm extends LitElement {
 
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;
 
    @property()
-   buttons: ButtonComponent[] = [];
+   buttons: NidocaButton[] = [];
 
    @query('#slotElement')
    slotElement: HTMLSlotElement | undefined;
@@ -38,7 +30,7 @@ export class FormComponent extends LitElement {
 
    protected render() {
       return html`
-         <form id="htmlForm" @component-button-click="${this.formButtonClicked}">
+         <form id="htmlForm" @nidoca-event-button-clicked="${this.formButtonClicked}">
             <slot name="header"></slot>
 
             <effect-color color="var(--app-color-error)">
@@ -69,7 +61,7 @@ export class FormComponent extends LitElement {
       let elements: Element[] = slotElement.assignedElements();
       for (let index = 0; index < elements.length; index++) {
          let element: Element = elements[index];
-         if (element instanceof InputfieldComponent && element.inputfieldType != InputfieldType.HIDDEN) {
+         if (element instanceof NidocaInputfield && element.inputfieldType != InputfieldType.HIDDEN) {
             element.classList.add('formElement');
          }
       }
@@ -80,7 +72,7 @@ export class FormComponent extends LitElement {
          let elements: Element[] = this.slotElement.assignedElements();
          for (let elementIndex = 0; elementIndex < elements.length; elementIndex++) {
             let element: Element = elements[elementIndex];
-            if (element instanceof InputfieldComponent) {
+            if (element instanceof NidocaInputfield) {
                if (!element.isValid()) {
                   return false;
                }
@@ -95,7 +87,7 @@ export class FormComponent extends LitElement {
          let elements: Element[] = this.slotElement.assignedElements();
          for (let elementIndex = 0; elementIndex < elements.length; elementIndex++) {
             let element: Element = elements[elementIndex];
-            if (element instanceof InputfieldComponent) {
+            if (element instanceof NidocaInputfield) {
                element.validate();
             }
          }
@@ -103,7 +95,7 @@ export class FormComponent extends LitElement {
       return this.isValid();
    }
 
-   public getOutputData(): FormComponentOutputData {
+   public getOutputData(): NidocaFormOutputData {
       let formData = new FormData();
       let json: any = {};
 
@@ -111,7 +103,7 @@ export class FormComponent extends LitElement {
          let elements: Element[] = this.slotElement.assignedElements();
          for (let elementIndex = 0; elementIndex < elements.length; elementIndex++) {
             let element: Element = elements[elementIndex];
-            if (element instanceof InputfieldComponent) {
+            if (element instanceof NidocaInputfield) {
                let elementOutputData = element.getOutputData();
                json[elementOutputData.key] = elementOutputData.value;
                formData.append(elementOutputData.key, elementOutputData.value);
@@ -119,7 +111,7 @@ export class FormComponent extends LitElement {
          }
       }
 
-      let outputData = <FormComponentOutputData>{};
+      let outputData = <NidocaFormOutputData>{};
       outputData.jsonObject = json;
 
       outputData.formData = formData;
@@ -134,7 +126,7 @@ export class FormComponent extends LitElement {
          case 'submitButton':
             BasicService.getUniqueInstance().dispatchSimpleCustomEvent(
                this,
-               FormComponent.EVENT_SUBMIT_BUTTON,
+               'nidoca-event-form-submit-button-clicked',
                this.getOutputData()
             );
             break;

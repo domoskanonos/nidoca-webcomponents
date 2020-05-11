@@ -33,7 +33,7 @@ export enum TypographyAlignment {
 const componentCSS = require('./component.css');
 
 @customElement('nidoca-typography')
-export class TypographyComponent extends LitElement {
+export class NidocaTypography extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;

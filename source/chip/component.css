@@ -1,6 +1,6 @@
 .CHIP {
     display: inline-block;
-    background: #dddddd;
+    background: var(--app-color-surface-background-light);
     padding: 0 12px;
     border-radius: 32px;
     font-size: 13px;

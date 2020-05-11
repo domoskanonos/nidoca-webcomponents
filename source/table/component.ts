@@ -5,7 +5,7 @@ import { repeat } from 'lit-html/directives/repeat';
 const componentCSS = require('./component.css');
 
 @customElement('nidoca-table')
-export class TableComponent extends LitElement {
+export class NidocaTable extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;

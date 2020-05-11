@@ -4,7 +4,7 @@ import { VisibleType } from '../..';
 const componentCSS = require('./component.css');
 
 @customElement('nidoca-tab-content')
-export class TabContentComponent extends LitElement {
+export class NidocaTabContent extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;

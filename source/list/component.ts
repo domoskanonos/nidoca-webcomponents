@@ -1,10 +1,10 @@
 import { css, customElement, html, property, unsafeCSS, query, LitElement } from 'lit-element';
-import { ListItemComponent } from './item/component';
+import { NidocaListItem } from './item/component';
 
 const componentCSS = require('./component.css');
 
 @customElement('nidoca-list')
-export class ListComponent extends LitElement {
+export class NidocaList extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;
@@ -30,13 +30,13 @@ export class ListComponent extends LitElement {
       `;
    }
 
-   getItems(): ListItemComponent[] {
-      let all: ListItemComponent[] = [];
+   getItems(): NidocaListItem[] {
+      let all: NidocaListItem[] = [];
       if (this.slotElement != null) {
          let slottedElements = this.slotElement.assignedElements();
          for (let index = 0; index < slottedElements.length; index++) {
             let element = slottedElements[index];
-            if (element instanceof ListItemComponent) {
+            if (element instanceof NidocaListItem) {
                all.push(element);
             }
          }
@@ -44,13 +44,13 @@ export class ListComponent extends LitElement {
       return all;
    }
 
-   getSelectedItems(): ListItemComponent[] {
-      let selection: ListItemComponent[] = [];
+   getSelectedItems(): NidocaListItem[] {
+      let selection: NidocaListItem[] = [];
       if (this.slotElement != null) {
          let slottedElements = this.slotElement.assignedElements();
          for (let index = 0; index < slottedElements.length; index++) {
             let element = slottedElements[index];
-            if (element instanceof ListItemComponent) {
+            if (element instanceof NidocaListItem) {
                if (element.selected) {
                   selection.push(element);
                }

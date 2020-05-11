@@ -11,7 +11,7 @@ export enum TargetType {
 }
 
 @customElement('nidoca-link')
-export class LinkComponent extends LitElement {
+export class NidocaLink extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;

@@ -1,5 +1,5 @@
 import { css, customElement, html, LitElement, property, query, unsafeCSS } from 'lit-element';
-import {InputfieldType, InputfieldComponent, IconComponent} from '..';
+import {InputfieldType, NidocaInputfield, NidocaIcon} from '..';
 import { BasicService } from '@domoskanonos/frontend-basis';
 
 const componentCSS = require('./component.css');
@@ -15,16 +15,11 @@ export class SearchBarOutputData {
 }
 
 @customElement('nidoca-search-bar')
-export class SearchBarComponent extends LitElement {
+export class NidocaSearchBar extends LitElement {
+
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;
-
-   static IDENTIFIER: string = 'SearchBarComponent';
-
-   constructor() {
-      super();
-   }
 
    @property()
    placeholder: string = '';
@@ -36,7 +31,7 @@ export class SearchBarComponent extends LitElement {
    value: string = '';
 
    @query('#inputfieldComponent')
-   private inputfieldComponent: InputfieldComponent | undefined;
+   private inputfieldComponent: NidocaInputfield | undefined;
 
    render() {
       return html`
@@ -45,8 +40,8 @@ export class SearchBarComponent extends LitElement {
             <nidoca-icon icon="search"></nidoca-icon>
             <nidoca-inputfield
                id="inputfieldComponent"
-               @component-inputfield-keyup="${() => this.textfieldKeyUp()}"
-               @component-icon-click="${(event: CustomEvent) => {
+               @nidoca-event-inputfield-keyup="${() => this.textfieldKeyUp()}"
+               @nidoca-icon-clicked="${(event: CustomEvent) => {
                   this.textfieldIconClicked(event);
                }}"
                placeholder="${this.placeholder}"
@@ -70,7 +65,7 @@ export class SearchBarComponent extends LitElement {
    }
 
    private textfieldIconClicked(event: CustomEvent) {
-      let nidocaIcon: IconComponent = event.detail;
+      let nidocaIcon: NidocaIcon = event.detail;
       switch (nidocaIcon.icon) {
          case 'close':
             if (this.inputfieldComponent != null && this.inputfieldComponent.inputElemet != null) {

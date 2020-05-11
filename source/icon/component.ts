@@ -13,12 +13,10 @@ export enum IconShadowType {
 }
 
 @customElement('nidoca-icon')
-export class IconComponent extends LitElement {
+export class NidocaIcon extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;
-
-   static EVENT_CLICK: string = 'component-icon-click';
 
    @property()
    icon: string = '';
@@ -77,13 +75,9 @@ export class IconComponent extends LitElement {
       `;
    }
 
-   getEventList(): string[] {
-      return [IconComponent.EVENT_CLICK];
-   }
-
    async clicked() {
       if (this.clickable) {
-         BasicService.getUniqueInstance().dispatchSimpleCustomEvent(this, IconComponent.EVENT_CLICK, this);
+         BasicService.getUniqueInstance().dispatchSimpleCustomEvent(this, 'nidoca-icon-clicked', this);
       }
    }
 }

@@ -1,7 +1,7 @@
 import { css, customElement, html, property, unsafeCSS, LitElement } from 'lit-element';
 import { repeat } from 'lit-html/directives/repeat';
 import { guard } from 'lit-html/directives/guard';
-import { IconComponent, TypographyType } from '..';
+import { NidocaIcon, TypographyType } from '..';
 
 const componentCSS = require('./component.css');
 
@@ -38,7 +38,7 @@ export class NidocaWizard extends LitElement {
                                     <nidoca-icon
                                     icon="${wizardStep.icon}"
                                     clickable="true"
-                                    @component-icon-click="${() => {
+                                    @nidoca-icon-clicked="${() => {
                                        this.selectedStep = wizardStep;
                                     }}"
                                  ></nidoca-icon>

@@ -18,7 +18,7 @@ export enum GridAlignItems {
 }
 
 @customElement('nidoca-grid-container')
-export class GridComponent extends LitElement {
+export class NidocaGrid extends LitElement {
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;

@@ -6,7 +6,7 @@ export class AppData {
    description?: string;
 }
 
-export abstract class AbstractApp extends LitElement {
+export abstract class NidocaAbstractApp extends LitElement {
    /**
     * doing stuff before first rendering, f.e. load data from server
     */
