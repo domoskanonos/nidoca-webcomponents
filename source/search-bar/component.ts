@@ -1,6 +1,5 @@
 import { css, customElement, html, LitElement, property, query, unsafeCSS } from 'lit-element';
-import { InputfieldType, InputfieldComponent } from '..';
-import { EventIconClickData } from '../icon/component';
+import {InputfieldType, InputfieldComponent, IconComponent} from '..';
 import { BasicService } from '@domoskanonos/frontend-basis';
 
 const componentCSS = require('./component.css');
@@ -71,8 +70,8 @@ export class SearchBarComponent extends LitElement {
    }
 
    private textfieldIconClicked(event: CustomEvent) {
-      let data: EventIconClickData = event.detail;
-      switch (data.icon) {
+      let nidocaIcon: IconComponent = event.detail;
+      switch (nidocaIcon.icon) {
          case 'close':
             if (this.inputfieldComponent != null && this.inputfieldComponent.inputElemet != null) {
                this.inputfieldComponent.inputElemet.value = '';
