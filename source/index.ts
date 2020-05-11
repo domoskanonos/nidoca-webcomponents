@@ -1,3 +1,5 @@
+import { FlexContainerProperties, FlexItemProperties, FlexDirection, FlexWrap, FlexJustifyContent, FlexAlignItems, FlexAlignContent, FlexComponent } from './flex-container/component';
+
 import { AbstractApp } from './abstract-app';
 import { AccordionComponent } from './accordion/component';
 import { BoxComponent } from './box/component';
@@ -10,7 +12,6 @@ import { AccordionItemComponent } from './accordion/item/component';
 import { ButtonType, ButtonComponent } from './button/component';
 import { CodeComponent } from './code/component';
 import { DividerComponent } from './divider/component';
-import { FlexDirection, FlexWrap, FlexJustifyContent, FlexAlignItems, FlexAlignContent, FlexComponent } from './flex-container/component';
 import { GridComponent } from './grid-container/component';
 import { KeyValueData, FormComponentOutputData, FormComponent } from './form/component';
 import { ContainerComponent } from './container/component';
@@ -38,6 +39,8 @@ import { TopBottomTemplate } from './template-top-bottom-bars/component';
 import { TypographyType, TypographyComponent } from './typography/component';
 import { DialogComponent } from './dialog/component';
 
+export { FlexContainerProperties, FlexItemProperties, FlexDirection, FlexWrap, FlexJustifyContent, FlexAlignItems, FlexAlignContent, FlexComponent } from './flex-container/component';
+
 export { AbstractApp } from './abstract-app';
 export { AccordionComponent } from './accordion/component';
 export { BorderProperties, BorderSize, BorderComponent } from './border/component';
@@ -50,7 +53,6 @@ export { AccordionItemComponent } from './accordion/item/component';
 export { ButtonType, ButtonComponent } from './button/component';
 export { CodeComponent } from './code/component';
 export { DividerComponent } from './divider/component';
-export { FlexDirection, FlexWrap, FlexJustifyContent, FlexAlignItems, FlexAlignContent, FlexComponent } from './flex-container/component';
 export { GridComponent } from './grid-container/component';
 export { KeyValueData, FormComponentOutputData, FormComponent } from './form/component';
 export { ContainerComponent } from './container/component';
