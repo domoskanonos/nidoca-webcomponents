@@ -78,6 +78,5 @@ export { TopBottomTemplate } from './template-top-bottom-bars/component';
 export { TypographyAlignment, TypographyType, TypographyComponent } from './typography/component';
 export { DialogComponent } from './dialog/component';
 
-//Auskommentieren bei erstellen neuer Version auf NPM, nach auskommentieren nochmal ts in js bauen
-import './_showcase/showcase-app';
+//for development
 import './index.css';
