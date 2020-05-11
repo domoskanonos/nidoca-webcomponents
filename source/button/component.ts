@@ -6,9 +6,9 @@ import { SpacerSize, TypographyType, VisibleType } from '..';
 
 const componentCSS = require('./component.css');
 
-export class ButtonType {
-   static PRIMARY = 'PRIMARY';
-   static SECONDARY = 'SECONDARY';
+export enum ButtonType {
+    PRIMARY = 'PRIMARY',
+    SECONDARY = 'SECONDARY'
 }
 
 @customElement('nidoca-button')

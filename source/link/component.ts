@@ -3,11 +3,11 @@ import { TypographyType } from '..';
 
 const componentCSS = require('./component.css');
 
-export class TargetType {
-   static BLANK: string = '_blank';
-   static SELF: string = '_self';
-   static PARENT: string = '_parent';
-   static TOP: string = '_top';
+export enum TargetType {
+   BLANK = '_blank',
+   SELF = '_self',
+   PARENT = '_parent',
+   TOP = '_top'
 }
 
 @customElement('nidoca-link')

@@ -4,10 +4,10 @@ import { BasicService } from '@domoskanonos/frontend-basis';
 
 const componentCSS = require('./component.css');
 
-export class SearchBarState {
-   static NORMAL: string = 'NORMAL';
-   static SEARCH: string = 'SEARCH';
-   static MOUSE_OUT: string = 'MOUSE_OUT';
+export enum SearchBarState {
+   NORMAL = 'NORMAL',
+   SEARCH = 'SEARCH',
+   MOUSE_OUT = 'MOUSE_OUT'
 }
 
 export class SearchBarOutputData {

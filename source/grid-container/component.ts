@@ -3,18 +3,18 @@ import { BasicService } from '@domoskanonos/frontend-basis';
 
 const componentCSS = require('./component.css');
 
-export class GridJustifyItems {
-   static START = 'start';
-   static END = 'end';
-   static CENTER = 'center';
-   static STRETCH = 'stretch';
+export enum GridJustifyItems {
+   START = 'start',
+   END = 'end',
+   CENTER = 'center',
+   STRETCH = 'stretch'
 }
 
-export class GridAlignItems {
-   static START = 'start';
-   static END = 'end';
-   static CENTER = 'center';
-   static STRETCH = 'stretch';
+export enum GridAlignItems {
+   START = 'start',
+   END = 'end',
+   CENTER = 'center',
+   STRETCH = 'stretch'
 }
 
 @customElement('nidoca-grid-container')

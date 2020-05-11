@@ -3,9 +3,9 @@ import { BasicService } from '@domoskanonos/frontend-basis';
 
 const componentCSS = require('./component.css');
 
-export class CodeFormatter {
-   static NONE = 'NONE';
-   static HTML = 'HTML';
+export enum CodeFormatter {
+    NONE = 'NONE',
+    HTML = 'HTML'
 }
 
 @customElement('nidoca-code')

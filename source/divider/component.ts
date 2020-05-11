@@ -3,10 +3,10 @@ import { BorderProperties, SpacerAlignment, SpacerSize } from '..';
 
 const componentCSS = require('./component.css');
 
-export class DividerType {
-   static THIN: string = 'THIN';
-   static MEDIUM: string = 'MEDIUM';
-   static THICK: string = 'THICK';
+export enum DividerType {
+   THIN = 'THIN',
+   MEDIUM = 'MEDIUM',
+   THICK = 'THICK'
 }
 
 @customElement('nidoca-divider')

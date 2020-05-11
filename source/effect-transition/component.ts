@@ -2,17 +2,17 @@ import { css, customElement, html, LitElement, property, unsafeCSS } from 'lit-e
 
 const componentCSS = require('./component.css');
 
-export class TransitionType {
-   static CENTER = 'CENTER';
-   static LEFT = 'LEFT';
-   static RIGHT = 'RIGHT';
-   static TOP = 'TOP';
-   static BOTTOM = 'BOTTOM';
-   static SLIDE_CENTER = 'SLIDE_CENTER';
-   static SLIDE_LEFT = 'SLIDE_LEFT';
-   static SLIDE_RIGHT = 'SLIDE_RIGHT';
-   static SLIDE_TOP = 'SLIDE_TOP';
-   static SLIDE_BOTTOM = 'SLIDE_BOTTOM';
+export enum TransitionType {
+   CENTER = 'CENTER',
+   LEFT = 'LEFT',
+   RIGHT = 'RIGHT',
+   TOP = 'TOP',
+   BOTTOM = 'BOTTOM',
+   SLIDE_CENTER = 'SLIDE_CENTER',
+   SLIDE_LEFT = 'SLIDE_LEFT',
+   SLIDE_RIGHT = 'SLIDE_RIGHT',
+   SLIDE_TOP = 'SLIDE_TOP',
+   SLIDE_BOTTOM = 'SLIDE_BOTTOM'
 }
 
 @customElement('effect-transition')

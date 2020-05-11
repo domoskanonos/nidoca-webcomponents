@@ -2,10 +2,10 @@ import { css, customElement, html, LitElement, property, unsafeCSS } from 'lit-e
 
 const componentCSS = require('./component.css');
 
-export class VisibleType {
-   static HIDE: string = 'HIDE';
-   static INVISIBLE: string = 'INVISIBLE';
-   static NORMAL: string = 'NORMAL';
+export enum VisibleType {
+   HIDE = 'HIDE',
+   INVISIBLE = 'INVISIBLE',
+   NORMAL = 'NORMAL'
 }
 
 @customElement('nidoca-visible')

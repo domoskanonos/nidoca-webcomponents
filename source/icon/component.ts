@@ -4,12 +4,12 @@ import { ShadowType } from '../border/component';
 
 const componentCSS = require('./component.css');
 
-export class IconShadowType {
-   static NONE = 'NONE';
-   static DEFAULT_SHADOW = 'DEFAULT_SHADOW';
-   static SHADOW_1 = 'SHADOW_1';
-   static SHADOW_2 = 'SHADOW_2';
-   static SHADOW_3 = 'SHADOW_3';
+export enum IconShadowType {
+   NONE = 'NONE',
+   DEFAULT_SHADOW = 'DEFAULT_SHADOW',
+   SHADOW_1 = 'SHADOW_1',
+   SHADOW_2 = 'SHADOW_2',
+   SHADOW_3 = 'SHADOW_3'
 }
 
 @customElement('nidoca-icon')

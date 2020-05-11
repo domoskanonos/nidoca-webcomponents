@@ -2,9 +2,9 @@ import { css, customElement, html, LitElement, property, unsafeCSS } from 'lit-e
 
 const componentCSS = require('./component.css');
 
-export class RichMediaType {
-   static IMG: string = 'IMG';
-   static MOVIE: string = 'MOVIE';
+export enum RichMediaType {
+   IMG = 'IMG',
+   MOVIE = 'MOVIE'
 }
 
 export enum RichMediaProperties {

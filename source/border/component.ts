@@ -1,31 +1,31 @@
 import { css, customElement, html, property, unsafeCSS } from 'lit-element';
 import { LitElement } from 'lit-element';
 
-export class BorderProperties {
-   static NONE: string = 'NONE';
-   static ALL: string = 'ALL';
-   static ALL_ROUND: string = 'ALL_ROUND';
-   static HORIZONTAL: string = 'HORIZONTAL';
-   static VERTICAL: string = 'VERTICAL';
-   static LEFT: string = 'LEFT';
-   static RIGHT: string = 'RIGHT';
-   static TOP: string = 'TOP';
-   static BOTTOM: string = 'BOTTOM';
-   static BOTTOM_SELECTED: string = 'BOTTOM_SELECTED';
-   static FULL_WIDTH: string = 'FULL_WIDTH';
+export enum BorderProperties {
+   NONE = 'NONE',
+   ALL = 'ALL',
+   ALL_ROUND = 'ALL_ROUND',
+   HORIZONTAL = 'HORIZONTAL',
+   VERTICAL = 'VERTICAL',
+   LEFT = 'LEFT',
+   RIGHT = 'RIGHT',
+   TOP = 'TOP',
+   BOTTOM = 'BOTTOM',
+   BOTTOM_SELECTED = 'BOTTOM_SELECTED',
+   FULL_WIDTH = 'FULL_WIDTH'
 }
 
-export class BorderSize {
-   static THIN: string = 'THIN';
-   static MEDIUM: string = 'MEDIUM';
-   static THICK: string = 'THICK';
+export enum BorderSize {
+   THIN = 'THIN',
+   MEDIUM = 'MEDIUM',
+   THICK = 'THICK'
 }
 
-export class ShadowType {
-   static NONE: string = 'NONE';
-   static KEY_LIGHT: string = 'KEY_LIGHT';
-   static AMBIENT_LIGHT: string = 'AMBIENT_LIGHT';
-   static COMBINED: string = 'COMBINED';
+export enum ShadowType {
+   NONE = 'NONE',
+   KEY_LIGHT = 'KEY_LIGHT',
+   AMBIENT_LIGHT = 'AMBIENT_LIGHT',
+   COMBINED = 'COMBINED'
 }
 
 const componentCSS = require('./component.css');
@@ -47,10 +47,7 @@ export class BorderComponent extends LitElement {
 
    render() {
       return html`
-         <slot
-            class="${this.toBorderPropertiesString(this.borderProperties)} ${this.borderSize} ${this
-               .shadowType}"
-         ></slot>
+         <slot class="${this.toBorderPropertiesString(this.borderProperties)} ${this.borderSize} ${this.shadowType}"></slot>
       `;
    }
 
@@ -61,4 +58,5 @@ export class BorderComponent extends LitElement {
       });
       return borderClazzString;
    }
+
 }

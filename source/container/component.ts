@@ -4,6 +4,7 @@ const componentCSS = require('./component.css');
 
 @customElement('nidoca-container')
 export class ContainerComponent extends LitElement {
+
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;

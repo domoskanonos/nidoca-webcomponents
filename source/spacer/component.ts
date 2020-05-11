@@ -2,20 +2,20 @@ import { css, customElement, html, LitElement, property, unsafeCSS } from 'lit-e
 
 const componentCSS = require('./component.css');
 
-export class SpacerAlignment {
-   static BOTH: string = 'both';
-   static HORIZONTAL: string = 'horizontalAlignment';
-   static VERTICAL: string = 'verticalAlignment';
+export enum SpacerAlignment {
+   BOTH = 'both',
+   HORIZONTAL = 'horizontalAlignment',
+   VERTICAL = 'verticalAlignment'
 }
 
-export class SpacerSize {
-   static ZERO: string = 'spacerZero';
-   static LITTLE: string = 'spaceLittle';
-   static SMALL: string = 'spaceSmall';
-   static MEDIUM: string = 'spaceMedium';
-   static NORMAL: string = 'spaceNormal';
-   static BIG: string = 'spaceBig';
-   static MAX: string = 'spaceMax';
+export enum SpacerSize {
+   ZERO = 'spacerZero',
+   LITTLE = 'spaceLittle',
+   SMALL = 'spaceSmall',
+   MEDIUM = 'spaceMedium',
+   NORMAL = 'spaceNormal',
+   BIG = 'spaceBig',
+   MAX = 'spaceMax'
 }
 
 @customElement('nidoca-spacer')
