@@ -611,15 +611,6 @@ ${this.value}</textarea
       return options;
    }
 
-   static enumGetKeyFromValue(enumeration: any, value: string): string {
-      for (const key of Object.keys(enumeration)) {
-         if (enumeration[key] == value) {
-            return key;
-         }
-      }
-      return '';
-   }
-
    static clazzToComboboxItems(clazz: any): KeyValueData[] {
       let options: KeyValueData[] = [];
       Object.keys(clazz).forEach((key) => {
