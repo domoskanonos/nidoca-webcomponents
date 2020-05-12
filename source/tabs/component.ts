@@ -49,7 +49,7 @@ export class NidocaTabs extends LitElement {
    render() {
       return html`
          <nidoca-grid-container
-            @component-tab-click="${(event: CustomEvent) => this.tabClicked(event)}"
+            @nidoca-event-tab-clicked="${(event: CustomEvent) => this.tabClicked(event)}"
             .gridTemplateRows="${['auto', 'auto']}"
             .gridTemplateColumns="${['100%']}"
          >
