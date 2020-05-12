@@ -20,10 +20,3 @@ code {
    font-size: 0.85em;
    position: relative;
 }
-
-.icon-position {
-   position: absolute;
-   top: -24px;
-   right: 0;
-   opacity: 0.2;
-}

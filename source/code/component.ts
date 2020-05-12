@@ -1,16 +1,14 @@
 import { css, customElement, html, property, unsafeCSS, LitElement } from 'lit-element';
-import { BasicService } from '@domoskanonos/frontend-basis';
 
 const componentCSS = require('./component.css');
 
 export enum CodeFormatter {
-    NONE = 'NONE',
-    HTML = 'HTML'
+   NONE = 'NONE',
+   HTML = 'HTML'
 }
 
 @customElement('nidoca-code')
 export class NidocaCode extends LitElement {
-
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;
@@ -24,9 +22,7 @@ export class NidocaCode extends LitElement {
    render() {
       return html`
          <pre>
-                <code>${this.format(this.code)}<nidoca-icon class="icon-position" @nidoca-icon-clicked="${() => {
-         BasicService.getUniqueInstance().copyToClipboard(this.code);
-      }}" clickable="true" icon="file_copy"><slot></slot></code>
+                <code>${this.format(this.code)}<slot></slot></code>
             </pre>
       `;
    }
