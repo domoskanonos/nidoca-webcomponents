@@ -27,9 +27,8 @@ export class NidocaLink extends LitElement {
 
    render() {
       return html`
-         <a href="${this.href}" target="${this.targetType}"
-            ><nidoca-typography .typographyType="${TypographyType.BODY1}">${this.text}<slot></slot></nidoca-typography
-         ></a>
+         <a href="${this.href}" target="${this.targetType}">${this.text}<slot></slot></a>
       `;
    }
+
 }
