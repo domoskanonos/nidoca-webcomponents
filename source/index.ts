@@ -10,7 +10,6 @@ export { ShadowType, BorderProperties, BorderSize, NidocaBorder } from './border
 export { NidocaFloatingContainer } from './floating/component';
 export { NidocaAccordionItem } from './accordion/item/component';
 export { ButtonType, NidocaButton } from './button/component';
-export { CodeFormatter, NidocaCode } from './code/component';
 export { DividerType, NidocaDivider } from './divider/component';
 export { GridAlignItems,GridJustifyItems, NidocaGrid } from './grid-container/component';
 export { NidocaFormOutputData, NidocaForm } from './form/component';

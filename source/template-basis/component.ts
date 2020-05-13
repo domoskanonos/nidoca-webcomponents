@@ -36,7 +36,7 @@ export abstract class NidocaTemplate extends LitElement {
          <nidoca-navigation .closed="${this.navigationClosed}" navigationType="${this.navigationType}">
             ${this.getLeftNavigationContent()}
          </nidoca-navigation>
-         <top id="top" class="${this.menuCss}" @nidoca-icon-clicked="${this.menuItemClicked}">
+         <top id="top" class="${this.menuCss}" @nidoca-event-icon-clicked="${this.menuItemClicked}">
             <nidoca-border ..borderProperties="${[BorderProperties.BOTTOM]}">
                ${this.getTopContent()}
             </nidoca-border>

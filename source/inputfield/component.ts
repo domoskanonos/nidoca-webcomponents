@@ -207,7 +207,7 @@ export class NidocaInputfield extends LitElement {
                                            <nidoca-icon
                                               icon="attachment"
                                               .clickable="${true}"
-                                              @nidoca-icon-clicked="
+                                              @nidoca-event-icon-clicked="
                                           ${() => this.inputElemet?.click()}
                                           "
                                            ></nidoca-icon>
@@ -285,7 +285,7 @@ ${this.value}</textarea
                                      <componetn-container>
                                         <nidoca-visible visibleType="${this.checked ? VisibleType.HIDE : VisibleType.NORMAL}">
                                            <nidoca-icon
-                                              @nidoca-icon-clicked="${() => {
+                                              @nidoca-event-icon-clicked="${() => {
                                                  this.switchChecked();
                                               }}"
                                               icon="toggle_off"
@@ -295,7 +295,7 @@ ${this.value}</textarea
                                         <nidoca-visible visibleType="${this.checked ? VisibleType.NORMAL : VisibleType.HIDE}">
                                            <nidoca-icon
                                               color="var(--app-color-primary-background)"
-                                              @nidoca-icon-clicked="${() => {
+                                              @nidoca-event-icon-clicked="${() => {
                                                  this.switchChecked();
                                               }}"
                                               icon="toggle_on"

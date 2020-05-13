@@ -41,7 +41,7 @@ export class NidocaSearchBar extends LitElement {
             <nidoca-inputfield
                id="inputfieldComponent"
                @nidoca-event-inputfield-keyup="${() => this.textfieldKeyUp()}"
-               @nidoca-icon-clicked="${(event: CustomEvent) => {
+               @nidoca-event-icon-clicked="${(event: CustomEvent) => {
                   this.textfieldIconClicked(event);
                }}"
                placeholder="${this.placeholder}"

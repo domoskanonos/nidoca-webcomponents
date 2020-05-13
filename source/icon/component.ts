@@ -77,7 +77,7 @@ export class NidocaIcon extends LitElement {
 
    async clicked() {
       if (this.clickable) {
-         BasicService.getUniqueInstance().dispatchSimpleCustomEvent(this, 'nidoca-icon-clicked', this);
+         BasicService.getUniqueInstance().dispatchSimpleCustomEvent(this, 'nidoca-event-icon-clicked', this);
       }
    }
 }

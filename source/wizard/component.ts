@@ -38,7 +38,7 @@ export class NidocaWizard extends LitElement {
                                     <nidoca-icon
                                     icon="${wizardStep.icon}"
                                     clickable="true"
-                                    @nidoca-icon-clicked="${() => {
+                                    @nidoca-event-icon-clicked="${() => {
                                        this.selectedStep = wizardStep;
                                     }}"
                                  ></nidoca-icon>
