@@ -1,6 +1,6 @@
 {
    "name": "@domoskanonos/nidoca-core",
-   "version": "1.0.415",
+   "version": "1.0.416",
    "license": "MIT",
    "description": "nidoca framework (nidoca-core)",
    "main": "source/index.js",
