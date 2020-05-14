@@ -1,5 +1,5 @@
 import { css, customElement, html, LitElement, property, query, unsafeCSS } from 'lit-element';
-import { InputfieldType, NidocaInputfield, NidocaIcon, GridJustifyItems, GridAlignItems } from '..';
+import {InputfieldType, NidocaInputfield, NidocaIcon, GridJustifyItems, GridAlignItems, InputfieldMode} from '..';
 import { BasicService } from '@domoskanonos/frontend-basis';
 
 const componentCSS = require('./component.css');
@@ -41,6 +41,7 @@ export class NidocaSearchBar extends LitElement {
                value="${this.value}"
                .automaticInfoText="${false}"
                .inputfieldType="${InputfieldType.TEXT}"
+               .inputfieldMode="${InputfieldMode.CLEAN}"
                trailingIcon="${this.trailingIcon}"
                .trailingIconClickable="${true}"
             ></nidoca-inputfield>

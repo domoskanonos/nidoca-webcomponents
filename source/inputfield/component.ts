@@ -379,7 +379,11 @@ ${this.value}</textarea
               </nidoca-visible>
               </nidoca-spacer>
               <nidoca-visible visibleType="${
-                 BasicService.getUniqueInstance().isNotBlank(this.errorText) ? VisibleType.NORMAL : VisibleType.HIDE
+                 BasicService.getUniqueInstance().isNotBlank(this.errorText)
+                    ? VisibleType.NORMAL
+                    : this.inputfieldMode == InputfieldMode.CLEAN
+                    ? VisibleType.HIDE
+                    : VisibleType.INVISIBLE
               }">
               <nidoca-typography
                  style="color:var(--app-color-error)"
