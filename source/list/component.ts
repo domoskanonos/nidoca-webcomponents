@@ -59,4 +59,20 @@ export class NidocaList extends LitElement {
       }
       return selection;
    }
+
+   getSelectedIndexes(): number[] {
+      let selection: number[] = [];
+      if (this.slotElement != null) {
+         let slottedElements = this.slotElement.assignedElements();
+         for (let index = 0; index < slottedElements.length; index++) {
+            let element = slottedElements[index];
+            if (element instanceof NidocaListItem) {
+               if (element.selected) {
+                  selection.push(index);
+               }
+            }
+         }
+      }
+      return selection;
+   }
 }
