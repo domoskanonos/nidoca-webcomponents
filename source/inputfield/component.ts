@@ -3,10 +3,18 @@ import { guard } from 'lit-html/directives/guard';
 import { css, customElement, html, property, query, unsafeCSS, LitElement } from 'lit-element';
 import { TypographyType } from '../typography/component';
 import { BasicService } from '@domoskanonos/frontend-basis';
-import { FlexAlignContent, FlexAlignItems, BorderProperties, FlexJustifyContent, SpacerAlignment, SpacerSize, VisibleType } from '..';
+import {
+   FlexAlignContent,
+   FlexAlignItems,
+   BorderProperties,
+   FlexJustifyContent,
+   SpacerAlignment,
+   SpacerSize,
+   VisibleType
+} from '..';
 import { FlexContainerProperties } from '../flex-container/component';
 import { GridAlignItems, GridJustifyItems } from '../grid-container/component';
-import {KeyValueData} from "../meta";
+import { KeyValueData } from '../meta';
 
 const componentCSS = require('./component.css');
 
@@ -33,6 +41,11 @@ export enum InputfieldType {
    COMBOBOX = 'combobox'
 }
 
+export enum InputfieldMode {
+   CLEAN = 'CLEAN',
+   FILLED = 'FILLED'
+}
+
 export class InputfieldDataChangeEvent {
    type?: string;
    outputData?: KeyValueData;
@@ -56,6 +69,9 @@ export class NidocaInputfield extends LitElement {
 
    @property()
    inputfieldType: string = InputfieldType.TEXT;
+
+   @property()
+   inputfieldMode: string = InputfieldMode.FILLED;
 
    @property()
    placeholder: string = '';
@@ -144,7 +160,7 @@ export class NidocaInputfield extends LitElement {
               >
               
               <nidoca-grid-container
-                    class="${this.toContainerClazz(this.inputfieldType)}"
+                    class="${this.inputfieldMode}"
                     minHeight="56px"
                     .gridJustifyItems="${GridJustifyItems.STRETCH}"
                     .gridAlignItems="${GridAlignItems.CENTER}" 
@@ -362,11 +378,15 @@ ${this.value}</textarea
                  </nidoca-flex-container>
               </nidoca-visible>
               </nidoca-spacer>
+              <nidoca-visible visibleType="${
+                 BasicService.getUniqueInstance().isNotBlank(this.errorText) ? VisibleType.NORMAL : VisibleType.HIDE
+              }">
               <nidoca-typography
                  style="color:var(--app-color-error)"
                  .typographyType="${TypographyType.OVERLINE}"
                  text="${this.errorText}"
               ></nidoca-typography>
+              </nidoca-visible>
            `
          : html`
               <input
@@ -388,11 +408,7 @@ ${this.value}</textarea
    }
 
    async keyup() {
-      BasicService.getUniqueInstance().dispatchSimpleCustomEvent(
-         this,
-         'nidoca-event-inputfield-keyup',
-         this.getOutputData()
-      );
+      BasicService.getUniqueInstance().dispatchSimpleCustomEvent(this, 'nidoca-event-inputfield-keyup', this.getOutputData());
    }
 
    async focused(event: Event) {
@@ -406,11 +422,7 @@ ${this.value}</textarea
       console.log('event: '.concat(JSON.stringify(event)));
       this.selected = false;
       this.validate();
-      BasicService.getUniqueInstance().dispatchSimpleCustomEvent(
-         this,
-         'nidoca-event-inputfield-focus-out',
-         this.getOutputData()
-      );
+      BasicService.getUniqueInstance().dispatchSimpleCustomEvent(this, 'nidoca-event-inputfield-focus-out', this.getOutputData());
    }
 
    async change(event: Event) {
@@ -579,28 +591,6 @@ ${this.value}</textarea
 
    private showAdditionalTextContainer() {
       return this.inputfieldType != InputfieldType.SWITCH && (this.assistiveText.length > 0 || this.infoText.length > 0);
-   }
-
-   private toContainerClazz(inputfieldType: string) {
-      let retval: string = '';
-      switch (inputfieldType) {
-         case InputfieldType.TEXT:
-         case InputfieldType.NUMBER:
-         case InputfieldType.COMBOBOX:
-         case InputfieldType.COLOR:
-         case InputfieldType.TIME:
-         case InputfieldType.WEEK:
-         case InputfieldType.MONTH:
-         case InputfieldType.FILE:
-         case InputfieldType.DATETIME_LOCAL:
-         case InputfieldType.DATE:
-         case InputfieldType.EMAIL:
-         case InputfieldType.TEL:
-         case InputfieldType.TEXTAREA:
-            retval = retval.concat('FILLED');
-            break;
-      }
-      return retval;
    }
 
    static enumToComboboxItems(enumeration: any): KeyValueData[] {

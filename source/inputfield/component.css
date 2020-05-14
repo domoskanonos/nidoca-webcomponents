@@ -29,7 +29,7 @@ select:focus,
 textarea:focus {
    outline: none;
    box-shadow: none;
-   background: var(--app-color-surface-background-light);
+   background: inherit;
 }
 
 input:valid,
@@ -37,7 +37,7 @@ select:valid,
 textarea:valid {
    outline: none;
    box-shadow: none;
-   background: var(--app-color-surface-background-light);
+   background: inherit;
 }
 
 input[type='checkbox'] {

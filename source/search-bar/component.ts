@@ -1,22 +1,11 @@
 import { css, customElement, html, LitElement, property, query, unsafeCSS } from 'lit-element';
-import {InputfieldType, NidocaInputfield, NidocaIcon} from '..';
+import { InputfieldType, NidocaInputfield, NidocaIcon, GridJustifyItems, GridAlignItems } from '..';
 import { BasicService } from '@domoskanonos/frontend-basis';
 
 const componentCSS = require('./component.css');
 
-export enum SearchBarState {
-   NORMAL = 'NORMAL',
-   SEARCH = 'SEARCH',
-   MOUSE_OUT = 'MOUSE_OUT'
-}
-
-export class SearchBarOutputData {
-   value: string = '';
-}
-
 @customElement('nidoca-search-bar')
 export class NidocaSearchBar extends LitElement {
-
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;
@@ -35,8 +24,12 @@ export class NidocaSearchBar extends LitElement {
 
    render() {
       return html`
-         <div class="search-bar">
-            <slot></slot>
+         <nidoca-grid-container
+            .gridJustifyItems="${GridJustifyItems.STRETCH}"
+            .gridAlignItems="${GridAlignItems.STRETCH}"
+            .gridTemplateRows="${['1fr']}"
+            .gridTemplateColumns="${['auto', '1fr']}"
+         >
             <nidoca-icon icon="search"></nidoca-icon>
             <nidoca-inputfield
                id="inputfieldComponent"
@@ -49,17 +42,16 @@ export class NidocaSearchBar extends LitElement {
                .automaticInfoText="${false}"
                .inputfieldType="${InputfieldType.TEXT}"
                trailingIcon="${this.trailingIcon}"
-               .leadingIconClickable="${true}"
                .trailingIconClickable="${true}"
             ></nidoca-inputfield>
-         </div>
+         </nidoca-grid-container>
       `;
    }
 
-   getOutputData(): SearchBarOutputData {
-      let searchBarOutputData = new SearchBarOutputData();
+   getOutputData(): string {
+      let searchBarOutputData: string = '';
       if (this.inputfieldComponent != null && this.inputfieldComponent.inputElemet != null) {
-         searchBarOutputData.value = this.inputfieldComponent.inputElemet.value;
+         searchBarOutputData = this.inputfieldComponent.inputElemet.value;
       }
       return searchBarOutputData;
    }
@@ -82,7 +74,7 @@ export class NidocaSearchBar extends LitElement {
    }
 
    private setTrailingIcon() {
-      if (BasicService.getUniqueInstance().isNotBlank(this.getOutputData().value)) {
+      if (BasicService.getUniqueInstance().isNotBlank(this.getOutputData())) {
          this.trailingIcon = 'close';
       } else {
          this.trailingIcon = '';
