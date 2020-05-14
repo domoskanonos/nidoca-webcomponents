@@ -1,9 +1,9 @@
-import {css, customElement, html, LitElement, property, query, unsafeCSS} from 'lit-element';
-import {NidocaInputfield, InputfieldType} from '../inputfield/component';
-import {guard} from 'lit-html/directives/guard';
-import {repeat} from 'lit-html/directives/repeat';
-import {NidocaButton} from '..';
-import {BasicService} from '@domoskanonos/frontend-basis';
+import { css, customElement, html, LitElement, property, query, unsafeCSS } from 'lit-element';
+import { NidocaInputfield, InputfieldType } from '../inputfield/component';
+import { guard } from 'lit-html/directives/guard';
+import { repeat } from 'lit-html/directives/repeat';
+import { NidocaButton } from '..';
+import { BasicService } from '@domoskanonos/frontend-basis';
 
 const componentCSS = require('./component.css');
 
@@ -14,7 +14,6 @@ export class NidocaFormOutputData {
 
 @customElement('nidoca-form')
 export class NidocaForm extends LitElement {
-
    static styles = css`
       ${unsafeCSS(componentCSS)}
    `;
@@ -32,10 +31,7 @@ export class NidocaForm extends LitElement {
       return html`
          <form id="htmlForm" @nidoca-event-button-clicked="${this.formButtonClicked}">
             <slot name="header"></slot>
-
-            <effect-color color="var(--app-color-error)">
-               <slot name="errorMessages"></slot>
-            </effect-color>
+            <slot style="color: var(--app-color-error);" name="errorMessages"></slot>
             <slot id="slotElement" @slotchange="${(event: Event) => this.slotChanged(event)}"></slot>
             ${guard(
                this.buttons,
