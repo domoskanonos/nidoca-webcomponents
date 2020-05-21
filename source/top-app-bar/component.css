@@ -3,6 +3,8 @@
     display: grid;
     grid-template-rows: var(--menubar-height);
     grid-template-columns: auto auto auto;
+    color: inherit;
+    background-color: inherit;
 }
 
 .left {
