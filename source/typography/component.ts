@@ -30,7 +30,7 @@ export enum TypographyAlignment {
    UNSET = 'text-align: unset;',
 }
 
-const componentCSS = require('./component.css');
+
 
 @customElement('nidoca-typography')
 export class NidocaTypography extends LitElement {

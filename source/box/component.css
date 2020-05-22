@@ -1,7 +1,0 @@
-:host,
-*,
-::slotted(*) {
-   box-sizing: border-box;
-   color: inherit;
-   background-color: inherit;
-}

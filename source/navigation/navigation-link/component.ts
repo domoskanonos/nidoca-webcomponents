@@ -1,23 +1,33 @@
-import { css, customElement, html, unsafeCSS, property, LitElement } from 'lit-element';
-import { BasicService, RouterService } from '@domoskanonos/frontend-basis';
+import { css, customElement, html, property, LitElement } from 'lit-element';
+import { RouterService } from '@domoskanonos/frontend-basis';
 import {
    FlexAlignContent,
    FlexAlignItems,
+   FlexContainerProperties,
    FlexDirection,
    FlexJustifyContent,
    FlexWrap,
    SpacerAlignment,
    SpacerSize,
-   TypographyType
+   TypographyType,
 } from '../..';
-import { FlexContainerProperties } from '../../flex-container/component';
-
-const componentCSS = require('./component.css');
 
 @customElement('nidoca-navigation-link')
 export class NidocaNavigationLink extends LitElement {
    static styles = css`
-      ${unsafeCSS(componentCSS)}
+      .navItem {
+         cursor: pointer;
+      }
+
+      ::slotted(.navItem.selected),
+      .navItem.selected,
+      ::slotted(.navItem:hover),
+      .navItem:hover,
+      ::slotted(.navItem:active),
+      .navItem:active {
+         color: var(--app-color-primary-light);
+         background-color: var(--app-color-primary-background-dark);
+      }
    `;
 
    @property()

@@ -3,13 +3,22 @@ import { BasicService } from '@domoskanonos/frontend-basis';
 import { VisibleType } from '../..';
 import { GridAlignItems, GridJustifyItems } from '../../grid-container/component';
 
-const componentCSS = require('./component.css');
-
 @customElement('nidoca-list-item')
 export class NidocaListItem extends LitElement {
-
    static styles = css`
-      ${unsafeCSS(componentCSS)}
+      .LIST_ITEM_SLOT {
+         display: grid;
+         grid-template-rows: 1fr;
+         grid-template-columns: 1fr;
+      }
+
+      .LIST_ITEM {
+         cursor: pointer;
+      }
+
+      .LIST_ITEM:hover {
+         background-color: var(--app-color-surface-background-light);
+      }
    `;
 
    @property()

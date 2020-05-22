@@ -2,12 +2,22 @@ import { css, customElement, html, query, unsafeCSS, LitElement, property } from
 import { NidocaTabContent } from './tab-content/component';
 import { NidocaTab } from './tab/component';
 
-const componentCSS = require('./component.css');
-
 @customElement('nidoca-tabs')
 export class NidocaTabs extends LitElement {
    static styles = css`
-      ${unsafeCSS(componentCSS)}
+      slot {
+         display: inline;
+      }
+
+      #tabSlot {
+         margin: 0px auto;
+         text-align: center;
+         width: 100% !important;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+      }
+            
    `;
 
    @query('#tabSlot')

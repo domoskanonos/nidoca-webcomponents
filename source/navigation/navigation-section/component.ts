@@ -1,25 +1,20 @@
-import { css, customElement, html, LitElement, property, unsafeCSS } from 'lit-element';
+import { css, customElement, html, LitElement, property } from 'lit-element';
 
 import {
    FlexAlignContent,
    FlexAlignItems,
+   FlexContainerProperties,
    FlexDirection,
    FlexJustifyContent,
    FlexWrap,
    SpacerAlignment,
    SpacerSize,
-   TypographyType
+   TypographyType,
 } from '../..';
-import { FlexContainerProperties } from '../../flex-container/component';
-
-const componentCSS = require('./component.css');
 
 @customElement('nidoca-navigation-section')
 export class NidocaNavigationSection extends LitElement {
-
-   static styles = css`
-      ${unsafeCSS(componentCSS)}
-   `;
+   static styles = css``;
 
    @property()
    text: string = '';

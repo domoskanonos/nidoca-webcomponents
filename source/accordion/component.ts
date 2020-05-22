@@ -2,8 +2,6 @@ import {css, customElement, html, property, query, unsafeCSS} from 'lit-element'
 import {LitElement} from 'lit-element';
 import {NidocaAccordionItem} from './item/component';
 
-const componentCSS = require('./component.css');
-
 export enum AccordionType {
     SINGLE = 'SINGLE',
     MULTI = 'MULTI'
@@ -12,9 +10,7 @@ export enum AccordionType {
 @customElement('nidoca-accordion')
 export class NidocaAccordion extends LitElement {
 
-    static styles = css`
-      ${unsafeCSS(componentCSS)}
-   `;
+    static styles = css``;
 
     @property()
     accordionType: string = AccordionType.SINGLE;

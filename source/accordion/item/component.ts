@@ -4,13 +4,12 @@ import { BorderProperties, SpacerAlignment, SpacerSize, VisibleType } from '../.
 import { GridAlignItems, GridJustifyItems } from '../../grid-container/component';
 import { BasicService } from '@domoskanonos/frontend-basis';
 
-const componentCSS = require('./component.css');
-
 @customElement('nidoca-accordion-item')
 export class NidocaAccordionItem extends LitElement {
-
    static styles = css`
-      ${unsafeCSS(componentCSS)}
+      .ACCORDION_HEADER {
+         cursor: pointer;
+      }
    `;
 
    @property()
@@ -51,5 +50,4 @@ export class NidocaAccordionItem extends LitElement {
       console.log('accordion clicked, after state=' + this.opened);
       BasicService.getUniqueInstance().dispatchSimpleCustomEvent(this, 'nidoca-event-accordion-item-clicked', this);
    }
-
 }

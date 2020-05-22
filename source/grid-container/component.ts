@@ -1,26 +1,35 @@
-import { css, customElement, html, property, unsafeCSS, LitElement } from 'lit-element';
+import { css, customElement, html, property, LitElement } from 'lit-element';
 import { BasicService } from '@domoskanonos/frontend-basis';
-
-const componentCSS = require('./component.css');
 
 export enum GridJustifyItems {
    START = 'start',
    END = 'end',
    CENTER = 'center',
-   STRETCH = 'stretch'
+   STRETCH = 'stretch',
 }
 
 export enum GridAlignItems {
    START = 'start',
    END = 'end',
    CENTER = 'center',
-   STRETCH = 'stretch'
+   STRETCH = 'stretch',
 }
 
 @customElement('nidoca-grid-container')
 export class NidocaGrid extends LitElement {
    static styles = css`
-      ${unsafeCSS(componentCSS)}
+      *,
+      ::slotted(*) {
+         box-sizing: border-box;
+         color: inherit;
+         background-color: inherit;
+      }
+
+      .GRID_CONTAINER,
+      ::slotted(.GRID_CONTAINER) {
+         display: grid;
+         box-sizing: border-box;
+      }
    `;
 
    @property()

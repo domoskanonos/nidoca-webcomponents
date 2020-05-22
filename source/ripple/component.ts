@@ -1,6 +1,4 @@
-import { css, customElement, html, LitElement, property, PropertyValues, query, unsafeCSS } from 'lit-element';
-
-const componentCSS = require('./component.css');
+import { css, customElement, html, LitElement, query } from 'lit-element';
 
 /**
  * check source: https://codepen.io/jakob-e/pen/XZoZWQ
@@ -8,7 +6,50 @@ const componentCSS = require('./component.css');
 @customElement('nidoca-ripple')
 export class NidocaRipple extends LitElement {
    static styles = css`
-      ${unsafeCSS(componentCSS)}
+      :root {
+         --ripple-background: var(--app-color-surface-background-dark);
+         --ripple-opacity: 0.8;
+         --ripple-duration: 600ms;
+         --ripple-easing: linear;
+
+         --y: 0;
+         --x: 0;
+         --d: 0;
+         --t: 0;
+         --s: 0;
+         --o: 0;
+      }
+
+      *,
+      *::before,
+      *::after {
+         box-sizing: inherit;
+      }
+
+      [anim='ripple'] {
+         position: relative;
+         overflow: hidden;
+      }
+
+      [anim='ripple']:before {
+         content: '';
+         position: absolute;
+         display: block;
+         background: var(--ripple-background, white);
+         border-radius: 50%;
+         pointer-events: none;
+         top: calc(var(--y) * 1px);
+         left: calc(var(--x) * 1px);
+         width: calc(var(--d) * 1px);
+         height: calc(var(--d) * 1px);
+         opacity: calc(var(--o, 1) * var(--ripple-opacity, 0.3));
+         -webkit-transition: calc(var(--t, 0) * var(--ripple-duration, 600ms)) var(--ripple-easing, linear);
+         transition: calc(var(--t, 0) * var(--ripple-duration, 600ms)) var(--ripple-easing, linear);
+         -webkit-transform: translate(-50%, -50%) scale(var(--s, 1));
+         transform: translate(-50%, -50%) scale(var(--s, 1));
+         -webkit-transform-origin: center;
+         transform-origin: center;
+      }
    `;
 
    @query('#rippleContainer')
@@ -32,8 +73,9 @@ export class NidocaRipple extends LitElement {
          this.rippleContainerElement.style.cssText = `--s: 0; --o: 1;`;
          this.rippleContainerElement.offsetTop;
          if (event instanceof MouseEvent || event instanceof Touch) {
-            this.rippleContainerElement.style.cssText = `--t: 1; --o: 0; --d: ${d}; --x:${event.clientX -
-               r.left}; --y:${event.clientY - r.top};`;
+            this.rippleContainerElement.style.cssText = `--t: 1; --o: 0; --d: ${d}; --x:${event.clientX - r.left}; --y:${
+               event.clientY - r.top
+            };`;
          }
       }
    }

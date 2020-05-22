@@ -1,11 +1,9 @@
 import { css, customElement, html, LitElement, property, unsafeCSS } from 'lit-element';
 
-const componentCSS = require('./component.css');
-
 export enum SpacerAlignment {
    BOTH = 'both',
    HORIZONTAL = 'horizontalAlignment',
-   VERTICAL = 'verticalAlignment'
+   VERTICAL = 'verticalAlignment',
 }
 
 export enum SpacerSize {
@@ -15,13 +13,63 @@ export enum SpacerSize {
    MEDIUM = 'spaceMedium',
    NORMAL = 'spaceNormal',
    BIG = 'spaceBig',
-   MAX = 'spaceMax'
+   MAX = 'spaceMax',
 }
 
 @customElement('nidoca-spacer')
 export class NidocaSpacer extends LitElement {
    static styles = css`
-      ${unsafeCSS(componentCSS)}
+      :host,
+      ::slotted(:host) {
+      }
+
+      .spacer,
+      ::slotted(.spacer) {
+         box-sizing: border-box;
+         display: block;
+      }
+
+      .horizontalAlignment,
+      ::slotted(.horizontalAlignment) {
+         padding-top: 0 !important;
+         padding-bottom: 0 !important;
+      }
+
+      .verticalAlignment,
+      ::slotted(.verticalAlignment) {
+         padding-left: 0 !important;
+         padding-right: 0 !important;
+      }
+
+      .spaceLittle,
+      ::slotted(.spaceLittle) {
+         padding: var(--space-little);
+      }
+
+      .spaceSmall,
+      ::slotted(.spaceSmall) {
+         padding: var(--space-small);
+      }
+
+      .spaceMedium,
+      ::slotted(.spaceMedium) {
+         padding: var(--space-medium);
+      }
+
+      .spaceNormal,
+      ::slotted(.spaceNormal) {
+         padding: var(--space-normal);
+      }
+
+      .spaceBig,
+      ::slotted(.spaceBig) {
+         padding: var(--space-big);
+      }
+
+      .spaceMax,
+      ::slotted(.spaceMax) {
+         padding: var(--space-max);
+      }
    `;
 
    @property()
@@ -47,19 +95,9 @@ export class NidocaSpacer extends LitElement {
       }
       switch (this.spacerAlignment) {
          case SpacerAlignment.VERTICAL:
-            return 'padding-top:'
-               .concat(size)
-               .concat(';')
-               .concat('padding-bottom:')
-               .concat(size)
-               .concat(';');
+            return 'padding-top:'.concat(size).concat(';').concat('padding-bottom:').concat(size).concat(';');
          case SpacerAlignment.HORIZONTAL:
-            return 'padding-left:'
-               .concat(size)
-               .concat(';')
-               .concat('padding-right:')
-               .concat(size)
-               .concat(';');
+            return 'padding-left:'.concat(size).concat(';').concat('padding-right:').concat(size).concat(';');
          case SpacerAlignment.BOTH:
             return 'padding:'.concat(size).concat(';');
       }

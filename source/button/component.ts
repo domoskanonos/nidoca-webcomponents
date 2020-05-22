@@ -4,18 +4,54 @@ import { BasicService } from '@domoskanonos/frontend-basis';
 import { FlexAlignItems, FlexContainerProperties, FlexJustifyContent, FlexWrap } from '../flex-container/component';
 import { SpacerSize, TypographyType, VisibleType } from '..';
 
-const componentCSS = require('./component.css');
-
 export enum ButtonType {
-    PRIMARY = 'PRIMARY',
-    SECONDARY = 'SECONDARY'
+   PRIMARY = 'PRIMARY',
+   SECONDARY = 'SECONDARY',
 }
 
 @customElement('nidoca-button')
 export class NidocaButton extends LitElement {
-
    static styles = css`
-      ${unsafeCSS(componentCSS)}
+      .BUTTON {
+         cursor: pointer;
+         text-transform: uppercase;
+         box-sizing: border-box;
+         font-family: inherit;
+         text-align: center;
+         vertical-align: center;
+         line-height: 48px;
+      }
+
+      .PRIMARY {
+         background-color: var(--app-color-primary-background);
+         color: var(--app-color-primary);
+      }
+      ::slotted(.PRIMARY:hover),
+      .PRIMARY:hover,
+      ::slotted(.PRIMARY:active),
+      .PRIMARY:active {
+         background-color: var(--app-color-primary-background-dark);
+         color: var(--app-color-primary-dark);
+      }
+
+      .SECONDARY {
+         background-color: var(--app-color-secondary-background);
+         color: var(--app-color-secondary);
+      }
+      ::slotted(.SECONDARY:hover),
+      .SECONDARY:hover,
+      ::slotted(.SECONDARY:active),
+      .SECONDARY:active {
+         background-color: var(--app-color-secondary-background-dark);
+         color: var(--app-color-secondary-dark);
+      }
+
+      @media only screen and (orientation: portrait) {
+         button,
+         .btn {
+            width: 100%;
+         }
+      }
    `;
 
    @property()
@@ -64,5 +100,4 @@ export class NidocaButton extends LitElement {
    clicked() {
       BasicService.getUniqueInstance().dispatchSimpleCustomEvent(this, 'nidoca-event-button-clicked', this);
    }
-
 }

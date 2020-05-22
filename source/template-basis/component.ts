@@ -1,15 +1,81 @@
-import { css, html, property, query, TemplateResult, unsafeCSS, LitElement } from 'lit-element';
+import { css, html, property, query, TemplateResult, LitElement } from 'lit-element';
 
 import { BasicService } from '@domoskanonos/frontend-basis';
 import { BorderProperties, NidocaIcon } from '..';
 import { NavigationType } from '../navigation/component';
 
-const componentCSS = require('./component.css');
-
 export abstract class NidocaTemplate extends LitElement {
-
    static styles = css`
-      ${unsafeCSS(componentCSS)}
+      #top {
+         position: fixed;
+         width: calc(100%);
+         height: var(--menubar-height);
+         right: 0;
+         z-index: 10;
+         background-color: var(--app-color-primary-background);
+         color: var(--app-color-primary);
+      }
+
+      #top.menuClosed {
+         width: 100%;
+      }
+
+      #main {
+         padding-top: var(--menubar-height);
+         min-height: 100%;
+      }
+      #main.menuClosed {
+         margin-left: 0;
+      }
+
+      #main.body-opacity {
+         opacity: 0.5;
+         transition: all 0.35s ease;
+      }
+
+      #main.menuClosed {
+         margin-left: 0;
+         opacity: 1;
+         background: #fff;
+         transition: all 0.35s ease;
+      }
+
+      #main.dismissible-main {
+         opacity: 1;
+         transition: all 0.35s ease;
+      }
+
+      #main.menuClosed {
+         margin-left: 0;
+         opacity: 1;
+         background: #fff;
+         transition: all 0.35s ease;
+      }
+
+      .permanent-main {
+         width: calc(100vw - var(--menu-size)) !important;
+         position: relative;
+         float: right;
+         transition: all 0.35s ease;
+      }
+
+      .dismissible-main {
+         width: calc(100vw - var(--menu-size)) !important;
+         position: relative;
+         float: right;
+         transition: all 0.35s ease;
+      }
+
+      #main {
+         width: 100%;
+      }
+
+      @media screen and (min-width: 521px) {
+         #main {
+            transition: margin-left 0.25s linear;
+            margin-left: var(--menu-size);
+         }
+      }
    `;
 
    @property()

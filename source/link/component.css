@@ -1,9 +1,0 @@
-:host,
-::slotted(:host) {
-  display: contents;
-}
-a {
-  color: inherit;
-  background-color: inherit;
-}
-

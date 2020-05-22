@@ -1,12 +1,13 @@
 import { css, customElement, html, property, unsafeCSS, LitElement } from 'lit-element';
 
-const componentCSS = require('./component.css');
+
 
 @customElement('nidoca-container')
 export class NidocaContainer extends LitElement {
-
    static styles = css`
-      ${unsafeCSS(componentCSS)}
+      :host {
+         box-sizing: border-box;
+      }
    `;
 
    @property()
@@ -16,10 +17,6 @@ export class NidocaContainer extends LitElement {
    cssStyle: string = '';
 
    render() {
-      return this.rendered
-         ? html`
-              <slot style="${this.cssStyle}"></slot>
-           `
-         : html``;
+      return this.rendered ? html` <slot style="${this.cssStyle}"></slot> ` : html``;
    }
 }

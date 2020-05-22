@@ -1,14 +1,10 @@
-import { css, customElement, html, LitElement, property, query, unsafeCSS } from 'lit-element';
+import { css, customElement, html, LitElement, property, query } from 'lit-element';
 import {InputfieldType, NidocaInputfield, NidocaIcon, GridJustifyItems, GridAlignItems, InputfieldMode} from '..';
 import { BasicService } from '@domoskanonos/frontend-basis';
 
-const componentCSS = require('./component.css');
-
 @customElement('nidoca-search-bar')
 export class NidocaSearchBar extends LitElement {
-   static styles = css`
-      ${unsafeCSS(componentCSS)}
-   `;
+   static styles = css``;
 
    @property()
    placeholder: string = '';

@@ -1,13 +1,9 @@
-import { css, customElement, html, property, unsafeCSS, LitElement } from 'lit-element';
+import { css, customElement, html, property, LitElement } from 'lit-element';
 import { VisibleType } from '../..';
-
-const componentCSS = require('./component.css');
 
 @customElement('nidoca-tab-content')
 export class NidocaTabContent extends LitElement {
-   static styles = css`
-      ${unsafeCSS(componentCSS)}
-   `;
+   static styles = css``;
 
    @property()
    selected: boolean = false;

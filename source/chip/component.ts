@@ -1,12 +1,23 @@
 import { css, customElement, html, unsafeCSS } from 'lit-element';
 import { LitElement } from 'lit-element';
 
-const componentCSS = require('./component.css');
+
 
 @customElement('nidoca-chip')
 export class NidocaChip extends LitElement {
    static styles = css`
-      ${unsafeCSS(componentCSS)}
+      .CHIP {
+         display: inline-block;
+         background: var(--app-color-surface-background-light);
+         padding: 0 12px;
+         border-radius: 32px;
+         font-size: 13px;
+         line-height: 32px;
+      }
+
+      .CHIP-hover:hover {
+         background: #ccc;
+      }
    `;
 
    render() {

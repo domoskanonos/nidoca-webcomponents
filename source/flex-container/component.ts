@@ -1,7 +1,5 @@
-import { css, customElement, html, property, query, unsafeCSS, LitElement } from 'lit-element';
+import { css, customElement, html, property, query, LitElement } from 'lit-element';
 import { BasicService } from '@domoskanonos/frontend-basis';
-
-const componentCSS = require('./component.css');
 
 export enum FlexContainerProperties {
    CONTAINER_WIDTH_MIN_CONTENT = 'CONTAINER_WIDTH_MIN_CONTENT',
@@ -16,7 +14,7 @@ export enum FlexContainerProperties {
    SMARTPHONE_HORIZONTAL_PADDING = 'SMARTPHONE_HORIZONTAL_PADDING',
    SMARTPHONE_VERTICAL_PADDING = 'SMARTPHONE_VERTICAL_PADDING',
    TABLET_HORIZONTAL_PADDING = 'TABLET_HORIZONTAL_PADDING',
-   TABLET_VERTICAL_PADDING = 'TABLET_VERTICAL_PADDING'
+   TABLET_VERTICAL_PADDING = 'TABLET_VERTICAL_PADDING',
 }
 
 export enum FlexItemProperties {
@@ -30,20 +28,20 @@ export enum FlexItemProperties {
    KEYLINE_SIZE_SMALL = 'KEYLINE_SIZE_SMALL',
    KEYLINE_SIZE_MEDIUM = 'KEYLINE_SIZE_MEDIUM',
    KEYLINE_SIZE_BIG = 'KEYLINE_SIZE_BIG',
-   KEYLINE_SIZE_MAX = 'KEYLINE_SIZE_MAX'
+   KEYLINE_SIZE_MAX = 'KEYLINE_SIZE_MAX',
 }
 
 export enum FlexDirection {
    ROW = 'row',
    ROW_REVERSE = 'rowData-reverse',
    COLUMN = 'column',
-   COLUMN_REVERSE = 'column-reverse'
+   COLUMN_REVERSE = 'column-reverse',
 }
 
 export enum FlexWrap {
    WRAP = 'wrap',
    NO_WRAP = 'nowrap',
-   WRAP_REVERSE = 'flexWrap-reverse'
+   WRAP_REVERSE = 'flexWrap-reverse',
 }
 
 export enum FlexJustifyContent {
@@ -52,7 +50,7 @@ export enum FlexJustifyContent {
    CENTER = 'center',
    SPACE_BETWEEN = 'space-between',
    SPACE_AROUND = 'space-around',
-   SPACE_EVENLY = 'space-evenly'
+   SPACE_EVENLY = 'space-evenly',
 }
 
 export enum FlexAlignItems {
@@ -66,7 +64,7 @@ export enum FlexAlignItems {
    FIRST_BASELINE = 'first baseline',
    LAST_BASLINE = 'last baseline',
    SAFE = 'safe',
-   UNSAFE = 'unsafe'
+   UNSAFE = 'unsafe',
 }
 
 export enum FlexAlignContent {
@@ -83,13 +81,158 @@ export enum FlexAlignContent {
    FIRST_BASELINE = 'first baseline',
    LAST_BASLINE = 'last baseline',
    SAFE = 'safe',
-   UNSAFE = 'unsafe'
+   UNSAFE = 'unsafe',
 }
 
 @customElement('nidoca-flex-container')
 export class NidocaFlex extends LitElement {
    static styles = css`
-      ${unsafeCSS(componentCSS)}
+      :host,
+      *,
+      ::slotted(*) {
+         box-sizing: border-box;
+         color: inherit;
+         background-color: inherit;
+      }
+
+      .FLEX_CONTAINER,
+      ::slotted(.FLEX_CONTAINER) {
+         margin: auto;
+         display: flex;
+      }
+
+      .CONTAINER_WIDTH_MIN_CONTENT,
+      ::slotted(.CONTAINER_WIDTH_MIN_CONTENT) {
+         width: min-content;
+         height: min-content;
+      }
+
+      .CONTAINER_HEIGHT_100,
+      ::slotted(.CONTAINER_HEIGHT_100) {
+         height: 100%;
+      }
+
+      .CONTAINER_WIDTH_AUTO,
+      ::slotted(.CONTAINER_WIDTH_AUTO) {
+         width: auto;
+      }
+
+      .CONTAINER_WIDTH_100,
+      ::slotted(.CONTAINER_WIDTH_100) {
+         width: 100%;
+      }
+
+      .CONTAINER_WIDTH_75,
+      ::slotted(.CONTAINER_WIDTH_75) {
+         width: 75%;
+      }
+
+      .CONTAINER_WIDTH_50,
+      ::slotted(.CONTAINER_WIDTH_50) {
+         width: 50%;
+      }
+
+      .CONTAINER_WIDTH_25,
+      ::slotted(.CONTAINER_WIDTH_25) {
+         width: 25%;
+      }
+
+      .FLEX_ITEM,
+      ::slotted(.FLEX_ITEM) {
+         box-sizing: border-box;
+         overflow: auto;
+      }
+
+      .KEYLINE_SIZE_LITTLE,
+      ::slotted(.KEYLINE_SIZE_LITTLE) {
+         padding-right: var(--space-little);
+         padding-bottom: var(--space-little);
+      }
+
+      .KEYLINE_SIZE_SMALL,
+      ::slotted(.KEYLINE_SIZE_SMALL) {
+         padding-right: var(--space-small);
+         padding-bottom: var(--space-small);
+      }
+
+      .KEYLINE_SIZE_MEDIUM,
+      ::slotted(.KEYLINE_SIZE_MEDIUM) {
+         padding-right: var(--space-medium);
+         padding-bottom: var(--space-medium);
+      }
+
+      .KEYLINE_SIZE_BIG,
+      ::slotted(.KEYLINE_SIZE_BIG) {
+         padding-right: var(--space-big);
+         padding-bottom: var(--space-big);
+      }
+
+      .KEYLINE_SIZE_MAX,
+      ::slotted(.KEYLINE_SIZE_MAX) {
+         padding-right: var(--space-max);
+         padding-bottom: var(--space-max);
+      }
+
+      .KEYLINE_ALIGNMENT_HORIZONTAL,
+      ::slotted(.KEYLINE_ALIGNMENT_HORIZONTAL) {
+         padding-bottom: 0;
+      }
+
+      .KEYLINE_ALIGNMENT_VERTICAL,
+      ::slotted(.KEYLINE_ALIGNMENT_VERTICAL) {
+         padding-right: 0;
+      }
+
+      .KEYLINE_SIZE_ALIGNMENT_BOTH,
+      ::slotted(.KEYLINE_SIZE_ALIGNMENT_BOTH) {
+         padding: 0;
+      }
+
+      @media only screen and (max-width: 1280px) and (orientation: portrait) {
+         .FLEX_CONTAINER.TABLET_HORIZONTAL_PADDING {
+            padding-left: var(--space-normal);
+            padding-right: var(--space-normal);
+         }
+
+         .FLEX_CONTAINER.TABLET_VERTICAL_PADDING {
+            padding-top: var(--space-normal);
+            padding-bottom: var(--space-normal);
+         }
+
+         .FLEX_CONTAINER.TABLET_MAX_WIDTH,
+         ::slotted(.FLEX_CONTAINER.TABLET_MAX_WIDTH) {
+            width: 100%;
+         }
+
+         ::slotted(.FLEX_ITEM.TABLET_MAX_WIDTH),
+         .FLEX_ITEM.TABLET_MAX_WIDTH {
+            flex-basis: 100% !important;
+            max-width: 100% !important;
+         }
+      }
+
+      @media only screen and (max-width: 768px) and (orientation: portrait) {
+         .FLEX_CONTAINER.SMARTPHONE_HORIZONTAL_PADDING {
+            padding-left: var(--space-big);
+            padding-right: var(--space-big);
+         }
+
+         .FLEX_CONTAINER.SMARTPHONE_VERTICAL_PADDING {
+            padding-top: var(--space-big);
+            padding-bottom: var(--space-big);
+         }
+
+         .FLEX_CONTAINER.SMARTPHONE_MAX_WIDTH,
+         ::slotted(.FLEX_CONTAINER.SMARTPHONE_MAX_WIDTH) {
+            width: 100%;
+         }
+
+         ::slotted(.FLEX_ITEM.SMARTPHONE_MAX_WIDTH),
+         .FLEX_ITEM.SMARTPHONE_MAX_WIDTH {
+            flex-basis: 100% !important;
+            max-width: 100% !important;
+         }
+      }
    `;
 
    @property()
@@ -187,10 +330,7 @@ export class NidocaFlex extends LitElement {
 
    private getFlexItemStyle(index: number): string {
       let flexBasisValue = BasicService.getUniqueInstance().getValue(this.flexItemBasisValues[index], this.flexItemBasisValue);
-      return 'flex-basis: '
-         .concat(flexBasisValue)
-         .concat(';max-width: ')
-         .concat(flexBasisValue);
+      return 'flex-basis: '.concat(flexBasisValue).concat(';max-width: ').concat(flexBasisValue);
    }
 
    toContainerPropertiesString(flexContainerPropertieses: string[]) {

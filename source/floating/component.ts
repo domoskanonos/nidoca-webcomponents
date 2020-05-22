@@ -1,11 +1,15 @@
-import { css, customElement, html, property, unsafeCSS, LitElement } from 'lit-element';
-
-const componentCSS = require('./component.css');
+import { css, customElement, html, property, LitElement } from 'lit-element';
 
 @customElement('nidoca-floating-container')
 export class NidocaFloatingContainer extends LitElement {
    static styles = css`
-      ${unsafeCSS(componentCSS)}
+      .FLOATING {
+         position: fixed;
+         display: inline;
+         margin: auto;
+         background-color: inherit;
+         color: inherit;
+      }
    `;
 
    @property()

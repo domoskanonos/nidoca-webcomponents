@@ -1,12 +1,14 @@
-import { css, customElement, html, property, unsafeCSS, query, LitElement } from 'lit-element';
+import { css, customElement, html, property, query, LitElement } from 'lit-element';
 import { NidocaListItem } from './item/component';
-
-const componentCSS = require('./component.css');
 
 @customElement('nidoca-list')
 export class NidocaList extends LitElement {
    static styles = css`
-      ${unsafeCSS(componentCSS)}
+      .LIST_SLOT {
+         display: grid;
+         grid-template-rows: 1fr;
+         grid-template-columns: 1fr;
+      }
    `;
 
    @property()
@@ -25,9 +27,7 @@ export class NidocaList extends LitElement {
    }
 
    render() {
-      return html`
-         <slot class="LIST_SLOT" id="slotElement"></slot>
-      `;
+      return html` <slot class="LIST_SLOT" id="slotElement"></slot> `;
    }
 
    getItems(): NidocaListItem[] {

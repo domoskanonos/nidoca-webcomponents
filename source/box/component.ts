@@ -1,11 +1,17 @@
 import { css, customElement, html, unsafeCSS, LitElement, property } from 'lit-element';
 
-const componentCSS = require('./component.css');
+
 
 @customElement('nidoca-box')
 export class NidocaBox extends LitElement {
    static styles = css`
-      ${unsafeCSS(componentCSS)}
+      :host,
+      *,
+      ::slotted(*) {
+         box-sizing: border-box;
+         color: inherit;
+         background-color: inherit;
+      }
    `;
 
    @property()

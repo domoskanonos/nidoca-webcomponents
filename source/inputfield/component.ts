@@ -1,7 +1,6 @@
+import { css, customElement, html, property, query, LitElement } from 'lit-element';
 import { repeat } from 'lit-html/directives/repeat';
 import { guard } from 'lit-html/directives/guard';
-import { css, customElement, html, property, query, unsafeCSS, LitElement } from 'lit-element';
-import { TypographyType } from '../typography/component';
 import { BasicService } from '@domoskanonos/frontend-basis';
 import {
    FlexAlignContent,
@@ -9,13 +8,13 @@ import {
    FlexJustifyContent,
    SpacerAlignment,
    SpacerSize,
-   VisibleType
+   VisibleType,
+   KeyValueData,
+   GridJustifyItems,
+   GridAlignItems,
+   FlexContainerProperties,
+   TypographyType,
 } from '..';
-import { FlexContainerProperties } from '../flex-container/component';
-import { GridAlignItems, GridJustifyItems } from '../grid-container/component';
-import { KeyValueData } from '../meta';
-
-const componentCSS = require('./component.css');
 
 export enum InputfieldType {
    TEXTAREA = 'textarea',
@@ -37,12 +36,12 @@ export enum InputfieldType {
    TIME = 'time',
    URL = 'url',
    WEEK = 'week',
-   COMBOBOX = 'combobox'
+   COMBOBOX = 'combobox',
 }
 
 export enum InputfieldMode {
    CLEAN = 'CLEAN',
-   FILLED = 'FILLED'
+   FILLED = 'FILLED',
 }
 
 export class InputfieldDataChangeEvent {
@@ -54,7 +53,118 @@ export class InputfieldDataChangeEvent {
 @customElement('nidoca-inputfield')
 export class NidocaInputfield extends LitElement {
    static styles = css`
-      ${unsafeCSS(componentCSS)}
+      .FILLED {
+         background-color: var(--app-color-surface-background-light);
+      }
+
+      input,
+      select,
+      textarea {
+         font: inherit;
+         box-sizing: border-box;
+         width: 100%;
+         border: none;
+         color: inherit;
+         background-color: inherit;
+         line-height: var(--line-height);
+         height: var(--line-height);
+      }
+
+      textarea {
+         min-height: 150px;
+      }
+
+      select[multiple] {
+         line-height: unset;
+         height: auto;
+      }
+
+      input:focus,
+      select:focus,
+      textarea:focus {
+         outline: none;
+         box-shadow: none;
+         background: inherit;
+      }
+
+      input:valid,
+      select:valid,
+      textarea:valid {
+         outline: none;
+         box-shadow: none;
+         background: inherit;
+      }
+
+      input[type='checkbox'] {
+         width: auto;
+      }
+
+      input[type='color'] {
+         padding-left: 0;
+      }
+
+      ::-webkit-inner-spin-button,
+      ::-webkit-outer-spin-button,
+      ::-webkit-clear-button {
+      }
+
+      input[type='range'] {
+         -webkit-appearance: none;
+         width: 100%;
+         height: 5px;
+         border-radius: 5px;
+         background: var(--app-color-primary-background-light);
+         outline: none;
+         -webkit-transition: 0.2s;
+         transition: opacity 0.2s;
+      }
+
+      input[type='range']::-webkit-slider-thumb {
+         -webkit-appearance: none;
+         appearance: none;
+         width: var(--line-height);
+         height: var(--line-height);
+         border-radius: 50%;
+         background: var(--app-color-primary-background);
+         cursor: pointer;
+      }
+
+      input[type='range']::-moz-range-thumb {
+         width: var(--line-height);
+         height: var(--line-height);
+         border-radius: 50%;
+         background: var(--app-color-primary-background);
+         cursor: pointer;
+      }
+
+      input[type='datetime-local']::-webkit-calendar-picker-indicator,
+      input[type='date']::-webkit-calendar-picker-indicator,
+      input[type='month']::-webkit-calendar-picker-indicator,
+      input[type='week']::-webkit-calendar-picker-indicator,
+      input[type='datetime-local']::-moz-calendar-picker-indicator,
+      input[type='date']::-moz-calendar-picker-indicator,
+      input[type='month']::-moz-calendar-picker-indicator,
+      input[type='week']::-moz-calendar-picker-indicator {
+         color: rgba(0, 0, 0, 0);
+         opacity: 1;
+         display: block;
+         width: 20px;
+         height: 20px;
+         border-width: thin;
+      }
+
+      input:-webkit-autofill,
+      input:-webkit-autofill:hover,
+      input:-webkit-autofill:focus input:-webkit-autofill,
+      textarea:-webkit-autofill,
+      textarea:-webkit-autofill:hover textarea:-webkit-autofill:focus,
+      select:-webkit-autofill,
+      select:-webkit-autofill:hover,
+      select:-webkit-autofill:focus {
+         -webkit-text-fill-color: #000;
+         -webkit-box-shadow: 0 0 0px 1000px var(--app-color-surface-background-light) inset;
+         transition: background-color 5000s ease-in-out 0s;
+      }
    `;
 
    @property()
@@ -154,7 +264,7 @@ export class NidocaInputfield extends LitElement {
                        ? BorderProperties.BOTTOM_SELECTED
                        : this.showBorder()
                        ? BorderProperties.BOTTOM
-                       : BorderProperties.NONE
+                       : BorderProperties.NONE,
                  ]}"
               >
               
@@ -186,7 +296,7 @@ export class NidocaInputfield extends LitElement {
                     <nidoca-flex-container
                        .flexContainerProperties="${[
                           FlexContainerProperties.CONTAINER_WIDTH_100,
-                          FlexContainerProperties.CONTAINER_HEIGHT_100
+                          FlexContainerProperties.CONTAINER_HEIGHT_100,
                        ]}"
                        .flexAlignContent="${FlexAlignContent.CENTER}"
                        flexItemBasisValue="100%"
@@ -261,12 +371,8 @@ export class NidocaInputfield extends LitElement {
                                                     this.multiple &&
                                                     this.value.indexOf(option.key) > -1) ||
                                                  BasicService.getUniqueInstance().isEqual(this.value, option.key)
-                                                    ? html`
-                                                         <option value="${option.key}" selected>${option.value}</option>
-                                                      `
-                                                    : html`
-                                                         <option value="${option.key}">${option.value}</option>
-                                                      `
+                                                    ? html` <option value="${option.key}" selected>${option.value}</option> `
+                                                    : html` <option value="${option.key}">${option.value}</option> `
                                            )}
                                         `
                                      )}
@@ -491,7 +597,7 @@ ${this.value}</textarea
 
       return <KeyValueData>{
          key: this.name,
-         value: outputValue
+         value: outputValue,
       };
    }
 
@@ -541,22 +647,14 @@ ${this.value}</textarea
                .getValue(this.min, '')
                .toString()
                .concat('-')
-               .concat(
-                  BasicService.getUniqueInstance()
-                     .getValue(this.max, '')
-                     .toString()
-               );
+               .concat(BasicService.getUniqueInstance().getValue(this.max, '').toString());
             break;
          case InputfieldType.TEXT:
          case InputfieldType.PASSWORD:
             this.infoText = this.value.length
                .toString()
                .concat('/')
-               .concat(
-                  BasicService.getUniqueInstance()
-                     .getValue(this.maxlength, '0')
-                     .toString()
-               );
+               .concat(BasicService.getUniqueInstance().getValue(this.maxlength, '0').toString());
             break;
       }
    }

@@ -5,8 +5,6 @@ import { repeat } from 'lit-html/directives/repeat';
 import { NidocaButton } from '..';
 import { BasicService } from '@domoskanonos/frontend-basis';
 
-const componentCSS = require('./component.css');
-
 export class NidocaFormOutputData {
    jsonObject: any;
    formData: FormData = FormData.prototype;
@@ -15,7 +13,23 @@ export class NidocaFormOutputData {
 @customElement('nidoca-form')
 export class NidocaForm extends LitElement {
    static styles = css`
-      ${unsafeCSS(componentCSS)}
+      .formElement,
+      ::slotted(.formElement) {
+         padding-top: var(--space-medium);
+         padding-bottom: var(--space-medium);
+         box-sizing: border-box;
+         display: block;
+      }
+
+      form {
+         width: 100%;
+         box-sizing: border-box;
+      }
+
+      @media only screen and (orientation: portrait) {
+         form {
+         }
+      }
    `;
 
    @property()
@@ -33,18 +47,7 @@ export class NidocaForm extends LitElement {
             <slot name="header"></slot>
             <slot style="color: var(--app-color-error);" name="errorMessages"></slot>
             <slot id="slotElement" @slotchange="${(event: Event) => this.slotChanged(event)}"></slot>
-            ${guard(
-               this.buttons,
-               () =>
-                  html`
-                     ${repeat(
-                        this.buttons,
-                        (buttons) => html`
-                           ${buttons}
-                        `
-                     )}
-                  `
-            )}
+            ${guard(this.buttons, () => html` ${repeat(this.buttons, (buttons) => html` ${buttons} `)} `)}
          </form>
       `;
    }
