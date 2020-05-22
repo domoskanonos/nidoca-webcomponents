@@ -10,7 +10,6 @@
    "devDependencies": {
       "@domoskanonos/frontend-basis": "latest",
       "@types/node": "latest",
-      "copyfiles": "^2.2.0",
       "lit-element": "latest",
       "prettier": "latest",
       "typescript": "next"
@@ -18,7 +17,6 @@
    "dependencies": {},
    "author": "Dominik Bruhn",
    "scripts": {
-      "copy-css": "copyfiles -u 1 ./source/**/*.css ./lib/",
       "build_typescript": "npm run copy-css & tsc -p ./",
       "pretty": "prettier --write \"./**/*.{ts,json}\"",
       "new-version": "npm run build_typescript & npm version patch & npm publish --access=public",
