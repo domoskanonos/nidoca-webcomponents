@@ -1,5 +1,5 @@
 import { css, customElement, html, property, query, LitElement } from 'lit-element';
-import { NidocaListItem } from './item/component';
+import { NidocaListItem } from './item/nidoca-list-item';
 
 @customElement('nidoca-list')
 export class NidocaList extends LitElement {

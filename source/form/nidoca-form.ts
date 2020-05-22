@@ -1,5 +1,5 @@
 import { css, customElement, html, LitElement, property, query, unsafeCSS } from 'lit-element';
-import { NidocaInputfield, InputfieldType } from '../inputfield/component';
+import { NidocaInputfield, InputfieldType } from '../inputfield/nidoca-inputfield';
 import { guard } from 'lit-html/directives/guard';
 import { repeat } from 'lit-html/directives/repeat';
 import { NidocaButton } from '..';

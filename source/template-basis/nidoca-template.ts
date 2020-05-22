@@ -2,7 +2,7 @@ import { css, html, property, query, TemplateResult, LitElement } from 'lit-elem
 
 import { BasicService } from '@domoskanonos/frontend-basis';
 import { BorderProperties, NidocaIcon } from '..';
-import { NavigationType } from '../navigation/component';
+import { NavigationType } from '../navigation/nidoca-navigation';
 
 export abstract class NidocaTemplate extends LitElement {
    static styles = css`

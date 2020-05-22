@@ -1,7 +1,7 @@
 import { css, customElement, html, LitElement, property, unsafeCSS } from 'lit-element';
 import { BasicService } from '@domoskanonos/frontend-basis';
 import { VisibleType } from '../..';
-import { GridAlignItems, GridJustifyItems } from '../../grid-container/component';
+import { GridAlignItems, GridJustifyItems } from '../../grid-container/nidoca-grid-container';
 
 @customElement('nidoca-list-item')
 export class NidocaListItem extends LitElement {

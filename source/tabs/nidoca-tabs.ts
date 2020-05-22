@@ -1,6 +1,6 @@
 import { css, customElement, html, query, unsafeCSS, LitElement, property } from 'lit-element';
-import { NidocaTabContent } from './tab-content/component';
-import { NidocaTab } from './tab/component';
+import { NidocaTabContent } from './tab-content/nidoca-tab-content';
+import { NidocaTab } from './tab/nidoca-tab';
 
 @customElement('nidoca-tabs')
 export class NidocaTabs extends LitElement {
