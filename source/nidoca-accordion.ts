@@ -1,6 +1,6 @@
 import {css, customElement, html, property, query, unsafeCSS} from 'lit-element';
 import {LitElement} from 'lit-element';
-import {NidocaAccordionItem} from './item/component';
+import {NidocaAccordionItem} from "./nidoca-accordion-item";
 
 export enum AccordionType {
     SINGLE = 'SINGLE',

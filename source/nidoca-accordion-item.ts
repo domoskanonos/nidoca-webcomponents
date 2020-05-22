@@ -1,7 +1,7 @@
 import { css, customElement, html, property, unsafeCSS } from 'lit-element';
 import { LitElement } from 'lit-element';
-import { BorderProperties, SpacerAlignment, SpacerSize, VisibleType } from '../..';
-import { GridAlignItems, GridJustifyItems } from '../../grid-container/component';
+import { BorderProperties, SpacerAlignment, SpacerSize, VisibleType } from './index';
+import { GridAlignItems, GridJustifyItems } from './grid-container/component';
 import { BasicService } from '@domoskanonos/frontend-basis';
 
 @customElement('nidoca-accordion-item')

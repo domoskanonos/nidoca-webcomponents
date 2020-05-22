@@ -1,6 +1,6 @@
 import { css, customElement, html, property, LitElement } from 'lit-element';
 import { BasicService } from '@domoskanonos/frontend-basis';
-import { ShadowType } from '../border/component';
+import { ShadowType } from '../nidoca-border';
 
 export enum IconShadowType {
    NONE = 'NONE',
