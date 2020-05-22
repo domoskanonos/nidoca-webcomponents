@@ -1,5 +1,5 @@
 import { css, customElement, html, property, unsafeCSS, LitElement } from 'lit-element';
-import { BasicService } from '@domoskanonos/frontend-basis';
+import { BasicService } from '@domoskanonos/frontend-basis/lib';
 import { ShadowType } from '../border/component';
 
 const componentCSS = require('./component.css');

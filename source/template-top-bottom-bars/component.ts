@@ -1,6 +1,6 @@
 import { css, html, property, query, TemplateResult, unsafeCSS, LitElement } from 'lit-element';
 
-import { BasicService } from '@domoskanonos/frontend-basis';
+import { BasicService } from '@domoskanonos/frontend-basis/lib';
 import { NidocaIcon } from '..';
 
 const componentCSS = require('./component.css');

@@ -3,7 +3,7 @@ import { NidocaInputfield, InputfieldType } from '../inputfield/component';
 import { guard } from 'lit-html/directives/guard';
 import { repeat } from 'lit-html/directives/repeat';
 import { NidocaButton } from '..';
-import { BasicService } from '@domoskanonos/frontend-basis';
+import { BasicService } from '@domoskanonos/frontend-basis/lib';
 
 const componentCSS = require('./component.css');
 

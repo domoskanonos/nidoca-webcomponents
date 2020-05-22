@@ -1,5 +1,5 @@
 import { css, customElement, html, property, query, unsafeCSS, LitElement } from 'lit-element';
-import { BasicService } from '@domoskanonos/frontend-basis';
+import { BasicService } from '@domoskanonos/frontend-basis/lib';
 
 const componentCSS = require('./component.css');
 

@@ -2,7 +2,7 @@ import { css, customElement, html, property, unsafeCSS } from 'lit-element';
 import { LitElement } from 'lit-element';
 import { BorderProperties, SpacerAlignment, SpacerSize, VisibleType } from '../..';
 import { GridAlignItems, GridJustifyItems } from '../../grid-container/component';
-import { BasicService } from '@domoskanonos/frontend-basis';
+import { BasicService } from '@domoskanonos/frontend-basis/lib';
 
 const componentCSS = require('./component.css');
 

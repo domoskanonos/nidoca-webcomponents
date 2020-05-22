@@ -66,3 +66,4 @@ typings/
 .next
 /wc-atomic.iml
 /package-lock.json
+/lib/

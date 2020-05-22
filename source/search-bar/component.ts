@@ -1,6 +1,6 @@
 import { css, customElement, html, LitElement, property, query, unsafeCSS } from 'lit-element';
 import {InputfieldType, NidocaInputfield, NidocaIcon, GridJustifyItems, GridAlignItems, InputfieldMode} from '..';
-import { BasicService } from '@domoskanonos/frontend-basis';
+import { BasicService } from '@domoskanonos/frontend-basis/lib';
 
 const componentCSS = require('./component.css');
 

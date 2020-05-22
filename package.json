@@ -3,24 +3,23 @@
    "version": "1.0.424",
    "license": "MIT",
    "description": "nidoca framework (nidoca-core)",
+   "files": [
+      "lib/**/*"
+   ],
    "main": "source/index.js",
-   "types": "source/index.d.ts",
-   "module": "source/index.d.js",
    "devDependencies": {
       "@types/node": "latest",
       "prettier": "latest",
       "typescript": "next",
       "lit-element": "latest",
-      "@domoskanonos/frontend-basis": "latest"
+      "@domoskanonos/frontend-basis/lib": "^1.0.186"
    },
    "dependencies": {},
    "author": "Dominik Bruhn",
    "scripts": {
-      "start": "./node_modules/.bin/webpack-dev-server --config webpack.dev.js --open",
       "build_typescript": "tsc -p ./",
       "pretty": "prettier --write \"./**/*.{ts,json}\"",
-      "new-version": "npm version patch & npm publish --access=public",
-      "unpublish": "npm unpublish --force",
-      "test": "echo \"Error: no test specified\" && exit 1"
+      "new-version": "npm run build_typescript & npm version patch & npm publish --access=public",
+      "unpublish": "npm unpublish --force"
    }
 }
