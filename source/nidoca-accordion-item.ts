@@ -1,8 +1,10 @@
-import { css, customElement, html, property, unsafeCSS } from 'lit-element';
+import { css, customElement, html, property } from 'lit-element';
 import { LitElement } from 'lit-element';
-import { BorderProperties, SpacerAlignment, SpacerSize, VisibleType } from './index';
-import { GridAlignItems, GridJustifyItems } from './grid-container/nidoca-grid-container';
+import { GridAlignItems, GridJustifyItems } from './nidoca-grid-container';
 import { BasicService } from '@domoskanonos/frontend-basis';
+import {BorderProperties} from "./nidoca-border";
+import {SpacerAlignment, SpacerSize} from "./nidoca-spacer";
+import {VisibleType} from "./nidoca-visible";
 
 @customElement('nidoca-accordion-item')
 export class NidocaAccordionItem extends LitElement {

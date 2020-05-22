@@ -1,8 +1,10 @@
 import { css, customElement, html, property, unsafeCSS } from 'lit-element';
 import { LitElement } from 'lit-element';
 import { BasicService } from '@domoskanonos/frontend-basis';
-import { FlexAlignItems, FlexContainerProperties, FlexJustifyContent, FlexWrap } from './flex-container/nidoca-flex-container';
-import { SpacerSize, TypographyType, VisibleType } from './index';
+import { FlexAlignItems, FlexContainerProperties, FlexJustifyContent, FlexWrap } from './nidoca-flex-container';
+import {VisibleType} from "./nidoca-visible";
+import {SpacerSize} from "./nidoca-spacer";
+import {TypographyType} from "./nidoca-typography";
 
 export enum ButtonType {
    PRIMARY = 'PRIMARY',
