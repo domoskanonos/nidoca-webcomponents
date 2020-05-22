@@ -2,7 +2,7 @@ import { repeat } from 'lit-html/directives/repeat';
 import { guard } from 'lit-html/directives/guard';
 import { css, customElement, html, property, query, unsafeCSS, LitElement } from 'lit-element';
 import { TypographyType } from '../typography/component';
-import { BasicService } from '@domoskanonos/frontend-basis/lib';
+import { BasicService } from '@domoskanonos/frontend-basis';
 import {
    FlexAlignContent,
    FlexAlignItems,

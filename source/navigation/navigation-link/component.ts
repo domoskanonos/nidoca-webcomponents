@@ -1,5 +1,5 @@
 import { css, customElement, html, unsafeCSS, property, LitElement } from 'lit-element';
-import { BasicService, RouterService } from '@domoskanonos/frontend-basis/lib';
+import { BasicService, RouterService } from '@domoskanonos/frontend-basis';
 import {
    FlexAlignContent,
    FlexAlignItems,

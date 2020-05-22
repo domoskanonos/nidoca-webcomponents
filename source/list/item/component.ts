@@ -1,5 +1,5 @@
 import { css, customElement, html, LitElement, property, unsafeCSS } from 'lit-element';
-import { BasicService } from '@domoskanonos/frontend-basis/lib';
+import { BasicService } from '@domoskanonos/frontend-basis';
 import { VisibleType } from '../..';
 import { GridAlignItems, GridJustifyItems } from '../../grid-container/component';
 

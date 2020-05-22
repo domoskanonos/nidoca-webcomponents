@@ -1,5 +1,5 @@
 import { LitElement, TemplateResult } from 'lit-element';
-import { RouterService } from '@domoskanonos/frontend-basis/lib';
+import { RouterService } from '@domoskanonos/frontend-basis';
 
 export class AppData {
    name?: string;

@@ -1,6 +1,6 @@
 import { css, customElement, html, property, unsafeCSS } from 'lit-element';
 import { LitElement } from 'lit-element';
-import { BasicService } from '@domoskanonos/frontend-basis/lib';
+import { BasicService } from '@domoskanonos/frontend-basis';
 import { FlexAlignItems, FlexContainerProperties, FlexJustifyContent, FlexWrap } from '../flex-container/component';
 import { SpacerSize, TypographyType, VisibleType } from '..';
 
