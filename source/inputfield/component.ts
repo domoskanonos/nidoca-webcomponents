@@ -5,7 +5,6 @@ import { TypographyType } from '../typography/component';
 import { BasicService } from '@domoskanonos/frontend-basis';
 import {
    FlexAlignContent,
-   FlexAlignItems,
    BorderProperties,
    FlexJustifyContent,
    SpacerAlignment,
