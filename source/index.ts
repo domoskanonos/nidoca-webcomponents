@@ -37,6 +37,3 @@ export { NidocaTemplate } from './template-basis/component';
 export { NidocaTopBottomTemplate } from './template-top-bottom-bars/component';
 export { TypographyAlignment, TypographyType, NidocaTypography } from './typography/component';
 export { NidocaDialog } from './dialog/component';
-
-//for development
-import './index.css';
