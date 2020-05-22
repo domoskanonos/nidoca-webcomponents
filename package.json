@@ -12,7 +12,7 @@
       "prettier": "latest",
       "typescript": "next",
       "lit-element": "latest",
-      "@domoskanonos/frontend-basis": "^1.0.187"
+      "@domoskanonos/frontend-basis": "latest"
    },
    "dependencies": {},
    "author": "Dominik Bruhn",
