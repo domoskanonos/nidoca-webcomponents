@@ -15,7 +15,6 @@ export class NidocaForm extends LitElement {
    static styles = css`
       .formElement,
       ::slotted(.formElement) {
-         padding-top: var(--space-medium);
          padding-bottom: var(--space-medium);
          box-sizing: border-box;
          display: block;
