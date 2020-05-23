@@ -9,6 +9,7 @@ import {SpacerAlignment, SpacerSize} from './nidoca-spacer';
 import {VisibleType} from './nidoca-visible';
 import {FlexAlignContent, FlexContainerProperties, FlexJustifyContent} from './nidoca-flex-container';
 import {TypographyType} from './nidoca-typography';
+import {I18nService} from '@domoskanonos/frontend-basis/lib';
 
 export enum InputfieldType {
    TEXTAREA = 'textarea',
@@ -540,12 +541,15 @@ ${this.value}</textarea
       switch (this.inputfieldType) {
          case InputfieldType.COMBOBOX:
             return this.selectElemet != null ? this.selectElemet.validity.valid : false;
+         case InputfieldType.SWITCH:
+            return this.required ? this.required && this.checked : true;
          default:
             return this.inputElemet != null ? this.inputElemet.validity.valid : false;
       }
    }
 
    public validate(): void {
+      this.errorText = '';
       if (this.inputElemet != null) {
          if (this.inputElemet.validity.valid) {
             this.value = this.inputElemet.value;
@@ -553,6 +557,11 @@ ${this.value}</textarea
          }
          if (this.inputElemet.validationMessage != this.errorText) {
             this.errorText = this.inputElemet.validationMessage;
+         }
+      }
+      if (this.inputfieldType === InputfieldType.SWITCH) {
+         if (!this.checked && this.required) {
+            this.errorText = I18nService.getUniqueInstance().getValue('nidoca-inputfield-error-required');
          }
       }
    }
@@ -669,12 +678,13 @@ ${this.value}</textarea
    private showLabelText(): boolean {
       return (
          ((this.selected ||
-            this.inputfieldType === InputfieldType.COLOR ||
-            this.inputfieldType === InputfieldType.COMBOBOX ||
-            this.inputfieldType === InputfieldType.TEXTAREA ||
-            this.inputfieldType === InputfieldType.RANGE ||
-            this.inputfieldType === InputfieldType.SWITCH ||
-            this.inputfieldType === InputfieldType.MONTH ||
+             this.inputfieldType === InputfieldType.COLOR ||
+             this.inputfieldType === InputfieldType.COMBOBOX ||
+             this.inputfieldType === InputfieldType.TEXTAREA ||
+             this.inputfieldType === InputfieldType.RANGE ||
+             this.inputfieldType === InputfieldType.SWITCH ||
+             this.inputfieldType === InputfieldType.CHECKBOX ||
+             this.inputfieldType === InputfieldType.MONTH ||
             this.inputfieldType === InputfieldType.TIME ||
             this.inputfieldType === InputfieldType.WEEK ||
             this.inputfieldType === InputfieldType.DATE ||
