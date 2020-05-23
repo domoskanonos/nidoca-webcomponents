@@ -405,11 +405,11 @@ export class NidocaTransition extends LitElement {
 
       /*  */
       .CENTER {
-         animation: fadeIn ease 5s;
-         -webkit-animation: fadeIn ease 5s;
-         -moz-animation: fadeIn ease 5s;
-         -o-animation: fadeIn ease 5s;
-         -ms-animation: fadeIn ease 5s;
+         animation: fadeIn ease 2s;
+         -webkit-animation: fadeIn ease 2s;
+         -moz-animation: fadeIn ease 2s;
+         -o-animation: fadeIn ease 2s;
+         -ms-animation: fadeIn ease 2s;
       }
 
       .LEFT {
