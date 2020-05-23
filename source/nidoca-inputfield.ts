@@ -389,15 +389,14 @@ ${this.value}</textarea
                                         .flexContainerProperties="${[FlexContainerProperties.CONTAINER_WIDTH_100]}"
                                         flexItemBasisValue="100%"
                                      >
+                                        <nidoca-typography .typographyType="${TypographyType.SUBTITLE1}" text="${this.infoText}"
+                                           ><slot></slot
+                                        ></nidoca-typography>
                                         <nidoca-visible
                                            visibleType="${BasicService.getUniqueInstance().isNotBlank(this.assistiveText)
                                               ? VisibleType.NORMAL
                                               : VisibleType.HIDE}"
-                                           ><nidoca-typography
-                                              .typographyType="${TypographyType.SUBTITLE1}"
-                                              text="${this.infoText}"
-                                              ><slot></slot
-                                           ></nidoca-typography>
+                                        >
                                            <nidoca-typography
                                               .typographyType="${TypographyType.SUBTITLE2}"
                                               text="${this.assistiveText}"
