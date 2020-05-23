@@ -1,15 +1,15 @@
-import {css, customElement, html, property, query, LitElement} from 'lit-element';
-import {repeat} from 'lit-html/directives/repeat';
-import {guard} from 'lit-html/directives/guard';
-import {BasicService} from '@domoskanonos/frontend-basis';
-import {KeyValueData} from './meta';
-import {BorderProperties} from './nidoca-border';
-import {GridAlignItems, GridJustifyItems} from './nidoca-grid-container';
-import {SpacerAlignment, SpacerSize} from './nidoca-spacer';
-import {VisibleType} from './nidoca-visible';
-import {FlexAlignContent, FlexContainerProperties, FlexJustifyContent} from './nidoca-flex-container';
-import {TypographyType} from './nidoca-typography';
-import {I18nService} from '@domoskanonos/frontend-basis/lib';
+import { css, customElement, html, property, query, LitElement } from 'lit-element';
+import { repeat } from 'lit-html/directives/repeat';
+import { guard } from 'lit-html/directives/guard';
+import { BasicService } from '@domoskanonos/frontend-basis';
+import { KeyValueData } from './meta';
+import { BorderProperties } from './nidoca-border';
+import { GridAlignItems, GridJustifyItems } from './nidoca-grid-container';
+import { SpacerAlignment, SpacerSize } from './nidoca-spacer';
+import { VisibleType } from './nidoca-visible';
+import { FlexAlignContent, FlexContainerProperties, FlexJustifyContent } from './nidoca-flex-container';
+import { TypographyType } from './nidoca-typography';
+import { I18nService } from '@domoskanonos/frontend-basis/lib';
 
 export enum InputfieldType {
    TEXTAREA = 'textarea',
@@ -389,15 +389,21 @@ ${this.value}</textarea
                                         .flexContainerProperties="${[FlexContainerProperties.CONTAINER_WIDTH_100]}"
                                         flexItemBasisValue="100%"
                                      >
-                                        <nidoca-typography
-                                           .typographyType="${TypographyType.SUBTITLE1}"
-                                           text="${this.assistiveText}"
-                                        ></nidoca-typography>
-                                        <nidoca-typography
-                                           .typographyType="${TypographyType.SUBTITLE2}"
-                                           text="${this.infoText}"
-                                        ></nidoca-typography
-                                     ></nidoca-flex-container>
+                                        <nidoca-visible
+                                           visibleType="${BasicService.getUniqueInstance().isNotBlank(this.assistiveText)
+                                              ? VisibleType.NORMAL
+                                              : VisibleType.HIDE}"
+                                           ><nidoca-typography
+                                              .typographyType="${TypographyType.SUBTITLE1}"
+                                              text="${this.infoText}"
+                                              ><slot></slot
+                                           ></nidoca-typography>
+                                           <nidoca-typography
+                                              .typographyType="${TypographyType.SUBTITLE2}"
+                                              text="${this.assistiveText}"
+                                           ></nidoca-typography>
+                                        </nidoca-visible>
+                                     </nidoca-flex-container>
                                      <componetn-container>
                                         <nidoca-visible visibleType="${this.checked ? VisibleType.HIDE : VisibleType.NORMAL}">
                                            <nidoca-icon
@@ -678,13 +684,13 @@ ${this.value}</textarea
    private showLabelText(): boolean {
       return (
          ((this.selected ||
-             this.inputfieldType === InputfieldType.COLOR ||
-             this.inputfieldType === InputfieldType.COMBOBOX ||
-             this.inputfieldType === InputfieldType.TEXTAREA ||
-             this.inputfieldType === InputfieldType.RANGE ||
-             this.inputfieldType === InputfieldType.SWITCH ||
-             this.inputfieldType === InputfieldType.CHECKBOX ||
-             this.inputfieldType === InputfieldType.MONTH ||
+            this.inputfieldType === InputfieldType.COLOR ||
+            this.inputfieldType === InputfieldType.COMBOBOX ||
+            this.inputfieldType === InputfieldType.TEXTAREA ||
+            this.inputfieldType === InputfieldType.RANGE ||
+            this.inputfieldType === InputfieldType.SWITCH ||
+            this.inputfieldType === InputfieldType.CHECKBOX ||
+            this.inputfieldType === InputfieldType.MONTH ||
             this.inputfieldType === InputfieldType.TIME ||
             this.inputfieldType === InputfieldType.WEEK ||
             this.inputfieldType === InputfieldType.DATE ||
