@@ -566,7 +566,7 @@ ${this.value}</textarea
       }
       if (this.inputfieldType === InputfieldType.SWITCH) {
          if (!this.checked && this.required) {
-            this.errorText = I18nService.getUniqueInstance().getValue('nidoca-inputfield-switch-error-required');
+            this.errorText = I18nService.getUniqueInstance().getValue('nidoca-inputfield-switch-error-should-true');
          }
       }
    }
