@@ -272,7 +272,6 @@ export class NidocaInputfield extends LitElement {
                     .gridTemplateColumns="${['1fr']}"
                  >
               <nidoca-spacer size="4px;" spacerAlignment="${SpacerAlignment.VERTICAL}">
-              <nidoca-spacer spacerSize="${SpacerSize.BIG}" spacerAlignment="${SpacerAlignment.HORIZONTAL}">
                  <nidoca-grid-container
                     .gridJustifyItems="${GridJustifyItems.STRETCH}"
                     .gridAlignItems="${GridAlignItems.CENTER}" 
@@ -462,7 +461,7 @@ ${this.value}</textarea
                        <nidoca-icon icon="${this.trailingIcon}" .clickable="${this.trailingIconClickable}"></nidoca-icon>
                     </nidoca-visible>
                  </nidoca-grid-container>
-                 </nidoca-spacer>   </nidoca-spacer>
+                 </nidoca-spacer>
                  </nidoca-grid-container>
               </nidoca-border>
               <nidoca-visible visibleType="${this.showAdditionalTextContainer() ? VisibleType.NORMAL : VisibleType.HIDE}">
