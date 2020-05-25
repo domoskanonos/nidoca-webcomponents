@@ -1,20 +1,20 @@
 {
-  "compilerOptions": {
-    "target": "es2015",
-    "declaration": true,
-    "outDir": "./lib/",
-    "module": "commonjs",
-    "rootDir": "./source",
-    "downlevelIteration": true,
-    "strict": true,
-    "noUnusedParameters": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
-    "moduleResolution": "node",
-    "esModuleInterop": true,
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true
-  },
-  "include": ["source"],
-  "exclude": ["node_modules"]
+    "compilerOptions": {
+        "target": "es2015",
+        "declaration": true,
+        "outDir": "./lib/",
+        "module": "commonjs",
+        "rootDir": "./source",
+        "downlevelIteration": true,
+        "strict": true,
+        "noUnusedParameters": true,
+        "noImplicitReturns": true,
+        "noFallthroughCasesInSwitch": true,
+        "moduleResolution": "node",
+        "esModuleInterop": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true
+    },
+    "include": ["source"],
+    "exclude": ["node_modules"]
 }

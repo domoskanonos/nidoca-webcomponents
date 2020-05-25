@@ -2,104 +2,104 @@ import { css, customElement, html, property, LitElement } from 'lit-element';
 import { BasicService } from '@domoskanonos/frontend-basis';
 
 export enum GridJustifyItems {
-  START = 'start',
-  END = 'end',
-  CENTER = 'center',
-  STRETCH = 'stretch',
+    START = 'start',
+    END = 'end',
+    CENTER = 'center',
+    STRETCH = 'stretch',
 }
 
 export enum GridAlignItems {
-  START = 'start',
-  END = 'end',
-  CENTER = 'center',
-  STRETCH = 'stretch',
+    START = 'start',
+    END = 'end',
+    CENTER = 'center',
+    STRETCH = 'stretch',
 }
 
 @customElement('nidoca-grid-container')
 export class NidocaGrid extends LitElement {
-  static styles = css`
-    *,
-    ::slotted(*) {
-      box-sizing: border-box;
-      color: inherit;
-      background-color: inherit;
-    }
+    static styles = css`
+        *,
+        ::slotted(*) {
+            box-sizing: border-box;
+            color: inherit;
+            background-color: inherit;
+        }
 
-    .GRID_CONTAINER,
-    ::slotted(.GRID_CONTAINER) {
-      display: grid;
-      box-sizing: border-box;
-    }
-  `;
-
-  @property()
-  gridTemplateRows: string[] = [];
-
-  @property()
-  gridTemplateColumns: string[] = [];
-
-  @property()
-  gridJustifyItems: string = '';
-
-  @property()
-  gridAlignItems: string = '';
-
-  @property()
-  height: string = 'min-content';
-
-  @property()
-  minHeight: string = 'min-content';
-
-  render() {
-    return html`
-      <div
-        class="GRID_CONTAINER"
-        style="${this.toGridJustifyItems(this.gridJustifyItems)}${this.toGridAlignItems(this.gridAlignItems)}${this.toGridTemplateRowsStyle(this.gridTemplateRows)}${this.toGridTemplateColumnsStyle(
-          this.gridTemplateColumns
-        )}${this.toHeightStyle(this.height)}${this.toMinHeightStyle(this.minHeight)}"
-      >
-        <slot></slot>
-      </div>
+        .GRID_CONTAINER,
+        ::slotted(.GRID_CONTAINER) {
+            display: grid;
+            box-sizing: border-box;
+        }
     `;
-  }
 
-  private toGridTemplateRowsStyle(gridTemplateRows: string[]) {
-    let gridTemplateRowsStyle: string = '';
-    if (gridTemplateRows.length > 0) {
-      gridTemplateRowsStyle = 'grid-template-rows:';
-      gridTemplateRows.forEach((value) => {
-        gridTemplateRowsStyle = gridTemplateRowsStyle.concat(' ').concat(value);
-      });
-      gridTemplateRowsStyle = gridTemplateRowsStyle.concat(';');
+    @property()
+    gridTemplateRows: string[] = [];
+
+    @property()
+    gridTemplateColumns: string[] = [];
+
+    @property()
+    gridJustifyItems: string = '';
+
+    @property()
+    gridAlignItems: string = '';
+
+    @property()
+    height: string = 'min-content';
+
+    @property()
+    minHeight: string = 'min-content';
+
+    render() {
+        return html`
+            <div
+                class="GRID_CONTAINER"
+                style="${this.toGridJustifyItems(this.gridJustifyItems)}${this.toGridAlignItems(this.gridAlignItems)}${this.toGridTemplateRowsStyle(
+                    this.gridTemplateRows
+                )}${this.toGridTemplateColumnsStyle(this.gridTemplateColumns)}${this.toHeightStyle(this.height)}${this.toMinHeightStyle(this.minHeight)}"
+            >
+                <slot></slot>
+            </div>
+        `;
     }
-    return gridTemplateRowsStyle;
-  }
 
-  private toGridTemplateColumnsStyle(gridTemplateColumns: string[]) {
-    let gridTemplateColumnsStyle: string = '';
-    if (gridTemplateColumns.length > 0) {
-      gridTemplateColumnsStyle = 'grid-template-columns:';
-      gridTemplateColumns.forEach((value) => {
-        gridTemplateColumnsStyle = gridTemplateColumnsStyle.concat(' ').concat(value);
-      });
-      gridTemplateColumnsStyle = gridTemplateColumnsStyle.concat(';');
+    private toGridTemplateRowsStyle(gridTemplateRows: string[]) {
+        let gridTemplateRowsStyle: string = '';
+        if (gridTemplateRows.length > 0) {
+            gridTemplateRowsStyle = 'grid-template-rows:';
+            gridTemplateRows.forEach((value) => {
+                gridTemplateRowsStyle = gridTemplateRowsStyle.concat(' ').concat(value);
+            });
+            gridTemplateRowsStyle = gridTemplateRowsStyle.concat(';');
+        }
+        return gridTemplateRowsStyle;
     }
-    return gridTemplateColumnsStyle;
-  }
 
-  private toHeightStyle(height: string) {
-    return height.length > 0 ? 'height:'.concat(height).concat(';') : '';
-  }
+    private toGridTemplateColumnsStyle(gridTemplateColumns: string[]) {
+        let gridTemplateColumnsStyle: string = '';
+        if (gridTemplateColumns.length > 0) {
+            gridTemplateColumnsStyle = 'grid-template-columns:';
+            gridTemplateColumns.forEach((value) => {
+                gridTemplateColumnsStyle = gridTemplateColumnsStyle.concat(' ').concat(value);
+            });
+            gridTemplateColumnsStyle = gridTemplateColumnsStyle.concat(';');
+        }
+        return gridTemplateColumnsStyle;
+    }
 
-  private toMinHeightStyle(minheight: string) {
-    return minheight.length > 0 ? 'min-height:'.concat(minheight).concat(';') : '';
-  }
+    private toHeightStyle(height: string) {
+        return height.length > 0 ? 'height:'.concat(height).concat(';') : '';
+    }
 
-  private toGridJustifyItems(gridJustifyItems: string) {
-    return BasicService.getUniqueInstance().isNotBlank(gridJustifyItems) ? 'justify-items:'.concat(gridJustifyItems).concat(';') : '';
-  }
+    private toMinHeightStyle(minheight: string) {
+        return minheight.length > 0 ? 'min-height:'.concat(minheight).concat(';') : '';
+    }
 
-  private toGridAlignItems(gridAlignItems: string) {
-    return BasicService.getUniqueInstance().isNotBlank(gridAlignItems) ? 'align-items:'.concat(gridAlignItems).concat(';') : '';
-  }
+    private toGridJustifyItems(gridJustifyItems: string) {
+        return BasicService.getUniqueInstance().isNotBlank(gridJustifyItems) ? 'justify-items:'.concat(gridJustifyItems).concat(';') : '';
+    }
+
+    private toGridAlignItems(gridAlignItems: string) {
+        return BasicService.getUniqueInstance().isNotBlank(gridAlignItems) ? 'align-items:'.concat(gridAlignItems).concat(';') : '';
+    }
 }

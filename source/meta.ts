@@ -1,4 +1,4 @@
 export class KeyValueData {
-  key: string = '';
-  value: any;
+    key: string = '';
+    value: any;
 }
