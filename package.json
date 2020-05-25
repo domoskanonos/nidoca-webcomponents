@@ -1,25 +1,25 @@
 {
-    "name": "@domoskanonos/nidoca-core",
-    "version": "1.0.448",
-    "license": "MIT",
-    "description": "nidoca framework (nidoca-core)",
-    "files": [
-        "lib/**/*"
-    ],
-    "main": "lib/index.js",
-    "devDependencies": {
-        "@domoskanonos/frontend-basis": "latest",
-        "@types/node": "latest",
-        "lit-element": "latest",
-        "prettier": "latest",
-        "typescript": "next"
-    },
-    "dependencies": {},
-    "author": "Dominik Bruhn",
-    "scripts": {
-        "build_typescript": "tsc -p ./",
-        "pretty": "prettier --write \"./**/*.{ts,json}\"",
-        "new-version": "npm run build_typescript & npm version patch & npm publish --access=public",
-        "unpublish": "npm unpublish --force"
-    }
+  "name": "@domoskanonos/nidoca-core",
+  "version": "1.0.448",
+  "license": "MIT",
+  "description": "nidoca framework (nidoca-core)",
+  "files": [
+    "lib/**/*"
+  ],
+  "main": "lib/index.js",
+  "devDependencies": {
+    "@domoskanonos/frontend-basis": "latest",
+    "@types/node": "latest",
+    "lit-element": "latest",
+    "prettier": "latest",
+    "typescript": "next"
+  },
+  "dependencies": {},
+  "author": "Dominik Bruhn",
+  "scripts": {
+    "build_typescript": "tsc -p ./",
+    "pretty": "prettier --write \"./**/*.{ts,json}\"",
+    "new-version": "npm run build_typescript & npm version patch & npm publish --access=public",
+    "unpublish": "npm unpublish --force"
+  }
 }
