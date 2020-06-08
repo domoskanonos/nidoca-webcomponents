@@ -369,9 +369,9 @@ export class NidocaInputfield extends LitElement {
                                    () => html`
                                      ${repeat(
                                        this.options,
-                                       option => option.value,
+                                       option => option[this.optionValueField],
                                        option =>
-                                         (option.key.length > 0 &&
+                                         (option[this.optionKeyField].length > 0 &&
                                            this.multiple &&
                                            this.value.indexOf(option[this.optionKeyField]) > -1) ||
                                          BasicService.getUniqueInstance().isEqual(this.value, option[this.optionKeyField])
