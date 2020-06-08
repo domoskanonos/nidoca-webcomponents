@@ -789,4 +789,23 @@ ${this.value}</textarea
     });
     return options;
   }
+
+  static stringArray2KeyValueDataArrayWithI18nValueMapping(
+      arr: string[],
+      i18nPrefix: string,
+      withEmptyItem: boolean = false
+  ): KeyValueData[] {
+    let options: KeyValueData[] = [];
+    if (withEmptyItem) {
+      options.push(new KeyValueData());
+    }
+    Object.values(arr).forEach((value: any) => {
+      options.push(<KeyValueData>{
+        key: value,
+        value: I18nService.getUniqueInstance().getValue(i18nPrefix.concat(value))
+      });
+    });
+    return options;
+  }
+
 }
