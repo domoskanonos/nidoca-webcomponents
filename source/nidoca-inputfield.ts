@@ -237,7 +237,13 @@ export class NidocaInputfield extends LitElement {
   selected: boolean = false;
 
   @property()
-  options: KeyValueData[] = [];
+  options: any[] = [];
+
+  @property()
+  optionKeyField: string = 'key';
+
+  @property()
+  optionValueField: string = 'value';
 
   @query('#inputElement')
   inputElemet: HTMLInputElement | undefined;
@@ -367,13 +373,13 @@ export class NidocaInputfield extends LitElement {
                                        option =>
                                          (option.key.length > 0 &&
                                            this.multiple &&
-                                           this.value.indexOf(option.key) > -1) ||
-                                         BasicService.getUniqueInstance().isEqual(this.value, option.key)
+                                           this.value.indexOf(option[this.optionKeyField]) > -1) ||
+                                         BasicService.getUniqueInstance().isEqual(this.value, option[this.optionKeyField])
                                            ? html`
-                                               <option value="${option.key}" selected>${option.value}</option>
+                                               <option value="${option[this.optionKeyField]}" selected>${option[this.optionValueField]}</option>
                                              `
                                            : html`
-                                               <option value="${option.key}">${option.value}</option>
+                                               <option value="${option[this.optionKeyField]}">${option[this.optionValueField]}</option>
                                              `
                                      )}
                                    `
