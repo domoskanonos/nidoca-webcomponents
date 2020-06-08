@@ -371,17 +371,14 @@ export class NidocaInputfield extends LitElement {
                                        this.options,
                                        option => option[this.optionValueField],
                                        option =>
-                                         (option[this.optionKeyField].length > 0 &&
-                                           this.multiple &&
-                                           this.value.indexOf(option[this.optionKeyField]) > -1) ||
-                                         BasicService.getUniqueInstance().isEqual(this.value, option[this.optionKeyField])
-                                           ? html`
+                                           this.isSelectedOption(option)
+                                               ? html`
                                                <option value="${option[this.optionKeyField]}" selected>${option[this.optionValueField]}</option>
                                              `
-                                           : html`
+                                               : html`
                                                <option value="${option[this.optionKeyField]}">${option[this.optionValueField]}</option>
                                              `
-                                     )}
+                                   )}
                                    `
                                  )}
                                </select>
@@ -814,4 +811,21 @@ ${this.value}</textarea
     return options;
   }
 
+  private isSelectedOption(option: any): boolean {
+    if (option[this.optionKeyField].length == 0) {
+      return false;
+    } else if (this.multiple) {
+      let isSelected: boolean = false;
+      for (let item of Object.values<any>(this.value)) {
+        isSelected = BasicService.getUniqueInstance().isEqual(item[this.optionKeyField], option[this.optionKeyField]);
+        if (isSelected) {
+          return true;
+        }
+      }
+    } else {
+      return BasicService.getUniqueInstance().isEqual(this.value, option[this.optionKeyField]);
+    }
+    return false;
+
+  }
 }
