@@ -240,6 +240,9 @@ export class NidocaInputfield extends LitElement {
     options: any[] = [];
 
     @property()
+    valueKeyField: string = '';
+
+    @property()
     optionKeyField: string = 'key';
 
     @property()
@@ -369,14 +372,13 @@ export class NidocaInputfield extends LitElement {
                         () => html`
                                      ${repeat(
                             this.options,
-                            option => option[this.optionValueField],
-                            option =>
-                                this.isSelectedOption(option)
+                            optionModel =>
+                                this.isSelectedOption(optionModel)
                                     ? html`
-                                               <option value="${option[this.optionKeyField]}" selected>${option[this.optionValueField]}</option>
+                                               <option value="${this.getOptionKey(optionModel)}" selected>${this.getOptionValue(optionModel)}</option>
                                              `
                                     : html`
-                                               <option value="${option[this.optionKeyField]}">${option[this.optionValueField]}</option>
+                                               <option value="${this.getOptionKey(optionModel)}">${this.getOptionValue(optionModel)}</option>
                                              `
                         )}
                                    `
@@ -533,6 +535,18 @@ ${this.value}</textarea
             value="${this.prepareValue(this.value)}"
           />
         `;
+    }
+
+    private getOptionValue(optionModel: any) {
+        return BasicService.getUniqueInstance().isBlank(this.optionValueField) ? optionModel : optionModel[this.optionValueField];
+    }
+
+    private getOptionKey(optionModel: any) {
+        return BasicService.getUniqueInstance().isBlank(this.optionKeyField) ? optionModel : optionModel[this.optionKeyField];
+    }
+
+    private getValueKey(valueModel: any) {
+        return BasicService.getUniqueInstance().isBlank(this.valueKeyField) ? valueModel : valueModel[this.valueKeyField];
     }
 
     private switchChecked() {
@@ -812,21 +826,19 @@ ${this.value}</textarea
         return options;
     }
 
-    private isSelectedOption(option: any): boolean {
-        if (option[this.optionKeyField].length == 0) {
-            return false;
-        } else if (this.multiple) {
+    private isSelectedOption(optionModel: any): boolean {
+
+        if (this.multiple) {
             let isSelected: boolean = false;
             for (let item of Object.values<any>(this.value)) {
-                isSelected = BasicService.getUniqueInstance().isEqual(item[this.optionKeyField], option[this.optionKeyField]);
+                isSelected = BasicService.getUniqueInstance().isEqual(this.getValueKey(item), this.getOptionKey(optionModel));
                 if (isSelected) {
                     return true;
                 }
             }
-        } else {
-            return BasicService.getUniqueInstance().isEqual(this.value, option[this.optionKeyField]);
         }
-        return false;
+
+        return BasicService.getUniqueInstance().isEqual(this.getValueKey(this.value), this.getOptionKey(optionModel));
 
     }
 }
