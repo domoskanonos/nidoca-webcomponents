@@ -164,10 +164,10 @@ export class NidocaInputfield extends LitElement {
     @property()
     name: string = '';
 
-    @property()
+    @property({type : Object})
     value: any;
 
-    @property()
+    @property({type : Object})
     oldValue: any;
 
     @property()
