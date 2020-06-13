@@ -350,6 +350,7 @@ export class NidocaInputfield extends LitElement {
                                    type="${this.inputfieldType}"
                                    value="${this.prepareValue(this.value)}"
                                    ?multiple="${this.multiple}"
+                                   @change="${(event: Event) => this.change(event)}"
                                /></nidoca-visible>
                              `
                            : this.inputfieldType == InputfieldType.COMBOBOX
