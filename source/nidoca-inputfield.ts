@@ -349,6 +349,7 @@ export class NidocaInputfield extends LitElement {
                                    name="${this.name}"
                                    type="${this.inputfieldType}"
                                    value="${this.prepareValue(this.value)}"
+                                   ?multiple="${this.multiple}"
                                /></nidoca-visible>
                              `
                            : this.inputfieldType == InputfieldType.COMBOBOX
