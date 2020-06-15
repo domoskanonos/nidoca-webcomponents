@@ -153,7 +153,7 @@ export class NidocaTypography extends LitElement {
   typographyType: TypographyType = TypographyType.BODY1;
 
   @property()
-  typographyAlignment: TypographyAlignment = TypographyAlignment.JUSTIFY;
+  typographyAlignment: TypographyAlignment = TypographyAlignment.START;
 
   @property()
   text: string = '';
