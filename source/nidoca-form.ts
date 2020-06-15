@@ -34,6 +34,9 @@ export class NidocaForm extends LitElement {
   @property()
   buttons: NidocaButton[] = [];
 
+  @property()
+  autocomplete: boolean = true;
+
   @query('#slotElement')
   slotElement: HTMLSlotElement | undefined;
 
@@ -42,13 +45,13 @@ export class NidocaForm extends LitElement {
 
   protected render() {
     return html`
-      <form id="htmlForm" @nidoca-event-button-clicked="${this.formButtonClicked}" autocomplete="on">
+      <form id="htmlForm" @nidoca-event-button-clicked="${this.formButtonClicked}" autocomplete="${this.autocomplete}">
         <slot name="header"></slot>
         <slot style="color: var(--app-color-error);" name="errorMessages"></slot>
         <slot id="slotElement" @slotchange="${(event: Event) => this.slotChanged(event)}"></slot>
         ${guard(
-          this.buttons,
-          () =>
+        this.buttons,
+        () =>
             html`
               ${repeat(
                 this.buttons,
