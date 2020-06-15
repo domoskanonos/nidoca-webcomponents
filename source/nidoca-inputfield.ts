@@ -624,6 +624,8 @@ ${this.value}</textarea
         return this.selectElemet != null ? this.selectElemet.validity.valid : false;
       case InputfieldType.SWITCH:
         return this.required ? this.required && this.checked : true;
+      case InputfieldType.FILE:
+        return !this.maxFileSizeReached();
       default:
         return this.inputElemet != null ? this.inputElemet.validity.valid : false;
     }
@@ -635,6 +637,11 @@ ${this.value}</textarea
       if (this.inputElemet.validity.valid) {
         this.value = this.inputElemet.value;
         this.oldValue = this.inputElemet.value;
+      }
+      if (this.inputfieldType === InputfieldType.FILE) {
+        if (this.maxFileSizeReached()) {
+          this.errorText = I18nService.getUniqueInstance().getValue('nidoca-inputfield-file-error-max-size-reached');
+        }
       }
       if (this.inputElemet.validationMessage != this.errorText) {
         this.errorText = this.inputElemet.validationMessage;
@@ -852,5 +859,18 @@ ${this.value}</textarea
     }
 
     return BasicService.getUniqueInstance().isEqual(this.getValueKey(this.value), this.getOptionKey(optionModel));
+  }
+
+  private maxFileSizeReached(): boolean {
+    let files: FileList | null | undefined = this.inputElemet?.files;
+    if (files != null) {
+      for (let i = 0; i < files.length; i++) {
+        let file: File | null = files.item(i);
+        if (file != null && file.size / 1024 > this.maxSize) {
+          return true;
+        }
+      }
+    }
+    return false;
   }
 }
