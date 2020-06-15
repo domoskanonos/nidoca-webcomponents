@@ -639,9 +639,14 @@ ${this.value}</textarea
         this.oldValue = this.inputElemet.value;
       }
       if (this.inputfieldType === InputfieldType.FILE) {
+        let errorTextFile = '';
         if (this.maxFileSizeReached()) {
           this.errorText = I18nService.getUniqueInstance().getValue('nidoca-inputfield-file-error-max-size-reached');
         }
+        if (this.allowedFiles()) {
+          this.errorText = I18nService.getUniqueInstance().getValue('nidoca-inputfield-file-error-allowed-file-type');
+        }
+        this.errorText = errorTextFile;
       } else if (this.inputElemet.validationMessage != this.errorText) {
         this.errorText = this.inputElemet.validationMessage;
       }
@@ -871,5 +876,25 @@ ${this.value}</textarea
       }
     }
     return false;
+  }
+
+  private allowedFiles(): boolean {
+    let files: FileList | null | undefined = this.inputElemet?.files;
+    if (files != null) {
+      for (let i = 0; i < files.length; i++) {
+        let file: File | null = files.item(i);
+        if (file != null) {
+          let filename = file.name;
+          let fileEnding = filename.substr(filename.lastIndexOf('.') + 1);
+          if (this.accept == 'image/*' && (fileEnding == 'jpg' || fileEnding == 'png' || fileEnding == 'gif')) {
+            continue;
+          }
+          if (this.accept.indexOf(fileEnding) == -1) {
+            return false;
+          }
+        }
+      }
+    }
+    return true;
   }
 }
