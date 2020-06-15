@@ -42,7 +42,7 @@ export class NidocaForm extends LitElement {
 
   protected render() {
     return html`
-      <form id="htmlForm" @nidoca-event-button-clicked="${this.formButtonClicked}">
+      <form id="htmlForm" @nidoca-event-button-clicked="${this.formButtonClicked}" autocomplete="on">
         <slot name="header"></slot>
         <slot style="color: var(--app-color-error);" name="errorMessages"></slot>
         <slot id="slotElement" @slotchange="${(event: Event) => this.slotChanged(event)}"></slot>
