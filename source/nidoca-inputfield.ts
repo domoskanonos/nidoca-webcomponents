@@ -195,6 +195,9 @@ export class NidocaInputfield extends LitElement {
   accept: string = '*/*';
 
   @property()
+  maxSize: number = 2048;
+
+  @property()
   maxlength: number | undefined;
 
   @property()
@@ -299,7 +302,9 @@ export class NidocaInputfield extends LitElement {
                        <nidoca-icon icon="${this.leadingIcon}" .clickable="${this.leadingIconClickable}"></nidoca-icon>
                     </nidoca-visible>
                     <nidoca-spacer spacerSize="${
-                      this.inputfieldType == InputfieldType.SWITCH ? SpacerSize.ZERO : SpacerSize.MEDIUM
+                      this.inputfieldType == InputfieldType.SWITCH || this.inputfieldType == InputfieldType.FILE
+                        ? SpacerSize.ZERO
+                        : SpacerSize.MEDIUM
                     }" spacerAlignment="${SpacerAlignment.HORIZONTAL}">
                     <nidoca-flex-container
                        .flexContainerProperties="${[
@@ -350,6 +355,7 @@ export class NidocaInputfield extends LitElement {
                                    id="inputElement"
                                    class="slider"
                                    accept="${this.accept}"
+                                   max-size="${this.maxSize}"
                                    name="${this.name}"
                                    type="${this.inputfieldType}"
                                    value="${this.prepareValue(this.value)}"
@@ -758,12 +764,12 @@ ${this.value}</textarea
   private showLabelText(): boolean {
     return (
       ((this.selected ||
-          this.inputfieldType === InputfieldType.COLOR ||
-          this.inputfieldType === InputfieldType.COMBOBOX ||
-          this.inputfieldType === InputfieldType.TEXTAREA ||
-          this.inputfieldType === InputfieldType.RANGE ||
-          this.inputfieldType === InputfieldType.FILE ||
-          this.inputfieldType === InputfieldType.SWITCH ||
+        this.inputfieldType === InputfieldType.COLOR ||
+        this.inputfieldType === InputfieldType.COMBOBOX ||
+        this.inputfieldType === InputfieldType.TEXTAREA ||
+        this.inputfieldType === InputfieldType.RANGE ||
+        this.inputfieldType === InputfieldType.FILE ||
+        this.inputfieldType === InputfieldType.SWITCH ||
         this.inputfieldType === InputfieldType.CHECKBOX ||
         this.inputfieldType === InputfieldType.MONTH ||
         this.inputfieldType === InputfieldType.TIME ||
@@ -778,9 +784,9 @@ ${this.value}</textarea
 
   private showAdditionalTextContainer() {
     return (
-        this.inputfieldType != InputfieldType.SWITCH &&
-        this.inputfieldType != InputfieldType.FILE &&
-        (this.assistiveText.length > 0 || this.infoText.length > 0)
+      this.inputfieldType != InputfieldType.SWITCH &&
+      this.inputfieldType != InputfieldType.FILE &&
+      (this.assistiveText.length > 0 || this.infoText.length > 0)
     );
   }
 
