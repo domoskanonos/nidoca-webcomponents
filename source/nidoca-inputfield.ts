@@ -772,7 +772,7 @@ ${this.value}</textarea
   }
 
   private showAdditionalTextContainer() {
-    return this.inputfieldType != InputfieldType.SWITCH && (this.assistiveText.length > 0 || this.infoText.length > 0);
+    return this.inputfieldType != InputfieldType.SWITCH && this.inputfieldType != InputfieldType.FILE && (this.assistiveText.length > 0 || this.infoText.length > 0);
   }
 
   static enumToComboboxItems(enumeration: any): KeyValueData[] {
