@@ -641,10 +641,13 @@ ${this.value}</textarea
       if (this.inputfieldType === InputfieldType.FILE) {
         let errorTextFile = '';
         if (this.maxFileSizeReached()) {
-          this.errorText = I18nService.getUniqueInstance().getValue('nidoca-inputfield-file-error-max-size-reached');
+          errorTextFile = I18nService.getUniqueInstance().getValue('nidoca-inputfield-file-error-max-size-reached');
         }
         if (this.unexpectedFileType()) {
-          this.errorText = I18nService.getUniqueInstance().getValue('nidoca-inputfield-file-error-allowed-file-type');
+          if (errorTextFile.length > 0) {
+            errorTextFile = errorTextFile.concat('\n');
+          }
+          errorTextFile = I18nService.getUniqueInstance().getValue('nidoca-inputfield-file-error-allowed-file-type');
         }
         this.errorText = errorTextFile;
       } else if (this.inputElemet.validationMessage != this.errorText) {
