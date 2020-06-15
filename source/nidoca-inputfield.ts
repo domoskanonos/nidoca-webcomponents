@@ -192,6 +192,9 @@ export class NidocaInputfield extends LitElement {
   multiple: boolean = false;
 
   @property()
+  accept: string = '*/*';
+
+  @property()
   maxlength: number | undefined;
 
   @property()
@@ -346,6 +349,7 @@ export class NidocaInputfield extends LitElement {
                                  <input
                                    id="inputElement"
                                    class="slider"
+                                   accept="${this.accept}"
                                    name="${this.name}"
                                    type="${this.inputfieldType}"
                                    value="${this.prepareValue(this.value)}"
@@ -754,11 +758,12 @@ ${this.value}</textarea
   private showLabelText(): boolean {
     return (
       ((this.selected ||
-        this.inputfieldType === InputfieldType.COLOR ||
-        this.inputfieldType === InputfieldType.COMBOBOX ||
-        this.inputfieldType === InputfieldType.TEXTAREA ||
-        this.inputfieldType === InputfieldType.RANGE ||
-        this.inputfieldType === InputfieldType.SWITCH ||
+          this.inputfieldType === InputfieldType.COLOR ||
+          this.inputfieldType === InputfieldType.COMBOBOX ||
+          this.inputfieldType === InputfieldType.TEXTAREA ||
+          this.inputfieldType === InputfieldType.RANGE ||
+          this.inputfieldType === InputfieldType.FILE ||
+          this.inputfieldType === InputfieldType.SWITCH ||
         this.inputfieldType === InputfieldType.CHECKBOX ||
         this.inputfieldType === InputfieldType.MONTH ||
         this.inputfieldType === InputfieldType.TIME ||
@@ -772,7 +777,11 @@ ${this.value}</textarea
   }
 
   private showAdditionalTextContainer() {
-    return this.inputfieldType != InputfieldType.SWITCH && this.inputfieldType != InputfieldType.FILE && (this.assistiveText.length > 0 || this.infoText.length > 0);
+    return (
+        this.inputfieldType != InputfieldType.SWITCH &&
+        this.inputfieldType != InputfieldType.FILE &&
+        (this.assistiveText.length > 0 || this.infoText.length > 0)
+    );
   }
 
   static enumToComboboxItems(enumeration: any): KeyValueData[] {
