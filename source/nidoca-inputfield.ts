@@ -625,7 +625,7 @@ ${this.value}</textarea
       case InputfieldType.SWITCH:
         return this.required ? this.required && this.checked : true;
       case InputfieldType.FILE:
-        return !this.maxFileSizeReached();
+        return !this.maxFileSizeReached() && !this.unexpectedFileType();
       default:
         return this.inputElemet != null ? this.inputElemet.validity.valid : false;
     }
