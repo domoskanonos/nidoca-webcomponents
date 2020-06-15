@@ -643,7 +643,7 @@ ${this.value}</textarea
         if (this.maxFileSizeReached()) {
           this.errorText = I18nService.getUniqueInstance().getValue('nidoca-inputfield-file-error-max-size-reached');
         }
-        if (this.allowedFiles()) {
+        if (this.unexpectedFileType()) {
           this.errorText = I18nService.getUniqueInstance().getValue('nidoca-inputfield-file-error-allowed-file-type');
         }
         this.errorText = errorTextFile;
@@ -878,7 +878,7 @@ ${this.value}</textarea
     return false;
   }
 
-  private allowedFiles(): boolean {
+  private unexpectedFileType(): boolean {
     let files: FileList | null | undefined = this.inputElemet?.files;
     if (files != null) {
       for (let i = 0; i < files.length; i++) {
@@ -890,11 +890,11 @@ ${this.value}</textarea
             continue;
           }
           if (this.accept.indexOf(fileEnding) == -1) {
-            return false;
+            return true;
           }
         }
       }
     }
-    return true;
+    return false;
   }
 }
