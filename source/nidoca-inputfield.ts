@@ -642,8 +642,7 @@ ${this.value}</textarea
         if (this.maxFileSizeReached()) {
           this.errorText = I18nService.getUniqueInstance().getValue('nidoca-inputfield-file-error-max-size-reached');
         }
-      }
-      if (this.inputElemet.validationMessage != this.errorText) {
+      } else if (this.inputElemet.validationMessage != this.errorText) {
         this.errorText = this.inputElemet.validationMessage;
       }
     }
