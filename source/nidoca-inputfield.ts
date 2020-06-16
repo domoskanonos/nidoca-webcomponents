@@ -882,6 +882,9 @@ ${this.value}</textarea
   }
 
   private unexpectedFileType(): boolean {
+    if (this.accept == '*/*') {
+      return false;
+    }
     let files: FileList | null | undefined = this.inputElemet?.files;
     if (files != null) {
       for (let i = 0; i < files.length; i++) {
