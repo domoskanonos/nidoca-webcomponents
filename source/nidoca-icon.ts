@@ -135,7 +135,7 @@ export class NidocaIcon extends LitElement {
               ? 'font-size: ' + this.size.toString().concat(this.sizeUnit.concat(';'))
               : ''}"
             >${this.icon}</i
-          >
+          ><slot></slot>
         </span>
       </nidoca-spacer>
     `;

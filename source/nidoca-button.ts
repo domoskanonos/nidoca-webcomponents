@@ -9,6 +9,7 @@ import {TypographyType} from './nidoca-typography';
 export enum ButtonType {
   PRIMARY = 'PRIMARY',
   SECONDARY = 'SECONDARY',
+  CLEAR = 'CLEAR',
 }
 
 @customElement('nidoca-button')
@@ -91,9 +92,8 @@ export class NidocaButton extends LitElement {
               : VisibleType.HIDE}"
             ><nidoca-spacer spacerSize="${SpacerSize.MEDIUM}"></nidoca-spacer
           ></nidoca-visible>
-          <nidoca-typography text="${this.text}" typographyType="${TypographyType.BUTTON}"></nidoca-typography>
+          <nidoca-typography text="${this.text}" typographyType="${TypographyType.BUTTON}"><slot></slot></nidoca-typography>
           <nidoca-spacer spacerSize="${SpacerSize.MEDIUM}"></nidoca-spacer>
-          <slot></slot>
         </nidoca-flex-container>
       </nidoca-ripple>
     `;
