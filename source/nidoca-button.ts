@@ -80,20 +80,34 @@ export class NidocaButton extends LitElement {
           .flexAlignItems="${FlexAlignItems.CENTER}"
         >
           <nidoca-visible
-            visibleType="${BasicService.getUniqueInstance().isNotBlank(this.leadingIcon)
-              ? VisibleType.NORMAL
-              : VisibleType.HIDE}"
+            visibleType="${
+              BasicService.getUniqueInstance().isNotBlank(this.leadingIcon) ? VisibleType.NORMAL : VisibleType.HIDE
+            }"
           >
             <nidoca-icon icon="${this.leadingIcon}"> </nidoca-icon>
           </nidoca-visible>
           <nidoca-visible
-            visibleType="${BasicService.getUniqueInstance().isBlank(this.leadingIcon)
-              ? VisibleType.NORMAL
-              : VisibleType.HIDE}"
-            ><nidoca-spacer spacerSize="${SpacerSize.MEDIUM}"></nidoca-spacer
-          ></nidoca-visible>
-          <nidoca-typography text="${this.text}" typographyType="${TypographyType.BUTTON}"><slot></slot></nidoca-typography>
-          <nidoca-spacer spacerSize="${SpacerSize.MEDIUM}"></nidoca-spacer>
+            visibleType="${
+              BasicService.getUniqueInstance().isBlank(this.leadingIcon) ? VisibleType.NORMAL : VisibleType.HIDE
+            }"
+            >
+                      <nidoca-visible
+            visibleType="${this.buttonType == ButtonType.CLEAR ? VisibleType.HIDE : VisibleType.NORMAL}"
+          >
+            <nidoca-spacer spacerSize="${SpacerSize.MEDIUM}"></nidoca-spacer
+          >
+         </nidoca-visible> 
+          </nidoca-visible>
+          <nidoca-typography text="${this.text}" typographyType="${
+      TypographyType.BUTTON
+    }"><slot></slot></nidoca-typography>
+          
+                               <nidoca-visible
+            visibleType="${this.buttonType == ButtonType.CLEAR ? VisibleType.HIDE : VisibleType.NORMAL}"
+          >
+            <nidoca-spacer spacerSize="${SpacerSize.MEDIUM}"></nidoca-spacer
+          >
+          
         </nidoca-flex-container>
       </nidoca-ripple>
     `;
