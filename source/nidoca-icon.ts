@@ -120,7 +120,7 @@ export class NidocaIcon extends LitElement {
             : ''}"
           title="${this.title}"
           @click="${this.clicked}"
-          style="${this.backgroundColor ? 'background-color:'.concat(this.backgroundColor).concat(';') : ''} ${this
+          style="${'line-height: '.concat(this.size.toString()).concat(this.sizeUnit).concat(';')}${this.backgroundColor ? 'background-color:'.concat(this.backgroundColor).concat(';') : ''} ${this
             .round
             ? 'height:'
                 .concat((this.size * 2).toString())
@@ -132,7 +132,7 @@ export class NidocaIcon extends LitElement {
           ><i
             class="material-icons"
             style="${this.color.length > 0 ? 'color: '.concat(this.color).concat(';') : ''} ${this.size != undefined
-              ? 'font-size: ' + this.size.toString().concat(this.sizeUnit.concat(';'))
+              ? 'font-size: '.concat(this.size.toString()).concat(this.sizeUnit).concat(';')
               : ''}"
             >${this.icon}</i
           ><slot></slot>
