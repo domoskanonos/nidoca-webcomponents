@@ -854,6 +854,22 @@ ${this.value}</textarea
     return options;
   }
 
+  static inputfieldTypeByPropertyName(object: object, propertyName: string): InputfieldType {
+    let propertyTypeName: string = BasicService.getUniqueInstance().getPropertyTypeOf(object, propertyName);
+    console.debug('get inputfieldType by propertyName: %s, propertyTypeName: %s', propertyName, propertyTypeName);
+    switch (propertyTypeName) {
+      case 'number':
+        return InputfieldType.NUMBER;
+      case 'boolean':
+        return InputfieldType.SWITCH;
+      case 'date':
+        return InputfieldType.DATE;
+      case 'string':
+      default:
+        return InputfieldType.TEXT;
+    }
+  }
+
   private isSelectedOption(optionModel: any): boolean {
     if (this.multiple) {
       let isSelected: boolean = false;
