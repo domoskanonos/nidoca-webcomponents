@@ -38,12 +38,6 @@ export enum InputfieldMode {
   FILLED = 'FILLED',
 }
 
-export class InputfieldDataChangeEvent {
-  type?: string;
-  outputData?: KeyValuePair;
-  element?: HTMLInputElement;
-}
-
 @customElement('nidoca-inputfield')
 export class NidocaInputfield extends LitElement {
   static styles = css`
@@ -565,14 +559,10 @@ ${this.value}</textarea
 
   private switchChecked() {
     this.checked = !Boolean(this.checked);
-    let inputDataChangedEvent: InputfieldDataChangeEvent = <InputfieldDataChangeEvent>{};
-    inputDataChangedEvent.type = this.inputfieldType;
-    inputDataChangedEvent.element = this.inputElemet;
-    inputDataChangedEvent.outputData = this.getOutputData();
     BasicService.getUniqueInstance().dispatchSimpleCustomEvent(
       this,
       'nidoca-event-inputfield-change',
-      inputDataChangedEvent
+      this.getOutputData()
     );
   }
 
