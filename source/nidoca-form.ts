@@ -10,29 +10,47 @@ export class NidocaFormOutputData {
   formData: FormData = FormData.prototype;
 }
 
+export enum FormProperties {
+  ROW_LAYOUT = 'ROW_LAYOUT',
+  COLUMN_LAYOUT = 'COLUMN_LAYOUT',
+  FULL_WIDTH = 'FULL_WIDTH',
+}
+
 @customElement('nidoca-form')
 export class NidocaForm extends LitElement {
   static styles = css`
-    .formElement,
-    ::slotted(.formElement) {
-      padding-bottom: var(--space-medium);
+    .FORM {
       box-sizing: border-box;
-      display: block;
     }
-
-    form {
+    .COLUMN_LAYOUT {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      justify-content: space-around;
+      align-items: stretch;
+      align-content: space-around;
+    }
+    .ROW_LAYOUT {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+      align-items: start;
+      align-content: space-evenly;
+    }
+    .FULL_WIDTH {
       width: 100%;
-      box-sizing: border-box;
     }
 
     @media only screen and (orientation: portrait) {
-      form {
+      .FORM {
+        width: 100%;
       }
     }
   `;
 
   @property()
-  buttons: NidocaButton[] = [];
+  formProperties: FormProperties[] = [];
 
   @property()
   autocomplete: boolean = true;
@@ -45,25 +63,26 @@ export class NidocaForm extends LitElement {
 
   protected render() {
     return html`
-      <form id="htmlForm" @nidoca-event-button-clicked="${this.formButtonClicked}" autocomplete="${this.autocomplete}">
+      <form
+        class="${this.toFormPropertiesString(this.formProperties)}"
+        id="htmlForm"
+        @nidoca-event-button-clicked="${this.formButtonClicked}"
+        autocomplete="${this.autocomplete}"
+      >
         <slot name="header"></slot>
-        <slot style="color: var(--app-color-error);" name="errorMessages"></slot>
+        <slot name="errorMessages" style="color: var(--app-color-error);"></slot>
         <slot id="slotElement" @slotchange="${(event: Event) => this.slotChanged(event)}"></slot>
-        ${guard(
-        this.buttons,
-        () =>
-            html`
-              ${repeat(
-                this.buttons,
-                buttons =>
-                  html`
-                    ${buttons}
-                  `
-              )}
-            `
-        )}
+        <slot name="footer"></slot>
       </form>
     `;
+  }
+
+  toFormPropertiesString(formProperties: FormProperties[]) {
+    let formPropertiesClazzString: string = 'FORM';
+    formProperties.forEach((clazz) => {
+      formPropertiesClazzString = formPropertiesClazzString.concat(' ').concat(clazz);
+    });
+    return formPropertiesClazzString;
   }
 
   slotChanged(event: Event) {
