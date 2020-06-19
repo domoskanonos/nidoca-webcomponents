@@ -34,9 +34,9 @@ export class NidocaForm extends LitElement {
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
-      justify-content: space-evenly;
-      align-items: start;
-      align-content: space-evenly;
+      justify-content: flex-start;
+      align-items: flex-start;
+      align-content: flex-start;
     }
     .FULL_WIDTH {
       width: 100%;
