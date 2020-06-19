@@ -520,8 +520,6 @@ ${this.value}</textarea
               <nidoca-visible visibleType="${
                 BasicService.getUniqueInstance().isNotBlank(this.errorText)
                   ? VisibleType.NORMAL
-                  : this.inputfieldMode == InputfieldMode.CLEAN
-                  ? VisibleType.HIDE
                   : VisibleType.INVISIBLE
               }">
               <nidoca-typography
