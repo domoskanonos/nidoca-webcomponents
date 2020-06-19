@@ -1,7 +1,7 @@
 import {css, customElement, html, property, query, LitElement} from 'lit-element';
 import {repeat} from 'lit-html/directives/repeat';
 import {guard} from 'lit-html/directives/guard';
-import {BasicService, I18nService} from '@domoskanonos/frontend-basis';
+import {TypescriptType, BasicService, I18nService} from '@domoskanonos/frontend-basis';
 import {KeyValueData} from './meta';
 import {BorderProperties} from './nidoca-border';
 import {GridAlignItems, GridJustifyItems} from './nidoca-grid-container';
@@ -854,17 +854,15 @@ ${this.value}</textarea
     return options;
   }
 
-  static inputfieldTypeByPropertyName(object: object, propertyName: string): InputfieldType {
-    let propertyTypeName: string = BasicService.getUniqueInstance().getPropertyTypeOf(object, propertyName);
-    console.debug('get inputfieldType by propertyName: %s, propertyTypeName: %s', propertyName, propertyTypeName);
-    switch (propertyTypeName) {
-      case 'number':
+  static inputfieldTypeByTypescriptType(tyescriptType: TypescriptType): InputfieldType {
+    switch (tyescriptType) {
+      case TypescriptType.NUMBER:
         return InputfieldType.NUMBER;
-      case 'boolean':
+      case TypescriptType.BOOLEAN:
         return InputfieldType.SWITCH;
-      case 'date':
+      case TypescriptType.DATE:
         return InputfieldType.DATE;
-      case 'string':
+      case TypescriptType.STRING:
       default:
         return InputfieldType.TEXT;
     }
