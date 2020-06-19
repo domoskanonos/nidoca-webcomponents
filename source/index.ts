@@ -1,4 +1,3 @@
-export * from './meta';
 export * from './nidoca-flex-container';
 export * from './abstract-app';
 export * from './nidoca-accordion';

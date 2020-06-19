@@ -1,14 +1,14 @@
 import {css, customElement, html, property, query, LitElement} from 'lit-element';
 import {repeat} from 'lit-html/directives/repeat';
 import {guard} from 'lit-html/directives/guard';
-import {TypescriptType, BasicService, I18nService} from '@domoskanonos/frontend-basis';
-import {KeyValueData} from './meta';
+import {KeyValuePair, TypescriptType, BasicService, I18nService} from '@domoskanonos/frontend-basis';
 import {BorderProperties} from './nidoca-border';
 import {GridAlignItems, GridJustifyItems} from './nidoca-grid-container';
 import {SpacerAlignment, SpacerSize} from './nidoca-spacer';
 import {VisibleType} from './nidoca-visible';
 import {FlexAlignContent, FlexContainerProperties, FlexJustifyContent} from './nidoca-flex-container';
 import {TypographyType} from './nidoca-typography';
+
 
 export enum InputfieldType {
   TEXTAREA = 'textarea',
@@ -40,7 +40,7 @@ export enum InputfieldMode {
 
 export class InputfieldDataChangeEvent {
   type?: string;
-  outputData?: KeyValueData;
+  outputData?: KeyValuePair;
   element?: HTMLInputElement;
 }
 
@@ -596,7 +596,7 @@ ${this.value}</textarea
   }
 
   async focusout(event: Event) {
-    console.log('event: '.concat(JSON.stringify(event)));
+    console.log('focusout event: '.concat(JSON.stringify(event)));
     this.selected = false;
     this.validate();
     BasicService.getUniqueInstance().dispatchSimpleCustomEvent(
@@ -607,14 +607,11 @@ ${this.value}</textarea
   }
 
   async change(event: Event) {
-    let inputDataChangedEvent: InputfieldDataChangeEvent = <InputfieldDataChangeEvent>{};
-    inputDataChangedEvent.type = this.inputfieldType;
-    inputDataChangedEvent.element = <HTMLInputElement>event.target;
-    inputDataChangedEvent.outputData = this.getOutputData();
+    console.log('change event: '.concat(JSON.stringify(event)));
     BasicService.getUniqueInstance().dispatchSimpleCustomEvent(
-      this,
-      'nidoca-event-inputfield-change',
-      inputDataChangedEvent
+        this,
+        'nidoca-event-inputfield-change',
+        this.getOutputData()
     );
   }
 
@@ -661,7 +658,7 @@ ${this.value}</textarea
     }
   }
 
-  getOutputData(): KeyValueData {
+  getOutputData(): KeyValuePair {
     let outputValue: any = this.oldValue;
 
     switch (this.inputfieldType) {
@@ -697,7 +694,7 @@ ${this.value}</textarea
         break;
     }
 
-    return <KeyValueData>{
+    return <KeyValuePair>{
       key: this.name,
       value: outputValue,
     };
@@ -798,55 +795,55 @@ ${this.value}</textarea
 
   private showAdditionalTextContainer() {
     return (
-      this.inputfieldType != InputfieldType.SWITCH &&
-      this.inputfieldType != InputfieldType.FILE &&
-      (this.assistiveText.length > 0 || this.infoText.length > 0)
+        this.inputfieldType != InputfieldType.SWITCH &&
+        this.inputfieldType != InputfieldType.FILE &&
+        (this.assistiveText.length > 0 || this.infoText.length > 0)
     );
   }
 
-  static enumToComboboxItems(enumeration: any): KeyValueData[] {
-    let options: KeyValueData[] = [];
+  static enumToComboboxItems(enumeration: any): KeyValuePair[] {
+    let options: KeyValuePair[] = [];
     Object.keys(enumeration).forEach((key) => {
-      options.push(<KeyValueData>{key: key, value: enumeration[key]});
+      options.push(<KeyValuePair>{key: key, value: enumeration[key]});
     });
     return options;
   }
 
-  static clazzToComboboxItems(clazz: any): KeyValueData[] {
-    let options: KeyValueData[] = [];
+  static clazzToComboboxItems(clazz: any): KeyValuePair[] {
+    let options: KeyValuePair[] = [];
     Object.keys(clazz).forEach((key) => {
-      options.push(<KeyValueData>{key: clazz[key], value: key});
+      options.push(<KeyValuePair>{key: clazz[key], value: key});
     });
     return options;
   }
 
-  static object2KeyValueDataArray(
-    object: any,
-    keyFieldName: string,
-    valueFieldName: string,
-    withEmptyItem: boolean = false
-  ): KeyValueData[] {
-    let options: KeyValueData[] = [];
+  static object2KeyValuePairArray(
+      object: any,
+      keyFieldName: string,
+      valueFieldName: string,
+      withEmptyItem: boolean = false
+  ): KeyValuePair[] {
+    let options: KeyValuePair[] = [];
     if (withEmptyItem) {
-      options.push(new KeyValueData());
+      options.push(<KeyValuePair>{key: '', value: {}});
     }
     Object.values(object).forEach((value: any) => {
-      options.push(<KeyValueData>{key: value[keyFieldName], value: value[valueFieldName]});
+      options.push(<KeyValuePair>{key: value[keyFieldName], value: value[valueFieldName]});
     });
     return options;
   }
 
-  static stringArray2KeyValueDataArrayWithI18nValueMapping(
-    arr: string[],
-    i18nPrefix: string,
-    withEmptyItem: boolean = false
-  ): KeyValueData[] {
-    let options: KeyValueData[] = [];
+  static stringArray2KeyValuePairArrayWithI18nValueMapping(
+      arr: string[],
+      i18nPrefix: string,
+      withEmptyItem: boolean = false
+  ): KeyValuePair[] {
+    let options: KeyValuePair[] = [];
     if (withEmptyItem) {
-      options.push(new KeyValueData());
+      options.push(<KeyValuePair>{key: '', value: {}});
     }
     Object.values(arr).forEach((value: any) => {
-      options.push(<KeyValueData>{
+      options.push(<KeyValuePair>{
         key: value,
         value: I18nService.getUniqueInstance().getValue(i18nPrefix.concat(value)),
       });
