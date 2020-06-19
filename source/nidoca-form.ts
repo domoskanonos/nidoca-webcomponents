@@ -71,7 +71,7 @@ export class NidocaForm extends LitElement {
       >
         <slot name="header"></slot>
         <slot name="errorMessages" style="color: var(--app-color-error);"></slot>
-        <slot id="slotElement" @slotchange="${(event: Event) => this.slotChanged(event)}"></slot>
+        <slot id="slotElement"></slot>
         <slot name="footer"></slot>
       </form>
     `;
@@ -85,44 +85,33 @@ export class NidocaForm extends LitElement {
     return formPropertiesClazzString;
   }
 
-  slotChanged(event: Event) {
-    let slotElement: HTMLSlotElement = <HTMLSlotElement>event.target;
+  getInputElements(slotElement: HTMLSlotElement | undefined): NidocaInputfield[] {
     if (slotElement == null) {
-      return;
+      return [];
     }
-    let elements: Element[] = slotElement.assignedElements();
+    let inputElements: NidocaInputfield[] = [];
+    let elements: Element[] = slotElement.assignedElements({flatten: true});
     for (let index = 0; index < elements.length; index++) {
       let element: Element = elements[index];
-      if (element instanceof NidocaInputfield && element.inputfieldType != InputfieldType.HIDDEN) {
-        element.classList.add('formElement');
+      if (element instanceof NidocaInputfield) {
+        inputElements.push(element);
       }
     }
+    return inputElements;
   }
 
   public isValid(): boolean {
-    if (this.slotElement != null) {
-      let elements: Element[] = this.slotElement.assignedElements();
-      for (let elementIndex = 0; elementIndex < elements.length; elementIndex++) {
-        let element: Element = elements[elementIndex];
-        if (element instanceof NidocaInputfield) {
-          if (!element.isValid()) {
-            return false;
-          }
-        }
+    for (let element of this.getInputElements(this.slotElement)) {
+      if (!element.isValid()) {
+        return false;
       }
     }
     return true;
   }
 
   public validate(): boolean {
-    if (this.slotElement != null) {
-      let elements: Element[] = this.slotElement.assignedElements();
-      for (let elementIndex = 0; elementIndex < elements.length; elementIndex++) {
-        let element: Element = elements[elementIndex];
-        if (element instanceof NidocaInputfield) {
-          element.validate();
-        }
-      }
+    for (let element of this.getInputElements(this.slotElement)) {
+      element.validate();
     }
     return this.isValid();
   }
@@ -131,16 +120,10 @@ export class NidocaForm extends LitElement {
     let formData = new FormData();
     let json: any = {};
 
-    if (this.slotElement != null) {
-      let elements: Element[] = this.slotElement.assignedElements();
-      for (let elementIndex = 0; elementIndex < elements.length; elementIndex++) {
-        let element: Element = elements[elementIndex];
-        if (element instanceof NidocaInputfield) {
-          let elementOutputData = element.getOutputData();
-          json[elementOutputData.key] = elementOutputData.value;
-          formData.append(elementOutputData.key, elementOutputData.value);
-        }
-      }
+    for (let element of this.getInputElements(this.slotElement)) {
+      let elementOutputData = element.getOutputData();
+      json[elementOutputData.key] = elementOutputData.value;
+      formData.append(elementOutputData.key, elementOutputData.value);
     }
 
     let outputData = <NidocaFormOutputData>{};
@@ -149,6 +132,7 @@ export class NidocaForm extends LitElement {
     outputData.formData = formData;
 
     return outputData;
+
   }
 
   private formButtonClicked(event: CustomEvent) {
