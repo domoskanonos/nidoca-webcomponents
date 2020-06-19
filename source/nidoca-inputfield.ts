@@ -125,22 +125,6 @@ export class NidocaInputfield extends LitElement {
       cursor: pointer;
     }
 
-    input[type='datetime-local']::-webkit-calendar-picker-indicator,
-    input[type='date']::-webkit-calendar-picker-indicator,
-    input[type='month']::-webkit-calendar-picker-indicator,
-    input[type='week']::-webkit-calendar-picker-indicator,
-    input[type='datetime-local']::-moz-calendar-picker-indicator,
-    input[type='date']::-moz-calendar-picker-indicator,
-    input[type='month']::-moz-calendar-picker-indicator,
-    input[type='week']::-moz-calendar-picker-indicator {
-      color: rgba(0, 0, 0, 0);
-      opacity: 1;
-      display: block;
-      width: 20px;
-      height: 20px;
-      border-width: thin;
-    }
-
     input:-webkit-autofill,
     input:-webkit-autofill:hover,
     input:-webkit-autofill:focus input:-webkit-autofill,
