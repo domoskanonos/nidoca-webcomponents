@@ -273,7 +273,7 @@ export class NidocaInputfield extends LitElement {
               
               <nidoca-grid-container
                     class="${this.inputfieldMode}"
-                    minHeight="56px"
+                    minHeight="68px"
                     .gridJustifyItems="${GridJustifyItems.STRETCH}"
                     .gridAlignItems="${GridAlignItems.CENTER}" 
                     .gridTemplateRows="${['1fr']}"
