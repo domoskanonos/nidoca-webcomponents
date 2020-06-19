@@ -13,6 +13,7 @@ export enum BorderProperties {
   BOTTOM = 'BOTTOM',
   BOTTOM_SELECTED = 'BOTTOM_SELECTED',
   FULL_WIDTH = 'FULL_WIDTH',
+  FULL_HEIGHT = 'FULL_HEIGHT',
 }
 
 export enum BorderSize {
@@ -47,6 +48,10 @@ export class NidocaBorder extends LitElement {
 
     .FULL_WIDTH {
       width: 100%;
+    }
+    
+    .FULL_HEIGHT {
+      height: 100%;
     }
 
     .THIN {
@@ -129,7 +134,7 @@ export class NidocaBorder extends LitElement {
 
   toBorderPropertiesString(borderPropertieses: string[]) {
     let borderClazzString: string = 'BORDER';
-    borderPropertieses.forEach(clazz => {
+    borderPropertieses.forEach((clazz) => {
       borderClazzString = borderClazzString.concat(' ').concat(clazz);
     });
     return borderClazzString;
