@@ -11,6 +11,7 @@ export * from './nidoca-button';
 export * from './nidoca-divider';
 export * from './nidoca-grid-container';
 export * from './nidoca-form';
+export * from './nidoca-toolbar';
 export * from './nidoca-container';
 export * from './nidoca-ripple';
 export * from './nidoca-visible';
