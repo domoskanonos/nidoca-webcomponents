@@ -9,7 +9,6 @@ import {VisibleType} from './nidoca-visible';
 import {FlexAlignContent, FlexContainerProperties, FlexJustifyContent} from './nidoca-flex-container';
 import {TypographyType} from './nidoca-typography';
 
-
 export enum InputfieldType {
   TEXTAREA = 'textarea',
   SWITCH = 'SWITCH',
@@ -599,9 +598,9 @@ ${this.value}</textarea
   async change(event: Event) {
     console.log('change event: '.concat(JSON.stringify(event)));
     BasicService.getUniqueInstance().dispatchSimpleCustomEvent(
-        this,
-        'nidoca-event-inputfield-change',
-        this.getOutputData()
+      this,
+      'nidoca-event-inputfield-change',
+      this.getOutputData()
     );
   }
 
@@ -772,6 +771,7 @@ ${this.value}</textarea
         this.inputfieldType === InputfieldType.FILE ||
         this.inputfieldType === InputfieldType.SWITCH ||
         this.inputfieldType === InputfieldType.CHECKBOX ||
+        this.inputfieldType === InputfieldType.NUMBER ||
         this.inputfieldType === InputfieldType.MONTH ||
         this.inputfieldType === InputfieldType.TIME ||
         this.inputfieldType === InputfieldType.WEEK ||
@@ -785,9 +785,9 @@ ${this.value}</textarea
 
   private showAdditionalTextContainer() {
     return (
-        this.inputfieldType != InputfieldType.SWITCH &&
-        this.inputfieldType != InputfieldType.FILE &&
-        (this.assistiveText.length > 0 || this.infoText.length > 0)
+      this.inputfieldType != InputfieldType.SWITCH &&
+      this.inputfieldType != InputfieldType.FILE &&
+      (this.assistiveText.length > 0 || this.infoText.length > 0)
     );
   }
 
@@ -808,10 +808,10 @@ ${this.value}</textarea
   }
 
   static object2KeyValuePairArray(
-      object: any,
-      keyFieldName: string,
-      valueFieldName: string,
-      withEmptyItem: boolean = false
+    object: any,
+    keyFieldName: string,
+    valueFieldName: string,
+    withEmptyItem: boolean = false
   ): KeyValuePair[] {
     let options: KeyValuePair[] = [];
     if (withEmptyItem) {
@@ -824,9 +824,9 @@ ${this.value}</textarea
   }
 
   static stringArray2KeyValuePairArrayWithI18nValueMapping(
-      arr: string[],
-      i18nPrefix: string,
-      withEmptyItem: boolean = false
+    arr: string[],
+    i18nPrefix: string,
+    withEmptyItem: boolean = false
   ): KeyValuePair[] {
     let options: KeyValuePair[] = [];
     if (withEmptyItem) {
