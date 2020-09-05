@@ -99,6 +99,8 @@ export class NidocaFlex extends LitElement {
     ::slotted(.FLEX_CONTAINER) {
       margin: auto;
       display: flex;
+      overflow:auto;
+      box-sizing:border-boxed;
     }
 
     .CONTAINER_WIDTH_MIN_CONTENT,
