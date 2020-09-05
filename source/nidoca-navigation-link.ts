@@ -55,10 +55,10 @@ export class NidocaNavigationLink extends LitElement {
                 .flexItemProperties="${[]}"
                 .flexDirection="${FlexDirection.ROW}"
                 .flexWrap="${FlexWrap.NO_WRAP}"
-                .flexJustifyContent="${FlexJustifyContent.FLEX_END}"
+                .flexJustifyContent="${FlexJustifyContent.SPACE_BETWEEN}"
                 .flexAlignItems="${FlexAlignItems.CENTER}"
                 .flexAlignContent="${FlexAlignContent.FLEX_START}"
-                .flexItemBasisValues="${['20%', '80%']}"
+                .flexItemBasisValues="${['auto', '80%']}"
               >
                 <nidoca-icon icon="${this.icon}" .withIconSpace="${false}"></nidoca-icon>
                 <nidoca-typography typographyType="${TypographyType.BODY2}">${this.text}</nidoca-typography>
