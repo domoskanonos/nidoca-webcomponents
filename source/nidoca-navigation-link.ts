@@ -55,7 +55,7 @@ export class NidocaNavigationLink extends LitElement {
                 .flexItemProperties="${[]}"
                 .flexDirection="${FlexDirection.ROW}"
                 .flexWrap="${FlexWrap.NO_WRAP}"
-                .flexJustifyContent="${FlexJustifyContent.SPACE_BETWEEN}"
+                .flexJustifyContent="${FlexJustifyContent.SPACE_AROUND}"
                 .flexAlignItems="${FlexAlignItems.CENTER}"
                 .flexAlignContent="${FlexAlignContent.FLEX_START}"
                 .flexItemBasisValues="${['auto', '80%']}"
