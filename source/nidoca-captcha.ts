@@ -3,7 +3,7 @@ import {BasicService, I18nService} from '@domoskanonos/frontend-basis/lib';
 import {InputfieldMode, InputfieldType, NidocaInputfield} from "./nidoca-inputfield";
 
 @customElement('nidoca-captcha-component')
-export class NidocaCaptchaComponents extends LitElement {
+export class NidocaCaptcha extends LitElement {
     static styles = css``;
 
     @property()

@@ -19,6 +19,7 @@ export * from './nidoca-transition';
 export * from './nidoca-icon';
 export * from './nidoca-rich-media';
 export * from './nidoca-inputfield';
+export * from './nidoca-captcha';
 export * from './nidoca-link';
 export * from './nidoca-list';
 export * from './nidoca-list-item';
