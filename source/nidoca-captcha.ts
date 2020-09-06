@@ -35,7 +35,7 @@ export class NidocaCaptcha extends LitElement {
             .concat(String(this.numberTwo))
             .concat(' = ?')}"
         name="captcha"
-        leadingIcon="verified"
+        leadingIcon="create"
         value=""
       ></nidoca-inputfield>
     `;
