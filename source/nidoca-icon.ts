@@ -113,31 +113,37 @@ export class NidocaIcon extends LitElement {
 
   render() {
     return html`
-      <nidoca-spacer size="${this.withIconSpace ? String(this.size / 2).concat(this.sizeUnit) : '0px'}">
-        <span
-          class="icon-container ${this.iconShadowType} ${this.clickable ? 'clickable' : ''} ${this.round
-            ? 'ROUND'
-            : ''}"
-          title="${this.title}"
-          @click="${this.clicked}"
-          style="${'line-height: '.concat(this.size.toString()).concat(this.sizeUnit).concat(';')}${'width: '.concat(this.size.toString()).concat(this.sizeUnit).concat(';')}${this.backgroundColor ? 'background-color:'.concat(this.backgroundColor).concat(';') : ''} ${this
-            .round
-            ? 'height:'
-                .concat((this.size * 2).toString())
-                .concat('px;')
-                .concat('width:')
-                .concat((this.size * 2).toString())
-                .concat('px;')
-            : ''}"
-          ><i
-            class="material-icons"
-            style="${this.color.length > 0 ? 'color: '.concat(this.color).concat(';') : ''} ${this.size != undefined
-              ? 'font-size: '.concat(this.size.toString()).concat(this.sizeUnit).concat(';')
+      <nidoca-ripple>
+        <nidoca-spacer size="${this.withIconSpace ? String(this.size / 2).concat(this.sizeUnit) : '0px'}">
+          <span
+            class="icon-container ${this.iconShadowType} ${this.clickable ? 'clickable' : ''} ${this.round
+              ? 'ROUND'
               : ''}"
-            >${this.icon}</i
-          ><slot></slot>
-        </span>
-      </nidoca-spacer>
+            title="${this.title}"
+            @click="${this.clicked}"
+            style="${'line-height: '.concat(this.size.toString()).concat(this.sizeUnit).concat(';')}${'width: '
+              .concat(this.size.toString())
+              .concat(this.sizeUnit)
+              .concat(';')}${this.backgroundColor
+              ? 'background-color:'.concat(this.backgroundColor).concat(';')
+              : ''} ${this.round
+              ? 'height:'
+                  .concat((this.size * 2).toString())
+                  .concat('px;')
+                  .concat('width:')
+                  .concat((this.size * 2).toString())
+                  .concat('px;')
+              : ''}"
+            ><i
+              class="material-icons"
+              style="${this.color.length > 0 ? 'color: '.concat(this.color).concat(';') : ''} ${this.size != undefined
+                ? 'font-size: '.concat(this.size.toString()).concat(this.sizeUnit).concat(';')
+                : ''}"
+              >${this.icon}</i
+            ><slot></slot>
+          </span>
+        </nidoca-spacer>
+      </nidoca-ripple>
     `;
   }
 
