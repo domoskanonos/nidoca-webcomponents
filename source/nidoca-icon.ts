@@ -46,6 +46,10 @@ export class NidocaIcon extends LitElement {
       color: inherit;
     }
 
+    .icon-container:active {
+    color: var(--app-color-secondary-background);
+    }
+
     .ROUND {
       -moz-border-radius: 50%;
       -webkit-border-radius: 50%;
@@ -113,7 +117,6 @@ export class NidocaIcon extends LitElement {
 
   render() {
     return html`
-      <nidoca-ripple>
         <nidoca-spacer size="${this.withIconSpace ? String(this.size / 2).concat(this.sizeUnit) : '0px'}">
           <span
             class="icon-container ${this.iconShadowType} ${this.clickable ? 'clickable' : ''} ${this.round
@@ -143,7 +146,6 @@ export class NidocaIcon extends LitElement {
             ><slot></slot>
           </span>
         </nidoca-spacer>
-      </nidoca-ripple>
     `;
   }
 
