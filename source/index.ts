@@ -39,7 +39,7 @@ export * from './nidoca-typography';
 export * from './nidoca-dialog';
 
 
-import './index.css';
+//import './index.css';
 
 
 export * from './nidoca-test';
