@@ -261,13 +261,13 @@ export class NidocaInputfield extends LitElement {
       ? html`
               <nidoca-border
                  .borderProperties="${[
-        BorderProperties.FULL_WIDTH,
-        this.showSelectedBorder()
-          ? BorderProperties.BOTTOM_SELECTED
-          : this.showBorder()
-          ? BorderProperties.BOTTOM
-          : BorderProperties.NONE,
-      ]}"
+                   BorderProperties.FULL_WIDTH,
+                   this.showSelectedBorder()
+                     ? BorderProperties.BOTTOM_SELECTED
+                     : this.showBorder()
+                     ? BorderProperties.BOTTOM
+                     : BorderProperties.NONE,
+                 ]}"
               >
               
               <nidoca-grid-container
@@ -287,23 +287,23 @@ export class NidocaInputfield extends LitElement {
                  >
                     <nidoca-visible
                                   visibleType="${
-        BasicService.getUniqueInstance().isNotBlank(this.leadingIcon)
-          ? VisibleType.NORMAL
-          : VisibleType.HIDE
-      }"
+                                    BasicService.getUniqueInstance().isNotBlank(this.leadingIcon)
+                                      ? VisibleType.NORMAL
+                                      : VisibleType.HIDE
+                                  }"
                     >
                        <nidoca-icon icon="${this.leadingIcon}" .clickable="${this.leadingIconClickable}"></nidoca-icon>
                     </nidoca-visible>
                     <nidoca-spacer spacerSize="${
-        this.inputfieldType == InputfieldType.SWITCH || this.inputfieldType == InputfieldType.FILE
-          ? SpacerSize.ZERO
-          : SpacerSize.MEDIUM
-      }" spacerAlignment="${SpacerAlignment.HORIZONTAL}">
+                      this.inputfieldType == InputfieldType.SWITCH || this.inputfieldType == InputfieldType.FILE
+                        ? SpacerSize.ZERO
+                        : SpacerSize.MEDIUM
+                    }" spacerAlignment="${SpacerAlignment.HORIZONTAL}">
                     <nidoca-flex-container
                        .flexContainerProperties="${[
-        FlexContainerProperties.CONTAINER_WIDTH_100,
-        FlexContainerProperties.CONTAINER_HEIGHT_100,
-      ]}"
+                         FlexContainerProperties.CONTAINER_WIDTH_100,
+                         FlexContainerProperties.CONTAINER_HEIGHT_100,
+                       ]}"
                        .flexAlignContent="${FlexAlignContent.CENTER}"
                        flexItemBasisValue="100%"
                     >
@@ -314,8 +314,8 @@ export class NidocaInputfield extends LitElement {
                           ></nidoca-typography>
                        </nidoca-visible>
                        ${
-        this.inputfieldType == InputfieldType.FILE
-          ? html`
+                         this.inputfieldType == InputfieldType.FILE
+                           ? html`
                                <nidoca-grid-container
                                  .gridTemplateRows="${['auto']}"
                                  .gridTemplateColumns="${['1fr', 'auto']}"
@@ -356,8 +356,8 @@ export class NidocaInputfield extends LitElement {
                                    @change="${(event: Event) => this.change(event)}"
                                /></nidoca-visible>
                              `
-          : this.inputfieldType == InputfieldType.COMBOBOX
-          ? html`
+                           : this.inputfieldType == InputfieldType.COMBOBOX
+                           ? html`
                                <select
                                  id="selectElement"
                                  ?required="${this.required}"
@@ -369,27 +369,27 @@ export class NidocaInputfield extends LitElement {
                                  @focusout="${(event: Event) => this.focusout(event)}"
                                >
                                  ${guard(
-            [this.options],
-            () => html`
+                                   [this.options],
+                                   () => html`
                                      ${repeat(this.options, (optionModel) =>
-              this.isSelectedOption(optionModel)
-                ? html`
-                                             <option value="${this.getOptionKey(optionModel)}" selected
-                                               >${this.getOptionValue(optionModel)}</option
-                                             >
+                                       this.isSelectedOption(optionModel)
+                                         ? html`
+                                             <option value="${this.getOptionKey(optionModel)}" selected>
+                                               ${this.getOptionValue(optionModel)}
+                                             </option>
                                            `
-                : html`
-                                             <option value="${this.getOptionKey(optionModel)}"
-                                               >${this.getOptionValue(optionModel)}</option
-                                             >
-                                           `,
-            )}
-                                   `,
-          )}
+                                         : html`
+                                             <option value="${this.getOptionKey(optionModel)}">
+                                               ${this.getOptionValue(optionModel)}
+                                             </option>
+                                           `
+                                     )}
+                                   `
+                                 )}
                                </select>
                              `
-          : this.inputfieldType == InputfieldType.TEXTAREA
-            ? html`
+                           : this.inputfieldType == InputfieldType.TEXTAREA
+                           ? html`
                                <textarea
                                  id="textareaElement"
                                  name="${this.name}"
@@ -399,8 +399,8 @@ export class NidocaInputfield extends LitElement {
 ${this.value}</textarea
                                >
                              `
-            : this.inputfieldType == InputfieldType.SWITCH
-              ? html`
+                           : this.inputfieldType == InputfieldType.SWITCH
+                           ? html`
                                <nidoca-grid-container
                                  .gridTemplateRows="${['auto']}"
                                  .gridTemplateColumns="${['1fr', 'auto']}"
@@ -416,8 +416,8 @@ ${this.value}</textarea
                                    ></nidoca-typography>
                                    <nidoca-visible
                                      visibleType="${BasicService.getUniqueInstance().isNotBlank(this.assistiveText)
-                ? VisibleType.NORMAL
-                : VisibleType.HIDE}"
+                                       ? VisibleType.NORMAL
+                                       : VisibleType.HIDE}"
                                    >
                                      <nidoca-typography
                                        .typographyType="${TypographyType.SUBTITLE2}"
@@ -431,8 +431,8 @@ ${this.value}</textarea
                                    >
                                      <nidoca-icon
                                        @nidoca-event-icon-clicked="${() => {
-                this.switchChecked();
-              }}"
+                                         this.switchChecked();
+                                       }}"
                                        icon="toggle_off"
                                        .clickable="${true}"
                                      ></nidoca-icon>
@@ -443,8 +443,8 @@ ${this.value}</textarea
                                      <nidoca-icon
                                        color="var(--app-color-primary-background)"
                                        @nidoca-event-icon-clicked="${() => {
-                this.switchChecked();
-              }}"
+                                         this.switchChecked();
+                                       }}"
                                        icon="toggle_on"
                                        .clickable="${true}"
                                      ></nidoca-icon>
@@ -452,16 +452,16 @@ ${this.value}</textarea
                                  </componetn-container>
                                </nidoca-grid-container>
                              `
-              : html`
+                           : html`
                                <input
                                  id="inputElement"
                                  name="${this.name}"
                                  type="${this.inputfieldType}"
                                  value="${this.prepareValue(this.value)}"
                                  placeholder="${BasicService.getUniqueInstance().isBlank(this.placeholder) &&
-              !this.showLabelText()
-                ? this.label
-                : this.placeholder}"
+                                 !this.showLabelText()
+                                   ? this.label
+                                   : this.placeholder}"
                                  size="${this.size}"
                                  minlength="${this.minlength}"
                                  maxlength="${this.maxlength}"
@@ -478,27 +478,27 @@ ${this.value}</textarea
                                  @focusout="${(event: Event) => this.focusout(event)}"
                                />
                              `
-      }</nidoca-flex-container
+                       }</nidoca-flex-container
                     >
                     </nidoca-spacer>
                     <nidoca-visible
                        visibleType="${
-        BasicService.getUniqueInstance().isNotBlank(this.trailingIcon)
-          ? VisibleType.NORMAL
-          : VisibleType.HIDE
-      }"
+                         BasicService.getUniqueInstance().isNotBlank(this.trailingIcon)
+                           ? VisibleType.NORMAL
+                           : VisibleType.HIDE
+                       }"
                     >
                        <nidoca-icon icon="${this.trailingIcon}" .clickable="${
-        this.trailingIconClickable
-      }"></nidoca-icon>
+          this.trailingIconClickable
+        }"></nidoca-icon>
                     </nidoca-visible>
                  </nidoca-grid-container>
                  </nidoca-spacer>
                  </nidoca-grid-container>
               </nidoca-border>
               <nidoca-visible visibleType="${
-        this.showAdditionalTextContainer() ? VisibleType.NORMAL : VisibleType.HIDE
-      }">
+                this.showAdditionalTextContainer() ? VisibleType.NORMAL : VisibleType.HIDE
+              }">
                  <nidoca-spacer spacerSize="${SpacerSize.LITTLE}" spacerAlignment="${SpacerAlignment.VERTICAL}">
                  <nidoca-flex-container
                     .flexContainerProperties="${[FlexContainerProperties.CONTAINER_WIDTH_100]}"
@@ -517,12 +517,12 @@ ${this.value}</textarea
               </nidoca-visible>
               </nidoca-spacer>
               <nidoca-visible visibleType="${
-        BasicService.getUniqueInstance().isNotBlank(this.errorText)
-          ? VisibleType.NORMAL
-          : this.inputfieldMode == InputfieldMode.CLEAN
-          ? VisibleType.HIDE
-          : VisibleType.INVISIBLE
-      }">
+                BasicService.getUniqueInstance().isNotBlank(this.errorText)
+                  ? VisibleType.NORMAL
+                  : this.inputfieldMode == InputfieldMode.CLEAN
+                  ? VisibleType.HIDE
+                  : VisibleType.INVISIBLE
+              }">
               <nidoca-typography
                  style="color:var(--app-color-error)"
                  .typographyType="${TypographyType.OVERLINE}"
@@ -561,7 +561,7 @@ ${this.value}</textarea
     BasicService.getUniqueInstance().dispatchSimpleCustomEvent(
       this,
       'nidoca-event-inputfield-change',
-      this.getOutputData(),
+      this.getOutputData()
     );
   }
 
@@ -569,7 +569,7 @@ ${this.value}</textarea
     BasicService.getUniqueInstance().dispatchSimpleCustomEvent(
       this,
       'nidoca-event-inputfield-keyup',
-      this.getOutputData(),
+      this.getOutputData()
     );
   }
 
@@ -580,7 +580,7 @@ ${this.value}</textarea
     BasicService.getUniqueInstance().dispatchSimpleCustomEvent(
       this,
       'nidoca-event-inputfield-focus',
-      this.getOutputData(),
+      this.getOutputData()
     );
   }
 
@@ -591,7 +591,7 @@ ${this.value}</textarea
     BasicService.getUniqueInstance().dispatchSimpleCustomEvent(
       this,
       'nidoca-event-inputfield-focus-out',
-      this.getOutputData(),
+      this.getOutputData()
     );
   }
 
@@ -600,7 +600,7 @@ ${this.value}</textarea
     BasicService.getUniqueInstance().dispatchSimpleCustomEvent(
       this,
       'nidoca-event-inputfield-change',
-      this.getOutputData(),
+      this.getOutputData()
     );
   }
 
@@ -799,7 +799,6 @@ ${this.value}</textarea
     return options;
   }
 
-
   static enumToComboboxItemsI18n(enumeration: any, i18nPrefix: string): KeyValuePair[] {
     let options: KeyValuePair[] = [];
     Object.keys(enumeration).forEach((key) => {
@@ -810,7 +809,6 @@ ${this.value}</textarea
     });
     return options;
   }
-
 
   static clazzToComboboxItems(clazz: any): KeyValuePair[] {
     let options: KeyValuePair[] = [];
@@ -824,7 +822,7 @@ ${this.value}</textarea
     object: any,
     keyFieldName: string,
     valueFieldName: string,
-    withEmptyItem: boolean = false,
+    withEmptyItem: boolean = false
   ): KeyValuePair[] {
     let options: KeyValuePair[] = [];
     if (withEmptyItem) {
@@ -839,7 +837,7 @@ ${this.value}</textarea
   static stringArray2KeyValuePairArrayWithI18nValueMapping(
     arr: string[],
     i18nPrefix: string,
-    withEmptyItem: boolean = false,
+    withEmptyItem: boolean = false
   ): KeyValuePair[] {
     let options: KeyValuePair[] = [];
     if (withEmptyItem) {
