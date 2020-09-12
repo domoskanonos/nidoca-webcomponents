@@ -40,3 +40,6 @@ export * from './nidoca-dialog';
 
 
 import './index.css';
+
+
+export * from './nidoca-test';
