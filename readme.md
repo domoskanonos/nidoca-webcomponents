@@ -21,7 +21,7 @@ or refer directly in package.json:
         "@domoskanonos/nidoca-core": "latest",
     }
 
-
+  /*"main": "source/index.js",*/
 
 
 Package ohne inde:

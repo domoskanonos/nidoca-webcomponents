@@ -6,7 +6,7 @@
   "files": [
     "lib/**/*"
   ],
-  "main": "source/index.js",
+  "main": "lib/index.js",
   "module": "source/index.js",
   "devDependencies": {
     "@types/jasmine": "^3.5.14",
