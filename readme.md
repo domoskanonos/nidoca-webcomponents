@@ -21,3 +21,23 @@ or refer directly in package.json:
         "@domoskanonos/nidoca-core": "latest",
     }
 
+
+
+
+Package ohne inde:
+  /**
+ "main": "lib/index.js",
+  "devDependencies": {
+    "@domoskanonos/frontend-basis": "latest",
+    "@types/node": "latest",
+    "lit-element": "latest",
+  "prettier": "latest",
+     "typescript": "next"
+  },
+  **/
+
+
+webpack dev und prod löschen, normalen dependencys leer, obige dev depencys durch die anderen erstetzen, index.css und index.html löschen
+
+
+
