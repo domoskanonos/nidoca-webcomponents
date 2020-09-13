@@ -10,6 +10,7 @@ export class NidocaListItem extends LitElement {
       display: grid;
       grid-template-rows: 1fr;
       grid-template-columns: 1fr;
+      width:100%;
     }
 
     .LIST_ITEM {
