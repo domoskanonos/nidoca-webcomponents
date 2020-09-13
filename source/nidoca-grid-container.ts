@@ -50,6 +50,12 @@ export class NidocaGrid extends LitElement {
   @property()
   minHeight: string = 'min-content';
 
+  @property()
+  width: string = 'min-content';
+
+  @property()
+  minWidth: string = 'min-content';
+
   render() {
     return html`
       <div
@@ -58,7 +64,9 @@ export class NidocaGrid extends LitElement {
           this.gridAlignItems
         )}${this.toGridTemplateRowsStyle(this.gridTemplateRows)}${this.toGridTemplateColumnsStyle(
           this.gridTemplateColumns
-        )}${this.toHeightStyle(this.height)}${this.toMinHeightStyle(this.minHeight)}"
+        )}${this.toHeightStyle(this.height)}${this.toMinHeightStyle(this.minHeight)}${this.toWidthStyle(
+          this.width
+        )}${this.toMinWidthStyle(this.minWidth)}"
       >
         <slot></slot>
       </div>
@@ -69,7 +77,7 @@ export class NidocaGrid extends LitElement {
     let gridTemplateRowsStyle: string = '';
     if (gridTemplateRows.length > 0) {
       gridTemplateRowsStyle = 'grid-template-rows:';
-      gridTemplateRows.forEach(value => {
+      gridTemplateRows.forEach((value) => {
         gridTemplateRowsStyle = gridTemplateRowsStyle.concat(' ').concat(value);
       });
       gridTemplateRowsStyle = gridTemplateRowsStyle.concat(';');
@@ -81,7 +89,7 @@ export class NidocaGrid extends LitElement {
     let gridTemplateColumnsStyle: string = '';
     if (gridTemplateColumns.length > 0) {
       gridTemplateColumnsStyle = 'grid-template-columns:';
-      gridTemplateColumns.forEach(value => {
+      gridTemplateColumns.forEach((value) => {
         gridTemplateColumnsStyle = gridTemplateColumnsStyle.concat(' ').concat(value);
       });
       gridTemplateColumnsStyle = gridTemplateColumnsStyle.concat(';');
@@ -95,6 +103,14 @@ export class NidocaGrid extends LitElement {
 
   private toMinHeightStyle(minheight: string) {
     return minheight.length > 0 ? 'min-height:'.concat(minheight).concat(';') : '';
+  }
+
+  private toWidthStyle(width: string) {
+    return width.length > 0 ? 'width:'.concat(width).concat(';') : '';
+  }
+
+  private toMinWidthStyle(minwidth: string) {
+    return minwidth.length > 0 ? 'min-height:'.concat(minwidth).concat(';') : '';
   }
 
   private toGridJustifyItems(gridJustifyItems: string) {
