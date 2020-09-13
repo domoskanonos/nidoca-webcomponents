@@ -45,16 +45,16 @@ export class NidocaGrid extends LitElement {
   gridAlignItems: string = '';
 
   @property()
-  height: string = 'min-content';
+  height: string = '';
 
   @property()
-  minHeight: string = 'min-content';
+  minHeight: string = '';
 
   @property()
-  width: string = 'min-content';
+  width: string = '';
 
   @property()
-  minWidth: string = 'min-content';
+  minWidth: string = '';
 
   render() {
     return html`
