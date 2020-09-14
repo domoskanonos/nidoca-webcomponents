@@ -17,8 +17,7 @@ export class NidocaCaptcha extends LitElement {
 
     @query('#inputfield')
     inputfield: NidocaInputfield | undefined;
-
-    @property()
+    
     render() {
         return html`
       <nidoca-inputfield
