@@ -43,7 +43,7 @@ export class NidocaCaptcha extends LitElement {
 
     public isValid(): boolean {
         if (this.inputfield != undefined) {
-            return this.numberOne + this.numberTwo == this.inputfield.getOutputData().value;
+            return this.numberOne + this.numberTwo == Number(this.inputfield.getOutputData().value);
         } else {
             return false;
         }
