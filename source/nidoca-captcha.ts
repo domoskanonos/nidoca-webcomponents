@@ -49,7 +49,7 @@ export class NidocaCaptcha extends LitElement {
         }
     }
 
-    private validate(): boolean {
+    public validate(): boolean {
         let isValid = this.isValid();
         if (isValid) {
             this.errorText = '';
