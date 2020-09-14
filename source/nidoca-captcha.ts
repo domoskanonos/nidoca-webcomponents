@@ -42,7 +42,11 @@ export class NidocaCaptcha extends LitElement {
     }
 
     public isValid(): boolean {
-        return this.numberOne + this.numberTwo == this.inputfield?.getOutputData().value;
+        if (this.inputfield != undefined) {
+            return this.numberOne + this.numberTwo == this.inputfield.getOutputData().value;
+        } else {
+            return false;
+        }
     }
 
     private validate() {
