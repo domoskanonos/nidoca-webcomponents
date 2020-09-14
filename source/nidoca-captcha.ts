@@ -1,6 +1,6 @@
 import {css, customElement, html, LitElement, property, query} from 'lit-element';
 import {BasicService, I18nService} from '@domoskanonos/frontend-basis/lib';
-import {InputfieldMode, InputfieldType, NidocaInputfield} from "./nidoca-inputfield";
+import {InputfieldMode, InputfieldType, NidocaInputfield} from './nidoca-inputfield';
 
 @customElement('nidoca-captcha-component')
 export class NidocaCaptcha extends LitElement {
@@ -49,8 +49,13 @@ export class NidocaCaptcha extends LitElement {
         }
     }
 
-    private validate() {
-        if (this.isValid()) this.errorText = '';
-        else this.errorText = I18nService.getUniqueInstance().getValue('nidoca-captcha-wrong-value');
+    private validate(): boolean {
+        let isValid = this.isValid();
+        if (isValid) {
+            this.errorText = '';
+        } else {
+            this.errorText = I18nService.getUniqueInstance().getValue('nidoca-captcha-wrong-value');
+        }
+        return isValid;
     }
 }
