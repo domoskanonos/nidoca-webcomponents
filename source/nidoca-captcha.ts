@@ -17,14 +17,13 @@ export class NidocaCaptcha extends LitElement {
 
     @query('#inputfield')
     inputfield: NidocaInputfield | undefined;
-    
+
     render() {
         return html`
       <nidoca-inputfield
         id="inputfield"
         .inputfieldMode="${InputfieldMode.FILLED}"
         .inputfieldType="${InputfieldType.NUMBER}"
-        required="true"
         errorText="${this.errorText}"
         @nidoca-event-inputfield-focus-out="${() => this.validate()}"
         label="${I18nService.getUniqueInstance()
