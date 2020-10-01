@@ -369,7 +369,7 @@ export class NidocaInputfield extends LitElement {
                                  @focusout="${(event: Event) => this.focusout(event)}"
                                >
                                  ${guard(
-                                   [this.options],
+                                   [this.value, this.options],
                                    () => html`
                                      ${repeat(this.options, (optionModel) =>
                                        this.isSelectedOption(optionModel)
