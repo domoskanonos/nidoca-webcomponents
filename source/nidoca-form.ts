@@ -6,19 +6,19 @@ import {BasicService} from '@domoskanonos/frontend-basis';
 import {NidocaButton} from './nidoca-button';
 
 export class NidocaFormOutputData {
-  jsonObject: any;
-  formData: FormData = FormData.prototype;
+    jsonObject: any;
+    formData: FormData = FormData.prototype;
 }
 
 export enum FormProperties {
-  ROW_LAYOUT = 'ROW_LAYOUT',
-  COLUMN_LAYOUT = 'COLUMN_LAYOUT',
-  FULL_WIDTH = 'FULL_WIDTH',
+    ROW_LAYOUT = 'ROW_LAYOUT',
+    COLUMN_LAYOUT = 'COLUMN_LAYOUT',
+    FULL_WIDTH = 'FULL_WIDTH',
 }
 
 @customElement('nidoca-form')
 export class NidocaForm extends LitElement {
-  static styles = css`
+    static styles = css`
     .FORM {
       box-sizing: border-box;
     }
@@ -49,20 +49,20 @@ export class NidocaForm extends LitElement {
     }
   `;
 
-  @property()
-  formProperties: FormProperties[] = [];
+    @property()
+    formProperties: FormProperties[] = [];
 
-  @property()
-  autocomplete: boolean = true;
+    @property()
+    autocomplete: boolean = true;
 
-  @query('#slotElement')
-  slotElement: HTMLSlotElement | undefined;
+    @query('#slotElement')
+    slotElement: HTMLSlotElement | undefined;
 
-  @query('#htmlForm')
-  htmlForm: HTMLFormElement | undefined;
+    @query('#htmlForm')
+    htmlForm: HTMLFormElement | undefined;
 
-  protected render() {
-    return html`
+    protected render() {
+        return html`
       <form
         class="${this.toFormPropertiesString(this.formProperties)}"
         id="htmlForm"
@@ -75,77 +75,85 @@ export class NidocaForm extends LitElement {
         <slot name="footer"></slot>
       </form>
     `;
-  }
-
-  toFormPropertiesString(formProperties: FormProperties[]) {
-    let formPropertiesClazzString: string = 'FORM';
-    formProperties.forEach((clazz) => {
-      formPropertiesClazzString = formPropertiesClazzString.concat(' ').concat(clazz);
-    });
-    return formPropertiesClazzString;
-  }
-
-  getInputElements(slotElement: HTMLSlotElement | undefined): NidocaInputfield[] {
-    if (slotElement == null) {
-      return [];
-    }
-    let inputElements: NidocaInputfield[] = [];
-    let elements: Element[] = slotElement.assignedElements({flatten: true});
-    for (let index = 0; index < elements.length; index++) {
-      let element: Element = elements[index];
-      if (element instanceof NidocaInputfield) {
-        inputElements.push(element);
-      }
-    }
-    return inputElements;
-  }
-
-  public isValid(): boolean {
-    for (let element of this.getInputElements(this.slotElement)) {
-      if (!element.isValid()) {
-        return false;
-      }
-    }
-    return true;
-  }
-
-  public validate(): boolean {
-    for (let element of this.getInputElements(this.slotElement)) {
-      element.validate();
-    }
-    return this.isValid();
-  }
-
-  public getOutputData(): NidocaFormOutputData {
-    let formData = new FormData();
-    let json: any = {};
-
-    for (let element of this.getInputElements(this.slotElement)) {
-      let elementOutputData = element.getOutputData();
-      json[elementOutputData.key] = elementOutputData.value;
-      formData.append(elementOutputData.key, elementOutputData.value);
     }
 
-    let outputData = <NidocaFormOutputData>{};
-    outputData.jsonObject = json;
-
-    outputData.formData = formData;
-
-    return outputData;
-
-  }
-
-  private formButtonClicked(event: CustomEvent) {
-    console.log('formButton clicked: ' + event.detail);
-    let buttonIdentifier = event.detail;
-    switch (buttonIdentifier) {
-      case 'submitButton':
-        BasicService.getUniqueInstance().dispatchSimpleCustomEvent(
-          this,
-          'nidoca-event-form-submit-button-clicked',
-          this.getOutputData()
-        );
-        break;
+    toFormPropertiesString(formProperties: FormProperties[]) {
+        let formPropertiesClazzString: string = 'FORM';
+        formProperties.forEach((clazz) => {
+            formPropertiesClazzString = formPropertiesClazzString.concat(' ').concat(clazz);
+        });
+        return formPropertiesClazzString;
     }
-  }
+
+    getInputElements(slotElement: HTMLSlotElement | undefined): NidocaInputfield[] {
+        if (slotElement == null) {
+            return [];
+        }
+        let inputElements: NidocaInputfield[] = [];
+        let elements: Element[] = slotElement.assignedElements({flatten: true});
+        for (let index = 0; index < elements.length; index++) {
+            let element: Element = elements[index];
+            this.recursiveInputElementSearch(element, inputElements);
+        }
+        return inputElements;
+    }
+
+    public isValid(): boolean {
+        for (let element of this.getInputElements(this.slotElement)) {
+            if (!element.isValid()) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public validate(): boolean {
+        for (let element of this.getInputElements(this.slotElement)) {
+            element.validate();
+        }
+        return this.isValid();
+    }
+
+    public getOutputData(): NidocaFormOutputData {
+        let formData = new FormData();
+        let json: any = {};
+
+        for (let element of this.getInputElements(this.slotElement)) {
+            let elementOutputData = element.getOutputData();
+            json[elementOutputData.key] = elementOutputData.value;
+            formData.append(elementOutputData.key, elementOutputData.value);
+        }
+
+        let outputData = <NidocaFormOutputData>{};
+        outputData.jsonObject = json;
+
+        outputData.formData = formData;
+
+        return outputData;
+
+    }
+
+    private formButtonClicked(event: CustomEvent) {
+        console.log('formButton clicked: ' + event.detail);
+        let buttonIdentifier = event.detail;
+        switch (buttonIdentifier) {
+            case 'submitButton':
+                BasicService.getUniqueInstance().dispatchSimpleCustomEvent(
+                    this,
+                    'nidoca-event-form-submit-button-clicked',
+                    this.getOutputData()
+                );
+                break;
+        }
+    }
+
+    private recursiveInputElementSearch(element: Element, inputElements: NidocaInputfield[]) {
+        if (element instanceof NidocaInputfield) {
+            inputElements.push(element);
+        } else if (element.hasChildNodes()) {
+            for (let childElement of element.children) {
+                this.recursiveInputElementSearch(childElement, inputElements);
+            }
+        }
+    }
 }
