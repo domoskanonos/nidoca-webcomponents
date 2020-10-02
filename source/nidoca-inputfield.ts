@@ -395,9 +395,8 @@ export class NidocaInputfield extends LitElement {
                                  name="${this.name}"
                                  @keyup="${this.keyup}"
                                  rows="${this.size}"
-                               >
-${this.value}</textarea
-                               >
+                                 value="${this.prepareValue(this.value)}"
+                               ></textarea>
                              `
                         : this.inputfieldType == InputfieldType.SWITCH
                             ? html`
