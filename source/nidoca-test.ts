@@ -11,10 +11,14 @@ export class NidocaTest extends LitElement {
     render() {
         return html`
       
+      <nidoca-icon
+            clickable="true"
+            icon="filter_list"
+            title="njiuhuihuihuihui"
+            .deactivated="${true}"
+          ></nidoca-icon>
       
-      <nidoca-inputfield .inputfieldMode="${InputfieldMode.FILLED}"
-                   .inputfieldType="${InputfieldType.COMBOBOX}" name="Test" label="Hallo"></nidoca-inputfield>
-      
+     
       
       
     `;

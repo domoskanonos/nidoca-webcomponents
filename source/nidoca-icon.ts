@@ -3,16 +3,16 @@ import {BasicService} from '@domoskanonos/frontend-basis';
 import {ShadowType} from './nidoca-border';
 
 export enum IconShadowType {
-  NONE = 'NONE',
-  DEFAULT_SHADOW = 'DEFAULT_SHADOW',
-  SHADOW_1 = 'SHADOW_1',
-  SHADOW_2 = 'SHADOW_2',
-  SHADOW_3 = 'SHADOW_3',
+    NONE = 'NONE',
+    DEFAULT_SHADOW = 'DEFAULT_SHADOW',
+    SHADOW_1 = 'SHADOW_1',
+    SHADOW_2 = 'SHADOW_2',
+    SHADOW_3 = 'SHADOW_3',
 }
 
 @customElement('nidoca-icon')
 export class NidocaIcon extends LitElement {
-  static styles = css`
+    static styles = css`
     .material-icons {
       font-family: 'Material Icons';
       font-weight: normal;
@@ -83,75 +83,83 @@ export class NidocaIcon extends LitElement {
     .clickable {
       cursor: pointer;
     }
+    
+    .deactivated {
+      color: var(--app-color-surface-background-dark);
+    }
+    
   `;
 
-  @property()
-  icon: string = '';
+    @property()
+    icon: string = '';
 
-  @property()
-  color: string = '';
+    @property()
+    color: string = '';
 
-  @property()
-  backgroundColor: string = '';
+    @property()
+    backgroundColor: string = '';
 
-  @property()
-  iconShadowType: string = ShadowType.NONE;
+    @property()
+    iconShadowType: string = ShadowType.NONE;
 
-  @property()
-  size: number = 24;
+    @property()
+    size: number = 24;
 
-  @property()
-  sizeUnit: string = 'px';
+    @property()
+    sizeUnit: string = 'px';
 
-  @property()
-  title: string = '';
+    @property()
+    title: string = '';
 
-  @property()
-  withIconSpace: boolean = true;
+    @property()
+    withIconSpace: boolean = true;
 
-  @property()
-  round: boolean = false;
+    @property()
+    round: boolean = false;
 
-  @property()
-  clickable: boolean = false;
+    @property()
+    clickable: boolean = false;
 
-  render() {
-    return html`
+    @property()
+    deactivated: boolean = false;
+
+    render() {
+        return html`
         <nidoca-spacer size="${this.withIconSpace ? String(this.size / 2).concat(this.sizeUnit) : '0px'}">
           <span
-            class="icon-container ${this.iconShadowType} ${this.clickable ? 'clickable' : ''} ${this.round
-              ? 'ROUND'
-              : ''}"
+            class="icon-container ${this.iconShadowType} ${this.clickable && !this.deactivated ? 'clickable' : ''} ${this.round
+            ? 'ROUND'
+            : ''} ${this.deactivated ? 'deactivated' : ''}"
             title="${this.title}"
             @click="${this.clicked}"
             style="${'line-height: '.concat(this.size.toString()).concat(this.sizeUnit).concat(';')}${'width: '
-              .concat(this.size.toString())
-              .concat(this.sizeUnit)
-              .concat(';')}${this.backgroundColor
-              ? 'background-color:'.concat(this.backgroundColor).concat(';')
-              : ''} ${this.round
-              ? 'height:'
-                  .concat((this.size * 2).toString())
-                  .concat('px;')
-                  .concat('width:')
-                  .concat((this.size * 2).toString())
-                  .concat('px;')
-              : ''}"
+            .concat(this.size.toString())
+            .concat(this.sizeUnit)
+            .concat(';')}${this.backgroundColor
+            ? 'background-color:'.concat(this.backgroundColor).concat(';')
+            : ''} ${this.round
+            ? 'height:'
+                .concat((this.size * 2).toString())
+                .concat('px;')
+                .concat('width:')
+                .concat((this.size * 2).toString())
+                .concat('px;')
+            : ''}"
             ><i
               class="material-icons"
               style="${this.color.length > 0 ? 'color: '.concat(this.color).concat(';') : ''} ${this.size != undefined
-                ? 'font-size: '.concat(this.size.toString()).concat(this.sizeUnit).concat(';')
-                : ''}"
+            ? 'font-size: '.concat(this.size.toString()).concat(this.sizeUnit).concat(';')
+            : ''}"
               >${this.icon}</i
             ><slot></slot>
           </span>
         </nidoca-spacer>
     `;
-  }
-
-  async clicked() {
-    if (this.clickable) {
-      BasicService.getUniqueInstance().dispatchSimpleCustomEvent(this, 'nidoca-event-icon-clicked', this);
     }
-  }
+
+    async clicked() {
+        if (this.clickable && !this.deactivated) {
+            BasicService.getUniqueInstance().dispatchSimpleCustomEvent(this, 'nidoca-event-icon-clicked', this);
+        }
+    }
 }

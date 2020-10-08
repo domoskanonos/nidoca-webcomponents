@@ -39,7 +39,7 @@
   },
   "author": "Dominik Bruhn",
   "scripts": {
-    "start": "node_modules/.bin/webpack-dev-server --config webpack.dev.js --open",
+    "start": "node_modules/.bin/webpack-dev-server --config webpack.prod.js --open",
     "build_typescript": "tsc -p ./",
     "pretty": "prettier --write \"./**/*.{ts,json}\"",
     "new-version": "npm run build_typescript & npm version patch & npm publish --access=public",
