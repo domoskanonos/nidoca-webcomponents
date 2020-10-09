@@ -690,12 +690,9 @@ export class NidocaInputfield extends LitElement {
     }
 
     private prepareValue(value: any): any {
-        if (value == null) {
-            return '';
-        }
 
-        if (typeof value == 'string') {
-            return value;
+        if (value == null) {
+            value = '';
         }
 
         switch (this.inputfieldType) {
@@ -706,7 +703,17 @@ export class NidocaInputfield extends LitElement {
                 value = BasicService.getUniqueInstance().beautifyText(value);
                 break;
         }
+
+        if (this.inputElemet != undefined) {
+            this.inputElemet.value = value;
+        }
+
+        if (this.textareaElement != undefined) {
+            this.textareaElement.value = value;
+        }
+
         return value;
+
     }
 
     public updateInfoText(): void {
