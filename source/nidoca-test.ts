@@ -11,12 +11,10 @@ export class NidocaTest extends LitElement {
     render() {
         return html`
       
-      <nidoca-icon
-            clickable="true"
-            icon="filter_list"
-            title="njiuhuihuihuihui"
-            .deactivated="${true}"
-          ></nidoca-icon>
+      <nidoca-navigation-section
+        slot="links"
+        text="Test"
+      ></nidoca-navigation-section>
       
      
       

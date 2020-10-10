@@ -31,9 +31,9 @@ export class NidocaNavigationSection extends LitElement {
             .flexJustifyContent="${FlexJustifyContent.FLEX_END}"
             .flexAlignItems="${FlexAlignItems.CENTER}"
             .flexAlignContent="${FlexAlignContent.FLEX_START}"
-            flexItemBasisValue="80%"
+            flexItemBasisValue="100%"
           >
-            <nidoca-spacer spacerSize="${SpacerSize.MEDIUM}" spacerAlignment="${SpacerAlignment.VERTICAL}">
+            <nidoca-spacer spacerSize="${SpacerSize.SMALL}" spacerAlignment="${SpacerAlignment.BOTH}">
               <nidoca-typography .typographyType="${TypographyType.H6}" text="${this.text}"></nidoca-typography>
             </nidoca-spacer>
           </nidoca-flex-container>
