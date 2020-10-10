@@ -394,6 +394,8 @@ export class NidocaInputfield extends LitElement {
                                  id="textareaElement"
                                  name="${this.name}"
                                  @keyup="${this.keyup}"
+                                 minlength="${this.minlength}"
+                                 maxlength="${this.maxlength}"
                                  rows="${this.size}"
                                >${this.prepareValue(this.value)}</textarea>
                              `
