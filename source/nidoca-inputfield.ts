@@ -640,11 +640,20 @@ export class NidocaInputfield extends LitElement {
                 this.errorText = this.inputElemet.validationMessage;
             }
         }
-        if (this.inputfieldType === InputfieldType.SWITCH) {
-            if (!this.checked && this.required) {
-                this.errorText = I18nService.getUniqueInstance().getValue('nidoca-inputfield-switch-error-should-true');
-            }
+
+        switch (this.inputfieldType) {
+            case InputfieldType.SWITCH:
+                if (!this.checked && this.required) {
+                    this.errorText = I18nService.getUniqueInstance().getValue('nidoca-inputfield-switch-error-should-true');
+                }
+                break;
+            case InputfieldType.TEXTAREA:
+                if (this.textareaElement != undefined && this.textareaElement.validationMessage != this.errorText) {
+                    this.errorText = this.textareaElement.validationMessage;
+                }
+                break;
         }
+
     }
 
     getOutputData(): KeyValuePair {
