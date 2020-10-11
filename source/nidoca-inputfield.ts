@@ -710,7 +710,7 @@ ${this.prepareValue(this.value)}</textarea
       value = '';
     }
 
-    if (typeof value == 'string' && value.length == 0) {
+    if (typeof value == 'string') {
       return value;
     }
 
