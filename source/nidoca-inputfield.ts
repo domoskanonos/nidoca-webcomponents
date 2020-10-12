@@ -710,12 +710,11 @@ ${this.prepareValue(this.value)}</textarea
       value = '';
     }
 
-    if (typeof value == 'string') {
-      return value;
-    }
-
     switch (this.inputfieldType) {
       case InputfieldType.DATE:
+        if (typeof value == 'string') {
+          return value;
+        }
         value = value.toISOString().substr(0, 10);
         break;
       default:
