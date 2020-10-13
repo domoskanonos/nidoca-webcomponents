@@ -395,6 +395,7 @@ export class NidocaInputfield extends NidocaInputElement {
                                  id="textareaElement"
                                  name="${this.name}"
                                  @keyup="${this.keyup}"
+                                 ?required="${this.required}"
                                  minlength="${this.minlength}"
                                  maxlength="${this.maxlength}"
                                  rows="${this.size}"
