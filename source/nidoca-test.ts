@@ -11,10 +11,10 @@ export class NidocaTest extends LitElement {
     render() {
         return html`
       
-      <nidoca-navigation-section
-        slot="links"
-        text="Test"
-      ></nidoca-navigation-section>
+      <nidoca-search-bar
+        placeholder="links"
+        value="Hallo"
+      ></nidoca-search-bar>
       
      
       

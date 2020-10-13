@@ -1,82 +1,77 @@
 import {css, customElement, html, LitElement, property, query} from 'lit-element';
-import {BasicService} from '@domoskanonos/frontend-basis';
-import {InputfieldMode, InputfieldType, NidocaInputfield} from './nidoca-inputfield';
 import {GridAlignItems, GridJustifyItems} from './nidoca-grid-container';
 import {NidocaIcon} from './nidoca-icon';
+import {BorderProperties, BorderSize, ShadowType} from './nidoca-border';
+import {BasicService} from '@domoskanonos/frontend-basis';
 
 @customElement('nidoca-search-bar')
 export class NidocaSearchBar extends LitElement {
-  static styles = css``;
+  static styles = css`
+    .input-field {
+      font: inherit;
+      box-sizing: border-box;
+      width: 100%;
+      border: none;
+      color: inherit;
+      background-color: inherit;
+      line-height: var(--line-height);
+      height: auto;
+    }
+
+    .input-field:focus,
+    .input-field:valid {
+      outline: none;
+      box-shadow: none;
+      background: inherit;
+    }
+  `;
 
   @property()
   placeholder: string = '';
 
   @property()
-  trailingIcon: string = '';
-
-  @property()
   value: string = '';
 
-  @query('#inputfieldComponent')
-  private inputfieldComponent: NidocaInputfield | undefined;
+  @query('#htmlInputElement')
+  private htmlInputElement: HTMLInputElement | undefined;
 
   render() {
     return html`
-      <nidoca-grid-container
-        .gridJustifyItems="${GridJustifyItems.STRETCH}"
-        .gridAlignItems="${GridAlignItems.STRETCH}"
-        .gridTemplateRows="${['1fr']}"
-        .gridTemplateColumns="${['auto', '1fr']}"
+      <nidoca-border
+        .borderProperties="${[BorderProperties.ALL, BorderProperties.FULL_WIDTH]}"
+        .borderSize="${BorderSize.THIN}"
+        .shadowType="${ShadowType.NONE}"
       >
-        <nidoca-icon icon="search"></nidoca-icon>
-        <nidoca-inputfield
-          id="inputfieldComponent"
-          @nidoca-event-inputfield-keyup="${() => this.textfieldKeyUp()}"
-          @nidoca-event-icon-clicked="${(event: CustomEvent) => {
-            this.textfieldIconClicked(event);
-          }}"
-          placeholder="${this.placeholder}"
-          value="${this.value}"
-          .automaticInfoText="${false}"
-          .inputfieldType="${InputfieldType.TEXT}"
-          .inputfieldMode="${InputfieldMode.CLEAN}"
-          trailingIcon="${this.trailingIcon}"
-          .trailingIconClickable="${true}"
-        ></nidoca-inputfield>
-      </nidoca-grid-container>
+        <nidoca-grid-container
+          .gridJustifyItems="${GridJustifyItems.STRETCH}"
+          .gridAlignItems="${GridAlignItems.STRETCH}"
+          .gridTemplateRows="${['1fr']}"
+          .gridTemplateColumns="${['auto', '1fr']}"
+        >
+          <nidoca-icon icon="search"></nidoca-icon>
+          <input
+            class="input-field"
+            id="inputfieldComponent"
+            type="search"
+            @keyup="${() => this.textfieldKeyUp()}"
+            placeholder="${this.placeholder}"
+            value="${this.value}"
+          />
+        </nidoca-grid-container>
+      </nidoca-border>
     `;
   }
 
   getOutputData(): string {
     let searchBarOutputData: string = '';
-    if (this.inputfieldComponent != null && this.inputfieldComponent.inputElemet != null) {
-      searchBarOutputData = this.inputfieldComponent.inputElemet.value;
+    if (this.htmlInputElement != null) {
+      searchBarOutputData = this.htmlInputElement.value;
     }
     return searchBarOutputData;
   }
 
-  private textfieldIconClicked(event: CustomEvent) {
-    let nidocaIcon: NidocaIcon = event.detail;
-    switch (nidocaIcon.icon) {
-      case 'close':
-        if (this.inputfieldComponent != null && this.inputfieldComponent.inputElemet != null) {
-          this.inputfieldComponent.inputElemet.value = '';
-          this.inputfieldComponent.inputElemet.focus();
-        }
-        this.setTrailingIcon();
-        break;
-    }
-  }
-
   private textfieldKeyUp() {
-    this.setTrailingIcon();
-  }
-
-  private setTrailingIcon() {
-    if (BasicService.getUniqueInstance().isNotBlank(this.getOutputData())) {
-      this.trailingIcon = 'close';
-    } else {
-      this.trailingIcon = '';
-    }
+    console.log('textfieldKeyUp');
+    BasicService.getUniqueInstance().dispatchSimpleCustomEvent(this, 'nidoca-event-search', this.getOutputData());
   }
 }
