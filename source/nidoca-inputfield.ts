@@ -41,8 +41,12 @@ export enum InputfieldMode {
 @customElement('nidoca-inputfield')
 export class NidocaInputfield extends NidocaInputElement {
     static styles = css`
-    .FILLED {
+    .ENABLED {
       background-color: var(--app-color-surface-background-light);
+    }
+    
+    .DISABLED {
+      background-color: var(--app-color-surface-background);    
     }
 
     input,
@@ -272,7 +276,7 @@ export class NidocaInputfield extends NidocaInputElement {
               >
               
               <nidoca-grid-container
-                    class="${this.inputfieldMode}"
+                    class="${this.disabled ? 'DISABLED' : 'ENABLED'}"
                     minHeight="68px"
                     .gridJustifyItems="${GridJustifyItems.STRETCH}"
                     .gridAlignItems="${GridAlignItems.CENTER}" 
