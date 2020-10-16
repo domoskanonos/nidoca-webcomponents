@@ -232,9 +232,6 @@ export class NidocaInputfield extends NidocaInputElement {
     trailingIcon: string = '';
 
     @property()
-    pattern: string = '';
-
-    @property()
     leadingIconClickable: boolean = false;
 
     @property()
@@ -479,7 +476,6 @@ ${this.prepareValue(this.value)}</textarea
                                  min="${this.min}"
                                  max="${this.max}"
                                  step="${this.step}"
-                                 pattern="${this.pattern}"
                                  ?required="${this.required}"
                                  ?disabled="${this.disabled}"
                                  ?checked="${this.checked}"
