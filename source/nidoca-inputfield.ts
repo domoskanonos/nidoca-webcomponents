@@ -11,36 +11,36 @@ import {TypographyType} from './nidoca-typography';
 import {NidocaInputElement} from './nidoca-input-element';
 
 export enum InputfieldType {
-  TEXTAREA = 'textarea',
-  SWITCH = 'SWITCH',
-  CHECKBOX = 'checkbox',
-  COLOR = 'color',
-  DATE = 'date',
-  DATETIME_LOCAL = 'datetime-local',
-  EMAIL = 'email',
-  FILE = 'file',
-  HIDDEN = 'hidden',
-  MONTH = 'month',
-  NUMBER = 'number',
-  PASSWORD = 'password',
-  RANGE = 'range',
-  SEARCH = 'search',
-  TEL = 'tel',
-  TEXT = 'text',
-  TIME = 'time',
-  URL = 'url',
-  WEEK = 'week',
-  COMBOBOX = 'combobox',
+    TEXTAREA = 'textarea',
+    SWITCH = 'SWITCH',
+    CHECKBOX = 'checkbox',
+    COLOR = 'color',
+    DATE = 'date',
+    DATETIME_LOCAL = 'datetime-local',
+    EMAIL = 'email',
+    FILE = 'file',
+    HIDDEN = 'hidden',
+    MONTH = 'month',
+    NUMBER = 'number',
+    PASSWORD = 'password',
+    RANGE = 'range',
+    SEARCH = 'search',
+    TEL = 'tel',
+    TEXT = 'text',
+    TIME = 'time',
+    URL = 'url',
+    WEEK = 'week',
+    COMBOBOX = 'combobox',
 }
 
 export enum InputfieldMode {
-  CLEAN = 'CLEAN',
-  FILLED = 'FILLED',
+    CLEAN = 'CLEAN',
+    FILLED = 'FILLED',
 }
 
 @customElement('nidoca-inputfield')
 export class NidocaInputfield extends NidocaInputElement {
-  static styles = css`
+    static styles = css`
     .ENABLED {
       background-color: var(--app-color-surface-background-light);
     }
@@ -159,120 +159,123 @@ export class NidocaInputfield extends NidocaInputElement {
     }
   `;
 
-  @property()
-  name: string = '';
+    @property()
+    name: string = '';
 
-  @property()
-  value: any;
+    @property()
+    value: any;
 
-  @property()
-  oldValue: any;
+    @property()
+    oldValue: any;
 
-  @property()
-  inputfieldType: string = InputfieldType.TEXT;
+    @property()
+    inputfieldType: string = InputfieldType.TEXT;
 
-  @property()
-  inputfieldMode: string = InputfieldMode.FILLED;
+    @property()
+    inputfieldMode: string = InputfieldMode.FILLED;
 
-  @property()
-  placeholder: string = '';
+    @property()
+    placeholder: string = '';
 
-  @property()
-  required: boolean = false;
+    @property()
+    required: boolean = false;
 
-  @property()
-  disabled: boolean = false;
+    @property()
+    disabled: boolean = false;
 
-  @property()
-  checked: boolean = false;
+    @property()
+    checked: boolean = false;
 
-  @property()
-  multiple: boolean = false;
+    @property()
+    multiple: boolean = false;
 
-  @property()
-  accept: string = '*/*';
+    @property()
+    accept: string = '*/*';
 
-  @property()
-  maxSize: number = 2048;
+    @property()
+    maxSize: number = 2048;
 
-  @property()
-  maxlength: number | undefined;
+    @property()
+    maxlength: number | undefined;
 
-  @property()
-  minlength: number | undefined;
+    @property()
+    minlength: number | undefined;
 
-  @property()
-  min: number | undefined;
+    @property()
+    min: number | undefined;
 
-  @property()
-  max: number | undefined;
+    @property()
+    max: number | undefined;
 
-  @property()
-  step: number | undefined;
+    @property()
+    step: number | undefined;
 
-  @property()
-  size: number | undefined;
+    @property()
+    size: number | undefined;
 
-  @property()
-  label: string = '';
+    @property()
+    label: string = '';
 
-  @property()
-  assistiveText: string = '';
+    @property()
+    assistiveText: string = '';
 
-  @property()
-  infoText: string = '';
+    @property()
+    infoText: string = '';
 
-  @property()
-  errorText: string = '';
+    @property()
+    errorText: string = '';
 
-  @property()
-  leadingIcon: string = '';
+    @property()
+    leadingIcon: string = '';
 
-  @property()
-  trailingIcon: string = '';
+    @property()
+    trailingIcon: string = '';
 
-  @property()
-  leadingIconClickable: boolean = false;
+    @property()
+    pattern: string = '';
 
-  @property()
-  trailingIconClickable: boolean = false;
+    @property()
+    leadingIconClickable: boolean = false;
 
-  @property()
-  selected: boolean = false;
+    @property()
+    trailingIconClickable: boolean = false;
 
-  @property()
-  options: any[] = [];
+    @property()
+    selected: boolean = false;
 
-  @property()
-  valueKeyField: string = '';
+    @property()
+    options: any[] = [];
 
-  @property()
-  optionKeyField: string = 'key';
+    @property()
+    valueKeyField: string = '';
 
-  @property()
-  optionValueField: string = 'value';
+    @property()
+    optionKeyField: string = 'key';
 
-  @query('#inputElement')
-  inputElemet: HTMLInputElement | undefined;
+    @property()
+    optionValueField: string = 'value';
 
-  @query('#selectElement')
-  selectElemet: HTMLSelectElement | undefined;
+    @query('#inputElement')
+    inputElemet: HTMLInputElement | undefined;
 
-  @query('#textareaElement')
-  textareaElement: HTMLTextAreaElement | undefined;
+    @query('#selectElement')
+    selectElemet: HTMLSelectElement | undefined;
 
-  render() {
-    return this.inputfieldType != InputfieldType.HIDDEN
-      ? html`
+    @query('#textareaElement')
+    textareaElement: HTMLTextAreaElement | undefined;
+
+    render() {
+        return this.inputfieldType != InputfieldType.HIDDEN
+            ? html`
               <nidoca-border
                  .borderProperties="${[
-                   BorderProperties.FULL_WIDTH,
-                   this.showSelectedBorder()
-                     ? BorderProperties.BOTTOM_SELECTED
-                     : this.showBorder()
-                     ? BorderProperties.BOTTOM
-                     : BorderProperties.NONE,
-                 ]}"
+                BorderProperties.FULL_WIDTH,
+                this.showSelectedBorder()
+                    ? BorderProperties.BOTTOM_SELECTED
+                    : this.showBorder()
+                    ? BorderProperties.BOTTOM
+                    : BorderProperties.NONE,
+            ]}"
               >
               
               <nidoca-grid-container
@@ -292,23 +295,23 @@ export class NidocaInputfield extends NidocaInputElement {
                  >
                     <nidoca-visible
                                   visibleType="${
-                                    BasicService.getUniqueInstance().isNotBlank(this.leadingIcon)
-                                      ? VisibleType.NORMAL
-                                      : VisibleType.HIDE
-                                  }"
+                BasicService.getUniqueInstance().isNotBlank(this.leadingIcon)
+                    ? VisibleType.NORMAL
+                    : VisibleType.HIDE
+            }"
                     >
                        <nidoca-icon icon="${this.leadingIcon}" .clickable="${this.leadingIconClickable}"></nidoca-icon>
                     </nidoca-visible>
                     <nidoca-spacer spacerSize="${
-                      this.inputfieldType == InputfieldType.SWITCH || this.inputfieldType == InputfieldType.FILE
-                        ? SpacerSize.ZERO
-                        : SpacerSize.MEDIUM
-                    }" spacerAlignment="${SpacerAlignment.HORIZONTAL}">
+                this.inputfieldType == InputfieldType.SWITCH || this.inputfieldType == InputfieldType.FILE
+                    ? SpacerSize.ZERO
+                    : SpacerSize.MEDIUM
+            }" spacerAlignment="${SpacerAlignment.HORIZONTAL}">
                     <nidoca-flex-container
                        .flexContainerProperties="${[
-                         FlexContainerProperties.CONTAINER_WIDTH_100,
-                         FlexContainerProperties.CONTAINER_HEIGHT_100,
-                       ]}"
+                FlexContainerProperties.CONTAINER_WIDTH_100,
+                FlexContainerProperties.CONTAINER_HEIGHT_100,
+            ]}"
                        .flexAlignContent="${FlexAlignContent.CENTER}"
                        flexItemBasisValue="100%"
                     >
@@ -319,8 +322,8 @@ export class NidocaInputfield extends NidocaInputElement {
                           ></nidoca-typography>
                        </nidoca-visible>
                        ${
-                         this.inputfieldType == InputfieldType.FILE
-                           ? html`
+                this.inputfieldType == InputfieldType.FILE
+                    ? html`
                                <nidoca-grid-container
                                  .gridTemplateRows="${['auto']}"
                                  .gridTemplateColumns="${['1fr', 'auto']}"
@@ -361,8 +364,8 @@ export class NidocaInputfield extends NidocaInputElement {
                                    @change="${(event: Event) => this.change(event)}"
                                /></nidoca-visible>
                              `
-                           : this.inputfieldType == InputfieldType.COMBOBOX
-                           ? html`
+                    : this.inputfieldType == InputfieldType.COMBOBOX
+                    ? html`
                                <select
                                  id="selectElement"
                                  ?required="${this.required}"
@@ -374,27 +377,27 @@ export class NidocaInputfield extends NidocaInputElement {
                                  @focusout="${(event: Event) => this.focusout(event)}"
                                >
                                  ${guard(
-                                   [this.value, this.options],
-                                   () => html`
+                        [this.value, this.options],
+                        () => html`
                                      ${repeat(this.options, (optionModel) =>
-                                       this.isSelectedOption(optionModel)
-                                         ? html`
+                            this.isSelectedOption(optionModel)
+                                ? html`
                                              <option value="${this.getOptionKey(optionModel)}" selected>
                                                ${this.getOptionValue(optionModel)}
                                              </option>
                                            `
-                                         : html`
+                                : html`
                                              <option value="${this.getOptionKey(optionModel)}">
                                                ${this.getOptionValue(optionModel)}
                                              </option>
                                            `
-                                     )}
+                        )}
                                    `
-                                 )}
+                    )}
                                </select>
                              `
-                           : this.inputfieldType == InputfieldType.TEXTAREA
-                           ? html`
+                    : this.inputfieldType == InputfieldType.TEXTAREA
+                        ? html`
                                <textarea
                                  id="textareaElement"
                                  name="${this.name}"
@@ -407,8 +410,8 @@ export class NidocaInputfield extends NidocaInputElement {
 ${this.prepareValue(this.value)}</textarea
                                >
                              `
-                           : this.inputfieldType == InputfieldType.SWITCH
-                           ? html`
+                        : this.inputfieldType == InputfieldType.SWITCH
+                            ? html`
                                <nidoca-grid-container
                                  .gridTemplateRows="${['auto']}"
                                  .gridTemplateColumns="${['1fr', 'auto']}"
@@ -424,8 +427,8 @@ ${this.prepareValue(this.value)}</textarea
                                    ></nidoca-typography>
                                    <nidoca-visible
                                      visibleType="${BasicService.getUniqueInstance().isNotBlank(this.assistiveText)
-                                       ? VisibleType.NORMAL
-                                       : VisibleType.HIDE}"
+                                ? VisibleType.NORMAL
+                                : VisibleType.HIDE}"
                                    >
                                      <nidoca-typography
                                        .typographyType="${TypographyType.SUBTITLE2}"
@@ -439,8 +442,8 @@ ${this.prepareValue(this.value)}</textarea
                                    >
                                      <nidoca-icon
                                        @nidoca-event-icon-clicked="${() => {
-                                         this.switchChecked();
-                                       }}"
+                                this.switchChecked();
+                            }}"
                                        icon="toggle_off"
                                        .clickable="${true}"
                                      ></nidoca-icon>
@@ -451,8 +454,8 @@ ${this.prepareValue(this.value)}</textarea
                                      <nidoca-icon
                                        color="var(--app-color-primary-background)"
                                        @nidoca-event-icon-clicked="${() => {
-                                         this.switchChecked();
-                                       }}"
+                                this.switchChecked();
+                            }}"
                                        icon="toggle_on"
                                        .clickable="${true}"
                                      ></nidoca-icon>
@@ -460,22 +463,23 @@ ${this.prepareValue(this.value)}</textarea
                                  </componetn-container>
                                </nidoca-grid-container>
                              `
-                           : html`
+                            : html`
                                <input
                                  id="inputElement"
                                  name="${this.name}"
                                  type="${this.inputfieldType}"
                                  value="${this.prepareValue(this.value)}"
                                  placeholder="${BasicService.getUniqueInstance().isBlank(this.placeholder) &&
-                                 !this.showLabelText()
-                                   ? this.label
-                                   : this.placeholder}"
+                            !this.showLabelText()
+                                ? this.label
+                                : this.placeholder}"
                                  size="${this.size}"
                                  minlength="${this.minlength}"
                                  maxlength="${this.maxlength}"
                                  min="${this.min}"
                                  max="${this.max}"
                                  step="${this.step}"
+                                 ?pattern="${this.pattern}"
                                  ?required="${this.required}"
                                  ?disabled="${this.disabled}"
                                  ?checked="${this.checked}"
@@ -486,19 +490,19 @@ ${this.prepareValue(this.value)}</textarea
                                  @focusout="${(event: Event) => this.focusout(event)}"
                                />
                              `
-                       }</nidoca-flex-container
+            }</nidoca-flex-container
                     >
                     </nidoca-spacer>
                     <nidoca-visible
                        visibleType="${
-                         BasicService.getUniqueInstance().isNotBlank(this.trailingIcon)
-                           ? VisibleType.NORMAL
-                           : VisibleType.HIDE
-                       }"
+                BasicService.getUniqueInstance().isNotBlank(this.trailingIcon)
+                    ? VisibleType.NORMAL
+                    : VisibleType.HIDE
+            }"
                     >
                        <nidoca-icon icon="${this.trailingIcon}" .clickable="${
-          this.trailingIconClickable
-        }"></nidoca-icon>
+                this.trailingIconClickable
+            }"></nidoca-icon>
                     </nidoca-visible>
                  </nidoca-grid-container>
                  </nidoca-spacer>
@@ -506,7 +510,7 @@ ${this.prepareValue(this.value)}</textarea
               </nidoca-border>
               <nidoca-visible visibleType="${
                 this.showAdditionalTextContainer() ? VisibleType.NORMAL : VisibleType.HIDE
-              }">
+            }">
                  <nidoca-spacer spacerSize="${SpacerSize.LITTLE}" spacerAlignment="${SpacerAlignment.VERTICAL}">
                  <nidoca-flex-container
                     .flexContainerProperties="${[FlexContainerProperties.CONTAINER_WIDTH_100]}"
@@ -526,11 +530,11 @@ ${this.prepareValue(this.value)}</textarea
               </nidoca-spacer>
               <nidoca-visible visibleType="${
                 BasicService.getUniqueInstance().isNotBlank(this.errorText)
-                  ? VisibleType.NORMAL
-                  : this.inputfieldMode == InputfieldMode.CLEAN
-                  ? VisibleType.HIDE
-                  : VisibleType.INVISIBLE
-              }">
+                    ? VisibleType.NORMAL
+                    : this.inputfieldMode == InputfieldMode.CLEAN
+                    ? VisibleType.HIDE
+                    : VisibleType.INVISIBLE
+            }">
               <nidoca-typography
                  style="color:var(--app-color-error)"
                  .typographyType="${TypographyType.OVERLINE}"
@@ -538,7 +542,7 @@ ${this.prepareValue(this.value)}</textarea
               ></nidoca-typography>
               </nidoca-visible>
            `
-      : html`
+            : html`
           <input
             id="inputElement"
             name="${this.name}"
@@ -546,412 +550,412 @@ ${this.prepareValue(this.value)}</textarea
             value="${this.prepareValue(this.value)}"
           />
         `;
-  }
-
-  private getOptionValue(optionModel: any) {
-    return BasicService.getUniqueInstance().isBlank(this.optionValueField)
-      ? optionModel
-      : optionModel[this.optionValueField];
-  }
-
-  private getOptionKey(optionModel: any) {
-    return BasicService.getUniqueInstance().isBlank(this.optionKeyField)
-      ? optionModel
-      : optionModel[this.optionKeyField];
-  }
-
-  private getValueKey(valueModel: any) {
-    return BasicService.getUniqueInstance().isBlank(this.valueKeyField) ? valueModel : valueModel[this.valueKeyField];
-  }
-
-  private switchChecked() {
-    this.checked = !Boolean(this.checked);
-    BasicService.getUniqueInstance().dispatchSimpleCustomEvent(
-      this,
-      'nidoca-event-inputfield-change',
-      this.getOutputData()
-    );
-  }
-
-  async keyup() {
-    BasicService.getUniqueInstance().dispatchSimpleCustomEvent(
-      this,
-      'nidoca-event-inputfield-keyup',
-      this.getOutputData()
-    );
-  }
-
-  async focused(event: Event) {
-    console.log('event: '.concat(JSON.stringify(event)));
-    this.oldValue = this.value;
-    this.selected = true;
-    BasicService.getUniqueInstance().dispatchSimpleCustomEvent(
-      this,
-      'nidoca-event-inputfield-focus',
-      this.getOutputData()
-    );
-  }
-
-  async focusout(event: Event) {
-    console.log('focusout event: '.concat(JSON.stringify(event)));
-    this.selected = false;
-    this.validate();
-    BasicService.getUniqueInstance().dispatchSimpleCustomEvent(
-      this,
-      'nidoca-event-inputfield-focus-out',
-      this.getOutputData()
-    );
-  }
-
-  async change(event: Event) {
-    console.log('change event: '.concat(JSON.stringify(event)));
-    BasicService.getUniqueInstance().dispatchSimpleCustomEvent(
-      this,
-      'nidoca-event-inputfield-change',
-      this.getOutputData()
-    );
-  }
-
-  public isValid(): boolean {
-    switch (this.inputfieldType) {
-      case InputfieldType.COMBOBOX:
-        return this.selectElemet != null ? this.selectElemet.validity.valid : false;
-      case InputfieldType.TEXTAREA:
-        return this.textareaElement != null ? this.textareaElement.validity.valid : false;
-      case InputfieldType.SWITCH:
-        return this.required ? this.required && this.checked : true;
-      case InputfieldType.FILE:
-        return !this.maxFileSizeReached() && !this.unexpectedFileType();
-      default:
-        return this.inputElemet != null ? this.inputElemet.validity.valid : false;
-    }
-  }
-
-  public validate(): void {
-    this.errorText = '';
-    if (this.inputElemet != null) {
-      if (this.inputElemet.validity.valid) {
-        this.value = this.inputElemet.value;
-        this.oldValue = this.inputElemet.value;
-      }
-      if (this.inputfieldType === InputfieldType.FILE) {
-        let errorTextFile = '';
-        if (this.maxFileSizeReached()) {
-          errorTextFile = I18nService.getUniqueInstance().getValue('nidoca-inputfield-file-error-max-size-reached');
-        }
-        if (this.unexpectedFileType()) {
-          if (errorTextFile.length > 0) {
-            errorTextFile = errorTextFile.concat('\n');
-          }
-          errorTextFile = I18nService.getUniqueInstance().getValue('nidoca-inputfield-file-error-allowed-file-type');
-        }
-        this.errorText = errorTextFile;
-      } else if (this.inputElemet.validationMessage != this.errorText) {
-        this.errorText = this.inputElemet.validationMessage;
-      }
     }
 
-    switch (this.inputfieldType) {
-      case InputfieldType.SWITCH:
-        if (!this.checked && this.required) {
-          this.errorText = I18nService.getUniqueInstance().getValue('nidoca-inputfield-switch-error-should-true');
-        }
-        break;
-      case InputfieldType.TEXTAREA:
-        if (this.textareaElement != undefined && this.textareaElement.validationMessage != this.errorText) {
-          this.errorText = this.textareaElement.validationMessage;
-        }
-        break;
-      case InputfieldType.COMBOBOX:
-        if (
-          this.selectElemet != null &&
-          !this.selectElemet.validity.valid &&
-          this.selectElemet.validationMessage != this.errorText
-        ) {
-          this.errorText = this.selectElemet.validationMessage;
-        }
-        break;
+    private getOptionValue(optionModel: any) {
+        return BasicService.getUniqueInstance().isBlank(this.optionValueField)
+            ? optionModel
+            : optionModel[this.optionValueField];
     }
-  }
 
-  getOutputData(): KeyValuePair {
-    let outputValue: any = this.oldValue;
+    private getOptionKey(optionModel: any) {
+        return BasicService.getUniqueInstance().isBlank(this.optionKeyField)
+            ? optionModel
+            : optionModel[this.optionKeyField];
+    }
 
-    switch (this.inputfieldType) {
-      case InputfieldType.COMBOBOX:
-        if (this.selectElemet != null && this.multiple) {
-          outputValue = [];
-          for (let i = 0, len = this.selectElemet.options.length; i < len; i++) {
-            let opt: HTMLOptionElement = this.selectElemet.options[i];
-            if (opt.selected) {
-              outputValue.push(this.options[i]);
-              //outputValue.push(opt.value);
+    private getValueKey(valueModel: any) {
+        return BasicService.getUniqueInstance().isBlank(this.valueKeyField) ? valueModel : valueModel[this.valueKeyField];
+    }
+
+    private switchChecked() {
+        this.checked = !Boolean(this.checked);
+        BasicService.getUniqueInstance().dispatchSimpleCustomEvent(
+            this,
+            'nidoca-event-inputfield-change',
+            this.getOutputData()
+        );
+    }
+
+    async keyup() {
+        BasicService.getUniqueInstance().dispatchSimpleCustomEvent(
+            this,
+            'nidoca-event-inputfield-keyup',
+            this.getOutputData()
+        );
+    }
+
+    async focused(event: Event) {
+        console.log('event: '.concat(JSON.stringify(event)));
+        this.oldValue = this.value;
+        this.selected = true;
+        BasicService.getUniqueInstance().dispatchSimpleCustomEvent(
+            this,
+            'nidoca-event-inputfield-focus',
+            this.getOutputData()
+        );
+    }
+
+    async focusout(event: Event) {
+        console.log('focusout event: '.concat(JSON.stringify(event)));
+        this.selected = false;
+        this.validate();
+        BasicService.getUniqueInstance().dispatchSimpleCustomEvent(
+            this,
+            'nidoca-event-inputfield-focus-out',
+            this.getOutputData()
+        );
+    }
+
+    async change(event: Event) {
+        console.log('change event: '.concat(JSON.stringify(event)));
+        BasicService.getUniqueInstance().dispatchSimpleCustomEvent(
+            this,
+            'nidoca-event-inputfield-change',
+            this.getOutputData()
+        );
+    }
+
+    public isValid(): boolean {
+        switch (this.inputfieldType) {
+            case InputfieldType.COMBOBOX:
+                return this.selectElemet != null ? this.selectElemet.validity.valid : false;
+            case InputfieldType.TEXTAREA:
+                return this.textareaElement != null ? this.textareaElement.validity.valid : false;
+            case InputfieldType.SWITCH:
+                return this.required ? this.required && this.checked : true;
+            case InputfieldType.FILE:
+                return !this.maxFileSizeReached() && !this.unexpectedFileType();
+            default:
+                return this.inputElemet != null ? this.inputElemet.validity.valid : false;
+        }
+    }
+
+    public validate(): void {
+        this.errorText = '';
+        if (this.inputElemet != null) {
+            if (this.inputElemet.validity.valid) {
+                this.value = this.inputElemet.value;
+                this.oldValue = this.inputElemet.value;
             }
-          }
-        } else if (this.selectElemet != null) {
-          if (this.selectElemet.value.length == 0) {
-            outputValue = null;
-          } else {
-            outputValue = this.selectElemet.value;
-          }
+            if (this.inputfieldType === InputfieldType.FILE) {
+                let errorTextFile = '';
+                if (this.maxFileSizeReached()) {
+                    errorTextFile = I18nService.getUniqueInstance().getValue('nidoca-inputfield-file-error-max-size-reached');
+                }
+                if (this.unexpectedFileType()) {
+                    if (errorTextFile.length > 0) {
+                        errorTextFile = errorTextFile.concat('\n');
+                    }
+                    errorTextFile = I18nService.getUniqueInstance().getValue('nidoca-inputfield-file-error-allowed-file-type');
+                }
+                this.errorText = errorTextFile;
+            } else if (this.inputElemet.validationMessage != this.errorText) {
+                this.errorText = this.inputElemet.validationMessage;
+            }
         }
-        break;
-      case InputfieldType.SWITCH:
-        outputValue = this.checked;
-        break;
-      case InputfieldType.DATETIME_LOCAL:
-      case InputfieldType.DATE:
-        outputValue = this.inputElemet?.valueAsDate;
-        break;
-      case InputfieldType.TEXTAREA:
-        outputValue = this.textareaElement?.value;
-        break;
-      case InputfieldType.FILE:
-        outputValue = this.inputElemet?.files;
-        break;
-      default:
-        outputValue = this.inputElemet?.value;
-        break;
-    }
 
-    return <KeyValuePair>{
-      key: this.name,
-      value: outputValue,
-    };
-  }
-
-  private prepareValue(value: any): any {
-    if (value == null) {
-      value = '';
-    }
-
-    switch (this.inputfieldType) {
-      case InputfieldType.DATE:
-        if (typeof value == 'string') {
-          return value;
+        switch (this.inputfieldType) {
+            case InputfieldType.SWITCH:
+                if (!this.checked && this.required) {
+                    this.errorText = I18nService.getUniqueInstance().getValue('nidoca-inputfield-switch-error-should-true');
+                }
+                break;
+            case InputfieldType.TEXTAREA:
+                if (this.textareaElement != undefined && this.textareaElement.validationMessage != this.errorText) {
+                    this.errorText = this.textareaElement.validationMessage;
+                }
+                break;
+            case InputfieldType.COMBOBOX:
+                if (
+                    this.selectElemet != null &&
+                    !this.selectElemet.validity.valid &&
+                    this.selectElemet.validationMessage != this.errorText
+                ) {
+                    this.errorText = this.selectElemet.validationMessage;
+                }
+                break;
         }
-        value = value.toISOString().substr(0, 10);
-        break;
-      default:
-        value = BasicService.getUniqueInstance().beautifyText(value);
-        break;
     }
 
-    if (this.inputElemet != undefined) {
-      this.inputElemet.value = value;
-    }
+    getOutputData(): KeyValuePair {
+        let outputValue: any = this.oldValue;
 
-    if (this.textareaElement != undefined) {
-      this.textareaElement.value = value;
-    }
-
-    return value;
-  }
-
-  public updateInfoText(): void {
-    if (!this.showBorder()) {
-      this.infoText = '';
-      return;
-    }
-    switch (this.inputfieldType) {
-      case InputfieldType.SWITCH:
-      case InputfieldType.COLOR:
-      case InputfieldType.DATE:
-      case InputfieldType.DATETIME_LOCAL:
-      case InputfieldType.EMAIL:
-      case InputfieldType.FILE:
-      case InputfieldType.HIDDEN:
-      case InputfieldType.MONTH:
-      case InputfieldType.RANGE:
-      case InputfieldType.SEARCH:
-      case InputfieldType.TEL:
-      case InputfieldType.TIME:
-      case InputfieldType.URL:
-      case InputfieldType.WEEK:
-        break;
-      case InputfieldType.NUMBER:
-        this.infoText = BasicService.getUniqueInstance()
-          .getValue(this.min, '')
-          .toString()
-          .concat('-')
-          .concat(BasicService.getUniqueInstance().getValue(this.max, '').toString());
-        break;
-      case InputfieldType.TEXT:
-      case InputfieldType.PASSWORD:
-        this.infoText = this.value.length
-          .toString()
-          .concat('/')
-          .concat(BasicService.getUniqueInstance().getValue(this.maxlength, '0').toString());
-        break;
-    }
-  }
-
-  private showBorder(): boolean {
-    return this.inputfieldMode != InputfieldMode.CLEAN && BasicService.getUniqueInstance().isNotBlank(this.label);
-  }
-
-  private showSelectedBorder(): boolean {
-    return (
-      this.inputfieldMode != InputfieldMode.CLEAN &&
-      this.showBorder() &&
-      this.selected &&
-      this.inputfieldType !== InputfieldType.RANGE &&
-      this.inputfieldType !== InputfieldType.COLOR
-    );
-  }
-
-  private showLabelText(): boolean {
-    return (
-      ((this.selected ||
-        this.inputfieldType === InputfieldType.COLOR ||
-        this.inputfieldType === InputfieldType.COMBOBOX ||
-        this.inputfieldType === InputfieldType.TEXTAREA ||
-        this.inputfieldType === InputfieldType.RANGE ||
-        this.inputfieldType === InputfieldType.FILE ||
-        this.inputfieldType === InputfieldType.SWITCH ||
-        this.inputfieldType === InputfieldType.CHECKBOX ||
-        this.inputfieldType === InputfieldType.NUMBER ||
-        this.inputfieldType === InputfieldType.MONTH ||
-        this.inputfieldType === InputfieldType.TIME ||
-        this.inputfieldType === InputfieldType.WEEK ||
-        this.inputfieldType === InputfieldType.DATE ||
-        this.inputfieldType === InputfieldType.DATETIME_LOCAL) &&
-        BasicService.getUniqueInstance().isNotBlank(this.label)) ||
-      (BasicService.getUniqueInstance().isNotBlank(this.value) &&
-        BasicService.getUniqueInstance().isNotBlank(this.label))
-    );
-  }
-
-  private showAdditionalTextContainer() {
-    return (
-      this.inputfieldType != InputfieldType.SWITCH &&
-      this.inputfieldType != InputfieldType.FILE &&
-      (this.assistiveText.length > 0 || this.infoText.length > 0)
-    );
-  }
-
-  static enumToComboboxItems(enumeration: any): KeyValuePair[] {
-    let options: KeyValuePair[] = [];
-    Object.keys(enumeration).forEach((key) => {
-      options.push(<KeyValuePair>{key: key, value: enumeration[key]});
-    });
-    return options;
-  }
-
-  static enumToComboboxItemsI18n(enumeration: any, i18nPrefix: string): KeyValuePair[] {
-    let options: KeyValuePair[] = [];
-    Object.keys(enumeration).forEach((key) => {
-      options.push(<KeyValuePair>{
-        key: key,
-        value: I18nService.getUniqueInstance().getValue(i18nPrefix.concat(enumeration[key])),
-      });
-    });
-    return options;
-  }
-
-  static clazzToComboboxItems(clazz: any): KeyValuePair[] {
-    let options: KeyValuePair[] = [];
-    Object.keys(clazz).forEach((key) => {
-      options.push(<KeyValuePair>{key: clazz[key], value: key});
-    });
-    return options;
-  }
-
-  static object2KeyValuePairArray(
-    object: any,
-    keyFieldName: string,
-    valueFieldName: string,
-    withEmptyItem: boolean = false
-  ): KeyValuePair[] {
-    let options: KeyValuePair[] = [];
-    if (withEmptyItem) {
-      options.push(<KeyValuePair>{key: '', value: {}});
-    }
-    Object.values(object).forEach((value: any) => {
-      options.push(<KeyValuePair>{key: value[keyFieldName], value: value[valueFieldName]});
-    });
-    return options;
-  }
-
-  static stringArray2KeyValuePairArrayWithI18nValueMapping(
-    arr: string[],
-    i18nPrefix: string,
-    withEmptyItem: boolean = false
-  ): KeyValuePair[] {
-    let options: KeyValuePair[] = [];
-    if (withEmptyItem) {
-      options.push(<KeyValuePair>{key: '', value: {}});
-    }
-    Object.values(arr).forEach((value: any) => {
-      options.push(<KeyValuePair>{
-        key: value,
-        value: I18nService.getUniqueInstance().getValue(i18nPrefix.concat(value)),
-      });
-    });
-    return options;
-  }
-
-  static inputfieldTypeByTypescriptType(tyescriptType: TypescriptType): InputfieldType {
-    switch (tyescriptType) {
-      case TypescriptType.NUMBER:
-        return InputfieldType.NUMBER;
-      case TypescriptType.BOOLEAN:
-        return InputfieldType.SWITCH;
-      case TypescriptType.DATE:
-        return InputfieldType.DATE;
-      case TypescriptType.STRING:
-      default:
-        return InputfieldType.TEXT;
-    }
-  }
-
-  private isSelectedOption(optionModel: any): boolean {
-    if (this.multiple) {
-      let isSelected: boolean = false;
-      for (let item of Object.values<any>(this.value)) {
-        isSelected = BasicService.getUniqueInstance().isEqual(this.getValueKey(item), this.getOptionKey(optionModel));
-        if (isSelected) {
-          return true;
+        switch (this.inputfieldType) {
+            case InputfieldType.COMBOBOX:
+                if (this.selectElemet != null && this.multiple) {
+                    outputValue = [];
+                    for (let i = 0, len = this.selectElemet.options.length; i < len; i++) {
+                        let opt: HTMLOptionElement = this.selectElemet.options[i];
+                        if (opt.selected) {
+                            outputValue.push(this.options[i]);
+                            //outputValue.push(opt.value);
+                        }
+                    }
+                } else if (this.selectElemet != null) {
+                    if (this.selectElemet.value.length == 0) {
+                        outputValue = null;
+                    } else {
+                        outputValue = this.selectElemet.value;
+                    }
+                }
+                break;
+            case InputfieldType.SWITCH:
+                outputValue = this.checked;
+                break;
+            case InputfieldType.DATETIME_LOCAL:
+            case InputfieldType.DATE:
+                outputValue = this.inputElemet?.valueAsDate;
+                break;
+            case InputfieldType.TEXTAREA:
+                outputValue = this.textareaElement?.value;
+                break;
+            case InputfieldType.FILE:
+                outputValue = this.inputElemet?.files;
+                break;
+            default:
+                outputValue = this.inputElemet?.value;
+                break;
         }
-      }
+
+        return <KeyValuePair>{
+            key: this.name,
+            value: outputValue,
+        };
     }
 
-    return BasicService.getUniqueInstance().isEqual(this.getValueKey(this.value), this.getOptionKey(optionModel));
-  }
-
-  private maxFileSizeReached(): boolean {
-    let files: FileList | null | undefined = this.inputElemet?.files;
-    if (files != null) {
-      for (let i = 0; i < files.length; i++) {
-        let file: File | null = files.item(i);
-        if (file != null && file.size / 1024 > this.maxSize) {
-          return true;
+    private prepareValue(value: any): any {
+        if (value == null) {
+            value = '';
         }
-      }
-    }
-    return false;
-  }
 
-  private unexpectedFileType(): boolean {
-    if (this.accept == '*/*') {
-      return false;
-    }
-    let files: FileList | null | undefined = this.inputElemet?.files;
-    if (files != null) {
-      for (let i = 0; i < files.length; i++) {
-        let file: File | null = files.item(i);
-        if (file != null) {
-          let filename = file.name;
-          let fileEnding = filename.substr(filename.lastIndexOf('.') + 1);
-          if (this.accept == 'image/*' && (fileEnding == 'jpg' || fileEnding == 'png' || fileEnding == 'gif')) {
-            continue;
-          }
-          if (this.accept.indexOf(fileEnding) == -1) {
-            return true;
-          }
+        switch (this.inputfieldType) {
+            case InputfieldType.DATE:
+                if (typeof value == 'string') {
+                    return value;
+                }
+                value = value.toISOString().substr(0, 10);
+                break;
+            default:
+                value = BasicService.getUniqueInstance().beautifyText(value);
+                break;
         }
-      }
+
+        if (this.inputElemet != undefined) {
+            this.inputElemet.value = value;
+        }
+
+        if (this.textareaElement != undefined) {
+            this.textareaElement.value = value;
+        }
+
+        return value;
     }
-    return false;
-  }
+
+    public updateInfoText(): void {
+        if (!this.showBorder()) {
+            this.infoText = '';
+            return;
+        }
+        switch (this.inputfieldType) {
+            case InputfieldType.SWITCH:
+            case InputfieldType.COLOR:
+            case InputfieldType.DATE:
+            case InputfieldType.DATETIME_LOCAL:
+            case InputfieldType.EMAIL:
+            case InputfieldType.FILE:
+            case InputfieldType.HIDDEN:
+            case InputfieldType.MONTH:
+            case InputfieldType.RANGE:
+            case InputfieldType.SEARCH:
+            case InputfieldType.TEL:
+            case InputfieldType.TIME:
+            case InputfieldType.URL:
+            case InputfieldType.WEEK:
+                break;
+            case InputfieldType.NUMBER:
+                this.infoText = BasicService.getUniqueInstance()
+                    .getValue(this.min, '')
+                    .toString()
+                    .concat('-')
+                    .concat(BasicService.getUniqueInstance().getValue(this.max, '').toString());
+                break;
+            case InputfieldType.TEXT:
+            case InputfieldType.PASSWORD:
+                this.infoText = this.value.length
+                    .toString()
+                    .concat('/')
+                    .concat(BasicService.getUniqueInstance().getValue(this.maxlength, '0').toString());
+                break;
+        }
+    }
+
+    private showBorder(): boolean {
+        return this.inputfieldMode != InputfieldMode.CLEAN && BasicService.getUniqueInstance().isNotBlank(this.label);
+    }
+
+    private showSelectedBorder(): boolean {
+        return (
+            this.inputfieldMode != InputfieldMode.CLEAN &&
+            this.showBorder() &&
+            this.selected &&
+            this.inputfieldType !== InputfieldType.RANGE &&
+            this.inputfieldType !== InputfieldType.COLOR
+        );
+    }
+
+    private showLabelText(): boolean {
+        return (
+            ((this.selected ||
+                this.inputfieldType === InputfieldType.COLOR ||
+                this.inputfieldType === InputfieldType.COMBOBOX ||
+                this.inputfieldType === InputfieldType.TEXTAREA ||
+                this.inputfieldType === InputfieldType.RANGE ||
+                this.inputfieldType === InputfieldType.FILE ||
+                this.inputfieldType === InputfieldType.SWITCH ||
+                this.inputfieldType === InputfieldType.CHECKBOX ||
+                this.inputfieldType === InputfieldType.NUMBER ||
+                this.inputfieldType === InputfieldType.MONTH ||
+                this.inputfieldType === InputfieldType.TIME ||
+                this.inputfieldType === InputfieldType.WEEK ||
+                this.inputfieldType === InputfieldType.DATE ||
+                this.inputfieldType === InputfieldType.DATETIME_LOCAL) &&
+                BasicService.getUniqueInstance().isNotBlank(this.label)) ||
+            (BasicService.getUniqueInstance().isNotBlank(this.value) &&
+                BasicService.getUniqueInstance().isNotBlank(this.label))
+        );
+    }
+
+    private showAdditionalTextContainer() {
+        return (
+            this.inputfieldType != InputfieldType.SWITCH &&
+            this.inputfieldType != InputfieldType.FILE &&
+            (this.assistiveText.length > 0 || this.infoText.length > 0)
+        );
+    }
+
+    static enumToComboboxItems(enumeration: any): KeyValuePair[] {
+        let options: KeyValuePair[] = [];
+        Object.keys(enumeration).forEach((key) => {
+            options.push(<KeyValuePair>{key: key, value: enumeration[key]});
+        });
+        return options;
+    }
+
+    static enumToComboboxItemsI18n(enumeration: any, i18nPrefix: string): KeyValuePair[] {
+        let options: KeyValuePair[] = [];
+        Object.keys(enumeration).forEach((key) => {
+            options.push(<KeyValuePair>{
+                key: key,
+                value: I18nService.getUniqueInstance().getValue(i18nPrefix.concat(enumeration[key])),
+            });
+        });
+        return options;
+    }
+
+    static clazzToComboboxItems(clazz: any): KeyValuePair[] {
+        let options: KeyValuePair[] = [];
+        Object.keys(clazz).forEach((key) => {
+            options.push(<KeyValuePair>{key: clazz[key], value: key});
+        });
+        return options;
+    }
+
+    static object2KeyValuePairArray(
+        object: any,
+        keyFieldName: string,
+        valueFieldName: string,
+        withEmptyItem: boolean = false
+    ): KeyValuePair[] {
+        let options: KeyValuePair[] = [];
+        if (withEmptyItem) {
+            options.push(<KeyValuePair>{key: '', value: {}});
+        }
+        Object.values(object).forEach((value: any) => {
+            options.push(<KeyValuePair>{key: value[keyFieldName], value: value[valueFieldName]});
+        });
+        return options;
+    }
+
+    static stringArray2KeyValuePairArrayWithI18nValueMapping(
+        arr: string[],
+        i18nPrefix: string,
+        withEmptyItem: boolean = false
+    ): KeyValuePair[] {
+        let options: KeyValuePair[] = [];
+        if (withEmptyItem) {
+            options.push(<KeyValuePair>{key: '', value: {}});
+        }
+        Object.values(arr).forEach((value: any) => {
+            options.push(<KeyValuePair>{
+                key: value,
+                value: I18nService.getUniqueInstance().getValue(i18nPrefix.concat(value)),
+            });
+        });
+        return options;
+    }
+
+    static inputfieldTypeByTypescriptType(tyescriptType: TypescriptType): InputfieldType {
+        switch (tyescriptType) {
+            case TypescriptType.NUMBER:
+                return InputfieldType.NUMBER;
+            case TypescriptType.BOOLEAN:
+                return InputfieldType.SWITCH;
+            case TypescriptType.DATE:
+                return InputfieldType.DATE;
+            case TypescriptType.STRING:
+            default:
+                return InputfieldType.TEXT;
+        }
+    }
+
+    private isSelectedOption(optionModel: any): boolean {
+        if (this.multiple) {
+            let isSelected: boolean = false;
+            for (let item of Object.values<any>(this.value)) {
+                isSelected = BasicService.getUniqueInstance().isEqual(this.getValueKey(item), this.getOptionKey(optionModel));
+                if (isSelected) {
+                    return true;
+                }
+            }
+        }
+
+        return BasicService.getUniqueInstance().isEqual(this.getValueKey(this.value), this.getOptionKey(optionModel));
+    }
+
+    private maxFileSizeReached(): boolean {
+        let files: FileList | null | undefined = this.inputElemet?.files;
+        if (files != null) {
+            for (let i = 0; i < files.length; i++) {
+                let file: File | null = files.item(i);
+                if (file != null && file.size / 1024 > this.maxSize) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    private unexpectedFileType(): boolean {
+        if (this.accept == '*/*') {
+            return false;
+        }
+        let files: FileList | null | undefined = this.inputElemet?.files;
+        if (files != null) {
+            for (let i = 0; i < files.length; i++) {
+                let file: File | null = files.item(i);
+                if (file != null) {
+                    let filename = file.name;
+                    let fileEnding = filename.substr(filename.lastIndexOf('.') + 1);
+                    if (this.accept == 'image/*' && (fileEnding == 'jpg' || fileEnding == 'png' || fileEnding == 'gif')) {
+                        continue;
+                    }
+                    if (this.accept.indexOf(fileEnding) == -1) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
 }
