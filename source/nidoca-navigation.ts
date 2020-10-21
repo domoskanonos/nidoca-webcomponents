@@ -6,9 +6,31 @@ export enum NavigationType {
   MODAL = 'MODAL',
 }
 
+export enum NavigationStyle {
+  SURFACE = 'SURFACE',
+  PRIMARY = 'PRIMARY',
+  SECONDARY = 'SECONDARY',
+}
+
 @customElement('nidoca-navigation')
 export class NidocaNavigation extends LitElement {
   static styles = css`
+  
+    .SURFACE {
+        background-color: var(--app-color-surface-background);
+        color: var(--app-color-surface);
+    }
+    
+    .PRIMARY {
+        background-color: var(--app-color-primary-background);
+        color: var(--app-color-primary);
+    }
+    
+    .SECONDARY {
+        background-color: var(--app-color-secondary-background);
+        color: var(--app-color-secondary);
+    }
+    
     .NAVIGATION {
       height: 100%;
       width: var(--menu-size);
@@ -19,8 +41,7 @@ export class NidocaNavigation extends LitElement {
       left: 0;
       overflow-x: hidden;
       margin-top: var(--toolbar-height);
-      background-color: var(--app-color-primary-background);
-      color: var(--app-color-primary);
+      
     }
 
     .CLOSED {
@@ -74,9 +95,12 @@ export class NidocaNavigation extends LitElement {
   @property()
   navigationType: string = NavigationType.PERMANENT;
 
+  @property()
+  navigationStyle: NavigationStyle = NavigationStyle.PRIMARY;
+
   render() {
     return html`
-      <div class="NAVIGATION ${this.navigationType} ${this.closed ? 'CLOSED' : ''}">
+      <div class="NAVIGATION ${this.navigationType} ${this.navigationStyle} ${this.closed ? 'CLOSED' : ''}">
         <slot name="contentBefore"></slot>
         <slot name="links"></slot>
         <slot name="contentAfter"></slot>
