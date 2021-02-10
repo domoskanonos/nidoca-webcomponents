@@ -264,288 +264,292 @@ export class NidocaInputfield extends NidocaInputElement {
   render() {
     return this.inputfieldType != InputfieldType.HIDDEN
       ? html`
-              <nidoca-border
-                 .borderProperties="${[
-                   BorderProperties.FULL_WIDTH,
-                   this.showSelectedBorder()
-                     ? BorderProperties.BOTTOM_SELECTED
-                     : this.showBorder()
-                     ? BorderProperties.BOTTOM
-                     : BorderProperties.NONE,
-                 ]}"
-              >
-              
+        <nidoca-border
+          .borderProperties='${[
+            BorderProperties.FULL_WIDTH,
+            this.showSelectedBorder()
+              ? BorderProperties.BOTTOM_SELECTED
+              : this.showBorder()
+              ? BorderProperties.BOTTOM
+              : BorderProperties.NONE,
+          ]}'
+        >
+
+          <nidoca-grid-container
+            class='${this.disabled ? 'DISABLED' : 'ENABLED'}'
+            minHeight='68px'
+            .gridJustifyItems='${GridJustifyItems.STRETCH}'
+            .gridAlignItems='${GridAlignItems.CENTER}'
+            .gridTemplateRows='${['1fr']}'
+            .gridTemplateColumns='${['1fr']}'
+          >
+            <nidoca-spacer size='4px;' spacerAlignment='${SpacerAlignment.VERTICAL}'>
               <nidoca-grid-container
-                    class="${this.disabled ? 'DISABLED' : 'ENABLED'}"
-                    minHeight="68px"
-                    .gridJustifyItems="${GridJustifyItems.STRETCH}"
-                    .gridAlignItems="${GridAlignItems.CENTER}" 
-                    .gridTemplateRows="${['1fr']}"
-                    .gridTemplateColumns="${['1fr']}"
-                 >
-              <nidoca-spacer size="4px;" spacerAlignment="${SpacerAlignment.VERTICAL}">
-                 <nidoca-grid-container
-                    .gridJustifyItems="${GridJustifyItems.STRETCH}"
-                    .gridAlignItems="${GridAlignItems.CENTER}" 
-                    .gridTemplateRows="${['auto']}"
-                    .gridTemplateColumns="${['auto', '1fr', 'auto', 'auto']}"
-                 >
-                    <nidoca-visible
-                                  visibleType="${
-                                    BasicService.getUniqueInstance().isNotBlank(this.leadingIcon)
-                                      ? VisibleType.NORMAL
-                                      : VisibleType.HIDE
-                                  }"
-                    >
-                       <nidoca-icon icon="${this.leadingIcon}" .clickable="${this.leadingIconClickable}"></nidoca-icon>
+                .gridJustifyItems='${GridJustifyItems.STRETCH}'
+                .gridAlignItems='${GridAlignItems.CENTER}'
+                .gridTemplateRows='${['auto']}'
+                .gridTemplateColumns='${['auto', '1fr', 'auto', 'auto']}'
+              >
+                <nidoca-visible
+                  visibleType='${
+                    BasicService.getUniqueInstance().isNotBlank(this.leadingIcon)
+                      ? VisibleType.NORMAL
+                      : VisibleType.HIDE
+                  }'
+                >
+                  <nidoca-icon icon='${this.leadingIcon}' .clickable='${this.leadingIconClickable}'></nidoca-icon>
+                </nidoca-visible>
+                <nidoca-spacer spacerSize='${
+                  this.inputfieldType == InputfieldType.SWITCH || this.inputfieldType == InputfieldType.FILE
+                    ? SpacerSize.ZERO
+                    : SpacerSize.MEDIUM
+                }' spacerAlignment='${SpacerAlignment.HORIZONTAL}'>
+                  <nidoca-flex-container
+                    .flexContainerProperties='${[
+                      FlexContainerProperties.CONTAINER_WIDTH_100,
+                      FlexContainerProperties.CONTAINER_HEIGHT_100,
+                    ]}'
+                    .flexAlignContent='${FlexAlignContent.CENTER}'
+                    flexItemBasisValue='100%'
+                  >
+                    <nidoca-visible visibleType='${this.showLabelText() ? VisibleType.NORMAL : VisibleType.HIDE}'>
+                      <nidoca-typography
+                        .typographyType='${TypographyType.OVERLINE}'
+                        text='${this.label}'
+                      ></nidoca-typography>
                     </nidoca-visible>
-                    <nidoca-spacer spacerSize="${
-                      this.inputfieldType == InputfieldType.SWITCH || this.inputfieldType == InputfieldType.FILE
-                        ? SpacerSize.ZERO
-                        : SpacerSize.MEDIUM
-                    }" spacerAlignment="${SpacerAlignment.HORIZONTAL}">
-                    <nidoca-flex-container
-                       .flexContainerProperties="${[
-                         FlexContainerProperties.CONTAINER_WIDTH_100,
-                         FlexContainerProperties.CONTAINER_HEIGHT_100,
-                       ]}"
-                       .flexAlignContent="${FlexAlignContent.CENTER}"
-                       flexItemBasisValue="100%"
-                    >
-                       <nidoca-visible visibleType="${this.showLabelText() ? VisibleType.NORMAL : VisibleType.HIDE}">
-                          <nidoca-typography
-                             .typographyType="${TypographyType.OVERLINE}"
-                             text="${this.label}"
-                          ></nidoca-typography>
-                       </nidoca-visible>
-                       ${
-                         this.inputfieldType == InputfieldType.FILE
-                           ? html`
-                               <nidoca-grid-container
-                                 .gridTemplateRows="${['auto']}"
-                                 .gridTemplateColumns="${['1fr', 'auto']}"
-                               >
-                                 <nidoca-flex-container
-                                   .flexContainerProperties="${[FlexContainerProperties.CONTAINER_WIDTH_100]}"
-                                   flexItemBasisValue="100%"
-                                 >
-                                   <nidoca-typography
-                                     .typographyType="${TypographyType.SUBTITLE1}"
-                                     text="${this.assistiveText}"
-                                   ></nidoca-typography>
-                                   <nidoca-typography
-                                     .typographyType="${TypographyType.SUBTITLE2}"
-                                     text="${this.infoText}"
-                                   ></nidoca-typography
-                                 ></nidoca-flex-container>
-                                 <nidoca-container>
-                                   <nidoca-icon
-                                     icon="attachment"
-                                     .clickable="${true}"
-                                     @nidoca-event-icon-clicked="
+                    ${
+                      this.inputfieldType == InputfieldType.FILE
+                        ? html`
+                          <nidoca-grid-container
+                            .gridTemplateRows='${['auto']}'
+                            .gridTemplateColumns='${['1fr', 'auto']}'
+                          >
+                            <nidoca-flex-container
+                              .flexContainerProperties='${[FlexContainerProperties.CONTAINER_WIDTH_100]}'
+                              flexItemBasisValue='100%'
+                            >
+                              <nidoca-typography
+                                .typographyType='${TypographyType.SUBTITLE1}'
+                                text='${this.assistiveText}'
+                              ></nidoca-typography>
+                              <nidoca-typography
+                                .typographyType='${TypographyType.SUBTITLE2}'
+                                text='${this.infoText}'
+                              ></nidoca-typography
+                              >
+                            </nidoca-flex-container>
+                            <nidoca-container>
+                              <nidoca-icon
+                                icon='attachment'
+                                .clickable='${true}'
+                                @nidoca-event-icon-clicked='
                                           ${() => this.inputElemet?.click()}
-                                          "
-                                   ></nidoca-icon>
-                                 </nidoca-container>
-                               </nidoca-grid-container>
-                               <nidoca-visible visibleType="${VisibleType.HIDE}">
-                                 <input
-                                   id="inputElement"
-                                   class="slider"
-                                   accept="${this.accept}"
-                                   max-size="${this.maxSize}"
-                                   name="${this.name}"
-                                   type="${this.inputfieldType}"
-                                   value="${this.prepareValue(this.value)}"
-                                   ?multiple="${this.multiple}"
-                                   @change="${(event: Event) => this.change(event)}"
-                               /></nidoca-visible>
-                             `
-                           : this.inputfieldType == InputfieldType.COMBOBOX
-                           ? html`
-                               <select
-                                 id="selectElement"
-                                 ?required="${this.required}"
-                                 ?multiple="${this.multiple}"
-                                 name="${this.name}"
-                                 size="${this.size}"
-                                 @change="${(event: Event) => this.change(event)}"
-                                 @focus="${(event: Event) => this.focused(event)}"
-                                 @focusout="${(event: Event) => this.focusout(event)}"
-                               >
-                                 ${guard(
-                                   [this.value, this.options],
-                                   () => html`
-                                     ${repeat(this.options, (optionModel) =>
-                                       this.isSelectedOption(optionModel)
-                                         ? html`
-                                             <option value="${this.getOptionKey(optionModel)}" selected>
-                                               ${this.getOptionValue(optionModel)}
-                                             </option>
-                                           `
-                                         : html`
-                                             <option value="${this.getOptionKey(optionModel)}">
-                                               ${this.getOptionValue(optionModel)}
-                                             </option>
-                                           `
-                                     )}
-                                   `
-                                 )}
-                               </select>
-                             `
-                           : this.inputfieldType == InputfieldType.TEXTAREA
-                           ? html`
-                               <textarea
-                                 id="textareaElement"
-                                 name="${this.name}"
-                                 @keyup="${this.keyup}"
-                                 ?required="${this.required}"
-                                 minlength="${this.minlength}"
-                                 maxlength="${this.maxlength}"
-                                 rows="${this.size}"
-                               >
+                                          '
+                              ></nidoca-icon>
+                            </nidoca-container>
+                          </nidoca-grid-container>
+                          <nidoca-visible visibleType='${VisibleType.HIDE}'>
+                            <input
+                              id='inputElement'
+                              class='slider'
+                              accept='${this.accept}'
+                              max-size='${this.maxSize}'
+                              name='${this.name}'
+                              type='${this.inputfieldType}'
+                              value='${this.prepareValue(this.value)}'
+                              ?multiple='${this.multiple}'
+                              @change='${(event: Event) => this.change(event)}'
+                            /></nidoca-visible>
+                        `
+                        : this.inputfieldType == InputfieldType.COMBOBOX
+                        ? html`
+                          <select
+                            id='selectElement'
+                            ?required='${this.required}'
+                            ?multiple='${this.multiple}'
+                            name='${this.name}'
+                            size='${this.size}'
+                            @change='${(event: Event) => this.change(event)}'
+                            @focus='${(event: Event) => this.focused(event)}'
+                            @focusout='${(event: Event) => this.focusout(event)}'
+                          >
+                            ${guard(
+                              [this.value, this.options],
+                              () => html`
+                                ${repeat(this.options, (optionModel) =>
+                                  this.isSelectedOption(optionModel)
+                                    ? html`
+                                      <option value='${this.getOptionKey(optionModel)}' selected>
+                                        ${this.getOptionValue(optionModel)}
+                                      </option>
+                                    `
+                                    : html`
+                                      <option value='${this.getOptionKey(optionModel)}'>
+                                        ${this.getOptionValue(optionModel)}
+                                      </option>
+                                    `,
+                                )}
+                              `,
+                            )}
+                          </select>
+                        `
+                        : this.inputfieldType == InputfieldType.TEXTAREA
+                          ? html`
+                            <textarea
+                              id='textareaElement'
+                              name='${this.name}'
+                              @keyup='${this.keyup}'
+                              ?required='${this.required}'
+                              minlength='${this.minlength}'
+                              maxlength='${this.maxlength}'
+                              rows='${this.size}'
+                            >
 ${this.prepareValue(this.value)}</textarea
-                               >
-                             `
-                           : this.inputfieldType == InputfieldType.SWITCH
-                           ? html`
-                               <nidoca-grid-container
-                                 .gridTemplateRows="${['auto']}"
-                                 .gridTemplateColumns="${['1fr', 'auto']}"
-                               >
-                                 <nidoca-flex-container
-                                   .flexContainerProperties="${[FlexContainerProperties.CONTAINER_WIDTH_100]}"
-                                   flexItemBasisValue="100%"
-                                 >
-                                   <nidoca-typography
-                                     .typographyType="${TypographyType.SUBTITLE1}"
-                                     text="${this.infoText}"
-                                     ><slot></slot
-                                   ></nidoca-typography>
-                                   <nidoca-visible
-                                     visibleType="${BasicService.getUniqueInstance().isNotBlank(this.assistiveText)
-                                       ? VisibleType.NORMAL
-                                       : VisibleType.HIDE}"
-                                   >
-                                     <nidoca-typography
-                                       .typographyType="${TypographyType.SUBTITLE2}"
-                                       text="${this.assistiveText}"
-                                     ></nidoca-typography>
-                                   </nidoca-visible>
-                                 </nidoca-flex-container>
-                                 <componetn-container>
-                                   <nidoca-visible
-                                     visibleType="${this.checked ? VisibleType.HIDE : VisibleType.NORMAL}"
-                                   >
-                                     <nidoca-icon
-                                       @nidoca-event-icon-clicked="${() => {
-                                         this.switchChecked();
-                                       }}"
-                                       icon="toggle_off"
-                                       .clickable="${true}"
-                                     ></nidoca-icon>
-                                   </nidoca-visible>
-                                   <nidoca-visible
-                                     visibleType="${this.checked ? VisibleType.NORMAL : VisibleType.HIDE}"
-                                   >
-                                     <nidoca-icon
-                                       color="var(--app-color-primary-background)"
-                                       @nidoca-event-icon-clicked="${() => {
-                                         this.switchChecked();
-                                       }}"
-                                       icon="toggle_on"
-                                       .clickable="${true}"
-                                     ></nidoca-icon>
-                                   </nidoca-visible>
-                                 </componetn-container>
-                               </nidoca-grid-container>
-                             `
-                           : html`
-                               <input
-                                 id="inputElement"
-                                 name="${this.name}"
-                                 type="${this.inputfieldType}"
-                                 value="${this.prepareValue(this.value)}"
-                                 placeholder="${BasicService.getUniqueInstance().isBlank(this.placeholder) &&
-                                 !this.showLabelText()
-                                   ? this.label
-                                   : this.placeholder}"
-                                 size="${this.size}"
-                                 minlength="${this.minlength}"
-                                 maxlength="${this.maxlength}"
-                                 min="${this.min}"
-                                 max="${this.max}"
-                                 step="${this.step}"
-                                 ?required="${this.required}"
-                                 ?disabled="${this.disabled}"
-                                 ?checked="${this.checked}"
-                                 ?multiple="${this.multiple}"
-                                 @keyup="${this.keyup}"
-                                 @change="${(event: Event) => this.change(event)}"
-                                 @focus="${(event: Event) => this.focused(event)}"
-                                 @focusout="${(event: Event) => this.focusout(event)}"
-                               />
-                             `
-                       }</nidoca-flex-container
-                    >
-                    </nidoca-spacer>
-                    <nidoca-visible
-                       visibleType="${
-                         BasicService.getUniqueInstance().isNotBlank(this.trailingIcon)
-                           ? VisibleType.NORMAL
-                           : VisibleType.HIDE
-                       }"
-                    >
-                       <nidoca-icon icon="${this.trailingIcon}" .clickable="${
-          this.trailingIconClickable
-        }"></nidoca-icon>
-                    </nidoca-visible>
-                 </nidoca-grid-container>
-                 </nidoca-spacer>
-                 </nidoca-grid-container>
-              </nidoca-border>
-              <nidoca-visible visibleType="${
-                this.showAdditionalTextContainer() ? VisibleType.NORMAL : VisibleType.HIDE
-              }">
-                 <nidoca-spacer spacerSize="${SpacerSize.LITTLE}" spacerAlignment="${SpacerAlignment.VERTICAL}">
-                 <nidoca-flex-container
-                    .flexContainerProperties="${[FlexContainerProperties.CONTAINER_WIDTH_100]}"
-                    flexItemBasisValue="auto"
-                    flexJustifyContent="${FlexJustifyContent.SPACE_BETWEEN}"
-                 >
-                    <nidoca-typography
-                       .typographyType="${TypographyType.OVERLINE}"
-                       text="${this.assistiveText}"
-                    ></nidoca-typography>
-                    <nidoca-typography
-                       .typographyType="${TypographyType.OVERLINE}"
-                       text="${this.infoText}"
-                    ></nidoca-typography>
-                 </nidoca-flex-container>
-              </nidoca-visible>
-              </nidoca-spacer>
-              <nidoca-visible visibleType="${
-                BasicService.getUniqueInstance().isNotBlank(this.errorText)
-                  ? VisibleType.NORMAL
-                  : this.inputfieldMode == InputfieldMode.CLEAN
-                  ? VisibleType.HIDE
-                  : VisibleType.INVISIBLE
-              }">
+                            >
+                          `
+                          : this.inputfieldType == InputfieldType.SWITCH
+                            ? html`
+                              <nidoca-grid-container
+                                .gridTemplateRows='${['auto']}'
+                                .gridTemplateColumns='${['1fr', 'auto']}'
+                              >
+                                <nidoca-flex-container
+                                  .flexContainerProperties='${[FlexContainerProperties.CONTAINER_WIDTH_100]}'
+                                  flexItemBasisValue='100%'
+                                >
+                                  <nidoca-typography
+                                    .typographyType='${TypographyType.SUBTITLE1}'
+                                    text='${this.infoText}'
+                                  >
+                                    <slot></slot
+                                    >
+                                  </nidoca-typography>
+                                  <nidoca-visible
+                                    visibleType='${BasicService.getUniqueInstance().isNotBlank(this.assistiveText)
+                                      ? VisibleType.NORMAL
+                                      : VisibleType.HIDE}'
+                                  >
+                                    <nidoca-typography
+                                      .typographyType='${TypographyType.SUBTITLE2}'
+                                      text='${this.assistiveText}'
+                                    ></nidoca-typography>
+                                  </nidoca-visible>
+                                </nidoca-flex-container>
+                                <componetn-container>
+                                  <nidoca-visible
+                                    visibleType='${this.checked ? VisibleType.HIDE : VisibleType.NORMAL}'
+                                  >
+                                    <nidoca-icon
+                                      @nidoca-event-icon-clicked='${() => {
+                                        this.switchChecked();
+                                      }}'
+                                      icon='toggle_off'
+                                      .clickable='${true}'
+                                    ></nidoca-icon>
+                                  </nidoca-visible>
+                                  <nidoca-visible
+                                    visibleType='${this.checked ? VisibleType.NORMAL : VisibleType.HIDE}'
+                                  >
+                                    <nidoca-icon
+                                      color='var(--app-color-primary-background)'
+                                      @nidoca-event-icon-clicked='${() => {
+                                        this.switchChecked();
+                                      }}'
+                                      icon='toggle_on'
+                                      .clickable='${true}'
+                                    ></nidoca-icon>
+                                  </nidoca-visible>
+                                </componetn-container>
+                              </nidoca-grid-container>
+                            `
+                            : html`
+                              <input
+                                id='inputElement'
+                                name='${this.name}'
+                                type='${this.inputfieldType}'
+                                value='${this.prepareValue(this.value)}'
+                                placeholder='${BasicService.getUniqueInstance().isBlank(this.placeholder) &&
+                                !this.showLabelText()
+                                  ? this.label
+                                  : this.placeholder}'
+                                size='${this.size}'
+                                minlength='${this.minlength}'
+                                maxlength='${this.maxlength}'
+                                min='${this.min}'
+                                max='${this.max}'
+                                step='${this.step}'
+                                ?required='${this.required}'
+                                ?disabled='${this.disabled}'
+                                ?checked='${this.checked}'
+                                ?multiple='${this.multiple}'
+                                @keyup='${this.keyup}'
+                                @change='${(event: Event) => this.change(event)}'
+                                @focus='${(event: Event) => this.focused(event)}'
+                                @focusout='${(event: Event) => this.focusout(event)}'
+                              />
+                            `
+                    }
+                  </nidoca-flex-container
+                  >
+                </nidoca-spacer>
+                <nidoca-visible
+                  visibleType='${
+                    BasicService.getUniqueInstance().isNotBlank(this.trailingIcon)
+                      ? VisibleType.NORMAL
+                      : VisibleType.HIDE
+                  }'
+                >
+                  <nidoca-icon icon='${this.trailingIcon}' .clickable='${
+                    this.trailingIconClickable
+                  }'></nidoca-icon>
+                </nidoca-visible>
+              </nidoca-grid-container>
+            </nidoca-spacer>
+          </nidoca-grid-container>
+        </nidoca-border>
+        <nidoca-visible visibleType='${
+          this.showAdditionalTextContainer() ? VisibleType.NORMAL : VisibleType.HIDE
+        }'>
+          <nidoca-spacer spacerSize='${SpacerSize.LITTLE}' spacerAlignment='${SpacerAlignment.VERTICAL}'>
+            <nidoca-flex-container
+              .flexContainerProperties='${[FlexContainerProperties.CONTAINER_WIDTH_100]}'
+              flexItemBasisValue='auto'
+              flexJustifyContent='${FlexJustifyContent.SPACE_BETWEEN}'
+            >
               <nidoca-typography
-                 style="color:var(--app-color-error)"
-                 .typographyType="${TypographyType.OVERLINE}"
-                 text="${this.errorText}"
+                .typographyType='${TypographyType.OVERLINE}'
+                text='${this.assistiveText}'
               ></nidoca-typography>
-              </nidoca-visible>
-           `
+              <nidoca-typography
+                .typographyType='${TypographyType.OVERLINE}'
+                text='${this.infoText}'
+              ></nidoca-typography>
+            </nidoca-flex-container>
+        </nidoca-visible>
+        </nidoca-spacer>
+        <nidoca-visible visibleType='${
+          BasicService.getUniqueInstance().isNotBlank(this.errorText)
+            ? VisibleType.NORMAL
+            : this.inputfieldMode == InputfieldMode.CLEAN
+            ? VisibleType.HIDE
+            : VisibleType.INVISIBLE
+        }'>
+          <nidoca-typography
+            style='color:var(--app-color-error)'
+            .typographyType='${TypographyType.OVERLINE}'
+            text='${this.errorText}'
+          ></nidoca-typography>
+        </nidoca-visible>
+      `
       : html`
-          <input
-            id="inputElement"
-            name="${this.name}"
-            type="${this.inputfieldType}"
-            value="${this.prepareValue(this.value)}"
-          />
-        `;
+        <input
+          id='inputElement'
+          name='${this.name}'
+          type='${this.inputfieldType}'
+          value='${this.prepareValue(this.value)}'
+        />
+      `;
   }
 
   private getOptionValue(optionModel: any) {
@@ -569,7 +573,7 @@ ${this.prepareValue(this.value)}</textarea
     BasicService.getUniqueInstance().dispatchSimpleCustomEvent(
       this,
       'nidoca-event-inputfield-change',
-      this.getOutputData()
+      this.getOutputData(),
     );
   }
 
@@ -577,7 +581,7 @@ ${this.prepareValue(this.value)}</textarea
     BasicService.getUniqueInstance().dispatchSimpleCustomEvent(
       this,
       'nidoca-event-inputfield-keyup',
-      this.getOutputData()
+      this.getOutputData(),
     );
   }
 
@@ -588,7 +592,7 @@ ${this.prepareValue(this.value)}</textarea
     BasicService.getUniqueInstance().dispatchSimpleCustomEvent(
       this,
       'nidoca-event-inputfield-focus',
-      this.getOutputData()
+      this.getOutputData(),
     );
   }
 
@@ -599,7 +603,7 @@ ${this.prepareValue(this.value)}</textarea
     BasicService.getUniqueInstance().dispatchSimpleCustomEvent(
       this,
       'nidoca-event-inputfield-focus-out',
-      this.getOutputData()
+      this.getOutputData(),
     );
   }
 
@@ -608,7 +612,7 @@ ${this.prepareValue(this.value)}</textarea
     BasicService.getUniqueInstance().dispatchSimpleCustomEvent(
       this,
       'nidoca-event-inputfield-change',
-      this.getOutputData()
+      this.getOutputData(),
     );
   }
 
@@ -867,13 +871,14 @@ ${this.prepareValue(this.value)}</textarea
     object: any,
     keyFieldName: string,
     valueFieldName: string,
-    withEmptyItem: boolean = false
+    withEmptyItem: boolean = false,
   ): KeyValuePair[] {
     let options: KeyValuePair[] = [];
     if (withEmptyItem) {
       options.push(<KeyValuePair>{key: '', value: {}});
     }
-    Object.values(object).forEach((value: any) => {
+    Object.keys(object).map(function(e) {
+      let value: any = object[e];
       options.push(<KeyValuePair>{key: value[keyFieldName], value: value[valueFieldName]});
     });
     return options;
@@ -882,13 +887,13 @@ ${this.prepareValue(this.value)}</textarea
   static stringArray2KeyValuePairArrayWithI18nValueMapping(
     arr: string[],
     i18nPrefix: string,
-    withEmptyItem: boolean = false
+    withEmptyItem: boolean = false,
   ): KeyValuePair[] {
     let options: KeyValuePair[] = [];
     if (withEmptyItem) {
       options.push(<KeyValuePair>{key: '', value: {}});
     }
-    Object.values(arr).forEach((value: any) => {
+    Object.keys(arr).map(function(value) {
       options.push(<KeyValuePair>{
         key: value,
         value: I18nService.getUniqueInstance().getValue(i18nPrefix.concat(value)),
@@ -914,12 +919,14 @@ ${this.prepareValue(this.value)}</textarea
   private isSelectedOption(optionModel: any): boolean {
     if (this.multiple) {
       let isSelected: boolean = false;
-      for (let item of Object.values<any>(this.value)) {
+      /**
+       for (let item of Object.values<any>(this.value)) {
         isSelected = BasicService.getUniqueInstance().isEqual(this.getValueKey(item), this.getOptionKey(optionModel));
         if (isSelected) {
           return true;
         }
       }
+       **/
     }
 
     return BasicService.getUniqueInstance().isEqual(this.getValueKey(this.value), this.getOptionKey(optionModel));

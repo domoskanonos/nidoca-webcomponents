@@ -9,8 +9,13 @@ export class NidocaTest extends LitElement {
   `;
 
     render() {
+      
+      
+      this.dodo();
         return html`
       
+          
+          huhu
       <nidoca-search-bar
         placeholder="links"
         value="Hallo"
@@ -20,6 +25,18 @@ export class NidocaTest extends LitElement {
       
       
     `;
+    }
+    
+    
+    dodo():void {
+      
+      
+      
+      window.customElements.whenDefined("").then(value => {
+      console.log("jidoffjdiofjidofjfio" +value);  
+      });
+      
+      
     }
 
 

@@ -67,3 +67,5 @@ typings/
 /wc-atomic.iml
 /package-lock.json
 /lib/
+/.cache/
+/.cache

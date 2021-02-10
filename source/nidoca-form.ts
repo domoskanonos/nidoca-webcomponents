@@ -117,7 +117,9 @@ export class NidocaForm extends LitElement {
 
     for (let element of this.getInputElements(this.slotElement)) {
       let elementOutputData = element.getOutputData();
+      // @ts-ignore
       json[elementOutputData.key] = elementOutputData.value;
+      // @ts-ignore
       formData.append(elementOutputData.key, elementOutputData.value);
     }
 
