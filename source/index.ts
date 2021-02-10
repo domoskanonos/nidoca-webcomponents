@@ -11,17 +11,12 @@ export * from './nidoca-button';
 export * from './nidoca-divider';
 export * from './nidoca-grid-container';
 export * from './nidoca-form';
-export * from './nidoca-toolbar';
-export * from './nidoca-container';
-export * from './nidoca-ripple';
-export * from './nidoca-visible';
-export * from './nidoca-transition';
+export * from './nidoca-form-combobox';
 export * from './nidoca-icon';
 export * from './nidoca-rich-media';
 export * from './nidoca-input-element';
 export * from './nidoca-inputfield';
 export * from './nidoca-captcha';
-import "./nidoca-link";
 export * from './nidoca-link';
 export * from './nidoca-list';
 export * from './nidoca-list-item';
@@ -44,4 +39,4 @@ export * from './nidoca-dialog';
 //import './index.css';
 
 
-export * from './nidoca-test';
+export * from './nidoca-showcase';
