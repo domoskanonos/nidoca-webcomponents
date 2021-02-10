@@ -1,20 +1,25 @@
-import {css, customElement, html, property, unsafeCSS} from 'lit-element';
+import {css, customElement, html, property} from 'lit-element';
 import {LitElement} from 'lit-element';
-import {BasicService} from '@domoskanonos/frontend-basis';
 import {FlexAlignItems, FlexContainerProperties, FlexJustifyContent, FlexWrap} from './nidoca-flex-container';
 import {VisibleType} from './nidoca-visible';
 import {SpacerSize} from './nidoca-spacer';
 import {TypographyType} from './nidoca-typography';
 
 export enum ButtonType {
-  PRIMARY = 'PRIMARY',
-  SECONDARY = 'SECONDARY',
-  CLEAR = 'CLEAR',
+    PRIMARY = 'PRIMARY',
+    SECONDARY = 'SECONDARY',
+    CLEAR = 'CLEAR',
+}
+
+interface NidocaButtonInterface {
+    buttonType: ButtonType;
+    leadingIcon: string | null | undefined;
+    text: string;
 }
 
 @customElement('nidoca-button')
-export class NidocaButton extends LitElement {
-  static styles = css`
+export class NidocaButton extends LitElement implements NidocaButtonInterface {
+    static styles = css`
     .BUTTON {
       cursor: pointer;
       text-transform: uppercase;
@@ -57,23 +62,28 @@ export class NidocaButton extends LitElement {
     }
   `;
 
-  @property()
-  buttonType: ButtonType = ButtonType.PRIMARY;
+    @property()
+    buttonType: ButtonType = ButtonType.PRIMARY;
 
-  @property()
-  leadingIcon: string = '';
+    @property()
+    leadingIcon: string | null | undefined;
 
-  @property()
-  text: string = '';
+    @property()
+    text: string = '';
 
-  render() {
-    return html`
+
+    constructor() {
+        super();
+    }
+
+    render() {
+        return html`
       <nidoca-ripple>
         <nidoca-flex-container
           class="BUTTON ${this.buttonType}"
           @click="${() => {
             this.clicked();
-          }}"
+        }}"
           .flexContainerProperties="${[FlexContainerProperties.CONTAINER_WIDTH_AUTO]}"
           flexWrap="${FlexWrap.NO_WRAP}"
           .flexJustifyContent="${FlexJustifyContent.CENTER}"
@@ -81,15 +91,15 @@ export class NidocaButton extends LitElement {
         >
           <nidoca-visible
             visibleType="${
-              BasicService.getUniqueInstance().isNotBlank(this.leadingIcon) ? VisibleType.NORMAL : VisibleType.HIDE
-            }"
+            this.leadingIcon ? VisibleType.NORMAL : VisibleType.HIDE
+        }"
           >
             <nidoca-icon icon="${this.leadingIcon}"> </nidoca-icon>
           </nidoca-visible>
           <nidoca-visible
             visibleType="${
-              BasicService.getUniqueInstance().isBlank(this.leadingIcon) ? VisibleType.NORMAL : VisibleType.HIDE
-            }"
+            this.leadingIcon ? VisibleType.NORMAL : VisibleType.HIDE
+        }"
             >
                       <nidoca-visible
             visibleType="${this.buttonType == ButtonType.CLEAR ? VisibleType.HIDE : VisibleType.NORMAL}"
@@ -99,8 +109,8 @@ export class NidocaButton extends LitElement {
          </nidoca-visible> 
           </nidoca-visible>
           <nidoca-typography text="${this.text}" typographyType="${
-      TypographyType.BUTTON
-    }"><slot></slot></nidoca-typography>
+            TypographyType.BUTTON
+        }"><slot></slot></nidoca-typography>
           
                                <nidoca-visible
             visibleType="${this.buttonType == ButtonType.CLEAR ? VisibleType.HIDE : VisibleType.NORMAL}"
@@ -111,9 +121,11 @@ export class NidocaButton extends LitElement {
         </nidoca-flex-container>
       </nidoca-ripple>
     `;
-  }
+    }
 
-  clicked() {
-    BasicService.getUniqueInstance().dispatchSimpleCustomEvent(this, 'nidoca-event-button-clicked', this);
-  }
+    clicked() {
+        this.dispatchEvent(new CustomEvent("nidoca-event-button-clicked", {
+            detail: this
+        }));
+    }
 }

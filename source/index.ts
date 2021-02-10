@@ -21,6 +21,7 @@ export * from './nidoca-rich-media';
 export * from './nidoca-input-element';
 export * from './nidoca-inputfield';
 export * from './nidoca-captcha';
+import "./nidoca-link";
 export * from './nidoca-link';
 export * from './nidoca-list';
 export * from './nidoca-list-item';

@@ -1,43 +1,55 @@
 import {css, customElement, html, property, unsafeCSS} from 'lit-element';
 import {LitElement} from 'lit-element';
-import {InputfieldMode, InputfieldType} from "./nidoca-inputfield";
+import {ButtonType, NidocaButton} from "./nidoca-button";
+import {NidocaLink, NidocaLinkInterface} from "./nidoca-link";
+import {KeyValuePair} from "@domoskanonos/frontend-basis";
 
-@customElement('nidoca-test')
+@customElement('nidoca-core')
 export class NidocaTest extends LitElement {
     static styles = css`
    
   `;
 
     render() {
-      
-      
-      this.dodo();
+
+        this.ccc();
         return html`
-      
-          
-          huhu
-      <nidoca-search-bar
-        placeholder="links"
-        value="Hallo"
-      ></nidoca-search-bar>
+
+
+      <nidoca-link text="Mein Button"
+      ></nidoca-link>
       
      
       
       
     `;
     }
-    
-    
-    dodo():void {
-      
-      
-      
-      window.customElements.whenDefined("").then(value => {
-      console.log("jidoffjdiofjidofjfio" +value);  
-      });
-      
-      
+
+    static enumToComboboxItems(enumeration: any): KeyValuePair[] {
+        let options: KeyValuePair[] = [];
+        Object.keys(enumeration).forEach((key) => {
+            options.push(<KeyValuePair>{key: key, value: enumeration[key]});
+        });
+        return options;
     }
 
+    public ccc():void {
 
+
+       NidocaTest.enumToComboboxItems(<NidocaLinkInterface>{}).forEach(value => {console.log(value)});
+
+        let ownKeys = Reflect.ownKeys(new NidocaLink());
+        let x :any = Object.getOwnPropertyDescriptor(new NidocaLink(), "_changedProperties");
+        if(x){
+
+            for (const value of x.value) {
+                //console.log(value);
+
+            }
+
+        }
+        Object.getOwnPropertyNames(new NidocaLink()).forEach(value => {
+            console.log(value);
+        })
+    }
 }

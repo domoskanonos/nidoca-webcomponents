@@ -1,15 +1,21 @@
 import {css, customElement, html, LitElement, property} from 'lit-element';
 
 export enum TargetType {
-  BLANK = '_blank',
-  SELF = '_self',
-  PARENT = '_parent',
-  TOP = '_top',
+    BLANK = '_blank',
+    SELF = '_self',
+    PARENT = '_parent',
+    TOP = '_top',
+}
+
+export interface NidocaLinkInterface {
+    text: string;
+    href: string;
+    targetType: string;
 }
 
 @customElement('nidoca-link')
-export class NidocaLink extends LitElement {
-  static styles = css`
+export class NidocaLink extends LitElement implements NidocaLinkInterface {
+    static styles = css`
     :host,
     ::slotted(:host) {
       display: contents;
@@ -20,18 +26,18 @@ export class NidocaLink extends LitElement {
     }
   `;
 
-  @property()
-  text: string = '';
+    @property()
+    text: string = '';
 
-  @property()
-  href: string = '';
+    @property()
+    href: string = '';
 
-  @property()
-  targetType: string = TargetType.SELF;
+    @property()
+    targetType: string = TargetType.SELF;
 
-  render() {
-    return html`
+    render() {
+        return html`
       <a href="${this.href}" target="${this.targetType}">${this.text}<slot></slot></a>
     `;
-  }
+    }
 }
