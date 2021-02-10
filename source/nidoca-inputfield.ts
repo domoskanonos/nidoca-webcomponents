@@ -840,14 +840,6 @@ ${this.prepareValue(this.value)}</textarea
     );
   }
 
-  static enumToComboboxItems(enumeration: any): KeyValuePair[] {
-    let options: KeyValuePair[] = [];
-    Object.keys(enumeration).forEach((key) => {
-      options.push(<KeyValuePair>{key: key, value: enumeration[key]});
-    });
-    return options;
-  }
-
   static enumToComboboxItemsI18n(enumeration: any, i18nPrefix: string): KeyValuePair[] {
     let options: KeyValuePair[] = [];
     Object.keys(enumeration).forEach((key) => {

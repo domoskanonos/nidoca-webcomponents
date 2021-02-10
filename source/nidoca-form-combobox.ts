@@ -354,67 +354,15 @@ export class NidocaFormCombobox extends NidocaInputElement {
         return value;
     }
 
-    static enumToComboboxItems(enumeration: any): KeyValuePair[] {
+    static enumToOptions(enumeration: any): any[] {
         let options: KeyValuePair[] = [];
         Object.keys(enumeration).forEach((key) => {
-            options.push(<KeyValuePair>{key: key, value: enumeration[key]});
+            options.push({key: key, value: enumeration[key]});
         });
         return options;
     }
 
-    static enumToComboboxItemsI18n(enumeration: any, i18nPrefix: string): KeyValuePair[] {
-        let options: KeyValuePair[] = [];
-        Object.keys(enumeration).forEach((key) => {
-            options.push(<KeyValuePair>{
-                key: key,
-                value: I18nService.getUniqueInstance().getValue(i18nPrefix.concat(enumeration[key])),
-            });
-        });
-        return options;
-    }
 
-    static clazzToComboboxItems(clazz: any): KeyValuePair[] {
-        let options: KeyValuePair[] = [];
-        Object.keys(clazz).forEach((key) => {
-            options.push(<KeyValuePair>{key: clazz[key], value: key});
-        });
-        return options;
-    }
-
-    static object2KeyValuePairArray(
-        object: any,
-        keyFieldName: string,
-        valueFieldName: string,
-        withEmptyItem: boolean = false,
-    ): KeyValuePair[] {
-        let options: KeyValuePair[] = [];
-        if (withEmptyItem) {
-            options.push(<KeyValuePair>{key: '', value: {}});
-        }
-        Object.keys(object).map(function (e) {
-            let value: any = object[e];
-            options.push(<KeyValuePair>{key: value[keyFieldName], value: value[valueFieldName]});
-        });
-        return options;
-    }
-
-    static stringArray2KeyValuePairArrayWithI18nValueMapping(
-        arr: string[],
-        i18nPrefix: string,
-        withEmptyItem: boolean = false,
-    ): KeyValuePair[] {
-        let options: KeyValuePair[] = [];
-        if (withEmptyItem) {
-            options.push(<KeyValuePair>{key: '', value: {}});
-        }
-        Object.keys(arr).map(function (value) {
-            options.push(<KeyValuePair>{
-                key: value,
-                value: I18nService.getUniqueInstance().getValue(i18nPrefix.concat(value)),
-            });
-        });
-        return options;
-    }
 
     private isSelectedOption(optionModel: any): boolean {
         if (this.multiple) {
