@@ -9,14 +9,21 @@ export class NidocaShowcase extends LitElement {
    
   `;
 
+
     render() {
-        return html`<nidoca-form-combobox .options="${NidocaFormCombobox.enumToOptions(InputfieldType)}"
-                           label="hallo"
-                           value="${InputfieldType.TEXTAREA}">
-                           
-                           
-                           
-</nidoca-form-combobox>`;
+        
+
+        return html`
+            <nidoca-form-combobox name="combobox"
+                                  label="Combobox Label"
+                                  value="${InputfieldType.TEXTAREA}"
+                                  .options="${NidocaFormCombobox.enumToOptions(InputfieldType)}"
+                                  required="true"
+                                  
+            >
+
+
+            </nidoca-form-combobox>`;
     }
 
 

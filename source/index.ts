@@ -14,7 +14,7 @@ export * from './nidoca-form';
 export * from './nidoca-form-combobox';
 export * from './nidoca-icon';
 export * from './nidoca-rich-media';
-export * from './nidoca-input-element';
+export * from './nidoca-form-input-element';
 export * from './nidoca-inputfield';
 export * from './nidoca-captcha';
 export * from './nidoca-link';
