@@ -10,16 +10,16 @@ import {NidocaFormInputElement} from './nidoca-form-input-element';
 
 @customElement('nidoca-form-combobox')
 export class NidocaFormCombobox extends NidocaFormInputElement {
-    static styles = css`
+  static styles = css`
     select {
       font: inherit;
       box-sizing: border-box;
       width: 100%;
       border: none;
-      color: inherit;
-      background-color: inherit;
-      line-height: var(--line-height);
-      height: auto;
+      color: var(--app-color-surface);
+      background-color: var(--app-color-surface-background);
+      height: var(--line-height-large);
+      line-height: var(--line-height-large);
     }
 
     select[multiple] {
@@ -30,85 +30,78 @@ export class NidocaFormCombobox extends NidocaFormInputElement {
     select:focus {
       outline: none;
       box-shadow: none;
-      background: inherit;
     }
 
     select:valid {
       outline: none;
       box-shadow: none;
-      background: inherit;
     }
   `;
 
-    @property()
-    name: string = '';
+  @property()
+  name: string = '';
 
-    @property()
-    value: any;
+  @property()
+  value: any;
 
-    @property()
-    label: string = '';
+  @property()
+  label: string = '';
 
-    @property()
-    options: KeyValuePair[] = [];
+  @property()
+  options: KeyValuePair[] = [];
 
-    
-    
-    
-    
-    
+  @property()
+  required: boolean = false;
 
-    @property()
-    required: boolean = false;
+  @property()
+  size: number = 1;
 
-    @property()
-    size: number = 1;
+  @property()
+  disabled: boolean = false;
 
-    @property()
-    disabled: boolean = false;
+  @property()
+  multiple: boolean = false;
 
-    @property()
-    multiple: boolean = false;
+  @property()
+  maxSize: number = 2048;
 
-    @property()
-    maxSize: number = 2048;
+  @property()
+  maxlength: number | undefined;
 
-    @property()
-    maxlength: number | undefined;
+  @property()
+  minlength: number | undefined;
 
-    @property()
-    minlength: number | undefined;
+  @property()
+  errorText: string | undefined;
 
-    @property()
-    errorText: string | undefined;
+  @property()
+  selected: boolean = false;
 
-    @property()
-    selected: boolean = false;
+  @query('#selectElement')
+  selectElement: HTMLSelectElement | undefined;
 
-    @query('#selectElement')
-    selectElement: HTMLSelectElement | undefined;
-
-    render() {
-        return html`
+  render() {
+    return html`
+            
+            
             <nidoca-border
-                    .borderProperties='${[BorderProperties.FULL_WIDTH, BorderProperties.NONE]}'
+                    .borderProperties='${[BorderProperties.FULL_WIDTH, BorderProperties.BOTTOM_SELECTED]}'
             >
 
                 <nidoca-flex-container
                         .flexContainerProperties='${[
-                            FlexContainerProperties.CONTAINER_WIDTH_100,
-                            FlexContainerProperties.CONTAINER_HEIGHT_100,
+                          FlexContainerProperties.CONTAINER_WIDTH_100,
+                          FlexContainerProperties.CONTAINER_HEIGHT_100,
                         ]}'
                         .flexAlignContent='${FlexAlignContent.CENTER}'
                         flexItemBasisValue='100%'
                 >
 
                     <nidoca-typography
-                            .typographyType='${TypographyType.OVERLINE}'
+                            .typographyType='${TypographyType.SUBTITLE2}'
                             text='${this.label}'
                     ></nidoca-typography>
-
-
+<span>
                     <select
                             id='selectElement'
                             name='${this.name}'
@@ -120,25 +113,19 @@ export class NidocaFormCombobox extends NidocaFormInputElement {
                             @focusout='${() => this.focusout()}'
                     >
                         ${guard(
-                                [this.value, this.options],
-                                () => html`
-                                    ${repeat(this.options, (option: KeyValuePair) =>
-                                            this.isSelectedOption(option)
-                                                    ? html`
-                                                        <option value="${option.key}" selected>
-                                                            ${option.value}
-                                                        </option>
-                                                    `
-                                                    : html`
-                                                        <option value="${option.key}">
-                                                            ${option.value}
-                                                        </option>
-                                                    `
-                                    )}
-                                `
+                          [this.value, this.options],
+                          () => html`
+                            ${repeat(this.options, (option: KeyValuePair) =>
+                              this.isSelectedOption(option)
+                                ? html` <option value="${option.key}" selected>${option.value}</option> `
+                                : html` <option value="${option.key}">${option.value}</option> `
+                            )}
+                          `
                         )}
                     </select>
 
+  </span>
+  
                 </nidoca-flex-container
                 >
                 </nidoca-grid-container>
@@ -146,108 +133,102 @@ export class NidocaFormCombobox extends NidocaFormInputElement {
 
             
             
-            ${guard([this.errorText], ()=>html`
-
-                <nidoca-visible visibleType='${
-                        this.errorText ? VisibleType.NORMAL : VisibleType.INVISIBLE
-                }'>
-                    <nidoca-typography
-                            style='color:var(--app-color-error-background)'
-                            .typographyType='${TypographyType.OVERLINE}'
-                            text='${this.errorText}'
-                    ></nidoca-typography>
+            ${guard(
+              [this.errorText],
+              () => html`
+                <nidoca-visible visibleType="${this.errorText ? VisibleType.NORMAL : VisibleType.INVISIBLE}">
+                  <nidoca-typography
+                    style="color:var(--app-color-error-background)"
+                    .typographyType="${TypographyType.OVERLINE}"
+                    text="${this.errorText}"
+                  ></nidoca-typography>
                 </nidoca-visible>
-            
-            
-            
-            `)}
+              `
+            )}
            
         `;
-    }
+  }
 
-    getOutputData(): KeyValuePair {
-        let outputValue: any = this.value;
-        if (this.selectElement != null && this.multiple) {
-            outputValue = [];
-            for (let i = 0, len = this.selectElement.options.length; i < len; i++) {
-                let opt: HTMLOptionElement = this.selectElement.options[i];
-                if (opt.selected) {
-                    outputValue.push(opt.value);
-                }
-            }
-        } else if (this.selectElement != null) {
-            if (this.selectElement.value.length == 0) {
-                outputValue = null;
-            } else {
-                outputValue = this.selectElement.value;
-            }
+  getOutputData(): KeyValuePair {
+    let outputValue: any = this.value;
+    if (this.selectElement != null && this.multiple) {
+      outputValue = [];
+      for (let i = 0, len = this.selectElement.options.length; i < len; i++) {
+        let opt: HTMLOptionElement = this.selectElement.options[i];
+        if (opt.selected) {
+          outputValue.push(opt.value);
         }
-        return <KeyValuePair>{
-            key: this.name,
-            value: outputValue,
-        };
+      }
+    } else if (this.selectElement != null) {
+      if (this.selectElement.value.length == 0) {
+        outputValue = null;
+      } else {
+        outputValue = this.selectElement.value;
+      }
     }
+    return <KeyValuePair>{
+      key: this.name,
+      value: outputValue,
+    };
+  }
 
-    async focused() {
-        this.selected = true;
-        this.dispatchOutputDataChangeEvent();
+  async focused() {
+    this.selected = true;
+    this.dispatchOutputDataChangeEvent();
+  }
+
+  async focusout() {
+    this.selected = false;
+    this.dispatchOutputDataChangeEvent();
+  }
+
+  async change() {
+    this.dispatchOutputDataChangeEvent();
+  }
+
+  async dispatchOutputDataChangeEvent() {
+    if (this.validate()) {
+      let customEvent = new CustomEvent('nidoca-form-combobox-event-change', {
+        detail: this.getOutputData(),
+      });
+      console.debug('dispatch custom event type: %s, detail: %s', customEvent.type, JSON.stringify(customEvent.detail));
+      this.dispatchEvent(customEvent);
     }
+  }
 
-    async focusout() {
-        this.selected = false;
-        this.dispatchOutputDataChangeEvent();
+  public validate(): boolean {
+    this.errorText = undefined;
+    if (
+      this.selectElement != null &&
+      !this.selectElement.validity.valid &&
+      this.selectElement.validationMessage != this.errorText
+    ) {
+      this.errorText = this.selectElement.validationMessage;
     }
+    return this.errorText != undefined;
+  }
 
-    async change() {
-        this.dispatchOutputDataChangeEvent();
-    }
-
-    async dispatchOutputDataChangeEvent() {
-        if (this.validate()) {
-            let customEvent = new CustomEvent('nidoca-form-combobox-event-change', {
-                detail: this.getOutputData(),
-            });
-            console.debug("dispatch custom event type: %s, detail: %s", customEvent.type, JSON.stringify(customEvent.detail));
-            this.dispatchEvent(customEvent);
+  private isSelectedOption(option: KeyValuePair): boolean {
+    if (this.multiple) {
+      let isSelected: boolean = false;
+      for (let option of this.value) {
+        isSelected = this.value = option.value;
+        if (isSelected) {
+          return true;
         }
+      }
     }
+    return this.value === option.value;
+  }
 
-
-    public validate(): boolean {
-        this.errorText = undefined;
-        if (
-            this.selectElement != null &&
-            !this.selectElement.validity.valid &&
-            this.selectElement.validationMessage != this.errorText
-        ) {
-            this.errorText = this.selectElement.validationMessage;
-        }
-        return this.errorText != undefined;
+  static enumToOptions(enumeration: any, emptyElement: boolean = true): any[] {
+    let options: KeyValuePair[] = [];
+    if (emptyElement) {
+      options.push(<KeyValuePair>{key: '', value: ''});
     }
-
-    private isSelectedOption(option: KeyValuePair): boolean {
-        if (this.multiple) {
-            let isSelected: boolean = false;
-            for (let option of this.value) {
-                isSelected = this.value = option.value;
-                if (isSelected) {
-                    return true;
-                }
-            }
-        }
-        return this.value === option.value;
-
-    }
-
-    static enumToOptions(enumeration: any, emptyElement: boolean = true): any[] {
-        let options: KeyValuePair[] = [];
-        if (emptyElement) {
-            options.push(<KeyValuePair>{key: "", value: ""});
-        }
-        Object.keys(enumeration).forEach((key) => {
-            options.push(<KeyValuePair>{key: key, value: enumeration[key]});
-        });
-        return options;
-    }
-    
+    Object.keys(enumeration).forEach((key) => {
+      options.push(<KeyValuePair>{key: key, value: enumeration[key]});
+    });
+    return options;
+  }
 }

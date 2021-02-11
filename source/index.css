@@ -15,7 +15,7 @@
 
    --font-family: 'Roboto', sans-serif;
    --letter-spacing: 1pt;
-   --font-size: 1rem;
+   --font-size: 1.2rem;
 
    --menu-size: 275px;
 
@@ -31,7 +31,7 @@
    --line-height-big: 60px;
    --line-height-massiv: 72px;
 
-   --app-color: #212121;
+   --app-color: #696868;
    --app-color-background: #ffffff;
 
    --app-color-primary: #ffffff;
@@ -47,7 +47,8 @@
    --app-color-secondary-background-light: #FF972F;
    --app-color-secondary-dark: #ffffff;
    --app-color-secondary-background-dark: #C66300;
-
+   
+   --app-color-surface: #325278;
    --app-color-surface-background-dark: #d6d4d4;
    --app-color-surface-background: #e3e3e3;
    --app-color-surface-background-light: #f5f5f5;
@@ -73,7 +74,6 @@
    text-rendering: optimizelegibility;
    font-family: var(--font-family);
    font-size: var(--font-size);
-   fx-font-family: var(--font-family);
    letter-spacing: var(--letter-spacing);
    text-decoration: none;
    line-height: normal;
