@@ -16,10 +16,15 @@ export class NidocaFormCombobox extends NidocaFormInputElement {
       box-sizing: border-box;
       width: 100%;
       border: none;
-      color: var(--app-color-surface);
-      background-color: var(--app-color-surface-background);
+      color: inherit;
+      background-color: inherit;
       height: var(--line-height-large);
       line-height: var(--line-height-large);
+    }
+
+    select option {
+      color: inherit;
+      background: inherit;
     }
 
     select[multiple] {
@@ -54,6 +59,15 @@ export class NidocaFormCombobox extends NidocaFormInputElement {
   required: boolean = false;
 
   @property()
+  errorText: string | undefined;
+
+  @property()
+  infoText: string | undefined;
+
+  @property()
+  warningText: string | undefined;
+
+  @property()
   size: number = 1;
 
   @property()
@@ -72,9 +86,6 @@ export class NidocaFormCombobox extends NidocaFormInputElement {
   minlength: number | undefined;
 
   @property()
-  errorText: string | undefined;
-
-  @property()
   selected: boolean = false;
 
   @query('#selectElement')
@@ -82,71 +93,35 @@ export class NidocaFormCombobox extends NidocaFormInputElement {
 
   render() {
     return html`
-            
-            
-            <nidoca-border
-                    .borderProperties='${[BorderProperties.FULL_WIDTH, BorderProperties.BOTTOM_SELECTED]}'
-            >
-
-                <nidoca-flex-container
-                        .flexContainerProperties='${[
-                          FlexContainerProperties.CONTAINER_WIDTH_100,
-                          FlexContainerProperties.CONTAINER_HEIGHT_100,
-                        ]}'
-                        .flexAlignContent='${FlexAlignContent.CENTER}'
-                        flexItemBasisValue='100%'
-                >
-
-                    <nidoca-typography
-                            .typographyType='${TypographyType.SUBTITLE2}'
-                            text='${this.label}'
-                    ></nidoca-typography>
-<span>
-                    <select
-                            id='selectElement'
-                            name='${this.name}'
-                            size='${this.size}'
-                            ?required='${this.required}'
-                            ?multiple='${this.multiple}'
-                            @change='${() => this.change()}'
-                            @focus='${() => this.focused()}'
-                            @focusout='${() => this.focusout()}'
-                    >
-                        ${guard(
-                          [this.value, this.options],
-                          () => html`
-                            ${repeat(this.options, (option: KeyValuePair) =>
-                              this.isSelectedOption(option)
-                                ? html` <option value="${option.key}" selected>${option.value}</option> `
-                                : html` <option value="${option.key}">${option.value}</option> `
-                            )}
-                          `
-                        )}
-                    </select>
-
-  </span>
-  
-                </nidoca-flex-container
-                >
-                </nidoca-grid-container>
-            </nidoca-border>
-
-            
-            
-            ${guard(
-              [this.errorText],
-              () => html`
-                <nidoca-visible visibleType="${this.errorText ? VisibleType.NORMAL : VisibleType.INVISIBLE}">
-                  <nidoca-typography
-                    style="color:var(--app-color-error-background)"
-                    .typographyType="${TypographyType.OVERLINE}"
-                    text="${this.errorText}"
-                  ></nidoca-typography>
-                </nidoca-visible>
-              `
-            )}
-           
-        `;
+      <nidoca-inputframe
+        label="${this.label}"
+        .errorText="${this.errorText}"
+        .infoText="${this.infoText}"
+        .warningText="${this.warningText}"
+      >
+        <select
+          id="selectElement"
+          name="${this.name}"
+          size="${this.size}"
+          ?required="${this.required}"
+          ?multiple="${this.multiple}"
+          @change="${() => this.change()}"
+          @focus="${() => this.focused()}"
+          @focusout="${() => this.focusout()}"
+        >
+          ${guard(
+            [this.value, this.options],
+            () => html`
+              ${repeat(this.options, (option: KeyValuePair) =>
+                this.isSelectedOption(option)
+                  ? html` <option value="${option.key}" selected>${option.value}</option> `
+                  : html` <option value="${option.key}">${option.value}</option> `
+              )}
+            `
+          )}
+        </select>
+      </nidoca-inputframe>
+    `;
   }
 
   getOutputData(): KeyValuePair {
@@ -205,7 +180,7 @@ export class NidocaFormCombobox extends NidocaFormInputElement {
     ) {
       this.errorText = this.selectElement.validationMessage;
     }
-    return this.errorText != undefined;
+    return this.errorText == undefined;
   }
 
   private isSelectedOption(option: KeyValuePair): boolean {
