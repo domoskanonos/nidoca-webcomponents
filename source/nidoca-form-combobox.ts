@@ -66,13 +66,7 @@ export class NidocaFormCombobox extends NidocaFormInputElement {
     size: number = 1;
 
     @property()
-    disabled: boolean = false;
-
-    @property()
     multiple: boolean = false;
-
-    @property()
-    selected: boolean = false;
 
     @query('#selectElement')
     selectElement: HTMLSelectElement | undefined;
@@ -91,9 +85,7 @@ export class NidocaFormCombobox extends NidocaFormInputElement {
                         size="${this.size}"
                         ?required="${this.required}"
                         ?multiple="${this.multiple}"
-                        @change="${() => this.change()}"
-                        @focus="${() => this.focused()}"
-                        @focusout="${() => this.focusout()}"
+                        @change="${() => this.change()}"      
                 >
                     ${guard(
                             [this.value, this.options],
@@ -139,12 +131,10 @@ export class NidocaFormCombobox extends NidocaFormInputElement {
     }
 
     async focused() {
-        this.selected = true;
         this.dispatchOutputDataChangeEvent();
     }
 
     async focusout() {
-        this.selected = false;
         this.dispatchOutputDataChangeEvent();
     }
 

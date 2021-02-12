@@ -98,7 +98,7 @@ export class NidocaBorder extends LitElement {
     }
 
     .BOTTOM_SELECTED {
-      border-bottom-style: solid;
+      border-bottom: 0.2em solid;
       border-color: var(--app-color-primary-background);
     }
 

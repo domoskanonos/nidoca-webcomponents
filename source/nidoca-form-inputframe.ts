@@ -1,47 +1,52 @@
-import {css, customElement, html, LitElement, property, query} from 'lit-element';
-import {repeat} from 'lit-html/directives/repeat';
-import {guard} from 'lit-html/directives/guard';
-import {KeyValuePair, TypescriptType, BasicService, KeyValuePairs} from '@domoskanonos/frontend-basis';
-import {BorderProperties} from './nidoca-border';
+import {css, customElement, html, LitElement, property} from 'lit-element';
+import {BorderProperties, BorderSize} from './nidoca-border';
 import {VisibleType} from './nidoca-visible';
 import {FlexAlignContent, FlexContainerProperties} from './nidoca-flex-container';
 import {TypographyType} from './nidoca-typography';
-import {NidocaFormInputElement} from './nidoca-form-input-element';
 import {SpacerAlignment, SpacerSize} from './nidoca-spacer';
 
 @customElement('nidoca-inputframe')
 export class NidocaFormInputframe extends LitElement {
-  static styles = css`
+    static styles = css`
     .main {
       color: var(--app-color-surface);
       background-color: var(--app-color-surface-background);
     }
   `;
 
-  @property()
-  label: string = '';
+    @property()
+    label: string = '';
 
-  @property()
-  errorText: string | undefined;
+    @property()
+    errorText: string | undefined;
 
-  @property()
-  infoText: string | undefined;
+    @property()
+    infoText: string | undefined;
 
-  @property()
-  warningText: string | undefined;
+    @property()
+    warningText: string | undefined;
 
-  render() {
-    return html`
+    @property()
+    selected: boolean = false;
+
+    render() {
+        return html`
       <nidoca-border
         class="main"
-        .borderProperties="${[BorderProperties.FULL_WIDTH, BorderProperties.BOTTOM_SELECTED]}"
+        .borderSize="${this.selected ? BorderSize.THIN : BorderSize.MEDIUM}"
+        .borderProperties="${[
+            BorderProperties.FULL_WIDTH,
+            this.selected ? BorderProperties.BOTTOM_SELECTED : BorderProperties.BOTTOM
+        ]}"
+        @mouseover="${() => this.mouseover()}"
+        @mouseout="${() => this.mouseout()}"
       >
         <nidoca-spacer spacerSize="${SpacerSize.SMALL}" spacerAlignment="${SpacerAlignment.BOTH}">
           <nidoca-flex-container
             .flexContainerProperties="${[
-              FlexContainerProperties.CONTAINER_WIDTH_100,
-              FlexContainerProperties.CONTAINER_HEIGHT_100,
-            ]}"
+            FlexContainerProperties.CONTAINER_WIDTH_100,
+            FlexContainerProperties.CONTAINER_HEIGHT_100,
+        ]}"
             .flexAlignContent="${FlexAlignContent.CENTER}"
             flexItemBasisValue="100%"
           >
@@ -53,16 +58,13 @@ export class NidocaFormInputframe extends LitElement {
 
       <nidoca-flex-container
         .flexContainerProperties="${[
-          FlexContainerProperties.CONTAINER_WIDTH_100,
-          FlexContainerProperties.CONTAINER_HEIGHT_100,
+            FlexContainerProperties.CONTAINER_WIDTH_100,
+            FlexContainerProperties.CONTAINER_HEIGHT_100,
         ]}"
         .flexAlignContent="${FlexAlignContent.CENTER}"
         flexItemBasisValue="100%"
         ><nidoca-visible visibleType="${this.infoText ? VisibleType.NORMAL : VisibleType.HIDE}">
-          <nidoca-typography
-            .typographyType="${TypographyType.BODY1}"
-            text="${this.infoText}"
-          ></nidoca-typography>
+          <nidoca-typography .typographyType="${TypographyType.BODY1}" text="${this.infoText}"></nidoca-typography>
         </nidoca-visible>
 
         <nidoca-visible visibleType="${this.warningText ? VisibleType.NORMAL : VisibleType.HIDE}">
@@ -81,5 +83,13 @@ export class NidocaFormInputframe extends LitElement {
           ></nidoca-typography> </nidoca-visible
       ></nidoca-flex-container>
     `;
-  }
+    }
+
+    async mouseover() {
+        this.selected = true;
+    }
+
+    async mouseout() {
+        this.selected = false;
+    }
 }

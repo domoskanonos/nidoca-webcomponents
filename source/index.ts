@@ -12,6 +12,8 @@ export * from './nidoca-divider';
 export * from './nidoca-grid-container';
 export * from './nidoca-form';
 export * from './nidoca-form-combobox';
+export * from './nidoca-form-text';
+export * from './nidoca-form-date';
 export * from './nidoca-form-inputframe';
 export * from './nidoca-form-input-element';
 export * from './nidoca-icon';
