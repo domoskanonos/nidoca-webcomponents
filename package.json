@@ -20,7 +20,7 @@
   "scripts": {
     "start": "parcel source/index.html",
     "build_ts": "tsc -p ./",
-    "build": "parcel build source/index.html --no-content-hash --no-source-maps --out-dir build/output --public-url ./",
+    "build": "parcel build source/index.html -d build/output --no-content-hash --no-source-maps --public-url ./",
     "pretty": "prettier --write \"./**/*.{ts,json}\"",
     "new-version": "npm run build & npm version patch & npm publish --access=public",
     "unpublish": "npm unpublish --force"
