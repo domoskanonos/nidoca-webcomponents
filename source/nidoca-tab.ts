@@ -1,10 +1,9 @@
 import {css, customElement, html, property, LitElement} from 'lit-element';
-import {BasicService} from '@domoskanonos/frontend-basis';
 import {TypographyType} from './nidoca-typography';
 
 @customElement('nidoca-tab')
 export class NidocaTab extends LitElement {
-  static styles = css`
+    static styles = css`
     :host {
       border-width: 4px;
       border-color: var(--app-color-surface-background);
@@ -24,27 +23,28 @@ export class NidocaTab extends LitElement {
     }
   `;
 
-  @property()
-  selected: boolean = false;
+    @property()
+    selected: boolean = false;
 
-  @property()
-  text: string = '';
+    @property()
+    text: string = '';
 
-  render() {
-    return html`
-      <span class="tab ${this.selected ? 'SELECTED' : ''}" @click="${() => this.tabClicked()}">
-        ${BasicService.getUniqueInstance().isNotBlank(this.text)
-          ? html`
-              <nidoca-typography .typographyType="${TypographyType.OVERLINE}" text="${this.text}"></nidoca-typography>
-            `
-          : html``}
+    render() {
+        return html`
+            <span class="tab ${this.selected ? 'SELECTED' : ''}" @click="${() => this.tabClicked()}">
+        ${this.text
+                ? html`
+                    <nidoca-typography .typographyType="${TypographyType.OVERLINE}"
+                                       text="${this.text}"></nidoca-typography>
+                `
+                : html``}
         <slot></slot>
       </span>
-    `;
-  }
+        `;
+    }
 
-  private tabClicked(): void {
-    console.log('tab clicked.');
-    BasicService.getUniqueInstance().dispatchSimpleCustomEvent(this, 'nidoca-event-tab-clicked', this);
-  }
+    private tabClicked(): void {
+        console.log('tab clicked.');
+        this.dispatchEvent(new CustomEvent("nidoca-event-tab-clicked", {detail: this}));
+    }
 }

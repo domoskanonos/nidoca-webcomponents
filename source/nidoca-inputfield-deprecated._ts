@@ -39,7 +39,7 @@ export enum InputfieldMode {
 }
 
 @customElement('nidoca-inputfield')
-export class NidocaInputfield extends NidocaFormInputElement {
+export class NidocaInputfieldDeprecated extends NidocaFormInputElement {
     static styles = css`
     .ENABLED {
       background-color: var(--app-color-surface-background-light);

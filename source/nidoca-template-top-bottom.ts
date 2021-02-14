@@ -1,6 +1,5 @@
 import {css, html, property, query, TemplateResult, LitElement} from 'lit-element';
 
-import {BasicService} from '@domoskanonos/frontend-basis';
 import {NidocaIcon} from './nidoca-icon';
 
 export abstract class NidocaTopBottomTemplate extends LitElement {
@@ -129,7 +128,7 @@ export abstract class NidocaTopBottomTemplate extends LitElement {
 
   menuItemClicked(event: CustomEvent) {
     let id: NidocaIcon = event.detail;
-    if (BasicService.getUniqueInstance().isEqual(id.icon, this.menuSwitchIcon)) {
+    if (id.icon === this.menuSwitchIcon) {
       console.log('menuItemClicked...');
       this.toogleMenu();
     }

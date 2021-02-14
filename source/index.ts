@@ -18,7 +18,6 @@ export * from './nidoca-form-inputframe';
 export * from './nidoca-form-input-element';
 export * from './nidoca-icon';
 export * from './nidoca-rich-media';
-export * from './nidoca-inputfield';
 export * from './nidoca-captcha';
 export * from './nidoca-link';
 export * from './nidoca-list';

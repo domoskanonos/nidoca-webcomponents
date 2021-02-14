@@ -1,7 +1,7 @@
-import {css, customElement, html, LitElement, property, unsafeCSS} from 'lit-element';
-import {BasicService} from '@domoskanonos/frontend-basis';
+import {css, customElement, html, LitElement, property} from 'lit-element';
 import {GridAlignItems, GridJustifyItems} from './nidoca-grid-container';
 import {VisibleType} from './nidoca-visible';
+import {FormOutputData} from "./nidoca-form-input-element";
 
 @customElement('nidoca-list-item')
 export class NidocaListItem extends LitElement {
@@ -59,15 +59,15 @@ export class NidocaListItem extends LitElement {
   }
 
   itemClicked() {
-    BasicService.getUniqueInstance().dispatchSimpleCustomEvent(this, 'nidoca-event-list-item-clicked', this);
+    this.dispatchEvent(new CustomEvent("nidoca-event-list-item-clicked", {detail: this}));
   }
 
   switchSelected() {
     this.selected = Boolean(!this.selected);
     if (this.selected) {
-      BasicService.getUniqueInstance().dispatchSimpleCustomEvent(this, 'nidoca-event-list-item-select', this);
+      this.dispatchEvent(new CustomEvent("nidoca-event-list-item-select", {detail: this}));
     } else {
-      BasicService.getUniqueInstance().dispatchSimpleCustomEvent(this, 'nidoca-event-list-item-unselect', this);
+      this.dispatchEvent(new CustomEvent("nidoca-event-list-item-unselect", {detail: this}));
     }
   }
 }

@@ -1,12 +1,10 @@
 import {css, customElement, html, LitElement, property, query} from 'lit-element';
 import {GridAlignItems, GridJustifyItems} from './nidoca-grid-container';
-import {NidocaIcon} from './nidoca-icon';
 import {BorderProperties, BorderSize, ShadowType} from './nidoca-border';
-import {BasicService} from '@domoskanonos/frontend-basis';
 
 @customElement('nidoca-search-bar')
 export class NidocaSearchBar extends LitElement {
-  static styles = css`
+    static styles = css`
     .input-field {
       font: inherit;
       box-sizing: border-box;
@@ -26,51 +24,51 @@ export class NidocaSearchBar extends LitElement {
     }
   `;
 
-  @property()
-  placeholder: string = '';
+    @property()
+    placeholder: string = '';
 
-  @property()
-  value: string = '';
+    @property()
+    value: string = '';
 
-  @query('#htmlInputElement')
-  private htmlInputElement: HTMLInputElement | undefined;
+    @query('#htmlInputElement')
+    private htmlInputElement: HTMLInputElement | undefined;
 
-  render() {
-    return html`
-      <nidoca-border
-        .borderProperties="${[BorderProperties.ALL, BorderProperties.FULL_WIDTH]}"
-        .borderSize="${BorderSize.THIN}"
-        .shadowType="${ShadowType.NONE}"
-      >
-        <nidoca-grid-container
-          .gridJustifyItems="${GridJustifyItems.STRETCH}"
-          .gridAlignItems="${GridAlignItems.STRETCH}"
-          .gridTemplateRows="${['1fr']}"
-          .gridTemplateColumns="${['auto', '1fr']}"
-        >
-          <nidoca-icon icon="search"></nidoca-icon>
-          <input
-            class="input-field"
-            id="htmlInputElement"
-            type="search"
-            @keyup="${() => this.textfieldKeyUp()}"
-            placeholder="${this.placeholder}"
-            value="${this.value}"
-          />
-        </nidoca-grid-container>
-      </nidoca-border>
-    `;
-  }
-
-  getOutputData(): string {
-    let searchBarOutputData: string = '';
-    if (this.htmlInputElement != null) {
-      searchBarOutputData = this.htmlInputElement.value;
+    render() {
+        return html`
+            <nidoca-border
+                    .borderProperties="${[BorderProperties.ALL, BorderProperties.FULL_WIDTH]}"
+                    .borderSize="${BorderSize.THIN}"
+                    .shadowType="${ShadowType.NONE}"
+            >
+                <nidoca-grid-container
+                        .gridJustifyItems="${GridJustifyItems.STRETCH}"
+                        .gridAlignItems="${GridAlignItems.STRETCH}"
+                        .gridTemplateRows="${['1fr']}"
+                        .gridTemplateColumns="${['auto', '1fr']}"
+                >
+                    <nidoca-icon icon="search"></nidoca-icon>
+                    <input
+                            class="input-field"
+                            id="htmlInputElement"
+                            type="search"
+                            @keyup="${() => this.textfieldKeyUp()}"
+                            placeholder="${this.placeholder}"
+                            value="${this.value}"
+                    />
+                </nidoca-grid-container>
+            </nidoca-border>
+        `;
     }
-    return searchBarOutputData;
-  }
 
-  private textfieldKeyUp() {
-    BasicService.getUniqueInstance().dispatchSimpleCustomEvent(this, 'nidoca-event-search', this.getOutputData());
-  }
+    getOutputData(): string {
+        let searchBarOutputData: string = '';
+        if (this.htmlInputElement != null) {
+            searchBarOutputData = this.htmlInputElement.value;
+        }
+        return searchBarOutputData;
+    }
+
+    private textfieldKeyUp() {
+        this.dispatchEvent(new CustomEvent("nidoca-event-search", {detail: this.getOutputData()}));
+    }
 }

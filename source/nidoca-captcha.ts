@@ -1,55 +1,51 @@
 import {css, customElement, html, LitElement, property, query} from 'lit-element';
-import {BasicService, I18nService} from '@domoskanonos/frontend-basis/lib';
-import {InputfieldMode, InputfieldType, NidocaInputfield} from './nidoca-inputfield';
+import {NidocaFormText} from "./nidoca-form-text";
 
 @customElement('nidoca-captcha-component')
 export class NidocaCaptcha extends LitElement {
-  static styles = css``;
+    static styles = css``;
 
-  @property()
-  numberOne: number = BasicService.getUniqueInstance().getRandomNumber(1, 20);
+    @property()
+    numberOne: number = 1;
 
-  @property()
-  numberTwo: number = BasicService.getUniqueInstance().getRandomNumber(1, 20);
+    @property()
+    numberTwo: number = 10;
 
-  @query('#inputfield')
-  inputfield: NidocaInputfield | undefined;
+    @query('#inputfield')
+    inputfield: NidocaFormText | undefined;
 
-  render() {
-    return html`
-      <nidoca-inputfield
-        id="inputfield"
-        .inputfieldMode="${InputfieldMode.FILLED}"
-        .inputfieldType="${InputfieldType.NUMBER}"
-        @nidoca-event-inputfield-focus-out="${() => this.validate()}"
-        label="${I18nService.getUniqueInstance()
-          .getValue('nidoca-captcha-label')
-          .concat(String(this.numberOne))
-          .concat(' + ')
-          .concat(String(this.numberTwo))
-          .concat(' = ?')}"
-        name="captcha"
-        trailingIcon="create"
-        value=""
-      ></nidoca-inputfield>
-    `;
-  }
-
-  public isValid(): boolean {
-    if (this.inputfield != undefined) {
-      return this.numberOne + this.numberTwo == Number(this.inputfield.getOutputData().value);
-    } else {
-      return false;
+    render() {
+        return html`
+            <nidoca-form-text
+                    id="inputfield"
+                    @nidoca-event-inputfield-focus-out="${() => this.validate()}"
+                    label="${'nidoca-captcha-label'
+                            .concat(String(this.numberOne))
+                            .concat(' + ')
+                            .concat(String(this.numberTwo))
+                            .concat(' = ?')}"
+                    name="captcha"
+                    trailingIcon="create"
+                    value=""
+            ></nidoca-form-text>
+        `;
     }
-  }
 
-  public validate(): boolean {
-    let isValid: boolean = this.isValid();
-    if (isValid && this.inputfield != undefined) {
-      this.inputfield.errorText = '';
-    } else if (this.inputfield != undefined) {
-      this.inputfield.errorText = I18nService.getUniqueInstance().getValue('nidoca-captcha-wrong-value');
+    public isValid(): boolean {
+        if (this.inputfield != undefined) {
+            return this.numberOne + this.numberTwo == Number(this.inputfield.getOutputData().value);
+        } else {
+            return false;
+        }
     }
-    return isValid;
-  }
+
+    public validate(): boolean {
+        let isValid: boolean = this.isValid();
+        if (isValid && this.inputfield != undefined) {
+            this.inputfield.errorText = '';
+        } else if (this.inputfield != undefined) {
+            this.inputfield.errorText = 'nidoca-captcha-wrong-value';
+        }
+        return isValid;
+    }
 }

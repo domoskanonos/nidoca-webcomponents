@@ -1,5 +1,4 @@
 import {css, customElement, html, property, LitElement} from 'lit-element';
-import {BasicService} from '@domoskanonos/frontend-basis';
 
 export enum GridJustifyItems {
   START = 'start',
@@ -114,13 +113,13 @@ export class NidocaGrid extends LitElement {
   }
 
   private toGridJustifyItems(gridJustifyItems: string) {
-    return BasicService.getUniqueInstance().isNotBlank(gridJustifyItems)
+    return gridJustifyItems
       ? 'justify-items:'.concat(gridJustifyItems).concat(';')
       : '';
   }
 
   private toGridAlignItems(gridAlignItems: string) {
-    return BasicService.getUniqueInstance().isNotBlank(gridAlignItems)
+    return gridAlignItems
       ? 'align-items:'.concat(gridAlignItems).concat(';')
       : '';
   }

@@ -1,5 +1,4 @@
 import {LitElement, TemplateResult} from 'lit-element';
-import {RouterService} from '@domoskanonos/frontend-basis';
 
 export class AppData {
   name?: string;
@@ -28,7 +27,7 @@ export abstract class NidocaAbstractApp extends LitElement {
 
   firstUpdated() {
     this.registerEventListener();
-    RouterService.getUniqueInstance().subscribe(() => this.requestUpdate());
+    //TODO: RouterService.getUniqueInstance().subscribe(() => this.requestUpdate());
   }
 
   abstract renderPage(): TemplateResult;

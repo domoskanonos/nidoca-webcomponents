@@ -1,7 +1,6 @@
 import {css, customElement, html, property} from 'lit-element';
 import {LitElement} from 'lit-element';
 import {GridAlignItems, GridJustifyItems} from './nidoca-grid-container';
-import {BasicService} from '@domoskanonos/frontend-basis';
 import {BorderProperties} from './nidoca-border';
 import {SpacerAlignment, SpacerSize} from './nidoca-spacer';
 import {VisibleType} from './nidoca-visible';
@@ -50,6 +49,6 @@ export class NidocaAccordionItem extends LitElement {
     console.log('accordion clicked, state=' + this.opened);
     this.opened = Boolean(!this.opened);
     console.log('accordion clicked, after state=' + this.opened);
-    BasicService.getUniqueInstance().dispatchSimpleCustomEvent(this, 'nidoca-event-accordion-item-clicked', this);
+    this.dispatchEvent(new CustomEvent('nidoca-event-accordion-item-clicked', {detail: this}));
   }
 }

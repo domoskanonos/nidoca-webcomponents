@@ -1,6 +1,5 @@
 import {css, customElement, html, LitElement, property, query} from 'lit-element';
 import {NidocaFormInputElement} from './nidoca-form-input-element';
-import {BasicService} from '@domoskanonos/frontend-basis';
 
 export class NidocaFormOutputData {
     jsonObject: any;
@@ -131,11 +130,7 @@ export class NidocaForm extends LitElement {
         let buttonIdentifier = event.detail;
         switch (buttonIdentifier) {
             case 'submitButton':
-                BasicService.getUniqueInstance().dispatchSimpleCustomEvent(
-                    this,
-                    'nidoca-event-form-submit-button-clicked',
-                    this.getOutputData()
-                );
+                this.dispatchEvent(new CustomEvent('nidoca-event-form-submit-button-clicked', {detail: this.getOutputData()}));
                 break;
         }
     }

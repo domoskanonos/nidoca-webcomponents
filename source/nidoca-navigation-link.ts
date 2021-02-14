@@ -1,5 +1,4 @@
 import {css, customElement, html, property, LitElement} from 'lit-element';
-import {RouterService} from '@domoskanonos/frontend-basis';
 import {SpacerAlignment, SpacerSize} from './nidoca-spacer';
 import {
   FlexAlignContent,
@@ -46,7 +45,7 @@ export class NidocaNavigationLink extends LitElement {
       ? html`
           <div
             class="navItem"
-            class="${RouterService.getUniqueInstance().getPath() == this.href ? 'navItem selected' : 'navItem'}"
+            class="${'TODO: RouterService.getUniqueInstance().getPath()' == this.href ? 'navItem selected' : 'navItem'}"
           >
             <nidoca-spacer spacerSize="${SpacerSize.SMALL}" spacerAlignment="${SpacerAlignment.VERTICAL}">
               <nidoca-flex-container
@@ -61,7 +60,7 @@ export class NidocaNavigationLink extends LitElement {
                 .flexItemBasisValues="${['auto', '80%']}"
               >
                 <nidoca-icon icon="${this.icon}" .withIconSpace="${false}"></nidoca-icon>
-                <nidoca-typography typographyType="${TypographyType.BODY2}">${this.text}</nidoca-typography>
+                <nidoca-typography typographyType="${TypographyType.BODY2}">${this.text} </nidoca-typography>
               </nidoca-flex-container>
             </nidoca-spacer>
           </div>
@@ -70,6 +69,6 @@ export class NidocaNavigationLink extends LitElement {
   }
 
   private linkClicked() {
-    RouterService.getUniqueInstance().navigate(this.href);
+    this.dispatchEvent(new CustomEvent('nidoca-event-link-clicked', {detail: this.href}));
   }
 }

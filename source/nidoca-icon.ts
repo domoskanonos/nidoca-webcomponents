@@ -1,5 +1,4 @@
 import {css, customElement, html, property, LitElement} from 'lit-element';
-import {BasicService} from '@domoskanonos/frontend-basis';
 import {ShadowType} from './nidoca-border';
 
 export enum IconShadowType {
@@ -159,7 +158,7 @@ export class NidocaIcon extends LitElement {
 
     async clicked() {
         if (this.clickable && !this.deactivated) {
-            BasicService.getUniqueInstance().dispatchSimpleCustomEvent(this, 'nidoca-event-icon-clicked', this);
+            this.dispatchEvent(new CustomEvent('nidoca-event-icon-clicked', {detail: this}));
         }
     }
 }

@@ -1,10 +1,8 @@
 import {css, customElement, html} from 'lit-element';
 import {LitElement} from 'lit-element';
-import {InputfieldType, NidocaInputfield} from './nidoca-inputfield';
-import {NidocaFormCombobox} from './nidoca-form-combobox';
 import {SpacerSize} from './nidoca-spacer';
-import {KeyValuePair} from '@domoskanonos/frontend-basis';
 import {TextType} from './nidoca-form-text';
+import {FormOutputData} from "./nidoca-form-input-element";
 
 @customElement('nidoca-showcase')
 export class NidocaShowcase extends LitElement {
@@ -17,12 +15,12 @@ export class NidocaShowcase extends LitElement {
           <nidoca-form-combobox
             name="opinionLikeSite"
             label="Wie findest du diese Seite ?"
-            value="${InputfieldType.TEXTAREA}"
+            value="ok"
             .options="${[
-              <KeyValuePair>{key: null, value: 'Bitte wählen'},
-              <KeyValuePair>{key: 'verryGood', value: 'Sehr gut'},
-              <KeyValuePair>{key: 'ok', value: 'Ein  bisschen gut'},
-              <KeyValuePair>{key: 'bad', value: 'Schlecht'},
+              <FormOutputData>{key: null, value: 'Bitte wählen'},
+              <FormOutputData>{key: 'verryGood', value: 'Sehr gut'},
+              <FormOutputData>{key: 'ok', value: 'Ein  bisschen gut'},
+              <FormOutputData>{key: 'bad', value: 'Schlecht'},
             ]}"
             required="true"
             infoText="Wie findest du den diese tolle Seite"
@@ -33,15 +31,15 @@ export class NidocaShowcase extends LitElement {
           <nidoca-form-combobox
             name="languages"
             label="Welche Sprachen sprichst du ?"
-            value="${InputfieldType.TEXTAREA}"
+            value="france"
             multiple="true"
             size="5"
             .options="${[
-              <KeyValuePair>{key: 'german', value: 'Deutsch'},
-              <KeyValuePair>{key: 'english', value: 'Englisch'},
-              <KeyValuePair>{key: 'spanish', value: 'Spanisch'},
-              <KeyValuePair>{key: 'france', value: 'Französisch'},
-              <KeyValuePair>{key: 'japanese', value: 'Japanisch'},
+              <FormOutputData>{key: 'german', value: 'Deutsch'},
+              <FormOutputData>{key: 'english', value: 'Englisch'},
+              <FormOutputData>{key: 'spanish', value: 'Spanisch'},
+              <FormOutputData>{key: 'france', value: 'Französisch'},
+              <FormOutputData>{key: 'japanese', value: 'Japanisch'},
             ]}"
             required="true"
             infoText="Gib hier die Sprachen ein die du sprichst"
