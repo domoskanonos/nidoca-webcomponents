@@ -69,3 +69,5 @@ typings/
 /lib/
 /.cache/
 /.cache
+/.parcel-cache/
+/build/
