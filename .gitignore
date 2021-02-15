@@ -65,7 +65,7 @@ typings/
 # next.js build output
 .next
 /wc-atomic.iml
-/package-lock.json
+package-lock.json
 /lib/
 /.cache/
 /.cache
