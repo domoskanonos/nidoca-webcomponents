@@ -66,8 +66,8 @@ typings/
 .next
 /wc-atomic.iml
 package-lock.json
-/lib/
-/.cache/
-/.cache
+lib
+.cache
+dist
+build
 /.parcel-cache/
-/build/
