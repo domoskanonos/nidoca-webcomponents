@@ -7,7 +7,7 @@
     "lib/**/*"
   ],
   "main": "lib/index.js",
-  "module": "source/index.js",
+  "module": "core/source/index.js",
   "devDependencies": {
     "parcel-bundler": "^1.12.4",
     "prettier": "^2.2.1",
