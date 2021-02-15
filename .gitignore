@@ -71,3 +71,4 @@ lib
 dist
 build
 /.parcel-cache/
+*.d.ts
