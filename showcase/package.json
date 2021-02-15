@@ -1,0 +1,31 @@
+{
+  "name": "@domoskanonos/nidoca-core",
+  "version": "1.0.548",
+  "license": "MIT",
+  "description": "nidoca framework (nidoca-core)",
+  "files": [
+    "lib/**/*"
+  ],
+  "main": "lib/index.js",
+  "module": "core/source/index.js",
+  "devDependencies": {
+    "typescript-ast-explorer": "^0.0.5",
+    "prettier": "^2.2.1",
+    "typescript": "^4.1.4"
+  },
+  "dependencies": {
+    "lit-element": "^2.4.0"
+  },
+  "author": "Dominik Bruhn",
+  "scripts": {
+    "start": "parcel source/index.html",
+    "build_ts": "tsc -p ./",
+    "build": "parcel build source/index.html -d build/output --no-content-hash --no-source-maps --public-url ./",
+    "pretty": "prettier --write \"./**/*.{ts,json}\"",
+    "new-version": "npm run build & npm version patch & npm publish --access=public",
+    "unpublish": "npm unpublish --force"
+  },
+  "browserslist": [
+    "last 1 Chrome version"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "main": "lib/index.js",
+  "module": "core/source/index.js",
+  "devDependencies": {
+    "typescript-parser": "^2.6.1",
+    "@types/node": "^14.14.28"
+  },
+  "author": "Dominik Bruhn",
+  "scripts": {
+    "generate-showcase": "tsc -p ./ && node generator-showcase.js"
+  }
+}
