@@ -1,15 +1,25 @@
 import {TypescriptParser} from "typescript-Parser";
 import fs from 'fs';
+import Mustache from "mustache";
+
 
 const typescriptParser = new TypescriptParser();
 let sourceRoot = "./../core/source/";
 const parsedIndexFile = typescriptParser.parseFile(sourceRoot.concat('index.ts'), 'workspace root');
 parsedIndexFile.then((indexFileContent: any) => {
+
     indexFileContent["exports"].forEach((file: any) => {
         let filename: string = file.from.replace("./", "").concat(".ts");
         console.log("parse file: %s", filename);
         const parsedFile = typescriptParser.parseFile(sourceRoot.concat(filename), 'workspace root');
+
         parsedFile.then(value => {
+
+            var template: string = fs.readFileSync("./component.html","utf-8");
+            var output = Mustache.render(template, value);
+            console.log(output);
+
+
             let imps: any[] = value["imports"];
             imps.forEach((imp: any) => {
                 let libraryName: string = imp.libraryName;
@@ -48,10 +58,9 @@ parsedIndexFile.then((indexFileContent: any) => {
                 }
             });
 
-            let options = {
+            fs.writeFileSync("./../showcase/source/".concat(filename), output, {
                 encoding: "utf8",
-            };
-            //fs.writeFileSync("./../showcase/source/".concat(filename), JSON.stringify(value), options);
+            });
         })
     });
 })
