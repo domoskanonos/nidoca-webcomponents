@@ -1,20 +1,14 @@
 {
-  "name": "@domoskanonos/nidoca-core",
-  "version": "1.0.548",
+  "name": "@domoskanonos/nidoca-showcase",
+  "version": "1.0.0",
   "license": "MIT",
-  "description": "nidoca framework (nidoca-core)",
-  "files": [
-    "lib/**/*"
-  ],
-  "main": "lib/index.js",
-  "module": "core/source/index.js",
+  "description": "nidoca framework (nidoca-showcase)",
   "devDependencies": {
-    "typescript-ast-explorer": "^0.0.5",
     "prettier": "^2.2.1",
     "typescript": "^4.1.4"
   },
   "dependencies": {
-    "lit-element": "^2.4.0"
+    "@domoskanonos/nidoca-core": "latest"
   },
   "author": "Dominik Bruhn",
   "scripts": {

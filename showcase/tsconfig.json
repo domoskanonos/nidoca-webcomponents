@@ -16,7 +16,7 @@
     "emitDecoratorMetadata": true
   },
   "include": [
-    "core/source"
+    "./source"
   ],
   "exclude": ["node_modules"]
 }
