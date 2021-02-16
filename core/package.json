@@ -1,6 +1,6 @@
 {
   "name": "@domoskanonos/nidoca-core",
-  "version": "1.0.549",
+  "version": "1.0.551",
   "license": "MIT",
   "description": "nidoca framework (nidoca-core)",
   "files": [
@@ -22,7 +22,7 @@
     "build_ts": "tsc -p ./",
     "build": "parcel build source/index.html -d build/output --no-content-hash --no-source-maps --public-url ./",
     "pretty": "prettier --write \"./**/*.{ts,json}\"",
-    "new-version": "npm run build_ts & npm version patch & git add & git commit -m 'new version' & git push & npm publish --access=public",
+    "new-version": "npm run build_ts & npm version patch & git add . & git commit -m 'new version' & git push & npm publish --access=public",
     "unpublish": "npm unpublish --force"
   },
   "browserslist": [
