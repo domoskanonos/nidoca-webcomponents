@@ -1,8 +1,3 @@
-{{#imports}} import { {{#specifiers}}{{specifier|xxx}},{{/specifiers}} } from '{{libraryName}}';
-{{/imports}}
-
-
-
-{{#xxx}}
-  {{name}} is awesome.
-{{/xxx}}
+{{#each imports}}
+import { {{#each this.specifiers}}{{#if @first}}{{else}},{{/if}}{{this.specifier}}{{/each}} } from '{{this.libraryName}}';
+{{/each}}

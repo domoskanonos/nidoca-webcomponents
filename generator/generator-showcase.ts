@@ -1,6 +1,6 @@
-import { TypescriptParser } from "typescript-Parser";
+import {TypescriptParser} from "typescript-Parser";
 import fs from 'fs';
-import Mustache from "mustache";
+import Handlebars = require('handlebars');
 
 
 const typescriptParser = new TypescriptParser();
@@ -17,16 +17,19 @@ parsedIndexFile.then((indexFileContent: any) => {
 
 
 
-            value['xxx'] = function () {
-                    return function (val: any) {
-                        return "I passed in this value: " + val;
-                    }
 
-                };
+
+
+
 
             var template: string = fs.readFileSync("./component.html", "utf-8");
-            var output = Mustache.render(template, value);
-            console.log(output);
+
+            let compiledTemplate = Handlebars.compile(template);
+
+            let output : string = compiledTemplate(value);
+
+            //var compiledTemplate = Mustache.render(template, value);
+            console.log(compiledTemplate);
 
 
             let imps: any[] = value["imports"];
