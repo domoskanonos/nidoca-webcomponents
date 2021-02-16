@@ -1,13 +1,13 @@
 {
   "name": "@domoskanonos/nidoca-core",
-  "version": "1.0.548",
+  "version": "1.0.549",
   "license": "MIT",
   "description": "nidoca framework (nidoca-core)",
   "files": [
     "lib/**/*"
   ],
   "main": "lib/index.js",
-  "module": "core/source/index.js",
+  "module": "./source/index.js",
   "devDependencies": {
     "parcel-bundler": "^1.12.4",
     "prettier": "^2.2.1",
@@ -22,7 +22,7 @@
     "build_ts": "tsc -p ./",
     "build": "parcel build source/index.html -d build/output --no-content-hash --no-source-maps --public-url ./",
     "pretty": "prettier --write \"./**/*.{ts,json}\"",
-    "new-version": "npm run build & npm version patch & npm publish --access=public",
+    "new-version": "npm run build_ts & npm version patch & npm publish --access=public",
     "unpublish": "npm unpublish --force"
   },
   "browserslist": [
