@@ -1,4 +1,4 @@
-import {TypescriptParser} from "typescript-Parser";
+import { TypescriptParser } from "typescript-Parser";
 import fs from 'fs';
 import Mustache from "mustache";
 
@@ -13,9 +13,18 @@ parsedIndexFile.then((indexFileContent: any) => {
         console.log("parse file: %s", filename);
         const parsedFile = typescriptParser.parseFile(sourceRoot.concat(filename), 'workspace root');
 
-        parsedFile.then(value => {
+        parsedFile.then((value: any) => {
 
-            var template: string = fs.readFileSync("./component.html","utf-8");
+
+
+            value['xxx'] = function () {
+                    return function (val: any) {
+                        return "I passed in this value: " + val;
+                    }
+
+                };
+
+            var template: string = fs.readFileSync("./component.html", "utf-8");
             var output = Mustache.render(template, value);
             console.log(output);
 
