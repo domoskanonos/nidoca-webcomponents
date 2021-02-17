@@ -14,23 +14,9 @@ parsedIndexFile.then((indexFileContent: any) => {
         const parsedFile = typescriptParser.parseFile(sourceRoot.concat(filename), 'workspace root');
 
         parsedFile.then((value: any) => {
-
-
-
-
-
-
-
-
-            var template: string = fs.readFileSync("./component.html", "utf-8");
-
-            let compiledTemplate = Handlebars.compile(template);
-
-            let output : string = compiledTemplate(value);
-
-            //var compiledTemplate = Mustache.render(template, value);
-            console.log(compiledTemplate);
-
+            let fileContent: string = fs.readFileSync("./component.html", "utf-8");
+            let template = Handlebars.compile(fileContent);
+            let output : string = template(value);
 
             let imps: any[] = value["imports"];
             imps.forEach((imp: any) => {

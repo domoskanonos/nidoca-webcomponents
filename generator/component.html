@@ -1,3 +1,30 @@
 {{#each imports}}
 import { {{#each this.specifiers}}{{#if @first}}{{else}},{{/if}}{{this.specifier}}{{/each}} } from '{{this.libraryName}}';
 {{/each}}
+
+
+{{#each declarations}}
+
+@customElement('')
+export class {{this.name}}ShowcasePage extends LitElement {
+
+
+
+  {{#each methods}}
+  {{/each}}
+
+
+  {{#each properties}}
+
+  {{this.name}}
+
+  {{this.type}}
+
+
+  {{/each}}
+  
+
+}
+
+
+{{/each}}
