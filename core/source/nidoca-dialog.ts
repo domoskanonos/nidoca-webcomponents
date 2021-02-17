@@ -1,4 +1,4 @@
-import {css, customElement, html, property, unsafeCSS, LitElement} from 'lit-element';
+import {css, customElement, html, property, unsafeCSS, LitElement, TemplateResult} from 'lit-element';
 import {VisibleType} from './nidoca-visible';
 import {TransitionType} from './nidoca-transition';
 
@@ -43,7 +43,7 @@ export class NidocaDialog extends LitElement {
   @property()
   show: boolean = false;
 
-  render() {
+  render(): TemplateResult {
     return html`
       <nidoca-visible visibleType="${this.show ? VisibleType.NORMAL : VisibleType.HIDE}">
         <div class="fullScreen opacScreen"></div>

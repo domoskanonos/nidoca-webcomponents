@@ -1,14 +1,14 @@
-import {css, customElement, html} from 'lit-element';
+import {css, customElement, html, TemplateResult} from 'lit-element';
 import {LitElement} from 'lit-element';
 import {SpacerSize} from './nidoca-spacer';
 import {TextType} from './nidoca-form-text';
-import {FormOutputData} from "./nidoca-form-input-element";
+import {FormOutputData} from "./nidoca-form-abstract-input-element";
 
 @customElement('nidoca-showcase')
 export class NidocaShowcase extends LitElement {
   static styles = css``;
 
-  render() {
+  render(): TemplateResult {
     return html`
       <nidoca-spacer spacerSize="${SpacerSize.NORMAL}">
         <nidoca-form>

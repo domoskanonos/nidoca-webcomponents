@@ -1,4 +1,4 @@
-import {css, customElement, html, property, unsafeCSS} from 'lit-element';
+import {css, customElement, html, property, TemplateResult, unsafeCSS} from 'lit-element';
 import {LitElement} from 'lit-element';
 
 export enum BorderProperties {
@@ -124,7 +124,7 @@ export class NidocaBorder extends LitElement {
   @property()
   shadowType: string = ShadowType.NONE;
 
-  render() {
+  render(): TemplateResult {
     return html`
       <slot
         class="${this.toBorderPropertiesString(this.borderProperties)} ${this.borderSize} ${this.shadowType}"

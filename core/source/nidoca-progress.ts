@@ -1,4 +1,4 @@
-import {css, customElement, html, property} from 'lit-element';
+import {css, customElement, html, property, TemplateResult} from 'lit-element';
 import {LitElement} from 'lit-element';
 
 export enum ProgressType {
@@ -205,9 +205,9 @@ export class NidocaProgress extends LitElement {
   @property()
   progressType: ProgressType = ProgressType.PROGRESS;
 
-  render() {
+  render(): TemplateResult {
     return html`
-      <progress class="${this.progressType}" />
+      <progress class="${this.progressType}" ></progress>
     `;
   }
 }

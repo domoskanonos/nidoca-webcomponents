@@ -99,7 +99,7 @@ export abstract class NidocaTopBottomTemplate extends LitElement {
   @query('#main')
   private mainElement: HTMLElement | undefined;
 
-  render() {
+  render(): TemplateResult {
     return html`
       <div class="container" @nidoca-event-icon-clicked="${this.menuItemClicked}">
         <div id="top" class="${this.menuCss}">

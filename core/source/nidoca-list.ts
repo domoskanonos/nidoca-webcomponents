@@ -1,4 +1,4 @@
-import {css, customElement, html, property, query, LitElement} from 'lit-element';
+import {css, customElement, html, property, query, LitElement, TemplateResult} from 'lit-element';
 import {NidocaListItem} from './nidoca-list-item';
 
 @customElement('nidoca-list')
@@ -26,7 +26,7 @@ export class NidocaList extends LitElement {
     }
   }
 
-  render() {
+  render(): TemplateResult {
     return html`
       <slot class="LIST_SLOT" id="slotElement"></slot>
     `;

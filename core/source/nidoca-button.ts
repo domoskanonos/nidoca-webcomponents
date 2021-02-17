@@ -1,4 +1,4 @@
-import {css, customElement, html, property} from 'lit-element';
+import {css, customElement, html, property, TemplateResult} from 'lit-element';
 import {LitElement} from 'lit-element';
 import {FlexAlignItems, FlexContainerProperties, FlexJustifyContent, FlexWrap} from './nidoca-flex-container';
 import {VisibleType} from './nidoca-visible';
@@ -76,7 +76,7 @@ export class NidocaButton extends LitElement implements NidocaButtonInterface {
         super();
     }
 
-    render() {
+    render(): TemplateResult {
         return html`
       <nidoca-ripple>
         <nidoca-flex-container

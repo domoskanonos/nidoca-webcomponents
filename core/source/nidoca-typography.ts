@@ -1,4 +1,4 @@
-import {css, customElement, html, property, unsafeCSS, LitElement} from 'lit-element';
+import {css, customElement, html, property, unsafeCSS, LitElement, TemplateResult} from 'lit-element';
 
 export enum TypographyType {
   H1 = 'H1',
@@ -158,7 +158,7 @@ export class NidocaTypography extends LitElement {
   @property()
   text: string = '';
 
-  render() {
+  render(): TemplateResult {
     return html`
       <span class="TYPOGRAPHY ${this.typographyType}" style="${this.typographyAlignment}"
         >${this.text}<slot></slot

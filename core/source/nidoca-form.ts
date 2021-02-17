@@ -1,5 +1,5 @@
-import {css, customElement, html, LitElement, property, query} from 'lit-element';
-import {NidocaFormInputElement} from './nidoca-form-input-element';
+import {css, customElement, html, LitElement, property, query, TemplateResult} from 'lit-element';
+import {NidocaFormAbstractInputElement} from './nidoca-form-abstract-input-element';
 
 export class NidocaFormOutputData {
     jsonObject: any;
@@ -57,7 +57,7 @@ export class NidocaForm extends LitElement {
     @query('#htmlForm')
     htmlForm: HTMLFormElement | undefined;
 
-    protected render() {
+    render(): TemplateResult {
         return html`
             <form
                     class="${this.toFormPropertiesString(this.formProperties)}"
@@ -81,11 +81,11 @@ export class NidocaForm extends LitElement {
         return formPropertiesClazzString;
     }
 
-    getInputElements(slotElement: HTMLSlotElement | undefined): NidocaFormInputElement[] {
+    getInputElements(slotElement: HTMLSlotElement | undefined): NidocaFormAbstractInputElement[] {
         if (slotElement == null) {
             return [];
         }
-        let inputElements: NidocaFormInputElement[] = [];
+        let inputElements: NidocaFormAbstractInputElement[] = [];
         let elements: Element[] = slotElement.assignedElements({flatten: true});
         for (let index = 0; index < elements.length; index++) {
             let element: Element = elements[index];
@@ -135,8 +135,8 @@ export class NidocaForm extends LitElement {
         }
     }
 
-    private recursiveInputElementSearch(element: Element, inputElements: NidocaFormInputElement[]) {
-        if (element instanceof NidocaFormInputElement) {
+    private recursiveInputElementSearch(element: Element, inputElements: NidocaFormAbstractInputElement[]) {
+        if (element instanceof NidocaFormAbstractInputElement) {
             inputElements.push(element);
         } else if (element.hasChildNodes()) {
             for (let childElement of element.children) {

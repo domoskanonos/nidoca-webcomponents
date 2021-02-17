@@ -1,11 +1,11 @@
-import {LitElement} from "lit-element";
+import { LitElement } from "lit-element";
 
 export interface FormOutputData {
     key: string | null;
     value: any;
 }
 
-export abstract class NidocaFormInputElement extends LitElement {
+export abstract class NidocaFormAbstractInputElement extends LitElement {
 
     abstract validate(): boolean;
 

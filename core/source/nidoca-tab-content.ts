@@ -1,4 +1,4 @@
-import {css, customElement, html, property, LitElement} from 'lit-element';
+import {css, customElement, html, property, LitElement, TemplateResult} from 'lit-element';
 import {VisibleType} from './nidoca-visible';
 
 @customElement('nidoca-tab-content')
@@ -8,7 +8,7 @@ export class NidocaTabContent extends LitElement {
   @property()
   selected: boolean = false;
 
-  render() {
+  render(): TemplateResult {
     return html`
       <nidoca-visible visibleType="${this.selected ? VisibleType.NORMAL : VisibleType.HIDE}">
         <slot></slot>

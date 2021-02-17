@@ -1,4 +1,4 @@
-import {css, customElement, html, property, LitElement} from 'lit-element';
+import {css, customElement, html, property, LitElement, TemplateResult} from 'lit-element';
 import {guard} from 'lit-html/directives/guard';
 import {repeat} from 'lit-html/directives/repeat';
 
@@ -52,7 +52,7 @@ export class NidocaTopAppBar extends LitElement {
     super();
   }
 
-  render() {
+  render(): TemplateResult {
     return html`
       <div class="topappbar">
         <div class="left">

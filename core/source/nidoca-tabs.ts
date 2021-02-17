@@ -1,4 +1,4 @@
-import {css, customElement, html, query, unsafeCSS, LitElement, property} from 'lit-element';
+import {css, customElement, html, query, unsafeCSS, LitElement, property, TemplateResult} from 'lit-element';
 import {NidocaTabContent} from './nidoca-tab-content';
 import {NidocaTab} from './nidoca-tab';
 
@@ -55,7 +55,7 @@ export class NidocaTabs extends LitElement {
     }
   }
 
-  render() {
+  render(): TemplateResult {
     return html`
       <nidoca-grid-container
         @nidoca-event-tab-clicked="${(event: CustomEvent) => this.tabClicked(event)}"

@@ -1,3 +1,4 @@
+import { NidocaTemplate } from '@domoskanonos/nidoca-core';
 {{#each imports}}
 import { {{#each this.specifiers}}{{#if @first}}{{else}},{{/if}}{{this.specifier}}{{/each}} } from '{{this.libraryName}}';
 {{/each}}
@@ -5,7 +6,7 @@ import { {{#each this.specifiers}}{{#if @first}}{{else}},{{/if}}{{this.specifier
 {{#each declarations}}
 {{#if (empty this.members)}}
 @customElement('{{toTag this.name}}-showcase-page')
-export class {{this.name}}ShowcasePage extends LitElement {
+export class {{this.name}}ShowcasePage extends NidocaTemplate {
 {{#each methods}}
 {{/each}}
 {{#each properties}}
@@ -15,14 +16,16 @@ export class {{this.name}}ShowcasePage extends LitElement {
 {{/if}}
 {{/each}}
 
-  render() {
-    return html`
-
-    Huhu
-
-      
-    `;
+  getMainComponent(): TemplateResult {
+    return html``;
   }
+  getLeftNavigationContent(): TemplateResult {
+    return html``;
+  }
+  getTopContent(): TemplateResult {
+    return html``;
+  }
+
 }
 {{/if}}
 {{/each}}

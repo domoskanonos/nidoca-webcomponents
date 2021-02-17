@@ -97,16 +97,16 @@ export abstract class NidocaTemplate extends LitElement {
   @query('#main')
   private mainElement: HTMLElement | undefined;
 
-  render() {
+  render(): TemplateResult {
     return html`
       <nidoca-navigation .closed="${this.navigationClosed}" navigationType="${this.navigationType}">
         ${this.getLeftNavigationContent()}
       </nidoca-navigation>
-      <top id="top" class="${this.menuCss}" @nidoca-event-icon-clicked="${this.menuItemClicked}">
+      <div id="top" class="${this.menuCss}" @nidoca-event-icon-clicked="${this.menuItemClicked}">
         <nidoca-border ..borderProperties="${[BorderProperties.BOTTOM]}">
           ${this.getTopContent()}
         </nidoca-border>
-      </top>
+      </div>
       <div id="main" class="${this.menuCss} body-opacity">
         ${this.getMainComponent()}
       </div>

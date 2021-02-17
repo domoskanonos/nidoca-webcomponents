@@ -1,4 +1,4 @@
-import {css, customElement, html, property, LitElement} from 'lit-element';
+import {css, customElement, html, property, LitElement, TemplateResult} from 'lit-element';
 import {ShadowType} from './nidoca-border';
 
 export enum IconShadowType {
@@ -122,8 +122,8 @@ export class NidocaIcon extends LitElement {
     @property()
     deactivated: boolean = false;
 
-    render() {
-        return html`
+    render(): TemplateResult {
+      return html`
         <nidoca-spacer size="${this.withIconSpace ? String(this.size / 2).concat(this.sizeUnit) : '0px'}">
           <span
             class="icon-container ${this.iconShadowType} ${this.clickable && !this.deactivated ? 'clickable' : ''} ${this.round

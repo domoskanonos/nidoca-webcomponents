@@ -1,5 +1,5 @@
-import {css, customElement, html, property, query} from 'lit-element';
-import {FormOutputData, NidocaFormInputElement} from './nidoca-form-input-element';
+import {css, customElement, html, property, query, TemplateResult} from 'lit-element';
+import {FormOutputData, NidocaFormAbstractInputElement} from './nidoca-form-abstract-input-element';
 
 export enum DateType {
   DATE = 'date',
@@ -10,7 +10,7 @@ export enum DateType {
 }
 
 @customElement('nidoca-form-date')
-export class NidocaFormDate extends NidocaFormInputElement {
+export class NidocaFormDate extends NidocaFormAbstractInputElement {
   static styles = css`
     input {
       font: inherit;
@@ -86,7 +86,7 @@ export class NidocaFormDate extends NidocaFormInputElement {
   @query('#inputElement')
   inputElement: HTMLInputElement | undefined;
 
-  render() {
+  render(): TemplateResult {
     return html`
       <nidoca-inputframe
         label="${this.label}"

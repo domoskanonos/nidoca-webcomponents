@@ -1,4 +1,4 @@
-import {css, customElement, html, LitElement, property} from 'lit-element';
+import {css, customElement, html, LitElement, property, TemplateResult} from 'lit-element';
 
 export enum RichMediaType {
   IMG = 'IMG',
@@ -78,7 +78,7 @@ export class NidocaRichMedia extends LitElement {
   @property()
   richMediaProperties: RichMediaProperties[] = [];
 
-  render() {
+  render(): TemplateResult {
     return this.richMediaType == RichMediaType.IMG
       ? html`
           <span class="${this.toRichMediaPropertiesString(this.richMediaProperties)}"><img src="${this.src}"/></span>

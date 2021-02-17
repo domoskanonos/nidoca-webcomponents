@@ -1,4 +1,4 @@
-import {css, customElement, html, LitElement, property} from 'lit-element';
+import {css, customElement, html, LitElement, property, TemplateResult} from 'lit-element';
 
 export enum VisibleType {
   HIDE = 'HIDE',
@@ -24,7 +24,7 @@ export class NidocaVisible extends LitElement {
   @property()
   visibleType: string = VisibleType.HIDE;
 
-  render() {
+  render(): TemplateResult {
     return html`
       <slot class="${this.visibleType}"></slot>
     `;

@@ -1,7 +1,7 @@
-import {css, customElement, html, LitElement, property} from 'lit-element';
+import {css, customElement, html, LitElement, property, TemplateResult} from 'lit-element';
 import {GridAlignItems, GridJustifyItems} from './nidoca-grid-container';
 import {VisibleType} from './nidoca-visible';
-import {FormOutputData} from "./nidoca-form-input-element";
+import {FormOutputData} from "./nidoca-form-abstract-input-element";
 
 @customElement('nidoca-list-item')
 export class NidocaListItem extends LitElement {
@@ -37,7 +37,7 @@ export class NidocaListItem extends LitElement {
     }
   }
 
-  render() {
+  render(): TemplateResult {
     return html`
       <nidoca-ripple>
         <nidoca-grid-container

@@ -1,4 +1,4 @@
-import {css, customElement, html, property, LitElement} from 'lit-element';
+import {css, customElement, html, property, LitElement, TemplateResult} from 'lit-element';
 import {SpacerAlignment, SpacerSize} from './nidoca-spacer';
 import {
   FlexAlignContent,
@@ -40,7 +40,7 @@ export class NidocaNavigationLink extends LitElement {
   @property()
   rendered: boolean = true;
 
-  render() {
+  render(): TemplateResult {
     return this.rendered
       ? html`
           <div

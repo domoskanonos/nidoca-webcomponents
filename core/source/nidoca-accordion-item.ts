@@ -1,4 +1,4 @@
-import {css, customElement, html, property} from 'lit-element';
+import {css, customElement, html, property, TemplateResult} from 'lit-element';
 import {LitElement} from 'lit-element';
 import {GridAlignItems, GridJustifyItems} from './nidoca-grid-container';
 import {BorderProperties} from './nidoca-border';
@@ -19,7 +19,7 @@ export class NidocaAccordionItem extends LitElement {
   @property()
   opened: boolean = false;
 
-  render() {
+  render(): TemplateResult {
     return html`
       <div class="ACCORDION_ITEM">
         <nidoca-border .borderProperties="${[BorderProperties.ALL, BorderProperties.FULL_WIDTH]}">

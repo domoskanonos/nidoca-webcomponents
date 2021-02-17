@@ -1,4 +1,4 @@
-import {css, customElement, html, LitElement, query} from 'lit-element';
+import {css, customElement, html, LitElement, query, TemplateResult} from 'lit-element';
 
 /**
  * check source: https://codepen.io/jakob-e/pen/XZoZWQ
@@ -55,7 +55,7 @@ export class NidocaRipple extends LitElement {
   @query('#rippleContainer')
   private rippleContainerElement: HTMLSpanElement | undefined;
 
-  render() {
+  render(): TemplateResult {
     return html`
       <div id="rippleContainer" anim="ripple" @click="${(event: MouseEvent | TouchEvent) => this.clicked(event)}">
         <slot></slot>

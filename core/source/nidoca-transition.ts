@@ -1,4 +1,4 @@
-import {css, customElement, html, LitElement, property} from 'lit-element';
+import {css, customElement, html, LitElement, property, TemplateResult} from 'lit-element';
 
 export enum TransitionType {
   CENTER = 'CENTER',
@@ -519,8 +519,8 @@ export class NidocaTransition extends LitElement {
     }
   `;
 
-  render() {
-    return html`
+render(): TemplateResult {
+  return html`
       <div class="${this.transitionType}"><slot></slot></div>
     `;
   }

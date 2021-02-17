@@ -1,4 +1,4 @@
-import {css, customElement, html, LitElement, property, query} from 'lit-element';
+import {css, customElement, html, LitElement, property, query, TemplateResult} from 'lit-element';
 import {GridAlignItems, GridJustifyItems} from './nidoca-grid-container';
 import {BorderProperties, BorderSize, ShadowType} from './nidoca-border';
 
@@ -33,7 +33,7 @@ export class NidocaSearchBar extends LitElement {
     @query('#htmlInputElement')
     private htmlInputElement: HTMLInputElement | undefined;
 
-    render() {
+    render(): TemplateResult {
         return html`
             <nidoca-border
                     .borderProperties="${[BorderProperties.ALL, BorderProperties.FULL_WIDTH]}"

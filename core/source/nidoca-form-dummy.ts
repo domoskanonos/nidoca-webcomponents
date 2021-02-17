@@ -1,8 +1,8 @@
-import {css, customElement, html, property, query} from 'lit-element';
-import {FormOutputData, NidocaFormInputElement} from './nidoca-form-input-element';
+import {css, customElement, html, property, query, TemplateResult} from 'lit-element';
+import {FormOutputData, NidocaFormAbstractInputElement} from './nidoca-form-abstract-input-element';
 
 @customElement('nidoca-form-text')
-export class NidocaFormText extends NidocaFormInputElement {
+export class NidocaFormText extends NidocaFormAbstractInputElement {
     static styles = css`
     
   `;
@@ -34,7 +34,7 @@ export class NidocaFormText extends NidocaFormInputElement {
     @query('#selectElement')
     inputElement: HTMLInputElement | undefined;
 
-    render() {
+    render(): TemplateResult {
         return html`
             <nidoca-inputframe
                     label="${this.label}"

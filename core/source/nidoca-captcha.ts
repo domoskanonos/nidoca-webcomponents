@@ -1,4 +1,4 @@
-import {css, customElement, html, LitElement, property, query} from 'lit-element';
+import {css, customElement, html, LitElement, property, query, TemplateResult} from 'lit-element';
 import {NidocaFormText} from "./nidoca-form-text";
 
 @customElement('nidoca-captcha-component')
@@ -14,7 +14,7 @@ export class NidocaCaptcha extends LitElement {
     @query('#inputfield')
     inputfield: NidocaFormText | undefined;
 
-    render() {
+    render(): TemplateResult {
         return html`
             <nidoca-form-text
                     id="inputfield"

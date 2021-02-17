@@ -1,4 +1,4 @@
-import {css, customElement, html, LitElement, property} from 'lit-element';
+import {css, customElement, html, LitElement, property, TemplateResult} from 'lit-element';
 
 export enum NavigationType {
   DISMISSIBLE = 'DISMISSIBLE',
@@ -98,7 +98,7 @@ export class NidocaNavigation extends LitElement {
   @property()
   navigationStyle: NavigationStyle = NavigationStyle.PRIMARY;
 
-  render() {
+  render(): TemplateResult {
     return html`
       <div class="NAVIGATION ${this.navigationType} ${this.navigationStyle} ${this.closed ? 'CLOSED' : ''}">
         <slot name="contentBefore"></slot>

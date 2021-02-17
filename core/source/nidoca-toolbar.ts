@@ -1,5 +1,5 @@
-import {css, customElement, html, LitElement, property} from 'lit-element';
-import {FlexJustifyContent} from './nidoca-flex-container';
+import { css, customElement, html, LitElement, property, TemplateResult } from 'lit-element';
+import { FlexJustifyContent } from './nidoca-flex-container';
 
 export class ToolbarAlignment {
   static HORIZONTAL: string = 'HORIZONTAL';
@@ -38,7 +38,7 @@ export class ToolbarComponent extends LitElement {
   @property()
   width: string = 'auto';
 
-  render() {
+  render(): TemplateResult {
     return html`
       <div
         class="TOOLBAR ${this.toolbarAlignment}"

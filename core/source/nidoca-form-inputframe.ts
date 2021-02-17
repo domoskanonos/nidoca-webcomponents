@@ -1,4 +1,4 @@
-import {css, customElement, html, LitElement, property} from 'lit-element';
+import {css, customElement, html, LitElement, property, TemplateResult} from 'lit-element';
 import {BorderProperties, BorderSize} from './nidoca-border';
 import {VisibleType} from './nidoca-visible';
 import {FlexAlignContent, FlexContainerProperties} from './nidoca-flex-container';
@@ -29,8 +29,8 @@ export class NidocaFormInputframe extends LitElement {
     @property()
     selected: boolean = false;
 
-    render() {
-        return html`
+    render(): TemplateResult {
+      return html`
       <nidoca-border
         class="main"
         .borderSize="${this.selected ? BorderSize.THIN : BorderSize.MEDIUM}"

@@ -1,4 +1,4 @@
-import {css, customElement, html, property, LitElement} from 'lit-element';
+import {css, customElement, html, property, LitElement, TemplateResult} from 'lit-element';
 
 export enum GridJustifyItems {
   START = 'start',
@@ -55,7 +55,7 @@ export class NidocaGrid extends LitElement {
   @property()
   minWidth: string = '';
 
-  render() {
+  render(): TemplateResult {
     return html`
       <div
         class="GRID_CONTAINER"

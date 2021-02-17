@@ -1,4 +1,4 @@
-import {css, customElement, html, property, query, unsafeCSS} from 'lit-element';
+import {css, customElement, html, property, query, TemplateResult, unsafeCSS} from 'lit-element';
 import {LitElement} from 'lit-element';
 import {NidocaAccordionItem} from './nidoca-accordion-item';
 
@@ -17,7 +17,7 @@ export class NidocaAccordion extends LitElement {
   @query('#accordionSlot')
   accordionSlot: HTMLSlotElement | undefined;
 
-  render() {
+  render(): TemplateResult {
     return html`
       <div @nidoca-event-accordion-item-clicked="${(event: CustomEvent) => this.accordionSwitched(event)}">
         <slot id="accordionSlot"></slot>

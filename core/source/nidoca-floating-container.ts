@@ -1,4 +1,4 @@
-import {css, customElement, html, property, LitElement} from 'lit-element';
+import {css, customElement, html, property, LitElement, TemplateResult} from 'lit-element';
 
 @customElement('nidoca-floating-container')
 export class NidocaFloatingContainer extends LitElement {
@@ -30,7 +30,7 @@ export class NidocaFloatingContainer extends LitElement {
   @property()
   bottom: string = 'auto';
 
-  render() {
+  render(): TemplateResult {
     return html`
       <slot
         class="FLOATING"

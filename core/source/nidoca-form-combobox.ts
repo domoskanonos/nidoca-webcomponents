@@ -1,10 +1,10 @@
-import {css, customElement, html, property, query} from 'lit-element';
+import {css, customElement, html, property, query, TemplateResult} from 'lit-element';
 import {repeat} from 'lit-html/directives/repeat';
 import {guard} from 'lit-html/directives/guard';
-import {FormOutputData, NidocaFormInputElement} from './nidoca-form-input-element';
+import {FormOutputData, NidocaFormAbstractInputElement} from './nidoca-form-abstract-input-element';
 
 @customElement('nidoca-form-combobox')
-export class NidocaFormCombobox extends NidocaFormInputElement {
+export class NidocaFormCombobox extends NidocaFormAbstractInputElement {
     static styles = css`
     select {
       font: inherit;
@@ -71,7 +71,7 @@ export class NidocaFormCombobox extends NidocaFormInputElement {
     @query('#selectElement')
     selectElement: HTMLSelectElement | undefined;
 
-    render() {
+    render(): TemplateResult {
         return html`
             <nidoca-inputframe
                     label="${this.label}"

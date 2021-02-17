@@ -1,4 +1,4 @@
-import {css, customElement, html, LitElement, property} from 'lit-element';
+import {css, customElement, html, LitElement, property, TemplateResult} from 'lit-element';
 import {guard} from 'lit-html/directives/guard';
 import {repeat} from 'lit-html/directives/repeat';
 
@@ -39,7 +39,7 @@ export class NidocaTable extends LitElement {
   @property()
   rows: [any[]] = [[]];
 
-  render() {
+  render(): TemplateResult {
     return html`
       <div>
         <table>

@@ -1,4 +1,4 @@
-import {css, customElement, html, property, LitElement} from 'lit-element';
+import {css, customElement, html, property, LitElement, TemplateResult} from 'lit-element';
 
 export enum DividerType {
   THIN = 'THIN',
@@ -34,7 +34,7 @@ export class NidocaDivider extends LitElement {
   @property()
   opacity: number = 1.0;
 
-  render() {
+  render(): TemplateResult {
     return html`
       <div class="DIVIDER ${this.dividerType}" style="opacity: ${this.opacity};"></div>
     `;

@@ -1,4 +1,4 @@
-import {css, customElement, html, property, LitElement} from 'lit-element';
+import {css, customElement, html, property, LitElement, TemplateResult} from 'lit-element';
 
 @customElement('nidoca-container')
 export class NidocaContainer extends LitElement {
@@ -14,7 +14,7 @@ export class NidocaContainer extends LitElement {
   @property()
   cssStyle: string = '';
 
-  render() {
+  render(): TemplateResult {
     return this.rendered
       ? html`
           <slot style="${this.cssStyle}"></slot>

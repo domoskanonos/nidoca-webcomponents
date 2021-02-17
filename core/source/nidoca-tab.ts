@@ -1,4 +1,4 @@
-import {css, customElement, html, property, LitElement} from 'lit-element';
+import {css, customElement, html, property, LitElement, TemplateResult} from 'lit-element';
 import {TypographyType} from './nidoca-typography';
 
 @customElement('nidoca-tab')
@@ -29,8 +29,8 @@ export class NidocaTab extends LitElement {
     @property()
     text: string = '';
 
-    render() {
-        return html`
+    render(): TemplateResult {
+      return html`
             <span class="tab ${this.selected ? 'SELECTED' : ''}" @click="${() => this.tabClicked()}">
         ${this.text
                 ? html`

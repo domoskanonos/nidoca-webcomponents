@@ -1,4 +1,4 @@
-import {css, customElement, html, LitElement, property} from 'lit-element';
+import {css, customElement, html, LitElement, property, TemplateResult} from 'lit-element';
 import {
   FlexAlignContent,
   FlexAlignItems,
@@ -20,7 +20,7 @@ export class NidocaNavigationSection extends LitElement {
   @property()
   rendered: boolean = true;
 
-  render() {
+  render(): TemplateResult {
     return this.rendered
       ? html`
           <nidoca-flex-container

@@ -1,4 +1,4 @@
-import {css, customElement, html, LitElement, property} from 'lit-element';
+import {css, customElement, html, LitElement, property, TemplateResult} from 'lit-element';
 
 export enum TargetType {
     BLANK = '_blank',
@@ -35,8 +35,8 @@ export class NidocaLink extends LitElement implements NidocaLinkInterface {
     @property()
     targetType: string = TargetType.SELF;
 
-    render() {
-        return html`
+    render(): TemplateResult {
+      return html`
       <a href="${this.href}" target="${this.targetType}">${this.text}<slot></slot></a>
     `;
     }

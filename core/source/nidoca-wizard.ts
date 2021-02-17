@@ -1,4 +1,4 @@
-import {css, customElement, html, property, LitElement} from 'lit-element';
+import {css, customElement, html, property, LitElement, TemplateResult} from 'lit-element';
 import {repeat} from 'lit-html/directives/repeat';
 import {guard} from 'lit-html/directives/guard';
 import {TypographyType} from './nidoca-typography';
@@ -72,7 +72,7 @@ export class NidocaWizard extends LitElement {
   @property()
   selectedStep: WizardStep | undefined;
 
-  render() {
+  render(): TemplateResult {
     return html`
       <div class="WIZARD">
         ${guard(

@@ -1,4 +1,4 @@
-import {css, customElement, html, LitElement, property} from 'lit-element';
+import {css, customElement, html, LitElement, property, TemplateResult} from 'lit-element';
 
 export enum SpacerAlignment {
   BOTH = 'both',
@@ -81,7 +81,7 @@ export class NidocaSpacer extends LitElement {
   @property()
   size: string = '';
 
-  render() {
+  render(): TemplateResult {
     return html`
       <span class="spacer ${this.spacerSize} ${this.spacerAlignment}" style="${this.toSizeStyle(this.size)}"
         ><slot></slot

@@ -1,5 +1,5 @@
 export * from './nidoca-flex-container';
-export * from './abstract-app';
+export * from './nidoca-abstract-app';
 export * from './nidoca-accordion';
 export * from './nidoca-box';
 export * from './nidoca-wizard';
@@ -15,7 +15,7 @@ export * from './nidoca-form-combobox';
 export * from './nidoca-form-text';
 export * from './nidoca-form-date';
 export * from './nidoca-form-inputframe';
-export * from './nidoca-form-input-element';
+export * from './nidoca-form-abstract-input-element';
 export * from './nidoca-icon';
 export * from './nidoca-rich-media';
 export * from './nidoca-captcha';
