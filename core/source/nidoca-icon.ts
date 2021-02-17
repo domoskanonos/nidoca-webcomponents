@@ -1,17 +1,17 @@
-import {css, customElement, html, property, LitElement, TemplateResult} from 'lit-element';
-import {ShadowType} from './nidoca-border';
+import { css, customElement, html, property, LitElement, TemplateResult } from 'lit-element';
+import { ShadowType } from './nidoca-border';
 
 export enum IconShadowType {
-    NONE = 'NONE',
-    DEFAULT_SHADOW = 'DEFAULT_SHADOW',
-    SHADOW_1 = 'SHADOW_1',
-    SHADOW_2 = 'SHADOW_2',
-    SHADOW_3 = 'SHADOW_3',
+  NONE = 'NONE',
+  DEFAULT_SHADOW = 'DEFAULT_SHADOW',
+  SHADOW_1 = 'SHADOW_1',
+  SHADOW_2 = 'SHADOW_2',
+  SHADOW_3 = 'SHADOW_3',
 }
 
 @customElement('nidoca-icon')
 export class NidocaIcon extends LitElement {
-    static styles = css`
+  static styles = css`
     .material-icons {
       font-family: 'Material Icons';
       font-weight: normal;
@@ -89,76 +89,76 @@ export class NidocaIcon extends LitElement {
     
   `;
 
-    @property()
-    icon: string = '';
+  @property()
+  icon: string | null | undefined;
 
-    @property()
-    color: string = '';
+  @property()
+  color: string = '';
 
-    @property()
-    backgroundColor: string = '';
+  @property()
+  backgroundColor: string = '';
 
-    @property()
-    iconShadowType: string = ShadowType.NONE;
+  @property()
+  iconShadowType: string = ShadowType.NONE;
 
-    @property()
-    size: number = 24;
+  @property()
+  size: number = 24;
 
-    @property()
-    sizeUnit: string = 'px';
+  @property()
+  sizeUnit: string = 'px';
 
-    @property()
-    title: string = '';
+  @property()
+  title: string = '';
 
-    @property()
-    withIconSpace: boolean = true;
+  @property()
+  withIconSpace: boolean = true;
 
-    @property()
-    round: boolean = false;
+  @property()
+  round: boolean = false;
 
-    @property()
-    clickable: boolean = false;
+  @property()
+  clickable: boolean = false;
 
-    @property()
-    deactivated: boolean = false;
+  @property()
+  deactivated: boolean = false;
 
-    render(): TemplateResult {
-      return html`
+  render(): TemplateResult {
+    return html`
         <nidoca-spacer size="${this.withIconSpace ? String(this.size / 2).concat(this.sizeUnit) : '0px'}">
           <span
             class="icon-container ${this.iconShadowType} ${this.clickable && !this.deactivated ? 'clickable' : ''} ${this.round
-            ? 'ROUND'
-            : ''} ${this.deactivated ? 'deactivated' : ''}"
+        ? 'ROUND'
+        : ''} ${this.deactivated ? 'deactivated' : ''}"
             title="${this.title}"
             @click="${this.clicked}"
             style="${'line-height: '.concat(this.size.toString()).concat(this.sizeUnit).concat(';')}${'width: '
-            .concat(this.size.toString())
-            .concat(this.sizeUnit)
-            .concat(';')}${this.backgroundColor
-            ? 'background-color:'.concat(this.backgroundColor).concat(';')
-            : ''} ${this.round
+        .concat(this.size.toString())
+        .concat(this.sizeUnit)
+        .concat(';')}${this.backgroundColor
+          ? 'background-color:'.concat(this.backgroundColor).concat(';')
+          : ''} ${this.round
             ? 'height:'
-                .concat((this.size * 2).toString())
-                .concat('px;')
-                .concat('width:')
-                .concat((this.size * 2).toString())
-                .concat('px;')
+              .concat((this.size * 2).toString())
+              .concat('px;')
+              .concat('width:')
+              .concat((this.size * 2).toString())
+              .concat('px;')
             : ''}"
             ><i
               class="material-icons"
               style="${this.color.length > 0 ? 'color: '.concat(this.color).concat(';') : ''} ${this.size != undefined
-            ? 'font-size: '.concat(this.size.toString()).concat(this.sizeUnit).concat(';')
-            : ''}"
+        ? 'font-size: '.concat(this.size.toString()).concat(this.sizeUnit).concat(';')
+        : ''}"
               >${this.icon}</i
             ><slot></slot>
           </span>
         </nidoca-spacer>
     `;
-    }
+  }
 
-    async clicked() {
-        if (this.clickable && !this.deactivated) {
-            this.dispatchEvent(new CustomEvent('nidoca-event-icon-clicked', {detail: this}));
-        }
+  async clicked() {
+    if (this.clickable && !this.deactivated) {
+      this.dispatchEvent(new CustomEvent('nidoca-event-icon-clicked', { detail: this }));
     }
+  }
 }

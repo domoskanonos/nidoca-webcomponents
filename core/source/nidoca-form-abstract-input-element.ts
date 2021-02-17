@@ -1,7 +1,7 @@
 import { LitElement } from "lit-element";
 
 export interface FormOutputData {
-    key: string | null;
+    key: string;
     value: any;
 }
 
