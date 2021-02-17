@@ -1,6 +1,29 @@
-import {TypescriptParser} from "typescript-Parser";
+import { TypescriptParser } from "typescript-Parser";
 import fs from 'fs';
 import Handlebars = require('handlebars');
+
+
+Handlebars.registerHelper('empty', function (list: any = undefined) {
+    return list === undefined || list == null || list.length == 0;
+});
+
+Handlebars.registerHelper('toTag', function (value) {
+    let retval: string = '';
+    for (let i = 0; i < value.length; i++) {
+        let c: string = value.charAt(i);
+        let cToUpperCase: string = c.toUpperCase();
+        if (retval.length == 0) {
+            retval = c.toLowerCase();
+
+        } else if (c == cToUpperCase) {
+            retval = retval.concat('-').concat(c.toLowerCase());
+        }
+        else {
+            retval = retval.concat(c);
+        }
+    }
+    return retval;
+});
 
 
 const typescriptParser = new TypescriptParser();
@@ -14,9 +37,13 @@ parsedIndexFile.then((indexFileContent: any) => {
         const parsedFile = typescriptParser.parseFile(sourceRoot.concat(filename), 'workspace root');
 
         parsedFile.then((value: any) => {
+
+
+            //console.log(JSON.stringify(value));
+
             let fileContent: string = fs.readFileSync("./component.html", "utf-8");
             let template = Handlebars.compile(fileContent);
-            let output : string = template(value);
+            let output: string = template(value);
 
             let imps: any[] = value["imports"];
             imps.forEach((imp: any) => {
@@ -56,7 +83,7 @@ parsedIndexFile.then((indexFileContent: any) => {
                 }
             });
 
-            fs.writeFileSync("./../showcase/source/".concat(filename), output, {
+            fs.writeFileSync("./../showcase/source/".concat(file.from).concat('-showcase-page.ts'), output, {
                 encoding: "utf8",
             });
         })

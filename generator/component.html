@@ -2,29 +2,27 @@
 import { {{#each this.specifiers}}{{#if @first}}{{else}},{{/if}}{{this.specifier}}{{/each}} } from '{{this.libraryName}}';
 {{/each}}
 
-
 {{#each declarations}}
-
-@customElement('')
+{{#if (empty this.members)}}
+@customElement('{{toTag this.name}}-showcase-page')
 export class {{this.name}}ShowcasePage extends LitElement {
+{{#each methods}}
+{{/each}}
+{{#each properties}}
+{{#if this.isStatic}}{{else}}
+  @property()
+  {{this.name}} : {{this.type}};
+{{/if}}
+{{/each}}
 
+  render() {
+    return html`
 
+    Huhu
 
-  {{#each methods}}
-  {{/each}}
-
-
-  {{#each properties}}
-
-  {{this.name}}
-
-  {{this.type}}
-
-
-  {{/each}}
-  
-
+      
+    `;
+  }
 }
-
-
+{{/if}}
 {{/each}}
