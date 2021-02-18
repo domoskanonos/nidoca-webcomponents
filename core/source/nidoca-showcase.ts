@@ -17,7 +17,7 @@ export class NidocaShowcase extends LitElement {
             label="Wie findest du diese Seite ?"
             value="ok"
             .options="${[
-              <FormOutputData>{key: null, value: 'Bitte wählen'},
+              <FormOutputData>{key: '', value: 'Bitte wählen'},
               <FormOutputData>{key: 'verryGood', value: 'Sehr gut'},
               <FormOutputData>{key: 'ok', value: 'Ein  bisschen gut'},
               <FormOutputData>{key: 'bad', value: 'Schlecht'},

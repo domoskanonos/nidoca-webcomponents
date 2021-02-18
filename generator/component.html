@@ -1,7 +1,8 @@
 import { NidocaTemplate } from '@domoskanonos/nidoca-core';
 {{#each imports}}
-import { {{#each this.specifiers}}{{#if @first}}{{else}},{{/if}}{{this.specifier}}{{/each}} } from '{{replace this.libraryName "/nidoca-" "@domoskanonos/nidoca-core/nidoca-"}}';
+import { {{#each this.specifiers}}{{#if @first}}{{else}},{{/if}}{{this.specifier}}{{/each}} } from '{{#has this.libraryName "./nidoca-"}}@domoskanonos/nidoca-core{{else}}{{this.libraryName}}{{/has}}';
 {{/each}}
+
 
 {{#each declarations}}
 {{#if (empty this.members)}}
