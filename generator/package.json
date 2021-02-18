@@ -6,7 +6,9 @@
     "typescript-parser": "^2.6.1",
     "@types/node": "^14.14.28",
     "@types/handlebars": "^4.1.0",
-    "handlebars": "^4.7.7"
+    "@types/handlebars-helpers": "0.5.2",
+    "handlebars": "^4.7.7",
+    "handlebars-helpers": "0.10.0"
   },
   "author": "Dominik Bruhn",
   "scripts": {

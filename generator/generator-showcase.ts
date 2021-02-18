@@ -2,6 +2,11 @@ import { TypescriptParser } from "typescript-Parser";
 import fs from 'fs';
 import Handlebars = require('handlebars');
 
+let handlebarsHelpers = require('handlebars-helpers')({
+    handlebars: Handlebars
+});
+console.log("handlebarsHelpers registered");
+
 
 Handlebars.registerHelper('empty', function (list: any = undefined) {
     return list === undefined || list == null || list.length == 0;
@@ -24,6 +29,8 @@ Handlebars.registerHelper('toTag', function (value) {
     }
     return retval;
 });
+
+
 
 
 let typescriptParser = new TypescriptParser();
@@ -102,9 +109,9 @@ parsedIndexFile.then((indexFileContent: any) => {
     });
 
     console.log(indexTSContent);
-fs.writeFileSync("./../showcase/source/index.ts", indexTSContent, {
-    encoding: "utf8",
-});
+    fs.writeFileSync("./../showcase/source/index.ts", indexTSContent, {
+        encoding: "utf8",
+    });
 
 
 });
