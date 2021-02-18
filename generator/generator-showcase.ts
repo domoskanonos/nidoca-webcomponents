@@ -31,9 +31,10 @@ let sourceRoot = "./../core/source/";
 let parsedIndexFile = typescriptParser.parseFile(sourceRoot.concat('index.ts'), 'workspace root');
 
 
-let indexTSContent: string = '';
 
 parsedIndexFile.then((indexFileContent: any) => {
+
+    let indexTSContent: string = '';
 
     indexFileContent["exports"].forEach((file: any) => {
         let filename: string = file.from.replace("./", "").concat(".ts");
@@ -41,16 +42,15 @@ parsedIndexFile.then((indexFileContent: any) => {
 
         if (filename.indexOf('Abstract') == -1) {
 
-            indexTSContent = indexTSContent.concat('import \'').concat(filename).concat('\';');
-
+            let destinationFilename: string = file.from.concat('-showcase-page.ts');
+            indexTSContent = indexTSContent.concat('import \'').concat(destinationFilename).concat('\';\n');
 
             console.log("parse file: %s", filename);
             const parsedFile = typescriptParser.parseFile(sourceRoot.concat(filename), 'workspace root');
 
             parsedFile.then((value: any) => {
 
-
-                console.log(JSON.stringify(value));
+                //console.log(JSON.stringify(value));
 
                 let fileContent: string = fs.readFileSync("./component.html", "utf-8");
                 let template = Handlebars.compile(fileContent);
@@ -94,14 +94,17 @@ parsedIndexFile.then((indexFileContent: any) => {
                     }
                 });
 
-                fs.writeFileSync("./../showcase/source/".concat(file.from).concat('-showcase-page.ts'), output, {
+                fs.writeFileSync("./../showcase/source/".concat(destinationFilename), output, {
                     encoding: "utf8",
                 });
             });
         }
     });
-});
 
+    console.log(indexTSContent);
 fs.writeFileSync("./../showcase/source/index.ts", indexTSContent, {
     encoding: "utf8",
+});
+
+
 });
