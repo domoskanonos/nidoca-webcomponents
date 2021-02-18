@@ -26,9 +26,13 @@ Handlebars.registerHelper('toTag', function (value) {
 });
 
 
-const typescriptParser = new TypescriptParser();
+let typescriptParser = new TypescriptParser();
 let sourceRoot = "./../core/source/";
-const parsedIndexFile = typescriptParser.parseFile(sourceRoot.concat('index.ts'), 'workspace root');
+let parsedIndexFile = typescriptParser.parseFile(sourceRoot.concat('index.ts'), 'workspace root');
+
+
+let indexTSContent: string = '';
+
 parsedIndexFile.then((indexFileContent: any) => {
 
     indexFileContent["exports"].forEach((file: any) => {
@@ -36,6 +40,8 @@ parsedIndexFile.then((indexFileContent: any) => {
 
 
         if (filename.indexOf('Abstract') == -1) {
+
+            indexTSContent = indexTSContent.concat('import \'').concat(filename).concat('\';');
 
 
             console.log("parse file: %s", filename);
@@ -94,4 +100,8 @@ parsedIndexFile.then((indexFileContent: any) => {
             });
         }
     });
-})
+});
+
+fs.writeFileSync("./../showcase/source/index.ts", indexTSContent, {
+    encoding: "utf8",
+});
