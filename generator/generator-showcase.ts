@@ -43,7 +43,7 @@ parsedIndexFile.then((indexFileContent: any) => {
         let filename: string = file.from.replace('./', '').concat('.ts');
 
 
-        if (filename.indexOf('Abstract') == -1) {
+        if (filename.indexOf('abstract') == -1 && filename.indexOf('template') == -1) {
 
             let destinationFilename: string = file.from.concat('-showcase-page.ts');
             indexTSContent = indexTSContent.concat('import \'').concat(destinationFilename).concat('\';\n');
@@ -52,45 +52,59 @@ parsedIndexFile.then((indexFileContent: any) => {
             const parsedFile = typescriptParser.parseFile(sourceRoot.concat(filename), 'workspace root');
 
             parsedFile.then((value: any) => {
-
-                let imps: any[] = value['imports'];
-                let decs: any[] = value['declarations'];
-                decs.forEach((clazz: any) => {
-                    let clazzName: string = clazz.name;
-                    let isExported: boolean = clazz.isExported;
-                    let accessors: any[] = clazz.accessors;
-                    imps.push({libraryName: '@domoskanonos/nidoca-core', specifiers: [{specifier: clazzName}]});
-                    if (clazz.properties) {
-                        clazz.properties.forEach((property: any) => {
-                            let propertyType: string = property.type;
-                            switch (propertyType) {
-                                case "string":
+                    value['imports'] = [];
+                    let imps: any[] = value['imports'];
+                    let decs: any[] = value['declarations'];
+                    decs.forEach((clazz: any) => {
+                        let clazzName: string = clazz.name;
+                        let isExported: boolean = clazz.isExported;
+                        let accessors: any[] = clazz.accessors;
+                        imps.push({libraryName: '@domoskanonos/nidoca-core', specifiers: [{specifier: clazzName}]});
+                        if (clazz.properties) {
+                            for (let i = 0; i < clazz.properties.length; i++) {
+                                let property: any = clazz.properties[i];
+                                let propertyType: string = property.type;
+                                if (propertyType == undefined) {
+                                    continue;
+                                }
+                                if (propertyType.indexOf("[]]") > -1) {
+                                    property.defaultValue = "[[]]";
+                                } else if (propertyType.indexOf("[]") > -1) {
+                                    property.defaultValue = "[]";
+                                } else if (propertyType.indexOf("string") > -1) {
                                     property.defaultValue = "''";
-                                    break;
-                                default:
+                                } else if (propertyType.indexOf("boolean") > -1) {
+                                    property.defaultValue = "false";
+                                } else {
                                     property.defaultValue = "undefined";
-                            }
-                        });
-                    }
-                });
-                imps.forEach((imp: any) => {
-                    if (imp.libraryName == 'lit-element') {
-                        imp.specifiers.push("TemplateResult");
-                        imp.specifiers.push("property");
-                        imp.specifiers.push("customElement");
-                        imp.specifiers.push("html");
-                    }
-                });
+                                }
 
-                let fileContent: string = fs.readFileSync('./component.html', 'utf-8');
-                let template = Handlebars.compile(fileContent);
-                let output: string = template(value);
-                fs.writeFileSync('./../showcase/source/'.concat(destinationFilename), output, {
-                    encoding: 'utf8',
-                });
-            });
+                                if (propertyType.indexOf("undefined") == -1) {
+                                    propertyType = propertyType.concat("|undefined")
+                                }
+                                if (propertyType.indexOf("null") == -1) {
+                                    propertyType = propertyType.concat("|null")
+                                }
+                                property.type = propertyType;
+                            }
+                        }
+                    });
+                    imps.push({
+                        libraryName: 'lit-element',
+                        specifiers: [{specifier: "TemplateResult"}, {specifier: "property"}, {specifier: "customElement"}, {specifier: "html"}, {specifier: "LitElement"}]
+                    });
+
+                    let fileContent: string = fs.readFileSync('./component.html', 'utf-8');
+                    let template = Handlebars.compile(fileContent);
+                    let output: string = template(value);
+                    fs.writeFileSync('./../showcase/source/'.concat(destinationFilename), output, {
+                        encoding: 'utf8',
+                    });
+                }
+            );
         }
-    });
+    })
+    ;
 
     console.log(indexTSContent);
     fs.writeFileSync('./../showcase/source/index.ts', indexTSContent, {
@@ -98,4 +112,5 @@ parsedIndexFile.then((indexFileContent: any) => {
     });
 
 
-});
+})
+;

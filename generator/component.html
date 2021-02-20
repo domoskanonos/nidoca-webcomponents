@@ -6,6 +6,7 @@ import { {{#each this.specifiers}}{{#if @first}}{{else}},{{/if}}{{this.specifier
 
 {{#each declarations}}
 {{#if (empty this.members)}}
+{{#has this.name "Nidoca"}}
 @customElement('{{toTag this.name}}-showcase-page')
 export class {{this.name}}ShowcasePage extends NidocaTemplate {
 {{#each methods}}
@@ -13,7 +14,7 @@ export class {{this.name}}ShowcasePage extends NidocaTemplate {
 {{#each properties}}
 {{#if this.isStatic}}{{else}}
   @property()
-  {{this.name}} : {{this.type}} = {{this.defaultValue}};
+  {{this.name}} : {{this.type}} = {{{this.defaultValue}}};
 {{/if}}
 {{/each}}
 
@@ -28,5 +29,6 @@ export class {{this.name}}ShowcasePage extends NidocaTemplate {
   }
 
 }
+{{/has}}
 {{/if}}
 {{/each}}
