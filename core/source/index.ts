@@ -1,6 +1,7 @@
 export * from './nidoca-flex-container';
 export * from './nidoca-abstract-app';
 export * from './nidoca-accordion';
+export * from './nidoca-accordion-item';
 export * from './nidoca-box';
 export * from './nidoca-wizard';
 export * from './nidoca-chip';
