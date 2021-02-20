@@ -88,7 +88,7 @@ export abstract class NidocaTemplate extends LitElement {
   navigationClosed: boolean = true;
 
   @property()
-  navigationType: string = NavigationType.DISMISSIBLE;
+  navType: string = NavigationType.DISMISSIBLE;
 
   @query('#top')
   private topElement: HTMLElement | undefined;
@@ -99,7 +99,7 @@ export abstract class NidocaTemplate extends LitElement {
 
   render(): TemplateResult {
     return html`
-      <nidoca-navigation .closed="${this.navigationClosed}" navigationType="${this.navigationType}">
+      <nidoca-navigation .closed="${this.navigationClosed}" navigationType="${this.navType}">
         ${this.getLeftNavigationContent()}
       </nidoca-navigation>
       <div id="top" class="${this.menuCss}" @nidoca-event-icon-clicked="${this.menuItemClicked}">
@@ -131,10 +131,10 @@ export abstract class NidocaTemplate extends LitElement {
     if (this.menuCss.indexOf('menuClosed') == -1) {
       this.menuCss = 'menuClosed basicShadow';
       this.navigationClosed = true;
-    } else if (this.navigationType == NavigationType.PERMANENT) {
+    } else if (this.navType == NavigationType.PERMANENT) {
       this.menuCss = 'permanent-top permanent-main';
       this.navigationClosed = false;
-    } else if (this.navigationType == NavigationType.DISMISSIBLE) {
+    } else if (this.navType == NavigationType.DISMISSIBLE) {
       this.menuCss = 'dismissible-main';
       this.navigationClosed = false;
     } else {

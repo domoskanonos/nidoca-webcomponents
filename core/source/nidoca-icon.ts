@@ -108,7 +108,7 @@ export class NidocaIcon extends LitElement {
   sizeUnit: string = 'px';
 
   @property()
-  title: string = '';
+  iconTitle: string = '';
 
   @property()
   withIconSpace: boolean = true;
