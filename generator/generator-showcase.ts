@@ -1,32 +1,32 @@
-import { TypescriptParser } from 'typescript-Parser';
+import {TypescriptParser} from 'typescript-Parser';
 import fs from 'fs';
 import Handlebars = require('handlebars');
 
 let handlebarsHelpers = require('handlebars-helpers')({
-  handlebars: Handlebars,
+    handlebars: Handlebars,
 });
 console.log('handlebarsHelpers registered');
 
 
 Handlebars.registerHelper('empty', function (list: any = undefined) {
-  return list === undefined || list == null || list.length == 0;
+    return list === undefined || list == null || list.length == 0;
 });
 
 Handlebars.registerHelper('toTag', function (value: any) {
-  let retval: string = '';
-  for (let i = 0; i < value.length; i++) {
-    let c: string = value.charAt(i);
-    let cToUpperCase: string = c.toUpperCase();
-    if (retval.length == 0) {
-      retval = c.toLowerCase();
+    let retval: string = '';
+    for (let i = 0; i < value.length; i++) {
+        let c: string = value.charAt(i);
+        let cToUpperCase: string = c.toUpperCase();
+        if (retval.length == 0) {
+            retval = c.toLowerCase();
 
-    } else if (c == cToUpperCase) {
-      retval = retval.concat('-').concat(c.toLowerCase());
-    } else {
-      retval = retval.concat(c);
+        } else if (c == cToUpperCase) {
+            retval = retval.concat('-').concat(c.toLowerCase());
+        } else {
+            retval = retval.concat(c);
+        }
     }
-  }
-  return retval;
+    return retval;
 });
 
 
@@ -37,45 +37,53 @@ let parsedIndexFile = typescriptParser.parseFile(sourceRoot.concat('index.ts'), 
 
 parsedIndexFile.then((indexFileContent: any) => {
 
-  let indexTSContent: string = '';
+    let indexTSContent: string = '';
 
-  indexFileContent['exports'].forEach((file: any) => {
-    let filename: string = file.from.replace('./', '').concat('.ts');
+    indexFileContent['exports'].forEach((file: any) => {
+        let filename: string = file.from.replace('./', '').concat('.ts');
 
 
-    if (filename.indexOf('Abstract') == -1) {
+        if (filename.indexOf('Abstract') == -1) {
 
-      let destinationFilename: string = file.from.concat('-showcase-page.ts');
-      indexTSContent = indexTSContent.concat('import \'').concat(destinationFilename).concat('\';\n');
+            let destinationFilename: string = file.from.concat('-showcase-page.ts');
+            indexTSContent = indexTSContent.concat('import \'').concat(destinationFilename).concat('\';\n');
 
-      console.log('parse file: %s', filename);
-      const parsedFile = typescriptParser.parseFile(sourceRoot.concat(filename), 'workspace root');
+            console.log('parse file: %s', filename);
+            const parsedFile = typescriptParser.parseFile(sourceRoot.concat(filename), 'workspace root');
 
-      parsedFile.then((value: any) => {
+            parsedFile.then((value: any) => {
 
-        let imps: any[] = value['imports'];
-        let dec: any[] = value['declarations'];
-        dec.forEach((clazz: any) => {
-          let clazzName: string = clazz.name;
-          let isExported: boolean = clazz.isExported;
-          let accessors: any[] = clazz.accessors;
-          imps.push({ libraryName: '@domoskanonos/nidoca-core', specifiers: [{ specifier: clazzName }] });
-        });
+                let imps: any[] = value['imports'];
+                let decs: any[] = value['declarations'];
+                decs.forEach((clazz: any) => {
+                    let clazzName: string = clazz.name;
+                    let isExported: boolean = clazz.isExported;
+                    let accessors: any[] = clazz.accessors;
+                    imps.push({libraryName: '@domoskanonos/nidoca-core', specifiers: [{specifier: clazzName}]});
+                });
+                imps.forEach((imp: any) => {
+                    if (imp.libraryName == 'lit-element') {
+                        imp.specifiers.push("TemplateResult");
+                        imp.specifiers.push("property");
+                        imp.specifiers.push("customElement");
+                        imp.specifiers.push("html");
+                    }
+                });
 
-        let fileContent: string = fs.readFileSync('./component.html', 'utf-8');
-        let template = Handlebars.compile(fileContent);
-        let output: string = template(value);
-        fs.writeFileSync('./../showcase/source/'.concat(destinationFilename), output, {
-          encoding: 'utf8',
-        });
-      });
-    }
-  });
+                let fileContent: string = fs.readFileSync('./component.html', 'utf-8');
+                let template = Handlebars.compile(fileContent);
+                let output: string = template(value);
+                fs.writeFileSync('./../showcase/source/'.concat(destinationFilename), output, {
+                    encoding: 'utf8',
+                });
+            });
+        }
+    });
 
-  console.log(indexTSContent);
-  fs.writeFileSync('./../showcase/source/index.ts', indexTSContent, {
-    encoding: 'utf8',
-  });
+    console.log(indexTSContent);
+    fs.writeFileSync('./../showcase/source/index.ts', indexTSContent, {
+        encoding: 'utf8',
+    });
 
 
 });
