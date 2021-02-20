@@ -11,7 +11,7 @@ export enum ButtonType {
   CLEAR = 'CLEAR',
 }
 
-interface NidocaButtonInterface {
+export interface NidocaButtonInterface {
   buttonType: ButtonType;
   leadingIcon: string | null | undefined;
   text: string;

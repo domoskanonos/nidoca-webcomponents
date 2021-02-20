@@ -59,7 +59,7 @@ parsedIndexFile.then((indexFileContent: any) => {
           let clazzName: string = clazz.name;
           let isExported: boolean = clazz.isExported;
           let accessors: any[] = clazz.accessors;
-          imps.push({ libraryName: 'nidoca', specifiers: [{ specifier: clazzName }] });
+          imps.push({ libraryName: '@domoskanonos/nidoca-core', specifiers: [{ specifier: clazzName }] });
         });
 
         let fileContent: string = fs.readFileSync('./component.html', 'utf-8');
