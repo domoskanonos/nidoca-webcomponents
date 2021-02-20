@@ -13,7 +13,7 @@ export class {{this.name}}ShowcasePage extends NidocaTemplate {
 {{#each properties}}
 {{#if this.isStatic}}{{else}}
   @property()
-  {{this.name}} : {{this.type}};
+  {{this.name}} : {{this.type}} = {{this.defaultValue}};
 {{/if}}
 {{/each}}
 

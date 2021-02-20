@@ -60,6 +60,18 @@ parsedIndexFile.then((indexFileContent: any) => {
                     let isExported: boolean = clazz.isExported;
                     let accessors: any[] = clazz.accessors;
                     imps.push({libraryName: '@domoskanonos/nidoca-core', specifiers: [{specifier: clazzName}]});
+                    if (clazz.properties) {
+                        clazz.properties.forEach((property: any) => {
+                            let propertyType: string = property.type;
+                            switch (propertyType) {
+                                case "string":
+                                    property.defaultValue = "''";
+                                    break;
+                                default:
+                                    property.defaultValue = "undefined";
+                            }
+                        });
+                    }
                 });
                 imps.forEach((imp: any) => {
                     if (imp.libraryName == 'lit-element') {
