@@ -87,7 +87,7 @@ export abstract class NidocaTopBottomTemplate extends LitElement {
   static IDENTIFIER: string = 'DefaultTemplate';
 
   @property()
-  menuSwitchIcon = 'menu';
+  menuSwitchIcon : string = 'menu';
 
   @property()
   menuCss: string = 'menuClosed basicShadow';
