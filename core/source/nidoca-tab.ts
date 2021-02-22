@@ -45,6 +45,7 @@ export class NidocaTab extends LitElement {
 
     private tabClicked(): void {
         console.log('tab clicked.');
-        this.dispatchEvent(new CustomEvent("nidoca-event-tab-clicked", {detail: this}));
+        this.dispatchEvent(new CustomEvent("nidoca-event-tab-clicked", {detail: this,bubbles: true,
+            composed: true}));
     }
 }

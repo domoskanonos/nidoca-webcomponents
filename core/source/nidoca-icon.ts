@@ -158,7 +158,8 @@ export class NidocaIcon extends LitElement {
 
   async clicked() {
     if (this.clickable && !this.deactivated) {
-      this.dispatchEvent(new CustomEvent('nidoca-event-icon-clicked', { detail: this }));
+      this.dispatchEvent(new CustomEvent('nidoca-event-icon-clicked', { detail: this ,bubbles: true,
+        composed: true}));
     }
   }
 }

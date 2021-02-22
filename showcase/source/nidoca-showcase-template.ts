@@ -25,7 +25,7 @@ return html`
         .clickable="${true}"
 ></nidoca-icon>
 <nidoca-typography slot="leftComponents" .typographyType="${TypographyType.BODY1}"
->Title
+>nidoca showcase
 </nidoca-typography
 >
 `;

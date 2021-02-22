@@ -69,6 +69,7 @@ export class NidocaNavigationLink extends LitElement {
   }
 
   private linkClicked() {
-    this.dispatchEvent(new CustomEvent('nidoca-event-link-clicked', {detail: this.href}));
+    this.dispatchEvent(new CustomEvent('nidoca-event-link-clicked', {detail: this.href,bubbles: true,
+      composed: true}));
   }
 }

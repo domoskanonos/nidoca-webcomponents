@@ -5,7 +5,7 @@ import {FormOutputData} from "./nidoca-form-abstract-input-element";
 
 @customElement('nidoca-list-item')
 export class NidocaListItem extends LitElement {
-  static styles = css`
+    static styles = css`
     .LIST_ITEM_SLOT {
       display: grid;
       grid-template-rows: 1fr;
@@ -22,23 +22,23 @@ export class NidocaListItem extends LitElement {
     }
   `;
 
-  @property()
-  selectionMode: boolean = false;
+    @property()
+    selectionMode: boolean = false;
 
-  @property()
-  selected: boolean = false;
+    @property()
+    selected: boolean = false;
 
-  protected update(changedProperties: Map<PropertyKey, unknown>): void {
-    super.update(changedProperties);
-    if (changedProperties.get('selectionMode') != undefined) {
-      if (!this.selectionMode) {
-        this.selected = false;
-      }
+    protected update(changedProperties: Map<PropertyKey, unknown>): void {
+        super.update(changedProperties);
+        if (changedProperties.get('selectionMode') != undefined) {
+            if (!this.selectionMode) {
+                this.selected = false;
+            }
+        }
     }
-  }
 
-  render(): TemplateResult {
-    return html`
+    render(): TemplateResult {
+        return html`
       <nidoca-ripple>
         <nidoca-grid-container
           class="LIST_ITEM"
@@ -56,18 +56,27 @@ export class NidocaListItem extends LitElement {
           <slot class="LIST_ITEM_SLOT" @click="${() => this.itemClicked()}"></slot> </nidoca-grid-container
       ></nidoca-ripple>
     `;
-  }
-
-  itemClicked() {
-    this.dispatchEvent(new CustomEvent("nidoca-event-list-item-clicked", {detail: this}));
-  }
-
-  switchSelected() {
-    this.selected = Boolean(!this.selected);
-    if (this.selected) {
-      this.dispatchEvent(new CustomEvent("nidoca-event-list-item-select", {detail: this}));
-    } else {
-      this.dispatchEvent(new CustomEvent("nidoca-event-list-item-unselect", {detail: this}));
     }
-  }
+
+    itemClicked() {
+        this.dispatchEvent(new CustomEvent("nidoca-event-list-item-clicked", {
+            detail: this, bubbles: true,
+            composed: true
+        }));
+    }
+
+    switchSelected() {
+        this.selected = Boolean(!this.selected);
+        if (this.selected) {
+            this.dispatchEvent(new CustomEvent("nidoca-event-list-item-select", {
+                detail: this, bubbles: true,
+                composed: true
+            }));
+        } else {
+            this.dispatchEvent(new CustomEvent("nidoca-event-list-item-unselect", {
+                detail: this, bubbles: true,
+                composed: true
+            }));
+        }
+    }
 }

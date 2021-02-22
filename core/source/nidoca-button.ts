@@ -117,7 +117,8 @@ export class NidocaButton extends LitElement {
 
     clicked() {
         this.dispatchEvent(new CustomEvent("nidoca-event-button-clicked", {
-            detail: this
+            detail: this,bubbles: true,
+            composed: true
         }));
     }
 }

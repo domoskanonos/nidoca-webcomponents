@@ -69,6 +69,7 @@ export class NidocaSearchBar extends LitElement {
     }
 
     private textfieldKeyUp() {
-        this.dispatchEvent(new CustomEvent("nidoca-event-search", {detail: this.getOutputData()}));
+        this.dispatchEvent(new CustomEvent("nidoca-event-search", {detail: this.getOutputData(),bubbles: true,
+            composed: true}));
     }
 }

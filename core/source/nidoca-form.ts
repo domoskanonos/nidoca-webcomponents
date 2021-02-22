@@ -130,7 +130,8 @@ export class NidocaForm extends LitElement {
         let buttonIdentifier = event.detail;
         switch (buttonIdentifier) {
             case 'submitButton':
-                this.dispatchEvent(new CustomEvent('nidoca-event-form-submit-button-clicked', {detail: this.getOutputData()}));
+                this.dispatchEvent(new CustomEvent('nidoca-event-form-submit-button-clicked', {detail: this.getOutputData(),bubbles: true,
+                    composed: true}));
                 break;
         }
     }

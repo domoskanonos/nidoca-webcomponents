@@ -146,7 +146,8 @@ export class NidocaFormDate extends NidocaFormAbstractInputElement {
   async dispatchOutputDataChangeEvent() {
     if (this.validate()) {
       let customEvent = new CustomEvent('nidoca-form-text-event-change', {
-        detail: this.getOutputData(),
+        detail: this.getOutputData(),bubbles: true,
+        composed: true
       });
       console.debug('dispatch custom event type: %s, detail: %s', customEvent.type, JSON.stringify(customEvent.detail));
       this.dispatchEvent(customEvent);
