@@ -1,3 +1,6 @@
+import {NavigationType, NidocaTemplate, TypographyType} from "@domoskanonos/nidoca-core";
+import {html, TemplateResult} from "lit-element";
+
 export abstract class NidocaShowcaseTemplate extends NidocaTemplate {
 
 constructor() {

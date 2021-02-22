@@ -6,15 +6,6 @@ import { FlexContainerProperties,FlexItemProperties,FlexDirection,FlexWrap,FlexJ
 @customElement('nidoca-top-app-bar-showcase-page')
 export class NidocaTopAppBarShowcasePage extends NidocaShowcaseTemplate {
 
-  @property()
-  leftComponents : LitElement[]|undefined|null = [];
-
-  @property()
-  mainComponents : LitElement[]|undefined|null = [];
-
-  @property()
-  rightComponents : LitElement[]|undefined|null = [];
-
   getMainComponent(): TemplateResult {
     return html``;
   }

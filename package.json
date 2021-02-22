@@ -4,9 +4,6 @@
   "license": "MIT",
   "author": "Dominik Bruhn",
   "scripts": {
-    "all": "npm --prefix ./core run new-version & npm --prefix ./generator run generate-showcase"
-  },
-  "browserslist": [
-    "last 1 Chrome version"
-  ]
+    "all": "npm --prefix ./core run new-version & npm --prefix ./generator install & npm --prefix ./generator run generate-showcase"
+  }
 }
