@@ -14,10 +14,10 @@
   },
   "author": "Dominik Bruhn",
   "scripts": {
-    "start": "parcel source/index.html",
-    "build_ts": "tsc -p ./",
-    "build": "parcel build source/index.html -d build/output --no-content-hash --no-source-maps --public-url ./",
     "pretty": "prettier --write \"./**/*.{ts,json}\"",
+    "build_ts": "npm run pretty & tsc -p ./",
+    "build": "npm run pretty & parcel build source/index.html -d build/output --no-content-hash --no-source-maps --public-url ./",
+    "start": "parcel source/index.html",
     "new-version": "npm run build & npm version patch & npm publish --access=public",
     "unpublish": "npm unpublish --force"
   },

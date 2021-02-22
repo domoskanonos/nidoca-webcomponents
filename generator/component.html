@@ -1,4 +1,3 @@
-import { NidocaTemplate } from '@domoskanonos/nidoca-core';
 {{#each imports}}
 import { {{#each this.specifiers}}{{#if @first}}{{else}},{{/if}}{{this.specifier}}{{/each}} } from '{{#has this.libraryName "./nidoca-"}}@domoskanonos/nidoca-core{{else}}{{this.libraryName}}{{/has}}';
 {{/each}}

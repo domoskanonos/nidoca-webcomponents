@@ -29,88 +29,116 @@ Handlebars.registerHelper('toTag', function (value: any) {
     return retval;
 });
 
+async function createImports(files: any[]): Promise<any[]> {
+    let imps: any[] = [];
+    imps.push({
+        libraryName: 'lit-element',
+        specifiers: [{specifier: "TemplateResult"}, {specifier: "property"}, {specifier: "customElement"}, {specifier: "html"}, {specifier: "LitElement"}]
+    });
+    let nidocaClazzNames: Set<String> = new Set();
+    for (let i = 0; i < files.length; i++) {
+        let file: any = files[i];
+        let filename: string = file.from.replace('./', '').concat('.ts');
+        const value: any = await typescriptParser.parseFile(sourceRoot.concat(filename), 'workspace root');
+        let decs: any[] = value['declarations'];
+        for (let j = 0; j < decs.length; j++) {
+            let clazz: any = decs[j];
+            let clazzName: string = clazz.name;
+            nidocaClazzNames.add(clazzName);
+        }
+
+    }
+    let nidocaImports: any = {
+        libraryName: '@domoskanonos/nidoca-core',
+        specifiers: []
+    };
+    imps.push(nidocaImports);
+
+    nidocaClazzNames.forEach(function (clazzName) {
+        console.log(clazzName);
+        nidocaImports.specifiers.push({specifier: clazzName});
+    });
+    return imps;
+}
 
 let typescriptParser = new TypescriptParser();
 let sourceRoot = './../core/source/';
 let parsedIndexFile = typescriptParser.parseFile(sourceRoot.concat('index.ts'), 'workspace root');
 
+parsedIndexFile.then((parsedIndexFileContent: any) => {
 
-parsedIndexFile.then((indexFileContent: any) => {
+    let files = parsedIndexFileContent["exports"];
 
     let indexTSContent: string = '';
+    createImports(files).then(imps => {
 
-    indexFileContent['exports'].forEach((file: any) => {
-        let filename: string = file.from.replace('./', '').concat('.ts');
+        files.forEach((file: any) => {
+            let filename: string = file.from.replace('./', '').concat('.ts');
 
+            if (filename.indexOf('abstract') == -1 && filename.indexOf('template') == -1) {
 
-        if (filename.indexOf('abstract') == -1 && filename.indexOf('template') == -1) {
+                let destinationFilename: string = file.from.concat('-showcase-page.ts');
+                indexTSContent = indexTSContent.concat('import \'').concat(destinationFilename).concat('\';\n');
 
-            let destinationFilename: string = file.from.concat('-showcase-page.ts');
-            indexTSContent = indexTSContent.concat('import \'').concat(destinationFilename).concat('\';\n');
+                console.log('parse file: %s', filename);
+                const parsedFile = typescriptParser.parseFile(sourceRoot.concat(filename), 'workspace root');
 
-            console.log('parse file: %s', filename);
-            const parsedFile = typescriptParser.parseFile(sourceRoot.concat(filename), 'workspace root');
+                parsedFile.then((value: any) => {
+                        value['imports'] = imps;
+                        let decs: any[] = value['declarations'];
+                        decs.forEach((clazz: any) => {
+                            let clazzName: string = clazz.name;
+                            let isExported: boolean = clazz.isExported;
+                            let accessors: any[] = clazz.accessors;
+                            if (clazz.properties) {
+                                for (let i = 0; i < clazz.properties.length; i++) {
+                                    let property: any = clazz.properties[i];
+                                    let propertyType: string = property.type;
+                                    if (propertyType == undefined) {
+                                        continue;
+                                    }
+                                    if (propertyType.indexOf("[]]") > -1) {
+                                        property.defaultValue = "[[]]";
+                                    } else if (propertyType.indexOf("[]") > -1) {
+                                        property.defaultValue = "[]";
+                                    } else if (propertyType.indexOf("string") > -1) {
+                                        property.defaultValue = "''";
+                                    } else if (propertyType.indexOf("boolean") > -1) {
+                                        property.defaultValue = "false";
+                                    } else {
+                                        property.defaultValue = "undefined";
+                                    }
 
-            parsedFile.then((value: any) => {
-                    value['imports'] = [];
-                    let imps: any[] = value['imports'];
-                    let decs: any[] = value['declarations'];
-                    decs.forEach((clazz: any) => {
-                        let clazzName: string = clazz.name;
-                        let isExported: boolean = clazz.isExported;
-                        let accessors: any[] = clazz.accessors;
-                        imps.push({libraryName: '@domoskanonos/nidoca-core', specifiers: [{specifier: clazzName}]});
-                        if (clazz.properties) {
-                            for (let i = 0; i < clazz.properties.length; i++) {
-                                let property: any = clazz.properties[i];
-                                let propertyType: string = property.type;
-                                if (propertyType == undefined) {
-                                    continue;
+                                    if (propertyType.indexOf("undefined") == -1) {
+                                        propertyType = propertyType.concat("|undefined")
+                                    }
+                                    if (propertyType.indexOf("null") == -1) {
+                                        propertyType = propertyType.concat("|null")
+                                    }
+                                    property.type = propertyType;
                                 }
-                                if (propertyType.indexOf("[]]") > -1) {
-                                    property.defaultValue = "[[]]";
-                                } else if (propertyType.indexOf("[]") > -1) {
-                                    property.defaultValue = "[]";
-                                } else if (propertyType.indexOf("string") > -1) {
-                                    property.defaultValue = "''";
-                                } else if (propertyType.indexOf("boolean") > -1) {
-                                    property.defaultValue = "false";
-                                } else {
-                                    property.defaultValue = "undefined";
-                                }
-
-                                if (propertyType.indexOf("undefined") == -1) {
-                                    propertyType = propertyType.concat("|undefined")
-                                }
-                                if (propertyType.indexOf("null") == -1) {
-                                    propertyType = propertyType.concat("|null")
-                                }
-                                property.type = propertyType;
                             }
-                        }
-                    });
-                    imps.push({
-                        libraryName: 'lit-element',
-                        specifiers: [{specifier: "TemplateResult"}, {specifier: "property"}, {specifier: "customElement"}, {specifier: "html"}, {specifier: "LitElement"}]
-                    });
+                        });
 
-                    let fileContent: string = fs.readFileSync('./component.html', 'utf-8');
-                    let template = Handlebars.compile(fileContent);
-                    let output: string = template(value);
-                    fs.writeFileSync('./../showcase/source/'.concat(destinationFilename), output, {
-                        encoding: 'utf8',
-                    });
-                }
-            );
-        }
-    })
-    ;
 
-    console.log(indexTSContent);
-    fs.writeFileSync('./../showcase/source/index.ts', indexTSContent, {
-        encoding: 'utf8',
+                        let fileContent: string = fs.readFileSync('./component.html', 'utf-8');
+                        let template = Handlebars.compile(fileContent);
+                        let output: string = template(value);
+                        fs.writeFileSync('./../showcase/source/'.concat(destinationFilename), output, {
+                            encoding: 'utf8',
+                        });
+                    }
+                );
+            }
+        })
+        ;
+
+        console.log(indexTSContent);
+        fs.writeFileSync('./../showcase/source/index.ts', indexTSContent, {
+            encoding: 'utf8',
+        });
+
     });
-
 
 })
 ;

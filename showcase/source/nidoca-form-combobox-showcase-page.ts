@@ -1,4 +1,4 @@
-import {NidocaTemplate} from '@domoskanonos/nidoca-core';
+import {FormOutputData, NidocaTemplate} from '@domoskanonos/nidoca-core';
 import {customElement, html, property, TemplateResult} from 'lit-element';
 
 @customElement('nidoca-form-combobox-showcase-page')
