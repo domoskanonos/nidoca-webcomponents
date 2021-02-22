@@ -1,11 +1,9 @@
-import {css, customElement, html, property, LitElement, TemplateResult} from 'lit-element';
-import {guard} from 'lit-html/directives/guard';
-import {repeat} from 'lit-html/directives/repeat';
+import {css, customElement, html, LitElement, TemplateResult} from 'lit-element';
 
 @customElement('nidoca-top-app-bar')
 export class NidocaTopAppBar extends LitElement {
-  static styles = css`
-    .topappbar {
+    static styles = css`
+    .TOP_APP_BAR {
       width: 100vw;
       display: grid;
       grid-template-rows: var(--menubar-height);
@@ -39,74 +37,23 @@ export class NidocaTopAppBar extends LitElement {
     }
   `;
 
-  @property()
-  leftComponents: LitElement[] = [];
+    render(): TemplateResult {
+        return html`
+            <div class="TOP_APP_BAR">
+                <div class="left">
+                    <slot name="leftComponents"></slot>
+                </div>
 
-  @property()
-  mainComponents: LitElement[] = [];
-
-  @property()
-  rightComponents: LitElement[] = [];
-
-  constructor() {
-    super();
-  }
-
-  render(): TemplateResult {
-    return html`
-      <div class="topappbar">
-        <div class="left">
-          ${guard(
-            this.leftComponents,
-            () =>
-              html`
-                ${repeat(
-                  this.leftComponents,
-                  component =>
-                    html`
-                      ${component}
-                    `
-                )}
-              `
-          )}
-          <slot name="leftComponents"></slot>
-        </div>
-
-        <div class="center">
-          ${guard(
-            this.mainComponents,
-            () =>
-              html`
-                ${repeat(
-                  this.mainComponents,
-                  component =>
-                    html`
-                      ${component}
-                    `
-                )}
-              `
-          )}<slot name="mainComponents"></slot>
-        </div>
-        <div class="right">
-          ${guard(
-            this.rightComponents,
-            () =>
-              html`
-                ${repeat(
-                  this.rightComponents,
-                  component =>
-                    html`
-                      ${component}
-                    `
-                )}
-              `
-          )}
-          <slot name="rightComponents"></slot>
-        </div>
-        <div class="prominent">
-          <slot name="prominentComponents"></slot>
-        </div>
-      </div>
-    `;
-  }
+                <div class="center">
+                    <slot name="mainComponents"></slot>
+                </div>
+                <div class="right">
+                    <slot name="rightComponents"></slot>
+                </div>
+                <div class="prominent">
+                    <slot name="prominentComponents"></slot>
+                </div>
+            </div>
+        `;
+    }
 }
