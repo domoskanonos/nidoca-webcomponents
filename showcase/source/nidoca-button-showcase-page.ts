@@ -1,24 +1,22 @@
-import {ButtonType, NidocaTemplate} from '@domoskanonos/nidoca-core';
-import {customElement, html, property, TemplateResult} from 'lit-element';
+import {NidocaShowcaseTemplate} from "./nidoca-showcase-template";
+import { TemplateResult,property,customElement,html,LitElement } from 'lit-element';
+import { FlexContainerProperties,FlexItemProperties,FlexDirection,FlexWrap,FlexJustifyContent,FlexAlignItems,FlexAlignContent,NidocaFlex,AppData,NidocaAbstractApp,AccordionType,NidocaAccordion,NidocaAccordionItem,NidocaBox,WizardStep,NidocaWizard,NidocaChip,ProgressType,NidocaProgress,BorderProperties,BorderSize,ShadowType,NidocaBorder,NidocaFloatingContainer,ButtonType,NidocaButton,DividerType,NidocaDivider,GridJustifyItems,GridAlignItems,NidocaGrid,NidocaFormOutputData,FormProperties,NidocaForm,NidocaFormCombobox,TextType,NidocaFormText,DateType,NidocaFormDate,NidocaFormInputframe,FormOutputData,NidocaFormAbstractInputElement,IconShadowType,NidocaIcon,RichMediaType,RichMediaProperties,NidocaRichMedia,NidocaCaptcha,TargetType,NidocaLinkInterface,NidocaLink,NidocaList,NidocaListItem,NidocaTopAppBar,NavigationType,NavigationStyle,NidocaNavigation,NidocaSearchBar,NidocaNavigationLink,VisibleType,NidocaVisible,NidocaNavigationSection,NidocaTable,SpacerAlignment,SpacerSize,NidocaSpacer,NidocaTabs,NidocaTab,NidocaTabContent,NidocaTemplate,NidocaTopBottomTemplate,TypographyType,TypographyAlignment,NidocaTypography,NidocaDialog,NidocaShowcase } from '@domoskanonos/nidoca-core';
+
 
 @customElement('nidoca-button-showcase-page')
-export class NidocaButtonShowcasePage extends NidocaTemplate {
-  @property()
-  buttonType: ButtonType | undefined | null = undefined;
+export class NidocaButtonShowcasePage extends NidocaShowcaseTemplate {
 
   @property()
-  leadingIcon: string | null | undefined = '';
+  buttonType : ButtonType|undefined|null = undefined;
 
   @property()
-  text: string | undefined | null = '';
+  leadingIcon : string | null | undefined = '';
+
+  @property()
+  text : string|undefined|null = '';
 
   getMainComponent(): TemplateResult {
     return html``;
   }
-  getLeftNavigationContent(): TemplateResult {
-    return html``;
-  }
-  getTopContent(): TemplateResult {
-    return html``;
-  }
+
 }

@@ -65,80 +65,111 @@ let typescriptParser = new TypescriptParser();
 let sourceRoot = './../core/source/';
 let parsedIndexFile = typescriptParser.parseFile(sourceRoot.concat('index.ts'), 'workspace root');
 
-parsedIndexFile.then((parsedIndexFileContent: any) => {
-
-    let files = parsedIndexFileContent["exports"];
-
+function createIndexPage(files: any[]) {
     let indexTSContent: string = '';
+    files.forEach((file: any) => {
+        let filename: string = file.from.replace('./', '').concat('.ts');
+
+        if (filename.indexOf('abstract') == -1 && filename.indexOf('template') == -1) {
+
+            let destinationFilename: string = file.from.concat('-showcase-page.ts');
+            indexTSContent = indexTSContent.concat('import \'').concat(destinationFilename).concat('\';\n');
+
+        }
+    })
+    ;
+
+    console.log(indexTSContent);
+    fs.writeFileSync('./../showcase/source/index.ts', indexTSContent, {
+        encoding: 'utf8',
+    });
+}
+
+function createNidocaShowcaseTemplate(files: any[]) {
+    let fileContent: string = fs.readFileSync('./nidoca-showcase-template.html', 'utf-8');
+    let template = Handlebars.compile(fileContent);
+    let output: string = template({});
+    files.forEach((file: any) => {
+        let filename: string = file.from.replace('./', '').concat('.ts');
+        if (filename.indexOf('abstract') == -1 && filename.indexOf('template') == -1) {
+        }
+    })
+    ;
+    fs.writeFileSync('./../showcase/source/nidoca-showcase-template.ts', output, {
+        encoding: 'utf8',
+    });
+}
+
+function createComponentPages(files: any[], imps: any[]) {
+    files.forEach((file: any) => {
+        let filename: string = file.from.replace('./', '').concat('.ts');
+
+        if (filename.indexOf('abstract') == -1 && filename.indexOf('template') == -1) {
+
+            let destinationFilename: string = file.from.concat('-showcase-page.ts');
+
+            console.log('parse file: %s', filename);
+            const parsedFile = typescriptParser.parseFile(sourceRoot.concat(filename), 'workspace root');
+
+            parsedFile.then((value: any) => {
+                    value['imports'] = imps;
+                    let decs: any[] = value['declarations'];
+                    decs.forEach((clazz: any) => {
+                        let clazzName: string = clazz.name;
+                        let isExported: boolean = clazz.isExported;
+                        let accessors: any[] = clazz.accessors;
+                        if (clazz.properties) {
+                            for (let i = 0; i < clazz.properties.length; i++) {
+                                let property: any = clazz.properties[i];
+                                let propertyType: string = property.type;
+                                if (propertyType == undefined) {
+                                    continue;
+                                }
+                                if (propertyType.indexOf("[]]") > -1) {
+                                    property.defaultValue = "[[]]";
+                                } else if (propertyType.indexOf("[]") > -1) {
+                                    property.defaultValue = "[]";
+                                } else if (propertyType.indexOf("string") > -1) {
+                                    property.defaultValue = "''";
+                                } else if (propertyType.indexOf("boolean") > -1) {
+                                    property.defaultValue = "false";
+                                } else {
+                                    property.defaultValue = "undefined";
+                                }
+
+                                if (propertyType.indexOf("undefined") == -1) {
+                                    propertyType = propertyType.concat("|undefined")
+                                }
+                                if (propertyType.indexOf("null") == -1) {
+                                    propertyType = propertyType.concat("|null")
+                                }
+                                property.type = propertyType;
+                            }
+                        }
+                    });
+
+
+                    let fileContent: string = fs.readFileSync('./component.html', 'utf-8');
+                    let template = Handlebars.compile(fileContent);
+                    let output: string = template(value);
+                    fs.writeFileSync('./../showcase/source/'.concat(destinationFilename), output, {
+                        encoding: 'utf8',
+                    });
+                }
+            );
+        }
+    })
+    ;
+
+}
+
+parsedIndexFile.then((parsedIndexFileContent: any) => {
+    let files = parsedIndexFileContent["exports"];
     createImports(files).then(imps => {
 
-        files.forEach((file: any) => {
-            let filename: string = file.from.replace('./', '').concat('.ts');
-
-            if (filename.indexOf('abstract') == -1 && filename.indexOf('template') == -1) {
-
-                let destinationFilename: string = file.from.concat('-showcase-page.ts');
-                indexTSContent = indexTSContent.concat('import \'').concat(destinationFilename).concat('\';\n');
-
-                console.log('parse file: %s', filename);
-                const parsedFile = typescriptParser.parseFile(sourceRoot.concat(filename), 'workspace root');
-
-                parsedFile.then((value: any) => {
-                        value['imports'] = imps;
-                        let decs: any[] = value['declarations'];
-                        decs.forEach((clazz: any) => {
-                            let clazzName: string = clazz.name;
-                            let isExported: boolean = clazz.isExported;
-                            let accessors: any[] = clazz.accessors;
-                            if (clazz.properties) {
-                                for (let i = 0; i < clazz.properties.length; i++) {
-                                    let property: any = clazz.properties[i];
-                                    let propertyType: string = property.type;
-                                    if (propertyType == undefined) {
-                                        continue;
-                                    }
-                                    if (propertyType.indexOf("[]]") > -1) {
-                                        property.defaultValue = "[[]]";
-                                    } else if (propertyType.indexOf("[]") > -1) {
-                                        property.defaultValue = "[]";
-                                    } else if (propertyType.indexOf("string") > -1) {
-                                        property.defaultValue = "''";
-                                    } else if (propertyType.indexOf("boolean") > -1) {
-                                        property.defaultValue = "false";
-                                    } else {
-                                        property.defaultValue = "undefined";
-                                    }
-
-                                    if (propertyType.indexOf("undefined") == -1) {
-                                        propertyType = propertyType.concat("|undefined")
-                                    }
-                                    if (propertyType.indexOf("null") == -1) {
-                                        propertyType = propertyType.concat("|null")
-                                    }
-                                    property.type = propertyType;
-                                }
-                            }
-                        });
-
-
-                        let fileContent: string = fs.readFileSync('./component.html', 'utf-8');
-                        let template = Handlebars.compile(fileContent);
-                        let output: string = template(value);
-                        fs.writeFileSync('./../showcase/source/'.concat(destinationFilename), output, {
-                            encoding: 'utf8',
-                        });
-                    }
-                );
-            }
-        })
-        ;
-
-        console.log(indexTSContent);
-        fs.writeFileSync('./../showcase/source/index.ts', indexTSContent, {
-            encoding: 'utf8',
-        });
+        createIndexPage(files);
+        createNidocaShowcaseTemplate(files);
+        createComponentPages(files, imps);
 
     });
-
-})
-;
+});

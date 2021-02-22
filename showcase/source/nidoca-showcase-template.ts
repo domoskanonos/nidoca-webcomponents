@@ -1,18 +1,55 @@
-import {NidocaTemplate} from '@domoskanonos/nidoca-core';
-import {customElement, html, property, TemplateResult} from 'lit-element';
+export abstract class NidocaShowcaseTemplate extends NidocaTemplate {
 
-@customElement('nidoca-dialog-showcase-page')
-export class NidocaDialogShowcasePage extends NidocaTemplate {
-  @property()
-  show: boolean | undefined | null = false;
+constructor() {
+super();
+this.navType = NavigationType.PERMANENT;
+}
 
-  getMainComponent(): TemplateResult {
-    return html``;
-  }
-  getLeftNavigationContent(): TemplateResult {
-    return html``;
-  }
-  getTopContent(): TemplateResult {
-    return html`iuhnioh`;
-  }
+getTopContent(): TemplateResult {
+return html`
+<nidoca-top-app-bar>
+    ${this.getTopLeftComponent()} ${this.getTopMainComponent()} ${this.getTopRightComponent()}
+</nidoca-top-app-bar>
+`;
+}
+
+getTopLeftComponent(): TemplateResult {
+return html`
+<nidoca-icon
+        title="Menü"
+        slot="leftComponents"
+        icon="menu"
+        .clickable="${true}"
+></nidoca-icon>
+<nidoca-typography slot="leftComponents" .typographyType="${TypographyType.BODY1}"
+>Title
+</nidoca-typography
+>
+`;
+}
+
+getTopMainComponent(): TemplateResult {
+return html``;
+}
+
+getTopRightComponent(): TemplateResult {
+return html``;
+}
+
+getLeftNavigationContent(): TemplateResult {
+return html`
+
+
+
+<nidoca-navigation-link
+        slot="links"
+        icon="arrow_forward_ios"
+        text="Hallo"
+        href="introduction"
+></nidoca-navigation-link>
+
+
+
+`;
+}
 }
