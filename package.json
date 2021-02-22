@@ -4,6 +4,7 @@
   "license": "MIT",
   "author": "Dominik Bruhn",
   "scripts": {
-    "all": "npm --prefix ./core run new-version & npm --prefix ./generator install & npm --prefix ./generator run generate-showcase"
+    "all": "npm --prefix ./core run new-version & npm --prefix ./showcase run generate-showcase& npm --prefix ./showcase prune & npm --prefix ./generator install ",
+    "showcase": "npm --prefix ./showcase start"
   }
 }
