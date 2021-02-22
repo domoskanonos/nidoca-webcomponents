@@ -5,7 +5,7 @@ import {BorderProperties} from './nidoca-border';
 import {NidocaIcon} from './nidoca-icon';
 
 export abstract class NidocaTemplate extends LitElement {
-  static styles = css`
+    static styles = css`
     #top {
       position: fixed;
       width: calc(100%);
@@ -78,68 +78,69 @@ export abstract class NidocaTemplate extends LitElement {
     }
   `;
 
-  @property()
-  menuSwitchIcon = 'menu';
+    @property()
+    menuSwitchIcon = 'menu';
 
-  @property()
-  menuCss: string = 'menuClosed basicShadow';
+    @property()
+    menuCss: string = 'menuClosed basicShadow';
 
-  @property()
-  navigationClosed: boolean = true;
+    @property()
+    navigationClosed: boolean = true;
 
-  @property()
-  navType: string = NavigationType.DISMISSIBLE;
+    @property()
+    navType: string = NavigationType.DISMISSIBLE;
 
-  @query('#top')
-  private topElement: HTMLElement | undefined;
-  @query('#left')
-  private leftElement: HTMLElement | undefined;
-  @query('#main')
-  private mainElement: HTMLElement | undefined;
+    @query('#top')
+    private topElement: HTMLElement | undefined;
+    @query('#left')
+    private leftElement: HTMLElement | undefined;
+    @query('#main')
+    private mainElement: HTMLElement | undefined;
 
-  render(): TemplateResult {
-    return html`
-      <nidoca-navigation .closed="${this.navigationClosed}" navigationType="${this.navType}">
-        ${this.getLeftNavigationContent()}
-      </nidoca-navigation>
-      <div id="top" class="${this.menuCss}" @nidoca-event-icon-clicked="${this.menuItemClicked}">
-        <nidoca-border ..borderProperties="${[BorderProperties.BOTTOM]}">
-          ${this.getTopContent()}
-        </nidoca-border>
-      </div>
-      <div id="main" class="${this.menuCss} body-opacity">
-        ${this.getMainComponent()}
-      </div>
-    `;
-  }
-
-  abstract getMainComponent(): TemplateResult;
-
-  abstract getLeftNavigationContent(): TemplateResult;
-
-  abstract getTopContent(): TemplateResult;
-
-  menuItemClicked(event: CustomEvent) {
-    let id: NidocaIcon = event.detail;
-    if (id.icon === this.menuSwitchIcon) {
-      console.log('menuItemClicked...');
-      this.toogleMenu();
+    render(): TemplateResult {
+        return html`
+            <nidoca-navigation .closed="${this.navigationClosed}" navigationType="${this.navType}">
+                ${this.getLeftNavigationContent()}
+            </nidoca-navigation>
+            <div id="top" class="${this.menuCss}"
+                 @nidoca-event-icon-clicked="${(event: CustomEvent) => this.menuItemClicked(event)}">
+                <nidoca-border ..borderProperties="${[BorderProperties.BOTTOM]}">
+                    ${this.getTopContent()}
+                </nidoca-border>
+            </div>
+            <div id="main" class="${this.menuCss} body-opacity">
+                ${this.getMainComponent()}
+            </div>
+        `;
     }
-  }
 
-  private toogleMenu(): void {
-    if (this.menuCss.indexOf('menuClosed') == -1) {
-      this.menuCss = 'menuClosed basicShadow';
-      this.navigationClosed = true;
-    } else if (this.navType == NavigationType.PERMANENT) {
-      this.menuCss = 'permanent-top permanent-main';
-      this.navigationClosed = false;
-    } else if (this.navType == NavigationType.DISMISSIBLE) {
-      this.menuCss = 'dismissible-main';
-      this.navigationClosed = false;
-    } else {
-      this.menuCss = 'basicShadow';
-      this.navigationClosed = false;
+    abstract getMainComponent(): TemplateResult;
+
+    abstract getLeftNavigationContent(): TemplateResult;
+
+    abstract getTopContent(): TemplateResult;
+
+    menuItemClicked(event: CustomEvent) {
+        let id: NidocaIcon = event.detail;
+        if (id.icon === this.menuSwitchIcon) {
+            console.log('menuItemClicked...');
+            this.toogleMenu();
+        }
     }
-  }
+
+    private toogleMenu(): void {
+        if (this.menuCss.indexOf('menuClosed') == -1) {
+            this.menuCss = 'menuClosed basicShadow';
+            this.navigationClosed = true;
+        } else if (this.navType == NavigationType.PERMANENT) {
+            this.menuCss = 'permanent-top permanent-main';
+            this.navigationClosed = false;
+        } else if (this.navType == NavigationType.DISMISSIBLE) {
+            this.menuCss = 'dismissible-main';
+            this.navigationClosed = false;
+        } else {
+            this.menuCss = 'basicShadow';
+            this.navigationClosed = false;
+        }
+    }
 }
