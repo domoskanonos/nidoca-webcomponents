@@ -10,6 +10,7 @@
     "typescript": "^4.1.4"
   },
   "dependencies": {
+    "@domoskanonos/frontend-basis": "latest",
     "@domoskanonos/nidoca-core": "latest"
   },
   "author": "Dominik Bruhn",

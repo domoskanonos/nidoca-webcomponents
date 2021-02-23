@@ -67,6 +67,8 @@ let parsedIndexFile = typescriptParser.parseFile(sourceRoot.concat('index.ts'), 
 
 function createIndexPage(files: any[]) {
     let indexTSContent: string = '';
+    indexTSContent = indexTSContent.concat('import \'').concat('./nidoca-showcase-app').concat('\';\n');
+    indexTSContent = indexTSContent.concat('import \'').concat('./nidoca-showcase-dashboard-page').concat('\';\n');
     files.forEach((file: any) => {
         let filename: string = file.from.replace('./', '').concat('.ts');
 
@@ -96,6 +98,21 @@ function createNidocaShowcaseTemplate(files: any[]) {
     })
     ;
     fs.writeFileSync('./../showcase/source/nidoca-showcase-template.ts', output, {
+        encoding: 'utf8',
+    });
+}
+
+function createNidocaShowcaseApp(files: any[]) {
+    let fileContent: string = fs.readFileSync('./nidoca-showcase-app.html', 'utf-8');
+    let template = Handlebars.compile(fileContent);
+    let output: string = template({});
+    files.forEach((file: any) => {
+        let filename: string = file.from.replace('./', '').concat('.ts');
+        if (filename.indexOf('abstract') == -1 && filename.indexOf('template') == -1) {
+        }
+    })
+    ;
+    fs.writeFileSync('./../showcase/source/nidoca-showcase-app.ts', output, {
         encoding: 'utf8',
     });
 }
@@ -169,6 +186,7 @@ parsedIndexFile.then((parsedIndexFileContent: any) => {
 
         createIndexPage(files);
         createNidocaShowcaseTemplate(files);
+        createNidocaShowcaseApp(files);
         createComponentPages(files, imps);
 
     });

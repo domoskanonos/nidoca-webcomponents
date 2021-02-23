@@ -1,0 +1,26 @@
+import {RouterService} from '@domoskanonos/frontend-basis';
+import {NidocaAbstractApp} from '@domoskanonos/nidoca-core';
+import {customElement, html, TemplateResult} from 'lit-element';
+
+@customElement('nidoca-showcase-app')
+export class NidocaShowcaseApp extends NidocaAbstractApp {
+  async preRender(): Promise<void> {
+    return super.preRender();
+  }
+
+  renderPage(): TemplateResult {
+    let path = RouterService.getUniqueInstance().getCurrentPage();
+    console.log('current path: '.concat(path));
+    switch (path) {
+      case 'undefined':
+        return html` <page-wizard></page-wizard> `;
+      case 'dashboard':
+      default:
+        return html` <nidoca-showcase-dashboard-page></nidoca-showcase-dashboard-page> `;
+    }
+  }
+
+  getAppTitle(): string {
+    return 'nidoca showcase';
+  }
+}

@@ -1,70 +1,67 @@
-import {NidocaShowcaseTemplate} from "./nidoca-showcase-template";
-import { TemplateResult,property,customElement,html,LitElement } from 'lit-element';
-import { FlexContainerProperties,FlexItemProperties,FlexDirection,FlexWrap,FlexJustifyContent,FlexAlignItems,FlexAlignContent,NidocaFlex,AppData,NidocaAbstractApp,AccordionType,NidocaAccordion,NidocaAccordionItem,NidocaBox,WizardStep,NidocaWizard,NidocaChip,ProgressType,NidocaProgress,BorderProperties,BorderSize,ShadowType,NidocaBorder,NidocaFloatingContainer,ButtonType,NidocaButton,DividerType,NidocaDivider,GridJustifyItems,GridAlignItems,NidocaGrid,NidocaFormOutputData,FormProperties,NidocaForm,NidocaFormCombobox,TextType,NidocaFormText,DateType,NidocaFormDate,NidocaFormInputframe,FormOutputData,NidocaFormAbstractInputElement,IconShadowType,NidocaIcon,RichMediaType,RichMediaProperties,NidocaRichMedia,NidocaCaptcha,TargetType,NidocaLinkInterface,NidocaLink,NidocaList,NidocaListItem,NidocaTopAppBar,NavigationType,NavigationStyle,NidocaNavigation,NidocaSearchBar,NidocaNavigationLink,VisibleType,NidocaVisible,NidocaNavigationSection,NidocaTable,SpacerAlignment,SpacerSize,NidocaSpacer,NidocaTabs,NidocaTab,NidocaTabContent,NidocaTemplate,NidocaTopBottomTemplate,TypographyType,TypographyAlignment,NidocaTypography,NidocaDialog,NidocaShowcase } from '@domoskanonos/nidoca-core';
-
+import {TextType} from '@domoskanonos/nidoca-core';
+import {customElement, html, property, TemplateResult} from 'lit-element';
+import {NidocaShowcaseTemplate} from './nidoca-showcase-template';
 
 @customElement('nidoca-form-text-showcase-page')
 export class NidocaFormTextShowcasePage extends NidocaShowcaseTemplate {
+  @property()
+  textType: TextType | undefined | null = undefined;
 
   @property()
-  textType : TextType|undefined|null = undefined;
+  name: string | undefined | null = '';
 
   @property()
-  name : string|undefined|null = '';
+  value: any | undefined | null = undefined;
 
   @property()
-  value : any|undefined|null = undefined;
+  label: string | undefined | null = '';
 
   @property()
-  label : string|undefined|null = '';
+  required: boolean | undefined | null = false;
 
   @property()
-  required : boolean|undefined|null = false;
+  placeholder: string | undefined | null = '';
 
   @property()
-  placeholder : string|undefined|null = '';
+  disabled: boolean | undefined | null = false;
 
   @property()
-  disabled : boolean|undefined|null = false;
+  checked: boolean | undefined | null = false;
 
   @property()
-  checked : boolean|undefined|null = false;
+  multiple: boolean | undefined | null = false;
 
   @property()
-  multiple : boolean|undefined|null = false;
+  maxlength: number | undefined | null = undefined;
 
   @property()
-  maxlength : number | undefined|null = undefined;
+  minlength: number | undefined | null = undefined;
 
   @property()
-  minlength : number | undefined|null = undefined;
+  min: number | undefined | null = undefined;
 
   @property()
-  min : number | undefined|null = undefined;
+  max: number | undefined | null = undefined;
 
   @property()
-  max : number | undefined|null = undefined;
+  step: number | undefined | null = undefined;
 
   @property()
-  step : number | undefined|null = undefined;
+  size: number | undefined | null = undefined;
 
   @property()
-  size : number | undefined|null = undefined;
+  errorText: string | undefined | null = '';
 
   @property()
-  errorText : string | undefined|null = '';
+  infoText: string | undefined | null = '';
 
   @property()
-  infoText : string | undefined|null = '';
+  warningText: string | undefined | null = '';
 
   @property()
-  warningText : string | undefined|null = '';
-
-  @property()
-  inputElement : HTMLInputElement | undefined|null = undefined;
+  inputElement: HTMLInputElement | undefined | null = undefined;
 
   getMainComponent(): TemplateResult {
     return html``;
   }
-
 }
