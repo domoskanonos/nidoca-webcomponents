@@ -12,9 +12,11 @@ export class NidocaShowcaseApp extends NidocaAbstractApp {
     let path = RouterService.getUniqueInstance().getCurrentPage();
     console.log('current path: '.concat(path));
     switch (path) {
-      case 'undefined':
-        return html` <page-wizard></page-wizard> `;
-      case 'dashboard':
+      {{#each pages}}
+      case '{{this}}':
+        return html` <{{this}}></{{this}}> `;
+      {{/each}}
+      case 'nidoca-showcase-dashboard-page':
       default:
         return html` <nidoca-showcase-dashboard-page></nidoca-showcase-dashboard-page> `;
     }
