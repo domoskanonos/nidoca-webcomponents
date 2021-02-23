@@ -1,6 +1,6 @@
 FROM ubuntu:18.04
-RUN apt-get update \
-    && sudo apt-get install nodejs \
-    && sudo apt-get install npm \
-    && rm -rf /var/lib/apt/lists/*
-ENTRYPOINT ["/app"]
+RUN apt-get update
+RUN yes | apt-get install nodejs
+RUN yes | apt-get install npm
+RUN yes | apt-get install git
+CMD git clone https://github.com/domoskanonos/nidoca.git && npm --prefix ./nidoca run all

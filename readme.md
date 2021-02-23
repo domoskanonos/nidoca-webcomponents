@@ -41,3 +41,6 @@ webpack dev und prod löschen, normalen dependencys leer, obige dev depencys dur
 
 
 
+
+docker build -t nidoca .
+
