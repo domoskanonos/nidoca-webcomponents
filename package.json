@@ -4,7 +4,6 @@
   "license": "MIT",
   "author": "Dominik Bruhn",
   "scripts": {
-    "new-version": "cd core && npm run new-version && cd.. && cd showcase && npm run bundle",
-    "git": "git add . && git commit -m \"current state npm push\" && git push"
+    "new-version": "cd core && npm run new-version && cd.. && cd showcase && npm run bundle"
   }
 }
