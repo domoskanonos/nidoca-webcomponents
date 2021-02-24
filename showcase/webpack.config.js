@@ -29,7 +29,7 @@ module.exports = {
    },
    mode: 'production',
    output: {
-      path: path.resolve(__dirname).concat('/dist'),
+      path: path.resolve(__dirname).concat('/build'),
       filename: 'showcase.js'
    },
    plugins: [new HtmlWebpackPlugin({ template: './source/index.html' })]
