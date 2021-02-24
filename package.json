@@ -1,10 +1,10 @@
 {
-  "name": "@domoskanonos/nidoca-all",
+  "name": "@domoskanonos/nidoca",
   "version": "1.0.0",
   "license": "MIT",
   "author": "Dominik Bruhn",
   "scripts": {
-    "all": "npm --prefix ./core install && npm --prefix ./core run build_ts",
-    "showcase": "npm --prefix ./showcase start"
+    "new-version": "cd core && npm run new-version && cd.. && cd showcase && npm run bundle",
+    "git": "git add . && git commit -m \"current state npm push\" && git push"
   }
 }
