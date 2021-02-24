@@ -1,4 +1,4 @@
-*.js
+
 *.js.map
 .idea/**
 target/**
@@ -72,3 +72,4 @@ dist
 build
 /.parcel-cache/
 *.d.ts
+generator/generator-showcase.js
