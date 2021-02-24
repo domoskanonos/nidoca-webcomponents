@@ -7,36 +7,36 @@ import {SpacerAlignment, SpacerSize} from './nidoca-spacer';
 
 @customElement('nidoca-inputframe')
 export class NidocaFormInputframe extends LitElement {
-    static styles = css`
+  static styles = css`
     .main {
       color: var(--app-color-surface);
       background-color: var(--app-color-surface-background);
     }
   `;
 
-    @property()
-    label: string = '';
+  @property()
+  label: string = '';
 
-    @property()
-    errorText: string | undefined;
+  @property()
+  errorText: string | undefined;
 
-    @property()
-    infoText: string | undefined;
+  @property()
+  infoText: string | undefined;
 
-    @property()
-    warningText: string | undefined;
+  @property()
+  warningText: string | undefined;
 
-    @property()
-    selected: boolean = false;
+  @property()
+  selected: boolean = false;
 
-    render(): TemplateResult {
-      return html`
+  render(): TemplateResult {
+    return html`
       <nidoca-border
         class="main"
         .borderSize="${this.selected ? BorderSize.THIN : BorderSize.MEDIUM}"
         .borderProperties="${[
-            BorderProperties.FULL_WIDTH,
-            this.selected ? BorderProperties.BOTTOM_SELECTED : BorderProperties.BOTTOM
+          BorderProperties.FULL_WIDTH,
+          this.selected ? BorderProperties.BOTTOM_SELECTED : BorderProperties.BOTTOM,
         ]}"
         @mouseover="${() => this.mouseover()}"
         @mouseout="${() => this.mouseout()}"
@@ -44,9 +44,9 @@ export class NidocaFormInputframe extends LitElement {
         <nidoca-spacer spacerSize="${SpacerSize.SMALL}" spacerAlignment="${SpacerAlignment.BOTH}">
           <nidoca-flex-container
             .flexContainerProperties="${[
-            FlexContainerProperties.CONTAINER_WIDTH_100,
-            FlexContainerProperties.CONTAINER_HEIGHT_100,
-        ]}"
+              FlexContainerProperties.CONTAINER_WIDTH_100,
+              FlexContainerProperties.CONTAINER_HEIGHT_100,
+            ]}"
             .flexAlignContent="${FlexAlignContent.CENTER}"
             flexItemBasisValue="100%"
           >
@@ -58,8 +58,8 @@ export class NidocaFormInputframe extends LitElement {
 
       <nidoca-flex-container
         .flexContainerProperties="${[
-            FlexContainerProperties.CONTAINER_WIDTH_100,
-            FlexContainerProperties.CONTAINER_HEIGHT_100,
+          FlexContainerProperties.CONTAINER_WIDTH_100,
+          FlexContainerProperties.CONTAINER_HEIGHT_100,
         ]}"
         .flexAlignContent="${FlexAlignContent.CENTER}"
         flexItemBasisValue="100%"
@@ -83,13 +83,13 @@ export class NidocaFormInputframe extends LitElement {
           ></nidoca-typography> </nidoca-visible
       ></nidoca-flex-container>
     `;
-    }
+  }
 
-    async mouseover() {
-        this.selected = true;
-    }
+  async mouseover() {
+    this.selected = true;
+  }
 
-    async mouseout() {
-        this.selected = false;
-    }
+  async mouseout() {
+    this.selected = false;
+  }
 }

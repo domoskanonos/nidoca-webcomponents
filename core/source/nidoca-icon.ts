@@ -1,5 +1,5 @@
-import { css, customElement, html, property, LitElement, TemplateResult } from 'lit-element';
-import { ShadowType } from './nidoca-border';
+import {css, customElement, html, property, LitElement, TemplateResult} from 'lit-element';
+import {ShadowType} from './nidoca-border';
 
 export enum IconShadowType {
   NONE = 'NONE',
@@ -46,7 +46,7 @@ export class NidocaIcon extends LitElement {
     }
 
     .icon-container:active {
-    color: var(--app-color-secondary-background);
+      color: var(--app-color-secondary-background);
     }
 
     .ROUND {
@@ -82,11 +82,10 @@ export class NidocaIcon extends LitElement {
     .clickable {
       cursor: pointer;
     }
-    
+
     .deactivated {
       color: var(--app-color-surface-background-dark);
     }
-    
   `;
 
   @property()
@@ -124,44 +123,50 @@ export class NidocaIcon extends LitElement {
 
   render(): TemplateResult {
     return html`
-            <nidoca-spacer size="${this.withIconSpace ? String(this.size / 2).concat(this.sizeUnit) : '0px'}">
-          <span
-                  class="icon-container ${this.iconShadowType} ${this.clickable && !this.deactivated ? 'clickable' : ''} ${this.round
-        ? 'ROUND'
-        : ''} ${this.deactivated ? 'deactivated' : ''}"
-                  title="${this.title}"
-                  @click="${this.clicked}"
-                  style="${'line-height: '.concat(this.size.toString()).concat(this.sizeUnit).concat(';')}${'width: '
-        .concat(this.size.toString())
-        .concat(this.sizeUnit)
-        .concat(';')}${this.backgroundColor
-          ? 'background-color:'.concat(this.backgroundColor).concat(';')
-          : ''} ${this.round
+      <nidoca-spacer size="${this.withIconSpace ? String(this.size / 2).concat(this.sizeUnit) : '0px'}">
+        <span
+          class="icon-container ${this.iconShadowType} ${this.clickable && !this.deactivated ? 'clickable' : ''} ${this
+            .round
+            ? 'ROUND'
+            : ''} ${this.deactivated ? 'deactivated' : ''}"
+          title="${this.title}"
+          @click="${this.clicked}"
+          style="${'line-height: '.concat(this.size.toString()).concat(this.sizeUnit).concat(';')}${'width: '
+            .concat(this.size.toString())
+            .concat(this.sizeUnit)
+            .concat(';')}${this.backgroundColor
+            ? 'background-color:'.concat(this.backgroundColor).concat(';')
+            : ''} ${this.round
             ? 'height:'
-              .concat((this.size * 2).toString())
-              .concat('px;')
-              .concat('width:')
-              .concat((this.size * 2).toString())
-              .concat('px;')
+                .concat((this.size * 2).toString())
+                .concat('px;')
+                .concat('width:')
+                .concat((this.size * 2).toString())
+                .concat('px;')
             : ''}"
           ><i
-                  class="material-icons"
-                  style="${this.color.length > 0 ? 'color: '.concat(this.color).concat(';') : ''} ${this.size != undefined
-        ? 'font-size: '.concat(this.size.toString()).concat(this.sizeUnit).concat(';')
-        : ''}"
-          >${this.icon}</i
+            class="material-icons"
+            style="${this.color.length > 0 ? 'color: '.concat(this.color).concat(';') : ''} ${this.size != undefined
+              ? 'font-size: '.concat(this.size.toString()).concat(this.sizeUnit).concat(';')
+              : ''}"
+            >${this.icon}</i
           ><slot></slot>
-          </span>
-            </nidoca-spacer>
-        `;
+        </span>
+      </nidoca-spacer>
+    `;
   }
 
   async clicked() {
     if (this.clickable && !this.deactivated) {
-      this.dispatchEvent(new CustomEvent('nidoca-event-icon-clicked', {
-        detail: this, bubbles: true,
-        composed: true
-      }));
+      let customEventName = 'nidoca-event-icon-clicked';
+      console.log('dispatch custom event: %s', customEventName);
+      this.dispatchEvent(
+        new CustomEvent(customEventName, {
+          detail: this,
+          bubbles: true,
+          composed: true,
+        })
+      );
     }
   }
 }

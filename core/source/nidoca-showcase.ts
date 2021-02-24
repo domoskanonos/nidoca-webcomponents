@@ -2,7 +2,7 @@ import {css, customElement, html, TemplateResult} from 'lit-element';
 import {LitElement} from 'lit-element';
 import {SpacerSize} from './nidoca-spacer';
 import {TextType} from './nidoca-form-text';
-import {FormOutputData} from "./nidoca-form-abstract-input-element";
+import {FormOutputData} from './nidoca-form-abstract-input-element';
 
 @customElement('nidoca-showcase')
 export class NidocaShowcase extends LitElement {

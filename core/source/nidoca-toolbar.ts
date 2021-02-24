@@ -1,5 +1,5 @@
-import { css, customElement, html, LitElement, property, TemplateResult } from 'lit-element';
-import { FlexJustifyContent } from './nidoca-flex-container';
+import {css, customElement, html, LitElement, property, TemplateResult} from 'lit-element';
+import {FlexJustifyContent} from './nidoca-flex-container';
 
 export class ToolbarAlignment {
   static HORIZONTAL: string = 'HORIZONTAL';

@@ -25,8 +25,6 @@ export class NidocaVisible extends LitElement {
   visibleType: string = VisibleType.HIDE;
 
   render(): TemplateResult {
-    return html`
-      <slot class="${this.visibleType}"></slot>
-    `;
+    return html` <slot class="${this.visibleType}"></slot> `;
   }
 }

@@ -2,7 +2,7 @@ import {css, customElement, html, LitElement, TemplateResult} from 'lit-element'
 
 @customElement('nidoca-top-app-bar')
 export class NidocaTopAppBar extends LitElement {
-    static styles = css`
+  static styles = css`
     .TOP_APP_BAR {
       width: 100vw;
       display: grid;
@@ -37,23 +37,23 @@ export class NidocaTopAppBar extends LitElement {
     }
   `;
 
-    render(): TemplateResult {
-        return html`
-            <div class="TOP_APP_BAR">
-                <div class="left">
-                    <slot name="leftComponents"></slot>
-                </div>
+  render(): TemplateResult {
+    return html`
+      <div class="TOP_APP_BAR">
+        <div class="left">
+          <slot name="leftComponents"></slot>
+        </div>
 
-                <div class="center">
-                    <slot name="mainComponents"></slot>
-                </div>
-                <div class="right">
-                    <slot name="rightComponents"></slot>
-                </div>
-                <div class="prominent">
-                    <slot name="prominentComponents"></slot>
-                </div>
-            </div>
-        `;
-    }
+        <div class="center">
+          <slot name="mainComponents"></slot>
+        </div>
+        <div class="right">
+          <slot name="rightComponents"></slot>
+        </div>
+        <div class="prominent">
+          <slot name="prominentComponents"></slot>
+        </div>
+      </div>
+    `;
+  }
 }

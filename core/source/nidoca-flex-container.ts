@@ -1,4 +1,4 @@
-import { css, customElement, html, property, query, LitElement, TemplateResult } from 'lit-element';
+import {css, customElement, html, property, query, LitElement, TemplateResult} from 'lit-element';
 
 export enum FlexContainerProperties {
   CONTAINER_WIDTH_MIN_CONTENT = 'CONTAINER_WIDTH_MIN_CONTENT',
@@ -98,8 +98,8 @@ export class NidocaFlex extends LitElement {
     ::slotted(.FLEX_CONTAINER) {
       margin: auto;
       display: flex;
-      overflow:auto;
-      box-sizing:border-boxed;
+      overflow: auto;
+      box-sizing: border-boxed;
     }
 
     .CONTAINER_WIDTH_MIN_CONTENT,
@@ -268,14 +268,14 @@ export class NidocaFlex extends LitElement {
 
   render(): TemplateResult {
     return html`
-            <div
-                    class="${this.toContainerPropertiesString(this.flexContainerProperties)}"
-                    style="flex-direction: ${this.flexDirection}; flex-wrap: ${this.flexWrap}; justify-content: ${this
-        .flexJustifyContent}; align-items: ${this.flexAlignItems}; align-content: ${this.flexAlignContent};"
-            >
-                <slot id="slotElement" @slotchange="${(event: Event) => this.slotChanged(event)}"></slot>
-            </div>
-        `;
+      <div
+        class="${this.toContainerPropertiesString(this.flexContainerProperties)}"
+        style="flex-direction: ${this.flexDirection}; flex-wrap: ${this.flexWrap}; justify-content: ${this
+          .flexJustifyContent}; align-items: ${this.flexAlignItems}; align-content: ${this.flexAlignContent};"
+      >
+        <slot id="slotElement" @slotchange="${(event: Event) => this.slotChanged(event)}"></slot>
+      </div>
+    `;
   }
 
   protected update(changedProperties: Map<PropertyKey, unknown>): void {
@@ -309,7 +309,7 @@ export class NidocaFlex extends LitElement {
     let classList = element.classList;
     classList.value = '';
     classList.add('FLEX_ITEM');
-    this.flexItemProperties.forEach(clazz => {
+    this.flexItemProperties.forEach((clazz) => {
       classList.add(clazz);
     });
 
@@ -319,7 +319,7 @@ export class NidocaFlex extends LitElement {
     } else {
       let currentStyles = currentStyle.split(';');
       currentStyle = '';
-      currentStyles.forEach(value => {
+      currentStyles.forEach((value) => {
         if (value.length > 0 && value.lastIndexOf('flex-basis') === -1 && value.lastIndexOf('max-width') === -1) {
           currentStyle += value + ';';
         }
@@ -330,19 +330,13 @@ export class NidocaFlex extends LitElement {
   }
 
   private getFlexItemStyle(index: number): string {
-    let flexBasisValue =
-      this.flexItemBasisValues[index] ? this.flexItemBasisValues[index] :
-        this.flexItemBasisValue
-      ;
-    return 'flex-basis: '
-      .concat(flexBasisValue)
-      .concat(';max-width: ')
-      .concat(flexBasisValue);
+    let flexBasisValue = this.flexItemBasisValues[index] ? this.flexItemBasisValues[index] : this.flexItemBasisValue;
+    return 'flex-basis: '.concat(flexBasisValue).concat(';max-width: ').concat(flexBasisValue);
   }
 
   toContainerPropertiesString(flexContainerPropertieses: string[]) {
     let containerClazzString: string = 'FLEX_CONTAINER';
-    flexContainerPropertieses.forEach(clazz => {
+    flexContainerPropertieses.forEach((clazz) => {
       containerClazzString = containerClazzString.concat(' ').concat(clazz);
     });
     return containerClazzString;

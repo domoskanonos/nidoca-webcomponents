@@ -87,7 +87,7 @@ export abstract class NidocaTopBottomTemplate extends LitElement {
   static IDENTIFIER: string = 'DefaultTemplate';
 
   @property()
-  menuSwitchIcon : string = 'menu';
+  menuSwitchIcon: string = 'menu';
 
   @property()
   menuCss: string = 'menuClosed basicShadow';
@@ -102,18 +102,10 @@ export abstract class NidocaTopBottomTemplate extends LitElement {
   render(): TemplateResult {
     return html`
       <div class="container" @nidoca-event-icon-clicked="${this.menuItemClicked}">
-        <div id="top" class="${this.menuCss}">
-          ${this.getTopContent()}
-        </div>
-        <div id="left" class="${this.menuCss}">
-          ${this.getLeftComponent()}
-        </div>
-        <div id="main" class="${this.menuCss}">
-          ${this.getMainComponent()}
-        </div>
-        <div id="bottom" class="${this.menuCss}">
-          ${this.getBottomContent()}
-        </div>
+        <div id="top" class="${this.menuCss}">${this.getTopContent()}</div>
+        <div id="left" class="${this.menuCss}">${this.getLeftComponent()}</div>
+        <div id="main" class="${this.menuCss}">${this.getMainComponent()}</div>
+        <div id="bottom" class="${this.menuCss}">${this.getBottomContent()}</div>
       </div>
     `;
   }

@@ -1,5 +1,5 @@
-import { css, customElement, html, TemplateResult } from 'lit-element';
-import { LitElement } from 'lit-element';
+import {css, customElement, html, TemplateResult} from 'lit-element';
+import {LitElement} from 'lit-element';
 
 @customElement('nidoca-chip')
 export class NidocaChip extends LitElement {

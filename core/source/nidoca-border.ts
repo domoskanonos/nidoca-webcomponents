@@ -49,7 +49,7 @@ export class NidocaBorder extends LitElement {
     .FULL_WIDTH {
       width: 100%;
     }
-    
+
     .FULL_HEIGHT {
       height: 100%;
     }

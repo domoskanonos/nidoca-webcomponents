@@ -81,7 +81,7 @@ export class NidocaRichMedia extends LitElement {
   render(): TemplateResult {
     return this.richMediaType == RichMediaType.IMG
       ? html`
-          <span class="${this.toRichMediaPropertiesString(this.richMediaProperties)}"><img src="${this.src}"/></span>
+          <span class="${this.toRichMediaPropertiesString(this.richMediaProperties)}"><img src="${this.src}" /></span>
         `
       : html`
           <span class="${this.toRichMediaPropertiesString(this.richMediaProperties)}">

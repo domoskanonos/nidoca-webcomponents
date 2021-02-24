@@ -35,8 +35,6 @@ export class NidocaDivider extends LitElement {
   opacity: number = 1.0;
 
   render(): TemplateResult {
-    return html`
-      <div class="DIVIDER ${this.dividerType}" style="opacity: ${this.opacity};"></div>
-    `;
+    return html` <div class="DIVIDER ${this.dividerType}" style="opacity: ${this.opacity};"></div> `;
   }
 }

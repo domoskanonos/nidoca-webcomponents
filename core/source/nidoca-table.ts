@@ -46,16 +46,7 @@ export class NidocaTable extends LitElement {
           <thead>
             ${guard(
               [this.headers],
-              () =>
-                html`
-                  ${repeat(
-                    this.headers,
-                    header =>
-                      html`
-                        <th colspan="1" rowspan="1">${header}</th>
-                      `
-                  )}
-                `
+              () => html` ${repeat(this.headers, (header) => html` <th colspan="1" rowspan="1">${header}</th> `)} `
             )}
           </thead>
           <tbody>
@@ -65,16 +56,10 @@ export class NidocaTable extends LitElement {
                 html`
                   ${repeat(
                     this.rows,
-                    row =>
+                    (row) =>
                       html`
                         <tr>
-                          ${repeat(
-                            row,
-                            column =>
-                              html`
-                                <td colspan="1" rowspan="1">${column}</td>
-                              `
-                          )}
+                          ${repeat(row, (column) => html` <td colspan="1" rowspan="1">${column}</td> `)}
                         </tr>
                       `
                   )}

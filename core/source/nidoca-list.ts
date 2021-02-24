@@ -20,16 +20,14 @@ export class NidocaList extends LitElement {
   protected update(changedProperties: Map<PropertyKey, unknown>): void {
     super.update(changedProperties);
     if (changedProperties.get('selectionMode') != undefined) {
-      this.getItems().forEach(listItemComponent => {
+      this.getItems().forEach((listItemComponent) => {
         listItemComponent.selectionMode = this.selectionMode;
       });
     }
   }
 
   render(): TemplateResult {
-    return html`
-      <slot class="LIST_SLOT" id="slotElement"></slot>
-    `;
+    return html` <slot class="LIST_SLOT" id="slotElement"></slot> `;
   }
 
   getItems(): NidocaListItem[] {

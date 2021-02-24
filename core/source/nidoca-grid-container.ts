@@ -113,14 +113,10 @@ export class NidocaGrid extends LitElement {
   }
 
   private toGridJustifyItems(gridJustifyItems: string) {
-    return gridJustifyItems
-      ? 'justify-items:'.concat(gridJustifyItems).concat(';')
-      : '';
+    return gridJustifyItems ? 'justify-items:'.concat(gridJustifyItems).concat(';') : '';
   }
 
   private toGridAlignItems(gridAlignItems: string) {
-    return gridAlignItems
-      ? 'align-items:'.concat(gridAlignItems).concat(';')
-      : '';
+    return gridAlignItems ? 'align-items:'.concat(gridAlignItems).concat(';') : '';
   }
 }

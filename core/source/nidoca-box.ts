@@ -1,4 +1,4 @@
-import { css, customElement, html, unsafeCSS, LitElement, property, TemplateResult } from 'lit-element';
+import {css, customElement, html, unsafeCSS, LitElement, property, TemplateResult} from 'lit-element';
 
 @customElement('nidoca-box')
 export class NidocaBox extends LitElement {
