@@ -12,6 +12,6 @@
   },
   "author": "Dominik Bruhn",
   "scripts": {
-    "generate-showcase": "tsc -p ./ && node generator-showcase.js"
+    "generate-showcase": "tsc && node generator-showcase.js"
   }
 }

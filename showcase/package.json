@@ -18,8 +18,7 @@
   },
   "author": "Dominik Bruhn",
   "scripts": {
-    "pretty": "prettier --write \"./**/*.{ts,json}\"",
-    "build": "npm run pretty & tsc -p ./",
+    "build": "cd .. && cd generator && npm install && npm run generate-showcase && cd.. && cd showcase && npm install && prettier --write \"./**/*.{ts,json}\" && tsc -p ./",
     "bundle": "npm run build && webpack"
   },
   "browserslist": [
