@@ -8,6 +8,12 @@ export class NidocaShowcaseApp extends NidocaAbstractApp {
     return super.preRender();
   }
 
+  firstUpdated() {
+    RouterService.getUniqueInstance().subscribe(() => {
+      return this.requestUpdate();
+    });
+  }
+
   renderPage(): TemplateResult {
     let path = RouterService.getUniqueInstance().getCurrentPage();
     console.log('current path: '.concat(path));
