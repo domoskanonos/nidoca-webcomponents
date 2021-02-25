@@ -4,14 +4,18 @@ import {customElement, html, TemplateResult} from 'lit-element';
 
 @customElement('nidoca-showcase-app')
 export class NidocaShowcaseApp extends NidocaAbstractApp {
-  async preRender(): Promise<void> {
-    return super.preRender();
+
+  constructor() {
+    super();
+      RouterService.getUniqueInstance().subscribe(() => {
+      this.requestUpdate().then(() => {
+        console.log('requestUpdated completed');
+      });
+    });
   }
 
-  firstUpdated() {
-    RouterService.getUniqueInstance().subscribe(() => {
-    return this.requestUpdate();
-  });
+  async preRender(): Promise<void> {
+    return super.preRender();
   }
 
   renderPage(): TemplateResult {
