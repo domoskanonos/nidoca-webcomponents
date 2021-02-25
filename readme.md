@@ -7,11 +7,11 @@ nidoca is a lightweight ui-framework based on
 [typescript](https://www.typescriptlang.org/)
 and [litelement](https://lit-element.polymer-project.org/).
 
-visit showcase page: [nidoca.de](http://nidoca.de)
+Visit showcase page: [nidoca.de](http://nidoca.de)
 
 ## Installation:
 
-Installation is simple with [npm](https://www.npmjs.com/package/@domoskanonos/nidoca-core):
+Installation with [npm](https://www.npmjs.com/package/@domoskanonos/nidoca-core):
 
     npm i @domoskanonos/nidoca-core
 
@@ -21,26 +21,15 @@ or refer directly in package.json:
         "@domoskanonos/nidoca-core": "latest",
     }
 
-  /*"main": "source/index.js",*/
+### build showcase docker image
+    docker build -t nidoca-showcase .
 
+### push image to docker registry
+    docker tag nidoca-showcase <registry-host>:5000/nidoca-showcase
+    docker push <registry-host>:5000/nidoca-showcase
 
-Package ohne inde:
-  /**
- "main": "lib/index.js",
-  "devDependencies": {
-    "@domoskanonos/frontend-basis": "latest",
-    "@types/node": "latest",
-    "lit-element": "latest",
-  "prettier": "latest",
-     "typescript": "next"
-  },
-  **/
+### after push, goto server and pull:
+    docker pull localhost:5000/nidoca-showcase
 
-
-webpack dev und prod löschen, normalen dependencys leer, obige dev depencys durch die anderen erstetzen, index.css und index.html löschen
-
-
-
-
-docker build -t nidoca .
-
+### run docker image on server
+    docker run -d -p 80:80 localhost:5000/nidoca-showcase
