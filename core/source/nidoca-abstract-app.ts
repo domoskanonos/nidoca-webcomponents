@@ -27,7 +27,6 @@ export abstract class NidocaAbstractApp extends LitElement {
 
   firstUpdated() {
     this.registerEventListener();
-    //TODO: RouterService.getUniqueInstance().subscribe(() => this.requestUpdate());
   }
 
   abstract renderPage(): TemplateResult;
@@ -38,7 +37,8 @@ export abstract class NidocaAbstractApp extends LitElement {
    * so you can catch all underlying events.
    *
    */
-  protected registerEventListener(): void {}
+  protected registerEventListener(): void {
+  }
 
   getDefaultInputData(): AppData {
     return <AppData>{};
@@ -48,5 +48,6 @@ export abstract class NidocaAbstractApp extends LitElement {
     return undefined;
   }
 
-  protected inputDataChanged(): void {}
+  protected inputDataChanged(): void {
+  }
 }
