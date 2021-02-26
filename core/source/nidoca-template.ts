@@ -99,19 +99,23 @@ export abstract class NidocaTemplate extends LitElement {
 
   render(): TemplateResult {
     return html`
-      <nidoca-navigation .closed="${this.navigationClosed}" navigationType="${this.navType}">
+        <nidoca-navigation
+                @nidoca-event-link-clicked="${(event: CustomEvent) => this.navigationLinkClicked(event)} .closed="
+                ${this.navigationClosed}" navigationType="${this.navType}">
         ${this.getLeftNavigationContent()}
-      </nidoca-navigation>
-      <div
-        id="top"
-        class="${this.menuCss}"
-        @nidoca-event-icon-clicked="${(event: CustomEvent) => this.menuItemClicked(event)}"
-      >
-        <nidoca-border ..borderProperties="${[BorderProperties.BOTTOM]}"> ${this.getTopContent()} </nidoca-border>
-      </div>
-      <div id="main" class="${this.menuCss} body-opacity">${this.getMainComponent()}</div>
+        </nidoca-navigation>
+        <div
+                id="top"
+                class="${this.menuCss}"
+                @nidoca-event-icon-clicked="${(event: CustomEvent) => this.menuIconClicked(event)}"
+        >
+            <nidoca-border ..borderProperties="${[BorderProperties.BOTTOM]}"> ${this.getTopContent()}</nidoca-border>
+        </div>
+        <div id="main" class="${this.menuCss} body-opacity">${this.getMainComponent()}</div>
     `;
   }
+
+  abstract navigationLinkClicked(event: CustomEvent): void;
 
   abstract getMainComponent(): TemplateResult;
 
@@ -119,10 +123,10 @@ export abstract class NidocaTemplate extends LitElement {
 
   abstract getTopContent(): TemplateResult;
 
-  menuItemClicked(event: CustomEvent) {
+  menuIconClicked(event: CustomEvent) {
     let id: NidocaIcon = event.detail;
     if (id.icon === this.menuSwitchIcon) {
-      console.log('menuItemClicked...');
+      console.log('menu icon clicked...');
       this.toogleMenu();
     }
   }
@@ -142,4 +146,5 @@ export abstract class NidocaTemplate extends LitElement {
       this.navigationClosed = false;
     }
   }
+
 }
