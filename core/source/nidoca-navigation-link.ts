@@ -60,7 +60,7 @@ export class NidocaNavigationLink extends LitElement {
                 .flexItemBasisValues="${['auto', '80%']}"
               >
                 <nidoca-icon icon="${this.icon}" .withIconSpace="${false}"></nidoca-icon>
-                <nidoca-typography typographyType="${TypographyType.BODY2}">${this.text} </nidoca-typography>
+                <nidoca-typography typographyType="${TypographyType.BODY2}">${this.text}</nidoca-typography>
               </nidoca-flex-container>
             </nidoca-spacer>
           </div>
@@ -69,7 +69,8 @@ export class NidocaNavigationLink extends LitElement {
   }
 
   private linkClicked() {
-    this.dispatchEvent(new CustomEvent('nidoca-event-link-clicked', {detail: this.href,bubbles: true,
-      composed: true}));
+    let customEventName = 'nidoca-event-link-clicked';
+    console.log('dispatch custom event: %s', customEventName);
+    this.dispatchEvent(new CustomEvent(customEventName, {detail: this.href, bubbles: true, composed: true}));
   }
 }

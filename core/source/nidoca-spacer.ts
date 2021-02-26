@@ -95,19 +95,9 @@ export class NidocaSpacer extends LitElement {
     }
     switch (this.spacerAlignment) {
       case SpacerAlignment.VERTICAL:
-        return 'padding-top:'
-          .concat(size)
-          .concat(';')
-          .concat('padding-bottom:')
-          .concat(size)
-          .concat(';');
+        return 'padding-top:'.concat(size).concat(';').concat('padding-bottom:').concat(size).concat(';');
       case SpacerAlignment.HORIZONTAL:
-        return 'padding-left:'
-          .concat(size)
-          .concat(';')
-          .concat('padding-right:')
-          .concat(size)
-          .concat(';');
+        return 'padding-left:'.concat(size).concat(';').concat('padding-right:').concat(size).concat(';');
       case SpacerAlignment.BOTH:
         return 'padding:'.concat(size).concat(';');
     }

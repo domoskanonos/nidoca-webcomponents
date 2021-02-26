@@ -15,22 +15,21 @@ export enum NavigationStyle {
 @customElement('nidoca-navigation')
 export class NidocaNavigation extends LitElement {
   static styles = css`
-  
     .SURFACE {
-        background-color: var(--app-color-surface-background);
-        color: var(--app-color-surface);
+      background-color: var(--app-color-surface-background);
+      color: var(--app-color-surface);
     }
-    
+
     .PRIMARY {
-        background-color: var(--app-color-primary-background);
-        color: var(--app-color-primary);
+      background-color: var(--app-color-primary-background);
+      color: var(--app-color-primary);
     }
-    
+
     .SECONDARY {
-        background-color: var(--app-color-secondary-background);
-        color: var(--app-color-secondary);
+      background-color: var(--app-color-secondary-background);
+      color: var(--app-color-secondary);
     }
-    
+
     .NAVIGATION {
       height: 100%;
       width: var(--menu-size);
@@ -41,7 +40,6 @@ export class NidocaNavigation extends LitElement {
       left: 0;
       overflow-x: hidden;
       margin-top: var(--toolbar-height);
-      
     }
 
     .CLOSED {

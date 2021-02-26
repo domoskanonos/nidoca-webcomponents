@@ -49,7 +49,8 @@ export class NidocaAccordionItem extends LitElement {
     console.log('accordion clicked, state=' + this.opened);
     this.opened = Boolean(!this.opened);
     console.log('accordion clicked, after state=' + this.opened);
-    this.dispatchEvent(new CustomEvent('nidoca-event-accordion-item-clicked', {detail: this,bubbles: true,
-      composed: true}));
+    this.dispatchEvent(
+      new CustomEvent('nidoca-event-accordion-item-clicked', {detail: this, bubbles: true, composed: true})
+    );
   }
 }

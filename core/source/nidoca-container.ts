@@ -15,10 +15,6 @@ export class NidocaContainer extends LitElement {
   cssStyle: string = '';
 
   render(): TemplateResult {
-    return this.rendered
-      ? html`
-          <slot style="${this.cssStyle}"></slot>
-        `
-      : html``;
+    return this.rendered ? html` <slot style="${this.cssStyle}"></slot> ` : html``;
   }
 }

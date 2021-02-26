@@ -1,9 +1,9 @@
 import {customElement, html, TemplateResult} from 'lit-element';
 import {NidocaShowcaseTemplate} from './nidoca-showcase-template';
 
-@customElement('nidoca-chip-showcase-page')
-export class NidocaChipShowcasePage extends NidocaShowcaseTemplate {
+@customElement('nidoca-showcase-dashboard-page')
+export class NidocaShowcaseDashboardPage extends NidocaShowcaseTemplate {
   getMainComponent(): TemplateResult {
-    return html``;
+    return html`Dashboard`;
   }
 }

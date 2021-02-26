@@ -39,8 +39,6 @@ export * from './nidoca-template-top-bottom';
 export * from './nidoca-typography';
 export * from './nidoca-dialog';
 
-
 //import './index.css';
-
 
 export * from './nidoca-showcase';

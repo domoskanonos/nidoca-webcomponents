@@ -4,22 +4,25 @@
   "license": "MIT",
   "description": "nidoca framework (nidoca-showcase)",
   "devDependencies": {
-    "parcel-bundler": "^1.12.4",
+    "html-webpack-plugin": "^3.2.0",
+    "terser-webpack-plugin": "^2.3.8",
     "prettier": "^2.2.1",
     "prettier-plugin-organize-imports": "^1.1.1",
-    "typescript": "^4.1.4"
+    "ts-loader": "8.0.17",
+    "typescript": "^4.1.4",
+    "webpack": "^4.41.6",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
+    "@domoskanonos/frontend-basis": "latest",
     "@domoskanonos/nidoca-core": "latest"
   },
   "author": "Dominik Bruhn",
   "scripts": {
-    "pretty": "prettier --write \"./**/*.{ts,json}\"",
-    "build_ts": "npm run pretty & tsc -p ./",
-    "build": "npm run pretty & parcel build source/index.html -d build/output --no-content-hash --no-source-maps --public-url ./",
-    "start": "parcel source/index.html",
-    "new-version": "npm run build & npm version patch & npm publish --access=public",
-    "unpublish": "npm unpublish --force"
+    "start": "webpack-dev-server --config webpack.dev.js --open",
+    "build": "cd .. && cd generator && npm install && npm run generate-showcase && cd.. && cd showcase && npm install && prettier --write \"./**/*.{ts,json}\" && tsc -p ./",
+    "bundle": "npm run build && webpack"
   },
   "browserslist": [
     "last 1 Chrome version"

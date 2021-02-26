@@ -43,12 +43,28 @@ getLeftNavigationContent(): TemplateResult {
 return html`
 
 
+{{#each pages}}
+
 
 <nidoca-navigation-link
         slot="links"
-        icon="arrow_forward_ios"
-        text="Hallo"
-        href="introduction"
+        icon=""
+        text="<{{this}}>"
+        href="{{this}}"
+></nidoca-navigation-link>
+
+
+{{/each}}
+
+
+
+
+
+<nidoca-navigation-link
+        slot="links"
+        icon=""
+        text="Dashboard"
+        href="nidoca-showcase-dashboard-page"
 ></nidoca-navigation-link>
 
 

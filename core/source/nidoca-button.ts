@@ -6,15 +6,14 @@ import {SpacerSize} from './nidoca-spacer';
 import {TypographyType} from './nidoca-typography';
 
 export enum ButtonType {
-    PRIMARY = 'PRIMARY',
-    SECONDARY = 'SECONDARY',
-    CLEAR = 'CLEAR',
+  PRIMARY = 'PRIMARY',
+  SECONDARY = 'SECONDARY',
+  CLEAR = 'CLEAR',
 }
-
 
 @customElement('nidoca-button')
 export class NidocaButton extends LitElement {
-    static styles = css`
+  static styles = css`
     .BUTTON {
       cursor: pointer;
       text-transform: uppercase;
@@ -57,68 +56,61 @@ export class NidocaButton extends LitElement {
     }
   `;
 
-    @property()
-    buttonType: ButtonType = ButtonType.PRIMARY;
+  @property()
+  buttonType: ButtonType = ButtonType.PRIMARY;
 
-    @property()
-    leadingIcon: string | null | undefined;
+  @property()
+  leadingIcon: string | null | undefined;
 
-    @property()
-    text: string = '';
+  @property()
+  text: string = '';
 
+  constructor() {
+    super();
+  }
 
-    constructor() {
-        super();
-    }
+  render(): TemplateResult {
+    return html`
+      <nidoca-ripple>
+        <nidoca-flex-container
+          class="BUTTON ${this.buttonType}"
+          @click="${() => {
+            this.clicked();
+          }}"
+          .flexContainerProperties="${[FlexContainerProperties.CONTAINER_WIDTH_AUTO]}"
+          flexWrap="${FlexWrap.NO_WRAP}"
+          .flexJustifyContent="${FlexJustifyContent.CENTER}"
+          .flexAlignItems="${FlexAlignItems.CENTER}"
+        >
+          <nidoca-visible visibleType="${this.leadingIcon ? VisibleType.NORMAL : VisibleType.HIDE}">
+            <nidoca-icon .icon="${this.leadingIcon}"></nidoca-icon>
+          </nidoca-visible>
+          <nidoca-visible visibleType="${this.leadingIcon ? VisibleType.NORMAL : VisibleType.HIDE}">
+            <nidoca-visible
+              visibleType="${this.buttonType == ButtonType.CLEAR ? VisibleType.HIDE : VisibleType.NORMAL}"
+            >
+              <nidoca-spacer spacerSize="${SpacerSize.MEDIUM}"></nidoca-spacer>
+            </nidoca-visible>
+          </nidoca-visible>
+          <nidoca-typography text="${this.text}" typographyType="${TypographyType.BUTTON}">
+            <slot></slot>
+          </nidoca-typography>
 
-    render(): TemplateResult {
-        return html`
-            <nidoca-ripple>
-                <nidoca-flex-container
-                        class="BUTTON ${this.buttonType}"
-                        @click="${() => {
-                            this.clicked();
-                        }}"
-                        .flexContainerProperties="${[FlexContainerProperties.CONTAINER_WIDTH_AUTO]}"
-                        flexWrap="${FlexWrap.NO_WRAP}"
-                        .flexJustifyContent="${FlexJustifyContent.CENTER}"
-                        .flexAlignItems="${FlexAlignItems.CENTER}"
-                >
-                    <nidoca-visible
-                            visibleType="${this.leadingIcon ? VisibleType.NORMAL : VisibleType.HIDE
-                            }"
-                    >
-                        <nidoca-icon .icon="${this.leadingIcon}"></nidoca-icon>
-                    </nidoca-visible>
-                    <nidoca-visible
-                            visibleType="${this.leadingIcon ? VisibleType.NORMAL : VisibleType.HIDE
-                            }"
-                    >
-                        <nidoca-visible
-                                visibleType="${this.buttonType == ButtonType.CLEAR ? VisibleType.HIDE : VisibleType.NORMAL}"
-                        >
-                            <nidoca-spacer spacerSize="${SpacerSize.MEDIUM}"></nidoca-spacer
-                            >
-                        </nidoca-visible>
-                    </nidoca-visible>
-                    <nidoca-typography text="${this.text}" typographyType="${TypographyType.BUTTON
-                    }">
-                        <slot></slot>
-                    </nidoca-typography>
+          <nidoca-visible visibleType="${this.buttonType == ButtonType.CLEAR ? VisibleType.HIDE : VisibleType.NORMAL}">
+            <nidoca-spacer spacerSize="${SpacerSize.MEDIUM}"></nidoca-spacer>
+          </nidoca-visible>
+        </nidoca-flex-container>
+      </nidoca-ripple>
+    `;
+  }
 
-                    <nidoca-visible
-                            visibleType="${this.buttonType == ButtonType.CLEAR ? VisibleType.HIDE : VisibleType.NORMAL}">
-                        <nidoca-spacer spacerSize="${SpacerSize.MEDIUM}"></nidoca-spacer>
-                    </nidoca-visible>
-                </nidoca-flex-container>
-            </nidoca-ripple>
-        `;
-    }
-
-    clicked() {
-        this.dispatchEvent(new CustomEvent("nidoca-event-button-clicked", {
-            detail: this,bubbles: true,
-            composed: true
-        }));
-    }
+  clicked() {
+    this.dispatchEvent(
+      new CustomEvent('nidoca-event-button-clicked', {
+        detail: this,
+        bubbles: true,
+        composed: true,
+      })
+    );
+  }
 }
