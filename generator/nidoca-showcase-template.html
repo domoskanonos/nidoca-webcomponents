@@ -1,3 +1,4 @@
+import {RouterService} from "@domoskanonos/frontend-basis";
 import {NavigationType, NidocaTemplate, TypographyType} from "@domoskanonos/nidoca-core";
 import {html, TemplateResult} from "lit-element";
 
@@ -7,6 +8,12 @@ constructor() {
 super();
 this.navType = NavigationType.PERMANENT;
 }
+
+    navigationLinkClicked(event: CustomEvent): void {
+        let url = event.detail;
+        console.log("navigate to %s", url)
+        RouterService.getUniqueInstance().navigate(url);
+    }
 
 getTopContent(): TemplateResult {
 return html`
