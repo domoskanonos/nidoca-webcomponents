@@ -22,7 +22,7 @@
   "scripts": {
     "start": "webpack-dev-server --config webpack.dev.js --open",
     "pretty": "prettier --write \"./**/*.{ts,json}\"",
-    "build": "cd .. && cd generator && npm install && npm run generate-showcase && cd.. && cd showcase && npm install && pretty && tsc -p ./",
+    "build": "cd .. && cd generator && npm install && npm run generate-showcase && cd.. && cd showcase && npm install && npm run pretty && tsc -p ./",
     "bundle": "npm run build && webpack"
   },
   "browserslist": [
