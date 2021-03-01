@@ -15,8 +15,8 @@
     "webpack-dev-server": "3.11.2"
   },
   "dependencies": {
-    "@domoskanonos/frontend-basis": "latest",
-    "@domoskanonos/nidoca-core": "latest"
+    "@domoskanonos/frontend-basis": "^1.0.239",
+    "@domoskanonos/nidoca-core": "^1.0.589"
   },
   "author": "Dominik Bruhn",
   "scripts": {
