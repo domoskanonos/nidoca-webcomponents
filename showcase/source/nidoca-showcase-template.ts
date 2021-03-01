@@ -1,51 +1,47 @@
-import {NavigationType, NidocaTemplate, TypographyType} from "@domoskanonos/nidoca-core";
-import {html, TemplateResult} from "lit-element";
+import {RouterService} from '@domoskanonos/frontend-basis';
+import {NavigationType, NidocaTemplate, TypographyType} from '@domoskanonos/nidoca-core';
+import {html, TemplateResult} from 'lit-element';
 
 export abstract class NidocaShowcaseTemplate extends NidocaTemplate {
+  constructor() {
+    super();
+    this.navType = NavigationType.PERMANENT;
+  }
 
-constructor() {
-super();
-this.navType = NavigationType.PERMANENT;
-}
+  navigationLinkClicked(event: CustomEvent): void {
+    let url = event.detail;
+    console.log('navigate to %s', url);
+    RouterService.getUniqueInstance().navigate(url);
+  }
 
-getTopContent(): TemplateResult {
-return html`
-<nidoca-top-app-bar>
-    ${this.getTopLeftComponent()} ${this.getTopMainComponent()} ${this.getTopRightComponent()}
-</nidoca-top-app-bar>
-`;
-}
+  getTopContent(): TemplateResult {
+    return html`
+      <nidoca-top-app-bar>
+        ${this.getTopLeftComponent()} ${this.getTopMainComponent()} ${this.getTopRightComponent()}
+      </nidoca-top-app-bar>
+    `;
+  }
 
-getTopLeftComponent(): TemplateResult {
-return html`
-<nidoca-icon
-        title="Menü"
-        slot="leftComponents"
-        icon="menu"
-        .clickable="${true}"
-></nidoca-icon>
-<nidoca-typography slot="leftComponents" .typographyType="${TypographyType.BODY1}"
->nidoca showcase
-</nidoca-typography
->
-`;
-}
+  getTopLeftComponent(): TemplateResult {
+    return html`
+      <nidoca-icon title="Menü" slot="leftComponents" icon="menu" .clickable="${true}"></nidoca-icon>
+      <nidoca-typography slot="leftComponents" .typographyType="${TypographyType.BODY1}"
+        >nidoca showcase
+      </nidoca-typography>
+    `;
+  }
 
-getTopMainComponent(): TemplateResult {
-return html``;
-}
+  getTopMainComponent(): TemplateResult {
+    return html``;
+  }
 
-getTopRightComponent(): TemplateResult {
-return html``;
-}
+  getTopRightComponent(): TemplateResult {
+    return html``;
+  }
 
-getLeftNavigationContent(): TemplateResult {
-return html`
-
-
-
-
-<nidoca-navigation-link
+  getLeftNavigationContent(): TemplateResult {
+    return html`
+      <nidoca-navigation-link
         slot="links"
         icon=""
         text="<nidoca-flex-container>"

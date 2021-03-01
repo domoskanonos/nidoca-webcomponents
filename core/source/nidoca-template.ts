@@ -100,7 +100,7 @@ export abstract class NidocaTemplate extends LitElement {
   render(): TemplateResult {
     return html`
         <nidoca-navigation
-                @nidoca-event-link-clicked="${(event: CustomEvent) => this.navigationLinkClicked(event)} .closed="
+                @nidoca-event-link-clicked="${(event: CustomEvent) => this.navigationLinkClicked(event)}" .closed="
                 ${this.navigationClosed}" navigationType="${this.navType}">
         ${this.getLeftNavigationContent()}
         </nidoca-navigation>
