@@ -4,78 +4,66 @@ import {html, TemplateResult} from "lit-element";
 
 export abstract class NidocaShowcaseTemplate extends NidocaTemplate {
 
-constructor() {
-super();
-this.navType = NavigationType.PERMANENT;
-}
+    getHeaderContent(): TemplateResult {
+        return html`
+        <nidoca-top-app-bar>
+            ${this.getHeaderLeftComponent()} ${this.getHeaderMainComponent()} ${this.getHeaderRightComponent()}
+        </nidoca-top-app-bar>
+        `;
+    }
 
-    navigationLinkClicked(event: CustomEvent): void {
+    getHeaderLeftComponent(): TemplateResult {
+        return html`
+        <nidoca-icon
+                title="Menü"
+                slot="leftComponents"
+                icon="menu"
+                .clickable="${true}"
+        ></nidoca-icon>
+        <nidoca-typography slot="leftComponents" .typographyType="${TypographyType.BODY1}"
+        >nidoca showcase
+        </nidoca-typography
+        >
+        `;
+    }
+
+    getHeaderMainComponent(): TemplateResult {
+        return html``;
+    }
+
+    getHeaderRightComponent(): TemplateResult {
+        return html``;
+    }
+
+
+    getSidebarContent(): TemplateResult {
+        return html`
+        <nidoca-navigation
+                @nidoca-event-link-clicked="${(event: CustomEvent) => this.navigationLinkClicked(event)}"
+                .closed="${this.navigationClosed}"
+        >
+            {{#each pages}}
+            <nidoca-navigation-link
+                    slot="links"
+                    icon=""
+                    text="<{{this}}>"
+                    href="{{this}}"
+            ></nidoca-navigation-link>
+            {{/each}}
+            <nidoca-navigation-link
+                    slot="links"
+                    icon=""
+                    text="Dashboard"
+                    href="nidoca-showcase-dashboard-page"
+            ></nidoca-navigation-link>
+        </nidoca-navigation>
+        `;
+    }
+
+    navigationLinkClicked(event: CustomEvent<any>): void {
         let url = event.detail;
         console.log("navigate to %s", url)
         RouterService.getUniqueInstance().navigate(url);
     }
 
-getTopContent(): TemplateResult {
-return html`
-<nidoca-top-app-bar>
-    ${this.getTopLeftComponent()} ${this.getTopMainComponent()} ${this.getTopRightComponent()}
-</nidoca-top-app-bar>
-`;
-}
-
-getTopLeftComponent(): TemplateResult {
-return html`
-<nidoca-icon
-        title="Menü"
-        slot="leftComponents"
-        icon="menu"
-        .clickable="${true}"
-></nidoca-icon>
-<nidoca-typography slot="leftComponents" .typographyType="${TypographyType.BODY1}"
->nidoca showcase
-</nidoca-typography
->
-`;
-}
-
-getTopMainComponent(): TemplateResult {
-return html``;
-}
-
-getTopRightComponent(): TemplateResult {
-return html``;
-}
-
-getLeftNavigationContent(): TemplateResult {
-return html`
-
-
-{{#each pages}}
-
-
-<nidoca-navigation-link
-        slot="links"
-        icon=""
-        text="<{{this}}>"
-        href="{{this}}"
-></nidoca-navigation-link>
-
-
-{{/each}}
-
-
-
-
-
-<nidoca-navigation-link
-        slot="links"
-        icon=""
-        text="Dashboard"
-        href="nidoca-showcase-dashboard-page"
-></nidoca-navigation-link>
-
-
-
-`;
-}
 }
