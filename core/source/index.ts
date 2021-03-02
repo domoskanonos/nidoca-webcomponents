@@ -35,7 +35,6 @@ export * from './nidoca-tabs';
 export * from './nidoca-tab';
 export * from './nidoca-tab-content';
 export * from './nidoca-template';
-export * from './nidoca-template-top-bottom';
 export * from './nidoca-typography';
 export * from './nidoca-dialog';
 

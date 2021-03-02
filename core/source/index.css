@@ -6,6 +6,7 @@
 }
 
 :root {
+
   --space-little: 0.5vmin;
   --space-small: 1vmin;
   --space-medium: 1.5vmin;
@@ -17,13 +18,8 @@
   --letter-spacing: 1pt;
   --font-size: 1rem;
 
-  --menu-size: 275px;
-
   --icon-size: 24px;
   --icon-size-space: 48px;
-
-  --menubar-height: 60px;
-  --toolbar-height: 50px;
 
   --line-height-small: 24px;
   --line-height: 24px;
