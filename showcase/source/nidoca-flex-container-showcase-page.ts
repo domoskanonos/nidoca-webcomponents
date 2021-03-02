@@ -34,7 +34,7 @@ export class NidocaFlexShowcasePage extends NidocaShowcaseTemplate {
   @property()
   slotElement: HTMLSlotElement | undefined | null = undefined;
 
-  getMainComponent(): TemplateResult {
+  getContent(): TemplateResult {
     return html`
       <nidoca-flex-container
         .flexContainerProperties="${[

@@ -13,7 +13,7 @@ export class NidocaLinkInterfaceShowcasePage extends NidocaShowcaseTemplate {
   @property()
   targetType: string | undefined | null = '';
 
-  getMainComponent(): TemplateResult {
+  getContent(): TemplateResult {
     return html`
       <nidoca-flex-container
         .flexContainerProperties="${[
@@ -53,7 +53,7 @@ export class NidocaLinkShowcasePage extends NidocaShowcaseTemplate {
   @property()
   targetType: string | undefined | null = '';
 
-  getMainComponent(): TemplateResult {
+  getContent(): TemplateResult {
     return html`
       <nidoca-flex-container
         .flexContainerProperties="${[

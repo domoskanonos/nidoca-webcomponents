@@ -22,7 +22,7 @@ export class NidocaFloatingContainerShowcasePage extends NidocaShowcaseTemplate 
   @property()
   bottom: string | undefined | null = '';
 
-  getMainComponent(): TemplateResult {
+  getContent(): TemplateResult {
     return html`
       <nidoca-flex-container
         .flexContainerProperties="${[

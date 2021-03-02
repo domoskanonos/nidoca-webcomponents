@@ -10,7 +10,7 @@ export class NidocaTableShowcasePage extends NidocaShowcaseTemplate {
   @property()
   rows: [any[]] | undefined | null = [[]];
 
-  getMainComponent(): TemplateResult {
+  getContent(): TemplateResult {
     return html`
       <nidoca-flex-container
         .flexContainerProperties="${[

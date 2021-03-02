@@ -16,7 +16,7 @@ export class NidocaNavigationLinkShowcasePage extends NidocaShowcaseTemplate {
   @property()
   rendered: boolean | undefined | null = false;
 
-  getMainComponent(): TemplateResult {
+  getContent(): TemplateResult {
     return html`
       <nidoca-flex-container
         .flexContainerProperties="${[

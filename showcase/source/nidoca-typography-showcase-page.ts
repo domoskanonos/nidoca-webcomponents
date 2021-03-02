@@ -18,7 +18,7 @@ export class NidocaTypographyShowcasePage extends NidocaShowcaseTemplate {
   @property()
   text: string | undefined | null = '';
 
-  getMainComponent(): TemplateResult {
+  getContent(): TemplateResult {
     return html`
       <nidoca-flex-container
         .flexContainerProperties="${[

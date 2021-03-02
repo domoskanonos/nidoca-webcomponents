@@ -37,7 +37,7 @@ export class NidocaFormComboboxShowcasePage extends NidocaShowcaseTemplate {
   @property()
   selectElement: HTMLSelectElement | undefined | null = undefined;
 
-  getMainComponent(): TemplateResult {
+  getContent(): TemplateResult {
     return html`
       <nidoca-flex-container
         .flexContainerProperties="${[

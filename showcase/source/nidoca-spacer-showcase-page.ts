@@ -13,7 +13,7 @@ export class NidocaSpacerShowcasePage extends NidocaShowcaseTemplate {
   @property()
   size: string | undefined | null = '';
 
-  getMainComponent(): TemplateResult {
+  getContent(): TemplateResult {
     return html`
       <nidoca-flex-container
         .flexContainerProperties="${[

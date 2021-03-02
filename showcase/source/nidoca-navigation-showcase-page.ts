@@ -7,7 +7,7 @@ export class NidocaNavigationShowcasePage extends NidocaShowcaseTemplate {
   @property()
   navigationStyle: NavigationStyle | undefined | null = undefined;
 
-  getMainComponent(): TemplateResult {
+  getContent(): TemplateResult {
     return html`
       <nidoca-flex-container
         .flexContainerProperties="${[

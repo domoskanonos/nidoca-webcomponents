@@ -113,7 +113,7 @@ export abstract class NidocaTemplate extends LitElement {
         return html``;
     }
 
-    private toogleNavigation(): void {
+    toogleNavigation(): void {
         console.log('toogle navigation.');
         this.navigationClosed = !this.navigationClosed;
     }

@@ -13,7 +13,7 @@ export class NidocaSearchBarShowcasePage extends NidocaShowcaseTemplate {
   @property()
   htmlInputElement: HTMLInputElement | undefined | null = undefined;
 
-  getMainComponent(): TemplateResult {
+  getContent(): TemplateResult {
     return html`
       <nidoca-flex-container
         .flexContainerProperties="${[

@@ -10,7 +10,7 @@ export class NidocaListItemShowcasePage extends NidocaShowcaseTemplate {
   @property()
   selected: boolean | undefined | null = false;
 
-  getMainComponent(): TemplateResult {
+  getContent(): TemplateResult {
     return html`
       <nidoca-flex-container
         .flexContainerProperties="${[

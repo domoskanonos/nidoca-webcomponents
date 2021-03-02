@@ -28,7 +28,7 @@ export class NidocaGridShowcasePage extends NidocaShowcaseTemplate {
   @property()
   minWidth: string | undefined | null = '';
 
-  getMainComponent(): TemplateResult {
+  getContent(): TemplateResult {
     return html`
       <nidoca-flex-container
         .flexContainerProperties="${[

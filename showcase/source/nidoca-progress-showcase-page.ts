@@ -7,7 +7,7 @@ export class NidocaProgressShowcasePage extends NidocaShowcaseTemplate {
   @property()
   progressType: ProgressType | undefined | null = undefined;
 
-  getMainComponent(): TemplateResult {
+  getContent(): TemplateResult {
     return html`
       <nidoca-flex-container
         .flexContainerProperties="${[

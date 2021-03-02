@@ -10,7 +10,7 @@ export class NidocaDividerShowcasePage extends NidocaShowcaseTemplate {
   @property()
   opacity: number | undefined | null = undefined;
 
-  getMainComponent(): TemplateResult {
+  getContent(): TemplateResult {
     return html`
       <nidoca-flex-container
         .flexContainerProperties="${[

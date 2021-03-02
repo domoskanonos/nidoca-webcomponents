@@ -10,7 +10,7 @@ export class NidocaAccordionShowcasePage extends NidocaShowcaseTemplate {
   @property()
   accordionSlot: HTMLSlotElement | undefined | null = undefined;
 
-  getMainComponent(): TemplateResult {
+  getContent(): TemplateResult {
     return html`
       <nidoca-flex-container
         .flexContainerProperties="${[

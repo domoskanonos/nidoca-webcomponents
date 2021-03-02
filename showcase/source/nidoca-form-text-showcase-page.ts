@@ -61,7 +61,7 @@ export class NidocaFormTextShowcasePage extends NidocaShowcaseTemplate {
   @property()
   inputElement: HTMLInputElement | undefined | null = undefined;
 
-  getMainComponent(): TemplateResult {
+  getContent(): TemplateResult {
     return html`
       <nidoca-flex-container
         .flexContainerProperties="${[

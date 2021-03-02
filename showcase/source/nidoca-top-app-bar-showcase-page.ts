@@ -4,7 +4,7 @@ import {NidocaShowcaseTemplate} from './nidoca-showcase-template';
 
 @customElement('nidoca-top-app-bar-showcase-page')
 export class NidocaTopAppBarShowcasePage extends NidocaShowcaseTemplate {
-  getMainComponent(): TemplateResult {
+  getContent(): TemplateResult {
     return html`
       <nidoca-flex-container
         .flexContainerProperties="${[

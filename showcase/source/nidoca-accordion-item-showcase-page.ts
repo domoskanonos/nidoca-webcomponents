@@ -10,7 +10,7 @@ export class NidocaAccordionItemShowcasePage extends NidocaShowcaseTemplate {
   @property()
   opened: boolean | undefined | null = false;
 
-  getMainComponent(): TemplateResult {
+  getContent(): TemplateResult {
     return html`
       <nidoca-flex-container
         .flexContainerProperties="${[

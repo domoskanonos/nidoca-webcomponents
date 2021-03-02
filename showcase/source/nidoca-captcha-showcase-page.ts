@@ -13,7 +13,7 @@ export class NidocaCaptchaShowcasePage extends NidocaShowcaseTemplate {
   @property()
   inputfield: NidocaFormText | undefined | null = undefined;
 
-  getMainComponent(): TemplateResult {
+  getContent(): TemplateResult {
     return html`
       <nidoca-flex-container
         .flexContainerProperties="${[

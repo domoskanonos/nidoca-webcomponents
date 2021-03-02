@@ -7,7 +7,7 @@ export class NidocaVisibleShowcasePage extends NidocaShowcaseTemplate {
   @property()
   visibleType: string | undefined | null = '';
 
-  getMainComponent(): TemplateResult {
+  getContent(): TemplateResult {
     return html`
       <nidoca-flex-container
         .flexContainerProperties="${[

@@ -10,7 +10,7 @@ export class NidocaBoxShowcasePage extends NidocaShowcaseTemplate {
   @property()
   width: string | undefined | null = '';
 
-  getMainComponent(): TemplateResult {
+  getContent(): TemplateResult {
     return html`
       <nidoca-flex-container
         .flexContainerProperties="${[

@@ -10,7 +10,7 @@ export class NidocaFormOutputDataShowcasePage extends NidocaShowcaseTemplate {
   @property()
   formData: FormData | undefined | null = undefined;
 
-  getMainComponent(): TemplateResult {
+  getContent(): TemplateResult {
     return html`
       <nidoca-flex-container
         .flexContainerProperties="${[
@@ -53,7 +53,7 @@ export class NidocaFormShowcasePage extends NidocaShowcaseTemplate {
   @property()
   htmlForm: HTMLFormElement | undefined | null = undefined;
 
-  getMainComponent(): TemplateResult {
+  getContent(): TemplateResult {
     return html`
       <nidoca-flex-container
         .flexContainerProperties="${[

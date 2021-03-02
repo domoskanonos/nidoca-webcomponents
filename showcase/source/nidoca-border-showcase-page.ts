@@ -13,7 +13,7 @@ export class NidocaBorderShowcasePage extends NidocaShowcaseTemplate {
   @property()
   shadowType: string | undefined | null = '';
 
-  getMainComponent(): TemplateResult {
+  getContent(): TemplateResult {
     return html`
       <nidoca-flex-container
         .flexContainerProperties="${[

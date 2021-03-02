@@ -10,7 +10,7 @@ export class NidocaWizardShowcasePage extends NidocaShowcaseTemplate {
   @property()
   selectedStep: WizardStep | undefined | null = undefined;
 
-  getMainComponent(): TemplateResult {
+  getContent(): TemplateResult {
     return html`
       <nidoca-flex-container
         .flexContainerProperties="${[

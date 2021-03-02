@@ -13,7 +13,7 @@ export class NidocaButtonShowcasePage extends NidocaShowcaseTemplate {
   @property()
   text: string | undefined | null = '';
 
-  getMainComponent(): TemplateResult {
+  getContent(): TemplateResult {
     return html`
       <nidoca-flex-container
         .flexContainerProperties="${[

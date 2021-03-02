@@ -10,7 +10,7 @@ export class NidocaTabsShowcasePage extends NidocaShowcaseTemplate {
   @property()
   tabContentSlot: HTMLSlotElement | undefined | null = undefined;
 
-  getMainComponent(): TemplateResult {
+  getContent(): TemplateResult {
     return html`
       <nidoca-flex-container
         .flexContainerProperties="${[

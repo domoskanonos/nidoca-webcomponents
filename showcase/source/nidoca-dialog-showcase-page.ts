@@ -7,7 +7,7 @@ export class NidocaDialogShowcasePage extends NidocaShowcaseTemplate {
   @property()
   show: boolean | undefined | null = false;
 
-  getMainComponent(): TemplateResult {
+  getContent(): TemplateResult {
     return html`
       <nidoca-flex-container
         .flexContainerProperties="${[

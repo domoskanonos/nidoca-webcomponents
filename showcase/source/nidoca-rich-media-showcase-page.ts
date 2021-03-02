@@ -18,7 +18,7 @@ export class NidocaRichMediaShowcasePage extends NidocaShowcaseTemplate {
   @property()
   richMediaProperties: RichMediaProperties[] | undefined | null = [];
 
-  getMainComponent(): TemplateResult {
+  getContent(): TemplateResult {
     return html`
       <nidoca-flex-container
         .flexContainerProperties="${[

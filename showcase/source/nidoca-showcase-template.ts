@@ -5,7 +5,7 @@ import {html, TemplateResult} from 'lit-element';
 export abstract class NidocaShowcaseTemplate extends NidocaTemplate {
   getHeaderContent(): TemplateResult {
     return html`
-      <nidoca-top-app-bar>
+      <nidoca-top-app-bar @nidoca-event-icon-clicked="${() => this.toogleNavigation()}">
         ${this.getHeaderLeftComponent()} ${this.getHeaderMainComponent()} ${this.getHeaderRightComponent()}
       </nidoca-top-app-bar>
     `;
