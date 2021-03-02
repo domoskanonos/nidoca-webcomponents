@@ -1,4 +1,5 @@
-import {css, html, property, query, TemplateResult, LitElement} from 'lit-element';
+import {css, html, property, query, TemplateResult, LitElement, PropertyValues} from 'lit-element';
+import {TypographyType} from "./nidoca-typography";
 
 export abstract class NidocaTemplate extends LitElement {
 
@@ -7,7 +8,6 @@ export abstract class NidocaTemplate extends LitElement {
     #header {
       position: fixed;
       width: 100%;
-      height: 60px;
       z-index: 1;
       background-color: var(--app-color-primary-background);
       color: var(--app-color-primary);
@@ -15,9 +15,10 @@ export abstract class NidocaTemplate extends LitElement {
 
     #content {
     position: fixed;
-      top: 60px;
       min-height: 100%;
       width: 100%;
+      overflow-y: scroll;
+      max-height: 100%;
     }
 
     #content.menuClosed {
@@ -26,18 +27,20 @@ export abstract class NidocaTemplate extends LitElement {
       transition: all 0.35s ease;
     }
 
-    #sidebar {z-index: 1;
+    #sidebar {
+    z-index: 1;
      position: fixed;
      width:300px;
-      top: 60px;
       min-height: 100%;
       background-color: var(--app-color-primary-background);
       transition: all 0.35s linear;
+      overflow-y: scroll;
+      max-height: 100%;
     }
 
     #sidebar.menuClosed {
       width: 0px;
-
+      margin-left: -300px;
       transition: all 0.35s ease;
     }
 
@@ -52,12 +55,31 @@ export abstract class NidocaTemplate extends LitElement {
     @property()
     navigationClosed: boolean = true;
 
-    @query('#top')
-    private topElement: HTMLElement | undefined;
-    @query('#left')
-    private leftElement: HTMLElement | undefined;
-    @query('#main')
-    private mainElement: HTMLElement | undefined;
+    @query('#header')
+    private headerElement: HTMLElement | undefined;
+
+    @query('#sidebar')
+    private sidebarElement: HTMLElement | undefined;
+
+    @query('#content')
+    private contentElement: HTMLElement | undefined;
+
+    protected updated(_changedProperties: PropertyValues) {
+        super.updated(_changedProperties);
+        new Promise((resolve) => requestAnimationFrame(resolve)).then(() => {
+            if (this.headerElement != undefined) {
+                let height = this.headerElement.offsetHeight;
+                let topStyle = "top:".concat(String(height)).concat("px;");
+                console.debug("set header height to corresponding elements: %s", topStyle);
+                if (this.sidebarElement != undefined) {
+                    this.sidebarElement.setAttribute("style", topStyle);
+                }
+                if (this.contentElement != undefined) {
+                    this.contentElement.setAttribute("style", topStyle);
+                }
+            }
+        });
+    }
 
     render(): TemplateResult {
         return html`
@@ -69,32 +91,31 @@ export abstract class NidocaTemplate extends LitElement {
 
     getHeaderContent(): TemplateResult {
         return html`
-            <nidoca-icon
-                    icon="${this.navigationClosed ? 'menu' : 'clear' }"
-                    .clickable="${true}"
-                    @nidoca-event-icon-clicked="${() => this.toogleNavigation()}"
-            ></nidoca-icon>`;
+            <nidoca-top-app-bar>
+                <nidoca-icon slot="leftComponents"
+                             icon="${this.navigationClosed ? 'menu' : 'clear'}"
+                             .clickable="${true}"
+                             @nidoca-event-icon-clicked="${() => this.toogleNavigation()}"
+                ></nidoca-icon>
+                <nidoca-typography slot="leftComponents" .typographyType="${TypographyType.BODY1}"
+                >nidoca-template
+                </nidoca-typography
+                >
+            </nidoca-top-app-bar>
+        `;
     }
 
     getSidebarContent(): TemplateResult {
-        return html`
-            <nidoca-navigation
-                    @nidoca-event-link-clicked="${(event: CustomEvent) => this.navigationLinkClicked(event)}"
-                    .closed="${this.navigationClosed}"
-            >
-            </nidoca-navigation>`;
+        return html``;
     }
 
     getContent(): TemplateResult {
         return html``;
     }
 
-    navigationLinkClicked(event: CustomEvent<any>): void {
-        console.warn('Method not implemented. event detail: %s' + event.detail);
-    }
-
     private toogleNavigation(): void {
         console.log('toogle navigation.');
         this.navigationClosed = !this.navigationClosed;
     }
+
 }
