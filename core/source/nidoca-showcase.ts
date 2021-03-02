@@ -9,9 +9,7 @@ import { NidocaTemplate } from './nidoca-template';
 @customElement('nidoca-showcase')
 export class NidocaShowcase extends NidocaTemplate {
 
-   static styles = css``;
-
-   getMainComponent(): TemplateResult {
+   getContent(): TemplateResult {
       return html`
         <nidoca-flex-container
             .flexContainerProperties="${[

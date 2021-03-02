@@ -1,14 +1,10 @@
 import {css, html, property, query, TemplateResult, LitElement} from 'lit-element';
 
-import {NavigationType} from './nidoca-navigation';
-import {BorderProperties} from './nidoca-border';
-import {NidocaIcon} from './nidoca-icon';
-
 export abstract class NidocaTemplate extends LitElement {
   static styles = css`
-    #top {
+    #header {
       position: fixed;
-      width: calc(100%);
+      width: 100%;
       height: var(--menubar-height);
       right: 0;
       z-index: 10;
@@ -16,62 +12,55 @@ export abstract class NidocaTemplate extends LitElement {
       color: var(--app-color-primary);
     }
 
-    #top.menuClosed {
+    #content {
+      padding-top: var(--menubar-height);
+      min-height: 100%;
       width: 100%;
     }
 
-    #main {
-      padding-top: var(--menubar-height);
-      min-height: 100%;
-    }
-    #main.menuClosed {
+    #content.menuClosed {
       margin-left: 0;
     }
 
-    #main.body-opacity {
+    #content.body-opacity {
       opacity: 0.5;
       transition: all 0.35s ease;
     }
 
-    #main.menuClosed {
+    #content.menuClosed {
       margin-left: 0;
       opacity: 1;
       background: #fff;
       transition: all 0.35s ease;
     }
 
-    #main.dismissible-main {
+    #content.dismissible-main {
       opacity: 1;
       transition: all 0.35s ease;
     }
 
-    #main.menuClosed {
+    #content.menuClosed {
       margin-left: 0;
       opacity: 1;
       background: #fff;
       transition: all 0.35s ease;
     }
 
-    .permanent-main {
-      width: calc(100vw - var(--menu-size)) !important;
+    #sidebar {
+      padding-top: var(--menubar-height);
+      min-height: 100%;
+      background-color: var(--app-color-primary-background);
+    }
+
+    #sidebar.menuClosed {
+      width: 0px !important;
       position: relative;
       float: right;
       transition: all 0.35s ease;
-    }
-
-    .dismissible-main {
-      width: calc(100vw - var(--menu-size)) !important;
-      position: relative;
-      float: right;
-      transition: all 0.35s ease;
-    }
-
-    #main {
-      width: 100%;
     }
 
     @media screen and (min-width: 521px) {
-      #main {
+      #content {
         transition: margin-left 0.25s linear;
         margin-left: var(--menu-size);
       }
@@ -79,16 +68,7 @@ export abstract class NidocaTemplate extends LitElement {
   `;
 
   @property()
-  menuSwitchIcon = 'menu';
-
-  @property()
-  menuCss: string = 'menuClosed basicShadow';
-
-  @property()
-  navigationClosed: boolean = true;
-
-  @property()
-  navType: string = NavigationType.DISMISSIBLE;
+  navigationClosed: boolean = false;
 
   @query('#top')
   private topElement: HTMLElement | undefined;
@@ -99,60 +79,44 @@ export abstract class NidocaTemplate extends LitElement {
 
   render(): TemplateResult {
     return html`
-      <nidoca-navigation
-        @nidoca-event-link-clicked="${(event: CustomEvent) => this.navigationLinkClicked(event)}"
-        .closed="
-                ${this.navigationClosed}"
-        navigationType="${this.navType}"
-      >
-        ${this.getLeftNavigationContent()}
-      </nidoca-navigation>
-      <div
-        id="top"
-        class="${this.menuCss}"
-        @nidoca-event-icon-clicked="${(event: CustomEvent) => this.menuIconClicked(event)}"
-      >
-        <nidoca-border ..borderProperties="${[BorderProperties.BOTTOM]}"> ${this.getTopContent()}</nidoca-border>
-      </div>
-      <div id="main" class="${this.menuCss} body-opacity">${this.getMainComponent()}</div>
+      <div id="header" class="${this.navigationClosed ? 'menuClosed' : ''}">${this.getHeaderContent()}</div>
+      <div id="sidebar" class="${this.navigationClosed ? 'menuClosed' : ''}">${this.getSidebarContent()}</div>
+      <div id="content" class="${this.navigationClosed ? 'menuClosed' : ''}">${this.getContent()}</div>
     `;
   }
 
+  getHeaderContent(): TemplateResult {
+    return html`<nidoca-icon
+      icon="menu"
+      .clickable="${true}"
+      @nidoca-event-icon-clicked="${() => this.toogleNavigation()}"
+    ></nidoca-icon>`;
+  }
+
+  getSidebarContent(): TemplateResult {
+    return html`
+    pojio
+    jiojoi
+    <br/>
+    fdf
+    
+    <nidoca-navigation
+      @nidoca-event-link-clicked="${(event: CustomEvent) => this.navigationLinkClicked(event)}"
+      .closed="${this.navigationClosed}"
+    >
+    </nidoca-navigation>`;
+  }
+
+  getContent(): TemplateResult {
+    return html``;
+  }
+
   navigationLinkClicked(event: CustomEvent<any>): void {
-    throw new Error('Method not implemented.' + event);
+    console.warn('Method not implemented. event detail: %s' + event.detail);
   }
 
-  getMainComponent(): TemplateResult {
-    return html``;
-  }
-  getLeftNavigationContent(): TemplateResult {
-    return html``;
-  }
-  getTopContent(): TemplateResult {
-    return html``;
-  }
-
-  menuIconClicked(event: CustomEvent) {
-    let id: NidocaIcon = event.detail;
-    if (id.icon === this.menuSwitchIcon) {
-      console.log('menu icon clicked...');
-      this.toogleMenu();
-    }
-  }
-
-  private toogleMenu(): void {
-    if (this.menuCss.indexOf('menuClosed') == -1) {
-      this.menuCss = 'menuClosed basicShadow';
-      this.navigationClosed = true;
-    } else if (this.navType == NavigationType.PERMANENT) {
-      this.menuCss = 'permanent-top permanent-main';
-      this.navigationClosed = false;
-    } else if (this.navType == NavigationType.DISMISSIBLE) {
-      this.menuCss = 'dismissible-main';
-      this.navigationClosed = false;
-    } else {
-      this.menuCss = 'basicShadow';
-      this.navigationClosed = false;
-    }
+  private toogleNavigation(): void {
+    console.log('toogle navigation.');
+    this.navigationClosed = !this.navigationClosed;
   }
 }
