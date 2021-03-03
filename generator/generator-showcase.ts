@@ -139,6 +139,11 @@ function createComponentPages(files: any[], imps: any[]) {
       const parsedFile = typescriptParser.parseFile(sourceRoot.concat(filename), 'workspace root');
 
       parsedFile.then((value: any) => {
+
+
+        console.log( "                         "+JSON.stringify(value));
+
+
           value['imports'] = imps;
           let decs: any[] = value['declarations'];
           decs.forEach((clazz: any) => {
@@ -165,10 +170,10 @@ function createComponentPages(files: any[], imps: any[]) {
                 }
 
                 if (propertyType.indexOf('undefined') == -1) {
-                  propertyType = propertyType.concat('|undefined');
+                  //propertyType = propertyType.concat('|undefined');
                 }
                 if (propertyType.indexOf('null') == -1) {
-                  propertyType = propertyType.concat('|null');
+                  //propertyType = propertyType.concat('|null');
                 }
                 property.type = propertyType;
               }

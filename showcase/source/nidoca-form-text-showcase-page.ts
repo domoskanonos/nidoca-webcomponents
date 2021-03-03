@@ -1,92 +1,123 @@
-import {FlexContainerProperties, FlexItemProperties, TextType, TypographyType} from '@domoskanonos/nidoca-core';
-import {customElement, html, property, TemplateResult} from 'lit-element';
-import {NidocaShowcaseTemplate} from './nidoca-showcase-template';
+import {NidocaShowcaseTemplate} from "./nidoca-showcase-template";
+import { TemplateResult,property,customElement,html,LitElement } from 'lit-element';
+import { FlexContainerProperties,FlexItemProperties,FlexDirection,FlexWrap,FlexJustifyContent,FlexAlignItems,FlexAlignContent,NidocaFlexContainer,AppData,NidocaAbstractApp,AccordionType,NidocaAccordion,NidocaAccordionItem,NidocaBox,WizardStep,NidocaWizard,NidocaChip,ProgressType,NidocaProgress,BorderProperties,BorderSize,ShadowType,NidocaBorder,NidocaFloatingContainer,ButtonType,NidocaButton,DividerType,NidocaDivider,GridJustifyItems,GridAlignItems,NidocaGridContainer,NidocaFormOutputData,FormProperties,NidocaForm,NidocaFormCombobox,TextType,NidocaFormText,DateType,NidocaFormDate,NidocaFormInputframe,FormOutputData,NidocaFormAbstractInputElement,IconShadowType,NidocaIcon,RichMediaType,RichMediaProperties,NidocaRichMedia,NidocaCaptcha,TargetType,NidocaLinkInterface,NidocaLink,NidocaList,NidocaListItem,NidocaTopAppBar,NavigationStyle,NidocaNavigation,NidocaSearchBar,NidocaNavigationLink,VisibleType,NidocaVisible,NidocaNavigationSection,NidocaTable,SpacerAlignment,SpacerSize,NidocaSpacer,NidocaTabs,NidocaTab,NidocaTabContent,NidocaTemplate,TypographyType,TypographyAlignment,NidocaTypography,NidocaDialog,NidocaShowcase } from '@domoskanonos/nidoca-core';
+
 
 @customElement('nidoca-form-text-showcase-page')
 export class NidocaFormTextShowcasePage extends NidocaShowcaseTemplate {
-  @property()
-  textType: TextType | undefined | null = undefined;
 
   @property()
-  name: string | undefined | null = '';
+  textType : TextType = undefined;
 
   @property()
-  value: any | undefined | null = undefined;
+  name : string = '';
 
   @property()
-  label: string | undefined | null = '';
+  value : any = undefined;
 
   @property()
-  required: boolean | undefined | null = false;
+  label : string = '';
 
   @property()
-  placeholder: string | undefined | null = '';
+  required : boolean = false;
 
   @property()
-  disabled: boolean | undefined | null = false;
+  placeholder : string = '';
 
   @property()
-  checked: boolean | undefined | null = false;
+  disabled : boolean = false;
 
   @property()
-  multiple: boolean | undefined | null = false;
+  checked : boolean = false;
 
   @property()
-  maxlength: number | undefined | null = undefined;
+  multiple : boolean = false;
 
   @property()
-  minlength: number | undefined | null = undefined;
+  maxlength : number | undefined = undefined;
 
   @property()
-  min: number | undefined | null = undefined;
+  minlength : number | undefined = undefined;
 
   @property()
-  max: number | undefined | null = undefined;
+  min : number | undefined = undefined;
 
   @property()
-  step: number | undefined | null = undefined;
+  max : number | undefined = undefined;
 
   @property()
-  size: number | undefined | null = undefined;
+  step : number | undefined = undefined;
 
   @property()
-  errorText: string | undefined | null = '';
+  size : number | undefined = undefined;
 
   @property()
-  infoText: string | undefined | null = '';
+  errorText : string | undefined = '';
 
   @property()
-  warningText: string | undefined | null = '';
+  infoText : string | undefined = '';
 
   @property()
-  inputElement: HTMLInputElement | undefined | null = undefined;
+  warningText : string | undefined = '';
+
+  @property()
+  inputElement : HTMLInputElement | undefined = undefined;
 
   getContent(): TemplateResult {
     return html`
       <nidoca-flex-container
-        .flexContainerProperties="${[
-          FlexContainerProperties.CONTAINER_WIDTH_50,
-          FlexContainerProperties.TABLET_MAX_WIDTH,
-          FlexContainerProperties.SMARTPHONE_MAX_WIDTH,
-          FlexContainerProperties.SMARTPHONE_HORIZONTAL_PADDING,
-          FlexContainerProperties.TABLET_HORIZONTAL_PADDING,
-        ]}"
-        .flexItemProperties="${[
-          FlexItemProperties.KEYLINE_ALIGNMENT_HORIZONTAL,
-          FlexItemProperties.KEYLINE_SIZE_MEDIUM,
-        ]}"
-        flexItemBasisValue="100%"
-      >
-        <nidoca-typography .typographyType="${TypographyType.H2}" text="<nidoca-form-text/>"></nidoca-typography>
-        <nidoca-typography .typographyType="${TypographyType.BODY1}"> <br />description<br /><br /> </nidoca-typography>
-        <nidoca-typography .typographyType="${TypographyType.H4}" text="example"></nidoca-typography>
-        <nidoca-tabs>
-          <nidoca-tab slot="tab" .selected="${true}" text="demo"></nidoca-tab>
-          <nidoca-tab slot="tab" text="source"></nidoca-tab>
-          <nidoca-tab-content slot="tabContent" .selected="${true}"> </nidoca-tab-content>
-          <nidoca-tab-content slot="tabContent"> </nidoca-tab-content>
-        </nidoca-tabs>
-      </nidoca-flex-container>
-    `;
+      .flexContainerProperties="${[
+      FlexContainerProperties.CONTAINER_WIDTH_50,
+      FlexContainerProperties.TABLET_MAX_WIDTH,
+      FlexContainerProperties.SMARTPHONE_MAX_WIDTH,
+      FlexContainerProperties.SMARTPHONE_HORIZONTAL_PADDING,
+      FlexContainerProperties.TABLET_HORIZONTAL_PADDING
+  ]}"
+      .flexItemProperties="${[FlexItemProperties.KEYLINE_ALIGNMENT_HORIZONTAL, FlexItemProperties.KEYLINE_SIZE_MEDIUM]}"
+      flexItemBasisValue="100%"
+  >
+      <nidoca-typography .typographyType="${TypographyType.H2}" text="<nidoca-form-text/>"></nidoca-typography>
+      <nidoca-typography .typographyType="${TypographyType.BODY1}">
+        <br />description<br /><br />
+      </nidoca-typography>
+      <nidoca-typography .typographyType="${TypographyType.H4}" text="example"></nidoca-typography>
+      <nidoca-tabs>
+        <nidoca-tab slot="tab" .selected="${true}" text="demo"></nidoca-tab>
+        <nidoca-tab slot="tab" text="source"></nidoca-tab>
+        <nidoca-tab-content slot="tabContent" .selected="${true}">
+          <nidoca-spacer .spacerAlignment="${SpacerAlignment.VERTICAL}" .spacerSize="${SpacerSize.BIG}">
+            <nidoca-form-text
+             .textType=${ this.textType }
+             name=${ this.name }
+             .value=${ this.value }
+             label=${ this.label }
+             .required=${ this.required }
+             placeholder=${ this.placeholder }
+             .disabled=${ this.disabled }
+             .checked=${ this.checked }
+             .multiple=${ this.multiple }
+             .maxlength=${ this.maxlength }
+             .minlength=${ this.minlength }
+             .min=${ this.min }
+             .max=${ this.max }
+             .step=${ this.step }
+             .size=${ this.size }
+             .errorText=${ this.errorText }
+             .infoText=${ this.infoText }
+             .warningText=${ this.warningText }
+             .inputElement=${ this.inputElement }
+            ></nidoca-form-text>
+          </nidoca-spacer>
+        </nidoca-tab-content>
+        <nidoca-tab-content slot="tabContent">
+        </nidoca-tab-content>
+      </nidoca-tabs>
+  </nidoca-flex-container>
+  `;
   }
+
 }
+
+
+
+

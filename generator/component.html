@@ -41,7 +41,9 @@ export class {{this.name}}ShowcasePage extends NidocaShowcaseTemplate {
         <nidoca-tab slot="tab" text="source"></nidoca-tab>
         <nidoca-tab-content slot="tabContent" .selected="${true}">
           <nidoca-spacer .spacerAlignment="${SpacerAlignment.VERTICAL}" .spacerSize="${SpacerSize.BIG}">
-            <{{toTag this.name}} label="dsdsdsd"></{{toTag this.name}}>
+            <{{toTag this.name}}{{#each properties}}{{#if this.isStatic}}{{else}}             {{#isnt this.type "string"}}.{{/isnt}}{{this.name}}=${ this.{{this.name}} }{{/if}}
+{{/each}}
+            ></{{toTag this.name}}>
           </nidoca-spacer>
         </nidoca-tab-content>
         <nidoca-tab-content slot="tabContent">
@@ -55,3 +57,7 @@ export class {{this.name}}ShowcasePage extends NidocaShowcaseTemplate {
 {{/has}}
 {{/if}}
 {{/each}}
+
+
+
+
