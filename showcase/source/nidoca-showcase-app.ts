@@ -4,10 +4,9 @@ import {customElement, html, TemplateResult} from 'lit-element';
 
 @customElement('nidoca-showcase-app')
 export class NidocaShowcaseApp extends NidocaAbstractApp {
-
   constructor() {
     super();
-      RouterService.getUniqueInstance().subscribe(() => {
+    RouterService.getUniqueInstance().subscribe(() => {
       this.requestUpdate().then(() => {
         console.log('requestUpdated completed');
       });
