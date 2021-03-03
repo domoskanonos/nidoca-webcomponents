@@ -79,7 +79,7 @@ export class NidocaFormComboboxShowcasePage extends NidocaShowcaseTemplate {
                 warningText=${this.warningText}
                 .size=${this.size}
                 .multiple=${this.multiple}
-                .selectElement=${this.selectElement}
+                
               ></nidoca-form-combobox>
             </nidoca-spacer>
           </nidoca-tab-content>

@@ -15,7 +15,7 @@ export class NidocaAccordion extends LitElement {
   accordionType: string = AccordionType.SINGLE;
 
   @query('#accordionSlot')
-  accordionSlot: HTMLSlotElement | undefined;
+  private accordionSlot: HTMLSlotElement | undefined;
 
   render(): TemplateResult {
     return html`

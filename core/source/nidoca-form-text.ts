@@ -86,7 +86,7 @@ export class NidocaFormText extends NidocaFormAbstractInputElement {
   warningText: string | undefined;
 
   @query('#inputElement')
-  inputElement: HTMLInputElement | undefined;
+  private inputElement: HTMLInputElement | undefined;
 
   render(): TemplateResult {
     return html`

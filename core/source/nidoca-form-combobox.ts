@@ -69,7 +69,7 @@ export class NidocaFormCombobox extends NidocaFormAbstractInputElement {
   multiple: boolean = false;
 
   @query('#selectElement')
-  selectElement: HTMLSelectElement | undefined;
+  private selectElement: HTMLSelectElement | undefined;
 
   render(): TemplateResult {
     return html`
