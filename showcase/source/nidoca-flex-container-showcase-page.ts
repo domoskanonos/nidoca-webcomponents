@@ -2,7 +2,7 @@ import {FlexContainerProperties, FlexItemProperties, TypographyType} from '@domo
 import {customElement, html, property, TemplateResult} from 'lit-element';
 import {NidocaShowcaseTemplate} from './nidoca-showcase-template';
 
-@customElement('nidoca-flex-showcase-page')
+@customElement('nidoca-flex-container-showcase-page')
 export class NidocaFlexShowcasePage extends NidocaShowcaseTemplate {
   @property()
   flexDirection: string | undefined | null = '';

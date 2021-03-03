@@ -40,6 +40,9 @@ export class {{this.name}}ShowcasePage extends NidocaShowcaseTemplate {
         <nidoca-tab slot="tab" .selected="${true}" text="demo"></nidoca-tab>
         <nidoca-tab slot="tab" text="source"></nidoca-tab>
         <nidoca-tab-content slot="tabContent" .selected="${true}">
+          <nidoca-spacer .spacerAlignment="${SpacerAlignment.VERTICAL}" .spacerSize="${SpacerSize.BIG}">
+            <{{toTag this.name}} label="dsdsdsd"></{{toTag this.name}}>
+          </nidoca-spacer>
         </nidoca-tab-content>
         <nidoca-tab-content slot="tabContent">
         </nidoca-tab-content>

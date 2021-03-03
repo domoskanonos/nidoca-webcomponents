@@ -1,4 +1,4 @@
-import {FlexContainerProperties, FlexItemProperties, FormOutputData, TypographyType} from '@domoskanonos/nidoca-core';
+import {FlexContainerProperties, FlexItemProperties, FormOutputData, SpacerAlignment, SpacerSize, TypographyType} from '@domoskanonos/nidoca-core';
 import {customElement, html, property, TemplateResult} from 'lit-element';
 import {NidocaShowcaseTemplate} from './nidoca-showcase-template';
 
@@ -59,7 +59,20 @@ export class NidocaFormComboboxShowcasePage extends NidocaShowcaseTemplate {
         <nidoca-tabs>
           <nidoca-tab slot="tab" .selected="${true}" text="demo"></nidoca-tab>
           <nidoca-tab slot="tab" text="source"></nidoca-tab>
-          <nidoca-tab-content slot="tabContent" .selected="${true}"> </nidoca-tab-content>
+          <nidoca-tab-content slot="tabContent" .selected="${true}"> 
+        
+
+          <nidoca-spacer .spacerAlignment="${SpacerAlignment.VERTICAL}" .spacerSize="${SpacerSize.BIG}">
+
+          <nidoca-form-combobox label="dsdsdsd"></nidoca-form-combobox>
+
+
+          </nidoca-spacer>
+
+</nidoca-tab-content>
+
+
+
           <nidoca-tab-content slot="tabContent"> </nidoca-tab-content>
         </nidoca-tabs>
       </nidoca-flex-container>

@@ -15,7 +15,7 @@ export enum GridAlignItems {
 }
 
 @customElement('nidoca-grid-container')
-export class NidocaGrid extends LitElement {
+export class NidocaGridContainer extends LitElement {
   static styles = css`
     *,
     ::slotted(*) {
