@@ -39,28 +39,28 @@ export class NidocaFormCombobox extends NidocaFormAbstractInputElement {
   `;
 
   @property()
-  name: string = '';
+  name: string = 'combobox';
 
   @property()
-  value: any;
+  value: any = '';
 
   @property()
-  label: string = '';
+  label: string = 'combobox';
 
   @property()
-  options: FormOutputData[] = [];
+  options: FormOutputData[] = [<FormOutputData>{key: '', value: 'no value'},<FormOutputData>{key: '1', value: 'value'}];
 
   @property()
-  required: boolean = false;
+  required: boolean = true;
 
   @property()
-  errorText: string | undefined;
+  errorText: string = 'errorText';
 
   @property()
-  infoText: string | undefined;
+  infoText: string = 'infoText';
 
   @property()
-  warningText: string | undefined;
+  warningText: string = 'warningText';
 
   @property()
   size: number = 1;
@@ -152,7 +152,7 @@ export class NidocaFormCombobox extends NidocaFormAbstractInputElement {
   }
 
   public validate(): boolean {
-    this.errorText = undefined;
+    this.errorText = '';
     if (
       this.selectElement != null &&
       !this.selectElement.validity.valid &&
@@ -160,7 +160,7 @@ export class NidocaFormCombobox extends NidocaFormAbstractInputElement {
     ) {
       this.errorText = this.selectElement.validationMessage;
     }
-    return this.errorText == undefined;
+    return this.errorText.length == 0;
   }
 
   private isSelectedOption(option: FormOutputData): boolean {
