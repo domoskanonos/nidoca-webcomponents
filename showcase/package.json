@@ -5,7 +5,7 @@
   "description": "nidoca framework (nidoca-showcase)",
   "devDependencies": {
     "html-webpack-plugin": "^3.2.0",
-    "prettier": "2.2.1",
+    "prettier": "^2.2.1",
     "prettier-plugin-organize-imports": "^1.1.1",
     "terser-webpack-plugin": "^2.3.8",
     "ts-loader": "8.0.17",
@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@domoskanonos/frontend-basis": "^1.0.239",
-    "@domoskanonos/nidoca-core": "^1.0.591"
+    "@domoskanonos/nidoca-core": "^1.0.595"
   },
   "author": "Dominik Bruhn",
   "scripts": {

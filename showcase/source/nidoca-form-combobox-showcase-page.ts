@@ -2,6 +2,7 @@ import {
   FlexContainerProperties,
   FlexItemProperties,
   FormOutputData,
+  NidocaFormCombobox,
   SpacerAlignment,
   SpacerSize,
   TypographyType,
@@ -41,8 +42,30 @@ export class NidocaFormComboboxShowcasePage extends NidocaShowcaseTemplate {
   @property()
   multiple: boolean = false;
 
-  @property()
-  selectElement: HTMLSelectElement | undefined = undefined;
+  constructor() {
+    super();
+    let initComponent: NidocaFormCombobox = new NidocaFormCombobox();
+
+    this.name = initComponent.name;
+
+    this.value = initComponent.value;
+
+    this.label = initComponent.label;
+
+    this.options = initComponent.options;
+
+    this.required = initComponent.required;
+
+    this.errorText = initComponent.errorText;
+
+    this.infoText = initComponent.infoText;
+
+    this.warningText = initComponent.warningText;
+
+    this.size = initComponent.size;
+
+    this.multiple = initComponent.multiple;
+  }
 
   getContent(): TemplateResult {
     return html`
@@ -79,7 +102,6 @@ export class NidocaFormComboboxShowcasePage extends NidocaShowcaseTemplate {
                 warningText=${this.warningText}
                 .size=${this.size}
                 .multiple=${this.multiple}
-                
               ></nidoca-form-combobox>
             </nidoca-spacer>
           </nidoca-tab-content>

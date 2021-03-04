@@ -1,6 +1,7 @@
 import {
   FlexContainerProperties,
   FlexItemProperties,
+  NidocaFloatingContainer,
   SpacerAlignment,
   SpacerSize,
   TypographyType,
@@ -27,6 +28,23 @@ export class NidocaFloatingContainerShowcasePage extends NidocaShowcaseTemplate 
 
   @property()
   bottom: string = '';
+
+  constructor() {
+    super();
+    let initComponent: NidocaFloatingContainer = new NidocaFloatingContainer();
+
+    this.height = initComponent.height;
+
+    this.width = initComponent.width;
+
+    this.left = initComponent.left;
+
+    this.top = initComponent.top;
+
+    this.right = initComponent.right;
+
+    this.bottom = initComponent.bottom;
+  }
 
   getContent(): TemplateResult {
     return html`

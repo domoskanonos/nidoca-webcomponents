@@ -1,6 +1,7 @@
 import {
   FlexContainerProperties,
   FlexItemProperties,
+  NidocaGridContainer,
   SpacerAlignment,
   SpacerSize,
   TypographyType,
@@ -33,6 +34,27 @@ export class NidocaGridContainerShowcasePage extends NidocaShowcaseTemplate {
 
   @property()
   minWidth: string = '';
+
+  constructor() {
+    super();
+    let initComponent: NidocaGridContainer = new NidocaGridContainer();
+
+    this.gridTemplateRows = initComponent.gridTemplateRows;
+
+    this.gridTemplateColumns = initComponent.gridTemplateColumns;
+
+    this.gridJustifyItems = initComponent.gridJustifyItems;
+
+    this.gridAlignItems = initComponent.gridAlignItems;
+
+    this.height = initComponent.height;
+
+    this.minHeight = initComponent.minHeight;
+
+    this.width = initComponent.width;
+
+    this.minWidth = initComponent.minWidth;
+  }
 
   getContent(): TemplateResult {
     return html`

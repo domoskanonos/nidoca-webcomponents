@@ -70,13 +70,13 @@ export class NidocaRichMedia extends LitElement {
   `;
 
   @property()
-  src: string = '';
+  src: string = 'http://picsum.photos/400/300';
 
   @property()
-  richMediaType: string = RichMediaType.IMG;
+  richMediaType: RichMediaType = RichMediaType.IMG;
 
   @property()
-  richMediaProperties: RichMediaProperties[] = [];
+  richMediaProperties: RichMediaProperties[] = [RichMediaProperties.CLICKABLE,RichMediaProperties.ZOOM_WRAPPED];
 
   render(): TemplateResult {
     return this.richMediaType == RichMediaType.IMG

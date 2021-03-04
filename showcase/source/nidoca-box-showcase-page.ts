@@ -1,6 +1,7 @@
 import {
   FlexContainerProperties,
   FlexItemProperties,
+  NidocaBox,
   SpacerAlignment,
   SpacerSize,
   TypographyType,
@@ -15,6 +16,15 @@ export class NidocaBoxShowcasePage extends NidocaShowcaseTemplate {
 
   @property()
   width: string = '';
+
+  constructor() {
+    super();
+    let initComponent: NidocaBox = new NidocaBox();
+
+    this.height = initComponent.height;
+
+    this.width = initComponent.width;
+  }
 
   getContent(): TemplateResult {
     return html`

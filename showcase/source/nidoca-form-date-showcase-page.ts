@@ -2,6 +2,7 @@ import {
   DateType,
   FlexContainerProperties,
   FlexItemProperties,
+  NidocaFormDate,
   SpacerAlignment,
   SpacerSize,
   TypographyType,
@@ -65,8 +66,46 @@ export class NidocaFormDateShowcasePage extends NidocaShowcaseTemplate {
   @property()
   warningText: string | undefined = '';
 
-  @property()
-  inputElement: HTMLInputElement | undefined = undefined;
+  constructor() {
+    super();
+    let initComponent: NidocaFormDate = new NidocaFormDate();
+
+    this.dateType = initComponent.dateType;
+
+    this.name = initComponent.name;
+
+    this.value = initComponent.value;
+
+    this.label = initComponent.label;
+
+    this.required = initComponent.required;
+
+    this.placeholder = initComponent.placeholder;
+
+    this.disabled = initComponent.disabled;
+
+    this.checked = initComponent.checked;
+
+    this.multiple = initComponent.multiple;
+
+    this.maxlength = initComponent.maxlength;
+
+    this.minlength = initComponent.minlength;
+
+    this.min = initComponent.min;
+
+    this.max = initComponent.max;
+
+    this.step = initComponent.step;
+
+    this.size = initComponent.size;
+
+    this.errorText = initComponent.errorText;
+
+    this.infoText = initComponent.infoText;
+
+    this.warningText = initComponent.warningText;
+  }
 
   getContent(): TemplateResult {
     return html`
@@ -111,7 +150,6 @@ export class NidocaFormDateShowcasePage extends NidocaShowcaseTemplate {
                 .errorText=${this.errorText}
                 .infoText=${this.infoText}
                 .warningText=${this.warningText}
-                .inputElement=${this.inputElement}
               ></nidoca-form-date>
             </nidoca-spacer>
           </nidoca-tab-content>

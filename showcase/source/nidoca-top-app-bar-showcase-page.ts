@@ -1,6 +1,7 @@
 import {
   FlexContainerProperties,
   FlexItemProperties,
+  NidocaTopAppBar,
   SpacerAlignment,
   SpacerSize,
   TypographyType,
@@ -10,6 +11,11 @@ import {NidocaShowcaseTemplate} from './nidoca-showcase-template';
 
 @customElement('nidoca-top-app-bar-showcase-page')
 export class NidocaTopAppBarShowcasePage extends NidocaShowcaseTemplate {
+  constructor() {
+    super();
+    let initComponent: NidocaTopAppBar = new NidocaTopAppBar();
+  }
+
   getContent(): TemplateResult {
     return html`
       <nidoca-flex-container

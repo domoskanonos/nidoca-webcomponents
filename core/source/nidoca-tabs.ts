@@ -20,10 +20,10 @@ export class NidocaTabs extends LitElement {
   `;
 
   @query('#tabSlot')
-  tabSlot: HTMLSlotElement | undefined;
+  private tabSlot: HTMLSlotElement | undefined;
 
   @query('#tabContentSlot')
-  tabContentSlot: HTMLSlotElement | undefined;
+  private tabContentSlot: HTMLSlotElement | undefined;
 
   protected firstUpdated(_changedProperties: Map<PropertyKey, unknown>): void {
     super.firstUpdated(_changedProperties);

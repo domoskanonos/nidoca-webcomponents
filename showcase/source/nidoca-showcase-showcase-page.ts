@@ -1,6 +1,7 @@
 import {
   FlexContainerProperties,
   FlexItemProperties,
+  NidocaShowcase,
   SpacerAlignment,
   SpacerSize,
   TypographyType,
@@ -10,6 +11,11 @@ import {NidocaShowcaseTemplate} from './nidoca-showcase-template';
 
 @customElement('nidoca-showcase-showcase-page')
 export class NidocaShowcaseShowcasePage extends NidocaShowcaseTemplate {
+  constructor() {
+    super();
+    let initComponent: NidocaShowcase = new NidocaShowcase();
+  }
+
   getContent(): TemplateResult {
     return html`
       <nidoca-flex-container

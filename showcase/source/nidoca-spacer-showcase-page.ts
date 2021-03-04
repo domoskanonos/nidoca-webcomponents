@@ -1,6 +1,7 @@
 import {
   FlexContainerProperties,
   FlexItemProperties,
+  NidocaSpacer,
   SpacerAlignment,
   SpacerSize,
   TypographyType,
@@ -18,6 +19,17 @@ export class NidocaSpacerShowcasePage extends NidocaShowcaseTemplate {
 
   @property()
   size: string = '';
+
+  constructor() {
+    super();
+    let initComponent: NidocaSpacer = new NidocaSpacer();
+
+    this.spacerSize = initComponent.spacerSize;
+
+    this.spacerAlignment = initComponent.spacerAlignment;
+
+    this.size = initComponent.size;
+  }
 
   getContent(): TemplateResult {
     return html`

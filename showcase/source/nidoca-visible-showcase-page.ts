@@ -1,6 +1,7 @@
 import {
   FlexContainerProperties,
   FlexItemProperties,
+  NidocaVisible,
   SpacerAlignment,
   SpacerSize,
   TypographyType,
@@ -12,6 +13,13 @@ import {NidocaShowcaseTemplate} from './nidoca-showcase-template';
 export class NidocaVisibleShowcasePage extends NidocaShowcaseTemplate {
   @property()
   visibleType: string = '';
+
+  constructor() {
+    super();
+    let initComponent: NidocaVisible = new NidocaVisible();
+
+    this.visibleType = initComponent.visibleType;
+  }
 
   getContent(): TemplateResult {
     return html`

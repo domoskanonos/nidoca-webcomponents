@@ -1,20 +1,20 @@
 import {
   FlexContainerProperties,
   FlexItemProperties,
+  NidocaTabs,
   SpacerAlignment,
   SpacerSize,
   TypographyType,
 } from '@domoskanonos/nidoca-core';
-import {customElement, html, property, TemplateResult} from 'lit-element';
+import {customElement, html, TemplateResult} from 'lit-element';
 import {NidocaShowcaseTemplate} from './nidoca-showcase-template';
 
 @customElement('nidoca-tabs-showcase-page')
 export class NidocaTabsShowcasePage extends NidocaShowcaseTemplate {
-  @property()
-  tabSlot: HTMLSlotElement | undefined = undefined;
-
-  @property()
-  tabContentSlot: HTMLSlotElement | undefined = undefined;
+  constructor() {
+    super();
+    let initComponent: NidocaTabs = new NidocaTabs();
+  }
 
   getContent(): TemplateResult {
     return html`
@@ -40,7 +40,7 @@ export class NidocaTabsShowcasePage extends NidocaShowcaseTemplate {
           <nidoca-tab slot="tab" text="source"></nidoca-tab>
           <nidoca-tab-content slot="tabContent" .selected="${true}">
             <nidoca-spacer .spacerAlignment="${SpacerAlignment.VERTICAL}" .spacerSize="${SpacerSize.BIG}">
-              <nidoca-tabs .tabSlot=${this.tabSlot} .tabContentSlot=${this.tabContentSlot}></nidoca-tabs>
+              <nidoca-tabs></nidoca-tabs>
             </nidoca-spacer>
           </nidoca-tab-content>
           <nidoca-tab-content slot="tabContent"> </nidoca-tab-content>

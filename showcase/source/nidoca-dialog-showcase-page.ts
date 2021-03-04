@@ -1,6 +1,7 @@
 import {
   FlexContainerProperties,
   FlexItemProperties,
+  NidocaDialog,
   SpacerAlignment,
   SpacerSize,
   TypographyType,
@@ -12,6 +13,13 @@ import {NidocaShowcaseTemplate} from './nidoca-showcase-template';
 export class NidocaDialogShowcasePage extends NidocaShowcaseTemplate {
   @property()
   show: boolean = false;
+
+  constructor() {
+    super();
+    let initComponent: NidocaDialog = new NidocaDialog();
+
+    this.show = initComponent.show;
+  }
 
   getContent(): TemplateResult {
     return html`

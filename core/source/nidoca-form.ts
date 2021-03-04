@@ -52,10 +52,10 @@ export class NidocaForm extends LitElement {
   autocomplete: boolean = true;
 
   @query('#slotElement')
-  slotElement: HTMLSlotElement | undefined;
+  private slotElement: HTMLSlotElement | undefined;
 
   @query('#htmlForm')
-  htmlForm: HTMLFormElement | undefined;
+  private htmlForm: HTMLFormElement | undefined;
 
   render(): TemplateResult {
     return html`

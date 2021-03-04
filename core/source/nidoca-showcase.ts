@@ -10,7 +10,10 @@ import {NidocaTemplate} from './nidoca-template';
 export class NidocaShowcase extends NidocaTemplate {
 
     getContent(): TemplateResult {
-        return html``;
+        return html`
+        <nidoca-rich-media></nidoca-rich-media>
+        
+        `;
     }
 
     getSidebarContent(): TemplateResult {

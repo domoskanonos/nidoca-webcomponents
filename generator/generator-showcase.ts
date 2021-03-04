@@ -139,6 +139,8 @@ function createComponentPages(files: any[], imps: any[]) {
             const parsedFile = typescriptParser.parseFile(sourceRoot.concat(filename), 'workspace root');
 
             parsedFile.then((value: any) => {
+
+
                     value['imports'] = imps;
                     let decs: any[] = value['declarations'];
                     decs.forEach((clazz: any) => {
@@ -148,6 +150,10 @@ function createComponentPages(files: any[], imps: any[]) {
                         if (clazz.properties) {
                             for (let i = 0; i < clazz.properties.length; i++) {
                                 let property: any = clazz.properties[i];
+                                if(property.visibility == 0){
+                                    property.private = true;
+                                }
+                                console.log(JSON.stringify(property));
                                 let propertyType: string = property.type;
                                 if (propertyType == undefined) {
                                     continue;

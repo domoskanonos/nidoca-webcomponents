@@ -1,6 +1,7 @@
 import {
   FlexContainerProperties,
   FlexItemProperties,
+  NidocaAccordion,
   SpacerAlignment,
   SpacerSize,
   TypographyType,
@@ -13,8 +14,12 @@ export class NidocaAccordionShowcasePage extends NidocaShowcaseTemplate {
   @property()
   accordionType: string = '';
 
-  @property()
-  accordionSlot: HTMLSlotElement | undefined = undefined;
+  constructor() {
+    super();
+    let initComponent: NidocaAccordion = new NidocaAccordion();
+
+    this.accordionType = initComponent.accordionType;
+  }
 
   getContent(): TemplateResult {
     return html`
@@ -40,10 +45,7 @@ export class NidocaAccordionShowcasePage extends NidocaShowcaseTemplate {
           <nidoca-tab slot="tab" text="source"></nidoca-tab>
           <nidoca-tab-content slot="tabContent" .selected="${true}">
             <nidoca-spacer .spacerAlignment="${SpacerAlignment.VERTICAL}" .spacerSize="${SpacerSize.BIG}">
-              <nidoca-accordion
-                accordionType=${this.accordionType}
-                .accordionSlot=${this.accordionSlot}
-              ></nidoca-accordion>
+              <nidoca-accordion accordionType=${this.accordionType}></nidoca-accordion>
             </nidoca-spacer>
           </nidoca-tab-content>
           <nidoca-tab-content slot="tabContent"> </nidoca-tab-content>

@@ -1,6 +1,7 @@
 import {
   FlexContainerProperties,
   FlexItemProperties,
+  NidocaFormInputframe,
   SpacerAlignment,
   SpacerSize,
   TypographyType,
@@ -24,6 +25,21 @@ export class NidocaFormInputframeShowcasePage extends NidocaShowcaseTemplate {
 
   @property()
   selected: boolean = false;
+
+  constructor() {
+    super();
+    let initComponent: NidocaFormInputframe = new NidocaFormInputframe();
+
+    this.label = initComponent.label;
+
+    this.errorText = initComponent.errorText;
+
+    this.infoText = initComponent.infoText;
+
+    this.warningText = initComponent.warningText;
+
+    this.selected = initComponent.selected;
+  }
 
   getContent(): TemplateResult {
     return html`

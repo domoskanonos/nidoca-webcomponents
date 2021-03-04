@@ -1,6 +1,7 @@
 import {
   FlexContainerProperties,
   FlexItemProperties,
+  NidocaIcon,
   SpacerAlignment,
   SpacerSize,
   TypographyType,
@@ -42,6 +43,33 @@ export class NidocaIconShowcasePage extends NidocaShowcaseTemplate {
 
   @property()
   deactivated: boolean = false;
+
+  constructor() {
+    super();
+    let initComponent: NidocaIcon = new NidocaIcon();
+
+    this.icon = initComponent.icon;
+
+    this.color = initComponent.color;
+
+    this.backgroundColor = initComponent.backgroundColor;
+
+    this.iconShadowType = initComponent.iconShadowType;
+
+    this.size = initComponent.size;
+
+    this.sizeUnit = initComponent.sizeUnit;
+
+    this.iconTitle = initComponent.iconTitle;
+
+    this.withIconSpace = initComponent.withIconSpace;
+
+    this.round = initComponent.round;
+
+    this.clickable = initComponent.clickable;
+
+    this.deactivated = initComponent.deactivated;
+  }
 
   getContent(): TemplateResult {
     return html`

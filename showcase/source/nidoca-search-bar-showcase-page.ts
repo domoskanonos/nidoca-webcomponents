@@ -1,6 +1,7 @@
 import {
   FlexContainerProperties,
   FlexItemProperties,
+  NidocaSearchBar,
   SpacerAlignment,
   SpacerSize,
   TypographyType,
@@ -16,8 +17,14 @@ export class NidocaSearchBarShowcasePage extends NidocaShowcaseTemplate {
   @property()
   value: string = '';
 
-  @property()
-  htmlInputElement: HTMLInputElement | undefined = undefined;
+  constructor() {
+    super();
+    let initComponent: NidocaSearchBar = new NidocaSearchBar();
+
+    this.placeholder = initComponent.placeholder;
+
+    this.value = initComponent.value;
+  }
 
   getContent(): TemplateResult {
     return html`
@@ -43,11 +50,7 @@ export class NidocaSearchBarShowcasePage extends NidocaShowcaseTemplate {
           <nidoca-tab slot="tab" text="source"></nidoca-tab>
           <nidoca-tab-content slot="tabContent" .selected="${true}">
             <nidoca-spacer .spacerAlignment="${SpacerAlignment.VERTICAL}" .spacerSize="${SpacerSize.BIG}">
-              <nidoca-search-bar
-                placeholder=${this.placeholder}
-                value=${this.value}
-                .htmlInputElement=${this.htmlInputElement}
-              ></nidoca-search-bar>
+              <nidoca-search-bar placeholder=${this.placeholder} value=${this.value}></nidoca-search-bar>
             </nidoca-spacer>
           </nidoca-tab-content>
           <nidoca-tab-content slot="tabContent"> </nidoca-tab-content>

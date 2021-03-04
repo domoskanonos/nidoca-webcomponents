@@ -1,6 +1,7 @@
 import {
   FlexContainerProperties,
   FlexItemProperties,
+  NidocaCaptcha,
   NidocaFormText,
   SpacerAlignment,
   SpacerSize,
@@ -19,6 +20,17 @@ export class NidocaCaptchaShowcasePage extends NidocaShowcaseTemplate {
 
   @property()
   inputfield: NidocaFormText | undefined = undefined;
+
+  constructor() {
+    super();
+    let initComponent: NidocaCaptcha = new NidocaCaptcha();
+
+    this.numberOne = initComponent.numberOne;
+
+    this.numberTwo = initComponent.numberTwo;
+
+    this.inputfield = initComponent.inputfield;
+  }
 
   getContent(): TemplateResult {
     return html`

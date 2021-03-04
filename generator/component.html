@@ -13,10 +13,22 @@ export class {{this.name}}ShowcasePage extends NidocaShowcaseTemplate {
 {{/each}}
 {{#each properties}}
 {{#if this.isStatic}}{{else}}
-  @property()
+{{#if this.private}} {{else}}  @property()
   {{this.name}} : {{this.type}} = {{{this.defaultValue}}};
 {{/if}}
+{{/if}}
 {{/each}}
+
+
+    constructor() {
+        super();
+        let initComponent : {{this.name}} = new {{this.name}}();
+{{#each properties}}{{#if this.isStatic}}{{else}}
+{{#if this.private}} {{else}}        this.{{this.name}} = initComponent.{{this.name}};
+{{/if}}
+{{/if}}
+{{/each}}
+    }
 
   getContent(): TemplateResult {
     return html`
@@ -41,7 +53,7 @@ export class {{this.name}}ShowcasePage extends NidocaShowcaseTemplate {
         <nidoca-tab slot="tab" text="source"></nidoca-tab>
         <nidoca-tab-content slot="tabContent" .selected="${true}">
           <nidoca-spacer .spacerAlignment="${SpacerAlignment.VERTICAL}" .spacerSize="${SpacerSize.BIG}">
-            <{{toTag this.name}}{{#each properties}}{{#if this.isStatic}}{{else}}             {{#isnt this.type "string"}}.{{/isnt}}{{this.name}}=${ this.{{this.name}} }{{/if}}
+            <{{toTag this.name}}{{#each properties}}{{#if this.isStatic}}{{else}}{{#if this.private}}{{else}}{{#isnt this.type "string"}}.{{/isnt}}{{this.name}}=${ this.{{this.name}} }{{/if}} {{/if}}
 {{/each}}
             ></{{toTag this.name}}>
           </nidoca-spacer>

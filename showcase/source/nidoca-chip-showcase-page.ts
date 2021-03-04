@@ -1,6 +1,7 @@
 import {
   FlexContainerProperties,
   FlexItemProperties,
+  NidocaChip,
   SpacerAlignment,
   SpacerSize,
   TypographyType,
@@ -10,6 +11,11 @@ import {NidocaShowcaseTemplate} from './nidoca-showcase-template';
 
 @customElement('nidoca-chip-showcase-page')
 export class NidocaChipShowcasePage extends NidocaShowcaseTemplate {
+  constructor() {
+    super();
+    let initComponent: NidocaChip = new NidocaChip();
+  }
+
   getContent(): TemplateResult {
     return html`
       <nidoca-flex-container

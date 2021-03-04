@@ -2,6 +2,7 @@ import {
   ButtonType,
   FlexContainerProperties,
   FlexItemProperties,
+  NidocaButton,
   SpacerAlignment,
   SpacerSize,
   TypographyType,
@@ -19,6 +20,17 @@ export class NidocaButtonShowcasePage extends NidocaShowcaseTemplate {
 
   @property()
   text: string = '';
+
+  constructor() {
+    super();
+    let initComponent: NidocaButton = new NidocaButton();
+
+    this.buttonType = initComponent.buttonType;
+
+    this.leadingIcon = initComponent.leadingIcon;
+
+    this.text = initComponent.text;
+  }
 
   getContent(): TemplateResult {
     return html`

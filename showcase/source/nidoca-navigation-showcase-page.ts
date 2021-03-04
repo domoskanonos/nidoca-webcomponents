@@ -2,6 +2,7 @@ import {
   FlexContainerProperties,
   FlexItemProperties,
   NavigationStyle,
+  NidocaNavigation,
   SpacerAlignment,
   SpacerSize,
   TypographyType,
@@ -13,6 +14,13 @@ import {NidocaShowcaseTemplate} from './nidoca-showcase-template';
 export class NidocaNavigationShowcasePage extends NidocaShowcaseTemplate {
   @property()
   navigationStyle: NavigationStyle = Object.values(NavigationStyle)[0];
+
+  constructor() {
+    super();
+    let initComponent: NidocaNavigation = new NidocaNavigation();
+
+    this.navigationStyle = initComponent.navigationStyle;
+  }
 
   getContent(): TemplateResult {
     return html`

@@ -1,6 +1,7 @@
 import {
   FlexContainerProperties,
   FlexItemProperties,
+  NidocaNavigationSection,
   SpacerAlignment,
   SpacerSize,
   TypographyType,
@@ -15,6 +16,15 @@ export class NidocaNavigationSectionShowcasePage extends NidocaShowcaseTemplate 
 
   @property()
   rendered: boolean = false;
+
+  constructor() {
+    super();
+    let initComponent: NidocaNavigationSection = new NidocaNavigationSection();
+
+    this.text = initComponent.text;
+
+    this.rendered = initComponent.rendered;
+  }
 
   getContent(): TemplateResult {
     return html`

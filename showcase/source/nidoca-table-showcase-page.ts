@@ -1,6 +1,7 @@
 import {
   FlexContainerProperties,
   FlexItemProperties,
+  NidocaTable,
   SpacerAlignment,
   SpacerSize,
   TypographyType,
@@ -15,6 +16,15 @@ export class NidocaTableShowcasePage extends NidocaShowcaseTemplate {
 
   @property()
   rows: [any[]] = [[]];
+
+  constructor() {
+    super();
+    let initComponent: NidocaTable = new NidocaTable();
+
+    this.headers = initComponent.headers;
+
+    this.rows = initComponent.rows;
+  }
 
   getContent(): TemplateResult {
     return html`

@@ -1,6 +1,7 @@
 import {
   FlexContainerProperties,
   FlexItemProperties,
+  NidocaNavigationLink,
   SpacerAlignment,
   SpacerSize,
   TypographyType,
@@ -21,6 +22,19 @@ export class NidocaNavigationLinkShowcasePage extends NidocaShowcaseTemplate {
 
   @property()
   rendered: boolean = false;
+
+  constructor() {
+    super();
+    let initComponent: NidocaNavigationLink = new NidocaNavigationLink();
+
+    this.icon = initComponent.icon;
+
+    this.text = initComponent.text;
+
+    this.href = initComponent.href;
+
+    this.rendered = initComponent.rendered;
+  }
 
   getContent(): TemplateResult {
     return html`

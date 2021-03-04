@@ -1,7 +1,9 @@
 import {
   FlexContainerProperties,
   FlexItemProperties,
+  NidocaRichMedia,
   RichMediaProperties,
+  RichMediaType,
   SpacerAlignment,
   SpacerSize,
   TypographyType,
@@ -15,10 +17,21 @@ export class NidocaRichMediaShowcasePage extends NidocaShowcaseTemplate {
   src: string = '';
 
   @property()
-  richMediaType: string = '';
+  richMediaType: RichMediaType = Object.values(RichMediaType)[0];
 
   @property()
   richMediaProperties: RichMediaProperties[] = [];
+
+  constructor() {
+    super();
+    let initComponent: NidocaRichMedia = new NidocaRichMedia();
+
+    this.src = initComponent.src;
+
+    this.richMediaType = initComponent.richMediaType;
+
+    this.richMediaProperties = initComponent.richMediaProperties;
+  }
 
   getContent(): TemplateResult {
     return html`
@@ -46,7 +59,7 @@ export class NidocaRichMediaShowcasePage extends NidocaShowcaseTemplate {
             <nidoca-spacer .spacerAlignment="${SpacerAlignment.VERTICAL}" .spacerSize="${SpacerSize.BIG}">
               <nidoca-rich-media
                 src=${this.src}
-                richMediaType=${this.richMediaType}
+                .richMediaType=${this.richMediaType}
                 .richMediaProperties=${this.richMediaProperties}
               ></nidoca-rich-media>
             </nidoca-spacer>

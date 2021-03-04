@@ -7,14 +7,8 @@ export enum TargetType {
   TOP = '_top',
 }
 
-export interface NidocaLinkInterface {
-  text: string;
-  href: string;
-  targetType: string;
-}
-
 @customElement('nidoca-link')
-export class NidocaLink extends LitElement implements NidocaLinkInterface {
+export class NidocaLink extends LitElement {
   static styles = css`
     :host,
     ::slotted(:host) {

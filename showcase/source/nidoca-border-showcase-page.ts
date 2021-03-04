@@ -1,6 +1,7 @@
 import {
   FlexContainerProperties,
   FlexItemProperties,
+  NidocaBorder,
   SpacerAlignment,
   SpacerSize,
   TypographyType,
@@ -18,6 +19,17 @@ export class NidocaBorderShowcasePage extends NidocaShowcaseTemplate {
 
   @property()
   shadowType: string = '';
+
+  constructor() {
+    super();
+    let initComponent: NidocaBorder = new NidocaBorder();
+
+    this.borderProperties = initComponent.borderProperties;
+
+    this.borderSize = initComponent.borderSize;
+
+    this.shadowType = initComponent.shadowType;
+  }
 
   getContent(): TemplateResult {
     return html`

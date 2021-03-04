@@ -1,6 +1,7 @@
 import {
   FlexContainerProperties,
   FlexItemProperties,
+  NidocaList,
   SpacerAlignment,
   SpacerSize,
   TypographyType,
@@ -15,6 +16,15 @@ export class NidocaListShowcasePage extends NidocaShowcaseTemplate {
 
   @property()
   slotElement: HTMLSlotElement | undefined = undefined;
+
+  constructor() {
+    super();
+    let initComponent: NidocaList = new NidocaList();
+
+    this.selectionMode = initComponent.selectionMode;
+
+    this.slotElement = initComponent.slotElement;
+  }
 
   getContent(): TemplateResult {
     return html`

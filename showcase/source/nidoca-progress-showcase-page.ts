@@ -1,6 +1,7 @@
 import {
   FlexContainerProperties,
   FlexItemProperties,
+  NidocaProgress,
   ProgressType,
   SpacerAlignment,
   SpacerSize,
@@ -13,6 +14,13 @@ import {NidocaShowcaseTemplate} from './nidoca-showcase-template';
 export class NidocaProgressShowcasePage extends NidocaShowcaseTemplate {
   @property()
   progressType: ProgressType = Object.values(ProgressType)[0];
+
+  constructor() {
+    super();
+    let initComponent: NidocaProgress = new NidocaProgress();
+
+    this.progressType = initComponent.progressType;
+  }
 
   getContent(): TemplateResult {
     return html`

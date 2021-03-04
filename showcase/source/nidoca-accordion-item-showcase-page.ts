@@ -1,6 +1,7 @@
 import {
   FlexContainerProperties,
   FlexItemProperties,
+  NidocaAccordionItem,
   SpacerAlignment,
   SpacerSize,
   TypographyType,
@@ -15,6 +16,15 @@ export class NidocaAccordionItemShowcasePage extends NidocaShowcaseTemplate {
 
   @property()
   opened: boolean = false;
+
+  constructor() {
+    super();
+    let initComponent: NidocaAccordionItem = new NidocaAccordionItem();
+
+    this.header = initComponent.header;
+
+    this.opened = initComponent.opened;
+  }
 
   getContent(): TemplateResult {
     return html`

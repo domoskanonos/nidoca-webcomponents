@@ -1,6 +1,7 @@
 import {
   FlexContainerProperties,
   FlexItemProperties,
+  NidocaLink,
   SpacerAlignment,
   SpacerSize,
   TypographyType,
@@ -8,54 +9,6 @@ import {
 import {customElement, html, property, TemplateResult} from 'lit-element';
 import {NidocaShowcaseTemplate} from './nidoca-showcase-template';
 
-@customElement('nidoca-link-interface-showcase-page')
-export class NidocaLinkInterfaceShowcasePage extends NidocaShowcaseTemplate {
-  @property()
-  text: string = '';
-
-  @property()
-  href: string = '';
-
-  @property()
-  targetType: string = '';
-
-  getContent(): TemplateResult {
-    return html`
-      <nidoca-flex-container
-        .flexContainerProperties="${[
-          FlexContainerProperties.CONTAINER_WIDTH_50,
-          FlexContainerProperties.TABLET_MAX_WIDTH,
-          FlexContainerProperties.SMARTPHONE_MAX_WIDTH,
-          FlexContainerProperties.SMARTPHONE_HORIZONTAL_PADDING,
-          FlexContainerProperties.TABLET_HORIZONTAL_PADDING,
-        ]}"
-        .flexItemProperties="${[
-          FlexItemProperties.KEYLINE_ALIGNMENT_HORIZONTAL,
-          FlexItemProperties.KEYLINE_SIZE_MEDIUM,
-        ]}"
-        flexItemBasisValue="100%"
-      >
-        <nidoca-typography .typographyType="${TypographyType.H2}" text="<nidoca-link-interface/>"></nidoca-typography>
-        <nidoca-typography .typographyType="${TypographyType.BODY1}"> <br />description<br /><br /> </nidoca-typography>
-        <nidoca-typography .typographyType="${TypographyType.H4}" text="example"></nidoca-typography>
-        <nidoca-tabs>
-          <nidoca-tab slot="tab" .selected="${true}" text="demo"></nidoca-tab>
-          <nidoca-tab slot="tab" text="source"></nidoca-tab>
-          <nidoca-tab-content slot="tabContent" .selected="${true}">
-            <nidoca-spacer .spacerAlignment="${SpacerAlignment.VERTICAL}" .spacerSize="${SpacerSize.BIG}">
-              <nidoca-link-interface
-                text=${this.text}
-                href=${this.href}
-                targetType=${this.targetType}
-              ></nidoca-link-interface>
-            </nidoca-spacer>
-          </nidoca-tab-content>
-          <nidoca-tab-content slot="tabContent"> </nidoca-tab-content>
-        </nidoca-tabs>
-      </nidoca-flex-container>
-    `;
-  }
-}
 @customElement('nidoca-link-showcase-page')
 export class NidocaLinkShowcasePage extends NidocaShowcaseTemplate {
   @property()
@@ -66,6 +19,17 @@ export class NidocaLinkShowcasePage extends NidocaShowcaseTemplate {
 
   @property()
   targetType: string = '';
+
+  constructor() {
+    super();
+    let initComponent: NidocaLink = new NidocaLink();
+
+    this.text = initComponent.text;
+
+    this.href = initComponent.href;
+
+    this.targetType = initComponent.targetType;
+  }
 
   getContent(): TemplateResult {
     return html`

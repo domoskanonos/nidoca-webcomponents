@@ -264,7 +264,7 @@ export class NidocaFlexContainer extends LitElement {
   flexItemBasisValues: string[] = [];
 
   @query('#slotElement')
-  slotElement: HTMLSlotElement | undefined;
+  private slotElement: HTMLSlotElement | undefined;
 
   render(): TemplateResult {
     return html`

@@ -1,6 +1,7 @@
 import {
   FlexContainerProperties,
   FlexItemProperties,
+  NidocaWizard,
   SpacerAlignment,
   SpacerSize,
   TypographyType,
@@ -16,6 +17,15 @@ export class NidocaWizardShowcasePage extends NidocaShowcaseTemplate {
 
   @property()
   selectedStep: WizardStep | undefined = undefined;
+
+  constructor() {
+    super();
+    let initComponent: NidocaWizard = new NidocaWizard();
+
+    this.wizardSteps = initComponent.wizardSteps;
+
+    this.selectedStep = initComponent.selectedStep;
+  }
 
   getContent(): TemplateResult {
     return html`

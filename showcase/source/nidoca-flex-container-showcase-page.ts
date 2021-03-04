@@ -1,6 +1,7 @@
 import {
   FlexContainerProperties,
   FlexItemProperties,
+  NidocaFlexContainer,
   SpacerAlignment,
   SpacerSize,
   TypographyType,
@@ -37,8 +38,28 @@ export class NidocaFlexContainerShowcasePage extends NidocaShowcaseTemplate {
   @property()
   flexItemBasisValues: string[] = [];
 
-  @property()
-  slotElement: HTMLSlotElement | undefined = undefined;
+  constructor() {
+    super();
+    let initComponent: NidocaFlexContainer = new NidocaFlexContainer();
+
+    this.flexDirection = initComponent.flexDirection;
+
+    this.flexWrap = initComponent.flexWrap;
+
+    this.flexJustifyContent = initComponent.flexJustifyContent;
+
+    this.flexAlignItems = initComponent.flexAlignItems;
+
+    this.flexAlignContent = initComponent.flexAlignContent;
+
+    this.flexContainerProperties = initComponent.flexContainerProperties;
+
+    this.flexItemProperties = initComponent.flexItemProperties;
+
+    this.flexItemBasisValue = initComponent.flexItemBasisValue;
+
+    this.flexItemBasisValues = initComponent.flexItemBasisValues;
+  }
 
   getContent(): TemplateResult {
     return html`
@@ -74,7 +95,6 @@ export class NidocaFlexContainerShowcasePage extends NidocaShowcaseTemplate {
                 .flexItemProperties=${this.flexItemProperties}
                 flexItemBasisValue=${this.flexItemBasisValue}
                 .flexItemBasisValues=${this.flexItemBasisValues}
-                .slotElement=${this.slotElement}
               ></nidoca-flex-container>
             </nidoca-spacer>
           </nidoca-tab-content>

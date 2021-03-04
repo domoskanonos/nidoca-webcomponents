@@ -1,6 +1,7 @@
 import {
   FlexContainerProperties,
   FlexItemProperties,
+  NidocaTabContent,
   SpacerAlignment,
   SpacerSize,
   TypographyType,
@@ -12,6 +13,13 @@ import {NidocaShowcaseTemplate} from './nidoca-showcase-template';
 export class NidocaTabContentShowcasePage extends NidocaShowcaseTemplate {
   @property()
   selected: boolean = false;
+
+  constructor() {
+    super();
+    let initComponent: NidocaTabContent = new NidocaTabContent();
+
+    this.selected = initComponent.selected;
+  }
 
   getContent(): TemplateResult {
     return html`

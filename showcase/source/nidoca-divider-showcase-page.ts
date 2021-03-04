@@ -1,6 +1,7 @@
 import {
   FlexContainerProperties,
   FlexItemProperties,
+  NidocaDivider,
   SpacerAlignment,
   SpacerSize,
   TypographyType,
@@ -15,6 +16,15 @@ export class NidocaDividerShowcasePage extends NidocaShowcaseTemplate {
 
   @property()
   opacity: number = 0;
+
+  constructor() {
+    super();
+    let initComponent: NidocaDivider = new NidocaDivider();
+
+    this.dividerType = initComponent.dividerType;
+
+    this.opacity = initComponent.opacity;
+  }
 
   getContent(): TemplateResult {
     return html`
