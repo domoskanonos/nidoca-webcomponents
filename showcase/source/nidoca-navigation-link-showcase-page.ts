@@ -60,17 +60,24 @@ export class NidocaNavigationLinkShowcasePage extends NidocaShowcaseTemplate {
           <nidoca-tab slot="tab" text="source"></nidoca-tab>
           <nidoca-tab-content slot="tabContent" .selected="${true}">
             <nidoca-spacer .spacerAlignment="${SpacerAlignment.VERTICAL}" .spacerSize="${SpacerSize.BIG}">
-              <nidoca-navigation-link
-                icon=${this.icon}
-                text=${this.text}
-                href=${this.href}
-                .rendered=${this.rendered}
-              ></nidoca-navigation-link>
+              <nidoca-navigation-link icon=${this.icon} text=${this.text} href=${this.href} .rendered=${this.rendered}
+                >nidoca-navigation-link</nidoca-navigation-link
+              >
             </nidoca-spacer>
           </nidoca-tab-content>
           <nidoca-tab-content slot="tabContent"> </nidoca-tab-content>
         </nidoca-tabs>
       </nidoca-flex-container>
+
+      <nidoca-table
+        .headers="${['property', 'type']}"
+        .rows="${[
+          ['icon', 'string'],
+          ['text', 'string'],
+          ['href', 'string'],
+          ['rendered', 'boolean'],
+        ]}"
+      ></nidoca-table>
     `;
   }
 }

@@ -89,12 +89,27 @@ export class NidocaGridContainerShowcasePage extends NidocaShowcaseTemplate {
                 minHeight=${this.minHeight}
                 width=${this.width}
                 minWidth=${this.minWidth}
-              ></nidoca-grid-container>
+                >nidoca-grid-container</nidoca-grid-container
+              >
             </nidoca-spacer>
           </nidoca-tab-content>
           <nidoca-tab-content slot="tabContent"> </nidoca-tab-content>
         </nidoca-tabs>
       </nidoca-flex-container>
+
+      <nidoca-table
+        .headers="${['property', 'type']}"
+        .rows="${[
+          ['gridTemplateRows', 'string[]'],
+          ['gridTemplateColumns', 'string[]'],
+          ['gridJustifyItems', 'string'],
+          ['gridAlignItems', 'string'],
+          ['height', 'string'],
+          ['minHeight', 'string'],
+          ['width', 'string'],
+          ['minWidth', 'string'],
+        ]}"
+      ></nidoca-table>
     `;
   }
 }

@@ -15,7 +15,7 @@ export class NidocaTableShowcasePage extends NidocaShowcaseTemplate {
   headers: any[] = [];
 
   @property()
-  rows: [any[]] = [[]];
+  rows: any[] = [];
 
   constructor() {
     super();
@@ -50,12 +50,20 @@ export class NidocaTableShowcasePage extends NidocaShowcaseTemplate {
           <nidoca-tab slot="tab" text="source"></nidoca-tab>
           <nidoca-tab-content slot="tabContent" .selected="${true}">
             <nidoca-spacer .spacerAlignment="${SpacerAlignment.VERTICAL}" .spacerSize="${SpacerSize.BIG}">
-              <nidoca-table .headers=${this.headers} .rows=${this.rows}></nidoca-table>
+              <nidoca-table .headers=${this.headers} .rows=${this.rows}>nidoca-table</nidoca-table>
             </nidoca-spacer>
           </nidoca-tab-content>
           <nidoca-tab-content slot="tabContent"> </nidoca-tab-content>
         </nidoca-tabs>
       </nidoca-flex-container>
+
+      <nidoca-table
+        .headers="${['property', 'type']}"
+        .rows="${[
+          ['headers', 'any[]'],
+          ['rows', 'any[]'],
+        ]}"
+      ></nidoca-table>
     `;
   }
 }

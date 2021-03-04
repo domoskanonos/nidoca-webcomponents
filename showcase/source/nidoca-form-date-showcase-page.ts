@@ -150,12 +150,37 @@ export class NidocaFormDateShowcasePage extends NidocaShowcaseTemplate {
                 .errorText=${this.errorText}
                 .infoText=${this.infoText}
                 .warningText=${this.warningText}
-              ></nidoca-form-date>
+                >nidoca-form-date</nidoca-form-date
+              >
             </nidoca-spacer>
           </nidoca-tab-content>
           <nidoca-tab-content slot="tabContent"> </nidoca-tab-content>
         </nidoca-tabs>
       </nidoca-flex-container>
+
+      <nidoca-table
+        .headers="${['property', 'type']}"
+        .rows="${[
+          ['dateType', 'DateType'],
+          ['name', 'string'],
+          ['value', 'any'],
+          ['label', 'string'],
+          ['required', 'boolean'],
+          ['placeholder', 'string'],
+          ['disabled', 'boolean'],
+          ['checked', 'boolean'],
+          ['multiple', 'boolean'],
+          ['maxlength', 'number | undefined'],
+          ['minlength', 'number | undefined'],
+          ['min', 'number | undefined'],
+          ['max', 'number | undefined'],
+          ['step', 'number | undefined'],
+          ['size', 'number | undefined'],
+          ['errorText', 'string | undefined'],
+          ['infoText', 'string | undefined'],
+          ['warningText', 'string | undefined'],
+        ]}"
+      ></nidoca-table>
     `;
   }
 }

@@ -53,12 +53,22 @@ export class NidocaNavigationSectionShowcasePage extends NidocaShowcaseTemplate 
           <nidoca-tab slot="tab" text="source"></nidoca-tab>
           <nidoca-tab-content slot="tabContent" .selected="${true}">
             <nidoca-spacer .spacerAlignment="${SpacerAlignment.VERTICAL}" .spacerSize="${SpacerSize.BIG}">
-              <nidoca-navigation-section text=${this.text} .rendered=${this.rendered}></nidoca-navigation-section>
+              <nidoca-navigation-section text=${this.text} .rendered=${this.rendered}
+                >nidoca-navigation-section</nidoca-navigation-section
+              >
             </nidoca-spacer>
           </nidoca-tab-content>
           <nidoca-tab-content slot="tabContent"> </nidoca-tab-content>
         </nidoca-tabs>
       </nidoca-flex-container>
+
+      <nidoca-table
+        .headers="${['property', 'type']}"
+        .rows="${[
+          ['text', 'string'],
+          ['rendered', 'boolean'],
+        ]}"
+      ></nidoca-table>
     `;
   }
 }

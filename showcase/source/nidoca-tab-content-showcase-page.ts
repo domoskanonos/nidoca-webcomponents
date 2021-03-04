@@ -45,12 +45,14 @@ export class NidocaTabContentShowcasePage extends NidocaShowcaseTemplate {
           <nidoca-tab slot="tab" text="source"></nidoca-tab>
           <nidoca-tab-content slot="tabContent" .selected="${true}">
             <nidoca-spacer .spacerAlignment="${SpacerAlignment.VERTICAL}" .spacerSize="${SpacerSize.BIG}">
-              <nidoca-tab-content .selected=${this.selected}></nidoca-tab-content>
+              <nidoca-tab-content .selected=${this.selected}>nidoca-tab-content</nidoca-tab-content>
             </nidoca-spacer>
           </nidoca-tab-content>
           <nidoca-tab-content slot="tabContent"> </nidoca-tab-content>
         </nidoca-tabs>
       </nidoca-flex-container>
+
+      <nidoca-table .headers="${['property', 'type']}" .rows="${[['selected', 'boolean']]}"></nidoca-table>
     `;
   }
 }

@@ -56,16 +56,23 @@ export class NidocaCaptchaShowcasePage extends NidocaShowcaseTemplate {
           <nidoca-tab slot="tab" text="source"></nidoca-tab>
           <nidoca-tab-content slot="tabContent" .selected="${true}">
             <nidoca-spacer .spacerAlignment="${SpacerAlignment.VERTICAL}" .spacerSize="${SpacerSize.BIG}">
-              <nidoca-captcha
-                .numberOne=${this.numberOne}
-                .numberTwo=${this.numberTwo}
-                .inputfield=${this.inputfield}
-              ></nidoca-captcha>
+              <nidoca-captcha .numberOne=${this.numberOne} .numberTwo=${this.numberTwo} .inputfield=${this.inputfield}
+                >nidoca-captcha</nidoca-captcha
+              >
             </nidoca-spacer>
           </nidoca-tab-content>
           <nidoca-tab-content slot="tabContent"> </nidoca-tab-content>
         </nidoca-tabs>
       </nidoca-flex-container>
+
+      <nidoca-table
+        .headers="${['property', 'type']}"
+        .rows="${[
+          ['numberOne', 'number'],
+          ['numberTwo', 'number'],
+          ['inputfield', 'NidocaFormText | undefined'],
+        ]}"
+      ></nidoca-table>
     `;
   }
 }

@@ -50,12 +50,22 @@ export class NidocaSearchBarShowcasePage extends NidocaShowcaseTemplate {
           <nidoca-tab slot="tab" text="source"></nidoca-tab>
           <nidoca-tab-content slot="tabContent" .selected="${true}">
             <nidoca-spacer .spacerAlignment="${SpacerAlignment.VERTICAL}" .spacerSize="${SpacerSize.BIG}">
-              <nidoca-search-bar placeholder=${this.placeholder} value=${this.value}></nidoca-search-bar>
+              <nidoca-search-bar placeholder=${this.placeholder} value=${this.value}
+                >nidoca-search-bar</nidoca-search-bar
+              >
             </nidoca-spacer>
           </nidoca-tab-content>
           <nidoca-tab-content slot="tabContent"> </nidoca-tab-content>
         </nidoca-tabs>
       </nidoca-flex-container>
+
+      <nidoca-table
+        .headers="${['property', 'type']}"
+        .rows="${[
+          ['placeholder', 'string'],
+          ['value', 'string'],
+        ]}"
+      ></nidoca-table>
     `;
   }
 }

@@ -50,12 +50,20 @@ export class NidocaDividerShowcasePage extends NidocaShowcaseTemplate {
           <nidoca-tab slot="tab" text="source"></nidoca-tab>
           <nidoca-tab-content slot="tabContent" .selected="${true}">
             <nidoca-spacer .spacerAlignment="${SpacerAlignment.VERTICAL}" .spacerSize="${SpacerSize.BIG}">
-              <nidoca-divider dividerType=${this.dividerType} .opacity=${this.opacity}></nidoca-divider>
+              <nidoca-divider dividerType=${this.dividerType} .opacity=${this.opacity}>nidoca-divider</nidoca-divider>
             </nidoca-spacer>
           </nidoca-tab-content>
           <nidoca-tab-content slot="tabContent"> </nidoca-tab-content>
         </nidoca-tabs>
       </nidoca-flex-container>
+
+      <nidoca-table
+        .headers="${['property', 'type']}"
+        .rows="${[
+          ['dividerType', 'string'],
+          ['opacity', 'number'],
+        ]}"
+      ></nidoca-table>
     `;
   }
 }

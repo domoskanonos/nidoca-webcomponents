@@ -59,12 +59,22 @@ export class NidocaBorderShowcasePage extends NidocaShowcaseTemplate {
                 .borderProperties=${this.borderProperties}
                 borderSize=${this.borderSize}
                 shadowType=${this.shadowType}
-              ></nidoca-border>
+                >nidoca-border</nidoca-border
+              >
             </nidoca-spacer>
           </nidoca-tab-content>
           <nidoca-tab-content slot="tabContent"> </nidoca-tab-content>
         </nidoca-tabs>
       </nidoca-flex-container>
+
+      <nidoca-table
+        .headers="${['property', 'type']}"
+        .rows="${[
+          ['borderProperties', 'string[]'],
+          ['borderSize', 'string'],
+          ['shadowType', 'string'],
+        ]}"
+      ></nidoca-table>
     `;
   }
 }

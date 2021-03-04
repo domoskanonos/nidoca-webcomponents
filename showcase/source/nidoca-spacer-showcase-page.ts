@@ -55,16 +55,23 @@ export class NidocaSpacerShowcasePage extends NidocaShowcaseTemplate {
           <nidoca-tab slot="tab" text="source"></nidoca-tab>
           <nidoca-tab-content slot="tabContent" .selected="${true}">
             <nidoca-spacer .spacerAlignment="${SpacerAlignment.VERTICAL}" .spacerSize="${SpacerSize.BIG}">
-              <nidoca-spacer
-                .spacerSize=${this.spacerSize}
-                .spacerAlignment=${this.spacerAlignment}
-                size=${this.size}
-              ></nidoca-spacer>
+              <nidoca-spacer .spacerSize=${this.spacerSize} .spacerAlignment=${this.spacerAlignment} size=${this.size}
+                >nidoca-spacer</nidoca-spacer
+              >
             </nidoca-spacer>
           </nidoca-tab-content>
           <nidoca-tab-content slot="tabContent"> </nidoca-tab-content>
         </nidoca-tabs>
       </nidoca-flex-container>
+
+      <nidoca-table
+        .headers="${['property', 'type']}"
+        .rows="${[
+          ['spacerSize', 'SpacerSize'],
+          ['spacerAlignment', 'SpacerAlignment'],
+          ['size', 'string'],
+        ]}"
+      ></nidoca-table>
     `;
   }
 }

@@ -12,18 +12,13 @@ import {NidocaShowcaseTemplate} from './nidoca-showcase-template';
 @customElement('nidoca-box-showcase-page')
 export class NidocaBoxShowcasePage extends NidocaShowcaseTemplate {
   @property()
-  height: string = '';
-
-  @property()
-  width: string = '';
+  cssStyle: string = '';
 
   constructor() {
     super();
     let initComponent: NidocaBox = new NidocaBox();
 
-    this.height = initComponent.height;
-
-    this.width = initComponent.width;
+    this.cssStyle = initComponent.cssStyle;
   }
 
   getContent(): TemplateResult {
@@ -50,12 +45,14 @@ export class NidocaBoxShowcasePage extends NidocaShowcaseTemplate {
           <nidoca-tab slot="tab" text="source"></nidoca-tab>
           <nidoca-tab-content slot="tabContent" .selected="${true}">
             <nidoca-spacer .spacerAlignment="${SpacerAlignment.VERTICAL}" .spacerSize="${SpacerSize.BIG}">
-              <nidoca-box height=${this.height} width=${this.width}></nidoca-box>
+              <nidoca-box cssStyle=${this.cssStyle}>nidoca-box</nidoca-box>
             </nidoca-spacer>
           </nidoca-tab-content>
           <nidoca-tab-content slot="tabContent"> </nidoca-tab-content>
         </nidoca-tabs>
       </nidoca-flex-container>
+
+      <nidoca-table .headers="${['property', 'type']}" .rows="${[['cssStyle', 'string']]}"></nidoca-table>
     `;
   }
 }

@@ -55,12 +55,21 @@ export class NidocaLinkShowcasePage extends NidocaShowcaseTemplate {
           <nidoca-tab slot="tab" text="source"></nidoca-tab>
           <nidoca-tab-content slot="tabContent" .selected="${true}">
             <nidoca-spacer .spacerAlignment="${SpacerAlignment.VERTICAL}" .spacerSize="${SpacerSize.BIG}">
-              <nidoca-link text=${this.text} href=${this.href} targetType=${this.targetType}></nidoca-link>
+              <nidoca-link text=${this.text} href=${this.href} targetType=${this.targetType}>nidoca-link</nidoca-link>
             </nidoca-spacer>
           </nidoca-tab-content>
           <nidoca-tab-content slot="tabContent"> </nidoca-tab-content>
         </nidoca-tabs>
       </nidoca-flex-container>
+
+      <nidoca-table
+        .headers="${['property', 'type']}"
+        .rows="${[
+          ['text', 'string'],
+          ['href', 'string'],
+          ['targetType', 'string'],
+        ]}"
+      ></nidoca-table>
     `;
   }
 }

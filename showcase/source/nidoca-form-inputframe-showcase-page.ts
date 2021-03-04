@@ -71,12 +71,24 @@ export class NidocaFormInputframeShowcasePage extends NidocaShowcaseTemplate {
                 .infoText=${this.infoText}
                 .warningText=${this.warningText}
                 .selected=${this.selected}
-              ></nidoca-form-inputframe>
+                >nidoca-form-inputframe</nidoca-form-inputframe
+              >
             </nidoca-spacer>
           </nidoca-tab-content>
           <nidoca-tab-content slot="tabContent"> </nidoca-tab-content>
         </nidoca-tabs>
       </nidoca-flex-container>
+
+      <nidoca-table
+        .headers="${['property', 'type']}"
+        .rows="${[
+          ['label', 'string'],
+          ['errorText', 'string | undefined'],
+          ['infoText', 'string | undefined'],
+          ['warningText', 'string | undefined'],
+          ['selected', 'boolean'],
+        ]}"
+      ></nidoca-table>
     `;
   }
 }

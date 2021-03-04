@@ -62,6 +62,12 @@ export class {{this.name}}ShowcasePage extends NidocaShowcaseTemplate {
         </nidoca-tab-content>
       </nidoca-tabs>
   </nidoca-flex-container>
+
+
+<nidoca-table .headers="${ ["property", "type"] }" .rows="${ [ {{#each properties}}{{#if this.isStatic}}{{else}}{{#if this.private}}{{else}}["{{this.name}}","{{this.type}}"],{{/if}} {{/if}}{{/each}} ] }"></nidoca-table>
+
+
+
   `;
   }
 

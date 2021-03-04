@@ -53,13 +53,22 @@ export class NidocaFormOutputDataShowcasePage extends NidocaShowcaseTemplate {
           <nidoca-spacer .spacerAlignment="${SpacerAlignment.VERTICAL}" .spacerSize="${SpacerSize.BIG}">
             <nidoca-form-output-data.jsonObject=${this.jsonObject} 
 .formData=${this.formData} 
-            ></nidoca-form-output-data>
+            >nidoca-form-output-data</nidoca-form-output-data>
           </nidoca-spacer>
         </nidoca-tab-content>
         <nidoca-tab-content slot="tabContent">
         </nidoca-tab-content>
       </nidoca-tabs>
   </nidoca-flex-container>
+
+
+<nidoca-table .headers="${['property', 'type']}" .rows="${[
+      ['jsonObject', 'any'],
+      ['formData', 'FormData'],
+    ]}"></nidoca-table>
+
+
+
   `;
   }
 }
@@ -104,12 +113,22 @@ export class NidocaFormShowcasePage extends NidocaShowcaseTemplate {
           <nidoca-tab slot="tab" text="source"></nidoca-tab>
           <nidoca-tab-content slot="tabContent" .selected="${true}">
             <nidoca-spacer .spacerAlignment="${SpacerAlignment.VERTICAL}" .spacerSize="${SpacerSize.BIG}">
-              <nidoca-form .formProperties=${this.formProperties} .autocomplete=${this.autocomplete}></nidoca-form>
+              <nidoca-form .formProperties=${this.formProperties} .autocomplete=${this.autocomplete}
+                >nidoca-form</nidoca-form
+              >
             </nidoca-spacer>
           </nidoca-tab-content>
           <nidoca-tab-content slot="tabContent"> </nidoca-tab-content>
         </nidoca-tabs>
       </nidoca-flex-container>
+
+      <nidoca-table
+        .headers="${['property', 'type']}"
+        .rows="${[
+          ['formProperties', 'FormProperties[]'],
+          ['autocomplete', 'boolean'],
+        ]}"
+      ></nidoca-table>
     `;
   }
 }

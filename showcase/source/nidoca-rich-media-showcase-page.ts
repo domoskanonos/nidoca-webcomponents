@@ -61,12 +61,22 @@ export class NidocaRichMediaShowcasePage extends NidocaShowcaseTemplate {
                 src=${this.src}
                 .richMediaType=${this.richMediaType}
                 .richMediaProperties=${this.richMediaProperties}
-              ></nidoca-rich-media>
+                >nidoca-rich-media</nidoca-rich-media
+              >
             </nidoca-spacer>
           </nidoca-tab-content>
           <nidoca-tab-content slot="tabContent"> </nidoca-tab-content>
         </nidoca-tabs>
       </nidoca-flex-container>
+
+      <nidoca-table
+        .headers="${['property', 'type']}"
+        .rows="${[
+          ['src', 'string'],
+          ['richMediaType', 'RichMediaType'],
+          ['richMediaProperties', 'RichMediaProperties[]'],
+        ]}"
+      ></nidoca-table>
     `;
   }
 }

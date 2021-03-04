@@ -60,12 +60,22 @@ export class NidocaTypographyShowcasePage extends NidocaShowcaseTemplate {
                 .typographyType=${this.typographyType}
                 .typographyAlignment=${this.typographyAlignment}
                 text=${this.text}
-              ></nidoca-typography>
+                >nidoca-typography</nidoca-typography
+              >
             </nidoca-spacer>
           </nidoca-tab-content>
           <nidoca-tab-content slot="tabContent"> </nidoca-tab-content>
         </nidoca-tabs>
       </nidoca-flex-container>
+
+      <nidoca-table
+        .headers="${['property', 'type']}"
+        .rows="${[
+          ['typographyType', 'TypographyType'],
+          ['typographyAlignment', 'TypographyAlignment'],
+          ['text', 'string'],
+        ]}"
+      ></nidoca-table>
     `;
   }
 }

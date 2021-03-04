@@ -95,12 +95,28 @@ export class NidocaFlexContainerShowcasePage extends NidocaShowcaseTemplate {
                 .flexItemProperties=${this.flexItemProperties}
                 flexItemBasisValue=${this.flexItemBasisValue}
                 .flexItemBasisValues=${this.flexItemBasisValues}
-              ></nidoca-flex-container>
+                >nidoca-flex-container</nidoca-flex-container
+              >
             </nidoca-spacer>
           </nidoca-tab-content>
           <nidoca-tab-content slot="tabContent"> </nidoca-tab-content>
         </nidoca-tabs>
       </nidoca-flex-container>
+
+      <nidoca-table
+        .headers="${['property', 'type']}"
+        .rows="${[
+          ['flexDirection', 'string'],
+          ['flexWrap', 'string'],
+          ['flexJustifyContent', 'string'],
+          ['flexAlignItems', 'string'],
+          ['flexAlignContent', 'string'],
+          ['flexContainerProperties', 'string[]'],
+          ['flexItemProperties', 'string[]'],
+          ['flexItemBasisValue', 'string'],
+          ['flexItemBasisValues', 'string[]'],
+        ]}"
+      ></nidoca-table>
     `;
   }
 }

@@ -6,14 +6,19 @@ import {
   SpacerSize,
   TypographyType,
 } from '@domoskanonos/nidoca-core';
-import {customElement, html, TemplateResult} from 'lit-element';
+import {customElement, html, property, TemplateResult} from 'lit-element';
 import {NidocaShowcaseTemplate} from './nidoca-showcase-template';
 
 @customElement('nidoca-chip-showcase-page')
 export class NidocaChipShowcasePage extends NidocaShowcaseTemplate {
+  @property()
+  clickable: boolean = false;
+
   constructor() {
     super();
     let initComponent: NidocaChip = new NidocaChip();
+
+    this.clickable = initComponent.clickable;
   }
 
   getContent(): TemplateResult {
@@ -40,12 +45,14 @@ export class NidocaChipShowcasePage extends NidocaShowcaseTemplate {
           <nidoca-tab slot="tab" text="source"></nidoca-tab>
           <nidoca-tab-content slot="tabContent" .selected="${true}">
             <nidoca-spacer .spacerAlignment="${SpacerAlignment.VERTICAL}" .spacerSize="${SpacerSize.BIG}">
-              <nidoca-chip></nidoca-chip>
+              <nidoca-chip .clickable=${this.clickable}>nidoca-chip</nidoca-chip>
             </nidoca-spacer>
           </nidoca-tab-content>
           <nidoca-tab-content slot="tabContent"> </nidoca-tab-content>
         </nidoca-tabs>
       </nidoca-flex-container>
+
+      <nidoca-table .headers="${['property', 'type']}" .rows="${[['clickable', 'boolean']]}"></nidoca-table>
     `;
   }
 }

@@ -80,12 +80,25 @@ export class NidocaFloatingContainerShowcasePage extends NidocaShowcaseTemplate 
                 top=${this.top}
                 right=${this.right}
                 bottom=${this.bottom}
-              ></nidoca-floating-container>
+                >nidoca-floating-container</nidoca-floating-container
+              >
             </nidoca-spacer>
           </nidoca-tab-content>
           <nidoca-tab-content slot="tabContent"> </nidoca-tab-content>
         </nidoca-tabs>
       </nidoca-flex-container>
+
+      <nidoca-table
+        .headers="${['property', 'type']}"
+        .rows="${[
+          ['height', 'string'],
+          ['width', 'string'],
+          ['left', 'string'],
+          ['top', 'string'],
+          ['right', 'string'],
+          ['bottom', 'string'],
+        ]}"
+      ></nidoca-table>
     `;
   }
 }

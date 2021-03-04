@@ -50,12 +50,22 @@ export class NidocaListShowcasePage extends NidocaShowcaseTemplate {
           <nidoca-tab slot="tab" text="source"></nidoca-tab>
           <nidoca-tab-content slot="tabContent" .selected="${true}">
             <nidoca-spacer .spacerAlignment="${SpacerAlignment.VERTICAL}" .spacerSize="${SpacerSize.BIG}">
-              <nidoca-list .selectionMode=${this.selectionMode} .slotElement=${this.slotElement}></nidoca-list>
+              <nidoca-list .selectionMode=${this.selectionMode} .slotElement=${this.slotElement}
+                >nidoca-list</nidoca-list
+              >
             </nidoca-spacer>
           </nidoca-tab-content>
           <nidoca-tab-content slot="tabContent"> </nidoca-tab-content>
         </nidoca-tabs>
       </nidoca-flex-container>
+
+      <nidoca-table
+        .headers="${['property', 'type']}"
+        .rows="${[
+          ['selectionMode', 'boolean'],
+          ['slotElement', 'HTMLSlotElement | undefined'],
+        ]}"
+      ></nidoca-table>
     `;
   }
 }

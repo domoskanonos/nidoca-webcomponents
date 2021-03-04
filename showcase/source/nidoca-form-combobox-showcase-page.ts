@@ -102,12 +102,29 @@ export class NidocaFormComboboxShowcasePage extends NidocaShowcaseTemplate {
                 warningText=${this.warningText}
                 .size=${this.size}
                 .multiple=${this.multiple}
-              ></nidoca-form-combobox>
+                >nidoca-form-combobox</nidoca-form-combobox
+              >
             </nidoca-spacer>
           </nidoca-tab-content>
           <nidoca-tab-content slot="tabContent"> </nidoca-tab-content>
         </nidoca-tabs>
       </nidoca-flex-container>
+
+      <nidoca-table
+        .headers="${['property', 'type']}"
+        .rows="${[
+          ['name', 'string'],
+          ['value', 'any'],
+          ['label', 'string'],
+          ['options', 'FormOutputData[]'],
+          ['required', 'boolean'],
+          ['errorText', 'string'],
+          ['infoText', 'string'],
+          ['warningText', 'string'],
+          ['size', 'number'],
+          ['multiple', 'boolean'],
+        ]}"
+      ></nidoca-table>
     `;
   }
 }

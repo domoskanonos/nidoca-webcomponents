@@ -12,7 +12,7 @@ import {NidocaShowcaseTemplate} from './nidoca-showcase-template';
 @customElement('nidoca-icon-showcase-page')
 export class NidocaIconShowcasePage extends NidocaShowcaseTemplate {
   @property()
-  icon: string | null | undefined = '';
+  icon: string = '';
 
   @property()
   color: string = '';
@@ -96,7 +96,7 @@ export class NidocaIconShowcasePage extends NidocaShowcaseTemplate {
           <nidoca-tab-content slot="tabContent" .selected="${true}">
             <nidoca-spacer .spacerAlignment="${SpacerAlignment.VERTICAL}" .spacerSize="${SpacerSize.BIG}">
               <nidoca-icon
-                .icon=${this.icon}
+                icon=${this.icon}
                 color=${this.color}
                 backgroundColor=${this.backgroundColor}
                 iconShadowType=${this.iconShadowType}
@@ -107,12 +107,30 @@ export class NidocaIconShowcasePage extends NidocaShowcaseTemplate {
                 .round=${this.round}
                 .clickable=${this.clickable}
                 .deactivated=${this.deactivated}
-              ></nidoca-icon>
+                >nidoca-icon</nidoca-icon
+              >
             </nidoca-spacer>
           </nidoca-tab-content>
           <nidoca-tab-content slot="tabContent"> </nidoca-tab-content>
         </nidoca-tabs>
       </nidoca-flex-container>
+
+      <nidoca-table
+        .headers="${['property', 'type']}"
+        .rows="${[
+          ['icon', 'string'],
+          ['color', 'string'],
+          ['backgroundColor', 'string'],
+          ['iconShadowType', 'string'],
+          ['size', 'number'],
+          ['sizeUnit', 'string'],
+          ['iconTitle', 'string'],
+          ['withIconSpace', 'boolean'],
+          ['round', 'boolean'],
+          ['clickable', 'boolean'],
+          ['deactivated', 'boolean'],
+        ]}"
+      ></nidoca-table>
     `;
   }
 }

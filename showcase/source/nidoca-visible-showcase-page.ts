@@ -45,12 +45,14 @@ export class NidocaVisibleShowcasePage extends NidocaShowcaseTemplate {
           <nidoca-tab slot="tab" text="source"></nidoca-tab>
           <nidoca-tab-content slot="tabContent" .selected="${true}">
             <nidoca-spacer .spacerAlignment="${SpacerAlignment.VERTICAL}" .spacerSize="${SpacerSize.BIG}">
-              <nidoca-visible visibleType=${this.visibleType}></nidoca-visible>
+              <nidoca-visible visibleType=${this.visibleType}>nidoca-visible</nidoca-visible>
             </nidoca-spacer>
           </nidoca-tab-content>
           <nidoca-tab-content slot="tabContent"> </nidoca-tab-content>
         </nidoca-tabs>
       </nidoca-flex-container>
+
+      <nidoca-table .headers="${['property', 'type']}" .rows="${[['visibleType', 'string']]}"></nidoca-table>
     `;
   }
 }
