@@ -48,7 +48,10 @@ export class NidocaFormCombobox extends NidocaFormAbstractInputElement {
   label: string = 'combobox';
 
   @property()
-  options: FormOutputData[] = [<FormOutputData>{key: '', value: 'no value'},<FormOutputData>{key: '1', value: 'value'}];
+  options: FormOutputData[] = [
+    <FormOutputData>{key: '', value: 'no value'},
+    <FormOutputData>{key: '1', value: 'value'},
+  ];
 
   @property()
   required: boolean = true;

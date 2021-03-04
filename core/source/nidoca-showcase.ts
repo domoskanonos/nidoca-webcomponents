@@ -8,26 +8,26 @@ import {NidocaTemplate} from './nidoca-template';
 
 @customElement('nidoca-showcase')
 export class NidocaShowcase extends NidocaTemplate {
+  getContent(): TemplateResult {
+    return html`
+      <nidoca-progress>dsoidjf</nidoca-progress>
+      <nidoca-box cssStyle="height:600px; width:100%">
+        <nidoca-table></nidoca-table>
+      </nidoca-box>
+    `;
+  }
 
-    getContent(): TemplateResult {
-        return html`
-        <nidoca-rich-media></nidoca-rich-media>
-        
-        `;
-    }
+  getSidebarContent(): TemplateResult {
+    return html`
+      <nidoca-navigation
+        @nidoca-event-link-clicked="${(event: CustomEvent) => this.navigationLinkClicked(event)}"
+        .closed="${this.navigationClosed}"
+      >
+      </nidoca-navigation>
+    `;
+  }
 
-    getSidebarContent(): TemplateResult {
-        return html`
-            <nidoca-navigation
-                    @nidoca-event-link-clicked="${(event: CustomEvent) => this.navigationLinkClicked(event)}"
-                    .closed="${this.navigationClosed}"
-            >
-            </nidoca-navigation>
-        `;
-    }
-
-    navigationLinkClicked(event: CustomEvent<any>): void {
-        console.warn('Method not implemented. event detail: %s' + event.detail);
-    }
-
+  navigationLinkClicked(event: CustomEvent<any>): void {
+    console.warn('Method not implemented. event detail: %s' + event.detail);
+  }
 }

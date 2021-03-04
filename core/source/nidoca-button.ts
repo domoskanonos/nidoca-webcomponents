@@ -60,7 +60,7 @@ export class NidocaButton extends LitElement {
   buttonType: ButtonType = ButtonType.PRIMARY;
 
   @property()
-  leadingIcon: string | null | undefined;
+  leadingIcon: string = 'thumb_up';
 
   @property()
   text: string = '';
@@ -85,13 +85,7 @@ export class NidocaButton extends LitElement {
           <nidoca-visible visibleType="${this.leadingIcon ? VisibleType.NORMAL : VisibleType.HIDE}">
             <nidoca-icon .icon="${this.leadingIcon}"></nidoca-icon>
           </nidoca-visible>
-          <nidoca-visible visibleType="${this.leadingIcon ? VisibleType.NORMAL : VisibleType.HIDE}">
-            <nidoca-visible
-              visibleType="${this.buttonType == ButtonType.CLEAR ? VisibleType.HIDE : VisibleType.NORMAL}"
-            >
-              <nidoca-spacer spacerSize="${SpacerSize.MEDIUM}"></nidoca-spacer>
-            </nidoca-visible>
-          </nidoca-visible>
+          <nidoca-visible visibleType="${this.leadingIcon ? VisibleType.NORMAL : VisibleType.HIDE}"> </nidoca-visible>
           <nidoca-typography text="${this.text}" typographyType="${TypographyType.BUTTON}">
             <slot></slot>
           </nidoca-typography>

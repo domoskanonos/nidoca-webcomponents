@@ -1,24 +1,24 @@
 import {css, customElement, html, LitElement, property, TemplateResult} from 'lit-element';
 
 export enum SpacerAlignment {
-    BOTH = 'both',
-    HORIZONTAL = 'horizontalAlignment',
-    VERTICAL = 'verticalAlignment',
+  BOTH = 'both',
+  HORIZONTAL = 'horizontalAlignment',
+  VERTICAL = 'verticalAlignment',
 }
 
 export enum SpacerSize {
-    ZERO = 'spacerZero',
-    LITTLE = 'spaceLittle',
-    SMALL = 'spaceSmall',
-    MEDIUM = 'spaceMedium',
-    NORMAL = 'spaceNormal',
-    BIG = 'spaceBig',
-    MAX = 'spaceMax',
+  ZERO = 'spacerZero',
+  LITTLE = 'spaceLittle',
+  SMALL = 'spaceSmall',
+  MEDIUM = 'spaceMedium',
+  NORMAL = 'spaceNormal',
+  BIG = 'spaceBig',
+  MAX = 'spaceMax',
 }
 
 @customElement('nidoca-spacer')
 export class NidocaSpacer extends LitElement {
-    static styles = css`
+  static styles = css`
     :host,
     ::slotted(:host) {
     }
@@ -72,35 +72,35 @@ export class NidocaSpacer extends LitElement {
     }
   `;
 
-    @property()
-    spacerSize: SpacerSize = SpacerSize.ZERO;
+  @property()
+  spacerSize: SpacerSize = SpacerSize.NORMAL;
 
-    @property()
-    spacerAlignment: SpacerAlignment = SpacerAlignment.BOTH;
+  @property()
+  spacerAlignment: SpacerAlignment = SpacerAlignment.BOTH;
 
-    @property()
-    size: string = '';
+  @property()
+  size: string = '';
 
-    render(): TemplateResult {
-        return html`
-            <span class="spacer ${this.spacerSize} ${this.spacerAlignment}" style="${this.toSizeStyle(this.size)}"
-            ><slot></slot
-            ></span>
-        `;
+  render(): TemplateResult {
+    return html`
+      <span class="spacer ${this.spacerSize} ${this.spacerAlignment}" style="${this.toSizeStyle(this.size)}"
+        ><slot></slot
+      ></span>
+    `;
+  }
+
+  private toSizeStyle(size: string): string {
+    if (size == null || size.length == 0) {
+      return '';
     }
-
-    private toSizeStyle(size: string): string {
-        if (size == null || size.length == 0) {
-            return '';
-        }
-        switch (this.spacerAlignment) {
-            case SpacerAlignment.VERTICAL:
-                return 'padding-top:'.concat(size).concat(';').concat('padding-bottom:').concat(size).concat(';');
-            case SpacerAlignment.HORIZONTAL:
-                return 'padding-left:'.concat(size).concat(';').concat('padding-right:').concat(size).concat(';');
-            case SpacerAlignment.BOTH:
-                return 'padding:'.concat(size).concat(';');
-        }
-        return '';
+    switch (this.spacerAlignment) {
+      case SpacerAlignment.VERTICAL:
+        return 'padding-top:'.concat(size).concat(';').concat('padding-bottom:').concat(size).concat(';');
+      case SpacerAlignment.HORIZONTAL:
+        return 'padding-left:'.concat(size).concat(';').concat('padding-right:').concat(size).concat(';');
+      case SpacerAlignment.BOTH:
+        return 'padding:'.concat(size).concat(';');
     }
+    return '';
+  }
 }

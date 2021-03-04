@@ -89,7 +89,7 @@ export class NidocaIcon extends LitElement {
   `;
 
   @property()
-  icon: string | null | undefined;
+  icon: string = 'thumb_up';
 
   @property()
   color: string = '';
@@ -116,7 +116,7 @@ export class NidocaIcon extends LitElement {
   round: boolean = false;
 
   @property()
-  clickable: boolean = false;
+  clickable: boolean = true;
 
   @property()
   deactivated: boolean = false;

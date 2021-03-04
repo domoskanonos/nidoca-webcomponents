@@ -1,26 +1,32 @@
-import {css, customElement, html, TemplateResult} from 'lit-element';
+import {css, customElement, html, property, TemplateResult} from 'lit-element';
 import {LitElement} from 'lit-element';
 
 @customElement('nidoca-chip')
 export class NidocaChip extends LitElement {
   static styles = css`
-    .CHIP {
+    .chip {
       display: inline-block;
       background: var(--app-color-surface-background-light);
-      padding: 0 12px;
-      border-radius: 32px;
-      font-size: 13px;
-      line-height: 32px;
+      padding: 0 var(--space-normal);
+      border-radius: var(--line-height-large);
+      line-height: var(--line-height-large);
     }
 
-    .CHIP-hover:hover {
-      background: #ccc;
+    .chip:hover {
+      background: var(--app-color-surface-background-dark);
+    }
+
+    .clickable {
+      cursor: pointer;
     }
   `;
 
+  @property()
+  clickable: boolean = true;
+
   render(): TemplateResult {
     return html`
-      <div class="CHIP">
+      <div class="chip ${this.clickable ? 'clickable' : ''}">
         <slot></slot>
       </div>
     `;

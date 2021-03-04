@@ -1,6 +1,7 @@
 import {css, customElement, html, LitElement, property, TemplateResult} from 'lit-element';
 import {guard} from 'lit-html/directives/guard';
 import {repeat} from 'lit-html/directives/repeat';
+import {NidocaIcon} from './nidoca-icon';
 
 @customElement('nidoca-table')
 export class NidocaTable extends LitElement {
@@ -34,10 +35,13 @@ export class NidocaTable extends LitElement {
   `;
 
   @property()
-  headers: any[] = [];
+  headers: any[] = ['column 1', 'column 2'];
 
   @property()
-  rows: [any[]] = [[]];
+  rows: any[] = [
+    ['row 1', new NidocaIcon()],
+    ['row 2', new NidocaIcon()],
+  ];
 
   render(): TemplateResult {
     return html`
