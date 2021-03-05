@@ -12,7 +12,7 @@ export class NidocaAccordion extends LitElement {
   static styles = css``;
 
   @property()
-  accordionType: string = AccordionType.SINGLE;
+  accordionType: AccordionType = AccordionType.SINGLE;
 
   @query('#accordionSlot')
   private accordionSlot: HTMLSlotElement | undefined;

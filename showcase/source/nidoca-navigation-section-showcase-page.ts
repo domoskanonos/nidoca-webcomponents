@@ -36,10 +36,7 @@ export class NidocaNavigationSectionShowcasePage extends NidocaShowcaseTemplate 
           FlexContainerProperties.SMARTPHONE_HORIZONTAL_PADDING,
           FlexContainerProperties.TABLET_HORIZONTAL_PADDING,
         ]}"
-        .flexItemProperties="${[
-          FlexItemProperties.KEYLINE_ALIGNMENT_HORIZONTAL,
-          FlexItemProperties.KEYLINE_SIZE_MEDIUM,
-        ]}"
+        .flexItemProperties="${[FlexItemProperties.KEYLINE_ALIGNMENT_BOTH, FlexItemProperties.KEYLINE_SIZE_MEDIUM]}"
         flexItemBasisValue="100%"
       >
         <nidoca-typography
@@ -52,23 +49,34 @@ export class NidocaNavigationSectionShowcasePage extends NidocaShowcaseTemplate 
           <nidoca-tab slot="tab" .selected="${true}" text="demo"></nidoca-tab>
           <nidoca-tab slot="tab" text="source"></nidoca-tab>
           <nidoca-tab-content slot="tabContent" .selected="${true}">
-            <nidoca-spacer .spacerAlignment="${SpacerAlignment.VERTICAL}" .spacerSize="${SpacerSize.BIG}">
+            <nidoca-spacer
+              .spacerAlignment="${SpacerAlignment.VERTICAL}"
+              .spacerSize="${SpacerSize.LITTLE}"
+            ></nidoca-spacer>
+            <nidoca-box cssStyle="width:100%; height:50vh;background-color: var(--app-color-surface-background-light)">
               <nidoca-navigation-section text=${this.text} .rendered=${this.rendered}
                 >nidoca-navigation-section</nidoca-navigation-section
               >
-            </nidoca-spacer>
+            </nidoca-box>
           </nidoca-tab-content>
-          <nidoca-tab-content slot="tabContent"> </nidoca-tab-content>
+          <nidoca-tab-content slot="tabContent">
+            <nidoca-spacer
+              .spacerAlignment="${SpacerAlignment.VERTICAL}"
+              .spacerSize="${SpacerSize.LITTLE}"
+            ></nidoca-spacer>
+            <nidoca-box cssStyle="width:100%; height:50vh;background-color: var(--app-color-surface-background-light)">
+            </nidoca-box>
+          </nidoca-tab-content>
         </nidoca-tabs>
-      </nidoca-flex-container>
 
-      <nidoca-table
-        .headers="${['property', 'type']}"
-        .rows="${[
-          ['text', 'string'],
-          ['rendered', 'boolean'],
-        ]}"
-      ></nidoca-table>
+        <nidoca-table
+          .headers="${['property', 'type']}"
+          .rows="${[
+            ['text', 'string'],
+            ['rendered', 'boolean'],
+          ]}"
+        ></nidoca-table>
+      </nidoca-flex-container>
     `;
   }
 }

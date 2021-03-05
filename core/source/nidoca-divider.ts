@@ -29,7 +29,7 @@ export class NidocaDivider extends LitElement {
   `;
 
   @property()
-  dividerType: string = DividerType.THIN;
+  dividerType: DividerType = DividerType.THIN;
 
   @property()
   opacity: number = 1.0;

@@ -56,10 +56,7 @@ export class NidocaFloatingContainerShowcasePage extends NidocaShowcaseTemplate 
           FlexContainerProperties.SMARTPHONE_HORIZONTAL_PADDING,
           FlexContainerProperties.TABLET_HORIZONTAL_PADDING,
         ]}"
-        .flexItemProperties="${[
-          FlexItemProperties.KEYLINE_ALIGNMENT_HORIZONTAL,
-          FlexItemProperties.KEYLINE_SIZE_MEDIUM,
-        ]}"
+        .flexItemProperties="${[FlexItemProperties.KEYLINE_ALIGNMENT_BOTH, FlexItemProperties.KEYLINE_SIZE_MEDIUM]}"
         flexItemBasisValue="100%"
       >
         <nidoca-typography
@@ -72,7 +69,11 @@ export class NidocaFloatingContainerShowcasePage extends NidocaShowcaseTemplate 
           <nidoca-tab slot="tab" .selected="${true}" text="demo"></nidoca-tab>
           <nidoca-tab slot="tab" text="source"></nidoca-tab>
           <nidoca-tab-content slot="tabContent" .selected="${true}">
-            <nidoca-spacer .spacerAlignment="${SpacerAlignment.VERTICAL}" .spacerSize="${SpacerSize.BIG}">
+            <nidoca-spacer
+              .spacerAlignment="${SpacerAlignment.VERTICAL}"
+              .spacerSize="${SpacerSize.LITTLE}"
+            ></nidoca-spacer>
+            <nidoca-box cssStyle="width:100%; height:50vh;background-color: var(--app-color-surface-background-light)">
               <nidoca-floating-container
                 height=${this.height}
                 width=${this.width}
@@ -82,23 +83,30 @@ export class NidocaFloatingContainerShowcasePage extends NidocaShowcaseTemplate 
                 bottom=${this.bottom}
                 >nidoca-floating-container</nidoca-floating-container
               >
-            </nidoca-spacer>
+            </nidoca-box>
           </nidoca-tab-content>
-          <nidoca-tab-content slot="tabContent"> </nidoca-tab-content>
+          <nidoca-tab-content slot="tabContent">
+            <nidoca-spacer
+              .spacerAlignment="${SpacerAlignment.VERTICAL}"
+              .spacerSize="${SpacerSize.LITTLE}"
+            ></nidoca-spacer>
+            <nidoca-box cssStyle="width:100%; height:50vh;background-color: var(--app-color-surface-background-light)">
+            </nidoca-box>
+          </nidoca-tab-content>
         </nidoca-tabs>
-      </nidoca-flex-container>
 
-      <nidoca-table
-        .headers="${['property', 'type']}"
-        .rows="${[
-          ['height', 'string'],
-          ['width', 'string'],
-          ['left', 'string'],
-          ['top', 'string'],
-          ['right', 'string'],
-          ['bottom', 'string'],
-        ]}"
-      ></nidoca-table>
+        <nidoca-table
+          .headers="${['property', 'type']}"
+          .rows="${[
+            ['height', 'string'],
+            ['width', 'string'],
+            ['left', 'string'],
+            ['top', 'string'],
+            ['right', 'string'],
+            ['bottom', 'string'],
+          ]}"
+        ></nidoca-table>
+      </nidoca-flex-container>
     `;
   }
 }

@@ -67,44 +67,47 @@ export class NidocaWizard extends LitElement {
   `;
 
   @property()
-  wizardSteps: WizardStep[] = [];
+  wizardSteps: WizardStep[] = [<WizardStep>{icon: 'thumb_up', title: 'step 1'}, <WizardStep>{
+    icon: 'thumb_up',
+    title: 'step 2',
+  }, <WizardStep>{icon: 'thumb_up', title: 'step 3'}];
 
   @property()
-  selectedStep: WizardStep | undefined;
+  selectedStep: WizardStep = <WizardStep>{icon: 'thumb_up', title: 'step 1'};
 
   render(): TemplateResult {
     return html`
-      <div class="WIZARD">
-        ${guard(
-          [this.wizardSteps],
-          () =>
-            html`
-              ${repeat(
-                this.wizardSteps,
-                (wizardStep: WizardStep) =>
-                  html`
-                    <div class="WIZARD_STEP">
-                      <div class="WIZARD_ICON">
-                        <nidoca-icon
-                          icon="${wizardStep.icon}"
-                          clickable="true"
-                          @nidoca-event-icon-clicked="${() => {
-                            this.selectedStep = wizardStep;
-                          }}"
-                        ></nidoca-icon>
-                      </div>
-                      <div class="WIZARD_TITLE">
-                        <nidoca-typography
-                          .typographyType="${TypographyType.OVERLINE}"
-                          text="${wizardStep.title}"
-                        ></nidoca-typography>
-                      </div>
-                    </div>
-                  `
-              )}
-            `
-        )}
-      </div>
+        <div class="WIZARD">
+            ${guard(
+                    [this.wizardSteps],
+                    () =>
+                            html`
+                                ${repeat(
+                                        this.wizardSteps,
+                                        (wizardStep: WizardStep) =>
+                                                html`
+                                                    <div class="WIZARD_STEP">
+                                                        <div class="WIZARD_ICON">
+                                                            <nidoca-icon
+                                                                    icon="${wizardStep.icon}"
+                                                                    clickable="true"
+                                                                    @nidoca-event-icon-clicked="${() => {
+                                                                        this.selectedStep = wizardStep;
+                                                                    }}"
+                                                            ></nidoca-icon>
+                                                        </div>
+                                                        <div class="WIZARD_TITLE">
+                                                            <nidoca-typography
+                                                                    .typographyType="${TypographyType.OVERLINE}"
+                                                                    text="${wizardStep.title}"
+                                                            ></nidoca-typography>
+                                                        </div>
+                                                    </div>
+                                                `,
+                                )}
+                            `,
+            )}
+        </div>
     `;
   }
 }

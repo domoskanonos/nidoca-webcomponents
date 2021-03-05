@@ -81,10 +81,7 @@ export class NidocaIconShowcasePage extends NidocaShowcaseTemplate {
           FlexContainerProperties.SMARTPHONE_HORIZONTAL_PADDING,
           FlexContainerProperties.TABLET_HORIZONTAL_PADDING,
         ]}"
-        .flexItemProperties="${[
-          FlexItemProperties.KEYLINE_ALIGNMENT_HORIZONTAL,
-          FlexItemProperties.KEYLINE_SIZE_MEDIUM,
-        ]}"
+        .flexItemProperties="${[FlexItemProperties.KEYLINE_ALIGNMENT_BOTH, FlexItemProperties.KEYLINE_SIZE_MEDIUM]}"
         flexItemBasisValue="100%"
       >
         <nidoca-typography .typographyType="${TypographyType.H2}" text="<nidoca-icon/>"></nidoca-typography>
@@ -94,7 +91,11 @@ export class NidocaIconShowcasePage extends NidocaShowcaseTemplate {
           <nidoca-tab slot="tab" .selected="${true}" text="demo"></nidoca-tab>
           <nidoca-tab slot="tab" text="source"></nidoca-tab>
           <nidoca-tab-content slot="tabContent" .selected="${true}">
-            <nidoca-spacer .spacerAlignment="${SpacerAlignment.VERTICAL}" .spacerSize="${SpacerSize.BIG}">
+            <nidoca-spacer
+              .spacerAlignment="${SpacerAlignment.VERTICAL}"
+              .spacerSize="${SpacerSize.LITTLE}"
+            ></nidoca-spacer>
+            <nidoca-box cssStyle="width:100%; height:50vh;background-color: var(--app-color-surface-background-light)">
               <nidoca-icon
                 icon=${this.icon}
                 color=${this.color}
@@ -109,28 +110,35 @@ export class NidocaIconShowcasePage extends NidocaShowcaseTemplate {
                 .deactivated=${this.deactivated}
                 >nidoca-icon</nidoca-icon
               >
-            </nidoca-spacer>
+            </nidoca-box>
           </nidoca-tab-content>
-          <nidoca-tab-content slot="tabContent"> </nidoca-tab-content>
+          <nidoca-tab-content slot="tabContent">
+            <nidoca-spacer
+              .spacerAlignment="${SpacerAlignment.VERTICAL}"
+              .spacerSize="${SpacerSize.LITTLE}"
+            ></nidoca-spacer>
+            <nidoca-box cssStyle="width:100%; height:50vh;background-color: var(--app-color-surface-background-light)">
+            </nidoca-box>
+          </nidoca-tab-content>
         </nidoca-tabs>
-      </nidoca-flex-container>
 
-      <nidoca-table
-        .headers="${['property', 'type']}"
-        .rows="${[
-          ['icon', 'string'],
-          ['color', 'string'],
-          ['backgroundColor', 'string'],
-          ['iconShadowType', 'string'],
-          ['size', 'number'],
-          ['sizeUnit', 'string'],
-          ['iconTitle', 'string'],
-          ['withIconSpace', 'boolean'],
-          ['round', 'boolean'],
-          ['clickable', 'boolean'],
-          ['deactivated', 'boolean'],
-        ]}"
-      ></nidoca-table>
+        <nidoca-table
+          .headers="${['property', 'type']}"
+          .rows="${[
+            ['icon', 'string'],
+            ['color', 'string'],
+            ['backgroundColor', 'string'],
+            ['iconShadowType', 'string'],
+            ['size', 'number'],
+            ['sizeUnit', 'string'],
+            ['iconTitle', 'string'],
+            ['withIconSpace', 'boolean'],
+            ['round', 'boolean'],
+            ['clickable', 'boolean'],
+            ['deactivated', 'boolean'],
+          ]}"
+        ></nidoca-table>
+      </nidoca-flex-container>
     `;
   }
 }

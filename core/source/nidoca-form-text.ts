@@ -35,28 +35,25 @@ export class NidocaFormText extends NidocaFormAbstractInputElement {
   textType: TextType = TextType.TEXT;
 
   @property()
-  name: string = '';
+  name: string = 'text';
 
   @property()
-  value: any;
+  value: any = '';
 
   @property()
-  label: string = '';
+  label: string = 'nidoca-form-text';
 
   @property()
   required: boolean = false;
 
   @property()
-  placeholder: string = '';
+  placeholder: string = 'nidoca-form-text';
 
   @property()
   disabled: boolean = false;
 
   @property()
   checked: boolean = false;
-
-  @property()
-  multiple: boolean = false;
 
   @property()
   maxlength: number | undefined;
@@ -77,13 +74,13 @@ export class NidocaFormText extends NidocaFormAbstractInputElement {
   size: number | undefined;
 
   @property()
-  errorText: string | undefined;
+  errorText: string = "errorText";
 
   @property()
-  infoText: string | undefined;
+  infoText: string = "infoText";
 
   @property()
-  warningText: string | undefined;
+  warningText: string = "warningText";
 
   @query('#inputElement')
   private inputElement: HTMLInputElement | undefined;
@@ -111,7 +108,6 @@ export class NidocaFormText extends NidocaFormAbstractInputElement {
           ?required="${this.required}"
           ?disabled="${this.disabled}"
           ?checked="${this.checked}"
-          ?multiple="${this.multiple}"
           @keyup="${this.handleKeyup}"
           @change="${() => this.handleChange()}"
           @focus="${() => this.handleFocus()}"
@@ -158,7 +154,7 @@ export class NidocaFormText extends NidocaFormAbstractInputElement {
   }
 
   public validate(): boolean {
-    this.errorText = undefined;
+    this.errorText = '';
     if (
       this.inputElement != null &&
       !this.inputElement.validity.valid &&
@@ -166,6 +162,6 @@ export class NidocaFormText extends NidocaFormAbstractInputElement {
     ) {
       this.errorText = this.inputElement.validationMessage;
     }
-    return this.errorText == undefined;
+    return this.errorText == '';
   }
 }
