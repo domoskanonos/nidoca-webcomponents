@@ -5,6 +5,7 @@ export * from './nidoca-accordion-item';
 export * from './nidoca-box';
 export * from './nidoca-wizard';
 export * from './nidoca-chip';
+export * from './nidoca-code';
 export * from './nidoca-progress';
 export * from './nidoca-border';
 export * from './nidoca-floating-container';
