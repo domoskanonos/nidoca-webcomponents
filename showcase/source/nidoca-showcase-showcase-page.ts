@@ -46,6 +46,10 @@ export class NidocaShowcaseShowcasePage extends NidocaShowcaseTemplate {
           <nidoca-code code="${'<nidoca-showcase >\n     nidoca-showcase\n</nidoca-showcase>'}"></nidoca-code>
         </nidoca-flex-container>
 
+        Slot:
+
+        <nidoca-table .headers="${['property', 'type']}" .rows="${[]}"></nidoca-table>
+
         <nidoca-table .headers="${['property', 'type']}" .rows="${[]}"></nidoca-table>
       </nidoca-flex-container>
     `;

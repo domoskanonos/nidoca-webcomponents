@@ -64,6 +64,8 @@ export class NidocaListItemShowcasePage extends NidocaShowcaseTemplate {
           ></nidoca-code>
         </nidoca-flex-container>
 
+        Slot: [object Object]
+
         <nidoca-table
           .headers="${['property', 'type']}"
           .rows="${[
@@ -71,6 +73,8 @@ export class NidocaListItemShowcasePage extends NidocaShowcaseTemplate {
             ['selected', 'boolean'],
           ]}"
         ></nidoca-table>
+
+        <nidoca-table .headers="${['property', 'type']}" .rows="${[['render', 'render']]}"></nidoca-table>
       </nidoca-flex-container>
     `;
   }

@@ -76,6 +76,8 @@ export class NidocaSearchBarShowcasePage extends NidocaShowcaseTemplate {
           ></nidoca-code>
         </nidoca-flex-container>
 
+        Slot: [object Object]
+
         <nidoca-table
           .headers="${['property', 'type']}"
           .rows="${[
@@ -83,6 +85,8 @@ export class NidocaSearchBarShowcasePage extends NidocaShowcaseTemplate {
             ['value', 'string'],
           ]}"
         ></nidoca-table>
+
+        <nidoca-table .headers="${['property', 'type']}" .rows="${[['render', 'render']]}"></nidoca-table>
       </nidoca-flex-container>
     `;
   }

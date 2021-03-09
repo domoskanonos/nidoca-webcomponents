@@ -100,6 +100,8 @@ export class NidocaFormSwitchShowcasePage extends NidocaShowcaseTemplate {
           ></nidoca-code>
         </nidoca-flex-container>
 
+        Slot: [object Object]
+
         <nidoca-table
           .headers="${['property', 'type']}"
           .rows="${[
@@ -109,6 +111,8 @@ export class NidocaFormSwitchShowcasePage extends NidocaShowcaseTemplate {
             ['checked', 'boolean'],
           ]}"
         ></nidoca-table>
+
+        <nidoca-table .headers="${['property', 'type']}" .rows="${[['render', 'render']]}"></nidoca-table>
       </nidoca-flex-container>
     `;
   }

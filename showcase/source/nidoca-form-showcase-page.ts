@@ -71,6 +71,8 @@ export class NidocaFormOutputDataShowcasePage extends NidocaShowcaseTemplate {
           ></nidoca-code>
         </nidoca-flex-container>
 
+        Slot:
+
         <nidoca-table
           .headers="${['property', 'type']}"
           .rows="${[
@@ -78,6 +80,8 @@ export class NidocaFormOutputDataShowcasePage extends NidocaShowcaseTemplate {
             ['formData', 'FormData'],
           ]}"
         ></nidoca-table>
+
+        <nidoca-table .headers="${['property', 'type']}" .rows="${[]}"></nidoca-table>
       </nidoca-flex-container>
     `;
   }
@@ -148,6 +152,8 @@ export class NidocaFormShowcasePage extends NidocaShowcaseTemplate {
           ></nidoca-code>
         </nidoca-flex-container>
 
+        Slot: [object Object]
+
         <nidoca-table
           .headers="${['property', 'type']}"
           .rows="${[
@@ -155,6 +161,8 @@ export class NidocaFormShowcasePage extends NidocaShowcaseTemplate {
             ['autocomplete', 'boolean'],
           ]}"
         ></nidoca-table>
+
+        <nidoca-table .headers="${['property', 'type']}" .rows="${[['render', 'render']]}"></nidoca-table>
       </nidoca-flex-container>
     `;
   }

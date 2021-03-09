@@ -306,6 +306,8 @@ export class NidocaFormTextShowcasePage extends NidocaShowcaseTemplate {
           ></nidoca-code>
         </nidoca-flex-container>
 
+        Slot: [object Object]
+
         <nidoca-table
           .headers="${['property', 'type']}"
           .rows="${[
@@ -328,6 +330,8 @@ export class NidocaFormTextShowcasePage extends NidocaShowcaseTemplate {
             ['warningText', 'string'],
           ]}"
         ></nidoca-table>
+
+        <nidoca-table .headers="${['property', 'type']}" .rows="${[['render', 'render']]}"></nidoca-table>
       </nidoca-flex-container>
     `;
   }

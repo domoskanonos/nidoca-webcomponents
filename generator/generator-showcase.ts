@@ -135,13 +135,14 @@ function createComponentPages(files: any[], imps: any[]) {
 
             let destinationFilename: string = file.from.concat('-showcase-page.ts');
 
-            console.log('parse file: %s', filename);
+           // console.log('parse file: %s', filename);
             const parsedFile = typescriptParser.parseFile(sourceRoot.concat(filename), 'workspace root');
 
             parsedFile.then((value: any) => {
 
+                //console.log("parsedfiie: "+ JSON.stringify(value));
 
-                    value['imports'] = imps;
+                value['imports'] = imps;
                     let decs: any[] = value['declarations'];
                     decs.forEach((clazz: any) => {
                         let clazzName: string = clazz.name;
@@ -153,7 +154,7 @@ function createComponentPages(files: any[], imps: any[]) {
                                 if(property.visibility == 0){
                                     property.private = true;
                                 }
-                                console.log(JSON.stringify(property));
+                                //console.log(JSON.stringify(property));
                                 let propertyType: string = property.type;
                                 if (propertyType == undefined) {
                                     continue;
@@ -180,7 +181,29 @@ function createComponentPages(files: any[], imps: any[]) {
                                 property.type = propertyType;
                             }
                         }
+
+
+                        clazz.slots = [];
+                        if(clazz.methods){
+                            clazz.methods.forEach((method: any) => {
+
+                                if(method.name == 'render'){
+                                console.log(JSON.stringify(method));
+
+                                console.log(method.moduleSpecifier);
+
+                                clazz.slots.push({name: method.name});
+                                }
+
+                            });
+
+                        }
+
                     });
+
+
+
+
 
 
                     let fileContent: string = fs.readFileSync('./component.html', 'utf-8');
