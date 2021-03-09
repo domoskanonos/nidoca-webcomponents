@@ -32,9 +32,12 @@ export class {{this.name}}ShowcasePage extends NidocaShowcaseTemplate {
 
   getContent(): TemplateResult {
     return html`
+
+
+
       <nidoca-flex-container
       .flexContainerProperties="${[
-      FlexContainerProperties.CONTAINER_WIDTH_50,
+      FlexContainerProperties.CONTAINER_WIDTH_100,
       FlexContainerProperties.TABLET_MAX_WIDTH,
       FlexContainerProperties.SMARTPHONE_MAX_WIDTH,
       FlexContainerProperties.SMARTPHONE_HORIZONTAL_PADDING,
@@ -48,52 +51,61 @@ export class {{this.name}}ShowcasePage extends NidocaShowcaseTemplate {
         <br />description<br /><br />
       </nidoca-typography>
       <nidoca-typography .typographyType="${TypographyType.H4}" text="example"></nidoca-typography>
-      <nidoca-tabs>
-        <nidoca-tab slot="tab" .selected="${true}" text="demo"></nidoca-tab>
-        <nidoca-tab slot="tab" text="source"></nidoca-tab>
-        <nidoca-tab-content slot="tabContent" .selected="${true}">
-
-            <nidoca-spacer .spacerAlignment="${SpacerAlignment.VERTICAL}" .spacerSize="${SpacerSize.LITTLE}"></nidoca-spacer>
-            <nidoca-box cssStyle="width:100%; height:50vh;background-color: var(--app-color-surface-background-light)">
 
 
 
-            <{{toTag this.name}}{{#each properties}}{{#if this.isStatic}}{{else}}{{#if this.private}}{{else}}{{#isnt this.type "string"}}.{{/isnt}}{{this.name}}=${ this.{{this.name}} }{{/if}} {{/if}}
-{{/each}}
-            >{{toTag this.name}}</{{toTag this.name}}>
+
+          <nidoca-flex-container
+                  .flexContainerProperties="${[
+      FlexContainerProperties.CONTAINER_WIDTH_100,
+      FlexContainerProperties.TABLET_MAX_WIDTH,
+      FlexContainerProperties.SMARTPHONE_MAX_WIDTH,
+      FlexContainerProperties.SMARTPHONE_HORIZONTAL_PADDING,
+      FlexContainerProperties.TABLET_HORIZONTAL_PADDING
+  ]}"
+                  .flexItemProperties="${[FlexItemProperties.KEYLINE_ALIGNMENT_BOTH, FlexItemProperties.KEYLINE_SIZE_MEDIUM]}"
+                  flexItemBasisValue="33.3%"
+          >
+
+
+              <nidoca-container>
+
+              {{#each properties}}
+              {{#if this.isStatic}}{{else}}{{#if this.private}}{{else}}
+
+              {{#has this.type "string"}}
+              <nidoca-form-text label="{{this.name}}" .value="${ this.{{this.name}} }" @nidoca-form-text-event-change="${ (event: CustomEvent)=>this.{{this.name}} = event.detail.value }"></nidoca-form-text>
+              {{/has}}
+
+              {{#has this.type "number"}}
+              <nidoca-form-text textType="${TextType.NUMBER}" label="{{this.name}}" .value="${ this.{{this.name}} }" @nidoca-form-text-event-change="${ (event: CustomEvent)=>this.{{this.name}} = event.detail.value }"></nidoca-form-text>
+              {{/has}}
+
+              {{#has this.type "number"}}
+              <nidoca-form-switch label="{{this.name}}" .value="${ this.{{this.name}} }" @nidoca-form-text-event-change="${ (event: CustomEvent)=>this.{{this.name}} = event.detail.value }"></nidoca-form-switch>
+              {{/has}}
 
 
 
-            </nidoca-box>
+                  {{/if}} {{/if}}
+              {{/each}}
+              </nidoca-container>
+
+
+              <nidoca-box cssStyle="width:100%; height:50vh;background-color: var(--app-color-surface-background-light)">
 
 
 
-        </nidoca-tab-content>
-        <nidoca-tab-content slot="tabContent">
-
-            <nidoca-spacer .spacerAlignment="${SpacerAlignment.VERTICAL}" .spacerSize="${SpacerSize.LITTLE}"></nidoca-spacer>
-            <nidoca-box cssStyle="width:100%; height:50vh;background-color: var(--app-color-surface-background-light)">
-
-                <nidoca-code code="Code"></nidoca-code>
-
-            </nidoca-box>
+<{{toTag this.name}} {{#each properties}}{{#if this.isStatic}}{{else}}{{#if this.private}}{{else}}{{#isnt this.type "string"}}.{{/isnt}}{{this.name}}="${ this.{{this.name}} }"{{/if}} {{/if}}{{/each}}>{{toTag this.name}}</{{toTag this.name}}>
 
 
-        </nidoca-tab-content>
-      </nidoca-tabs>
+              </nidoca-box>
+
+              <nidoca-code code="${'<{{toTag this.name}} {{#each properties}}{{#if this.isStatic}}{{else}}{{#if this.private}}{{else}}{{#isnt this.type "string"}}.{{/isnt}}\n    {{this.name}}="'+this.toValue(this.{{this.name}})+'"{{/if}} {{/if}}{{/each}}>\n     {{toTag this.name}}\n</{{toTag this.name}}>'}"></nidoca-code>
+
+          </nidoca-flex-container>
 
 
-
-{{#each properties}}
-{{#if this.isStatic}}{{else}}{{#if this.private}}{{else}}
-
-          {{#has this.type "string"}}
-          <nidoca-form-text label="{{this.name}}" .value="${ this.{{this.name}} }" @nidoca-form-text-event-change="${ (event: CustomEvent)=>this.{{this.name}} = event.detail.value }"></nidoca-form-text>
-          {{/has}}
-
-
-{{/if}} {{/if}}
-          {{/each}}
 
 
 
@@ -108,6 +120,12 @@ export class {{this.name}}ShowcasePage extends NidocaShowcaseTemplate {
 
   `;
   }
+
+
+toValue(item: any): string{
+return String(item);
+}
+
 
 }
 {{/has}}

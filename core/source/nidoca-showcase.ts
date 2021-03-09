@@ -11,9 +11,18 @@ export class NidocaShowcase extends NidocaTemplate {
   getContent(): TemplateResult {
     return html`
       <nidoca-progress>dsoidjf</nidoca-progress>
+      
+      
+      <nidoca-code>class java {}</nidoca-code>
+      
+      <nidoca-form-switch></nidoca-form-switch>
+      
       <nidoca-box cssStyle="height:600px; width:100%">
         <nidoca-table></nidoca-table>
       </nidoca-box>
+      
+      
+      
     `;
   }
 

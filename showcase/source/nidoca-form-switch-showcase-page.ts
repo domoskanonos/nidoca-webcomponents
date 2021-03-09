@@ -1,42 +1,32 @@
-import {
-  FlexContainerProperties,
-  FlexItemProperties,
-  NidocaFormInputframe,
-  TypographyType,
-} from '@domoskanonos/nidoca-core';
+import {FlexContainerProperties, FlexItemProperties, NidocaFormSwitch, TypographyType} from '@domoskanonos/nidoca-core';
 import {customElement, html, property, TemplateResult} from 'lit-element';
 import {NidocaShowcaseTemplate} from './nidoca-showcase-template';
 
-@customElement('nidoca-form-inputframe-showcase-page')
-export class NidocaFormInputframeShowcasePage extends NidocaShowcaseTemplate {
+@customElement('nidoca-form-switch-showcase-page')
+export class NidocaFormSwitchShowcasePage extends NidocaShowcaseTemplate {
   @property()
-  label: string = '';
+  assistiveText: string = '';
 
   @property()
-  errorText: string | undefined = '';
+  infoText: string = '';
 
   @property()
-  infoText: string | undefined = '';
+  errorText: string = '';
 
   @property()
-  warningText: string | undefined = '';
-
-  @property()
-  selected: boolean = false;
+  checked: boolean = false;
 
   constructor() {
     super();
-    let initComponent: NidocaFormInputframe = new NidocaFormInputframe();
+    let initComponent: NidocaFormSwitch = new NidocaFormSwitch();
 
-    this.label = initComponent.label;
-
-    this.errorText = initComponent.errorText;
+    this.assistiveText = initComponent.assistiveText;
 
     this.infoText = initComponent.infoText;
 
-    this.warningText = initComponent.warningText;
+    this.errorText = initComponent.errorText;
 
-    this.selected = initComponent.selected;
+    this.checked = initComponent.checked;
   }
 
   getContent(): TemplateResult {
@@ -52,7 +42,7 @@ export class NidocaFormInputframeShowcasePage extends NidocaShowcaseTemplate {
         .flexItemProperties="${[FlexItemProperties.KEYLINE_ALIGNMENT_BOTH, FlexItemProperties.KEYLINE_SIZE_MEDIUM]}"
         flexItemBasisValue="100%"
       >
-        <nidoca-typography .typographyType="${TypographyType.H2}" text="<nidoca-form-inputframe/>"></nidoca-typography>
+        <nidoca-typography .typographyType="${TypographyType.H2}" text="<nidoca-form-switch/>"></nidoca-typography>
         <nidoca-typography .typographyType="${TypographyType.BODY1}"> <br />description<br /><br /> </nidoca-typography>
         <nidoca-typography .typographyType="${TypographyType.H4}" text="example"></nidoca-typography>
 
@@ -69,15 +59,9 @@ export class NidocaFormInputframeShowcasePage extends NidocaShowcaseTemplate {
         >
           <nidoca-container>
             <nidoca-form-text
-              label="label"
-              .value="${this.label}"
-              @nidoca-form-text-event-change="${(event: CustomEvent) => (this.label = event.detail.value)}"
-            ></nidoca-form-text>
-
-            <nidoca-form-text
-              label="errorText"
-              .value="${this.errorText}"
-              @nidoca-form-text-event-change="${(event: CustomEvent) => (this.errorText = event.detail.value)}"
+              label="assistiveText"
+              .value="${this.assistiveText}"
+              @nidoca-form-text-event-change="${(event: CustomEvent) => (this.assistiveText = event.detail.value)}"
             ></nidoca-form-text>
 
             <nidoca-form-text
@@ -87,46 +71,42 @@ export class NidocaFormInputframeShowcasePage extends NidocaShowcaseTemplate {
             ></nidoca-form-text>
 
             <nidoca-form-text
-              label="warningText"
-              .value="${this.warningText}"
-              @nidoca-form-text-event-change="${(event: CustomEvent) => (this.warningText = event.detail.value)}"
+              label="errorText"
+              .value="${this.errorText}"
+              @nidoca-form-text-event-change="${(event: CustomEvent) => (this.errorText = event.detail.value)}"
             ></nidoca-form-text>
           </nidoca-container>
 
           <nidoca-box cssStyle="width:100%; height:50vh;background-color: var(--app-color-surface-background-light)">
-            <nidoca-form-inputframe
-              label="${this.label}"
-              .errorText="${this.errorText}"
-              .infoText="${this.infoText}"
-              .warningText="${this.warningText}"
-              .selected="${this.selected}"
-              >nidoca-form-inputframe</nidoca-form-inputframe
+            <nidoca-form-switch
+              assistiveText="${this.assistiveText}"
+              infoText="${this.infoText}"
+              errorText="${this.errorText}"
+              .checked="${this.checked}"
+              >nidoca-form-switch</nidoca-form-switch
             >
           </nidoca-box>
 
           <nidoca-code
-            code="${'<nidoca-form-inputframe \n    label="' +
-            this.toValue(this.label) +
-            '" .\n    errorText="' +
-            this.toValue(this.errorText) +
-            '" .\n    infoText="' +
+            code="${'<nidoca-form-switch \n    assistiveText="' +
+            this.toValue(this.assistiveText) +
+            '" \n    infoText="' +
             this.toValue(this.infoText) +
-            '" .\n    warningText="' +
-            this.toValue(this.warningText) +
-            '" .\n    selected="' +
-            this.toValue(this.selected) +
-            '" >\n     nidoca-form-inputframe\n</nidoca-form-inputframe>'}"
+            '" \n    errorText="' +
+            this.toValue(this.errorText) +
+            '" .\n    checked="' +
+            this.toValue(this.checked) +
+            '"  >\n     nidoca-form-switch\n</nidoca-form-switch>'}"
           ></nidoca-code>
         </nidoca-flex-container>
 
         <nidoca-table
           .headers="${['property', 'type']}"
           .rows="${[
-            ['label', 'string'],
-            ['errorText', 'string | undefined'],
-            ['infoText', 'string | undefined'],
-            ['warningText', 'string | undefined'],
-            ['selected', 'boolean'],
+            ['assistiveText', 'string'],
+            ['infoText', 'string'],
+            ['errorText', 'string'],
+            ['checked', 'boolean'],
           ]}"
         ></nidoca-table>
       </nidoca-flex-container>

@@ -119,6 +119,12 @@ export abstract class NidocaShowcaseTemplate extends NidocaTemplate {
         <nidoca-navigation-link
           slot="links"
           icon=""
+          text="<nidoca-form-switch>"
+          href="nidoca-form-switch"
+        ></nidoca-navigation-link>
+        <nidoca-navigation-link
+          slot="links"
+          icon=""
           text="<nidoca-form-inputframe>"
           href="nidoca-form-inputframe"
         ></nidoca-navigation-link>

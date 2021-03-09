@@ -14,6 +14,7 @@ import './nidoca-form-combobox-showcase-page.ts';
 import './nidoca-form-date-showcase-page.ts';
 import './nidoca-form-inputframe-showcase-page.ts';
 import './nidoca-form-showcase-page.ts';
+import './nidoca-form-switch-showcase-page.ts';
 import './nidoca-form-text-showcase-page.ts';
 import './nidoca-grid-container-showcase-page.ts';
 import './nidoca-icon-showcase-page.ts';

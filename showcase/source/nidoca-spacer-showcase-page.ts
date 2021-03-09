@@ -35,7 +35,7 @@ export class NidocaSpacerShowcasePage extends NidocaShowcaseTemplate {
     return html`
       <nidoca-flex-container
         .flexContainerProperties="${[
-          FlexContainerProperties.CONTAINER_WIDTH_50,
+          FlexContainerProperties.CONTAINER_WIDTH_100,
           FlexContainerProperties.TABLET_MAX_WIDTH,
           FlexContainerProperties.SMARTPHONE_MAX_WIDTH,
           FlexContainerProperties.SMARTPHONE_HORIZONTAL_PADDING,
@@ -47,36 +47,45 @@ export class NidocaSpacerShowcasePage extends NidocaShowcaseTemplate {
         <nidoca-typography .typographyType="${TypographyType.H2}" text="<nidoca-spacer/>"></nidoca-typography>
         <nidoca-typography .typographyType="${TypographyType.BODY1}"> <br />description<br /><br /> </nidoca-typography>
         <nidoca-typography .typographyType="${TypographyType.H4}" text="example"></nidoca-typography>
-        <nidoca-tabs>
-          <nidoca-tab slot="tab" .selected="${true}" text="demo"></nidoca-tab>
-          <nidoca-tab slot="tab" text="source"></nidoca-tab>
-          <nidoca-tab-content slot="tabContent" .selected="${true}">
-            <nidoca-spacer
-              .spacerAlignment="${SpacerAlignment.VERTICAL}"
-              .spacerSize="${SpacerSize.LITTLE}"
-            ></nidoca-spacer>
-            <nidoca-box cssStyle="width:100%; height:50vh;background-color: var(--app-color-surface-background-light)">
-              <nidoca-spacer .spacerSize=${this.spacerSize} .spacerAlignment=${this.spacerAlignment} size=${this.size}
-                >nidoca-spacer</nidoca-spacer
-              >
-            </nidoca-box>
-          </nidoca-tab-content>
-          <nidoca-tab-content slot="tabContent">
-            <nidoca-spacer
-              .spacerAlignment="${SpacerAlignment.VERTICAL}"
-              .spacerSize="${SpacerSize.LITTLE}"
-            ></nidoca-spacer>
-            <nidoca-box cssStyle="width:100%; height:50vh;background-color: var(--app-color-surface-background-light)">
-              <nidoca-code code="Code"></nidoca-code>
-            </nidoca-box>
-          </nidoca-tab-content>
-        </nidoca-tabs>
 
-        <nidoca-form-text
-          label="size"
-          .value="${this.size}"
-          @nidoca-form-text-event-change="${(event: CustomEvent) => (this.size = event.detail.value)}"
-        ></nidoca-form-text>
+        <nidoca-flex-container
+          .flexContainerProperties="${[
+            FlexContainerProperties.CONTAINER_WIDTH_100,
+            FlexContainerProperties.TABLET_MAX_WIDTH,
+            FlexContainerProperties.SMARTPHONE_MAX_WIDTH,
+            FlexContainerProperties.SMARTPHONE_HORIZONTAL_PADDING,
+            FlexContainerProperties.TABLET_HORIZONTAL_PADDING,
+          ]}"
+          .flexItemProperties="${[FlexItemProperties.KEYLINE_ALIGNMENT_BOTH, FlexItemProperties.KEYLINE_SIZE_MEDIUM]}"
+          flexItemBasisValue="33.3%"
+        >
+          <nidoca-container>
+            <nidoca-form-text
+              label="size"
+              .value="${this.size}"
+              @nidoca-form-text-event-change="${(event: CustomEvent) => (this.size = event.detail.value)}"
+            ></nidoca-form-text>
+          </nidoca-container>
+
+          <nidoca-box cssStyle="width:100%; height:50vh;background-color: var(--app-color-surface-background-light)">
+            <nidoca-spacer
+              .spacerSize="${this.spacerSize}"
+              .spacerAlignment="${this.spacerAlignment}"
+              size="${this.size}"
+              >nidoca-spacer</nidoca-spacer
+            >
+          </nidoca-box>
+
+          <nidoca-code
+            code="${'<nidoca-spacer .\n    spacerSize="' +
+            this.toValue(this.spacerSize) +
+            '" .\n    spacerAlignment="' +
+            this.toValue(this.spacerAlignment) +
+            '" \n    size="' +
+            this.toValue(this.size) +
+            '" >\n     nidoca-spacer\n</nidoca-spacer>'}"
+          ></nidoca-code>
+        </nidoca-flex-container>
 
         <nidoca-table
           .headers="${['property', 'type']}"
@@ -88,5 +97,9 @@ export class NidocaSpacerShowcasePage extends NidocaShowcaseTemplate {
         ></nidoca-table>
       </nidoca-flex-container>
     `;
+  }
+
+  toValue(item: any): string {
+    return String(item);
   }
 }

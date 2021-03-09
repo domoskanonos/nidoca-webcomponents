@@ -2,8 +2,6 @@ import {
   FlexContainerProperties,
   FlexItemProperties,
   NidocaNavigationSection,
-  SpacerAlignment,
-  SpacerSize,
   TypographyType,
 } from '@domoskanonos/nidoca-core';
 import {customElement, html, property, TemplateResult} from 'lit-element';
@@ -30,7 +28,7 @@ export class NidocaNavigationSectionShowcasePage extends NidocaShowcaseTemplate 
     return html`
       <nidoca-flex-container
         .flexContainerProperties="${[
-          FlexContainerProperties.CONTAINER_WIDTH_50,
+          FlexContainerProperties.CONTAINER_WIDTH_100,
           FlexContainerProperties.TABLET_MAX_WIDTH,
           FlexContainerProperties.SMARTPHONE_MAX_WIDTH,
           FlexContainerProperties.SMARTPHONE_HORIZONTAL_PADDING,
@@ -45,36 +43,40 @@ export class NidocaNavigationSectionShowcasePage extends NidocaShowcaseTemplate 
         ></nidoca-typography>
         <nidoca-typography .typographyType="${TypographyType.BODY1}"> <br />description<br /><br /> </nidoca-typography>
         <nidoca-typography .typographyType="${TypographyType.H4}" text="example"></nidoca-typography>
-        <nidoca-tabs>
-          <nidoca-tab slot="tab" .selected="${true}" text="demo"></nidoca-tab>
-          <nidoca-tab slot="tab" text="source"></nidoca-tab>
-          <nidoca-tab-content slot="tabContent" .selected="${true}">
-            <nidoca-spacer
-              .spacerAlignment="${SpacerAlignment.VERTICAL}"
-              .spacerSize="${SpacerSize.LITTLE}"
-            ></nidoca-spacer>
-            <nidoca-box cssStyle="width:100%; height:50vh;background-color: var(--app-color-surface-background-light)">
-              <nidoca-navigation-section text=${this.text} .rendered=${this.rendered}
-                >nidoca-navigation-section</nidoca-navigation-section
-              >
-            </nidoca-box>
-          </nidoca-tab-content>
-          <nidoca-tab-content slot="tabContent">
-            <nidoca-spacer
-              .spacerAlignment="${SpacerAlignment.VERTICAL}"
-              .spacerSize="${SpacerSize.LITTLE}"
-            ></nidoca-spacer>
-            <nidoca-box cssStyle="width:100%; height:50vh;background-color: var(--app-color-surface-background-light)">
-              <nidoca-code code="Code"></nidoca-code>
-            </nidoca-box>
-          </nidoca-tab-content>
-        </nidoca-tabs>
 
-        <nidoca-form-text
-          label="text"
-          .value="${this.text}"
-          @nidoca-form-text-event-change="${(event: CustomEvent) => (this.text = event.detail.value)}"
-        ></nidoca-form-text>
+        <nidoca-flex-container
+          .flexContainerProperties="${[
+            FlexContainerProperties.CONTAINER_WIDTH_100,
+            FlexContainerProperties.TABLET_MAX_WIDTH,
+            FlexContainerProperties.SMARTPHONE_MAX_WIDTH,
+            FlexContainerProperties.SMARTPHONE_HORIZONTAL_PADDING,
+            FlexContainerProperties.TABLET_HORIZONTAL_PADDING,
+          ]}"
+          .flexItemProperties="${[FlexItemProperties.KEYLINE_ALIGNMENT_BOTH, FlexItemProperties.KEYLINE_SIZE_MEDIUM]}"
+          flexItemBasisValue="33.3%"
+        >
+          <nidoca-container>
+            <nidoca-form-text
+              label="text"
+              .value="${this.text}"
+              @nidoca-form-text-event-change="${(event: CustomEvent) => (this.text = event.detail.value)}"
+            ></nidoca-form-text>
+          </nidoca-container>
+
+          <nidoca-box cssStyle="width:100%; height:50vh;background-color: var(--app-color-surface-background-light)">
+            <nidoca-navigation-section text="${this.text}" .rendered="${this.rendered}"
+              >nidoca-navigation-section</nidoca-navigation-section
+            >
+          </nidoca-box>
+
+          <nidoca-code
+            code="${'<nidoca-navigation-section \n    text="' +
+            this.toValue(this.text) +
+            '" .\n    rendered="' +
+            this.toValue(this.rendered) +
+            '" >\n     nidoca-navigation-section\n</nidoca-navigation-section>'}"
+          ></nidoca-code>
+        </nidoca-flex-container>
 
         <nidoca-table
           .headers="${['property', 'type']}"
@@ -85,5 +87,9 @@ export class NidocaNavigationSectionShowcasePage extends NidocaShowcaseTemplate 
         ></nidoca-table>
       </nidoca-flex-container>
     `;
+  }
+
+  toValue(item: any): string {
+    return String(item);
   }
 }

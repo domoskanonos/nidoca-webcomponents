@@ -55,6 +55,8 @@ export class NidocaShowcaseApp extends NidocaAbstractApp {
         return html` <nidoca-form-text-showcase-page></nidoca-form-text-showcase-page> `;
       case 'nidoca-form-date':
         return html` <nidoca-form-date-showcase-page></nidoca-form-date-showcase-page> `;
+      case 'nidoca-form-switch':
+        return html` <nidoca-form-switch-showcase-page></nidoca-form-switch-showcase-page> `;
       case 'nidoca-form-inputframe':
         return html` <nidoca-form-inputframe-showcase-page></nidoca-form-inputframe-showcase-page> `;
       case 'nidoca-icon':
