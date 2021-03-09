@@ -1,4 +1,5 @@
 import {
+  DividerType,
   FlexContainerProperties,
   FlexItemProperties,
   NidocaDivider,
@@ -12,7 +13,7 @@ import {NidocaShowcaseTemplate} from './nidoca-showcase-template';
 @customElement('nidoca-divider-showcase-page')
 export class NidocaDividerShowcasePage extends NidocaShowcaseTemplate {
   @property()
-  dividerType: string = '';
+  dividerType: DividerType = Object.values(DividerType)[0];
 
   @property()
   opacity: number = 0;
@@ -51,7 +52,7 @@ export class NidocaDividerShowcasePage extends NidocaShowcaseTemplate {
               .spacerSize="${SpacerSize.LITTLE}"
             ></nidoca-spacer>
             <nidoca-box cssStyle="width:100%; height:50vh;background-color: var(--app-color-surface-background-light)">
-              <nidoca-divider dividerType=${this.dividerType} .opacity=${this.opacity}>nidoca-divider</nidoca-divider>
+              <nidoca-divider .dividerType=${this.dividerType} .opacity=${this.opacity}>nidoca-divider</nidoca-divider>
             </nidoca-box>
           </nidoca-tab-content>
           <nidoca-tab-content slot="tabContent">
@@ -60,6 +61,7 @@ export class NidocaDividerShowcasePage extends NidocaShowcaseTemplate {
               .spacerSize="${SpacerSize.LITTLE}"
             ></nidoca-spacer>
             <nidoca-box cssStyle="width:100%; height:50vh;background-color: var(--app-color-surface-background-light)">
+              <nidoca-code code="Code"></nidoca-code>
             </nidoca-box>
           </nidoca-tab-content>
         </nidoca-tabs>
@@ -67,7 +69,7 @@ export class NidocaDividerShowcasePage extends NidocaShowcaseTemplate {
         <nidoca-table
           .headers="${['property', 'type']}"
           .rows="${[
-            ['dividerType', 'string'],
+            ['dividerType', 'DividerType'],
             ['opacity', 'number'],
           ]}"
         ></nidoca-table>

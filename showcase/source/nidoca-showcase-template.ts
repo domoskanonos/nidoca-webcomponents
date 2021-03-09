@@ -60,6 +60,7 @@ export abstract class NidocaShowcaseTemplate extends NidocaTemplate {
           href="nidoca-wizard"
         ></nidoca-navigation-link>
         <nidoca-navigation-link slot="links" icon="" text="<nidoca-chip>" href="nidoca-chip"></nidoca-navigation-link>
+        <nidoca-navigation-link slot="links" icon="" text="<nidoca-code>" href="nidoca-code"></nidoca-navigation-link>
         <nidoca-navigation-link
           slot="links"
           icon=""

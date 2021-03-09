@@ -1,4 +1,5 @@
 import {
+  AccordionType,
   FlexContainerProperties,
   FlexItemProperties,
   NidocaAccordion,
@@ -12,7 +13,7 @@ import {NidocaShowcaseTemplate} from './nidoca-showcase-template';
 @customElement('nidoca-accordion-showcase-page')
 export class NidocaAccordionShowcasePage extends NidocaShowcaseTemplate {
   @property()
-  accordionType: string = '';
+  accordionType: AccordionType = Object.values(AccordionType)[0];
 
   constructor() {
     super();
@@ -46,7 +47,7 @@ export class NidocaAccordionShowcasePage extends NidocaShowcaseTemplate {
               .spacerSize="${SpacerSize.LITTLE}"
             ></nidoca-spacer>
             <nidoca-box cssStyle="width:100%; height:50vh;background-color: var(--app-color-surface-background-light)">
-              <nidoca-accordion accordionType=${this.accordionType}>nidoca-accordion</nidoca-accordion>
+              <nidoca-accordion .accordionType=${this.accordionType}>nidoca-accordion</nidoca-accordion>
             </nidoca-box>
           </nidoca-tab-content>
           <nidoca-tab-content slot="tabContent">
@@ -55,11 +56,12 @@ export class NidocaAccordionShowcasePage extends NidocaShowcaseTemplate {
               .spacerSize="${SpacerSize.LITTLE}"
             ></nidoca-spacer>
             <nidoca-box cssStyle="width:100%; height:50vh;background-color: var(--app-color-surface-background-light)">
+              <nidoca-code code="Code"></nidoca-code>
             </nidoca-box>
           </nidoca-tab-content>
         </nidoca-tabs>
 
-        <nidoca-table .headers="${['property', 'type']}" .rows="${[['accordionType', 'string']]}"></nidoca-table>
+        <nidoca-table .headers="${['property', 'type']}" .rows="${[['accordionType', 'AccordionType']]}"></nidoca-table>
       </nidoca-flex-container>
     `;
   }

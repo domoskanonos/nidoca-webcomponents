@@ -56,6 +56,7 @@ export class NidocaProgressShowcasePage extends NidocaShowcaseTemplate {
               .spacerSize="${SpacerSize.LITTLE}"
             ></nidoca-spacer>
             <nidoca-box cssStyle="width:100%; height:50vh;background-color: var(--app-color-surface-background-light)">
+              <nidoca-code code="Code"></nidoca-code>
             </nidoca-box>
           </nidoca-tab-content>
         </nidoca-tabs>

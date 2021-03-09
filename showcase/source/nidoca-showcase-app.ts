@@ -33,6 +33,8 @@ export class NidocaShowcaseApp extends NidocaAbstractApp {
         return html` <nidoca-wizard-showcase-page></nidoca-wizard-showcase-page> `;
       case 'nidoca-chip':
         return html` <nidoca-chip-showcase-page></nidoca-chip-showcase-page> `;
+      case 'nidoca-code':
+        return html` <nidoca-code-showcase-page></nidoca-code-showcase-page> `;
       case 'nidoca-progress':
         return html` <nidoca-progress-showcase-page></nidoca-progress-showcase-page> `;
       case 'nidoca-border':

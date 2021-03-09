@@ -16,7 +16,7 @@ export class NidocaWizardShowcasePage extends NidocaShowcaseTemplate {
   wizardSteps: WizardStep[] = [];
 
   @property()
-  selectedStep: WizardStep | undefined = undefined;
+  selectedStep: WizardStep = Object.values(WizardStep)[0];
 
   constructor() {
     super();
@@ -63,6 +63,7 @@ export class NidocaWizardShowcasePage extends NidocaShowcaseTemplate {
               .spacerSize="${SpacerSize.LITTLE}"
             ></nidoca-spacer>
             <nidoca-box cssStyle="width:100%; height:50vh;background-color: var(--app-color-surface-background-light)">
+              <nidoca-code code="Code"></nidoca-code>
             </nidoca-box>
           </nidoca-tab-content>
         </nidoca-tabs>
@@ -71,7 +72,7 @@ export class NidocaWizardShowcasePage extends NidocaShowcaseTemplate {
           .headers="${['property', 'type']}"
           .rows="${[
             ['wizardSteps', 'WizardStep[]'],
-            ['selectedStep', 'WizardStep | undefined'],
+            ['selectedStep', 'WizardStep'],
           ]}"
         ></nidoca-table>
       </nidoca-flex-container>

@@ -37,9 +37,6 @@ export class NidocaFormTextShowcasePage extends NidocaShowcaseTemplate {
   checked: boolean = false;
 
   @property()
-  multiple: boolean = false;
-
-  @property()
   maxlength: number | undefined = 0;
 
   @property()
@@ -58,13 +55,13 @@ export class NidocaFormTextShowcasePage extends NidocaShowcaseTemplate {
   size: number | undefined = 0;
 
   @property()
-  errorText: string | undefined = '';
+  errorText: string = '';
 
   @property()
-  infoText: string | undefined = '';
+  infoText: string = '';
 
   @property()
-  warningText: string | undefined = '';
+  warningText: string = '';
 
   constructor() {
     super();
@@ -85,8 +82,6 @@ export class NidocaFormTextShowcasePage extends NidocaShowcaseTemplate {
     this.disabled = initComponent.disabled;
 
     this.checked = initComponent.checked;
-
-    this.multiple = initComponent.multiple;
 
     this.maxlength = initComponent.maxlength;
 
@@ -141,16 +136,15 @@ export class NidocaFormTextShowcasePage extends NidocaShowcaseTemplate {
                 placeholder=${this.placeholder}
                 .disabled=${this.disabled}
                 .checked=${this.checked}
-                .multiple=${this.multiple}
                 .maxlength=${this.maxlength}
                 .minlength=${this.minlength}
                 .min=${this.min}
                 .max=${this.max}
                 .step=${this.step}
                 .size=${this.size}
-                .errorText=${this.errorText}
-                .infoText=${this.infoText}
-                .warningText=${this.warningText}
+                errorText=${this.errorText}
+                infoText=${this.infoText}
+                warningText=${this.warningText}
                 >nidoca-form-text</nidoca-form-text
               >
             </nidoca-box>
@@ -161,6 +155,7 @@ export class NidocaFormTextShowcasePage extends NidocaShowcaseTemplate {
               .spacerSize="${SpacerSize.LITTLE}"
             ></nidoca-spacer>
             <nidoca-box cssStyle="width:100%; height:50vh;background-color: var(--app-color-surface-background-light)">
+              <nidoca-code code="Code"></nidoca-code>
             </nidoca-box>
           </nidoca-tab-content>
         </nidoca-tabs>
@@ -176,16 +171,15 @@ export class NidocaFormTextShowcasePage extends NidocaShowcaseTemplate {
             ['placeholder', 'string'],
             ['disabled', 'boolean'],
             ['checked', 'boolean'],
-            ['multiple', 'boolean'],
             ['maxlength', 'number | undefined'],
             ['minlength', 'number | undefined'],
             ['min', 'number | undefined'],
             ['max', 'number | undefined'],
             ['step', 'number | undefined'],
             ['size', 'number | undefined'],
-            ['errorText', 'string | undefined'],
-            ['infoText', 'string | undefined'],
-            ['warningText', 'string | undefined'],
+            ['errorText', 'string'],
+            ['infoText', 'string'],
+            ['warningText', 'string'],
           ]}"
         ></nidoca-table>
       </nidoca-flex-container>
