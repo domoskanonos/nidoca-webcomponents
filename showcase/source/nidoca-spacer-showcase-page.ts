@@ -72,6 +72,12 @@ export class NidocaSpacerShowcasePage extends NidocaShowcaseTemplate {
           </nidoca-tab-content>
         </nidoca-tabs>
 
+        <nidoca-form-text
+          label="size"
+          .value="${this.size}"
+          @nidoca-form-text-event-change="${(event: CustomEvent) => (this.size = event.detail.value)}"
+        ></nidoca-form-text>
+
         <nidoca-table
           .headers="${['property', 'type']}"
           .rows="${[

@@ -60,6 +60,12 @@ export class NidocaBoxShowcasePage extends NidocaShowcaseTemplate {
           </nidoca-tab-content>
         </nidoca-tabs>
 
+        <nidoca-form-text
+          label="cssStyle"
+          .value="${this.cssStyle}"
+          @nidoca-form-text-event-change="${(event: CustomEvent) => (this.cssStyle = event.detail.value)}"
+        ></nidoca-form-text>
+
         <nidoca-table .headers="${['property', 'type']}" .rows="${[['cssStyle', 'string']]}"></nidoca-table>
       </nidoca-flex-container>
     `;

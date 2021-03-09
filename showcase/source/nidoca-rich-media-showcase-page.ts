@@ -77,6 +77,12 @@ export class NidocaRichMediaShowcasePage extends NidocaShowcaseTemplate {
           </nidoca-tab-content>
         </nidoca-tabs>
 
+        <nidoca-form-text
+          label="src"
+          .value="${this.src}"
+          @nidoca-form-text-event-change="${(event: CustomEvent) => (this.src = event.detail.value)}"
+        ></nidoca-form-text>
+
         <nidoca-table
           .headers="${['property', 'type']}"
           .rows="${[

@@ -173,6 +173,7 @@ function createComponentPages(files: any[], imps: any[]) {
                                 } else if (propertyType.indexOf('undefined') > -1) {
                                     property.defaultValue = 'undefined';
                                 } else {
+                                    console.log(JSON.stringify(property));
                                     property.defaultValue = 'Object.values('.concat(propertyType).concat(')[0];');
                                 }
 

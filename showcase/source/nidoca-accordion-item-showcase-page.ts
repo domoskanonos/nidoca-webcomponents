@@ -67,6 +67,12 @@ export class NidocaAccordionItemShowcasePage extends NidocaShowcaseTemplate {
           </nidoca-tab-content>
         </nidoca-tabs>
 
+        <nidoca-form-text
+          label="header"
+          .value="${this.header}"
+          @nidoca-form-text-event-change="${(event: CustomEvent) => (this.header = event.detail.value)}"
+        ></nidoca-form-text>
+
         <nidoca-table
           .headers="${['property', 'type']}"
           .rows="${[

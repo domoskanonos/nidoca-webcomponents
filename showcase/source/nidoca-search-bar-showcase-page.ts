@@ -67,6 +67,18 @@ export class NidocaSearchBarShowcasePage extends NidocaShowcaseTemplate {
           </nidoca-tab-content>
         </nidoca-tabs>
 
+        <nidoca-form-text
+          label="placeholder"
+          .value="${this.placeholder}"
+          @nidoca-form-text-event-change="${(event: CustomEvent) => (this.placeholder = event.detail.value)}"
+        ></nidoca-form-text>
+
+        <nidoca-form-text
+          label="value"
+          .value="${this.value}"
+          @nidoca-form-text-event-change="${(event: CustomEvent) => (this.value = event.detail.value)}"
+        ></nidoca-form-text>
+
         <nidoca-table
           .headers="${['property', 'type']}"
           .rows="${[

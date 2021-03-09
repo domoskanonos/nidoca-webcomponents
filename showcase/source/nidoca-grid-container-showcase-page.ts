@@ -105,6 +105,54 @@ export class NidocaGridContainerShowcasePage extends NidocaShowcaseTemplate {
           </nidoca-tab-content>
         </nidoca-tabs>
 
+        <nidoca-form-text
+          label="gridTemplateRows"
+          .value="${this.gridTemplateRows}"
+          @nidoca-form-text-event-change="${(event: CustomEvent) => (this.gridTemplateRows = event.detail.value)}"
+        ></nidoca-form-text>
+
+        <nidoca-form-text
+          label="gridTemplateColumns"
+          .value="${this.gridTemplateColumns}"
+          @nidoca-form-text-event-change="${(event: CustomEvent) => (this.gridTemplateColumns = event.detail.value)}"
+        ></nidoca-form-text>
+
+        <nidoca-form-text
+          label="gridJustifyItems"
+          .value="${this.gridJustifyItems}"
+          @nidoca-form-text-event-change="${(event: CustomEvent) => (this.gridJustifyItems = event.detail.value)}"
+        ></nidoca-form-text>
+
+        <nidoca-form-text
+          label="gridAlignItems"
+          .value="${this.gridAlignItems}"
+          @nidoca-form-text-event-change="${(event: CustomEvent) => (this.gridAlignItems = event.detail.value)}"
+        ></nidoca-form-text>
+
+        <nidoca-form-text
+          label="height"
+          .value="${this.height}"
+          @nidoca-form-text-event-change="${(event: CustomEvent) => (this.height = event.detail.value)}"
+        ></nidoca-form-text>
+
+        <nidoca-form-text
+          label="minHeight"
+          .value="${this.minHeight}"
+          @nidoca-form-text-event-change="${(event: CustomEvent) => (this.minHeight = event.detail.value)}"
+        ></nidoca-form-text>
+
+        <nidoca-form-text
+          label="width"
+          .value="${this.width}"
+          @nidoca-form-text-event-change="${(event: CustomEvent) => (this.width = event.detail.value)}"
+        ></nidoca-form-text>
+
+        <nidoca-form-text
+          label="minWidth"
+          .value="${this.minWidth}"
+          @nidoca-form-text-event-change="${(event: CustomEvent) => (this.minWidth = event.detail.value)}"
+        ></nidoca-form-text>
+
         <nidoca-table
           .headers="${['property', 'type']}"
           .rows="${[

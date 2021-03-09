@@ -87,6 +87,30 @@ export class NidocaFormInputframeShowcasePage extends NidocaShowcaseTemplate {
           </nidoca-tab-content>
         </nidoca-tabs>
 
+        <nidoca-form-text
+          label="label"
+          .value="${this.label}"
+          @nidoca-form-text-event-change="${(event: CustomEvent) => (this.label = event.detail.value)}"
+        ></nidoca-form-text>
+
+        <nidoca-form-text
+          label="errorText"
+          .value="${this.errorText}"
+          @nidoca-form-text-event-change="${(event: CustomEvent) => (this.errorText = event.detail.value)}"
+        ></nidoca-form-text>
+
+        <nidoca-form-text
+          label="infoText"
+          .value="${this.infoText}"
+          @nidoca-form-text-event-change="${(event: CustomEvent) => (this.infoText = event.detail.value)}"
+        ></nidoca-form-text>
+
+        <nidoca-form-text
+          label="warningText"
+          .value="${this.warningText}"
+          @nidoca-form-text-event-change="${(event: CustomEvent) => (this.warningText = event.detail.value)}"
+        ></nidoca-form-text>
+
         <nidoca-table
           .headers="${['property', 'type']}"
           .rows="${[

@@ -96,6 +96,42 @@ export class NidocaFloatingContainerShowcasePage extends NidocaShowcaseTemplate 
           </nidoca-tab-content>
         </nidoca-tabs>
 
+        <nidoca-form-text
+          label="height"
+          .value="${this.height}"
+          @nidoca-form-text-event-change="${(event: CustomEvent) => (this.height = event.detail.value)}"
+        ></nidoca-form-text>
+
+        <nidoca-form-text
+          label="width"
+          .value="${this.width}"
+          @nidoca-form-text-event-change="${(event: CustomEvent) => (this.width = event.detail.value)}"
+        ></nidoca-form-text>
+
+        <nidoca-form-text
+          label="left"
+          .value="${this.left}"
+          @nidoca-form-text-event-change="${(event: CustomEvent) => (this.left = event.detail.value)}"
+        ></nidoca-form-text>
+
+        <nidoca-form-text
+          label="top"
+          .value="${this.top}"
+          @nidoca-form-text-event-change="${(event: CustomEvent) => (this.top = event.detail.value)}"
+        ></nidoca-form-text>
+
+        <nidoca-form-text
+          label="right"
+          .value="${this.right}"
+          @nidoca-form-text-event-change="${(event: CustomEvent) => (this.right = event.detail.value)}"
+        ></nidoca-form-text>
+
+        <nidoca-form-text
+          label="bottom"
+          .value="${this.bottom}"
+          @nidoca-form-text-event-change="${(event: CustomEvent) => (this.bottom = event.detail.value)}"
+        ></nidoca-form-text>
+
         <nidoca-table
           .headers="${['property', 'type']}"
           .rows="${[

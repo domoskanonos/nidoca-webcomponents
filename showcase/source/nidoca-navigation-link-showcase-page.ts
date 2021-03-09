@@ -77,6 +77,24 @@ export class NidocaNavigationLinkShowcasePage extends NidocaShowcaseTemplate {
           </nidoca-tab-content>
         </nidoca-tabs>
 
+        <nidoca-form-text
+          label="icon"
+          .value="${this.icon}"
+          @nidoca-form-text-event-change="${(event: CustomEvent) => (this.icon = event.detail.value)}"
+        ></nidoca-form-text>
+
+        <nidoca-form-text
+          label="text"
+          .value="${this.text}"
+          @nidoca-form-text-event-change="${(event: CustomEvent) => (this.text = event.detail.value)}"
+        ></nidoca-form-text>
+
+        <nidoca-form-text
+          label="href"
+          .value="${this.href}"
+          @nidoca-form-text-event-change="${(event: CustomEvent) => (this.href = event.detail.value)}"
+        ></nidoca-form-text>
+
         <nidoca-table
           .headers="${['property', 'type']}"
           .rows="${[

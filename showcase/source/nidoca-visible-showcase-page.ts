@@ -60,6 +60,12 @@ export class NidocaVisibleShowcasePage extends NidocaShowcaseTemplate {
           </nidoca-tab-content>
         </nidoca-tabs>
 
+        <nidoca-form-text
+          label="visibleType"
+          .value="${this.visibleType}"
+          @nidoca-form-text-event-change="${(event: CustomEvent) => (this.visibleType = event.detail.value)}"
+        ></nidoca-form-text>
+
         <nidoca-table .headers="${['property', 'type']}" .rows="${[['visibleType', 'string']]}"></nidoca-table>
       </nidoca-flex-container>
     `;

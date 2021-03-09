@@ -84,6 +84,25 @@ export class NidocaFormOutputDataShowcasePage extends NidocaShowcaseTemplate {
         </nidoca-tab-content>
       </nidoca-tabs>
 
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
       <nidoca-table .headers="${['property', 'type']}" .rows="${[
       ['jsonObject', 'any'],
       ['formData', 'FormData'],

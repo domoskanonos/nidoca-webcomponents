@@ -70,6 +70,12 @@ export class NidocaNavigationSectionShowcasePage extends NidocaShowcaseTemplate 
           </nidoca-tab-content>
         </nidoca-tabs>
 
+        <nidoca-form-text
+          label="text"
+          .value="${this.text}"
+          @nidoca-form-text-event-change="${(event: CustomEvent) => (this.text = event.detail.value)}"
+        ></nidoca-form-text>
+
         <nidoca-table
           .headers="${['property', 'type']}"
           .rows="${[

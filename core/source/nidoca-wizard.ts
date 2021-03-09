@@ -3,9 +3,9 @@ import {repeat} from 'lit-html/directives/repeat';
 import {guard} from 'lit-html/directives/guard';
 import {TypographyType} from './nidoca-typography';
 
-export interface WizardStep {
-  title: string;
-  icon?: string;
+export class WizardStep {
+  title: string = '';
+  icon?: string = '';
 }
 
 @customElement('nidoca-wizard')

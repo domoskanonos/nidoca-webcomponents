@@ -75,6 +75,24 @@ export class NidocaBorderShowcasePage extends NidocaShowcaseTemplate {
           </nidoca-tab-content>
         </nidoca-tabs>
 
+        <nidoca-form-text
+          label="borderProperties"
+          .value="${this.borderProperties}"
+          @nidoca-form-text-event-change="${(event: CustomEvent) => (this.borderProperties = event.detail.value)}"
+        ></nidoca-form-text>
+
+        <nidoca-form-text
+          label="borderSize"
+          .value="${this.borderSize}"
+          @nidoca-form-text-event-change="${(event: CustomEvent) => (this.borderSize = event.detail.value)}"
+        ></nidoca-form-text>
+
+        <nidoca-form-text
+          label="shadowType"
+          .value="${this.shadowType}"
+          @nidoca-form-text-event-change="${(event: CustomEvent) => (this.shadowType = event.detail.value)}"
+        ></nidoca-form-text>
+
         <nidoca-table
           .headers="${['property', 'type']}"
           .rows="${[

@@ -111,6 +111,61 @@ export class NidocaFlexContainerShowcasePage extends NidocaShowcaseTemplate {
           </nidoca-tab-content>
         </nidoca-tabs>
 
+        <nidoca-form-text
+          label="flexDirection"
+          .value="${this.flexDirection}"
+          @nidoca-form-text-event-change="${(event: CustomEvent) => (this.flexDirection = event.detail.value)}"
+        ></nidoca-form-text>
+
+        <nidoca-form-text
+          label="flexWrap"
+          .value="${this.flexWrap}"
+          @nidoca-form-text-event-change="${(event: CustomEvent) => (this.flexWrap = event.detail.value)}"
+        ></nidoca-form-text>
+
+        <nidoca-form-text
+          label="flexJustifyContent"
+          .value="${this.flexJustifyContent}"
+          @nidoca-form-text-event-change="${(event: CustomEvent) => (this.flexJustifyContent = event.detail.value)}"
+        ></nidoca-form-text>
+
+        <nidoca-form-text
+          label="flexAlignItems"
+          .value="${this.flexAlignItems}"
+          @nidoca-form-text-event-change="${(event: CustomEvent) => (this.flexAlignItems = event.detail.value)}"
+        ></nidoca-form-text>
+
+        <nidoca-form-text
+          label="flexAlignContent"
+          .value="${this.flexAlignContent}"
+          @nidoca-form-text-event-change="${(event: CustomEvent) => (this.flexAlignContent = event.detail.value)}"
+        ></nidoca-form-text>
+
+        <nidoca-form-text
+          label="flexContainerProperties"
+          .value="${this.flexContainerProperties}"
+          @nidoca-form-text-event-change="${(event: CustomEvent) =>
+            (this.flexContainerProperties = event.detail.value)}"
+        ></nidoca-form-text>
+
+        <nidoca-form-text
+          label="flexItemProperties"
+          .value="${this.flexItemProperties}"
+          @nidoca-form-text-event-change="${(event: CustomEvent) => (this.flexItemProperties = event.detail.value)}"
+        ></nidoca-form-text>
+
+        <nidoca-form-text
+          label="flexItemBasisValue"
+          .value="${this.flexItemBasisValue}"
+          @nidoca-form-text-event-change="${(event: CustomEvent) => (this.flexItemBasisValue = event.detail.value)}"
+        ></nidoca-form-text>
+
+        <nidoca-form-text
+          label="flexItemBasisValues"
+          .value="${this.flexItemBasisValues}"
+          @nidoca-form-text-event-change="${(event: CustomEvent) => (this.flexItemBasisValues = event.detail.value)}"
+        ></nidoca-form-text>
+
         <nidoca-table
           .headers="${['property', 'type']}"
           .rows="${[

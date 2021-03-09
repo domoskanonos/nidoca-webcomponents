@@ -123,6 +123,42 @@ export class NidocaIconShowcasePage extends NidocaShowcaseTemplate {
           </nidoca-tab-content>
         </nidoca-tabs>
 
+        <nidoca-form-text
+          label="icon"
+          .value="${this.icon}"
+          @nidoca-form-text-event-change="${(event: CustomEvent) => (this.icon = event.detail.value)}"
+        ></nidoca-form-text>
+
+        <nidoca-form-text
+          label="color"
+          .value="${this.color}"
+          @nidoca-form-text-event-change="${(event: CustomEvent) => (this.color = event.detail.value)}"
+        ></nidoca-form-text>
+
+        <nidoca-form-text
+          label="backgroundColor"
+          .value="${this.backgroundColor}"
+          @nidoca-form-text-event-change="${(event: CustomEvent) => (this.backgroundColor = event.detail.value)}"
+        ></nidoca-form-text>
+
+        <nidoca-form-text
+          label="iconShadowType"
+          .value="${this.iconShadowType}"
+          @nidoca-form-text-event-change="${(event: CustomEvent) => (this.iconShadowType = event.detail.value)}"
+        ></nidoca-form-text>
+
+        <nidoca-form-text
+          label="sizeUnit"
+          .value="${this.sizeUnit}"
+          @nidoca-form-text-event-change="${(event: CustomEvent) => (this.sizeUnit = event.detail.value)}"
+        ></nidoca-form-text>
+
+        <nidoca-form-text
+          label="iconTitle"
+          .value="${this.iconTitle}"
+          @nidoca-form-text-event-change="${(event: CustomEvent) => (this.iconTitle = event.detail.value)}"
+        ></nidoca-form-text>
+
         <nidoca-table
           .headers="${['property', 'type']}"
           .rows="${[
