@@ -59,7 +59,6 @@ async function createImports(files: any[]): Promise<any[]> {
     imps.push(nidocaImports);
 
     nidocaClazzNames.forEach(function (clazzName) {
-        console.log(clazzName);
         nidocaImports.specifiers.push({specifier: clazzName});
     });
     return imps;
@@ -109,18 +108,18 @@ function createNidocaShowcaseTemplate(files: any[]) {
 }
 
 function createNidocaShowcaseApp(files: any[]) {
-    let model: any = {pages: []};
+    let appModel: any = {pages: []};
     files.forEach((file: any) => {
         let filename: string = file.from.replace('./', '');
         if (filename.indexOf('abstract') == -1 && filename.indexOf('template') == -1) {
-            model.pages.push(filename);
+            appModel.pages.push(filename);
         }
     })
     ;
 
-    let fileContent: string = fs.readFileSync('./nidoca-showcase-app.html', 'utf-8');
-    let template = handlebars.compile(fileContent);
-    let output: string = template(model);
+    let appFileContent: string = fs.readFileSync('./nidoca-showcase-app.html', 'utf-8');
+    let template = handlebars.compile(appFileContent);
+    let output: string = template(appModel);
 
     fs.writeFileSync('./../showcase/source/nidoca-showcase-app.ts', output, {
         encoding: 'utf8',
@@ -135,12 +134,22 @@ function createComponentPages(files: any[], imps: any[]) {
 
             let destinationFilename: string = file.from.concat('-showcase-page.ts');
 
-           // console.log('parse file: %s', filename);
-            const parsedFile = typescriptParser.parseFile(sourceRoot.concat(filename), 'workspace root');
+            const filepath = sourceRoot.concat(filename);
+            console.log('parse file: %s', filepath);
+            
+            const parsedFile = typescriptParser.parseFile(filepath, 'workspace root');
 
             parsedFile.then((value: any) => {
 
-                //console.log("parsedfiie: "+ JSON.stringify(value));
+                value['content'] = fs.readFileSync(filepath,'utf-8');
+
+                //default slot avaliable ?
+                var defaultSlotRegex = /<slot>[^![^\n]*/gm;
+                value['defaultSlot'] = value['content'].match(defaultSlotRegex) != null;
+
+                //namedSlots
+                let namedSlots = /(?<=<slot name=")(.*)(?=")/gm;
+                value['namedSlots'] = value['content'].match(namedSlots);
 
                 value['imports'] = imps;
                     let decs: any[] = value['declarations'];
@@ -154,7 +163,6 @@ function createComponentPages(files: any[], imps: any[]) {
                                 if(property.visibility == 0){
                                     property.private = true;
                                 }
-                                //console.log(JSON.stringify(property));
                                 let propertyType: string = property.type;
                                 if (propertyType == undefined) {
                                     continue;
@@ -174,7 +182,6 @@ function createComponentPages(files: any[], imps: any[]) {
                                 } else if (propertyType.indexOf('undefined') > -1) {
                                     property.defaultValue = 'undefined';
                                 } else {
-                                    console.log(JSON.stringify(property));
                                     property.defaultValue = 'Object.values('.concat(propertyType).concat(')[0];');
                                 }
 
@@ -188,11 +195,7 @@ function createComponentPages(files: any[], imps: any[]) {
                             clazz.methods.forEach((method: any) => {
 
                                 if(method.name == 'render'){
-                                console.log(JSON.stringify(method));
-
-                                console.log(method.moduleSpecifier);
-
-                                clazz.slots.push({name: method.name});
+                                    clazz.slots.push({name: method.name});
                                 }
 
                             });
