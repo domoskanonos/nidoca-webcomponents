@@ -1,4 +1,5 @@
 import {
+  AccordionType,
   FlexContainerProperties,
   FlexItemProperties,
   FormOutputData,
@@ -70,7 +71,7 @@ export class NidocaFormComboboxShowcasePage extends NidocaShowcaseTemplate {
     return html`
       <nidoca-flex-container
         .flexContainerProperties="${[
-          FlexContainerProperties.CONTAINER_WIDTH_100,
+          FlexContainerProperties.CONTAINER_WIDTH_75,
           FlexContainerProperties.TABLET_MAX_WIDTH,
           FlexContainerProperties.SMARTPHONE_MAX_WIDTH,
           FlexContainerProperties.SMARTPHONE_HORIZONTAL_PADDING,
@@ -81,7 +82,7 @@ export class NidocaFormComboboxShowcasePage extends NidocaShowcaseTemplate {
       >
         <nidoca-typography .typographyType="${TypographyType.H2}" text="<nidoca-form-combobox/>"></nidoca-typography>
         <nidoca-typography .typographyType="${TypographyType.BODY1}"> <br />description<br /><br /> </nidoca-typography>
-        <nidoca-typography .typographyType="${TypographyType.H4}" text="example"></nidoca-typography>
+        <nidoca-typography .typographyType="${TypographyType.H4}" text="showcase"></nidoca-typography>
 
         <nidoca-flex-container
           .flexContainerProperties="${[
@@ -95,48 +96,60 @@ export class NidocaFormComboboxShowcasePage extends NidocaShowcaseTemplate {
           flexItemBasisValue="33.3%"
         >
           <nidoca-container>
-            <nidoca-form-text
-              label="name"
-              .value="${this.name}"
-              @nidoca-form-text-event-change="${(event: CustomEvent) => (this.name = event.detail.value)}"
-            ></nidoca-form-text>
+            <nidoca-accordion .accordionType="${AccordionType.SINGLE}">
+              <nidoca-accordion-item header="properties" .opened="${true}">
+                <nidoca-form-text
+                  label="name"
+                  .value="${this.name}"
+                  @nidoca-form-text-event-change="${(event: CustomEvent) => (this.name = event.detail.value)}"
+                ></nidoca-form-text>
 
-            <nidoca-form-text
-              label="label"
-              .value="${this.label}"
-              @nidoca-form-text-event-change="${(event: CustomEvent) => (this.label = event.detail.value)}"
-            ></nidoca-form-text>
+                <nidoca-form-text
+                  label="label"
+                  .value="${this.label}"
+                  @nidoca-form-text-event-change="${(event: CustomEvent) => (this.label = event.detail.value)}"
+                ></nidoca-form-text>
 
-            <nidoca-form-text
-              label="errorText"
-              .value="${this.errorText}"
-              @nidoca-form-text-event-change="${(event: CustomEvent) => (this.errorText = event.detail.value)}"
-            ></nidoca-form-text>
+                <nidoca-form-switch
+                  name="required"
+                  infoText="required"
+                  .selected="${this.required}"
+                  @nidoca-form-switch-event-change="${(event: CustomEvent) => (this.required = event.detail.value)}"
+                ></nidoca-form-switch>
 
-            <nidoca-form-text
-              label="infoText"
-              .value="${this.infoText}"
-              @nidoca-form-text-event-change="${(event: CustomEvent) => (this.infoText = event.detail.value)}"
-            ></nidoca-form-text>
+                <nidoca-form-text
+                  label="errorText"
+                  .value="${this.errorText}"
+                  @nidoca-form-text-event-change="${(event: CustomEvent) => (this.errorText = event.detail.value)}"
+                ></nidoca-form-text>
 
-            <nidoca-form-text
-              label="warningText"
-              .value="${this.warningText}"
-              @nidoca-form-text-event-change="${(event: CustomEvent) => (this.warningText = event.detail.value)}"
-            ></nidoca-form-text>
+                <nidoca-form-text
+                  label="infoText"
+                  .value="${this.infoText}"
+                  @nidoca-form-text-event-change="${(event: CustomEvent) => (this.infoText = event.detail.value)}"
+                ></nidoca-form-text>
 
-            <nidoca-form-text
-              textType="${TextType.NUMBER}"
-              label="size"
-              .value="${this.size}"
-              @nidoca-form-text-event-change="${(event: CustomEvent) => (this.size = event.detail.value)}"
-            ></nidoca-form-text>
+                <nidoca-form-text
+                  label="warningText"
+                  .value="${this.warningText}"
+                  @nidoca-form-text-event-change="${(event: CustomEvent) => (this.warningText = event.detail.value)}"
+                ></nidoca-form-text>
 
-            <nidoca-form-switch
-              label="size"
-              .value="${this.size}"
-              @nidoca-form-text-event-change="${(event: CustomEvent) => (this.size = event.detail.value)}"
-            ></nidoca-form-switch>
+                <nidoca-form-text
+                  textType="${TextType.NUMBER}"
+                  label="size"
+                  .value="${this.size}"
+                  @nidoca-form-text-event-change="${(event: CustomEvent) => (this.size = event.detail.value)}"
+                ></nidoca-form-text>
+
+                <nidoca-form-switch
+                  name="multiple"
+                  infoText="multiple"
+                  .selected="${this.multiple}"
+                  @nidoca-form-switch-event-change="${(event: CustomEvent) => (this.multiple = event.detail.value)}"
+                ></nidoca-form-switch>
+              </nidoca-accordion-item>
+            </nidoca-accordion>
           </nidoca-container>
 
           <nidoca-box cssStyle="width:100%; height:50vh;background-color: var(--app-color-surface-background-light)">
@@ -156,54 +169,46 @@ export class NidocaFormComboboxShowcasePage extends NidocaShowcaseTemplate {
           </nidoca-box>
 
           <nidoca-code
-            code="${'<nidoca-form-combobox \n    name="' +
-            this.toValue(this.name) +
-            '" .\n    value="' +
-            this.toValue(this.value) +
-            '" \n    label="' +
-            this.toValue(this.label) +
-            '" .\n    options="' +
-            this.toValue(this.options) +
-            '" .\n    required="' +
-            this.toValue(this.required) +
-            '" \n    errorText="' +
-            this.toValue(this.errorText) +
-            '" \n    infoText="' +
-            this.toValue(this.infoText) +
-            '" \n    warningText="' +
-            this.toValue(this.warningText) +
-            '" .\n    size="' +
-            this.toValue(this.size) +
-            '" .\n    multiple="' +
-            this.toValue(this.multiple) +
+            code="${'<nidoca-form-combobox \n  name="' +
+            this.toAttributeCodeString(this.name, 'string') +
+            '" \n  .value="' +
+            this.toAttributeCodeString(this.value, 'any') +
+            '" \n  label="' +
+            this.toAttributeCodeString(this.label, 'string') +
+            '" \n  .options="' +
+            this.toAttributeCodeString(this.options, 'FormOutputData[]') +
+            '" \n  .required="' +
+            this.toAttributeCodeString(this.required, 'boolean') +
+            '" \n  errorText="' +
+            this.toAttributeCodeString(this.errorText, 'string') +
+            '" \n  infoText="' +
+            this.toAttributeCodeString(this.infoText, 'string') +
+            '" \n  warningText="' +
+            this.toAttributeCodeString(this.warningText, 'string') +
+            '" \n  .size="' +
+            this.toAttributeCodeString(this.size, 'number') +
+            '" \n  .multiple="' +
+            this.toAttributeCodeString(this.multiple, 'boolean') +
             '"  >\n     nidoca-form-combobox\n</nidoca-form-combobox>'}"
           ></nidoca-code>
         </nidoca-flex-container>
 
-        Slot: [object Object]
-
         <nidoca-table
           .headers="${['property', 'type']}"
           .rows="${[
-            ['name', 'string'],
-            ['value', 'any'],
-            ['label', 'string'],
-            ['options', 'FormOutputData[]'],
-            ['required', 'boolean'],
-            ['errorText', 'string'],
-            ['infoText', 'string'],
-            ['warningText', 'string'],
-            ['size', 'number'],
-            ['multiple', 'boolean'],
+            ['name', this.object2Value('string', null)],
+            ['value', this.object2Value('any', null)],
+            ['label', this.object2Value('string', null)],
+            ['options', this.object2Value('FormOutputData[]', null)],
+            ['required', this.object2Value('boolean', null)],
+            ['errorText', this.object2Value('string', null)],
+            ['infoText', this.object2Value('string', null)],
+            ['warningText', this.object2Value('string', null)],
+            ['size', this.object2Value('number', null)],
+            ['multiple', this.object2Value('boolean', null)],
           ]}"
         ></nidoca-table>
-
-        <nidoca-table .headers="${['property', 'type']}" .rows="${[['render', 'render']]}"></nidoca-table>
       </nidoca-flex-container>
     `;
-  }
-
-  toValue(item: any): string {
-    return String(item);
   }
 }

@@ -70,34 +70,51 @@ export class {{this.name}}ShowcasePage extends NidocaShowcaseTemplate {
               <nidoca-container>
 
 
+                <nidoca-accordion .accordionType="${AccordionType.SINGLE}" >
 
-              <nidoca-typography .typographyType="${TypographyType.H6}" text="properties"></nidoca-typography>
+                  <nidoca-accordion-item header="properties" .opened="${true}">
 
-              {{#each properties}}
-              {{#if this.isStatic}}{{else}}{{#if this.private}}{{else}}
+                    {{#each this.properties}}
+                    {{#if this.isStatic}}{{else}}{{#if this.private}}{{else}}
+      
+                    {{#if this.isString}}
+                    <nidoca-form-text label="{{this.name}}" .value="${ this.{{this.name}} }" @nidoca-form-text-event-change="${ (event: CustomEvent)=>this.{{this.name}} = event.detail.value }"></nidoca-form-text>
+                    {{/if}}
+      
+                    {{#if this.isNumber}}
+                    <nidoca-form-text textType="${TextType.NUMBER}" label="{{this.name}}" .value="${ this.{{this.name}} }" @nidoca-form-text-event-change="${ (event: CustomEvent)=>this.{{this.name}} = event.detail.value }"></nidoca-form-text>
+                    {{/if}}
+      
+                    {{#if this.isBoolean}}
+                    <nidoca-form-switch name="{{this.name}}" infoText="{{this.name}}" .selected="${ this.{{this.name}} }" @nidoca-form-switch-event-change="${ (event: CustomEvent)=>this.{{this.name}} = event.detail.value }"></nidoca-form-switch>
+                    {{/if}}
+ 
+                    {{#if this.isObject}}
+                    <nidoca-form-combobox label="{{this.name}}" .value="${ this.{{this.name}} }" .options="${ this.toComboboxOptions({{this.type}}) }" @nidoca-form-combobox-event-change="${ (event: CustomEvent)=>this.{{this.name}} = event.detail.value }"></nidoca-form-combobox>
+                    {{/if}}
+      
+                        {{/if}} {{/if}}
+                    {{/each}}
+      
+                  
+                  </nidoca-accordion-item>
 
-              {{#has this.type "string"}}
-              <nidoca-form-text label="{{this.name}}" .value="${ this.{{this.name}} }" @nidoca-form-text-event-change="${ (event: CustomEvent)=>this.{{this.name}} = event.detail.value }"></nidoca-form-text>
-              {{/has}}
 
-              {{#has this.type "number"}}
-              <nidoca-form-text textType="${TextType.NUMBER}" label="{{this.name}}" .value="${ this.{{this.name}} }" @nidoca-form-text-event-change="${ (event: CustomEvent)=>this.{{this.name}} = event.detail.value }"></nidoca-form-text>
-              {{/has}}
+                  {{#if this.slots}}
+                  <nidoca-accordion-item header="slots">
 
-              {{#has this.type "number"}}
-              <nidoca-form-switch label="{{this.name}}" .value="${ this.{{this.name}} }" @nidoca-form-text-event-change="${ (event: CustomEvent)=>this.{{this.name}} = event.detail.value }"></nidoca-form-switch>
-              {{/has}}
+                    <nidoca-table .headers="${ ["slot name", "components", "add"] }" .rows="${ [ {{#each this.slots}} ["{{ this }}",html`<nidoca-form-combobox></nidoca-form-combobox>`,html`<nidoca-icon icon="add"></nidoca-icon>`], {{/each}} ] }"></nidoca-table>
 
+                  </nidoca-accordion-item>
+                  {{/if}}
 
-
-                  {{/if}} {{/if}}
-              {{/each}}
+                  </nidoca-accordion>
 
 
 
-              <nidoca-typography .typographyType="${TypographyType.H6}" text="slots"></nidoca-typography>
 
-              <nidoca-table .headers="${ ["slot name", "components", "add"] }" .rows="${ [ {{#each this.slots}} ["{{ this }}",html`<nidoca-form-combobox></nidoca-form-combobox>`,html`<nidoca-icon icon="add"></nidoca-icon>`], {{/each}} ] }"></nidoca-table>
+
+
 
 
               </nidoca-container>
@@ -112,7 +129,7 @@ export class {{this.name}}ShowcasePage extends NidocaShowcaseTemplate {
 
               </nidoca-box>
 
-              <nidoca-code code="${'<{{toTag this.name}} {{#each properties}}{{#if this.isStatic}}{{else}}{{#if this.private}}{{else}}{{#isnt this.type "string"}}.{{/isnt}}\n    {{this.name}}="'+this.toValue(this.{{this.name}})+'"{{/if}} {{/if}}{{/each}}>\n     {{toTag this.name}}\n</{{toTag this.name}}>'}"></nidoca-code>
+              <nidoca-code code="${'<{{toTag this.name}} {{#each properties}}{{#if this.isStatic}}{{else}}{{#if this.private}}{{else}}\n  {{#isnt this.type "string"}}.{{/isnt}}{{this.name}}="'+this.toAttributeCodeString(this.{{this.name}},"{{this.type}}"{{#if this.isObject}},{{this.type}}{{/if}})+'"{{/if}} {{/if}}{{/each}}>\n     {{toTag this.name}}\n</{{toTag this.name}}>'}"></nidoca-code>
 
           </nidoca-flex-container>
 

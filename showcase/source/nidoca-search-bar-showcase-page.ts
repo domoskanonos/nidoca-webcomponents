@@ -1,4 +1,10 @@
-import {FlexContainerProperties, FlexItemProperties, NidocaSearchBar, TypographyType} from '@domoskanonos/nidoca-core';
+import {
+  AccordionType,
+  FlexContainerProperties,
+  FlexItemProperties,
+  NidocaSearchBar,
+  TypographyType,
+} from '@domoskanonos/nidoca-core';
 import {customElement, html, property, TemplateResult} from 'lit-element';
 import {NidocaShowcaseTemplate} from './nidoca-showcase-template';
 
@@ -23,7 +29,7 @@ export class NidocaSearchBarShowcasePage extends NidocaShowcaseTemplate {
     return html`
       <nidoca-flex-container
         .flexContainerProperties="${[
-          FlexContainerProperties.CONTAINER_WIDTH_100,
+          FlexContainerProperties.CONTAINER_WIDTH_75,
           FlexContainerProperties.TABLET_MAX_WIDTH,
           FlexContainerProperties.SMARTPHONE_MAX_WIDTH,
           FlexContainerProperties.SMARTPHONE_HORIZONTAL_PADDING,
@@ -34,7 +40,7 @@ export class NidocaSearchBarShowcasePage extends NidocaShowcaseTemplate {
       >
         <nidoca-typography .typographyType="${TypographyType.H2}" text="<nidoca-search-bar/>"></nidoca-typography>
         <nidoca-typography .typographyType="${TypographyType.BODY1}"> <br />description<br /><br /> </nidoca-typography>
-        <nidoca-typography .typographyType="${TypographyType.H4}" text="example"></nidoca-typography>
+        <nidoca-typography .typographyType="${TypographyType.H4}" text="showcase"></nidoca-typography>
 
         <nidoca-flex-container
           .flexContainerProperties="${[
@@ -48,17 +54,21 @@ export class NidocaSearchBarShowcasePage extends NidocaShowcaseTemplate {
           flexItemBasisValue="33.3%"
         >
           <nidoca-container>
-            <nidoca-form-text
-              label="placeholder"
-              .value="${this.placeholder}"
-              @nidoca-form-text-event-change="${(event: CustomEvent) => (this.placeholder = event.detail.value)}"
-            ></nidoca-form-text>
+            <nidoca-accordion .accordionType="${AccordionType.SINGLE}">
+              <nidoca-accordion-item header="properties" .opened="${true}">
+                <nidoca-form-text
+                  label="placeholder"
+                  .value="${this.placeholder}"
+                  @nidoca-form-text-event-change="${(event: CustomEvent) => (this.placeholder = event.detail.value)}"
+                ></nidoca-form-text>
 
-            <nidoca-form-text
-              label="value"
-              .value="${this.value}"
-              @nidoca-form-text-event-change="${(event: CustomEvent) => (this.value = event.detail.value)}"
-            ></nidoca-form-text>
+                <nidoca-form-text
+                  label="value"
+                  .value="${this.value}"
+                  @nidoca-form-text-event-change="${(event: CustomEvent) => (this.value = event.detail.value)}"
+                ></nidoca-form-text>
+              </nidoca-accordion-item>
+            </nidoca-accordion>
           </nidoca-container>
 
           <nidoca-box cssStyle="width:100%; height:50vh;background-color: var(--app-color-surface-background-light)">
@@ -68,30 +78,22 @@ export class NidocaSearchBarShowcasePage extends NidocaShowcaseTemplate {
           </nidoca-box>
 
           <nidoca-code
-            code="${'<nidoca-search-bar \n    placeholder="' +
-            this.toValue(this.placeholder) +
-            '" \n    value="' +
-            this.toValue(this.value) +
+            code="${'<nidoca-search-bar \n  placeholder="' +
+            this.toAttributeCodeString(this.placeholder, 'string') +
+            '" \n  value="' +
+            this.toAttributeCodeString(this.value, 'string') +
             '"  >\n     nidoca-search-bar\n</nidoca-search-bar>'}"
           ></nidoca-code>
         </nidoca-flex-container>
 
-        Slot: [object Object]
-
         <nidoca-table
           .headers="${['property', 'type']}"
           .rows="${[
-            ['placeholder', 'string'],
-            ['value', 'string'],
+            ['placeholder', this.object2Value('string', null)],
+            ['value', this.object2Value('string', null)],
           ]}"
         ></nidoca-table>
-
-        <nidoca-table .headers="${['property', 'type']}" .rows="${[['render', 'render']]}"></nidoca-table>
       </nidoca-flex-container>
     `;
-  }
-
-  toValue(item: any): string {
-    return String(item);
   }
 }

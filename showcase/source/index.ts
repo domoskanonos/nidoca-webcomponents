@@ -29,6 +29,7 @@ import './nidoca-rich-media-showcase-page.ts';
 import './nidoca-search-bar-showcase-page.ts';
 import './nidoca-showcase-app';
 import './nidoca-showcase-dashboard-page';
+import './nidoca-showcase-get-started-page';
 import './nidoca-showcase-showcase-page.ts';
 import './nidoca-spacer-showcase-page.ts';
 import './nidoca-tab-content-showcase-page.ts';

@@ -1,4 +1,5 @@
 import {
+  AccordionType,
   FlexContainerProperties,
   FlexItemProperties,
   FormProperties,
@@ -30,7 +31,7 @@ export class NidocaFormOutputDataShowcasePage extends NidocaShowcaseTemplate {
     return html`
       <nidoca-flex-container
         .flexContainerProperties="${[
-          FlexContainerProperties.CONTAINER_WIDTH_100,
+          FlexContainerProperties.CONTAINER_WIDTH_75,
           FlexContainerProperties.TABLET_MAX_WIDTH,
           FlexContainerProperties.SMARTPHONE_MAX_WIDTH,
           FlexContainerProperties.SMARTPHONE_HORIZONTAL_PADDING,
@@ -41,7 +42,7 @@ export class NidocaFormOutputDataShowcasePage extends NidocaShowcaseTemplate {
       >
         <nidoca-typography .typographyType="${TypographyType.H2}" text="<nidoca-form-output-data/>"></nidoca-typography>
         <nidoca-typography .typographyType="${TypographyType.BODY1}"> <br />description<br /><br /> </nidoca-typography>
-        <nidoca-typography .typographyType="${TypographyType.H4}" text="example"></nidoca-typography>
+        <nidoca-typography .typographyType="${TypographyType.H4}" text="showcase"></nidoca-typography>
 
         <nidoca-flex-container
           .flexContainerProperties="${[
@@ -54,7 +55,41 @@ export class NidocaFormOutputDataShowcasePage extends NidocaShowcaseTemplate {
           .flexItemProperties="${[FlexItemProperties.KEYLINE_ALIGNMENT_BOTH, FlexItemProperties.KEYLINE_SIZE_MEDIUM]}"
           flexItemBasisValue="33.3%"
         >
-          <nidoca-container> </nidoca-container>
+          <nidoca-container>
+            <nidoca-accordion .accordionType="${AccordionType.SINGLE}">
+              <nidoca-accordion-item header="properties" .opened="${true}">
+                <nidoca-form-combobox
+                  label="formData"
+                  .value="${this.formData}"
+                  .options="${this.toComboboxOptions(FormData)}"
+                  @nidoca-form-combobox-event-change="${(event: CustomEvent) => (this.formData = event.detail.value)}"
+                ></nidoca-form-combobox>
+              </nidoca-accordion-item>
+
+              <nidoca-accordion-item header="slots">
+                <nidoca-table
+                  .headers="${['slot name', 'components', 'add']}"
+                  .rows="${[
+                    [
+                      'header',
+                      html`<nidoca-form-combobox></nidoca-form-combobox>`,
+                      html`<nidoca-icon icon="add"></nidoca-icon>`,
+                    ],
+                    [
+                      'errorMessages&quot; style&#x3D;&quot;color: var(--app-color-error);',
+                      html`<nidoca-form-combobox></nidoca-form-combobox>`,
+                      html`<nidoca-icon icon="add"></nidoca-icon>`,
+                    ],
+                    [
+                      'footer',
+                      html`<nidoca-form-combobox></nidoca-form-combobox>`,
+                      html`<nidoca-icon icon="add"></nidoca-icon>`,
+                    ],
+                  ]}"
+                ></nidoca-table>
+              </nidoca-accordion-item>
+            </nidoca-accordion>
+          </nidoca-container>
 
           <nidoca-box cssStyle="width:100%; height:50vh;background-color: var(--app-color-surface-background-light)">
             <nidoca-form-output-data .jsonObject="${this.jsonObject}" .formData="${this.formData}"
@@ -63,31 +98,23 @@ export class NidocaFormOutputDataShowcasePage extends NidocaShowcaseTemplate {
           </nidoca-box>
 
           <nidoca-code
-            code="${'<nidoca-form-output-data .\n    jsonObject="' +
-            this.toValue(this.jsonObject) +
-            '" .\n    formData="' +
-            this.toValue(this.formData) +
+            code="${'<nidoca-form-output-data \n  .jsonObject="' +
+            this.toAttributeCodeString(this.jsonObject, 'any') +
+            '" \n  .formData="' +
+            this.toAttributeCodeString(this.formData, 'FormData', FormData) +
             '" >\n     nidoca-form-output-data\n</nidoca-form-output-data>'}"
           ></nidoca-code>
         </nidoca-flex-container>
 
-        Slot:
-
         <nidoca-table
           .headers="${['property', 'type']}"
           .rows="${[
-            ['jsonObject', 'any'],
-            ['formData', 'FormData'],
+            ['jsonObject', this.object2Value('any', null)],
+            ['formData', this.object2Value('FormData', FormData)],
           ]}"
         ></nidoca-table>
-
-        <nidoca-table .headers="${['property', 'type']}" .rows="${[]}"></nidoca-table>
       </nidoca-flex-container>
     `;
-  }
-
-  toValue(item: any): string {
-    return String(item);
   }
 }
 @customElement('nidoca-form-showcase-page')
@@ -111,7 +138,7 @@ export class NidocaFormShowcasePage extends NidocaShowcaseTemplate {
     return html`
       <nidoca-flex-container
         .flexContainerProperties="${[
-          FlexContainerProperties.CONTAINER_WIDTH_100,
+          FlexContainerProperties.CONTAINER_WIDTH_75,
           FlexContainerProperties.TABLET_MAX_WIDTH,
           FlexContainerProperties.SMARTPHONE_MAX_WIDTH,
           FlexContainerProperties.SMARTPHONE_HORIZONTAL_PADDING,
@@ -122,7 +149,7 @@ export class NidocaFormShowcasePage extends NidocaShowcaseTemplate {
       >
         <nidoca-typography .typographyType="${TypographyType.H2}" text="<nidoca-form/>"></nidoca-typography>
         <nidoca-typography .typographyType="${TypographyType.BODY1}"> <br />description<br /><br /> </nidoca-typography>
-        <nidoca-typography .typographyType="${TypographyType.H4}" text="example"></nidoca-typography>
+        <nidoca-typography .typographyType="${TypographyType.H4}" text="showcase"></nidoca-typography>
 
         <nidoca-flex-container
           .flexContainerProperties="${[
@@ -135,7 +162,41 @@ export class NidocaFormShowcasePage extends NidocaShowcaseTemplate {
           .flexItemProperties="${[FlexItemProperties.KEYLINE_ALIGNMENT_BOTH, FlexItemProperties.KEYLINE_SIZE_MEDIUM]}"
           flexItemBasisValue="33.3%"
         >
-          <nidoca-container> </nidoca-container>
+          <nidoca-container>
+            <nidoca-accordion .accordionType="${AccordionType.SINGLE}">
+              <nidoca-accordion-item header="properties" .opened="${true}">
+                <nidoca-form-switch
+                  name="autocomplete"
+                  infoText="autocomplete"
+                  .selected="${this.autocomplete}"
+                  @nidoca-form-switch-event-change="${(event: CustomEvent) => (this.autocomplete = event.detail.value)}"
+                ></nidoca-form-switch>
+              </nidoca-accordion-item>
+
+              <nidoca-accordion-item header="slots">
+                <nidoca-table
+                  .headers="${['slot name', 'components', 'add']}"
+                  .rows="${[
+                    [
+                      'header',
+                      html`<nidoca-form-combobox></nidoca-form-combobox>`,
+                      html`<nidoca-icon icon="add"></nidoca-icon>`,
+                    ],
+                    [
+                      'errorMessages&quot; style&#x3D;&quot;color: var(--app-color-error);',
+                      html`<nidoca-form-combobox></nidoca-form-combobox>`,
+                      html`<nidoca-icon icon="add"></nidoca-icon>`,
+                    ],
+                    [
+                      'footer',
+                      html`<nidoca-form-combobox></nidoca-form-combobox>`,
+                      html`<nidoca-icon icon="add"></nidoca-icon>`,
+                    ],
+                  ]}"
+                ></nidoca-table>
+              </nidoca-accordion-item>
+            </nidoca-accordion>
+          </nidoca-container>
 
           <nidoca-box cssStyle="width:100%; height:50vh;background-color: var(--app-color-surface-background-light)">
             <nidoca-form .formProperties="${this.formProperties}" .autocomplete="${this.autocomplete}"
@@ -144,30 +205,22 @@ export class NidocaFormShowcasePage extends NidocaShowcaseTemplate {
           </nidoca-box>
 
           <nidoca-code
-            code="${'<nidoca-form .\n    formProperties="' +
-            this.toValue(this.formProperties) +
-            '" .\n    autocomplete="' +
-            this.toValue(this.autocomplete) +
+            code="${'<nidoca-form \n  .formProperties="' +
+            this.toAttributeCodeString(this.formProperties, 'FormProperties[]') +
+            '" \n  .autocomplete="' +
+            this.toAttributeCodeString(this.autocomplete, 'boolean') +
             '"   >\n     nidoca-form\n</nidoca-form>'}"
           ></nidoca-code>
         </nidoca-flex-container>
 
-        Slot: [object Object]
-
         <nidoca-table
           .headers="${['property', 'type']}"
           .rows="${[
-            ['formProperties', 'FormProperties[]'],
-            ['autocomplete', 'boolean'],
+            ['formProperties', this.object2Value('FormProperties[]', null)],
+            ['autocomplete', this.object2Value('boolean', null)],
           ]}"
         ></nidoca-table>
-
-        <nidoca-table .headers="${['property', 'type']}" .rows="${[['render', 'render']]}"></nidoca-table>
       </nidoca-flex-container>
     `;
-  }
-
-  toValue(item: any): string {
-    return String(item);
   }
 }

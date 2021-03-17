@@ -1,4 +1,10 @@
-import {FlexContainerProperties, FlexItemProperties, NidocaBox, TypographyType} from '@domoskanonos/nidoca-core';
+import {
+  AccordionType,
+  FlexContainerProperties,
+  FlexItemProperties,
+  NidocaBox,
+  TypographyType,
+} from '@domoskanonos/nidoca-core';
 import {customElement, html, property, TemplateResult} from 'lit-element';
 import {NidocaShowcaseTemplate} from './nidoca-showcase-template';
 
@@ -18,7 +24,7 @@ export class NidocaBoxShowcasePage extends NidocaShowcaseTemplate {
     return html`
       <nidoca-flex-container
         .flexContainerProperties="${[
-          FlexContainerProperties.CONTAINER_WIDTH_100,
+          FlexContainerProperties.CONTAINER_WIDTH_75,
           FlexContainerProperties.TABLET_MAX_WIDTH,
           FlexContainerProperties.SMARTPHONE_MAX_WIDTH,
           FlexContainerProperties.SMARTPHONE_HORIZONTAL_PADDING,
@@ -29,7 +35,7 @@ export class NidocaBoxShowcasePage extends NidocaShowcaseTemplate {
       >
         <nidoca-typography .typographyType="${TypographyType.H2}" text="<nidoca-box/>"></nidoca-typography>
         <nidoca-typography .typographyType="${TypographyType.BODY1}"> <br />description<br /><br /> </nidoca-typography>
-        <nidoca-typography .typographyType="${TypographyType.H4}" text="example"></nidoca-typography>
+        <nidoca-typography .typographyType="${TypographyType.H4}" text="showcase"></nidoca-typography>
 
         <nidoca-flex-container
           .flexContainerProperties="${[
@@ -43,11 +49,28 @@ export class NidocaBoxShowcasePage extends NidocaShowcaseTemplate {
           flexItemBasisValue="33.3%"
         >
           <nidoca-container>
-            <nidoca-form-text
-              label="cssStyle"
-              .value="${this.cssStyle}"
-              @nidoca-form-text-event-change="${(event: CustomEvent) => (this.cssStyle = event.detail.value)}"
-            ></nidoca-form-text>
+            <nidoca-accordion .accordionType="${AccordionType.SINGLE}">
+              <nidoca-accordion-item header="properties" .opened="${true}">
+                <nidoca-form-text
+                  label="cssStyle"
+                  .value="${this.cssStyle}"
+                  @nidoca-form-text-event-change="${(event: CustomEvent) => (this.cssStyle = event.detail.value)}"
+                ></nidoca-form-text>
+              </nidoca-accordion-item>
+
+              <nidoca-accordion-item header="slots">
+                <nidoca-table
+                  .headers="${['slot name', 'components', 'add']}"
+                  .rows="${[
+                    [
+                      '',
+                      html`<nidoca-form-combobox></nidoca-form-combobox>`,
+                      html`<nidoca-icon icon="add"></nidoca-icon>`,
+                    ],
+                  ]}"
+                ></nidoca-table>
+              </nidoca-accordion-item>
+            </nidoca-accordion>
           </nidoca-container>
 
           <nidoca-box cssStyle="width:100%; height:50vh;background-color: var(--app-color-surface-background-light)">
@@ -55,22 +78,17 @@ export class NidocaBoxShowcasePage extends NidocaShowcaseTemplate {
           </nidoca-box>
 
           <nidoca-code
-            code="${'<nidoca-box \n    cssStyle="' +
-            this.toValue(this.cssStyle) +
+            code="${'<nidoca-box \n  cssStyle="' +
+            this.toAttributeCodeString(this.cssStyle, 'string') +
             '" >\n     nidoca-box\n</nidoca-box>'}"
           ></nidoca-code>
         </nidoca-flex-container>
 
-        Slot: [object Object]
-
-        <nidoca-table .headers="${['property', 'type']}" .rows="${[['cssStyle', 'string']]}"></nidoca-table>
-
-        <nidoca-table .headers="${['property', 'type']}" .rows="${[['render', 'render']]}"></nidoca-table>
+        <nidoca-table
+          .headers="${['property', 'type']}"
+          .rows="${[['cssStyle', this.object2Value('string', null)]]}"
+        ></nidoca-table>
       </nidoca-flex-container>
     `;
-  }
-
-  toValue(item: any): string {
-    return String(item);
   }
 }

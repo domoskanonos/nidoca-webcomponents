@@ -1,4 +1,5 @@
 import {
+  AccordionType,
   FlexContainerProperties,
   FlexItemProperties,
   NidocaCaptcha,
@@ -35,7 +36,7 @@ export class NidocaCaptchaShowcasePage extends NidocaShowcaseTemplate {
     return html`
       <nidoca-flex-container
         .flexContainerProperties="${[
-          FlexContainerProperties.CONTAINER_WIDTH_100,
+          FlexContainerProperties.CONTAINER_WIDTH_75,
           FlexContainerProperties.TABLET_MAX_WIDTH,
           FlexContainerProperties.SMARTPHONE_MAX_WIDTH,
           FlexContainerProperties.SMARTPHONE_HORIZONTAL_PADDING,
@@ -46,7 +47,7 @@ export class NidocaCaptchaShowcasePage extends NidocaShowcaseTemplate {
       >
         <nidoca-typography .typographyType="${TypographyType.H2}" text="<nidoca-captcha/>"></nidoca-typography>
         <nidoca-typography .typographyType="${TypographyType.BODY1}"> <br />description<br /><br /> </nidoca-typography>
-        <nidoca-typography .typographyType="${TypographyType.H4}" text="example"></nidoca-typography>
+        <nidoca-typography .typographyType="${TypographyType.H4}" text="showcase"></nidoca-typography>
 
         <nidoca-flex-container
           .flexContainerProperties="${[
@@ -60,31 +61,23 @@ export class NidocaCaptchaShowcasePage extends NidocaShowcaseTemplate {
           flexItemBasisValue="33.3%"
         >
           <nidoca-container>
-            <nidoca-form-text
-              textType="${TextType.NUMBER}"
-              label="numberOne"
-              .value="${this.numberOne}"
-              @nidoca-form-text-event-change="${(event: CustomEvent) => (this.numberOne = event.detail.value)}"
-            ></nidoca-form-text>
+            <nidoca-accordion .accordionType="${AccordionType.SINGLE}">
+              <nidoca-accordion-item header="properties" .opened="${true}">
+                <nidoca-form-text
+                  textType="${TextType.NUMBER}"
+                  label="numberOne"
+                  .value="${this.numberOne}"
+                  @nidoca-form-text-event-change="${(event: CustomEvent) => (this.numberOne = event.detail.value)}"
+                ></nidoca-form-text>
 
-            <nidoca-form-switch
-              label="numberOne"
-              .value="${this.numberOne}"
-              @nidoca-form-text-event-change="${(event: CustomEvent) => (this.numberOne = event.detail.value)}"
-            ></nidoca-form-switch>
-
-            <nidoca-form-text
-              textType="${TextType.NUMBER}"
-              label="numberTwo"
-              .value="${this.numberTwo}"
-              @nidoca-form-text-event-change="${(event: CustomEvent) => (this.numberTwo = event.detail.value)}"
-            ></nidoca-form-text>
-
-            <nidoca-form-switch
-              label="numberTwo"
-              .value="${this.numberTwo}"
-              @nidoca-form-text-event-change="${(event: CustomEvent) => (this.numberTwo = event.detail.value)}"
-            ></nidoca-form-switch>
+                <nidoca-form-text
+                  textType="${TextType.NUMBER}"
+                  label="numberTwo"
+                  .value="${this.numberTwo}"
+                  @nidoca-form-text-event-change="${(event: CustomEvent) => (this.numberTwo = event.detail.value)}"
+                ></nidoca-form-text>
+              </nidoca-accordion-item>
+            </nidoca-accordion>
           </nidoca-container>
 
           <nidoca-box cssStyle="width:100%; height:50vh;background-color: var(--app-color-surface-background-light)">
@@ -97,33 +90,25 @@ export class NidocaCaptchaShowcasePage extends NidocaShowcaseTemplate {
           </nidoca-box>
 
           <nidoca-code
-            code="${'<nidoca-captcha .\n    numberOne="' +
-            this.toValue(this.numberOne) +
-            '" .\n    numberTwo="' +
-            this.toValue(this.numberTwo) +
-            '" .\n    inputfield="' +
-            this.toValue(this.inputfield) +
+            code="${'<nidoca-captcha \n  .numberOne="' +
+            this.toAttributeCodeString(this.numberOne, 'number') +
+            '" \n  .numberTwo="' +
+            this.toAttributeCodeString(this.numberTwo, 'number') +
+            '" \n  .inputfield="' +
+            this.toAttributeCodeString(this.inputfield, 'NidocaFormText | undefined') +
             '" >\n     nidoca-captcha\n</nidoca-captcha>'}"
           ></nidoca-code>
         </nidoca-flex-container>
 
-        Slot: [object Object]
-
         <nidoca-table
           .headers="${['property', 'type']}"
           .rows="${[
-            ['numberOne', 'number'],
-            ['numberTwo', 'number'],
-            ['inputfield', 'NidocaFormText | undefined'],
+            ['numberOne', this.object2Value('number', null)],
+            ['numberTwo', this.object2Value('number', null)],
+            ['inputfield', this.object2Value('NidocaFormText | undefined', null)],
           ]}"
         ></nidoca-table>
-
-        <nidoca-table .headers="${['property', 'type']}" .rows="${[['render', 'render']]}"></nidoca-table>
       </nidoca-flex-container>
     `;
-  }
-
-  toValue(item: any): string {
-    return String(item);
   }
 }

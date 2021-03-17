@@ -75,6 +75,8 @@ function createIndexPage(files: any[]) {
   let indexTSContent: string = '';
   indexTSContent = indexTSContent.concat("import '").concat('./nidoca-showcase-app').concat("';\n");
   indexTSContent = indexTSContent.concat("import '").concat('./nidoca-showcase-dashboard-page').concat("';\n");
+  indexTSContent = indexTSContent.concat("import '").concat('./nidoca-showcase-get-started-page').concat("';\n");
+
   files.forEach((file: any) => {
     let filename: string = file.from.replace('./', '').concat('.ts');
 
@@ -137,11 +139,7 @@ function createComponentPages(files: any[], imps: any[]) {
       const parsedFile = typescriptParser.parseFile(filepath, 'workspace root');
 
       parsedFile.then((value: any) => {
-        value['content'] = fs.readFileSync(filepath, 'utf-8');
-
-        //default slot avaliable ?
-        var defaultSlotRegex = /<slot>[^![^\n]*/gm;
-        value['defaultSlot'] = value['content'].match(defaultSlotRegex) != null;
+        value.content = fs.readFileSync(filepath, 'utf-8');
 
         value['imports'] = imps;
         let decs: any[] = value['declarations'];
@@ -151,11 +149,23 @@ function createComponentPages(files: any[], imps: any[]) {
           let accessors: any[] = clazz.accessors;
 
           //slots
+          
+          //default slot avaliable ?
+          var defaultSlotRegex = /<slot>[^![^\n]*/gm;
+          clazz.defaultSlot = value.content.match(defaultSlotRegex) != null;
+
+          clazz.slots = [];
+          if(clazz.defaultSlot){
+            console.log("add default slot.");
+            clazz.slots.push("");
+          }
+
           let slots = /(?<=<slot name=")(.*)(?=")/gm;
-          clazz.slots = value['content'].match(slots);
-          if (clazz.slots) {
-            clazz.slots.forEach((slotElement: any) => {
+          let namedSlots : [] = value.content.match(slots);
+          if (namedSlots) {
+            namedSlots.forEach((slotElement: any) => {
               console.log('slot element name detected: %s', slotElement);
+              clazz.slots.push(slotElement);
             });
           }
 
@@ -174,14 +184,19 @@ function createComponentPages(files: any[], imps: any[]) {
               } else if (propertyType.indexOf('[]') > -1) {
                 property.defaultValue = '[]';
               } else if (propertyType.indexOf('string') > -1) {
+                property.isString = true;
                 property.defaultValue = "''";
               } else if (propertyType.indexOf('boolean') > -1) {
+                property.isBoolean = true;
                 property.defaultValue = 'false';
               } else if (propertyType.indexOf('number') > -1) {
+                property.isNumber = true;
                 property.defaultValue = '0';
               } else if (propertyType.indexOf('any') > -1) {
+                property.isAny = true;
                 property.defaultValue = "''";
               } else if (propertyType.indexOf('undefined') > -1) {
+                property.isUndefined = true;
                 property.defaultValue = 'undefined';
               } else {
                 property.isObject = true;

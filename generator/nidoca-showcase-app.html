@@ -26,6 +26,8 @@ export class NidocaShowcaseApp extends NidocaAbstractApp {
       case '{{this}}':
         return html` <{{this}}-showcase-page></{{this}}-showcase-page> `;
       {{/each}}
+      case 'nidoca-showcase-get-started-page':
+        return html` <nidoca-showcase-get-started-page></nidoca-showcase-get-started-page> `;
       case 'nidoca-showcase-dashboard-page':
       default:
         return html` <nidoca-showcase-dashboard-page></nidoca-showcase-dashboard-page> `;

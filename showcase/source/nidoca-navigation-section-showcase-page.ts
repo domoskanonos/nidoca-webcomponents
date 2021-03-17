@@ -1,4 +1,5 @@
 import {
+  AccordionType,
   FlexContainerProperties,
   FlexItemProperties,
   NidocaNavigationSection,
@@ -28,7 +29,7 @@ export class NidocaNavigationSectionShowcasePage extends NidocaShowcaseTemplate 
     return html`
       <nidoca-flex-container
         .flexContainerProperties="${[
-          FlexContainerProperties.CONTAINER_WIDTH_100,
+          FlexContainerProperties.CONTAINER_WIDTH_75,
           FlexContainerProperties.TABLET_MAX_WIDTH,
           FlexContainerProperties.SMARTPHONE_MAX_WIDTH,
           FlexContainerProperties.SMARTPHONE_HORIZONTAL_PADDING,
@@ -42,7 +43,7 @@ export class NidocaNavigationSectionShowcasePage extends NidocaShowcaseTemplate 
           text="<nidoca-navigation-section/>"
         ></nidoca-typography>
         <nidoca-typography .typographyType="${TypographyType.BODY1}"> <br />description<br /><br /> </nidoca-typography>
-        <nidoca-typography .typographyType="${TypographyType.H4}" text="example"></nidoca-typography>
+        <nidoca-typography .typographyType="${TypographyType.H4}" text="showcase"></nidoca-typography>
 
         <nidoca-flex-container
           .flexContainerProperties="${[
@@ -56,11 +57,22 @@ export class NidocaNavigationSectionShowcasePage extends NidocaShowcaseTemplate 
           flexItemBasisValue="33.3%"
         >
           <nidoca-container>
-            <nidoca-form-text
-              label="text"
-              .value="${this.text}"
-              @nidoca-form-text-event-change="${(event: CustomEvent) => (this.text = event.detail.value)}"
-            ></nidoca-form-text>
+            <nidoca-accordion .accordionType="${AccordionType.SINGLE}">
+              <nidoca-accordion-item header="properties" .opened="${true}">
+                <nidoca-form-text
+                  label="text"
+                  .value="${this.text}"
+                  @nidoca-form-text-event-change="${(event: CustomEvent) => (this.text = event.detail.value)}"
+                ></nidoca-form-text>
+
+                <nidoca-form-switch
+                  name="rendered"
+                  infoText="rendered"
+                  .selected="${this.rendered}"
+                  @nidoca-form-switch-event-change="${(event: CustomEvent) => (this.rendered = event.detail.value)}"
+                ></nidoca-form-switch>
+              </nidoca-accordion-item>
+            </nidoca-accordion>
           </nidoca-container>
 
           <nidoca-box cssStyle="width:100%; height:50vh;background-color: var(--app-color-surface-background-light)">
@@ -70,30 +82,22 @@ export class NidocaNavigationSectionShowcasePage extends NidocaShowcaseTemplate 
           </nidoca-box>
 
           <nidoca-code
-            code="${'<nidoca-navigation-section \n    text="' +
-            this.toValue(this.text) +
-            '" .\n    rendered="' +
-            this.toValue(this.rendered) +
+            code="${'<nidoca-navigation-section \n  text="' +
+            this.toAttributeCodeString(this.text, 'string') +
+            '" \n  .rendered="' +
+            this.toAttributeCodeString(this.rendered, 'boolean') +
             '" >\n     nidoca-navigation-section\n</nidoca-navigation-section>'}"
           ></nidoca-code>
         </nidoca-flex-container>
 
-        Slot: [object Object]
-
         <nidoca-table
           .headers="${['property', 'type']}"
           .rows="${[
-            ['text', 'string'],
-            ['rendered', 'boolean'],
+            ['text', this.object2Value('string', null)],
+            ['rendered', this.object2Value('boolean', null)],
           ]}"
         ></nidoca-table>
-
-        <nidoca-table .headers="${['property', 'type']}" .rows="${[['render', 'render']]}"></nidoca-table>
       </nidoca-flex-container>
     `;
-  }
-
-  toValue(item: any): string {
-    return String(item);
   }
 }

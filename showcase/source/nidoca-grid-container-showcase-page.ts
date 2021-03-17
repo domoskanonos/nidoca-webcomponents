@@ -1,4 +1,5 @@
 import {
+  AccordionType,
   FlexContainerProperties,
   FlexItemProperties,
   NidocaGridContainer,
@@ -58,7 +59,7 @@ export class NidocaGridContainerShowcasePage extends NidocaShowcaseTemplate {
     return html`
       <nidoca-flex-container
         .flexContainerProperties="${[
-          FlexContainerProperties.CONTAINER_WIDTH_100,
+          FlexContainerProperties.CONTAINER_WIDTH_75,
           FlexContainerProperties.TABLET_MAX_WIDTH,
           FlexContainerProperties.SMARTPHONE_MAX_WIDTH,
           FlexContainerProperties.SMARTPHONE_HORIZONTAL_PADDING,
@@ -69,7 +70,7 @@ export class NidocaGridContainerShowcasePage extends NidocaShowcaseTemplate {
       >
         <nidoca-typography .typographyType="${TypographyType.H2}" text="<nidoca-grid-container/>"></nidoca-typography>
         <nidoca-typography .typographyType="${TypographyType.BODY1}"> <br />description<br /><br /> </nidoca-typography>
-        <nidoca-typography .typographyType="${TypographyType.H4}" text="example"></nidoca-typography>
+        <nidoca-typography .typographyType="${TypographyType.H4}" text="showcase"></nidoca-typography>
 
         <nidoca-flex-container
           .flexContainerProperties="${[
@@ -83,54 +84,59 @@ export class NidocaGridContainerShowcasePage extends NidocaShowcaseTemplate {
           flexItemBasisValue="33.3%"
         >
           <nidoca-container>
-            <nidoca-form-text
-              label="gridTemplateRows"
-              .value="${this.gridTemplateRows}"
-              @nidoca-form-text-event-change="${(event: CustomEvent) => (this.gridTemplateRows = event.detail.value)}"
-            ></nidoca-form-text>
+            <nidoca-accordion .accordionType="${AccordionType.SINGLE}">
+              <nidoca-accordion-item header="properties" .opened="${true}">
+                <nidoca-form-text
+                  label="gridJustifyItems"
+                  .value="${this.gridJustifyItems}"
+                  @nidoca-form-text-event-change="${(event: CustomEvent) =>
+                    (this.gridJustifyItems = event.detail.value)}"
+                ></nidoca-form-text>
 
-            <nidoca-form-text
-              label="gridTemplateColumns"
-              .value="${this.gridTemplateColumns}"
-              @nidoca-form-text-event-change="${(event: CustomEvent) =>
-                (this.gridTemplateColumns = event.detail.value)}"
-            ></nidoca-form-text>
+                <nidoca-form-text
+                  label="gridAlignItems"
+                  .value="${this.gridAlignItems}"
+                  @nidoca-form-text-event-change="${(event: CustomEvent) => (this.gridAlignItems = event.detail.value)}"
+                ></nidoca-form-text>
 
-            <nidoca-form-text
-              label="gridJustifyItems"
-              .value="${this.gridJustifyItems}"
-              @nidoca-form-text-event-change="${(event: CustomEvent) => (this.gridJustifyItems = event.detail.value)}"
-            ></nidoca-form-text>
+                <nidoca-form-text
+                  label="height"
+                  .value="${this.height}"
+                  @nidoca-form-text-event-change="${(event: CustomEvent) => (this.height = event.detail.value)}"
+                ></nidoca-form-text>
 
-            <nidoca-form-text
-              label="gridAlignItems"
-              .value="${this.gridAlignItems}"
-              @nidoca-form-text-event-change="${(event: CustomEvent) => (this.gridAlignItems = event.detail.value)}"
-            ></nidoca-form-text>
+                <nidoca-form-text
+                  label="minHeight"
+                  .value="${this.minHeight}"
+                  @nidoca-form-text-event-change="${(event: CustomEvent) => (this.minHeight = event.detail.value)}"
+                ></nidoca-form-text>
 
-            <nidoca-form-text
-              label="height"
-              .value="${this.height}"
-              @nidoca-form-text-event-change="${(event: CustomEvent) => (this.height = event.detail.value)}"
-            ></nidoca-form-text>
+                <nidoca-form-text
+                  label="width"
+                  .value="${this.width}"
+                  @nidoca-form-text-event-change="${(event: CustomEvent) => (this.width = event.detail.value)}"
+                ></nidoca-form-text>
 
-            <nidoca-form-text
-              label="minHeight"
-              .value="${this.minHeight}"
-              @nidoca-form-text-event-change="${(event: CustomEvent) => (this.minHeight = event.detail.value)}"
-            ></nidoca-form-text>
+                <nidoca-form-text
+                  label="minWidth"
+                  .value="${this.minWidth}"
+                  @nidoca-form-text-event-change="${(event: CustomEvent) => (this.minWidth = event.detail.value)}"
+                ></nidoca-form-text>
+              </nidoca-accordion-item>
 
-            <nidoca-form-text
-              label="width"
-              .value="${this.width}"
-              @nidoca-form-text-event-change="${(event: CustomEvent) => (this.width = event.detail.value)}"
-            ></nidoca-form-text>
-
-            <nidoca-form-text
-              label="minWidth"
-              .value="${this.minWidth}"
-              @nidoca-form-text-event-change="${(event: CustomEvent) => (this.minWidth = event.detail.value)}"
-            ></nidoca-form-text>
+              <nidoca-accordion-item header="slots">
+                <nidoca-table
+                  .headers="${['slot name', 'components', 'add']}"
+                  .rows="${[
+                    [
+                      '',
+                      html`<nidoca-form-combobox></nidoca-form-combobox>`,
+                      html`<nidoca-icon icon="add"></nidoca-icon>`,
+                    ],
+                  ]}"
+                ></nidoca-table>
+              </nidoca-accordion-item>
+            </nidoca-accordion>
           </nidoca-container>
 
           <nidoca-box cssStyle="width:100%; height:50vh;background-color: var(--app-color-surface-background-light)">
@@ -148,48 +154,40 @@ export class NidocaGridContainerShowcasePage extends NidocaShowcaseTemplate {
           </nidoca-box>
 
           <nidoca-code
-            code="${'<nidoca-grid-container .\n    gridTemplateRows="' +
-            this.toValue(this.gridTemplateRows) +
-            '" .\n    gridTemplateColumns="' +
-            this.toValue(this.gridTemplateColumns) +
-            '" \n    gridJustifyItems="' +
-            this.toValue(this.gridJustifyItems) +
-            '" \n    gridAlignItems="' +
-            this.toValue(this.gridAlignItems) +
-            '" \n    height="' +
-            this.toValue(this.height) +
-            '" \n    minHeight="' +
-            this.toValue(this.minHeight) +
-            '" \n    width="' +
-            this.toValue(this.width) +
-            '" \n    minWidth="' +
-            this.toValue(this.minWidth) +
+            code="${'<nidoca-grid-container \n  .gridTemplateRows="' +
+            this.toAttributeCodeString(this.gridTemplateRows, 'string[]') +
+            '" \n  .gridTemplateColumns="' +
+            this.toAttributeCodeString(this.gridTemplateColumns, 'string[]') +
+            '" \n  gridJustifyItems="' +
+            this.toAttributeCodeString(this.gridJustifyItems, 'string') +
+            '" \n  gridAlignItems="' +
+            this.toAttributeCodeString(this.gridAlignItems, 'string') +
+            '" \n  height="' +
+            this.toAttributeCodeString(this.height, 'string') +
+            '" \n  minHeight="' +
+            this.toAttributeCodeString(this.minHeight, 'string') +
+            '" \n  width="' +
+            this.toAttributeCodeString(this.width, 'string') +
+            '" \n  minWidth="' +
+            this.toAttributeCodeString(this.minWidth, 'string') +
             '" >\n     nidoca-grid-container\n</nidoca-grid-container>'}"
           ></nidoca-code>
         </nidoca-flex-container>
 
-        Slot: [object Object]
-
         <nidoca-table
           .headers="${['property', 'type']}"
           .rows="${[
-            ['gridTemplateRows', 'string[]'],
-            ['gridTemplateColumns', 'string[]'],
-            ['gridJustifyItems', 'string'],
-            ['gridAlignItems', 'string'],
-            ['height', 'string'],
-            ['minHeight', 'string'],
-            ['width', 'string'],
-            ['minWidth', 'string'],
+            ['gridTemplateRows', this.object2Value('string[]', null)],
+            ['gridTemplateColumns', this.object2Value('string[]', null)],
+            ['gridJustifyItems', this.object2Value('string', null)],
+            ['gridAlignItems', this.object2Value('string', null)],
+            ['height', this.object2Value('string', null)],
+            ['minHeight', this.object2Value('string', null)],
+            ['width', this.object2Value('string', null)],
+            ['minWidth', this.object2Value('string', null)],
           ]}"
         ></nidoca-table>
-
-        <nidoca-table .headers="${['property', 'type']}" .rows="${[['render', 'render']]}"></nidoca-table>
       </nidoca-flex-container>
     `;
-  }
-
-  toValue(item: any): string {
-    return String(item);
   }
 }

@@ -1,4 +1,5 @@
 import {
+  AccordionType,
   FlexContainerProperties,
   FlexItemProperties,
   NidocaIcon,
@@ -74,7 +75,7 @@ export class NidocaIconShowcasePage extends NidocaShowcaseTemplate {
     return html`
       <nidoca-flex-container
         .flexContainerProperties="${[
-          FlexContainerProperties.CONTAINER_WIDTH_100,
+          FlexContainerProperties.CONTAINER_WIDTH_75,
           FlexContainerProperties.TABLET_MAX_WIDTH,
           FlexContainerProperties.SMARTPHONE_MAX_WIDTH,
           FlexContainerProperties.SMARTPHONE_HORIZONTAL_PADDING,
@@ -85,7 +86,7 @@ export class NidocaIconShowcasePage extends NidocaShowcaseTemplate {
       >
         <nidoca-typography .typographyType="${TypographyType.H2}" text="<nidoca-icon/>"></nidoca-typography>
         <nidoca-typography .typographyType="${TypographyType.BODY1}"> <br />description<br /><br /> </nidoca-typography>
-        <nidoca-typography .typographyType="${TypographyType.H4}" text="example"></nidoca-typography>
+        <nidoca-typography .typographyType="${TypographyType.H4}" text="showcase"></nidoca-typography>
 
         <nidoca-flex-container
           .flexContainerProperties="${[
@@ -99,54 +100,95 @@ export class NidocaIconShowcasePage extends NidocaShowcaseTemplate {
           flexItemBasisValue="33.3%"
         >
           <nidoca-container>
-            <nidoca-form-text
-              label="icon"
-              .value="${this.icon}"
-              @nidoca-form-text-event-change="${(event: CustomEvent) => (this.icon = event.detail.value)}"
-            ></nidoca-form-text>
+            <nidoca-accordion .accordionType="${AccordionType.SINGLE}">
+              <nidoca-accordion-item header="properties" .opened="${true}">
+                <nidoca-form-text
+                  label="icon"
+                  .value="${this.icon}"
+                  @nidoca-form-text-event-change="${(event: CustomEvent) => (this.icon = event.detail.value)}"
+                ></nidoca-form-text>
 
-            <nidoca-form-text
-              label="color"
-              .value="${this.color}"
-              @nidoca-form-text-event-change="${(event: CustomEvent) => (this.color = event.detail.value)}"
-            ></nidoca-form-text>
+                <nidoca-form-text
+                  label="color"
+                  .value="${this.color}"
+                  @nidoca-form-text-event-change="${(event: CustomEvent) => (this.color = event.detail.value)}"
+                ></nidoca-form-text>
 
-            <nidoca-form-text
-              label="backgroundColor"
-              .value="${this.backgroundColor}"
-              @nidoca-form-text-event-change="${(event: CustomEvent) => (this.backgroundColor = event.detail.value)}"
-            ></nidoca-form-text>
+                <nidoca-form-text
+                  label="backgroundColor"
+                  .value="${this.backgroundColor}"
+                  @nidoca-form-text-event-change="${(event: CustomEvent) =>
+                    (this.backgroundColor = event.detail.value)}"
+                ></nidoca-form-text>
 
-            <nidoca-form-text
-              label="iconShadowType"
-              .value="${this.iconShadowType}"
-              @nidoca-form-text-event-change="${(event: CustomEvent) => (this.iconShadowType = event.detail.value)}"
-            ></nidoca-form-text>
+                <nidoca-form-text
+                  label="iconShadowType"
+                  .value="${this.iconShadowType}"
+                  @nidoca-form-text-event-change="${(event: CustomEvent) => (this.iconShadowType = event.detail.value)}"
+                ></nidoca-form-text>
 
-            <nidoca-form-text
-              textType="${TextType.NUMBER}"
-              label="size"
-              .value="${this.size}"
-              @nidoca-form-text-event-change="${(event: CustomEvent) => (this.size = event.detail.value)}"
-            ></nidoca-form-text>
+                <nidoca-form-text
+                  textType="${TextType.NUMBER}"
+                  label="size"
+                  .value="${this.size}"
+                  @nidoca-form-text-event-change="${(event: CustomEvent) => (this.size = event.detail.value)}"
+                ></nidoca-form-text>
 
-            <nidoca-form-switch
-              label="size"
-              .value="${this.size}"
-              @nidoca-form-text-event-change="${(event: CustomEvent) => (this.size = event.detail.value)}"
-            ></nidoca-form-switch>
+                <nidoca-form-text
+                  label="sizeUnit"
+                  .value="${this.sizeUnit}"
+                  @nidoca-form-text-event-change="${(event: CustomEvent) => (this.sizeUnit = event.detail.value)}"
+                ></nidoca-form-text>
 
-            <nidoca-form-text
-              label="sizeUnit"
-              .value="${this.sizeUnit}"
-              @nidoca-form-text-event-change="${(event: CustomEvent) => (this.sizeUnit = event.detail.value)}"
-            ></nidoca-form-text>
+                <nidoca-form-text
+                  label="iconTitle"
+                  .value="${this.iconTitle}"
+                  @nidoca-form-text-event-change="${(event: CustomEvent) => (this.iconTitle = event.detail.value)}"
+                ></nidoca-form-text>
 
-            <nidoca-form-text
-              label="iconTitle"
-              .value="${this.iconTitle}"
-              @nidoca-form-text-event-change="${(event: CustomEvent) => (this.iconTitle = event.detail.value)}"
-            ></nidoca-form-text>
+                <nidoca-form-switch
+                  name="withIconSpace"
+                  infoText="withIconSpace"
+                  .selected="${this.withIconSpace}"
+                  @nidoca-form-switch-event-change="${(event: CustomEvent) =>
+                    (this.withIconSpace = event.detail.value)}"
+                ></nidoca-form-switch>
+
+                <nidoca-form-switch
+                  name="round"
+                  infoText="round"
+                  .selected="${this.round}"
+                  @nidoca-form-switch-event-change="${(event: CustomEvent) => (this.round = event.detail.value)}"
+                ></nidoca-form-switch>
+
+                <nidoca-form-switch
+                  name="clickable"
+                  infoText="clickable"
+                  .selected="${this.clickable}"
+                  @nidoca-form-switch-event-change="${(event: CustomEvent) => (this.clickable = event.detail.value)}"
+                ></nidoca-form-switch>
+
+                <nidoca-form-switch
+                  name="deactivated"
+                  infoText="deactivated"
+                  .selected="${this.deactivated}"
+                  @nidoca-form-switch-event-change="${(event: CustomEvent) => (this.deactivated = event.detail.value)}"
+                ></nidoca-form-switch>
+              </nidoca-accordion-item>
+
+              <nidoca-accordion-item header="slots">
+                <nidoca-table
+                  .headers="${['slot name', 'components', 'add']}"
+                  .rows="${[
+                    [
+                      '',
+                      html`<nidoca-form-combobox></nidoca-form-combobox>`,
+                      html`<nidoca-icon icon="add"></nidoca-icon>`,
+                    ],
+                  ]}"
+                ></nidoca-table>
+              </nidoca-accordion-item>
+            </nidoca-accordion>
           </nidoca-container>
 
           <nidoca-box cssStyle="width:100%; height:50vh;background-color: var(--app-color-surface-background-light)">
@@ -167,57 +209,49 @@ export class NidocaIconShowcasePage extends NidocaShowcaseTemplate {
           </nidoca-box>
 
           <nidoca-code
-            code="${'<nidoca-icon \n    icon="' +
-            this.toValue(this.icon) +
-            '" \n    color="' +
-            this.toValue(this.color) +
-            '" \n    backgroundColor="' +
-            this.toValue(this.backgroundColor) +
-            '" \n    iconShadowType="' +
-            this.toValue(this.iconShadowType) +
-            '" .\n    size="' +
-            this.toValue(this.size) +
-            '" \n    sizeUnit="' +
-            this.toValue(this.sizeUnit) +
-            '" \n    iconTitle="' +
-            this.toValue(this.iconTitle) +
-            '" .\n    withIconSpace="' +
-            this.toValue(this.withIconSpace) +
-            '" .\n    round="' +
-            this.toValue(this.round) +
-            '" .\n    clickable="' +
-            this.toValue(this.clickable) +
-            '" .\n    deactivated="' +
-            this.toValue(this.deactivated) +
+            code="${'<nidoca-icon \n  icon="' +
+            this.toAttributeCodeString(this.icon, 'string') +
+            '" \n  color="' +
+            this.toAttributeCodeString(this.color, 'string') +
+            '" \n  backgroundColor="' +
+            this.toAttributeCodeString(this.backgroundColor, 'string') +
+            '" \n  iconShadowType="' +
+            this.toAttributeCodeString(this.iconShadowType, 'string') +
+            '" \n  .size="' +
+            this.toAttributeCodeString(this.size, 'number') +
+            '" \n  sizeUnit="' +
+            this.toAttributeCodeString(this.sizeUnit, 'string') +
+            '" \n  iconTitle="' +
+            this.toAttributeCodeString(this.iconTitle, 'string') +
+            '" \n  .withIconSpace="' +
+            this.toAttributeCodeString(this.withIconSpace, 'boolean') +
+            '" \n  .round="' +
+            this.toAttributeCodeString(this.round, 'boolean') +
+            '" \n  .clickable="' +
+            this.toAttributeCodeString(this.clickable, 'boolean') +
+            '" \n  .deactivated="' +
+            this.toAttributeCodeString(this.deactivated, 'boolean') +
             '" >\n     nidoca-icon\n</nidoca-icon>'}"
           ></nidoca-code>
         </nidoca-flex-container>
 
-        Slot: [object Object]
-
         <nidoca-table
           .headers="${['property', 'type']}"
           .rows="${[
-            ['icon', 'string'],
-            ['color', 'string'],
-            ['backgroundColor', 'string'],
-            ['iconShadowType', 'string'],
-            ['size', 'number'],
-            ['sizeUnit', 'string'],
-            ['iconTitle', 'string'],
-            ['withIconSpace', 'boolean'],
-            ['round', 'boolean'],
-            ['clickable', 'boolean'],
-            ['deactivated', 'boolean'],
+            ['icon', this.object2Value('string', null)],
+            ['color', this.object2Value('string', null)],
+            ['backgroundColor', this.object2Value('string', null)],
+            ['iconShadowType', this.object2Value('string', null)],
+            ['size', this.object2Value('number', null)],
+            ['sizeUnit', this.object2Value('string', null)],
+            ['iconTitle', this.object2Value('string', null)],
+            ['withIconSpace', this.object2Value('boolean', null)],
+            ['round', this.object2Value('boolean', null)],
+            ['clickable', this.object2Value('boolean', null)],
+            ['deactivated', this.object2Value('boolean', null)],
           ]}"
         ></nidoca-table>
-
-        <nidoca-table .headers="${['property', 'type']}" .rows="${[['render', 'render']]}"></nidoca-table>
       </nidoca-flex-container>
     `;
-  }
-
-  toValue(item: any): string {
-    return String(item);
   }
 }

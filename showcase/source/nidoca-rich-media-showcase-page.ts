@@ -1,4 +1,5 @@
 import {
+  AccordionType,
   FlexContainerProperties,
   FlexItemProperties,
   NidocaRichMedia,
@@ -35,7 +36,7 @@ export class NidocaRichMediaShowcasePage extends NidocaShowcaseTemplate {
     return html`
       <nidoca-flex-container
         .flexContainerProperties="${[
-          FlexContainerProperties.CONTAINER_WIDTH_100,
+          FlexContainerProperties.CONTAINER_WIDTH_75,
           FlexContainerProperties.TABLET_MAX_WIDTH,
           FlexContainerProperties.SMARTPHONE_MAX_WIDTH,
           FlexContainerProperties.SMARTPHONE_HORIZONTAL_PADDING,
@@ -46,7 +47,7 @@ export class NidocaRichMediaShowcasePage extends NidocaShowcaseTemplate {
       >
         <nidoca-typography .typographyType="${TypographyType.H2}" text="<nidoca-rich-media/>"></nidoca-typography>
         <nidoca-typography .typographyType="${TypographyType.BODY1}"> <br />description<br /><br /> </nidoca-typography>
-        <nidoca-typography .typographyType="${TypographyType.H4}" text="example"></nidoca-typography>
+        <nidoca-typography .typographyType="${TypographyType.H4}" text="showcase"></nidoca-typography>
 
         <nidoca-flex-container
           .flexContainerProperties="${[
@@ -60,11 +61,23 @@ export class NidocaRichMediaShowcasePage extends NidocaShowcaseTemplate {
           flexItemBasisValue="33.3%"
         >
           <nidoca-container>
-            <nidoca-form-text
-              label="src"
-              .value="${this.src}"
-              @nidoca-form-text-event-change="${(event: CustomEvent) => (this.src = event.detail.value)}"
-            ></nidoca-form-text>
+            <nidoca-accordion .accordionType="${AccordionType.SINGLE}">
+              <nidoca-accordion-item header="properties" .opened="${true}">
+                <nidoca-form-text
+                  label="src"
+                  .value="${this.src}"
+                  @nidoca-form-text-event-change="${(event: CustomEvent) => (this.src = event.detail.value)}"
+                ></nidoca-form-text>
+
+                <nidoca-form-combobox
+                  label="richMediaType"
+                  .value="${this.richMediaType}"
+                  .options="${this.toComboboxOptions(RichMediaType)}"
+                  @nidoca-form-combobox-event-change="${(event: CustomEvent) =>
+                    (this.richMediaType = event.detail.value)}"
+                ></nidoca-form-combobox>
+              </nidoca-accordion-item>
+            </nidoca-accordion>
           </nidoca-container>
 
           <nidoca-box cssStyle="width:100%; height:50vh;background-color: var(--app-color-surface-background-light)">
@@ -77,33 +90,25 @@ export class NidocaRichMediaShowcasePage extends NidocaShowcaseTemplate {
           </nidoca-box>
 
           <nidoca-code
-            code="${'<nidoca-rich-media \n    src="' +
-            this.toValue(this.src) +
-            '" .\n    richMediaType="' +
-            this.toValue(this.richMediaType) +
-            '" .\n    richMediaProperties="' +
-            this.toValue(this.richMediaProperties) +
+            code="${'<nidoca-rich-media \n  src="' +
+            this.toAttributeCodeString(this.src, 'string') +
+            '" \n  .richMediaType="' +
+            this.toAttributeCodeString(this.richMediaType, 'RichMediaType', RichMediaType) +
+            '" \n  .richMediaProperties="' +
+            this.toAttributeCodeString(this.richMediaProperties, 'RichMediaProperties[]') +
             '" >\n     nidoca-rich-media\n</nidoca-rich-media>'}"
           ></nidoca-code>
         </nidoca-flex-container>
 
-        Slot: [object Object]
-
         <nidoca-table
           .headers="${['property', 'type']}"
           .rows="${[
-            ['src', 'string'],
-            ['richMediaType', 'RichMediaType'],
-            ['richMediaProperties', 'RichMediaProperties[]'],
+            ['src', this.object2Value('string', null)],
+            ['richMediaType', this.object2Value('RichMediaType', RichMediaType)],
+            ['richMediaProperties', this.object2Value('RichMediaProperties[]', null)],
           ]}"
         ></nidoca-table>
-
-        <nidoca-table .headers="${['property', 'type']}" .rows="${[['render', 'render']]}"></nidoca-table>
       </nidoca-flex-container>
     `;
-  }
-
-  toValue(item: any): string {
-    return String(item);
   }
 }

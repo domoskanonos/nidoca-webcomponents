@@ -99,6 +99,8 @@ export class NidocaShowcaseApp extends NidocaAbstractApp {
         return html` <nidoca-dialog-showcase-page></nidoca-dialog-showcase-page> `;
       case 'nidoca-showcase':
         return html` <nidoca-showcase-showcase-page></nidoca-showcase-showcase-page> `;
+      case 'nidoca-showcase-get-started-page':
+        return html` <nidoca-showcase-get-started-page></nidoca-showcase-get-started-page> `;
       case 'nidoca-showcase-dashboard-page':
       default:
         return html` <nidoca-showcase-dashboard-page></nidoca-showcase-dashboard-page> `;

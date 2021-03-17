@@ -1,4 +1,5 @@
 import {
+  AccordionType,
   DividerType,
   FlexContainerProperties,
   FlexItemProperties,
@@ -30,7 +31,7 @@ export class NidocaDividerShowcasePage extends NidocaShowcaseTemplate {
     return html`
       <nidoca-flex-container
         .flexContainerProperties="${[
-          FlexContainerProperties.CONTAINER_WIDTH_100,
+          FlexContainerProperties.CONTAINER_WIDTH_75,
           FlexContainerProperties.TABLET_MAX_WIDTH,
           FlexContainerProperties.SMARTPHONE_MAX_WIDTH,
           FlexContainerProperties.SMARTPHONE_HORIZONTAL_PADDING,
@@ -41,7 +42,7 @@ export class NidocaDividerShowcasePage extends NidocaShowcaseTemplate {
       >
         <nidoca-typography .typographyType="${TypographyType.H2}" text="<nidoca-divider/>"></nidoca-typography>
         <nidoca-typography .typographyType="${TypographyType.BODY1}"> <br />description<br /><br /> </nidoca-typography>
-        <nidoca-typography .typographyType="${TypographyType.H4}" text="example"></nidoca-typography>
+        <nidoca-typography .typographyType="${TypographyType.H4}" text="showcase"></nidoca-typography>
 
         <nidoca-flex-container
           .flexContainerProperties="${[
@@ -55,18 +56,24 @@ export class NidocaDividerShowcasePage extends NidocaShowcaseTemplate {
           flexItemBasisValue="33.3%"
         >
           <nidoca-container>
-            <nidoca-form-text
-              textType="${TextType.NUMBER}"
-              label="opacity"
-              .value="${this.opacity}"
-              @nidoca-form-text-event-change="${(event: CustomEvent) => (this.opacity = event.detail.value)}"
-            ></nidoca-form-text>
+            <nidoca-accordion .accordionType="${AccordionType.SINGLE}">
+              <nidoca-accordion-item header="properties" .opened="${true}">
+                <nidoca-form-combobox
+                  label="dividerType"
+                  .value="${this.dividerType}"
+                  .options="${this.toComboboxOptions(DividerType)}"
+                  @nidoca-form-combobox-event-change="${(event: CustomEvent) =>
+                    (this.dividerType = event.detail.value)}"
+                ></nidoca-form-combobox>
 
-            <nidoca-form-switch
-              label="opacity"
-              .value="${this.opacity}"
-              @nidoca-form-text-event-change="${(event: CustomEvent) => (this.opacity = event.detail.value)}"
-            ></nidoca-form-switch>
+                <nidoca-form-text
+                  textType="${TextType.NUMBER}"
+                  label="opacity"
+                  .value="${this.opacity}"
+                  @nidoca-form-text-event-change="${(event: CustomEvent) => (this.opacity = event.detail.value)}"
+                ></nidoca-form-text>
+              </nidoca-accordion-item>
+            </nidoca-accordion>
           </nidoca-container>
 
           <nidoca-box cssStyle="width:100%; height:50vh;background-color: var(--app-color-surface-background-light)">
@@ -76,30 +83,22 @@ export class NidocaDividerShowcasePage extends NidocaShowcaseTemplate {
           </nidoca-box>
 
           <nidoca-code
-            code="${'<nidoca-divider .\n    dividerType="' +
-            this.toValue(this.dividerType) +
-            '" .\n    opacity="' +
-            this.toValue(this.opacity) +
+            code="${'<nidoca-divider \n  .dividerType="' +
+            this.toAttributeCodeString(this.dividerType, 'DividerType', DividerType) +
+            '" \n  .opacity="' +
+            this.toAttributeCodeString(this.opacity, 'number') +
             '" >\n     nidoca-divider\n</nidoca-divider>'}"
           ></nidoca-code>
         </nidoca-flex-container>
 
-        Slot: [object Object]
-
         <nidoca-table
           .headers="${['property', 'type']}"
           .rows="${[
-            ['dividerType', 'DividerType'],
-            ['opacity', 'number'],
+            ['dividerType', this.object2Value('DividerType', DividerType)],
+            ['opacity', this.object2Value('number', null)],
           ]}"
         ></nidoca-table>
-
-        <nidoca-table .headers="${['property', 'type']}" .rows="${[['render', 'render']]}"></nidoca-table>
       </nidoca-flex-container>
     `;
-  }
-
-  toValue(item: any): string {
-    return String(item);
   }
 }

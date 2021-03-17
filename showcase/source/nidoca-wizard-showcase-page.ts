@@ -1,4 +1,5 @@
 import {
+  AccordionType,
   FlexContainerProperties,
   FlexItemProperties,
   NidocaWizard,
@@ -29,7 +30,7 @@ export class NidocaWizardShowcasePage extends NidocaShowcaseTemplate {
     return html`
       <nidoca-flex-container
         .flexContainerProperties="${[
-          FlexContainerProperties.CONTAINER_WIDTH_100,
+          FlexContainerProperties.CONTAINER_WIDTH_75,
           FlexContainerProperties.TABLET_MAX_WIDTH,
           FlexContainerProperties.SMARTPHONE_MAX_WIDTH,
           FlexContainerProperties.SMARTPHONE_HORIZONTAL_PADDING,
@@ -40,7 +41,7 @@ export class NidocaWizardShowcasePage extends NidocaShowcaseTemplate {
       >
         <nidoca-typography .typographyType="${TypographyType.H2}" text="<nidoca-wizard/>"></nidoca-typography>
         <nidoca-typography .typographyType="${TypographyType.BODY1}"> <br />description<br /><br /> </nidoca-typography>
-        <nidoca-typography .typographyType="${TypographyType.H4}" text="example"></nidoca-typography>
+        <nidoca-typography .typographyType="${TypographyType.H4}" text="showcase"></nidoca-typography>
 
         <nidoca-flex-container
           .flexContainerProperties="${[
@@ -53,7 +54,19 @@ export class NidocaWizardShowcasePage extends NidocaShowcaseTemplate {
           .flexItemProperties="${[FlexItemProperties.KEYLINE_ALIGNMENT_BOTH, FlexItemProperties.KEYLINE_SIZE_MEDIUM]}"
           flexItemBasisValue="33.3%"
         >
-          <nidoca-container> </nidoca-container>
+          <nidoca-container>
+            <nidoca-accordion .accordionType="${AccordionType.SINGLE}">
+              <nidoca-accordion-item header="properties" .opened="${true}">
+                <nidoca-form-combobox
+                  label="selectedStep"
+                  .value="${this.selectedStep}"
+                  .options="${this.toComboboxOptions(WizardStep)}"
+                  @nidoca-form-combobox-event-change="${(event: CustomEvent) =>
+                    (this.selectedStep = event.detail.value)}"
+                ></nidoca-form-combobox>
+              </nidoca-accordion-item>
+            </nidoca-accordion>
+          </nidoca-container>
 
           <nidoca-box cssStyle="width:100%; height:50vh;background-color: var(--app-color-surface-background-light)">
             <nidoca-wizard .wizardSteps="${this.wizardSteps}" .selectedStep="${this.selectedStep}"
@@ -62,30 +75,22 @@ export class NidocaWizardShowcasePage extends NidocaShowcaseTemplate {
           </nidoca-box>
 
           <nidoca-code
-            code="${'<nidoca-wizard .\n    wizardSteps="' +
-            this.toValue(this.wizardSteps) +
-            '" .\n    selectedStep="' +
-            this.toValue(this.selectedStep) +
+            code="${'<nidoca-wizard \n  .wizardSteps="' +
+            this.toAttributeCodeString(this.wizardSteps, 'WizardStep[]') +
+            '" \n  .selectedStep="' +
+            this.toAttributeCodeString(this.selectedStep, 'WizardStep', WizardStep) +
             '" >\n     nidoca-wizard\n</nidoca-wizard>'}"
           ></nidoca-code>
         </nidoca-flex-container>
 
-        Slot: [object Object]
-
         <nidoca-table
           .headers="${['property', 'type']}"
           .rows="${[
-            ['wizardSteps', 'WizardStep[]'],
-            ['selectedStep', 'WizardStep'],
+            ['wizardSteps', this.object2Value('WizardStep[]', null)],
+            ['selectedStep', this.object2Value('WizardStep', WizardStep)],
           ]}"
         ></nidoca-table>
-
-        <nidoca-table .headers="${['property', 'type']}" .rows="${[['render', 'render']]}"></nidoca-table>
       </nidoca-flex-container>
     `;
-  }
-
-  toValue(item: any): string {
-    return String(item);
   }
 }

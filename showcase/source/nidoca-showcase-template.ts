@@ -1,5 +1,5 @@
 import {RouterService} from '@domoskanonos/frontend-basis';
-import {NidocaTemplate, TypographyType} from '@domoskanonos/nidoca-core';
+import {FormOutputData, NidocaTemplate, TypographyType} from '@domoskanonos/nidoca-core';
 import {html, TemplateResult} from 'lit-element';
 
 export abstract class NidocaShowcaseTemplate extends NidocaTemplate {
@@ -28,12 +28,77 @@ export abstract class NidocaShowcaseTemplate extends NidocaTemplate {
     return html``;
   }
 
+  object2Value(typeAsString: string, type: any = null): string {
+    if (type == null) {
+      return typeAsString;
+    }
+
+    let retval: string = '';
+    Object.values(type).forEach((value: any) => {
+      if (retval.length > 0) {
+        retval = retval.concat(', ');
+      }
+      retval = retval.concat(typeAsString).concat('.').concat(value);
+    });
+    return retval;
+  }
+
+  /**
+   * generate code string for attribute value.
+   * f.e. type PropertyEnum, item = ENUM_VALUE,
+   * generated return string: ${PropertyEnum.ENUM_VALUE} .
+   *
+   * @param item of type any
+   * @param typeAsString string representation of type
+   * @returns
+   */
+  toAttributeCodeString(item: any, typeAsString: string, type: any = null): string {
+    if (typeAsString.indexOf('undefined') > -1) {
+      return '${undefined}';
+    } else if (typeAsString.indexOf('string') > -1) {
+      return item;
+    } else if (typeAsString.indexOf('number') > -1) {
+      return String(item);
+    } else if (typeAsString.indexOf('any') > -1) {
+      return String('');
+    } else if (typeAsString.indexOf('boolean') > -1) {
+      return '${'.concat(String(item)).concat('}');
+    } else {
+      return '${'
+        .concat(typeAsString)
+        .concat('.')
+        .concat(String(Object.keys(type)[Object.values(type).indexOf(item)]))
+        .concat('}');
+    }
+  }
+
+  toComboboxOptions(type: any = null): FormOutputData[] {
+    if (type == null) {
+      return [];
+    }
+
+    let retval: FormOutputData[] = [];
+
+    Object.values(type).forEach((value: any) => {
+      retval.push(<FormOutputData>{key: value, value: value});
+    });
+
+    return retval;
+  }
+
   getSidebarContent(): TemplateResult {
     return html`
       <nidoca-navigation
         @nidoca-event-link-clicked="${(event: CustomEvent) => this.navigationLinkClicked(event)}"
         .closed="${this.navigationClosed}"
       >
+        <nidoca-navigation-link slot="links" icon="" text="dashboard" href=""></nidoca-navigation-link>
+        <nidoca-navigation-link
+          slot="links"
+          icon=""
+          text="get started"
+          href="nidoca-showcase-get-started-page"
+        ></nidoca-navigation-link>
         <nidoca-navigation-link
           slot="links"
           icon=""

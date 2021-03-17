@@ -11,6 +11,9 @@ export class NidocaFormSwitch extends NidocaFormAbstractInputElement {
   `;
 
   @property()
+  name: string = 'name';
+
+  @property()
   assistiveText: string = 'assistiveText';
 
   @property()
@@ -20,10 +23,7 @@ export class NidocaFormSwitch extends NidocaFormAbstractInputElement {
   errorText: string = 'errorText';
 
   @property()
-  checked: boolean = false;
-
-  @query('#inputElement')
-  private inputElement: HTMLInputElement | undefined;
+  selected: boolean = false;
 
   render(): TemplateResult {
     return html`
@@ -55,23 +55,23 @@ export class NidocaFormSwitch extends NidocaFormAbstractInputElement {
             </nidoca-flex-container>
             <componetn-container>
                 <nidoca-visible
-                        visibleType='${this.checked ? VisibleType.HIDE : VisibleType.NORMAL}'
+                        visibleType='${this.selected ? VisibleType.HIDE : VisibleType.NORMAL}'
                 >
                     <nidoca-icon
                             @nidoca-event-icon-clicked='${() => {
-                                this.switchChecked();
+                                this.switchSelected();
                             }}'
                             icon='toggle_off'
                             .clickable='${true}'
                     ></nidoca-icon>
                 </nidoca-visible>
                 <nidoca-visible
-                        visibleType='${this.checked ? VisibleType.NORMAL : VisibleType.HIDE}'
+                        visibleType='${this.selected ? VisibleType.NORMAL : VisibleType.HIDE}'
                 >
                     <nidoca-icon
                             color='var(--app-color-primary-background)'
                             @nidoca-event-icon-clicked='${() => {
-                                this.switchChecked();
+                                this.switchSelected();
                             }}'
                             icon='toggle_on'
                             .clickable='${true}'
@@ -84,10 +84,9 @@ export class NidocaFormSwitch extends NidocaFormAbstractInputElement {
   }
 
   getOutputData(): FormOutputData {
-    let outputValue: any = this.inputElement?.value;
     return <FormOutputData>{
-      key: '',
-      value: outputValue,
+      key: this.name,
+      value: this.selected,
     };
   }
 
@@ -95,8 +94,8 @@ export class NidocaFormSwitch extends NidocaFormAbstractInputElement {
     return true;
   }
 
-  private switchChecked() {
-    this.checked = !Boolean(this.checked);
+  private switchSelected() {
+    this.selected = !Boolean(this.selected);
     if (this.validate()) {
       let customEvent = new CustomEvent('nidoca-form-switch-event-change', {
         detail: this.getOutputData(),
