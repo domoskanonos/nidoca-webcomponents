@@ -35,6 +35,26 @@ export abstract class NidocaShowcaseTemplate extends NidocaTemplate {
         return html``;
     }
 
+    object2Value(typeAsString: string, type: any = null): string {
+
+        if (type == null) {
+          return typeAsString;
+        }
+    
+        let retval: string = '';
+        Object.values(type).forEach((value: any) => {
+            if (retval.length > 0) {
+                retval = retval.concat(', ');
+            }
+            retval = retval.concat(typeAsString).concat('.').concat(value).concat(', ');
+        });
+        return retval;
+        
+    }
+    
+    toValue(item: any): string {
+        return String(item);
+    }
 
     getSidebarContent(): TemplateResult {
         return html`
