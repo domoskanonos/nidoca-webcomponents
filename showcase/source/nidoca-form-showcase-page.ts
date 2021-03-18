@@ -1,6 +1,6 @@
 import {
-  FlexContainerProperties,
-  FlexItemProperties,
+  FlexContainerProperty,
+  FlexItemProperty,
   FormProperties,
   NidocaForm,
   NidocaFormOutputData,
@@ -36,9 +36,10 @@ export class NidocaFormOutputDataShowcasePage extends NidocaShowcaseTemplate {
         style="background-color: var(--app-color-surface-background);"
       >
         <nidoca-box cssStyle="width:100%; height:25vh;background-color: var(--app-color-surface-background-light)">
-          <nidoca-form-output-data .jsonObject="${this.jsonObject}" .formData="${this.formData}"
-            >nidoca-form-output-data</nidoca-form-output-data
-          >
+          <nidoca-form-output-data
+            .jsonObject="${this.jsonObject}"
+            .formData="${this.formData}"
+          ></nidoca-form-output-data>
         </nidoca-box>
       </nidoca-floating-container>
 
@@ -46,13 +47,13 @@ export class NidocaFormOutputDataShowcasePage extends NidocaShowcaseTemplate {
 
       <nidoca-flex-container
         .flexContainerProperties="${[
-          FlexContainerProperties.CONTAINER_WIDTH_75,
-          FlexContainerProperties.TABLET_MAX_WIDTH,
-          FlexContainerProperties.SMARTPHONE_MAX_WIDTH,
-          FlexContainerProperties.SMARTPHONE_HORIZONTAL_PADDING,
-          FlexContainerProperties.TABLET_HORIZONTAL_PADDING,
+          FlexContainerProperty.CONTAINER_WIDTH_75,
+          FlexContainerProperty.TABLET_MAX_WIDTH,
+          FlexContainerProperty.SMARTPHONE_MAX_WIDTH,
+          FlexContainerProperty.SMARTPHONE_HORIZONTAL_PADDING,
+          FlexContainerProperty.TABLET_HORIZONTAL_PADDING,
         ]}"
-        .flexItemProperties="${[FlexItemProperties.KEYLINE_ALIGNMENT_BOTH, FlexItemProperties.KEYLINE_SIZE_MEDIUM]}"
+        .flexItemProperties="${[FlexItemProperty.KEYLINE_ALIGNMENT_BOTH, FlexItemProperty.KEYLINE_SIZE_MEDIUM]}"
         flexItemBasisValue="100%"
       >
         <nidoca-spacer spacerSize="${SpacerSize.BIG}" spacerAlignment="${SpacerAlignment.VERTICAL}">
@@ -68,12 +69,27 @@ export class NidocaFormOutputDataShowcasePage extends NidocaShowcaseTemplate {
 
           <nidoca-tab-content slot="tabContent" .selected="${true}">
             <nidoca-spacer spacerSize="${SpacerSize.NORMAL}" spacerAlignment="${SpacerAlignment.VERTICAL}">
+              JHUHUH: jsonObject
+              <nidoca-spacer
+                spacerSize="${SpacerSize.MEDIUM}"
+                spacerAlignment="${SpacerAlignment.VERTICAL}"
+              ></nidoca-spacer>
+
               <nidoca-form-combobox
                 label="formData"
                 .value="${this.formData}"
-                .options="${this.toComboboxOptions(FormData)}"
+                .options="${this.toComboboxOptions('FormData', FormData)}"
                 @nidoca-form-combobox-event-change="${(event: CustomEvent) => (this.formData = event.detail.value)}"
+                warningText=""
+                errorText=""
+                infoText=""
               ></nidoca-form-combobox>
+
+              JHUHUH: formData
+              <nidoca-spacer
+                spacerSize="${SpacerSize.MEDIUM}"
+                spacerAlignment="${SpacerAlignment.VERTICAL}"
+              ></nidoca-spacer>
             </nidoca-spacer>
           </nidoca-tab-content>
 
@@ -93,6 +109,7 @@ export class NidocaFormOutputDataShowcasePage extends NidocaShowcaseTemplate {
         <nidoca-table
           .headers="${['slots']}"
           .rows="${[
+            ['<slot></slot>'],
             ['<slot name="header"></slot>'],
             ['<slot name="errorMessages&quot; style&#x3D;&quot;color: var(--app-color-error);"></slot>'],
             ['<slot name="footer"></slot>'],
@@ -135,9 +152,7 @@ export class NidocaFormShowcasePage extends NidocaShowcaseTemplate {
         style="background-color: var(--app-color-surface-background);"
       >
         <nidoca-box cssStyle="width:100%; height:25vh;background-color: var(--app-color-surface-background-light)">
-          <nidoca-form .formProperties="${this.formProperties}" .autocomplete="${this.autocomplete}"
-            >nidoca-form</nidoca-form
-          >
+          <nidoca-form .formProperties="${this.formProperties}" .autocomplete="${this.autocomplete}"></nidoca-form>
         </nidoca-box>
       </nidoca-floating-container>
 
@@ -145,13 +160,13 @@ export class NidocaFormShowcasePage extends NidocaShowcaseTemplate {
 
       <nidoca-flex-container
         .flexContainerProperties="${[
-          FlexContainerProperties.CONTAINER_WIDTH_75,
-          FlexContainerProperties.TABLET_MAX_WIDTH,
-          FlexContainerProperties.SMARTPHONE_MAX_WIDTH,
-          FlexContainerProperties.SMARTPHONE_HORIZONTAL_PADDING,
-          FlexContainerProperties.TABLET_HORIZONTAL_PADDING,
+          FlexContainerProperty.CONTAINER_WIDTH_75,
+          FlexContainerProperty.TABLET_MAX_WIDTH,
+          FlexContainerProperty.SMARTPHONE_MAX_WIDTH,
+          FlexContainerProperty.SMARTPHONE_HORIZONTAL_PADDING,
+          FlexContainerProperty.TABLET_HORIZONTAL_PADDING,
         ]}"
-        .flexItemProperties="${[FlexItemProperties.KEYLINE_ALIGNMENT_BOTH, FlexItemProperties.KEYLINE_SIZE_MEDIUM]}"
+        .flexItemProperties="${[FlexItemProperty.KEYLINE_ALIGNMENT_BOTH, FlexItemProperty.KEYLINE_SIZE_MEDIUM]}"
         flexItemBasisValue="100%"
       >
         <nidoca-spacer spacerSize="${SpacerSize.BIG}" spacerAlignment="${SpacerAlignment.VERTICAL}">
@@ -164,12 +179,39 @@ export class NidocaFormShowcasePage extends NidocaShowcaseTemplate {
 
           <nidoca-tab-content slot="tabContent" .selected="${true}">
             <nidoca-spacer spacerSize="${SpacerSize.NORMAL}" spacerAlignment="${SpacerAlignment.VERTICAL}">
+              <nidoca-form-combobox
+                .multiple="${true}"
+                label="formProperties"
+                .value="${this.formProperties}"
+                .options="${this.toComboboxOptions('FormProperties', FormProperties)}"
+                @nidoca-form-combobox-event-change="${(event: CustomEvent) =>
+                  (this.formProperties = event.detail.value)}"
+                warningText=""
+                errorText=""
+                infoText=""
+              ></nidoca-form-combobox>
+
+              JHUHUH: formProperties
+              <nidoca-spacer
+                spacerSize="${SpacerSize.MEDIUM}"
+                spacerAlignment="${SpacerAlignment.VERTICAL}"
+              ></nidoca-spacer>
+
               <nidoca-form-switch
                 name="autocomplete"
                 infoText="autocomplete"
                 .selected="${this.autocomplete}"
                 @nidoca-form-switch-event-change="${(event: CustomEvent) => (this.autocomplete = event.detail.value)}"
+                warningText=""
+                errorText=""
+                infoText=""
               ></nidoca-form-switch>
+
+              JHUHUH: autocomplete
+              <nidoca-spacer
+                spacerSize="${SpacerSize.MEDIUM}"
+                spacerAlignment="${SpacerAlignment.VERTICAL}"
+              ></nidoca-spacer>
             </nidoca-spacer>
           </nidoca-tab-content>
 
@@ -177,7 +219,7 @@ export class NidocaFormShowcasePage extends NidocaShowcaseTemplate {
             <nidoca-spacer spacerSize="${SpacerSize.NORMAL}" spacerAlignment="${SpacerAlignment.VERTICAL}">
               <nidoca-code
                 code="${'<nidoca-form \n  .formProperties="' +
-                this.toAttributeCodeString(this.formProperties, 'FormProperties[]') +
+                this.toAttributeCodeString(this.formProperties, 'FormProperties[]', FormProperties) +
                 '" \n  .autocomplete="' +
                 this.toAttributeCodeString(this.autocomplete, 'boolean') +
                 '"   >\n     nidoca-form\n</nidoca-form>'}"
@@ -189,6 +231,7 @@ export class NidocaFormShowcasePage extends NidocaShowcaseTemplate {
         <nidoca-table
           .headers="${['slots']}"
           .rows="${[
+            ['<slot></slot>'],
             ['<slot name="header"></slot>'],
             ['<slot name="errorMessages&quot; style&#x3D;&quot;color: var(--app-color-error);"></slot>'],
             ['<slot name="footer"></slot>'],

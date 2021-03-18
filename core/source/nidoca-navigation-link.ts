@@ -3,7 +3,7 @@ import {SpacerAlignment, SpacerSize} from './nidoca-spacer';
 import {
   FlexAlignContent,
   FlexAlignItems,
-  FlexContainerProperties,
+  FlexContainerProperty,
   FlexDirection,
   FlexJustifyContent,
   FlexWrap,
@@ -50,7 +50,7 @@ export class NidocaNavigationLink extends LitElement {
             <nidoca-spacer spacerSize="${SpacerSize.SMALL}" spacerAlignment="${SpacerAlignment.VERTICAL}">
               <nidoca-flex-container
                 @click="${() => this.linkClicked()}"
-                .flexContainerProperties="${[FlexContainerProperties.CONTAINER_WIDTH_100]}"
+                .flexContainerProperties="${[FlexContainerProperty.CONTAINER_WIDTH_100]}"
                 .flexItemProperties="${[]}"
                 .flexDirection="${FlexDirection.ROW}"
                 .flexWrap="${FlexWrap.NO_WRAP}"

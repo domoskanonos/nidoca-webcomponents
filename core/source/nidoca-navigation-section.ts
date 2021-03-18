@@ -2,7 +2,7 @@ import {css, customElement, html, LitElement, property, TemplateResult} from 'li
 import {
   FlexAlignContent,
   FlexAlignItems,
-  FlexContainerProperties,
+  FlexContainerProperty,
   FlexDirection,
   FlexJustifyContent,
   FlexWrap,
@@ -24,7 +24,7 @@ export class NidocaNavigationSection extends LitElement {
     return this.rendered
       ? html`
           <nidoca-flex-container
-            .flexContainerProperties="${[FlexContainerProperties.CONTAINER_WIDTH_100]}"
+            .flexContainerProperties="${[FlexContainerProperty.CONTAINER_WIDTH_100]}"
             .flexItemProperties="${[]}"
             .flexDirection="${FlexDirection.ROW}"
             .flexWrap="${FlexWrap.NO_WRAP}"

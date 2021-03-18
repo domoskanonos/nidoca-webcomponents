@@ -1,6 +1,6 @@
 import {
-  FlexContainerProperties,
-  FlexItemProperties,
+  FlexContainerProperty,
+  FlexItemProperty,
   NidocaIcon,
   SpacerAlignment,
   SpacerSize,
@@ -92,8 +92,7 @@ export class NidocaIconShowcasePage extends NidocaShowcaseTemplate {
             .round="${this.round}"
             .clickable="${this.clickable}"
             .deactivated="${this.deactivated}"
-            >nidoca-icon</nidoca-icon
-          >
+          ></nidoca-icon>
         </nidoca-box>
       </nidoca-floating-container>
 
@@ -101,13 +100,13 @@ export class NidocaIconShowcasePage extends NidocaShowcaseTemplate {
 
       <nidoca-flex-container
         .flexContainerProperties="${[
-          FlexContainerProperties.CONTAINER_WIDTH_75,
-          FlexContainerProperties.TABLET_MAX_WIDTH,
-          FlexContainerProperties.SMARTPHONE_MAX_WIDTH,
-          FlexContainerProperties.SMARTPHONE_HORIZONTAL_PADDING,
-          FlexContainerProperties.TABLET_HORIZONTAL_PADDING,
+          FlexContainerProperty.CONTAINER_WIDTH_75,
+          FlexContainerProperty.TABLET_MAX_WIDTH,
+          FlexContainerProperty.SMARTPHONE_MAX_WIDTH,
+          FlexContainerProperty.SMARTPHONE_HORIZONTAL_PADDING,
+          FlexContainerProperty.TABLET_HORIZONTAL_PADDING,
         ]}"
-        .flexItemProperties="${[FlexItemProperties.KEYLINE_ALIGNMENT_BOTH, FlexItemProperties.KEYLINE_SIZE_MEDIUM]}"
+        .flexItemProperties="${[FlexItemProperty.KEYLINE_ALIGNMENT_BOTH, FlexItemProperty.KEYLINE_SIZE_MEDIUM]}"
         flexItemBasisValue="100%"
       >
         <nidoca-spacer spacerSize="${SpacerSize.BIG}" spacerAlignment="${SpacerAlignment.VERTICAL}">
@@ -124,72 +123,171 @@ export class NidocaIconShowcasePage extends NidocaShowcaseTemplate {
                 label="icon"
                 .value="${this.icon}"
                 @nidoca-form-text-event-change="${(event: CustomEvent) => (this.icon = event.detail.value)}"
+                warningText=""
+                errorText=""
+                infoText=""
               ></nidoca-form-text>
+
+              JHUHUH: icon
+              <nidoca-spacer
+                spacerSize="${SpacerSize.MEDIUM}"
+                spacerAlignment="${SpacerAlignment.VERTICAL}"
+              ></nidoca-spacer>
 
               <nidoca-form-text
                 label="color"
                 .value="${this.color}"
                 @nidoca-form-text-event-change="${(event: CustomEvent) => (this.color = event.detail.value)}"
+                warningText=""
+                errorText=""
+                infoText=""
               ></nidoca-form-text>
+
+              JHUHUH: color
+              <nidoca-spacer
+                spacerSize="${SpacerSize.MEDIUM}"
+                spacerAlignment="${SpacerAlignment.VERTICAL}"
+              ></nidoca-spacer>
 
               <nidoca-form-text
                 label="backgroundColor"
                 .value="${this.backgroundColor}"
                 @nidoca-form-text-event-change="${(event: CustomEvent) => (this.backgroundColor = event.detail.value)}"
+                warningText=""
+                errorText=""
+                infoText=""
               ></nidoca-form-text>
+
+              JHUHUH: backgroundColor
+              <nidoca-spacer
+                spacerSize="${SpacerSize.MEDIUM}"
+                spacerAlignment="${SpacerAlignment.VERTICAL}"
+              ></nidoca-spacer>
 
               <nidoca-form-text
                 label="iconShadowType"
                 .value="${this.iconShadowType}"
                 @nidoca-form-text-event-change="${(event: CustomEvent) => (this.iconShadowType = event.detail.value)}"
+                warningText=""
+                errorText=""
+                infoText=""
               ></nidoca-form-text>
+
+              JHUHUH: iconShadowType
+              <nidoca-spacer
+                spacerSize="${SpacerSize.MEDIUM}"
+                spacerAlignment="${SpacerAlignment.VERTICAL}"
+              ></nidoca-spacer>
 
               <nidoca-form-text
                 textType="${TextType.NUMBER}"
                 label="size"
                 .value="${this.size}"
                 @nidoca-form-text-event-change="${(event: CustomEvent) => (this.size = event.detail.value)}"
+                warningText=""
+                errorText=""
+                infoText=""
               ></nidoca-form-text>
+
+              JHUHUH: size
+              <nidoca-spacer
+                spacerSize="${SpacerSize.MEDIUM}"
+                spacerAlignment="${SpacerAlignment.VERTICAL}"
+              ></nidoca-spacer>
 
               <nidoca-form-text
                 label="sizeUnit"
                 .value="${this.sizeUnit}"
                 @nidoca-form-text-event-change="${(event: CustomEvent) => (this.sizeUnit = event.detail.value)}"
+                warningText=""
+                errorText=""
+                infoText=""
               ></nidoca-form-text>
+
+              JHUHUH: sizeUnit
+              <nidoca-spacer
+                spacerSize="${SpacerSize.MEDIUM}"
+                spacerAlignment="${SpacerAlignment.VERTICAL}"
+              ></nidoca-spacer>
 
               <nidoca-form-text
                 label="iconTitle"
                 .value="${this.iconTitle}"
                 @nidoca-form-text-event-change="${(event: CustomEvent) => (this.iconTitle = event.detail.value)}"
+                warningText=""
+                errorText=""
+                infoText=""
               ></nidoca-form-text>
+
+              JHUHUH: iconTitle
+              <nidoca-spacer
+                spacerSize="${SpacerSize.MEDIUM}"
+                spacerAlignment="${SpacerAlignment.VERTICAL}"
+              ></nidoca-spacer>
 
               <nidoca-form-switch
                 name="withIconSpace"
                 infoText="withIconSpace"
                 .selected="${this.withIconSpace}"
                 @nidoca-form-switch-event-change="${(event: CustomEvent) => (this.withIconSpace = event.detail.value)}"
+                warningText=""
+                errorText=""
+                infoText=""
               ></nidoca-form-switch>
+
+              JHUHUH: withIconSpace
+              <nidoca-spacer
+                spacerSize="${SpacerSize.MEDIUM}"
+                spacerAlignment="${SpacerAlignment.VERTICAL}"
+              ></nidoca-spacer>
 
               <nidoca-form-switch
                 name="round"
                 infoText="round"
                 .selected="${this.round}"
                 @nidoca-form-switch-event-change="${(event: CustomEvent) => (this.round = event.detail.value)}"
+                warningText=""
+                errorText=""
+                infoText=""
               ></nidoca-form-switch>
+
+              JHUHUH: round
+              <nidoca-spacer
+                spacerSize="${SpacerSize.MEDIUM}"
+                spacerAlignment="${SpacerAlignment.VERTICAL}"
+              ></nidoca-spacer>
 
               <nidoca-form-switch
                 name="clickable"
                 infoText="clickable"
                 .selected="${this.clickable}"
                 @nidoca-form-switch-event-change="${(event: CustomEvent) => (this.clickable = event.detail.value)}"
+                warningText=""
+                errorText=""
+                infoText=""
               ></nidoca-form-switch>
+
+              JHUHUH: clickable
+              <nidoca-spacer
+                spacerSize="${SpacerSize.MEDIUM}"
+                spacerAlignment="${SpacerAlignment.VERTICAL}"
+              ></nidoca-spacer>
 
               <nidoca-form-switch
                 name="deactivated"
                 infoText="deactivated"
                 .selected="${this.deactivated}"
                 @nidoca-form-switch-event-change="${(event: CustomEvent) => (this.deactivated = event.detail.value)}"
+                warningText=""
+                errorText=""
+                infoText=""
               ></nidoca-form-switch>
+
+              JHUHUH: deactivated
+              <nidoca-spacer
+                spacerSize="${SpacerSize.MEDIUM}"
+                spacerAlignment="${SpacerAlignment.VERTICAL}"
+              ></nidoca-spacer>
             </nidoca-spacer>
           </nidoca-tab-content>
 

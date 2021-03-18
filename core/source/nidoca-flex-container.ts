@@ -1,6 +1,6 @@
 import {css, customElement, html, property, query, LitElement, TemplateResult} from 'lit-element';
 
-export enum FlexContainerProperties {
+export enum FlexContainerProperty {
   CONTAINER_WIDTH_MIN_CONTENT = 'CONTAINER_WIDTH_MIN_CONTENT',
   CONTAINER_WIDTH_AUTO = 'CONTAINER_WIDTH_AUTO',
   CONTAINER_WIDTH_100 = 'CONTAINER_WIDTH_100',
@@ -16,7 +16,7 @@ export enum FlexContainerProperties {
   TABLET_VERTICAL_PADDING = 'TABLET_VERTICAL_PADDING',
 }
 
-export enum FlexItemProperties {
+export enum FlexItemProperty {
   TABLET_MAX_WIDTH = 'TABLET_MAX_WIDTH',
   SMARTPHONE_MAX_WIDTH = 'SMARTPHONE_MAX_WIDTH',
   KEYLINE_ALIGNMENT_HORIZONTAL = 'KEYLINE_ALIGNMENT_HORIZONTAL',
@@ -237,25 +237,25 @@ export class NidocaFlexContainer extends LitElement {
   `;
 
   @property()
-  flexDirection: string = FlexDirection.ROW;
+  flexDirection: FlexDirection = FlexDirection.ROW;
 
   @property()
-  flexWrap: string = FlexWrap.WRAP;
+  flexWrap: FlexWrap = FlexWrap.WRAP;
 
   @property()
-  flexJustifyContent: string = FlexJustifyContent.FLEX_START;
+  flexJustifyContent: FlexJustifyContent = FlexJustifyContent.FLEX_START;
 
   @property()
-  flexAlignItems: string = FlexAlignItems.FLEX_START;
+  flexAlignItems: FlexAlignItems = FlexAlignItems.FLEX_START;
 
   @property()
-  flexAlignContent: string = FlexAlignContent.FLEX_START;
+  flexAlignContent: FlexAlignContent = FlexAlignContent.FLEX_START;
 
   @property()
-  flexContainerProperties: string[] = [];
+  flexContainerProperties: FlexContainerProperty[] = [];
 
   @property()
-  flexItemProperties: string[] = [];
+  flexItemProperties: FlexItemProperty[] = [];
 
   @property()
   flexItemBasisValue: string = 'auto';

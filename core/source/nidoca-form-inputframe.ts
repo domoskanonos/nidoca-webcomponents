@@ -1,7 +1,7 @@
 import {css, customElement, html, LitElement, property, TemplateResult} from 'lit-element';
 import {BorderProperties, BorderSize} from './nidoca-border';
 import {VisibleType} from './nidoca-visible';
-import {FlexAlignContent, FlexContainerProperties} from './nidoca-flex-container';
+import {FlexAlignContent, FlexContainerProperty} from './nidoca-flex-container';
 import {TypographyType} from './nidoca-typography';
 import {SpacerAlignment, SpacerSize} from './nidoca-spacer';
 
@@ -44,8 +44,8 @@ export class NidocaFormInputframe extends LitElement {
         <nidoca-spacer spacerSize="${SpacerSize.SMALL}" spacerAlignment="${SpacerAlignment.BOTH}">
           <nidoca-flex-container
             .flexContainerProperties="${[
-              FlexContainerProperties.CONTAINER_WIDTH_100,
-              FlexContainerProperties.CONTAINER_HEIGHT_100,
+              FlexContainerProperty.CONTAINER_WIDTH_100,
+              FlexContainerProperty.CONTAINER_HEIGHT_100,
             ]}"
             .flexAlignContent="${FlexAlignContent.CENTER}"
             flexItemBasisValue="100%"
@@ -58,8 +58,8 @@ export class NidocaFormInputframe extends LitElement {
 
       <nidoca-flex-container
         .flexContainerProperties="${[
-          FlexContainerProperties.CONTAINER_WIDTH_100,
-          FlexContainerProperties.CONTAINER_HEIGHT_100,
+          FlexContainerProperty.CONTAINER_WIDTH_100,
+          FlexContainerProperty.CONTAINER_HEIGHT_100,
         ]}"
         .flexAlignContent="${FlexAlignContent.CENTER}"
         flexItemBasisValue="100%"

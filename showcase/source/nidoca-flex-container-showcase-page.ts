@@ -1,6 +1,11 @@
 import {
-  FlexContainerProperties,
-  FlexItemProperties,
+  FlexAlignContent,
+  FlexAlignItems,
+  FlexContainerProperty,
+  FlexDirection,
+  FlexItemProperty,
+  FlexJustifyContent,
+  FlexWrap,
   NidocaFlexContainer,
   SpacerAlignment,
   SpacerSize,
@@ -12,25 +17,25 @@ import {NidocaShowcaseTemplate} from './nidoca-showcase-template';
 @customElement('nidoca-flex-container-showcase-page')
 export class NidocaFlexContainerShowcasePage extends NidocaShowcaseTemplate {
   @property()
-  flexDirection: string = '';
+  flexDirection: FlexDirection = Object.values(FlexDirection)[0];
 
   @property()
-  flexWrap: string = '';
+  flexWrap: FlexWrap = Object.values(FlexWrap)[0];
 
   @property()
-  flexJustifyContent: string = '';
+  flexJustifyContent: FlexJustifyContent = Object.values(FlexJustifyContent)[0];
 
   @property()
-  flexAlignItems: string = '';
+  flexAlignItems: FlexAlignItems = Object.values(FlexAlignItems)[0];
 
   @property()
-  flexAlignContent: string = '';
+  flexAlignContent: FlexAlignContent = Object.values(FlexAlignContent)[0];
 
   @property()
-  flexContainerProperties: string[] = [];
+  flexContainerProperties: FlexContainerProperty[] = [];
 
   @property()
-  flexItemProperties: string[] = [];
+  flexItemProperties: FlexItemProperty[] = [];
 
   @property()
   flexItemBasisValue: string = '';
@@ -70,17 +75,16 @@ export class NidocaFlexContainerShowcasePage extends NidocaShowcaseTemplate {
       >
         <nidoca-box cssStyle="width:100%; height:25vh;background-color: var(--app-color-surface-background-light)">
           <nidoca-flex-container
-            flexDirection="${this.flexDirection}"
-            flexWrap="${this.flexWrap}"
-            flexJustifyContent="${this.flexJustifyContent}"
-            flexAlignItems="${this.flexAlignItems}"
-            flexAlignContent="${this.flexAlignContent}"
+            .flexDirection="${this.flexDirection}"
+            .flexWrap="${this.flexWrap}"
+            .flexJustifyContent="${this.flexJustifyContent}"
+            .flexAlignItems="${this.flexAlignItems}"
+            .flexAlignContent="${this.flexAlignContent}"
             .flexContainerProperties="${this.flexContainerProperties}"
             .flexItemProperties="${this.flexItemProperties}"
             flexItemBasisValue="${this.flexItemBasisValue}"
             .flexItemBasisValues="${this.flexItemBasisValues}"
-            >nidoca-flex-container</nidoca-flex-container
-          >
+          ></nidoca-flex-container>
         </nidoca-box>
       </nidoca-floating-container>
 
@@ -88,13 +92,13 @@ export class NidocaFlexContainerShowcasePage extends NidocaShowcaseTemplate {
 
       <nidoca-flex-container
         .flexContainerProperties="${[
-          FlexContainerProperties.CONTAINER_WIDTH_75,
-          FlexContainerProperties.TABLET_MAX_WIDTH,
-          FlexContainerProperties.SMARTPHONE_MAX_WIDTH,
-          FlexContainerProperties.SMARTPHONE_HORIZONTAL_PADDING,
-          FlexContainerProperties.TABLET_HORIZONTAL_PADDING,
+          FlexContainerProperty.CONTAINER_WIDTH_75,
+          FlexContainerProperty.TABLET_MAX_WIDTH,
+          FlexContainerProperty.SMARTPHONE_MAX_WIDTH,
+          FlexContainerProperty.SMARTPHONE_HORIZONTAL_PADDING,
+          FlexContainerProperty.TABLET_HORIZONTAL_PADDING,
         ]}"
-        .flexItemProperties="${[FlexItemProperties.KEYLINE_ALIGNMENT_BOTH, FlexItemProperties.KEYLINE_SIZE_MEDIUM]}"
+        .flexItemProperties="${[FlexItemProperty.KEYLINE_ALIGNMENT_BOTH, FlexItemProperty.KEYLINE_SIZE_MEDIUM]}"
         flexItemBasisValue="100%"
       >
         <nidoca-spacer spacerSize="${SpacerSize.BIG}" spacerAlignment="${SpacerAlignment.VERTICAL}">
@@ -107,83 +111,205 @@ export class NidocaFlexContainerShowcasePage extends NidocaShowcaseTemplate {
 
           <nidoca-tab-content slot="tabContent" .selected="${true}">
             <nidoca-spacer spacerSize="${SpacerSize.NORMAL}" spacerAlignment="${SpacerAlignment.VERTICAL}">
-              <nidoca-form-text
+              <nidoca-form-combobox
                 label="flexDirection"
                 .value="${this.flexDirection}"
-                @nidoca-form-text-event-change="${(event: CustomEvent) => (this.flexDirection = event.detail.value)}"
-              ></nidoca-form-text>
+                .options="${this.toComboboxOptions('FlexDirection', FlexDirection)}"
+                @nidoca-form-combobox-event-change="${(event: CustomEvent) =>
+                  (this.flexDirection = event.detail.value)}"
+                warningText=""
+                errorText=""
+                infoText=""
+              ></nidoca-form-combobox>
 
-              <nidoca-form-text
+              JHUHUH: flexDirection
+              <nidoca-spacer
+                spacerSize="${SpacerSize.MEDIUM}"
+                spacerAlignment="${SpacerAlignment.VERTICAL}"
+              ></nidoca-spacer>
+
+              <nidoca-form-combobox
                 label="flexWrap"
                 .value="${this.flexWrap}"
-                @nidoca-form-text-event-change="${(event: CustomEvent) => (this.flexWrap = event.detail.value)}"
-              ></nidoca-form-text>
+                .options="${this.toComboboxOptions('FlexWrap', FlexWrap)}"
+                @nidoca-form-combobox-event-change="${(event: CustomEvent) => (this.flexWrap = event.detail.value)}"
+                warningText=""
+                errorText=""
+                infoText=""
+              ></nidoca-form-combobox>
 
-              <nidoca-form-text
+              JHUHUH: flexWrap
+              <nidoca-spacer
+                spacerSize="${SpacerSize.MEDIUM}"
+                spacerAlignment="${SpacerAlignment.VERTICAL}"
+              ></nidoca-spacer>
+
+              <nidoca-form-combobox
                 label="flexJustifyContent"
                 .value="${this.flexJustifyContent}"
-                @nidoca-form-text-event-change="${(event: CustomEvent) =>
+                .options="${this.toComboboxOptions('FlexJustifyContent', FlexJustifyContent)}"
+                @nidoca-form-combobox-event-change="${(event: CustomEvent) =>
                   (this.flexJustifyContent = event.detail.value)}"
-              ></nidoca-form-text>
+                warningText=""
+                errorText=""
+                infoText=""
+              ></nidoca-form-combobox>
 
-              <nidoca-form-text
+              JHUHUH: flexJustifyContent
+              <nidoca-spacer
+                spacerSize="${SpacerSize.MEDIUM}"
+                spacerAlignment="${SpacerAlignment.VERTICAL}"
+              ></nidoca-spacer>
+
+              <nidoca-form-combobox
                 label="flexAlignItems"
                 .value="${this.flexAlignItems}"
-                @nidoca-form-text-event-change="${(event: CustomEvent) => (this.flexAlignItems = event.detail.value)}"
-              ></nidoca-form-text>
+                .options="${this.toComboboxOptions('FlexAlignItems', FlexAlignItems)}"
+                @nidoca-form-combobox-event-change="${(event: CustomEvent) =>
+                  (this.flexAlignItems = event.detail.value)}"
+                warningText=""
+                errorText=""
+                infoText=""
+              ></nidoca-form-combobox>
 
-              <nidoca-form-text
+              JHUHUH: flexAlignItems
+              <nidoca-spacer
+                spacerSize="${SpacerSize.MEDIUM}"
+                spacerAlignment="${SpacerAlignment.VERTICAL}"
+              ></nidoca-spacer>
+
+              <nidoca-form-combobox
                 label="flexAlignContent"
                 .value="${this.flexAlignContent}"
-                @nidoca-form-text-event-change="${(event: CustomEvent) => (this.flexAlignContent = event.detail.value)}"
-              ></nidoca-form-text>
+                .options="${this.toComboboxOptions('FlexAlignContent', FlexAlignContent)}"
+                @nidoca-form-combobox-event-change="${(event: CustomEvent) =>
+                  (this.flexAlignContent = event.detail.value)}"
+                warningText=""
+                errorText=""
+                infoText=""
+              ></nidoca-form-combobox>
+
+              JHUHUH: flexAlignContent
+              <nidoca-spacer
+                spacerSize="${SpacerSize.MEDIUM}"
+                spacerAlignment="${SpacerAlignment.VERTICAL}"
+              ></nidoca-spacer>
+
+              <nidoca-form-combobox
+                .multiple="${true}"
+                label="flexContainerProperties"
+                .value="${this.flexContainerProperties}"
+                .options="${this.toComboboxOptions('FlexContainerProperty', FlexContainerProperty)}"
+                @nidoca-form-combobox-event-change="${(event: CustomEvent) =>
+                  (this.flexContainerProperties = event.detail.value)}"
+                warningText=""
+                errorText=""
+                infoText=""
+              ></nidoca-form-combobox>
+
+              JHUHUH: flexContainerProperties
+              <nidoca-spacer
+                spacerSize="${SpacerSize.MEDIUM}"
+                spacerAlignment="${SpacerAlignment.VERTICAL}"
+              ></nidoca-spacer>
+
+              <nidoca-form-combobox
+                .multiple="${true}"
+                label="flexItemProperties"
+                .value="${this.flexItemProperties}"
+                .options="${this.toComboboxOptions('FlexItemProperty', FlexItemProperty)}"
+                @nidoca-form-combobox-event-change="${(event: CustomEvent) =>
+                  (this.flexItemProperties = event.detail.value)}"
+                warningText=""
+                errorText=""
+                infoText=""
+              ></nidoca-form-combobox>
+
+              JHUHUH: flexItemProperties
+              <nidoca-spacer
+                spacerSize="${SpacerSize.MEDIUM}"
+                spacerAlignment="${SpacerAlignment.VERTICAL}"
+              ></nidoca-spacer>
 
               <nidoca-form-text
                 label="flexItemBasisValue"
                 .value="${this.flexItemBasisValue}"
                 @nidoca-form-text-event-change="${(event: CustomEvent) =>
                   (this.flexItemBasisValue = event.detail.value)}"
+                warningText=""
+                errorText=""
+                infoText=""
               ></nidoca-form-text>
+
+              JHUHUH: flexItemBasisValue
+              <nidoca-spacer
+                spacerSize="${SpacerSize.MEDIUM}"
+                spacerAlignment="${SpacerAlignment.VERTICAL}"
+              ></nidoca-spacer>
+
+              <nidoca-form-combobox
+                .multiple="${true}"
+                label="flexItemBasisValues"
+                .value="${this.flexItemBasisValues}"
+                .options="${this.toComboboxOptions('String', String)}"
+                @nidoca-form-combobox-event-change="${(event: CustomEvent) =>
+                  (this.flexItemBasisValues = event.detail.value)}"
+                warningText=""
+                errorText=""
+                infoText=""
+              ></nidoca-form-combobox>
+
+              JHUHUH: flexItemBasisValues
+              <nidoca-spacer
+                spacerSize="${SpacerSize.MEDIUM}"
+                spacerAlignment="${SpacerAlignment.VERTICAL}"
+              ></nidoca-spacer>
             </nidoca-spacer>
           </nidoca-tab-content>
 
           <nidoca-tab-content slot="tabContent">
             <nidoca-spacer spacerSize="${SpacerSize.NORMAL}" spacerAlignment="${SpacerAlignment.VERTICAL}">
               <nidoca-code
-                code="${'<nidoca-flex-container \n  flexDirection="' +
-                this.toAttributeCodeString(this.flexDirection, 'string') +
-                '" \n  flexWrap="' +
-                this.toAttributeCodeString(this.flexWrap, 'string') +
-                '" \n  flexJustifyContent="' +
-                this.toAttributeCodeString(this.flexJustifyContent, 'string') +
-                '" \n  flexAlignItems="' +
-                this.toAttributeCodeString(this.flexAlignItems, 'string') +
-                '" \n  flexAlignContent="' +
-                this.toAttributeCodeString(this.flexAlignContent, 'string') +
+                code="${'<nidoca-flex-container \n  .flexDirection="' +
+                this.toAttributeCodeString(this.flexDirection, 'FlexDirection', FlexDirection) +
+                '" \n  .flexWrap="' +
+                this.toAttributeCodeString(this.flexWrap, 'FlexWrap', FlexWrap) +
+                '" \n  .flexJustifyContent="' +
+                this.toAttributeCodeString(this.flexJustifyContent, 'FlexJustifyContent', FlexJustifyContent) +
+                '" \n  .flexAlignItems="' +
+                this.toAttributeCodeString(this.flexAlignItems, 'FlexAlignItems', FlexAlignItems) +
+                '" \n  .flexAlignContent="' +
+                this.toAttributeCodeString(this.flexAlignContent, 'FlexAlignContent', FlexAlignContent) +
                 '" \n  .flexContainerProperties="' +
-                this.toAttributeCodeString(this.flexContainerProperties, 'string[]') +
+                this.toAttributeCodeString(
+                  this.flexContainerProperties,
+                  'FlexContainerProperty[]',
+                  FlexContainerProperty
+                ) +
                 '" \n  .flexItemProperties="' +
-                this.toAttributeCodeString(this.flexItemProperties, 'string[]') +
+                this.toAttributeCodeString(this.flexItemProperties, 'FlexItemProperty[]', FlexItemProperty) +
                 '" \n  flexItemBasisValue="' +
                 this.toAttributeCodeString(this.flexItemBasisValue, 'string') +
                 '" \n  .flexItemBasisValues="' +
-                this.toAttributeCodeString(this.flexItemBasisValues, 'string[]') +
+                this.toAttributeCodeString(this.flexItemBasisValues, 'string[]', String) +
                 '"  >\n     nidoca-flex-container\n</nidoca-flex-container>'}"
               ></nidoca-code>
             </nidoca-spacer>
           </nidoca-tab-content>
         </nidoca-tabs>
 
+        <nidoca-table .headers="${['slots']}" .rows="${[['<slot></slot>']]}"></nidoca-table>
+
         <nidoca-table
           .headers="${['property', 'type']}"
           .rows="${[
-            ['flexDirection', this.object2Value('string', null)],
-            ['flexWrap', this.object2Value('string', null)],
-            ['flexJustifyContent', this.object2Value('string', null)],
-            ['flexAlignItems', this.object2Value('string', null)],
-            ['flexAlignContent', this.object2Value('string', null)],
-            ['flexContainerProperties', this.object2Value('string[]', null)],
-            ['flexItemProperties', this.object2Value('string[]', null)],
+            ['flexDirection', this.object2Value('FlexDirection', FlexDirection)],
+            ['flexWrap', this.object2Value('FlexWrap', FlexWrap)],
+            ['flexJustifyContent', this.object2Value('FlexJustifyContent', FlexJustifyContent)],
+            ['flexAlignItems', this.object2Value('FlexAlignItems', FlexAlignItems)],
+            ['flexAlignContent', this.object2Value('FlexAlignContent', FlexAlignContent)],
+            ['flexContainerProperties', this.object2Value('FlexContainerProperty[]', null)],
+            ['flexItemProperties', this.object2Value('FlexItemProperty[]', null)],
             ['flexItemBasisValue', this.object2Value('string', null)],
             ['flexItemBasisValues', this.object2Value('string[]', null)],
           ]}"

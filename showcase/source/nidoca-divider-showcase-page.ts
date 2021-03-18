@@ -1,7 +1,7 @@
 import {
   DividerType,
-  FlexContainerProperties,
-  FlexItemProperties,
+  FlexContainerProperty,
+  FlexItemProperty,
   NidocaDivider,
   SpacerAlignment,
   SpacerSize,
@@ -36,7 +36,7 @@ export class NidocaDividerShowcasePage extends NidocaShowcaseTemplate {
         style="background-color: var(--app-color-surface-background);"
       >
         <nidoca-box cssStyle="width:100%; height:25vh;background-color: var(--app-color-surface-background-light)">
-          <nidoca-divider .dividerType="${this.dividerType}" .opacity="${this.opacity}">nidoca-divider</nidoca-divider>
+          <nidoca-divider .dividerType="${this.dividerType}" .opacity="${this.opacity}"></nidoca-divider>
         </nidoca-box>
       </nidoca-floating-container>
 
@@ -44,13 +44,13 @@ export class NidocaDividerShowcasePage extends NidocaShowcaseTemplate {
 
       <nidoca-flex-container
         .flexContainerProperties="${[
-          FlexContainerProperties.CONTAINER_WIDTH_75,
-          FlexContainerProperties.TABLET_MAX_WIDTH,
-          FlexContainerProperties.SMARTPHONE_MAX_WIDTH,
-          FlexContainerProperties.SMARTPHONE_HORIZONTAL_PADDING,
-          FlexContainerProperties.TABLET_HORIZONTAL_PADDING,
+          FlexContainerProperty.CONTAINER_WIDTH_75,
+          FlexContainerProperty.TABLET_MAX_WIDTH,
+          FlexContainerProperty.SMARTPHONE_MAX_WIDTH,
+          FlexContainerProperty.SMARTPHONE_HORIZONTAL_PADDING,
+          FlexContainerProperty.TABLET_HORIZONTAL_PADDING,
         ]}"
-        .flexItemProperties="${[FlexItemProperties.KEYLINE_ALIGNMENT_BOTH, FlexItemProperties.KEYLINE_SIZE_MEDIUM]}"
+        .flexItemProperties="${[FlexItemProperty.KEYLINE_ALIGNMENT_BOTH, FlexItemProperty.KEYLINE_SIZE_MEDIUM]}"
         flexItemBasisValue="100%"
       >
         <nidoca-spacer spacerSize="${SpacerSize.BIG}" spacerAlignment="${SpacerAlignment.VERTICAL}">
@@ -66,16 +66,34 @@ export class NidocaDividerShowcasePage extends NidocaShowcaseTemplate {
               <nidoca-form-combobox
                 label="dividerType"
                 .value="${this.dividerType}"
-                .options="${this.toComboboxOptions(DividerType)}"
+                .options="${this.toComboboxOptions('DividerType', DividerType)}"
                 @nidoca-form-combobox-event-change="${(event: CustomEvent) => (this.dividerType = event.detail.value)}"
+                warningText=""
+                errorText=""
+                infoText=""
               ></nidoca-form-combobox>
+
+              JHUHUH: dividerType
+              <nidoca-spacer
+                spacerSize="${SpacerSize.MEDIUM}"
+                spacerAlignment="${SpacerAlignment.VERTICAL}"
+              ></nidoca-spacer>
 
               <nidoca-form-text
                 textType="${TextType.NUMBER}"
                 label="opacity"
                 .value="${this.opacity}"
                 @nidoca-form-text-event-change="${(event: CustomEvent) => (this.opacity = event.detail.value)}"
+                warningText=""
+                errorText=""
+                infoText=""
               ></nidoca-form-text>
+
+              JHUHUH: opacity
+              <nidoca-spacer
+                spacerSize="${SpacerSize.MEDIUM}"
+                spacerAlignment="${SpacerAlignment.VERTICAL}"
+              ></nidoca-spacer>
             </nidoca-spacer>
           </nidoca-tab-content>
 

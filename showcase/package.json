@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@domoskanonos/frontend-basis": "^1.0.239",
-    "@domoskanonos/nidoca-core": "^1.0.604"
+    "@domoskanonos/nidoca-core": "^1.0.605"
   },
   "author": "Dominik Bruhn",
   "scripts": {

@@ -1,6 +1,6 @@
 import {
-  FlexContainerProperties,
-  FlexItemProperties,
+  FlexContainerProperty,
+  FlexItemProperty,
   NidocaRichMedia,
   RichMediaProperties,
   RichMediaType,
@@ -45,8 +45,7 @@ export class NidocaRichMediaShowcasePage extends NidocaShowcaseTemplate {
             src="${this.src}"
             .richMediaType="${this.richMediaType}"
             .richMediaProperties="${this.richMediaProperties}"
-            >nidoca-rich-media</nidoca-rich-media
-          >
+          ></nidoca-rich-media>
         </nidoca-box>
       </nidoca-floating-container>
 
@@ -54,13 +53,13 @@ export class NidocaRichMediaShowcasePage extends NidocaShowcaseTemplate {
 
       <nidoca-flex-container
         .flexContainerProperties="${[
-          FlexContainerProperties.CONTAINER_WIDTH_75,
-          FlexContainerProperties.TABLET_MAX_WIDTH,
-          FlexContainerProperties.SMARTPHONE_MAX_WIDTH,
-          FlexContainerProperties.SMARTPHONE_HORIZONTAL_PADDING,
-          FlexContainerProperties.TABLET_HORIZONTAL_PADDING,
+          FlexContainerProperty.CONTAINER_WIDTH_75,
+          FlexContainerProperty.TABLET_MAX_WIDTH,
+          FlexContainerProperty.SMARTPHONE_MAX_WIDTH,
+          FlexContainerProperty.SMARTPHONE_HORIZONTAL_PADDING,
+          FlexContainerProperty.TABLET_HORIZONTAL_PADDING,
         ]}"
-        .flexItemProperties="${[FlexItemProperties.KEYLINE_ALIGNMENT_BOTH, FlexItemProperties.KEYLINE_SIZE_MEDIUM]}"
+        .flexItemProperties="${[FlexItemProperty.KEYLINE_ALIGNMENT_BOTH, FlexItemProperty.KEYLINE_SIZE_MEDIUM]}"
         flexItemBasisValue="100%"
       >
         <nidoca-spacer spacerSize="${SpacerSize.BIG}" spacerAlignment="${SpacerAlignment.VERTICAL}">
@@ -77,15 +76,51 @@ export class NidocaRichMediaShowcasePage extends NidocaShowcaseTemplate {
                 label="src"
                 .value="${this.src}"
                 @nidoca-form-text-event-change="${(event: CustomEvent) => (this.src = event.detail.value)}"
+                warningText=""
+                errorText=""
+                infoText=""
               ></nidoca-form-text>
+
+              JHUHUH: src
+              <nidoca-spacer
+                spacerSize="${SpacerSize.MEDIUM}"
+                spacerAlignment="${SpacerAlignment.VERTICAL}"
+              ></nidoca-spacer>
 
               <nidoca-form-combobox
                 label="richMediaType"
                 .value="${this.richMediaType}"
-                .options="${this.toComboboxOptions(RichMediaType)}"
+                .options="${this.toComboboxOptions('RichMediaType', RichMediaType)}"
                 @nidoca-form-combobox-event-change="${(event: CustomEvent) =>
                   (this.richMediaType = event.detail.value)}"
+                warningText=""
+                errorText=""
+                infoText=""
               ></nidoca-form-combobox>
+
+              JHUHUH: richMediaType
+              <nidoca-spacer
+                spacerSize="${SpacerSize.MEDIUM}"
+                spacerAlignment="${SpacerAlignment.VERTICAL}"
+              ></nidoca-spacer>
+
+              <nidoca-form-combobox
+                .multiple="${true}"
+                label="richMediaProperties"
+                .value="${this.richMediaProperties}"
+                .options="${this.toComboboxOptions('RichMediaProperties', RichMediaProperties)}"
+                @nidoca-form-combobox-event-change="${(event: CustomEvent) =>
+                  (this.richMediaProperties = event.detail.value)}"
+                warningText=""
+                errorText=""
+                infoText=""
+              ></nidoca-form-combobox>
+
+              JHUHUH: richMediaProperties
+              <nidoca-spacer
+                spacerSize="${SpacerSize.MEDIUM}"
+                spacerAlignment="${SpacerAlignment.VERTICAL}"
+              ></nidoca-spacer>
             </nidoca-spacer>
           </nidoca-tab-content>
 
@@ -97,7 +132,7 @@ export class NidocaRichMediaShowcasePage extends NidocaShowcaseTemplate {
                 '" \n  .richMediaType="' +
                 this.toAttributeCodeString(this.richMediaType, 'RichMediaType', RichMediaType) +
                 '" \n  .richMediaProperties="' +
-                this.toAttributeCodeString(this.richMediaProperties, 'RichMediaProperties[]') +
+                this.toAttributeCodeString(this.richMediaProperties, 'RichMediaProperties[]', RichMediaProperties) +
                 '" >\n     nidoca-rich-media\n</nidoca-rich-media>'}"
               ></nidoca-code>
             </nidoca-spacer>

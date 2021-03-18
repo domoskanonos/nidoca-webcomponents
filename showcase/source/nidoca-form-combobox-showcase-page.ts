@@ -1,6 +1,6 @@
 import {
-  FlexContainerProperties,
-  FlexItemProperties,
+  FlexContainerProperty,
+  FlexItemProperty,
   FormOutputData,
   NidocaFormCombobox,
   SpacerAlignment,
@@ -87,8 +87,7 @@ export class NidocaFormComboboxShowcasePage extends NidocaShowcaseTemplate {
             warningText="${this.warningText}"
             .size="${this.size}"
             .multiple="${this.multiple}"
-            >nidoca-form-combobox</nidoca-form-combobox
-          >
+          ></nidoca-form-combobox>
         </nidoca-box>
       </nidoca-floating-container>
 
@@ -96,13 +95,13 @@ export class NidocaFormComboboxShowcasePage extends NidocaShowcaseTemplate {
 
       <nidoca-flex-container
         .flexContainerProperties="${[
-          FlexContainerProperties.CONTAINER_WIDTH_75,
-          FlexContainerProperties.TABLET_MAX_WIDTH,
-          FlexContainerProperties.SMARTPHONE_MAX_WIDTH,
-          FlexContainerProperties.SMARTPHONE_HORIZONTAL_PADDING,
-          FlexContainerProperties.TABLET_HORIZONTAL_PADDING,
+          FlexContainerProperty.CONTAINER_WIDTH_75,
+          FlexContainerProperty.TABLET_MAX_WIDTH,
+          FlexContainerProperty.SMARTPHONE_MAX_WIDTH,
+          FlexContainerProperty.SMARTPHONE_HORIZONTAL_PADDING,
+          FlexContainerProperty.TABLET_HORIZONTAL_PADDING,
         ]}"
-        .flexItemProperties="${[FlexItemProperties.KEYLINE_ALIGNMENT_BOTH, FlexItemProperties.KEYLINE_SIZE_MEDIUM]}"
+        .flexItemProperties="${[FlexItemProperty.KEYLINE_ALIGNMENT_BOTH, FlexItemProperty.KEYLINE_SIZE_MEDIUM]}"
         flexItemBasisValue="100%"
       >
         <nidoca-spacer spacerSize="${SpacerSize.BIG}" spacerAlignment="${SpacerAlignment.VERTICAL}">
@@ -119,52 +118,147 @@ export class NidocaFormComboboxShowcasePage extends NidocaShowcaseTemplate {
                 label="name"
                 .value="${this.name}"
                 @nidoca-form-text-event-change="${(event: CustomEvent) => (this.name = event.detail.value)}"
+                warningText=""
+                errorText=""
+                infoText=""
               ></nidoca-form-text>
+
+              JHUHUH: name
+              <nidoca-spacer
+                spacerSize="${SpacerSize.MEDIUM}"
+                spacerAlignment="${SpacerAlignment.VERTICAL}"
+              ></nidoca-spacer>
+
+              JHUHUH: value
+              <nidoca-spacer
+                spacerSize="${SpacerSize.MEDIUM}"
+                spacerAlignment="${SpacerAlignment.VERTICAL}"
+              ></nidoca-spacer>
 
               <nidoca-form-text
                 label="label"
                 .value="${this.label}"
                 @nidoca-form-text-event-change="${(event: CustomEvent) => (this.label = event.detail.value)}"
+                warningText=""
+                errorText=""
+                infoText=""
               ></nidoca-form-text>
+
+              JHUHUH: label
+              <nidoca-spacer
+                spacerSize="${SpacerSize.MEDIUM}"
+                spacerAlignment="${SpacerAlignment.VERTICAL}"
+              ></nidoca-spacer>
+
+              <nidoca-form-combobox
+                .multiple="${true}"
+                label="options"
+                .value="${this.options}"
+                .options="${this.toComboboxOptions('FormOutputData', null)}"
+                @nidoca-form-combobox-event-change="${(event: CustomEvent) => (this.options = event.detail.value)}"
+                warningText=""
+                errorText=""
+                infoText=""
+              ></nidoca-form-combobox>
+
+              JHUHUH: options
+              <nidoca-spacer
+                spacerSize="${SpacerSize.MEDIUM}"
+                spacerAlignment="${SpacerAlignment.VERTICAL}"
+              ></nidoca-spacer>
 
               <nidoca-form-switch
                 name="required"
                 infoText="required"
                 .selected="${this.required}"
                 @nidoca-form-switch-event-change="${(event: CustomEvent) => (this.required = event.detail.value)}"
+                warningText=""
+                errorText=""
+                infoText=""
               ></nidoca-form-switch>
+
+              JHUHUH: required
+              <nidoca-spacer
+                spacerSize="${SpacerSize.MEDIUM}"
+                spacerAlignment="${SpacerAlignment.VERTICAL}"
+              ></nidoca-spacer>
 
               <nidoca-form-text
                 label="errorText"
                 .value="${this.errorText}"
                 @nidoca-form-text-event-change="${(event: CustomEvent) => (this.errorText = event.detail.value)}"
+                warningText=""
+                errorText=""
+                infoText=""
               ></nidoca-form-text>
+
+              JHUHUH: errorText
+              <nidoca-spacer
+                spacerSize="${SpacerSize.MEDIUM}"
+                spacerAlignment="${SpacerAlignment.VERTICAL}"
+              ></nidoca-spacer>
 
               <nidoca-form-text
                 label="infoText"
                 .value="${this.infoText}"
                 @nidoca-form-text-event-change="${(event: CustomEvent) => (this.infoText = event.detail.value)}"
+                warningText=""
+                errorText=""
+                infoText=""
               ></nidoca-form-text>
+
+              JHUHUH: infoText
+              <nidoca-spacer
+                spacerSize="${SpacerSize.MEDIUM}"
+                spacerAlignment="${SpacerAlignment.VERTICAL}"
+              ></nidoca-spacer>
 
               <nidoca-form-text
                 label="warningText"
                 .value="${this.warningText}"
                 @nidoca-form-text-event-change="${(event: CustomEvent) => (this.warningText = event.detail.value)}"
+                warningText=""
+                errorText=""
+                infoText=""
               ></nidoca-form-text>
+
+              JHUHUH: warningText
+              <nidoca-spacer
+                spacerSize="${SpacerSize.MEDIUM}"
+                spacerAlignment="${SpacerAlignment.VERTICAL}"
+              ></nidoca-spacer>
 
               <nidoca-form-text
                 textType="${TextType.NUMBER}"
                 label="size"
                 .value="${this.size}"
                 @nidoca-form-text-event-change="${(event: CustomEvent) => (this.size = event.detail.value)}"
+                warningText=""
+                errorText=""
+                infoText=""
               ></nidoca-form-text>
+
+              JHUHUH: size
+              <nidoca-spacer
+                spacerSize="${SpacerSize.MEDIUM}"
+                spacerAlignment="${SpacerAlignment.VERTICAL}"
+              ></nidoca-spacer>
 
               <nidoca-form-switch
                 name="multiple"
                 infoText="multiple"
                 .selected="${this.multiple}"
                 @nidoca-form-switch-event-change="${(event: CustomEvent) => (this.multiple = event.detail.value)}"
+                warningText=""
+                errorText=""
+                infoText=""
               ></nidoca-form-switch>
+
+              JHUHUH: multiple
+              <nidoca-spacer
+                spacerSize="${SpacerSize.MEDIUM}"
+                spacerAlignment="${SpacerAlignment.VERTICAL}"
+              ></nidoca-spacer>
             </nidoca-spacer>
           </nidoca-tab-content>
 
@@ -178,7 +272,7 @@ export class NidocaFormComboboxShowcasePage extends NidocaShowcaseTemplate {
                 '" \n  label="' +
                 this.toAttributeCodeString(this.label, 'string') +
                 '" \n  .options="' +
-                this.toAttributeCodeString(this.options, 'FormOutputData[]') +
+                this.toAttributeCodeString(this.options, 'FormOutputData[]', FormOutputData) +
                 '" \n  .required="' +
                 this.toAttributeCodeString(this.required, 'boolean') +
                 '" \n  errorText="' +

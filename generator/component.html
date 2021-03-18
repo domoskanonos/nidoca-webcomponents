@@ -38,7 +38,7 @@ export class {{this.name}}ShowcasePage extends NidocaShowcaseTemplate {
             style="background-color: var(--app-color-surface-background);"
             >
             <nidoca-box cssStyle="width:100%; height:25vh;background-color: var(--app-color-surface-background-light)">
-              <{{toTag this.name}} {{#each properties}}{{#if this.isStatic}}{{else}}{{#if this.private}}{{else}}{{#isnt this.type "string"}}.{{/isnt}}{{this.name}}="${ this.{{this.name}} }"{{/if}} {{/if}}{{/each}}>{{toTag this.name}}</{{toTag this.name}}>
+              <{{toTag this.name}} {{#each properties}}{{#if this.isStatic}}{{else}}{{#if this.private}}{{else}}{{#isnt this.type "string"}}.{{/isnt}}{{this.name}}="${ this.{{this.name}} }"{{/if}} {{/if}}{{/each}}></{{toTag this.name}}>
             </nidoca-box>
          </nidoca-floating-container>
 
@@ -49,13 +49,13 @@ export class {{this.name}}ShowcasePage extends NidocaShowcaseTemplate {
 
     <nidoca-flex-container
       .flexContainerProperties="${[
-      FlexContainerProperties.CONTAINER_WIDTH_75,
-      FlexContainerProperties.TABLET_MAX_WIDTH,
-      FlexContainerProperties.SMARTPHONE_MAX_WIDTH,
-      FlexContainerProperties.SMARTPHONE_HORIZONTAL_PADDING,
-      FlexContainerProperties.TABLET_HORIZONTAL_PADDING
+        FlexContainerProperty.CONTAINER_WIDTH_75,
+        FlexContainerProperty.TABLET_MAX_WIDTH,
+        FlexContainerProperty.SMARTPHONE_MAX_WIDTH,
+        FlexContainerProperty.SMARTPHONE_HORIZONTAL_PADDING,
+        FlexContainerProperty.TABLET_HORIZONTAL_PADDING
   ]}"
-      .flexItemProperties="${[FlexItemProperties.KEYLINE_ALIGNMENT_BOTH, FlexItemProperties.KEYLINE_SIZE_MEDIUM]}"
+      .flexItemProperties="${[FlexItemProperty.KEYLINE_ALIGNMENT_BOTH, FlexItemProperty.KEYLINE_SIZE_MEDIUM]}"
       flexItemBasisValue="100%"
   >
 
@@ -75,17 +75,24 @@ export class {{this.name}}ShowcasePage extends NidocaShowcaseTemplate {
           {{#each this.properties}}
           {{#if this.isStatic}}{{else}}{{#if this.private}}{{else}}
           {{#if this.isString}}
-          <nidoca-form-text label="{{this.name}}" .value="${ this.{{this.name}} }" @nidoca-form-text-event-change="${ (event: CustomEvent)=>this.{{this.name}} = event.detail.value }"></nidoca-form-text>
+          <nidoca-form-text label="{{this.name}}" .value="${ this.{{this.name}} }" @nidoca-form-text-event-change="${ (event: CustomEvent)=>this.{{this.name}} = event.detail.value }" warningText="" errorText="" infoText=""></nidoca-form-text>
           {{/if}}
           {{#if this.isNumber}}
-          <nidoca-form-text textType="${TextType.NUMBER}" label="{{this.name}}" .value="${ this.{{this.name}} }" @nidoca-form-text-event-change="${ (event: CustomEvent)=>this.{{this.name}} = event.detail.value }"></nidoca-form-text>
+          <nidoca-form-text textType="${TextType.NUMBER}" label="{{this.name}}" .value="${ this.{{this.name}} }" @nidoca-form-text-event-change="${ (event: CustomEvent)=>this.{{this.name}} = event.detail.value }" warningText="" errorText="" infoText=""></nidoca-form-text>
           {{/if}}
           {{#if this.isBoolean}}
-          <nidoca-form-switch name="{{this.name}}" infoText="{{this.name}}" .selected="${ this.{{this.name}} }" @nidoca-form-switch-event-change="${ (event: CustomEvent)=>this.{{this.name}} = event.detail.value }"></nidoca-form-switch>
+          <nidoca-form-switch name="{{this.name}}" infoText="{{this.name}}" .selected="${ this.{{this.name}} }" @nidoca-form-switch-event-change="${ (event: CustomEvent)=>this.{{this.name}} = event.detail.value }" warningText="" errorText="" infoText=""></nidoca-form-switch>
           {{/if}}
           {{#if this.isObject}}
-          <nidoca-form-combobox label="{{this.name}}" .value="${ this.{{this.name}} }" .options="${ this.toComboboxOptions({{this.type}}) }" @nidoca-form-combobox-event-change="${ (event: CustomEvent)=>this.{{this.name}} = event.detail.value }"></nidoca-form-combobox>
+          <nidoca-form-combobox label="{{this.name}}" .value="${ this.{{this.name}} }" .options="${ this.toComboboxOptions('{{this.type}}',{{this.type}}) }" @nidoca-form-combobox-event-change="${ (event: CustomEvent)=>this.{{this.name}} = event.detail.value }" warningText="" errorText="" infoText=""></nidoca-form-combobox>
           {{/if}}
+
+          {{#if this.isArray}}
+          <nidoca-form-combobox .multiple="${true}" label="{{this.name}}" .value="${ this.{{this.name}} }" .options="${ this.toComboboxOptions('{{this.baseType}}',{{this.baseType}}) }" @nidoca-form-combobox-event-change="${ (event: CustomEvent)=>this.{{this.name}} = event.detail.value }" warningText="" errorText="" infoText=""></nidoca-form-combobox>
+          {{/if}}
+
+          JHUHUH: {{this.name}}
+          <nidoca-spacer spacerSize="${SpacerSize.MEDIUM}" spacerAlignment="${SpacerAlignment.VERTICAL}"></nidoca-spacer>
           {{/if}} {{/if}}
           {{/each}}
         </nidoca-spacer>
@@ -95,7 +102,7 @@ export class {{this.name}}ShowcasePage extends NidocaShowcaseTemplate {
 
       <nidoca-tab-content slot="tabContent">
         <nidoca-spacer spacerSize="${SpacerSize.NORMAL}" spacerAlignment="${SpacerAlignment.VERTICAL}">
-          <nidoca-code code="${'<{{toTag this.name}} {{#each properties}}{{#if this.isStatic}}{{else}}{{#if this.private}}{{else}}\n  {{#isnt this.type "string"}}.{{/isnt}}{{this.name}}="'+this.toAttributeCodeString(this.{{this.name}},"{{this.type}}"{{#if this.isObject}},{{this.type}}{{/if}})+'"{{/if}} {{/if}}{{/each}}>\n     {{toTag this.name}}\n</{{toTag this.name}}>'}"></nidoca-code>
+          <nidoca-code code="${'<{{toTag this.name}} {{#each properties}}{{#if this.isStatic}}{{else}}{{#if this.private}}{{else}}\n  {{#isnt this.type "string"}}.{{/isnt}}{{this.name}}="'+this.toAttributeCodeString(this.{{this.name}},"{{this.type}}"{{#if this.isObject}},{{this.type}}{{/if}}{{#if this.isArray}},{{this.baseType}}{{/if}})+'"{{/if}} {{/if}}{{/each}}>\n     {{toTag this.name}}\n</{{toTag this.name}}>'}"></nidoca-code>
         </nidoca-spacer>
       </nidoca-tab-content>
     

@@ -1,7 +1,7 @@
 import {
   AccordionType,
-  FlexContainerProperties,
-  FlexItemProperties,
+  FlexContainerProperty,
+  FlexItemProperty,
   NidocaAccordion,
   SpacerAlignment,
   SpacerSize,
@@ -30,7 +30,7 @@ export class NidocaAccordionShowcasePage extends NidocaShowcaseTemplate {
         style="background-color: var(--app-color-surface-background);"
       >
         <nidoca-box cssStyle="width:100%; height:25vh;background-color: var(--app-color-surface-background-light)">
-          <nidoca-accordion .accordionType="${this.accordionType}">nidoca-accordion</nidoca-accordion>
+          <nidoca-accordion .accordionType="${this.accordionType}"></nidoca-accordion>
         </nidoca-box>
       </nidoca-floating-container>
 
@@ -38,13 +38,13 @@ export class NidocaAccordionShowcasePage extends NidocaShowcaseTemplate {
 
       <nidoca-flex-container
         .flexContainerProperties="${[
-          FlexContainerProperties.CONTAINER_WIDTH_75,
-          FlexContainerProperties.TABLET_MAX_WIDTH,
-          FlexContainerProperties.SMARTPHONE_MAX_WIDTH,
-          FlexContainerProperties.SMARTPHONE_HORIZONTAL_PADDING,
-          FlexContainerProperties.TABLET_HORIZONTAL_PADDING,
+          FlexContainerProperty.CONTAINER_WIDTH_75,
+          FlexContainerProperty.TABLET_MAX_WIDTH,
+          FlexContainerProperty.SMARTPHONE_MAX_WIDTH,
+          FlexContainerProperty.SMARTPHONE_HORIZONTAL_PADDING,
+          FlexContainerProperty.TABLET_HORIZONTAL_PADDING,
         ]}"
-        .flexItemProperties="${[FlexItemProperties.KEYLINE_ALIGNMENT_BOTH, FlexItemProperties.KEYLINE_SIZE_MEDIUM]}"
+        .flexItemProperties="${[FlexItemProperty.KEYLINE_ALIGNMENT_BOTH, FlexItemProperty.KEYLINE_SIZE_MEDIUM]}"
         flexItemBasisValue="100%"
       >
         <nidoca-spacer spacerSize="${SpacerSize.BIG}" spacerAlignment="${SpacerAlignment.VERTICAL}">
@@ -60,10 +60,19 @@ export class NidocaAccordionShowcasePage extends NidocaShowcaseTemplate {
               <nidoca-form-combobox
                 label="accordionType"
                 .value="${this.accordionType}"
-                .options="${this.toComboboxOptions(AccordionType)}"
+                .options="${this.toComboboxOptions('AccordionType', AccordionType)}"
                 @nidoca-form-combobox-event-change="${(event: CustomEvent) =>
                   (this.accordionType = event.detail.value)}"
+                warningText=""
+                errorText=""
+                infoText=""
               ></nidoca-form-combobox>
+
+              JHUHUH: accordionType
+              <nidoca-spacer
+                spacerSize="${SpacerSize.MEDIUM}"
+                spacerAlignment="${SpacerAlignment.VERTICAL}"
+              ></nidoca-spacer>
             </nidoca-spacer>
           </nidoca-tab-content>
 
@@ -77,6 +86,8 @@ export class NidocaAccordionShowcasePage extends NidocaShowcaseTemplate {
             </nidoca-spacer>
           </nidoca-tab-content>
         </nidoca-tabs>
+
+        <nidoca-table .headers="${['slots']}" .rows="${[['<slot></slot>']]}"></nidoca-table>
 
         <nidoca-table
           .headers="${['property', 'type']}"

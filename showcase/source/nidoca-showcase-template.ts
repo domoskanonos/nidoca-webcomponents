@@ -38,7 +38,10 @@ export abstract class NidocaShowcaseTemplate extends NidocaTemplate {
       if (retval.length > 0) {
         retval = retval.concat(', ');
       }
-      retval = retval.concat(typeAsString).concat('.').concat(value);
+      retval = retval
+        .concat(typeAsString)
+        .concat('.')
+        .concat(String(Object.keys(type)[Object.values(type).indexOf(value)]));
     });
     return retval;
   }
@@ -63,6 +66,8 @@ export abstract class NidocaShowcaseTemplate extends NidocaTemplate {
       return String('');
     } else if (typeAsString.indexOf('boolean') > -1) {
       return '${'.concat(String(item)).concat('}');
+    } else if (typeAsString.indexOf('[]') > -1) {
+      return '${[]}';
     } else {
       return '${'
         .concat(typeAsString)
@@ -72,7 +77,7 @@ export abstract class NidocaShowcaseTemplate extends NidocaTemplate {
     }
   }
 
-  toComboboxOptions(type: any = null): FormOutputData[] {
+  toComboboxOptions(typeAsString: string, type: any = null): FormOutputData[] {
     if (type == null) {
       return [];
     }
@@ -80,7 +85,10 @@ export abstract class NidocaShowcaseTemplate extends NidocaTemplate {
     let retval: FormOutputData[] = [];
 
     Object.values(type).forEach((value: any) => {
-      retval.push(<FormOutputData>{key: value, value: value});
+      retval.push(<FormOutputData>{
+        key: value,
+        value: typeAsString.concat('.').concat(String(Object.keys(type)[Object.values(type).indexOf(value)])),
+      });
     });
 
     return retval;

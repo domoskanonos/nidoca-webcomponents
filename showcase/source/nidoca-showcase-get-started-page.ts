@@ -1,5 +1,5 @@
 import {I18nService} from '@domoskanonos/frontend-basis';
-import {FlexContainerProperties, FlexItemProperties, TargetType, TypographyType} from '@domoskanonos/nidoca-core';
+import {FlexContainerProperty, FlexItemProperty, TargetType, TypographyType} from '@domoskanonos/nidoca-core';
 import {customElement, html, TemplateResult} from 'lit-element';
 import {NidocaShowcaseTemplate} from './nidoca-showcase-template';
 
@@ -8,13 +8,13 @@ export class NidocaShowcaseDashboardPage extends NidocaShowcaseTemplate {
   getContent(): TemplateResult {
     return html` <nidoca-flex-container
       .flexContainerProperties="${[
-        FlexContainerProperties.CONTAINER_WIDTH_50,
-        FlexContainerProperties.TABLET_MAX_WIDTH,
-        FlexContainerProperties.SMARTPHONE_MAX_WIDTH,
-        FlexContainerProperties.SMARTPHONE_HORIZONTAL_PADDING,
-        FlexContainerProperties.TABLET_HORIZONTAL_PADDING,
+        FlexContainerProperty.CONTAINER_WIDTH_50,
+        FlexContainerProperty.TABLET_MAX_WIDTH,
+        FlexContainerProperty.SMARTPHONE_MAX_WIDTH,
+        FlexContainerProperty.SMARTPHONE_HORIZONTAL_PADDING,
+        FlexContainerProperty.TABLET_HORIZONTAL_PADDING,
       ]}"
-      .flexItemProperties="${[FlexItemProperties.KEYLINE_ALIGNMENT_HORIZONTAL, FlexItemProperties.KEYLINE_SIZE_MEDIUM]}"
+      .flexItemProperties="${[FlexItemProperty.KEYLINE_ALIGNMENT_HORIZONTAL, FlexItemProperty.KEYLINE_SIZE_MEDIUM]}"
       flexItemBasisValue="100%"
     >
       <nidoca-typography .typographyType="${TypographyType.H1}" text="get started"></nidoca-typography>

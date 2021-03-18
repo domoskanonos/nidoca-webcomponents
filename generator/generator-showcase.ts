@@ -151,7 +151,7 @@ function createComponentPages(files: any[], imps: any[]) {
           //slots
           
           //default slot avaliable ?
-          var defaultSlotRegex = /<slot>[^![^\n]*/gm;
+          let defaultSlotRegex = /<slot>[^![^\n]*|<slot id[^![^\n]*/gm;
           clazz.defaultSlot = value.content.match(defaultSlotRegex) != null;
 
           clazz.slots = [];
@@ -180,8 +180,16 @@ function createComponentPages(files: any[], imps: any[]) {
                 continue;
               }
               if (propertyType.indexOf('[]]') > -1) {
+                property.isArray = true;
                 property.defaultValue = '[[]]';
+                property.baseType = propertyType.replace("[","").replace("]","");
+                property.baseType = property.baseType.charAt(0).toUpperCase() + property.baseType.slice(1);
+                if(property.baseType == 'Any'){property.baseType = 'String'}
               } else if (propertyType.indexOf('[]') > -1) {
+                property.isArray = true;
+                property.baseType = propertyType.replace("[","").replace("]","");
+                property.baseType = property.baseType.charAt(0).toUpperCase() + property.baseType.slice(1);
+                if(property.baseType == 'Any'){property.baseType = 'String'}
                 property.defaultValue = '[]';
               } else if (propertyType.indexOf('string') > -1) {
                 property.isString = true;

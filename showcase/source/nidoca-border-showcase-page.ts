@@ -1,6 +1,6 @@
 import {
-  FlexContainerProperties,
-  FlexItemProperties,
+  FlexContainerProperty,
+  FlexItemProperty,
   NidocaBorder,
   SpacerAlignment,
   SpacerSize,
@@ -43,8 +43,7 @@ export class NidocaBorderShowcasePage extends NidocaShowcaseTemplate {
             .borderProperties="${this.borderProperties}"
             borderSize="${this.borderSize}"
             shadowType="${this.shadowType}"
-            >nidoca-border</nidoca-border
-          >
+          ></nidoca-border>
         </nidoca-box>
       </nidoca-floating-container>
 
@@ -52,13 +51,13 @@ export class NidocaBorderShowcasePage extends NidocaShowcaseTemplate {
 
       <nidoca-flex-container
         .flexContainerProperties="${[
-          FlexContainerProperties.CONTAINER_WIDTH_75,
-          FlexContainerProperties.TABLET_MAX_WIDTH,
-          FlexContainerProperties.SMARTPHONE_MAX_WIDTH,
-          FlexContainerProperties.SMARTPHONE_HORIZONTAL_PADDING,
-          FlexContainerProperties.TABLET_HORIZONTAL_PADDING,
+          FlexContainerProperty.CONTAINER_WIDTH_75,
+          FlexContainerProperty.TABLET_MAX_WIDTH,
+          FlexContainerProperty.SMARTPHONE_MAX_WIDTH,
+          FlexContainerProperty.SMARTPHONE_HORIZONTAL_PADDING,
+          FlexContainerProperty.TABLET_HORIZONTAL_PADDING,
         ]}"
-        .flexItemProperties="${[FlexItemProperties.KEYLINE_ALIGNMENT_BOTH, FlexItemProperties.KEYLINE_SIZE_MEDIUM]}"
+        .flexItemProperties="${[FlexItemProperty.KEYLINE_ALIGNMENT_BOTH, FlexItemProperty.KEYLINE_SIZE_MEDIUM]}"
         flexItemBasisValue="100%"
       >
         <nidoca-spacer spacerSize="${SpacerSize.BIG}" spacerAlignment="${SpacerAlignment.VERTICAL}">
@@ -71,17 +70,53 @@ export class NidocaBorderShowcasePage extends NidocaShowcaseTemplate {
 
           <nidoca-tab-content slot="tabContent" .selected="${true}">
             <nidoca-spacer spacerSize="${SpacerSize.NORMAL}" spacerAlignment="${SpacerAlignment.VERTICAL}">
+              <nidoca-form-combobox
+                .multiple="${true}"
+                label="borderProperties"
+                .value="${this.borderProperties}"
+                .options="${this.toComboboxOptions('String', String)}"
+                @nidoca-form-combobox-event-change="${(event: CustomEvent) =>
+                  (this.borderProperties = event.detail.value)}"
+                warningText=""
+                errorText=""
+                infoText=""
+              ></nidoca-form-combobox>
+
+              JHUHUH: borderProperties
+              <nidoca-spacer
+                spacerSize="${SpacerSize.MEDIUM}"
+                spacerAlignment="${SpacerAlignment.VERTICAL}"
+              ></nidoca-spacer>
+
               <nidoca-form-text
                 label="borderSize"
                 .value="${this.borderSize}"
                 @nidoca-form-text-event-change="${(event: CustomEvent) => (this.borderSize = event.detail.value)}"
+                warningText=""
+                errorText=""
+                infoText=""
               ></nidoca-form-text>
+
+              JHUHUH: borderSize
+              <nidoca-spacer
+                spacerSize="${SpacerSize.MEDIUM}"
+                spacerAlignment="${SpacerAlignment.VERTICAL}"
+              ></nidoca-spacer>
 
               <nidoca-form-text
                 label="shadowType"
                 .value="${this.shadowType}"
                 @nidoca-form-text-event-change="${(event: CustomEvent) => (this.shadowType = event.detail.value)}"
+                warningText=""
+                errorText=""
+                infoText=""
               ></nidoca-form-text>
+
+              JHUHUH: shadowType
+              <nidoca-spacer
+                spacerSize="${SpacerSize.MEDIUM}"
+                spacerAlignment="${SpacerAlignment.VERTICAL}"
+              ></nidoca-spacer>
             </nidoca-spacer>
           </nidoca-tab-content>
 
@@ -89,7 +124,7 @@ export class NidocaBorderShowcasePage extends NidocaShowcaseTemplate {
             <nidoca-spacer spacerSize="${SpacerSize.NORMAL}" spacerAlignment="${SpacerAlignment.VERTICAL}">
               <nidoca-code
                 code="${'<nidoca-border \n  .borderProperties="' +
-                this.toAttributeCodeString(this.borderProperties, 'string[]') +
+                this.toAttributeCodeString(this.borderProperties, 'string[]', String) +
                 '" \n  borderSize="' +
                 this.toAttributeCodeString(this.borderSize, 'string') +
                 '" \n  shadowType="' +

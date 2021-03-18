@@ -1,6 +1,6 @@
 import {
-  FlexContainerProperties,
-  FlexItemProperties,
+  FlexContainerProperty,
+  FlexItemProperty,
   NidocaTypography,
   SpacerAlignment,
   SpacerSize,
@@ -44,8 +44,7 @@ export class NidocaTypographyShowcasePage extends NidocaShowcaseTemplate {
             .typographyType="${this.typographyType}"
             .typographyAlignment="${this.typographyAlignment}"
             text="${this.text}"
-            >nidoca-typography</nidoca-typography
-          >
+          ></nidoca-typography>
         </nidoca-box>
       </nidoca-floating-container>
 
@@ -53,13 +52,13 @@ export class NidocaTypographyShowcasePage extends NidocaShowcaseTemplate {
 
       <nidoca-flex-container
         .flexContainerProperties="${[
-          FlexContainerProperties.CONTAINER_WIDTH_75,
-          FlexContainerProperties.TABLET_MAX_WIDTH,
-          FlexContainerProperties.SMARTPHONE_MAX_WIDTH,
-          FlexContainerProperties.SMARTPHONE_HORIZONTAL_PADDING,
-          FlexContainerProperties.TABLET_HORIZONTAL_PADDING,
+          FlexContainerProperty.CONTAINER_WIDTH_75,
+          FlexContainerProperty.TABLET_MAX_WIDTH,
+          FlexContainerProperty.SMARTPHONE_MAX_WIDTH,
+          FlexContainerProperty.SMARTPHONE_HORIZONTAL_PADDING,
+          FlexContainerProperty.TABLET_HORIZONTAL_PADDING,
         ]}"
-        .flexItemProperties="${[FlexItemProperties.KEYLINE_ALIGNMENT_BOTH, FlexItemProperties.KEYLINE_SIZE_MEDIUM]}"
+        .flexItemProperties="${[FlexItemProperty.KEYLINE_ALIGNMENT_BOTH, FlexItemProperty.KEYLINE_SIZE_MEDIUM]}"
         flexItemBasisValue="100%"
       >
         <nidoca-spacer spacerSize="${SpacerSize.BIG}" spacerAlignment="${SpacerAlignment.VERTICAL}">
@@ -75,24 +74,51 @@ export class NidocaTypographyShowcasePage extends NidocaShowcaseTemplate {
               <nidoca-form-combobox
                 label="typographyType"
                 .value="${this.typographyType}"
-                .options="${this.toComboboxOptions(TypographyType)}"
+                .options="${this.toComboboxOptions('TypographyType', TypographyType)}"
                 @nidoca-form-combobox-event-change="${(event: CustomEvent) =>
                   (this.typographyType = event.detail.value)}"
+                warningText=""
+                errorText=""
+                infoText=""
               ></nidoca-form-combobox>
+
+              JHUHUH: typographyType
+              <nidoca-spacer
+                spacerSize="${SpacerSize.MEDIUM}"
+                spacerAlignment="${SpacerAlignment.VERTICAL}"
+              ></nidoca-spacer>
 
               <nidoca-form-combobox
                 label="typographyAlignment"
                 .value="${this.typographyAlignment}"
-                .options="${this.toComboboxOptions(TypographyAlignment)}"
+                .options="${this.toComboboxOptions('TypographyAlignment', TypographyAlignment)}"
                 @nidoca-form-combobox-event-change="${(event: CustomEvent) =>
                   (this.typographyAlignment = event.detail.value)}"
+                warningText=""
+                errorText=""
+                infoText=""
               ></nidoca-form-combobox>
+
+              JHUHUH: typographyAlignment
+              <nidoca-spacer
+                spacerSize="${SpacerSize.MEDIUM}"
+                spacerAlignment="${SpacerAlignment.VERTICAL}"
+              ></nidoca-spacer>
 
               <nidoca-form-text
                 label="text"
                 .value="${this.text}"
                 @nidoca-form-text-event-change="${(event: CustomEvent) => (this.text = event.detail.value)}"
+                warningText=""
+                errorText=""
+                infoText=""
               ></nidoca-form-text>
+
+              JHUHUH: text
+              <nidoca-spacer
+                spacerSize="${SpacerSize.MEDIUM}"
+                spacerAlignment="${SpacerAlignment.VERTICAL}"
+              ></nidoca-spacer>
             </nidoca-spacer>
           </nidoca-tab-content>
 

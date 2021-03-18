@@ -1,6 +1,6 @@
 import {css, customElement, html, property, TemplateResult} from 'lit-element';
 import {LitElement} from 'lit-element';
-import {FlexAlignItems, FlexContainerProperties, FlexJustifyContent, FlexWrap} from './nidoca-flex-container';
+import {FlexAlignItems, FlexContainerProperty, FlexJustifyContent, FlexWrap} from './nidoca-flex-container';
 import {VisibleType} from './nidoca-visible';
 import {SpacerSize} from './nidoca-spacer';
 import {TypographyType} from './nidoca-typography';
@@ -77,7 +77,7 @@ export class NidocaButton extends LitElement {
           @click="${() => {
             this.clicked();
           }}"
-          .flexContainerProperties="${[FlexContainerProperties.CONTAINER_WIDTH_AUTO]}"
+          .flexContainerProperties="${[FlexContainerProperty.CONTAINER_WIDTH_AUTO]}"
           flexWrap="${FlexWrap.NO_WRAP}"
           .flexJustifyContent="${FlexJustifyContent.CENTER}"
           .flexAlignItems="${FlexAlignItems.CENTER}"

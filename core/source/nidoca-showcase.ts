@@ -3,7 +3,7 @@ import {LitElement} from 'lit-element';
 import {SpacerAlignment, SpacerSize} from './nidoca-spacer';
 import {TextType} from './nidoca-form-text';
 import {FormOutputData} from './nidoca-form-abstract-input-element';
-import {FlexContainerProperties, FlexItemProperties, TypographyType} from '.';
+import {FlexContainerProperty, FlexItemProperty, TypographyType} from '.';
 import {NidocaTemplate} from './nidoca-template';
 
 @customElement('nidoca-showcase')
