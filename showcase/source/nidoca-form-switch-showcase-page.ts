@@ -1,8 +1,9 @@
 import {
-  AccordionType,
   FlexContainerProperties,
   FlexItemProperties,
   NidocaFormSwitch,
+  SpacerAlignment,
+  SpacerSize,
   TypographyType,
 } from '@domoskanonos/nidoca-core';
 import {customElement, html, property, TemplateResult} from 'lit-element';
@@ -42,6 +43,25 @@ export class NidocaFormSwitchShowcasePage extends NidocaShowcaseTemplate {
 
   getContent(): TemplateResult {
     return html`
+      <nidoca-floating-container
+        top="var(--menubar-height)"
+        width="100%"
+        style="background-color: var(--app-color-surface-background);"
+      >
+        <nidoca-box cssStyle="width:100%; height:25vh;background-color: var(--app-color-surface-background-light)">
+          <nidoca-form-switch
+            name="${this.name}"
+            assistiveText="${this.assistiveText}"
+            infoText="${this.infoText}"
+            errorText="${this.errorText}"
+            .selected="${this.selected}"
+            >nidoca-form-switch</nidoca-form-switch
+          >
+        </nidoca-box>
+      </nidoca-floating-container>
+
+      <nidoca-spacer size="12.5vh" spacerAlignment="${SpacerAlignment.VERTICAL}"></nidoca-spacer>
+
       <nidoca-flex-container
         .flexContainerProperties="${[
           FlexContainerProperties.CONTAINER_WIDTH_75,
@@ -53,96 +73,69 @@ export class NidocaFormSwitchShowcasePage extends NidocaShowcaseTemplate {
         .flexItemProperties="${[FlexItemProperties.KEYLINE_ALIGNMENT_BOTH, FlexItemProperties.KEYLINE_SIZE_MEDIUM]}"
         flexItemBasisValue="100%"
       >
-        <nidoca-typography .typographyType="${TypographyType.H2}" text="<nidoca-form-switch/>"></nidoca-typography>
-        <nidoca-typography .typographyType="${TypographyType.BODY1}"> <br />description<br /><br /> </nidoca-typography>
-        <nidoca-typography .typographyType="${TypographyType.H4}" text="showcase"></nidoca-typography>
+        <nidoca-spacer spacerSize="${SpacerSize.BIG}" spacerAlignment="${SpacerAlignment.VERTICAL}">
+          <nidoca-typography .typographyType="${TypographyType.H2}" text="<nidoca-form-switch/>"></nidoca-typography>
+        </nidoca-spacer>
 
-        <nidoca-flex-container
-          .flexContainerProperties="${[
-            FlexContainerProperties.CONTAINER_WIDTH_100,
-            FlexContainerProperties.TABLET_MAX_WIDTH,
-            FlexContainerProperties.SMARTPHONE_MAX_WIDTH,
-            FlexContainerProperties.SMARTPHONE_HORIZONTAL_PADDING,
-            FlexContainerProperties.TABLET_HORIZONTAL_PADDING,
-          ]}"
-          .flexItemProperties="${[FlexItemProperties.KEYLINE_ALIGNMENT_BOTH, FlexItemProperties.KEYLINE_SIZE_MEDIUM]}"
-          flexItemBasisValue="33.3%"
-        >
-          <nidoca-container>
-            <nidoca-accordion .accordionType="${AccordionType.SINGLE}">
-              <nidoca-accordion-item header="properties" .opened="${true}">
-                <nidoca-form-text
-                  label="name"
-                  .value="${this.name}"
-                  @nidoca-form-text-event-change="${(event: CustomEvent) => (this.name = event.detail.value)}"
-                ></nidoca-form-text>
+        <nidoca-tabs>
+          <nidoca-tab slot="tab" .selected="${true}" text="properties"></nidoca-tab>
+          <nidoca-tab slot="tab" text="source"></nidoca-tab>
 
-                <nidoca-form-text
-                  label="assistiveText"
-                  .value="${this.assistiveText}"
-                  @nidoca-form-text-event-change="${(event: CustomEvent) => (this.assistiveText = event.detail.value)}"
-                ></nidoca-form-text>
+          <nidoca-tab-content slot="tabContent" .selected="${true}">
+            <nidoca-spacer spacerSize="${SpacerSize.NORMAL}" spacerAlignment="${SpacerAlignment.VERTICAL}">
+              <nidoca-form-text
+                label="name"
+                .value="${this.name}"
+                @nidoca-form-text-event-change="${(event: CustomEvent) => (this.name = event.detail.value)}"
+              ></nidoca-form-text>
 
-                <nidoca-form-text
-                  label="infoText"
-                  .value="${this.infoText}"
-                  @nidoca-form-text-event-change="${(event: CustomEvent) => (this.infoText = event.detail.value)}"
-                ></nidoca-form-text>
+              <nidoca-form-text
+                label="assistiveText"
+                .value="${this.assistiveText}"
+                @nidoca-form-text-event-change="${(event: CustomEvent) => (this.assistiveText = event.detail.value)}"
+              ></nidoca-form-text>
 
-                <nidoca-form-text
-                  label="errorText"
-                  .value="${this.errorText}"
-                  @nidoca-form-text-event-change="${(event: CustomEvent) => (this.errorText = event.detail.value)}"
-                ></nidoca-form-text>
+              <nidoca-form-text
+                label="infoText"
+                .value="${this.infoText}"
+                @nidoca-form-text-event-change="${(event: CustomEvent) => (this.infoText = event.detail.value)}"
+              ></nidoca-form-text>
 
-                <nidoca-form-switch
-                  name="selected"
-                  infoText="selected"
-                  .selected="${this.selected}"
-                  @nidoca-form-switch-event-change="${(event: CustomEvent) => (this.selected = event.detail.value)}"
-                ></nidoca-form-switch>
-              </nidoca-accordion-item>
+              <nidoca-form-text
+                label="errorText"
+                .value="${this.errorText}"
+                @nidoca-form-text-event-change="${(event: CustomEvent) => (this.errorText = event.detail.value)}"
+              ></nidoca-form-text>
 
-              <nidoca-accordion-item header="slots">
-                <nidoca-table
-                  .headers="${['slot name', 'components', 'add']}"
-                  .rows="${[
-                    [
-                      '',
-                      html`<nidoca-form-combobox></nidoca-form-combobox>`,
-                      html`<nidoca-icon icon="add"></nidoca-icon>`,
-                    ],
-                  ]}"
-                ></nidoca-table>
-              </nidoca-accordion-item>
-            </nidoca-accordion>
-          </nidoca-container>
+              <nidoca-form-switch
+                name="selected"
+                infoText="selected"
+                .selected="${this.selected}"
+                @nidoca-form-switch-event-change="${(event: CustomEvent) => (this.selected = event.detail.value)}"
+              ></nidoca-form-switch>
+            </nidoca-spacer>
+          </nidoca-tab-content>
 
-          <nidoca-box cssStyle="width:100%; height:50vh;background-color: var(--app-color-surface-background-light)">
-            <nidoca-form-switch
-              name="${this.name}"
-              assistiveText="${this.assistiveText}"
-              infoText="${this.infoText}"
-              errorText="${this.errorText}"
-              .selected="${this.selected}"
-              >nidoca-form-switch</nidoca-form-switch
-            >
-          </nidoca-box>
+          <nidoca-tab-content slot="tabContent">
+            <nidoca-spacer spacerSize="${SpacerSize.NORMAL}" spacerAlignment="${SpacerAlignment.VERTICAL}">
+              <nidoca-code
+                code="${'<nidoca-form-switch \n  name="' +
+                this.toAttributeCodeString(this.name, 'string') +
+                '" \n  assistiveText="' +
+                this.toAttributeCodeString(this.assistiveText, 'string') +
+                '" \n  infoText="' +
+                this.toAttributeCodeString(this.infoText, 'string') +
+                '" \n  errorText="' +
+                this.toAttributeCodeString(this.errorText, 'string') +
+                '" \n  .selected="' +
+                this.toAttributeCodeString(this.selected, 'boolean') +
+                '" >\n     nidoca-form-switch\n</nidoca-form-switch>'}"
+              ></nidoca-code>
+            </nidoca-spacer>
+          </nidoca-tab-content>
+        </nidoca-tabs>
 
-          <nidoca-code
-            code="${'<nidoca-form-switch \n  name="' +
-            this.toAttributeCodeString(this.name, 'string') +
-            '" \n  assistiveText="' +
-            this.toAttributeCodeString(this.assistiveText, 'string') +
-            '" \n  infoText="' +
-            this.toAttributeCodeString(this.infoText, 'string') +
-            '" \n  errorText="' +
-            this.toAttributeCodeString(this.errorText, 'string') +
-            '" \n  .selected="' +
-            this.toAttributeCodeString(this.selected, 'boolean') +
-            '" >\n     nidoca-form-switch\n</nidoca-form-switch>'}"
-          ></nidoca-code>
-        </nidoca-flex-container>
+        <nidoca-table .headers="${['slots']}" .rows="${[['<slot></slot>']]}"></nidoca-table>
 
         <nidoca-table
           .headers="${['property', 'type']}"

@@ -205,6 +205,7 @@ function createComponentPages(files: any[], imps: any[]) {
 
               property.type = propertyType;
             }
+
           }
 
         });

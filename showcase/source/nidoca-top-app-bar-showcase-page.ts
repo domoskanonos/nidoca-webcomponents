@@ -1,8 +1,9 @@
 import {
-  AccordionType,
   FlexContainerProperties,
   FlexItemProperties,
   NidocaTopAppBar,
+  SpacerAlignment,
+  SpacerSize,
   TypographyType,
 } from '@domoskanonos/nidoca-core';
 import {customElement, html, TemplateResult} from 'lit-element';
@@ -17,6 +18,18 @@ export class NidocaTopAppBarShowcasePage extends NidocaShowcaseTemplate {
 
   getContent(): TemplateResult {
     return html`
+      <nidoca-floating-container
+        top="var(--menubar-height)"
+        width="100%"
+        style="background-color: var(--app-color-surface-background);"
+      >
+        <nidoca-box cssStyle="width:100%; height:25vh;background-color: var(--app-color-surface-background-light)">
+          <nidoca-top-app-bar>nidoca-top-app-bar</nidoca-top-app-bar>
+        </nidoca-box>
+      </nidoca-floating-container>
+
+      <nidoca-spacer size="12.5vh" spacerAlignment="${SpacerAlignment.VERTICAL}"></nidoca-spacer>
+
       <nidoca-flex-container
         .flexContainerProperties="${[
           FlexContainerProperties.CONTAINER_WIDTH_75,
@@ -28,61 +41,37 @@ export class NidocaTopAppBarShowcasePage extends NidocaShowcaseTemplate {
         .flexItemProperties="${[FlexItemProperties.KEYLINE_ALIGNMENT_BOTH, FlexItemProperties.KEYLINE_SIZE_MEDIUM]}"
         flexItemBasisValue="100%"
       >
-        <nidoca-typography .typographyType="${TypographyType.H2}" text="<nidoca-top-app-bar/>"></nidoca-typography>
-        <nidoca-typography .typographyType="${TypographyType.BODY1}"> <br />description<br /><br /> </nidoca-typography>
-        <nidoca-typography .typographyType="${TypographyType.H4}" text="showcase"></nidoca-typography>
+        <nidoca-spacer spacerSize="${SpacerSize.BIG}" spacerAlignment="${SpacerAlignment.VERTICAL}">
+          <nidoca-typography .typographyType="${TypographyType.H2}" text="<nidoca-top-app-bar/>"></nidoca-typography>
+        </nidoca-spacer>
 
-        <nidoca-flex-container
-          .flexContainerProperties="${[
-            FlexContainerProperties.CONTAINER_WIDTH_100,
-            FlexContainerProperties.TABLET_MAX_WIDTH,
-            FlexContainerProperties.SMARTPHONE_MAX_WIDTH,
-            FlexContainerProperties.SMARTPHONE_HORIZONTAL_PADDING,
-            FlexContainerProperties.TABLET_HORIZONTAL_PADDING,
+        <nidoca-tabs>
+          <nidoca-tab slot="tab" .selected="${true}" text="properties"></nidoca-tab>
+          <nidoca-tab slot="tab" text="source"></nidoca-tab>
+
+          <nidoca-tab-content slot="tabContent" .selected="${true}">
+            <nidoca-spacer spacerSize="${SpacerSize.NORMAL}" spacerAlignment="${SpacerAlignment.VERTICAL}">
+            </nidoca-spacer>
+          </nidoca-tab-content>
+
+          <nidoca-tab-content slot="tabContent">
+            <nidoca-spacer spacerSize="${SpacerSize.NORMAL}" spacerAlignment="${SpacerAlignment.VERTICAL}">
+              <nidoca-code
+                code="${'<nidoca-top-app-bar >\n     nidoca-top-app-bar\n</nidoca-top-app-bar>'}"
+              ></nidoca-code>
+            </nidoca-spacer>
+          </nidoca-tab-content>
+        </nidoca-tabs>
+
+        <nidoca-table
+          .headers="${['slots']}"
+          .rows="${[
+            ['<slot name="leftComponents"></slot>'],
+            ['<slot name="mainComponents"></slot>'],
+            ['<slot name="rightComponents"></slot>'],
+            ['<slot name="prominentComponents"></slot>'],
           ]}"
-          .flexItemProperties="${[FlexItemProperties.KEYLINE_ALIGNMENT_BOTH, FlexItemProperties.KEYLINE_SIZE_MEDIUM]}"
-          flexItemBasisValue="33.3%"
-        >
-          <nidoca-container>
-            <nidoca-accordion .accordionType="${AccordionType.SINGLE}">
-              <nidoca-accordion-item header="properties" .opened="${true}"> </nidoca-accordion-item>
-
-              <nidoca-accordion-item header="slots">
-                <nidoca-table
-                  .headers="${['slot name', 'components', 'add']}"
-                  .rows="${[
-                    [
-                      'leftComponents',
-                      html`<nidoca-form-combobox></nidoca-form-combobox>`,
-                      html`<nidoca-icon icon="add"></nidoca-icon>`,
-                    ],
-                    [
-                      'mainComponents',
-                      html`<nidoca-form-combobox></nidoca-form-combobox>`,
-                      html`<nidoca-icon icon="add"></nidoca-icon>`,
-                    ],
-                    [
-                      'rightComponents',
-                      html`<nidoca-form-combobox></nidoca-form-combobox>`,
-                      html`<nidoca-icon icon="add"></nidoca-icon>`,
-                    ],
-                    [
-                      'prominentComponents',
-                      html`<nidoca-form-combobox></nidoca-form-combobox>`,
-                      html`<nidoca-icon icon="add"></nidoca-icon>`,
-                    ],
-                  ]}"
-                ></nidoca-table>
-              </nidoca-accordion-item>
-            </nidoca-accordion>
-          </nidoca-container>
-
-          <nidoca-box cssStyle="width:100%; height:50vh;background-color: var(--app-color-surface-background-light)">
-            <nidoca-top-app-bar>nidoca-top-app-bar</nidoca-top-app-bar>
-          </nidoca-box>
-
-          <nidoca-code code="${'<nidoca-top-app-bar >\n     nidoca-top-app-bar\n</nidoca-top-app-bar>'}"></nidoca-code>
-        </nidoca-flex-container>
+        ></nidoca-table>
 
         <nidoca-table .headers="${['property', 'type']}" .rows="${[]}"></nidoca-table>
       </nidoca-flex-container>

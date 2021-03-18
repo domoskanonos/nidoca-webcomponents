@@ -1,9 +1,10 @@
 import {
-  AccordionType,
   ButtonType,
   FlexContainerProperties,
   FlexItemProperties,
   NidocaButton,
+  SpacerAlignment,
+  SpacerSize,
   TypographyType,
 } from '@domoskanonos/nidoca-core';
 import {customElement, html, property, TemplateResult} from 'lit-element';
@@ -33,6 +34,20 @@ export class NidocaButtonShowcasePage extends NidocaShowcaseTemplate {
 
   getContent(): TemplateResult {
     return html`
+      <nidoca-floating-container
+        top="var(--menubar-height)"
+        width="100%"
+        style="background-color: var(--app-color-surface-background);"
+      >
+        <nidoca-box cssStyle="width:100%; height:25vh;background-color: var(--app-color-surface-background-light)">
+          <nidoca-button .buttonType="${this.buttonType}" leadingIcon="${this.leadingIcon}" text="${this.text}"
+            >nidoca-button</nidoca-button
+          >
+        </nidoca-box>
+      </nidoca-floating-container>
+
+      <nidoca-spacer size="12.5vh" spacerAlignment="${SpacerAlignment.VERTICAL}"></nidoca-spacer>
+
       <nidoca-flex-container
         .flexContainerProperties="${[
           FlexContainerProperties.CONTAINER_WIDTH_75,
@@ -44,75 +59,53 @@ export class NidocaButtonShowcasePage extends NidocaShowcaseTemplate {
         .flexItemProperties="${[FlexItemProperties.KEYLINE_ALIGNMENT_BOTH, FlexItemProperties.KEYLINE_SIZE_MEDIUM]}"
         flexItemBasisValue="100%"
       >
-        <nidoca-typography .typographyType="${TypographyType.H2}" text="<nidoca-button/>"></nidoca-typography>
-        <nidoca-typography .typographyType="${TypographyType.BODY1}"> <br />description<br /><br /> </nidoca-typography>
-        <nidoca-typography .typographyType="${TypographyType.H4}" text="showcase"></nidoca-typography>
+        <nidoca-spacer spacerSize="${SpacerSize.BIG}" spacerAlignment="${SpacerAlignment.VERTICAL}">
+          <nidoca-typography .typographyType="${TypographyType.H2}" text="<nidoca-button/>"></nidoca-typography>
+        </nidoca-spacer>
 
-        <nidoca-flex-container
-          .flexContainerProperties="${[
-            FlexContainerProperties.CONTAINER_WIDTH_100,
-            FlexContainerProperties.TABLET_MAX_WIDTH,
-            FlexContainerProperties.SMARTPHONE_MAX_WIDTH,
-            FlexContainerProperties.SMARTPHONE_HORIZONTAL_PADDING,
-            FlexContainerProperties.TABLET_HORIZONTAL_PADDING,
-          ]}"
-          .flexItemProperties="${[FlexItemProperties.KEYLINE_ALIGNMENT_BOTH, FlexItemProperties.KEYLINE_SIZE_MEDIUM]}"
-          flexItemBasisValue="33.3%"
-        >
-          <nidoca-container>
-            <nidoca-accordion .accordionType="${AccordionType.SINGLE}">
-              <nidoca-accordion-item header="properties" .opened="${true}">
-                <nidoca-form-combobox
-                  label="buttonType"
-                  .value="${this.buttonType}"
-                  .options="${this.toComboboxOptions(ButtonType)}"
-                  @nidoca-form-combobox-event-change="${(event: CustomEvent) => (this.buttonType = event.detail.value)}"
-                ></nidoca-form-combobox>
+        <nidoca-tabs>
+          <nidoca-tab slot="tab" .selected="${true}" text="properties"></nidoca-tab>
+          <nidoca-tab slot="tab" text="source"></nidoca-tab>
 
-                <nidoca-form-text
-                  label="leadingIcon"
-                  .value="${this.leadingIcon}"
-                  @nidoca-form-text-event-change="${(event: CustomEvent) => (this.leadingIcon = event.detail.value)}"
-                ></nidoca-form-text>
+          <nidoca-tab-content slot="tabContent" .selected="${true}">
+            <nidoca-spacer spacerSize="${SpacerSize.NORMAL}" spacerAlignment="${SpacerAlignment.VERTICAL}">
+              <nidoca-form-combobox
+                label="buttonType"
+                .value="${this.buttonType}"
+                .options="${this.toComboboxOptions(ButtonType)}"
+                @nidoca-form-combobox-event-change="${(event: CustomEvent) => (this.buttonType = event.detail.value)}"
+              ></nidoca-form-combobox>
 
-                <nidoca-form-text
-                  label="text"
-                  .value="${this.text}"
-                  @nidoca-form-text-event-change="${(event: CustomEvent) => (this.text = event.detail.value)}"
-                ></nidoca-form-text>
-              </nidoca-accordion-item>
+              <nidoca-form-text
+                label="leadingIcon"
+                .value="${this.leadingIcon}"
+                @nidoca-form-text-event-change="${(event: CustomEvent) => (this.leadingIcon = event.detail.value)}"
+              ></nidoca-form-text>
 
-              <nidoca-accordion-item header="slots">
-                <nidoca-table
-                  .headers="${['slot name', 'components', 'add']}"
-                  .rows="${[
-                    [
-                      '',
-                      html`<nidoca-form-combobox></nidoca-form-combobox>`,
-                      html`<nidoca-icon icon="add"></nidoca-icon>`,
-                    ],
-                  ]}"
-                ></nidoca-table>
-              </nidoca-accordion-item>
-            </nidoca-accordion>
-          </nidoca-container>
+              <nidoca-form-text
+                label="text"
+                .value="${this.text}"
+                @nidoca-form-text-event-change="${(event: CustomEvent) => (this.text = event.detail.value)}"
+              ></nidoca-form-text>
+            </nidoca-spacer>
+          </nidoca-tab-content>
 
-          <nidoca-box cssStyle="width:100%; height:50vh;background-color: var(--app-color-surface-background-light)">
-            <nidoca-button .buttonType="${this.buttonType}" leadingIcon="${this.leadingIcon}" text="${this.text}"
-              >nidoca-button</nidoca-button
-            >
-          </nidoca-box>
+          <nidoca-tab-content slot="tabContent">
+            <nidoca-spacer spacerSize="${SpacerSize.NORMAL}" spacerAlignment="${SpacerAlignment.VERTICAL}">
+              <nidoca-code
+                code="${'<nidoca-button \n  .buttonType="' +
+                this.toAttributeCodeString(this.buttonType, 'ButtonType', ButtonType) +
+                '" \n  leadingIcon="' +
+                this.toAttributeCodeString(this.leadingIcon, 'string') +
+                '" \n  text="' +
+                this.toAttributeCodeString(this.text, 'string') +
+                '" >\n     nidoca-button\n</nidoca-button>'}"
+              ></nidoca-code>
+            </nidoca-spacer>
+          </nidoca-tab-content>
+        </nidoca-tabs>
 
-          <nidoca-code
-            code="${'<nidoca-button \n  .buttonType="' +
-            this.toAttributeCodeString(this.buttonType, 'ButtonType', ButtonType) +
-            '" \n  leadingIcon="' +
-            this.toAttributeCodeString(this.leadingIcon, 'string') +
-            '" \n  text="' +
-            this.toAttributeCodeString(this.text, 'string') +
-            '" >\n     nidoca-button\n</nidoca-button>'}"
-          ></nidoca-code>
-        </nidoca-flex-container>
+        <nidoca-table .headers="${['slots']}" .rows="${[['<slot></slot>']]}"></nidoca-table>
 
         <nidoca-table
           .headers="${['property', 'type']}"

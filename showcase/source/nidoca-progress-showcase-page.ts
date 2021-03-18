@@ -1,9 +1,10 @@
 import {
-  AccordionType,
   FlexContainerProperties,
   FlexItemProperties,
   NidocaProgress,
   ProgressType,
+  SpacerAlignment,
+  SpacerSize,
   TypographyType,
 } from '@domoskanonos/nidoca-core';
 import {customElement, html, property, TemplateResult} from 'lit-element';
@@ -23,6 +24,18 @@ export class NidocaProgressShowcasePage extends NidocaShowcaseTemplate {
 
   getContent(): TemplateResult {
     return html`
+      <nidoca-floating-container
+        top="var(--menubar-height)"
+        width="100%"
+        style="background-color: var(--app-color-surface-background);"
+      >
+        <nidoca-box cssStyle="width:100%; height:25vh;background-color: var(--app-color-surface-background-light)">
+          <nidoca-progress .progressType="${this.progressType}">nidoca-progress</nidoca-progress>
+        </nidoca-box>
+      </nidoca-floating-container>
+
+      <nidoca-spacer size="12.5vh" spacerAlignment="${SpacerAlignment.VERTICAL}"></nidoca-spacer>
+
       <nidoca-flex-container
         .flexContainerProperties="${[
           FlexContainerProperties.CONTAINER_WIDTH_75,
@@ -34,45 +47,35 @@ export class NidocaProgressShowcasePage extends NidocaShowcaseTemplate {
         .flexItemProperties="${[FlexItemProperties.KEYLINE_ALIGNMENT_BOTH, FlexItemProperties.KEYLINE_SIZE_MEDIUM]}"
         flexItemBasisValue="100%"
       >
-        <nidoca-typography .typographyType="${TypographyType.H2}" text="<nidoca-progress/>"></nidoca-typography>
-        <nidoca-typography .typographyType="${TypographyType.BODY1}"> <br />description<br /><br /> </nidoca-typography>
-        <nidoca-typography .typographyType="${TypographyType.H4}" text="showcase"></nidoca-typography>
+        <nidoca-spacer spacerSize="${SpacerSize.BIG}" spacerAlignment="${SpacerAlignment.VERTICAL}">
+          <nidoca-typography .typographyType="${TypographyType.H2}" text="<nidoca-progress/>"></nidoca-typography>
+        </nidoca-spacer>
 
-        <nidoca-flex-container
-          .flexContainerProperties="${[
-            FlexContainerProperties.CONTAINER_WIDTH_100,
-            FlexContainerProperties.TABLET_MAX_WIDTH,
-            FlexContainerProperties.SMARTPHONE_MAX_WIDTH,
-            FlexContainerProperties.SMARTPHONE_HORIZONTAL_PADDING,
-            FlexContainerProperties.TABLET_HORIZONTAL_PADDING,
-          ]}"
-          .flexItemProperties="${[FlexItemProperties.KEYLINE_ALIGNMENT_BOTH, FlexItemProperties.KEYLINE_SIZE_MEDIUM]}"
-          flexItemBasisValue="33.3%"
-        >
-          <nidoca-container>
-            <nidoca-accordion .accordionType="${AccordionType.SINGLE}">
-              <nidoca-accordion-item header="properties" .opened="${true}">
-                <nidoca-form-combobox
-                  label="progressType"
-                  .value="${this.progressType}"
-                  .options="${this.toComboboxOptions(ProgressType)}"
-                  @nidoca-form-combobox-event-change="${(event: CustomEvent) =>
-                    (this.progressType = event.detail.value)}"
-                ></nidoca-form-combobox>
-              </nidoca-accordion-item>
-            </nidoca-accordion>
-          </nidoca-container>
+        <nidoca-tabs>
+          <nidoca-tab slot="tab" .selected="${true}" text="properties"></nidoca-tab>
+          <nidoca-tab slot="tab" text="source"></nidoca-tab>
 
-          <nidoca-box cssStyle="width:100%; height:50vh;background-color: var(--app-color-surface-background-light)">
-            <nidoca-progress .progressType="${this.progressType}">nidoca-progress</nidoca-progress>
-          </nidoca-box>
+          <nidoca-tab-content slot="tabContent" .selected="${true}">
+            <nidoca-spacer spacerSize="${SpacerSize.NORMAL}" spacerAlignment="${SpacerAlignment.VERTICAL}">
+              <nidoca-form-combobox
+                label="progressType"
+                .value="${this.progressType}"
+                .options="${this.toComboboxOptions(ProgressType)}"
+                @nidoca-form-combobox-event-change="${(event: CustomEvent) => (this.progressType = event.detail.value)}"
+              ></nidoca-form-combobox>
+            </nidoca-spacer>
+          </nidoca-tab-content>
 
-          <nidoca-code
-            code="${'<nidoca-progress \n  .progressType="' +
-            this.toAttributeCodeString(this.progressType, 'ProgressType', ProgressType) +
-            '" >\n     nidoca-progress\n</nidoca-progress>'}"
-          ></nidoca-code>
-        </nidoca-flex-container>
+          <nidoca-tab-content slot="tabContent">
+            <nidoca-spacer spacerSize="${SpacerSize.NORMAL}" spacerAlignment="${SpacerAlignment.VERTICAL}">
+              <nidoca-code
+                code="${'<nidoca-progress \n  .progressType="' +
+                this.toAttributeCodeString(this.progressType, 'ProgressType', ProgressType) +
+                '" >\n     nidoca-progress\n</nidoca-progress>'}"
+              ></nidoca-code>
+            </nidoca-spacer>
+          </nidoca-tab-content>
+        </nidoca-tabs>
 
         <nidoca-table
           .headers="${['property', 'type']}"
