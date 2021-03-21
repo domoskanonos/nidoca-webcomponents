@@ -23,7 +23,11 @@ export class NidocaButtonShowcasePage extends NidocaShowcaseTemplate {
 
   constructor() {
     super();
-    let initComponent: NidocaButton = new NidocaButton();
+    let initComponent: NidocaButton | null = null;
+    initComponent = this.loadShowcaseInitData('NidocaButton');
+    if (initComponent == null) {
+      initComponent = new NidocaButton();
+    }
 
     this.buttonType = initComponent.buttonType;
 
@@ -39,12 +43,10 @@ export class NidocaButtonShowcasePage extends NidocaShowcaseTemplate {
         width="100%"
         style="background-color: var(--app-color-surface-background);"
       >
-        <nidoca-box cssStyle="width:100%; height:25vh;background-color: var(--app-color-surface-background-light)">
-          <nidoca-button
-            .buttonType="${this.buttonType}"
-            leadingIcon="${this.leadingIcon}"
-            text="${this.text}"
-          ></nidoca-button>
+        <nidoca-box cssStyle="width:100%; height:40vh;background-color: var(--app-color-surface-background-light)">
+          <nidoca-button .buttonType="${this.buttonType}" leadingIcon="${this.leadingIcon}" text="${this.text}"
+            >${this.loadShowcaseContent('NidocaButton')}</nidoca-button
+          >
         </nidoca-box>
       </nidoca-floating-container>
 
@@ -81,7 +83,6 @@ export class NidocaButtonShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-combobox>
 
-              JHUHUH: buttonType
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"
@@ -96,7 +97,6 @@ export class NidocaButtonShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-text>
 
-              JHUHUH: leadingIcon
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"
@@ -111,7 +111,6 @@ export class NidocaButtonShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-text>
 
-              JHUHUH: text
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"

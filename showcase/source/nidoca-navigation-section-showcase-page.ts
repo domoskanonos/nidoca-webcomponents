@@ -19,7 +19,11 @@ export class NidocaNavigationSectionShowcasePage extends NidocaShowcaseTemplate 
 
   constructor() {
     super();
-    let initComponent: NidocaNavigationSection = new NidocaNavigationSection();
+    let initComponent: NidocaNavigationSection | null = null;
+    initComponent = this.loadShowcaseInitData('NidocaNavigationSection');
+    if (initComponent == null) {
+      initComponent = new NidocaNavigationSection();
+    }
 
     this.text = initComponent.text;
 
@@ -33,8 +37,10 @@ export class NidocaNavigationSectionShowcasePage extends NidocaShowcaseTemplate 
         width="100%"
         style="background-color: var(--app-color-surface-background);"
       >
-        <nidoca-box cssStyle="width:100%; height:25vh;background-color: var(--app-color-surface-background-light)">
-          <nidoca-navigation-section text="${this.text}" .rendered="${this.rendered}"></nidoca-navigation-section>
+        <nidoca-box cssStyle="width:100%; height:40vh;background-color: var(--app-color-surface-background-light)">
+          <nidoca-navigation-section text="${this.text}" .rendered="${this.rendered}"
+            >${this.loadShowcaseContent('NidocaNavigationSection')}</nidoca-navigation-section
+          >
         </nidoca-box>
       </nidoca-floating-container>
 
@@ -73,7 +79,6 @@ export class NidocaNavigationSectionShowcasePage extends NidocaShowcaseTemplate 
                 infoText=""
               ></nidoca-form-text>
 
-              JHUHUH: text
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"
@@ -89,7 +94,6 @@ export class NidocaNavigationSectionShowcasePage extends NidocaShowcaseTemplate 
                 infoText=""
               ></nidoca-form-switch>
 
-              JHUHUH: rendered
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"

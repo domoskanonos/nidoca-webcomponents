@@ -21,7 +21,11 @@ export class NidocaFormOutputDataShowcasePage extends NidocaShowcaseTemplate {
 
   constructor() {
     super();
-    let initComponent: NidocaFormOutputData = new NidocaFormOutputData();
+    let initComponent: NidocaFormOutputData | null = null;
+    initComponent = this.loadShowcaseInitData('NidocaFormOutputData');
+    if (initComponent == null) {
+      initComponent = new NidocaFormOutputData();
+    }
 
     this.jsonObject = initComponent.jsonObject;
 
@@ -35,11 +39,10 @@ export class NidocaFormOutputDataShowcasePage extends NidocaShowcaseTemplate {
         width="100%"
         style="background-color: var(--app-color-surface-background);"
       >
-        <nidoca-box cssStyle="width:100%; height:25vh;background-color: var(--app-color-surface-background-light)">
-          <nidoca-form-output-data
-            .jsonObject="${this.jsonObject}"
-            .formData="${this.formData}"
-          ></nidoca-form-output-data>
+        <nidoca-box cssStyle="width:100%; height:40vh;background-color: var(--app-color-surface-background-light)">
+          <nidoca-form-output-data .jsonObject="${this.jsonObject}" .formData="${this.formData}"
+            >${this.loadShowcaseContent('NidocaFormOutputData')}</nidoca-form-output-data
+          >
         </nidoca-box>
       </nidoca-floating-container>
 
@@ -69,7 +72,6 @@ export class NidocaFormOutputDataShowcasePage extends NidocaShowcaseTemplate {
 
           <nidoca-tab-content slot="tabContent" .selected="${true}">
             <nidoca-spacer spacerSize="${SpacerSize.NORMAL}" spacerAlignment="${SpacerAlignment.VERTICAL}">
-              JHUHUH: jsonObject
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"
@@ -85,7 +87,6 @@ export class NidocaFormOutputDataShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-combobox>
 
-              JHUHUH: formData
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"
@@ -137,7 +138,11 @@ export class NidocaFormShowcasePage extends NidocaShowcaseTemplate {
 
   constructor() {
     super();
-    let initComponent: NidocaForm = new NidocaForm();
+    let initComponent: NidocaForm | null = null;
+    initComponent = this.loadShowcaseInitData('NidocaForm');
+    if (initComponent == null) {
+      initComponent = new NidocaForm();
+    }
 
     this.formProperties = initComponent.formProperties;
 
@@ -151,8 +156,10 @@ export class NidocaFormShowcasePage extends NidocaShowcaseTemplate {
         width="100%"
         style="background-color: var(--app-color-surface-background);"
       >
-        <nidoca-box cssStyle="width:100%; height:25vh;background-color: var(--app-color-surface-background-light)">
-          <nidoca-form .formProperties="${this.formProperties}" .autocomplete="${this.autocomplete}"></nidoca-form>
+        <nidoca-box cssStyle="width:100%; height:40vh;background-color: var(--app-color-surface-background-light)">
+          <nidoca-form .formProperties="${this.formProperties}" .autocomplete="${this.autocomplete}"
+            >${this.loadShowcaseContent('NidocaForm')}</nidoca-form
+          >
         </nidoca-box>
       </nidoca-floating-container>
 
@@ -181,6 +188,7 @@ export class NidocaFormShowcasePage extends NidocaShowcaseTemplate {
             <nidoca-spacer spacerSize="${SpacerSize.NORMAL}" spacerAlignment="${SpacerAlignment.VERTICAL}">
               <nidoca-form-combobox
                 .multiple="${true}"
+                size="3"
                 label="formProperties"
                 .value="${this.formProperties}"
                 .options="${this.toComboboxOptions('FormProperties', FormProperties)}"
@@ -191,7 +199,6 @@ export class NidocaFormShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-combobox>
 
-              JHUHUH: formProperties
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"
@@ -207,7 +214,6 @@ export class NidocaFormShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-switch>
 
-              JHUHUH: autocomplete
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"

@@ -16,7 +16,11 @@ export class NidocaChipShowcasePage extends NidocaShowcaseTemplate {
 
   constructor() {
     super();
-    let initComponent: NidocaChip = new NidocaChip();
+    let initComponent: NidocaChip | null = null;
+    initComponent = this.loadShowcaseInitData('NidocaChip');
+    if (initComponent == null) {
+      initComponent = new NidocaChip();
+    }
 
     this.clickable = initComponent.clickable;
   }
@@ -28,8 +32,8 @@ export class NidocaChipShowcasePage extends NidocaShowcaseTemplate {
         width="100%"
         style="background-color: var(--app-color-surface-background);"
       >
-        <nidoca-box cssStyle="width:100%; height:25vh;background-color: var(--app-color-surface-background-light)">
-          <nidoca-chip .clickable="${this.clickable}"></nidoca-chip>
+        <nidoca-box cssStyle="width:100%; height:40vh;background-color: var(--app-color-surface-background-light)">
+          <nidoca-chip .clickable="${this.clickable}">${this.loadShowcaseContent('NidocaChip')}</nidoca-chip>
         </nidoca-box>
       </nidoca-floating-container>
 
@@ -66,7 +70,6 @@ export class NidocaChipShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-switch>
 
-              JHUHUH: clickable
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"

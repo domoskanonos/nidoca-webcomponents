@@ -176,7 +176,7 @@ export class NidocaFormCombobox extends NidocaFormAbstractInputElement {
         }
       }
     }
-    return this.value === option.value;
+    return this.value === option.key;
   }
 
   static enumToOptions(enumeration: any, emptyElement: boolean = true): any[] {

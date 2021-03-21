@@ -1,9 +1,0 @@
-{
-  "name": "@domoskanonos/nidoca",
-  "version": "1.0.0",
-  "license": "MIT",
-  "author": "Dominik Bruhn",
-  "scripts": {
-    "new-version": "cd core && npm run new-version && cd.. && cd showcase && npm run bundle"
-  }
-}

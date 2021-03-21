@@ -20,7 +20,11 @@ export class NidocaWizardShowcasePage extends NidocaShowcaseTemplate {
 
   constructor() {
     super();
-    let initComponent: NidocaWizard = new NidocaWizard();
+    let initComponent: NidocaWizard | null = null;
+    initComponent = this.loadShowcaseInitData('NidocaWizard');
+    if (initComponent == null) {
+      initComponent = new NidocaWizard();
+    }
 
     this.wizardSteps = initComponent.wizardSteps;
 
@@ -34,8 +38,10 @@ export class NidocaWizardShowcasePage extends NidocaShowcaseTemplate {
         width="100%"
         style="background-color: var(--app-color-surface-background);"
       >
-        <nidoca-box cssStyle="width:100%; height:25vh;background-color: var(--app-color-surface-background-light)">
-          <nidoca-wizard .wizardSteps="${this.wizardSteps}" .selectedStep="${this.selectedStep}"></nidoca-wizard>
+        <nidoca-box cssStyle="width:100%; height:40vh;background-color: var(--app-color-surface-background-light)">
+          <nidoca-wizard .wizardSteps="${this.wizardSteps}" .selectedStep="${this.selectedStep}"
+            >${this.loadShowcaseContent('NidocaWizard')}</nidoca-wizard
+          >
         </nidoca-box>
       </nidoca-floating-container>
 
@@ -64,6 +70,7 @@ export class NidocaWizardShowcasePage extends NidocaShowcaseTemplate {
             <nidoca-spacer spacerSize="${SpacerSize.NORMAL}" spacerAlignment="${SpacerAlignment.VERTICAL}">
               <nidoca-form-combobox
                 .multiple="${true}"
+                size="3"
                 label="wizardSteps"
                 .value="${this.wizardSteps}"
                 .options="${this.toComboboxOptions('WizardStep', WizardStep)}"
@@ -73,7 +80,6 @@ export class NidocaWizardShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-combobox>
 
-              JHUHUH: wizardSteps
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"
@@ -89,7 +95,6 @@ export class NidocaWizardShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-combobox>
 
-              JHUHUH: selectedStep
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"

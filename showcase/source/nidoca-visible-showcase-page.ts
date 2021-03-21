@@ -16,7 +16,11 @@ export class NidocaVisibleShowcasePage extends NidocaShowcaseTemplate {
 
   constructor() {
     super();
-    let initComponent: NidocaVisible = new NidocaVisible();
+    let initComponent: NidocaVisible | null = null;
+    initComponent = this.loadShowcaseInitData('NidocaVisible');
+    if (initComponent == null) {
+      initComponent = new NidocaVisible();
+    }
 
     this.visibleType = initComponent.visibleType;
   }
@@ -28,8 +32,10 @@ export class NidocaVisibleShowcasePage extends NidocaShowcaseTemplate {
         width="100%"
         style="background-color: var(--app-color-surface-background);"
       >
-        <nidoca-box cssStyle="width:100%; height:25vh;background-color: var(--app-color-surface-background-light)">
-          <nidoca-visible visibleType="${this.visibleType}"></nidoca-visible>
+        <nidoca-box cssStyle="width:100%; height:40vh;background-color: var(--app-color-surface-background-light)">
+          <nidoca-visible visibleType="${this.visibleType}"
+            >${this.loadShowcaseContent('NidocaVisible')}</nidoca-visible
+          >
         </nidoca-box>
       </nidoca-floating-container>
 
@@ -65,7 +71,6 @@ export class NidocaVisibleShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-text>
 
-              JHUHUH: visibleType
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"

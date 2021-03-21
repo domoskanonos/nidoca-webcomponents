@@ -47,7 +47,11 @@ export class NidocaIconShowcasePage extends NidocaShowcaseTemplate {
 
   constructor() {
     super();
-    let initComponent: NidocaIcon = new NidocaIcon();
+    let initComponent: NidocaIcon | null = null;
+    initComponent = this.loadShowcaseInitData('NidocaIcon');
+    if (initComponent == null) {
+      initComponent = new NidocaIcon();
+    }
 
     this.icon = initComponent.icon;
 
@@ -79,7 +83,7 @@ export class NidocaIconShowcasePage extends NidocaShowcaseTemplate {
         width="100%"
         style="background-color: var(--app-color-surface-background);"
       >
-        <nidoca-box cssStyle="width:100%; height:25vh;background-color: var(--app-color-surface-background-light)">
+        <nidoca-box cssStyle="width:100%; height:40vh;background-color: var(--app-color-surface-background-light)">
           <nidoca-icon
             icon="${this.icon}"
             color="${this.color}"
@@ -92,7 +96,8 @@ export class NidocaIconShowcasePage extends NidocaShowcaseTemplate {
             .round="${this.round}"
             .clickable="${this.clickable}"
             .deactivated="${this.deactivated}"
-          ></nidoca-icon>
+            >${this.loadShowcaseContent('NidocaIcon')}</nidoca-icon
+          >
         </nidoca-box>
       </nidoca-floating-container>
 
@@ -128,7 +133,6 @@ export class NidocaIconShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-text>
 
-              JHUHUH: icon
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"
@@ -143,7 +147,6 @@ export class NidocaIconShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-text>
 
-              JHUHUH: color
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"
@@ -158,7 +161,6 @@ export class NidocaIconShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-text>
 
-              JHUHUH: backgroundColor
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"
@@ -173,7 +175,6 @@ export class NidocaIconShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-text>
 
-              JHUHUH: iconShadowType
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"
@@ -189,7 +190,6 @@ export class NidocaIconShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-text>
 
-              JHUHUH: size
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"
@@ -204,7 +204,6 @@ export class NidocaIconShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-text>
 
-              JHUHUH: sizeUnit
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"
@@ -219,7 +218,6 @@ export class NidocaIconShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-text>
 
-              JHUHUH: iconTitle
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"
@@ -235,7 +233,6 @@ export class NidocaIconShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-switch>
 
-              JHUHUH: withIconSpace
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"
@@ -251,7 +248,6 @@ export class NidocaIconShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-switch>
 
-              JHUHUH: round
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"
@@ -267,7 +263,6 @@ export class NidocaIconShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-switch>
 
-              JHUHUH: clickable
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"
@@ -283,7 +278,6 @@ export class NidocaIconShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-switch>
 
-              JHUHUH: deactivated
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"

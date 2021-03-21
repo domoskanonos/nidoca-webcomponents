@@ -16,7 +16,11 @@ export class NidocaCodeShowcasePage extends NidocaShowcaseTemplate {
 
   constructor() {
     super();
-    let initComponent: NidocaCode = new NidocaCode();
+    let initComponent: NidocaCode | null = null;
+    initComponent = this.loadShowcaseInitData('NidocaCode');
+    if (initComponent == null) {
+      initComponent = new NidocaCode();
+    }
 
     this.code = initComponent.code;
   }
@@ -28,8 +32,8 @@ export class NidocaCodeShowcasePage extends NidocaShowcaseTemplate {
         width="100%"
         style="background-color: var(--app-color-surface-background);"
       >
-        <nidoca-box cssStyle="width:100%; height:25vh;background-color: var(--app-color-surface-background-light)">
-          <nidoca-code code="${this.code}"></nidoca-code>
+        <nidoca-box cssStyle="width:100%; height:40vh;background-color: var(--app-color-surface-background-light)">
+          <nidoca-code code="${this.code}">${this.loadShowcaseContent('NidocaCode')}</nidoca-code>
         </nidoca-box>
       </nidoca-floating-container>
 
@@ -65,7 +69,6 @@ export class NidocaCodeShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-text>
 
-              JHUHUH: code
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"

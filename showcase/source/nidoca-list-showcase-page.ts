@@ -19,7 +19,11 @@ export class NidocaListShowcasePage extends NidocaShowcaseTemplate {
 
   constructor() {
     super();
-    let initComponent: NidocaList = new NidocaList();
+    let initComponent: NidocaList | null = null;
+    initComponent = this.loadShowcaseInitData('NidocaList');
+    if (initComponent == null) {
+      initComponent = new NidocaList();
+    }
 
     this.selectionMode = initComponent.selectionMode;
 
@@ -33,8 +37,10 @@ export class NidocaListShowcasePage extends NidocaShowcaseTemplate {
         width="100%"
         style="background-color: var(--app-color-surface-background);"
       >
-        <nidoca-box cssStyle="width:100%; height:25vh;background-color: var(--app-color-surface-background-light)">
-          <nidoca-list .selectionMode="${this.selectionMode}" .slotElement="${this.slotElement}"></nidoca-list>
+        <nidoca-box cssStyle="width:100%; height:40vh;background-color: var(--app-color-surface-background-light)">
+          <nidoca-list .selectionMode="${this.selectionMode}" .slotElement="${this.slotElement}"
+            >${this.loadShowcaseContent('NidocaList')}</nidoca-list
+          >
         </nidoca-box>
       </nidoca-floating-container>
 
@@ -71,13 +77,11 @@ export class NidocaListShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-switch>
 
-              JHUHUH: selectionMode
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"
               ></nidoca-spacer>
 
-              JHUHUH: slotElement
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"

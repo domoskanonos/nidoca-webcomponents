@@ -1,5 +1,13 @@
 import {RouterService} from '@domoskanonos/frontend-basis';
-import {FormOutputData, NidocaTemplate, TypographyType} from '@domoskanonos/nidoca-core';
+import {
+  FlexAlignContent,
+  FlexAlignItems,
+  FlexJustifyContent,
+  FormOutputData,
+  NidocaFlexContainer,
+  NidocaTemplate,
+  TypographyType,
+} from '@domoskanonos/nidoca-core';
 import {html, TemplateResult} from 'lit-element';
 
 export abstract class NidocaShowcaseTemplate extends NidocaTemplate {
@@ -92,6 +100,34 @@ export abstract class NidocaShowcaseTemplate extends NidocaTemplate {
     });
 
     return retval;
+  }
+
+  loadShowcaseContent(name: string): TemplateResult {
+    switch (name) {
+      case 'NidocaFlexContainer':
+        return html`${this.createBox()}${this.createBox()}${this.createBox()}${this.createBox()}${this.createBox()}${this.createBox()}${this.createBox()}${this.createBox()}${this.createBox()}${this.createBox()}${this.createBox()}`;
+      default:
+        return html`${name}`;
+    }
+  }
+
+  loadShowcaseInitData(name: string): any {
+    switch (name) {
+      case 'NidocaFlexContainer':
+        let nidocaFlexContainer: NidocaFlexContainer = new NidocaFlexContainer();
+        nidocaFlexContainer.containerStyle =
+          'height:35vh; width:80vw; background-color:var(--app-color-primary-background)';
+        nidocaFlexContainer.flexJustifyContent = FlexJustifyContent.SPACE_EVENLY;
+        nidocaFlexContainer.flexAlignContent = FlexAlignContent.SPACE_EVENLY;
+        nidocaFlexContainer.flexAlignItems = FlexAlignItems.CENTER;
+        return nidocaFlexContainer;
+      default:
+        return null;
+    }
+  }
+
+  private createBox(): TemplateResult {
+    return html` <nidoca-rich-media src="https://picsum.photos/100/100"></nidoca-rich-media> `;
   }
 
   getSidebarContent(): TemplateResult {

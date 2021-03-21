@@ -28,7 +28,11 @@ export class NidocaFormSwitchShowcasePage extends NidocaShowcaseTemplate {
 
   constructor() {
     super();
-    let initComponent: NidocaFormSwitch = new NidocaFormSwitch();
+    let initComponent: NidocaFormSwitch | null = null;
+    initComponent = this.loadShowcaseInitData('NidocaFormSwitch');
+    if (initComponent == null) {
+      initComponent = new NidocaFormSwitch();
+    }
 
     this.name = initComponent.name;
 
@@ -48,14 +52,15 @@ export class NidocaFormSwitchShowcasePage extends NidocaShowcaseTemplate {
         width="100%"
         style="background-color: var(--app-color-surface-background);"
       >
-        <nidoca-box cssStyle="width:100%; height:25vh;background-color: var(--app-color-surface-background-light)">
+        <nidoca-box cssStyle="width:100%; height:40vh;background-color: var(--app-color-surface-background-light)">
           <nidoca-form-switch
             name="${this.name}"
             assistiveText="${this.assistiveText}"
             infoText="${this.infoText}"
             errorText="${this.errorText}"
             .selected="${this.selected}"
-          ></nidoca-form-switch>
+            >${this.loadShowcaseContent('NidocaFormSwitch')}</nidoca-form-switch
+          >
         </nidoca-box>
       </nidoca-floating-container>
 
@@ -91,7 +96,6 @@ export class NidocaFormSwitchShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-text>
 
-              JHUHUH: name
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"
@@ -106,7 +110,6 @@ export class NidocaFormSwitchShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-text>
 
-              JHUHUH: assistiveText
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"
@@ -121,7 +124,6 @@ export class NidocaFormSwitchShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-text>
 
-              JHUHUH: infoText
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"
@@ -136,7 +138,6 @@ export class NidocaFormSwitchShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-text>
 
-              JHUHUH: errorText
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"
@@ -152,7 +153,6 @@ export class NidocaFormSwitchShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-switch>
 
-              JHUHUH: selected
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"

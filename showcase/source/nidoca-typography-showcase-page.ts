@@ -23,7 +23,11 @@ export class NidocaTypographyShowcasePage extends NidocaShowcaseTemplate {
 
   constructor() {
     super();
-    let initComponent: NidocaTypography = new NidocaTypography();
+    let initComponent: NidocaTypography | null = null;
+    initComponent = this.loadShowcaseInitData('NidocaTypography');
+    if (initComponent == null) {
+      initComponent = new NidocaTypography();
+    }
 
     this.typographyType = initComponent.typographyType;
 
@@ -39,12 +43,13 @@ export class NidocaTypographyShowcasePage extends NidocaShowcaseTemplate {
         width="100%"
         style="background-color: var(--app-color-surface-background);"
       >
-        <nidoca-box cssStyle="width:100%; height:25vh;background-color: var(--app-color-surface-background-light)">
+        <nidoca-box cssStyle="width:100%; height:40vh;background-color: var(--app-color-surface-background-light)">
           <nidoca-typography
             .typographyType="${this.typographyType}"
             .typographyAlignment="${this.typographyAlignment}"
             text="${this.text}"
-          ></nidoca-typography>
+            >${this.loadShowcaseContent('NidocaTypography')}</nidoca-typography
+          >
         </nidoca-box>
       </nidoca-floating-container>
 
@@ -82,7 +87,6 @@ export class NidocaTypographyShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-combobox>
 
-              JHUHUH: typographyType
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"
@@ -99,7 +103,6 @@ export class NidocaTypographyShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-combobox>
 
-              JHUHUH: typographyAlignment
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"
@@ -114,7 +117,6 @@ export class NidocaTypographyShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-text>
 
-              JHUHUH: text
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"

@@ -37,7 +37,11 @@ export class NidocaGridContainerShowcasePage extends NidocaShowcaseTemplate {
 
   constructor() {
     super();
-    let initComponent: NidocaGridContainer = new NidocaGridContainer();
+    let initComponent: NidocaGridContainer | null = null;
+    initComponent = this.loadShowcaseInitData('NidocaGridContainer');
+    if (initComponent == null) {
+      initComponent = new NidocaGridContainer();
+    }
 
     this.gridTemplateRows = initComponent.gridTemplateRows;
 
@@ -63,7 +67,7 @@ export class NidocaGridContainerShowcasePage extends NidocaShowcaseTemplate {
         width="100%"
         style="background-color: var(--app-color-surface-background);"
       >
-        <nidoca-box cssStyle="width:100%; height:25vh;background-color: var(--app-color-surface-background-light)">
+        <nidoca-box cssStyle="width:100%; height:40vh;background-color: var(--app-color-surface-background-light)">
           <nidoca-grid-container
             .gridTemplateRows="${this.gridTemplateRows}"
             .gridTemplateColumns="${this.gridTemplateColumns}"
@@ -73,7 +77,8 @@ export class NidocaGridContainerShowcasePage extends NidocaShowcaseTemplate {
             minHeight="${this.minHeight}"
             width="${this.width}"
             minWidth="${this.minWidth}"
-          ></nidoca-grid-container>
+            >${this.loadShowcaseContent('NidocaGridContainer')}</nidoca-grid-container
+          >
         </nidoca-box>
       </nidoca-floating-container>
 
@@ -102,6 +107,7 @@ export class NidocaGridContainerShowcasePage extends NidocaShowcaseTemplate {
             <nidoca-spacer spacerSize="${SpacerSize.NORMAL}" spacerAlignment="${SpacerAlignment.VERTICAL}">
               <nidoca-form-combobox
                 .multiple="${true}"
+                size="3"
                 label="gridTemplateRows"
                 .value="${this.gridTemplateRows}"
                 .options="${this.toComboboxOptions('String', String)}"
@@ -112,7 +118,6 @@ export class NidocaGridContainerShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-combobox>
 
-              JHUHUH: gridTemplateRows
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"
@@ -120,6 +125,7 @@ export class NidocaGridContainerShowcasePage extends NidocaShowcaseTemplate {
 
               <nidoca-form-combobox
                 .multiple="${true}"
+                size="3"
                 label="gridTemplateColumns"
                 .value="${this.gridTemplateColumns}"
                 .options="${this.toComboboxOptions('String', String)}"
@@ -130,7 +136,6 @@ export class NidocaGridContainerShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-combobox>
 
-              JHUHUH: gridTemplateColumns
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"
@@ -145,7 +150,6 @@ export class NidocaGridContainerShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-text>
 
-              JHUHUH: gridJustifyItems
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"
@@ -160,7 +164,6 @@ export class NidocaGridContainerShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-text>
 
-              JHUHUH: gridAlignItems
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"
@@ -175,7 +178,6 @@ export class NidocaGridContainerShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-text>
 
-              JHUHUH: height
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"
@@ -190,7 +192,6 @@ export class NidocaGridContainerShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-text>
 
-              JHUHUH: minHeight
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"
@@ -205,7 +206,6 @@ export class NidocaGridContainerShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-text>
 
-              JHUHUH: width
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"
@@ -220,7 +220,6 @@ export class NidocaGridContainerShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-text>
 
-              JHUHUH: minWidth
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"

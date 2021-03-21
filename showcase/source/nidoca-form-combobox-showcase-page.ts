@@ -45,7 +45,11 @@ export class NidocaFormComboboxShowcasePage extends NidocaShowcaseTemplate {
 
   constructor() {
     super();
-    let initComponent: NidocaFormCombobox = new NidocaFormCombobox();
+    let initComponent: NidocaFormCombobox | null = null;
+    initComponent = this.loadShowcaseInitData('NidocaFormCombobox');
+    if (initComponent == null) {
+      initComponent = new NidocaFormCombobox();
+    }
 
     this.name = initComponent.name;
 
@@ -75,7 +79,7 @@ export class NidocaFormComboboxShowcasePage extends NidocaShowcaseTemplate {
         width="100%"
         style="background-color: var(--app-color-surface-background);"
       >
-        <nidoca-box cssStyle="width:100%; height:25vh;background-color: var(--app-color-surface-background-light)">
+        <nidoca-box cssStyle="width:100%; height:40vh;background-color: var(--app-color-surface-background-light)">
           <nidoca-form-combobox
             name="${this.name}"
             .value="${this.value}"
@@ -87,7 +91,8 @@ export class NidocaFormComboboxShowcasePage extends NidocaShowcaseTemplate {
             warningText="${this.warningText}"
             .size="${this.size}"
             .multiple="${this.multiple}"
-          ></nidoca-form-combobox>
+            >${this.loadShowcaseContent('NidocaFormCombobox')}</nidoca-form-combobox
+          >
         </nidoca-box>
       </nidoca-floating-container>
 
@@ -123,13 +128,11 @@ export class NidocaFormComboboxShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-text>
 
-              JHUHUH: name
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"
               ></nidoca-spacer>
 
-              JHUHUH: value
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"
@@ -144,7 +147,6 @@ export class NidocaFormComboboxShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-text>
 
-              JHUHUH: label
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"
@@ -152,16 +154,16 @@ export class NidocaFormComboboxShowcasePage extends NidocaShowcaseTemplate {
 
               <nidoca-form-combobox
                 .multiple="${true}"
+                size="3"
                 label="options"
                 .value="${this.options}"
-                .options="${this.toComboboxOptions('FormOutputData', null)}"
+                .options="${this.toComboboxOptions('FormOutputData', FormOutputData)}"
                 @nidoca-form-combobox-event-change="${(event: CustomEvent) => (this.options = event.detail.value)}"
                 warningText=""
                 errorText=""
                 infoText=""
               ></nidoca-form-combobox>
 
-              JHUHUH: options
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"
@@ -177,7 +179,6 @@ export class NidocaFormComboboxShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-switch>
 
-              JHUHUH: required
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"
@@ -192,7 +193,6 @@ export class NidocaFormComboboxShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-text>
 
-              JHUHUH: errorText
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"
@@ -207,7 +207,6 @@ export class NidocaFormComboboxShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-text>
 
-              JHUHUH: infoText
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"
@@ -222,7 +221,6 @@ export class NidocaFormComboboxShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-text>
 
-              JHUHUH: warningText
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"
@@ -238,7 +236,6 @@ export class NidocaFormComboboxShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-text>
 
-              JHUHUH: size
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"
@@ -254,7 +251,6 @@ export class NidocaFormComboboxShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-switch>
 
-              JHUHUH: multiple
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"

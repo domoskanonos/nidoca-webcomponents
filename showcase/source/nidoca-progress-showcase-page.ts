@@ -17,7 +17,11 @@ export class NidocaProgressShowcasePage extends NidocaShowcaseTemplate {
 
   constructor() {
     super();
-    let initComponent: NidocaProgress = new NidocaProgress();
+    let initComponent: NidocaProgress | null = null;
+    initComponent = this.loadShowcaseInitData('NidocaProgress');
+    if (initComponent == null) {
+      initComponent = new NidocaProgress();
+    }
 
     this.progressType = initComponent.progressType;
   }
@@ -29,8 +33,10 @@ export class NidocaProgressShowcasePage extends NidocaShowcaseTemplate {
         width="100%"
         style="background-color: var(--app-color-surface-background);"
       >
-        <nidoca-box cssStyle="width:100%; height:25vh;background-color: var(--app-color-surface-background-light)">
-          <nidoca-progress .progressType="${this.progressType}"></nidoca-progress>
+        <nidoca-box cssStyle="width:100%; height:40vh;background-color: var(--app-color-surface-background-light)">
+          <nidoca-progress .progressType="${this.progressType}"
+            >${this.loadShowcaseContent('NidocaProgress')}</nidoca-progress
+          >
         </nidoca-box>
       </nidoca-floating-container>
 
@@ -67,7 +73,6 @@ export class NidocaProgressShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-combobox>
 
-              JHUHUH: progressType
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"

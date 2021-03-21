@@ -17,7 +17,11 @@ export class NidocaAccordionShowcasePage extends NidocaShowcaseTemplate {
 
   constructor() {
     super();
-    let initComponent: NidocaAccordion = new NidocaAccordion();
+    let initComponent: NidocaAccordion | null = null;
+    initComponent = this.loadShowcaseInitData('NidocaAccordion');
+    if (initComponent == null) {
+      initComponent = new NidocaAccordion();
+    }
 
     this.accordionType = initComponent.accordionType;
   }
@@ -29,8 +33,10 @@ export class NidocaAccordionShowcasePage extends NidocaShowcaseTemplate {
         width="100%"
         style="background-color: var(--app-color-surface-background);"
       >
-        <nidoca-box cssStyle="width:100%; height:25vh;background-color: var(--app-color-surface-background-light)">
-          <nidoca-accordion .accordionType="${this.accordionType}"></nidoca-accordion>
+        <nidoca-box cssStyle="width:100%; height:40vh;background-color: var(--app-color-surface-background-light)">
+          <nidoca-accordion .accordionType="${this.accordionType}"
+            >${this.loadShowcaseContent('NidocaAccordion')}</nidoca-accordion
+          >
         </nidoca-box>
       </nidoca-floating-container>
 
@@ -68,7 +74,6 @@ export class NidocaAccordionShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-combobox>
 
-              JHUHUH: accordionType
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"

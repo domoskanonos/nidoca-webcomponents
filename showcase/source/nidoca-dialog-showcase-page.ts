@@ -16,7 +16,11 @@ export class NidocaDialogShowcasePage extends NidocaShowcaseTemplate {
 
   constructor() {
     super();
-    let initComponent: NidocaDialog = new NidocaDialog();
+    let initComponent: NidocaDialog | null = null;
+    initComponent = this.loadShowcaseInitData('NidocaDialog');
+    if (initComponent == null) {
+      initComponent = new NidocaDialog();
+    }
 
     this.show = initComponent.show;
   }
@@ -28,8 +32,8 @@ export class NidocaDialogShowcasePage extends NidocaShowcaseTemplate {
         width="100%"
         style="background-color: var(--app-color-surface-background);"
       >
-        <nidoca-box cssStyle="width:100%; height:25vh;background-color: var(--app-color-surface-background-light)">
-          <nidoca-dialog .show="${this.show}"></nidoca-dialog>
+        <nidoca-box cssStyle="width:100%; height:40vh;background-color: var(--app-color-surface-background-light)">
+          <nidoca-dialog .show="${this.show}">${this.loadShowcaseContent('NidocaDialog')}</nidoca-dialog>
         </nidoca-box>
       </nidoca-floating-container>
 
@@ -66,7 +70,6 @@ export class NidocaDialogShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-switch>
 
-              JHUHUH: show
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"

@@ -19,7 +19,11 @@ export class NidocaTabShowcasePage extends NidocaShowcaseTemplate {
 
   constructor() {
     super();
-    let initComponent: NidocaTab = new NidocaTab();
+    let initComponent: NidocaTab | null = null;
+    initComponent = this.loadShowcaseInitData('NidocaTab');
+    if (initComponent == null) {
+      initComponent = new NidocaTab();
+    }
 
     this.selected = initComponent.selected;
 
@@ -33,8 +37,10 @@ export class NidocaTabShowcasePage extends NidocaShowcaseTemplate {
         width="100%"
         style="background-color: var(--app-color-surface-background);"
       >
-        <nidoca-box cssStyle="width:100%; height:25vh;background-color: var(--app-color-surface-background-light)">
-          <nidoca-tab .selected="${this.selected}" text="${this.text}"></nidoca-tab>
+        <nidoca-box cssStyle="width:100%; height:40vh;background-color: var(--app-color-surface-background-light)">
+          <nidoca-tab .selected="${this.selected}" text="${this.text}"
+            >${this.loadShowcaseContent('NidocaTab')}</nidoca-tab
+          >
         </nidoca-box>
       </nidoca-floating-container>
 
@@ -71,7 +77,6 @@ export class NidocaTabShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-switch>
 
-              JHUHUH: selected
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"
@@ -86,7 +91,6 @@ export class NidocaTabShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-text>
 
-              JHUHUH: text
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"

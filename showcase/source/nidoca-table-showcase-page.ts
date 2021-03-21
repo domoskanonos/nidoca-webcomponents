@@ -19,7 +19,11 @@ export class NidocaTableShowcasePage extends NidocaShowcaseTemplate {
 
   constructor() {
     super();
-    let initComponent: NidocaTable = new NidocaTable();
+    let initComponent: NidocaTable | null = null;
+    initComponent = this.loadShowcaseInitData('NidocaTable');
+    if (initComponent == null) {
+      initComponent = new NidocaTable();
+    }
 
     this.headers = initComponent.headers;
 
@@ -33,8 +37,10 @@ export class NidocaTableShowcasePage extends NidocaShowcaseTemplate {
         width="100%"
         style="background-color: var(--app-color-surface-background);"
       >
-        <nidoca-box cssStyle="width:100%; height:25vh;background-color: var(--app-color-surface-background-light)">
-          <nidoca-table .headers="${this.headers}" .rows="${this.rows}"></nidoca-table>
+        <nidoca-box cssStyle="width:100%; height:40vh;background-color: var(--app-color-surface-background-light)">
+          <nidoca-table .headers="${this.headers}" .rows="${this.rows}"
+            >${this.loadShowcaseContent('NidocaTable')}</nidoca-table
+          >
         </nidoca-box>
       </nidoca-floating-container>
 
@@ -63,6 +69,7 @@ export class NidocaTableShowcasePage extends NidocaShowcaseTemplate {
             <nidoca-spacer spacerSize="${SpacerSize.NORMAL}" spacerAlignment="${SpacerAlignment.VERTICAL}">
               <nidoca-form-combobox
                 .multiple="${true}"
+                size="3"
                 label="headers"
                 .value="${this.headers}"
                 .options="${this.toComboboxOptions('String', String)}"
@@ -72,7 +79,6 @@ export class NidocaTableShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-combobox>
 
-              JHUHUH: headers
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"
@@ -80,6 +86,7 @@ export class NidocaTableShowcasePage extends NidocaShowcaseTemplate {
 
               <nidoca-form-combobox
                 .multiple="${true}"
+                size="3"
                 label="rows"
                 .value="${this.rows}"
                 .options="${this.toComboboxOptions('String', String)}"
@@ -89,7 +96,6 @@ export class NidocaTableShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-combobox>
 
-              JHUHUH: rows
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"

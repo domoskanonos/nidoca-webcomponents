@@ -24,7 +24,11 @@ export class NidocaRichMediaShowcasePage extends NidocaShowcaseTemplate {
 
   constructor() {
     super();
-    let initComponent: NidocaRichMedia = new NidocaRichMedia();
+    let initComponent: NidocaRichMedia | null = null;
+    initComponent = this.loadShowcaseInitData('NidocaRichMedia');
+    if (initComponent == null) {
+      initComponent = new NidocaRichMedia();
+    }
 
     this.src = initComponent.src;
 
@@ -40,12 +44,13 @@ export class NidocaRichMediaShowcasePage extends NidocaShowcaseTemplate {
         width="100%"
         style="background-color: var(--app-color-surface-background);"
       >
-        <nidoca-box cssStyle="width:100%; height:25vh;background-color: var(--app-color-surface-background-light)">
+        <nidoca-box cssStyle="width:100%; height:40vh;background-color: var(--app-color-surface-background-light)">
           <nidoca-rich-media
             src="${this.src}"
             .richMediaType="${this.richMediaType}"
             .richMediaProperties="${this.richMediaProperties}"
-          ></nidoca-rich-media>
+            >${this.loadShowcaseContent('NidocaRichMedia')}</nidoca-rich-media
+          >
         </nidoca-box>
       </nidoca-floating-container>
 
@@ -81,7 +86,6 @@ export class NidocaRichMediaShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-text>
 
-              JHUHUH: src
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"
@@ -98,7 +102,6 @@ export class NidocaRichMediaShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-combobox>
 
-              JHUHUH: richMediaType
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"
@@ -106,6 +109,7 @@ export class NidocaRichMediaShowcasePage extends NidocaShowcaseTemplate {
 
               <nidoca-form-combobox
                 .multiple="${true}"
+                size="3"
                 label="richMediaProperties"
                 .value="${this.richMediaProperties}"
                 .options="${this.toComboboxOptions('RichMediaProperties', RichMediaProperties)}"
@@ -116,7 +120,6 @@ export class NidocaRichMediaShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-combobox>
 
-              JHUHUH: richMediaProperties
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"

@@ -24,7 +24,11 @@ export class NidocaCaptchaShowcasePage extends NidocaShowcaseTemplate {
 
   constructor() {
     super();
-    let initComponent: NidocaCaptcha = new NidocaCaptcha();
+    let initComponent: NidocaCaptcha | null = null;
+    initComponent = this.loadShowcaseInitData('NidocaCaptcha');
+    if (initComponent == null) {
+      initComponent = new NidocaCaptcha();
+    }
 
     this.numberOne = initComponent.numberOne;
 
@@ -40,12 +44,10 @@ export class NidocaCaptchaShowcasePage extends NidocaShowcaseTemplate {
         width="100%"
         style="background-color: var(--app-color-surface-background);"
       >
-        <nidoca-box cssStyle="width:100%; height:25vh;background-color: var(--app-color-surface-background-light)">
-          <nidoca-captcha
-            .numberOne="${this.numberOne}"
-            .numberTwo="${this.numberTwo}"
-            .inputfield="${this.inputfield}"
-          ></nidoca-captcha>
+        <nidoca-box cssStyle="width:100%; height:40vh;background-color: var(--app-color-surface-background-light)">
+          <nidoca-captcha .numberOne="${this.numberOne}" .numberTwo="${this.numberTwo}" .inputfield="${this.inputfield}"
+            >${this.loadShowcaseContent('NidocaCaptcha')}</nidoca-captcha
+          >
         </nidoca-box>
       </nidoca-floating-container>
 
@@ -82,7 +84,6 @@ export class NidocaCaptchaShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-text>
 
-              JHUHUH: numberOne
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"
@@ -98,13 +99,11 @@ export class NidocaCaptchaShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-text>
 
-              JHUHUH: numberTwo
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"
               ></nidoca-spacer>
 
-              JHUHUH: inputfield
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"

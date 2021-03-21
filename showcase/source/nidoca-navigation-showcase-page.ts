@@ -17,7 +17,11 @@ export class NidocaNavigationShowcasePage extends NidocaShowcaseTemplate {
 
   constructor() {
     super();
-    let initComponent: NidocaNavigation = new NidocaNavigation();
+    let initComponent: NidocaNavigation | null = null;
+    initComponent = this.loadShowcaseInitData('NidocaNavigation');
+    if (initComponent == null) {
+      initComponent = new NidocaNavigation();
+    }
 
     this.navigationStyle = initComponent.navigationStyle;
   }
@@ -29,8 +33,10 @@ export class NidocaNavigationShowcasePage extends NidocaShowcaseTemplate {
         width="100%"
         style="background-color: var(--app-color-surface-background);"
       >
-        <nidoca-box cssStyle="width:100%; height:25vh;background-color: var(--app-color-surface-background-light)">
-          <nidoca-navigation .navigationStyle="${this.navigationStyle}"></nidoca-navigation>
+        <nidoca-box cssStyle="width:100%; height:40vh;background-color: var(--app-color-surface-background-light)">
+          <nidoca-navigation .navigationStyle="${this.navigationStyle}"
+            >${this.loadShowcaseContent('NidocaNavigation')}</nidoca-navigation
+          >
         </nidoca-box>
       </nidoca-floating-container>
 
@@ -68,7 +74,6 @@ export class NidocaNavigationShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-combobox>
 
-              JHUHUH: navigationStyle
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"

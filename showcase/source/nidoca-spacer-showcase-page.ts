@@ -22,7 +22,11 @@ export class NidocaSpacerShowcasePage extends NidocaShowcaseTemplate {
 
   constructor() {
     super();
-    let initComponent: NidocaSpacer = new NidocaSpacer();
+    let initComponent: NidocaSpacer | null = null;
+    initComponent = this.loadShowcaseInitData('NidocaSpacer');
+    if (initComponent == null) {
+      initComponent = new NidocaSpacer();
+    }
 
     this.spacerSize = initComponent.spacerSize;
 
@@ -38,12 +42,10 @@ export class NidocaSpacerShowcasePage extends NidocaShowcaseTemplate {
         width="100%"
         style="background-color: var(--app-color-surface-background);"
       >
-        <nidoca-box cssStyle="width:100%; height:25vh;background-color: var(--app-color-surface-background-light)">
-          <nidoca-spacer
-            .spacerSize="${this.spacerSize}"
-            .spacerAlignment="${this.spacerAlignment}"
-            size="${this.size}"
-          ></nidoca-spacer>
+        <nidoca-box cssStyle="width:100%; height:40vh;background-color: var(--app-color-surface-background-light)">
+          <nidoca-spacer .spacerSize="${this.spacerSize}" .spacerAlignment="${this.spacerAlignment}" size="${this.size}"
+            >${this.loadShowcaseContent('NidocaSpacer')}</nidoca-spacer
+          >
         </nidoca-box>
       </nidoca-floating-container>
 
@@ -80,7 +82,6 @@ export class NidocaSpacerShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-combobox>
 
-              JHUHUH: spacerSize
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"
@@ -97,7 +98,6 @@ export class NidocaSpacerShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-combobox>
 
-              JHUHUH: spacerAlignment
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"
@@ -112,7 +112,6 @@ export class NidocaSpacerShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-text>
 
-              JHUHUH: size
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"

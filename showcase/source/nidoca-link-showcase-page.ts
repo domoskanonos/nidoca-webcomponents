@@ -22,7 +22,11 @@ export class NidocaLinkShowcasePage extends NidocaShowcaseTemplate {
 
   constructor() {
     super();
-    let initComponent: NidocaLink = new NidocaLink();
+    let initComponent: NidocaLink | null = null;
+    initComponent = this.loadShowcaseInitData('NidocaLink');
+    if (initComponent == null) {
+      initComponent = new NidocaLink();
+    }
 
     this.text = initComponent.text;
 
@@ -38,8 +42,10 @@ export class NidocaLinkShowcasePage extends NidocaShowcaseTemplate {
         width="100%"
         style="background-color: var(--app-color-surface-background);"
       >
-        <nidoca-box cssStyle="width:100%; height:25vh;background-color: var(--app-color-surface-background-light)">
-          <nidoca-link text="${this.text}" href="${this.href}" targetType="${this.targetType}"></nidoca-link>
+        <nidoca-box cssStyle="width:100%; height:40vh;background-color: var(--app-color-surface-background-light)">
+          <nidoca-link text="${this.text}" href="${this.href}" targetType="${this.targetType}"
+            >${this.loadShowcaseContent('NidocaLink')}</nidoca-link
+          >
         </nidoca-box>
       </nidoca-floating-container>
 
@@ -75,7 +81,6 @@ export class NidocaLinkShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-text>
 
-              JHUHUH: text
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"
@@ -90,7 +95,6 @@ export class NidocaLinkShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-text>
 
-              JHUHUH: href
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"
@@ -105,7 +109,6 @@ export class NidocaLinkShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-text>
 
-              JHUHUH: targetType
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"

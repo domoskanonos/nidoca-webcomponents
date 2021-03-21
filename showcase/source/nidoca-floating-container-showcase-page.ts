@@ -31,7 +31,11 @@ export class NidocaFloatingContainerShowcasePage extends NidocaShowcaseTemplate 
 
   constructor() {
     super();
-    let initComponent: NidocaFloatingContainer = new NidocaFloatingContainer();
+    let initComponent: NidocaFloatingContainer | null = null;
+    initComponent = this.loadShowcaseInitData('NidocaFloatingContainer');
+    if (initComponent == null) {
+      initComponent = new NidocaFloatingContainer();
+    }
 
     this.height = initComponent.height;
 
@@ -53,7 +57,7 @@ export class NidocaFloatingContainerShowcasePage extends NidocaShowcaseTemplate 
         width="100%"
         style="background-color: var(--app-color-surface-background);"
       >
-        <nidoca-box cssStyle="width:100%; height:25vh;background-color: var(--app-color-surface-background-light)">
+        <nidoca-box cssStyle="width:100%; height:40vh;background-color: var(--app-color-surface-background-light)">
           <nidoca-floating-container
             height="${this.height}"
             width="${this.width}"
@@ -61,7 +65,8 @@ export class NidocaFloatingContainerShowcasePage extends NidocaShowcaseTemplate 
             top="${this.top}"
             right="${this.right}"
             bottom="${this.bottom}"
-          ></nidoca-floating-container>
+            >${this.loadShowcaseContent('NidocaFloatingContainer')}</nidoca-floating-container
+          >
         </nidoca-box>
       </nidoca-floating-container>
 
@@ -100,7 +105,6 @@ export class NidocaFloatingContainerShowcasePage extends NidocaShowcaseTemplate 
                 infoText=""
               ></nidoca-form-text>
 
-              JHUHUH: height
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"
@@ -115,7 +119,6 @@ export class NidocaFloatingContainerShowcasePage extends NidocaShowcaseTemplate 
                 infoText=""
               ></nidoca-form-text>
 
-              JHUHUH: width
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"
@@ -130,7 +133,6 @@ export class NidocaFloatingContainerShowcasePage extends NidocaShowcaseTemplate 
                 infoText=""
               ></nidoca-form-text>
 
-              JHUHUH: left
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"
@@ -145,7 +147,6 @@ export class NidocaFloatingContainerShowcasePage extends NidocaShowcaseTemplate 
                 infoText=""
               ></nidoca-form-text>
 
-              JHUHUH: top
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"
@@ -160,7 +161,6 @@ export class NidocaFloatingContainerShowcasePage extends NidocaShowcaseTemplate 
                 infoText=""
               ></nidoca-form-text>
 
-              JHUHUH: right
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"
@@ -175,7 +175,6 @@ export class NidocaFloatingContainerShowcasePage extends NidocaShowcaseTemplate 
                 infoText=""
               ></nidoca-form-text>
 
-              JHUHUH: bottom
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"

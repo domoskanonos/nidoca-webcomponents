@@ -22,7 +22,11 @@ export class NidocaBorderShowcasePage extends NidocaShowcaseTemplate {
 
   constructor() {
     super();
-    let initComponent: NidocaBorder = new NidocaBorder();
+    let initComponent: NidocaBorder | null = null;
+    initComponent = this.loadShowcaseInitData('NidocaBorder');
+    if (initComponent == null) {
+      initComponent = new NidocaBorder();
+    }
 
     this.borderProperties = initComponent.borderProperties;
 
@@ -38,12 +42,13 @@ export class NidocaBorderShowcasePage extends NidocaShowcaseTemplate {
         width="100%"
         style="background-color: var(--app-color-surface-background);"
       >
-        <nidoca-box cssStyle="width:100%; height:25vh;background-color: var(--app-color-surface-background-light)">
+        <nidoca-box cssStyle="width:100%; height:40vh;background-color: var(--app-color-surface-background-light)">
           <nidoca-border
             .borderProperties="${this.borderProperties}"
             borderSize="${this.borderSize}"
             shadowType="${this.shadowType}"
-          ></nidoca-border>
+            >${this.loadShowcaseContent('NidocaBorder')}</nidoca-border
+          >
         </nidoca-box>
       </nidoca-floating-container>
 
@@ -72,6 +77,7 @@ export class NidocaBorderShowcasePage extends NidocaShowcaseTemplate {
             <nidoca-spacer spacerSize="${SpacerSize.NORMAL}" spacerAlignment="${SpacerAlignment.VERTICAL}">
               <nidoca-form-combobox
                 .multiple="${true}"
+                size="3"
                 label="borderProperties"
                 .value="${this.borderProperties}"
                 .options="${this.toComboboxOptions('String', String)}"
@@ -82,7 +88,6 @@ export class NidocaBorderShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-combobox>
 
-              JHUHUH: borderProperties
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"
@@ -97,7 +102,6 @@ export class NidocaBorderShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-text>
 
-              JHUHUH: borderSize
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"
@@ -112,7 +116,6 @@ export class NidocaBorderShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-text>
 
-              JHUHUH: shadowType
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"

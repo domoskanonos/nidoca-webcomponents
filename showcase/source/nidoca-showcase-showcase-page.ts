@@ -13,7 +13,11 @@ import {NidocaShowcaseTemplate} from './nidoca-showcase-template';
 export class NidocaShowcaseShowcasePage extends NidocaShowcaseTemplate {
   constructor() {
     super();
-    let initComponent: NidocaShowcase = new NidocaShowcase();
+    let initComponent: NidocaShowcase | null = null;
+    initComponent = this.loadShowcaseInitData('NidocaShowcase');
+    if (initComponent == null) {
+      initComponent = new NidocaShowcase();
+    }
   }
 
   getContent(): TemplateResult {
@@ -23,8 +27,8 @@ export class NidocaShowcaseShowcasePage extends NidocaShowcaseTemplate {
         width="100%"
         style="background-color: var(--app-color-surface-background);"
       >
-        <nidoca-box cssStyle="width:100%; height:25vh;background-color: var(--app-color-surface-background-light)">
-          <nidoca-showcase></nidoca-showcase>
+        <nidoca-box cssStyle="width:100%; height:40vh;background-color: var(--app-color-surface-background-light)">
+          <nidoca-showcase>${this.loadShowcaseContent('NidocaShowcase')}</nidoca-showcase>
         </nidoca-box>
       </nidoca-floating-container>
 

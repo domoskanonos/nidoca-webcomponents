@@ -25,7 +25,11 @@ export class NidocaNavigationLinkShowcasePage extends NidocaShowcaseTemplate {
 
   constructor() {
     super();
-    let initComponent: NidocaNavigationLink = new NidocaNavigationLink();
+    let initComponent: NidocaNavigationLink | null = null;
+    initComponent = this.loadShowcaseInitData('NidocaNavigationLink');
+    if (initComponent == null) {
+      initComponent = new NidocaNavigationLink();
+    }
 
     this.icon = initComponent.icon;
 
@@ -43,13 +47,14 @@ export class NidocaNavigationLinkShowcasePage extends NidocaShowcaseTemplate {
         width="100%"
         style="background-color: var(--app-color-surface-background);"
       >
-        <nidoca-box cssStyle="width:100%; height:25vh;background-color: var(--app-color-surface-background-light)">
+        <nidoca-box cssStyle="width:100%; height:40vh;background-color: var(--app-color-surface-background-light)">
           <nidoca-navigation-link
             icon="${this.icon}"
             text="${this.text}"
             href="${this.href}"
             .rendered="${this.rendered}"
-          ></nidoca-navigation-link>
+            >${this.loadShowcaseContent('NidocaNavigationLink')}</nidoca-navigation-link
+          >
         </nidoca-box>
       </nidoca-floating-container>
 
@@ -88,7 +93,6 @@ export class NidocaNavigationLinkShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-text>
 
-              JHUHUH: icon
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"
@@ -103,7 +107,6 @@ export class NidocaNavigationLinkShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-text>
 
-              JHUHUH: text
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"
@@ -118,7 +121,6 @@ export class NidocaNavigationLinkShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-text>
 
-              JHUHUH: href
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"
@@ -134,7 +136,6 @@ export class NidocaNavigationLinkShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-switch>
 
-              JHUHUH: rendered
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"

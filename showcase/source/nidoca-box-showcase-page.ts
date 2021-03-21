@@ -16,7 +16,11 @@ export class NidocaBoxShowcasePage extends NidocaShowcaseTemplate {
 
   constructor() {
     super();
-    let initComponent: NidocaBox = new NidocaBox();
+    let initComponent: NidocaBox | null = null;
+    initComponent = this.loadShowcaseInitData('NidocaBox');
+    if (initComponent == null) {
+      initComponent = new NidocaBox();
+    }
 
     this.cssStyle = initComponent.cssStyle;
   }
@@ -28,8 +32,8 @@ export class NidocaBoxShowcasePage extends NidocaShowcaseTemplate {
         width="100%"
         style="background-color: var(--app-color-surface-background);"
       >
-        <nidoca-box cssStyle="width:100%; height:25vh;background-color: var(--app-color-surface-background-light)">
-          <nidoca-box cssStyle="${this.cssStyle}"></nidoca-box>
+        <nidoca-box cssStyle="width:100%; height:40vh;background-color: var(--app-color-surface-background-light)">
+          <nidoca-box cssStyle="${this.cssStyle}">${this.loadShowcaseContent('NidocaBox')}</nidoca-box>
         </nidoca-box>
       </nidoca-floating-container>
 
@@ -65,7 +69,6 @@ export class NidocaBoxShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-text>
 
-              JHUHUH: cssStyle
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"

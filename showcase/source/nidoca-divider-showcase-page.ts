@@ -21,7 +21,11 @@ export class NidocaDividerShowcasePage extends NidocaShowcaseTemplate {
 
   constructor() {
     super();
-    let initComponent: NidocaDivider = new NidocaDivider();
+    let initComponent: NidocaDivider | null = null;
+    initComponent = this.loadShowcaseInitData('NidocaDivider');
+    if (initComponent == null) {
+      initComponent = new NidocaDivider();
+    }
 
     this.dividerType = initComponent.dividerType;
 
@@ -35,8 +39,10 @@ export class NidocaDividerShowcasePage extends NidocaShowcaseTemplate {
         width="100%"
         style="background-color: var(--app-color-surface-background);"
       >
-        <nidoca-box cssStyle="width:100%; height:25vh;background-color: var(--app-color-surface-background-light)">
-          <nidoca-divider .dividerType="${this.dividerType}" .opacity="${this.opacity}"></nidoca-divider>
+        <nidoca-box cssStyle="width:100%; height:40vh;background-color: var(--app-color-surface-background-light)">
+          <nidoca-divider .dividerType="${this.dividerType}" .opacity="${this.opacity}"
+            >${this.loadShowcaseContent('NidocaDivider')}</nidoca-divider
+          >
         </nidoca-box>
       </nidoca-floating-container>
 
@@ -73,7 +79,6 @@ export class NidocaDividerShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-combobox>
 
-              JHUHUH: dividerType
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"
@@ -89,7 +94,6 @@ export class NidocaDividerShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-text>
 
-              JHUHUH: opacity
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"

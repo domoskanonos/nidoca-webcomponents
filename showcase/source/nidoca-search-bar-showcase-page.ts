@@ -19,7 +19,11 @@ export class NidocaSearchBarShowcasePage extends NidocaShowcaseTemplate {
 
   constructor() {
     super();
-    let initComponent: NidocaSearchBar = new NidocaSearchBar();
+    let initComponent: NidocaSearchBar | null = null;
+    initComponent = this.loadShowcaseInitData('NidocaSearchBar');
+    if (initComponent == null) {
+      initComponent = new NidocaSearchBar();
+    }
 
     this.placeholder = initComponent.placeholder;
 
@@ -33,8 +37,10 @@ export class NidocaSearchBarShowcasePage extends NidocaShowcaseTemplate {
         width="100%"
         style="background-color: var(--app-color-surface-background);"
       >
-        <nidoca-box cssStyle="width:100%; height:25vh;background-color: var(--app-color-surface-background-light)">
-          <nidoca-search-bar placeholder="${this.placeholder}" value="${this.value}"></nidoca-search-bar>
+        <nidoca-box cssStyle="width:100%; height:40vh;background-color: var(--app-color-surface-background-light)">
+          <nidoca-search-bar placeholder="${this.placeholder}" value="${this.value}"
+            >${this.loadShowcaseContent('NidocaSearchBar')}</nidoca-search-bar
+          >
         </nidoca-box>
       </nidoca-floating-container>
 
@@ -70,7 +76,6 @@ export class NidocaSearchBarShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-text>
 
-              JHUHUH: placeholder
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"
@@ -85,7 +90,6 @@ export class NidocaSearchBarShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-text>
 
-              JHUHUH: value
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"

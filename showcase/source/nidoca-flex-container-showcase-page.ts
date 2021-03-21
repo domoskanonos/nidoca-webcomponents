@@ -32,6 +32,12 @@ export class NidocaFlexContainerShowcasePage extends NidocaShowcaseTemplate {
   flexAlignContent: FlexAlignContent = Object.values(FlexAlignContent)[0];
 
   @property()
+  containerStyle: string = '';
+
+  @property()
+  itemStyle: string = '';
+
+  @property()
   flexContainerProperties: FlexContainerProperty[] = [];
 
   @property()
@@ -45,7 +51,11 @@ export class NidocaFlexContainerShowcasePage extends NidocaShowcaseTemplate {
 
   constructor() {
     super();
-    let initComponent: NidocaFlexContainer = new NidocaFlexContainer();
+    let initComponent: NidocaFlexContainer | null = null;
+    initComponent = this.loadShowcaseInitData('NidocaFlexContainer');
+    if (initComponent == null) {
+      initComponent = new NidocaFlexContainer();
+    }
 
     this.flexDirection = initComponent.flexDirection;
 
@@ -56,6 +66,10 @@ export class NidocaFlexContainerShowcasePage extends NidocaShowcaseTemplate {
     this.flexAlignItems = initComponent.flexAlignItems;
 
     this.flexAlignContent = initComponent.flexAlignContent;
+
+    this.containerStyle = initComponent.containerStyle;
+
+    this.itemStyle = initComponent.itemStyle;
 
     this.flexContainerProperties = initComponent.flexContainerProperties;
 
@@ -73,18 +87,21 @@ export class NidocaFlexContainerShowcasePage extends NidocaShowcaseTemplate {
         width="100%"
         style="background-color: var(--app-color-surface-background);"
       >
-        <nidoca-box cssStyle="width:100%; height:25vh;background-color: var(--app-color-surface-background-light)">
+        <nidoca-box cssStyle="width:100%; height:40vh;background-color: var(--app-color-surface-background-light)">
           <nidoca-flex-container
             .flexDirection="${this.flexDirection}"
             .flexWrap="${this.flexWrap}"
             .flexJustifyContent="${this.flexJustifyContent}"
             .flexAlignItems="${this.flexAlignItems}"
             .flexAlignContent="${this.flexAlignContent}"
+            containerStyle="${this.containerStyle}"
+            itemStyle="${this.itemStyle}"
             .flexContainerProperties="${this.flexContainerProperties}"
             .flexItemProperties="${this.flexItemProperties}"
             flexItemBasisValue="${this.flexItemBasisValue}"
             .flexItemBasisValues="${this.flexItemBasisValues}"
-          ></nidoca-flex-container>
+            >${this.loadShowcaseContent('NidocaFlexContainer')}</nidoca-flex-container
+          >
         </nidoca-box>
       </nidoca-floating-container>
 
@@ -122,7 +139,6 @@ export class NidocaFlexContainerShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-combobox>
 
-              JHUHUH: flexDirection
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"
@@ -138,7 +154,6 @@ export class NidocaFlexContainerShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-combobox>
 
-              JHUHUH: flexWrap
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"
@@ -155,7 +170,6 @@ export class NidocaFlexContainerShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-combobox>
 
-              JHUHUH: flexJustifyContent
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"
@@ -172,7 +186,6 @@ export class NidocaFlexContainerShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-combobox>
 
-              JHUHUH: flexAlignItems
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"
@@ -189,7 +202,34 @@ export class NidocaFlexContainerShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-combobox>
 
-              JHUHUH: flexAlignContent
+              <nidoca-spacer
+                spacerSize="${SpacerSize.MEDIUM}"
+                spacerAlignment="${SpacerAlignment.VERTICAL}"
+              ></nidoca-spacer>
+
+              <nidoca-form-text
+                label="containerStyle"
+                .value="${this.containerStyle}"
+                @nidoca-form-text-event-change="${(event: CustomEvent) => (this.containerStyle = event.detail.value)}"
+                warningText=""
+                errorText=""
+                infoText=""
+              ></nidoca-form-text>
+
+              <nidoca-spacer
+                spacerSize="${SpacerSize.MEDIUM}"
+                spacerAlignment="${SpacerAlignment.VERTICAL}"
+              ></nidoca-spacer>
+
+              <nidoca-form-text
+                label="itemStyle"
+                .value="${this.itemStyle}"
+                @nidoca-form-text-event-change="${(event: CustomEvent) => (this.itemStyle = event.detail.value)}"
+                warningText=""
+                errorText=""
+                infoText=""
+              ></nidoca-form-text>
+
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"
@@ -197,6 +237,7 @@ export class NidocaFlexContainerShowcasePage extends NidocaShowcaseTemplate {
 
               <nidoca-form-combobox
                 .multiple="${true}"
+                size="3"
                 label="flexContainerProperties"
                 .value="${this.flexContainerProperties}"
                 .options="${this.toComboboxOptions('FlexContainerProperty', FlexContainerProperty)}"
@@ -207,7 +248,6 @@ export class NidocaFlexContainerShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-combobox>
 
-              JHUHUH: flexContainerProperties
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"
@@ -215,6 +255,7 @@ export class NidocaFlexContainerShowcasePage extends NidocaShowcaseTemplate {
 
               <nidoca-form-combobox
                 .multiple="${true}"
+                size="3"
                 label="flexItemProperties"
                 .value="${this.flexItemProperties}"
                 .options="${this.toComboboxOptions('FlexItemProperty', FlexItemProperty)}"
@@ -225,7 +266,6 @@ export class NidocaFlexContainerShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-combobox>
 
-              JHUHUH: flexItemProperties
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"
@@ -241,7 +281,6 @@ export class NidocaFlexContainerShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-text>
 
-              JHUHUH: flexItemBasisValue
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"
@@ -249,6 +288,7 @@ export class NidocaFlexContainerShowcasePage extends NidocaShowcaseTemplate {
 
               <nidoca-form-combobox
                 .multiple="${true}"
+                size="3"
                 label="flexItemBasisValues"
                 .value="${this.flexItemBasisValues}"
                 .options="${this.toComboboxOptions('String', String)}"
@@ -259,7 +299,6 @@ export class NidocaFlexContainerShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-combobox>
 
-              JHUHUH: flexItemBasisValues
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"
@@ -280,6 +319,10 @@ export class NidocaFlexContainerShowcasePage extends NidocaShowcaseTemplate {
                 this.toAttributeCodeString(this.flexAlignItems, 'FlexAlignItems', FlexAlignItems) +
                 '" \n  .flexAlignContent="' +
                 this.toAttributeCodeString(this.flexAlignContent, 'FlexAlignContent', FlexAlignContent) +
+                '" \n  containerStyle="' +
+                this.toAttributeCodeString(this.containerStyle, 'string') +
+                '" \n  itemStyle="' +
+                this.toAttributeCodeString(this.itemStyle, 'string') +
                 '" \n  .flexContainerProperties="' +
                 this.toAttributeCodeString(
                   this.flexContainerProperties,
@@ -308,6 +351,8 @@ export class NidocaFlexContainerShowcasePage extends NidocaShowcaseTemplate {
             ['flexJustifyContent', this.object2Value('FlexJustifyContent', FlexJustifyContent)],
             ['flexAlignItems', this.object2Value('FlexAlignItems', FlexAlignItems)],
             ['flexAlignContent', this.object2Value('FlexAlignContent', FlexAlignContent)],
+            ['containerStyle', this.object2Value('string', null)],
+            ['itemStyle', this.object2Value('string', null)],
             ['flexContainerProperties', this.object2Value('FlexContainerProperty[]', null)],
             ['flexItemProperties', this.object2Value('FlexItemProperty[]', null)],
             ['flexItemBasisValue', this.object2Value('string', null)],

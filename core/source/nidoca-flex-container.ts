@@ -252,6 +252,13 @@ export class NidocaFlexContainer extends LitElement {
   flexAlignContent: FlexAlignContent = FlexAlignContent.FLEX_START;
 
   @property()
+  containerStyle: string = '';
+
+  @property()
+  itemStyle: string = '';
+
+
+  @property()
   flexContainerProperties: FlexContainerProperty[] = [];
 
   @property()
@@ -271,7 +278,7 @@ export class NidocaFlexContainer extends LitElement {
       <div
         class="${this.toContainerPropertiesString(this.flexContainerProperties)}"
         style="flex-direction: ${this.flexDirection}; flex-wrap: ${this.flexWrap}; justify-content: ${this
-          .flexJustifyContent}; align-items: ${this.flexAlignItems}; align-content: ${this.flexAlignContent};"
+          .flexJustifyContent}; align-items: ${this.flexAlignItems}; align-content: ${this.flexAlignContent}; ${this.containerStyle}"
       >
         <slot id="slotElement" @slotchange="${(event: Event) => this.slotChanged(event)}"></slot>
       </div>

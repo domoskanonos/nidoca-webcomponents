@@ -19,7 +19,11 @@ export class NidocaAccordionItemShowcasePage extends NidocaShowcaseTemplate {
 
   constructor() {
     super();
-    let initComponent: NidocaAccordionItem = new NidocaAccordionItem();
+    let initComponent: NidocaAccordionItem | null = null;
+    initComponent = this.loadShowcaseInitData('NidocaAccordionItem');
+    if (initComponent == null) {
+      initComponent = new NidocaAccordionItem();
+    }
 
     this.header = initComponent.header;
 
@@ -33,8 +37,10 @@ export class NidocaAccordionItemShowcasePage extends NidocaShowcaseTemplate {
         width="100%"
         style="background-color: var(--app-color-surface-background);"
       >
-        <nidoca-box cssStyle="width:100%; height:25vh;background-color: var(--app-color-surface-background-light)">
-          <nidoca-accordion-item header="${this.header}" .opened="${this.opened}"></nidoca-accordion-item>
+        <nidoca-box cssStyle="width:100%; height:40vh;background-color: var(--app-color-surface-background-light)">
+          <nidoca-accordion-item header="${this.header}" .opened="${this.opened}"
+            >${this.loadShowcaseContent('NidocaAccordionItem')}</nidoca-accordion-item
+          >
         </nidoca-box>
       </nidoca-floating-container>
 
@@ -70,7 +76,6 @@ export class NidocaAccordionItemShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-text>
 
-              JHUHUH: header
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"
@@ -86,7 +91,6 @@ export class NidocaAccordionItemShowcasePage extends NidocaShowcaseTemplate {
                 infoText=""
               ></nidoca-form-switch>
 
-              JHUHUH: opened
               <nidoca-spacer
                 spacerSize="${SpacerSize.MEDIUM}"
                 spacerAlignment="${SpacerAlignment.VERTICAL}"
