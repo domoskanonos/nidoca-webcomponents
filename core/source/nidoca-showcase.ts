@@ -1,9 +1,4 @@
-import {css, customElement, html, TemplateResult} from 'lit-element';
-import {LitElement} from 'lit-element';
-import {SpacerAlignment, SpacerSize} from './nidoca-spacer';
-import {TextType} from './nidoca-form-text';
-import {FormOutputData} from './nidoca-form-abstract-input-element';
-import {FlexContainerProperty, FlexItemProperty, TypographyType} from '.';
+import {customElement, html, TemplateResult} from 'lit-element';
 import {NidocaTemplate} from './nidoca-template';
 
 @customElement('nidoca-showcase')
@@ -13,6 +8,10 @@ export class NidocaShowcase extends NidocaTemplate {
       <nidoca-progress>dsoidjf</nidoca-progress>
       
       
+
+
+<nidoca-spacer>Hallo</nidoca-spacer>
+
       <nidoca-code>class java {}</nidoca-code>
       
       <nidoca-form-switch></nidoca-form-switch>

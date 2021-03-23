@@ -1,9 +1,9 @@
 import {
-  FlexContainerProperty,
-  FlexItemProperty,
+  ContainerProperty,
+  NidocaDevice,
   NidocaWizard,
-  SpacerAlignment,
   SpacerSize,
+  SpacerType,
   TypographyType,
   WizardStep,
 } from '@domoskanonos/nidoca-core';
@@ -45,84 +45,84 @@ export class NidocaWizardShowcasePage extends NidocaShowcaseTemplate {
         </nidoca-box>
       </nidoca-floating-container>
 
-      <nidoca-spacer size="12.5vh" spacerAlignment="${SpacerAlignment.VERTICAL}"></nidoca-spacer>
+      <nidoca-spacer size="20vh" .spacerTypes="${[SpacerType.ALL]}"></nidoca-spacer>
 
-      <nidoca-flex-container
-        .flexContainerProperties="${[
-          FlexContainerProperty.CONTAINER_WIDTH_75,
-          FlexContainerProperty.TABLET_MAX_WIDTH,
-          FlexContainerProperty.SMARTPHONE_MAX_WIDTH,
-          FlexContainerProperty.SMARTPHONE_HORIZONTAL_PADDING,
-          FlexContainerProperty.TABLET_HORIZONTAL_PADDING,
+      <nidoca-container
+        .containerProperties="${[
+          ContainerProperty.WIDTH_75,
+          ContainerProperty.SMARTPHONE_MAX_WIDTH,
+          ContainerProperty.TABLET_MAX_WIDTH,
         ]}"
-        .flexItemProperties="${[FlexItemProperty.KEYLINE_ALIGNMENT_BOTH, FlexItemProperty.KEYLINE_SIZE_MEDIUM]}"
-        flexItemBasisValue="100%"
       >
-        <nidoca-spacer spacerSize="${SpacerSize.BIG}" spacerAlignment="${SpacerAlignment.VERTICAL}">
-          <nidoca-typography .typographyType="${TypographyType.H2}" text="<nidoca-wizard/>"></nidoca-typography>
-        </nidoca-spacer>
+        <nidoca-flex-container itemStyle="flex-basis: 100%;">
+          <nidoca-spacer spacerSize="${SpacerSize.BIG}" .spacerTypes="${[SpacerType.ALL]}">
+            <nidoca-typography .typographyType="${TypographyType.H2}" text="<nidoca-wizard/>"></nidoca-typography>
+          </nidoca-spacer>
 
-        <nidoca-tabs>
-          <nidoca-tab slot="tab" .selected="${true}" text="properties"></nidoca-tab>
-          <nidoca-tab slot="tab" text="source"></nidoca-tab>
+          <nidoca-tabs>
+            <nidoca-tab slot="tab" .selected="${true}" text="properties"></nidoca-tab>
+            <nidoca-tab slot="tab" text="source"></nidoca-tab>
 
-          <nidoca-tab-content slot="tabContent" .selected="${true}">
-            <nidoca-spacer spacerSize="${SpacerSize.NORMAL}" spacerAlignment="${SpacerAlignment.VERTICAL}">
-              <nidoca-form-combobox
-                .multiple="${true}"
-                size="3"
-                label="wizardSteps"
-                .value="${this.wizardSteps}"
-                .options="${this.toComboboxOptions('WizardStep', WizardStep)}"
-                @nidoca-form-combobox-event-change="${(event: CustomEvent) => (this.wizardSteps = event.detail.value)}"
-                warningText=""
-                errorText=""
-                infoText=""
-              ></nidoca-form-combobox>
+            <nidoca-tab-content slot="tabContent" .selected="${true}">
+              <nidoca-spacer spacerSize="${SpacerSize.NORMAL}" .spacerTypes="${[SpacerType.TOP, SpacerType.BOTTOM]}">
+                <nidoca-spacer
+                  spacerSize="${SpacerSize.NORMAL}"
+                  .spacerTypes="${[SpacerType.LEFT, SpacerType.RIGHT]}"
+                  .devices="${[NidocaDevice.MOBILE]}"
+                >
+                  <nidoca-form-combobox
+                    .multiple="${true}"
+                    size="3"
+                    label="wizardSteps"
+                    .value="${this.wizardSteps}"
+                    .options="${this.toComboboxOptions('WizardStep', WizardStep)}"
+                    @nidoca-form-combobox-event-change="${(event: CustomEvent) =>
+                      (this.wizardSteps = event.detail.value)}"
+                    warningText=""
+                    errorText=""
+                    infoText=""
+                  ></nidoca-form-combobox>
 
-              <nidoca-spacer
-                spacerSize="${SpacerSize.MEDIUM}"
-                spacerAlignment="${SpacerAlignment.VERTICAL}"
-              ></nidoca-spacer>
+                  <nidoca-spacer spacerSize="${SpacerSize.MEDIUM}" .spacerTypes="${[SpacerType.ALL]}"></nidoca-spacer>
 
-              <nidoca-form-combobox
-                label="selectedStep"
-                .value="${this.selectedStep}"
-                .options="${this.toComboboxOptions('WizardStep', WizardStep)}"
-                @nidoca-form-combobox-event-change="${(event: CustomEvent) => (this.selectedStep = event.detail.value)}"
-                warningText=""
-                errorText=""
-                infoText=""
-              ></nidoca-form-combobox>
+                  <nidoca-form-combobox
+                    label="selectedStep"
+                    .value="${this.selectedStep}"
+                    .options="${this.toComboboxOptions('WizardStep', WizardStep)}"
+                    @nidoca-form-combobox-event-change="${(event: CustomEvent) =>
+                      (this.selectedStep = event.detail.value)}"
+                    warningText=""
+                    errorText=""
+                    infoText=""
+                  ></nidoca-form-combobox>
 
-              <nidoca-spacer
-                spacerSize="${SpacerSize.MEDIUM}"
-                spacerAlignment="${SpacerAlignment.VERTICAL}"
-              ></nidoca-spacer>
-            </nidoca-spacer>
-          </nidoca-tab-content>
+                  <nidoca-spacer spacerSize="${SpacerSize.MEDIUM}" .spacerTypes="${[SpacerType.ALL]}"></nidoca-spacer>
+                </nidoca-spacer>
+              </nidoca-spacer>
+            </nidoca-tab-content>
 
-          <nidoca-tab-content slot="tabContent">
-            <nidoca-spacer spacerSize="${SpacerSize.NORMAL}" spacerAlignment="${SpacerAlignment.VERTICAL}">
-              <nidoca-code
-                code="${'<nidoca-wizard \n  .wizardSteps="' +
-                this.toAttributeCodeString(this.wizardSteps, 'WizardStep[]', WizardStep) +
-                '" \n  .selectedStep="' +
-                this.toAttributeCodeString(this.selectedStep, 'WizardStep', WizardStep) +
-                '" >\n     nidoca-wizard\n</nidoca-wizard>'}"
-              ></nidoca-code>
-            </nidoca-spacer>
-          </nidoca-tab-content>
-        </nidoca-tabs>
+            <nidoca-tab-content slot="tabContent">
+              <nidoca-spacer spacerSize="${SpacerSize.NORMAL}" .spacerTypes="${[SpacerType.ALL]}">
+                <nidoca-code
+                  code="${'<nidoca-wizard \n  .wizardSteps="' +
+                  this.toAttributeCodeString(this.wizardSteps, 'WizardStep[]', WizardStep) +
+                  '" \n  .selectedStep="' +
+                  this.toAttributeCodeString(this.selectedStep, 'WizardStep', WizardStep) +
+                  '" >\n     nidoca-wizard\n</nidoca-wizard>'}"
+                ></nidoca-code>
+              </nidoca-spacer>
+            </nidoca-tab-content>
+          </nidoca-tabs>
 
-        <nidoca-table
-          .headers="${['property', 'type']}"
-          .rows="${[
-            ['wizardSteps', this.object2Value('WizardStep[]', null)],
-            ['selectedStep', this.object2Value('WizardStep', WizardStep)],
-          ]}"
-        ></nidoca-table>
-      </nidoca-flex-container>
+          <nidoca-table
+            .headers="${['property', 'type']}"
+            .rows="${[
+              ['wizardSteps', this.object2Value('WizardStep[]', null)],
+              ['selectedStep', this.object2Value('WizardStep', WizardStep)],
+            ]}"
+          ></nidoca-table>
+        </nidoca-flex-container>
+      </nidoca-container>
     `;
   }
 }

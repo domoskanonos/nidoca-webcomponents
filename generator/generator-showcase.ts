@@ -44,6 +44,7 @@ async function createImports(files: any[]): Promise<any[]> {
     ],
   });
   let nidocaClazzNames: Set<String> = new Set();
+  nidocaClazzNames.add('NidocaDevice');
   for (let i = 0; i < files.length; i++) {
     let file: any = files[i];
     let filename: string = file.from.replace('./', '').concat('.ts');
@@ -149,19 +150,19 @@ function createComponentPages(files: any[], imps: any[]) {
           let accessors: any[] = clazz.accessors;
 
           //slots
-          
+
           //default slot avaliable ?
           let defaultSlotRegex = /<slot>[^![^\n]*|<slot id[^![^\n]*/gm;
           clazz.defaultSlot = value.content.match(defaultSlotRegex) != null;
 
           clazz.slots = [];
-          if(clazz.defaultSlot){
-            console.log("add default slot.");
-            clazz.slots.push("");
+          if (clazz.defaultSlot) {
+            console.log('add default slot.');
+            clazz.slots.push('');
           }
 
           let slots = /(?<=<slot name=")(.*)(?=")/gm;
-          let namedSlots : [] = value.content.match(slots);
+          let namedSlots: [] = value.content.match(slots);
           if (namedSlots) {
             namedSlots.forEach((slotElement: any) => {
               console.log('slot element name detected: %s', slotElement);
@@ -182,14 +183,18 @@ function createComponentPages(files: any[], imps: any[]) {
               if (propertyType.indexOf('[]]') > -1) {
                 property.isArray = true;
                 property.defaultValue = '[[]]';
-                property.baseType = propertyType.replace("[","").replace("]","");
+                property.baseType = propertyType.replace('[', '').replace(']', '');
                 property.baseType = property.baseType.charAt(0).toUpperCase() + property.baseType.slice(1);
-                if(property.baseType == 'Any'){property.baseType = 'String'}
+                if (property.baseType == 'Any') {
+                  property.baseType = 'String';
+                }
               } else if (propertyType.indexOf('[]') > -1) {
                 property.isArray = true;
-                property.baseType = propertyType.replace("[","").replace("]","");
+                property.baseType = propertyType.replace('[', '').replace(']', '');
                 property.baseType = property.baseType.charAt(0).toUpperCase() + property.baseType.slice(1);
-                if(property.baseType == 'Any'){property.baseType = 'String'}
+                if (property.baseType == 'Any') {
+                  property.baseType = 'String';
+                }
                 property.defaultValue = '[]';
               } else if (propertyType.indexOf('string') > -1) {
                 property.isString = true;
@@ -213,9 +218,7 @@ function createComponentPages(files: any[], imps: any[]) {
 
               property.type = propertyType;
             }
-
           }
-
         });
 
         let fileContent: string = fs.readFileSync('./component.html', 'utf-8');
@@ -231,6 +234,7 @@ function createComponentPages(files: any[], imps: any[]) {
 
 parsedIndexFile.then((parsedIndexFileContent: any) => {
   let files = parsedIndexFileContent['exports'];
+  files = files.filter((file: any) => file.from !== './nidoca-meta');
   createImports(files).then((imps) => {
     createIndexPage(files);
     createNidocaShowcaseTemplate(files);

@@ -102,7 +102,7 @@ export abstract class NidocaShowcaseTemplate extends NidocaTemplate {
       loadShowcaseContent(name: string): TemplateResult {
         switch (name) {
           case 'NidocaFlexContainer':
-            return html`${this.createBox()}${this.createBox()}${this.createBox()}${this.createBox()}${this.createBox()}${this.createBox()}${this.createBox()}${this.createBox()}${this.createBox()}${this.createBox()}${this.createBox()}`;
+            return html`${this.createBox('100')}${this.createBox('100')}${this.createBox('150')}${this.createBox('100')}${this.createBox('150')}${this.createBox('100')}${this.createBox('100')}${this.createBox('150')}${this.createBox('100')}${this.createBox('100')}${this.createBox('150')}${this.createBox('100')}${this.createBox('200')}${this.createBox('150')}${this.createBox('100')}${this.createBox('200')}${this.createBox('100')}`;
           default:
             return html`${name}`;
         }
@@ -122,9 +122,9 @@ export abstract class NidocaShowcaseTemplate extends NidocaTemplate {
         }
       }
     
-      private createBox(): TemplateResult {
+      private createBox(size: string): TemplateResult {
         return html`
-          <nidoca-rich-media src="https://picsum.photos/100/100"></nidoca-rich-media>
+          <nidoca-rich-media src="https://picsum.photos/${size}/${size}"></nidoca-rich-media>
         `;
       }
         

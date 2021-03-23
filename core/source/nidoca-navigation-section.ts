@@ -1,13 +1,6 @@
 import {css, customElement, html, LitElement, property, TemplateResult} from 'lit-element';
-import {
-  FlexAlignContent,
-  FlexAlignItems,
-  FlexContainerProperty,
-  FlexDirection,
-  FlexJustifyContent,
-  FlexWrap,
-} from './nidoca-flex-container';
-import {SpacerAlignment, SpacerSize} from './nidoca-spacer';
+import {FlexAlignContent, FlexAlignItems, FlexDirection, FlexJustifyContent, FlexWrap} from './nidoca-flex-container';
+import {SpacerType, SpacerSize} from './nidoca-spacer';
 import {TypographyType} from './nidoca-typography';
 
 @customElement('nidoca-navigation-section')
@@ -24,16 +17,15 @@ export class NidocaNavigationSection extends LitElement {
     return this.rendered
       ? html`
           <nidoca-flex-container
-            .flexContainerProperties="${[FlexContainerProperty.CONTAINER_WIDTH_100]}"
             .flexItemProperties="${[]}"
             .flexDirection="${FlexDirection.ROW}"
             .flexWrap="${FlexWrap.NO_WRAP}"
             .flexJustifyContent="${FlexJustifyContent.FLEX_END}"
             .flexAlignItems="${FlexAlignItems.CENTER}"
             .flexAlignContent="${FlexAlignContent.FLEX_START}"
-            flexItemBasisValue="100%"
+            itemStyle="flex-basis: 100%;"
           >
-            <nidoca-spacer spacerSize="${SpacerSize.SMALL}" spacerAlignment="${SpacerAlignment.BOTH}">
+            <nidoca-spacer spacerSize="${SpacerSize.SMALL}" .spacerTypes="${[SpacerType.ALL]}">
               <nidoca-typography .typographyType="${TypographyType.H6}" text="${this.text}"></nidoca-typography>
             </nidoca-spacer>
           </nidoca-flex-container>

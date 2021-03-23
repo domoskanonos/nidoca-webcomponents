@@ -1,9 +1,9 @@
 import {css, customElement, html, LitElement, property, TemplateResult} from 'lit-element';
 import {BorderProperties, BorderSize} from './nidoca-border';
 import {VisibleType} from './nidoca-visible';
-import {FlexAlignContent, FlexContainerProperty} from './nidoca-flex-container';
+import {FlexAlignContent} from './nidoca-flex-container';
 import {TypographyType} from './nidoca-typography';
-import {SpacerAlignment, SpacerSize} from './nidoca-spacer';
+import {SpacerType, SpacerSize} from './nidoca-spacer';
 
 @customElement('nidoca-inputframe')
 export class NidocaFormInputframe extends LitElement {
@@ -41,12 +41,8 @@ export class NidocaFormInputframe extends LitElement {
         @mouseover="${() => this.mouseover()}"
         @mouseout="${() => this.mouseout()}"
       >
-        <nidoca-spacer spacerSize="${SpacerSize.SMALL}" spacerAlignment="${SpacerAlignment.BOTH}">
+        <nidoca-spacer spacerSize="${SpacerSize.SMALL}" .spacerTypes="${[SpacerType.ALL]}">
           <nidoca-flex-container
-            .flexContainerProperties="${[
-              FlexContainerProperty.CONTAINER_WIDTH_100,
-              FlexContainerProperty.CONTAINER_HEIGHT_100,
-            ]}"
             .flexAlignContent="${FlexAlignContent.CENTER}"
             flexItemBasisValue="100%"
           >
@@ -57,10 +53,6 @@ export class NidocaFormInputframe extends LitElement {
       </nidoca-border>
 
       <nidoca-flex-container
-        .flexContainerProperties="${[
-          FlexContainerProperty.CONTAINER_WIDTH_100,
-          FlexContainerProperty.CONTAINER_HEIGHT_100,
-        ]}"
         .flexAlignContent="${FlexAlignContent.CENTER}"
         flexItemBasisValue="100%"
         ><nidoca-visible visibleType="${this.infoText ? VisibleType.NORMAL : VisibleType.HIDE}">

@@ -2,7 +2,7 @@ import {css, customElement, html, property, TemplateResult} from 'lit-element';
 import {LitElement} from 'lit-element';
 import {GridAlignItems, GridJustifyItems} from './nidoca-grid-container';
 import {BorderProperties} from './nidoca-border';
-import {SpacerAlignment, SpacerSize} from './nidoca-spacer';
+import {SpacerType, SpacerSize} from './nidoca-spacer';
 import {VisibleType} from './nidoca-visible';
 
 @customElement('nidoca-accordion-item')
@@ -32,7 +32,7 @@ export class NidocaAccordionItem extends LitElement {
             .gridTemplateColumns="${['auto', '1fr', 'auto']}"
             ><nidoca-spacer
               spacerSize="${SpacerSize.MEDIUM}"
-              spacerAlignment="${SpacerAlignment.HORIZONTAL}"
+              spacerAlignment="${SpacerType.HORIZONTAL}"
             ></nidoca-spacer>
             <nidoca-typography text="${this.header}"></nidoca-typography>
             <nidoca-icon icon="${this.opened ? 'keyboard_arrow_down' : 'keyboard_arrow_up'}"></nidoca-icon>

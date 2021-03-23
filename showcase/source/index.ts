@@ -6,6 +6,7 @@ import './nidoca-button-showcase-page.ts';
 import './nidoca-captcha-showcase-page.ts';
 import './nidoca-chip-showcase-page.ts';
 import './nidoca-code-showcase-page.ts';
+import './nidoca-container-showcase-page.ts';
 import './nidoca-dialog-showcase-page.ts';
 import './nidoca-divider-showcase-page.ts';
 import './nidoca-flex-container-showcase-page.ts';

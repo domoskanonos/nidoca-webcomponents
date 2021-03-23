@@ -1,9 +1,9 @@
 import {
-  FlexContainerProperty,
-  FlexItemProperty,
+  ContainerProperty,
+  NidocaDevice,
   NidocaTypography,
-  SpacerAlignment,
   SpacerSize,
+  SpacerType,
   TypographyAlignment,
   TypographyType,
 } from '@domoskanonos/nidoca-core';
@@ -53,103 +53,98 @@ export class NidocaTypographyShowcasePage extends NidocaShowcaseTemplate {
         </nidoca-box>
       </nidoca-floating-container>
 
-      <nidoca-spacer size="12.5vh" spacerAlignment="${SpacerAlignment.VERTICAL}"></nidoca-spacer>
+      <nidoca-spacer size="20vh" .spacerTypes="${[SpacerType.ALL]}"></nidoca-spacer>
 
-      <nidoca-flex-container
-        .flexContainerProperties="${[
-          FlexContainerProperty.CONTAINER_WIDTH_75,
-          FlexContainerProperty.TABLET_MAX_WIDTH,
-          FlexContainerProperty.SMARTPHONE_MAX_WIDTH,
-          FlexContainerProperty.SMARTPHONE_HORIZONTAL_PADDING,
-          FlexContainerProperty.TABLET_HORIZONTAL_PADDING,
+      <nidoca-container
+        .containerProperties="${[
+          ContainerProperty.WIDTH_75,
+          ContainerProperty.SMARTPHONE_MAX_WIDTH,
+          ContainerProperty.TABLET_MAX_WIDTH,
         ]}"
-        .flexItemProperties="${[FlexItemProperty.KEYLINE_ALIGNMENT_BOTH, FlexItemProperty.KEYLINE_SIZE_MEDIUM]}"
-        flexItemBasisValue="100%"
       >
-        <nidoca-spacer spacerSize="${SpacerSize.BIG}" spacerAlignment="${SpacerAlignment.VERTICAL}">
-          <nidoca-typography .typographyType="${TypographyType.H2}" text="<nidoca-typography/>"></nidoca-typography>
-        </nidoca-spacer>
+        <nidoca-flex-container itemStyle="flex-basis: 100%;">
+          <nidoca-spacer spacerSize="${SpacerSize.BIG}" .spacerTypes="${[SpacerType.ALL]}">
+            <nidoca-typography .typographyType="${TypographyType.H2}" text="<nidoca-typography/>"></nidoca-typography>
+          </nidoca-spacer>
 
-        <nidoca-tabs>
-          <nidoca-tab slot="tab" .selected="${true}" text="properties"></nidoca-tab>
-          <nidoca-tab slot="tab" text="source"></nidoca-tab>
+          <nidoca-tabs>
+            <nidoca-tab slot="tab" .selected="${true}" text="properties"></nidoca-tab>
+            <nidoca-tab slot="tab" text="source"></nidoca-tab>
 
-          <nidoca-tab-content slot="tabContent" .selected="${true}">
-            <nidoca-spacer spacerSize="${SpacerSize.NORMAL}" spacerAlignment="${SpacerAlignment.VERTICAL}">
-              <nidoca-form-combobox
-                label="typographyType"
-                .value="${this.typographyType}"
-                .options="${this.toComboboxOptions('TypographyType', TypographyType)}"
-                @nidoca-form-combobox-event-change="${(event: CustomEvent) =>
-                  (this.typographyType = event.detail.value)}"
-                warningText=""
-                errorText=""
-                infoText=""
-              ></nidoca-form-combobox>
+            <nidoca-tab-content slot="tabContent" .selected="${true}">
+              <nidoca-spacer spacerSize="${SpacerSize.NORMAL}" .spacerTypes="${[SpacerType.TOP, SpacerType.BOTTOM]}">
+                <nidoca-spacer
+                  spacerSize="${SpacerSize.NORMAL}"
+                  .spacerTypes="${[SpacerType.LEFT, SpacerType.RIGHT]}"
+                  .devices="${[NidocaDevice.MOBILE]}"
+                >
+                  <nidoca-form-combobox
+                    label="typographyType"
+                    .value="${this.typographyType}"
+                    .options="${this.toComboboxOptions('TypographyType', TypographyType)}"
+                    @nidoca-form-combobox-event-change="${(event: CustomEvent) =>
+                      (this.typographyType = event.detail.value)}"
+                    warningText=""
+                    errorText=""
+                    infoText=""
+                  ></nidoca-form-combobox>
 
-              <nidoca-spacer
-                spacerSize="${SpacerSize.MEDIUM}"
-                spacerAlignment="${SpacerAlignment.VERTICAL}"
-              ></nidoca-spacer>
+                  <nidoca-spacer spacerSize="${SpacerSize.MEDIUM}" .spacerTypes="${[SpacerType.ALL]}"></nidoca-spacer>
 
-              <nidoca-form-combobox
-                label="typographyAlignment"
-                .value="${this.typographyAlignment}"
-                .options="${this.toComboboxOptions('TypographyAlignment', TypographyAlignment)}"
-                @nidoca-form-combobox-event-change="${(event: CustomEvent) =>
-                  (this.typographyAlignment = event.detail.value)}"
-                warningText=""
-                errorText=""
-                infoText=""
-              ></nidoca-form-combobox>
+                  <nidoca-form-combobox
+                    label="typographyAlignment"
+                    .value="${this.typographyAlignment}"
+                    .options="${this.toComboboxOptions('TypographyAlignment', TypographyAlignment)}"
+                    @nidoca-form-combobox-event-change="${(event: CustomEvent) =>
+                      (this.typographyAlignment = event.detail.value)}"
+                    warningText=""
+                    errorText=""
+                    infoText=""
+                  ></nidoca-form-combobox>
 
-              <nidoca-spacer
-                spacerSize="${SpacerSize.MEDIUM}"
-                spacerAlignment="${SpacerAlignment.VERTICAL}"
-              ></nidoca-spacer>
+                  <nidoca-spacer spacerSize="${SpacerSize.MEDIUM}" .spacerTypes="${[SpacerType.ALL]}"></nidoca-spacer>
 
-              <nidoca-form-text
-                label="text"
-                .value="${this.text}"
-                @nidoca-form-text-event-change="${(event: CustomEvent) => (this.text = event.detail.value)}"
-                warningText=""
-                errorText=""
-                infoText=""
-              ></nidoca-form-text>
+                  <nidoca-form-text
+                    label="text"
+                    .value="${this.text}"
+                    @nidoca-form-text-event-change="${(event: CustomEvent) => (this.text = event.detail.value)}"
+                    warningText=""
+                    errorText=""
+                    infoText=""
+                  ></nidoca-form-text>
 
-              <nidoca-spacer
-                spacerSize="${SpacerSize.MEDIUM}"
-                spacerAlignment="${SpacerAlignment.VERTICAL}"
-              ></nidoca-spacer>
-            </nidoca-spacer>
-          </nidoca-tab-content>
+                  <nidoca-spacer spacerSize="${SpacerSize.MEDIUM}" .spacerTypes="${[SpacerType.ALL]}"></nidoca-spacer>
+                </nidoca-spacer>
+              </nidoca-spacer>
+            </nidoca-tab-content>
 
-          <nidoca-tab-content slot="tabContent">
-            <nidoca-spacer spacerSize="${SpacerSize.NORMAL}" spacerAlignment="${SpacerAlignment.VERTICAL}">
-              <nidoca-code
-                code="${'<nidoca-typography \n  .typographyType="' +
-                this.toAttributeCodeString(this.typographyType, 'TypographyType', TypographyType) +
-                '" \n  .typographyAlignment="' +
-                this.toAttributeCodeString(this.typographyAlignment, 'TypographyAlignment', TypographyAlignment) +
-                '" \n  text="' +
-                this.toAttributeCodeString(this.text, 'string') +
-                '" >\n     nidoca-typography\n</nidoca-typography>'}"
-              ></nidoca-code>
-            </nidoca-spacer>
-          </nidoca-tab-content>
-        </nidoca-tabs>
+            <nidoca-tab-content slot="tabContent">
+              <nidoca-spacer spacerSize="${SpacerSize.NORMAL}" .spacerTypes="${[SpacerType.ALL]}">
+                <nidoca-code
+                  code="${'<nidoca-typography \n  .typographyType="' +
+                  this.toAttributeCodeString(this.typographyType, 'TypographyType', TypographyType) +
+                  '" \n  .typographyAlignment="' +
+                  this.toAttributeCodeString(this.typographyAlignment, 'TypographyAlignment', TypographyAlignment) +
+                  '" \n  text="' +
+                  this.toAttributeCodeString(this.text, 'string') +
+                  '" >\n     nidoca-typography\n</nidoca-typography>'}"
+                ></nidoca-code>
+              </nidoca-spacer>
+            </nidoca-tab-content>
+          </nidoca-tabs>
 
-        <nidoca-table .headers="${['slots']}" .rows="${[['<slot></slot>']]}"></nidoca-table>
+          <nidoca-table .headers="${['slots']}" .rows="${[['<slot></slot>']]}"></nidoca-table>
 
-        <nidoca-table
-          .headers="${['property', 'type']}"
-          .rows="${[
-            ['typographyType', this.object2Value('TypographyType', TypographyType)],
-            ['typographyAlignment', this.object2Value('TypographyAlignment', TypographyAlignment)],
-            ['text', this.object2Value('string', null)],
-          ]}"
-        ></nidoca-table>
-      </nidoca-flex-container>
+          <nidoca-table
+            .headers="${['property', 'type']}"
+            .rows="${[
+              ['typographyType', this.object2Value('TypographyType', TypographyType)],
+              ['typographyAlignment', this.object2Value('TypographyAlignment', TypographyAlignment)],
+              ['text', this.object2Value('string', null)],
+            ]}"
+          ></nidoca-table>
+        </nidoca-flex-container>
+      </nidoca-container>
     `;
   }
 }

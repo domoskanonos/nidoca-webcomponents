@@ -105,7 +105,15 @@ export abstract class NidocaShowcaseTemplate extends NidocaTemplate {
   loadShowcaseContent(name: string): TemplateResult {
     switch (name) {
       case 'NidocaFlexContainer':
-        return html`${this.createBox()}${this.createBox()}${this.createBox()}${this.createBox()}${this.createBox()}${this.createBox()}${this.createBox()}${this.createBox()}${this.createBox()}${this.createBox()}${this.createBox()}`;
+        return html`${this.createBox('100')}${this.createBox('100')}${this.createBox('150')}${this.createBox(
+          '100'
+        )}${this.createBox('150')}${this.createBox('100')}${this.createBox('100')}${this.createBox(
+          '150'
+        )}${this.createBox('100')}${this.createBox('100')}${this.createBox('150')}${this.createBox(
+          '100'
+        )}${this.createBox('200')}${this.createBox('150')}${this.createBox('100')}${this.createBox(
+          '200'
+        )}${this.createBox('100')}`;
       default:
         return html`${name}`;
     }
@@ -126,8 +134,8 @@ export abstract class NidocaShowcaseTemplate extends NidocaTemplate {
     }
   }
 
-  private createBox(): TemplateResult {
-    return html` <nidoca-rich-media src="https://picsum.photos/100/100"></nidoca-rich-media> `;
+  private createBox(size: string): TemplateResult {
+    return html` <nidoca-rich-media src="https://picsum.photos/${size}/${size}"></nidoca-rich-media> `;
   }
 
   getSidebarContent(): TemplateResult {
@@ -146,9 +154,28 @@ export abstract class NidocaShowcaseTemplate extends NidocaTemplate {
         <nidoca-navigation-link
           slot="links"
           icon=""
+          text="<nidoca-floating-container>"
+          href="nidoca-floating-container"
+        ></nidoca-navigation-link>
+        <nidoca-navigation-link
+          slot="links"
+          icon=""
+          text="<nidoca-container>"
+          href="nidoca-container"
+        ></nidoca-navigation-link>
+        <nidoca-navigation-link
+          slot="links"
+          icon=""
           text="<nidoca-flex-container>"
           href="nidoca-flex-container"
         ></nidoca-navigation-link>
+        <nidoca-navigation-link
+          slot="links"
+          icon=""
+          text="<nidoca-grid-container>"
+          href="nidoca-grid-container"
+        ></nidoca-navigation-link>
+        <nidoca-navigation-link slot="links" icon="" text="<nidoca-box>" href="nidoca-box"></nidoca-navigation-link>
         <nidoca-navigation-link
           slot="links"
           icon=""
@@ -161,7 +188,6 @@ export abstract class NidocaShowcaseTemplate extends NidocaTemplate {
           text="<nidoca-accordion-item>"
           href="nidoca-accordion-item"
         ></nidoca-navigation-link>
-        <nidoca-navigation-link slot="links" icon="" text="<nidoca-box>" href="nidoca-box"></nidoca-navigation-link>
         <nidoca-navigation-link
           slot="links"
           icon=""
@@ -185,12 +211,6 @@ export abstract class NidocaShowcaseTemplate extends NidocaTemplate {
         <nidoca-navigation-link
           slot="links"
           icon=""
-          text="<nidoca-floating-container>"
-          href="nidoca-floating-container"
-        ></nidoca-navigation-link>
-        <nidoca-navigation-link
-          slot="links"
-          icon=""
           text="<nidoca-button>"
           href="nidoca-button"
         ></nidoca-navigation-link>
@@ -199,12 +219,6 @@ export abstract class NidocaShowcaseTemplate extends NidocaTemplate {
           icon=""
           text="<nidoca-divider>"
           href="nidoca-divider"
-        ></nidoca-navigation-link>
-        <nidoca-navigation-link
-          slot="links"
-          icon=""
-          text="<nidoca-grid-container>"
-          href="nidoca-grid-container"
         ></nidoca-navigation-link>
         <nidoca-navigation-link slot="links" icon="" text="<nidoca-form>" href="nidoca-form"></nidoca-navigation-link>
         <nidoca-navigation-link

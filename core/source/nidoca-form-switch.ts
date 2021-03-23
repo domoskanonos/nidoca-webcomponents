@@ -1,7 +1,6 @@
 import {css, customElement, html, property, query, TemplateResult} from 'lit-element';
 import {FormOutputData, NidocaFormAbstractInputElement} from './nidoca-form-abstract-input-element';
 import {TypographyType} from './nidoca-typography';
-import {FlexContainerProperty} from './nidoca-flex-container';
 import {VisibleType} from './nidoca-visible';
 
 @customElement('nidoca-form-switch')
@@ -32,7 +31,6 @@ export class NidocaFormSwitch extends NidocaFormAbstractInputElement {
                 .gridTemplateColumns='${['1fr', 'auto']}'
         >
             <nidoca-flex-container
-                    .flexContainerProperties='${[FlexContainerProperty.CONTAINER_WIDTH_100]}'
                     flexItemBasisValue='100%'
             >
                 <nidoca-typography

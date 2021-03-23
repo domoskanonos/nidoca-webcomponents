@@ -3,9 +3,7 @@ import {
   ButtonType,
   FlexAlignContent,
   FlexAlignItems,
-  FlexContainerProperty,
   FlexDirection,
-  FlexItemProperty,
   FlexJustifyContent,
   FlexWrap,
   SpacerSize,
@@ -26,12 +24,6 @@ export class NidocaShowcaseDashboardPage extends NidocaShowcaseTemplate {
          >
             <nidoca-spacer size="10vmin">
                <nidoca-flex-container
-                  .flexContainerProperties="${[
-                    FlexContainerProperty.CONTAINER_WIDTH_50,
-                    FlexContainerProperty.SMARTPHONE_MAX_WIDTH,
-                    FlexContainerProperty.SMARTPHONE_HORIZONTAL_PADDING,
-                    FlexContainerProperty.CONTAINER_HEIGHT_100,
-                  ]}"
                   flexItemBasisValue="auto"
                   .flexJustifyContent="${FlexJustifyContent.CENTER}"
                   .flexAlignContent="${FlexAlignContent.CENTER}"
@@ -53,8 +45,6 @@ export class NidocaShowcaseDashboardPage extends NidocaShowcaseTemplate {
                   </nidoca-typography>
                   <nidoca-spacer spacerSize="${SpacerSize.MAX}">
                      <nidoca-flex-container
-                        .flexContainerProperties="${[FlexContainerProperty.CONTAINER_WIDTH_AUTO]}"
-                        .flexItemProperties="${[FlexItemProperty.KEYLINE_SIZE_MEDIUM]}"
                         flexItemBasisValue="auto"
                         .flexDirection="${FlexDirection.ROW}"
                         .flexWrap="${FlexWrap.WRAP}"
@@ -76,8 +66,6 @@ export class NidocaShowcaseDashboardPage extends NidocaShowcaseTemplate {
             </nidoca-spacer>
          </nidoca-box>
          <nidoca-flex-container
-            .flexContainerProperties="${[FlexContainerProperty.CONTAINER_WIDTH_100]}"
-            .flexItemProperties="${[FlexItemProperty.SMARTPHONE_MAX_WIDTH]}"
             .flexDirection="${FlexDirection.ROW}"
             .flexWrap="${FlexWrap.WRAP}"
             .flexJustifyContent="${FlexJustifyContent.FLEX_START}"
@@ -87,7 +75,6 @@ export class NidocaShowcaseDashboardPage extends NidocaShowcaseTemplate {
          >
              <nidoca-spacer spacerSize="${SpacerSize.NORMAL}">
              <nidoca-flex-container
-               .flexContainerProperties="${[FlexContainerProperty.CONTAINER_WIDTH_100]}"
                flexItemBasisValue="auto"
                .flexDirection="${FlexDirection.COLUMN}"
                .flexAlignItems="${FlexAlignItems.CENTER}"
@@ -102,7 +89,6 @@ export class NidocaShowcaseDashboardPage extends NidocaShowcaseTemplate {
          </nidoca-spacer>
          <nidoca-spacer spacerSize="${SpacerSize.NORMAL}">     
                         <nidoca-flex-container
-               .flexContainerProperties="${[FlexContainerProperty.CONTAINER_WIDTH_100]}"
                flexItemBasisValue="auto"
                .flexDirection="${FlexDirection.COLUMN}"
                .flexAlignItems="${FlexAlignItems.CENTER}"
@@ -117,7 +103,6 @@ export class NidocaShowcaseDashboardPage extends NidocaShowcaseTemplate {
             </nidoca-spacer>
               <nidoca-spacer spacerSize="${SpacerSize.NORMAL}">
                                     <nidoca-flex-container
-               .flexContainerProperties="${[FlexContainerProperty.CONTAINER_WIDTH_100]}"
                flexItemBasisValue="auto"
                .flexDirection="${FlexDirection.COLUMN}"
                .flexAlignItems="${FlexAlignItems.CENTER}"

@@ -50,25 +50,18 @@ export class {{this.name}}ShowcasePage extends NidocaShowcaseTemplate {
          </nidoca-floating-container>
 
          <nidoca-spacer
-              size="12.5vh"
-              spacerAlignment="${SpacerAlignment.VERTICAL}"
+              size="20vh"
+              .spacerTypes="${[SpacerType.ALL]}"
          ></nidoca-spacer>
 
+         <nidoca-container .containerProperties="${[ContainerProperty.WIDTH_75, ContainerProperty.SMARTPHONE_MAX_WIDTH, ContainerProperty.TABLET_MAX_WIDTH]}">
     <nidoca-flex-container
-      .flexContainerProperties="${[
-        FlexContainerProperty.CONTAINER_WIDTH_75,
-        FlexContainerProperty.TABLET_MAX_WIDTH,
-        FlexContainerProperty.SMARTPHONE_MAX_WIDTH,
-        FlexContainerProperty.SMARTPHONE_HORIZONTAL_PADDING,
-        FlexContainerProperty.TABLET_HORIZONTAL_PADDING
-  ]}"
-      .flexItemProperties="${[FlexItemProperty.KEYLINE_ALIGNMENT_BOTH, FlexItemProperty.KEYLINE_SIZE_MEDIUM]}"
-      flexItemBasisValue="100%"
+      itemStyle="flex-basis: 100%;"
   >
 
     <nidoca-spacer
       spacerSize="${SpacerSize.BIG}"
-      spacerAlignment="${SpacerAlignment.VERTICAL}"
+      .spacerTypes="${[SpacerType.ALL]}"
     >
       <nidoca-typography .typographyType="${TypographyType.H2}" text="<{{toTag this.name}}/>"></nidoca-typography>  
     </nidoca-spacer>
@@ -78,8 +71,9 @@ export class {{this.name}}ShowcasePage extends NidocaShowcaseTemplate {
       <nidoca-tab slot="tab" text="source"></nidoca-tab>
 
       <nidoca-tab-content slot="tabContent" .selected="${true}">
-        <nidoca-spacer spacerSize="${SpacerSize.NORMAL}" spacerAlignment="${SpacerAlignment.VERTICAL}">
-          {{#each this.properties}}
+        <nidoca-spacer spacerSize="${SpacerSize.NORMAL}" .spacerTypes="${[SpacerType.TOP,SpacerType.BOTTOM]}">
+          <nidoca-spacer spacerSize="${SpacerSize.NORMAL}" .spacerTypes="${[SpacerType.LEFT,SpacerType.RIGHT]}" .devices="${[NidocaDevice.MOBILE]}">
+            {{#each this.properties}}
           {{#if this.isStatic}}{{else}}{{#if this.private}}{{else}}
           {{#if this.isString}}
           <nidoca-form-text label="{{this.name}}" .value="${ this.{{this.name}} }" @nidoca-form-text-event-change="${ (event: CustomEvent)=>this.{{this.name}} = event.detail.value }" warningText="" errorText="" infoText=""></nidoca-form-text>
@@ -98,16 +92,17 @@ export class {{this.name}}ShowcasePage extends NidocaShowcaseTemplate {
           <nidoca-form-combobox .multiple="${true}" size="3" label="{{this.name}}" .value="${ this.{{this.name}} }" .options="${ this.toComboboxOptions('{{this.baseType}}',{{this.baseType}}) }" @nidoca-form-combobox-event-change="${ (event: CustomEvent)=>this.{{this.name}} = event.detail.value }" warningText="" errorText="" infoText=""></nidoca-form-combobox>
           {{/if}}
 
-          <nidoca-spacer spacerSize="${SpacerSize.MEDIUM}" spacerAlignment="${SpacerAlignment.VERTICAL}"></nidoca-spacer>
+          <nidoca-spacer spacerSize="${SpacerSize.MEDIUM}" .spacerTypes="${[SpacerType.ALL]}"></nidoca-spacer>
           {{/if}} {{/if}}
           {{/each}}
         </nidoca-spacer>
+      </nidoca-spacer>
 
 
       </nidoca-tab-content>
 
       <nidoca-tab-content slot="tabContent">
-        <nidoca-spacer spacerSize="${SpacerSize.NORMAL}" spacerAlignment="${SpacerAlignment.VERTICAL}">
+        <nidoca-spacer spacerSize="${SpacerSize.NORMAL}" .spacerTypes="${[SpacerType.ALL]}">
           <nidoca-code code="${'<{{toTag this.name}} {{#each properties}}{{#if this.isStatic}}{{else}}{{#if this.private}}{{else}}\n  {{#isnt this.type "string"}}.{{/isnt}}{{this.name}}="'+this.toAttributeCodeString(this.{{this.name}},"{{this.type}}"{{#if this.isObject}},{{this.type}}{{/if}}{{#if this.isArray}},{{this.baseType}}{{/if}})+'"{{/if}} {{/if}}{{/each}}>\n     {{toTag this.name}}\n</{{toTag this.name}}>'}"></nidoca-code>
         </nidoca-spacer>
       </nidoca-tab-content>
@@ -123,6 +118,7 @@ export class {{this.name}}ShowcasePage extends NidocaShowcaseTemplate {
     {{/if}}
 
   </nidoca-flex-container>
+</nidoca-container>
 
   `;
   }

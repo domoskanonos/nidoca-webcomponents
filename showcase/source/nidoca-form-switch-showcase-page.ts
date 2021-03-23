@@ -1,9 +1,9 @@
 import {
-  FlexContainerProperty,
-  FlexItemProperty,
+  ContainerProperty,
+  NidocaDevice,
   NidocaFormSwitch,
-  SpacerAlignment,
   SpacerSize,
+  SpacerType,
   TypographyType,
 } from '@domoskanonos/nidoca-core';
 import {customElement, html, property, TemplateResult} from 'lit-element';
@@ -64,134 +64,124 @@ export class NidocaFormSwitchShowcasePage extends NidocaShowcaseTemplate {
         </nidoca-box>
       </nidoca-floating-container>
 
-      <nidoca-spacer size="12.5vh" spacerAlignment="${SpacerAlignment.VERTICAL}"></nidoca-spacer>
+      <nidoca-spacer size="20vh" .spacerTypes="${[SpacerType.ALL]}"></nidoca-spacer>
 
-      <nidoca-flex-container
-        .flexContainerProperties="${[
-          FlexContainerProperty.CONTAINER_WIDTH_75,
-          FlexContainerProperty.TABLET_MAX_WIDTH,
-          FlexContainerProperty.SMARTPHONE_MAX_WIDTH,
-          FlexContainerProperty.SMARTPHONE_HORIZONTAL_PADDING,
-          FlexContainerProperty.TABLET_HORIZONTAL_PADDING,
+      <nidoca-container
+        .containerProperties="${[
+          ContainerProperty.WIDTH_75,
+          ContainerProperty.SMARTPHONE_MAX_WIDTH,
+          ContainerProperty.TABLET_MAX_WIDTH,
         ]}"
-        .flexItemProperties="${[FlexItemProperty.KEYLINE_ALIGNMENT_BOTH, FlexItemProperty.KEYLINE_SIZE_MEDIUM]}"
-        flexItemBasisValue="100%"
       >
-        <nidoca-spacer spacerSize="${SpacerSize.BIG}" spacerAlignment="${SpacerAlignment.VERTICAL}">
-          <nidoca-typography .typographyType="${TypographyType.H2}" text="<nidoca-form-switch/>"></nidoca-typography>
-        </nidoca-spacer>
+        <nidoca-flex-container itemStyle="flex-basis: 100%;">
+          <nidoca-spacer spacerSize="${SpacerSize.BIG}" .spacerTypes="${[SpacerType.ALL]}">
+            <nidoca-typography .typographyType="${TypographyType.H2}" text="<nidoca-form-switch/>"></nidoca-typography>
+          </nidoca-spacer>
 
-        <nidoca-tabs>
-          <nidoca-tab slot="tab" .selected="${true}" text="properties"></nidoca-tab>
-          <nidoca-tab slot="tab" text="source"></nidoca-tab>
+          <nidoca-tabs>
+            <nidoca-tab slot="tab" .selected="${true}" text="properties"></nidoca-tab>
+            <nidoca-tab slot="tab" text="source"></nidoca-tab>
 
-          <nidoca-tab-content slot="tabContent" .selected="${true}">
-            <nidoca-spacer spacerSize="${SpacerSize.NORMAL}" spacerAlignment="${SpacerAlignment.VERTICAL}">
-              <nidoca-form-text
-                label="name"
-                .value="${this.name}"
-                @nidoca-form-text-event-change="${(event: CustomEvent) => (this.name = event.detail.value)}"
-                warningText=""
-                errorText=""
-                infoText=""
-              ></nidoca-form-text>
+            <nidoca-tab-content slot="tabContent" .selected="${true}">
+              <nidoca-spacer spacerSize="${SpacerSize.NORMAL}" .spacerTypes="${[SpacerType.TOP, SpacerType.BOTTOM]}">
+                <nidoca-spacer
+                  spacerSize="${SpacerSize.NORMAL}"
+                  .spacerTypes="${[SpacerType.LEFT, SpacerType.RIGHT]}"
+                  .devices="${[NidocaDevice.MOBILE]}"
+                >
+                  <nidoca-form-text
+                    label="name"
+                    .value="${this.name}"
+                    @nidoca-form-text-event-change="${(event: CustomEvent) => (this.name = event.detail.value)}"
+                    warningText=""
+                    errorText=""
+                    infoText=""
+                  ></nidoca-form-text>
 
-              <nidoca-spacer
-                spacerSize="${SpacerSize.MEDIUM}"
-                spacerAlignment="${SpacerAlignment.VERTICAL}"
-              ></nidoca-spacer>
+                  <nidoca-spacer spacerSize="${SpacerSize.MEDIUM}" .spacerTypes="${[SpacerType.ALL]}"></nidoca-spacer>
 
-              <nidoca-form-text
-                label="assistiveText"
-                .value="${this.assistiveText}"
-                @nidoca-form-text-event-change="${(event: CustomEvent) => (this.assistiveText = event.detail.value)}"
-                warningText=""
-                errorText=""
-                infoText=""
-              ></nidoca-form-text>
+                  <nidoca-form-text
+                    label="assistiveText"
+                    .value="${this.assistiveText}"
+                    @nidoca-form-text-event-change="${(event: CustomEvent) =>
+                      (this.assistiveText = event.detail.value)}"
+                    warningText=""
+                    errorText=""
+                    infoText=""
+                  ></nidoca-form-text>
 
-              <nidoca-spacer
-                spacerSize="${SpacerSize.MEDIUM}"
-                spacerAlignment="${SpacerAlignment.VERTICAL}"
-              ></nidoca-spacer>
+                  <nidoca-spacer spacerSize="${SpacerSize.MEDIUM}" .spacerTypes="${[SpacerType.ALL]}"></nidoca-spacer>
 
-              <nidoca-form-text
-                label="infoText"
-                .value="${this.infoText}"
-                @nidoca-form-text-event-change="${(event: CustomEvent) => (this.infoText = event.detail.value)}"
-                warningText=""
-                errorText=""
-                infoText=""
-              ></nidoca-form-text>
+                  <nidoca-form-text
+                    label="infoText"
+                    .value="${this.infoText}"
+                    @nidoca-form-text-event-change="${(event: CustomEvent) => (this.infoText = event.detail.value)}"
+                    warningText=""
+                    errorText=""
+                    infoText=""
+                  ></nidoca-form-text>
 
-              <nidoca-spacer
-                spacerSize="${SpacerSize.MEDIUM}"
-                spacerAlignment="${SpacerAlignment.VERTICAL}"
-              ></nidoca-spacer>
+                  <nidoca-spacer spacerSize="${SpacerSize.MEDIUM}" .spacerTypes="${[SpacerType.ALL]}"></nidoca-spacer>
 
-              <nidoca-form-text
-                label="errorText"
-                .value="${this.errorText}"
-                @nidoca-form-text-event-change="${(event: CustomEvent) => (this.errorText = event.detail.value)}"
-                warningText=""
-                errorText=""
-                infoText=""
-              ></nidoca-form-text>
+                  <nidoca-form-text
+                    label="errorText"
+                    .value="${this.errorText}"
+                    @nidoca-form-text-event-change="${(event: CustomEvent) => (this.errorText = event.detail.value)}"
+                    warningText=""
+                    errorText=""
+                    infoText=""
+                  ></nidoca-form-text>
 
-              <nidoca-spacer
-                spacerSize="${SpacerSize.MEDIUM}"
-                spacerAlignment="${SpacerAlignment.VERTICAL}"
-              ></nidoca-spacer>
+                  <nidoca-spacer spacerSize="${SpacerSize.MEDIUM}" .spacerTypes="${[SpacerType.ALL]}"></nidoca-spacer>
 
-              <nidoca-form-switch
-                name="selected"
-                infoText="selected"
-                .selected="${this.selected}"
-                @nidoca-form-switch-event-change="${(event: CustomEvent) => (this.selected = event.detail.value)}"
-                warningText=""
-                errorText=""
-                infoText=""
-              ></nidoca-form-switch>
+                  <nidoca-form-switch
+                    name="selected"
+                    infoText="selected"
+                    .selected="${this.selected}"
+                    @nidoca-form-switch-event-change="${(event: CustomEvent) => (this.selected = event.detail.value)}"
+                    warningText=""
+                    errorText=""
+                    infoText=""
+                  ></nidoca-form-switch>
 
-              <nidoca-spacer
-                spacerSize="${SpacerSize.MEDIUM}"
-                spacerAlignment="${SpacerAlignment.VERTICAL}"
-              ></nidoca-spacer>
-            </nidoca-spacer>
-          </nidoca-tab-content>
+                  <nidoca-spacer spacerSize="${SpacerSize.MEDIUM}" .spacerTypes="${[SpacerType.ALL]}"></nidoca-spacer>
+                </nidoca-spacer>
+              </nidoca-spacer>
+            </nidoca-tab-content>
 
-          <nidoca-tab-content slot="tabContent">
-            <nidoca-spacer spacerSize="${SpacerSize.NORMAL}" spacerAlignment="${SpacerAlignment.VERTICAL}">
-              <nidoca-code
-                code="${'<nidoca-form-switch \n  name="' +
-                this.toAttributeCodeString(this.name, 'string') +
-                '" \n  assistiveText="' +
-                this.toAttributeCodeString(this.assistiveText, 'string') +
-                '" \n  infoText="' +
-                this.toAttributeCodeString(this.infoText, 'string') +
-                '" \n  errorText="' +
-                this.toAttributeCodeString(this.errorText, 'string') +
-                '" \n  .selected="' +
-                this.toAttributeCodeString(this.selected, 'boolean') +
-                '" >\n     nidoca-form-switch\n</nidoca-form-switch>'}"
-              ></nidoca-code>
-            </nidoca-spacer>
-          </nidoca-tab-content>
-        </nidoca-tabs>
+            <nidoca-tab-content slot="tabContent">
+              <nidoca-spacer spacerSize="${SpacerSize.NORMAL}" .spacerTypes="${[SpacerType.ALL]}">
+                <nidoca-code
+                  code="${'<nidoca-form-switch \n  name="' +
+                  this.toAttributeCodeString(this.name, 'string') +
+                  '" \n  assistiveText="' +
+                  this.toAttributeCodeString(this.assistiveText, 'string') +
+                  '" \n  infoText="' +
+                  this.toAttributeCodeString(this.infoText, 'string') +
+                  '" \n  errorText="' +
+                  this.toAttributeCodeString(this.errorText, 'string') +
+                  '" \n  .selected="' +
+                  this.toAttributeCodeString(this.selected, 'boolean') +
+                  '" >\n     nidoca-form-switch\n</nidoca-form-switch>'}"
+                ></nidoca-code>
+              </nidoca-spacer>
+            </nidoca-tab-content>
+          </nidoca-tabs>
 
-        <nidoca-table .headers="${['slots']}" .rows="${[['<slot></slot>']]}"></nidoca-table>
+          <nidoca-table .headers="${['slots']}" .rows="${[['<slot></slot>']]}"></nidoca-table>
 
-        <nidoca-table
-          .headers="${['property', 'type']}"
-          .rows="${[
-            ['name', this.object2Value('string', null)],
-            ['assistiveText', this.object2Value('string', null)],
-            ['infoText', this.object2Value('string', null)],
-            ['errorText', this.object2Value('string', null)],
-            ['selected', this.object2Value('boolean', null)],
-          ]}"
-        ></nidoca-table>
-      </nidoca-flex-container>
+          <nidoca-table
+            .headers="${['property', 'type']}"
+            .rows="${[
+              ['name', this.object2Value('string', null)],
+              ['assistiveText', this.object2Value('string', null)],
+              ['infoText', this.object2Value('string', null)],
+              ['errorText', this.object2Value('string', null)],
+              ['selected', this.object2Value('boolean', null)],
+            ]}"
+          ></nidoca-table>
+        </nidoca-flex-container>
+      </nidoca-container>
     `;
   }
 }

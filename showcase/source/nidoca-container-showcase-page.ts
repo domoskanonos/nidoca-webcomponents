@@ -1,6 +1,6 @@
 import {
   ContainerProperty,
-  NidocaAccordionItem,
+  NidocaContainer,
   NidocaDevice,
   SpacerSize,
   SpacerType,
@@ -9,25 +9,30 @@ import {
 import {customElement, html, property, TemplateResult} from 'lit-element';
 import {NidocaShowcaseTemplate} from './nidoca-showcase-template';
 
-@customElement('nidoca-accordion-item-showcase-page')
-export class NidocaAccordionItemShowcasePage extends NidocaShowcaseTemplate {
+@customElement('nidoca-container-showcase-page')
+export class NidocaContainerShowcasePage extends NidocaShowcaseTemplate {
   @property()
-  header: string = '';
+  rendered: boolean = false;
 
   @property()
-  opened: boolean = false;
+  cssStyle: string = '';
+
+  @property()
+  containerProperties: ContainerProperty[] = [];
 
   constructor() {
     super();
-    let initComponent: NidocaAccordionItem | null = null;
-    initComponent = this.loadShowcaseInitData('NidocaAccordionItem');
+    let initComponent: NidocaContainer | null = null;
+    initComponent = this.loadShowcaseInitData('NidocaContainer');
     if (initComponent == null) {
-      initComponent = new NidocaAccordionItem();
+      initComponent = new NidocaContainer();
     }
 
-    this.header = initComponent.header;
+    this.rendered = initComponent.rendered;
 
-    this.opened = initComponent.opened;
+    this.cssStyle = initComponent.cssStyle;
+
+    this.containerProperties = initComponent.containerProperties;
   }
 
   getContent(): TemplateResult {
@@ -38,8 +43,11 @@ export class NidocaAccordionItemShowcasePage extends NidocaShowcaseTemplate {
         style="background-color: var(--app-color-surface-background);"
       >
         <nidoca-box cssStyle="width:100%; height:40vh;background-color: var(--app-color-surface-background-light)">
-          <nidoca-accordion-item header="${this.header}" .opened="${this.opened}"
-            >${this.loadShowcaseContent('NidocaAccordionItem')}</nidoca-accordion-item
+          <nidoca-container
+            .rendered="${this.rendered}"
+            cssStyle="${this.cssStyle}"
+            .containerProperties="${this.containerProperties}"
+            >${this.loadShowcaseContent('NidocaContainer')}</nidoca-container
           >
         </nidoca-box>
       </nidoca-floating-container>
@@ -55,10 +63,7 @@ export class NidocaAccordionItemShowcasePage extends NidocaShowcaseTemplate {
       >
         <nidoca-flex-container itemStyle="flex-basis: 100%;">
           <nidoca-spacer spacerSize="${SpacerSize.BIG}" .spacerTypes="${[SpacerType.ALL]}">
-            <nidoca-typography
-              .typographyType="${TypographyType.H2}"
-              text="<nidoca-accordion-item/>"
-            ></nidoca-typography>
+            <nidoca-typography .typographyType="${TypographyType.H2}" text="<nidoca-container/>"></nidoca-typography>
           </nidoca-spacer>
 
           <nidoca-tabs>
@@ -72,10 +77,22 @@ export class NidocaAccordionItemShowcasePage extends NidocaShowcaseTemplate {
                   .spacerTypes="${[SpacerType.LEFT, SpacerType.RIGHT]}"
                   .devices="${[NidocaDevice.MOBILE]}"
                 >
+                  <nidoca-form-switch
+                    name="rendered"
+                    infoText="rendered"
+                    .selected="${this.rendered}"
+                    @nidoca-form-switch-event-change="${(event: CustomEvent) => (this.rendered = event.detail.value)}"
+                    warningText=""
+                    errorText=""
+                    infoText=""
+                  ></nidoca-form-switch>
+
+                  <nidoca-spacer spacerSize="${SpacerSize.MEDIUM}" .spacerTypes="${[SpacerType.ALL]}"></nidoca-spacer>
+
                   <nidoca-form-text
-                    label="header"
-                    .value="${this.header}"
-                    @nidoca-form-text-event-change="${(event: CustomEvent) => (this.header = event.detail.value)}"
+                    label="cssStyle"
+                    .value="${this.cssStyle}"
+                    @nidoca-form-text-event-change="${(event: CustomEvent) => (this.cssStyle = event.detail.value)}"
                     warningText=""
                     errorText=""
                     infoText=""
@@ -83,15 +100,18 @@ export class NidocaAccordionItemShowcasePage extends NidocaShowcaseTemplate {
 
                   <nidoca-spacer spacerSize="${SpacerSize.MEDIUM}" .spacerTypes="${[SpacerType.ALL]}"></nidoca-spacer>
 
-                  <nidoca-form-switch
-                    name="opened"
-                    infoText="opened"
-                    .selected="${this.opened}"
-                    @nidoca-form-switch-event-change="${(event: CustomEvent) => (this.opened = event.detail.value)}"
+                  <nidoca-form-combobox
+                    .multiple="${true}"
+                    size="3"
+                    label="containerProperties"
+                    .value="${this.containerProperties}"
+                    .options="${this.toComboboxOptions('ContainerProperty', ContainerProperty)}"
+                    @nidoca-form-combobox-event-change="${(event: CustomEvent) =>
+                      (this.containerProperties = event.detail.value)}"
                     warningText=""
                     errorText=""
                     infoText=""
-                  ></nidoca-form-switch>
+                  ></nidoca-form-combobox>
 
                   <nidoca-spacer spacerSize="${SpacerSize.MEDIUM}" .spacerTypes="${[SpacerType.ALL]}"></nidoca-spacer>
                 </nidoca-spacer>
@@ -101,23 +121,24 @@ export class NidocaAccordionItemShowcasePage extends NidocaShowcaseTemplate {
             <nidoca-tab-content slot="tabContent">
               <nidoca-spacer spacerSize="${SpacerSize.NORMAL}" .spacerTypes="${[SpacerType.ALL]}">
                 <nidoca-code
-                  code="${'<nidoca-accordion-item \n  header="' +
-                  this.toAttributeCodeString(this.header, 'string') +
-                  '" \n  .opened="' +
-                  this.toAttributeCodeString(this.opened, 'boolean') +
-                  '" >\n     nidoca-accordion-item\n</nidoca-accordion-item>'}"
+                  code="${'<nidoca-container \n  .rendered="' +
+                  this.toAttributeCodeString(this.rendered, 'boolean') +
+                  '" \n  cssStyle="' +
+                  this.toAttributeCodeString(this.cssStyle, 'string') +
+                  '" \n  .containerProperties="' +
+                  this.toAttributeCodeString(this.containerProperties, 'ContainerProperty[]', ContainerProperty) +
+                  '" >\n     nidoca-container\n</nidoca-container>'}"
                 ></nidoca-code>
               </nidoca-spacer>
             </nidoca-tab-content>
           </nidoca-tabs>
 
-          <nidoca-table .headers="${['slots']}" .rows="${[['<slot></slot>']]}"></nidoca-table>
-
           <nidoca-table
             .headers="${['property', 'type']}"
             .rows="${[
-              ['header', this.object2Value('string', null)],
-              ['opened', this.object2Value('boolean', null)],
+              ['rendered', this.object2Value('boolean', null)],
+              ['cssStyle', this.object2Value('string', null)],
+              ['containerProperties', this.object2Value('ContainerProperty[]', null)],
             ]}"
           ></nidoca-table>
         </nidoca-flex-container>

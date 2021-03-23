@@ -21,14 +21,20 @@ export class NidocaShowcaseApp extends NidocaAbstractApp {
     let path = RouterService.getUniqueInstance().getCurrentPage();
     console.log('current path: '.concat(path));
     switch (path) {
+      case 'nidoca-floating-container':
+        return html` <nidoca-floating-container-showcase-page></nidoca-floating-container-showcase-page> `;
+      case 'nidoca-container':
+        return html` <nidoca-container-showcase-page></nidoca-container-showcase-page> `;
       case 'nidoca-flex-container':
         return html` <nidoca-flex-container-showcase-page></nidoca-flex-container-showcase-page> `;
+      case 'nidoca-grid-container':
+        return html` <nidoca-grid-container-showcase-page></nidoca-grid-container-showcase-page> `;
+      case 'nidoca-box':
+        return html` <nidoca-box-showcase-page></nidoca-box-showcase-page> `;
       case 'nidoca-accordion':
         return html` <nidoca-accordion-showcase-page></nidoca-accordion-showcase-page> `;
       case 'nidoca-accordion-item':
         return html` <nidoca-accordion-item-showcase-page></nidoca-accordion-item-showcase-page> `;
-      case 'nidoca-box':
-        return html` <nidoca-box-showcase-page></nidoca-box-showcase-page> `;
       case 'nidoca-wizard':
         return html` <nidoca-wizard-showcase-page></nidoca-wizard-showcase-page> `;
       case 'nidoca-chip':
@@ -39,14 +45,10 @@ export class NidocaShowcaseApp extends NidocaAbstractApp {
         return html` <nidoca-progress-showcase-page></nidoca-progress-showcase-page> `;
       case 'nidoca-border':
         return html` <nidoca-border-showcase-page></nidoca-border-showcase-page> `;
-      case 'nidoca-floating-container':
-        return html` <nidoca-floating-container-showcase-page></nidoca-floating-container-showcase-page> `;
       case 'nidoca-button':
         return html` <nidoca-button-showcase-page></nidoca-button-showcase-page> `;
       case 'nidoca-divider':
         return html` <nidoca-divider-showcase-page></nidoca-divider-showcase-page> `;
-      case 'nidoca-grid-container':
-        return html` <nidoca-grid-container-showcase-page></nidoca-grid-container-showcase-page> `;
       case 'nidoca-form':
         return html` <nidoca-form-showcase-page></nidoca-form-showcase-page> `;
       case 'nidoca-form-combobox':

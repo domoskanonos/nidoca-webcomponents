@@ -1,9 +1,9 @@
 import {
-  FlexContainerProperty,
-  FlexItemProperty,
+  ContainerProperty,
+  NidocaDevice,
   NidocaGridContainer,
-  SpacerAlignment,
   SpacerSize,
+  SpacerType,
   TypographyType,
 } from '@domoskanonos/nidoca-core';
 import {customElement, html, property, TemplateResult} from 'lit-element';
@@ -82,192 +82,177 @@ export class NidocaGridContainerShowcasePage extends NidocaShowcaseTemplate {
         </nidoca-box>
       </nidoca-floating-container>
 
-      <nidoca-spacer size="12.5vh" spacerAlignment="${SpacerAlignment.VERTICAL}"></nidoca-spacer>
+      <nidoca-spacer size="20vh" .spacerTypes="${[SpacerType.ALL]}"></nidoca-spacer>
 
-      <nidoca-flex-container
-        .flexContainerProperties="${[
-          FlexContainerProperty.CONTAINER_WIDTH_75,
-          FlexContainerProperty.TABLET_MAX_WIDTH,
-          FlexContainerProperty.SMARTPHONE_MAX_WIDTH,
-          FlexContainerProperty.SMARTPHONE_HORIZONTAL_PADDING,
-          FlexContainerProperty.TABLET_HORIZONTAL_PADDING,
+      <nidoca-container
+        .containerProperties="${[
+          ContainerProperty.WIDTH_75,
+          ContainerProperty.SMARTPHONE_MAX_WIDTH,
+          ContainerProperty.TABLET_MAX_WIDTH,
         ]}"
-        .flexItemProperties="${[FlexItemProperty.KEYLINE_ALIGNMENT_BOTH, FlexItemProperty.KEYLINE_SIZE_MEDIUM]}"
-        flexItemBasisValue="100%"
       >
-        <nidoca-spacer spacerSize="${SpacerSize.BIG}" spacerAlignment="${SpacerAlignment.VERTICAL}">
-          <nidoca-typography .typographyType="${TypographyType.H2}" text="<nidoca-grid-container/>"></nidoca-typography>
-        </nidoca-spacer>
+        <nidoca-flex-container itemStyle="flex-basis: 100%;">
+          <nidoca-spacer spacerSize="${SpacerSize.BIG}" .spacerTypes="${[SpacerType.ALL]}">
+            <nidoca-typography
+              .typographyType="${TypographyType.H2}"
+              text="<nidoca-grid-container/>"
+            ></nidoca-typography>
+          </nidoca-spacer>
 
-        <nidoca-tabs>
-          <nidoca-tab slot="tab" .selected="${true}" text="properties"></nidoca-tab>
-          <nidoca-tab slot="tab" text="source"></nidoca-tab>
+          <nidoca-tabs>
+            <nidoca-tab slot="tab" .selected="${true}" text="properties"></nidoca-tab>
+            <nidoca-tab slot="tab" text="source"></nidoca-tab>
 
-          <nidoca-tab-content slot="tabContent" .selected="${true}">
-            <nidoca-spacer spacerSize="${SpacerSize.NORMAL}" spacerAlignment="${SpacerAlignment.VERTICAL}">
-              <nidoca-form-combobox
-                .multiple="${true}"
-                size="3"
-                label="gridTemplateRows"
-                .value="${this.gridTemplateRows}"
-                .options="${this.toComboboxOptions('String', String)}"
-                @nidoca-form-combobox-event-change="${(event: CustomEvent) =>
-                  (this.gridTemplateRows = event.detail.value)}"
-                warningText=""
-                errorText=""
-                infoText=""
-              ></nidoca-form-combobox>
+            <nidoca-tab-content slot="tabContent" .selected="${true}">
+              <nidoca-spacer spacerSize="${SpacerSize.NORMAL}" .spacerTypes="${[SpacerType.TOP, SpacerType.BOTTOM]}">
+                <nidoca-spacer
+                  spacerSize="${SpacerSize.NORMAL}"
+                  .spacerTypes="${[SpacerType.LEFT, SpacerType.RIGHT]}"
+                  .devices="${[NidocaDevice.MOBILE]}"
+                >
+                  <nidoca-form-combobox
+                    .multiple="${true}"
+                    size="3"
+                    label="gridTemplateRows"
+                    .value="${this.gridTemplateRows}"
+                    .options="${this.toComboboxOptions('String', String)}"
+                    @nidoca-form-combobox-event-change="${(event: CustomEvent) =>
+                      (this.gridTemplateRows = event.detail.value)}"
+                    warningText=""
+                    errorText=""
+                    infoText=""
+                  ></nidoca-form-combobox>
 
-              <nidoca-spacer
-                spacerSize="${SpacerSize.MEDIUM}"
-                spacerAlignment="${SpacerAlignment.VERTICAL}"
-              ></nidoca-spacer>
+                  <nidoca-spacer spacerSize="${SpacerSize.MEDIUM}" .spacerTypes="${[SpacerType.ALL]}"></nidoca-spacer>
 
-              <nidoca-form-combobox
-                .multiple="${true}"
-                size="3"
-                label="gridTemplateColumns"
-                .value="${this.gridTemplateColumns}"
-                .options="${this.toComboboxOptions('String', String)}"
-                @nidoca-form-combobox-event-change="${(event: CustomEvent) =>
-                  (this.gridTemplateColumns = event.detail.value)}"
-                warningText=""
-                errorText=""
-                infoText=""
-              ></nidoca-form-combobox>
+                  <nidoca-form-combobox
+                    .multiple="${true}"
+                    size="3"
+                    label="gridTemplateColumns"
+                    .value="${this.gridTemplateColumns}"
+                    .options="${this.toComboboxOptions('String', String)}"
+                    @nidoca-form-combobox-event-change="${(event: CustomEvent) =>
+                      (this.gridTemplateColumns = event.detail.value)}"
+                    warningText=""
+                    errorText=""
+                    infoText=""
+                  ></nidoca-form-combobox>
 
-              <nidoca-spacer
-                spacerSize="${SpacerSize.MEDIUM}"
-                spacerAlignment="${SpacerAlignment.VERTICAL}"
-              ></nidoca-spacer>
+                  <nidoca-spacer spacerSize="${SpacerSize.MEDIUM}" .spacerTypes="${[SpacerType.ALL]}"></nidoca-spacer>
 
-              <nidoca-form-text
-                label="gridJustifyItems"
-                .value="${this.gridJustifyItems}"
-                @nidoca-form-text-event-change="${(event: CustomEvent) => (this.gridJustifyItems = event.detail.value)}"
-                warningText=""
-                errorText=""
-                infoText=""
-              ></nidoca-form-text>
+                  <nidoca-form-text
+                    label="gridJustifyItems"
+                    .value="${this.gridJustifyItems}"
+                    @nidoca-form-text-event-change="${(event: CustomEvent) =>
+                      (this.gridJustifyItems = event.detail.value)}"
+                    warningText=""
+                    errorText=""
+                    infoText=""
+                  ></nidoca-form-text>
 
-              <nidoca-spacer
-                spacerSize="${SpacerSize.MEDIUM}"
-                spacerAlignment="${SpacerAlignment.VERTICAL}"
-              ></nidoca-spacer>
+                  <nidoca-spacer spacerSize="${SpacerSize.MEDIUM}" .spacerTypes="${[SpacerType.ALL]}"></nidoca-spacer>
 
-              <nidoca-form-text
-                label="gridAlignItems"
-                .value="${this.gridAlignItems}"
-                @nidoca-form-text-event-change="${(event: CustomEvent) => (this.gridAlignItems = event.detail.value)}"
-                warningText=""
-                errorText=""
-                infoText=""
-              ></nidoca-form-text>
+                  <nidoca-form-text
+                    label="gridAlignItems"
+                    .value="${this.gridAlignItems}"
+                    @nidoca-form-text-event-change="${(event: CustomEvent) =>
+                      (this.gridAlignItems = event.detail.value)}"
+                    warningText=""
+                    errorText=""
+                    infoText=""
+                  ></nidoca-form-text>
 
-              <nidoca-spacer
-                spacerSize="${SpacerSize.MEDIUM}"
-                spacerAlignment="${SpacerAlignment.VERTICAL}"
-              ></nidoca-spacer>
+                  <nidoca-spacer spacerSize="${SpacerSize.MEDIUM}" .spacerTypes="${[SpacerType.ALL]}"></nidoca-spacer>
 
-              <nidoca-form-text
-                label="height"
-                .value="${this.height}"
-                @nidoca-form-text-event-change="${(event: CustomEvent) => (this.height = event.detail.value)}"
-                warningText=""
-                errorText=""
-                infoText=""
-              ></nidoca-form-text>
+                  <nidoca-form-text
+                    label="height"
+                    .value="${this.height}"
+                    @nidoca-form-text-event-change="${(event: CustomEvent) => (this.height = event.detail.value)}"
+                    warningText=""
+                    errorText=""
+                    infoText=""
+                  ></nidoca-form-text>
 
-              <nidoca-spacer
-                spacerSize="${SpacerSize.MEDIUM}"
-                spacerAlignment="${SpacerAlignment.VERTICAL}"
-              ></nidoca-spacer>
+                  <nidoca-spacer spacerSize="${SpacerSize.MEDIUM}" .spacerTypes="${[SpacerType.ALL]}"></nidoca-spacer>
 
-              <nidoca-form-text
-                label="minHeight"
-                .value="${this.minHeight}"
-                @nidoca-form-text-event-change="${(event: CustomEvent) => (this.minHeight = event.detail.value)}"
-                warningText=""
-                errorText=""
-                infoText=""
-              ></nidoca-form-text>
+                  <nidoca-form-text
+                    label="minHeight"
+                    .value="${this.minHeight}"
+                    @nidoca-form-text-event-change="${(event: CustomEvent) => (this.minHeight = event.detail.value)}"
+                    warningText=""
+                    errorText=""
+                    infoText=""
+                  ></nidoca-form-text>
 
-              <nidoca-spacer
-                spacerSize="${SpacerSize.MEDIUM}"
-                spacerAlignment="${SpacerAlignment.VERTICAL}"
-              ></nidoca-spacer>
+                  <nidoca-spacer spacerSize="${SpacerSize.MEDIUM}" .spacerTypes="${[SpacerType.ALL]}"></nidoca-spacer>
 
-              <nidoca-form-text
-                label="width"
-                .value="${this.width}"
-                @nidoca-form-text-event-change="${(event: CustomEvent) => (this.width = event.detail.value)}"
-                warningText=""
-                errorText=""
-                infoText=""
-              ></nidoca-form-text>
+                  <nidoca-form-text
+                    label="width"
+                    .value="${this.width}"
+                    @nidoca-form-text-event-change="${(event: CustomEvent) => (this.width = event.detail.value)}"
+                    warningText=""
+                    errorText=""
+                    infoText=""
+                  ></nidoca-form-text>
 
-              <nidoca-spacer
-                spacerSize="${SpacerSize.MEDIUM}"
-                spacerAlignment="${SpacerAlignment.VERTICAL}"
-              ></nidoca-spacer>
+                  <nidoca-spacer spacerSize="${SpacerSize.MEDIUM}" .spacerTypes="${[SpacerType.ALL]}"></nidoca-spacer>
 
-              <nidoca-form-text
-                label="minWidth"
-                .value="${this.minWidth}"
-                @nidoca-form-text-event-change="${(event: CustomEvent) => (this.minWidth = event.detail.value)}"
-                warningText=""
-                errorText=""
-                infoText=""
-              ></nidoca-form-text>
+                  <nidoca-form-text
+                    label="minWidth"
+                    .value="${this.minWidth}"
+                    @nidoca-form-text-event-change="${(event: CustomEvent) => (this.minWidth = event.detail.value)}"
+                    warningText=""
+                    errorText=""
+                    infoText=""
+                  ></nidoca-form-text>
 
-              <nidoca-spacer
-                spacerSize="${SpacerSize.MEDIUM}"
-                spacerAlignment="${SpacerAlignment.VERTICAL}"
-              ></nidoca-spacer>
-            </nidoca-spacer>
-          </nidoca-tab-content>
+                  <nidoca-spacer spacerSize="${SpacerSize.MEDIUM}" .spacerTypes="${[SpacerType.ALL]}"></nidoca-spacer>
+                </nidoca-spacer>
+              </nidoca-spacer>
+            </nidoca-tab-content>
 
-          <nidoca-tab-content slot="tabContent">
-            <nidoca-spacer spacerSize="${SpacerSize.NORMAL}" spacerAlignment="${SpacerAlignment.VERTICAL}">
-              <nidoca-code
-                code="${'<nidoca-grid-container \n  .gridTemplateRows="' +
-                this.toAttributeCodeString(this.gridTemplateRows, 'string[]', String) +
-                '" \n  .gridTemplateColumns="' +
-                this.toAttributeCodeString(this.gridTemplateColumns, 'string[]', String) +
-                '" \n  gridJustifyItems="' +
-                this.toAttributeCodeString(this.gridJustifyItems, 'string') +
-                '" \n  gridAlignItems="' +
-                this.toAttributeCodeString(this.gridAlignItems, 'string') +
-                '" \n  height="' +
-                this.toAttributeCodeString(this.height, 'string') +
-                '" \n  minHeight="' +
-                this.toAttributeCodeString(this.minHeight, 'string') +
-                '" \n  width="' +
-                this.toAttributeCodeString(this.width, 'string') +
-                '" \n  minWidth="' +
-                this.toAttributeCodeString(this.minWidth, 'string') +
-                '" >\n     nidoca-grid-container\n</nidoca-grid-container>'}"
-              ></nidoca-code>
-            </nidoca-spacer>
-          </nidoca-tab-content>
-        </nidoca-tabs>
+            <nidoca-tab-content slot="tabContent">
+              <nidoca-spacer spacerSize="${SpacerSize.NORMAL}" .spacerTypes="${[SpacerType.ALL]}">
+                <nidoca-code
+                  code="${'<nidoca-grid-container \n  .gridTemplateRows="' +
+                  this.toAttributeCodeString(this.gridTemplateRows, 'string[]', String) +
+                  '" \n  .gridTemplateColumns="' +
+                  this.toAttributeCodeString(this.gridTemplateColumns, 'string[]', String) +
+                  '" \n  gridJustifyItems="' +
+                  this.toAttributeCodeString(this.gridJustifyItems, 'string') +
+                  '" \n  gridAlignItems="' +
+                  this.toAttributeCodeString(this.gridAlignItems, 'string') +
+                  '" \n  height="' +
+                  this.toAttributeCodeString(this.height, 'string') +
+                  '" \n  minHeight="' +
+                  this.toAttributeCodeString(this.minHeight, 'string') +
+                  '" \n  width="' +
+                  this.toAttributeCodeString(this.width, 'string') +
+                  '" \n  minWidth="' +
+                  this.toAttributeCodeString(this.minWidth, 'string') +
+                  '" >\n     nidoca-grid-container\n</nidoca-grid-container>'}"
+                ></nidoca-code>
+              </nidoca-spacer>
+            </nidoca-tab-content>
+          </nidoca-tabs>
 
-        <nidoca-table .headers="${['slots']}" .rows="${[['<slot></slot>']]}"></nidoca-table>
+          <nidoca-table .headers="${['slots']}" .rows="${[['<slot></slot>']]}"></nidoca-table>
 
-        <nidoca-table
-          .headers="${['property', 'type']}"
-          .rows="${[
-            ['gridTemplateRows', this.object2Value('string[]', null)],
-            ['gridTemplateColumns', this.object2Value('string[]', null)],
-            ['gridJustifyItems', this.object2Value('string', null)],
-            ['gridAlignItems', this.object2Value('string', null)],
-            ['height', this.object2Value('string', null)],
-            ['minHeight', this.object2Value('string', null)],
-            ['width', this.object2Value('string', null)],
-            ['minWidth', this.object2Value('string', null)],
-          ]}"
-        ></nidoca-table>
-      </nidoca-flex-container>
+          <nidoca-table
+            .headers="${['property', 'type']}"
+            .rows="${[
+              ['gridTemplateRows', this.object2Value('string[]', null)],
+              ['gridTemplateColumns', this.object2Value('string[]', null)],
+              ['gridJustifyItems', this.object2Value('string', null)],
+              ['gridAlignItems', this.object2Value('string', null)],
+              ['height', this.object2Value('string', null)],
+              ['minHeight', this.object2Value('string', null)],
+              ['width', this.object2Value('string', null)],
+              ['minWidth', this.object2Value('string', null)],
+            ]}"
+          ></nidoca-table>
+        </nidoca-flex-container>
+      </nidoca-container>
     `;
   }
 }

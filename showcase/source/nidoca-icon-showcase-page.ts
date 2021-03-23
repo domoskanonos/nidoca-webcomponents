@@ -1,9 +1,9 @@
 import {
-  FlexContainerProperty,
-  FlexItemProperty,
+  ContainerProperty,
+  NidocaDevice,
   NidocaIcon,
-  SpacerAlignment,
   SpacerSize,
+  SpacerType,
   TextType,
   TypographyType,
 } from '@domoskanonos/nidoca-core';
@@ -101,240 +101,215 @@ export class NidocaIconShowcasePage extends NidocaShowcaseTemplate {
         </nidoca-box>
       </nidoca-floating-container>
 
-      <nidoca-spacer size="12.5vh" spacerAlignment="${SpacerAlignment.VERTICAL}"></nidoca-spacer>
+      <nidoca-spacer size="20vh" .spacerTypes="${[SpacerType.ALL]}"></nidoca-spacer>
 
-      <nidoca-flex-container
-        .flexContainerProperties="${[
-          FlexContainerProperty.CONTAINER_WIDTH_75,
-          FlexContainerProperty.TABLET_MAX_WIDTH,
-          FlexContainerProperty.SMARTPHONE_MAX_WIDTH,
-          FlexContainerProperty.SMARTPHONE_HORIZONTAL_PADDING,
-          FlexContainerProperty.TABLET_HORIZONTAL_PADDING,
+      <nidoca-container
+        .containerProperties="${[
+          ContainerProperty.WIDTH_75,
+          ContainerProperty.SMARTPHONE_MAX_WIDTH,
+          ContainerProperty.TABLET_MAX_WIDTH,
         ]}"
-        .flexItemProperties="${[FlexItemProperty.KEYLINE_ALIGNMENT_BOTH, FlexItemProperty.KEYLINE_SIZE_MEDIUM]}"
-        flexItemBasisValue="100%"
       >
-        <nidoca-spacer spacerSize="${SpacerSize.BIG}" spacerAlignment="${SpacerAlignment.VERTICAL}">
-          <nidoca-typography .typographyType="${TypographyType.H2}" text="<nidoca-icon/>"></nidoca-typography>
-        </nidoca-spacer>
+        <nidoca-flex-container itemStyle="flex-basis: 100%;">
+          <nidoca-spacer spacerSize="${SpacerSize.BIG}" .spacerTypes="${[SpacerType.ALL]}">
+            <nidoca-typography .typographyType="${TypographyType.H2}" text="<nidoca-icon/>"></nidoca-typography>
+          </nidoca-spacer>
 
-        <nidoca-tabs>
-          <nidoca-tab slot="tab" .selected="${true}" text="properties"></nidoca-tab>
-          <nidoca-tab slot="tab" text="source"></nidoca-tab>
+          <nidoca-tabs>
+            <nidoca-tab slot="tab" .selected="${true}" text="properties"></nidoca-tab>
+            <nidoca-tab slot="tab" text="source"></nidoca-tab>
 
-          <nidoca-tab-content slot="tabContent" .selected="${true}">
-            <nidoca-spacer spacerSize="${SpacerSize.NORMAL}" spacerAlignment="${SpacerAlignment.VERTICAL}">
-              <nidoca-form-text
-                label="icon"
-                .value="${this.icon}"
-                @nidoca-form-text-event-change="${(event: CustomEvent) => (this.icon = event.detail.value)}"
-                warningText=""
-                errorText=""
-                infoText=""
-              ></nidoca-form-text>
+            <nidoca-tab-content slot="tabContent" .selected="${true}">
+              <nidoca-spacer spacerSize="${SpacerSize.NORMAL}" .spacerTypes="${[SpacerType.TOP, SpacerType.BOTTOM]}">
+                <nidoca-spacer
+                  spacerSize="${SpacerSize.NORMAL}"
+                  .spacerTypes="${[SpacerType.LEFT, SpacerType.RIGHT]}"
+                  .devices="${[NidocaDevice.MOBILE]}"
+                >
+                  <nidoca-form-text
+                    label="icon"
+                    .value="${this.icon}"
+                    @nidoca-form-text-event-change="${(event: CustomEvent) => (this.icon = event.detail.value)}"
+                    warningText=""
+                    errorText=""
+                    infoText=""
+                  ></nidoca-form-text>
 
-              <nidoca-spacer
-                spacerSize="${SpacerSize.MEDIUM}"
-                spacerAlignment="${SpacerAlignment.VERTICAL}"
-              ></nidoca-spacer>
+                  <nidoca-spacer spacerSize="${SpacerSize.MEDIUM}" .spacerTypes="${[SpacerType.ALL]}"></nidoca-spacer>
 
-              <nidoca-form-text
-                label="color"
-                .value="${this.color}"
-                @nidoca-form-text-event-change="${(event: CustomEvent) => (this.color = event.detail.value)}"
-                warningText=""
-                errorText=""
-                infoText=""
-              ></nidoca-form-text>
+                  <nidoca-form-text
+                    label="color"
+                    .value="${this.color}"
+                    @nidoca-form-text-event-change="${(event: CustomEvent) => (this.color = event.detail.value)}"
+                    warningText=""
+                    errorText=""
+                    infoText=""
+                  ></nidoca-form-text>
 
-              <nidoca-spacer
-                spacerSize="${SpacerSize.MEDIUM}"
-                spacerAlignment="${SpacerAlignment.VERTICAL}"
-              ></nidoca-spacer>
+                  <nidoca-spacer spacerSize="${SpacerSize.MEDIUM}" .spacerTypes="${[SpacerType.ALL]}"></nidoca-spacer>
 
-              <nidoca-form-text
-                label="backgroundColor"
-                .value="${this.backgroundColor}"
-                @nidoca-form-text-event-change="${(event: CustomEvent) => (this.backgroundColor = event.detail.value)}"
-                warningText=""
-                errorText=""
-                infoText=""
-              ></nidoca-form-text>
+                  <nidoca-form-text
+                    label="backgroundColor"
+                    .value="${this.backgroundColor}"
+                    @nidoca-form-text-event-change="${(event: CustomEvent) =>
+                      (this.backgroundColor = event.detail.value)}"
+                    warningText=""
+                    errorText=""
+                    infoText=""
+                  ></nidoca-form-text>
 
-              <nidoca-spacer
-                spacerSize="${SpacerSize.MEDIUM}"
-                spacerAlignment="${SpacerAlignment.VERTICAL}"
-              ></nidoca-spacer>
+                  <nidoca-spacer spacerSize="${SpacerSize.MEDIUM}" .spacerTypes="${[SpacerType.ALL]}"></nidoca-spacer>
 
-              <nidoca-form-text
-                label="iconShadowType"
-                .value="${this.iconShadowType}"
-                @nidoca-form-text-event-change="${(event: CustomEvent) => (this.iconShadowType = event.detail.value)}"
-                warningText=""
-                errorText=""
-                infoText=""
-              ></nidoca-form-text>
+                  <nidoca-form-text
+                    label="iconShadowType"
+                    .value="${this.iconShadowType}"
+                    @nidoca-form-text-event-change="${(event: CustomEvent) =>
+                      (this.iconShadowType = event.detail.value)}"
+                    warningText=""
+                    errorText=""
+                    infoText=""
+                  ></nidoca-form-text>
 
-              <nidoca-spacer
-                spacerSize="${SpacerSize.MEDIUM}"
-                spacerAlignment="${SpacerAlignment.VERTICAL}"
-              ></nidoca-spacer>
+                  <nidoca-spacer spacerSize="${SpacerSize.MEDIUM}" .spacerTypes="${[SpacerType.ALL]}"></nidoca-spacer>
 
-              <nidoca-form-text
-                textType="${TextType.NUMBER}"
-                label="size"
-                .value="${this.size}"
-                @nidoca-form-text-event-change="${(event: CustomEvent) => (this.size = event.detail.value)}"
-                warningText=""
-                errorText=""
-                infoText=""
-              ></nidoca-form-text>
+                  <nidoca-form-text
+                    textType="${TextType.NUMBER}"
+                    label="size"
+                    .value="${this.size}"
+                    @nidoca-form-text-event-change="${(event: CustomEvent) => (this.size = event.detail.value)}"
+                    warningText=""
+                    errorText=""
+                    infoText=""
+                  ></nidoca-form-text>
 
-              <nidoca-spacer
-                spacerSize="${SpacerSize.MEDIUM}"
-                spacerAlignment="${SpacerAlignment.VERTICAL}"
-              ></nidoca-spacer>
+                  <nidoca-spacer spacerSize="${SpacerSize.MEDIUM}" .spacerTypes="${[SpacerType.ALL]}"></nidoca-spacer>
 
-              <nidoca-form-text
-                label="sizeUnit"
-                .value="${this.sizeUnit}"
-                @nidoca-form-text-event-change="${(event: CustomEvent) => (this.sizeUnit = event.detail.value)}"
-                warningText=""
-                errorText=""
-                infoText=""
-              ></nidoca-form-text>
+                  <nidoca-form-text
+                    label="sizeUnit"
+                    .value="${this.sizeUnit}"
+                    @nidoca-form-text-event-change="${(event: CustomEvent) => (this.sizeUnit = event.detail.value)}"
+                    warningText=""
+                    errorText=""
+                    infoText=""
+                  ></nidoca-form-text>
 
-              <nidoca-spacer
-                spacerSize="${SpacerSize.MEDIUM}"
-                spacerAlignment="${SpacerAlignment.VERTICAL}"
-              ></nidoca-spacer>
+                  <nidoca-spacer spacerSize="${SpacerSize.MEDIUM}" .spacerTypes="${[SpacerType.ALL]}"></nidoca-spacer>
 
-              <nidoca-form-text
-                label="iconTitle"
-                .value="${this.iconTitle}"
-                @nidoca-form-text-event-change="${(event: CustomEvent) => (this.iconTitle = event.detail.value)}"
-                warningText=""
-                errorText=""
-                infoText=""
-              ></nidoca-form-text>
+                  <nidoca-form-text
+                    label="iconTitle"
+                    .value="${this.iconTitle}"
+                    @nidoca-form-text-event-change="${(event: CustomEvent) => (this.iconTitle = event.detail.value)}"
+                    warningText=""
+                    errorText=""
+                    infoText=""
+                  ></nidoca-form-text>
 
-              <nidoca-spacer
-                spacerSize="${SpacerSize.MEDIUM}"
-                spacerAlignment="${SpacerAlignment.VERTICAL}"
-              ></nidoca-spacer>
+                  <nidoca-spacer spacerSize="${SpacerSize.MEDIUM}" .spacerTypes="${[SpacerType.ALL]}"></nidoca-spacer>
 
-              <nidoca-form-switch
-                name="withIconSpace"
-                infoText="withIconSpace"
-                .selected="${this.withIconSpace}"
-                @nidoca-form-switch-event-change="${(event: CustomEvent) => (this.withIconSpace = event.detail.value)}"
-                warningText=""
-                errorText=""
-                infoText=""
-              ></nidoca-form-switch>
+                  <nidoca-form-switch
+                    name="withIconSpace"
+                    infoText="withIconSpace"
+                    .selected="${this.withIconSpace}"
+                    @nidoca-form-switch-event-change="${(event: CustomEvent) =>
+                      (this.withIconSpace = event.detail.value)}"
+                    warningText=""
+                    errorText=""
+                    infoText=""
+                  ></nidoca-form-switch>
 
-              <nidoca-spacer
-                spacerSize="${SpacerSize.MEDIUM}"
-                spacerAlignment="${SpacerAlignment.VERTICAL}"
-              ></nidoca-spacer>
+                  <nidoca-spacer spacerSize="${SpacerSize.MEDIUM}" .spacerTypes="${[SpacerType.ALL]}"></nidoca-spacer>
 
-              <nidoca-form-switch
-                name="round"
-                infoText="round"
-                .selected="${this.round}"
-                @nidoca-form-switch-event-change="${(event: CustomEvent) => (this.round = event.detail.value)}"
-                warningText=""
-                errorText=""
-                infoText=""
-              ></nidoca-form-switch>
+                  <nidoca-form-switch
+                    name="round"
+                    infoText="round"
+                    .selected="${this.round}"
+                    @nidoca-form-switch-event-change="${(event: CustomEvent) => (this.round = event.detail.value)}"
+                    warningText=""
+                    errorText=""
+                    infoText=""
+                  ></nidoca-form-switch>
 
-              <nidoca-spacer
-                spacerSize="${SpacerSize.MEDIUM}"
-                spacerAlignment="${SpacerAlignment.VERTICAL}"
-              ></nidoca-spacer>
+                  <nidoca-spacer spacerSize="${SpacerSize.MEDIUM}" .spacerTypes="${[SpacerType.ALL]}"></nidoca-spacer>
 
-              <nidoca-form-switch
-                name="clickable"
-                infoText="clickable"
-                .selected="${this.clickable}"
-                @nidoca-form-switch-event-change="${(event: CustomEvent) => (this.clickable = event.detail.value)}"
-                warningText=""
-                errorText=""
-                infoText=""
-              ></nidoca-form-switch>
+                  <nidoca-form-switch
+                    name="clickable"
+                    infoText="clickable"
+                    .selected="${this.clickable}"
+                    @nidoca-form-switch-event-change="${(event: CustomEvent) => (this.clickable = event.detail.value)}"
+                    warningText=""
+                    errorText=""
+                    infoText=""
+                  ></nidoca-form-switch>
 
-              <nidoca-spacer
-                spacerSize="${SpacerSize.MEDIUM}"
-                spacerAlignment="${SpacerAlignment.VERTICAL}"
-              ></nidoca-spacer>
+                  <nidoca-spacer spacerSize="${SpacerSize.MEDIUM}" .spacerTypes="${[SpacerType.ALL]}"></nidoca-spacer>
 
-              <nidoca-form-switch
-                name="deactivated"
-                infoText="deactivated"
-                .selected="${this.deactivated}"
-                @nidoca-form-switch-event-change="${(event: CustomEvent) => (this.deactivated = event.detail.value)}"
-                warningText=""
-                errorText=""
-                infoText=""
-              ></nidoca-form-switch>
+                  <nidoca-form-switch
+                    name="deactivated"
+                    infoText="deactivated"
+                    .selected="${this.deactivated}"
+                    @nidoca-form-switch-event-change="${(event: CustomEvent) =>
+                      (this.deactivated = event.detail.value)}"
+                    warningText=""
+                    errorText=""
+                    infoText=""
+                  ></nidoca-form-switch>
 
-              <nidoca-spacer
-                spacerSize="${SpacerSize.MEDIUM}"
-                spacerAlignment="${SpacerAlignment.VERTICAL}"
-              ></nidoca-spacer>
-            </nidoca-spacer>
-          </nidoca-tab-content>
+                  <nidoca-spacer spacerSize="${SpacerSize.MEDIUM}" .spacerTypes="${[SpacerType.ALL]}"></nidoca-spacer>
+                </nidoca-spacer>
+              </nidoca-spacer>
+            </nidoca-tab-content>
 
-          <nidoca-tab-content slot="tabContent">
-            <nidoca-spacer spacerSize="${SpacerSize.NORMAL}" spacerAlignment="${SpacerAlignment.VERTICAL}">
-              <nidoca-code
-                code="${'<nidoca-icon \n  icon="' +
-                this.toAttributeCodeString(this.icon, 'string') +
-                '" \n  color="' +
-                this.toAttributeCodeString(this.color, 'string') +
-                '" \n  backgroundColor="' +
-                this.toAttributeCodeString(this.backgroundColor, 'string') +
-                '" \n  iconShadowType="' +
-                this.toAttributeCodeString(this.iconShadowType, 'string') +
-                '" \n  .size="' +
-                this.toAttributeCodeString(this.size, 'number') +
-                '" \n  sizeUnit="' +
-                this.toAttributeCodeString(this.sizeUnit, 'string') +
-                '" \n  iconTitle="' +
-                this.toAttributeCodeString(this.iconTitle, 'string') +
-                '" \n  .withIconSpace="' +
-                this.toAttributeCodeString(this.withIconSpace, 'boolean') +
-                '" \n  .round="' +
-                this.toAttributeCodeString(this.round, 'boolean') +
-                '" \n  .clickable="' +
-                this.toAttributeCodeString(this.clickable, 'boolean') +
-                '" \n  .deactivated="' +
-                this.toAttributeCodeString(this.deactivated, 'boolean') +
-                '" >\n     nidoca-icon\n</nidoca-icon>'}"
-              ></nidoca-code>
-            </nidoca-spacer>
-          </nidoca-tab-content>
-        </nidoca-tabs>
+            <nidoca-tab-content slot="tabContent">
+              <nidoca-spacer spacerSize="${SpacerSize.NORMAL}" .spacerTypes="${[SpacerType.ALL]}">
+                <nidoca-code
+                  code="${'<nidoca-icon \n  icon="' +
+                  this.toAttributeCodeString(this.icon, 'string') +
+                  '" \n  color="' +
+                  this.toAttributeCodeString(this.color, 'string') +
+                  '" \n  backgroundColor="' +
+                  this.toAttributeCodeString(this.backgroundColor, 'string') +
+                  '" \n  iconShadowType="' +
+                  this.toAttributeCodeString(this.iconShadowType, 'string') +
+                  '" \n  .size="' +
+                  this.toAttributeCodeString(this.size, 'number') +
+                  '" \n  sizeUnit="' +
+                  this.toAttributeCodeString(this.sizeUnit, 'string') +
+                  '" \n  iconTitle="' +
+                  this.toAttributeCodeString(this.iconTitle, 'string') +
+                  '" \n  .withIconSpace="' +
+                  this.toAttributeCodeString(this.withIconSpace, 'boolean') +
+                  '" \n  .round="' +
+                  this.toAttributeCodeString(this.round, 'boolean') +
+                  '" \n  .clickable="' +
+                  this.toAttributeCodeString(this.clickable, 'boolean') +
+                  '" \n  .deactivated="' +
+                  this.toAttributeCodeString(this.deactivated, 'boolean') +
+                  '" >\n     nidoca-icon\n</nidoca-icon>'}"
+                ></nidoca-code>
+              </nidoca-spacer>
+            </nidoca-tab-content>
+          </nidoca-tabs>
 
-        <nidoca-table .headers="${['slots']}" .rows="${[['<slot></slot>']]}"></nidoca-table>
+          <nidoca-table .headers="${['slots']}" .rows="${[['<slot></slot>']]}"></nidoca-table>
 
-        <nidoca-table
-          .headers="${['property', 'type']}"
-          .rows="${[
-            ['icon', this.object2Value('string', null)],
-            ['color', this.object2Value('string', null)],
-            ['backgroundColor', this.object2Value('string', null)],
-            ['iconShadowType', this.object2Value('string', null)],
-            ['size', this.object2Value('number', null)],
-            ['sizeUnit', this.object2Value('string', null)],
-            ['iconTitle', this.object2Value('string', null)],
-            ['withIconSpace', this.object2Value('boolean', null)],
-            ['round', this.object2Value('boolean', null)],
-            ['clickable', this.object2Value('boolean', null)],
-            ['deactivated', this.object2Value('boolean', null)],
-          ]}"
-        ></nidoca-table>
-      </nidoca-flex-container>
+          <nidoca-table
+            .headers="${['property', 'type']}"
+            .rows="${[
+              ['icon', this.object2Value('string', null)],
+              ['color', this.object2Value('string', null)],
+              ['backgroundColor', this.object2Value('string', null)],
+              ['iconShadowType', this.object2Value('string', null)],
+              ['size', this.object2Value('number', null)],
+              ['sizeUnit', this.object2Value('string', null)],
+              ['iconTitle', this.object2Value('string', null)],
+              ['withIconSpace', this.object2Value('boolean', null)],
+              ['round', this.object2Value('boolean', null)],
+              ['clickable', this.object2Value('boolean', null)],
+              ['deactivated', this.object2Value('boolean', null)],
+            ]}"
+          ></nidoca-table>
+        </nidoca-flex-container>
+      </nidoca-container>
     `;
   }
 }

@@ -1,106 +1,106 @@
 import {css, customElement, html, LitElement, property, TemplateResult} from 'lit-element';
+import {NidocaDevice} from './nidoca-meta';
 
-export enum SpacerAlignment {
-  BOTH = 'both',
-  HORIZONTAL = 'horizontalAlignment',
-  VERTICAL = 'verticalAlignment',
+export enum SpacerType {
+  ALL = 'ALL',
+  VERTICAL = 'VERTICAL',
+  HORIZONTAL = 'HORIZONTAL',
+  LEFT = 'LEFT',
+  RIGHT = 'RIGHT',
+  TOP = 'TOP',
+  BOTTOM = 'BOTTOM',
 }
 
 export enum SpacerSize {
-  ZERO = 'spacerZero',
-  LITTLE = 'spaceLittle',
-  SMALL = 'spaceSmall',
-  MEDIUM = 'spaceMedium',
-  NORMAL = 'spaceNormal',
-  BIG = 'spaceBig',
-  MAX = 'spaceMax',
+  ZERO = '--space-zero',
+  LITTLE = '--space-little',
+  SMALL = '--space-small',
+  MEDIUM = '--space-medium',
+  NORMAL = '--space-normal',
+  BIG = '--space-big',
+  MAX = '--space-max',
 }
 
 @customElement('nidoca-spacer')
 export class NidocaSpacer extends LitElement {
   static styles = css`
-    :host,
-    ::slotted(:host) {
-    }
-
-    .spacer,
-    ::slotted(.spacer) {
+    .SPACER,
+    ::slotted(.SPACER) {
       box-sizing: border-box;
       display: block;
-    }
-
-    .horizontalAlignment,
-    ::slotted(.horizontalAlignment) {
-      padding-top: 0 !important;
-      padding-bottom: 0 !important;
-    }
-
-    .verticalAlignment,
-    ::slotted(.verticalAlignment) {
-      padding-left: 0 !important;
-      padding-right: 0 !important;
-    }
-
-    .spaceLittle,
-    ::slotted(.spaceLittle) {
-      padding: var(--space-little);
-    }
-
-    .spaceSmall,
-    ::slotted(.spaceSmall) {
-      padding: var(--space-small);
-    }
-
-    .spaceMedium,
-    ::slotted(.spaceMedium) {
-      padding: var(--space-medium);
-    }
-
-    .spaceNormal,
-    ::slotted(.spaceNormal) {
-      padding: var(--space-normal);
-    }
-
-    .spaceBig,
-    ::slotted(.spaceBig) {
-      padding: var(--space-big);
-    }
-
-    .spaceMax,
-    ::slotted(.spaceMax) {
-      padding: var(--space-max);
     }
   `;
 
   @property()
-  spacerSize: SpacerSize = SpacerSize.NORMAL;
+  devices: NidocaDevice[] = [NidocaDevice.DESKTOP, NidocaDevice.TABLET, NidocaDevice.MOBILE];
 
   @property()
-  spacerAlignment: SpacerAlignment = SpacerAlignment.BOTH;
+  spacerTypes: SpacerType[] = [SpacerType.ALL];
+
+  @property()
+  spacerSize: SpacerSize = SpacerSize.NORMAL;
 
   @property()
   size: string = '';
 
   render(): TemplateResult {
     return html`
-      <span class="spacer ${this.spacerSize} ${this.spacerAlignment}" style="${this.toSizeStyle(this.size)}"
-        ><slot></slot
-      ></span>
+      <style>
+        ${this.toStyle(this.devices, this.spacerTypes, this.spacerSize, this.size)}
+      </style>
+      <span class="SPACER">
+        <slot></slot>
+      </span>
     `;
   }
 
-  private toSizeStyle(size: string): string {
+  private toStyle(
+    devices: NidocaDevice[],
+    spacerProperties: SpacerType[],
+    spacerSize: SpacerSize,
+    size: string
+  ): string {
     if (size == null || size.length == 0) {
-      return '';
+      size = 'var('.concat(spacerSize).concat(')');
     }
-    switch (this.spacerAlignment) {
-      case SpacerAlignment.VERTICAL:
-        return 'padding-top:'.concat(size).concat(';').concat('padding-bottom:').concat(size).concat(';');
-      case SpacerAlignment.HORIZONTAL:
-        return 'padding-left:'.concat(size).concat(';').concat('padding-right:').concat(size).concat(';');
-      case SpacerAlignment.BOTH:
-        return 'padding:'.concat(size).concat(';');
-    }
-    return '';
+    let style: string = '';
+    spacerProperties.forEach((spacerType: SpacerType) => {
+      switch (spacerType) {
+        case SpacerType.LEFT:
+          style = style.concat('padding-left:'.concat(size).concat(';'));
+          break;
+        case SpacerType.RIGHT:
+          style = style.concat('padding-right:'.concat(size).concat(';'));
+          break;
+        case SpacerType.TOP:
+          style = style.concat('padding-top:'.concat(size).concat(';'));
+          break;
+        case SpacerType.BOTTOM:
+          style = style.concat('padding-bottom:'.concat(size).concat(';'));
+          break;
+        case SpacerType.ALL:
+          style = style.concat('padding-left:'.concat(size).concat(';'));
+          style = style.concat('padding-right:'.concat(size).concat(';'));
+          style = style.concat('padding-top:'.concat(size).concat(';'));
+          style = style.concat('padding-bottom:'.concat(size).concat(';'));
+          break;
+        case SpacerType.HORIZONTAL:
+          style = style.concat('padding-left:'.concat(size).concat(';'));
+          style = style.concat('padding-right:'.concat(size).concat(';'));
+          break;
+        case SpacerType.VERTICAL:
+          style = style.concat('padding-top:'.concat(size).concat(';'));
+          style = style.concat('padding-bottom:'.concat(size).concat(';'));
+          break;
+      }
+    });
+
+    style = '.SPACER {'.concat(style).concat().concat('}');
+
+    let styleAll = '';
+    devices.forEach((device: NidocaDevice) => {
+      styleAll = styleAll.concat(device.asMediaStyle(style));
+    });
+    return styleAll;
   }
 }

@@ -1,22 +1,12 @@
 import {I18nService} from '@domoskanonos/frontend-basis';
-import {FlexContainerProperty, FlexItemProperty, TargetType, TypographyType} from '@domoskanonos/nidoca-core';
+import {TargetType, TypographyType} from '@domoskanonos/nidoca-core';
 import {customElement, html, TemplateResult} from 'lit-element';
 import {NidocaShowcaseTemplate} from './nidoca-showcase-template';
 
 @customElement('nidoca-showcase-get-started-page')
 export class NidocaShowcaseDashboardPage extends NidocaShowcaseTemplate {
   getContent(): TemplateResult {
-    return html` <nidoca-flex-container
-      .flexContainerProperties="${[
-        FlexContainerProperty.CONTAINER_WIDTH_50,
-        FlexContainerProperty.TABLET_MAX_WIDTH,
-        FlexContainerProperty.SMARTPHONE_MAX_WIDTH,
-        FlexContainerProperty.SMARTPHONE_HORIZONTAL_PADDING,
-        FlexContainerProperty.TABLET_HORIZONTAL_PADDING,
-      ]}"
-      .flexItemProperties="${[FlexItemProperty.KEYLINE_ALIGNMENT_HORIZONTAL, FlexItemProperty.KEYLINE_SIZE_MEDIUM]}"
-      flexItemBasisValue="100%"
-    >
+    return html` <nidoca-flex-container itemStyle="flex-basis: 100%;">
       <nidoca-typography .typographyType="${TypographyType.H1}" text="get started"></nidoca-typography>
       <nidoca-typography .typographyType="${TypographyType.H4}"><br />installation</nidoca-typography>
       <nidoca-typography .typographyType="${TypographyType.BODY1}">
