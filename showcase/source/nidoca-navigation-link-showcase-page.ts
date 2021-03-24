@@ -1,5 +1,9 @@
 import {
-  ContainerProperty,
+  FlexAlignContent,
+  FlexAlignItems,
+  FlexDirection,
+  FlexJustifyContent,
+  FlexWrap,
   NidocaDevice,
   NidocaNavigationLink,
   SpacerSize,
@@ -20,9 +24,6 @@ export class NidocaNavigationLinkShowcasePage extends NidocaShowcaseTemplate {
   @property()
   href: string = '';
 
-  @property()
-  rendered: boolean = false;
-
   constructor() {
     super();
     let initComponent: NidocaNavigationLink | null = null;
@@ -36,8 +37,6 @@ export class NidocaNavigationLinkShowcasePage extends NidocaShowcaseTemplate {
     this.text = initComponent.text;
 
     this.href = initComponent.href;
-
-    this.rendered = initComponent.rendered;
   }
 
   getContent(): TemplateResult {
@@ -45,28 +44,27 @@ export class NidocaNavigationLinkShowcasePage extends NidocaShowcaseTemplate {
       <nidoca-floating-container
         top="var(--menubar-height)"
         width="100%"
+        height="40vh"
         style="background-color: var(--app-color-surface-background);"
       >
-        <nidoca-box cssStyle="width:100%; height:40vh;background-color: var(--app-color-surface-background-light)">
-          <nidoca-navigation-link
-            icon="${this.icon}"
-            text="${this.text}"
-            href="${this.href}"
-            .rendered="${this.rendered}"
+        <nidoca-flex-container
+          .flexDirection="${FlexDirection.ROW}"
+          .flexWrap="${FlexWrap.WRAP}"
+          .flexJustifyContent="${FlexJustifyContent.CENTER}"
+          .flexAlignItems="${FlexAlignItems.CENTER}"
+          .flexAlignContent="${FlexAlignContent.SPACE_AROUND}"
+          containerStyle="height:100%; width:100%; background-color:var(--app-color-surface-background-light)"
+          itemStyle=""
+        >
+          <nidoca-navigation-link icon="${this.icon}" text="${this.text}" href="${this.href}"
             >${this.loadShowcaseContent('NidocaNavigationLink')}</nidoca-navigation-link
           >
-        </nidoca-box>
+        </nidoca-flex-container>
       </nidoca-floating-container>
 
-      <nidoca-spacer size="20vh" .spacerTypes="${[SpacerType.ALL]}"></nidoca-spacer>
+      <nidoca-spacer cssStyle="padding:20vh;" .spacerTypes="${[SpacerType.ALL]}"></nidoca-spacer>
 
-      <nidoca-container
-        .containerProperties="${[
-          ContainerProperty.WIDTH_75,
-          ContainerProperty.SMARTPHONE_MAX_WIDTH,
-          ContainerProperty.TABLET_MAX_WIDTH,
-        ]}"
-      >
+      <nidoca-flex-container containerStyle="width:75%;" .devices="${[NidocaDevice.DESKTOP]}">
         <nidoca-flex-container itemStyle="flex-basis: 100%;">
           <nidoca-spacer spacerSize="${SpacerSize.BIG}" .spacerTypes="${[SpacerType.ALL]}">
             <nidoca-typography
@@ -118,35 +116,27 @@ export class NidocaNavigationLinkShowcasePage extends NidocaShowcaseTemplate {
                   ></nidoca-form-text>
 
                   <nidoca-spacer spacerSize="${SpacerSize.MEDIUM}" .spacerTypes="${[SpacerType.ALL]}"></nidoca-spacer>
-
-                  <nidoca-form-switch
-                    name="rendered"
-                    infoText="rendered"
-                    .selected="${this.rendered}"
-                    @nidoca-form-switch-event-change="${(event: CustomEvent) => (this.rendered = event.detail.value)}"
-                    warningText=""
-                    errorText=""
-                    infoText=""
-                  ></nidoca-form-switch>
-
-                  <nidoca-spacer spacerSize="${SpacerSize.MEDIUM}" .spacerTypes="${[SpacerType.ALL]}"></nidoca-spacer>
                 </nidoca-spacer>
               </nidoca-spacer>
             </nidoca-tab-content>
 
             <nidoca-tab-content slot="tabContent">
-              <nidoca-spacer spacerSize="${SpacerSize.NORMAL}" .spacerTypes="${[SpacerType.ALL]}">
-                <nidoca-code
-                  code="${'<nidoca-navigation-link \n  icon="' +
-                  this.toAttributeCodeString(this.icon, 'string') +
-                  '" \n  text="' +
-                  this.toAttributeCodeString(this.text, 'string') +
-                  '" \n  href="' +
-                  this.toAttributeCodeString(this.href, 'string') +
-                  '" \n  .rendered="' +
-                  this.toAttributeCodeString(this.rendered, 'boolean') +
-                  '" >\n     nidoca-navigation-link\n</nidoca-navigation-link>'}"
-                ></nidoca-code>
+              <nidoca-spacer spacerSize="${SpacerSize.NORMAL}" .spacerTypes="${[SpacerType.TOP, SpacerType.BOTTOM]}">
+                <nidoca-spacer
+                  spacerSize="${SpacerSize.NORMAL}"
+                  .spacerTypes="${[SpacerType.LEFT, SpacerType.RIGHT]}"
+                  .devices="${[NidocaDevice.MOBILE]}"
+                >
+                  <nidoca-code
+                    code="${'<nidoca-navigation-link \n  icon="' +
+                    this.toAttributeCodeString(this.icon, 'string') +
+                    '" \n  text="' +
+                    this.toAttributeCodeString(this.text, 'string') +
+                    '" \n  href="' +
+                    this.toAttributeCodeString(this.href, 'string') +
+                    '" >\n     nidoca-navigation-link\n</nidoca-navigation-link>'}"
+                  ></nidoca-code>
+                </nidoca-spacer>
               </nidoca-spacer>
             </nidoca-tab-content>
           </nidoca-tabs>
@@ -157,11 +147,10 @@ export class NidocaNavigationLinkShowcasePage extends NidocaShowcaseTemplate {
               ['icon', this.object2Value('string', null)],
               ['text', this.object2Value('string', null)],
               ['href', this.object2Value('string', null)],
-              ['rendered', this.object2Value('boolean', null)],
             ]}"
           ></nidoca-table>
         </nidoca-flex-container>
-      </nidoca-container>
+      </nidoca-flex-container>
     `;
   }
 }

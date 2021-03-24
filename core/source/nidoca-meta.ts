@@ -1,9 +1,9 @@
 export class NidocaDevice {
-  static readonly MOBILE = new NidocaDevice('0px', '640px');
-  static readonly TABLET = new NidocaDevice('641px', '1007px');
-  static readonly DESKTOP = new NidocaDevice('1008px', null);
+  static readonly MOBILE = new NidocaDevice('MOBILE','0px', '640px');
+  static readonly TABLET = new NidocaDevice('TABLET','641px', '1007px');
+  static readonly DESKTOP = new NidocaDevice('DESKTOP','1008px', null);
 
-  constructor(private minWidth: string | null, private maxWidth: string | null) {}
+  constructor(private key: string, private minWidth: string | null, private maxWidth: string | null) {}
 
   asMediaStyle(style: string): string {
     let mediaStyle: string = '@media ';

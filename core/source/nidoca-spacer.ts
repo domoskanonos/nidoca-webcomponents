@@ -41,14 +41,14 @@ export class NidocaSpacer extends LitElement {
   spacerSize: SpacerSize = SpacerSize.NORMAL;
 
   @property()
-  size: string = '';
+  cssStyle: string = '';
 
   render(): TemplateResult {
     return html`
       <style>
-        ${this.toStyle(this.devices, this.spacerTypes, this.spacerSize, this.size)}
+        ${this.toStyle(this.devices, this.spacerTypes, this.spacerSize)}
       </style>
-      <span class="SPACER">
+      <span class="SPACER" style="${this.cssStyle}">
         <slot></slot>
       </span>
     `;
@@ -57,12 +57,9 @@ export class NidocaSpacer extends LitElement {
   private toStyle(
     devices: NidocaDevice[],
     spacerProperties: SpacerType[],
-    spacerSize: SpacerSize,
-    size: string
+    spacerSize: SpacerSize
   ): string {
-    if (size == null || size.length == 0) {
-      size = 'var('.concat(spacerSize).concat(')');
-    }
+    let size = 'var('.concat(spacerSize).concat(')');
     let style: string = '';
     spacerProperties.forEach((spacerType: SpacerType) => {
       switch (spacerType) {

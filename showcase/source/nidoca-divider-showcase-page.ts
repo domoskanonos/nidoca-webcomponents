@@ -1,6 +1,10 @@
 import {
-  ContainerProperty,
   DividerType,
+  FlexAlignContent,
+  FlexAlignItems,
+  FlexDirection,
+  FlexJustifyContent,
+  FlexWrap,
   NidocaDevice,
   NidocaDivider,
   SpacerSize,
@@ -37,24 +41,27 @@ export class NidocaDividerShowcasePage extends NidocaShowcaseTemplate {
       <nidoca-floating-container
         top="var(--menubar-height)"
         width="100%"
+        height="40vh"
         style="background-color: var(--app-color-surface-background);"
       >
-        <nidoca-box cssStyle="width:100%; height:40vh;background-color: var(--app-color-surface-background-light)">
+        <nidoca-flex-container
+          .flexDirection="${FlexDirection.ROW}"
+          .flexWrap="${FlexWrap.WRAP}"
+          .flexJustifyContent="${FlexJustifyContent.CENTER}"
+          .flexAlignItems="${FlexAlignItems.CENTER}"
+          .flexAlignContent="${FlexAlignContent.SPACE_AROUND}"
+          containerStyle="height:100%; width:100%; background-color:var(--app-color-surface-background-light)"
+          itemStyle=""
+        >
           <nidoca-divider .dividerType="${this.dividerType}" .opacity="${this.opacity}"
             >${this.loadShowcaseContent('NidocaDivider')}</nidoca-divider
           >
-        </nidoca-box>
+        </nidoca-flex-container>
       </nidoca-floating-container>
 
-      <nidoca-spacer size="20vh" .spacerTypes="${[SpacerType.ALL]}"></nidoca-spacer>
+      <nidoca-spacer cssStyle="padding:20vh;" .spacerTypes="${[SpacerType.ALL]}"></nidoca-spacer>
 
-      <nidoca-container
-        .containerProperties="${[
-          ContainerProperty.WIDTH_75,
-          ContainerProperty.SMARTPHONE_MAX_WIDTH,
-          ContainerProperty.TABLET_MAX_WIDTH,
-        ]}"
-      >
+      <nidoca-flex-container containerStyle="width:75%;" .devices="${[NidocaDevice.DESKTOP]}">
         <nidoca-flex-container itemStyle="flex-basis: 100%;">
           <nidoca-spacer spacerSize="${SpacerSize.BIG}" .spacerTypes="${[SpacerType.ALL]}">
             <nidoca-typography .typographyType="${TypographyType.H2}" text="<nidoca-divider/>"></nidoca-typography>
@@ -100,14 +107,20 @@ export class NidocaDividerShowcasePage extends NidocaShowcaseTemplate {
             </nidoca-tab-content>
 
             <nidoca-tab-content slot="tabContent">
-              <nidoca-spacer spacerSize="${SpacerSize.NORMAL}" .spacerTypes="${[SpacerType.ALL]}">
-                <nidoca-code
-                  code="${'<nidoca-divider \n  .dividerType="' +
-                  this.toAttributeCodeString(this.dividerType, 'DividerType', DividerType) +
-                  '" \n  .opacity="' +
-                  this.toAttributeCodeString(this.opacity, 'number') +
-                  '" >\n     nidoca-divider\n</nidoca-divider>'}"
-                ></nidoca-code>
+              <nidoca-spacer spacerSize="${SpacerSize.NORMAL}" .spacerTypes="${[SpacerType.TOP, SpacerType.BOTTOM]}">
+                <nidoca-spacer
+                  spacerSize="${SpacerSize.NORMAL}"
+                  .spacerTypes="${[SpacerType.LEFT, SpacerType.RIGHT]}"
+                  .devices="${[NidocaDevice.MOBILE]}"
+                >
+                  <nidoca-code
+                    code="${'<nidoca-divider \n  .dividerType="' +
+                    this.toAttributeCodeString(this.dividerType, 'DividerType', DividerType) +
+                    '" \n  .opacity="' +
+                    this.toAttributeCodeString(this.opacity, 'number') +
+                    '" >\n     nidoca-divider\n</nidoca-divider>'}"
+                  ></nidoca-code>
+                </nidoca-spacer>
               </nidoca-spacer>
             </nidoca-tab-content>
           </nidoca-tabs>
@@ -120,7 +133,7 @@ export class NidocaDividerShowcasePage extends NidocaShowcaseTemplate {
             ]}"
           ></nidoca-table>
         </nidoca-flex-container>
-      </nidoca-container>
+      </nidoca-flex-container>
     `;
   }
 }

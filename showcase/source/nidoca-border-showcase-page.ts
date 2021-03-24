@@ -1,5 +1,9 @@
 import {
-  ContainerProperty,
+  FlexAlignContent,
+  FlexAlignItems,
+  FlexDirection,
+  FlexJustifyContent,
+  FlexWrap,
   NidocaBorder,
   NidocaDevice,
   SpacerSize,
@@ -40,27 +44,30 @@ export class NidocaBorderShowcasePage extends NidocaShowcaseTemplate {
       <nidoca-floating-container
         top="var(--menubar-height)"
         width="100%"
+        height="40vh"
         style="background-color: var(--app-color-surface-background);"
       >
-        <nidoca-box cssStyle="width:100%; height:40vh;background-color: var(--app-color-surface-background-light)">
+        <nidoca-flex-container
+          .flexDirection="${FlexDirection.ROW}"
+          .flexWrap="${FlexWrap.WRAP}"
+          .flexJustifyContent="${FlexJustifyContent.CENTER}"
+          .flexAlignItems="${FlexAlignItems.CENTER}"
+          .flexAlignContent="${FlexAlignContent.SPACE_AROUND}"
+          containerStyle="height:100%; width:100%; background-color:var(--app-color-surface-background-light)"
+          itemStyle=""
+        >
           <nidoca-border
             .borderProperties="${this.borderProperties}"
             borderSize="${this.borderSize}"
             shadowType="${this.shadowType}"
             >${this.loadShowcaseContent('NidocaBorder')}</nidoca-border
           >
-        </nidoca-box>
+        </nidoca-flex-container>
       </nidoca-floating-container>
 
-      <nidoca-spacer size="20vh" .spacerTypes="${[SpacerType.ALL]}"></nidoca-spacer>
+      <nidoca-spacer cssStyle="padding:20vh;" .spacerTypes="${[SpacerType.ALL]}"></nidoca-spacer>
 
-      <nidoca-container
-        .containerProperties="${[
-          ContainerProperty.WIDTH_75,
-          ContainerProperty.SMARTPHONE_MAX_WIDTH,
-          ContainerProperty.TABLET_MAX_WIDTH,
-        ]}"
-      >
+      <nidoca-flex-container containerStyle="width:75%;" .devices="${[NidocaDevice.DESKTOP]}">
         <nidoca-flex-container itemStyle="flex-basis: 100%;">
           <nidoca-spacer spacerSize="${SpacerSize.BIG}" .spacerTypes="${[SpacerType.ALL]}">
             <nidoca-typography .typographyType="${TypographyType.H2}" text="<nidoca-border/>"></nidoca-typography>
@@ -79,7 +86,7 @@ export class NidocaBorderShowcasePage extends NidocaShowcaseTemplate {
                 >
                   <nidoca-form-combobox
                     .multiple="${true}"
-                    size="3"
+                    size="5"
                     label="borderProperties"
                     .value="${this.borderProperties}"
                     .options="${this.toComboboxOptions('String', String)}"
@@ -118,16 +125,22 @@ export class NidocaBorderShowcasePage extends NidocaShowcaseTemplate {
             </nidoca-tab-content>
 
             <nidoca-tab-content slot="tabContent">
-              <nidoca-spacer spacerSize="${SpacerSize.NORMAL}" .spacerTypes="${[SpacerType.ALL]}">
-                <nidoca-code
-                  code="${'<nidoca-border \n  .borderProperties="' +
-                  this.toAttributeCodeString(this.borderProperties, 'string[]', String) +
-                  '" \n  borderSize="' +
-                  this.toAttributeCodeString(this.borderSize, 'string') +
-                  '" \n  shadowType="' +
-                  this.toAttributeCodeString(this.shadowType, 'string') +
-                  '" >\n     nidoca-border\n</nidoca-border>'}"
-                ></nidoca-code>
+              <nidoca-spacer spacerSize="${SpacerSize.NORMAL}" .spacerTypes="${[SpacerType.TOP, SpacerType.BOTTOM]}">
+                <nidoca-spacer
+                  spacerSize="${SpacerSize.NORMAL}"
+                  .spacerTypes="${[SpacerType.LEFT, SpacerType.RIGHT]}"
+                  .devices="${[NidocaDevice.MOBILE]}"
+                >
+                  <nidoca-code
+                    code="${'<nidoca-border \n  .borderProperties="' +
+                    this.toAttributeCodeString(this.borderProperties, 'string[]', String) +
+                    '" \n  borderSize="' +
+                    this.toAttributeCodeString(this.borderSize, 'string') +
+                    '" \n  shadowType="' +
+                    this.toAttributeCodeString(this.shadowType, 'string') +
+                    '" >\n     nidoca-border\n</nidoca-border>'}"
+                  ></nidoca-code>
+                </nidoca-spacer>
               </nidoca-spacer>
             </nidoca-tab-content>
           </nidoca-tabs>
@@ -141,7 +154,7 @@ export class NidocaBorderShowcasePage extends NidocaShowcaseTemplate {
             ]}"
           ></nidoca-table>
         </nidoca-flex-container>
-      </nidoca-container>
+      </nidoca-flex-container>
     `;
   }
 }

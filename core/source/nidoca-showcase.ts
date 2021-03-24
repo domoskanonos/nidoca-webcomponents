@@ -5,20 +5,19 @@ import {NidocaTemplate} from './nidoca-template';
 export class NidocaShowcase extends NidocaTemplate {
   getContent(): TemplateResult {
     return html`
-      <nidoca-progress>dsoidjf</nidoca-progress>
       
       
 
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
 
-<nidoca-spacer>Hallo</nidoca-spacer>
+<nidoca-navigation-link text="Hallo">Hallo</nidoca-navigation-link>
 
-      <nidoca-code>class java {}</nidoca-code>
-      
-      <nidoca-form-switch></nidoca-form-switch>
-      
-      <nidoca-box cssStyle="height:600px; width:100%">
-        <nidoca-table></nidoca-table>
-      </nidoca-box>
       
       
       

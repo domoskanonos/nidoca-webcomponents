@@ -1,4 +1,5 @@
 import {css, customElement, html, property, query, LitElement, TemplateResult} from 'lit-element';
+import {NidocaDevice} from '.';
 
 export enum FlexDirection {
   ROW = 'row',
@@ -64,20 +65,23 @@ export class NidocaFlexContainer extends LitElement {
       background-color: inherit;
     }
 
-    .FLEX_CONTAINER,
-    ::slotted(.FLEX_CONTAINER) {
+    .flexContainer,
+    ::slotted(.flexContainer) {
       margin: auto;
       display: flex;
       overflow: auto;
       box-sizing: border-boxed;
     }
 
-    .FLEX_ITEM,
-    ::slotted(.FLEX_ITEM) {
+    .flexItem,
+    ::slotted(.flexItem) {
       box-sizing: border-box;
       overflow: auto;
     }
   `;
+
+  @property()
+  devices: NidocaDevice[] = [NidocaDevice.DESKTOP, NidocaDevice.TABLET, NidocaDevice.MOBILE];
 
   @property()
   flexDirection: FlexDirection = FlexDirection.ROW;
@@ -105,28 +109,23 @@ export class NidocaFlexContainer extends LitElement {
 
   render(): TemplateResult {
     return html`
-      <div
-        class="FLEX_CONTAINER"
+      <style>
+        ${this.toDeviceStyle('flexContainerDevice', this.devices, this.containerStyle)}
+        ${this.toDeviceStyle('flexItemDevice', this.devices, this.itemStyle)}
+      </style>
+      <slot
+        class="flexContainer flexContainerDevice"
         style="flex-direction: ${this.flexDirection}; flex-wrap: ${this.flexWrap}; justify-content: ${this
-          .flexJustifyContent}; align-items: ${this.flexAlignItems}; align-content: ${this.flexAlignContent}; ${this
-          .containerStyle}"
-      >
-        <slot id="slotElement" @slotchange="${(event: Event) => this.slotChanged(event)}"></slot>
-      </div>
+          .flexJustifyContent}; align-items: ${this.flexAlignItems}; align-content: ${this.flexAlignContent};"
+        id="slotElement"
+        @slotchange="${(event: Event) => this.slotChanged(event)}"
+      ></slot>
     `;
-  }
-
-  protected update(changedProperties: Map<PropertyKey, unknown>): void {
-    super.update(changedProperties);
-    if (changedProperties.get('itemStyle') != undefined) {
-      this.changeSlotComponentsStyle(this.slotElement);
-    }
   }
 
   slotChanged(event: Event) {
     let slotElement: HTMLSlotElement = <HTMLSlotElement>event.target;
     let classList = slotElement.classList;
-    classList.add('FLEX_ITEM');
     this.changeSlotComponentsStyle(slotElement);
   }
 
@@ -137,8 +136,22 @@ export class NidocaFlexContainer extends LitElement {
     let elements: Element[] = slotElement.assignedElements();
     for (let index = 0; index < elements.length; index++) {
       let element: Element = elements[index];
-      element.setAttribute('style', this.itemStyle);
+      let classList = element.classList;
+      if (!classList.contains('flexItem')) {
+        classList.add('flexItem');
+      }
+      if (!classList.contains('flexItemDevice')) {
+        classList.add('flexItemDevice');
+      }
     }
   }
 
+  toDeviceStyle(className: string, devices: NidocaDevice[], style: string): string {
+    style = '.'.concat(className).concat(', ::slotted(.').concat(className).concat(') {').concat(style).concat().concat('}');
+    let styleAll = '';
+    devices.forEach((device: NidocaDevice) => {
+      styleAll = styleAll.concat(device.asMediaStyle(style));
+    });
+    return styleAll;
+  }
 }

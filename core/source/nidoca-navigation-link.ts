@@ -36,33 +36,30 @@ export class NidocaNavigationLink extends LitElement {
   @property()
   href: string = '';
 
-  @property()
-  rendered: boolean = true;
-
   render(): TemplateResult {
-    return this.rendered
-      ? html`
+    return html`
           <div
             class="navItem"
             class="${'TODO: RouterService.getUniqueInstance().getPath()' == this.href ? 'navItem selected' : 'navItem'}"
           >
-            <nidoca-spacer spacerSize="${SpacerSize.SMALL}" spacerAlignment="${SpacerType.VERTICAL}">
+            <nidoca-spacer spacerSize="${SpacerSize.LITTLE}" .spacerTypes="${[SpacerType.VERTICAL]}">
               <nidoca-flex-container
                 @click="${() => this.linkClicked()}"
                 .flexDirection="${FlexDirection.ROW}"
                 .flexWrap="${FlexWrap.NO_WRAP}"
-                .flexJustifyContent="${FlexJustifyContent.SPACE_AROUND}"
+                .flexJustifyContent="${FlexJustifyContent.FLEX_START}"
                 .flexAlignItems="${FlexAlignItems.CENTER}"
                 .flexAlignContent="${FlexAlignContent.FLEX_START}"
-                itemStyle="flex-basis: auto 80%;"
+                itemStyle="flex-basis: 48px auto;"
               >
                 <nidoca-icon icon="${this.icon}" .withIconSpace="${false}"></nidoca-icon>
-                <nidoca-typography typographyType="${TypographyType.BODY2}">${this.text}</nidoca-typography>
+                <nidoca-spacer spacerSize="${SpacerSize.LITTLE}" .spacerTypes="${[SpacerType.LEFT]}">
+                  <nidoca-typography typographyType="${TypographyType.BODY1}">${this.text}</nidoca-typography>
+                </nidoca-spacer>
               </nidoca-flex-container>
             </nidoca-spacer>
           </div>
-        `
-      : html``;
+        `;
   }
 
   private linkClicked() {

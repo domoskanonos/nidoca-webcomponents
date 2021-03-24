@@ -114,7 +114,7 @@ export class NidocaFormCombobox extends NidocaFormAbstractInputElement {
       for (let i = 0, len = this.selectElement.options.length; i < len; i++) {
         let opt: HTMLOptionElement = this.selectElement.options[i];
         if (opt.selected) {
-          outputValue.push(opt.value);
+          outputValue.push(this.options[i].key);
         }
       }
     } else if (this.selectElement != null) {

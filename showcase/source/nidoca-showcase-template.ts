@@ -5,6 +5,7 @@ import {
   FlexJustifyContent,
   FormOutputData,
   NidocaFlexContainer,
+  NidocaSpacer,
   NidocaTemplate,
   TypographyType,
 } from '@domoskanonos/nidoca-core';
@@ -21,7 +22,12 @@ export abstract class NidocaShowcaseTemplate extends NidocaTemplate {
 
   getHeaderLeftComponent(): TemplateResult {
     return html`
-      <nidoca-icon title="Menü" slot="leftComponents" icon="menu" .clickable="${true}"></nidoca-icon>
+      <nidoca-icon
+        title="Menü"
+        slot="leftComponents"
+        icon="${this.navigationClosed ? 'menu' : 'clear'}"
+        .clickable="${true}"
+      ></nidoca-icon>
       <nidoca-typography slot="leftComponents" .typographyType="${TypographyType.BODY1}"
         >nidoca showcase
       </nidoca-typography>
@@ -114,6 +120,8 @@ export abstract class NidocaShowcaseTemplate extends NidocaTemplate {
         )}${this.createBox('200')}${this.createBox('150')}${this.createBox('100')}${this.createBox(
           '200'
         )}${this.createBox('100')}`;
+      case 'NidocaSpacer':
+        return html`${this.createBox('200')}`;
       default:
         return html`${name}`;
     }
@@ -129,6 +137,10 @@ export abstract class NidocaShowcaseTemplate extends NidocaTemplate {
         nidocaFlexContainer.flexAlignContent = FlexAlignContent.SPACE_EVENLY;
         nidocaFlexContainer.flexAlignItems = FlexAlignItems.CENTER;
         return nidocaFlexContainer;
+      case 'NidocaSpacer':
+        let nidocaSpacer: NidocaSpacer = new NidocaSpacer();
+        nidocaSpacer.cssStyle = 'background-color:var(--app-color-primary-background)';
+        return nidocaSpacer;
       default:
         return null;
     }
@@ -154,14 +166,8 @@ export abstract class NidocaShowcaseTemplate extends NidocaTemplate {
         <nidoca-navigation-link
           slot="links"
           icon=""
-          text="<nidoca-floating-container>"
-          href="nidoca-floating-container"
-        ></nidoca-navigation-link>
-        <nidoca-navigation-link
-          slot="links"
-          icon=""
-          text="<nidoca-container>"
-          href="nidoca-container"
+          text="<nidoca-spacer>"
+          href="nidoca-spacer"
         ></nidoca-navigation-link>
         <nidoca-navigation-link
           slot="links"
@@ -172,10 +178,15 @@ export abstract class NidocaShowcaseTemplate extends NidocaTemplate {
         <nidoca-navigation-link
           slot="links"
           icon=""
+          text="<nidoca-floating-container>"
+          href="nidoca-floating-container"
+        ></nidoca-navigation-link>
+        <nidoca-navigation-link
+          slot="links"
+          icon=""
           text="<nidoca-grid-container>"
           href="nidoca-grid-container"
         ></nidoca-navigation-link>
-        <nidoca-navigation-link slot="links" icon="" text="<nidoca-box>" href="nidoca-box"></nidoca-navigation-link>
         <nidoca-navigation-link
           slot="links"
           icon=""
@@ -309,12 +320,6 @@ export abstract class NidocaShowcaseTemplate extends NidocaTemplate {
           href="nidoca-navigation-section"
         ></nidoca-navigation-link>
         <nidoca-navigation-link slot="links" icon="" text="<nidoca-table>" href="nidoca-table"></nidoca-navigation-link>
-        <nidoca-navigation-link
-          slot="links"
-          icon=""
-          text="<nidoca-spacer>"
-          href="nidoca-spacer"
-        ></nidoca-navigation-link>
         <nidoca-navigation-link slot="links" icon="" text="<nidoca-tabs>" href="nidoca-tabs"></nidoca-navigation-link>
         <nidoca-navigation-link slot="links" icon="" text="<nidoca-tab>" href="nidoca-tab"></nidoca-navigation-link>
         <nidoca-navigation-link

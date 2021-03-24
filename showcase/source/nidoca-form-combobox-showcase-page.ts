@@ -1,5 +1,9 @@
 import {
-  ContainerProperty,
+  FlexAlignContent,
+  FlexAlignItems,
+  FlexDirection,
+  FlexJustifyContent,
+  FlexWrap,
   FormOutputData,
   NidocaDevice,
   NidocaFormCombobox,
@@ -77,9 +81,18 @@ export class NidocaFormComboboxShowcasePage extends NidocaShowcaseTemplate {
       <nidoca-floating-container
         top="var(--menubar-height)"
         width="100%"
+        height="40vh"
         style="background-color: var(--app-color-surface-background);"
       >
-        <nidoca-box cssStyle="width:100%; height:40vh;background-color: var(--app-color-surface-background-light)">
+        <nidoca-flex-container
+          .flexDirection="${FlexDirection.ROW}"
+          .flexWrap="${FlexWrap.WRAP}"
+          .flexJustifyContent="${FlexJustifyContent.CENTER}"
+          .flexAlignItems="${FlexAlignItems.CENTER}"
+          .flexAlignContent="${FlexAlignContent.SPACE_AROUND}"
+          containerStyle="height:100%; width:100%; background-color:var(--app-color-surface-background-light)"
+          itemStyle=""
+        >
           <nidoca-form-combobox
             name="${this.name}"
             .value="${this.value}"
@@ -93,18 +106,12 @@ export class NidocaFormComboboxShowcasePage extends NidocaShowcaseTemplate {
             .multiple="${this.multiple}"
             >${this.loadShowcaseContent('NidocaFormCombobox')}</nidoca-form-combobox
           >
-        </nidoca-box>
+        </nidoca-flex-container>
       </nidoca-floating-container>
 
-      <nidoca-spacer size="20vh" .spacerTypes="${[SpacerType.ALL]}"></nidoca-spacer>
+      <nidoca-spacer cssStyle="padding:20vh;" .spacerTypes="${[SpacerType.ALL]}"></nidoca-spacer>
 
-      <nidoca-container
-        .containerProperties="${[
-          ContainerProperty.WIDTH_75,
-          ContainerProperty.SMARTPHONE_MAX_WIDTH,
-          ContainerProperty.TABLET_MAX_WIDTH,
-        ]}"
-      >
+      <nidoca-flex-container containerStyle="width:75%;" .devices="${[NidocaDevice.DESKTOP]}">
         <nidoca-flex-container itemStyle="flex-basis: 100%;">
           <nidoca-spacer spacerSize="${SpacerSize.BIG}" .spacerTypes="${[SpacerType.ALL]}">
             <nidoca-typography
@@ -150,7 +157,7 @@ export class NidocaFormComboboxShowcasePage extends NidocaShowcaseTemplate {
 
                   <nidoca-form-combobox
                     .multiple="${true}"
-                    size="3"
+                    size="5"
                     label="options"
                     .value="${this.options}"
                     .options="${this.toComboboxOptions('FormOutputData', FormOutputData)}"
@@ -235,30 +242,36 @@ export class NidocaFormComboboxShowcasePage extends NidocaShowcaseTemplate {
             </nidoca-tab-content>
 
             <nidoca-tab-content slot="tabContent">
-              <nidoca-spacer spacerSize="${SpacerSize.NORMAL}" .spacerTypes="${[SpacerType.ALL]}">
-                <nidoca-code
-                  code="${'<nidoca-form-combobox \n  name="' +
-                  this.toAttributeCodeString(this.name, 'string') +
-                  '" \n  .value="' +
-                  this.toAttributeCodeString(this.value, 'any') +
-                  '" \n  label="' +
-                  this.toAttributeCodeString(this.label, 'string') +
-                  '" \n  .options="' +
-                  this.toAttributeCodeString(this.options, 'FormOutputData[]', FormOutputData) +
-                  '" \n  .required="' +
-                  this.toAttributeCodeString(this.required, 'boolean') +
-                  '" \n  errorText="' +
-                  this.toAttributeCodeString(this.errorText, 'string') +
-                  '" \n  infoText="' +
-                  this.toAttributeCodeString(this.infoText, 'string') +
-                  '" \n  warningText="' +
-                  this.toAttributeCodeString(this.warningText, 'string') +
-                  '" \n  .size="' +
-                  this.toAttributeCodeString(this.size, 'number') +
-                  '" \n  .multiple="' +
-                  this.toAttributeCodeString(this.multiple, 'boolean') +
-                  '"  >\n     nidoca-form-combobox\n</nidoca-form-combobox>'}"
-                ></nidoca-code>
+              <nidoca-spacer spacerSize="${SpacerSize.NORMAL}" .spacerTypes="${[SpacerType.TOP, SpacerType.BOTTOM]}">
+                <nidoca-spacer
+                  spacerSize="${SpacerSize.NORMAL}"
+                  .spacerTypes="${[SpacerType.LEFT, SpacerType.RIGHT]}"
+                  .devices="${[NidocaDevice.MOBILE]}"
+                >
+                  <nidoca-code
+                    code="${'<nidoca-form-combobox \n  name="' +
+                    this.toAttributeCodeString(this.name, 'string') +
+                    '" \n  .value="' +
+                    this.toAttributeCodeString(this.value, 'any') +
+                    '" \n  label="' +
+                    this.toAttributeCodeString(this.label, 'string') +
+                    '" \n  .options="' +
+                    this.toAttributeCodeString(this.options, 'FormOutputData[]', FormOutputData) +
+                    '" \n  .required="' +
+                    this.toAttributeCodeString(this.required, 'boolean') +
+                    '" \n  errorText="' +
+                    this.toAttributeCodeString(this.errorText, 'string') +
+                    '" \n  infoText="' +
+                    this.toAttributeCodeString(this.infoText, 'string') +
+                    '" \n  warningText="' +
+                    this.toAttributeCodeString(this.warningText, 'string') +
+                    '" \n  .size="' +
+                    this.toAttributeCodeString(this.size, 'number') +
+                    '" \n  .multiple="' +
+                    this.toAttributeCodeString(this.multiple, 'boolean') +
+                    '"  >\n     nidoca-form-combobox\n</nidoca-form-combobox>'}"
+                  ></nidoca-code>
+                </nidoca-spacer>
               </nidoca-spacer>
             </nidoca-tab-content>
           </nidoca-tabs>
@@ -279,7 +292,7 @@ export class NidocaFormComboboxShowcasePage extends NidocaShowcaseTemplate {
             ]}"
           ></nidoca-table>
         </nidoca-flex-container>
-      </nidoca-container>
+      </nidoca-flex-container>
     `;
   }
 }

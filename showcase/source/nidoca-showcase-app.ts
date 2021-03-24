@@ -21,16 +21,14 @@ export class NidocaShowcaseApp extends NidocaAbstractApp {
     let path = RouterService.getUniqueInstance().getCurrentPage();
     console.log('current path: '.concat(path));
     switch (path) {
-      case 'nidoca-floating-container':
-        return html` <nidoca-floating-container-showcase-page></nidoca-floating-container-showcase-page> `;
-      case 'nidoca-container':
-        return html` <nidoca-container-showcase-page></nidoca-container-showcase-page> `;
+      case 'nidoca-spacer':
+        return html` <nidoca-spacer-showcase-page></nidoca-spacer-showcase-page> `;
       case 'nidoca-flex-container':
         return html` <nidoca-flex-container-showcase-page></nidoca-flex-container-showcase-page> `;
+      case 'nidoca-floating-container':
+        return html` <nidoca-floating-container-showcase-page></nidoca-floating-container-showcase-page> `;
       case 'nidoca-grid-container':
         return html` <nidoca-grid-container-showcase-page></nidoca-grid-container-showcase-page> `;
-      case 'nidoca-box':
-        return html` <nidoca-box-showcase-page></nidoca-box-showcase-page> `;
       case 'nidoca-accordion':
         return html` <nidoca-accordion-showcase-page></nidoca-accordion-showcase-page> `;
       case 'nidoca-accordion-item':
@@ -87,8 +85,6 @@ export class NidocaShowcaseApp extends NidocaAbstractApp {
         return html` <nidoca-navigation-section-showcase-page></nidoca-navigation-section-showcase-page> `;
       case 'nidoca-table':
         return html` <nidoca-table-showcase-page></nidoca-table-showcase-page> `;
-      case 'nidoca-spacer':
-        return html` <nidoca-spacer-showcase-page></nidoca-spacer-showcase-page> `;
       case 'nidoca-tabs':
         return html` <nidoca-tabs-showcase-page></nidoca-tabs-showcase-page> `;
       case 'nidoca-tab':

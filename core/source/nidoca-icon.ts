@@ -123,7 +123,7 @@ export class NidocaIcon extends LitElement {
 
   render(): TemplateResult {
     return html`
-      <nidoca-spacer size="${this.withIconSpace ? String(this.size / 2).concat(this.sizeUnit) : '0px'}">
+      <nidoca-spacer cssStyle="padding: ${this.withIconSpace ? String(this.size / 2).concat(this.sizeUnit) : '0px'}">
         <span
           class="icon-container ${this.iconShadowType} ${this.clickable && !this.deactivated ? 'clickable' : ''} ${this
             .round
