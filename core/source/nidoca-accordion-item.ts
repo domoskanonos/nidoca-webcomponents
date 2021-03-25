@@ -1,6 +1,6 @@
 import {css, customElement, html, property, TemplateResult} from 'lit-element';
 import {LitElement} from 'lit-element';
-import {GridAlignItems, GridJustifyItems} from './nidoca-grid-container';
+import {FlexAlignContent, FlexAlignItems, FlexDirection, FlexJustifyContent, FlexWrap} from '.';
 import {BorderProperties} from './nidoca-border';
 import {SpacerType, SpacerSize} from './nidoca-spacer';
 import {VisibleType} from './nidoca-visible';
@@ -22,21 +22,29 @@ export class NidocaAccordionItem extends LitElement {
   render(): TemplateResult {
     return html`
       <div class="ACCORDION_ITEM">
-        <nidoca-border .borderProperties="${[BorderProperties.ALL, BorderProperties.FULL_WIDTH]}">
-          <nidoca-grid-container
+        <nidoca-border
+          .borderProperties="${[
+            BorderProperties.BOTTOM,
+            BorderProperties.LEFT,
+            BorderProperties.RIGHT,
+            BorderProperties.FULL_WIDTH,
+          ]}"
+        >
+          <nidoca-flex-container
             class="ACCORDION_HEADER"
             @click="${() => this.toggle()}"
-            .gridJustifyItems="${GridJustifyItems.STRETCH}"
-            .gridAlignItems="${GridAlignItems.CENTER}"
-            .gridTemplateRows="${['1fr']}"
-            .gridTemplateColumns="${['auto', '1fr', 'auto']}"
-            ><nidoca-spacer
-              spacerSize="${SpacerSize.MEDIUM}"
-              spacerAlignment="${SpacerType.HORIZONTAL}"
-            ></nidoca-spacer>
-            <nidoca-typography text="${this.header}"></nidoca-typography>
+            .devices="${[]}"
+            .flexDirection="${FlexDirection.ROW}"
+            .flexWrap="${FlexWrap.WRAP}"
+            .flexJustifyContent="${FlexJustifyContent.SPACE_BETWEEN}"
+            .flexAlignItems="${FlexAlignItems.CENTER}"
+            .flexAlignContent="${FlexAlignContent.CENTER}"
+          >
+            <nidoca-spacer spacerSize="${SpacerSize.MEDIUM}" .spacerTypes="${[SpacerType.LEFT]}">
+              <nidoca-typography text="${this.header}"></nidoca-typography>
+            </nidoca-spacer>
             <nidoca-icon icon="${this.opened ? 'keyboard_arrow_down' : 'keyboard_arrow_up'}"></nidoca-icon>
-          </nidoca-grid-container>
+          </nidoca-flex-container>
           <nidoca-visible visibleType="${this.opened ? VisibleType.NORMAL : VisibleType.HIDE}">
             <slot></slot>
           </nidoca-visible>

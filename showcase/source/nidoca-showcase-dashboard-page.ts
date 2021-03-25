@@ -9,6 +9,7 @@ import {
   NidocaDevice,
   SpacerSize,
   TargetType,
+  TypographyAlignment,
   TypographyType,
 } from '@domoskanonos/nidoca-core';
 import {customElement, html, TemplateResult} from 'lit-element';
@@ -27,17 +28,24 @@ export class NidocaShowcaseDashboardPage extends NidocaShowcaseTemplate {
         containerStyle="width:100%; height:40vh; color: var(--app-color-primary); background-color:var(--app-color-primary-background-dark);"
       >
         <nidoca-typography .typographyType="${TypographyType.H1}">#nidoca</nidoca-typography>
-        <nidoca-typography>
-          Nidoca ist ein leichtgewichtiges Open Source UI-Framework, das auf
-          <nidoca-link href="https://www.webcomponents.org/" targetType="${TargetType.BLANK}">Webcomponents</nidoca-link
-          >,
-          <nidoca-link href="https://www.typescriptlang.org/" targetType="${TargetType.BLANK}">Typescript</nidoca-link>
-          und
-          <nidoca-link href="https://lit-element.polymer-project.org/" targetType="${TargetType.BLANK}"
-            >LitElement</nidoca-link
-          >
-          aufbaut.
-        </nidoca-typography>
+
+        <nidoca-spacer>
+          <nidoca-typography .typographyAlignment="${TypographyAlignment.CENTER}">
+            nidoca is a lightweight open source ui framework, based on
+            <nidoca-link href="https://www.webcomponents.org/" targetType="${TargetType.BLANK}"
+              >WebComponents</nidoca-link
+            >,
+            <nidoca-link href="https://www.typescriptlang.org/" targetType="${TargetType.BLANK}"
+              >Typescript</nidoca-link
+            >
+            and
+            <nidoca-link href="https://lit-element.polymer-project.org/" targetType="${TargetType.BLANK}"
+              >LitElement</nidoca-link
+            >
+            aufbaut.
+          </nidoca-typography>
+        </nidoca-spacer>
+
         <nidoca-spacer spacerSize="${SpacerSize.MAX}">
           <nidoca-flex-container
             flexItemBasisValue="auto"
@@ -47,14 +55,18 @@ export class NidocaShowcaseDashboardPage extends NidocaShowcaseTemplate {
             .flexAlignItems="${FlexAlignItems.START}"
             .flexAlignContent="${FlexAlignContent.FLEX_START}"
           >
-            <nidoca-button
-              .buttonType="${ButtonType.SECONDARY}"
-              text="Installation"
-              @nidoca-event-button-clicked="${() => {
-                RouterService.getUniqueInstance().navigate('nidoca-showcase-get-started-page');
-              }}"
-            ></nidoca-button>
-            <nidoca-button .buttonType="${ButtonType.SECONDARY}" text="Dokumentation"></nidoca-button>
+            <nidoca-spacer>
+              <nidoca-button
+                .buttonType="${ButtonType.SECONDARY}"
+                text="Installation"
+                @nidoca-event-button-clicked="${() => {
+                  RouterService.getUniqueInstance().navigate('nidoca-showcase-get-started-page');
+                }}"
+              ></nidoca-button>
+            </nidoca-spacer>
+            <nidoca-spacer>
+              <nidoca-button .buttonType="${ButtonType.SECONDARY}" text="Dokumentation"></nidoca-button>
+            </nidoca-spacer>
           </nidoca-flex-container>
         </nidoca-spacer>
       </nidoca-flex-container>
@@ -65,7 +77,7 @@ export class NidocaShowcaseDashboardPage extends NidocaShowcaseTemplate {
         .flexJustifyContent="${FlexJustifyContent.FLEX_START}"
         .flexAlignItems="${FlexAlignItems.FLEX_START}"
         .flexAlignContent="${FlexAlignContent.FLEX_START}"
-        .devices="${[NidocaDevice.DESKTOP,NidocaDevice.TABLET]}"
+        .devices="${[NidocaDevice.DESKTOP, NidocaDevice.TABLET]}"
         itemStyle="flex-basis: 33.3%"
       >
         <nidoca-spacer spacerSize="${SpacerSize.NORMAL}">
@@ -77,10 +89,17 @@ export class NidocaShowcaseDashboardPage extends NidocaShowcaseTemplate {
               backgroundColor="var(--app-color-surface-background)"
             ></nidoca-icon>
             <nidoca-typography .typographyType="${TypographyType.H4}">Responsive</nidoca-typography>
-            <nidoca-typography .typographyType="${TypographyType.BODY1}">
-              Die Komponenten sind so aufgebaut, das Sie auf jedem Endgerät gut aussehen. Der Vorteil des Responsiven
-              Paradigma ist, das man das Frontend nicht für jedes Entgerät neu programmieren muss.</nidoca-typography
-            >
+
+            <nidoca-spacer>
+              <nidoca-typography
+                .typographyType="${TypographyType.BODY1}"
+                .typographyAlignment="${TypographyAlignment.CENTER}"
+              >
+                The components looks good on all devices, because they are designed responsive. Responsive web design is
+                a creative and technical paradigm for creating websites, so that they can react to the properties of the
+                end device used, especially smartphones and tablet computers.
+              </nidoca-typography>
+            </nidoca-spacer>
           </nidoca-flex-container>
         </nidoca-spacer>
         <nidoca-spacer spacerSize="${SpacerSize.NORMAL}">
@@ -92,12 +111,16 @@ export class NidocaShowcaseDashboardPage extends NidocaShowcaseTemplate {
               backgroundColor="var(--app-color-surface-background)"
             ></nidoca-icon>
             <nidoca-typography .typographyType="${TypographyType.H4}">Leichtgewichtig</nidoca-typography>
-            <nidoca-typography .typographyType="${TypographyType.BODY1}">
-              Es handelt sich um ein sehr kleines, nützliches Komponentenframework welches gerade mal 32KB groß ist. Es
-              enthält mehr als 30 Komponenten und verschiedene zusätzliche Funktion wie Routing und. Aus den
-              Basiskomponenten lassen sich sehr einfach und schnell weitere Komponenten individuell
-              erstellen.</nidoca-typography
-            >
+            <nidoca-spacer>
+              <nidoca-typography
+                .typographyType="${TypographyType.BODY1}"
+                .typographyAlignment="${TypographyAlignment.CENTER}"
+              >
+                It is a very small, leightweight component framework which is just 32KB small. It contains more than 30
+                components and various additional functions such as routing / internationalization and storage.
+                Components can be easy customized and is extendable very easy. create.</nidoca-typography
+              >
+            </nidoca-spacer>
           </nidoca-flex-container>
         </nidoca-spacer>
         <nidoca-spacer spacerSize="${SpacerSize.NORMAL}">
@@ -109,10 +132,15 @@ export class NidocaShowcaseDashboardPage extends NidocaShowcaseTemplate {
               backgroundColor="var(--app-color-surface-background)"
             ></nidoca-icon>
             <nidoca-typography .typographyType="${TypographyType.H4}">Open Source</nidoca-typography>
-            <nidoca-typography .typographyType="${TypographyType.BODY1}">
-              Es handelt sich um ein Open Source Projekt welches sie in Github finden. Sie können das Projekt natürlich
-              gerne finanziell unterstützen wenn es Ihnen gefällt.
-            </nidoca-typography>
+            <nidoca-spacer>
+              <nidoca-typography
+                .typographyType="${TypographyType.BODY1}"
+                .typographyAlignment="${TypographyAlignment.CENTER}"
+              >
+                It is an open source project which you can find on Github. You can of course do the project gladly
+                support financially if you like it.
+              </nidoca-typography>
+            </nidoca-spacer>
           </nidoca-flex-container>
         </nidoca-spacer>
       </nidoca-flex-container>

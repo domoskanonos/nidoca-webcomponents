@@ -1,5 +1,4 @@
 import {css, customElement, html, LitElement, property, query, TemplateResult} from 'lit-element';
-import {GridAlignItems, GridJustifyItems} from './nidoca-grid-container';
 import {BorderProperties, BorderSize, ShadowType} from './nidoca-border';
 
 @customElement('nidoca-search-bar')
@@ -40,12 +39,7 @@ export class NidocaSearchBar extends LitElement {
         .borderSize="${BorderSize.THIN}"
         .shadowType="${ShadowType.NONE}"
       >
-        <nidoca-grid-container
-          .gridJustifyItems="${GridJustifyItems.STRETCH}"
-          .gridAlignItems="${GridAlignItems.STRETCH}"
-          .gridTemplateRows="${['1fr']}"
-          .gridTemplateColumns="${['auto', '1fr']}"
-        >
+        <nidoca-flex-container>
           <nidoca-icon icon="search"></nidoca-icon>
           <input
             class="input-field"
@@ -55,7 +49,7 @@ export class NidocaSearchBar extends LitElement {
             placeholder="${this.placeholder}"
             value="${this.value}"
           />
-        </nidoca-grid-container>
+        </nidoca-flex-container>
       </nidoca-border>
     `;
   }

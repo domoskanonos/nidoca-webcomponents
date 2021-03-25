@@ -103,8 +103,17 @@ export abstract class NidocaShowcaseTemplate extends NidocaTemplate {
         switch (name) {
           case 'NidocaFlexContainer':
             return html`${this.createBox('100')}${this.createBox('100')}${this.createBox('150')}${this.createBox('100')}${this.createBox('150')}${this.createBox('100')}${this.createBox('100')}${this.createBox('150')}${this.createBox('100')}${this.createBox('100')}${this.createBox('150')}${this.createBox('100')}${this.createBox('200')}${this.createBox('150')}${this.createBox('100')}${this.createBox('200')}${this.createBox('100')}`;
-          case 'NidocaSpacer':
+          case 'NidocaFloatingContainer':
             return html`${this.createBox('200')}`;
+            case 'NidocaSpacer':
+            return html`${this.createBox('200')}`;
+            case 'NidocaAccordion':
+            return html`
+            <nidoca-accordion-item header="Accordion 1"> <nidoca-rich-media></nidoca-rich-media> </nidoca-accordion-item>
+            <nidoca-accordion-item header="Accordion 2"> <nidoca-rich-media></nidoca-rich-media> </nidoca-accordion-item>
+            `;
+
+    
           default:
             return html`${name}`;
         }

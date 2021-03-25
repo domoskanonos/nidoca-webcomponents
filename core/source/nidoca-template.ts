@@ -12,11 +12,7 @@ export abstract class NidocaTemplate extends LitElement {
     }
 
     #content {
-      position: fixed;
-      min-height: 100%;
-      width: 100%;
       overflow-y: scroll;
-      max-height: 100%;
     }
 
     #content.menuClosed {
@@ -68,12 +64,13 @@ export abstract class NidocaTemplate extends LitElement {
       if (this.headerElement != undefined) {
         let height = this.headerElement.offsetHeight;
         let topStyle = 'top:'.concat(String(height)).concat('px;');
+        let paddingTopStyle = 'padding-top:'.concat(String(height)).concat('px;');
         console.debug('set header height to corresponding elements: %s', topStyle);
         if (this.sidebarElement != undefined) {
           this.sidebarElement.setAttribute('style', topStyle);
         }
         if (this.contentElement != undefined) {
-          this.contentElement.setAttribute('style', topStyle);
+          this.contentElement.setAttribute('style', paddingTopStyle);
         }
       }
     });

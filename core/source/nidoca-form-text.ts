@@ -74,13 +74,13 @@ export class NidocaFormText extends NidocaFormAbstractInputElement {
   size: number | undefined;
 
   @property()
-  errorText: string = "errorText";
+  errorText: string = "";
 
   @property()
-  infoText: string = "infoText";
+  infoText: string = "";
 
   @property()
-  warningText: string = "warningText";
+  warningText: string = "";
 
   @query('#inputElement')
   private inputElement: HTMLInputElement | undefined;
@@ -126,24 +126,24 @@ export class NidocaFormText extends NidocaFormAbstractInputElement {
   }
 
   async handleFocus() {
-    this.dispatchOutputDataChangeEvent();
+    this.dispatchOutputDataChangeEvent('nidoca-form-text-event-focus');
   }
 
   async handleFocusout() {
-    this.dispatchOutputDataChangeEvent();
+    this.dispatchOutputDataChangeEvent('nidoca-form-text-focusout');
   }
 
   async handleChange() {
-    this.dispatchOutputDataChangeEvent();
+    this.dispatchOutputDataChangeEvent('nidoca-form-text-event-change');
   }
 
   async handleKeyup() {
-    this.dispatchOutputDataChangeEvent();
+    this.dispatchOutputDataChangeEvent('nidoca-form-text-event-change');
   }
 
-  async dispatchOutputDataChangeEvent() {
+  async dispatchOutputDataChangeEvent(eventName: string) {
     if (this.validate()) {
-      let customEvent = new CustomEvent('nidoca-form-text-event-change', {
+      let customEvent = new CustomEvent(eventName, {
         detail: this.getOutputData(),
         bubbles: true,
         composed: true,

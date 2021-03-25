@@ -1,5 +1,4 @@
 import {css, customElement, html, LitElement, property, TemplateResult} from 'lit-element';
-import {GridAlignItems, GridJustifyItems} from './nidoca-grid-container';
 import {VisibleType} from './nidoca-visible';
 import {FormOutputData} from './nidoca-form-abstract-input-element';
 
@@ -40,20 +39,14 @@ export class NidocaListItem extends LitElement {
   render(): TemplateResult {
     return html`
       <nidoca-ripple>
-        <nidoca-grid-container
-          class="LIST_ITEM"
-          .gridJustifyItems="${GridJustifyItems.START}"
-          .gridAlignItems="${GridAlignItems.CENTER}"
-          .gridTemplateRows="${['1fr']}"
-          .gridTemplateColumns="${['auto', '1fr']}"
-        >
+        <div class="LIST_ITEM">
           <nidoca-visible visibleType="${this.selectionMode ? VisibleType.NORMAL : VisibleType.HIDE}">
             <nidoca-icon
               @click="${() => this.switchSelected()}"
               icon="${this.selected ? 'check_box' : 'check_box_outline_blank'}"
             ></nidoca-icon>
           </nidoca-visible>
-          <slot class="LIST_ITEM_SLOT" @click="${() => this.itemClicked()}"></slot> </nidoca-grid-container
+          <slot class="LIST_ITEM_SLOT" @click="${() => this.itemClicked()}"></slot></div
       ></nidoca-ripple>
     `;
   }

@@ -1,26 +1,16 @@
 import {customElement, html, TemplateResult} from 'lit-element';
+import {AccordionType} from './nidoca-accordion';
 import {NidocaTemplate} from './nidoca-template';
 
 @customElement('nidoca-showcase')
 export class NidocaShowcase extends NidocaTemplate {
   getContent(): TemplateResult {
     return html`
-      
-      
-
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-
-<nidoca-navigation-link text="Hallo">Hallo</nidoca-navigation-link>
-
-      
-      
-      
+      <nidoca-captcha></nidoca-captcha>
+      <nidoca-accordion accordionType="${AccordionType.MULTI}">
+        <nidoca-accordion-item header="Accordion 1" .opened="${true}"> <nidoca-rich-media></nidoca-rich-media> </nidoca-accordion-item>
+        <nidoca-accordion-item header="Accordion 1"> <nidoca-rich-media></nidoca-rich-media> </nidoca-accordion-item>
+      </nidoca-accordion>
     `;
   }
 

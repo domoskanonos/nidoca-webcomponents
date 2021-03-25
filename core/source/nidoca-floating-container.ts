@@ -3,7 +3,7 @@ import {css, customElement, html, property, LitElement, TemplateResult} from 'li
 @customElement('nidoca-floating-container')
 export class NidocaFloatingContainer extends LitElement {
   static styles = css`
-    .FLOATING {
+    .floatingContainer {
       position: fixed;
       display: inline;
       margin: auto;
@@ -33,7 +33,7 @@ export class NidocaFloatingContainer extends LitElement {
   render(): TemplateResult {
     return html`
       <slot
-        class="FLOATING"
+        class="floatingContainer"
         style="${this.toStyle(this.height, this.width, this.left, this.right, this.top, this.bottom)}"
       ></slot>
     `;

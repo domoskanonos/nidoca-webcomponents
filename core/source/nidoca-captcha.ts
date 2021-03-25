@@ -1,7 +1,7 @@
 import {css, customElement, html, LitElement, property, query, TemplateResult} from 'lit-element';
-import {NidocaFormText} from './nidoca-form-text';
+import {NidocaFormText, TextType} from './nidoca-form-text';
 
-@customElement('nidoca-captcha-component')
+@customElement('nidoca-captcha')
 export class NidocaCaptcha extends LitElement {
   static styles = css``;
 
@@ -18,7 +18,7 @@ export class NidocaCaptcha extends LitElement {
     return html`
       <nidoca-form-text
         id="inputfield"
-        @nidoca-event-inputfield-focus-out="${() => this.validate()}"
+        @nidoca-form-text-focusout="${() => this.validate()}"
         label="${'nidoca-captcha-label'
           .concat(String(this.numberOne))
           .concat(' + ')
@@ -26,6 +26,7 @@ export class NidocaCaptcha extends LitElement {
           .concat(' = ?')}"
         name="captcha"
         trailingIcon="create"
+        .textType="${TextType.NUMBER}"
         value=""
       ></nidoca-form-text>
     `;

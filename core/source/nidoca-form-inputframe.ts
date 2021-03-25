@@ -44,7 +44,7 @@ export class NidocaFormInputframe extends LitElement {
         <nidoca-spacer spacerSize="${SpacerSize.SMALL}" .spacerTypes="${[SpacerType.ALL]}">
           <nidoca-flex-container
             .flexAlignContent="${FlexAlignContent.CENTER}"
-            flexItemBasisValue="100%"
+            itemStyle="flex-basis: 100%;"
           >
             <nidoca-typography .typographyType="${TypographyType.CAPTION}" text="${this.label}"></nidoca-typography>
             <slot></slot>
@@ -54,7 +54,7 @@ export class NidocaFormInputframe extends LitElement {
 
       <nidoca-flex-container
         .flexAlignContent="${FlexAlignContent.CENTER}"
-        flexItemBasisValue="100%"
+        itemStyle="flex-basis: 100%;"
         ><nidoca-visible visibleType="${this.infoText ? VisibleType.NORMAL : VisibleType.HIDE}">
           <nidoca-typography .typographyType="${TypographyType.BODY1}" text="${this.infoText}"></nidoca-typography>
         </nidoca-visible>

@@ -2,7 +2,6 @@ export * from './nidoca-meta';
 export * from './nidoca-spacer';
 export * from './nidoca-flex-container';
 export * from './nidoca-floating-container';
-export * from './nidoca-grid-container';
 export * from './nidoca-abstract-app';
 export * from './nidoca-accordion';
 export * from './nidoca-accordion-item';

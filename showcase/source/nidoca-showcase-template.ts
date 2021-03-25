@@ -120,8 +120,16 @@ export abstract class NidocaShowcaseTemplate extends NidocaTemplate {
         )}${this.createBox('200')}${this.createBox('150')}${this.createBox('100')}${this.createBox(
           '200'
         )}${this.createBox('100')}`;
+      case 'NidocaFloatingContainer':
+        return html`${this.createBox('200')}`;
       case 'NidocaSpacer':
         return html`${this.createBox('200')}`;
+      case 'NidocaAccordion':
+        return html`
+          <nidoca-accordion-item header="Accordion 1"> <nidoca-rich-media></nidoca-rich-media> </nidoca-accordion-item>
+          <nidoca-accordion-item header="Accordion 2"> <nidoca-rich-media></nidoca-rich-media> </nidoca-accordion-item>
+        `;
+
       default:
         return html`${name}`;
     }
@@ -180,12 +188,6 @@ export abstract class NidocaShowcaseTemplate extends NidocaTemplate {
           icon=""
           text="<nidoca-floating-container>"
           href="nidoca-floating-container"
-        ></nidoca-navigation-link>
-        <nidoca-navigation-link
-          slot="links"
-          icon=""
-          text="<nidoca-grid-container>"
-          href="nidoca-grid-container"
         ></nidoca-navigation-link>
         <nidoca-navigation-link
           slot="links"

@@ -15,7 +15,6 @@ import './nidoca-form-inputframe-showcase-page.ts';
 import './nidoca-form-showcase-page.ts';
 import './nidoca-form-switch-showcase-page.ts';
 import './nidoca-form-text-showcase-page.ts';
-import './nidoca-grid-container-showcase-page.ts';
 import './nidoca-icon-showcase-page.ts';
 import './nidoca-link-showcase-page.ts';
 import './nidoca-list-item-showcase-page.ts';

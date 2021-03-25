@@ -27,8 +27,6 @@ export class NidocaShowcaseApp extends NidocaAbstractApp {
         return html` <nidoca-flex-container-showcase-page></nidoca-flex-container-showcase-page> `;
       case 'nidoca-floating-container':
         return html` <nidoca-floating-container-showcase-page></nidoca-floating-container-showcase-page> `;
-      case 'nidoca-grid-container':
-        return html` <nidoca-grid-container-showcase-page></nidoca-grid-container-showcase-page> `;
       case 'nidoca-accordion':
         return html` <nidoca-accordion-showcase-page></nidoca-accordion-showcase-page> `;
       case 'nidoca-accordion-item':
