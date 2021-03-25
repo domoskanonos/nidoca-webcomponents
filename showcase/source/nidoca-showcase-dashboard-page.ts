@@ -6,6 +6,7 @@ import {
   FlexDirection,
   FlexJustifyContent,
   FlexWrap,
+  NidocaDevice,
   SpacerSize,
   TargetType,
   TypographyType,
@@ -64,6 +65,7 @@ export class NidocaShowcaseDashboardPage extends NidocaShowcaseTemplate {
         .flexJustifyContent="${FlexJustifyContent.FLEX_START}"
         .flexAlignItems="${FlexAlignItems.FLEX_START}"
         .flexAlignContent="${FlexAlignContent.FLEX_START}"
+        .devices="${[NidocaDevice.DESKTOP,NidocaDevice.TABLET]}"
         itemStyle="flex-basis: 33.3%"
       >
         <nidoca-spacer spacerSize="${SpacerSize.NORMAL}">
