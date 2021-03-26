@@ -113,11 +113,13 @@ export class NidocaNavigationShowcasePage extends NidocaShowcaseTemplate {
               ['<slot name="contentAfter"></slot>'],
             ]}"
           ></nidoca-table>
+          <nidoca-spacer></nidoca-spacer>
 
           <nidoca-table
             .headers="${['property', 'type']}"
             .rows="${[['navigationStyle', this.object2Value('NavigationStyle', NavigationStyle)]]}"
           ></nidoca-table>
+          <nidoca-spacer></nidoca-spacer>
         </nidoca-flex-container>
       </nidoca-flex-container>
     `;

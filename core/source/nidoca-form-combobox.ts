@@ -166,11 +166,11 @@ export class NidocaFormCombobox extends NidocaFormAbstractInputElement {
     return this.errorText.length == 0;
   }
 
-  private isSelectedOption(option: FormOutputData): boolean {
+  private isSelectedOption(option: FormOutputData) {
     if (this.multiple) {
-      let isSelected: boolean = false;
-      for (let option of this.value) {
-        isSelected = this.value === option.value;
+      let isSelected = false;
+      for (let val of this.value) {
+        isSelected = option.key === val;
         if (isSelected) {
           return true;
         }

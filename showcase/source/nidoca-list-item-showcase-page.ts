@@ -130,6 +130,7 @@ export class NidocaListItemShowcasePage extends NidocaShowcaseTemplate {
               ['selected', this.object2Value('boolean', null)],
             ]}"
           ></nidoca-table>
+          <nidoca-spacer></nidoca-spacer>
         </nidoca-flex-container>
       </nidoca-flex-container>
     `;

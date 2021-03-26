@@ -52,7 +52,8 @@ export class {{this.name}}ShowcasePage extends NidocaShowcaseTemplate {
             .flexAlignItems="${FlexAlignItems.CENTER}"
             .flexAlignContent="${FlexAlignContent.SPACE_AROUND}"
             containerStyle="height:100%; width:100%; background-color:var(--app-color-surface-background-light)"
-            itemStyle="" >
+            itemStyle=""
+            >
                           <{{toTag this.name}} {{#each properties}}{{#if this.isStatic}}{{else}}{{#if this.private}}{{else}}{{#isnt this.type "string"}}.{{/isnt}}{{this.name}}="${ this.{{this.name}} }"{{/if}} {{/if}}{{/each}}>${this.loadShowcaseContent('{{this.name}}')}</{{toTag this.name}}>
             </nidoca-flex-container>
          </nidoca-floating-container>
@@ -119,10 +120,12 @@ export class {{this.name}}ShowcasePage extends NidocaShowcaseTemplate {
 
     {{#if this.slots}}
       <nidoca-table .headers="${ ["slots"] }" .rows="${ [ {{#each this.slots}} ["<slot{{#if this}} name=\"{{ this }}\"{{/if}}></slot>"], {{/each}} ] }"></nidoca-table>
+      <nidoca-spacer></nidoca-spacer>
     {{/if}}
 
     {{#if this.properties}}
       <nidoca-table .headers="${ ["property", "type"] }" .rows="${ [ {{#each this.properties}}{{#if this.isStatic}}{{else}}{{#if this.private}}{{else}}["{{this.name}}",this.object2Value('{{this.type}}', {{#if this.isObject}} {{this.type}}{{else}}null{{/if}})],{{/if}} {{/if}}{{/each}} ] }"></nidoca-table>
+      <nidoca-spacer></nidoca-spacer>
     {{/if}}
 
   </nidoca-flex-container>

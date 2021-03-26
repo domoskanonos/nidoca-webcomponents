@@ -131,6 +131,7 @@ export class NidocaNavigationSectionShowcasePage extends NidocaShowcaseTemplate 
               ['rendered', this.object2Value('boolean', null)],
             ]}"
           ></nidoca-table>
+          <nidoca-spacer></nidoca-spacer>
         </nidoca-flex-container>
       </nidoca-flex-container>
     `;

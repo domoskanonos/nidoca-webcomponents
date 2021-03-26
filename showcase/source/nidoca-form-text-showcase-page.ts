@@ -431,6 +431,7 @@ export class NidocaFormTextShowcasePage extends NidocaShowcaseTemplate {
               ['warningText', this.object2Value('string', null)],
             ]}"
           ></nidoca-table>
+          <nidoca-spacer></nidoca-spacer>
         </nidoca-flex-container>
       </nidoca-flex-container>
     `;

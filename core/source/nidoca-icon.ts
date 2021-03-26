@@ -92,22 +92,7 @@ export class NidocaIcon extends LitElement {
   icon: string = 'thumb_up';
 
   @property()
-  color: string = '';
-
-  @property()
-  backgroundColor: string = '';
-
-  @property()
-  iconShadowType: string = ShadowType.NONE;
-
-  @property()
-  size: number = 24;
-
-  @property()
-  sizeUnit: string = 'px';
-
-  @property()
-  iconTitle: string = '';
+  iconShadowType: IconShadowType = IconShadowType.NONE;
 
   @property()
   withIconSpace: boolean = true;
@@ -120,6 +105,19 @@ export class NidocaIcon extends LitElement {
 
   @property()
   deactivated: boolean = false;
+
+  @property()
+  color: string = '';
+
+  @property()
+  backgroundColor: string = 'transparent';
+
+  @property()
+  size: number = 24;
+
+  @property()
+  sizeUnit: string = 'px';
+
 
   render(): TemplateResult {
     return html`
@@ -150,7 +148,7 @@ export class NidocaIcon extends LitElement {
               ? 'font-size: '.concat(this.size.toString()).concat(this.sizeUnit).concat(';')
               : ''}"
             >${this.icon}</i
-          ><slot></slot>
+          >
         </span>
       </nidoca-spacer>
     `;

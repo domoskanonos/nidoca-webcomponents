@@ -126,6 +126,7 @@ export class NidocaFormOutputDataShowcasePage extends NidocaShowcaseTemplate {
               ['<slot name="footer"></slot>'],
             ]}"
           ></nidoca-table>
+          <nidoca-spacer></nidoca-spacer>
 
           <nidoca-table
             .headers="${['property', 'type']}"
@@ -134,6 +135,7 @@ export class NidocaFormOutputDataShowcasePage extends NidocaShowcaseTemplate {
               ['formData', this.object2Value('FormData', FormData)],
             ]}"
           ></nidoca-table>
+          <nidoca-spacer></nidoca-spacer>
         </nidoca-flex-container>
       </nidoca-flex-container>
     `;
@@ -261,6 +263,7 @@ export class NidocaFormShowcasePage extends NidocaShowcaseTemplate {
               ['<slot name="footer"></slot>'],
             ]}"
           ></nidoca-table>
+          <nidoca-spacer></nidoca-spacer>
 
           <nidoca-table
             .headers="${['property', 'type']}"
@@ -269,6 +272,7 @@ export class NidocaFormShowcasePage extends NidocaShowcaseTemplate {
               ['autocomplete', this.object2Value('boolean', null)],
             ]}"
           ></nidoca-table>
+          <nidoca-spacer></nidoca-spacer>
         </nidoca-flex-container>
       </nidoca-flex-container>
     `;

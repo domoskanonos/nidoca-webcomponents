@@ -141,6 +141,7 @@ export class NidocaCaptchaShowcasePage extends NidocaShowcaseTemplate {
               ['inputfield', this.object2Value('NidocaFormText | undefined', null)],
             ]}"
           ></nidoca-table>
+          <nidoca-spacer></nidoca-spacer>
         </nidoca-flex-container>
       </nidoca-flex-container>
     `;

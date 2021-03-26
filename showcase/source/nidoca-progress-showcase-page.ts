@@ -109,6 +109,7 @@ export class NidocaProgressShowcasePage extends NidocaShowcaseTemplate {
             .headers="${['property', 'type']}"
             .rows="${[['progressType', this.object2Value('ProgressType', ProgressType)]]}"
           ></nidoca-table>
+          <nidoca-spacer></nidoca-spacer>
         </nidoca-flex-container>
       </nidoca-flex-container>
     `;

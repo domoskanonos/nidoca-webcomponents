@@ -157,6 +157,7 @@ export class NidocaRichMediaShowcasePage extends NidocaShowcaseTemplate {
               ['richMediaProperties', this.object2Value('RichMediaProperties[]', null)],
             ]}"
           ></nidoca-table>
+          <nidoca-spacer></nidoca-spacer>
         </nidoca-flex-container>
       </nidoca-flex-container>
     `;

@@ -13,13 +13,13 @@ export class NidocaFormSwitch extends NidocaFormAbstractInputElement {
   name: string = 'name';
 
   @property()
-  assistiveText: string = 'assistiveText';
+  assistiveText: string = '';
 
   @property()
-  infoText: string = 'infoText';
+  infoText: string = '';
 
   @property()
-  errorText: string = 'errorText';
+  errorText: string = '';
 
   @property()
   selected: boolean = false;

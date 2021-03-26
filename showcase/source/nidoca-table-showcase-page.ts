@@ -133,6 +133,7 @@ export class NidocaTableShowcasePage extends NidocaShowcaseTemplate {
               ['rows', this.object2Value('any[]', null)],
             ]}"
           ></nidoca-table>
+          <nidoca-spacer></nidoca-spacer>
         </nidoca-flex-container>
       </nidoca-flex-container>
     `;

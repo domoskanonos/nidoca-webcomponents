@@ -4,7 +4,10 @@ import {
   FlexAlignItems,
   FlexJustifyContent,
   FormOutputData,
+  IconShadowType,
+  NidocaAccordion,
   NidocaFlexContainer,
+  NidocaIcon,
   NidocaSpacer,
   NidocaTemplate,
   TypographyType,
@@ -126,8 +129,42 @@ export abstract class NidocaShowcaseTemplate extends NidocaTemplate {
         return html`${this.createBox('200')}`;
       case 'NidocaAccordion':
         return html`
-          <nidoca-accordion-item header="Accordion 1"> <nidoca-rich-media></nidoca-rich-media> </nidoca-accordion-item>
-          <nidoca-accordion-item header="Accordion 2"> <nidoca-rich-media></nidoca-rich-media> </nidoca-accordion-item>
+          <nidoca-accordion-item header="Accordion 1">
+            <nidoca-spacer
+              ><nidoca-typography
+                >Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+                labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et
+                ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum
+                dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
+                magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
+                clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</nidoca-typography
+              ></nidoca-spacer
+            >
+          </nidoca-accordion-item>
+          <nidoca-accordion-item header="Accordion 2">
+            <nidoca-spacer
+              ><nidoca-typography
+                >Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+                labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et
+                ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum
+                dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
+                magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
+                clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</nidoca-typography
+              ></nidoca-spacer
+            >
+          </nidoca-accordion-item>
+          <nidoca-accordion-item header="Accordion 3">
+            <nidoca-spacer
+              ><nidoca-typography
+                >Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+                labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et
+                ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum
+                dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
+                magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
+                clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</nidoca-typography
+              ></nidoca-spacer
+            >
+          </nidoca-accordion-item>
         `;
 
       default:
@@ -149,6 +186,19 @@ export abstract class NidocaShowcaseTemplate extends NidocaTemplate {
         let nidocaSpacer: NidocaSpacer = new NidocaSpacer();
         nidocaSpacer.cssStyle = 'background-color:var(--app-color-primary-background)';
         return nidocaSpacer;
+      case 'NidocaIcon':
+        let nidocaIcon: NidocaIcon = new NidocaIcon();
+        nidocaIcon.backgroundColor = 'var(--app-color-primary-background);';
+        nidocaIcon.color = 'var(--app-color-primary);';
+        nidocaIcon.size = 96;
+        nidocaIcon.withIconSpace = true;
+        nidocaIcon.round = true;
+        nidocaIcon.iconShadowType = IconShadowType.SHADOW_2;
+        return nidocaIcon;
+      case 'NidocaAccordion':
+        let nidocaAccordion: NidocaAccordion = new NidocaAccordion();
+        //nidocaAccordion.setAttribute('style', 'width:500px;');
+        return nidocaAccordion;
       default:
         return null;
     }

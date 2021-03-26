@@ -104,11 +104,13 @@ export class NidocaTabContentShowcasePage extends NidocaShowcaseTemplate {
           </nidoca-tabs>
 
           <nidoca-table .headers="${['slots']}" .rows="${[['<slot></slot>']]}"></nidoca-table>
+          <nidoca-spacer></nidoca-spacer>
 
           <nidoca-table
             .headers="${['property', 'type']}"
             .rows="${[['selected', this.object2Value('boolean', null)]]}"
           ></nidoca-table>
+          <nidoca-spacer></nidoca-spacer>
         </nidoca-flex-container>
       </nidoca-flex-container>
     `;

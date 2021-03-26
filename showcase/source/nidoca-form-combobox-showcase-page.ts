@@ -291,6 +291,7 @@ export class NidocaFormComboboxShowcasePage extends NidocaShowcaseTemplate {
               ['multiple', this.object2Value('boolean', null)],
             ]}"
           ></nidoca-table>
+          <nidoca-spacer></nidoca-spacer>
         </nidoca-flex-container>
       </nidoca-flex-container>
     `;

@@ -170,6 +170,7 @@ export class NidocaSpacerShowcasePage extends NidocaShowcaseTemplate {
           </nidoca-tabs>
 
           <nidoca-table .headers="${['slots']}" .rows="${[['<slot></slot>']]}"></nidoca-table>
+          <nidoca-spacer></nidoca-spacer>
 
           <nidoca-table
             .headers="${['property', 'type']}"
@@ -180,6 +181,7 @@ export class NidocaSpacerShowcasePage extends NidocaShowcaseTemplate {
               ['cssStyle', this.object2Value('string', null)],
             ]}"
           ></nidoca-table>
+          <nidoca-spacer></nidoca-spacer>
         </nidoca-flex-container>
       </nidoca-flex-container>
     `;

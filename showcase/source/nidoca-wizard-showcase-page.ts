@@ -134,6 +134,7 @@ export class NidocaWizardShowcasePage extends NidocaShowcaseTemplate {
               ['selectedStep', this.object2Value('WizardStep', WizardStep)],
             ]}"
           ></nidoca-table>
+          <nidoca-spacer></nidoca-spacer>
         </nidoca-flex-container>
       </nidoca-flex-container>
     `;

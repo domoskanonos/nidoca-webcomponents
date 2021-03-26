@@ -265,6 +265,7 @@ export class NidocaFlexContainerShowcasePage extends NidocaShowcaseTemplate {
               ['itemStyle', this.object2Value('string', null)],
             ]}"
           ></nidoca-table>
+          <nidoca-spacer></nidoca-spacer>
         </nidoca-flex-container>
       </nidoca-flex-container>
     `;

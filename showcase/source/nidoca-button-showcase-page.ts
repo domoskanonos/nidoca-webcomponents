@@ -142,6 +142,7 @@ export class NidocaButtonShowcasePage extends NidocaShowcaseTemplate {
           </nidoca-tabs>
 
           <nidoca-table .headers="${['slots']}" .rows="${[['<slot></slot>']]}"></nidoca-table>
+          <nidoca-spacer></nidoca-spacer>
 
           <nidoca-table
             .headers="${['property', 'type']}"
@@ -151,6 +152,7 @@ export class NidocaButtonShowcasePage extends NidocaShowcaseTemplate {
               ['text', this.object2Value('string', null)],
             ]}"
           ></nidoca-table>
+          <nidoca-spacer></nidoca-spacer>
         </nidoca-flex-container>
       </nidoca-flex-container>
     `;

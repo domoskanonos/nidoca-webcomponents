@@ -149,6 +149,7 @@ export class NidocaNavigationLinkShowcasePage extends NidocaShowcaseTemplate {
               ['href', this.object2Value('string', null)],
             ]}"
           ></nidoca-table>
+          <nidoca-spacer></nidoca-spacer>
         </nidoca-flex-container>
       </nidoca-flex-container>
     `;

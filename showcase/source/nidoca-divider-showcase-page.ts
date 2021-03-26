@@ -132,6 +132,7 @@ export class NidocaDividerShowcasePage extends NidocaShowcaseTemplate {
               ['opacity', this.object2Value('number', null)],
             ]}"
           ></nidoca-table>
+          <nidoca-spacer></nidoca-spacer>
         </nidoca-flex-container>
       </nidoca-flex-container>
     `;

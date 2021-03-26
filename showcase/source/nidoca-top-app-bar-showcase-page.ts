@@ -92,8 +92,10 @@ export class NidocaTopAppBarShowcasePage extends NidocaShowcaseTemplate {
               ['<slot name="prominentComponents"></slot>'],
             ]}"
           ></nidoca-table>
+          <nidoca-spacer></nidoca-spacer>
 
           <nidoca-table .headers="${['property', 'type']}" .rows="${[]}"></nidoca-table>
+          <nidoca-spacer></nidoca-spacer>
         </nidoca-flex-container>
       </nidoca-flex-container>
     `;

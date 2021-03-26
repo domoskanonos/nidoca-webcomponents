@@ -4,6 +4,7 @@ import {
   FlexDirection,
   FlexJustifyContent,
   FlexWrap,
+  IconShadowType,
   NidocaDevice,
   NidocaIcon,
   SpacerSize,
@@ -20,22 +21,7 @@ export class NidocaIconShowcasePage extends NidocaShowcaseTemplate {
   icon: string = '';
 
   @property()
-  color: string = '';
-
-  @property()
-  backgroundColor: string = '';
-
-  @property()
-  iconShadowType: string = '';
-
-  @property()
-  size: number = 0;
-
-  @property()
-  sizeUnit: string = '';
-
-  @property()
-  iconTitle: string = '';
+  iconShadowType: IconShadowType = Object.values(IconShadowType)[0];
 
   @property()
   withIconSpace: boolean = false;
@@ -49,6 +35,18 @@ export class NidocaIconShowcasePage extends NidocaShowcaseTemplate {
   @property()
   deactivated: boolean = false;
 
+  @property()
+  color: string = '';
+
+  @property()
+  backgroundColor: string = '';
+
+  @property()
+  size: number = 0;
+
+  @property()
+  sizeUnit: string = '';
+
   constructor() {
     super();
     let initComponent: NidocaIcon | null = null;
@@ -59,17 +57,7 @@ export class NidocaIconShowcasePage extends NidocaShowcaseTemplate {
 
     this.icon = initComponent.icon;
 
-    this.color = initComponent.color;
-
-    this.backgroundColor = initComponent.backgroundColor;
-
     this.iconShadowType = initComponent.iconShadowType;
-
-    this.size = initComponent.size;
-
-    this.sizeUnit = initComponent.sizeUnit;
-
-    this.iconTitle = initComponent.iconTitle;
 
     this.withIconSpace = initComponent.withIconSpace;
 
@@ -78,6 +66,14 @@ export class NidocaIconShowcasePage extends NidocaShowcaseTemplate {
     this.clickable = initComponent.clickable;
 
     this.deactivated = initComponent.deactivated;
+
+    this.color = initComponent.color;
+
+    this.backgroundColor = initComponent.backgroundColor;
+
+    this.size = initComponent.size;
+
+    this.sizeUnit = initComponent.sizeUnit;
   }
 
   getContent(): TemplateResult {
@@ -99,16 +95,15 @@ export class NidocaIconShowcasePage extends NidocaShowcaseTemplate {
         >
           <nidoca-icon
             icon="${this.icon}"
-            color="${this.color}"
-            backgroundColor="${this.backgroundColor}"
-            iconShadowType="${this.iconShadowType}"
-            .size="${this.size}"
-            sizeUnit="${this.sizeUnit}"
-            iconTitle="${this.iconTitle}"
+            .iconShadowType="${this.iconShadowType}"
             .withIconSpace="${this.withIconSpace}"
             .round="${this.round}"
             .clickable="${this.clickable}"
             .deactivated="${this.deactivated}"
+            color="${this.color}"
+            backgroundColor="${this.backgroundColor}"
+            .size="${this.size}"
+            sizeUnit="${this.sizeUnit}"
             >${this.loadShowcaseContent('NidocaIcon')}</nidoca-icon
           >
         </nidoca-flex-container>
@@ -144,72 +139,16 @@ export class NidocaIconShowcasePage extends NidocaShowcaseTemplate {
 
                   <nidoca-spacer spacerSize="${SpacerSize.MEDIUM}" .spacerTypes="${[SpacerType.ALL]}"></nidoca-spacer>
 
-                  <nidoca-form-text
-                    label="color"
-                    .value="${this.color}"
-                    @nidoca-form-text-event-change="${(event: CustomEvent) => (this.color = event.detail.value)}"
-                    warningText=""
-                    errorText=""
-                    infoText=""
-                  ></nidoca-form-text>
-
-                  <nidoca-spacer spacerSize="${SpacerSize.MEDIUM}" .spacerTypes="${[SpacerType.ALL]}"></nidoca-spacer>
-
-                  <nidoca-form-text
-                    label="backgroundColor"
-                    .value="${this.backgroundColor}"
-                    @nidoca-form-text-event-change="${(event: CustomEvent) =>
-                      (this.backgroundColor = event.detail.value)}"
-                    warningText=""
-                    errorText=""
-                    infoText=""
-                  ></nidoca-form-text>
-
-                  <nidoca-spacer spacerSize="${SpacerSize.MEDIUM}" .spacerTypes="${[SpacerType.ALL]}"></nidoca-spacer>
-
-                  <nidoca-form-text
+                  <nidoca-form-combobox
                     label="iconShadowType"
                     .value="${this.iconShadowType}"
-                    @nidoca-form-text-event-change="${(event: CustomEvent) =>
+                    .options="${this.toComboboxOptions('IconShadowType', IconShadowType)}"
+                    @nidoca-form-combobox-event-change="${(event: CustomEvent) =>
                       (this.iconShadowType = event.detail.value)}"
                     warningText=""
                     errorText=""
                     infoText=""
-                  ></nidoca-form-text>
-
-                  <nidoca-spacer spacerSize="${SpacerSize.MEDIUM}" .spacerTypes="${[SpacerType.ALL]}"></nidoca-spacer>
-
-                  <nidoca-form-text
-                    textType="${TextType.NUMBER}"
-                    label="size"
-                    .value="${this.size}"
-                    @nidoca-form-text-event-change="${(event: CustomEvent) => (this.size = event.detail.value)}"
-                    warningText=""
-                    errorText=""
-                    infoText=""
-                  ></nidoca-form-text>
-
-                  <nidoca-spacer spacerSize="${SpacerSize.MEDIUM}" .spacerTypes="${[SpacerType.ALL]}"></nidoca-spacer>
-
-                  <nidoca-form-text
-                    label="sizeUnit"
-                    .value="${this.sizeUnit}"
-                    @nidoca-form-text-event-change="${(event: CustomEvent) => (this.sizeUnit = event.detail.value)}"
-                    warningText=""
-                    errorText=""
-                    infoText=""
-                  ></nidoca-form-text>
-
-                  <nidoca-spacer spacerSize="${SpacerSize.MEDIUM}" .spacerTypes="${[SpacerType.ALL]}"></nidoca-spacer>
-
-                  <nidoca-form-text
-                    label="iconTitle"
-                    .value="${this.iconTitle}"
-                    @nidoca-form-text-event-change="${(event: CustomEvent) => (this.iconTitle = event.detail.value)}"
-                    warningText=""
-                    errorText=""
-                    infoText=""
-                  ></nidoca-form-text>
+                  ></nidoca-form-combobox>
 
                   <nidoca-spacer spacerSize="${SpacerSize.MEDIUM}" .spacerTypes="${[SpacerType.ALL]}"></nidoca-spacer>
 
@@ -262,6 +201,52 @@ export class NidocaIconShowcasePage extends NidocaShowcaseTemplate {
                   ></nidoca-form-switch>
 
                   <nidoca-spacer spacerSize="${SpacerSize.MEDIUM}" .spacerTypes="${[SpacerType.ALL]}"></nidoca-spacer>
+
+                  <nidoca-form-text
+                    label="color"
+                    .value="${this.color}"
+                    @nidoca-form-text-event-change="${(event: CustomEvent) => (this.color = event.detail.value)}"
+                    warningText=""
+                    errorText=""
+                    infoText=""
+                  ></nidoca-form-text>
+
+                  <nidoca-spacer spacerSize="${SpacerSize.MEDIUM}" .spacerTypes="${[SpacerType.ALL]}"></nidoca-spacer>
+
+                  <nidoca-form-text
+                    label="backgroundColor"
+                    .value="${this.backgroundColor}"
+                    @nidoca-form-text-event-change="${(event: CustomEvent) =>
+                      (this.backgroundColor = event.detail.value)}"
+                    warningText=""
+                    errorText=""
+                    infoText=""
+                  ></nidoca-form-text>
+
+                  <nidoca-spacer spacerSize="${SpacerSize.MEDIUM}" .spacerTypes="${[SpacerType.ALL]}"></nidoca-spacer>
+
+                  <nidoca-form-text
+                    textType="${TextType.NUMBER}"
+                    label="size"
+                    .value="${this.size}"
+                    @nidoca-form-text-event-change="${(event: CustomEvent) => (this.size = event.detail.value)}"
+                    warningText=""
+                    errorText=""
+                    infoText=""
+                  ></nidoca-form-text>
+
+                  <nidoca-spacer spacerSize="${SpacerSize.MEDIUM}" .spacerTypes="${[SpacerType.ALL]}"></nidoca-spacer>
+
+                  <nidoca-form-text
+                    label="sizeUnit"
+                    .value="${this.sizeUnit}"
+                    @nidoca-form-text-event-change="${(event: CustomEvent) => (this.sizeUnit = event.detail.value)}"
+                    warningText=""
+                    errorText=""
+                    infoText=""
+                  ></nidoca-form-text>
+
+                  <nidoca-spacer spacerSize="${SpacerSize.MEDIUM}" .spacerTypes="${[SpacerType.ALL]}"></nidoca-spacer>
                 </nidoca-spacer>
               </nidoca-spacer>
             </nidoca-tab-content>
@@ -276,18 +261,8 @@ export class NidocaIconShowcasePage extends NidocaShowcaseTemplate {
                   <nidoca-code
                     code="${'<nidoca-icon \n  icon="' +
                     this.toAttributeCodeString(this.icon, 'string') +
-                    '" \n  color="' +
-                    this.toAttributeCodeString(this.color, 'string') +
-                    '" \n  backgroundColor="' +
-                    this.toAttributeCodeString(this.backgroundColor, 'string') +
-                    '" \n  iconShadowType="' +
-                    this.toAttributeCodeString(this.iconShadowType, 'string') +
-                    '" \n  .size="' +
-                    this.toAttributeCodeString(this.size, 'number') +
-                    '" \n  sizeUnit="' +
-                    this.toAttributeCodeString(this.sizeUnit, 'string') +
-                    '" \n  iconTitle="' +
-                    this.toAttributeCodeString(this.iconTitle, 'string') +
+                    '" \n  .iconShadowType="' +
+                    this.toAttributeCodeString(this.iconShadowType, 'IconShadowType', IconShadowType) +
                     '" \n  .withIconSpace="' +
                     this.toAttributeCodeString(this.withIconSpace, 'boolean') +
                     '" \n  .round="' +
@@ -296,6 +271,14 @@ export class NidocaIconShowcasePage extends NidocaShowcaseTemplate {
                     this.toAttributeCodeString(this.clickable, 'boolean') +
                     '" \n  .deactivated="' +
                     this.toAttributeCodeString(this.deactivated, 'boolean') +
+                    '" \n  color="' +
+                    this.toAttributeCodeString(this.color, 'string') +
+                    '" \n  backgroundColor="' +
+                    this.toAttributeCodeString(this.backgroundColor, 'string') +
+                    '" \n  .size="' +
+                    this.toAttributeCodeString(this.size, 'number') +
+                    '" \n  sizeUnit="' +
+                    this.toAttributeCodeString(this.sizeUnit, 'string') +
                     '" >\n     nidoca-icon\n</nidoca-icon>'}"
                   ></nidoca-code>
                 </nidoca-spacer>
@@ -303,24 +286,22 @@ export class NidocaIconShowcasePage extends NidocaShowcaseTemplate {
             </nidoca-tab-content>
           </nidoca-tabs>
 
-          <nidoca-table .headers="${['slots']}" .rows="${[['<slot></slot>']]}"></nidoca-table>
-
           <nidoca-table
             .headers="${['property', 'type']}"
             .rows="${[
               ['icon', this.object2Value('string', null)],
-              ['color', this.object2Value('string', null)],
-              ['backgroundColor', this.object2Value('string', null)],
-              ['iconShadowType', this.object2Value('string', null)],
-              ['size', this.object2Value('number', null)],
-              ['sizeUnit', this.object2Value('string', null)],
-              ['iconTitle', this.object2Value('string', null)],
+              ['iconShadowType', this.object2Value('IconShadowType', IconShadowType)],
               ['withIconSpace', this.object2Value('boolean', null)],
               ['round', this.object2Value('boolean', null)],
               ['clickable', this.object2Value('boolean', null)],
               ['deactivated', this.object2Value('boolean', null)],
+              ['color', this.object2Value('string', null)],
+              ['backgroundColor', this.object2Value('string', null)],
+              ['size', this.object2Value('number', null)],
+              ['sizeUnit', this.object2Value('string', null)],
             ]}"
           ></nidoca-table>
+          <nidoca-spacer></nidoca-spacer>
         </nidoca-flex-container>
       </nidoca-flex-container>
     `;

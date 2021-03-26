@@ -106,6 +106,7 @@ export class NidocaVisibleShowcasePage extends NidocaShowcaseTemplate {
             .headers="${['property', 'type']}"
             .rows="${[['visibleType', this.object2Value('string', null)]]}"
           ></nidoca-table>
+          <nidoca-spacer></nidoca-spacer>
         </nidoca-flex-container>
       </nidoca-flex-container>
     `;

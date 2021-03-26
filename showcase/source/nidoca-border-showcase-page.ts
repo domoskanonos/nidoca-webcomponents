@@ -153,6 +153,7 @@ export class NidocaBorderShowcasePage extends NidocaShowcaseTemplate {
               ['shadowType', this.object2Value('string', null)],
             ]}"
           ></nidoca-table>
+          <nidoca-spacer></nidoca-spacer>
         </nidoca-flex-container>
       </nidoca-flex-container>
     `;

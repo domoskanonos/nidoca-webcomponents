@@ -453,6 +453,7 @@ export class NidocaFormDateShowcasePage extends NidocaShowcaseTemplate {
               ['warningText', this.object2Value('string | undefined', null)],
             ]}"
           ></nidoca-table>
+          <nidoca-spacer></nidoca-spacer>
         </nidoca-flex-container>
       </nidoca-flex-container>
     `;

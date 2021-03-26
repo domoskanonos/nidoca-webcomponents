@@ -120,6 +120,7 @@ export class NidocaListShowcasePage extends NidocaShowcaseTemplate {
               ['slotElement', this.object2Value('HTMLSlotElement | undefined', null)],
             ]}"
           ></nidoca-table>
+          <nidoca-spacer></nidoca-spacer>
         </nidoca-flex-container>
       </nidoca-flex-container>
     `;
