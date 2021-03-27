@@ -113,7 +113,9 @@ export class NidocaSearchBarShowcasePage extends NidocaShowcaseTemplate {
                     this.toAttributeCodeString(this.placeholder, 'string') +
                     '" \n  value="' +
                     this.toAttributeCodeString(this.value, 'string') +
-                    '"  >\n     nidoca-search-bar\n</nidoca-search-bar>'}"
+                    '"  >\n     nidoca-search-bar\n' +
+                    this.loadShowcaseContentAsHtml('NidocaSearchBar') +
+                    '\n</nidoca-search-bar>'}"
                   ></nidoca-code>
                 </nidoca-spacer>
               </nidoca-spacer>

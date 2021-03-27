@@ -142,7 +142,9 @@ export class NidocaRichMediaShowcasePage extends NidocaShowcaseTemplate {
                     this.toAttributeCodeString(this.richMediaType, 'RichMediaType', RichMediaType) +
                     '" \n  .richMediaProperties="' +
                     this.toAttributeCodeString(this.richMediaProperties, 'RichMediaProperties[]', RichMediaProperties) +
-                    '" >\n     nidoca-rich-media\n</nidoca-rich-media>'}"
+                    '" >\n     nidoca-rich-media\n' +
+                    this.loadShowcaseContentAsHtml('NidocaRichMedia') +
+                    '\n</nidoca-rich-media>'}"
                   ></nidoca-code>
                 </nidoca-spacer>
               </nidoca-spacer>

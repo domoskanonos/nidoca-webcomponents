@@ -99,6 +99,10 @@ export abstract class NidocaShowcaseTemplate extends NidocaTemplate {
         
       }
 
+      loadShowcaseContentAsHtml(name: string): string {
+        return this.loadShowcaseContent(name).getHTML();
+      }
+
       loadShowcaseContent(name: string): TemplateResult {
         switch (name) {
           case 'NidocaFlexContainer':

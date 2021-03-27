@@ -174,7 +174,9 @@ export class NidocaFormSwitchShowcasePage extends NidocaShowcaseTemplate {
                     this.toAttributeCodeString(this.errorText, 'string') +
                     '" \n  .selected="' +
                     this.toAttributeCodeString(this.selected, 'boolean') +
-                    '" >\n     nidoca-form-switch\n</nidoca-form-switch>'}"
+                    '" >\n     nidoca-form-switch\n' +
+                    this.loadShowcaseContentAsHtml('NidocaFormSwitch') +
+                    '\n</nidoca-form-switch>'}"
                   ></nidoca-code>
                 </nidoca-spacer>
               </nidoca-spacer>

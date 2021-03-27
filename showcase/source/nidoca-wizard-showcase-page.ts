@@ -120,7 +120,9 @@ export class NidocaWizardShowcasePage extends NidocaShowcaseTemplate {
                     this.toAttributeCodeString(this.wizardSteps, 'WizardStep[]', WizardStep) +
                     '" \n  .selectedStep="' +
                     this.toAttributeCodeString(this.selectedStep, 'WizardStep', WizardStep) +
-                    '" >\n     nidoca-wizard\n</nidoca-wizard>'}"
+                    '" >\n     nidoca-wizard\n' +
+                    this.loadShowcaseContentAsHtml('NidocaWizard') +
+                    '\n</nidoca-wizard>'}"
                   ></nidoca-code>
                 </nidoca-spacer>
               </nidoca-spacer>

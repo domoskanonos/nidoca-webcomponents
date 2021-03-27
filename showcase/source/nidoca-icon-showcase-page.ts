@@ -279,7 +279,9 @@ export class NidocaIconShowcasePage extends NidocaShowcaseTemplate {
                     this.toAttributeCodeString(this.size, 'number') +
                     '" \n  sizeUnit="' +
                     this.toAttributeCodeString(this.sizeUnit, 'string') +
-                    '" >\n     nidoca-icon\n</nidoca-icon>'}"
+                    '" >\n     nidoca-icon\n' +
+                    this.loadShowcaseContentAsHtml('NidocaIcon') +
+                    '\n</nidoca-icon>'}"
                   ></nidoca-code>
                 </nidoca-spacer>
               </nidoca-spacer>

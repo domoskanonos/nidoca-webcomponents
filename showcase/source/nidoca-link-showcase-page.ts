@@ -131,7 +131,9 @@ export class NidocaLinkShowcasePage extends NidocaShowcaseTemplate {
                     this.toAttributeCodeString(this.href, 'string') +
                     '" \n  targetType="' +
                     this.toAttributeCodeString(this.targetType, 'string') +
-                    '" >\n     nidoca-link\n</nidoca-link>'}"
+                    '" >\n     nidoca-link\n' +
+                    this.loadShowcaseContentAsHtml('NidocaLink') +
+                    '\n</nidoca-link>'}"
                   ></nidoca-code>
                 </nidoca-spacer>
               </nidoca-spacer>

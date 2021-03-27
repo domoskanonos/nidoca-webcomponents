@@ -117,7 +117,9 @@ export class NidocaNavigationSectionShowcasePage extends NidocaShowcaseTemplate 
                     this.toAttributeCodeString(this.text, 'string') +
                     '" \n  .rendered="' +
                     this.toAttributeCodeString(this.rendered, 'boolean') +
-                    '" >\n     nidoca-navigation-section\n</nidoca-navigation-section>'}"
+                    '" >\n     nidoca-navigation-section\n' +
+                    this.loadShowcaseContentAsHtml('NidocaNavigationSection') +
+                    '\n</nidoca-navigation-section>'}"
                   ></nidoca-code>
                 </nidoca-spacer>
               </nidoca-spacer>

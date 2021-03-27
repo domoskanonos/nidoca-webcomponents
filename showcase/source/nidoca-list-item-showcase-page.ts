@@ -116,7 +116,9 @@ export class NidocaListItemShowcasePage extends NidocaShowcaseTemplate {
                     this.toAttributeCodeString(this.selectionMode, 'boolean') +
                     '" \n  .selected="' +
                     this.toAttributeCodeString(this.selected, 'boolean') +
-                    '" >\n     nidoca-list-item\n</nidoca-list-item>'}"
+                    '" >\n     nidoca-list-item\n' +
+                    this.loadShowcaseContentAsHtml('NidocaListItem') +
+                    '\n</nidoca-list-item>'}"
                   ></nidoca-code>
                 </nidoca-spacer>
               </nidoca-spacer>

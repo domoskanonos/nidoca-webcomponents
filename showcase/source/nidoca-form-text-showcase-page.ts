@@ -402,7 +402,9 @@ export class NidocaFormTextShowcasePage extends NidocaShowcaseTemplate {
                     this.toAttributeCodeString(this.infoText, 'string') +
                     '" \n  warningText="' +
                     this.toAttributeCodeString(this.warningText, 'string') +
-                    '"  >\n     nidoca-form-text\n</nidoca-form-text>'}"
+                    '"  >\n     nidoca-form-text\n' +
+                    this.loadShowcaseContentAsHtml('NidocaFormText') +
+                    '\n</nidoca-form-text>'}"
                   ></nidoca-code>
                 </nidoca-spacer>
               </nidoca-spacer>

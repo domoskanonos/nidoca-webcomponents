@@ -110,7 +110,9 @@ export class NidocaFormOutputDataShowcasePage extends NidocaShowcaseTemplate {
                     this.toAttributeCodeString(this.jsonObject, 'any') +
                     '" \n  .formData="' +
                     this.toAttributeCodeString(this.formData, 'FormData', FormData) +
-                    '" >\n     nidoca-form-output-data\n</nidoca-form-output-data>'}"
+                    '" >\n     nidoca-form-output-data\n' +
+                    this.loadShowcaseContentAsHtml('NidocaFormOutputData') +
+                    '\n</nidoca-form-output-data>'}"
                   ></nidoca-code>
                 </nidoca-spacer>
               </nidoca-spacer>
@@ -247,7 +249,9 @@ export class NidocaFormShowcasePage extends NidocaShowcaseTemplate {
                     this.toAttributeCodeString(this.formProperties, 'FormProperties[]', FormProperties) +
                     '" \n  .autocomplete="' +
                     this.toAttributeCodeString(this.autocomplete, 'boolean') +
-                    '"   >\n     nidoca-form\n</nidoca-form>'}"
+                    '"   >\n     nidoca-form\n' +
+                    this.loadShowcaseContentAsHtml('NidocaForm') +
+                    '\n</nidoca-form>'}"
                   ></nidoca-code>
                 </nidoca-spacer>
               </nidoca-spacer>

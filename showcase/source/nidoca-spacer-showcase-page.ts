@@ -162,7 +162,9 @@ export class NidocaSpacerShowcasePage extends NidocaShowcaseTemplate {
                     this.toAttributeCodeString(this.spacerSize, 'SpacerSize', SpacerSize) +
                     '" \n  cssStyle="' +
                     this.toAttributeCodeString(this.cssStyle, 'string') +
-                    '" >\n     nidoca-spacer\n</nidoca-spacer>'}"
+                    '" >\n     nidoca-spacer\n' +
+                    this.loadShowcaseContentAsHtml('NidocaSpacer') +
+                    '\n</nidoca-spacer>'}"
                   ></nidoca-code>
                 </nidoca-spacer>
               </nidoca-spacer>

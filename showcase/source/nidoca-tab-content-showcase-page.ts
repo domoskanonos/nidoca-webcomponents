@@ -96,7 +96,9 @@ export class NidocaTabContentShowcasePage extends NidocaShowcaseTemplate {
                   <nidoca-code
                     code="${'<nidoca-tab-content \n  .selected="' +
                     this.toAttributeCodeString(this.selected, 'boolean') +
-                    '" >\n     nidoca-tab-content\n</nidoca-tab-content>'}"
+                    '" >\n     nidoca-tab-content\n' +
+                    this.loadShowcaseContentAsHtml('NidocaTabContent') +
+                    '\n</nidoca-tab-content>'}"
                   ></nidoca-code>
                 </nidoca-spacer>
               </nidoca-spacer>

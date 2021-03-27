@@ -94,7 +94,9 @@ export class NidocaDialogShowcasePage extends NidocaShowcaseTemplate {
                   <nidoca-code
                     code="${'<nidoca-dialog \n  .show="' +
                     this.toAttributeCodeString(this.show, 'boolean') +
-                    '" >\n     nidoca-dialog\n</nidoca-dialog>'}"
+                    '" >\n     nidoca-dialog\n' +
+                    this.loadShowcaseContentAsHtml('NidocaDialog') +
+                    '\n</nidoca-dialog>'}"
                   ></nidoca-code>
                 </nidoca-spacer>
               </nidoca-spacer>

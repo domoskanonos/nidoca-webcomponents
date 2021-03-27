@@ -245,7 +245,9 @@ export class NidocaFlexContainerShowcasePage extends NidocaShowcaseTemplate {
                     this.toAttributeCodeString(this.containerStyle, 'string') +
                     '" \n  itemStyle="' +
                     this.toAttributeCodeString(this.itemStyle, 'string') +
-                    '"  >\n     nidoca-flex-container\n</nidoca-flex-container>'}"
+                    '"  >\n     nidoca-flex-container\n' +
+                    this.loadShowcaseContentAsHtml('NidocaFlexContainer') +
+                    '\n</nidoca-flex-container>'}"
                   ></nidoca-code>
                 </nidoca-spacer>
               </nidoca-spacer>

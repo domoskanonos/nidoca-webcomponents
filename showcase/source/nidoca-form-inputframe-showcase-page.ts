@@ -176,7 +176,9 @@ export class NidocaFormInputframeShowcasePage extends NidocaShowcaseTemplate {
                     this.toAttributeCodeString(this.warningText, 'string | undefined') +
                     '" \n  .selected="' +
                     this.toAttributeCodeString(this.selected, 'boolean') +
-                    '" >\n     nidoca-form-inputframe\n</nidoca-form-inputframe>'}"
+                    '" >\n     nidoca-form-inputframe\n' +
+                    this.loadShowcaseContentAsHtml('NidocaFormInputframe') +
+                    '\n</nidoca-form-inputframe>'}"
                   ></nidoca-code>
                 </nidoca-spacer>
               </nidoca-spacer>

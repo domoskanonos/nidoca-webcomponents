@@ -98,7 +98,9 @@ export class NidocaNavigationShowcasePage extends NidocaShowcaseTemplate {
                   <nidoca-code
                     code="${'<nidoca-navigation \n  .navigationStyle="' +
                     this.toAttributeCodeString(this.navigationStyle, 'NavigationStyle', NavigationStyle) +
-                    '" >\n     nidoca-navigation\n</nidoca-navigation>'}"
+                    '" >\n     nidoca-navigation\n' +
+                    this.loadShowcaseContentAsHtml('NidocaNavigation') +
+                    '\n</nidoca-navigation>'}"
                   ></nidoca-code>
                 </nidoca-spacer>
               </nidoca-spacer>

@@ -119,7 +119,9 @@ export class NidocaTableShowcasePage extends NidocaShowcaseTemplate {
                     this.toAttributeCodeString(this.headers, 'any[]', String) +
                     '" \n  .rows="' +
                     this.toAttributeCodeString(this.rows, 'any[]', String) +
-                    '" >\n     nidoca-table\n</nidoca-table>'}"
+                    '" >\n     nidoca-table\n' +
+                    this.loadShowcaseContentAsHtml('NidocaTable') +
+                    '\n</nidoca-table>'}"
                   ></nidoca-code>
                 </nidoca-spacer>
               </nidoca-spacer>

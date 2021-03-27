@@ -269,7 +269,9 @@ export class NidocaFormComboboxShowcasePage extends NidocaShowcaseTemplate {
                     this.toAttributeCodeString(this.size, 'number') +
                     '" \n  .multiple="' +
                     this.toAttributeCodeString(this.multiple, 'boolean') +
-                    '"  >\n     nidoca-form-combobox\n</nidoca-form-combobox>'}"
+                    '"  >\n     nidoca-form-combobox\n' +
+                    this.loadShowcaseContentAsHtml('NidocaFormCombobox') +
+                    '\n</nidoca-form-combobox>'}"
                   ></nidoca-code>
                 </nidoca-spacer>
               </nidoca-spacer>

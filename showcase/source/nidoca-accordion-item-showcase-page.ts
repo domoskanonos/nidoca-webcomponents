@@ -117,7 +117,9 @@ export class NidocaAccordionItemShowcasePage extends NidocaShowcaseTemplate {
                     this.toAttributeCodeString(this.header, 'string') +
                     '" \n  .opened="' +
                     this.toAttributeCodeString(this.opened, 'boolean') +
-                    '" >\n     nidoca-accordion-item\n</nidoca-accordion-item>'}"
+                    '" >\n     nidoca-accordion-item\n' +
+                    this.loadShowcaseContentAsHtml('NidocaAccordionItem') +
+                    '\n</nidoca-accordion-item>'}"
                   ></nidoca-code>
                 </nidoca-spacer>
               </nidoca-spacer>

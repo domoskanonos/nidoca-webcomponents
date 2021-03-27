@@ -423,7 +423,9 @@ export class NidocaFormDateShowcasePage extends NidocaShowcaseTemplate {
                     this.toAttributeCodeString(this.infoText, 'string | undefined') +
                     '" \n  .warningText="' +
                     this.toAttributeCodeString(this.warningText, 'string | undefined') +
-                    '"  >\n     nidoca-form-date\n</nidoca-form-date>'}"
+                    '"  >\n     nidoca-form-date\n' +
+                    this.loadShowcaseContentAsHtml('NidocaFormDate') +
+                    '\n</nidoca-form-date>'}"
                   ></nidoca-code>
                 </nidoca-spacer>
               </nidoca-spacer>

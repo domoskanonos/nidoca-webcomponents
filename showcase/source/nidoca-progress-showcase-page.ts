@@ -98,7 +98,9 @@ export class NidocaProgressShowcasePage extends NidocaShowcaseTemplate {
                   <nidoca-code
                     code="${'<nidoca-progress \n  .progressType="' +
                     this.toAttributeCodeString(this.progressType, 'ProgressType', ProgressType) +
-                    '" >\n     nidoca-progress\n</nidoca-progress>'}"
+                    '" >\n     nidoca-progress\n' +
+                    this.loadShowcaseContentAsHtml('NidocaProgress') +
+                    '\n</nidoca-progress>'}"
                   ></nidoca-code>
                 </nidoca-spacer>
               </nidoca-spacer>

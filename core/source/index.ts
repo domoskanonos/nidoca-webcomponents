@@ -5,6 +5,7 @@ export * from './nidoca-floating-container';
 export * from './nidoca-abstract-app';
 export * from './nidoca-accordion';
 export * from './nidoca-accordion-item';
+export * from './nidoca-wizard-step';
 export * from './nidoca-wizard';
 export * from './nidoca-chip';
 export * from './nidoca-code';

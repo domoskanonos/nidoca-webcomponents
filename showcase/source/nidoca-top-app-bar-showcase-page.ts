@@ -76,7 +76,9 @@ export class NidocaTopAppBarShowcasePage extends NidocaShowcaseTemplate {
                   .devices="${[NidocaDevice.MOBILE]}"
                 >
                   <nidoca-code
-                    code="${'<nidoca-top-app-bar >\n     nidoca-top-app-bar\n</nidoca-top-app-bar>'}"
+                    code="${'<nidoca-top-app-bar >\n     nidoca-top-app-bar\n' +
+                    this.loadShowcaseContentAsHtml('NidocaTopAppBar') +
+                    '\n</nidoca-top-app-bar>'}"
                   ></nidoca-code>
                 </nidoca-spacer>
               </nidoca-spacer>

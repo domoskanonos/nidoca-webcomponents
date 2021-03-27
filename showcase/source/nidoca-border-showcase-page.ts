@@ -138,7 +138,9 @@ export class NidocaBorderShowcasePage extends NidocaShowcaseTemplate {
                     this.toAttributeCodeString(this.borderSize, 'string') +
                     '" \n  shadowType="' +
                     this.toAttributeCodeString(this.shadowType, 'string') +
-                    '" >\n     nidoca-border\n</nidoca-border>'}"
+                    '" >\n     nidoca-border\n' +
+                    this.loadShowcaseContentAsHtml('NidocaBorder') +
+                    '\n</nidoca-border>'}"
                   ></nidoca-code>
                 </nidoca-spacer>
               </nidoca-spacer>

@@ -93,7 +93,9 @@ export class NidocaCodeShowcasePage extends NidocaShowcaseTemplate {
                   <nidoca-code
                     code="${'<nidoca-code \n  code="' +
                     this.toAttributeCodeString(this.code, 'string') +
-                    '" >\n     nidoca-code\n</nidoca-code>'}"
+                    '" >\n     nidoca-code\n' +
+                    this.loadShowcaseContentAsHtml('NidocaCode') +
+                    '\n</nidoca-code>'}"
                   ></nidoca-code>
                 </nidoca-spacer>
               </nidoca-spacer>

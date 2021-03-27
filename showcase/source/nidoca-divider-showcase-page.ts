@@ -118,7 +118,9 @@ export class NidocaDividerShowcasePage extends NidocaShowcaseTemplate {
                     this.toAttributeCodeString(this.dividerType, 'DividerType', DividerType) +
                     '" \n  .opacity="' +
                     this.toAttributeCodeString(this.opacity, 'number') +
-                    '" >\n     nidoca-divider\n</nidoca-divider>'}"
+                    '" >\n     nidoca-divider\n' +
+                    this.loadShowcaseContentAsHtml('NidocaDivider') +
+                    '\n</nidoca-divider>'}"
                   ></nidoca-code>
                 </nidoca-spacer>
               </nidoca-spacer>

@@ -111,7 +111,7 @@ export class {{this.name}}ShowcasePage extends NidocaShowcaseTemplate {
       <nidoca-tab-content slot="tabContent">
         <nidoca-spacer spacerSize="${SpacerSize.NORMAL}" .spacerTypes="${[SpacerType.TOP,SpacerType.BOTTOM]}">
           <nidoca-spacer spacerSize="${SpacerSize.NORMAL}" .spacerTypes="${[SpacerType.LEFT,SpacerType.RIGHT]}" .devices="${[NidocaDevice.MOBILE]}">
-          <nidoca-code code="${'<{{toTag this.name}} {{#each properties}}{{#if this.isStatic}}{{else}}{{#if this.private}}{{else}}\n  {{#isnt this.type "string"}}.{{/isnt}}{{this.name}}="'+this.toAttributeCodeString(this.{{this.name}},"{{this.type}}"{{#if this.isObject}},{{this.type}}{{/if}}{{#if this.isArray}},{{this.baseType}}{{/if}})+'"{{/if}} {{/if}}{{/each}}>\n     {{toTag this.name}}\n</{{toTag this.name}}>'}"></nidoca-code>
+          <nidoca-code code="${'<{{toTag this.name}} {{#each properties}}{{#if this.isStatic}}{{else}}{{#if this.private}}{{else}}\n  {{#isnt this.type "string"}}.{{/isnt}}{{this.name}}="'+this.toAttributeCodeString(this.{{this.name}},"{{this.type}}"{{#if this.isObject}},{{this.type}}{{/if}}{{#if this.isArray}},{{this.baseType}}{{/if}})+'"{{/if}} {{/if}}{{/each}}>\n     {{toTag this.name}}\n'+this.loadShowcaseContentAsHtml('{{this.name}}')+'\n</{{toTag this.name}}>'}"></nidoca-code>
         </nidoca-spacer>
       </nidoca-spacer>
     </nidoca-tab-content>

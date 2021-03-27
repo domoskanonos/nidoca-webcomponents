@@ -194,7 +194,9 @@ export class NidocaFloatingContainerShowcasePage extends NidocaShowcaseTemplate 
                     this.toAttributeCodeString(this.right, 'string') +
                     '" \n  bottom="' +
                     this.toAttributeCodeString(this.bottom, 'string') +
-                    '" >\n     nidoca-floating-container\n</nidoca-floating-container>'}"
+                    '" >\n     nidoca-floating-container\n' +
+                    this.loadShowcaseContentAsHtml('NidocaFloatingContainer') +
+                    '\n</nidoca-floating-container>'}"
                   ></nidoca-code>
                 </nidoca-spacer>
               </nidoca-spacer>

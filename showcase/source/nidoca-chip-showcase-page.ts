@@ -94,7 +94,9 @@ export class NidocaChipShowcasePage extends NidocaShowcaseTemplate {
                   <nidoca-code
                     code="${'<nidoca-chip \n  .clickable="' +
                     this.toAttributeCodeString(this.clickable, 'boolean') +
-                    '" >\n     nidoca-chip\n</nidoca-chip>'}"
+                    '" >\n     nidoca-chip\n' +
+                    this.loadShowcaseContentAsHtml('NidocaChip') +
+                    '\n</nidoca-chip>'}"
                   ></nidoca-code>
                 </nidoca-spacer>
               </nidoca-spacer>

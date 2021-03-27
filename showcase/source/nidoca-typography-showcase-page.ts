@@ -139,7 +139,9 @@ export class NidocaTypographyShowcasePage extends NidocaShowcaseTemplate {
                     this.toAttributeCodeString(this.typographyAlignment, 'TypographyAlignment', TypographyAlignment) +
                     '" \n  text="' +
                     this.toAttributeCodeString(this.text, 'string') +
-                    '" >\n     nidoca-typography\n</nidoca-typography>'}"
+                    '" >\n     nidoca-typography\n' +
+                    this.loadShowcaseContentAsHtml('NidocaTypography') +
+                    '\n</nidoca-typography>'}"
                   ></nidoca-code>
                 </nidoca-spacer>
               </nidoca-spacer>

@@ -106,7 +106,9 @@ export class NidocaListShowcasePage extends NidocaShowcaseTemplate {
                     this.toAttributeCodeString(this.selectionMode, 'boolean') +
                     '" \n  .slotElement="' +
                     this.toAttributeCodeString(this.slotElement, 'HTMLSlotElement | undefined') +
-                    '" >\n     nidoca-list\n</nidoca-list>'}"
+                    '" >\n     nidoca-list\n' +
+                    this.loadShowcaseContentAsHtml('NidocaList') +
+                    '\n</nidoca-list>'}"
                   ></nidoca-code>
                 </nidoca-spacer>
               </nidoca-spacer>

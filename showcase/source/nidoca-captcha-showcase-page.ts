@@ -126,7 +126,9 @@ export class NidocaCaptchaShowcasePage extends NidocaShowcaseTemplate {
                     this.toAttributeCodeString(this.numberTwo, 'number') +
                     '" \n  .inputfield="' +
                     this.toAttributeCodeString(this.inputfield, 'NidocaFormText | undefined') +
-                    '" >\n     nidoca-captcha\n</nidoca-captcha>'}"
+                    '" >\n     nidoca-captcha\n' +
+                    this.loadShowcaseContentAsHtml('NidocaCaptcha') +
+                    '\n</nidoca-captcha>'}"
                   ></nidoca-code>
                 </nidoca-spacer>
               </nidoca-spacer>

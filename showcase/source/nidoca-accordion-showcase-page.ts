@@ -98,7 +98,9 @@ export class NidocaAccordionShowcasePage extends NidocaShowcaseTemplate {
                   <nidoca-code
                     code="${'<nidoca-accordion \n  .accordionType="' +
                     this.toAttributeCodeString(this.accordionType, 'AccordionType', AccordionType) +
-                    '"  >\n     nidoca-accordion\n</nidoca-accordion>'}"
+                    '"  >\n     nidoca-accordion\n' +
+                    this.loadShowcaseContentAsHtml('NidocaAccordion') +
+                    '\n</nidoca-accordion>'}"
                   ></nidoca-code>
                 </nidoca-spacer>
               </nidoca-spacer>

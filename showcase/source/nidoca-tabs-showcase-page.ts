@@ -75,7 +75,11 @@ export class NidocaTabsShowcasePage extends NidocaShowcaseTemplate {
                   .spacerTypes="${[SpacerType.LEFT, SpacerType.RIGHT]}"
                   .devices="${[NidocaDevice.MOBILE]}"
                 >
-                  <nidoca-code code="${'<nidoca-tabs   >\n     nidoca-tabs\n</nidoca-tabs>'}"></nidoca-code>
+                  <nidoca-code
+                    code="${'<nidoca-tabs   >\n     nidoca-tabs\n' +
+                    this.loadShowcaseContentAsHtml('NidocaTabs') +
+                    '\n</nidoca-tabs>'}"
+                  ></nidoca-code>
                 </nidoca-spacer>
               </nidoca-spacer>
             </nidoca-tab-content>

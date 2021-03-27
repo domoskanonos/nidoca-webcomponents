@@ -1,5 +1,5 @@
 import {customElement, html, TemplateResult} from 'lit-element';
-import { IconShadowType } from '.';
+import {IconShadowType} from '.';
 import {AccordionType} from './nidoca-accordion';
 import {NidocaTemplate} from './nidoca-template';
 
@@ -7,29 +7,20 @@ import {NidocaTemplate} from './nidoca-template';
 export class NidocaShowcase extends NidocaTemplate {
   getContent(): TemplateResult {
     return html`
-      <nidoca-captcha></nidoca-captcha>
-      <nidoca-accordion accordionType="${AccordionType.MULTI}">
-        <nidoca-accordion-item header="Accordion 1" .opened="${true}">
-          <nidoca-rich-media></nidoca-rich-media>
-        </nidoca-accordion-item>
-        <nidoca-accordion-item header="Accordion 1"> <nidoca-rich-media></nidoca-rich-media> </nidoca-accordion-item>
-      </nidoca-accordion>
+      <nidoca-wizard>
+        <nidoca-wizard-step icon="home" .selected="${true}"></nidoca-wizard-step>
+        <nidoca-wizard-step icon="home"></nidoca-wizard-step>
+        <nidoca-wizard-step icon="home"></nidoca-wizard-step>
+        <nidoca-wizard-step icon="home"></nidoca-wizard-step>
+      </nidoca-wizard>
 
-      <nidoca-icon
-        icon="thumb_up"
-        color="blue"
-        backgroundColor="green"
-        .iconShadowType="${IconShadowType.SHADOW_3}"
-        size="96"
-        sizeUnit="px"
-        iconTitle=""
-        .withIconSpace="${false}"
-        .round="${true}"
-        .clickable="${true}"
-        .deactivated="${true}"
-      >
-        nidoca-icon
-      </nidoca-icon>
+
+      <nidoca-top-app-bar>
+          <div slot="leftComponents">j</div>
+          <div slot="mainComponents">justifyj</div>
+          <div slot="rightComponents">j</div>
+          <div slot="prominentComponents">j</div>
+          </nidoca-top-app-bar>
     `;
   }
 

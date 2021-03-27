@@ -134,7 +134,9 @@ export class NidocaButtonShowcasePage extends NidocaShowcaseTemplate {
                     this.toAttributeCodeString(this.leadingIcon, 'string') +
                     '" \n  text="' +
                     this.toAttributeCodeString(this.text, 'string') +
-                    '" >\n     nidoca-button\n</nidoca-button>'}"
+                    '" >\n     nidoca-button\n' +
+                    this.loadShowcaseContentAsHtml('NidocaButton') +
+                    '\n</nidoca-button>'}"
                   ></nidoca-code>
                 </nidoca-spacer>
               </nidoca-spacer>

@@ -95,7 +95,9 @@ export class NidocaVisibleShowcasePage extends NidocaShowcaseTemplate {
                   <nidoca-code
                     code="${'<nidoca-visible \n  visibleType="' +
                     this.toAttributeCodeString(this.visibleType, 'string') +
-                    '" >\n     nidoca-visible\n</nidoca-visible>'}"
+                    '" >\n     nidoca-visible\n' +
+                    this.loadShowcaseContentAsHtml('NidocaVisible') +
+                    '\n</nidoca-visible>'}"
                   ></nidoca-code>
                 </nidoca-spacer>
               </nidoca-spacer>
