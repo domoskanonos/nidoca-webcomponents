@@ -145,7 +145,8 @@ export class NidocaForm extends LitElement {
     if (element instanceof NidocaFormAbstractInputElement) {
       inputElements.push(element);
     } else if (element.hasChildNodes()) {
-      for (let childElement of element.children) {
+      let childrens:HTMLCollection = element.children;
+      for (let childElement of  [].slice.call(childrens)) {
         this.recursiveInputElementSearch(childElement, inputElements);
       }
     }
