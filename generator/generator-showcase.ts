@@ -88,7 +88,7 @@ function createIndexPage(files: any[]) {
   });
 
   console.log(indexTSContent);
-  fs.writeFileSync('./../showcase/source/index.ts', indexTSContent, {
+  fs.writeFileSync('./node_modules/@domoskanonos/nidoca-core/lib/index.d.ts', indexTSContent, {
     encoding: 'utf8',
   });
 }

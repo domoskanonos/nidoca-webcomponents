@@ -10,9 +10,11 @@
     "typescript": "^4.2.3",
     "typescript-parser": "^2.6.1"
   },
+  "dependencies": {
+    "@domoskanonos/nidoca-core": "^1.0.647"
+  },
   "author": "Dominik Bruhn",
   "scripts": {
     "generate-showcase": "tsc && node generator-showcase.js"
-  },
-  "dependencies": {}
+  }
 }
