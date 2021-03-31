@@ -9,7 +9,7 @@
   "main": "lib/index.js",
   "module": "./source/index.js",
   "devDependencies": {
-    "parcel-bundler": "^1.12.4",
+    "parcel": "2.0.0-beta.2",
     "prettier": "^2.2.1",
     "typescript": "^4.1.5"
   },
