@@ -9,7 +9,6 @@
   "main": "lib/index.js",
   "module": "./source/index.js",
   "devDependencies": {
-    "parcel": "2.0.0-beta.2",
     "prettier": "^2.2.1",
     "typescript": "^4.1.5"
   },
@@ -18,9 +17,7 @@
   },
   "author": "Dominik Bruhn",
   "scripts": {
-    "start": "parcel source/index.html",
     "build_ts": "tsc -p ./",
-    "build": "parcel build source/index.html -d build/output --no-content-hash --no-source-maps --public-url ./",
     "pretty": "prettier --write \"./**/*.{ts,json}\"",
     "new-version": "npm run build_ts && npm version patch && npm publish --access=public",
     "unpublish": "npm unpublish --force"
