@@ -12,7 +12,7 @@ export class NidocaCaptcha extends LitElement {
   numberTwo: number = 10;
 
   @query('#inputfield')
-  inputfield: NidocaFormText | undefined;
+  private inputfield: NidocaFormText | undefined;
 
   render(): TemplateResult {
     return html`
