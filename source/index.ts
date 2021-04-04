@@ -12,7 +12,7 @@ export * from './nidoca-code';
 export * from './nidoca-progress';
 export * from './nidoca-border';
 export * from './nidoca-button';
-export * from './nidoca-shadow';
+export * from './nidoca-box-shadow';
 export * from './nidoca-form';
 export * from './nidoca-form-combobox';
 export * from './nidoca-form-text';
