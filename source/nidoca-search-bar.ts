@@ -1,5 +1,5 @@
 import {css, customElement, html, LitElement, property, query, TemplateResult} from 'lit-element';
-import {BorderProperties, BorderSize, ShadowType} from './nidoca-border';
+import {BorderProperty, BorderSize} from './nidoca-border';
 
 @customElement('nidoca-search-bar')
 export class NidocaSearchBar extends LitElement {
@@ -35,9 +35,8 @@ export class NidocaSearchBar extends LitElement {
   render(): TemplateResult {
     return html`
       <nidoca-border
-        .borderProperties="${[BorderProperties.ALL, BorderProperties.FULL_WIDTH]}"
+        .borderProperties="${[BorderProperty.ALL, BorderProperty.FULL_WIDTH]}"
         .borderSize="${BorderSize.THIN}"
-        .shadowType="${ShadowType.NONE}"
       >
         <nidoca-flex-container>
           <nidoca-icon icon="search"></nidoca-icon>

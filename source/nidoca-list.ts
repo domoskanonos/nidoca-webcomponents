@@ -15,7 +15,7 @@ export class NidocaList extends LitElement {
   selectionMode: boolean = false;
 
   @query('#slotElement')
-  slotElement: HTMLSlotElement | undefined;
+  private slotElement: HTMLSlotElement | undefined;
 
   protected update(changedProperties: Map<PropertyKey, unknown>): void {
     super.update(changedProperties);

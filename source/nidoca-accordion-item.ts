@@ -1,7 +1,7 @@
 import {css, customElement, html, property, TemplateResult} from 'lit-element';
 import {LitElement} from 'lit-element';
 import {FlexAlignContent, FlexAlignItems, FlexDirection, FlexJustifyContent, FlexWrap} from '.';
-import {BorderProperties} from './nidoca-border';
+import {BorderProperty} from './nidoca-border';
 import {SpacerType, SpacerSize} from './nidoca-spacer';
 import {VisibleType} from './nidoca-visible';
 
@@ -24,10 +24,10 @@ export class NidocaAccordionItem extends LitElement {
       <div class="ACCORDION_ITEM">
         <nidoca-border
           .borderProperties="${[
-            BorderProperties.BOTTOM,
-            BorderProperties.LEFT,
-            BorderProperties.RIGHT,
-            BorderProperties.FULL_WIDTH,
+            BorderProperty.BOTTOM,
+            BorderProperty.LEFT,
+            BorderProperty.RIGHT,
+            BorderProperty.FULL_WIDTH,
           ]}"
         >
           <nidoca-flex-container

@@ -1,7 +1,7 @@
-import {css, customElement, html, property, TemplateResult, unsafeCSS} from 'lit-element';
-import {LitElement} from 'lit-element';
+import { css, customElement, html, property, TemplateResult, unsafeCSS } from 'lit-element';
+import { LitElement } from 'lit-element';
 
-export enum BorderProperties {
+export enum BorderProperty {
   NONE = 'NONE',
   ALL = 'ALL',
   ALL_ROUND = 'ALL_ROUND',
@@ -22,12 +22,6 @@ export enum BorderSize {
   THICK = 'THICK',
 }
 
-export enum ShadowType {
-  NONE = 'NONE',
-  KEY_LIGHT = 'KEY_LIGHT',
-  AMBIENT_LIGHT = 'AMBIENT_LIGHT',
-  COMBINED = 'COMBINED',
-}
 
 @customElement('nidoca-border')
 export class NidocaBorder extends LitElement {
@@ -72,8 +66,7 @@ export class NidocaBorder extends LitElement {
 
     .ALL_ROUND {
       overflow: hidden;
-      border: 1px solid;
-      border-color: var(--app-color-surface-background);
+      border-style: solid;
       border-radius: 10px;
     }
 
@@ -98,36 +91,22 @@ export class NidocaBorder extends LitElement {
     }
 
     .BOTTOM_SELECTED {
-      border-bottom: 0.2em solid;
+      border-bottom-style: solid;
       border-color: var(--app-color-primary-background);
     }
 
-    .KEY_LIGHT {
-      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-    }
-
-    .AMBIENT_LIGHT {
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-    }
-
-    .COMBINED {
-      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-    }
   `;
 
-  @property()
-  borderProperties: string[] = [BorderProperties.NONE];
+  @property({ type: BorderProperty })
+  borderProperties: BorderProperty[] = [BorderProperty.ALL];
 
-  @property()
-  borderSize: string = BorderSize.THIN;
+  @property({ type: BorderSize })
+  borderSize: BorderSize = BorderSize.THIN;
 
-  @property()
-  shadowType: string = ShadowType.NONE;
-
-  render(): TemplateResult {
+   render(): TemplateResult {
     return html`
       <slot
-        class="${this.toBorderPropertiesString(this.borderProperties)} ${this.borderSize} ${this.shadowType}"
+        class="${this.toBorderPropertiesString(this.borderProperties)} ${this.borderSize}"
       ></slot>
     `;
   }

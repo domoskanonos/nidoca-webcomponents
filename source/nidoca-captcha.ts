@@ -1,18 +1,18 @@
-import {css, customElement, html, LitElement, property, query, TemplateResult} from 'lit-element';
-import {NidocaFormText, TextType} from './nidoca-form-text';
+import { css, customElement, html, LitElement, property, PropertyValues, query, TemplateResult } from 'lit-element';
+import { NidocaFormText, TextType } from './nidoca-form-text';
 
 @customElement('nidoca-captcha')
 export class NidocaCaptcha extends LitElement {
-  
+
   static styles = css``;
 
-  @property({type : Number})
+  @property({ type: Number })
   min: number = 1;
 
-  @property({type : Number})
+  @property({ type: Number })
   max: number = 10;
 
-  @property({type : String})
+  @property({ type: String })
   errorText: string = 'nidoca-captcha-wrong-value';
 
   private numberOne: number = 1;
@@ -27,10 +27,11 @@ export class NidocaCaptcha extends LitElement {
         id="inputfield"
         @nidoca-form-text-focusout="${() => this.validate()}"
         label="${'nidoca-captcha-label'
-          .concat(String(this.numberOne))
-          .concat(' + ')
-          .concat(String(this.numberTwo))
-          .concat(' = ?')}"
+        .concat(' ')
+        .concat(String(this.numberOne))
+        .concat(' + ')
+        .concat(String(this.numberTwo))
+        .concat(' = ?')}"
         name="captcha"
         trailingIcon="create"
         .textType="${TextType.NUMBER}"
@@ -38,17 +39,19 @@ export class NidocaCaptcha extends LitElement {
       ></nidoca-form-text>
     `;
   }
-  
-  attributeChangedCallback(name: string, oldval: any, newval: any) {
-    if(name == 'min' || name =='max'){
+
+
+  updated(_changedProperties: PropertyValues) {
+    if (_changedProperties.has('min') || _changedProperties.has('max')) {
       this.generateNewNumber();
     }
-    super.attributeChangedCallback(name, oldval, newval);
+    super.updated(_changedProperties);
   }
 
   private generateNewNumber(): any {
-    this.numberOne = this.getRandomNumber(this.min,this.max);
-    this.numberTwo = this.getRandomNumber(this.min,this.max);
+    this.numberOne = Math.round(this.getRandomNumber(this.min, this.max));
+    this.numberTwo = Math.round(this.getRandomNumber(this.min, this.max));
+    this.requestUpdate();
   }
 
   private getRandomNumber(min: number, max: number) {

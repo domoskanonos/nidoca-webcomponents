@@ -1,6 +1,6 @@
 import {css, customElement, html, property, query, TemplateResult, unsafeCSS} from 'lit-element';
 import {LitElement} from 'lit-element';
-import {BorderProperties} from '.';
+import {BorderProperty} from '.';
 import {NidocaAccordionItem} from './nidoca-accordion-item';
 
 export enum AccordionType {
@@ -21,7 +21,7 @@ export class NidocaAccordion extends LitElement {
   render(): TemplateResult {
     return html`
       <nidoca-border
-        .borderProperties="${[BorderProperties.TOP, BorderProperties.FULL_WIDTH]}"
+        .borderProperties="${[BorderProperty.TOP, BorderProperty.FULL_WIDTH]}"
         @nidoca-event-accordion-item-clicked="${(event: CustomEvent) => this.accordionSwitched(event)}"
       >
         <slot id="accordionSlot"></slot>
