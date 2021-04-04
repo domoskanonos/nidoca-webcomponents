@@ -41,13 +41,13 @@ export class NidocaFormText extends NidocaFormAbstractInputElement {
   value: any = '';
 
   @property()
-  label: string = 'nidoca-form-text';
+  label: string = '';
 
   @property()
   required: boolean = false;
 
   @property()
-  placeholder: string = 'nidoca-form-text';
+  placeholder: string = '';
 
   @property()
   disabled: boolean = false;
