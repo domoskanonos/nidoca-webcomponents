@@ -1,7 +1,4 @@
 import {customElement, html, TemplateResult} from 'lit-element';
-import {IconShadowType} from '.';
-import {AccordionType} from './nidoca-accordion';
-import { BorderProperty as BorderProperty, BorderSize, ShadowType } from './nidoca-border';
 import {NidocaTemplate} from './nidoca-template';
 
 @customElement('nidoca-showcase')

@@ -1,5 +1,4 @@
 import {css, customElement, html, property, LitElement, TemplateResult} from 'lit-element';
-import {ShadowType} from './nidoca-border';
 
 export enum IconShadowType {
   NONE = 'NONE',
