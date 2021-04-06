@@ -6,79 +6,30 @@ export class NidocaFormOutputData {
   formData: FormData = FormData.prototype;
 }
 
-export enum FormProperties {
-  ROW_LAYOUT = 'ROW_LAYOUT',
-  COLUMN_LAYOUT = 'COLUMN_LAYOUT',
-  FULL_WIDTH = 'FULL_WIDTH',
-}
-
 @customElement('nidoca-form')
 export class NidocaForm extends LitElement {
   static styles = css`
     .FORM {
       box-sizing: border-box;
     }
-    .COLUMN_LAYOUT {
-      display: flex;
-      flex-direction: column;
-      flex-wrap: nowrap;
-      justify-content: space-around;
-      align-items: stretch;
-      align-content: space-around;
-    }
-    .ROW_LAYOUT {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: flex-start;
-      align-items: flex-start;
-      align-content: flex-start;
-    }
-    .FULL_WIDTH {
-      width: 100%;
-    }
-
-    @media only screen and (orientation: portrait) {
-      .FORM {
-        width: 100%;
-      }
-    }
   `;
 
-  @property()
-  formProperties: FormProperties[] = [];
-
-  @property()
+  @property({type : Boolean})
   autocomplete: boolean = true;
 
   @query('#slotElement')
   private slotElement: HTMLSlotElement | undefined;
 
-  @query('#htmlForm')
-  private htmlForm: HTMLFormElement | undefined;
-
   render(): TemplateResult {
     return html`
       <form
-        class="${this.toFormPropertiesString(this.formProperties)}"
-        id="htmlForm"
+        class="FORM"
         @nidoca-event-button-clicked="${this.formButtonClicked}"
-        autocomplete="${this.autocomplete}"
+        .?autocomplete="${this.autocomplete}"
       >
-        <slot name="header"></slot>
-        <slot name="errorMessages" style="color: var(--app-color-error);"></slot>
         <slot id="slotElement"></slot>
-        <slot name="footer"></slot>
       </form>
     `;
-  }
-
-  toFormPropertiesString(formProperties: FormProperties[]) {
-    let formPropertiesClazzString: string = 'FORM';
-    formProperties.forEach((clazz) => {
-      formPropertiesClazzString = formPropertiesClazzString.concat(' ').concat(clazz);
-    });
-    return formPropertiesClazzString;
   }
 
   getInputElements(slotElement: HTMLSlotElement | undefined): NidocaFormAbstractInputElement[] {
@@ -111,9 +62,7 @@ export class NidocaForm extends LitElement {
 
     for (let element of this.getInputElements(this.slotElement)) {
       let elementOutputData = element.getOutputData();
-      // @ts-ignore
       json[elementOutputData.key] = elementOutputData.value;
-      // @ts-ignore
       formData.append(elementOutputData.key, elementOutputData.value);
     }
 
