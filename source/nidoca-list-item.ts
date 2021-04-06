@@ -13,6 +13,9 @@ export class NidocaListItem extends LitElement {
     }
 
     .LIST_ITEM {
+      display: grid;
+      grid-template-rows: 1fr;
+      grid-template-columns: auto 1fr;
       cursor: pointer;
     }
 
@@ -21,10 +24,10 @@ export class NidocaListItem extends LitElement {
     }
   `;
 
-  @property()
+  @property({type: Boolean})
   selectionMode: boolean = false;
 
-  @property()
+  @property({type: Boolean})
   selected: boolean = false;
 
   protected update(changedProperties: Map<PropertyKey, unknown>): void {

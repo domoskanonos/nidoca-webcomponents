@@ -16,6 +16,15 @@ export class NidocaShowcase extends NidocaTemplate {
   getContent(): TemplateResult {
     return html`
      
+
+<div>
+<nidoca-progress></nidoca-progress>
+</div>
+
+<nidoca-list>
+<nidoca-list-item .selectionMode="${true}">Hallo</nidoca-list-item>
+</nidoca-list>
+
   
     
     <nidoca-form id="form">
