@@ -161,7 +161,7 @@ export class NidocaFormDate extends NidocaFormAbstractInputElement {
   }
 
   public validate(): boolean {
-    this.errorText = undefined;
+    this.errorText = '';
     if (
       this.inputElement != null &&
       !this.inputElement.validity.valid &&
@@ -169,6 +169,6 @@ export class NidocaFormDate extends NidocaFormAbstractInputElement {
     ) {
       this.errorText = this.inputElement.validationMessage;
     }
-    return this.errorText == undefined;
+    return this.errorText == '';
   }
 }
