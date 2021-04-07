@@ -1,5 +1,5 @@
 import {customElement, html, query, TemplateResult} from 'lit-element';
-import { DateType, FlexAlignContent, FlexAlignItems, FlexDirection, FlexJustifyContent, FlexWrap, TextType } from '.';
+import { DateType, FlexAlignContent, FlexAlignItems, FlexDirection, FlexJustifyContent, FlexWrap, TextType, TypographyType } from '.';
 import { NidocaForm } from './nidoca-form';
 import {NidocaTemplate} from './nidoca-template';
 
@@ -15,7 +15,45 @@ export class NidocaShowcase extends NidocaTemplate {
 
   getContent(): TemplateResult {
     return html`
-     
+
+
+
+<nidoca-top-app-bar style="background-color:var(--app-color-secondary-background); color:var(--app-color-secondary);" .prominent="${true}">
+        
+<nidoca-icon
+        title="Icon Title"
+        slot="leftComponents"
+        icon="menu"
+        .clickable="${true}"
+      ></nidoca-icon>
+      <nidoca-typography slot="leftComponents" .typographyType="${TypographyType.BODY1}"
+        >Title</nidoca-typography
+      >
+
+
+
+      <nidoca-icon
+        title="Icon Title"
+        slot="rightComponents"
+        icon="search"
+        .clickable="${true}"
+      ></nidoca-icon>
+
+        
+<nidoca-search-bar slot="prominentComponents">
+
+
+
+
+
+
+</nidoca-search-bar>
+
+
+
+        
+      </nidoca-top-app-bar>
+
 
 <div>
 <nidoca-progress></nidoca-progress>

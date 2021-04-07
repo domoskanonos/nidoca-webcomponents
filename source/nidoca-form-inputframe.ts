@@ -14,19 +14,19 @@ export class NidocaFormInputframe extends LitElement {
     }
   `;
 
-  @property()
+  @property({type: String})
   label: string = '';
 
-  @property()
-  errorText: string | undefined;
+  @property({type: String})
+  errorText: string = '';
 
-  @property()
-  infoText: string | undefined;
+  @property({type: String})
+  infoText: string = '';
 
-  @property()
-  warningText: string | undefined;
+  @property({type: String})
+  warningText: string = '';
 
-  @property()
+  @property({type: Boolean})
   selected: boolean = false;
 
   render(): TemplateResult {

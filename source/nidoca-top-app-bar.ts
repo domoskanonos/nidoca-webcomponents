@@ -1,59 +1,56 @@
-import {css, customElement, html, LitElement, TemplateResult} from 'lit-element';
+import {css, customElement, html, LitElement, TemplateResult, property} from 'lit-element';
+import {FlexAlignContent, FlexAlignItems, FlexDirection, FlexJustifyContent, FlexWrap} from '.';
 
 @customElement('nidoca-top-app-bar')
 export class NidocaTopAppBar extends LitElement {
   static styles = css`
-    .TOP_APP_BAR {
-      width: 100vw;
-      display: grid;
-      grid-template-rows: var(--menubar-height);
-      grid-template-columns: auto auto auto;
-      color: inherit;
-      background-color: inherit;
+
+    slot {
+      display: block;  
     }
 
     .left {
-      justify-self: start;
+      flex-basis:33.33%;
+      background-color:green;
     }
     .center {
-      justify-self: center;
+      flex-basis:33.33%;
+      background-color:blue;
     }
 
     .right {
-      justify-self: end;
+      flex-basis:33.33%;
+      background-color:yellow;
     }
 
     .prominent {
-    }
-
-    .left,
-    .center,
-    .right {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: nowrap;
-      justify-content: flex-start;
-      align-items: center;
+      flex-basis:100%;
+      background-color:black;
+      flex-grow:3;
     }
   `;
 
+  @property({type: Boolean})
+  prominent: boolean = false;
+
   render(): TemplateResult {
     return html`
-      <div class="TOP_APP_BAR">
-        <div class="left">
-          <slot name="leftComponents"></slot>
-        </div>
+      <nidoca-flex-container
+        .devices="${[]}"
+        .flexDirection="${FlexDirection.ROW}"
+        .flexWrap="${FlexWrap.WRAP}"
+        .flexJustifyContent="${FlexJustifyContent.SPACE_EVENLY}"
+        .flexAlignItems="${FlexAlignItems.CENTER}"
+        .flexAlignContent="${FlexAlignContent.SPACE_EVENLY}"
+        containerStyle=""
+        itemStyle=""
+      >
+        <slot class="left" name="leftComponents"></slot>
+        <slot class="center" name="mainComponents"></slot>
+        <slot class="right" name="rightComponents"></slot>
+        <slot class="prominent" name="prominentComponents"></slot>
 
-        <div class="center">
-          <slot name="mainComponents"></slot>
-        </div>
-        <div class="right">
-          <slot name="rightComponents"></slot>
-        </div>
-        <div class="prominent">
-          <slot name="prominentComponents"></slot>
-        </div>
-      </div>
+      </nidoca-flex-container>
     `;
   }
 }
