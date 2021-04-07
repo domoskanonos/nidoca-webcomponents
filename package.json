@@ -1,6 +1,6 @@
 {
   "name": "@domoskanonos/nidoca-core",
-  "version": "1.0.653",
+  "version": "1.0.654",
   "license": "MIT",
   "description": "nidoca framework (nidoca-core)",
   "files": [
@@ -24,9 +24,13 @@
   "author": "Dominik Bruhn",
   "scripts": {
     "start": "webpack-dev-server --config webpack.dev.js --open",
-    "build_ts": "tsc -p ./",
     "pretty": "prettier --write \"./**/*.{ts,json}\"",
-    "new-version": "npm run build_ts && npm version patch && npm publish --access=public",
+    "build": "tsc -p ./",
+    "preversion": "npm run build",
+    "new-patch": "npm version patch -m \"new patch version: %s\" --force",
+    "new-minor": "npm version minor -m \"new minor version: %s\" --force",
+    "new-major": "npm version major -m \"new major version: %s\" --force",
+    "postversion": "npm publish --access=public && git push --follow-tags",
     "unpublish": "npm unpublish --force"
   },
   "browserslist": [
