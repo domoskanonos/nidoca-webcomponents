@@ -1,4 +1,5 @@
 import {css, customElement, html, property, query, TemplateResult} from 'lit-element';
+import { InputframeMode } from '.';
 import {FormOutputData, NidocaFormAbstractInputElement} from './nidoca-form-abstract-input-element';
 
 export enum DateType {
@@ -75,24 +76,28 @@ export class NidocaFormDate extends NidocaFormAbstractInputElement {
   size: number | undefined;
 
   @property()
-  errorText: string | undefined;
+  errorText: string='';
 
   @property()
-  infoText: string | undefined;
+  infoText: string='';
 
   @property()
-  warningText: string | undefined;
+  warningText: string='';
 
   @query('#inputElement')
   private inputElement: HTMLInputElement | undefined;
+ 
+  @property({type: InputframeMode})
+  inputframeMode: InputframeMode = InputframeMode.NORMAL;
 
   render(): TemplateResult {
     return html`
-      <nidoca-inputframe
+      <nidoca-form-inputframe
         label="${this.label}"
-        .errorText="${this.errorText}"
-        .infoText="${this.infoText}"
-        .warningText="${this.warningText}"
+        errorText="${this.errorText}"
+        infoText="${this.infoText}"
+        warningText="${this.warningText}"
+        .inputframeMode="${this.inputframeMode}"
       >
         <input
           id="inputElement"
@@ -115,7 +120,7 @@ export class NidocaFormDate extends NidocaFormAbstractInputElement {
           @focus="${() => this.handleFocus()}"
           @focusout="${() => this.handleFocusout()}"
         />
-      </nidoca-inputframe>
+      </nidoca-form-inputframe>
     `;
   }
 

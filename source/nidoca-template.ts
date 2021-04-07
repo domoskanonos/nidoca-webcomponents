@@ -46,7 +46,7 @@ export abstract class NidocaTemplate extends LitElement {
     }
   `;
 
-  @property()
+  @property({type:Boolean})
   navigationClosed: boolean = true;
 
   @query('#header')
@@ -88,12 +88,12 @@ export abstract class NidocaTemplate extends LitElement {
     return html`
       <nidoca-top-app-bar>
         <nidoca-icon
-          slot="leftComponents"
+          slot="left"
           icon="${this.navigationClosed ? 'menu' : 'clear'}"
           .clickable="${true}"
           @nidoca-event-icon-clicked="${() => this.toogleNavigation()}"
         ></nidoca-icon>
-        <nidoca-typography slot="leftComponents" .typographyType="${TypographyType.BODY1}"
+        <nidoca-typography slot="left" .typographyType="${TypographyType.BODY1}"
           >nidoca-template
         </nidoca-typography>
       </nidoca-top-app-bar>

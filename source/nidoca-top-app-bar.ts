@@ -4,30 +4,15 @@ import {FlexAlignContent, FlexAlignItems, FlexDirection, FlexJustifyContent, Fle
 @customElement('nidoca-top-app-bar')
 export class NidocaTopAppBar extends LitElement {
   static styles = css`
-
     slot {
-      display: block;  
-    }
-
-    .left {
-      flex-basis:33.33%;
-      background-color:green;
-    }
-    .center {
-      flex-basis:33.33%;
-      background-color:blue;
-    }
-
-    .right {
-      flex-basis:33.33%;
-      background-color:yellow;
+      display: block;
     }
 
     .prominent {
-      flex-basis:100%;
-      background-color:black;
-      flex-grow:3;
+      flex-basis: 100%;
+      flex-grow: 3;
     }
+
   `;
 
   @property({type: Boolean})
@@ -39,18 +24,18 @@ export class NidocaTopAppBar extends LitElement {
         .devices="${[]}"
         .flexDirection="${FlexDirection.ROW}"
         .flexWrap="${FlexWrap.WRAP}"
-        .flexJustifyContent="${FlexJustifyContent.SPACE_EVENLY}"
+        .flexJustifyContent="${FlexJustifyContent.SPACE_BETWEEN}"
         .flexAlignItems="${FlexAlignItems.CENTER}"
-        .flexAlignContent="${FlexAlignContent.SPACE_EVENLY}"
+        .flexAlignContent="${FlexAlignContent.SPACE_AROUND}"
         containerStyle=""
         itemStyle=""
       >
-        <slot class="left" name="leftComponents"></slot>
-        <slot class="center" name="mainComponents"></slot>
-        <slot class="right" name="rightComponents"></slot>
-        <slot class="prominent" name="prominentComponents"></slot>
-
+        <slot name="left"></slot>
+        <slot name="center"></slot>
+        <slot name="right"></slot>
+        ${this.prominent ? html`<slot class="prominent" name="prominent"></slot>` : html``}
       </nidoca-flex-container>
     `;
   }
+  
 }

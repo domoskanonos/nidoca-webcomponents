@@ -1,101 +1,87 @@
-import {customElement, html, query, TemplateResult} from 'lit-element';
-import { DateType, FlexAlignContent, FlexAlignItems, FlexDirection, FlexJustifyContent, FlexWrap, TextType, TypographyType } from '.';
-import { NidocaForm } from './nidoca-form';
+import {customElement, html, property, query, TemplateResult} from 'lit-element';
+import {
+  DateType,
+  FlexAlignContent,
+  FlexAlignItems,
+  FlexDirection,
+  FlexJustifyContent,
+  FlexWrap,
+  TextType,
+  TypographyType,
+} from '.';
+import {NidocaForm} from './nidoca-form';
+import {InputframeMode} from './nidoca-form-inputframe';
 import {NidocaTemplate} from './nidoca-template';
 
 @customElement('nidoca-showcase')
 export class NidocaShowcase extends NidocaTemplate {
-
-
-
+  
   @query('#form')
   private form: NidocaForm | undefined;
 
-
+  @property({type:Boolean})
+  prominent: boolean = true;
 
   getContent(): TemplateResult {
     return html`
-
-
-
-<nidoca-top-app-bar style="background-color:var(--app-color-secondary-background); color:var(--app-color-secondary);" .prominent="${true}">
-        
-<nidoca-icon
-        title="Icon Title"
-        slot="leftComponents"
-        icon="menu"
-        .clickable="${true}"
-      ></nidoca-icon>
-      <nidoca-typography slot="leftComponents" .typographyType="${TypographyType.BODY1}"
-        >Title</nidoca-typography
+      <nidoca-top-app-bar
+        style="background-color:var(--app-color-secondary-background); color:var(--app-color-secondary);"
+        .prominent="${this.prominent}"
       >
+        <nidoca-icon title="menu" slot="left" icon="menu" .clickable="${true}"></nidoca-icon>
+        <nidoca-typography slot="center" .typographyType="${TypographyType.BODY1}">nidoca-top-app-bar</nidoca-typography>
 
+        <nidoca-icon title="search" slot="right" icon="search" .clickable="${true}" @nidoca-event-icon-clicked="${()=> this.prominent= !this.prominent}"></nidoca-icon>
 
+        <nidoca-form-text .textType="${TextType.SEARCH}" slot="prominent" .inputframeMode="${InputframeMode.CLEAR}">
 
-      <nidoca-icon
-        title="Icon Title"
-        slot="rightComponents"
-        icon="search"
-        .clickable="${true}"
-      ></nidoca-icon>
-
-        
-<nidoca-search-bar slot="prominentComponents">
-
-
-
-
-
-
-</nidoca-search-bar>
-
-
-
-        
+        </nidoca-form-text>
       </nidoca-top-app-bar>
 
+      <div>
+        <nidoca-progress></nidoca-progress>
+      </div>
 
-<div>
-<nidoca-progress></nidoca-progress>
-</div>
+      <nidoca-list>
+        <nidoca-list-item .selectionMode="${true}">Hallo</nidoca-list-item>
+      </nidoca-list>
 
-<nidoca-list>
-<nidoca-list-item .selectionMode="${true}">Hallo</nidoca-list-item>
-</nidoca-list>
+      <nidoca-form id="form">
+        <nidoca-flex-container
+          .devices="${[]}"
+          .flexDirection="${FlexDirection.ROW}"
+          .flexWrap="${FlexWrap.WRAP}"
+          .flexJustifyContent="${FlexJustifyContent.SPACE_EVENLY}"
+          .flexAlignItems="${FlexAlignItems.CENTER}"
+          .flexAlignContent="${FlexAlignContent.SPACE_EVENLY}"
+          containerStyle="height:35vh; width:80vw; background-color:var(--app-color-primary-background)"
+          itemStyle=""
+        >
+          <nidoca-form-text .textType="${TextType.TEXT}" name="text" value="" label="Text"></nidoca-form-text>
+          <nidoca-form-text .textType="${TextType.EMAIL}" name="email" value="" label="Email"></nidoca-form-text>
+          <nidoca-form-text .textType="${TextType.NUMBER}" name="number" value="" label="Number"></nidoca-form-text>
+          <nidoca-form-text
+            .textType="${TextType.PASSWORD}"
+            name="password"
+            value=""
+            label="Password"
+          ></nidoca-form-text>
+          <nidoca-form-text .textType="${TextType.TEL}" name="tel" value="" label="Telephone"></nidoca-form-text>
+          <nidoca-form-text .textType="${TextType.URL}" name="url" value="" label="Url"></nidoca-form-text>
+          <nidoca-form-date .dateType="${DateType.DATE}" name="date" value="" label="Date"></nidoca-form-date>
+          <nidoca-form-date
+            .dateType="${DateType.DATETIME_LOCAL}"
+            name="datetime"
+            value=""
+            label="Datetime"
+          ></nidoca-form-date>
+          <nidoca-form-date .dateType="${DateType.MONTH}" name="month" value="" label="Month"></nidoca-form-date>
+          <nidoca-form-date .dateType="${DateType.TIME}" name="time" value="" label="Time"></nidoca-form-date>
+          <nidoca-form-date .dateType="${DateType.WEEK}" name="week" value="" label="Week"></nidoca-form-date>
+        </nidoca-flex-container>
+      </nidoca-form>
 
-  
-    
-    <nidoca-form id="form">
-
-    <nidoca-flex-container
-.devices="${[]}"
-.flexDirection="${FlexDirection.ROW}"
-.flexWrap="${FlexWrap.WRAP}"
-.flexJustifyContent="${FlexJustifyContent.SPACE_EVENLY}"
-.flexAlignItems="${FlexAlignItems.CENTER}"
-.flexAlignContent="${FlexAlignContent.SPACE_EVENLY}"
-containerStyle="height:35vh; width:80vw; background-color:var(--app-color-primary-background)"
-itemStyle="" >
-
-    <nidoca-form-text .textType="${TextType.TEXT}" name="text" value="" label="Text" ></nidoca-form-text>
-            <nidoca-form-text .textType="${TextType.EMAIL}" name="email" value="" label="Email" ></nidoca-form-text>
-            <nidoca-form-text .textType="${TextType.NUMBER}" name="number" value="" label="Number" ></nidoca-form-text>
-            <nidoca-form-text .textType="${TextType.PASSWORD}" name="password" value="" label="Password" ></nidoca-form-text>
-            <nidoca-form-text .textType="${TextType.TEL}" name="tel" value="" label="Telephone" ></nidoca-form-text>
-            <nidoca-form-text .textType="${TextType.URL}" name="url" value="" label="Url" ></nidoca-form-text>
-            <nidoca-form-date .dateType="${DateType.DATE}" name="date" value="" label="Date" ></nidoca-form-date>
-            <nidoca-form-date .dateType="${DateType.DATETIME_LOCAL}" name="datetime" value="" label="Datetime" ></nidoca-form-date>
-            <nidoca-form-date .dateType="${DateType.MONTH}" name="month" value="" label="Month" ></nidoca-form-date>
-            <nidoca-form-date .dateType="${DateType.TIME}" name="time" value="" label="Time" ></nidoca-form-date>
-            <nidoca-form-date .dateType="${DateType.WEEK}" name="week" value="" label="Week" ></nidoca-form-date>
-
-    </nidoca-flex-container>
-    
-    </nidoca-form>
-
-
-    <nidoca-button @click="${()=> alert(JSON.stringify(this.form?.getOutputData()))}">HUhu</nidoca-button>
-
+      <nidoca-button @click="${() => alert(JSON.stringify(this.form?.getOutputData()))}">HUhu</nidoca-button>
     `;
   }
 

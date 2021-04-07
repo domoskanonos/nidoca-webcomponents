@@ -1,4 +1,5 @@
 import {css, customElement, html, property, query, TemplateResult} from 'lit-element';
+import { InputframeMode } from '.';
 import {FormOutputData, NidocaFormAbstractInputElement} from './nidoca-form-abstract-input-element';
 
 export enum TextType {
@@ -8,6 +9,7 @@ export enum TextType {
   PASSWORD = 'password',
   TEL = 'tel',
   TEXT = 'text',
+  SEARCH = 'search',
   URL = 'url',
 }
 
@@ -82,16 +84,20 @@ export class NidocaFormText extends NidocaFormAbstractInputElement {
   @property()
   warningText: string = "";
 
+  @property({type: InputframeMode})
+  inputframeMode: InputframeMode = InputframeMode.NORMAL;
+
   @query('#inputElement')
   private inputElement: HTMLInputElement | undefined;
 
   render(): TemplateResult {
     return html`
-      <nidoca-inputframe
+      <nidoca-form-inputframe
         label="${this.label}"
         .errorText="${this.errorText}"
         .infoText="${this.infoText}"
         .warningText="${this.warningText}"
+        .inputframeMode="${this.inputframeMode}"
       >
         <input
           id="inputElement"
@@ -113,7 +119,7 @@ export class NidocaFormText extends NidocaFormAbstractInputElement {
           @focus="${() => this.handleFocus()}"
           @focusout="${() => this.handleFocusout()}"
         />
-      </nidoca-inputframe>
+      </nidoca-form-inputframe>
     `;
   }
 

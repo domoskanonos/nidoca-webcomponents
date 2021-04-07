@@ -28,7 +28,6 @@ export * from './nidoca-list';
 export * from './nidoca-list-item';
 export * from './nidoca-top-app-bar';
 export * from './nidoca-navigation';
-export * from './nidoca-search-bar';
 export * from './nidoca-navigation-link';
 export * from './nidoca-visible';
 export * from './nidoca-navigation-section';

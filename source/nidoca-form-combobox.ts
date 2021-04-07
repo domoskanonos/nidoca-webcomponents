@@ -2,6 +2,7 @@ import {css, customElement, html, property, query, TemplateResult} from 'lit-ele
 import {repeat} from 'lit-html/directives/repeat';
 import {guard} from 'lit-html/directives/guard';
 import {FormOutputData, NidocaFormAbstractInputElement} from './nidoca-form-abstract-input-element';
+import { InputframeMode } from '.';
 
 @customElement('nidoca-form-combobox')
 export class NidocaFormCombobox extends NidocaFormAbstractInputElement {
@@ -71,16 +72,20 @@ export class NidocaFormCombobox extends NidocaFormAbstractInputElement {
   @property()
   multiple: boolean = false;
 
+  @property({type: InputframeMode})
+  inputframeMode: InputframeMode = InputframeMode.NORMAL;
+
   @query('#selectElement')
   private selectElement: HTMLSelectElement | undefined;
 
   render(): TemplateResult {
     return html`
-      <nidoca-inputframe
+      <nidoca-form-inputframe
         label="${this.label}"
-        .errorText="${this.errorText}"
-        .infoText="${this.infoText}"
-        .warningText="${this.warningText}"
+        errorText="${this.errorText}"
+        infoText="${this.infoText}"
+        warningText="${this.warningText}"
+        .inputframeMode="${this.inputframeMode}"
       >
         <select
           id="selectElement"
@@ -103,7 +108,7 @@ export class NidocaFormCombobox extends NidocaFormAbstractInputElement {
             `
           )}
         </select>
-      </nidoca-inputframe>
+      </nidoca-form-inputframe>
     `;
   }
 
