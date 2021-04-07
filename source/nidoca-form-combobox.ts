@@ -2,7 +2,7 @@ import {css, customElement, html, property, query, TemplateResult} from 'lit-ele
 import {repeat} from 'lit-html/directives/repeat';
 import {guard} from 'lit-html/directives/guard';
 import {FormOutputData, NidocaFormAbstractInputElement} from './nidoca-form-abstract-input-element';
-import { InputframeMode } from '.';
+import {InputframeMode} from '.';
 
 @customElement('nidoca-form-combobox')
 export class NidocaFormCombobox extends NidocaFormAbstractInputElement {
@@ -40,37 +40,34 @@ export class NidocaFormCombobox extends NidocaFormAbstractInputElement {
   `;
 
   @property()
-  name: string = 'combobox';
-
-  @property()
   value: any = '';
 
-  @property()
-  label: string = 'combobox';
+  @property({type: FormOutputData })
+  options: FormOutputData[] = [];
 
-  @property()
-  options: FormOutputData[] = [
-    <FormOutputData>{key: '', value: 'no value'},
-    <FormOutputData>{key: '1', value: 'value'},
-  ];
+  @property({type: String})
+  name: string = '';
 
-  @property()
+  @property({type: String})
+  label: string = '';
+
+  @property({type: String})
+  errorText: string = '';
+
+  @property({type: String})
+  infoText: string = '';
+
+  @property({type: String})
+  warningText: string = '';
+
+  @property({type: Boolean})
   required: boolean = true;
 
-  @property()
-  errorText: string = 'errorText';
-
-  @property()
-  infoText: string = 'infoText';
-
-  @property()
-  warningText: string = 'warningText';
-
-  @property()
-  size: number = 1;
-
-  @property()
+  @property({type: Boolean})
   multiple: boolean = false;
+
+  @property({type: Number})
+  size: number = 1;
 
   @property({type: InputframeMode})
   inputframeMode: InputframeMode = InputframeMode.NORMAL;

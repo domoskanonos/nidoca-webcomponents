@@ -24,6 +24,17 @@ export class NidocaShowcase extends NidocaTemplate {
 
   getContent(): TemplateResult {
     return html`
+
+
+<nidoca-wizard>
+
+<nidoca-wizard-step icon="home" title="Hallo" .selected="${true}"></nidoca-wizard-step>
+<nidoca-wizard-step icon="home" title="Hallo"></nidoca-wizard-step>
+<nidoca-wizard-step icon="home" title="Hallo"></nidoca-wizard-step>
+
+</nidoca-wizard>
+
+
       <nidoca-top-app-bar
         style="background-color:var(--app-color-secondary-background); color:var(--app-color-secondary);"
         .prominent="${this.prominent}"

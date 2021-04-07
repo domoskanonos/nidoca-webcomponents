@@ -1,85 +1,49 @@
 import {css, customElement, html, property, LitElement, TemplateResult} from 'lit-element';
-import {repeat} from 'lit-html/directives/repeat';
-import {guard} from 'lit-html/directives/guard';
-import {TypographyType} from './nidoca-typography';
-
-export class WizardStep {
-  title: string = '';
-  icon: string = '';
-}
+import {FlexAlignContent, FlexAlignItems, FlexDirection, FlexJustifyContent, FlexWrap} from '.';
+import {NidocaWizardStep} from './nidoca-wizard-step';
 
 @customElement('nidoca-wizard')
 export class NidocaWizard extends LitElement {
-  static styles = css`
-     .WIZARD {
+  static styles = css``;
+
+  render(): TemplateResult {
+    return html`
+      <nidoca-flex-container
+        .devices="${[]}"
+        .flexDirection="${FlexDirection.ROW}"
+        .flexWrap="${FlexWrap.NO_WRAP}"
+        .flexJustifyContent="${FlexJustifyContent.FLEX_START}"
+        .flexAlignItems="${FlexAlignItems.CENTER}"
+        .flexAlignContent="${FlexAlignContent.SPACE_EVENLY}"
+        containerStyle=""
+        itemStyle=""
+      >
+        <slot @slotchange="${(event: Event) => this.slotChanged(event)}"></slot>
+      </nidoca-flex-container>
+    `;
+  }
+
+  slotChanged(event: Event) {
+    let slotElement: HTMLSlotElement = <HTMLSlotElement>event.target;
+    if (slotElement == undefined) {
+      return;
     }
-
-    .WIZARD_STEP {
-      float: left;
+    let elements: Element[] = slotElement.assignedElements();
+    for (let index = 0; index < elements.length; index++) {
+      let element: Element = elements[index];
+      if (element instanceof NidocaWizardStep) {
+        var xxx = document.createElement('div');
+        //xxx.setAttribute("style","padding-right:110px;");
+        console.log('jdoifjdoifj');
+        //element.parentElement?.appendChild(xxx);
+        let classList = element.classList;
+        if (!classList.contains('flexItem')) {
+          //classList.add('flexItem');
+        }
+        if (!classList.contains('flexItemDevice')) {
+          //classList.add('flexItemDevice');
+        }
+      }
     }
-
-    .WIZARD_ICON {
-      width: 50px;
-      height: 50px;
-      float: left;
-      border: 2px solid var(--app-color-primary-background);
-      border-radius: 50%;
-      margin-right: 20px;
-      position: relative;
-      transition: all 0.35s;
-      color: var(--app-color-primary-background);
-    }
-
-    .WIZARD_ICON::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      right: -22px;
-      width: 20px;
-      height: 5px;
-
-      border-bottom: 2px solid var(--app-color-primary-background);
-    }
-
-    .WIZARD_STEP:last-child .WIZARD_ICON {
-      overflow: hidden;
-    }
-
-    .WIZARD_ICON:hover {
-      background: var(--app-color-primary-background);
-      color: #ffffff;
-    }
-
-    .WIZARD_STEP:first-child .WIZARD_ICON {
-      background: var(--app-color-primary-background);
-      color: #ffffff;
-    }
-
-    .WIZARD_STEP:first-child .WIZARD_ICON::after {
-      background: var(--app-color-primary-background);
-    }
-
-    .WIZARD_TITLE {
-      width: 50px;
-      text-align: center;
-    }
-  `;
-
-@property()
-wizardSteps: WizardStep[] = [<WizardStep>{icon: 'thumb_up', title: 'step 1'}, <WizardStep>{
-  icon: 'thumb_up',
-  title: 'step 2',
-}, <WizardStep>{icon: 'thumb_up', title: 'step 3'}];
-
-@property()
-selectedStep: WizardStep = <WizardStep>{icon: 'thumb_up', title: 'step 1'};
-
-render(): TemplateResult {
-  return html`
-      <div class="WIZARD">
-         <slot></slot>
-      </div>
-  `;
-}
+  }
 }
