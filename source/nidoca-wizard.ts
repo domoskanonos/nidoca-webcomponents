@@ -1,15 +1,17 @@
-import {css, customElement, html, property, LitElement, TemplateResult} from 'lit-element';
+import {css, customElement, html, query, LitElement, TemplateResult} from 'lit-element';
 import {FlexAlignContent, FlexAlignItems, FlexDirection, FlexJustifyContent, FlexWrap} from '.';
-import {NidocaWizardStep} from './nidoca-wizard-step';
+import {NidocaWizardStep, WizardStepState} from './nidoca-wizard-step';
 
 @customElement('nidoca-wizard')
 export class NidocaWizard extends LitElement {
   static styles = css``;
 
+  @query('#wizardSlot')
+  private wizardSlot: HTMLSlotElement | undefined;
+
   render(): TemplateResult {
     return html`
       <nidoca-flex-container
-        .devices="${[]}"
         .flexDirection="${FlexDirection.ROW}"
         .flexWrap="${FlexWrap.NO_WRAP}"
         .flexJustifyContent="${FlexJustifyContent.FLEX_START}"
@@ -17,8 +19,9 @@ export class NidocaWizard extends LitElement {
         .flexAlignContent="${FlexAlignContent.SPACE_EVENLY}"
         containerStyle=""
         itemStyle=""
+        @nidoca-event-wizard-step-clicked="${(event: CustomEvent) => this.stepClicked(event)}"
       >
-        <slot @slotchange="${(event: Event) => this.slotChanged(event)}"></slot>
+        <slot id="wizardSlot" @slotchange="${(event: Event) => this.slotChanged(event)}"></slot>
       </nidoca-flex-container>
     `;
   }
@@ -32,16 +35,33 @@ export class NidocaWizard extends LitElement {
     for (let index = 0; index < elements.length; index++) {
       let element: Element = elements[index];
       if (element instanceof NidocaWizardStep) {
-        var xxx = document.createElement('div');
-        //xxx.setAttribute("style","padding-right:110px;");
-        console.log('jdoifjdoifj');
-        //element.parentElement?.appendChild(xxx);
-        let classList = element.classList;
-        if (!classList.contains('flexItem')) {
-          //classList.add('flexItem');
+        element.index = index;
+        if (element.index == elements.length - 1) {
+          element.last = true;
         }
-        if (!classList.contains('flexItemDevice')) {
-          //classList.add('flexItemDevice');
+      }
+    }
+  }
+
+  stepClicked(event: CustomEvent<any>) {
+    let selectedStepIndex: number = event.detail;
+    console.debug('wizard step clicked, selectedStepIndex: %s', selectedStepIndex);
+    this.changeState(selectedStepIndex);
+  }
+
+  changeState(selectedStepIndex: number) {
+    if (this.wizardSlot) {
+      let elements: Element[] = this.wizardSlot.assignedElements();
+      for (let index = 0; index < elements.length; index++) {
+        let element: Element = elements[index];
+        if (element instanceof NidocaWizardStep && element.index) {
+          if (element.index < selectedStepIndex) {
+            element.state = WizardStepState.COMPLETED;
+          } else if (element.index == selectedStepIndex) {
+            element.state = WizardStepState.CURRENT;
+          } else {
+            element.state = WizardStepState.OPEN;
+          }
         }
       }
     }

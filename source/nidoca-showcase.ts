@@ -12,6 +12,7 @@ import {
 import {NidocaForm} from './nidoca-form';
 import {InputframeMode} from './nidoca-form-inputframe';
 import {NidocaTemplate} from './nidoca-template';
+import { WizardStepState } from './nidoca-wizard-step';
 
 @customElement('nidoca-showcase')
 export class NidocaShowcase extends NidocaTemplate {
@@ -28,9 +29,11 @@ export class NidocaShowcase extends NidocaTemplate {
 
 <nidoca-wizard>
 
-<nidoca-wizard-step icon="home" title="Hallo" .selected="${true}"></nidoca-wizard-step>
-<nidoca-wizard-step icon="home" title="Hallo"></nidoca-wizard-step>
-<nidoca-wizard-step icon="home" title="Hallo"></nidoca-wizard-step>
+<nidoca-wizard-step icon="face" title="personal data" .state="${WizardStepState.COMPLETED}"></nidoca-wizard-step>
+<nidoca-wizard-step icon="verified_user" title="verify" .state="${WizardStepState.CURRENT}"></nidoca-wizard-step>
+<nidoca-wizard-step icon="accessibility_new" title="accessibility"></nidoca-wizard-step>
+<nidoca-wizard-step icon="done" title="Ende"></nidoca-wizard-step>
+
 
 </nidoca-wizard>
 
