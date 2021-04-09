@@ -15,7 +15,7 @@ export class NidocaWizard extends LitElement {
         .flexDirection="${FlexDirection.ROW}"
         .flexWrap="${FlexWrap.NO_WRAP}"
         .flexJustifyContent="${FlexJustifyContent.FLEX_START}"
-        .flexAlignItems="${FlexAlignItems.CENTER}"
+        .flexAlignItems="${FlexAlignItems.FLEX_START}"
         .flexAlignContent="${FlexAlignContent.SPACE_EVENLY}"
         containerStyle=""
         itemStyle=""
@@ -32,15 +32,20 @@ export class NidocaWizard extends LitElement {
       return;
     }
     let elements: Element[] = slotElement.assignedElements();
+    let selectedStepIndex: number = 0;
     for (let index = 0; index < elements.length; index++) {
       let element: Element = elements[index];
       if (element instanceof NidocaWizardStep) {
         element.index = index;
+        if (element.state == WizardStepState.CURRENT) {
+          selectedStepIndex = index;
+        }
         if (element.index == elements.length - 1) {
-          element.last = true;
+          element.isLast = true;
         }
       }
     }
+    this.changeState(selectedStepIndex);
   }
 
   stepClicked(event: CustomEvent<any>) {
@@ -54,13 +59,15 @@ export class NidocaWizard extends LitElement {
       let elements: Element[] = this.wizardSlot.assignedElements();
       for (let index = 0; index < elements.length; index++) {
         let element: Element = elements[index];
-        if (element instanceof NidocaWizardStep && element.index) {
-          if (element.index < selectedStepIndex) {
-            element.state = WizardStepState.COMPLETED;
-          } else if (element.index == selectedStepIndex) {
-            element.state = WizardStepState.CURRENT;
-          } else {
-            element.state = WizardStepState.OPEN;
+        if (element instanceof NidocaWizardStep) {
+          if (element.index !== undefined) {
+            if (element.index < selectedStepIndex) {
+              element.state = WizardStepState.COMPLETED;
+            } else if (element.index == selectedStepIndex) {
+              element.state = WizardStepState.CURRENT;
+            } else {
+              element.state = WizardStepState.OPEN;
+            }
           }
         }
       }

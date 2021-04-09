@@ -26,32 +26,6 @@ export class NidocaShowcase extends NidocaTemplate {
   getContent(): TemplateResult {
     return html`
 
-
-<nidoca-wizard>
-
-<nidoca-wizard-step icon="face" title="personal data" .state="${WizardStepState.COMPLETED}"></nidoca-wizard-step>
-<nidoca-wizard-step icon="verified_user" title="verify" .state="${WizardStepState.CURRENT}"></nidoca-wizard-step>
-<nidoca-wizard-step icon="accessibility_new" title="accessibility"></nidoca-wizard-step>
-<nidoca-wizard-step icon="done" title="Ende"></nidoca-wizard-step>
-
-
-</nidoca-wizard>
-
-
-      <nidoca-top-app-bar
-        style="background-color:var(--app-color-secondary-background); color:var(--app-color-secondary);"
-        .prominent="${this.prominent}"
-      >
-        <nidoca-icon title="menu" slot="left" icon="menu" .clickable="${true}"></nidoca-icon>
-        <nidoca-typography slot="center" .typographyType="${TypographyType.BODY1}">nidoca-top-app-bar</nidoca-typography>
-
-        <nidoca-icon title="search" slot="right" icon="search" .clickable="${true}" @nidoca-event-icon-clicked="${()=> this.prominent= !this.prominent}"></nidoca-icon>
-
-        <nidoca-form-text .textType="${TextType.SEARCH}" slot="prominent" .inputframeMode="${InputframeMode.CLEAR}">
-
-        </nidoca-form-text>
-      </nidoca-top-app-bar>
-
       <div>
         <nidoca-progress></nidoca-progress>
       </div>

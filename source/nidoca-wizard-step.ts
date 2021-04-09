@@ -1,9 +1,12 @@
 import {css, customElement, html, property, LitElement, TemplateResult} from 'lit-element';
 import {FlexAlignContent, FlexAlignItems, FlexDirection, FlexJustifyContent, FlexWrap, IconShadowType} from '.';
-import {TypographyType} from './nidoca-typography';
+import {TypographyAlignment, TypographyType} from './nidoca-typography';
 
 export enum WizardStepState {
-  CURRENT, COMPLETED, OPEN
+  CURRENT,
+  COMPLETED,
+  OPEN,
+  FINISH,
 }
 
 @customElement('nidoca-wizard-step')
@@ -22,23 +25,32 @@ export class NidocaWizardStep extends LitElement {
     }
   `;
 
-  @property()
+  @property({type: String})
   icon: string = '';
 
-  @property()
+  @property({type: String})
   title: string = '';
 
   @property({type: WizardStepState})
   state: WizardStepState | undefined;
 
+  @property({type: Boolean})
+  isLast: boolean = false;
+
   index: number | undefined;
   first: boolean = false;
 
-  @property({type: Boolean})
-  last: boolean = false;
-
   render(): TemplateResult {
     return html`
+      <nidoca-flex-container
+        .flexDirection="${FlexDirection.COLUMN}"
+        .flexWrap="${FlexWrap.NO_WRAP}"
+        .flexJustifyContent="${FlexJustifyContent.SPACE_EVENLY}"
+        .flexAlignItems="${FlexAlignItems.FLEX_START}"
+        .flexAlignContent="${FlexAlignContent.SPACE_EVENLY}"
+        containerStyle=""
+        itemStyle=""
+      >
         <nidoca-flex-container
           .flexDirection="${FlexDirection.ROW}"
           .flexWrap="${FlexWrap.NO_WRAP}"
@@ -48,16 +60,6 @@ export class NidocaWizardStep extends LitElement {
           containerStyle=""
           itemStyle=""
         >
-        <nidoca-flex-container
-        .flexDirection="${FlexDirection.COLUMN}"
-        .flexWrap="${FlexWrap.NO_WRAP}"
-        .flexJustifyContent="${FlexJustifyContent.SPACE_EVENLY}"
-        .flexAlignItems="${FlexAlignItems.CENTER}"
-        .flexAlignContent="${FlexAlignContent.SPACE_EVENLY}"
-        containerStyle=""
-        itemStyle=""
-      >
-
           <nidoca-icon
             icon="${this.icon}"
             .iconShadowType="${IconShadowType.NONE}"
@@ -65,28 +67,46 @@ export class NidocaWizardStep extends LitElement {
             .round="${true}"
             .clickable="${true}"
             .deactivated="${false}"
-            color="${this.state == WizardStepState.COMPLETED ? 'var(--app-color-primary)' : this.state == WizardStepState.CURRENT ? 'var(--app-color-secondary)':  'var(--app-color-surface)'}"
-            backgroundColor="${this.state == WizardStepState.COMPLETED
-              ? 'var(--app-color-primary-background)'
-              : this.state ==  WizardStepState.CURRENT ? 'var(--app-color-secondary-background)': 'var(--app-color-surface-background)'}"
+            color="${this.determineColor(this.state)}"
+            backgroundColor="${this.determineBackgroundColor(this.state)}"
             size="24"
             @nidoca-event-icon-clicked="${() => this.stepClicked()}"
             sizeUnit="px"
           >
           </nidoca-icon>
 
-          <nidoca-typography .typographyType="${TypographyType.OVERLINE}" text="${this.title}"
+          ${this.isLast ? html`` : html`<nidoca-icon
+            color="${this.determineBackgroundColor(this.state)}"
+            icon="label_important">
+          </nidoca-icon>`}
+        </nidoca-flex-container>
+        <nidoca-typography
+          style="width:48px;"
+          .typographyType="${TypographyType.OVERLINE}"
+          typographyAlignment="${TypographyAlignment.CENTER}"
+          text="${this.title}"
           ><slot></slot>
         </nidoca-typography>
-
-
-        </nidoca-flex-container>
-
-
-        ${this.last ? html``: html`<nidoca-icon icon="label_important"></nidoca-icon>`}
-
       </nidoca-flex-container>
     `;
+  }
+
+  private determineBackgroundColor(state: WizardStepState | undefined): string {
+    return state == WizardStepState.COMPLETED
+      ? 'var(--app-color-primary-background)'
+      : state == WizardStepState.CURRENT
+        ? 'var(--app-color-secondary-background)'
+        : 'var(--app-color-surface-background)';
+  }
+
+  private determineColor(state: WizardStepState | undefined): string {
+    return state == WizardStepState.FINISH
+      ? 'var(--app-color-success)'
+      : state == WizardStepState.COMPLETED
+      ? 'var(--app-color-primary)'
+      : state == WizardStepState.CURRENT
+      ? 'var(--app-color-secondary)'
+      : 'var(--app-color-surface)';
   }
 
   stepClicked() {

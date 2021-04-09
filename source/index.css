@@ -54,8 +54,8 @@
   --app-color-warning-background: #ffcc00;
   --app-color-info-background: #40a6ce;
 
-  --app-color-success: #ffffff;
-  --app-color-error: #ffffff;
+  --app-color-success: #1b8544;
+  --app-color-error: hsl(128, 76%, 33%);
   --color-warning: #ffffff;
   --app-color-info: #ffffff;
 }
