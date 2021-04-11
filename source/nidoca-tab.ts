@@ -23,10 +23,10 @@ export class NidocaTab extends LitElement {
     }
   `;
 
-  @property()
+  @property({type: Boolean})
   selected: boolean = false;
 
-  @property()
+  @property({type: String})
   text: string = '';
 
   render(): TemplateResult {

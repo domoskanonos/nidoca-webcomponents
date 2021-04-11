@@ -12,7 +12,7 @@ export enum AccordionType {
 export class NidocaAccordion extends LitElement {
   static styles = css``;
 
-  @property()
+  @property({type: AccordionType})
   accordionType: AccordionType = AccordionType.SINGLE;
 
   @query('#accordionSlot')

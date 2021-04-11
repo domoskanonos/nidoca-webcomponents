@@ -80,28 +80,28 @@ export class NidocaFlexContainer extends LitElement {
     }
   `;
 
-  @property()
+  @property({type: NidocaDevice})
   devices: NidocaDevice[] = [NidocaDevice.DESKTOP, NidocaDevice.TABLET, NidocaDevice.MOBILE];
 
-  @property()
+  @property({type: FlexDirection})
   flexDirection: FlexDirection = FlexDirection.ROW;
 
-  @property()
+  @property({type: FlexWrap})
   flexWrap: FlexWrap = FlexWrap.WRAP;
 
-  @property()
+  @property({type: FlexJustifyContent})
   flexJustifyContent: FlexJustifyContent = FlexJustifyContent.FLEX_START;
 
-  @property()
+  @property({type: FlexAlignItems})
   flexAlignItems: FlexAlignItems = FlexAlignItems.FLEX_START;
 
-  @property()
+  @property({type: FlexAlignContent})
   flexAlignContent: FlexAlignContent = FlexAlignContent.FLEX_START;
 
-  @property()
+  @property({type: String})
   containerStyle: string = '';
 
-  @property()
+  @property({type: String})
   itemStyle: string = '';
 
   @query('#slotElement')

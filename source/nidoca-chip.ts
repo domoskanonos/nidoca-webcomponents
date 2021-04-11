@@ -21,7 +21,7 @@ export class NidocaChip extends LitElement {
     }
   `;
 
-  @property()
+  @property({type: Boolean})
   clickable: boolean = true;
 
   render(): TemplateResult {

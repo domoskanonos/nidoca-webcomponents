@@ -34,10 +34,10 @@ export class NidocaTable extends LitElement {
     }
   `;
 
-  @property()
+  @property({type: Array})
   headers: any[] = ['column 1', 'column 2'];
 
-  @property()
+  @property({type: Array})
   rows: any[] = [
     ['row 1', new NidocaIcon()],
     ['row 2', new NidocaIcon()],

@@ -11,7 +11,7 @@ export class NidocaList extends LitElement {
     }
   `;
 
-  @property()
+  @property({type: Boolean})
   selectionMode: boolean = false;
 
   @query('#slotElement')

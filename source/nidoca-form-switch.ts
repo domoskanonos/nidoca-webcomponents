@@ -9,19 +9,19 @@ export class NidocaFormSwitch extends NidocaFormAbstractInputElement {
     
   `;
 
-  @property()
-  name: string = 'name';
+  @property({type: String})
+  name: string = '';
 
-  @property()
+  @property({type: String})
   assistiveText: string = '';
 
-  @property()
+  @property({type: String})
   infoText: string = '';
 
-  @property()
+  @property({type: String})
   errorText: string = '';
 
-  @property()
+  @property({type: Boolean})
   selected: boolean = false;
 
   render(): TemplateResult {

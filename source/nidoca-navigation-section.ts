@@ -7,10 +7,10 @@ import {TypographyType} from './nidoca-typography';
 export class NidocaNavigationSection extends LitElement {
   static styles = css``;
 
-  @property()
+  @property({type: String})
   text: string = '';
 
-  @property()
+  @property({type: Boolean})
   rendered: boolean = true;
 
   render(): TemplateResult {

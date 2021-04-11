@@ -20,13 +20,13 @@ export class NidocaLink extends LitElement {
     }
   `;
 
-  @property()
+  @property({type: String})
   text: string = '';
 
-  @property()
+  @property({type: String})
   href: string = '';
 
-  @property()
+  @property({type: TargetType})
   targetType: string = TargetType.SELF;
 
   render(): TemplateResult {

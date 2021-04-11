@@ -12,22 +12,22 @@ export class NidocaFloatingContainer extends LitElement {
     }
   `;
 
-  @property()
+  @property({type: String})
   height: string = 'auto';
 
-  @property()
+  @property({type: String})
   width: string = 'auto';
 
-  @property()
+  @property({type: String})
   left: string = 'auto';
 
-  @property()
+  @property({type: String})
   top: string = 'auto';
 
-  @property()
+  @property({type: String})
   right: string = 'auto';
 
-  @property()
+  @property({type: String})
   bottom: string = 'auto';
 
   render(): TemplateResult {

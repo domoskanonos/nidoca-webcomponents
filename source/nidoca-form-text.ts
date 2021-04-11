@@ -33,55 +33,55 @@ export class NidocaFormText extends NidocaFormAbstractInputElement {
     }
   `;
 
-  @property()
+  @property({type: TextType})
   textType: TextType = TextType.TEXT;
 
-  @property()
-  name: string = 'text';
+  @property({type: String})
+  name: string = '';
 
   @property()
   value: any = '';
 
-  @property()
+  @property({type: String})
   label: string = '';
 
-  @property()
+  @property({type: Boolean})
   required: boolean = false;
 
-  @property()
+  @property({type: String})
   placeholder: string = '';
 
-  @property()
+  @property({type: Boolean})
   disabled: boolean = false;
 
-  @property()
+  @property({type: Boolean})
   checked: boolean = false;
 
-  @property()
+  @property({type: Number})
   maxlength: number | undefined;
 
-  @property()
+  @property({type: Number})
   minlength: number | undefined;
 
-  @property()
+  @property({type: Number})
   min: number | undefined;
 
-  @property()
+  @property({type: Number})
   max: number | undefined;
 
-  @property()
+  @property({type: Number})
   step: number | undefined;
 
-  @property()
+  @property({type: Number})
   size: number | undefined;
 
-  @property()
+  @property({type: String})
   errorText: string = "";
 
-  @property()
+  @property({type: String})
   infoText: string = "";
 
-  @property()
+  @property({type: String})
   warningText: string = "";
 
   @property({type: InputframeMode})

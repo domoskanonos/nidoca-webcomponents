@@ -13,10 +13,10 @@ export class NidocaAccordionItem extends LitElement {
     }
   `;
 
-  @property()
+  @property({type: String})
   header: string = '';
 
-  @property()
+  @property({type: Boolean})
   opened: boolean = false;
 
   render(): TemplateResult {
@@ -33,7 +33,6 @@ export class NidocaAccordionItem extends LitElement {
           <nidoca-flex-container
             class="ACCORDION_HEADER"
             @click="${() => this.toggle()}"
-            .devices="${[]}"
             .flexDirection="${FlexDirection.ROW}"
             .flexWrap="${FlexWrap.WRAP}"
             .flexJustifyContent="${FlexJustifyContent.SPACE_BETWEEN}"

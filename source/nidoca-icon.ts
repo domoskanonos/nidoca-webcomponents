@@ -87,36 +87,35 @@ export class NidocaIcon extends LitElement {
     }
   `;
 
-  @property()
-  icon: string = 'thumb_up';
+  @property({type: String})
+  icon: string = '';
 
-  @property()
+  @property({type: IconShadowType})
   iconShadowType: IconShadowType = IconShadowType.NONE;
 
-  @property()
+  @property({type: Boolean})
   withIconSpace: boolean = true;
 
-  @property()
+  @property({type: Boolean})
   round: boolean = false;
 
-  @property()
+  @property({type: Boolean})
   clickable: boolean = true;
 
-  @property()
+  @property({type: Boolean})
   deactivated: boolean = false;
 
-  @property()
+  @property({type: String})
   color: string = '';
 
-  @property()
+  @property({type: String})
   backgroundColor: string = 'transparent';
 
-  @property()
+  @property({type: Number})
   size: number = 24;
 
-  @property()
+  @property({type: String})
   sizeUnit: string = 'px';
-
 
   render(): TemplateResult {
     return html`

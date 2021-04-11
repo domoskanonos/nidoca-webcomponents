@@ -27,13 +27,13 @@ export class NidocaNavigationLink extends LitElement {
     }
   `;
 
-  @property()
+  @property({type: String})
   icon: string = '';
 
-  @property()
+  @property({type: String})
   text: string = '';
 
-  @property()
+  @property({type: String})
   href: string = '';
 
   render(): TemplateResult {

@@ -56,18 +56,14 @@ export class NidocaButton extends LitElement {
     }
   `;
 
-  @property()
+  @property({type: ButtonType})
   buttonType: ButtonType = ButtonType.PRIMARY;
 
-  @property()
+  @property({type: String})
   leadingIcon: string = 'thumb_up';
 
-  @property()
+  @property({type: String})
   text: string = '';
-
-  constructor() {
-    super();
-  }
 
   render(): TemplateResult {
     return html`

@@ -202,7 +202,7 @@ export class NidocaProgress extends LitElement {
     }
   `;
 
-  @property()
+  @property({type: ProgressType})
   progressType: ProgressType = ProgressType.PROGRESS;
 
   render(): TemplateResult {

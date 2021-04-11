@@ -31,16 +31,16 @@ export class NidocaSpacer extends LitElement {
     }
   `;
 
-  @property()
+  @property({type: NidocaDevice})
   devices: NidocaDevice[] = [NidocaDevice.DESKTOP, NidocaDevice.TABLET, NidocaDevice.MOBILE];
 
-  @property()
+  @property({type: SpacerType})
   spacerTypes: SpacerType[] = [SpacerType.ALL];
 
-  @property()
+  @property({type: SpacerSize})
   spacerSize: SpacerSize = SpacerSize.NORMAL;
 
-  @property()
+  @property({type: String})
   cssStyle: string = '';
 
   render(): TemplateResult {

@@ -40,7 +40,7 @@ export class NidocaDialog extends LitElement {
     }
   `;
 
-  @property()
+  @property({type: Boolean})
   show: boolean = false;
 
   render(): TemplateResult {

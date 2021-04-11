@@ -5,7 +5,7 @@ import {VisibleType} from './nidoca-visible';
 export class NidocaTabContent extends LitElement {
   static styles = css``;
 
-  @property()
+  @property({type: Boolean})
   selected: boolean = false;
 
   render(): TemplateResult {

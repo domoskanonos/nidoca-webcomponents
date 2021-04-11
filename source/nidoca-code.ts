@@ -34,7 +34,7 @@ code {
 }
    `;
 
-   @property()
+   @property({type: String})
    code: string = '';
 
    render() {

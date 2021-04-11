@@ -15,10 +15,11 @@ export enum TransitionType {
 
 @customElement('nidoca-transition')
 export class NidocaTransition extends LitElement {
-  @property()
+
+  @property({type: TransitionType})
   transitionType: TransitionType = TransitionType.CENTER;
 
-  @property()
+  @property({type: Number})
   duration: number = 0.5; // seconds
 
   static styles = css`
