@@ -1,7 +1,9 @@
+import {ClassElement} from 'lit-element';
+
 export class NidocaDevice {
-  static readonly MOBILE = new NidocaDevice('MOBILE','0px', '640px');
-  static readonly TABLET = new NidocaDevice('TABLET','641px', '1007px');
-  static readonly DESKTOP = new NidocaDevice('DESKTOP','1008px', null);
+  static readonly MOBILE = new NidocaDevice('MOBILE', '0px', '640px');
+  static readonly TABLET = new NidocaDevice('TABLET', '641px', '1007px');
+  static readonly DESKTOP = new NidocaDevice('DESKTOP', '1008px', null);
 
   constructor(private key: string, private minWidth: string | null, private maxWidth: string | null) {}
 
@@ -21,4 +23,29 @@ export class NidocaDevice {
     mediaStyle = mediaStyle.concat('} ');
     return mediaStyle;
   }
+}
+
+/**
+ * A property decorator to define property infos, like title, description, typeName, etc.
+ *
+ * @example
+ * ```ts
+ * class MyElement {
+ *   @propertyInfo({ type: Boolean })
+ *   clicked = false;
+ * }
+ * ```
+ * @category Decorator
+ * @ExportDecoratedItems
+ */
+export function propertyInfo(options?: PropertyInfo) {
+  // tslint:disable-next-line:no-any decorator
+  return (protoOrDescriptor: Object, name?: PropertyKey): any =>
+    console.log("skodjposid ", protoOrDescriptor, name);
+}
+
+export class PropertyInfo {
+  title: String = '';
+  description: String = '';
+  typeName: String = '';
 }

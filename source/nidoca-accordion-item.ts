@@ -2,6 +2,7 @@ import {css, customElement, html, property, TemplateResult} from 'lit-element';
 import {LitElement} from 'lit-element';
 import {FlexAlignContent, FlexAlignItems, FlexDirection, FlexJustifyContent, FlexWrap} from '.';
 import {BorderProperty} from './nidoca-border';
+import { propertyInfo } from './nidoca-meta';
 import {SpacerType, SpacerSize} from './nidoca-spacer';
 import {VisibleType} from './nidoca-visible';
 
@@ -13,6 +14,7 @@ export class NidocaAccordionItem extends LitElement {
     }
   `;
 
+  @propertyInfo({title: "Testproperty", description: "Testdescription", typeName:"String"})
   @property({type: String})
   header: string = '';
 
