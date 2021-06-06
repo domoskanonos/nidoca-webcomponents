@@ -1,6 +1,6 @@
 import {css, customElement, html, LitElement, property, TemplateResult} from 'lit-element';
 import {FlexAlignContent, FlexAlignItems, FlexDirection, FlexJustifyContent, FlexWrap} from './nidoca-flex-container';
-import {SpacerType, SpacerSize} from './nidoca-spacer';
+import {NidocaSpacerType, NidocaSpacerSize} from './nidoca-spacer';
 import {TypographyType} from './nidoca-typography';
 
 @customElement('nidoca-navigation-section')
@@ -25,7 +25,7 @@ export class NidocaNavigationSection extends LitElement {
             .flexAlignContent="${FlexAlignContent.FLEX_START}"
             itemStyle="flex-basis: 100%;"
           >
-            <nidoca-spacer spacerSize="${SpacerSize.SMALL}" .spacerTypes="${[SpacerType.ALL]}">
+            <nidoca-spacer spacerSize="${NidocaSpacerSize.SMALL}" .spacerTypes="${[NidocaSpacerType.ALL]}">
               <nidoca-typography .typographyType="${TypographyType.H6}" text="${this.text}"></nidoca-typography>
             </nidoca-spacer>
           </nidoca-flex-container>

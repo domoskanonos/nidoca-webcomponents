@@ -7,8 +7,8 @@ export abstract class NidocaTemplate extends LitElement {
       position: fixed;
       width: 100%;
       z-index: 1;
-      background-color: var(--app-color-primary-background);
-      color: var(--app-color-primary);
+      background-color: var(--mdc-theme-primary);
+      color: var(--mdc-theme-on-primary);
     }
 
     #content {
@@ -26,7 +26,7 @@ export abstract class NidocaTemplate extends LitElement {
       position: fixed;
       width: 300px;
       min-height: 100%;
-      background-color: var(--app-color-primary-background);
+      background-color: var(--mdc-theme-primary);
       transition: all 0.35s linear;
       overflow-y: scroll;
       max-height: 100%;

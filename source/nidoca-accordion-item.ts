@@ -3,7 +3,7 @@ import {LitElement} from 'lit-element';
 import {FlexAlignContent, FlexAlignItems, FlexDirection, FlexJustifyContent, FlexWrap} from '.';
 import {BorderProperty} from './nidoca-border';
 import { propertyInfo } from './nidoca-meta';
-import {SpacerType, SpacerSize} from './nidoca-spacer';
+import {NidocaSpacerType, NidocaSpacerSize} from './nidoca-spacer';
 import {VisibleType} from './nidoca-visible';
 
 @customElement('nidoca-accordion-item')
@@ -41,7 +41,7 @@ export class NidocaAccordionItem extends LitElement {
             .flexAlignItems="${FlexAlignItems.CENTER}"
             .flexAlignContent="${FlexAlignContent.CENTER}"
           >
-            <nidoca-spacer spacerSize="${SpacerSize.MEDIUM}" .spacerTypes="${[SpacerType.LEFT]}">
+            <nidoca-spacer spacerSize="${NidocaSpacerSize.MEDIUM}" .spacerTypes="${[NidocaSpacerType.LEFT]}">
               <nidoca-typography text="${this.header}"></nidoca-typography>
             </nidoca-spacer>
             <nidoca-icon icon="${this.opened ? 'keyboard_arrow_down' : 'keyboard_arrow_up'}"></nidoca-icon>

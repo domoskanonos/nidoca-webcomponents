@@ -2,7 +2,7 @@ import {css, customElement, html, property, TemplateResult} from 'lit-element';
 import {LitElement} from 'lit-element';
 import {FlexAlignItems, FlexJustifyContent, FlexWrap} from './nidoca-flex-container';
 import {VisibleType} from './nidoca-visible';
-import {SpacerSize} from './nidoca-spacer';
+import {NidocaSpacerSize} from './nidoca-spacer';
 import {TypographyType} from './nidoca-typography';
 
 export enum ButtonType {
@@ -25,15 +25,15 @@ export class NidocaButton extends LitElement {
     }
 
     .PRIMARY {
-      background-color: var(--app-color-primary-background);
-      color: var(--app-color-primary);
+      background-color: var(--mdc-theme-primary);
+      color: var(--mdc-theme-on-primary);
     }
     ::slotted(.PRIMARY:hover),
     .PRIMARY:hover,
     ::slotted(.PRIMARY:active),
     .PRIMARY:active {
-      background-color: var(--app-color-primary-background-dark);
-      color: var(--app-color-primary-dark);
+      background-color: var(--mdc-theme-primary-dark);
+      color: var(--mdc-theme-on-primary-dark);
     }
 
     .SECONDARY {
@@ -86,7 +86,7 @@ export class NidocaButton extends LitElement {
           </nidoca-typography>
 
           <nidoca-visible visibleType="${this.buttonType == ButtonType.CLEAR ? VisibleType.HIDE : VisibleType.NORMAL}">
-            <nidoca-spacer spacerSize="${SpacerSize.MEDIUM}"></nidoca-spacer>
+            <nidoca-spacer spacerSize="${NidocaSpacerSize.MEDIUM}"></nidoca-spacer>
           </nidoca-visible>
         </nidoca-flex-container>
       </nidoca-ripple>

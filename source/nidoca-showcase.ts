@@ -42,7 +42,7 @@ export class NidocaShowcase extends NidocaTemplate {
           .flexJustifyContent="${FlexJustifyContent.SPACE_EVENLY}"
           .flexAlignItems="${FlexAlignItems.CENTER}"
           .flexAlignContent="${FlexAlignContent.SPACE_EVENLY}"
-          containerStyle="height:35vh; width:80vw; background-color:var(--app-color-primary-background)"
+          containerStyle="height:35vh; width:80vw; background-color:var(--mdc-theme-primary)"
           itemStyle=""
         >
           <nidoca-form-text .textType="${TextType.TEXT}" name="text" value="" label="Text"></nidoca-form-text>

@@ -1,7 +1,7 @@
 import {css, customElement, html, LitElement, property, TemplateResult} from 'lit-element';
 import {NidocaDevice} from './nidoca-meta';
 
-export enum SpacerType {
+export enum NidocaSpacerType {
   ALL = 'ALL',
   VERTICAL = 'VERTICAL',
   HORIZONTAL = 'HORIZONTAL',
@@ -11,7 +11,7 @@ export enum SpacerType {
   BOTTOM = 'BOTTOM',
 }
 
-export enum SpacerSize {
+export enum NidocaSpacerSize {
   ZERO = '--space-zero',
   LITTLE = '--space-little',
   SMALL = '--space-small',
@@ -29,16 +29,22 @@ export class NidocaSpacer extends LitElement {
       box-sizing: border-box;
       display: block;
     }
+
+    .slotStyle {
+      display:flex;
+      flex-direction: column;
+    }
+
   `;
 
-  @property({type: NidocaDevice})
+  @property({type: Array})
   devices: NidocaDevice[] = [NidocaDevice.DESKTOP, NidocaDevice.TABLET, NidocaDevice.MOBILE];
 
-  @property({type: SpacerType})
-  spacerTypes: SpacerType[] = [SpacerType.ALL];
+  @property({type: Array})
+  spacerTypes: NidocaSpacerType[] = [NidocaSpacerType.ALL];
 
-  @property({type: SpacerSize})
-  spacerSize: SpacerSize = SpacerSize.NORMAL;
+  @property({type: String})
+  spacerSize: NidocaSpacerSize = NidocaSpacerSize.NORMAL;
 
   @property({type: String})
   cssStyle: string = '';
@@ -49,43 +55,43 @@ export class NidocaSpacer extends LitElement {
         ${this.toStyle(this.devices, this.spacerTypes, this.spacerSize)}
       </style>
       <span class="SPACER" style="${this.cssStyle}">
-        <slot></slot>
+        <slot class="slotStyle"></slot>
       </span>
     `;
   }
 
   private toStyle(
     devices: NidocaDevice[],
-    spacerProperties: SpacerType[],
-    spacerSize: SpacerSize
+    spacerProperties: NidocaSpacerType[],
+    spacerSize: NidocaSpacerSize
   ): string {
     let size = 'var('.concat(spacerSize).concat(')');
     let style: string = '';
-    spacerProperties.forEach((spacerType: SpacerType) => {
+    spacerProperties.forEach((spacerType: NidocaSpacerType) => {
       switch (spacerType) {
-        case SpacerType.LEFT:
+        case NidocaSpacerType.LEFT:
           style = style.concat('padding-left:'.concat(size).concat(';'));
           break;
-        case SpacerType.RIGHT:
+        case NidocaSpacerType.RIGHT:
           style = style.concat('padding-right:'.concat(size).concat(';'));
           break;
-        case SpacerType.TOP:
+        case NidocaSpacerType.TOP:
           style = style.concat('padding-top:'.concat(size).concat(';'));
           break;
-        case SpacerType.BOTTOM:
+        case NidocaSpacerType.BOTTOM:
           style = style.concat('padding-bottom:'.concat(size).concat(';'));
           break;
-        case SpacerType.ALL:
+        case NidocaSpacerType.ALL:
           style = style.concat('padding-left:'.concat(size).concat(';'));
           style = style.concat('padding-right:'.concat(size).concat(';'));
           style = style.concat('padding-top:'.concat(size).concat(';'));
           style = style.concat('padding-bottom:'.concat(size).concat(';'));
           break;
-        case SpacerType.HORIZONTAL:
+        case NidocaSpacerType.HORIZONTAL:
           style = style.concat('padding-left:'.concat(size).concat(';'));
           style = style.concat('padding-right:'.concat(size).concat(';'));
           break;
-        case SpacerType.VERTICAL:
+        case NidocaSpacerType.VERTICAL:
           style = style.concat('padding-top:'.concat(size).concat(';'));
           style = style.concat('padding-bottom:'.concat(size).concat(';'));
           break;
@@ -100,4 +106,5 @@ export class NidocaSpacer extends LitElement {
     });
     return styleAll;
   }
+
 }

@@ -1,5 +1,5 @@
 import {css, customElement, html, property, LitElement, TemplateResult} from 'lit-element';
-import {SpacerType, SpacerSize} from './nidoca-spacer';
+import {NidocaSpacerType, NidocaSpacerSize} from './nidoca-spacer';
 import {
   FlexAlignContent,
   FlexAlignItems,
@@ -22,8 +22,8 @@ export class NidocaNavigationLink extends LitElement {
     .navItem:hover,
     ::slotted(.navItem:active),
     .navItem:active {
-      color: var(--app-color-primary-light);
-      background-color: var(--app-color-primary-background-dark);
+      color: var(--mdc-theme-on-primary-light);
+      background-color: var(--mdc-theme-primary-dark);
     }
   `;
 
@@ -42,7 +42,7 @@ export class NidocaNavigationLink extends LitElement {
             class="navItem"
             class="${'TODO: RouterService.getUniqueInstance().getPath()' == this.href ? 'navItem selected' : 'navItem'}"
           >
-            <nidoca-spacer spacerSize="${SpacerSize.LITTLE}" .spacerTypes="${[SpacerType.VERTICAL]}">
+            <nidoca-spacer spacerSize="${NidocaSpacerSize.LITTLE}" .spacerTypes="${[NidocaSpacerType.VERTICAL]}">
               <nidoca-flex-container
                 @click="${() => this.linkClicked()}"
                 .flexDirection="${FlexDirection.ROW}"
@@ -53,7 +53,7 @@ export class NidocaNavigationLink extends LitElement {
                 itemStyle="flex-basis: 48px auto;"
               >
                 <nidoca-icon icon="${this.icon}" .withIconSpace="${false}"></nidoca-icon>
-                <nidoca-spacer spacerSize="${SpacerSize.LITTLE}" .spacerTypes="${[SpacerType.LEFT]}">
+                <nidoca-spacer spacerSize="${NidocaSpacerSize.LITTLE}" .spacerTypes="${[NidocaSpacerType.LEFT]}">
                   <nidoca-typography typographyType="${TypographyType.BODY1}">${this.text}</nidoca-typography>
                 </nidoca-spacer>
               </nidoca-flex-container>

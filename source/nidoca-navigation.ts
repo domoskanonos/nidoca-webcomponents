@@ -15,8 +15,8 @@ export class NidocaNavigation extends LitElement {
     }
 
     .PRIMARY {
-      background-color: var(--app-color-primary-background);
-      color: var(--app-color-primary);
+      background-color: var(--mdc-theme-primary);
+      color: var(--mdc-theme-on-primary);
     }
 
     .SECONDARY {
