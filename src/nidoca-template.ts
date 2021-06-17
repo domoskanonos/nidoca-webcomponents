@@ -1,7 +1,8 @@
-import {css, html, property, query, TemplateResult, LitElement, PropertyValues} from "lit-element";
-import {TypographyType} from "./nidoca-typography";
+import {css, html, property, query, TemplateResult, LitElement, PropertyValues, customElement} from 'lit-element';
+import {TypographyType} from './nidoca-typography';
 
-export abstract class NidocaTemplate extends LitElement {
+@customElement('nidoca-template')
+export class NidocaTemplate extends LitElement {
   static styles = css`
     #header {
       position: fixed;
@@ -46,16 +47,16 @@ export abstract class NidocaTemplate extends LitElement {
     }
   `;
 
-  @property({type:Boolean})
+  @property({type: Boolean})
   navigationClosed: boolean = true;
 
-  @query("#header")
+  @query('#header')
   private headerElement: HTMLElement | undefined;
 
-  @query("#sidebar")
+  @query('#sidebar')
   private sidebarElement: HTMLElement | undefined;
 
-  @query("#content")
+  @query('#content')
   private contentElement: HTMLElement | undefined;
 
   protected updated(_changedProperties: PropertyValues) {
@@ -63,14 +64,14 @@ export abstract class NidocaTemplate extends LitElement {
     new Promise((resolve) => requestAnimationFrame(resolve)).then(() => {
       if (this.headerElement != undefined) {
         const height = this.headerElement.offsetHeight;
-        const topStyle = "top:".concat(String(height)).concat("px;");
-        const paddingTopStyle = "padding-top:".concat(String(height)).concat("px;");
-        console.debug("set header height to corresponding elements: %s", topStyle);
+        const topStyle = 'top:'.concat(String(height)).concat('px;');
+        const paddingTopStyle = 'padding-top:'.concat(String(height)).concat('px;');
+        console.debug('set header height to corresponding elements: %s', topStyle);
         if (this.sidebarElement != undefined) {
-          this.sidebarElement.setAttribute("style", topStyle);
+          this.sidebarElement.setAttribute('style', topStyle);
         }
         if (this.contentElement != undefined) {
-          this.contentElement.setAttribute("style", paddingTopStyle);
+          this.contentElement.setAttribute('style', paddingTopStyle);
         }
       }
     });
@@ -78,38 +79,26 @@ export abstract class NidocaTemplate extends LitElement {
 
   render(): TemplateResult {
     return html`
-      <div id="header" class="${this.navigationClosed ? "menuClosed" : ""}">${this.getHeaderContent()}</div>
-      <div id="sidebar" class="${this.navigationClosed ? "menuClosed" : ""}">${this.getSidebarContent()}</div>
-      <div id="content" class="${this.navigationClosed ? "menuClosed" : ""}">${this.getContent()}</div>
-    `;
-  }
-
-  getHeaderContent(): TemplateResult {
-    return html`
-      <nidoca-top-app-bar>
+      <div id="header" class="${this.navigationClosed ? 'menuClosed' : ''}">
+        <nidoca-top-app-bar>
+        <slot name="left"></slot>
         <nidoca-icon
-          slot="left"
-          icon="${this.navigationClosed ? "menu" : "clear"}"
-          .clickable="${true}"
-          @nidoca-event-icon-clicked="${() => this.toogleNavigation()}"
-        ></nidoca-icon>
-        <nidoca-typography slot="left" .typographyType="${TypographyType.BODY1}"
-          >nidoca-template
-        </nidoca-typography>
-      </nidoca-top-app-bar>
+            slot="left"
+            icon="${this.navigationClosed ? 'menu' : 'clear'}"
+            .clickable="${true}"
+            @nidoca-event-icon-clicked="${() => this.toogleNavigation()}"
+          ></nidoca-icon>
+          <nidoca-typography slot="center" .typographyType="${TypographyType.BODY1}"></nidoca-typography>
+        </nidoca-top-app-bar>
+      </div>
+      <div id="sidebar" class="${this.navigationClosed ? 'menuClosed' : ''}"><slot name="sidebar"></slot></div>
+      <div id="content" class="${this.navigationClosed ? 'menuClosed' : ''}"><slot name="content"></slot></div>
     `;
-  }
-
-  getSidebarContent(): TemplateResult {
-    return html``;
-  }
-
-  getContent(): TemplateResult {
-    return html``;
   }
 
   toogleNavigation(): void {
-    console.log("toogle navigation.");
+    console.log('toogle navigation.');
     this.navigationClosed = !this.navigationClosed;
   }
+
 }
