@@ -1,0 +1,35 @@
+import {css, customElement, html, LitElement, property, TemplateResult} from "lit-element";
+
+export enum TargetType {
+  BLANK = "_blank",
+  SELF = "_self",
+  PARENT = "_parent",
+  TOP = "_top",
+}
+
+@customElement("nidoca-link")
+export class NidocaLink extends LitElement {
+  static styles = css`
+    :host,
+    ::slotted(:host) {
+      display: contents;
+    }
+    a {
+      color: inherit;
+      background-color: inherit;
+    }
+  `;
+
+  @property({type: String})
+  text: string = "";
+
+  @property({type: String})
+  href: string = "";
+
+  @property({type: TargetType})
+  targetType: string = TargetType.SELF;
+
+  render(): TemplateResult {
+    return html` <a href="${this.href}" target="${this.targetType}">${this.text}<slot></slot></a> `;
+  }
+}

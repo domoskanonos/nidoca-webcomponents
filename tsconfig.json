@@ -1,21 +1,26 @@
 {
   "compilerOptions": {
-    "target": "ES6",
+    "target": "es2015",
+    "module": "es2015",
+    "lib": ["es2015", "dom"],
     "declaration": true,
-    "sourceMap":true,
-    "outDir": "./lib/",
-    "module": "commonjs",
-    "rootDir": "./source",
-    "downlevelIteration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "inlineSources": true,
+    "outDir": "./lib",
+    "rootDir": "./src",
     "strict": true,
+    "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
     "moduleResolution": "node",
-    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
-    "emitDecoratorMetadata": true
+    "forceConsistentCasingInFileNames": true
   },
-  "include": ["./source"],
+  "include": ["src/**/*.ts"],
   "exclude": ["node_modules"]
 }

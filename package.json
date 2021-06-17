@@ -7,31 +7,28 @@
     "lib/**/*"
   ],
   "main": "lib/index.js",
-  "module": "./source/index.js",
+  "module": "./src/index.js",
   "devDependencies": {
-    "html-webpack-plugin": "5.3.1",
-    "prettier": "2.3.1",
-    "terser-webpack-plugin": "5.1.3",
-    "ts-loader": "9.2.3",
-    "typescript": "4.3.2",
-    "webpack": "5.38.1",
-    "webpack-cli": "4.7.0",
-    "webpack-dev-server": "3.11.2"
-  },
+    "@domoskanonos/nidoca-webpack": "1.0.5"  },
   "dependencies": {
     "lit-element": "^2.4.0"
   },
   "author": "Dominik Bruhn",
   "scripts": {
     "start": "webpack serve --config webpack.local.js",
+    "ts": "tsc",
+    "ts:watch": "tsc --watch",
     "pretty": "prettier --write \"./**/*.{ts,json}\"",
-    "build": "tsc -p ./",
-    "preversion": "npm run build",
+    "eslint": "eslint src",
+    "eslint:fix": "eslint src --fix",
+    "test": "wtr",
+    "test:watch": "npm run test -- --watch",
+    "build:webcomponent": "npm install && npm run ts && webpack --config ./webpack.prod.js ",
+    "preversion": "",
     "new-patch": "npm version patch -m \"new patch version: %s\" --force",
     "new-minor": "npm version minor -m \"new minor version: %s\" --force",
     "new-major": "npm version major -m \"new major version: %s\" --force",
-    "postversion": "npm publish --access=public && git push --follow-tags",
-    "unpublish": "npm unpublish --force"
+    "postversion": "npm publish --access=public"
   },
   "browserslist": [
     "last 1 Chrome version"

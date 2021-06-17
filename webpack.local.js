@@ -1,27 +1,36 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+
+var path = require("path");
 
 module.exports = {
+  target: "web",
   entry: {
-    main: './source/index.ts'
+    /**
+     * webpack-dev-server überwacht den Code von diesem Einstiegspunkt aus
+     * und kompiliert den Code neu, sobald Änderungen gemacht werden.
+     * In diesem Fall ist der Haupteinstigespunkt die index.ts Datei unseres Blueprints.
+     */
+    main: "./src/index.ts",
   },
+  devServer: {},
   resolve: {
-    extensions: ['.ts', '.js']
+    // Informiere Webpack darüber, welche Dateien für den Bundle-Prozess berücksichigt werden sollen.
+    extensions: [".ts", ".js", "css"],
   },
   performance: {
-    maxEntrypointSize: 700000
+    maxEntrypointSize: 700000,
   },
-  devServer: {
-  },
-  mode: 'development',
-  devtool: 'inline-source-map',
-  resolve: { extensions: ['.ts', '.js'] },
+  mode: "development",
+  devtool: "inline-source-map",
   module: {
     rules: [
       {
         test: /\.ts$/,
-        use: {loader: 'ts-loader', options: {transpileOnly: true}}
-      }
-    ]
+        use: { loader: "ts-loader", options: { transpileOnly: true } },
+      },
+    ],
   },
-  plugins: [new HtmlWebpackPlugin({ template: './source/index.html' })]
+  plugins: [
+    new HtmlWebpackPlugin({ template: "./index.html" }),
+  ],
 };
