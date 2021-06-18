@@ -11,8 +11,7 @@ module.exports = {
     ],
   },
   resolve: {
-    // Informiere Webpack darüber, welche Dateien für den Bundle-Prozess berücksichigt werden sollen.
-    extensions: [".ts", ".js", "css"],
+    extensions: [".ts", ".js"],
   },
   optimization: {
     minimize: true,
@@ -23,6 +22,6 @@ module.exports = {
   mode: "production",
   output: {
     path: path.resolve(__dirname).concat("/public"),
-    filename: "bundled.js",
+    filename: "nidoca-webcomponents.js",
   }
 };
