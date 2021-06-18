@@ -1,4 +1,4 @@
-# nidoca framework (nidoca-core)
+# nidoca framework (nidoca-webcomponents)
 
 nidoca is a lightweight ui-framework based on
 [webcomponents](https://www.webcomponents.org/),
