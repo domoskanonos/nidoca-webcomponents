@@ -3,10 +3,9 @@ import {css, html, property, query, TemplateResult, LitElement, PropertyValues, 
 @customElement("nidoca-template")
 export class NidocaTemplate extends LitElement {
   static styles = css`
-    
     slot {
       display: flex;
-      align-items:center;
+      align-items: center;
     }
 
     #header {
@@ -55,6 +54,9 @@ export class NidocaTemplate extends LitElement {
   @property({type: Boolean})
   navigationClosed: boolean = true;
 
+  @property({type: Boolean})
+  prominent: boolean = false;
+
   @query("#header")
   private headerElement: HTMLElement | undefined;
 
@@ -85,7 +87,7 @@ export class NidocaTemplate extends LitElement {
   render(): TemplateResult {
     return html`
       <div id="header" class="${this.navigationClosed ? "menuClosed" : ""}">
-        <nidoca-top-app-bar>
+        <nidoca-top-app-bar .prominent="${this.prominent}">
           <nidoca-icon
             slot="left"
             icon="${this.navigationClosed ? "menu" : "clear"}"
@@ -100,6 +102,9 @@ export class NidocaTemplate extends LitElement {
           </span>
           <span slot="right">
             <slot name="topRight"></slot>
+          </span>
+          <span slot="prominent">
+            <slot name="prominent"></slot>
           </span>
         </nidoca-top-app-bar>
       </div>

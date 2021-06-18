@@ -37,8 +37,8 @@ export class NidocaTopAppBar extends LitElement {
         <span>
           <slot name="right"></slot>
         </span>
-        ${this.prominent ? html`<slot class="prominent" name="prominent"></slot>` : html``}
       </nidoca-flex-container>
+      ${this.prominent ? html`<slot class="prominent" name="prominent"></slot>` : html``}
     `;
   }
 }
