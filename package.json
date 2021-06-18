@@ -1,6 +1,6 @@
 {
-  "name": "@domoskanonos/nidoca-core",
-  "version": "1.0.657",
+  "name": "@domoskanonos/nidoca-webcomponents",
+  "version": "1.0.0",
   "license": "MIT",
   "description": "nidoca framework (nidoca-core)",
   "files": [
@@ -9,13 +9,14 @@
   "main": "lib/index.js",
   "module": "./src/index.js",
   "devDependencies": {
-    "@domoskanonos/nidoca-webpack": "1.0.5"  },
+    "@domoskanonos/nidoca-webpack": "1.0.5"
+  },
   "dependencies": {
     "lit-element": "^2.4.0"
   },
   "author": "Dominik Bruhn",
   "scripts": {
-    "start": "webpack serve --config webpack.local.js",
+    "start": "webpack serve --config webpack.dev.js",
     "ts": "tsc",
     "ts:watch": "tsc --watch",
     "pretty": "prettier --write \"./**/*.{ts,json}\"",

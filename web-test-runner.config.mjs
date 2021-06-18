@@ -18,16 +18,14 @@ try {
   console.warn(e);
 }
 
-// test-runner configuration: https://modern-web.dev/docs/test-runner/cli-and-configuration/
 export default {
   testsStartTimeout: 30000,
   rootDir: ".",
-  files: ["./src/test/**/*.test.ts"],
+  files: ["./src/**/*.test.ts"],
   nodeResolve: true,
   preserveSymlinks: true,
   browsers: commandLineBrowsers ?? Object.values(browsers),
   testFramework: {
-    // mocha testframework documentation: https://mochajs.org/api/mocha
     config: {
       ui: "tdd",
     },

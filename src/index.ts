@@ -38,7 +38,3 @@ export * from "./nidoca-tab-content";
 export * from "./nidoca-template";
 export * from "./nidoca-typography";
 export * from "./nidoca-dialog";
-
-//import './index.css';
-
-export * from "./nidoca-showcase";

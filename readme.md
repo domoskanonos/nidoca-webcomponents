@@ -1,35 +1,18 @@
 # nidoca framework (nidoca-core)
 
-## Introduction
-
 nidoca is a lightweight ui-framework based on
 [webcomponents](https://www.webcomponents.org/),
 [typescript](https://www.typescriptlang.org/)
 and [litelement](https://lit-element.polymer-project.org/).
 
-Visit showcase page: [nidoca.de](http://nidoca.de)
+visit showcase page: [nidoca.de](http://nidoca.de)
 
-## Installation:
+|project info||
+|:-------------|:-------------|
+|npm|<nobr>[![Published on npm](https://img.shields.io/npm/l/@domoskanonos/nidoca-webcomponents)](https://www.npmjs.com/package/@domoskanonos/nidoca-webcomponents) [![Published on npm](https://img.shields.io/npm/v/@domoskanonos/nidoca-webcomponents)](https://www.npmjs.com/package/@domoskanonos/nidoca-webcomponents) [![Published on npm](https://img.shields.io/bundlephobia/min/@domoskanonos/nidoca-webcomponents)](https://www.npmjs.com/package/@domoskanonos/nidoca-webcomponents) [![Published on npm](https://img.shields.io/bundlephobia/minzip/@domoskanonos/nidoca-webcomponents)](https://www.npmjs.com/package/@domoskanonos/nidoca-webcomponents) [![Published on npm](https://img.shields.io/npm/dw/@domoskanonos/nidoca-webcomponents)](https://www.npmjs.com/package/@domoskanonos/nidoca-webcomponents)</nobr>|
+|github|<nobr>[![Published on git](https://img.shields.io/github/languages/code-size/domoskanonos/nidoca-webcomponents)](https://github.com/domoskanonos/nidoca-webcomponents)</nobr>|
+|donation|<nobr>[![donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=SWGKEVSK2PDEE)</nobr>|
 
-Installation with [npm](https://www.npmjs.com/package/@domoskanonos/nidoca-core):
-
-    npm i @domoskanonos/nidoca-core
-
-or refer directly in package.json:
-
-    "dependencies": {
-        "@domoskanonos/nidoca-core": "latest",
-    }
-
-### build showcase docker image
-    docker build -t nidoca-showcase .
-
-### push image to docker registry
-    docker tag nidoca-showcase <registry-host>:5000/nidoca-showcase
-    docker push <registry-host>:5000/nidoca-showcase
-
-### after push, goto server and pull:
-    docker pull localhost:5000/nidoca-showcase
-
-### run docker image on server
-    docker run -d -p 80:80 localhost:5000/nidoca-showcase
+### usage
+#### install npm
+    npm i @domoskanonos/nidoca-webcomponents
