@@ -1,9 +1,14 @@
-import {css, html, property, query, TemplateResult, LitElement, PropertyValues, customElement} from 'lit-element';
-import {TypographyType} from './nidoca-typography';
+import {css, html, property, query, TemplateResult, LitElement, PropertyValues, customElement} from "lit-element";
 
-@customElement('nidoca-template')
+@customElement("nidoca-template")
 export class NidocaTemplate extends LitElement {
   static styles = css`
+    
+    slot {
+      display: flex;
+      align-items:center;
+    }
+
     #header {
       position: fixed;
       width: 100%;
@@ -50,28 +55,28 @@ export class NidocaTemplate extends LitElement {
   @property({type: Boolean})
   navigationClosed: boolean = true;
 
-  @query('#header')
+  @query("#header")
   private headerElement: HTMLElement | undefined;
 
-  @query('#sidebar')
+  @query("#sidebar")
   private sidebarElement: HTMLElement | undefined;
 
-  @query('#content')
+  @query("#content")
   private contentElement: HTMLElement | undefined;
 
-  protected updated(_changedProperties: PropertyValues) {
+  protected updated(_changedProperties: PropertyValues): void {
     super.updated(_changedProperties);
     new Promise((resolve) => requestAnimationFrame(resolve)).then(() => {
       if (this.headerElement != undefined) {
         const height = this.headerElement.offsetHeight;
-        const topStyle = 'top:'.concat(String(height)).concat('px;');
-        const paddingTopStyle = 'padding-top:'.concat(String(height)).concat('px;');
-        console.debug('set header height to corresponding elements: %s', topStyle);
+        const topStyle = "top:".concat(String(height)).concat("px;");
+        const paddingTopStyle = "padding-top:".concat(String(height)).concat("px;");
+        console.debug("set header height to corresponding elements: %s", topStyle);
         if (this.sidebarElement != undefined) {
-          this.sidebarElement.setAttribute('style', topStyle);
+          this.sidebarElement.setAttribute("style", topStyle);
         }
         if (this.contentElement != undefined) {
-          this.contentElement.setAttribute('style', paddingTopStyle);
+          this.contentElement.setAttribute("style", paddingTopStyle);
         }
       }
     });
@@ -79,26 +84,32 @@ export class NidocaTemplate extends LitElement {
 
   render(): TemplateResult {
     return html`
-      <div id="header" class="${this.navigationClosed ? 'menuClosed' : ''}">
+      <div id="header" class="${this.navigationClosed ? "menuClosed" : ""}">
         <nidoca-top-app-bar>
-        <slot name="left"></slot>
-        <nidoca-icon
+          <nidoca-icon
             slot="left"
-            icon="${this.navigationClosed ? 'menu' : 'clear'}"
+            icon="${this.navigationClosed ? "menu" : "clear"}"
             .clickable="${true}"
             @nidoca-event-icon-clicked="${() => this.toogleNavigation()}"
           ></nidoca-icon>
-          <nidoca-typography slot="center" .typographyType="${TypographyType.BODY1}"></nidoca-typography>
+          <span slot="left">
+            <slot name="topLeft"></slot>
+          </span>
+          <span slot="center">
+            <slot name="topCenter"></slot>
+          </span>
+          <span slot="right">
+            <slot name="topRight"></slot>
+          </span>
         </nidoca-top-app-bar>
       </div>
-      <div id="sidebar" class="${this.navigationClosed ? 'menuClosed' : ''}"><slot name="sidebar"></slot></div>
-      <div id="content" class="${this.navigationClosed ? 'menuClosed' : ''}"><slot name="content"></slot></div>
+      <div id="sidebar" class="${this.navigationClosed ? "menuClosed" : ""}"><slot name="sidebar"></slot></div>
+      <div id="content" class="${this.navigationClosed ? "menuClosed" : ""}"><slot name="content"></slot></div>
     `;
   }
 
   toogleNavigation(): void {
-    console.log('toogle navigation.');
+    console.log("toogle navigation.");
     this.navigationClosed = !this.navigationClosed;
   }
-
 }

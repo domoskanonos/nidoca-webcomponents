@@ -5,14 +5,13 @@ import {FlexAlignContent, FlexAlignItems, FlexDirection, FlexJustifyContent, Fle
 export class NidocaTopAppBar extends LitElement {
   static styles = css`
     slot {
-      display: block;
+      display: flex;
     }
 
     .prominent {
       flex-basis: 100%;
       flex-grow: 3;
     }
-
   `;
 
   @property({type: Boolean})
@@ -21,21 +20,25 @@ export class NidocaTopAppBar extends LitElement {
   render(): TemplateResult {
     return html`
       <nidoca-flex-container
-        .devices="${[]}"
         .flexDirection="${FlexDirection.ROW}"
-        .flexWrap="${FlexWrap.WRAP}"
+        .flexWrap="${FlexWrap.NO_WRAP}"
         .flexJustifyContent="${FlexJustifyContent.SPACE_BETWEEN}"
         .flexAlignItems="${FlexAlignItems.CENTER}"
         .flexAlignContent="${FlexAlignContent.SPACE_AROUND}"
         containerStyle=""
         itemStyle=""
       >
-        <slot name="left"></slot>
-        <slot name="center"></slot>
-        <slot name="right"></slot>
+        <span>
+          <slot name="left"></slot>
+        </span>
+        <span>
+          <slot name="center"></slot>
+        </span>
+        <span>
+          <slot name="right"></slot>
+        </span>
         ${this.prominent ? html`<slot class="prominent" name="prominent"></slot>` : html``}
       </nidoca-flex-container>
     `;
   }
-  
 }
