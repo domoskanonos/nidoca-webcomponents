@@ -1,5 +1,7 @@
 import {customElement, html, LitElement, property, TemplateResult} from "lit-element";
-import {TypographyType} from "..";
+import {FlexAlignContent, TypographyType} from "..";
+import {BorderProperty} from "../nidoca-border";
+import {FlexAlignItems, FlexJustifyContent} from "../nidoca-flex-container";
 
 @customElement("nidoca-dev")
 export class NidocaShowcase extends LitElement {
@@ -9,7 +11,6 @@ export class NidocaShowcase extends LitElement {
   render(): TemplateResult {
     return html`
       <nidoca-template .prominent="${this.prominent}">
-        <nidoca-icon slot="content" icon="menu"></nidoca-icon>
         <nidoca-typography slot="topCenter" typographyType="${TypographyType.BODY1}"
           >nidoca framework</nidoca-typography
         >
@@ -24,8 +25,37 @@ export class NidocaShowcase extends LitElement {
 
         <nidoca-form-text name="search" slot="prominent"></nidoca-form-text>
 
-        <nidoca-typography slot="content" typographyType="H1">Testinhalt</nidoca-typography>
-        
+        <nidoca-layout-section slot="content">
+          <nidoca-rich-media src="http://picsum.photos/800/600"> </nidoca-rich-media>
+          <nidoca-spacer>
+            <nidoca-typography typographyType="${TypographyType.H1}">Lorem ipsum dolor sit amet</nidoca-typography>
+
+            <nidoca-typography typographyType="${TypographyType.BODY1}"
+              >Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
+              et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+              Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit
+              amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
+              aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
+              gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</nidoca-typography
+            >
+            <nidoca-button>Lorem Ipsum</nidoca-button>
+          </nidoca-spacer>
+        </nidoca-layout-section>
+
+        <nidoca-layout-section slot="content">
+          <nidoca-spacer>
+            <nidoca-typography typographyType="${TypographyType.H3}">Lorem ipsum dolor sit amet</nidoca-typography>
+
+            <nidoca-typography typographyType="${TypographyType.BODY1}"
+              >Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
+              et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+              Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+            </nidoca-typography>
+          </nidoca-spacer>
+          <nidoca-rich-media src="http://picsum.photos/400/550"> </nidoca-rich-media>
+          <nidoca-rich-media src="http://picsum.photos/400/570"> </nidoca-rich-media>
+          <nidoca-rich-media src="http://picsum.photos/400/500"> </nidoca-rich-media>
+        </nidoca-layout-section>
       </nidoca-template>
     `;
   }

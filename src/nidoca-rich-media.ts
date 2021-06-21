@@ -76,7 +76,7 @@ export class NidocaRichMedia extends LitElement {
   richMediaType: RichMediaType = RichMediaType.IMG;
 
   @property({type: RichMediaProperties})
-  richMediaProperties: RichMediaProperties[] = [RichMediaProperties.CLICKABLE];
+  richMediaProperties: RichMediaProperties[] = [RichMediaProperties.CLICKABLE, RichMediaProperties.FULL_WIDTH];
 
   render(): TemplateResult {
     return this.richMediaType == RichMediaType.IMG

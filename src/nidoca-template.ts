@@ -3,7 +3,8 @@ import {css, html, property, query, TemplateResult, LitElement, PropertyValues, 
 @customElement("nidoca-template")
 export class NidocaTemplate extends LitElement {
   static styles = css`
-    slot {
+    
+    .slotHeader {
       display: flex;
       align-items: center;
     }
@@ -14,6 +15,11 @@ export class NidocaTemplate extends LitElement {
       z-index: 1;
       background-color: var(--mdc-theme-primary);
       color: var(--mdc-theme-on-primary);
+    }
+
+    .content {
+      display: flex;
+      flex-direction: column;
     }
 
     #content {
@@ -95,16 +101,16 @@ export class NidocaTemplate extends LitElement {
             @nidoca-event-icon-clicked="${() => this.toogleNavigation()}"
           ></nidoca-icon>
           <span slot="left">
-            <slot name="topLeft"></slot>
+            <slot class="slotHeader" name="topLeft"></slot>
           </span>
           <span slot="center">
-            <slot name="topCenter"></slot>
+            <slot class="slotHeader" name="topCenter"></slot>
           </span>
           <span slot="right">
-            <slot name="topRight"></slot>
+            <slot class="slotHeader" name="topRight"></slot>
           </span>
           <span slot="prominent">
-            <slot name="prominent"></slot>
+            <slot class="slotHeader" name="prominent"></slot>
           </span>
         </nidoca-top-app-bar>
       </div>
