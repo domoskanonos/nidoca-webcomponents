@@ -1,7 +1,8 @@
 import {customElement, html, LitElement, property, TemplateResult} from "lit-element";
 import {FlexAlignContent, TypographyType} from "..";
 import {BorderProperty} from "../nidoca-border";
-import {FlexAlignItems, FlexJustifyContent} from "../nidoca-flex-container";
+import {FlexAlignItems, FlexDirection, FlexJustifyContent, FlexWrap} from "../nidoca-flex-container";
+import {RichMediaProperties} from "../nidoca-img";
 
 @customElement("nidoca-dev")
 export class NidocaShowcase extends LitElement {
@@ -26,7 +27,7 @@ export class NidocaShowcase extends LitElement {
         <nidoca-form-text name="search" slot="prominent"></nidoca-form-text>
 
         <nidoca-layout-section slot="content">
-          <nidoca-rich-media src="http://picsum.photos/800/600"> </nidoca-rich-media>
+          <nidoca-img src="http://picsum.photos/800/600"> </nidoca-img>
           <nidoca-spacer>
             <nidoca-typography typographyType="${TypographyType.H1}">Lorem ipsum dolor sit amet</nidoca-typography>
 
@@ -52,9 +53,27 @@ export class NidocaShowcase extends LitElement {
               Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
             </nidoca-typography>
           </nidoca-spacer>
-          <nidoca-rich-media src="http://picsum.photos/400/550"> </nidoca-rich-media>
-          <nidoca-rich-media src="http://picsum.photos/400/570"> </nidoca-rich-media>
-          <nidoca-rich-media src="http://picsum.photos/400/500"> </nidoca-rich-media>
+          <nidoca-img src="http://picsum.photos/400/550"> </nidoca-img>
+          <nidoca-img src="http://picsum.photos/400/570"> </nidoca-img>
+          <nidoca-img src="http://picsum.photos/400/500"> </nidoca-img>
+        </nidoca-layout-section>
+
+        <nidoca-layout-section slot="content">
+          <nidoca-spacer>
+            <nidoca-typography typographyType="${TypographyType.H3}">Lorem ipsum dolor sit amet</nidoca-typography>
+
+            <nidoca-typography typographyType="${TypographyType.BODY1}"
+              >Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
+              et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+              Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+            </nidoca-typography>
+          </nidoca-spacer>
+
+          
+          <nidoca-avatar title="Lorem Ipsum" description="Lorem Ipsum dolor sit amet" imgSrc="http://picsum.photos/300/300"></nidoca-avatar>
+          <nidoca-avatar title="Lorem Ipsum" description="Lorem Ipsum dolor sit amet" imgSrc="http://picsum.photos/300/300"></nidoca-avatar>
+          <nidoca-avatar title="Lorem Ipsum" description="Lorem Ipsum dolor sit amet" imgSrc="http://picsum.photos/300/300"></nidoca-avatar>
+
         </nidoca-layout-section>
       </nidoca-template>
     `;

@@ -12,8 +12,8 @@ export enum RichMediaProperties {
   FULL_WIDTH = "FULL_WIDTH",
 }
 
-@customElement("nidoca-rich-media")
-export class NidocaRichMedia extends LitElement {
+@customElement("nidoca-img")
+export class NidocaImg extends LitElement {
   static styles = css`
     :host,
     span {
@@ -24,11 +24,11 @@ export class NidocaRichMedia extends LitElement {
       line-height: 0;
     }
 
-    img,
-    iframe {
+    img {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
       box-sizing: border-box;
-      height: auto;
-      width: auto;
     }
 
     .CLICKABLE {
@@ -38,6 +38,7 @@ export class NidocaRichMedia extends LitElement {
     .ZOOM_WRAPPED {
       overflow: hidden;
     }
+    
     .ZOOM_WRAPPED img:hover {
       transform: scale(1.1, 1.1);
       transition: transform 0.5s;
@@ -46,8 +47,7 @@ export class NidocaRichMedia extends LitElement {
     .FULL_WIDTH {
       box-sizing: border-box;
     }
-    .FULL_WIDTH img,
-    .FULL_WIDTH iframe {
+    .FULL_WIDTH img {
       width: 100%;
     }
 
@@ -55,11 +55,9 @@ export class NidocaRichMedia extends LitElement {
       display: block;
       margin-left: auto;
       margin-right: auto;
-      width: 75%;
       box-sizing: border-box;
     }
-    .ROUND img,
-    .ROUND iframe {
+    .ROUND img {
       padding: 0.25em;
       border-radius: 50%;
       width: 100%;
@@ -72,26 +70,12 @@ export class NidocaRichMedia extends LitElement {
   @property({type: String})
   src: string = "http://picsum.photos/400/300";
 
-  @property({type: RichMediaType})
-  richMediaType: RichMediaType = RichMediaType.IMG;
-
   @property({type: RichMediaProperties})
   richMediaProperties: RichMediaProperties[] = [RichMediaProperties.CLICKABLE, RichMediaProperties.FULL_WIDTH];
 
   render(): TemplateResult {
-    return this.richMediaType == RichMediaType.IMG
-      ? html`
+    return html`
           <span class="${this.toRichMediaPropertiesString(this.richMediaProperties)}"><img src="${this.src}" /></span>
-        `
-      : html`
-          <span class="${this.toRichMediaPropertiesString(this.richMediaProperties)}">
-            <iframe
-              src="${this.src}"
-              frameborder="0"
-              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-            ></iframe
-          ></span>
         `;
   }
 
