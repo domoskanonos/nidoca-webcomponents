@@ -42,4 +42,5 @@ export * from "./nidoca-layout-section";
 export * from "./nidoca-dialog";
 export * from "./nidoca-avatar";
 export * from "./nidoca-card";
+export * from "./nidoca-gallery";
 

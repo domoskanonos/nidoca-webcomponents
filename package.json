@@ -10,6 +10,7 @@
   "main": "lib/index.js",
   "module": "./src/index.js",
   "devDependencies": {
+    "@domoskanonos/nidoca-router": "1.0.1",
     "@domoskanonos/nidoca-webpack": "1.0.5"
   },
   "dependencies": {

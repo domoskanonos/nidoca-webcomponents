@@ -1,4 +1,4 @@
-import { css, customElement, html, property, unsafeCSS, LitElement } from "lit-element";
+import { css, customElement, html, property, unsafeCSS, LitElement, TemplateResult } from "lit-element";
 
 @customElement("nidoca-code")
 export class NidocaCode extends LitElement {
@@ -37,7 +37,7 @@ code {
    @property({type: String})
    code: string = "";
 
-   render() {
+   render() : TemplateResult {
       return html`
          <pre>
                 <code>${this.code}<slot></slot></code>

@@ -1,14 +1,22 @@
 import {customElement, html, LitElement, property, TemplateResult} from "lit-element";
-import {FlexAlignContent, TypographyType} from "..";
-import {BorderProperty} from "../nidoca-border";
-import { ButtonType } from "../nidoca-button";
-import {FlexAlignItems, FlexDirection, FlexJustifyContent, FlexWrap} from "../nidoca-flex-container";
-import {RichMediaProperties} from "../nidoca-img";
+import {TypographyType} from "..";
+import {ButtonType} from "../nidoca-button";
+import {DUMMY_DESCRIPTION, DUMMY_DESCRIPTION_SHORT, DUMMY_IMAGE, DUMMY_TITLE} from "./constants";
+import {NidocaRouteListener, NidocaRouter} from "@domoskanonos/nidoca-router";
 
 @customElement("nidoca-dev")
-export class NidocaShowcase extends LitElement {
+export class NidocaShowcase extends LitElement implements NidocaRouteListener {
   @property({type: Boolean})
   prominent: boolean = false;
+
+  constructor() {
+    super();
+    NidocaRouter.getUniqueInstance().subscribe(this);
+  }
+  routeChanged(relUrl: string): void {
+    console.log(relUrl);
+    //throw new Error("Method not implemented.");
+  }
 
   render(): TemplateResult {
     return html`
@@ -28,85 +36,66 @@ export class NidocaShowcase extends LitElement {
         <nidoca-form-text name="search" slot="prominent"></nidoca-form-text>
 
         <nidoca-layout-section slot="content">
-          <nidoca-img src="http://picsum.photos/800/600"> </nidoca-img>
+          <nidoca-img src="${DUMMY_IMAGE}"> </nidoca-img>
           <nidoca-spacer>
-            <nidoca-typography typographyType="${TypographyType.H1}">Lorem ipsum dolor sit amet</nidoca-typography>
-
-            <nidoca-typography typographyType="${TypographyType.BODY1}"
-              >Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
-              et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
-              Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit
-              amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
-              aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
-              gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</nidoca-typography
-            >
+            <nidoca-typography typographyType="${TypographyType.H1}">${DUMMY_DESCRIPTION_SHORT}</nidoca-typography>
+            <nidoca-typography typographyType="${TypographyType.BODY1}">${DUMMY_DESCRIPTION}</nidoca-typography>
             <nidoca-button>Lorem Ipsum</nidoca-button>
           </nidoca-spacer>
         </nidoca-layout-section>
 
         <nidoca-layout-section slot="content">
           <nidoca-spacer>
-            <nidoca-typography typographyType="${TypographyType.H3}">Lorem ipsum dolor sit amet</nidoca-typography>
+            <nidoca-typography typographyType="${TypographyType.H3}">${DUMMY_DESCRIPTION_SHORT}</nidoca-typography>
 
-            <nidoca-typography typographyType="${TypographyType.BODY1}"
-              >Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
-              et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
-              Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-            </nidoca-typography>
+            <nidoca-typography typographyType="${TypographyType.BODY1}">${DUMMY_DESCRIPTION}</nidoca-typography>
           </nidoca-spacer>
-          <nidoca-img src="http://picsum.photos/400/550"> </nidoca-img>
-          <nidoca-img src="http://picsum.photos/400/570"> </nidoca-img>
-          <nidoca-img src="http://picsum.photos/400/500"> </nidoca-img>
+          <nidoca-img src="${DUMMY_IMAGE}"> </nidoca-img>
+          <nidoca-img src="${DUMMY_IMAGE}"> </nidoca-img>
+          <nidoca-img src="${DUMMY_IMAGE}"> </nidoca-img>
         </nidoca-layout-section>
 
         <nidoca-layout-section slot="content">
           <nidoca-spacer>
-            <nidoca-typography typographyType="${TypographyType.H3}">Lorem ipsum dolor sit amet</nidoca-typography>
-
-            <nidoca-typography typographyType="${TypographyType.BODY1}"
-              >Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
-              et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
-              Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-            </nidoca-typography>
+            <nidoca-typography typographyType="${TypographyType.H3}">${DUMMY_DESCRIPTION_SHORT}</nidoca-typography>
+            <nidoca-typography typographyType="${TypographyType.BODY1}">${DUMMY_DESCRIPTION}</nidoca-typography>
           </nidoca-spacer>
 
           <nidoca-avatar
-            title="Lorem Ipsum"
-            description="Lorem Ipsum dolor sit amet"
-            imgSrc="http://picsum.photos/300/300"
+            title="${DUMMY_TITLE}"
+            description="${DUMMY_DESCRIPTION_SHORT}"
+            imgSrc="${DUMMY_IMAGE}"
           ></nidoca-avatar>
           <nidoca-avatar
-            title="Lorem Ipsum"
-            description="Lorem Ipsum dolor sit amet"
-            imgSrc="http://picsum.photos/300/300"
+            title="${DUMMY_TITLE}"
+            description="${DUMMY_DESCRIPTION_SHORT}"
+            imgSrc="${DUMMY_IMAGE}"
           ></nidoca-avatar>
           <nidoca-avatar
-            title="Lorem Ipsum"
-            description="Lorem Ipsum dolor sit amet"
-            imgSrc="http://picsum.photos/300/300"
+            title="${DUMMY_TITLE}"
+            description="${DUMMY_DESCRIPTION_SHORT}"
+            imgSrc="${DUMMY_IMAGE}"
           ></nidoca-avatar>
         </nidoca-layout-section>
 
-        <nidoca-layout-section slot="content">
-          <nidoca-card>
-            <nidoca-img slot="media" src="https://digital-u.de/assets/images/d/Haftung-0573b610.jpeg"> </nidoca-img>
+        <nidoca-gallery slot="content">
+          ${["", "", "", "", "", "", "", "", ""].map(
+            () => html`
+              <nidoca-card>
+                <nidoca-img slot="media" src="${DUMMY_IMAGE}"> </nidoca-img>
+                <nidoca-typography slot="supportingText" typographyType="${TypographyType.H3}"
+                  >${DUMMY_TITLE}</nidoca-typography
+                >
+                <nidoca-typography slot="supportingText" typographyType="${TypographyType.BODY1}"
+                  >${DUMMY_DESCRIPTION}
+                </nidoca-typography>
 
-            <nidoca-typography slot="supportingText" typographyType="${TypographyType.H3}">Lorem ipsum dolor sit amet</nidoca-typography>
-
-            <nidoca-typography slot="supportingText" typographyType="${TypographyType.BODY1}"
-              >Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
-              et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
-              Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-            </nidoca-typography>
-
-
-            <nidoca-button buttonType="${ButtonType.CLEAR}" slot="actions">Go</nidoca-button>
-            <nidoca-button buttonType="${ButtonType.CLEAR}" slot="actions">Leave</nidoca-button>
-
-
-
-          </nidoca-card>
-        </nidoca-layout-section>
+                <nidoca-button buttonType="${ButtonType.CLEAR}" slot="actions">Go</nidoca-button>
+                <nidoca-button buttonType="${ButtonType.CLEAR}" slot="actions">Leave</nidoca-button>
+              </nidoca-card>
+            `
+          )}
+        </nidoca-gallery>
       </nidoca-template>
     `;
   }
