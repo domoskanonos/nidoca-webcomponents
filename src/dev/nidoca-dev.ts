@@ -1,6 +1,7 @@
 import {customElement, html, LitElement, property, TemplateResult} from "lit-element";
 import {FlexAlignContent, TypographyType} from "..";
 import {BorderProperty} from "../nidoca-border";
+import { ButtonType } from "../nidoca-button";
 import {FlexAlignItems, FlexDirection, FlexJustifyContent, FlexWrap} from "../nidoca-flex-container";
 import {RichMediaProperties} from "../nidoca-img";
 
@@ -69,11 +70,42 @@ export class NidocaShowcase extends LitElement {
             </nidoca-typography>
           </nidoca-spacer>
 
-          
-          <nidoca-avatar title="Lorem Ipsum" description="Lorem Ipsum dolor sit amet" imgSrc="http://picsum.photos/300/300"></nidoca-avatar>
-          <nidoca-avatar title="Lorem Ipsum" description="Lorem Ipsum dolor sit amet" imgSrc="http://picsum.photos/300/300"></nidoca-avatar>
-          <nidoca-avatar title="Lorem Ipsum" description="Lorem Ipsum dolor sit amet" imgSrc="http://picsum.photos/300/300"></nidoca-avatar>
+          <nidoca-avatar
+            title="Lorem Ipsum"
+            description="Lorem Ipsum dolor sit amet"
+            imgSrc="http://picsum.photos/300/300"
+          ></nidoca-avatar>
+          <nidoca-avatar
+            title="Lorem Ipsum"
+            description="Lorem Ipsum dolor sit amet"
+            imgSrc="http://picsum.photos/300/300"
+          ></nidoca-avatar>
+          <nidoca-avatar
+            title="Lorem Ipsum"
+            description="Lorem Ipsum dolor sit amet"
+            imgSrc="http://picsum.photos/300/300"
+          ></nidoca-avatar>
+        </nidoca-layout-section>
 
+        <nidoca-layout-section slot="content">
+          <nidoca-card>
+            <nidoca-img slot="media" src="https://digital-u.de/assets/images/d/Haftung-0573b610.jpeg"> </nidoca-img>
+
+            <nidoca-typography slot="supportingText" typographyType="${TypographyType.H3}">Lorem ipsum dolor sit amet</nidoca-typography>
+
+            <nidoca-typography slot="supportingText" typographyType="${TypographyType.BODY1}"
+              >Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
+              et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+              Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+            </nidoca-typography>
+
+
+            <nidoca-button buttonType="${ButtonType.CLEAR}" slot="actions">Go</nidoca-button>
+            <nidoca-button buttonType="${ButtonType.CLEAR}" slot="actions">Leave</nidoca-button>
+
+
+
+          </nidoca-card>
         </nidoca-layout-section>
       </nidoca-template>
     `;

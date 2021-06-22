@@ -37,7 +37,7 @@ export class NidocaBorder extends LitElement {
     }
 
     slot {
-      
+      display:inline-block;
     }
 
     .FULL_WIDTH {
