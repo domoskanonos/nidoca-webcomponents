@@ -1,41 +1,16 @@
-import {customElement, html, LitElement, property, TemplateResult} from "lit-element";
-import {TypographyType} from "..";
-import {ButtonType} from "../nidoca-button";
+import {css, customElement, html, LitElement, TemplateResult} from "lit-element";
+import {ButtonType, TypographyType} from "..";
 import {DUMMY_DESCRIPTION, DUMMY_DESCRIPTION_SHORT, DUMMY_IMAGE, DUMMY_TITLE} from "./constants";
-import {NidocaRouteListener, NidocaRouter} from "@domoskanonos/nidoca-router";
 
-@customElement("nidoca-dev")
-export class NidocaShowcase extends LitElement implements NidocaRouteListener {
-  @property({type: Boolean})
-  prominent: boolean = false;
+@customElement("nidoca-page-main")
+export class NidocaPageMain extends LitElement {
+  
+  static styles = css``;
 
-  constructor() {
-    super();
-    NidocaRouter.getUniqueInstance().subscribe(this);
-  }
-  routeChanged(relUrl: string): void {
-    console.log(relUrl);
-    //throw new Error("Method not implemented.");
-  }
 
   render(): TemplateResult {
     return html`
-      <nidoca-template .prominent="${this.prominent}">
-        <nidoca-typography slot="topCenter" typographyType="${TypographyType.BODY1}"
-          >nidoca framework</nidoca-typography
-        >
-        <nidoca-icon
-          slot="topRight"
-          icon="search"
-          @nidoca-event-icon-clicked="${() => (this.prominent = !this.prominent)}"
-        ></nidoca-icon>
-        <nidoca-icon slot="topRight" icon="person"></nidoca-icon>
-        <nidoca-icon slot="topRight" icon="share"></nidoca-icon>
-        <nidoca-icon slot="topRight" icon="more_vert"></nidoca-icon>
-
-        <nidoca-form-text name="search" slot="prominent"></nidoca-form-text>
-
-        <nidoca-layout-section slot="content">
+        <nidoca-layout-section >
           <nidoca-img src="${DUMMY_IMAGE}"> </nidoca-img>
           <nidoca-spacer>
             <nidoca-typography typographyType="${TypographyType.H1}">${DUMMY_DESCRIPTION_SHORT}</nidoca-typography>
@@ -44,7 +19,7 @@ export class NidocaShowcase extends LitElement implements NidocaRouteListener {
           </nidoca-spacer>
         </nidoca-layout-section>
 
-        <nidoca-layout-section slot="content">
+        <nidoca-layout-section >
           <nidoca-spacer>
             <nidoca-typography typographyType="${TypographyType.H3}">${DUMMY_DESCRIPTION_SHORT}</nidoca-typography>
 
@@ -55,7 +30,7 @@ export class NidocaShowcase extends LitElement implements NidocaRouteListener {
           <nidoca-img src="${DUMMY_IMAGE}"> </nidoca-img>
         </nidoca-layout-section>
 
-        <nidoca-layout-section slot="content">
+        <nidoca-layout-section >
           <nidoca-spacer>
             <nidoca-typography typographyType="${TypographyType.H3}">${DUMMY_DESCRIPTION_SHORT}</nidoca-typography>
             <nidoca-typography typographyType="${TypographyType.BODY1}">${DUMMY_DESCRIPTION}</nidoca-typography>
@@ -78,7 +53,7 @@ export class NidocaShowcase extends LitElement implements NidocaRouteListener {
           ></nidoca-avatar>
         </nidoca-layout-section>
 
-        <nidoca-gallery slot="content">
+        <nidoca-gallery >
           ${["", "", "", "", "", "", "", "", ""].map(
             () => html`
               <nidoca-card>
@@ -96,7 +71,7 @@ export class NidocaShowcase extends LitElement implements NidocaRouteListener {
             `
           )}
         </nidoca-gallery>
-      </nidoca-template>
+
     `;
   }
 }

@@ -10,7 +10,7 @@ module.exports = {
      * und kompiliert den Code neu, sobald Änderungen gemacht werden.
      * In diesem Fall ist der Haupteinstigespunkt die index.ts Datei unseres Blueprints.
      */
-    main: "./src/dev/index.dev.ts",
+    main: "./src/dev/index.app.ts",
   },
   devServer: {},
   resolve: {
