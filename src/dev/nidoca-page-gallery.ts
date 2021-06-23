@@ -1,6 +1,6 @@
 import {css, customElement, html, LitElement, TemplateResult} from "lit-element";
 import {ButtonType, TypographyType} from "..";
-import {DUMMY_DESCRIPTION, DUMMY_DESCRIPTION_SHORT, DUMMY_IMAGE, DUMMY_TITLE} from "./constants";
+import {DUMMY_DESCRIPTION, DUMMY_IMAGE, DUMMY_TITLE} from "./constants";
 
 @customElement("nidoca-page-gallery")
 export class NidocaPageGallery extends LitElement {

@@ -2,7 +2,7 @@ import {customElement, html, LitElement, property, TemplateResult} from "lit-ele
 import {NidocaRouteListener, NidocaRouter} from "@domoskanonos/nidoca-router";
 import {TypographyType} from "..";
 
-@customElement("nidoca-dev")
+@customElement("nidoca-app")
 export class NidocaApp extends LitElement implements NidocaRouteListener {
   @property({type: Boolean})
   prominent: boolean = false;
@@ -48,7 +48,7 @@ export class NidocaApp extends LitElement implements NidocaRouteListener {
         <span slot="content">${this.currentPage}</span>
 
         <nidoca-navigation slot="sidebar">
-        <nidoca-navigation-link
+          <nidoca-navigation-link
             slot="links"
             icon="home"
             text="Home"

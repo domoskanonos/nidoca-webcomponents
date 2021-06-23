@@ -1,5 +1,5 @@
 import {css, customElement, html, LitElement, TemplateResult} from "lit-element";
-import {ButtonType, TypographyType} from "..";
+import {TypographyType} from "..";
 import {DUMMY_DESCRIPTION, DUMMY_DESCRIPTION_SHORT, DUMMY_IMAGE, DUMMY_TITLE} from "./constants";
 
 @customElement("nidoca-page-main")
@@ -25,7 +25,7 @@ export class NidocaPageMain extends LitElement {
 
             <nidoca-typography typographyType="${TypographyType.BODY1}">${DUMMY_DESCRIPTION}</nidoca-typography>
           </nidoca-spacer>
-          <nidoca-img src="${DUMMY_IMAGE}"> </nidoca-img>
+          <nidoca-img style="width:200px;height:500px" src="${DUMMY_IMAGE}"> </nidoca-img>
           <nidoca-img src="${DUMMY_IMAGE}"> </nidoca-img>
           <nidoca-img src="${DUMMY_IMAGE}"> </nidoca-img>
         </nidoca-layout-section>
@@ -39,7 +39,7 @@ export class NidocaPageMain extends LitElement {
           <nidoca-avatar
             title="${DUMMY_TITLE}"
             description="${DUMMY_DESCRIPTION_SHORT}"
-            imgSrc="${DUMMY_IMAGE}"
+            imgSrc="${DUMMY_IMAGE}"           
           ></nidoca-avatar>
           <nidoca-avatar
             title="${DUMMY_TITLE}"
@@ -53,24 +53,7 @@ export class NidocaPageMain extends LitElement {
           ></nidoca-avatar>
         </nidoca-layout-section>
 
-        <nidoca-gallery >
-          ${["", "", "", "", "", "", "", "", ""].map(
-            () => html`
-              <nidoca-card>
-                <nidoca-img slot="media" src="${DUMMY_IMAGE}"> </nidoca-img>
-                <nidoca-typography slot="supportingText" typographyType="${TypographyType.H3}"
-                  >${DUMMY_TITLE}</nidoca-typography
-                >
-                <nidoca-typography slot="supportingText" typographyType="${TypographyType.BODY1}"
-                  >${DUMMY_DESCRIPTION}
-                </nidoca-typography>
-
-                <nidoca-button buttonType="${ButtonType.CLEAR}" slot="actions">Go</nidoca-button>
-                <nidoca-button buttonType="${ButtonType.CLEAR}" slot="actions">Leave</nidoca-button>
-              </nidoca-card>
-            `
-          )}
-        </nidoca-gallery>
+       
 
     `;
   }
