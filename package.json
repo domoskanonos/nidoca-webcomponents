@@ -2,7 +2,9 @@
   "name": "@domoskanonos/nidoca-webcomponents",
   "version": "1.0.0",
   "license": "MIT",
-  "keywords": "webcomponent, html, typescript, shadow dom, slot, ui, frontend, lit element",
+  "keywords": [
+    "webcomponent, html, typescript, shadow dom, slot, ui, frontend, lit element"
+  ],
   "description": "nidoca framework (nidoca-core)",
   "files": [
     "lib/**/*"
@@ -10,8 +12,8 @@
   "main": "lib/index.js",
   "module": "./src/index.js",
   "devDependencies": {
-    "@domoskanonos/nidoca-router": "1.0.1",
-    "@domoskanonos/nidoca-webpack": "1.0.5"
+    "@domoskanonos/nidoca-router": "1.0.2",
+    "@domoskanonos/nidoca-webpack": "1.0.6"
   },
   "dependencies": {
     "lit-element": "^2.4.0"

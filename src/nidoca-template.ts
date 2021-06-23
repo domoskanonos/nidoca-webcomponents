@@ -1,9 +1,9 @@
 import {css, html, property, query, TemplateResult, LitElement, PropertyValues, customElement} from "lit-element";
+import {NidocaSpacerSize} from "./nidoca-spacer";
 
 @customElement("nidoca-template")
 export class NidocaTemplate extends LitElement {
   static styles = css`
-    
     .slotHeader {
       display: flex;
       align-items: center;
@@ -54,6 +54,10 @@ export class NidocaTemplate extends LitElement {
         transition: margin-left 0.35s linear;
         margin-left: 300px;
       }
+    }
+
+    .slotProminent {
+      width: 100%;
     }
   `;
 
@@ -109,8 +113,10 @@ export class NidocaTemplate extends LitElement {
           <span slot="right">
             <slot class="slotHeader" name="topRight"></slot>
           </span>
-          <span slot="prominent">
-            <slot class="slotHeader" name="prominent"></slot>
+          <span class="slotProminent" slot="prominent">
+            <nidoca-spacer spacerSize="${NidocaSpacerSize.LITTLE}">
+              <slot class="slotHeader" name="prominent"></slot>
+            </nidoca-spacer>
           </span>
         </nidoca-top-app-bar>
       </div>
@@ -123,4 +129,5 @@ export class NidocaTemplate extends LitElement {
     console.log("toogle navigation.");
     this.navigationClosed = !this.navigationClosed;
   }
+
 }

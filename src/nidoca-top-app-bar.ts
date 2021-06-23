@@ -17,15 +17,18 @@ export class NidocaTopAppBar extends LitElement {
   @property({type: Boolean})
   prominent: boolean = false;
 
+  @property({type: String})
+  cssStyle: string = "height:60px;";
+
   render(): TemplateResult {
     return html`
-      <nidoca-flex-container
+      <nidoca-flex-container style="width:100%;"
         .flexDirection="${FlexDirection.ROW}"
         .flexWrap="${FlexWrap.NO_WRAP}"
         .flexJustifyContent="${FlexJustifyContent.SPACE_BETWEEN}"
         .flexAlignItems="${FlexAlignItems.CENTER}"
         .flexAlignContent="${FlexAlignContent.SPACE_AROUND}"
-        containerStyle=""
+        containerStyle="${this.cssStyle}"
         itemStyle=""
       >
         <span>

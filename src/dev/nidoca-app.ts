@@ -15,13 +15,13 @@ export class NidocaApp extends LitElement implements NidocaRouteListener {
     NidocaRouter.getUniqueInstance().subscribe(this);
   }
 
-  routeChanged(relUrl: string): void {
-    console.log(relUrl);
-    switch (relUrl) {
-      case "#gallery":
+  routeChanged(url: string): void {
+    console.log("enter new page, url: %s", url);
+    switch (url) {
+      case "gallery":
         this.currentPage = html`<nidoca-page-gallery></nidoca-page-gallery>`;
         break;
-      case "#main":
+      case "main":
       default:
         this.currentPage = html`<nidoca-page-main></nidoca-page-main>`;
         break;
@@ -36,14 +36,14 @@ export class NidocaApp extends LitElement implements NidocaRouteListener {
         >
         <nidoca-icon
           slot="topRight"
-          icon="search"
+          icon="${this.prominent ? "search_off" : "search"}"
           @nidoca-event-icon-clicked="${() => (this.prominent = !this.prominent)}"
         ></nidoca-icon>
         <nidoca-icon slot="topRight" icon="person"></nidoca-icon>
         <nidoca-icon slot="topRight" icon="share"></nidoca-icon>
         <nidoca-icon slot="topRight" icon="more_vert"></nidoca-icon>
 
-        <nidoca-form-text name="search" slot="prominent"></nidoca-form-text>
+        <nidoca-search-bar style="width:100%;" slot="prominent" placeholder="Suche..."></nidoca-search-bar>
 
         <span slot="content">${this.currentPage}</span>
 
