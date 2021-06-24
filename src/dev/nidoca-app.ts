@@ -21,6 +21,9 @@ export class NidocaApp extends LitElement implements NidocaRouteListener {
       case "gallery":
         this.currentPage = html`<nidoca-page-gallery></nidoca-page-gallery>`;
         break;
+      case "settings":
+        this.currentPage = html`<nidoca-page-settings></nidoca-page-settings>`;
+        break;
       case "main":
       default:
         this.currentPage = html`<nidoca-page-main></nidoca-page-main>`;
