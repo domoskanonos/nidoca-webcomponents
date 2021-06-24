@@ -43,6 +43,9 @@ export class NidocaDialog extends LitElement {
   @property({type: Boolean})
   show: boolean = false;
 
+  @property({type: Object})
+  content: TemplateResult = html``;
+
   render(): TemplateResult {
     return html`
       <nidoca-visible visibleType="${this.show ? VisibleType.NORMAL : VisibleType.HIDE}">
@@ -52,6 +55,7 @@ export class NidocaDialog extends LitElement {
             <!-- Dialog -->
             <nidoca-transition .transitionType="${TransitionType.SLIDE_CENTER}">
               <div class="dialogContainer">
+                ${this.content}
                 <slot></slot>
               </div>
             </nidoca-transition>

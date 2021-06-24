@@ -5,6 +5,12 @@ import {TypographyType} from "..";
 @customElement("nidoca-app")
 export class NidocaApp extends LitElement implements NidocaRouteListener {
   @property({type: Boolean})
+  showPopup: boolean = false;
+
+  @property({type: Object})
+  popupContent: TemplateResult = html``;
+
+  @property({type: Boolean})
   prominent: boolean = false;
 
   @property({type: Object})
@@ -42,7 +48,14 @@ export class NidocaApp extends LitElement implements NidocaRouteListener {
           icon="${this.prominent ? "search_off" : "search"}"
           @nidoca-event-icon-clicked="${() => (this.prominent = !this.prominent)}"
         ></nidoca-icon>
-        <nidoca-icon slot="topRight" icon="person"></nidoca-icon>
+        <nidoca-icon
+          slot="topRight"
+          icon="person"
+          @nidoca-event-icon-clicked="${() => {
+            this.showPopup = true;
+            this.popupContent = html`<nidoca-popup-login></nidoca-popup-login>`;
+          }}"
+        ></nidoca-icon>
         <nidoca-icon slot="topRight" icon="share"></nidoca-icon>
         <nidoca-icon slot="topRight" icon="more_vert"></nidoca-icon>
 
@@ -69,6 +82,13 @@ export class NidocaApp extends LitElement implements NidocaRouteListener {
           ></nidoca-navigation-link>
         </nidoca-navigation>
       </nidoca-template>
+      <nidoca-dialog
+        .show="${this.showPopup}"
+        .content="${this.popupContent}"
+        @nidoca-popup-login-closePopup="${() => (this.showPopup = false)}"
+      >
+      </nidoca-dialog>
+      <nidoca-elevation .show="${true}">jiojoijiojoij</nidoca-elevation>
     `;
   }
 }

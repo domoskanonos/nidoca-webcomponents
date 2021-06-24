@@ -9,6 +9,7 @@ export * from "./nidoca-wizard-step";
 export * from "./nidoca-wizard";
 export * from "./nidoca-chip";
 export * from "./nidoca-code";
+export * from "./nidoca-elevation";
 export * from "./nidoca-progress";
 export * from "./nidoca-border";
 export * from "./nidoca-button";
