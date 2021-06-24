@@ -17,7 +17,7 @@ export class NidocaElevation extends LitElement {
   associatedElement: HTMLElement | undefined;
 
   @property({type: Object})
-  content: TemplateResult = html``;
+  content: TemplateResult | undefined = html``;
 
   render(): TemplateResult {
     return html`
@@ -31,11 +31,12 @@ export class NidocaElevation extends LitElement {
       </nidoca-visible>
     `;
   }
+
   calculatePositionStyle(basedOnComponent: HTMLElement | undefined): string {
     let style: string = "top:0;left:0;";
     if (basedOnComponent) {
       const rect = basedOnComponent.getBoundingClientRect();
-      style = `top:${rect.top};left:${rect.left};`;
+      style = `top:${rect.bottom}px;left:${rect.left}px;`;
       console.log(rect.top, rect.right, rect.bottom, rect.left);
     }
     return style;

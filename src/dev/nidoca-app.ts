@@ -16,8 +16,14 @@ export class NidocaApp extends LitElement implements NidocaRouteListener {
   @property({type: Object})
   currentPage: TemplateResult = html`<nidoca-page-main></nidoca-page-main>`;
 
+  @property({type: Boolean})
+  elevationShow: boolean = false;
+
   @property({type: Object})
   elevationAssociatedElement: HTMLElement | undefined;
+
+  @property({type: Object})
+  elevationContentElement: TemplateResult | undefined;
 
   constructor() {
     super();
@@ -63,8 +69,11 @@ export class NidocaApp extends LitElement implements NidocaRouteListener {
         <nidoca-icon
           slot="topRight"
           icon="more_vert"
+          .clickable="${true}"
           @nidoca-event-icon-clicked="${(event: CustomEvent) => {
+            this.elevationShow = true;
             this.elevationAssociatedElement = <HTMLElement>event.target;
+            this.elevationContentElement = html`<nidoca-elevation-settings></nidoca-elevation-settings>`;
           }}"
         ></nidoca-icon>
 
@@ -97,9 +106,12 @@ export class NidocaApp extends LitElement implements NidocaRouteListener {
         @nidoca-popup-login-closePopup="${() => (this.showPopup = false)}"
       >
       </nidoca-dialog>
-      <nidoca-elevation .show="${true}" .associatedElement="${this.elevationAssociatedElement}"
-        >jiojoijiojoij</nidoca-elevation
-      >
+      <nidoca-elevation
+        .show="${this.elevationShow}"
+        .associatedElement="${this.elevationAssociatedElement}"
+        .content="${this.elevationContentElement}"
+        @mouseout="${() => (this.elevationShow = false)}"
+      ></nidoca-elevation>
     `;
   }
 }
