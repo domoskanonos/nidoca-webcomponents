@@ -76,6 +76,11 @@ export class NidocaTemplate extends LitElement {
   @query("#content")
   private contentElement: HTMLElement | undefined;
 
+  constructor() {
+    super();
+    document.getElementsByTagName("html")[0].setAttribute("oncontextmenu", "return false"); // avoid right click context menu
+  }
+
   protected updated(_changedProperties: PropertyValues): void {
     super.updated(_changedProperties);
     new Promise((resolve) => requestAnimationFrame(resolve)).then(() => {
@@ -129,5 +134,4 @@ export class NidocaTemplate extends LitElement {
     console.log("toogle navigation.");
     this.navigationClosed = !this.navigationClosed;
   }
-
 }

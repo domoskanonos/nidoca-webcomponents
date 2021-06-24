@@ -13,11 +13,8 @@ export class NidocaElevation extends LitElement {
   @property({type: Boolean})
   show: boolean = false;
 
-  @property({type: Number})
-  x: number = 0;
-
-  @property({type: Number})
-  y: number = 0;
+  @property({type: Object})
+  associatedElement: HTMLElement | undefined;
 
   @property({type: Object})
   content: TemplateResult = html``;
@@ -25,7 +22,7 @@ export class NidocaElevation extends LitElement {
   render(): TemplateResult {
     return html`
       <nidoca-visible visibleType="${this.show ? VisibleType.NORMAL : VisibleType.HIDE}">
-        <div class="elevationContainer" style="top:${this.x};left:${this.y};">
+        <div class="elevationContainer" style="${this.calculatePositionStyle(this.associatedElement)}">
           <nidoca-border>
             ${this.content}
             <slot></slot>
@@ -33,5 +30,14 @@ export class NidocaElevation extends LitElement {
         </div>
       </nidoca-visible>
     `;
+  }
+  calculatePositionStyle(basedOnComponent: HTMLElement | undefined): string {
+    let style: string = "top:0;left:0;";
+    if (basedOnComponent) {
+      const rect = basedOnComponent.getBoundingClientRect();
+      style = `top:${rect.top};left:${rect.left};`;
+      console.log(rect.top, rect.right, rect.bottom, rect.left);
+    }
+    return style;
   }
 }
