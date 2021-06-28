@@ -1,6 +1,9 @@
-import {css, customElement, html, property, query, TemplateResult} from "lit-element";
-import {repeat} from "lit-html/directives/repeat";
-import {guard} from "lit-html/directives/guard";
+import {css, html, TemplateResult} from "lit";
+import {customElement} from "lit/decorators/custom-element";
+import {property} from "lit/decorators/property";
+import {query} from "lit/decorators/query";
+import {repeat} from "lit/directives/repeat";
+import {guard} from "lit/directives/guard";
 import {FormOutputData, NidocaFormAbstractInputElement} from "./nidoca-form-abstract-input-element";
 import {InputframeMode} from ".";
 
@@ -69,7 +72,7 @@ export class NidocaFormCombobox extends NidocaFormAbstractInputElement {
   @property({type: Number})
   size: number = 1;
 
-  @property({type: InputframeMode})
+  @property({type: String})
   inputframeMode: InputframeMode = InputframeMode.NORMAL;
 
   @query("#selectElement")

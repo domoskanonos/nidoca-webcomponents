@@ -80,22 +80,22 @@ export class NidocaFlexContainer extends LitElement {
     }
   `;
 
-  @property({type: NidocaDevice})
+  @property({type: Array})
   devices: NidocaDevice[] = [NidocaDevice.DESKTOP, NidocaDevice.TABLET, NidocaDevice.MOBILE];
 
-  @property({type: FlexDirection})
+  @property({type: String})
   flexDirection: FlexDirection = FlexDirection.ROW;
 
-  @property({type: FlexWrap})
+  @property({type: String})
   flexWrap: FlexWrap = FlexWrap.WRAP;
 
-  @property({type: FlexJustifyContent})
+  @property({type: String})
   flexJustifyContent: FlexJustifyContent = FlexJustifyContent.FLEX_START;
 
-  @property({type: FlexAlignItems})
+  @property({type: String})
   flexAlignItems: FlexAlignItems = FlexAlignItems.FLEX_START;
 
-  @property({type: FlexAlignContent})
+  @property({type: String})
   flexAlignContent: FlexAlignContent = FlexAlignContent.FLEX_START;
 
   @property({type: String})

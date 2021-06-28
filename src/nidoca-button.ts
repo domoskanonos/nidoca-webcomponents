@@ -56,7 +56,7 @@ export class NidocaButton extends LitElement {
     }
   `;
 
-  @property({type: ButtonType})
+  @property({type: String})
   buttonType: ButtonType = ButtonType.PRIMARY;
 
   @property({type: String})

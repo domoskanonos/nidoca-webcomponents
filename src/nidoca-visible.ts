@@ -21,7 +21,7 @@ export class NidocaVisible extends LitElement {
     }
   `;
 
-  @property({ type: VisibleType })
+  @property({ type: String })
   visibleType: VisibleType = VisibleType.NORMAL;
 
   render(): TemplateResult {

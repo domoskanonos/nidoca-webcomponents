@@ -28,7 +28,7 @@ export class NidocaNavigation extends LitElement {
     }
   `;
 
-  @property({type: NavigationStyle})
+  @property({type: String})
   navigationStyle: NavigationStyle = NavigationStyle.PRIMARY;
 
   render(): TemplateResult {

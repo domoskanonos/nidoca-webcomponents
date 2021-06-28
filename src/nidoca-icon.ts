@@ -90,7 +90,7 @@ export class NidocaIcon extends LitElement {
   @property({type: String})
   icon: string = "";
 
-  @property({type: IconShadowType})
+  @property({type: String})
   iconShadowType: IconShadowType = IconShadowType.NONE;
 
   @property({type: Boolean})

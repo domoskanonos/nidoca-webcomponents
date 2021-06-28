@@ -97,10 +97,10 @@ export class NidocaBorder extends LitElement {
 
   `;
 
-  @property({ type: BorderProperty })
+  @property({ type: Array })
   borderProperties: BorderProperty[] = [BorderProperty.ALL];
 
-  @property({ type: BorderSize })
+  @property({ type: String })
   borderSize: BorderSize = BorderSize.THIN;
 
    render(): TemplateResult {
@@ -111,7 +111,7 @@ export class NidocaBorder extends LitElement {
     `;
   }
 
-  toBorderPropertiesString(borderPropertieses: string[]) {
+  toBorderPropertiesString(borderPropertieses: string[]) : string {
     let borderClazzString: string = "BORDER";
     borderPropertieses.forEach((clazz) => {
       borderClazzString = borderClazzString.concat(" ").concat(clazz);

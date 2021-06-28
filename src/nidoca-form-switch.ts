@@ -1,4 +1,6 @@
-import {css, customElement, html, property, query, TemplateResult} from "lit-element";
+import {css, html, TemplateResult} from "lit";
+import {customElement} from "lit/decorators/custom-element";
+import {property} from "lit/decorators/property";
 import {FormOutputData, NidocaFormAbstractInputElement} from "./nidoca-form-abstract-input-element";
 import {TypographyType} from "./nidoca-typography";
 import {VisibleType} from "./nidoca-visible";

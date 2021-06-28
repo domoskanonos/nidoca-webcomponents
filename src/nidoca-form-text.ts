@@ -1,5 +1,9 @@
-import {css, customElement, html, property, query, TemplateResult} from "lit-element";
-import { InputframeMode } from ".";
+import {css, html, TemplateResult} from "lit";
+import {customElement} from "lit/decorators/custom-element";
+import {property} from "lit/decorators/property";
+import {query} from "lit/decorators/query";
+import {ifDefined} from "lit/directives/if-defined";
+import {InputframeMode} from ".";
 import {FormOutputData, NidocaFormAbstractInputElement} from "./nidoca-form-abstract-input-element";
 
 export enum TextType {
@@ -33,7 +37,7 @@ export class NidocaFormText extends NidocaFormAbstractInputElement {
     }
   `;
 
-  @property({type: TextType})
+  @property({type: String})
   textType: TextType = TextType.TEXT;
 
   @property({type: String})
@@ -84,7 +88,7 @@ export class NidocaFormText extends NidocaFormAbstractInputElement {
   @property({type: String})
   warningText: string = "";
 
-  @property({type: InputframeMode})
+  @property({type: String})
   inputframeMode: InputframeMode = InputframeMode.NORMAL;
 
   @query("#inputElement")
@@ -105,12 +109,12 @@ export class NidocaFormText extends NidocaFormAbstractInputElement {
           type="${this.textType}"
           value="${this.value}"
           placeholder="${this.placeholder ? this.placeholder : this.label}"
-          size="${this.size}"
-          minlength="${this.minlength}"
-          maxlength="${this.maxlength}"
-          min="${this.min}"
-          max="${this.max}"
-          step="${this.step}"
+          size="${ifDefined(this.size)}"
+          minlength="${ifDefined(this.minlength)}"
+          maxlength="${ifDefined(this.maxlength)}"
+          min="${ifDefined(this.min)}"
+          max="${ifDefined(this.max)}"
+          step="${ifDefined(this.step)}"
           ?required="${this.required}"
           ?disabled="${this.disabled}"
           ?checked="${this.checked}"
@@ -131,23 +135,23 @@ export class NidocaFormText extends NidocaFormAbstractInputElement {
     };
   }
 
-  async handleFocus() {
+  async handleFocus(): Promise<void> {
     this.dispatchOutputDataChangeEvent("nidoca-form-text-event-focus");
   }
 
-  async handleFocusout() {
+  async handleFocusout(): Promise<void> {
     this.dispatchOutputDataChangeEvent("nidoca-form-text-focusout");
   }
 
-  async handleChange() {
+  async handleChange(): Promise<void> {
     this.dispatchOutputDataChangeEvent("nidoca-form-text-event-change");
   }
 
-  async handleKeyup() {
+  async handleKeyup(): Promise<void> {
     this.dispatchOutputDataChangeEvent("nidoca-form-text-event-change");
   }
 
-  async dispatchOutputDataChangeEvent(eventName: string) {
+  async dispatchOutputDataChangeEvent(eventName: string): Promise<void> {
     if (this.validate()) {
       const customEvent = new CustomEvent(eventName, {
         detail: this.getOutputData(),

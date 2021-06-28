@@ -70,7 +70,7 @@ export class NidocaImg extends LitElement {
   @property({type: String})
   src: string = "http://picsum.photos/400/300";
 
-  @property({type: RichMediaProperties})
+  @property({type: Array})
   richMediaProperties: RichMediaProperties[] = [RichMediaProperties.CLICKABLE, RichMediaProperties.FULL_WIDTH];
 
   render(): TemplateResult {

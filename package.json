@@ -16,7 +16,7 @@
     "@domoskanonos/nidoca-webpack": "1.0.6"
   },
   "dependencies": {
-    "lit-element": "^2.4.0"
+    "lit": "2.0.0-rc.2"
   },
   "author": "Dominik Bruhn",
   "scripts": {
@@ -32,7 +32,7 @@
     "docs": "typedoc",
     "docs:watch": "typedoc --watch",
     "build:webcomponent": "npm install && npm run ts && npm run lit-analyzer && npm run test && npm run docs && webpack --config ./webpack.webcomponent.js",
-    "preversion": "",
+    "preversion": "npm run build:webcomponent",
     "new-patch": "npm version patch -m \"new patch version: %s\" --force",
     "new-minor": "npm version minor -m \"new minor version: %s\" --force",
     "new-major": "npm version major -m \"new major version: %s\" --force",

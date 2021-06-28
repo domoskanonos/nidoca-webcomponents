@@ -122,10 +122,10 @@ export class NidocaTypography extends LitElement {
     }
   `;
 
-  @property({type: TypographyType})
+  @property({type: String})
   typographyType: TypographyType = TypographyType.BODY1;
 
-  @property({type: TypographyAlignment})
+  @property({type: String})
   typographyAlignment: TypographyAlignment = TypographyAlignment.START;
 
   @property({type: String})

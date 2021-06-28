@@ -1,4 +1,8 @@
-import {css, customElement, html, property, query, TemplateResult} from "lit-element";
+import {css, html, TemplateResult} from "lit";
+import {customElement} from "lit/decorators/custom-element";
+import {property} from "lit/decorators/property";
+import {query} from "lit/decorators/query";
+import { ifDefined } from "lit/directives/if-defined";
 import { InputframeMode } from ".";
 import {FormOutputData, NidocaFormAbstractInputElement} from "./nidoca-form-abstract-input-element";
 
@@ -87,7 +91,7 @@ export class NidocaFormDate extends NidocaFormAbstractInputElement {
   @query("#inputElement")
   private inputElement: HTMLInputElement | undefined;
  
-  @property({type: InputframeMode})
+  @property({type: String})
   inputframeMode: InputframeMode = InputframeMode.NORMAL;
 
   render(): TemplateResult {
@@ -105,12 +109,12 @@ export class NidocaFormDate extends NidocaFormAbstractInputElement {
           type="${this.dateType}"
           value="${this.value}"
           placeholder="${this.placeholder ? this.placeholder : this.label}"
-          size="${this.size}"
-          minlength="${this.minlength}"
-          maxlength="${this.maxlength}"
-          min="${this.min}"
-          max="${this.max}"
-          step="${this.step}"
+          size="${ifDefined(this.size)}"
+          minlength="${ifDefined(this.minlength)}"
+          maxlength="${ifDefined(this.maxlength)}"
+          min="${ifDefined(this.min)}"
+          max="${ifDefined(this.max)}"
+          step="${ifDefined(this.step)}"
           ?required="${this.required}"
           ?disabled="${this.disabled}"
           ?checked="${this.checked}"

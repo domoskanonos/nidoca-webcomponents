@@ -34,7 +34,7 @@ export class NidocaFormInputframe extends LitElement {
   @property({type: Boolean})
   selected: boolean = false;
 
-  @property({type: InputframeMode})
+  @property({type: String})
   inputframeMode: InputframeMode = InputframeMode.NORMAL;
 
   render(): TemplateResult {

@@ -31,7 +31,7 @@ export class NidocaWizardStep extends LitElement {
   @property({type: String})
   title: string = "";
 
-  @property({type: WizardStepState})
+  @property({type: Number})
   state: WizardStepState | undefined;
 
   @property({type: Boolean})

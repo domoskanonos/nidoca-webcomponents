@@ -16,7 +16,7 @@ export enum TransitionType {
 @customElement("nidoca-transition")
 export class NidocaTransition extends LitElement {
 
-  @property({type: TransitionType})
+  @property({type: String})
   transitionType: TransitionType = TransitionType.CENTER;
 
   @property({type: Number})
