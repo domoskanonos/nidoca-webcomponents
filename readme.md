@@ -3,7 +3,7 @@
 nidoca is a lightweight ui-framework based on
 [webcomponents](https://www.webcomponents.org/),
 [typescript](https://www.typescriptlang.org/)
-and [litelement](https://lit-element.polymer-project.org/).
+and [lit](https://lit.dev/).
 
 visit showcase page: [nidoca.de](http://nidoca.de)
 
