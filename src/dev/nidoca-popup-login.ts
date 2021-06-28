@@ -1,4 +1,5 @@
-import {css, customElement, html, LitElement, TemplateResult} from "lit-element";
+import {css, html, LitElement, TemplateResult} from "lit";
+import {customElement} from "lit/decorators/custom-element";
 
 @customElement("nidoca-popup-login")
 export class NidocaPopupLogin extends LitElement {

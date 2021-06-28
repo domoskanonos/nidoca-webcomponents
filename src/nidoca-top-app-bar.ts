@@ -1,4 +1,4 @@
-import {css, customElement, html, LitElement, TemplateResult, property} from "lit-element";
+import {css, customElement, html, LitElement, TemplateResult, property} from "lit";
 import {FlexAlignContent, FlexAlignItems, FlexDirection, FlexJustifyContent, FlexWrap} from ".";
 
 @customElement("nidoca-top-app-bar")

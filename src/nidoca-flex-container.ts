@@ -1,4 +1,4 @@
-import {css, customElement, html, property, query, LitElement, TemplateResult} from "lit-element";
+import {css, customElement, html, property, query, LitElement, TemplateResult} from "lit";
 import {NidocaDevice} from ".";
 
 export enum FlexDirection {

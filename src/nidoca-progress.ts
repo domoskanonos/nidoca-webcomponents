@@ -1,5 +1,5 @@
-import {css, customElement, html, property, TemplateResult} from "lit-element";
-import {LitElement} from "lit-element";
+import {css, customElement, html, property, TemplateResult} from "lit";
+import {LitElement} from "lit";
 
 export enum ProgressType {
   PROGRESS = "PROGRESS",

@@ -1,4 +1,4 @@
-import {css, customElement, html, LitElement, query, TemplateResult} from "lit-element";
+import {css, customElement, html, LitElement, query, TemplateResult} from "lit";
 
 /**
  * check src: https://codepen.io/jakob-e/pen/XZoZWQ

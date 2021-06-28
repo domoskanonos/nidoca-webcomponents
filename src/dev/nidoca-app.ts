@@ -1,4 +1,6 @@
-import {customElement, html, LitElement, property, TemplateResult} from "lit-element";
+import {html, TemplateResult} from "lit";
+import {customElement} from "lit/decorators/custom-element";
+import {property} from "lit/decorators/property";
 import {NidocaRouteListener, NidocaRouter} from "@domoskanonos/nidoca-router";
 import {TypographyType} from "..";
 

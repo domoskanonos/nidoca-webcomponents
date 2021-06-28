@@ -1,4 +1,4 @@
-import {css, customElement, html, LitElement, property, TemplateResult} from "lit-element";
+import {css, customElement, html, LitElement, property, TemplateResult} from "lit";
 import {NidocaDevice} from "./nidoca-meta";
 
 export enum NidocaSpacerType {

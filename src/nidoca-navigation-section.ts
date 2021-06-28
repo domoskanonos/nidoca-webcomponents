@@ -1,4 +1,4 @@
-import {css, customElement, html, LitElement, property, TemplateResult} from "lit-element";
+import {css, customElement, html, LitElement, property, TemplateResult} from "lit";
 import {FlexAlignContent, FlexAlignItems, FlexDirection, FlexJustifyContent, FlexWrap} from "./nidoca-flex-container";
 import {NidocaSpacerType, NidocaSpacerSize} from "./nidoca-spacer";
 import {TypographyType} from "./nidoca-typography";

@@ -1,5 +1,5 @@
-import {css, customElement, html, query, TemplateResult} from "lit-element";
-import {LitElement} from "lit-element";
+import {css, customElement, html, query, TemplateResult} from "lit";
+import {LitElement} from "lit";
 import {BorderProperty} from "./nidoca-border";
 import {NidocaDevice} from "./nidoca-meta";
 

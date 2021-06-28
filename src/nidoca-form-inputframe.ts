@@ -1,4 +1,4 @@
-import {css, customElement, html, LitElement, property, TemplateResult} from "lit-element";
+import {css, customElement, html, LitElement, property, TemplateResult} from "lit";
 import {BorderProperty, BorderSize} from "./nidoca-border";
 import {VisibleType} from "./nidoca-visible";
 import {FlexAlignContent} from "./nidoca-flex-container";

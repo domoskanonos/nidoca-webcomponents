@@ -1,4 +1,4 @@
-import {css, customElement, html, property, LitElement, TemplateResult} from "lit-element";
+import {css, customElement, html, property, LitElement, TemplateResult} from "lit";
 import {TypographyType} from "./nidoca-typography";
 
 @customElement("nidoca-tab")

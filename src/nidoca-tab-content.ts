@@ -1,4 +1,4 @@
-import {css, customElement, html, property, LitElement, TemplateResult} from "lit-element";
+import {css, customElement, html, property, LitElement, TemplateResult} from "lit";
 import {VisibleType} from "./nidoca-visible";
 
 @customElement("nidoca-tab-content")

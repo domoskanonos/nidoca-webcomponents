@@ -1,4 +1,4 @@
-import {css, customElement, html, property, LitElement, TemplateResult} from "lit-element";
+import {css, customElement, html, property, LitElement, TemplateResult} from "lit";
 
 export enum IconShadowType {
   NONE = "NONE",

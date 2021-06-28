@@ -1,4 +1,4 @@
-import {css, customElement, html, LitElement, property, query, TemplateResult} from "lit-element";
+import {css, customElement, html, LitElement, property, query, TemplateResult} from "lit";
 import {
   FlexAlignContent as NidocaFlexAlignContent,
   FlexAlignItems as NidocaFlexAlignItems,

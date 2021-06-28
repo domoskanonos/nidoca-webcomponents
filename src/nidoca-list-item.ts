@@ -1,4 +1,4 @@
-import {css, customElement, html, LitElement, property, TemplateResult} from "lit-element";
+import {css, customElement, html, LitElement, property, TemplateResult} from "lit";
 import {VisibleType} from "./nidoca-visible";
 import {FormOutputData} from "./nidoca-form-abstract-input-element";
 

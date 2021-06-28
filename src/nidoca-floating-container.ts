@@ -1,4 +1,4 @@
-import {css, customElement, html, property, LitElement, TemplateResult} from "lit-element";
+import {css, customElement, html, property, LitElement, TemplateResult} from "lit";
 
 @customElement("nidoca-floating-container")
 export class NidocaFloatingContainer extends LitElement {

@@ -1,5 +1,6 @@
-import { css, customElement, html, property, TemplateResult, unsafeCSS } from "lit-element";
-import { LitElement } from "lit-element";
+import {css, html, LitElement, TemplateResult} from "lit";
+import {customElement} from "lit/decorators/custom-element";
+import {property} from "lit/decorators/property";
 
 export enum BorderProperty {
   NONE = "NONE",

@@ -1,4 +1,4 @@
-import {css, customElement, html, query, unsafeCSS, LitElement, property, TemplateResult} from "lit-element";
+import {css, customElement, html, query, unsafeCSS, LitElement, property, TemplateResult} from "lit";
 import {NidocaTabContent} from "./nidoca-tab-content";
 import {NidocaTab} from "./nidoca-tab";
 

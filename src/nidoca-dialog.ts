@@ -1,4 +1,4 @@
-import {css, customElement, html, property, unsafeCSS, LitElement, TemplateResult} from "lit-element";
+import {css, customElement, html, property, unsafeCSS, LitElement, TemplateResult} from "lit";
 import {VisibleType} from "./nidoca-visible";
 import {TransitionType} from "./nidoca-transition";
 

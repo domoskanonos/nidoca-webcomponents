@@ -1,4 +1,4 @@
-import {LitElement, TemplateResult} from "lit-element";
+import {LitElement, TemplateResult} from "lit";
 
 export class AppData {
   name?: string;

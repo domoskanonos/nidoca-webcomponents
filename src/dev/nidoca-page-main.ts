@@ -1,4 +1,5 @@
-import {css, customElement, html, LitElement, TemplateResult} from "lit-element";
+import {css, html, LitElement, TemplateResult} from "lit";
+import {customElement} from "lit/decorators/custom-element";
 import {TypographyType} from "..";
 import {DUMMY_DESCRIPTION, DUMMY_DESCRIPTION_SHORT, DUMMY_IMAGE, DUMMY_TITLE} from "./constants";
 

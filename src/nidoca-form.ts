@@ -1,4 +1,4 @@
-import {css, customElement, html, LitElement, property, query, TemplateResult} from "lit-element";
+import {css, customElement, html, LitElement, property, query, TemplateResult} from "lit";
 import {NidocaFormAbstractInputElement} from "./nidoca-form-abstract-input-element";
 
 export class NidocaFormOutputData {

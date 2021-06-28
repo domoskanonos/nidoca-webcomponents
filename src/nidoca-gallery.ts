@@ -1,4 +1,4 @@
-import {css, customElement, html, property, unsafeCSS, LitElement, TemplateResult} from "lit-element";
+import {css, customElement, html, property, unsafeCSS, LitElement, TemplateResult} from "lit";
 import {NidocaDevice} from ".";
 import { NidocaSpacerType } from "./nidoca-spacer";
 

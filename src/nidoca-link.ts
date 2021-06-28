@@ -1,4 +1,4 @@
-import {css, customElement, html, LitElement, property, TemplateResult} from "lit-element";
+import {css, customElement, html, LitElement, property, TemplateResult} from "lit";
 
 export enum TargetType {
   BLANK = "_blank",

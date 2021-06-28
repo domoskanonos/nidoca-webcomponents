@@ -1,4 +1,6 @@
-import {css, customElement, html, property, LitElement, TemplateResult} from "lit-element";
+import {css, html, LitElement, TemplateResult} from "lit";
+import {customElement} from "lit/decorators/custom-element";
+import {property} from "lit/decorators/property";
 
 export enum ShadowType {
   NONE = "NONE",

@@ -1,4 +1,4 @@
-import {css, html, property, query, TemplateResult, LitElement, PropertyValues, customElement} from "lit-element";
+import {css, html, property, query, TemplateResult, LitElement, PropertyValues, customElement} from "lit";
 import {NidocaSpacerSize} from "./nidoca-spacer";
 
 @customElement("nidoca-template")
