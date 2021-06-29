@@ -1,6 +1,7 @@
-import {html, LitElement, TemplateResult} from "lit";
+import {css, html, LitElement, TemplateResult} from "lit";
 import {customElement} from "lit/decorators/custom-element";
 import {property} from "lit/decorators/property";
+import {query} from "lit/decorators/query";
 
 import {NidocaDevice} from ".";
 

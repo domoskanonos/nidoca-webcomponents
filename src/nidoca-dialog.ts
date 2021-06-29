@@ -1,4 +1,4 @@
-import {html, LitElement, TemplateResult} from "lit";
+import {css, html, LitElement, TemplateResult} from "lit";
 import {customElement} from "lit/decorators/custom-element";
 import {property} from "lit/decorators/property";
 import {VisibleType} from "./nidoca-visible";

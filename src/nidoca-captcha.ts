@@ -1,4 +1,4 @@
-import {css, html, LitElement, TemplateResult} from "lit";
+import {css, html, LitElement, PropertyValues, TemplateResult} from "lit";
 import {customElement} from "lit/decorators/custom-element";
 import {property} from "lit/decorators/property";
 import {query} from "lit/decorators/query";
@@ -44,7 +44,7 @@ export class NidocaCaptcha extends LitElement {
   }
 
 
-  updated(_changedProperties: PropertyValues) {
+  updated(_changedProperties: PropertyValues) : void {
     if (_changedProperties.has("min") || _changedProperties.has("max")) {
       this.generateNewNumber();
     }
