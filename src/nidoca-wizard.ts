@@ -1,4 +1,6 @@
-import {css, customElement, html, query, LitElement, TemplateResult} from "lit";
+import {css, html, TemplateResult,LitElement} from "lit";
+import {customElement} from "lit/decorators/custom-element";
+import {query} from "lit/decorators/query";
 import {FlexAlignContent, FlexAlignItems, FlexDirection, FlexJustifyContent, FlexWrap} from ".";
 import {NidocaWizardStep, WizardStepState} from "./nidoca-wizard-step";
 

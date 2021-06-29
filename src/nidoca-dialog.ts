@@ -1,4 +1,6 @@
-import {css, customElement, html, property, unsafeCSS, LitElement, TemplateResult} from "lit";
+import {html, LitElement, TemplateResult} from "lit";
+import {customElement} from "lit/decorators/custom-element";
+import {property} from "lit/decorators/property";
 import {VisibleType} from "./nidoca-visible";
 import {TransitionType} from "./nidoca-transition";
 

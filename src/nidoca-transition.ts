@@ -1,4 +1,6 @@
-import {css, customElement, html, LitElement, property, TemplateResult} from "lit";
+import {css, html, TemplateResult,LitElement} from "lit";
+import {customElement} from "lit/decorators/custom-element";
+import {property} from "lit/decorators/property";
 
 export enum TransitionType {
   CENTER = "CENTER",

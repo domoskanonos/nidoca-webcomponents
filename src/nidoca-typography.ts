@@ -1,4 +1,6 @@
-import {css, customElement, html, property, unsafeCSS, LitElement, TemplateResult} from "lit";
+import {css, html, TemplateResult,LitElement} from "lit";
+import {customElement} from "lit/decorators/custom-element";
+import {property} from "lit/decorators/property";
 
 export enum TypographyType {
   H1 = "H1",

@@ -1,4 +1,7 @@
-import {css, customElement, html, property, query, LitElement, TemplateResult} from "lit";
+import {css, html, TemplateResult, LitElement} from "lit";
+import {customElement} from "lit/decorators/custom-element";
+import {property} from "lit/decorators/property";
+import {query} from "lit/decorators/query";
 import {NidocaListItem} from "./nidoca-list-item";
 
 @customElement("nidoca-list")

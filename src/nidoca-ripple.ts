@@ -1,4 +1,6 @@
-import {css, customElement, html, LitElement, query, TemplateResult} from "lit";
+import {css, html, TemplateResult, LitElement} from "lit";
+import {customElement} from "lit/decorators/custom-element";
+import {query} from "lit/decorators/query";
 
 /**
  * check src: https://codepen.io/jakob-e/pen/XZoZWQ

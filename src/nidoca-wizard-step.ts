@@ -1,4 +1,6 @@
-import {css, customElement, html, property, LitElement, TemplateResult} from "lit";
+import {css, html, TemplateResult,LitElement} from "lit";
+import {customElement} from "lit/decorators/custom-element";
+import {property} from "lit/decorators/property";
 import {FlexAlignContent, FlexAlignItems, FlexDirection, FlexJustifyContent, FlexWrap, IconShadowType} from ".";
 import {TypographyAlignment, TypographyType} from "./nidoca-typography";
 

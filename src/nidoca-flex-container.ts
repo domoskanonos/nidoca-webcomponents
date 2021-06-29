@@ -1,4 +1,7 @@
-import {css, customElement, html, property, query, LitElement, TemplateResult} from "lit";
+import {html, LitElement, TemplateResult} from "lit";
+import {customElement} from "lit/decorators/custom-element";
+import {property} from "lit/decorators/property";
+
 import {NidocaDevice} from ".";
 
 export enum FlexDirection {

@@ -1,5 +1,5 @@
-import {css, customElement, html, property, unsafeCSS, LitElement, TemplateResult} from "lit";
-import {NidocaDevice} from ".";
+import {css, html, TemplateResult, LitElement} from "lit";
+import {customElement} from "lit/decorators/custom-element";
 import { NidocaSpacerType } from "./nidoca-spacer";
 
 @customElement("nidoca-gallery")

@@ -1,4 +1,7 @@
-import {css, customElement, html, LitElement, property, query, TemplateResult} from "lit";
+import {css, html, TemplateResult, LitElement} from "lit";
+import {customElement} from "lit/decorators/custom-element";
+import {property} from "lit/decorators/property";
+import {query} from "lit/decorators/query";
 import {
   FlexAlignContent as NidocaFlexAlignContent,
   FlexAlignItems as NidocaFlexAlignItems,
