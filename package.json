@@ -31,7 +31,7 @@
     "test:watch": "npm run test -- --watch",
     "docs": "typedoc",
     "docs:watch": "typedoc --watch",
-    "build:webcomponent": "npm install && npm run ts && npm run lit-analyzer && npm run test && npm run docs && webpack --config ./webpack.webcomponent.js",
+    "build:webcomponent": "npm install && npm run ts && npm run lit-analyzer && npm run docs && webpack --config ./webpack.webcomponent.js",
     "preversion": "npm run build:webcomponent",
     "new-patch": "npm version patch -m \"new patch version: %s\" --force",
     "new-minor": "npm version minor -m \"new minor version: %s\" --force",
