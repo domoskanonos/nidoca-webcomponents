@@ -13,7 +13,7 @@ export class NidocaTemplate extends LitElement {
     }
 
     #header {
-      position: fixed;
+/**      position: fixed; */
       width: 100%;
       z-index: 1;
       background-color: var(--mdc-theme-primary);
@@ -96,7 +96,7 @@ export class NidocaTemplate extends LitElement {
           this.sidebarElement.setAttribute("style", topStyle);
         }
         if (this.contentElement != undefined) {
-          this.contentElement.setAttribute("style", paddingTopStyle);
+          //this.contentElement.setAttribute("style", paddingTopStyle);
         }
       }
     });
@@ -106,12 +106,6 @@ export class NidocaTemplate extends LitElement {
     return html`
       <div id="header" class="${this.navigationClosed ? "menuClosed" : ""}">
         <nidoca-top-app-bar .prominent="${this.prominent}">
-          <nidoca-icon
-            slot="left"
-            icon="${this.navigationClosed ? "menu" : "clear"}"
-            .clickable="${true}"
-            @nidoca-event-icon-clicked="${() => this.toogleNavigation()}"
-          ></nidoca-icon>
           <span slot="left">
             <slot class="slotHeader" name="topLeft"></slot>
           </span>
@@ -133,8 +127,4 @@ export class NidocaTemplate extends LitElement {
     `;
   }
 
-  toogleNavigation(): void {
-    console.log("toogle navigation.");
-    this.navigationClosed = !this.navigationClosed;
-  }
 }

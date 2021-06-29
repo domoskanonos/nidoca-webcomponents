@@ -13,6 +13,9 @@ export class NidocaApp extends LitElement implements NidocaRouteListener {
   popupContent: TemplateResult = html``;
 
   @property({type: Boolean})
+  navigationClosed: boolean = true;
+
+  @property({type: Boolean})
   prominent: boolean = false;
 
   @property({type: Object})
@@ -41,6 +44,9 @@ export class NidocaApp extends LitElement implements NidocaRouteListener {
       case "settings":
         this.currentPage = html`<nidoca-page-settings></nidoca-page-settings>`;
         break;
+      case "list":
+        this.currentPage = html`<nidoca-page-list></nidoca-page-list>`;
+        break;
       case "main":
       default:
         this.currentPage = html`<nidoca-page-main></nidoca-page-main>`;
@@ -50,10 +56,16 @@ export class NidocaApp extends LitElement implements NidocaRouteListener {
 
   render(): TemplateResult {
     return html`
-      <nidoca-template .prominent="${this.prominent}">
+      <nidoca-template .prominent="${this.prominent}" .navigationClosed=${this.navigationClosed}>
         <nidoca-typography slot="topCenter" typographyType="${TypographyType.BODY1}"
           >nidoca framework</nidoca-typography
         >
+        <nidoca-icon
+          slot="topLeft"
+          icon="${this.navigationClosed ? "menu" : "clear"}"
+          .clickable="${true}"
+          @nidoca-event-icon-clicked="${() => (this.navigationClosed = !this.navigationClosed)}"
+        ></nidoca-icon>
         <nidoca-icon
           slot="topRight"
           icon="${this.prominent ? "search_off" : "search"}"
@@ -99,6 +111,14 @@ export class NidocaApp extends LitElement implements NidocaRouteListener {
             href="#main"
             .rendered="${true}"
             @nidoca-event-link-clicked="${() => NidocaRouter.getUniqueInstance().navigate("gallery")}"
+          ></nidoca-navigation-link>
+          <nidoca-navigation-link
+            slot="links"
+            icon="home"
+            text="list"
+            href="#main"
+            .rendered="${true}"
+            @nidoca-event-link-clicked="${() => NidocaRouter.getUniqueInstance().navigate("list")}"
           ></nidoca-navigation-link>
         </nidoca-navigation>
       </nidoca-template>
