@@ -9,7 +9,7 @@ import {
   FlexJustifyContent,
   FlexWrap,
 } from "./nidoca-flex-container";
-import {TypographyType} from "./nidoca-typography";
+import {NidocaTypographyType} from "./nidoca-typography";
 
 @customElement("nidoca-navigation-link")
 export class NidocaNavigationLink extends LitElement {
@@ -56,7 +56,7 @@ export class NidocaNavigationLink extends LitElement {
               >
                 <nidoca-icon icon="${this.icon}" .withIconSpace="${false}"></nidoca-icon>
                 <nidoca-spacer spacerSize="${NidocaSpacerSize.LITTLE}" .spacerTypes="${[NidocaSpacerType.LEFT]}">
-                  <nidoca-typography typographyType="${TypographyType.BODY1}">${this.text}</nidoca-typography>
+                  <nidoca-typography typographyType="${NidocaTypographyType.BODY1}">${this.text}</nidoca-typography>
                 </nidoca-spacer>
               </nidoca-flex-container>
             </nidoca-spacer>

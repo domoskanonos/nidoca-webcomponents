@@ -2,7 +2,7 @@ import {css, html, TemplateResult,LitElement} from "lit";
 import {customElement} from "lit/decorators/custom-element";
 import {property} from "lit/decorators/property";
 import {FlexAlignContent, FlexAlignItems, FlexDirection, FlexJustifyContent, FlexWrap, IconShadowType} from ".";
-import {TypographyAlignment, TypographyType} from "./nidoca-typography";
+import {NidocaTypographyAlignment, NidocaTypographyType} from "./nidoca-typography";
 
 export enum WizardStepState {
   CURRENT,
@@ -84,8 +84,8 @@ export class NidocaWizardStep extends LitElement {
         </nidoca-flex-container>
         <nidoca-typography
           style="width:48px;"
-          .typographyType="${TypographyType.OVERLINE}"
-          typographyAlignment="${TypographyAlignment.CENTER}"
+          .typographyType="${NidocaTypographyType.OVERLINE}"
+          typographyAlignment="${NidocaTypographyAlignment.CENTER}"
           text="${this.title}"
           ><slot></slot>
         </nidoca-typography>

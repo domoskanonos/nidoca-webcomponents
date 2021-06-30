@@ -2,7 +2,7 @@ import {css, html, TemplateResult,LitElement} from "lit";
 import {customElement} from "lit/decorators/custom-element";
 import {property} from "lit/decorators/property";
 
-export enum TypographyType {
+export enum NidocaTypographyType {
   H1 = "H1",
   H2 = "H2",
   H3 = "H3",
@@ -18,7 +18,7 @@ export enum TypographyType {
   OVERLINE = "OVERLINE",
 }
 
-export enum TypographyAlignment {
+export enum NidocaTypographyAlignment {
   JUSTIFY = "text-align:justify;",
   JUSTIFY_ALL = "text-align:justify-all;",
   LEFT = "text-align: left;",
@@ -125,10 +125,10 @@ export class NidocaTypography extends LitElement {
   `;
 
   @property({type: String})
-  typographyType: TypographyType = TypographyType.BODY1;
+  typographyType: NidocaTypographyType = NidocaTypographyType.BODY1;
 
   @property({type: String})
-  typographyAlignment: TypographyAlignment = TypographyAlignment.START;
+  typographyAlignment: NidocaTypographyAlignment = NidocaTypographyAlignment.START;
 
   @property({type: String})
   text: string = "";

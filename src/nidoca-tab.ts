@@ -1,7 +1,7 @@
 import {css, html, TemplateResult, LitElement} from "lit";
 import {customElement} from "lit/decorators/custom-element";
 import {property} from "lit/decorators/property";
-import {TypographyType} from "./nidoca-typography";
+import {NidocaTypographyType} from "./nidoca-typography";
 
 @customElement("nidoca-tab")
 export class NidocaTab extends LitElement {
@@ -36,7 +36,7 @@ export class NidocaTab extends LitElement {
       <span class="tab ${this.selected ? "SELECTED" : ""}" @click="${() => this.tabClicked()}">
         ${this.text
           ? html`
-              <nidoca-typography .typographyType="${TypographyType.OVERLINE}" text="${this.text}"></nidoca-typography>
+              <nidoca-typography .typographyType="${NidocaTypographyType.OVERLINE}" text="${this.text}"></nidoca-typography>
             `
           : html``}
         <slot></slot>

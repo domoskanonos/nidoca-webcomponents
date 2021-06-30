@@ -1,4 +1,4 @@
-import {css, html, TemplateResult, LitElement} from "lit";
+import {css, html, TemplateResult, LitElement, PropertyValues} from "lit";
 import {customElement} from "lit/decorators/custom-element";
 import {property} from "lit/decorators/property";
 import {query} from "lit/decorators/query";
@@ -7,10 +7,14 @@ import {NidocaListItem} from "./nidoca-list-item";
 @customElement("nidoca-list")
 export class NidocaList extends LitElement {
   static styles = css`
-    .LIST_SLOT {
+    .slotList {
       display: grid;
       grid-template-rows: 1fr;
       grid-template-columns: 1fr;
+    }
+
+    .slotList > * {
+      height:100px;
     }
   `;
 
@@ -20,17 +24,20 @@ export class NidocaList extends LitElement {
   @query("#slotElement")
   private slotElement: HTMLSlotElement | undefined;
 
-  protected update(changedProperties: Map<PropertyKey, unknown>): void {
-    super.update(changedProperties);
-    if (changedProperties.get("selectionMode") != undefined) {
-      this.getItems().forEach((listItemComponent) => {
-        listItemComponent.selectionMode = this.selectionMode;
-      });
-    }
+  updated(changedProperties: PropertyValues): void {
+    super.updated(changedProperties);
+    changedProperties.forEach((oldValue, propName) => {
+      console.debug(`${this.tagName} : property ${String(propName)} changed. oldValue: ${oldValue}`);
+      if (propName == "selectionMode") {
+        this.getItems().forEach((listItemComponent) => {
+          listItemComponent.selectionMode = this.selectionMode;
+        });
+      }
+    });
   }
 
   render(): TemplateResult {
-    return html` <slot class="LIST_SLOT" id="slotElement"></slot> `;
+    return html` <slot class="slotList" id="slotElement"></slot> `;
   }
 
   getItems(): NidocaListItem[] {

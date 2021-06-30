@@ -1,28 +1,35 @@
 import {css, html, TemplateResult, LitElement} from "lit";
 import {customElement} from "lit/decorators/custom-element";
 import {property} from "lit/decorators/property";
-import {VisibleType} from "./nidoca-visible";
-import {FormOutputData} from "./nidoca-form-abstract-input-element";
+import {FlexAlignItems, FlexDirection, FlexJustifyContent, FlexWrap} from ".";
 
 @customElement("nidoca-list-item")
 export class NidocaListItem extends LitElement {
   static styles = css`
-    .LIST_ITEM_SLOT {
-      display: grid;
-      grid-template-rows: 1fr;
-      grid-template-columns: 1fr;
-      width: 100%;
+    slot {
+      height: var(--line-height-massiv);
     }
 
-    .LIST_ITEM {
-      display: grid;
-      grid-template-rows: 1fr;
-      grid-template-columns: auto 1fr;
+    .container {
       cursor: pointer;
     }
 
-    .LIST_ITEM:hover {
+    .container:hover {
       background-color: var(--app-color-surface-background-light);
+    }
+
+    .slotGraphic,
+    .slotMeta,
+    .columnSelection {
+      display: block;
+      width: var(--line-height-big);
+    }
+
+    .containerTypography {
+      width: 100%;
+      display: grid;
+      align-items: center;
+      grid-template-columns: 1fr;
     }
   `;
 
@@ -44,19 +51,33 @@ export class NidocaListItem extends LitElement {
   render(): TemplateResult {
     return html`
       <nidoca-ripple>
-        <div class="LIST_ITEM">
-          <nidoca-visible visibleType="${this.selectionMode ? VisibleType.NORMAL : VisibleType.HIDE}">
-            <nidoca-icon
-              @click="${() => this.switchSelected()}"
-              icon="${this.selected ? "check_box" : "check_box_outline_blank"}"
-            ></nidoca-icon>
-          </nidoca-visible>
-          <slot class="LIST_ITEM_SLOT" @click="${() => this.itemClicked()}"></slot></div
-      ></nidoca-ripple>
+        <nidoca-flex-container
+          class="container"
+          .flexDirection="${FlexDirection.ROW}"
+          .flexWrap="${FlexWrap.NO_WRAP}"
+          .flexJustifyContent="${FlexJustifyContent.SPACE_BETWEEN}"
+          .flexAlignItems="${FlexAlignItems.STRETCH}"
+        >
+          ${this.selectionMode
+            ? html`<nidoca-icon
+                class="columnSelection"
+                @click="${() => this.switchSelected()}"
+                icon="${this.selected ? "check_box" : "check_box_outline_blank"}"
+              ></nidoca-icon>`
+            : html``}
+          <slot name="graphic" class="slotGraphic" @click="${() => this.itemClicked()}"></slot>
+          <div class="containerTypography">
+            <slot class="slotItem" @click="${() => this.itemClicked()}"></slot>
+            <slot name="secondary" @click="${() => this.itemClicked()}"></slot>
+          </div>
+
+          <slot name="meta" class="slotMeta" @click="${() => this.itemClicked()}"></slot>
+        </nidoca-flex-container>
+      </nidoca-ripple>
     `;
   }
 
-  itemClicked() {
+  itemClicked(): void {
     this.dispatchEvent(
       new CustomEvent("nidoca-event-list-item-clicked", {
         detail: this,
@@ -66,7 +87,7 @@ export class NidocaListItem extends LitElement {
     );
   }
 
-  switchSelected() {
+  switchSelected(): void {
     this.selected = Boolean(!this.selected);
     if (this.selected) {
       this.dispatchEvent(

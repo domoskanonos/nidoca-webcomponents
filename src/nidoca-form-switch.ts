@@ -2,7 +2,7 @@ import {css, html, TemplateResult} from "lit";
 import {customElement} from "lit/decorators/custom-element";
 import {property} from "lit/decorators/property";
 import {FormOutputData, NidocaFormAbstractInputElement} from "./nidoca-form-abstract-input-element";
-import {TypographyType} from "./nidoca-typography";
+import {NidocaTypographyType} from "./nidoca-typography";
 import {VisibleType} from "./nidoca-visible";
 
 @customElement("nidoca-form-switch")
@@ -36,7 +36,7 @@ export class NidocaFormSwitch extends NidocaFormAbstractInputElement {
                     flexItemBasisValue='100%'
             >
                 <nidoca-typography
-                        .typographyType='${TypographyType.SUBTITLE1}'
+                        .typographyType='${NidocaTypographyType.SUBTITLE1}'
                         text='${this.infoText}'
                 >
                     <slot></slot
@@ -48,7 +48,7 @@ export class NidocaFormSwitch extends NidocaFormAbstractInputElement {
                                 : VisibleType.HIDE}'
                 >
                     <nidoca-typography
-                            .typographyType='${TypographyType.SUBTITLE2}'
+                            .typographyType='${NidocaTypographyType.SUBTITLE2}'
                             text='${this.assistiveText}'
                     ></nidoca-typography>
                 </nidoca-visible>

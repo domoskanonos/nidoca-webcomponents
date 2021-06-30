@@ -2,7 +2,7 @@ import {html, LitElement, TemplateResult, css} from "lit";
 import {customElement} from "lit/decorators/custom-element";
 import {property} from "lit/decorators/property";
 import {NidocaRouteListener, NidocaRouter} from "@domoskanonos/nidoca-router";
-import {TypographyType} from "..";
+import {NidocaTypographyType} from "..";
 
 @customElement("nidoca-app")
 export class NidocaApp extends LitElement implements NidocaRouteListener {
@@ -35,6 +35,10 @@ export class NidocaApp extends LitElement implements NidocaRouteListener {
     NidocaRouter.getUniqueInstance().subscribe(this);
   }
 
+  firstUpdated(): void {
+    this.routeChanged(NidocaRouter.getUniqueInstance().getCurrentPage());
+  }
+
   routeChanged(url: string): void {
     console.log("enter new page, url: %s", url);
     switch (url) {
@@ -57,7 +61,7 @@ export class NidocaApp extends LitElement implements NidocaRouteListener {
   render(): TemplateResult {
     return html`
       <nidoca-template .prominent="${this.prominent}" .navigationClosed=${this.navigationClosed}>
-        <nidoca-typography slot="topCenter" typographyType="${TypographyType.BODY1}"
+        <nidoca-typography slot="topCenter" typographyType="${NidocaTypographyType.BODY1}"
           >nidoca framework</nidoca-typography
         >
         <nidoca-icon

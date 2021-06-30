@@ -1,7 +1,7 @@
 import {NidocaRouter} from "@domoskanonos/nidoca-router";
 import {css, html, LitElement, TemplateResult} from "lit";
 import {customElement} from "lit/decorators/custom-element";
-import {TypographyType, FlexJustifyContent, NidocaSpacerSize, FlexAlignItems} from "../index";
+import {NidocaTypographyType, FlexJustifyContent, NidocaSpacerSize, FlexAlignItems} from "../index";
 import {NidocaSpacerType} from "../nidoca-spacer";
 
 @customElement("nidoca-page-settings")
@@ -25,7 +25,7 @@ export class NidocaPageSettings extends LitElement {
           NidocaSpacerSize="${NidocaSpacerSize.SMALL}"
           .spacerTypes="${[NidocaSpacerType.LEFT, NidocaSpacerType.RIGHT]}"
         ></nidoca-spacer>
-        <nidoca-typography .typographyType="${TypographyType.H3}">Settings</nidoca-typography>
+        <nidoca-typography .typographyType="${NidocaTypographyType.H3}">Settings</nidoca-typography>
       </nidoca-flex-container>
       <nidoca-spacer
         nidocaSpacerSize="${NidocaSpacerSize.LITTLE}"
@@ -40,7 +40,7 @@ export class NidocaPageSettings extends LitElement {
           NidocaSpacerSize="${NidocaSpacerSize.LITTLE}"
           .nidocaSpacerType="${[NidocaSpacerType.TOP, NidocaSpacerType.BOTTOM]}"
         >
-          <nidoca-typography .typographyType="${TypographyType.H6}">Spracheinstellungen</nidoca-typography>
+          <nidoca-typography .typographyType="${NidocaTypographyType.H6}">Spracheinstellungen</nidoca-typography>
         </nidoca-spacer>
       </nidoca-flex-container>
     `;

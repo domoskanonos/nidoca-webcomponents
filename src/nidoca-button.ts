@@ -4,7 +4,7 @@ import {property} from "lit/decorators/property";
 import {FlexAlignItems, FlexJustifyContent, FlexWrap} from "./nidoca-flex-container";
 import {VisibleType} from "./nidoca-visible";
 import {NidocaSpacerSize} from "./nidoca-spacer";
-import {TypographyType} from "./nidoca-typography";
+import {NidocaTypographyType} from "./nidoca-typography";
 
 export enum ButtonType {
   PRIMARY = "PRIMARY",
@@ -82,7 +82,7 @@ export class NidocaButton extends LitElement {
             <nidoca-icon .icon="${this.leadingIcon}"></nidoca-icon>
           </nidoca-visible>
           <nidoca-visible visibleType="${this.leadingIcon ? VisibleType.NORMAL : VisibleType.HIDE}"> </nidoca-visible>
-          <nidoca-typography text="${this.text}" typographyType="${TypographyType.BUTTON}">
+          <nidoca-typography text="${this.text}" typographyType="${NidocaTypographyType.BUTTON}">
             <slot></slot>
           </nidoca-typography>
 

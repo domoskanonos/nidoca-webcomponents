@@ -1,4 +1,4 @@
-import {css, html, TemplateResult,LitElement, PropertyValues} from "lit";
+import {css, html, TemplateResult, LitElement, PropertyValues} from "lit";
 import {customElement} from "lit/decorators/custom-element";
 import {property} from "lit/decorators/property";
 import {query} from "lit/decorators/query";
@@ -13,7 +13,7 @@ export class NidocaTemplate extends LitElement {
     }
 
     #header {
-/**      position: fixed; */
+      /**      position: fixed; */
       width: 100%;
       z-index: 1;
       background-color: var(--mdc-theme-primary);
@@ -126,5 +126,4 @@ export class NidocaTemplate extends LitElement {
       <div id="content" class="${this.navigationClosed ? "menuClosed" : ""}"><slot name="content"></slot></div>
     `;
   }
-
 }
