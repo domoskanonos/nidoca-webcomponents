@@ -95,36 +95,41 @@ export class NidocaFormText extends NidocaFormAbstractInputElement {
   private inputElement: HTMLInputElement | undefined;
 
   render(): TemplateResult {
-    return html`
-      <nidoca-form-inputframe
-        label="${this.label}"
-        .errorText="${this.errorText}"
-        .infoText="${this.infoText}"
-        .warningText="${this.warningText}"
-        .inputframeMode="${this.inputframeMode}"
-      >
-        <input
-          id="inputElement"
-          name="${this.name}"
-          type="${this.textType}"
-          value="${this.value}"
-          placeholder="${this.placeholder ? this.placeholder : this.label}"
-          size="${ifDefined(this.size)}"
-          minlength="${ifDefined(this.minlength)}"
-          maxlength="${ifDefined(this.maxlength)}"
-          min="${ifDefined(this.min)}"
-          max="${ifDefined(this.max)}"
-          step="${ifDefined(this.step)}"
-          ?required="${this.required}"
-          ?disabled="${this.disabled}"
-          ?checked="${this.checked}"
-          @keyup="${this.handleKeyup}"
-          @change="${() => this.handleChange()}"
-          @focus="${() => this.handleFocus()}"
-          @focusout="${() => this.handleFocusout()}"
-        />
-      </nidoca-form-inputframe>
-    `;
+    return this.textType == NidocaTextType.HIDDEN
+      ? html`${this.renderInputElement()}`
+      : html`
+          <nidoca-form-inputframe
+            label="${this.label}"
+            .errorText="${this.errorText}"
+            .infoText="${this.infoText}"
+            .warningText="${this.warningText}"
+            .inputframeMode="${this.inputframeMode}"
+          >
+            ${this.renderInputElement()}
+          </nidoca-form-inputframe>
+        `;
+  }
+  renderInputElement(): TemplateResult {
+    return html`<input
+      id="inputElement"
+      name="${this.name}"
+      type="${this.textType}"
+      value="${this.value}"
+      placeholder="${this.placeholder ? this.placeholder : this.label}"
+      size="${ifDefined(this.size)}"
+      minlength="${ifDefined(this.minlength)}"
+      maxlength="${ifDefined(this.maxlength)}"
+      min="${ifDefined(this.min)}"
+      max="${ifDefined(this.max)}"
+      step="${ifDefined(this.step)}"
+      ?required="${this.required}"
+      ?disabled="${this.disabled}"
+      ?checked="${this.checked}"
+      @keyup="${this.handleKeyup}"
+      @change="${() => this.handleChange()}"
+      @focus="${() => this.handleFocus()}"
+      @focusout="${() => this.handleFocusout()}"
+    />`;
   }
 
   getOutputData(): FormOutputData {
