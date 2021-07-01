@@ -130,6 +130,6 @@ export class NidocaPageGallery extends LitElement {
     `;
   }
   clicked(index: number): void {
-    throw new Error("Method not implemented.");
+    throw new Error("Method not implemented."+index);
   }
 }
