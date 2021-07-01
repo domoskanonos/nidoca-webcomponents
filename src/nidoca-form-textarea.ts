@@ -8,7 +8,21 @@ import {FormOutputData, NidocaFormAbstractInputElement} from "./nidoca-form-abst
 
 @customElement("nidoca-form-textarea")
 export class NidocaFormTextarea extends NidocaFormAbstractInputElement {
-  static styles = css``;
+  static styles = css`
+    textarea {
+      font: inherit;
+      box-sizing: border-box;
+      width: 100%;
+      border: none;
+      color: inherit;
+      background-color: inherit;
+    }
+    textarea:focus {
+      outline: none;
+      box-shadow: none;
+      background: inherit;
+    }
+  `;
 
   @property({type: String})
   name: string = "";

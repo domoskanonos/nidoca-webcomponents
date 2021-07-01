@@ -51,6 +51,9 @@ export class NidocaApp extends LitElement implements NidocaRouteListener {
       case "list":
         this.currentPage = html`<nidoca-page-list></nidoca-page-list>`;
         break;
+      case "form":
+        this.currentPage = html`<nidoca-page-form></nidoca-page-form>`;
+        break;
       case "main":
       default:
         this.currentPage = html`<nidoca-page-main></nidoca-page-main>`;
@@ -123,6 +126,14 @@ export class NidocaApp extends LitElement implements NidocaRouteListener {
             href="#main"
             .rendered="${true}"
             @nidoca-event-link-clicked="${() => NidocaRouter.getUniqueInstance().navigate("list")}"
+          ></nidoca-navigation-link>
+          <nidoca-navigation-link
+            slot="links"
+            icon="home"
+            text="Formulare"
+            href="#main"
+            .rendered="${true}"
+            @nidoca-event-link-clicked="${() => NidocaRouter.getUniqueInstance().navigate("form")}"
           ></nidoca-navigation-link>
         </nidoca-navigation>
       </nidoca-template>
