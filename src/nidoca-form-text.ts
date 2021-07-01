@@ -101,20 +101,6 @@ export class NidocaFormText extends NidocaFormAbstractInputElement {
           name="${this.name}"
           type="${this.textType}"
           value="${this.value}"
-          placeholder="${this.placeholder ? this.placeholder : this.label}"
-          size="${ifDefined(this.size)}"
-          minlength="${ifDefined(this.minlength)}"
-          maxlength="${ifDefined(this.maxlength)}"
-          min="${ifDefined(this.min)}"
-          max="${ifDefined(this.max)}"
-          step="${ifDefined(this.step)}"
-          ?required="${this.required}"
-          ?disabled="${this.disabled}"
-          ?checked="${this.checked}"
-          @keyup="${this.handleKeyup}"
-          @change="${() => this.handleChange()}"
-          @focus="${() => this.handleFocus()}"
-          @focusout="${() => this.handleFocusout()}"
         />`
       : html`
           <nidoca-form-inputframe
