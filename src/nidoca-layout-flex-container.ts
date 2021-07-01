@@ -59,7 +59,7 @@ export enum FlexAlignContent {
 }
 
 @customElement("nidoca-layout-flex-container")
-export class NidocaFlexContainer extends LitElement {
+export class NidocaLayoutFlexContainer extends LitElement {
   static styles = css`
     :host,
     *,

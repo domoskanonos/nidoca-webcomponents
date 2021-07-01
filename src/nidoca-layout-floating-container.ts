@@ -4,7 +4,7 @@ import {property} from "lit/decorators/property";
 
 
 @customElement("nidoca-layout-floating-container")
-export class NidocaFloatingContainer extends LitElement {
+export class NidocaLayoutFloatingContainer extends LitElement {
   static styles = css`
     .floatingContainer {
       position: fixed;

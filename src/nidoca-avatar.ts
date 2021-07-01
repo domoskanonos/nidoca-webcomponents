@@ -10,7 +10,7 @@ import {
   RichMediaProperties,
   NidocaTypographyType,
 } from ".";
-import { NidocaSpacerSize } from "./nidoca-layout-spacer";
+import { NidocaLayoutSpacerSize } from "./nidoca-layout-spacer";
 
 @customElement("nidoca-avatar")
 export class NidocaAvatar extends LitElement {
@@ -32,7 +32,7 @@ export class NidocaAvatar extends LitElement {
       .flexAlignContent="${FlexAlignContent.CENTER}"
     >
       <nidoca-img src="${this.imgSrc}" .richMediaProperties="${[RichMediaProperties.ROUND]}"> </nidoca-img>
-      <nidoca-layout-spacer spacerSize="${NidocaSpacerSize.LITTLE}">
+      <nidoca-layout-spacer spacerSize="${NidocaLayoutSpacerSize.LITTLE}">
         <nidoca-typography typographyType="${NidocaTypographyType.H3}">${this.title}</nidoca-typography>
       </nidoca-layout-spacer>
       <nidoca-typography typographyType="${NidocaTypographyType.H5}">${this.description}</nidoca-typography>

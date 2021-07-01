@@ -3,7 +3,7 @@ import {css, html, LitElement, TemplateResult} from "lit";
 import {customElement} from "lit/decorators/custom-element";
 import {property} from "lit/decorators/property";
 import {FlexAlignContent, FlexAlignItems, FlexDirection, FlexJustifyContent, FlexWrap, NidocaTypographyType} from "..";
-import {NidocaSpacerSize, NidocaSpacerType} from "../nidoca-layout-spacer";
+import {NidocaLayoutSpacerSize, NidocaLayoutSpacerType} from "../nidoca-layout-spacer";
 
 @customElement("nidoca-page-list")
 export class NidocaPageGallery extends LitElement {
@@ -36,14 +36,14 @@ export class NidocaPageGallery extends LitElement {
         <nidoca-layout-spacer>
           <nidoca-typography typographyType="${NidocaTypographyType.H1}">Listenansicht mit Suche</nidoca-typography>
         </nidoca-layout-spacer>
-        <nidoca-layout-spacer .spacerTypes="${[NidocaSpacerType.BOTTOM]}">
+        <nidoca-layout-spacer .spacerTypes="${[NidocaLayoutSpacerType.BOTTOM]}">
           <nidoca-typography typographyType="${NidocaTypographyType.BODY1}"
             >Diese Listenansicht ist ein schönes Beispiel wie man eine Liste an Elementen anzeigt und verschiedene
             Funktionalität implementieren kann.</nidoca-typography
           >
         </nidoca-layout-spacer>
         <nidoca-template .prominent="${this.prominent}">
-          <nidoca-layout-spacer slot="topLeft" spacerSize="${NidocaSpacerSize.MEDIUM}" .spacerTypes=${[NidocaSpacerType.LEFT]}>
+          <nidoca-layout-spacer slot="topLeft" spacerSize="${NidocaLayoutSpacerSize.MEDIUM}" .spacerTypes=${[NidocaLayoutSpacerType.LEFT]}>
             <nidoca-typography typographyType="${NidocaTypographyType.BODY1}"
               >Aufgaben</nidoca-typography
             ></nidoca-layout-spacer

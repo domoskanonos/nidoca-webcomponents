@@ -3,7 +3,7 @@ import {customElement} from "lit/decorators/custom-element";
 import {property} from "lit/decorators/property";
 import {NidocaDevice} from "./nidoca-meta";
 
-export enum NidocaSpacerType {
+export enum NidocaLayoutSpacerType {
   ALL = "ALL",
   VERTICAL = "VERTICAL",
   HORIZONTAL = "HORIZONTAL",
@@ -13,7 +13,7 @@ export enum NidocaSpacerType {
   BOTTOM = "BOTTOM",
 }
 
-export enum NidocaSpacerSize {
+export enum NidocaLayoutSpacerSize {
   ZERO = "--space-zero",
   LITTLE = "--space-little",
   SMALL = "--space-small",
@@ -43,10 +43,10 @@ export class NidocaSpacer extends LitElement {
   devices: NidocaDevice[] = [NidocaDevice.DESKTOP, NidocaDevice.TABLET, NidocaDevice.MOBILE];
 
   @property({type: Array})
-  spacerTypes: NidocaSpacerType[] = [NidocaSpacerType.ALL];
+  spacerTypes: NidocaLayoutSpacerType[] = [NidocaLayoutSpacerType.ALL];
 
   @property({type: String})
-  spacerSize: NidocaSpacerSize = NidocaSpacerSize.NORMAL;
+  spacerSize: NidocaLayoutSpacerSize = NidocaLayoutSpacerSize.NORMAL;
 
   @property({type: String})
   cssStyle: string = "";
@@ -64,36 +64,36 @@ export class NidocaSpacer extends LitElement {
 
   private toStyle(
     devices: NidocaDevice[],
-    spacerProperties: NidocaSpacerType[],
-    spacerSize: NidocaSpacerSize
+    spacerProperties: NidocaLayoutSpacerType[],
+    spacerSize: NidocaLayoutSpacerSize
   ): string {
     const size = "var(".concat(spacerSize).concat(")");
     let style: string = "";
-    spacerProperties.forEach((spacerType: NidocaSpacerType) => {
+    spacerProperties.forEach((spacerType: NidocaLayoutSpacerType) => {
       switch (spacerType) {
-        case NidocaSpacerType.LEFT:
+        case NidocaLayoutSpacerType.LEFT:
           style = style.concat("padding-left:".concat(size).concat(";"));
           break;
-        case NidocaSpacerType.RIGHT:
+        case NidocaLayoutSpacerType.RIGHT:
           style = style.concat("padding-right:".concat(size).concat(";"));
           break;
-        case NidocaSpacerType.TOP:
+        case NidocaLayoutSpacerType.TOP:
           style = style.concat("padding-top:".concat(size).concat(";"));
           break;
-        case NidocaSpacerType.BOTTOM:
+        case NidocaLayoutSpacerType.BOTTOM:
           style = style.concat("padding-bottom:".concat(size).concat(";"));
           break;
-        case NidocaSpacerType.ALL:
+        case NidocaLayoutSpacerType.ALL:
           style = style.concat("padding-left:".concat(size).concat(";"));
           style = style.concat("padding-right:".concat(size).concat(";"));
           style = style.concat("padding-top:".concat(size).concat(";"));
           style = style.concat("padding-bottom:".concat(size).concat(";"));
           break;
-        case NidocaSpacerType.HORIZONTAL:
+        case NidocaLayoutSpacerType.HORIZONTAL:
           style = style.concat("padding-left:".concat(size).concat(";"));
           style = style.concat("padding-right:".concat(size).concat(";"));
           break;
-        case NidocaSpacerType.VERTICAL:
+        case NidocaLayoutSpacerType.VERTICAL:
           style = style.concat("padding-top:".concat(size).concat(";"));
           style = style.concat("padding-bottom:".concat(size).concat(";"));
           break;

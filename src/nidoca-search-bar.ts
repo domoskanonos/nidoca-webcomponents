@@ -9,7 +9,7 @@ import {
   FlexJustifyContent as NidocaFlexJustifyContent,
   FlexWrap as NidocaFlexWrap,
 } from ".";
-import {NidocaSpacerType} from "./nidoca-layout-spacer";
+import {NidocaLayoutSpacerType} from "./nidoca-layout-spacer";
 
 @customElement("nidoca-search-bar")
 export class NidocaSearchBar extends LitElement {
@@ -53,7 +53,7 @@ export class NidocaSearchBar extends LitElement {
           .flexAlignItems="${NidocaFlexAlignItems.FLEX_START}"
           .flexAlignContent="${NidocaFlexAlignContent.FLEX_START}"
         >
-          <nidoca-layout-spacer .spacerTypes="${[NidocaSpacerType.RIGHT]}">
+          <nidoca-layout-spacer .spacerTypes="${[NidocaLayoutSpacerType.RIGHT]}">
             <nidoca-icon icon="search"></nidoca-icon>
           </nidoca-layout-spacer>
           <input
@@ -67,7 +67,7 @@ export class NidocaSearchBar extends LitElement {
             @focus="${() => this.handleFocus()}"
             @focusout="${() => this.handleFocusout()}"
           />
-          <nidoca-layout-spacer .spacerTypes="${[NidocaSpacerType.RIGHT]}">
+          <nidoca-layout-spacer .spacerTypes="${[NidocaLayoutSpacerType.RIGHT]}">
             <nidoca-icon icon="close" @click="${() => (this.value = "")}"></nidoca-icon>
           </nidoca-layout-spacer>
         </nidoca-layout-flex-container>

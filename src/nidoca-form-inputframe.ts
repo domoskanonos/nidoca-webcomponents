@@ -5,7 +5,7 @@ import {BorderProperty, BorderSize} from "./nidoca-border";
 import {VisibleType} from "./nidoca-visible";
 import {FlexAlignContent} from "./nidoca-layout-flex-container";
 import {NidocaTypographyType} from "./nidoca-typography";
-import {NidocaSpacerType, NidocaSpacerSize} from "./nidoca-layout-spacer";
+import {NidocaLayoutSpacerType, NidocaLayoutSpacerSize} from "./nidoca-layout-spacer";
 
 export enum InputframeMode {
   NORMAL = "NORMAL",
@@ -52,7 +52,7 @@ export class NidocaFormInputframe extends LitElement {
             @mouseover="${() => this.mouseover()}"
             @mouseout="${() => this.mouseout()}"
           >
-            <nidoca-layout-spacer spacerSize="${NidocaSpacerSize.SMALL}" .spacerTypes="${[NidocaSpacerType.ALL]}">
+            <nidoca-layout-spacer spacerSize="${NidocaLayoutSpacerSize.SMALL}" .spacerTypes="${[NidocaLayoutSpacerType.ALL]}">
               <nidoca-layout-flex-container .flexAlignContent="${FlexAlignContent.CENTER}" itemStyle="flex-basis: 100%;">
                 <nidoca-typography .typographyType="${NidocaTypographyType.CAPTION}" text="${this.label}"></nidoca-typography>
                 <slot></slot>
