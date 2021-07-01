@@ -2,8 +2,8 @@ import {css, html, TemplateResult} from "lit";
 import {customElement} from "lit/decorators/custom-element";
 import {property} from "lit/decorators/property";
 import {query} from "lit/decorators/query";
-import { ifDefined } from "lit/directives/if-defined";
-import { InputframeMode } from ".";
+import {ifDefined} from "lit/directives/if-defined";
+import {InputframeMode} from ".";
 import {FormOutputData, NidocaFormAbstractInputElement} from "./nidoca-form-abstract-input-element";
 
 export enum NidocaDateType {
@@ -40,8 +40,8 @@ export class NidocaFormDate extends NidocaFormAbstractInputElement {
   @property({type: String})
   name: string = "";
 
-  @property()
-  value: any;
+  @property({type: String})
+  value: string = "";
 
   @property({type: String})
   label: string = "";
@@ -80,17 +80,17 @@ export class NidocaFormDate extends NidocaFormAbstractInputElement {
   size: number | undefined;
 
   @property({type: String})
-  errorText: string="";
+  errorText: string = "";
 
   @property({type: String})
-  infoText: string="";
+  infoText: string = "";
 
   @property({type: String})
-  warningText: string="";
+  warningText: string = "";
 
   @query("#inputElement")
   private inputElement: HTMLInputElement | undefined;
- 
+
   @property({type: String})
   inputframeMode: InputframeMode = InputframeMode.NORMAL;
 
