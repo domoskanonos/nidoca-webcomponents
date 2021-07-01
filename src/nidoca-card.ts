@@ -14,7 +14,7 @@ export class NidocaCard extends LitElement {
   render(): TemplateResult {
     return html`
       <nidoca-border .borderProperties="${[BorderProperty.ALL]}">
-        <nidoca-flex-container
+        <nidoca-layout-flex-container
           .flexDirection="${FlexDirection.COLUMN}"
           .flexWrap="${FlexWrap.WRAP}"
           .flexJustifyContent="${FlexJustifyContent.SPACE_BETWEEN}"
@@ -22,11 +22,11 @@ export class NidocaCard extends LitElement {
           .flexAlignContent="${FlexAlignContent.FLEX_START}"
         >
           <slot name="media"></slot>
-          <nidoca-spacer>
+          <nidoca-layout-spacer>
             <slot name="supportingText"></slot>
             <slot name="actions"></slot>
-          </nidoca-spacer>
-        </nidoca-flex-container>
+          </nidoca-layout-spacer>
+        </nidoca-layout-flex-container>
       </nidoca-border>
     `;
   }

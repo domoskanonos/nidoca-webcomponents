@@ -3,9 +3,9 @@ import {customElement} from "lit/decorators/custom-element";
 import {property} from "lit/decorators/property";
 import {BorderProperty, BorderSize} from "./nidoca-border";
 import {VisibleType} from "./nidoca-visible";
-import {FlexAlignContent} from "./nidoca-flex-container";
+import {FlexAlignContent} from "./nidoca-layout-flex-container";
 import {NidocaTypographyType} from "./nidoca-typography";
-import {NidocaSpacerType, NidocaSpacerSize} from "./nidoca-spacer";
+import {NidocaSpacerType, NidocaSpacerSize} from "./nidoca-layout-spacer";
 
 export enum InputframeMode {
   NORMAL = "NORMAL",
@@ -52,15 +52,15 @@ export class NidocaFormInputframe extends LitElement {
             @mouseover="${() => this.mouseover()}"
             @mouseout="${() => this.mouseout()}"
           >
-            <nidoca-spacer spacerSize="${NidocaSpacerSize.SMALL}" .spacerTypes="${[NidocaSpacerType.ALL]}">
-              <nidoca-flex-container .flexAlignContent="${FlexAlignContent.CENTER}" itemStyle="flex-basis: 100%;">
+            <nidoca-layout-spacer spacerSize="${NidocaSpacerSize.SMALL}" .spacerTypes="${[NidocaSpacerType.ALL]}">
+              <nidoca-layout-flex-container .flexAlignContent="${FlexAlignContent.CENTER}" itemStyle="flex-basis: 100%;">
                 <nidoca-typography .typographyType="${NidocaTypographyType.CAPTION}" text="${this.label}"></nidoca-typography>
                 <slot></slot>
-              </nidoca-flex-container>
-            </nidoca-spacer>
+              </nidoca-layout-flex-container>
+            </nidoca-layout-spacer>
           </nidoca-border>
 
-          <nidoca-flex-container .flexAlignContent="${FlexAlignContent.CENTER}" itemStyle="flex-basis: 100%;"
+          <nidoca-layout-flex-container .flexAlignContent="${FlexAlignContent.CENTER}" itemStyle="flex-basis: 100%;"
             ><nidoca-visible visibleType="${this.infoText ? VisibleType.NORMAL : VisibleType.HIDE}">
               <nidoca-typography .typographyType="${NidocaTypographyType.BODY1}" text="${this.infoText}"></nidoca-typography>
             </nidoca-visible>
@@ -79,7 +79,7 @@ export class NidocaFormInputframe extends LitElement {
                 .typographyType="${NidocaTypographyType.BODY1}"
                 text="${this.errorText}"
               ></nidoca-typography> </nidoca-visible
-          ></nidoca-flex-container>
+          ></nidoca-layout-flex-container>
         `
       : html`<slot></slot>`;
   }

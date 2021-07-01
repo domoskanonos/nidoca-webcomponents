@@ -1,7 +1,4 @@
 export * from "./nidoca-meta";
-export * from "./nidoca-spacer";
-export * from "./nidoca-flex-container";
-export * from "./nidoca-floating-container";
 export * from "./nidoca-abstract-app";
 export * from "./nidoca-accordion";
 export * from "./nidoca-accordion-item";
@@ -22,6 +19,12 @@ export * from "./nidoca-form-textarea";
 export * from "./nidoca-form-date";
 export * from "./nidoca-form-switch";
 export * from "./nidoca-form-abstract-input-element";
+
+export * from "./nidoca-layout-spacer";
+export * from "./nidoca-layout-flex-container";
+export * from "./nidoca-layout-floating-container";
+export * from "./nidoca-layout-section";
+
 export * from "./nidoca-icon";
 export * from "./nidoca-img";
 export * from "./nidoca-movie";
@@ -40,7 +43,6 @@ export * from "./nidoca-tab";
 export * from "./nidoca-tab-content";
 export * from "./nidoca-template";
 export * from "./nidoca-typography";
-export * from "./nidoca-layout-section";
 export * from "./nidoca-search-bar";
 export * from "./nidoca-dialog";
 export * from "./nidoca-avatar";

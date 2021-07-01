@@ -51,7 +51,7 @@ export class NidocaListItem extends LitElement {
   render(): TemplateResult {
     return html`
       <nidoca-ripple>
-        <nidoca-flex-container
+        <nidoca-layout-flex-container
           class="container"
           .flexDirection="${FlexDirection.ROW}"
           .flexWrap="${FlexWrap.NO_WRAP}"
@@ -72,7 +72,7 @@ export class NidocaListItem extends LitElement {
           </div>
 
           <slot name="meta" class="slotMeta" @click="${() => this.itemClicked()}"></slot>
-        </nidoca-flex-container>
+        </nidoca-layout-flex-container>
       </nidoca-ripple>
     `;
   }

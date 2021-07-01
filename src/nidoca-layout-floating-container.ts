@@ -3,7 +3,7 @@ import {customElement} from "lit/decorators/custom-element";
 import {property} from "lit/decorators/property";
 
 
-@customElement("nidoca-floating-container")
+@customElement("nidoca-layout-floating-container")
 export class NidocaFloatingContainer extends LitElement {
   static styles = css`
     .floatingContainer {

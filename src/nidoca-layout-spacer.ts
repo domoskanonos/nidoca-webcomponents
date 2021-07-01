@@ -23,7 +23,7 @@ export enum NidocaSpacerSize {
   MAX = "--space-max",
 }
 
-@customElement("nidoca-spacer")
+@customElement("nidoca-layout-spacer")
 export class NidocaSpacer extends LitElement {
   static styles = css`
     .SPACER,

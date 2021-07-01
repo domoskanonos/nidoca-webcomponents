@@ -1,6 +1,6 @@
 import {css, html, TemplateResult, LitElement} from "lit";
 import {customElement} from "lit/decorators/custom-element";
-import { NidocaSpacerType } from "./nidoca-spacer";
+import { NidocaSpacerType } from "./nidoca-layout-spacer";
 
 @customElement("nidoca-gallery")
 export class NidocaGallery extends LitElement {
@@ -22,9 +22,9 @@ export class NidocaGallery extends LitElement {
   render(): TemplateResult {
     return html`
     
-    <nidoca-spacer .spacerTypes="${[NidocaSpacerType.BOTTOM]}">
+    <nidoca-layout-spacer .spacerTypes="${[NidocaSpacerType.BOTTOM]}">
     <slot id="slotElement" @slotchange="${(event: Event) => this.slotChanged(event)}"></slot>
-    </nidoca-spacer>
+    </nidoca-layout-spacer>
     
     `;
   }

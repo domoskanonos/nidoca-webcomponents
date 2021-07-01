@@ -10,7 +10,7 @@ import {
   RichMediaProperties,
   NidocaTypographyType,
 } from ".";
-import { NidocaSpacerSize } from "./nidoca-spacer";
+import { NidocaSpacerSize } from "./nidoca-layout-spacer";
 
 @customElement("nidoca-avatar")
 export class NidocaAvatar extends LitElement {
@@ -24,7 +24,7 @@ export class NidocaAvatar extends LitElement {
   description: string = "";
 
   render(): TemplateResult {
-    return html`<nidoca-flex-container
+    return html`<nidoca-layout-flex-container
       .flexDirection="${FlexDirection.COLUMN}"
       .flexWrap="${FlexWrap.WRAP}"
       .flexJustifyContent="${FlexJustifyContent.SPACE_BETWEEN}"
@@ -32,10 +32,10 @@ export class NidocaAvatar extends LitElement {
       .flexAlignContent="${FlexAlignContent.CENTER}"
     >
       <nidoca-img src="${this.imgSrc}" .richMediaProperties="${[RichMediaProperties.ROUND]}"> </nidoca-img>
-      <nidoca-spacer spacerSize="${NidocaSpacerSize.LITTLE}">
+      <nidoca-layout-spacer spacerSize="${NidocaSpacerSize.LITTLE}">
         <nidoca-typography typographyType="${NidocaTypographyType.H3}">${this.title}</nidoca-typography>
-      </nidoca-spacer>
+      </nidoca-layout-spacer>
       <nidoca-typography typographyType="${NidocaTypographyType.H5}">${this.description}</nidoca-typography>
-    </nidoca-flex-container>`;
+    </nidoca-layout-flex-container>`;
   }
 }

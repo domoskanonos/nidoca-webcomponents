@@ -24,7 +24,7 @@ export class NidocaTopAppBar extends LitElement {
 
   render(): TemplateResult {
     return html`
-      <nidoca-flex-container style="width:100%;"
+      <nidoca-layout-flex-container style="width:100%;"
         .flexDirection="${FlexDirection.ROW}"
         .flexWrap="${FlexWrap.NO_WRAP}"
         .flexJustifyContent="${FlexJustifyContent.SPACE_BETWEEN}"
@@ -42,7 +42,7 @@ export class NidocaTopAppBar extends LitElement {
         <span>
           <slot name="right"></slot>
         </span>
-      </nidoca-flex-container>
+      </nidoca-layout-flex-container>
       ${this.prominent ? html`<slot class="prominent" name="prominent"></slot>` : html``}
     `;
   }

@@ -1,9 +1,9 @@
 import {css, html, LitElement, TemplateResult} from "lit";
 import {customElement} from "lit/decorators/custom-element";
 import {property} from "lit/decorators/property";
-import {FlexAlignItems, FlexJustifyContent, FlexWrap} from "./nidoca-flex-container";
+import {FlexAlignItems, FlexJustifyContent, FlexWrap} from "./nidoca-layout-flex-container";
 import {VisibleType} from "./nidoca-visible";
-import {NidocaSpacerSize} from "./nidoca-spacer";
+import {NidocaSpacerSize} from "./nidoca-layout-spacer";
 import {NidocaTypographyType} from "./nidoca-typography";
 
 export enum ButtonType {
@@ -69,7 +69,7 @@ export class NidocaButton extends LitElement {
   render(): TemplateResult {
     return html`
       <nidoca-ripple>
-        <nidoca-flex-container
+        <nidoca-layout-flex-container
           class="BUTTON ${this.buttonType}"
           @click="${() => {
             this.clicked();
@@ -87,9 +87,9 @@ export class NidocaButton extends LitElement {
           </nidoca-typography>
 
           <nidoca-visible visibleType="${this.buttonType == ButtonType.CLEAR ? VisibleType.HIDE : VisibleType.NORMAL}">
-            <nidoca-spacer spacerSize="${NidocaSpacerSize.MEDIUM}"></nidoca-spacer>
+            <nidoca-layout-spacer spacerSize="${NidocaSpacerSize.MEDIUM}"></nidoca-layout-spacer>
           </nidoca-visible>
-        </nidoca-flex-container>
+        </nidoca-layout-flex-container>
       </nidoca-ripple>
     `;
   }

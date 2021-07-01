@@ -58,7 +58,7 @@ export enum FlexAlignContent {
   UNSAFE = "unsafe",
 }
 
-@customElement("nidoca-flex-container")
+@customElement("nidoca-layout-flex-container")
 export class NidocaFlexContainer extends LitElement {
   static styles = css`
     :host,

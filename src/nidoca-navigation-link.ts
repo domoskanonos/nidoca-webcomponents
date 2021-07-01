@@ -1,14 +1,14 @@
 import {css, html, TemplateResult, LitElement} from "lit";
 import {customElement} from "lit/decorators/custom-element";
 import {property} from "lit/decorators/property";
-import {NidocaSpacerType, NidocaSpacerSize} from "./nidoca-spacer";
+import {NidocaSpacerType, NidocaSpacerSize} from "./nidoca-layout-spacer";
 import {
   FlexAlignContent,
   FlexAlignItems,
   FlexDirection,
   FlexJustifyContent,
   FlexWrap,
-} from "./nidoca-flex-container";
+} from "./nidoca-layout-flex-container";
 import {NidocaTypographyType} from "./nidoca-typography";
 
 @customElement("nidoca-navigation-link")
@@ -44,8 +44,8 @@ export class NidocaNavigationLink extends LitElement {
             class="navItem"
             class="${"TODO: RouterService.getUniqueInstance().getPath()" == this.href ? "navItem selected" : "navItem"}"
           >
-            <nidoca-spacer spacerSize="${NidocaSpacerSize.LITTLE}" .spacerTypes="${[NidocaSpacerType.VERTICAL]}">
-              <nidoca-flex-container
+            <nidoca-layout-spacer spacerSize="${NidocaSpacerSize.LITTLE}" .spacerTypes="${[NidocaSpacerType.VERTICAL]}">
+              <nidoca-layout-flex-container
                 @click="${() => this.linkClicked()}"
                 .flexDirection="${FlexDirection.ROW}"
                 .flexWrap="${FlexWrap.NO_WRAP}"
@@ -55,11 +55,11 @@ export class NidocaNavigationLink extends LitElement {
                 itemStyle="flex-basis: 48px auto;"
               >
                 <nidoca-icon icon="${this.icon}" .withIconSpace="${false}"></nidoca-icon>
-                <nidoca-spacer spacerSize="${NidocaSpacerSize.LITTLE}" .spacerTypes="${[NidocaSpacerType.LEFT]}">
+                <nidoca-layout-spacer spacerSize="${NidocaSpacerSize.LITTLE}" .spacerTypes="${[NidocaSpacerType.LEFT]}">
                   <nidoca-typography typographyType="${NidocaTypographyType.BODY1}">${this.text}</nidoca-typography>
-                </nidoca-spacer>
-              </nidoca-flex-container>
-            </nidoca-spacer>
+                </nidoca-layout-spacer>
+              </nidoca-layout-flex-container>
+            </nidoca-layout-spacer>
           </div>
         `;
   }
