@@ -2,7 +2,7 @@ import {css, html, LitElement, PropertyValues, TemplateResult} from "lit";
 import {customElement} from "lit/decorators/custom-element";
 import {property} from "lit/decorators/property";
 import {query} from "lit/decorators/query";
-import { NidocaFormText, TextType } from "./nidoca-form-text";
+import { NidocaFormText, NidocaTextType } from "./nidoca-form-text";
 
 @customElement("nidoca-captcha")
 export class NidocaCaptcha extends LitElement {
@@ -37,7 +37,7 @@ export class NidocaCaptcha extends LitElement {
         .concat(" = ?")}"
         name="captcha"
         trailingIcon="create"
-        .textType="${TextType.NUMBER}"
+        .textType="${NidocaTextType.NUMBER}"
         value=""
       ></nidoca-form-text>
     `;

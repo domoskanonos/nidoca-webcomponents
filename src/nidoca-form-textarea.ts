@@ -6,39 +6,9 @@ import {ifDefined} from "lit/directives/if-defined";
 import {InputframeMode} from ".";
 import {FormOutputData, NidocaFormAbstractInputElement} from "./nidoca-form-abstract-input-element";
 
-export enum NidocaTextType {
-  EMAIL = "email",
-  HIDDEN = "hidden",
-  NUMBER = "number",
-  PASSWORD = "password",
-  TEL = "tel",
-  TEXT = "text",
-  SEARCH = "search",
-  URL = "url",
-}
-
-@customElement("nidoca-form-text")
-export class NidocaFormText extends NidocaFormAbstractInputElement {
-  static styles = css`
-    input {
-      font: inherit;
-      box-sizing: border-box;
-      width: 100%;
-      border: none;
-      color: inherit;
-      background-color: inherit;
-      height: var(--line-height-large);
-      line-height: var(--line-height-large);
-    }
-    input:focus {
-      outline: none;
-      box-shadow: none;
-      background: inherit;
-    }
-  `;
-
-  @property({type: String})
-  textType: NidocaTextType = NidocaTextType.TEXT;
+@customElement("nidoca-form-textarea")
+export class NidocaFormTextarea extends NidocaFormAbstractInputElement {
+  static styles = css``;
 
   @property({type: String})
   name: string = "";
@@ -57,24 +27,6 @@ export class NidocaFormText extends NidocaFormAbstractInputElement {
 
   @property({type: Boolean})
   disabled: boolean = false;
-
-  @property({type: Boolean})
-  checked: boolean = false;
-
-  @property({type: Number})
-  maxlength: number | undefined;
-
-  @property({type: Number})
-  minlength: number | undefined;
-
-  @property({type: Number})
-  min: number | undefined;
-
-  @property({type: Number})
-  max: number | undefined;
-
-  @property({type: Number})
-  step: number | undefined;
 
   @property({type: Number})
   size: number | undefined;
@@ -103,26 +55,19 @@ export class NidocaFormText extends NidocaFormAbstractInputElement {
         .warningText="${this.warningText}"
         .inputframeMode="${this.inputframeMode}"
       >
-        <input
+        <textarea
           id="inputElement"
           name="${this.name}"
-          type="${this.textType}"
           value="${this.value}"
           placeholder="${this.placeholder ? this.placeholder : this.label}"
           size="${ifDefined(this.size)}"
-          minlength="${ifDefined(this.minlength)}"
-          maxlength="${ifDefined(this.maxlength)}"
-          min="${ifDefined(this.min)}"
-          max="${ifDefined(this.max)}"
-          step="${ifDefined(this.step)}"
           ?required="${this.required}"
           ?disabled="${this.disabled}"
-          ?checked="${this.checked}"
           @keyup="${this.handleKeyup}"
           @change="${() => this.handleChange()}"
           @focus="${() => this.handleFocus()}"
           @focusout="${() => this.handleFocusout()}"
-        />
+        ></textarea>
       </nidoca-form-inputframe>
     `;
   }

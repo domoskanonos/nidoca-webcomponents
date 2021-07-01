@@ -6,7 +6,7 @@ import { ifDefined } from "lit/directives/if-defined";
 import { InputframeMode } from ".";
 import {FormOutputData, NidocaFormAbstractInputElement} from "./nidoca-form-abstract-input-element";
 
-export enum DateType {
+export enum NidocaDateType {
   DATE = "date",
   DATETIME_LOCAL = "datetime-local",
   MONTH = "month",
@@ -35,7 +35,7 @@ export class NidocaFormDate extends NidocaFormAbstractInputElement {
   `;
 
   @property()
-  dateType: DateType = DateType.DATE;
+  dateType: NidocaDateType = NidocaDateType.DATE;
 
   @property({type: String})
   name: string = "";
