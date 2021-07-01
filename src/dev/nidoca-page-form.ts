@@ -1,18 +1,10 @@
-import {NidocaRouter} from "@domoskanonos/nidoca-router";
 import {css, html, LitElement, TemplateResult} from "lit";
 import {customElement} from "lit/decorators/custom-element";
 import {property} from "lit/decorators/property";
-import {
-  FlexAlignContent,
-  FlexAlignItems,
-  FlexDirection,
-  FlexJustifyContent,
-  FlexWrap,
-  NidocaDateType,
-  NidocaTypographyType,
-} from "..";
+import {query} from "lit/decorators/query";
+import {NidocaDateType} from "..";
+import {NidocaForm} from "../nidoca-form";
 import {NidocaTextType} from "../nidoca-form-text";
-import {NidocaSpacerSize, NidocaSpacerType} from "../nidoca-spacer";
 
 @customElement("nidoca-page-form")
 export class NidocaPageForm extends LitElement {
@@ -33,15 +25,51 @@ export class NidocaPageForm extends LitElement {
   @property({type: Object})
   elevationContentElement: TemplateResult = html`sdjoidj`;
 
+  @query("#form")
+  private form: NidocaForm | undefined;
+
   render(): TemplateResult {
     return html`
-      <nidoca-form>
+      <nidoca-form
+        id="form"
+        @nidoca-form-text-event-change="${() => this.showCurrentFormValues()}"
+        @nidoca-form-switch-event-change="${() => this.showCurrentFormValues()}"
+      >
         <nidoca-form-textarea name="textarea" label="Mein Text"></nidoca-form-textarea>
         <nidoca-form-text .textType="${NidocaTextType.TEXT}" name="text" label="Mein Textfeld"></nidoca-form-text>
-        <nidoca-form-date .dateType="${NidocaDateType.DATE}" name="text" label="Mein Textfeld"></nidoca-form-date>
+        <nidoca-form-text .textType="${NidocaTextType.EMAIL}" name="email" label="Meine Email"></nidoca-form-text>
+        <nidoca-form-text .textType="${NidocaTextType.NUMBER}" name="number" label="Meine Nummer"></nidoca-form-text>
+        <nidoca-form-text
+          .textType="${NidocaTextType.PASSWORD}"
+          name="password"
+          label="Mein Passwort"
+        ></nidoca-form-text>
+        <nidoca-form-text .textType="${NidocaTextType.TEL}" name="tel" label="Mein Telefon"></nidoca-form-text>
+        <nidoca-form-text .textType="${NidocaTextType.URL}" name="url" label="Meine URL"></nidoca-form-text>
+        <nidoca-form-date .dateType="${NidocaDateType.DATE}" name="date" label="Mein Textfeld"></nidoca-form-date>
+        <nidoca-form-date
+          .dateType="${NidocaDateType.DATETIME_LOCAL}"
+          name="dateLocal"
+          label="Mein Textfeld"
+        ></nidoca-form-date>
+        <nidoca-form-date .dateType="${NidocaDateType.MONTH}" name="month" label="Mein Textfeld"></nidoca-form-date>
+        <nidoca-form-date .dateType="${NidocaDateType.TIME}" name="time" label="Mein Textfeld"></nidoca-form-date>
+        <nidoca-form-date .dateType="${NidocaDateType.WEEK}" name="week" label="Mein Textfeld"></nidoca-form-date>
+        <nidoca-form-switch
+          name="switch"
+          label="Mein Auswahlfeld"
+          assistiveText="Mein Auswahlfeld Informationstext"
+          .checked="${true}"
+        ></nidoca-form-switch>
+        <nidoca-form-combobox name="combobox" label="Meine Combobox"></nidoca-form-combobox>
       </nidoca-form>
     `;
   }
+
+  showCurrentFormValues(): void {
+    console.log(this.form?.getOutputData());
+  }
+
   clicked(index: number): void {
     throw new Error("Method not implemented." + index);
   }
