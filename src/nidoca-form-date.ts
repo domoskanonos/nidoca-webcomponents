@@ -35,7 +35,7 @@ export class NidocaFormDate extends NidocaFormAbstractInputElement {
   `;
 
   @property()
-  dateType: NidocaDateType = NidocaDateType.DATE;
+  type: NidocaDateType = NidocaDateType.DATE;
 
   @property({type: String})
   name: string = "";
@@ -106,7 +106,7 @@ export class NidocaFormDate extends NidocaFormAbstractInputElement {
         <input
           id="inputElement"
           name="${this.name}"
-          type="${this.dateType}"
+          type="${this.type}"
           value="${this.date2String(this.value)}"
           placeholder="${this.placeholder ? this.placeholder : this.label}"
           size="${ifDefined(this.size)}"
@@ -131,7 +131,7 @@ export class NidocaFormDate extends NidocaFormAbstractInputElement {
     if (value == undefined) {
       return "";
     }
-    switch (this.dateType) {
+    switch (this.type) {
       case NidocaDateType.DATE:
         return value.toISOString().substr(0, 10);
       case NidocaDateType.DATETIME_LOCAL:

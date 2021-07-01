@@ -38,7 +38,7 @@ export class NidocaFormText extends NidocaFormAbstractInputElement {
   `;
 
   @property({type: String})
-  textType: NidocaTextType = NidocaTextType.TEXT;
+  type: NidocaTextType = NidocaTextType.TEXT;
 
   @property({type: String})
   name: string = "";
@@ -95,11 +95,11 @@ export class NidocaFormText extends NidocaFormAbstractInputElement {
   private inputElement: HTMLInputElement | undefined;
 
   render(): TemplateResult {
-    return this.textType == NidocaTextType.HIDDEN
+    return this.type == NidocaTextType.HIDDEN
       ? html`<input
           id="inputElement"
           name="${this.name}"
-          type="${this.textType}"
+          type="${this.type}"
           value="${this.value}"
         />`
       : html`
@@ -113,7 +113,7 @@ export class NidocaFormText extends NidocaFormAbstractInputElement {
             <input
               id="inputElement"
               name="${this.name}"
-              type="${this.textType}"
+              type="${this.type}"
               value="${this.value}"
               placeholder="${this.placeholder ? this.placeholder : this.label}"
               size="${ifDefined(this.size)}"

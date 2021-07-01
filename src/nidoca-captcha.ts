@@ -37,7 +37,7 @@ export class NidocaCaptcha extends LitElement {
         .concat(" = ?")}"
         name="captcha"
         trailingIcon="create"
-        .textType="${NidocaTextType.NUMBER}"
+        type="${NidocaTextType.NUMBER}"
         value=""
       ></nidoca-form-text>
     `;
