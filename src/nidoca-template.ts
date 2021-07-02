@@ -2,6 +2,7 @@ import {css, html, TemplateResult, LitElement, PropertyValues} from "lit";
 import {customElement} from "lit/decorators/custom-element";
 import {property} from "lit/decorators/property";
 import {query} from "lit/decorators/query";
+import { NidocaColorScheme } from ".";
 import {NidocaLayoutSpacerSize} from "./nidoca-layout-spacer";
 
 @customElement("nidoca-template")
@@ -16,8 +17,8 @@ export class NidocaTemplate extends LitElement {
       /**      position: fixed; */
       width: 100%;
       z-index: 1;
-      background-color: var(--mdc-theme-primary);
-      color: var(--mdc-theme-on-primary);
+      background-color: inherit;
+      color: inherit;
     }
 
     .content {
@@ -40,7 +41,6 @@ export class NidocaTemplate extends LitElement {
       position: fixed;
       width: 300px;
       min-height: 100%;
-      background-color: var(--mdc-theme-primary);
       transition: all 0.35s linear;
       overflow-y: scroll;
       max-height: 100%;
@@ -63,6 +63,9 @@ export class NidocaTemplate extends LitElement {
       width: 100%;
     }
   `;
+
+  @property({type: String})
+  colorScheme: NidocaColorScheme = NidocaColorScheme.PRIMARY;
 
   @property({type: Boolean})
   navigationClosed: boolean = true;
@@ -105,7 +108,7 @@ export class NidocaTemplate extends LitElement {
   render(): TemplateResult {
     return html`
       <div id="header" class="${this.navigationClosed ? "menuClosed" : ""}">
-        <nidoca-top-app-bar .prominent="${this.prominent}">
+        <nidoca-top-app-bar .prominent="${this.prominent}" .colorScheme="${this.colorScheme}">
           <span slot="left">
             <slot class="slotHeader" name="topLeft"></slot>
           </span>

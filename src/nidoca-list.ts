@@ -7,6 +7,9 @@ import {NidocaListItem} from "./nidoca-list-item";
 @customElement("nidoca-list")
 export class NidocaList extends LitElement {
   static styles = css`
+    :host {
+      width: 100%;
+    }
     .slotList {
       display: grid;
       grid-template-rows: 1fr;
@@ -14,7 +17,7 @@ export class NidocaList extends LitElement {
     }
 
     .slotList > * {
-      height:100px;
+      height: 100px;
     }
   `;
 

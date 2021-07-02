@@ -1,3 +1,9 @@
+export enum NidocaColorScheme {
+  PRIMARY = "primary",
+  SECONDARY = "secondary",
+  SURFACE = "surface",
+}
+
 export class NidocaDevice {
   static readonly MOBILE = new NidocaDevice("MOBILE", 0, 640);
   static readonly TABLET = new NidocaDevice("TABLET", 641, 1007);

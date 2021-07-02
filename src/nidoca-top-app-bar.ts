@@ -1,7 +1,7 @@
-import {css, html, TemplateResult,LitElement} from "lit";
+import {css, html, TemplateResult, LitElement} from "lit";
 import {customElement} from "lit/decorators/custom-element";
 import {property} from "lit/decorators/property";
-import {FlexAlignContent, FlexAlignItems, FlexDirection, FlexJustifyContent, FlexWrap} from ".";
+import {FlexAlignContent, FlexAlignItems, FlexDirection, FlexJustifyContent, FlexWrap, NidocaColorScheme} from ".";
 
 @customElement("nidoca-top-app-bar")
 export class NidocaTopAppBar extends LitElement {
@@ -16,6 +16,9 @@ export class NidocaTopAppBar extends LitElement {
     }
   `;
 
+  @property({type: String})
+  colorScheme: NidocaColorScheme = NidocaColorScheme.PRIMARY;
+
   @property({type: Boolean})
   prominent: boolean = false;
 
@@ -24,7 +27,15 @@ export class NidocaTopAppBar extends LitElement {
 
   render(): TemplateResult {
     return html`
-      <nidoca-layout-flex-container style="width:100%;"
+      <style>
+        :host {
+          color: var(--app-color-${this.colorScheme});
+          background-color: var(--app-color-${this.colorScheme}-background);
+        }
+      </style>
+
+      <nidoca-layout-flex-container
+        style="width:100%;"
         .flexDirection="${FlexDirection.ROW}"
         .flexWrap="${FlexWrap.NO_WRAP}"
         .flexJustifyContent="${FlexJustifyContent.SPACE_BETWEEN}"

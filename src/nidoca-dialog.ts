@@ -2,7 +2,7 @@ import {css, html, LitElement, TemplateResult} from "lit";
 import {customElement} from "lit/decorators/custom-element";
 import {property} from "lit/decorators/property";
 import {VisibleType} from "./nidoca-visible";
-import {TransitionType} from "./nidoca-transition";
+import {NidocaTransitionType} from "./nidoca-transition";
 
 @customElement("nidoca-dialog")
 export class NidocaDialog extends LitElement {
@@ -55,7 +55,7 @@ export class NidocaDialog extends LitElement {
         <div class="fullScreen wrapperOutside">
           <div class="wrapperInside">
             <!-- Dialog -->
-            <nidoca-transition .transitionType="${TransitionType.SLIDE_CENTER}">
+            <nidoca-transition .transitionType="${NidocaTransitionType.SLIDE_CENTER}">
               <div class="dialogContainer">
                 ${this.content}
                 <slot></slot>

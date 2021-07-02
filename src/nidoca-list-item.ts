@@ -21,7 +21,9 @@ export class NidocaListItem extends LitElement {
     .slotGraphic,
     .slotMeta,
     .columnSelection {
-      display: block;
+      display: grid;
+      align-items: center;
+      grid-template-columns: 1fr;
       width: var(--line-height-big);
     }
 
