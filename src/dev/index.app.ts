@@ -4,6 +4,7 @@ import "./nidoca-page-gallery";
 import "./nidoca-page-settings";
 import "./nidoca-page-list";
 import "./nidoca-page-form";
+import "./nidoca-page-top-app-bar";
 
 import "./nidoca-elevation-settings";
 

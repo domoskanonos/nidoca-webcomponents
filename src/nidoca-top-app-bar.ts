@@ -28,12 +28,12 @@ export class NidocaTopAppBar extends LitElement {
   render(): TemplateResult {
     return html`
       <style>
-        :host {
+        :host,
+        slot {
           color: var(--app-color-${this.colorScheme});
           background-color: var(--app-color-${this.colorScheme}-background);
         }
       </style>
-
       <nidoca-layout-flex-container
         style="width:100%;"
         .flexDirection="${FlexDirection.ROW}"

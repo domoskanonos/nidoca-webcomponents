@@ -2,7 +2,7 @@ import {css, html, TemplateResult, LitElement, PropertyValues} from "lit";
 import {customElement} from "lit/decorators/custom-element";
 import {property} from "lit/decorators/property";
 import {query} from "lit/decorators/query";
-import { NidocaColorScheme } from ".";
+import {NidocaColorScheme} from ".";
 import {NidocaLayoutSpacerSize} from "./nidoca-layout-spacer";
 
 @customElement("nidoca-template")
@@ -107,6 +107,12 @@ export class NidocaTemplate extends LitElement {
 
   render(): TemplateResult {
     return html`
+      <style>
+        #sidebar {
+          color: var(--app-color-${this.colorScheme});
+          background-color: var(--app-color-${this.colorScheme}-background);
+        }
+      </style>
       <div id="header" class="${this.navigationClosed ? "menuClosed" : ""}">
         <nidoca-top-app-bar .prominent="${this.prominent}" .colorScheme="${this.colorScheme}">
           <span slot="left">
