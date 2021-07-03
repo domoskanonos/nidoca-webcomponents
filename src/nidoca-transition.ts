@@ -2,7 +2,7 @@ import {css, html, TemplateResult,LitElement} from "lit";
 import {customElement} from "lit/decorators/custom-element";
 import {property} from "lit/decorators/property";
 
-export enum TransitionType {
+export enum NidocaTransitionType {
   CENTER = "CENTER",
   LEFT = "LEFT",
   RIGHT = "RIGHT",
@@ -19,7 +19,7 @@ export enum TransitionType {
 export class NidocaTransition extends LitElement {
 
   @property({type: String})
-  transitionType: TransitionType = TransitionType.CENTER;
+  transitionType: NidocaTransitionType = NidocaTransitionType.CENTER;
 
   @property({type: Number})
   duration: number = 0.5; // seconds

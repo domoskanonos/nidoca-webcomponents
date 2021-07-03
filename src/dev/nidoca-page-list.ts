@@ -2,7 +2,15 @@ import {NidocaRouter} from "@domoskanonos/nidoca-router";
 import {css, html, LitElement, TemplateResult} from "lit";
 import {customElement} from "lit/decorators/custom-element";
 import {property} from "lit/decorators/property";
-import {FlexAlignContent, FlexAlignItems, FlexDirection, FlexJustifyContent, FlexWrap, NidocaTypographyType} from "..";
+import {
+  FlexAlignContent,
+  FlexAlignItems,
+  FlexDirection,
+  FlexJustifyContent,
+  FlexWrap,
+  NidocaColorScheme,
+  NidocaTypographyType,
+} from "..";
 import {NidocaLayoutSpacerSize, NidocaLayoutSpacerType} from "../nidoca-layout-spacer";
 
 @customElement("nidoca-page-list")
@@ -42,8 +50,12 @@ export class NidocaPageGallery extends LitElement {
             Funktionalität implementieren kann.</nidoca-typography
           >
         </nidoca-layout-spacer>
-        <nidoca-template .prominent="${this.prominent}">
-          <nidoca-layout-spacer slot="topLeft" spacerSize="${NidocaLayoutSpacerSize.MEDIUM}" .spacerTypes=${[NidocaLayoutSpacerType.LEFT]}>
+        <nidoca-template .prominent="${this.prominent}" .colorScheme="${NidocaColorScheme.SURFACE}">
+          <nidoca-layout-spacer
+            slot="topLeft"
+            spacerSize="${NidocaLayoutSpacerSize.MEDIUM}"
+            .spacerTypes=${[NidocaLayoutSpacerType.LEFT]}
+          >
             <nidoca-typography typographyType="${NidocaTypographyType.BODY1}"
               >Aufgaben</nidoca-typography
             ></nidoca-layout-spacer
@@ -72,13 +84,10 @@ export class NidocaPageGallery extends LitElement {
             }}"
           ></nidoca-icon>
 
-          <nidoca-search-bar style="width:100%;" slot="prominent" placeholder="Suche..."></nidoca-search-bar>
+          <nidoca-search-bar slot="prominent" placeholder="Suche..."></nidoca-search-bar>
 
           <span slot="content">
-            <nidoca-list
-              .selectionMode="${this.selectionMode}"
-              style="background: var(--app-color-surface-background); "
-            >
+            <nidoca-list .selectionMode="${this.selectionMode}">
               ${[
                 {primary: "List Item", secondary: "Komponente muss schöner werden"},
                 {primary: "List Item", secondary: "Komponente muss schöner werden"},
@@ -119,6 +128,24 @@ export class NidocaPageGallery extends LitElement {
             ></nidoca-navigation-link>
           </nidoca-navigation>
         </nidoca-template>
+
+        <nidoca-list .selectionMode="${this.selectionMode}">
+          ${[
+            {primary: "List Item", secondary: "Komponente muss schöner werden"},
+            {primary: "List Item", secondary: "Komponente muss schöner werden"},
+            {primary: "List Item", secondary: "Komponente muss schöner werden"},
+            {primary: "List Item", secondary: "Komponente muss schöner werden"},
+            {primary: "List Item", secondary: "Komponente muss schöner werden"},
+          ].map(
+            (item, index) => html`
+              <nidoca-list-item @click="${() => this.clicked(index)}"
+                ><nidoca-typography .typographyType="${NidocaTypographyType.H6}">${item.primary}</nidoca-typography>
+                <nidoca-icon slot="graphic" icon="face">face</nidoca-icon>
+                <nidoca-icon slot="meta" icon="arrow_right">arrow_right</nidoca-icon>
+              </nidoca-list-item>
+            `
+          )}
+        </nidoca-list>
       </nidoca-layout-flex-container>
 
       <nidoca-elevation
@@ -130,6 +157,6 @@ export class NidocaPageGallery extends LitElement {
     `;
   }
   clicked(index: number): void {
-    throw new Error("Method not implemented."+index);
+    throw new Error("Method not implemented." + index);
   }
 }

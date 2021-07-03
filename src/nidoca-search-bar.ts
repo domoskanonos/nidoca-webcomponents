@@ -14,6 +14,10 @@ import {NidocaLayoutSpacerType} from "./nidoca-layout-spacer";
 @customElement("nidoca-search-bar")
 export class NidocaSearchBar extends LitElement {
   static styles = css`
+    :host {
+      width: 100%;
+    }
+
     input {
       height: var(--line-height-large);
       line-height: var(--line-height-large);
@@ -46,31 +50,31 @@ export class NidocaSearchBar extends LitElement {
 
   render(): TemplateResult {
     return html`
-        <nidoca-layout-flex-container
-          .flexDirection="${NidocaFlexDirection.ROW}"
-          .flexWrap="${NidocaFlexWrap.NO_WRAP}"
-          .flexJustifyContent="${NidocaFlexJustifyContent.FLEX_START}"
-          .flexAlignItems="${NidocaFlexAlignItems.FLEX_START}"
-          .flexAlignContent="${NidocaFlexAlignContent.FLEX_START}"
-        >
-          <nidoca-layout-spacer .spacerTypes="${[NidocaLayoutSpacerType.RIGHT]}">
-            <nidoca-icon icon="search"></nidoca-icon>
-          </nidoca-layout-spacer>
-          <input
-            id="inputElement"
-            type="text"
-            value="${this.value}"
-            placeholder="${this.placeholder}"
-            ?disabled="${this.disabled}"
-            @keyup="${this.handleKeyup}"
-            @change="${() => this.handleChange()}"
-            @focus="${() => this.handleFocus()}"
-            @focusout="${() => this.handleFocusout()}"
-          />
-          <nidoca-layout-spacer .spacerTypes="${[NidocaLayoutSpacerType.RIGHT]}">
-            <nidoca-icon icon="close" @click="${() => (this.value = "")}"></nidoca-icon>
-          </nidoca-layout-spacer>
-        </nidoca-layout-flex-container>
+      <nidoca-layout-flex-container
+        .flexDirection="${NidocaFlexDirection.ROW}"
+        .flexWrap="${NidocaFlexWrap.NO_WRAP}"
+        .flexJustifyContent="${NidocaFlexJustifyContent.FLEX_START}"
+        .flexAlignItems="${NidocaFlexAlignItems.FLEX_START}"
+        .flexAlignContent="${NidocaFlexAlignContent.FLEX_START}"
+      >
+        <nidoca-layout-spacer .spacerTypes="${[NidocaLayoutSpacerType.RIGHT]}">
+          <nidoca-icon icon="search"></nidoca-icon>
+        </nidoca-layout-spacer>
+        <input
+          id="inputElement"
+          type="text"
+          value="${this.value}"
+          placeholder="${this.placeholder}"
+          ?disabled="${this.disabled}"
+          @keyup="${this.handleKeyup}"
+          @change="${() => this.handleChange()}"
+          @focus="${() => this.handleFocus()}"
+          @focusout="${() => this.handleFocusout()}"
+        />
+        <nidoca-layout-spacer .spacerTypes="${[NidocaLayoutSpacerType.RIGHT]}">
+          <nidoca-icon icon="close" @click="${() => (this.value = "")}"></nidoca-icon>
+        </nidoca-layout-spacer>
+      </nidoca-layout-flex-container>
     `;
   }
 

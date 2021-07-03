@@ -3,6 +3,7 @@ import {customElement} from "lit/decorators/custom-element";
 import {property} from "lit/decorators/property";
 import {NidocaRouteListener, NidocaRouter} from "@domoskanonos/nidoca-router";
 import {NidocaTypographyType} from "..";
+import {NidocaColorScheme} from "../nidoca-meta";
 
 @customElement("nidoca-app")
 export class NidocaApp extends LitElement implements NidocaRouteListener {
@@ -63,7 +64,11 @@ export class NidocaApp extends LitElement implements NidocaRouteListener {
 
   render(): TemplateResult {
     return html`
-      <nidoca-template .prominent="${this.prominent}" .navigationClosed=${this.navigationClosed}>
+      <nidoca-template
+        .prominent="${this.prominent}"
+        .navigationClosed="${this.navigationClosed}"
+        .colorScheme="${NidocaColorScheme.PRIMARY}"
+      >
         <nidoca-typography slot="topCenter" typographyType="${NidocaTypographyType.BODY1}"
           >nidoca framework</nidoca-typography
         >
