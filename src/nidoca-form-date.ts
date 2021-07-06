@@ -40,8 +40,8 @@ export class NidocaFormDate extends NidocaFormAbstractInputElement {
   @property({type: String})
   name: string = "";
 
-  @property({type: Object})
-  value: Date | undefined;
+  @property({type: String})
+  value: string = "";
 
   @property({type: String})
   label: string = "";
@@ -107,7 +107,7 @@ export class NidocaFormDate extends NidocaFormAbstractInputElement {
           id="inputElement"
           name="${this.name}"
           type="${this.type}"
-          value="${this.date2String(this.value)}"
+          value="${this.value}"
           placeholder="${this.placeholder ? this.placeholder : this.label}"
           size="${ifDefined(this.size)}"
           minlength="${ifDefined(this.minlength)}"
@@ -119,65 +119,16 @@ export class NidocaFormDate extends NidocaFormAbstractInputElement {
           ?disabled="${this.disabled}"
           ?checked="${this.checked}"
           ?multiple="${this.multiple}"
-          @keyup="${this.handleKeyup}"
-          @change="${() => this.handleChange()}"
-          @focus="${() => this.handleFocus()}"
-          @focusout="${() => this.handleFocusout()}"
         />
       </nidoca-form-inputframe>
     `;
   }
-  date2String(value: Date | undefined): string {
-    if (value == undefined) {
-      return "";
-    }
-    switch (this.type) {
-      case NidocaDateType.DATE:
-        return value.toISOString().substr(0, 10);
-      case NidocaDateType.DATETIME_LOCAL:
-      case NidocaDateType.MONTH:
-      case NidocaDateType.TIME:
-      case NidocaDateType.WEEK:
-        return value.toISOString().substr(0, 10);
-      default:
-        return "";
-    }
-  }
 
   getOutputData(): FormOutputData {
-    const outputValue: any = this.inputElement?.value;
     return <FormOutputData>{
       key: this.name,
-      value: outputValue,
+      value: this.inputElement?.value,
     };
-  }
-
-  async handleFocus() {
-    this.dispatchOutputDataChangeEvent();
-  }
-
-  async handleFocusout() {
-    this.dispatchOutputDataChangeEvent();
-  }
-
-  async handleChange() {
-    this.dispatchOutputDataChangeEvent();
-  }
-
-  async handleKeyup() {
-    this.dispatchOutputDataChangeEvent();
-  }
-
-  async dispatchOutputDataChangeEvent() {
-    if (this.validate()) {
-      const customEvent = new CustomEvent("nidoca-form-text-event-change", {
-        detail: this.getOutputData(),
-        bubbles: true,
-        composed: true,
-      });
-      console.debug("dispatch custom event type: %s, detail: %s", customEvent.type, JSON.stringify(customEvent.detail));
-      this.dispatchEvent(customEvent);
-    }
   }
 
   public validate(): boolean {

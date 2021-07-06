@@ -93,7 +93,6 @@ export class NidocaFormCombobox extends NidocaFormAbstractInputElement {
           size="${this.size}"
           ?required="${this.required}"
           ?multiple="${this.multiple}"
-          @change="${() => this.change()}"
         >
           ${guard(
             [this.value, this.options],
@@ -133,30 +132,6 @@ export class NidocaFormCombobox extends NidocaFormAbstractInputElement {
       key: this.name,
       value: outputValue,
     };
-  }
-
-  async focused() {
-    this.dispatchOutputDataChangeEvent();
-  }
-
-  async focusout() {
-    this.dispatchOutputDataChangeEvent();
-  }
-
-  async change() {
-    this.dispatchOutputDataChangeEvent();
-  }
-
-  async dispatchOutputDataChangeEvent() {
-    if (this.validate()) {
-      const customEvent = new CustomEvent("nidoca-form-combobox-event-change", {
-        detail: this.getOutputData(),
-        bubbles: true,
-        composed: true,
-      });
-      console.debug("dispatch custom event type: %s, detail: %s", customEvent.type, JSON.stringify(customEvent.detail));
-      this.dispatchEvent(customEvent);
-    }
   }
 
   public validate(): boolean {

@@ -77,10 +77,6 @@ export class NidocaFormTextarea extends NidocaFormAbstractInputElement {
           size="${ifDefined(this.size)}"
           ?required="${this.required}"
           ?disabled="${this.disabled}"
-          @keyup="${this.handleKeyup}"
-          @change="${() => this.handleChange()}"
-          @focus="${() => this.handleFocus()}"
-          @focusout="${() => this.handleFocusout()}"
         ></textarea>
       </nidoca-form-inputframe>
     `;
@@ -94,34 +90,6 @@ export class NidocaFormTextarea extends NidocaFormAbstractInputElement {
     };
   }
 
-  async handleFocus(): Promise<void> {
-    this.dispatchOutputDataChangeEvent("nidoca-form-text-event-focus");
-  }
-
-  async handleFocusout(): Promise<void> {
-    this.dispatchOutputDataChangeEvent("nidoca-form-text-focusout");
-  }
-
-  async handleChange(): Promise<void> {
-    this.dispatchOutputDataChangeEvent("nidoca-form-text-event-change");
-  }
-
-  async handleKeyup(): Promise<void> {
-    this.dispatchOutputDataChangeEvent("nidoca-form-text-event-change");
-  }
-
-  async dispatchOutputDataChangeEvent(eventName: string): Promise<void> {
-    if (this.validate()) {
-      const customEvent = new CustomEvent(eventName, {
-        detail: this.getOutputData(),
-        bubbles: true,
-        composed: true,
-      });
-      console.debug("dispatch custom event type: %s, detail: %s", customEvent.type, JSON.stringify(customEvent.detail));
-      this.dispatchEvent(customEvent);
-    }
-  }
-
   public validate(): boolean {
     this.errorText = "";
     if (
@@ -133,4 +101,5 @@ export class NidocaFormTextarea extends NidocaFormAbstractInputElement {
     }
     return this.errorText == "";
   }
+  
 }

@@ -96,12 +96,7 @@ export class NidocaFormText extends NidocaFormAbstractInputElement {
 
   render(): TemplateResult {
     return this.type == NidocaTextType.HIDDEN
-      ? html`<input
-          id="inputElement"
-          name="${this.name}"
-          type="${this.type}"
-          value="${this.value}"
-        />`
+      ? html`<input id="inputElement" name="${this.name}" type="${this.type}" value="${this.value}" />`
       : html`
           <nidoca-form-inputframe
             label="${this.label}"
@@ -125,10 +120,6 @@ export class NidocaFormText extends NidocaFormAbstractInputElement {
               ?required="${this.required}"
               ?disabled="${this.disabled}"
               ?checked="${this.checked}"
-              @keyup="${this.handleKeyup}"
-              @change="${() => this.handleChange()}"
-              @focus="${() => this.handleFocus()}"
-              @focusout="${() => this.handleFocusout()}"
             />
           </nidoca-form-inputframe>
         `;
@@ -140,34 +131,6 @@ export class NidocaFormText extends NidocaFormAbstractInputElement {
       key: this.name,
       value: outputValue,
     };
-  }
-
-  async handleFocus(): Promise<void> {
-    this.dispatchOutputDataChangeEvent("nidoca-form-text-event-focus");
-  }
-
-  async handleFocusout(): Promise<void> {
-    this.dispatchOutputDataChangeEvent("nidoca-form-text-focusout");
-  }
-
-  async handleChange(): Promise<void> {
-    this.dispatchOutputDataChangeEvent("nidoca-form-text-event-change");
-  }
-
-  async handleKeyup(): Promise<void> {
-    this.dispatchOutputDataChangeEvent("nidoca-form-text-event-change");
-  }
-
-  async dispatchOutputDataChangeEvent(eventName: string): Promise<void> {
-    if (this.validate()) {
-      const customEvent = new CustomEvent(eventName, {
-        detail: this.getOutputData(),
-        bubbles: true,
-        composed: true,
-      });
-      console.debug("dispatch custom event type: %s, detail: %s", customEvent.type, JSON.stringify(customEvent.detail));
-      this.dispatchEvent(customEvent);
-    }
   }
 
   public validate(): boolean {
