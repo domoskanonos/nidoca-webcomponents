@@ -1,3 +1,2 @@
-- Router funktioniert initial nicht korrekt
+- nidoca-icon aufsplitten in icon und icon round
 - tests funktionieren mit der neuen Lit Version nicht :-(
-- nidoca-list anpassen wie bei mwc
