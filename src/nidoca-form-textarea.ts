@@ -72,12 +72,11 @@ export class NidocaFormTextarea extends NidocaFormAbstractInputElement {
         <textarea
           id="inputElement"
           name="${this.name}"
-          value="${this.value}"
           placeholder="${this.placeholder ? this.placeholder : this.label}"
           size="${ifDefined(this.size)}"
           ?required="${this.required}"
           ?disabled="${this.disabled}"
-        ></textarea>
+        >${this.value}</textarea>
       </nidoca-form-inputframe>
     `;
   }
