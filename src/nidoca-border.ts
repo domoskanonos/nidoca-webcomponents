@@ -23,7 +23,6 @@ export enum BorderSize {
   THICK = "THICK",
 }
 
-
 @customElement("nidoca-border")
 export class NidocaBorder extends LitElement {
   static styles = css`
@@ -32,13 +31,16 @@ export class NidocaBorder extends LitElement {
       box-sizing: border-box;
       color: inherit;
       background-color: inherit;
+      float: left;
+      clear: none;
+      display: contents;
     }
     .BORDER {
       border-color: var(--app-color-surface-background);
     }
 
     slot {
-      display:inline-block;
+      display: inline-block;
     }
 
     .FULL_WIDTH {
@@ -95,24 +97,19 @@ export class NidocaBorder extends LitElement {
       border-bottom-style: solid;
       border-color: var(--mdc-theme-primary);
     }
-
   `;
 
-  @property({ type: Array })
+  @property({type: Array})
   borderProperties: BorderProperty[] = [BorderProperty.ALL];
 
-  @property({ type: String })
+  @property({type: String})
   borderSize: BorderSize = BorderSize.THIN;
 
-   render(): TemplateResult {
-    return html`
-      <slot
-        class="${this.toBorderPropertiesString(this.borderProperties)} ${this.borderSize}"
-      ></slot>
-    `;
+  render(): TemplateResult {
+    return html` <slot class="${this.toBorderPropertiesString(this.borderProperties)} ${this.borderSize}"></slot> `;
   }
 
-  toBorderPropertiesString(borderPropertieses: string[]) : string {
+  toBorderPropertiesString(borderPropertieses: string[]): string {
     let borderClazzString: string = "BORDER";
     borderPropertieses.forEach((clazz) => {
       borderClazzString = borderClazzString.concat(" ").concat(clazz);
