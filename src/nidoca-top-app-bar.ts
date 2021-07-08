@@ -8,6 +8,7 @@ export class NidocaTopAppBar extends LitElement {
   static styles = css`
     slot {
       display: flex;
+      align-items:center;
     }
 
     .prominent {
