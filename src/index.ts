@@ -26,6 +26,7 @@ export * from "./nidoca-layout-floating-container";
 export * from "./nidoca-layout-section";
 
 export * from "./nidoca-icon";
+export * from "./nidoca-icon-extended";
 export * from "./nidoca-ripple";
 export * from "./nidoca-img";
 export * from "./nidoca-movie";
