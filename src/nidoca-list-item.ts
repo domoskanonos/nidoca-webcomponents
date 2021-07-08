@@ -1,17 +1,18 @@
 import {css, html, TemplateResult, LitElement} from "lit";
 import {customElement} from "lit/decorators/custom-element";
 import {property} from "lit/decorators/property";
-import {FlexAlignItems, FlexDirection, FlexJustifyContent, FlexWrap} from ".";
 
 @customElement("nidoca-list-item")
 export class NidocaListItem extends LitElement {
   static styles = css`
     slot {
-      height: var(--line-height-massiv);
+      min-height: var(--line-height-massiv);
     }
 
     .container {
+      display: grid;
       cursor: pointer;
+      grid-template-columns: 1fr minmax(auto, 100%) 1fr 1fr;
     }
 
     .container:hover {
@@ -24,11 +25,9 @@ export class NidocaListItem extends LitElement {
       display: grid;
       align-items: center;
       grid-template-columns: 1fr;
-      width: var(--line-height-big);
     }
 
     .containerTypography {
-      width: 100%;
       display: grid;
       align-items: center;
       grid-template-columns: 1fr;
@@ -53,20 +52,7 @@ export class NidocaListItem extends LitElement {
   render(): TemplateResult {
     return html`
       <nidoca-ripple>
-        <nidoca-layout-flex-container
-          class="container"
-          .flexDirection="${FlexDirection.ROW}"
-          .flexWrap="${FlexWrap.NO_WRAP}"
-          .flexJustifyContent="${FlexJustifyContent.SPACE_BETWEEN}"
-          .flexAlignItems="${FlexAlignItems.STRETCH}"
-        >
-          ${this.selectionMode
-            ? html`<nidoca-icon
-                class="columnSelection"
-                @click="${() => this.switchSelected()}"
-                icon="${this.selected ? "check_box" : "check_box_outline_blank"}"
-              ></nidoca-icon>`
-            : html``}
+        <div class="container">
           <slot name="graphic" class="slotGraphic" @click="${() => this.itemClicked()}"></slot>
           <div class="containerTypography">
             <slot class="slotItem" @click="${() => this.itemClicked()}"></slot>
@@ -74,7 +60,14 @@ export class NidocaListItem extends LitElement {
           </div>
 
           <slot name="meta" class="slotMeta" @click="${() => this.itemClicked()}"></slot>
-        </nidoca-layout-flex-container>
+          ${this.selectionMode
+            ? html`<nidoca-icon
+                class="columnSelection"
+                @click="${() => this.switchSelected()}"
+                icon="${this.selected ? "check_box" : "check_box_outline_blank"}"
+              ></nidoca-icon>`
+            : html``}
+        </div>
       </nidoca-ripple>
     `;
   }

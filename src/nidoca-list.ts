@@ -17,7 +17,6 @@ export class NidocaList extends LitElement {
     }
 
     .slotList > * {
-      height: 100px;
     }
   `;
 
