@@ -1,7 +1,7 @@
 import {css, html, TemplateResult,LitElement} from "lit";
 import {customElement} from "lit/decorators/custom-element";
 import {property} from "lit/decorators/property";
-import {FlexAlignContent, FlexAlignItems, FlexDirection, FlexJustifyContent, FlexWrap, IconShadowType} from ".";
+import {FlexAlignContent, FlexAlignItems, FlexDirection, FlexJustifyContent, FlexWrap, NidocaIconShadowType} from ".";
 import {NidocaTypographyAlignment, NidocaTypographyType} from "./nidoca-typography";
 
 export enum WizardStepState {
@@ -64,7 +64,7 @@ export class NidocaWizardStep extends LitElement {
         >
           <nidoca-icon
             icon="${this.icon}"
-            .iconShadowType="${IconShadowType.NONE}"
+            .iconShadowType="${NidocaIconShadowType.NONE}"
             .withIconSpace="${false}"
             .round="${true}"
             .clickable="${true}"
