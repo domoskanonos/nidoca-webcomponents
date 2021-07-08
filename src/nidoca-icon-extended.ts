@@ -1,6 +1,7 @@
 import {css, html, TemplateResult, LitElement} from "lit";
 import {customElement} from "lit/decorators/custom-element";
 import {property} from "lit/decorators/property";
+import {NidocaColorScheme} from ".";
 
 export enum NidocaIconShadowType {
   NONE = "NONE",
@@ -13,44 +14,7 @@ export enum NidocaIconShadowType {
 @customElement("nidoca-icon-extended")
 export class NidocaIconExtended extends LitElement {
   static styles = css`
-    .material-icons {
-      font-family: 'Material Icons';
-      font-weight: normal;
-      font-style: normal;
-      font-size: var(--icon-size);
-      display: inline-block;
-      line-height: 1;
-      text-transform: none;
-      letter-spacing: normal;
-      word-wrap: normal;
-      white-space: nowrap;
-      direction: ltr;
-
-      /* Support for all WebKit browsers. */
-      -webkit-font-smoothing: antialiased;
-      /* Support for Safari and Chrome. */
-      text-rendering: optimizeLegibility;
-
-      /* Support for Firefox. */
-      -moz-osx-font-smoothing: grayscale;
-
-      /* Support for IE. */
-      font-feature-settings: 'liga';
-    }
-
-    .icon-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: inherit;
-      color: inherit;
-    }
-
-    .icon-container:active {
-      color: var(--app-color-secondary-background);
-    }
-
-    .ROUND {
+    .round {
       -moz-border-radius: 50%;
       -webkit-border-radius: 50%;
       border-radius: 50%;
@@ -79,27 +43,16 @@ export class NidocaIconExtended extends LitElement {
       -webkit-box-shadow: 0 14px 14px 0 rgba(0, 0, 0, 0.25), 0 10px 5px 0 rgba(0, 0, 0, 0.22);
       box-shadow: 0 14px 14px 0 rgba(0, 0, 0, 0.25), 0 10px 5px 0 rgba(0, 0, 0, 0.22);
     }
-
-    .clickable {
-      cursor: pointer;
-    }
-
-    .deactivated {
-      color: var(--app-color-surface-background-dark);
-    }
   `;
 
   @property({type: String})
   icon: string = "";
 
   @property({type: String})
-  iconShadowType: NidocaIconShadowType = NidocaIconShadowType.NONE;
+  colorScheme: NidocaColorScheme = NidocaColorScheme.PRIMARY;
 
-  @property({type: Boolean})
-  withIconSpace: boolean = true;
-
-  @property({type: Boolean})
-  round: boolean = false;
+  @property({type: String})
+  shadowType: NidocaIconShadowType = NidocaIconShadowType.DEFAULT_SHADOW;
 
   @property({type: Boolean})
   clickable: boolean = true;
@@ -108,53 +61,31 @@ export class NidocaIconExtended extends LitElement {
   deactivated: boolean = false;
 
   @property({type: String})
-  color: string = "";
-
-  @property({type: String})
-  backgroundColor: string = "transparent";
-
-  @property({type: Number})
-  size: number = 24;
-
-  @property({type: String})
-  sizeUnit: string = "px";
+  cssStyle: string = "font-size: var(--icon-size); padding:var(--space-normal)";
 
   render(): TemplateResult {
     return html`
-      <nidoca-layout-spacer cssStyle="padding: ${this.withIconSpace ? String(this.size / 2).concat(this.sizeUnit) : "0px"}">
-        <span
-          class="icon-container ${this.iconShadowType} ${this.clickable && !this.deactivated ? "clickable" : ""} ${this
-            .round
-            ? "ROUND"
-            : ""} ${this.deactivated ? "deactivated" : ""}"
+      <style>
+        .iconExtended {
+          display: inline-block;
+          color: var(--app-color-${this.colorScheme});
+          background-color: var(--app-color-${this.colorScheme}-background);
+        }
+      </style>
+
+      <span class="iconExtended round ${this.shadowType}">
+        <nidoca-icon
+          .deactivated="${this.deactivated}"
+          .clickable="${this.clickable}"
+          icon="${this.icon}"
           title="${this.title}"
-          @click="${this.clicked}"
-          style="${"line-height: ".concat(this.size.toString()).concat(this.sizeUnit).concat(";")}${"width: "
-            .concat(this.size.toString())
-            .concat(this.sizeUnit)
-            .concat(";")}${this.backgroundColor
-            ? "background-color:".concat(this.backgroundColor).concat(";")
-            : ""} ${this.round
-            ? "height:"
-                .concat((this.size * 2).toString())
-                .concat("px;")
-                .concat("width:")
-                .concat((this.size * 2).toString())
-                .concat("px;")
-            : ""}"
-          ><i
-            class="material-icons"
-            style="${this.color.length > 0 ? "color: ".concat(this.color).concat(";") : ""} ${this.size != undefined
-              ? "font-size: ".concat(this.size.toString()).concat(this.sizeUnit).concat(";")
-              : ""}"
-            >${this.icon}</i
-          >
-        </span>
-      </nidoca-layout-spacer>
+          cssStyle="${this.cssStyle}"
+        ></nidoca-icon>
+      </span>
     `;
   }
 
-  async clicked() {
+  async clicked(): Promise<void> {
     if (this.clickable && !this.deactivated) {
       const customEventName = "nidoca-event-icon-clicked";
       console.log("dispatch custom event: %s", customEventName);

@@ -18,6 +18,7 @@ export class NidocaPageMain extends LitElement {
             <nidoca-typography typographyType="${NidocaTypographyType.BODY1}">${DUMMY_DESCRIPTION}</nidoca-typography>
             <nidoca-button>Lorem Ipsum</nidoca-button>
           </nidoca-layout-spacer>
+          <nidoca-icon-extended icon="home"></nidoca-icon-extended>
         </nidoca-layout-section>
 
         <nidoca-layout-section >
