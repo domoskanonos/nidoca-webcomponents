@@ -2,7 +2,7 @@ import {css, html, LitElement, TemplateResult} from "lit";
 import {customElement} from "lit/decorators/custom-element";
 import {property} from "lit/decorators/property";
 
-export enum BorderProperty {
+export enum NidocaBorderProperty {
   NONE = "NONE",
   ALL = "ALL",
   ALL_ROUND = "ALL_ROUND",
@@ -26,8 +26,7 @@ export enum BorderSize {
 @customElement("nidoca-border")
 export class NidocaBorder extends LitElement {
   static styles = css`
-    :host,
-    * {
+    :host, slot {
       box-sizing: border-box;
       color: inherit;
       background-color: inherit;
@@ -100,7 +99,7 @@ export class NidocaBorder extends LitElement {
   `;
 
   @property({type: Array})
-  borderProperties: BorderProperty[] = [BorderProperty.ALL];
+  borderProperties: NidocaBorderProperty[] = [NidocaBorderProperty.ALL];
 
   @property({type: String})
   borderSize: BorderSize = BorderSize.THIN;

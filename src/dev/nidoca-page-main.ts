@@ -1,6 +1,7 @@
 import {css, html, LitElement, TemplateResult} from "lit";
 import {customElement} from "lit/decorators/custom-element";
 import {NidocaTypographyType} from "..";
+import { ButtonType } from "../nidoca-button";
 import {DUMMY_DESCRIPTION, DUMMY_DESCRIPTION_SHORT, DUMMY_IMAGE, DUMMY_TITLE} from "./constants";
 
 @customElement("nidoca-page-main")
@@ -18,7 +19,23 @@ export class NidocaPageMain extends LitElement {
             <nidoca-typography typographyType="${NidocaTypographyType.BODY1}">${DUMMY_DESCRIPTION}</nidoca-typography>
             <nidoca-button>Lorem Ipsum</nidoca-button>
           </nidoca-layout-spacer>
+
+
+
+
           <nidoca-icon-extended icon="home"></nidoca-icon-extended>
+          <nidoca-dialog-action .show="${true}">
+
+          <nidoca-typography slot="header" typographyType="${NidocaTypographyType.H1}">${DUMMY_DESCRIPTION_SHORT}</nidoca-typography>
+            <nidoca-typography slot="text" typographyType="${NidocaTypographyType.BODY1}">${DUMMY_DESCRIPTION}</nidoca-typography>
+
+            <nidoca-button slot="action" buttonType="${ButtonType.TEXT}">Ok</nidoca-button>
+            <nidoca-button slot="action" buttonType="${ButtonType.TEXT}">Ok</nidoca-button>
+            <nidoca-button>Ok</nidoca-button>
+          </nidoca-dialog-action>
+
+
+
         </nidoca-layout-section>
 
         <nidoca-layout-section >

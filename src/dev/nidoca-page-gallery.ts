@@ -23,8 +23,8 @@ export class NidocaPageGallery extends LitElement {
                   >${DUMMY_DESCRIPTION}
                 </nidoca-typography>
 
-                <nidoca-button buttonType="${ButtonType.CLEAR}" slot="actions">Go</nidoca-button>
-                <nidoca-button buttonType="${ButtonType.CLEAR}" slot="actions">Leave</nidoca-button>
+                <nidoca-button buttonType="${ButtonType.TEXT}" slot="actions">Go</nidoca-button>
+                <nidoca-button buttonType="${ButtonType.TEXT}" slot="actions">Leave</nidoca-button>
               </nidoca-card>
             `
           )}

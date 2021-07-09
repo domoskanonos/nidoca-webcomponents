@@ -2,7 +2,7 @@ import {css, html, LitElement, TemplateResult} from "lit";
 import {customElement} from "lit/decorators/custom-element";
 import {property} from "lit/decorators/property";
 import {FlexAlignContent, FlexAlignItems, FlexDirection, FlexJustifyContent, FlexWrap} from ".";
-import {BorderProperty} from "./nidoca-border";
+import {NidocaBorderProperty} from "./nidoca-border";
 
 @customElement("nidoca-card")
 export class NidocaCard extends LitElement {
@@ -13,7 +13,7 @@ export class NidocaCard extends LitElement {
 
   render(): TemplateResult {
     return html`
-      <nidoca-border .borderProperties="${[BorderProperty.ALL]}">
+      <nidoca-border .borderProperties="${[NidocaBorderProperty.ALL]}">
         <nidoca-layout-flex-container
           .flexDirection="${FlexDirection.COLUMN}"
           .flexWrap="${FlexWrap.WRAP}"

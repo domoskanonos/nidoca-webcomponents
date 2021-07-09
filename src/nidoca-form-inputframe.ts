@@ -1,7 +1,7 @@
 import {css, html, TemplateResult, LitElement} from "lit";
 import {customElement} from "lit/decorators/custom-element";
 import {property} from "lit/decorators/property";
-import {BorderProperty, BorderSize} from "./nidoca-border";
+import {NidocaBorderProperty, BorderSize} from "./nidoca-border";
 import {VisibleType} from "./nidoca-visible";
 import {FlexAlignContent} from "./nidoca-layout-flex-container";
 import {NidocaTypographyType} from "./nidoca-typography";
@@ -46,8 +46,8 @@ export class NidocaFormInputframe extends LitElement {
             class="main"
             .borderSize="${this.selected ? BorderSize.THIN : BorderSize.MEDIUM}"
             .borderProperties="${[
-              BorderProperty.FULL_WIDTH,
-              this.selected ? BorderProperty.BOTTOM_SELECTED : BorderProperty.BOTTOM,
+              NidocaBorderProperty.FULL_WIDTH,
+              this.selected ? NidocaBorderProperty.BOTTOM_SELECTED : NidocaBorderProperty.BOTTOM,
             ]}"
             @mouseover="${() => this.mouseover()}"
             @mouseout="${() => this.mouseout()}"

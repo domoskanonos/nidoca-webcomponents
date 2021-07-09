@@ -1,7 +1,7 @@
 import {css, html, TemplateResult, LitElement} from "lit";
 import {customElement} from "lit/decorators/custom-element";
 import {query} from "lit/decorators/query";
-import {BorderProperty} from "./nidoca-border";
+import {NidocaBorderProperty} from "./nidoca-border";
 import {NidocaDevice} from "./nidoca-meta";
 
 @customElement("nidoca-layout-section")
@@ -19,7 +19,7 @@ export class NidocaLayoutSection extends LitElement {
   @query("#slotElement")
   private slotElement: HTMLSlotElement | undefined;
   render(): TemplateResult {
-    return html`<nidoca-border .borderProperties="${[BorderProperty.BOTTOM]}">
+    return html`<nidoca-border .borderProperties="${[NidocaBorderProperty.BOTTOM]}">
       <slot id="slotElement" @slotchange="${(event: Event) => this.slotChanged(event)}"> </slot
     ></nidoca-border>`;
   }

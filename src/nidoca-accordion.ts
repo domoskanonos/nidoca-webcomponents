@@ -2,7 +2,7 @@ import {css, html, LitElement, TemplateResult} from "lit";
 import {customElement} from "lit/decorators/custom-element";
 import {property} from "lit/decorators/property";
 import {query} from "lit/decorators/query";
-import {BorderProperty} from ".";
+import {NidocaBorderProperty} from ".";
 import {NidocaAccordionItem} from "./nidoca-accordion-item";
 
 export enum AccordionType {
@@ -23,7 +23,7 @@ export class NidocaAccordion extends LitElement {
   render(): TemplateResult {
     return html`
       <nidoca-border
-        .borderProperties="${[BorderProperty.TOP, BorderProperty.FULL_WIDTH]}"
+        .borderProperties="${[NidocaBorderProperty.TOP, NidocaBorderProperty.FULL_WIDTH]}"
         @nidoca-event-accordion-item-clicked="${(event: CustomEvent) => this.accordionSwitched(event)}"
       >
         <slot id="accordionSlot"></slot>

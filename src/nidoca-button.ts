@@ -7,14 +7,15 @@ import {NidocaLayoutSpacerSize} from "./nidoca-layout-spacer";
 import {NidocaTypographyType} from "./nidoca-typography";
 
 export enum ButtonType {
-  PRIMARY = "PRIMARY",
-  SECONDARY = "SECONDARY",
-  CLEAR = "CLEAR",
+  CONTAINED = "CONTAINED",
+  OUTLINED = "OUTLINED",
+  TEXT = "TEXT",
 }
 
 @customElement("nidoca-button")
 export class NidocaButton extends LitElement {
   static styles = css`
+    
     .BUTTON {
       cursor: pointer;
       text-transform: uppercase;
@@ -25,28 +26,9 @@ export class NidocaButton extends LitElement {
       line-height: 48px;
     }
 
-    .PRIMARY {
-      background-color: var(--mdc-theme-primary);
-      color: var(--mdc-theme-on-primary);
-    }
-    ::slotted(.PRIMARY:hover),
-    .PRIMARY:hover,
-    ::slotted(.PRIMARY:active),
-    .PRIMARY:active {
-      background-color: var(--mdc-theme-primary-dark);
-      color: var(--mdc-theme-on-primary-dark);
-    }
-
-    .SECONDARY {
-      background-color: var(--app-color-secondary-background);
-      color: var(--app-color-secondary);
-    }
-    ::slotted(.SECONDARY:hover),
-    .SECONDARY:hover,
-    ::slotted(.SECONDARY:active),
-    .SECONDARY:active {
-      background-color: var(--app-color-secondary-background-dark);
-      color: var(--app-color-secondary-dark);
+    .TEXT {
+      font-weight: 900;
+      color: var(--app-color-primary-background)
     }
 
     @media only screen and (orientation: portrait) {
@@ -58,10 +40,10 @@ export class NidocaButton extends LitElement {
   `;
 
   @property({type: String})
-  buttonType: ButtonType = ButtonType.PRIMARY;
+  buttonType: ButtonType = ButtonType.CONTAINED;
 
   @property({type: String})
-  leadingIcon: string = "thumb_up";
+  leadingIcon: string = "";
 
   @property({type: String})
   text: string = "";
@@ -86,7 +68,7 @@ export class NidocaButton extends LitElement {
             <slot></slot>
           </nidoca-typography>
 
-          <nidoca-visible visibleType="${this.buttonType == ButtonType.CLEAR ? VisibleType.HIDE : VisibleType.NORMAL}">
+          <nidoca-visible visibleType="${this.buttonType == ButtonType.TEXT ? VisibleType.HIDE : VisibleType.NORMAL}">
             <nidoca-layout-spacer spacerSize="${NidocaLayoutSpacerSize.MEDIUM}"></nidoca-layout-spacer>
           </nidoca-visible>
         </nidoca-layout-flex-container>

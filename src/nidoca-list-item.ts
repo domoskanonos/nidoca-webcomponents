@@ -1,7 +1,7 @@
 import {css, html, TemplateResult, LitElement} from "lit";
 import {customElement} from "lit/decorators/custom-element";
 import {property} from "lit/decorators/property";
-import {BorderProperty} from ".";
+import {NidocaBorderProperty as NidocaBorderProperty} from ".";
 
 @customElement("nidoca-list-item")
 export class NidocaListItem extends LitElement {
@@ -9,7 +9,7 @@ export class NidocaListItem extends LitElement {
     .container {
       display: grid;
       cursor: pointer;
-      grid-template-columns: 1fr minmax(auto, 100%) 1fr 1fr;
+      grid-template-columns: 1fr 1fr minmax(auto, 100%) 1fr;
       min-height: var(--line-height-massiv);
     }
 
@@ -50,33 +50,26 @@ export class NidocaListItem extends LitElement {
 
   render(): TemplateResult {
     return html`
-     
       <nidoca-ripple>
         <div class="container">
+          ${this.selectionMode
+            ? html`<nidoca-icon
+                class="columnSelection"
+                @click="${() => this.switchSelected()}"
+                icon="${this.selected ? "check_box" : "check_box_outline_blank"}"
+              ></nidoca-icon>`
+            : html`<span></span>`}
           <slot name="graphic" class="slotGraphic" @click="${() => this.itemClicked()}"></slot>
           <div class="containerTypography">
             <slot class="" @click="${() => this.itemClicked()}"></slot>
             <slot name="secondary" @click="${() => this.itemClicked()}"></slot>
           </div>
-
           <slot name="meta" class="slotMeta" @click="${() => this.itemClicked()}"></slot>
-          ${
-            this.selectionMode
-              ? html`<nidoca-icon
-                  class="columnSelection"
-                  @click="${() => this.switchSelected()}"
-                  icon="${this.selected ? "check_box" : "check_box_outline_blank"}"
-                ></nidoca-icon>`
-              : html``
-          }
         </div>
       </nidoca-ripple>
       <nidoca-border
-          .borderProperties="${[
-            BorderProperty.BOTTOM,
-            BorderProperty.FULL_WIDTH,
-          ]}"
-        ></nidoca-border></nidoca-border>
+        .borderProperties="${[NidocaBorderProperty.BOTTOM, NidocaBorderProperty.FULL_WIDTH]}"
+      ></nidoca-border>
     `;
   }
 
