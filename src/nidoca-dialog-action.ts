@@ -2,14 +2,14 @@ import {css, html, LitElement, TemplateResult} from "lit";
 import {customElement} from "lit/decorators/custom-element";
 import {property} from "lit/decorators/property";
 import {NidocaColorScheme} from ".";
-import {ShadowType as NidocaShadowType} from "./nidoca-box-shadow";
+import {NidocaShadowType as NidocaShadowType} from "./nidoca-box-shadow";
 
 @customElement("nidoca-dialog-action")
 export class NidocaDialogAction extends LitElement {
   static styles = css`
     slot {
       width: 300px;
-      display: flex
+      display: flex;
     }
   `;
 
@@ -28,13 +28,13 @@ export class NidocaDialogAction extends LitElement {
         }
       </style>
       <nidoca-dialog .show="${this.show}">
-        <nidoca-box-shadow class="box" .shadowType="${NidocaShadowType.KEY_LIGHT}">
-        <nidoca-layout-spacer>
-          <slot name="header"></slot>
-          <slot name="text"></slot>
-          <slot name="action"></slot>
+        <nidoca-card class="box" .shadowType="${NidocaShadowType.KEY_LIGHT}">
+          <nidoca-layout-spacer>
+            <slot name="header"></slot>
+            <slot name="text"></slot>
+            <slot name="action"></slot>
           </nidoca-layout-spacer>
-        </nidoca-box-shadow>
+        </nidoca-card>
       </nidoca-dialog>
     `;
   }

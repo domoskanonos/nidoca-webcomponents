@@ -2,7 +2,7 @@ import {css, html, LitElement, TemplateResult} from "lit";
 import {customElement} from "lit/decorators/custom-element";
 import {property} from "lit/decorators/property";
 
-export enum ShadowType {
+export enum NidocaShadowType {
   NONE = "NONE",
   KEY_LIGHT = "KEY_LIGHT",
   AMBIENT_LIGHT = "AMBIENT_LIGHT",
@@ -31,7 +31,7 @@ export class NidocaBoxShadow extends LitElement {
   `;
 
   @property({ type: String })
-  shadowType: ShadowType = ShadowType.NONE;
+  shadowType: NidocaShadowType = NidocaShadowType.NONE;
 
   render(): TemplateResult {
     return html` <span class="SHADOW ${this.shadowType}"><slot></slot></span> `;

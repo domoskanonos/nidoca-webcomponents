@@ -2,7 +2,7 @@ import {css, html, LitElement, TemplateResult} from "lit";
 import {customElement} from "lit/decorators/custom-element";
 import {property} from "lit/decorators/property";
 import {FlexAlignContent, FlexAlignItems, FlexDirection, FlexJustifyContent, FlexWrap} from ".";
-import {NidocaBorderProperty} from "./nidoca-border";
+import {NidocaShadowType} from "./nidoca-box-shadow";
 
 @customElement("nidoca-card")
 export class NidocaCard extends LitElement {
@@ -13,7 +13,7 @@ export class NidocaCard extends LitElement {
 
   render(): TemplateResult {
     return html`
-      <nidoca-border .borderProperties="${[NidocaBorderProperty.ALL]}">
+      <nidoca-box-shadow .shadowType="${NidocaShadowType.KEY_LIGHT}">
         <nidoca-layout-flex-container
           .flexDirection="${FlexDirection.COLUMN}"
           .flexWrap="${FlexWrap.WRAP}"
@@ -27,7 +27,8 @@ export class NidocaCard extends LitElement {
             <slot name="actions"></slot>
           </nidoca-layout-spacer>
         </nidoca-layout-flex-container>
-      </nidoca-border>
+        <slot></slot>
+      </nidoca-box-shadow>
     `;
   }
 }
