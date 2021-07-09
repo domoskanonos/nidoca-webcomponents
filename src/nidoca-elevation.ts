@@ -53,7 +53,7 @@ export class NidocaElevation extends LitElement {
     document.addEventListener("click", (me: MouseEvent) => {
       const rect = this.associatedElement?.getBoundingClientRect();
       if (rect) {
-        if (rect.top < me.clientY || rect.right < me.clientX || rect.left > me.clientX || rect.bottom > me.clientY) {
+        if (rect.top > me.clientY || rect.right < me.clientX || rect.left > me.clientX || rect.bottom < me.clientY) {
           this.dispachtEvent();
           console.log("iosdjiosdjio");
         }
