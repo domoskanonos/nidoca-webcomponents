@@ -152,7 +152,7 @@ export class NidocaPageGallery extends LitElement {
         .show="${this.elevationShow}"
         .associatedElement="${this.elevationAssociatedElement}"
         .content="${this.elevationContentElement}"
-        @mouseout="${() => (this.elevationShow = false)}"
+        @nidoca-elevation-event-closeme="${() => (this.elevationShow = false)}"
       ></nidoca-elevation>
     `;
   }

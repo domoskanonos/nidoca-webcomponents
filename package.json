@@ -13,7 +13,7 @@
   "module": "./src/index.js",
   "devDependencies": {
     "@domoskanonos/nidoca-router": "1.0.2",
-    "@domoskanonos/nidoca-webpack": "1.0.6"
+    "@domoskanonos/nidoca-pwa": "1.0.2"
   },
   "dependencies": {
     "lit": "2.0.0-rc.2"
@@ -21,24 +21,26 @@
   "author": "Dominik Bruhn",
   "scripts": {
     "start": "webpack serve --config webpack.dev.js",
+    "pretty": "prettier --write \"./**/*.{ts,json}\"",
+    "check-update": "ncu",
+    "upgrade": "ncu -u",
     "ts": "tsc",
     "ts:watch": "tsc --watch",
-    "pretty": "prettier --write \"./**/*.{ts,json}\"",
     "eslint": "eslint src",
     "eslint:fix": "eslint src --fix",
     "lit-analyzer": "lit-analyzer \"src/**/*.{js,ts}\"",
-    "test": "wtr",
-    "test:watch": "npm run test -- --watch",
-    "docs": "typedoc",
-    "docs:watch": "typedoc --watch",
-    "build:webcomponent": "npm install && npm run ts && npm run lit-analyzer && npm run docs && webpack --config ./webpack.webcomponent.js",
-    "preversion": "npm run build:webcomponent",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "typedocs": "typedoc src/index.ts",
+    "docs-webcomponents": "wca analyze \"src/**/*.{js,ts}\" --outDir docs/components",
+    "docs": "npm run typedocs && npm run docs-webcomponents",
+    "prebuild": "npm install && npm run ts && npm run eslint && npm run lit-analyzer && npm run docs",
+    "build:webcomponents": "webpack --config ./webpack.webcomponent.js ",
+    "build:all": "npm run prebuild && npm run build:webcomponents",
+    "preversion": "npm run build:all",
     "new-patch": "npm version patch -m \"new patch version: %s\" --force",
     "new-minor": "npm version minor -m \"new minor version: %s\" --force",
     "new-major": "npm version major -m \"new major version: %s\" --force",
     "postversion": "npm publish --access=public"
-  },
-  "browserslist": [
-    "last 1 Chrome version"
-  ]
+  }
 }

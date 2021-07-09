@@ -1,5 +1,4 @@
 export * from "./nidoca-meta";
-export * from "./nidoca-abstract-app";
 export * from "./nidoca-accordion";
 export * from "./nidoca-accordion-item";
 export * from "./nidoca-wizard-step";
