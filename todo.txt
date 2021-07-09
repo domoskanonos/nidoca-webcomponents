@@ -1,2 +1,2 @@
-- nidoca-icon aufsplitten in icon und icon round
+- nidoca-decision-dialog
 - tests funktionieren mit der neuen Lit Version nicht :-(
