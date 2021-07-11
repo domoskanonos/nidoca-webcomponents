@@ -66,39 +66,21 @@ export class NidocaSearchBar extends LitElement {
           value="${this.value}"
           placeholder="${this.placeholder}"
           ?disabled="${this.disabled}"
-          @keyup="${this.handleKeyup}"
-          @change="${() => this.handleChange()}"
-          @focus="${() => this.handleFocus()}"
-          @focusout="${() => this.handleFocusout()}"
+          @input="${() => this.valueChanged()}"
         />
         <nidoca-layout-spacer .spacerTypes="${[NidocaLayoutSpacerType.RIGHT]}">
-          <nidoca-icon icon="close" @click="${() => (this.value = "")}"></nidoca-icon>
+          <nidoca-icon icon="close" @click="${() => this.clearValue()}"></nidoca-icon>
         </nidoca-layout-spacer>
       </nidoca-layout-flex-container>
     `;
   }
 
-  clearValue() {
+  clearValue(): void {
     this.value = "";
   }
 
-  async handleFocus(): Promise<void> {
-    this.dispatchSearchValueChanged("nidoca-form-text-event-focus");
-  }
-
-  async handleFocusout(): Promise<void> {
-    this.dispatchSearchValueChanged("nidoca-form-text-focusout");
-  }
-
-  async handleChange(): Promise<void> {
-    this.dispatchSearchValueChanged("nidoca-form-text-event-change");
-  }
-
-  async handleKeyup(): Promise<void> {
-    this.dispatchSearchValueChanged("nidoca-form-text-event-change");
-  }
-
-  async dispatchSearchValueChanged(eventName: string): Promise<void> {
+  async valueChanged(): Promise<void> {
+    const eventName = "nidoca-search-bar-event-value-changed";
     const customEvent = new CustomEvent(eventName, {
       detail: this.inputElement?.value,
       bubbles: true,
