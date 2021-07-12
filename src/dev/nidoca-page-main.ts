@@ -24,7 +24,7 @@ export class NidocaPageMain extends LitElement {
 
 
           <nidoca-icon-extended icon="home"></nidoca-icon-extended>
-          <nidoca-dialog-action .show="${true}">
+          <nidoca-dialog-action .show="${false}">
 
           <nidoca-typography slot="header" typographyType="${NidocaTypographyType.H1}">${DUMMY_DESCRIPTION_SHORT}</nidoca-typography>
             <nidoca-typography slot="text" typographyType="${NidocaTypographyType.BODY1}">${DUMMY_DESCRIPTION}</nidoca-typography>

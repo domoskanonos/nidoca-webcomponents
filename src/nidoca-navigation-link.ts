@@ -25,7 +25,7 @@ export class NidocaNavigationLink extends LitElement {
     ::slotted(.navItem:active),
     .navItem:active {
       color: var(--mdc-theme-on-primary-light);
-      background-color: var(--mdc-theme-primary-dark);
+      background-color: var(--app-color-primary-dark);
     }
   `;
 

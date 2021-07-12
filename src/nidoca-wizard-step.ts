@@ -23,7 +23,7 @@ export class NidocaWizardStep extends LitElement {
     .wizard-step-connector.selected {
       padding: var(--space-little);
       color: var(--mdc-theme-on-primary);
-      background-color: var(--mdc-theme-primary);
+      background-color: var(--app-color-primary);
     }
   `;
 
@@ -95,7 +95,7 @@ export class NidocaWizardStep extends LitElement {
 
   private determineBackgroundColor(state: WizardStepState | undefined): string {
     return state == WizardStepState.COMPLETED
-      ? "var(--mdc-theme-primary)"
+      ? "var(--app-color-primary)"
       : state == WizardStepState.CURRENT
         ? "var(--app-color-secondary-background)"
         : "var(--app-color-surface-background)";

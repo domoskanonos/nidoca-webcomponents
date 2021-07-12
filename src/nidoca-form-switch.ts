@@ -46,7 +46,7 @@ export class NidocaFormSwitch extends NidocaFormAbstractInputElement {
       </nidoca-visible>
       <nidoca-visible visibleType="${this.checked ? VisibleType.NORMAL : VisibleType.HIDE}">
         <nidoca-icon
-          color="var(--mdc-theme-primary)"
+          style="color:var(--app-color-primary-background);"
           @nidoca-event-icon-clicked="${() => {
             this.switchSelected();
           }}"

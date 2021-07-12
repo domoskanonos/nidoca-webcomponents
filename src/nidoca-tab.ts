@@ -15,7 +15,7 @@ export class NidocaTab extends LitElement {
     }
 
     :host(.SELECTED) {
-      border-color: var(--mdc-theme-primary);
+      border-color: var(--app-color-primary);
     }
 
     .tab,

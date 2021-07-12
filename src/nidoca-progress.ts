@@ -16,7 +16,7 @@ export class NidocaProgress extends LitElement {
       appearance: none;
       border: none;
       height: 0.25em;
-      color: var(--mdc-theme-primary);
+      color: var(--app-color-primary);
       background-color: #dddddd;
       font-size: 16px;
       width: 100%;
@@ -93,7 +93,7 @@ export class NidocaProgress extends LitElement {
       padding: 0.25em;
       width: 3em;
       height: 3em;
-      color: var(--mdc-theme-primary);
+      color: var(--app-color-primary);
       background-color: transparent;
       font-size: 16px;
       overflow: hidden;
