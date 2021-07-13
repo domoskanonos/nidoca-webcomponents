@@ -1,8 +1,8 @@
 import {css, html, TemplateResult, LitElement} from "lit";
 import {customElement} from "lit/decorators/custom-element";
 
-@customElement("nidoca-navigation")
-export class NidocaNavigation extends LitElement {
+@customElement("nidoca-menu")
+export class NidocaMenu extends LitElement {
   static styles = css``;
 
   render(): TemplateResult {

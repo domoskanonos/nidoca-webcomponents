@@ -30,7 +30,16 @@ export class NidocaPageGallery extends LitElement {
   elevationAssociatedElement: HTMLElement | undefined;
 
   @property({type: Object})
-  elevationContentElement: TemplateResult = html`sdjoidj`;
+  elevationContentElement: TemplateResult = html`<nidoca-menu slot="sidebar">
+    <nidoca-menu-item
+      slot="links"
+      icon="home"
+      text="Home"
+      href="#main"
+      .rendered="${true}"
+      @nidoca-event-link-clicked="${() => NidocaRouter.getUniqueInstance().navigate("main")}"
+    ></nidoca-menu-item>
+  </nidoca-menu> `;
 
   render(): TemplateResult {
     return html`
@@ -95,8 +104,8 @@ export class NidocaPageGallery extends LitElement {
                 {primary: "List Item", secondary: "Komponente muss schöner werden"},
                 {primary: "List Item", secondary: "Komponente muss schöner werden"},
               ].map(
-                (item, index) => html`
-                  <nidoca-list-item @click="${() => this.clicked(index)}"
+                (item) => html`
+                  <nidoca-list-item
                     ><nidoca-typography .typographyType="${NidocaTypographyType.H6}">${item.primary}</nidoca-typography>
                     <nidoca-typography .typographyType="${NidocaTypographyType.BODY1}" slot="secondary"
                       >${item.secondary}</nidoca-typography
@@ -109,24 +118,24 @@ export class NidocaPageGallery extends LitElement {
             </nidoca-list>
           </span>
 
-          <nidoca-navigation slot="sidebar">
-            <nidoca-navigation-link
+          <nidoca-menu slot="sidebar">
+            <nidoca-menu-item
               slot="links"
               icon="home"
               text="Home"
               href="#main"
               .rendered="${true}"
               @nidoca-event-link-clicked="${() => NidocaRouter.getUniqueInstance().navigate("main")}"
-            ></nidoca-navigation-link>
-            <nidoca-navigation-link
+            ></nidoca-menu-item>
+            <nidoca-menu-item
               slot="links"
               icon="home"
               text="Gallery"
               href="#main"
               .rendered="${true}"
               @nidoca-event-link-clicked="${() => NidocaRouter.getUniqueInstance().navigate("gallery")}"
-            ></nidoca-navigation-link>
-          </nidoca-navigation>
+            ></nidoca-menu-item>
+          </nidoca-menu>
         </nidoca-template>
 
         <nidoca-list .selectionMode="${this.selectionMode}">
@@ -138,7 +147,7 @@ export class NidocaPageGallery extends LitElement {
             {primary: "List Item", secondary: "Komponente muss schöner werden"},
           ].map(
             (item, index) => html`
-              <nidoca-list-item @click="${() => this.clicked(index)}"
+              <nidoca-list-item
                 ><nidoca-typography .typographyType="${NidocaTypographyType.H6}">${item.primary}</nidoca-typography>
                 <nidoca-icon slot="graphic" icon="face">face</nidoca-icon>
                 <nidoca-icon slot="meta" icon="arrow_right">arrow_right</nidoca-icon>
@@ -155,8 +164,5 @@ export class NidocaPageGallery extends LitElement {
         @nidoca-elevation-event-closeme="${() => (this.elevationShow = false)}"
       ></nidoca-elevation>
     `;
-  }
-  clicked(index: number): void {
-    throw new Error("Method not implemented." + index);
   }
 }

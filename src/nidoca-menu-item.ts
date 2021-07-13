@@ -11,8 +11,8 @@ import {
 } from "./nidoca-layout-flex-container";
 import {NidocaTypographyType} from "./nidoca-typography";
 
-@customElement("nidoca-navigation-link")
-export class NidocaNavigationLink extends LitElement {
+@customElement("nidoca-menu-item")
+export class NidocaMenuItem extends LitElement {
   static styles = css`
     .navItem {
       cursor: pointer;

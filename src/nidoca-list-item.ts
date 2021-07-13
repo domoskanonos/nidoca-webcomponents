@@ -50,7 +50,7 @@ export class NidocaListItem extends LitElement {
 
   render(): TemplateResult {
     return html`
-      <nidoca-ripple>
+      <nidoca-ripple @mousedown="${() => this.mouseDownAction()}" @mouseup="${() => this.mouseUpAction()}">
         <div class="container">
           ${this.selectionMode
             ? html`<nidoca-icon
@@ -71,6 +71,28 @@ export class NidocaListItem extends LitElement {
         .borderProperties="${[NidocaBorderProperty.BOTTOM, NidocaBorderProperty.FULL_WIDTH]}"
       ></nidoca-border>
     `;
+  }
+
+  private clickStart: number | null = null;
+  private clickEnd: number | null = null;
+
+  mouseDownAction(): void {
+    this.clickStart = Date.now();
+  }
+
+  mouseUpAction(): void {
+    if (this.clickStart) {
+      const diff: number = Date.now() - this.clickStart + 1;
+      if (diff > 500) {
+        this.dispatchEvent(
+          new CustomEvent("nidoca-event-list-item-long-click", {
+            detail: this,
+            bubbles: true,
+            composed: true,
+          })
+        );
+      }
+    }
   }
 
   itemClicked(): void {

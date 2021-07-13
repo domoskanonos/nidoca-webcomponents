@@ -7,24 +7,24 @@ export class NidocaElevationSettings extends LitElement {
   static styles = css``;
   render(): TemplateResult {
     return html`
-      <nidoca-navigation slot="sidebar">
-        <nidoca-navigation-link
+      <nidoca-menu slot="sidebar">
+        <nidoca-menu-item
           slot="links"
           icon="home"
           text="Home"
           href="#main"
           .rendered="${true}"
           @nidoca-event-link-clicked="${() => NidocaRouter.getUniqueInstance().navigate("main")}"
-        ></nidoca-navigation-link>
-        <nidoca-navigation-link
+        ></nidoca-menu-item>
+        <nidoca-menu-item
           slot="links"
           icon="home"
           text="Gallery"
           href="#main"
           .rendered="${true}"
           @nidoca-event-link-clicked="${() => NidocaRouter.getUniqueInstance().navigate("gallery")}"
-        ></nidoca-navigation-link>
-      </nidoca-navigation>
+        ></nidoca-menu-item>
+      </nidoca-menu>
     `;
   }
 }

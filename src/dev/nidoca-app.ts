@@ -110,48 +110,48 @@ export class NidocaApp extends LitElement implements NidocaRouteListener {
 
         <span slot="content">${this.currentPage}</span>
 
-        <nidoca-navigation slot="sidebar">
-          <nidoca-navigation-link
+        <nidoca-menu slot="sidebar">
+          <nidoca-menu-item
             slot="links"
             icon="home"
             text="Home"
             href="#main"
             .rendered="${true}"
             @nidoca-event-link-clicked="${() => NidocaRouter.getUniqueInstance().navigate("main")}"
-          ></nidoca-navigation-link>
-          <nidoca-navigation-link
+          ></nidoca-menu-item>
+          <nidoca-menu-item
             slot="links"
             icon="home"
             text="Gallery"
             href="#main"
             .rendered="${true}"
             @nidoca-event-link-clicked="${() => NidocaRouter.getUniqueInstance().navigate("gallery")}"
-          ></nidoca-navigation-link>
-          <nidoca-navigation-link
+          ></nidoca-menu-item>
+          <nidoca-menu-item
             slot="links"
             icon="home"
             text="topAppBar"
             href="#main"
             .rendered="${true}"
             @nidoca-event-link-clicked="${() => NidocaRouter.getUniqueInstance().navigate("topAppBar")}"
-          ></nidoca-navigation-link>
-          <nidoca-navigation-link
+          ></nidoca-menu-item>
+          <nidoca-menu-item
             slot="links"
             icon="home"
             text="list"
             href="#main"
             .rendered="${true}"
             @nidoca-event-link-clicked="${() => NidocaRouter.getUniqueInstance().navigate("list")}"
-          ></nidoca-navigation-link>
-          <nidoca-navigation-link
+          ></nidoca-menu-item>
+          <nidoca-menu-item
             slot="links"
             icon="home"
             text="Formulare"
             href="#main"
             .rendered="${true}"
             @nidoca-event-link-clicked="${() => NidocaRouter.getUniqueInstance().navigate("form")}"
-          ></nidoca-navigation-link>
-        </nidoca-navigation>
+          ></nidoca-menu-item>
+        </nidoca-menu>
       </nidoca-template>
       <nidoca-dialog
         .show="${this.showPopup}"
