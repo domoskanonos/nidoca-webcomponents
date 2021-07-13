@@ -146,7 +146,7 @@ export class NidocaPageGallery extends LitElement {
             {primary: "List Item", secondary: "Komponente muss schöner werden"},
             {primary: "List Item", secondary: "Komponente muss schöner werden"},
           ].map(
-            (item, index) => html`
+            (item) => html`
               <nidoca-list-item
                 ><nidoca-typography .typographyType="${NidocaTypographyType.H6}">${item.primary}</nidoca-typography>
                 <nidoca-icon slot="graphic" icon="face">face</nidoca-icon>
