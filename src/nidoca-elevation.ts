@@ -1,4 +1,4 @@
-import {html, LitElement, TemplateResult, css, PropertyValues} from "lit";
+import {html, LitElement, TemplateResult, css} from "lit";
 import {customElement} from "lit/decorators/custom-element";
 import {property} from "lit/decorators/property";
 import {VisibleType} from ".";

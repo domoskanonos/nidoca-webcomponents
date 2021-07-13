@@ -12,7 +12,7 @@ export class NidocaFormOutputData {
 @customElement("nidoca-form")
 export class NidocaForm extends LitElement {
   static styles = css`
-    .FORM {
+    .container {
       box-sizing: border-box;
     }
   `;
@@ -26,7 +26,7 @@ export class NidocaForm extends LitElement {
   render(): TemplateResult {
     return html`
       <form
-        class="FORM"
+        class="container"
         @nidoca-event-button-clicked="${this.formButtonClicked}"
         .?autocomplete="${this.autocomplete}"
       >
