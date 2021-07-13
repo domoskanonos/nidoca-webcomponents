@@ -89,4 +89,16 @@ export class NidocaList extends LitElement {
     }
     return selection;
   }
+
+  selectAll(): void {
+    this.getItems().forEach((item) => {
+      item.selected = true;
+    });
+  }
+
+  unselectAll(): void {
+    this.getItems().forEach((item) => {
+      item.selected = false;
+    });
+  }
 }
