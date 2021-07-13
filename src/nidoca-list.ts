@@ -80,10 +80,10 @@ export class NidocaList extends LitElement {
       for (let i = 0; i < slottedElements.length; i++) {
         const element = slottedElements[i];
         if (element instanceof NidocaListItem) {
-          nliIndex++;
           if (element.selected) {
             selection.push(nliIndex);
           }
+          nliIndex++;
         }
       }
     }
