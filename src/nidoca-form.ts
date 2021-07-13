@@ -53,7 +53,6 @@ export class NidocaForm extends LitElement {
     for (const element of this.getInputElements(this.slotElement)) {
       if (!element.validate()) {
         valid = false;
-        break;
       }
     }
     return valid;
