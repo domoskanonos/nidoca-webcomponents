@@ -59,12 +59,12 @@ export class NidocaListItem extends LitElement {
                 icon="${this.selected ? "check_box" : "check_box_outline_blank"}"
               ></nidoca-icon>`
             : html`<span></span>`}
-          <slot name="graphic" class="slotGraphic" @click="${() => this.itemClicked()}"></slot>
+          <slot name="graphic" class="slotGraphic"></slot>
           <div class="containerTypography">
-            <slot class="" @click="${() => this.itemClicked()}"></slot>
-            <slot name="secondary" @click="${() => this.itemClicked()}"></slot>
+            <slot></slot>
+            <slot name="secondary"></slot>
           </div>
-          <slot name="meta" class="slotMeta" @click="${() => this.itemClicked()}"></slot>
+          <slot name="meta" class="slotMeta"></slot>
         </div>
       </nidoca-ripple>
       <nidoca-border
@@ -74,7 +74,6 @@ export class NidocaListItem extends LitElement {
   }
 
   private clickStart: number | null = null;
-  private clickEnd: number | null = null;
 
   mouseDownAction(): void {
     this.clickStart = Date.now();
@@ -83,26 +82,20 @@ export class NidocaListItem extends LitElement {
   mouseUpAction(): void {
     if (this.clickStart) {
       const diff: number = Date.now() - this.clickStart + 1;
+      let eventName: string = "";
       if (diff > 500) {
-        this.dispatchEvent(
-          new CustomEvent("nidoca-event-list-item-long-click", {
-            detail: this,
-            bubbles: true,
-            composed: true,
-          })
-        );
+        eventName = "nidoca-event-list-item-long-click";
+      } else {
+        eventName = "nidoca-event-list-item-click";
       }
+      this.dispatchEvent(
+        new CustomEvent(eventName, {
+          detail: this,
+          bubbles: true,
+          composed: true,
+        })
+      );
     }
-  }
-
-  itemClicked(): void {
-    this.dispatchEvent(
-      new CustomEvent("nidoca-event-list-item-clicked", {
-        detail: this,
-        bubbles: true,
-        composed: true,
-      })
-    );
   }
 
   switchSelected(): void {
