@@ -67,9 +67,6 @@ export class NidocaListItem extends LitElement {
           <slot name="meta" class="slotMeta"></slot>
         </div>
       </nidoca-ripple>
-      <nidoca-border
-        .borderProperties="${[NidocaBorderProperty.BOTTOM, NidocaBorderProperty.FULL_WIDTH]}"
-      ></nidoca-border>
     `;
   }
 

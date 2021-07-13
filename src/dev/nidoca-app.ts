@@ -110,48 +110,32 @@ export class NidocaApp extends LitElement implements NidocaRouteListener {
 
         <span slot="content">${this.currentPage}</span>
 
-        <nidoca-menu slot="sidebar">
-          <nidoca-menu-item
-            slot="links"
+        <nidoca-list slot="sidebar">
+          <nidoca-list-item
             icon="home"
             text="Home"
-            href="#main"
             .rendered="${true}"
-            @nidoca-event-link-clicked="${() => NidocaRouter.getUniqueInstance().navigate("main")}"
-          ></nidoca-menu-item>
-          <nidoca-menu-item
-            slot="links"
+            @click="${() => NidocaRouter.getUniqueInstance().navigate("main")}"
+          ></nidoca-list-item>
+          <nidoca-list-item
             icon="home"
             text="Gallery"
-            href="#main"
             .rendered="${true}"
-            @nidoca-event-link-clicked="${() => NidocaRouter.getUniqueInstance().navigate("gallery")}"
-          ></nidoca-menu-item>
-          <nidoca-menu-item
-            slot="links"
+            @click="${() => NidocaRouter.getUniqueInstance().navigate("gallery")}"
+          ></nidoca-list-item>
+          <nidoca-list-item
             icon="home"
             text="topAppBar"
-            href="#main"
             .rendered="${true}"
-            @nidoca-event-link-clicked="${() => NidocaRouter.getUniqueInstance().navigate("topAppBar")}"
-          ></nidoca-menu-item>
-          <nidoca-menu-item
-            slot="links"
-            icon="home"
-            text="list"
-            href="#main"
-            .rendered="${true}"
-            @nidoca-event-link-clicked="${() => NidocaRouter.getUniqueInstance().navigate("list")}"
-          ></nidoca-menu-item>
-          <nidoca-menu-item
-            slot="links"
-            icon="home"
-            text="Formulare"
-            href="#main"
-            .rendered="${true}"
-            @nidoca-event-link-clicked="${() => NidocaRouter.getUniqueInstance().navigate("form")}"
-          ></nidoca-menu-item>
-        </nidoca-menu>
+            @click="${() => NidocaRouter.getUniqueInstance().navigate("topAppBar")}"
+          ></nidoca-list-item>
+          <nidoca-list-item @click="${() => NidocaRouter.getUniqueInstance().navigate("list")}">Liste</nidoca-list-item>
+          <nidoca-list-item @click="${() => NidocaRouter.getUniqueInstance().navigate("form")}">
+            <nidoca-typography .typographyType="${NidocaTypographyType.H6}">Formular</nidoca-typography>
+            <nidoca-icon slot="graphic" icon="face">face</nidoca-icon>
+            <nidoca-icon slot="meta" icon="arrow_right">arrow_right</nidoca-icon>
+          </nidoca-list-item>
+        </nidoca-list>
       </nidoca-template>
       <nidoca-dialog
         .show="${this.showPopup}"
@@ -162,9 +146,9 @@ export class NidocaApp extends LitElement implements NidocaRouteListener {
       <nidoca-elevation
         .show="${this.elevationShow}"
         .associatedElement="${this.elevationAssociatedElement}"
-        .content="${this.elevationContentElement}"
         @mouseout="${() => (this.elevationShow = false)}"
-      ></nidoca-elevation>
+        >${this.elevationContentElement}</nidoca-elevation
+      >
     `;
   }
 }

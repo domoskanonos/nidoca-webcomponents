@@ -30,16 +30,37 @@ export class NidocaPageGallery extends LitElement {
   elevationAssociatedElement: HTMLElement | undefined;
 
   @property({type: Object})
-  elevationContentElement: TemplateResult = html`<nidoca-menu slot="sidebar">
-    <nidoca-menu-item
-      slot="links"
-      icon="home"
-      text="Home"
-      href="#main"
-      .rendered="${true}"
-      @nidoca-event-link-clicked="${() => NidocaRouter.getUniqueInstance().navigate("main")}"
-    ></nidoca-menu-item>
-  </nidoca-menu> `;
+  elevationContentElement: TemplateResult = html`
+  
+  <nidoca-list>
+              <nidoca-list-item
+                text="Kündigung drucken"
+                @click="${() => window.print()}"
+              >hiuhiuh</nidoca-list-item>
+
+              <nidoca-list-item
+                icon="delete"
+                title="Vertrag löschen"
+              ></nidoca-list-item>
+
+              <nidoca-list-item
+                icon="share"
+                title="Teilen"
+              ></nidoca-list-item>
+
+              <nidoca-list-item
+                text="Alle auswählen"
+                @click="${() => console.log("")}"
+              ></nidoca-list-item>
+              <nidoca-list-item
+                text="Alle abwählen"
+                @click="${() =>
+                  (this.selectionMode = false)}"
+              ></nidoca-list-item>
+            </nidoca-list>
+  
+  
+  `;
 
   render(): TemplateResult {
     return html`
@@ -118,24 +139,22 @@ export class NidocaPageGallery extends LitElement {
             </nidoca-list>
           </span>
 
-          <nidoca-menu slot="sidebar">
-            <nidoca-menu-item
-              slot="links"
+          <nidoca-list slot="sidebar">
+            <nidoca-list-item
               icon="home"
               text="Home"
               href="#main"
               .rendered="${true}"
-              @nidoca-event-link-clicked="${() => NidocaRouter.getUniqueInstance().navigate("main")}"
-            ></nidoca-menu-item>
-            <nidoca-menu-item
-              slot="links"
+              @click="${() => NidocaRouter.getUniqueInstance().navigate("main")}"
+            ></nidoca-list-item>
+            <nidoca-list-item
               icon="home"
               text="Gallery"
               href="#main"
               .rendered="${true}"
-              @nidoca-event-link-clicked="${() => NidocaRouter.getUniqueInstance().navigate("gallery")}"
-            ></nidoca-menu-item>
-          </nidoca-menu>
+              @click="${() => NidocaRouter.getUniqueInstance().navigate("gallery")}"
+            ></nidoca-list-item>
+          </nidoca-list>
         </nidoca-template>
 
         <nidoca-list .selectionMode="${this.selectionMode}">
@@ -157,12 +176,26 @@ export class NidocaPageGallery extends LitElement {
         </nidoca-list>
       </nidoca-layout-flex-container>
 
+      <nidoca-layout-spacer slot="topRight">
+<nidoca-icon
+            
+            icon="more_vert"
+            .clickable="${true}"
+            @nidoca-event-icon-clicked="${(event: CustomEvent) => {
+              this.elevationAssociatedElement = <HTMLElement>event.target;
+              this.elevationShow = true;
+            }}"
+          ></nidoca-icon>
+
+          </nidoca-layout-spacer>
+
+
+
       <nidoca-elevation
         .show="${this.elevationShow}"
         .associatedElement="${this.elevationAssociatedElement}"
-        .content="${this.elevationContentElement}"
-        @nidoca-elevation-event-closeme="${() => (this.elevationShow = false)}"
-      ></nidoca-elevation>
+       @nidoca-elevation-event-closeme="${() => (this.elevationShow = false)}"
+      >${this.elevationContentElement}</nidoca-elevation>
     `;
   }
 }

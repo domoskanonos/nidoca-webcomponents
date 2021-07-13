@@ -11,7 +11,7 @@ import {
 } from "./nidoca-layout-flex-container";
 import {NidocaTypographyType} from "./nidoca-typography";
 
-@customElement("nidoca-menu-item")
+@customElement("nidoca-list-item")
 export class NidocaMenuItem extends LitElement {
   static styles = css`
     .navItem {

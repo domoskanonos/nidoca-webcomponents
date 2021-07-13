@@ -29,12 +29,9 @@ export class NidocaSpacer extends LitElement {
     .SPACER,
     ::slotted(.SPACER) {
       box-sizing: border-box;
-      display: block;
     }
 
     .slotStyle {
-      display:flex;
-      flex-direction: column;
     }
 
   `;

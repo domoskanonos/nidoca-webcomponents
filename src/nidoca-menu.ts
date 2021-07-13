@@ -1,7 +1,7 @@
 import {css, html, TemplateResult, LitElement} from "lit";
 import {customElement} from "lit/decorators/custom-element";
 
-@customElement("nidoca-menu")
+@customElement("nidoca-list")
 export class NidocaMenu extends LitElement {
   static styles = css``;
 
@@ -9,7 +9,7 @@ export class NidocaMenu extends LitElement {
     return html`
       <div>
         <slot name="contentBefore"></slot>
-        <slot name="links"></slot>
+        <slot></slot>
         <slot name="contentAfter"></slot>
       </div>
     `;

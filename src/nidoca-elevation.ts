@@ -6,7 +6,7 @@ import {VisibleType} from ".";
 @customElement("nidoca-elevation")
 export class NidocaElevation extends LitElement {
   static styles = css`
-    .elevationContainer {
+    .container {
       position: fixed;
       z-index: 999;
     }
@@ -18,19 +18,31 @@ export class NidocaElevation extends LitElement {
   @property({type: Object})
   associatedElement: HTMLElement | undefined;
 
-  @property({type: Object})
-  content: TemplateResult | undefined;
+  constructor() {
+    super();
+    addEventListener("click", (me: MouseEvent) => {
+      const rect = this.associatedElement?.getBoundingClientRect();
+      if (rect) {
+        if (rect.top > me.clientY || rect.right < me.clientX || rect.left > me.clientX || rect.bottom < me.clientY) {
+          this.dispatchEvent(
+            new CustomEvent("nidoca-elevation-event-closeme", {
+              detail: this,
+              bubbles: true,
+              composed: true,
+            })
+          );
+        }
+        me.stopPropagation();
+      }
+    });
+  }
 
   render(): TemplateResult {
     return html`
-      <nidoca-visible
-        visibleType="${this.show ? VisibleType.NORMAL : VisibleType.HIDE}"
-        @mouseout="${() => this.dispachtEvent()}"
-      >
-        <div class="elevationContainer" style="${this.calculatePositionStyle(this.associatedElement)}">
+      <nidoca-visible visibleType="${this.show ? VisibleType.NORMAL : VisibleType.HIDE}">
+        <div class="container" style="${this.calculatePositionStyle(this.associatedElement)}">
           <nidoca-border>
-            ${this.content}
-            <slot></slot>
+            <slot id="slot"></slot>
           </nidoca-border>
         </div>
       </nidoca-visible>
@@ -38,47 +50,20 @@ export class NidocaElevation extends LitElement {
   }
 
   calculatePositionStyle(basedOnComponent: HTMLElement | undefined): string {
-    let style: string = "top:0;left:0;";
+    let style: string = "";
     if (basedOnComponent) {
       const rect = basedOnComponent.getBoundingClientRect();
-      style = `top:${rect.bottom}px;left:${rect.left}px;`;
-      console.log(rect.top, rect.right, rect.bottom, rect.left);
+      if (rect.right > window.innerWidth / 2) {
+        style += `right:${window.innerWidth - rect.right}px;`;
+      } else {
+        style += `left:${rect.left}px;`;
+      }
+      if (rect.top > window.innerHeight / 2) {
+        style += `bottom:${rect.height + window.innerHeight - rect.top}px;`;
+      } else {
+        style += `top:${rect.bottom}px;`;
+      }
     }
     return style;
-  }
-
-  updated(changedProperties: PropertyValues): void {
-    super.updated(changedProperties);
-
-    document.addEventListener("click", (me: MouseEvent) => {
-      const rect = this.associatedElement?.getBoundingClientRect();
-      if (rect) {
-        if (rect.top > me.clientY || rect.right < me.clientX || rect.left > me.clientX || rect.bottom < me.clientY) {
-          this.dispachtEvent();
-          console.log("iosdjiosdjio");
-        }
-      }
-      me.stopPropagation();
-    });
-    changedProperties.forEach((oldValue, propName) => {
-      if (propName == "associatedElement") {
-        console.debug(`${this.tagName} : property ${String(propName)} changed. oldValue: ${oldValue}`);
-        if (this.associatedElement) {
-          this.associatedElement.addEventListener("mouseout", () => {
-            //this.throwMousOutEvent();
-          });
-        }
-      }
-    });
-  }
-
-  dispachtEvent(): void {
-    this.dispatchEvent(
-      new CustomEvent("nidoca-elevation-event-closeme", {
-        detail: this,
-        bubbles: true,
-        composed: true,
-      })
-    );
   }
 }

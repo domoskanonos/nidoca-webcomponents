@@ -5,7 +5,7 @@ import {FlexAlignContent, FlexAlignItems, FlexDirection, FlexJustifyContent, Fle
 import {NidocaLayoutSpacerType, NidocaLayoutSpacerSize} from "./nidoca-layout-spacer";
 import {NidocaTypographyType} from "./nidoca-typography";
 
-@customElement("nidoca-menu-section")
+@customElement("nidoca-list-section")
 export class NidocaMenuSection extends LitElement {
   static styles = css``;
 
