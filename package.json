@@ -1,6 +1,6 @@
 {
   "name": "@domoskanonos/nidoca-webcomponents",
-  "version": "1.0.33",
+  "version": "1.0.34",
   "license": "MIT",
   "keywords": [
     "webcomponent, html, typescript, shadow dom, slot, ui, frontend, lit element"
