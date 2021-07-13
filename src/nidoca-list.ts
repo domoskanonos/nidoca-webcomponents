@@ -76,11 +76,13 @@ export class NidocaList extends LitElement {
     const selection: number[] = [];
     if (this.slotElement != null) {
       const slottedElements = this.slotElement.assignedElements();
-      for (let index = 0; index < slottedElements.length; index++) {
-        const element = slottedElements[index];
+      let nliIndex: number = 0;
+      for (let i = 0; i < slottedElements.length; i++) {
+        const element = slottedElements[i];
         if (element instanceof NidocaListItem) {
+          nliIndex++;
           if (element.selected) {
-            selection.push(index);
+            selection.push(nliIndex);
           }
         }
       }
