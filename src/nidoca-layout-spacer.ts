@@ -26,14 +26,12 @@ export enum NidocaLayoutSpacerSize {
 @customElement("nidoca-layout-spacer")
 export class NidocaSpacer extends LitElement {
   static styles = css`
-    .SPACER,
-    ::slotted(.SPACER) {
+    .container,
+    ::slotted(.container) {
+      display: inline-block;
       box-sizing: border-box;
     }
 
-    .slotStyle {
-      display: inline-block;
-    }
   `;
 
   @property({type: Array})
@@ -53,8 +51,8 @@ export class NidocaSpacer extends LitElement {
       <style>
         ${this.toStyle(this.devices, this.spacerTypes, this.spacerSize)}
       </style>
-      <span class="SPACER" style="${this.cssStyle}">
-        <slot class="slotStyle"></slot>
+      <span class="container" style="${this.cssStyle}">
+        <slot class=""></slot>
       </span>
     `;
   }
