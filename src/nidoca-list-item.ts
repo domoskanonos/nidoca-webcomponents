@@ -46,7 +46,12 @@ export class NidocaListItem extends LitElement {
 
   render(): TemplateResult {
     return html`
-      <nidoca-ripple @mousedown="${() => this.mouseDownAction()}" @mouseup="${() => this.mouseUpAction()}">
+      <nidoca-ripple
+        @mousedown="${() => this.downAction()}"
+        @mouseup="${() => this.upAction()}"
+        @pointerup="${() => this.upAction()}"
+        @pointerdown="${() => this.downAction()}"
+      >
         <div class="container">
           ${this.selectionMode
             ? html`<nidoca-icon
@@ -68,11 +73,11 @@ export class NidocaListItem extends LitElement {
 
   private clickStart: number | null = null;
 
-  mouseDownAction(): void {
+  downAction(): void {
     this.clickStart = Date.now();
   }
 
-  mouseUpAction(): void {
+  upAction(): void {
     if (this.clickStart) {
       const diff: number = Date.now() - this.clickStart + 1;
       let eventName: string = "";

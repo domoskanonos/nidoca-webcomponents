@@ -3,15 +3,10 @@ import {customElement} from "lit/decorators/custom-element";
 import {property} from "lit/decorators/property";
 import {NidocaBorderProperty, BorderSize} from "./nidoca-border";
 import {VisibleType} from "./nidoca-visible";
-import {
-  FlexAlignContent,
-  FlexAlignItems,
-  FlexDirection,
-  FlexJustifyContent,
-  FlexWrap,
-} from "./nidoca-layout-flex-container";
+import {FlexAlignContent} from "./nidoca-layout-flex-container";
 import {NidocaTypographyType} from "./nidoca-typography";
 import {NidocaLayoutSpacerType, NidocaLayoutSpacerSize} from "./nidoca-layout-spacer";
+import {NidocaColorScheme} from ".";
 
 export enum InputframeMode {
   NORMAL = "NORMAL",
@@ -20,12 +15,7 @@ export enum InputframeMode {
 
 @customElement("nidoca-form-inputframe")
 export class NidocaFormInputframe extends LitElement {
-  static styles = css`
-    .main {
-      color: var(--app-color-surface);
-      background-color: var(--app-color-surface-background);
-    }
-  `;
+  static styles = css``;
 
   @property({type: String})
   label: string = "";
@@ -43,14 +33,24 @@ export class NidocaFormInputframe extends LitElement {
   selected: boolean = false;
 
   @property({type: String})
+  colorScheme: NidocaColorScheme = NidocaColorScheme.SURFACE;
+
+  @property({type: String})
   inputframeMode: InputframeMode = InputframeMode.NORMAL;
 
   render(): TemplateResult {
     return this.inputframeMode == InputframeMode.NORMAL
       ? html`
+          <style>
+            .main {
+              color: var(--app-color-${this.colorScheme});
+              background-color: var(--app-color-${this.colorScheme}-background);
+            }
+          </style>
           <nidoca-border
             class="main"
-            .borderSize="${this.selected ? BorderSize.THIN : BorderSize.MEDIUM}"
+            .colorScheme="${this.colorScheme}"
+            .borderSize="${BorderSize.MEDIUM}"
             .borderProperties="${[
               NidocaBorderProperty.FULL_WIDTH,
               this.selected ? NidocaBorderProperty.BOTTOM_SELECTED : NidocaBorderProperty.BOTTOM,

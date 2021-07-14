@@ -1,6 +1,7 @@
 import {css, html, LitElement, TemplateResult} from "lit";
 import {customElement} from "lit/decorators/custom-element";
 import {property} from "lit/decorators/property";
+import {NidocaColorScheme} from ".";
 
 export enum NidocaBorderProperty {
   NONE = "NONE",
@@ -26,16 +27,14 @@ export enum BorderSize {
 @customElement("nidoca-border")
 export class NidocaBorder extends LitElement {
   static styles = css`
-    :host, slot {
+    :host,
+    slot {
       box-sizing: border-box;
       color: inherit;
       background-color: inherit;
       float: left;
       clear: none;
       display: contents;
-    }
-    .BORDER {
-      border-color: var(--app-color-surface-background);
     }
 
     slot {
@@ -94,9 +93,11 @@ export class NidocaBorder extends LitElement {
 
     .BOTTOM_SELECTED {
       border-bottom-style: solid;
-      border-color: var(--app-color-primary);
     }
   `;
+
+  @property({type: String})
+  colorScheme: NidocaColorScheme = NidocaColorScheme.SURFACE;
 
   @property({type: Array})
   borderProperties: NidocaBorderProperty[] = [NidocaBorderProperty.ALL];
@@ -105,7 +106,18 @@ export class NidocaBorder extends LitElement {
   borderSize: BorderSize = BorderSize.THIN;
 
   render(): TemplateResult {
-    return html` <slot class="${this.toBorderPropertiesString(this.borderProperties)} ${this.borderSize}"></slot> `;
+    return html`
+      <style>
+        .BORDER {
+          background-color: var(--app-color-${this.colorScheme}-background);
+        }
+        .BOTTOM_SELECTED {
+          border-color: var(--app-color-${this.colorScheme}-selected);
+        }
+      </style>
+
+      <slot class="${this.toBorderPropertiesString(this.borderProperties)} ${this.borderSize}"></slot>
+    `;
   }
 
   toBorderPropertiesString(borderPropertieses: string[]): string {
