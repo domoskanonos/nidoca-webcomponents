@@ -26,12 +26,11 @@ export enum NidocaLayoutSpacerSize {
 @customElement("nidoca-layout-spacer")
 export class NidocaSpacer extends LitElement {
   static styles = css`
-    .container,
-    ::slotted(.container) {
-      display: inline-block;
+    .spacer,
+    ::slotted(.spacer) {
       box-sizing: border-box;
+      display: inline-block;
     }
-
   `;
 
   @property({type: Array})
@@ -51,8 +50,8 @@ export class NidocaSpacer extends LitElement {
       <style>
         ${this.toStyle(this.devices, this.spacerTypes, this.spacerSize)}
       </style>
-      <span class="container" style="${this.cssStyle}">
-        <slot class=""></slot>
+      <span class="spacer" style="${this.cssStyle}">
+        <slot></slot>
       </span>
     `;
   }
@@ -95,7 +94,7 @@ export class NidocaSpacer extends LitElement {
       }
     });
 
-    style = ".SPACER {".concat(style).concat().concat("}");
+    style = ".spacer {".concat(style).concat().concat("}");
 
     let styleAll = "";
     devices.forEach((device: NidocaDevice) => {
