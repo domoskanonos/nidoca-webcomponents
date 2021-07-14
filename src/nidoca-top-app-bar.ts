@@ -8,7 +8,7 @@ export class NidocaTopAppBar extends LitElement {
   static styles = css`
     slot {
       display: flex;
-      align-items:center;
+      align-items: center;
     }
 
     .prominent {
@@ -24,7 +24,7 @@ export class NidocaTopAppBar extends LitElement {
   prominent: boolean = false;
 
   @property({type: String})
-  cssStyle: string = "height:60px;";
+  cssStyle: string = "height:60px;width:100%;position:relativ;";
 
   render(): TemplateResult {
     return html`
@@ -36,7 +36,6 @@ export class NidocaTopAppBar extends LitElement {
         }
       </style>
       <nidoca-layout-flex-container
-        style="width:100%;"
         .flexDirection="${FlexDirection.ROW}"
         .flexWrap="${FlexWrap.NO_WRAP}"
         .flexJustifyContent="${FlexJustifyContent.SPACE_BETWEEN}"

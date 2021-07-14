@@ -32,9 +32,8 @@ export class NidocaSpacer extends LitElement {
     }
 
     .slotStyle {
-      display: inline-block;
+      display: block;
     }
-
   `;
 
   @property({type: Array})
@@ -106,5 +105,4 @@ export class NidocaSpacer extends LitElement {
     });
     return styleAll;
   }
-
 }

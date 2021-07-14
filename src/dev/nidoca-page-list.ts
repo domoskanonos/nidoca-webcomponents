@@ -31,35 +31,13 @@ export class NidocaPageGallery extends LitElement {
 
   @property({type: Object})
   elevationContentElement: TemplateResult = html`
-  
-  <nidoca-list>
-              <nidoca-list-item
-                text="Kündigung drucken"
-                @click="${() => window.print()}"
-              >hiuhiuh</nidoca-list-item>
-
-              <nidoca-list-item
-                icon="delete"
-                title="Vertrag löschen"
-              ></nidoca-list-item>
-
-              <nidoca-list-item
-                icon="share"
-                title="Teilen"
-              ></nidoca-list-item>
-
-              <nidoca-list-item
-                text="Alle auswählen"
-                @click="${() => console.log("")}"
-              ></nidoca-list-item>
-              <nidoca-list-item
-                text="Alle abwählen"
-                @click="${() =>
-                  (this.selectionMode = false)}"
-              ></nidoca-list-item>
-            </nidoca-list>
-  
-  
+    <nidoca-list .colorScheme=${NidocaColorScheme.SURFACE}>
+      <nidoca-list-item text="Kündigung drucken" @click="${() => window.print()}">hiuhiuh</nidoca-list-item>
+      <nidoca-list-item icon="delete" title="Vertrag löschen"></nidoca-list-item>
+      <nidoca-list-item icon="share" title="Teilen"></nidoca-list-item>
+      <nidoca-list-item text="Alle auswählen" @click="${() => console.log("")}"></nidoca-list-item>
+      <nidoca-list-item text="Alle abwählen" @click="${() => (this.selectionMode = false)}"></nidoca-list-item>
+    </nidoca-list>
   `;
 
   render(): TemplateResult {
@@ -177,25 +155,22 @@ export class NidocaPageGallery extends LitElement {
       </nidoca-layout-flex-container>
 
       <nidoca-layout-spacer slot="topRight">
-<nidoca-icon
-            
-            icon="more_vert"
-            .clickable="${true}"
-            @nidoca-event-icon-clicked="${(event: CustomEvent) => {
-              this.elevationAssociatedElement = <HTMLElement>event.target;
-              this.elevationShow = true;
-            }}"
-          ></nidoca-icon>
-
-          </nidoca-layout-spacer>
-
-
+        <nidoca-icon
+          icon="more_vert"
+          .clickable="${true}"
+          @nidoca-event-icon-clicked="${(event: CustomEvent) => {
+            this.elevationAssociatedElement = <HTMLElement>event.target;
+            this.elevationShow = true;
+          }}"
+        ></nidoca-icon>
+      </nidoca-layout-spacer>
 
       <nidoca-elevation
         .show="${this.elevationShow}"
         .associatedElement="${this.elevationAssociatedElement}"
-       @nidoca-elevation-event-closeme="${() => (this.elevationShow = false)}"
-      >${this.elevationContentElement}</nidoca-elevation>
+        @nidoca-elevation-event-closeme="${() => (this.elevationShow = false)}"
+        >${this.elevationContentElement}</nidoca-elevation
+      >
     `;
   }
 }

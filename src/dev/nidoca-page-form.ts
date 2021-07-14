@@ -59,6 +59,8 @@ export class NidocaPageForm extends LitElement {
           name="switch"
           label="Mein Auswahlfeld"
           assistiveText="Mein Auswahlfeld Informationstext"
+          errorText="Mein Error Text"
+          warningText="Mein Warning Text"
           .checked="${true}"
         ></nidoca-form-switch>
         <nidoca-form-combobox name="combobox" label="Meine Combobox"></nidoca-form-combobox>

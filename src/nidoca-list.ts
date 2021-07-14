@@ -2,6 +2,7 @@ import {css, html, TemplateResult, LitElement, PropertyValues} from "lit";
 import {customElement} from "lit/decorators/custom-element";
 import {property} from "lit/decorators/property";
 import {query} from "lit/decorators/query";
+import {NidocaColorScheme} from ".";
 import {NidocaListItem} from "./nidoca-list-item";
 
 @customElement("nidoca-list")
@@ -15,9 +16,6 @@ export class NidocaList extends LitElement {
       grid-template-rows: 1fr;
       grid-template-columns: 1fr;
     }
-
-    .slotList > * {
-    }
   `;
 
   @property({type: Boolean})
@@ -25,6 +23,9 @@ export class NidocaList extends LitElement {
 
   @query("#slotElement")
   private slotElement: HTMLSlotElement | undefined;
+
+  @property({type: String})
+  colorScheme: NidocaColorScheme = NidocaColorScheme.BACKGROUND;
 
   updated(changedProperties: PropertyValues): void {
     super.updated(changedProperties);
@@ -39,7 +40,19 @@ export class NidocaList extends LitElement {
   }
 
   render(): TemplateResult {
-    return html` <slot class="slotList" id="slotElement"></slot> `;
+    return html`
+      <style>
+        ::slotted(nidoca-list-item) {
+          color: var(--app-color-${this.colorScheme});
+          background-color: var(--app-color-${this.colorScheme}-background);
+        }
+
+        ::slotted(nidoca-list-item:hover) {
+          background-color: var(--app-color-${this.colorScheme}-background-light);
+        }
+      </style>
+      <slot class="slotList" id="slotElement"></slot>
+    `;
   }
 
   getItems(): NidocaListItem[] {

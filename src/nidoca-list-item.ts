@@ -1,7 +1,7 @@
 import {css, html, TemplateResult, LitElement} from "lit";
 import {customElement} from "lit/decorators/custom-element";
 import {property} from "lit/decorators/property";
-import {NidocaBorderProperty as NidocaBorderProperty} from ".";
+import {NidocaBorderProperty as NidocaBorderProperty, NidocaColorScheme} from ".";
 
 @customElement("nidoca-list-item")
 export class NidocaListItem extends LitElement {
@@ -11,10 +11,6 @@ export class NidocaListItem extends LitElement {
       cursor: pointer;
       grid-template-columns: 1fr 1fr minmax(auto, 100%) 1fr;
       min-height: var(--line-height-massiv);
-    }
-
-    .container:hover {
-      background-color: var(--app-color-surface-background-light);
     }
 
     .slotGraphic,
