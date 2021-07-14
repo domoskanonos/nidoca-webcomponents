@@ -32,7 +32,7 @@ export class NidocaSpacer extends LitElement {
     }
 
     .slotStyle {
-      display: block;
+      display: inline-block;
     }
   `;
 
