@@ -59,6 +59,7 @@ export class NidocaFormInputframe extends LitElement {
             @mouseout="${() => this.mouseout()}"
           >
             <nidoca-layout-spacer
+              cssStyle="width:100%;"
               spacerSize="${NidocaLayoutSpacerSize.SMALL}"
               .spacerTypes="${[NidocaLayoutSpacerType.ALL]}"
             >

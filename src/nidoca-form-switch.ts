@@ -76,7 +76,7 @@ export class NidocaFormSwitch extends NidocaFormAbstractInputElement {
   label: string = "";
 
   @property({type: String})
-  assistiveText: string = "";
+  infoText: string = "";
 
   @property({type: String})
   errorText: string = "";
@@ -122,11 +122,11 @@ export class NidocaFormSwitch extends NidocaFormAbstractInputElement {
         </nidoca-typography>
         <nidoca-visible
           slot="secondary"
-          visibleType="${this.assistiveText.length > 0 ? VisibleType.NORMAL : VisibleType.HIDE}"
+          visibleType="${this.infoText.length > 0 ? VisibleType.NORMAL : VisibleType.HIDE}"
         >
           <nidoca-typography
             .typographyType="${NidocaTypographyType.SUBTITLE2}"
-            text="${this.assistiveText}"
+            text="${this.infoText}"
           ></nidoca-typography>
         </nidoca-visible>
         <label class="switch" slot="meta">

@@ -1,2 +1,3 @@
-- nidoca-decision-dialog
+- nidoca-print komponente
+- Fokus Problem in Eingabefeldern onmouseover und out nicht das richtige.
 - tests funktionieren mit der neuen Lit Version nicht :-(
