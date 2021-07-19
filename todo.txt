@@ -1,3 +1,4 @@
+- nidoca form component when vaidation failued, scroll into View: https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView
 - nidoca-print komponente
 - Fokus Problem in Eingabefeldern onmouseover und out nicht das richtige.
 - tests funktionieren mit der neuen Lit Version nicht :-(
