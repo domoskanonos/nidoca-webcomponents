@@ -17,7 +17,7 @@ export class NidocaForm extends LitElement {
     }
   `;
 
-  @property({type : Boolean})
+  @property({type: Boolean})
   autocomplete: boolean = true;
 
   @query("#slotElement")
@@ -52,6 +52,9 @@ export class NidocaForm extends LitElement {
     let valid: boolean = true;
     for (const element of this.getInputElements(this.slotElement)) {
       if (!element.validate()) {
+        if (valid) {
+          element.scrollIntoView(true);
+        }
         valid = false;
       }
     }
@@ -96,8 +99,8 @@ export class NidocaForm extends LitElement {
     if (element instanceof NidocaFormAbstractInputElement) {
       inputElements.push(element);
     } else if (element.hasChildNodes()) {
-      const childrens:HTMLCollection = element.children;
-      for (const childElement of  [].slice.call(childrens)) {
+      const childrens: HTMLCollection = element.children;
+      for (const childElement of [].slice.call(childrens)) {
         this.recursiveInputElementSearch(childElement, inputElements);
       }
     }
