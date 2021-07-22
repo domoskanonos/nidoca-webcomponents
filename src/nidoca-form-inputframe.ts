@@ -33,9 +33,6 @@ export class NidocaFormInputframe extends LitElement {
   @property({type: String})
   warningText: string = "";
 
-  @property({type: Boolean})
-  selected: boolean = false;
-
   @property({type: String})
   colorScheme: NidocaColorScheme = NidocaColorScheme.SURFACE;
 
@@ -58,7 +55,6 @@ export class NidocaFormInputframe extends LitElement {
             :focus-within .label {
               visibility: visible;
             }
-            
           </style>
           <nidoca-border
             class="main"
@@ -113,13 +109,5 @@ export class NidocaFormInputframe extends LitElement {
           </nidoca-visible>
         `
       : html`<slot></slot>`;
-  }
-
-  async mouseover(): Promise<void> {
-    this.selected = true;
-  }
-
-  async mouseout(): Promise<void> {
-    this.selected = false;
   }
 }
