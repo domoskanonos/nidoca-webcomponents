@@ -44,7 +44,7 @@ export class NidocaFormInputframe extends LitElement {
           <style>
             .main {
               color: var(--app-color-${this.colorScheme});
-              background-color: var(--app-color-${this.colorScheme}-background);
+              background-color: var(--app-color-${this.colorScheme}-background-light);
             }
           </style>
           <nidoca-border
