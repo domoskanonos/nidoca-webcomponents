@@ -109,9 +109,9 @@ export class NidocaBorder extends LitElement {
     return html`
       <style>
         .BORDER {
-          background-color: var(--app-color-${this.colorScheme}-background);
+          border-color: var(--app-color-${this.colorScheme}-background);
         }
-        .BOTTOM_SELECTED {
+        .BOTTOM_SELECTED:focus-within {
           border-color: var(--app-color-${this.colorScheme}-selected);
         }
       </style>

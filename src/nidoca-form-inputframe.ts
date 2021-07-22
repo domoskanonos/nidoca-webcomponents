@@ -15,7 +15,11 @@ export enum InputframeMode {
 
 @customElement("nidoca-form-inputframe")
 export class NidocaFormInputframe extends LitElement {
-  static styles = css``;
+  static styles = css`
+    .label {
+      visibility: hidden;
+    }
+  `;
 
   @property({type: String})
   label: string = "";
@@ -46,6 +50,15 @@ export class NidocaFormInputframe extends LitElement {
               color: var(--app-color-${this.colorScheme});
               background-color: var(--app-color-${this.colorScheme}-background-light);
             }
+
+            :focus-within {
+              background-color: var(--app-color-${this.colorScheme}-background);
+            }
+
+            :focus-within .label {
+              visibility: visible;
+            }
+            
           </style>
           <nidoca-border
             class="main"
@@ -53,10 +66,9 @@ export class NidocaFormInputframe extends LitElement {
             .borderSize="${BorderSize.MEDIUM}"
             .borderProperties="${[
               NidocaBorderProperty.FULL_WIDTH,
-              this.selected ? NidocaBorderProperty.BOTTOM_SELECTED : NidocaBorderProperty.BOTTOM,
+              NidocaBorderProperty.BOTTOM_SELECTED,
+              NidocaBorderProperty.BOTTOM,
             ]}"
-            @mouseover="${() => this.mouseover()}"
-            @mouseout="${() => this.mouseout()}"
           >
             <nidoca-layout-spacer
               cssStyle="width:100%;"
@@ -68,6 +80,7 @@ export class NidocaFormInputframe extends LitElement {
                 itemStyle="flex-basis: 100%;"
               >
                 <nidoca-typography
+                  class="label"
                   .typographyType="${NidocaTypographyType.CAPTION}"
                   text="${this.label}"
                 ></nidoca-typography>

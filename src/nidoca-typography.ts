@@ -1,4 +1,4 @@
-import {css, html, TemplateResult,LitElement} from "lit";
+import {css, html, TemplateResult, LitElement} from "lit";
 import {customElement} from "lit/decorators/custom-element";
 import {property} from "lit/decorators/property";
 
@@ -87,6 +87,15 @@ export class NidocaTypography extends LitElement {
 
     .H6 {
       font-size: 1.15rem;
+    }
+
+    .H4,
+    .H5,
+    .H6,
+    .OVERLINE,
+    .CAPTION,
+    .SUBTITLE2 {
+      opacity: 0.6;
     }
 
     .SUBTITLE1 {

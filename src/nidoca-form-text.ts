@@ -35,6 +35,9 @@ export class NidocaFormText extends NidocaFormAbstractInputElement {
       box-shadow: none;
       background: inherit;
     }
+    input:focus::placeholder {
+      color: transparent;
+    }
   `;
 
   @property({type: String})

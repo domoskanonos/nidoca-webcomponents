@@ -22,6 +22,9 @@ export class NidocaFormTextarea extends NidocaFormAbstractInputElement {
       box-shadow: none;
       background: inherit;
     }
+    textarea:focus::placeholder {
+      color: transparent;
+    }
   `;
 
   @property({type: String})
@@ -43,7 +46,7 @@ export class NidocaFormTextarea extends NidocaFormAbstractInputElement {
   disabled: boolean = false;
 
   @property({type: Number})
-  size: number | undefined;
+  rows: number = 5;
 
   @property({type: String})
   errorText: string = "";
@@ -73,10 +76,12 @@ export class NidocaFormTextarea extends NidocaFormAbstractInputElement {
           id="inputElement"
           name="${this.name}"
           placeholder="${this.placeholder ? this.placeholder : this.label}"
-          size="${ifDefined(this.size)}"
+          rows="${this.rows}"
           ?required="${this.required}"
           ?disabled="${this.disabled}"
-        >${this.value}</textarea>
+        >
+${this.value}</textarea
+        >
       </nidoca-form-inputframe>
     `;
   }
@@ -100,5 +105,4 @@ export class NidocaFormTextarea extends NidocaFormAbstractInputElement {
     }
     return this.errorText == "";
   }
-  
 }
