@@ -2,11 +2,12 @@ import {css, html, TemplateResult, LitElement} from "lit";
 import {customElement} from "lit/decorators/custom-element";
 import {property} from "lit/decorators/property";
 import {NidocaBorderProperty, BorderSize} from "./nidoca-border";
-import {VisibleType} from "./nidoca-visible";
+import {VisibleType as NidocaVisibleType} from "./nidoca-visible";
 import {FlexAlignContent} from "./nidoca-layout-flex-container";
 import {NidocaTypographyType} from "./nidoca-typography";
 import {NidocaLayoutSpacerType, NidocaLayoutSpacerSize} from "./nidoca-layout-spacer";
-import {NidocaColorScheme} from ".";
+import {NidocaColorScheme, NidocaFormDate} from ".";
+import {query} from "lit/decorators/query";
 
 export enum InputframeMode {
   NORMAL = "NORMAL",
@@ -15,14 +16,13 @@ export enum InputframeMode {
 
 @customElement("nidoca-form-inputframe")
 export class NidocaFormInputframe extends LitElement {
-  static styles = css`
-    .label {
-      visibility: hidden;
-    }
-  `;
+  static styles = css``;
 
   @property({type: String})
   label: string = "";
+
+  @property({type: Boolean})
+  showLabel: boolean = true;
 
   @property({type: String})
   errorText: string = "";
@@ -39,6 +39,9 @@ export class NidocaFormInputframe extends LitElement {
   @property({type: String})
   inputframeMode: InputframeMode = InputframeMode.NORMAL;
 
+  @query("#slotElement")
+  private slotElement: HTMLSlotElement | undefined;
+
   render(): TemplateResult {
     return this.inputframeMode == InputframeMode.NORMAL
       ? html`
@@ -51,12 +54,11 @@ export class NidocaFormInputframe extends LitElement {
             :focus-within {
               background-color: var(--app-color-${this.colorScheme}-background);
             }
-
-            :focus-within .label {
-              visibility: visible;
-            }
           </style>
           <nidoca-border
+            @slotchange="${() => this.setShowLabel()}"
+            @click="${() => this.setShowLabel()}"
+            @input="${() => this.setShowLabel()}"
             class="main"
             .colorScheme="${this.colorScheme}"
             .borderSize="${BorderSize.MEDIUM}"
@@ -75,24 +77,29 @@ export class NidocaFormInputframe extends LitElement {
                 .flexAlignContent="${FlexAlignContent.CENTER}"
                 itemStyle="flex-basis: 100%;"
               >
-                <nidoca-typography
-                  class="label"
-                  .typographyType="${NidocaTypographyType.CAPTION}"
-                  text="${this.label}"
-                ></nidoca-typography>
-                <slot></slot>
+                <nidoca-visible
+                  .visibleType="${this.showLabel ? NidocaVisibleType.NORMAL : NidocaVisibleType.INVISIBLE}"
+                >
+                  <nidoca-typography
+                    class="label"
+                    .typographyType="${NidocaTypographyType.CAPTION}"
+                    text="${this.label}"
+                  ></nidoca-typography>
+                </nidoca-visible>
+
+                <slot id="slotElement"></slot>
               </nidoca-layout-flex-container>
             </nidoca-layout-spacer>
           </nidoca-border>
 
-          <nidoca-visible visibleType="${this.infoText ? VisibleType.NORMAL : VisibleType.HIDE}">
+          <nidoca-visible visibleType="${this.infoText ? NidocaVisibleType.NORMAL : NidocaVisibleType.HIDE}">
             <nidoca-typography
               .typographyType="${NidocaTypographyType.BODY1}"
               text="${this.infoText}"
             ></nidoca-typography>
           </nidoca-visible>
 
-          <nidoca-visible visibleType="${this.warningText ? VisibleType.NORMAL : VisibleType.HIDE}">
+          <nidoca-visible visibleType="${this.warningText ? NidocaVisibleType.NORMAL : NidocaVisibleType.HIDE}">
             <nidoca-typography
               style="color:var(--app-color-warning-background)"
               .typographyType="${NidocaTypographyType.BODY1}"
@@ -100,7 +107,7 @@ export class NidocaFormInputframe extends LitElement {
             ></nidoca-typography>
           </nidoca-visible>
 
-          <nidoca-visible visibleType="${this.errorText ? VisibleType.NORMAL : VisibleType.HIDE}">
+          <nidoca-visible visibleType="${this.errorText ? NidocaVisibleType.NORMAL : NidocaVisibleType.HIDE}">
             <nidoca-typography
               style="color:var(--app-color-error-background)"
               .typographyType="${NidocaTypographyType.BODY1}"
@@ -108,6 +115,28 @@ export class NidocaFormInputframe extends LitElement {
             ></nidoca-typography>
           </nidoca-visible>
         `
-      : html`<slot></slot>`;
+      : html`<slot id="slotElement"></slot>`;
+  }
+
+  setShowLabel(): void {
+    if (this.slotElement) {
+      const assignedElements: Element[] = this.slotElement.assignedElements();
+      for (let index = 0; index < assignedElements.length; index++) {
+        const element: Element = assignedElements[index];
+        if (
+          element.tagName === "SELECT" ||
+          element.getAttribute("type") === "date" ||
+          element.getAttribute("type") === "datetime-local" ||
+          element.getAttribute("type") === "month" ||
+          element.getAttribute("type") === "time" ||
+          element.getAttribute("type") === "week"
+        ) {
+          this.showLabel = true;
+        } else if (element instanceof HTMLInputElement) {
+          const htmlElement: HTMLInputElement = <HTMLInputElement>element;
+          this.showLabel = true;
+        }
+      }
+    }
   }
 }
