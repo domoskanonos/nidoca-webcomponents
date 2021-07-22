@@ -1,3 +1,4 @@
 - nidoca-print komponente
+- nidoca listenansicht, wenn das letzte element deselektiert wurde, liste wieder in den normalmodus
 - Fokus Problem in Eingabefeldern onmouseover und out nicht das richtige.
 - tests funktionieren mit der neuen Lit Version nicht :-(
