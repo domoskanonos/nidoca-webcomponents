@@ -117,9 +117,6 @@ export class NidocaPageGallery extends LitElement {
         </nidoca-list>
 
 
-
-        <nidoca-print @click="${(event: Event)=> event.target.print() }">Hallo</nidoca-print>
-
       </nidoca-layout-flex-container>
 
       <nidoca-layout-spacer slot="topRight">
