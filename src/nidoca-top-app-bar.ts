@@ -6,6 +6,11 @@ import {FlexAlignContent, FlexAlignItems, FlexDirection, FlexJustifyContent, Fle
 @customElement("nidoca-top-app-bar")
 export class NidocaTopAppBar extends LitElement {
   static styles = css`
+    :host {
+      display: block;
+      width:100%;
+    }
+
     slot {
       display: flex;
       align-items: center;

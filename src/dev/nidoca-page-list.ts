@@ -58,9 +58,10 @@ export class NidocaPageGallery extends LitElement {
             Funktionalität implementieren kann.</nidoca-typography
           >
         </nidoca-layout-spacer>
-        <nidoca-template .prominent="${this.prominent}" .colorScheme="${NidocaColorScheme.SURFACE}">
+
+        <nidoca-top-app-bar .prominent="${this.prominent}" .colorScheme="${NidocaColorScheme.SURFACE}">
           <nidoca-layout-spacer
-            slot="topLeft"
+            slot="left"
             spacerSize="${NidocaLayoutSpacerSize.MEDIUM}"
             .spacerTypes=${[NidocaLayoutSpacerType.LEFT]}
           >
@@ -68,14 +69,13 @@ export class NidocaPageGallery extends LitElement {
               >Aufgaben</nidoca-typography
             ></nidoca-layout-spacer
           >
-
           <nidoca-icon
-            slot="topRight"
+            slot="right"
             icon="${this.prominent ? "search_off" : "search"}"
             @nidoca-event-icon-clicked="${() => (this.prominent = !this.prominent)}"
           ></nidoca-icon>
           <nidoca-icon
-            slot="topRight"
+            slot="right"
             icon="${this.selectionMode ? "low_priority" : "list"}"
             @nidoca-event-icon-clicked="${() => {
               this.selectionMode = !this.selectionMode;
@@ -83,7 +83,7 @@ export class NidocaPageGallery extends LitElement {
           ></nidoca-icon>
           <nidoca-icon slot="topRight" icon="share"></nidoca-icon>
           <nidoca-icon
-            slot="topRight"
+            slot="right"
             icon="more_vert"
             .clickable="${true}"
             @nidoca-event-icon-clicked="${(event: CustomEvent) => {
@@ -93,47 +93,7 @@ export class NidocaPageGallery extends LitElement {
           ></nidoca-icon>
 
           <nidoca-search-bar slot="prominent" placeholder="Suche..."></nidoca-search-bar>
-
-          <span slot="content">
-            <nidoca-list .selectionMode="${this.selectionMode}">
-              ${[
-                {primary: "List Item", secondary: "Komponente muss schöner werden"},
-                {primary: "List Item", secondary: "Komponente muss schöner werden"},
-                {primary: "List Item", secondary: "Komponente muss schöner werden"},
-                {primary: "List Item", secondary: "Komponente muss schöner werden"},
-                {primary: "List Item", secondary: "Komponente muss schöner werden"},
-              ].map(
-                (item) => html`
-                  <nidoca-list-item
-                    ><nidoca-typography .typographyType="${NidocaTypographyType.H6}">${item.primary}</nidoca-typography>
-                    <nidoca-typography .typographyType="${NidocaTypographyType.BODY1}" slot="secondary"
-                      >${item.secondary}</nidoca-typography
-                    >
-                    <nidoca-icon slot="graphic" icon="face">face</nidoca-icon>
-                    <nidoca-icon slot="meta" icon="arrow_right">arrow_right</nidoca-icon>
-                  </nidoca-list-item>
-                `
-              )}
-            </nidoca-list>
-          </span>
-
-          <nidoca-list slot="sidebar">
-            <nidoca-list-item
-              icon="home"
-              text="Home"
-              href="#main"
-              .rendered="${true}"
-              @click="${() => NidocaRouter.getUniqueInstance().navigate("main")}"
-            ></nidoca-list-item>
-            <nidoca-list-item
-              icon="home"
-              text="Gallery"
-              href="#main"
-              .rendered="${true}"
-              @click="${() => NidocaRouter.getUniqueInstance().navigate("gallery")}"
-            ></nidoca-list-item>
-          </nidoca-list>
-        </nidoca-template>
+        </nidoca-top-app-bar>
 
         <nidoca-list .selectionMode="${this.selectionMode}">
           ${[
@@ -146,12 +106,20 @@ export class NidocaPageGallery extends LitElement {
             (item) => html`
               <nidoca-list-item
                 ><nidoca-typography .typographyType="${NidocaTypographyType.H6}">${item.primary}</nidoca-typography>
+                <nidoca-typography .typographyType="${NidocaTypographyType.BODY1}" slot="secondary"
+                  >${item.secondary}</nidoca-typography
+                >
                 <nidoca-icon slot="graphic" icon="face">face</nidoca-icon>
                 <nidoca-icon slot="meta" icon="arrow_right">arrow_right</nidoca-icon>
               </nidoca-list-item>
             `
           )}
         </nidoca-list>
+
+
+
+        <nidoca-print @click="${(event: Event)=> event.target.print() }">Hallo</nidoca-print>
+
       </nidoca-layout-flex-container>
 
       <nidoca-layout-spacer slot="topRight">
@@ -171,6 +139,10 @@ export class NidocaPageGallery extends LitElement {
         @nidoca-elevation-event-closeme="${() => (this.elevationShow = false)}"
         >${this.elevationContentElement}</nidoca-elevation
       >
+
+
+
+
     `;
   }
 }

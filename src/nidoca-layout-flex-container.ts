@@ -65,8 +65,6 @@ export class NidocaLayoutFlexContainer extends LitElement {
     *,
     ::slotted(*) {
       box-sizing: border-box;
-      color: inherit;
-      background-color: inherit;
     }
 
     .flexContainer,
@@ -127,9 +125,8 @@ export class NidocaLayoutFlexContainer extends LitElement {
     `;
   }
 
-  slotChanged(event: Event) {
+  slotChanged(event: Event) : void {
     const slotElement: HTMLSlotElement = <HTMLSlotElement>event.target;
-    const classList = slotElement.classList;
     this.changeSlotComponentsStyle(slotElement);
   }
 
