@@ -4,8 +4,8 @@ import {customElement} from "lit/decorators/custom-element";
 @customElement("nidoca-print")
 export class NidocaPrint extends LitElement {
   static styles = css`
-    slot {
-      display: block;
+    :host {
+      display: none;
     }
   `;
 

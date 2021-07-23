@@ -2,6 +2,7 @@ import {NidocaRouter} from "@domoskanonos/nidoca-router";
 import {css, html, LitElement, TemplateResult} from "lit";
 import {customElement} from "lit/decorators/custom-element";
 import {property} from "lit/decorators/property";
+import {query} from "lit/decorators/query";
 import {
   FlexAlignContent,
   FlexAlignItems,
@@ -12,6 +13,7 @@ import {
   NidocaTypographyType,
 } from "..";
 import {NidocaLayoutSpacerSize, NidocaLayoutSpacerType} from "../nidoca-layout-spacer";
+import {NidocaPrint} from "../nidoca-print";
 
 @customElement("nidoca-page-list")
 export class NidocaPageGallery extends LitElement {
@@ -32,13 +34,16 @@ export class NidocaPageGallery extends LitElement {
   @property({type: Object})
   elevationContentElement: TemplateResult = html`
     <nidoca-list .colorScheme=${NidocaColorScheme.SURFACE}>
-      <nidoca-list-item text="Kündigung drucken" @click="${() => window.print()}">hiuhiuh</nidoca-list-item>
+      <nidoca-list-item text="Kündigung drucken" @click="${() => this.printElement?.print()}">hiuhiuh</nidoca-list-item>
       <nidoca-list-item icon="delete" title="Vertrag löschen"></nidoca-list-item>
       <nidoca-list-item icon="share" title="Teilen"></nidoca-list-item>
       <nidoca-list-item text="Alle auswählen" @click="${() => console.log("")}"></nidoca-list-item>
       <nidoca-list-item text="Alle abwählen" @click="${() => (this.selectionMode = false)}"></nidoca-list-item>
     </nidoca-list>
   `;
+
+  @query("#print")
+  printElement: NidocaPrint | undefined;
 
   render(): TemplateResult {
     return html`
@@ -115,8 +120,6 @@ export class NidocaPageGallery extends LitElement {
             `
           )}
         </nidoca-list>
-
-
       </nidoca-layout-flex-container>
 
       <nidoca-layout-spacer slot="topRight">
@@ -137,9 +140,7 @@ export class NidocaPageGallery extends LitElement {
         >${this.elevationContentElement}</nidoca-elevation
       >
 
-
-
-
+      <nidoca-print id="print">Hallo, finde ich super das es so geht <br/>Huhuh<br/>Huhuh<br/>Huhuh<br/>Huhuh<br/>Huhuh<br/>Huhuh</nidoca-print>
     `;
   }
 }
