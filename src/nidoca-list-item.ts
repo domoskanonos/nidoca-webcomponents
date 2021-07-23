@@ -1,7 +1,6 @@
 import {css, html, TemplateResult, LitElement} from "lit";
 import {customElement} from "lit/decorators/custom-element";
 import {property} from "lit/decorators/property";
-import {NidocaBorderProperty as NidocaBorderProperty, NidocaColorScheme} from ".";
 
 @customElement("nidoca-list-item")
 export class NidocaListItem extends LitElement {

@@ -14,7 +14,7 @@ export class NidocaTemplate extends LitElement {
     }
 
     #header {
-      /**      position: fixed; */
+      position: fixed;
       width: 100%;
       z-index: 1;
       background-color: inherit;
@@ -99,7 +99,7 @@ export class NidocaTemplate extends LitElement {
           this.sidebarElement.setAttribute("style", topStyle);
         }
         if (this.contentElement != undefined) {
-          //this.contentElement.setAttribute("style", paddingTopStyle);
+          this.contentElement.setAttribute("style", paddingTopStyle);
         }
       }
     });

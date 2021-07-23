@@ -51,7 +51,13 @@ export class NidocaList extends LitElement {
           background-color: var(--app-color-${this.colorScheme}-background-light);
         }
       </style>
-      <slot class="slotList" id="slotElement"></slot>
+      <slot
+        @nidoca-event-list-item-unselect="${() => {
+          this.selectionMode = this.getSelectedItems().length === 0;
+        }}"
+        class="slotList"
+        id="slotElement"
+      ></slot>
     `;
   }
 

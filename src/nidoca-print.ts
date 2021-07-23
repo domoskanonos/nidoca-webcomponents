@@ -3,9 +3,22 @@ import {customElement} from "lit/decorators/custom-element";
 
 @customElement("nidoca-print")
 export class NidocaPrint extends LitElement {
-  static styles = css``;
+  static styles = css`
+    slot {
+      display: block;
+    }
+  `;
 
   render(): TemplateResult {
-    return html` <div>PrintMe :-)</div> `;
+    return html`<slot></slot>`;
+  }
+
+  print(): void {
+    const printWindow: Window | null = window.open("");
+    if (printWindow) {
+      printWindow.document.write(this.innerHTML);
+      printWindow.print();
+      printWindow.close();
+    }
   }
 }
