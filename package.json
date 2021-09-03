@@ -13,7 +13,7 @@
   "module": "./src/index.js",
   "devDependencies": {
     "@domoskanonos/nidoca-router": "1.0.2",
-    "@domoskanonos/nidoca-pwa": "1.0.2"
+    "@domoskanonos/nidoca-pwa": "1.0.3"
   },
   "dependencies": {
     "lit": "2.0.0-rc.4"
