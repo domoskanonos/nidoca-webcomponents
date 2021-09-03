@@ -16,7 +16,7 @@
     "@domoskanonos/nidoca-pwa": "1.0.2"
   },
   "dependencies": {
-    "lit": "2.0.0-rc.2"
+    "lit": "2.0.0-rc.4"
   },
   "author": "Dominik Bruhn",
   "scripts": {
