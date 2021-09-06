@@ -1,6 +1,6 @@
 import {css, html, TemplateResult, LitElement} from "lit";
-import {customElement} from "lit/decorators/custom-element";
-import {property} from "lit/decorators/property";
+import {customElement} from "lit/decorators";
+import {property} from "lit/decorators";
 
 @customElement("nidoca-icon")
 export class NidocaIcon extends LitElement {

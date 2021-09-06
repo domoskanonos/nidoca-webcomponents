@@ -1,7 +1,7 @@
 import {css, html, TemplateResult, LitElement, PropertyValues} from "lit";
-import {customElement} from "lit/decorators/custom-element";
-import {property} from "lit/decorators/property";
-import {query} from "lit/decorators/query";
+import {customElement} from "lit/decorators";
+import {property} from "lit/decorators";
+import {query} from "lit/decorators";
 import {NidocaColorScheme} from ".";
 import {NidocaLayoutSpacerSize} from "./nidoca-layout-spacer";
 

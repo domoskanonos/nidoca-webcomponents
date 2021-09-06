@@ -1,7 +1,7 @@
 import {css, html, LitElement, TemplateResult} from "lit";
-import {customElement} from "lit/decorators/custom-element";
-import {property} from "lit/decorators/property";
-import {query} from "lit/decorators/query";
+import {customElement} from "lit/decorators";
+import {property} from "lit/decorators";
+import {query} from "lit/decorators";
 import {NidocaDateType} from "..";
 import {NidocaForm} from "../nidoca-form";
 import {NidocaTextType} from "../nidoca-form-text";

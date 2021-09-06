@@ -1,5 +1,5 @@
 import {css, html, LitElement, TemplateResult} from "lit";
-import {customElement} from "lit/decorators/custom-element";
+import {customElement} from "lit/decorators";
 import {ButtonType, NidocaTypographyType} from "..";
 import {DUMMY_DESCRIPTION, DUMMY_IMAGE, DUMMY_TITLE} from "./constants";
 

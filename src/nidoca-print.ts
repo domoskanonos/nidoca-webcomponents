@@ -1,5 +1,5 @@
 import {css, html, TemplateResult, LitElement} from "lit";
-import {customElement} from "lit/decorators/custom-element";
+import {customElement} from "lit/decorators";
 
 @customElement("nidoca-print")
 export class NidocaPrint extends LitElement {

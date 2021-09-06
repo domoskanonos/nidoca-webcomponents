@@ -1,5 +1,5 @@
 import {css, html, LitElement, TemplateResult} from "lit";
-import {customElement} from "lit/decorators/custom-element";
+import {customElement} from "lit/decorators";
 import {
   NidocaColorScheme,
 } from "..";

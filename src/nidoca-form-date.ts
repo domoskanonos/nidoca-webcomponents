@@ -1,7 +1,7 @@
 import {css, html, TemplateResult} from "lit";
-import {customElement} from "lit/decorators/custom-element";
-import {property} from "lit/decorators/property";
-import {query} from "lit/decorators/query";
+import {customElement} from "lit/decorators";
+import {property} from "lit/decorators";
+import {query} from "lit/decorators";
 import {ifDefined} from "lit/directives/if-defined";
 import {InputframeMode} from ".";
 import {FormOutputData, NidocaFormAbstractInputElement} from "./nidoca-form-abstract-input-element";

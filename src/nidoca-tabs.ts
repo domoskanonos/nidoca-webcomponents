@@ -1,6 +1,6 @@
 import {css, html, TemplateResult,LitElement} from "lit";
-import {customElement} from "lit/decorators/custom-element";
-import {query} from "lit/decorators/query";
+import {customElement} from "lit/decorators";
+import {query} from "lit/decorators";
 import {NidocaTabContent} from "./nidoca-tab-content";
 import {NidocaTab} from "./nidoca-tab";
 

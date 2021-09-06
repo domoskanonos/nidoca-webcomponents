@@ -1,6 +1,6 @@
 import {html, LitElement, TemplateResult} from "lit";
-import {customElement} from "lit/decorators/custom-element";
-import {property} from "lit/decorators/property";
+import {customElement} from "lit/decorators";
+import {property} from "lit/decorators";
 import {
   FlexAlignContent,
   FlexAlignItems,

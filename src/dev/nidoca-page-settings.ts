@@ -1,6 +1,6 @@
 import {NidocaRouter} from "@domoskanonos/nidoca-router";
 import {css, html, LitElement, TemplateResult} from "lit";
-import {customElement} from "lit/decorators/custom-element";
+import {customElement} from "lit/decorators";
 import {NidocaTypographyType, FlexJustifyContent, NidocaLayoutSpacerSize, FlexAlignItems} from "../index";
 import {NidocaLayoutSpacerType} from "../nidoca-layout-spacer";
 
