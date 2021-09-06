@@ -1,7 +1,7 @@
 import {css, html, TemplateResult, LitElement} from "lit";
-import {customElement} from "lit/decorators";
-import {property} from "lit/decorators";
-import {query} from "lit/decorators";
+import {customElement} from "lit/decorators.js";
+import {property} from "lit/decorators.js";
+import {query} from "lit/decorators.js";
 import {NidocaFormAbstractInputElement} from "./nidoca-form-abstract-input-element";
 
 export class NidocaFormOutputData {

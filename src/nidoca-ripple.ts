@@ -1,6 +1,6 @@
 import {css, html, TemplateResult, LitElement} from "lit";
-import {customElement} from "lit/decorators";
-import {query} from "lit/decorators";
+import {customElement} from "lit/decorators.js";
+import {query} from "lit/decorators.js";
 
 /**
  * check src: https://codepen.io/jakob-e/pen/XZoZWQ

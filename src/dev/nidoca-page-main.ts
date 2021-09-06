@@ -1,5 +1,5 @@
 import {css, html, LitElement, TemplateResult} from "lit";
-import {customElement} from "lit/decorators";
+import {customElement} from "lit/decorators.js";
 import {NidocaTypographyType} from "..";
 import {ButtonType} from "../nidoca-button";
 import {DUMMY_DESCRIPTION, DUMMY_DESCRIPTION_SHORT, DUMMY_IMAGE, DUMMY_TITLE} from "./constants";

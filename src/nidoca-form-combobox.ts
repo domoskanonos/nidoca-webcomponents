@@ -1,9 +1,9 @@
 import {css, html, TemplateResult} from "lit";
-import {customElement} from "lit/decorators";
-import {property} from "lit/decorators";
-import {query} from "lit/decorators";
-import {repeat} from "lit/directives/repeat";
-import {guard} from "lit/directives/guard";
+import {customElement} from "lit/decorators.js";
+import {property} from "lit/decorators.js";
+import {query} from "lit/decorators.js";
+import {repeat} from "lit/directives/repeat.js";
+import {guard} from "lit/directives/guard.js";
 import {FormOutputData, NidocaFormAbstractInputElement} from "./nidoca-form-abstract-input-element";
 import {InputframeMode} from ".";
 

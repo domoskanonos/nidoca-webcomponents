@@ -1,8 +1,7 @@
 import {css, html, TemplateResult, LitElement} from "lit";
-import {customElement} from "lit/decorators";
-import {property} from "lit/decorators";
-import {repeat} from "lit/directives/repeat";
-import {guard} from "lit/directives/guard";
+import {customElement} from "lit/decorators.js";
+import {property} from "lit/decorators.js";
+import {guard} from "lit/directives/guard.js";
 import {NidocaIcon} from "./nidoca-icon";
 
 @customElement("nidoca-table")

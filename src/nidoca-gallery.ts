@@ -1,5 +1,5 @@
 import {css, html, TemplateResult, LitElement} from "lit";
-import {customElement} from "lit/decorators";
+import {customElement} from "lit/decorators.js";
 import { NidocaLayoutSpacerType } from "./nidoca-layout-spacer";
 
 @customElement("nidoca-gallery")

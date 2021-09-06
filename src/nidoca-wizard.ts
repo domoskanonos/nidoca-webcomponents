@@ -1,5 +1,5 @@
 import {css, html, TemplateResult,LitElement} from "lit";
-import {customElement, query} from "lit/decorators";
+import {customElement, query} from "lit/decorators.js";
 import {FlexAlignContent, FlexAlignItems, FlexDirection, FlexJustifyContent, FlexWrap} from ".";
 import {NidocaWizardStep, WizardStepState} from "./nidoca-wizard-step";
 

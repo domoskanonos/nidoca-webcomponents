@@ -1,6 +1,6 @@
 import {css, html, TemplateResult, LitElement} from "lit";
-import {customElement} from "lit/decorators";
-import {property} from "lit/decorators";
+import {customElement} from "lit/decorators.js";
+import {property} from "lit/decorators.js";
 import {FlexAlignContent, FlexAlignItems, FlexDirection, FlexJustifyContent, FlexWrap} from "./nidoca-layout-flex-container";
 import {NidocaLayoutSpacerType, NidocaLayoutSpacerSize} from "./nidoca-layout-spacer";
 import {NidocaTypographyType} from "./nidoca-typography";

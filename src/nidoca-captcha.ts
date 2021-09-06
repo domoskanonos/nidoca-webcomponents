@@ -1,7 +1,7 @@
 import {css, html, LitElement, PropertyValues, TemplateResult} from "lit";
-import {customElement} from "lit/decorators";
-import {property} from "lit/decorators";
-import {query} from "lit/decorators";
+import {customElement} from "lit/decorators.js";
+import {property} from "lit/decorators.js";
+import {query} from "lit/decorators.js";
 import { NidocaFormText, NidocaTextType } from "./nidoca-form-text";
 
 @customElement("nidoca-captcha")

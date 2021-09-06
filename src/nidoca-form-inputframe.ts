@@ -1,13 +1,13 @@
 import {css, html, TemplateResult, LitElement} from "lit";
-import {customElement} from "lit/decorators";
-import {property} from "lit/decorators";
+import {customElement} from "lit/decorators.js";
+import {property} from "lit/decorators.js";
 import {NidocaBorderProperty, BorderSize} from "./nidoca-border";
 import {VisibleType as NidocaVisibleType} from "./nidoca-visible";
 import {FlexAlignContent} from "./nidoca-layout-flex-container";
 import {NidocaTypographyType} from "./nidoca-typography";
 import {NidocaLayoutSpacerType, NidocaLayoutSpacerSize} from "./nidoca-layout-spacer";
 import {NidocaColorScheme, NidocaFormDate} from ".";
-import {query} from "lit/decorators";
+import {query} from "lit/decorators.js";
 
 export enum InputframeMode {
   NORMAL = "NORMAL",

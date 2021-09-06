@@ -1,6 +1,6 @@
 import {html, LitElement, TemplateResult, css} from "lit";
-import {customElement} from "lit/decorators";
-import {property} from "lit/decorators";
+import {customElement} from "lit/decorators.js";
+import {property} from "lit/decorators.js";
 import {VisibleType} from ".";
 
 @customElement("nidoca-elevation")
