@@ -54,7 +54,7 @@ export class NidocaIcon extends LitElement {
   @property({type: String})
   title: string = "";
 
-  render(): TemplateResult {
+  render(): any {
     return html`
       <i
         class="material-icons ${this.deactivated ? "deactivated" : ""} ${this.clickable ? "clickable" : ""}"

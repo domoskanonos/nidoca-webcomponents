@@ -36,7 +36,7 @@ export class NidocaElevation extends LitElement {
     });
   }
 
-  render(): TemplateResult {
+  render(): any {
     return html`
       <nidoca-visible visibleType="${this.show ? VisibleType.NORMAL : VisibleType.HIDE}">
         <div class="container" style="${this.calculatePositionStyle(this.associatedElement)}">

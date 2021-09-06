@@ -17,7 +17,7 @@ export class NidocaDialogAction extends LitElement {
   @property({type: String})
   colorScheme: NidocaColorScheme = NidocaColorScheme.BACKGROUND;
 
-  render(): TemplateResult {
+  render(): any {
     return html`
       <style>
         .box {

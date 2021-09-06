@@ -1,4 +1,4 @@
-import {html, LitElement, TemplateResult, css} from "lit";
+import {html, LitElement} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
 import {NidocaRouteListener, NidocaRouter} from "@domoskanonos/nidoca-router";
@@ -11,7 +11,7 @@ export class NidocaApp extends LitElement implements NidocaRouteListener {
   showPopup: boolean = false;
 
   @property({type: Object})
-  popupContent: TemplateResult = html``;
+  popupContent: any = html``;
 
   @property({type: Boolean})
   navigationClosed: boolean = true;
@@ -20,7 +20,7 @@ export class NidocaApp extends LitElement implements NidocaRouteListener {
   prominent: boolean = false;
 
   @property({type: Object})
-  currentPage: TemplateResult = html`<nidoca-page-main></nidoca-page-main>`;
+  currentPage: any = html`<nidoca-page-main></nidoca-page-main>`;
 
   @property({type: Boolean})
   elevationShow: boolean = false;
@@ -29,7 +29,7 @@ export class NidocaApp extends LitElement implements NidocaRouteListener {
   elevationAssociatedElement: HTMLElement | undefined;
 
   @property({type: Object})
-  elevationContentElement: TemplateResult | undefined;
+  elevationContentElement: any | undefined;
 
   constructor() {
     super();
@@ -65,7 +65,7 @@ export class NidocaApp extends LitElement implements NidocaRouteListener {
     }
   }
 
-  render(): TemplateResult {
+  render(): any {
     return html`
       <nidoca-template
         .prominent="${this.prominent}"

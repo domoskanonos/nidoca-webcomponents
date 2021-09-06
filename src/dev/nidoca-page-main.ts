@@ -8,7 +8,7 @@ import {DUMMY_DESCRIPTION, DUMMY_DESCRIPTION_SHORT, DUMMY_IMAGE, DUMMY_TITLE} fr
 export class NidocaPageMain extends LitElement {
   static styles = css``;
 
-  render(): TemplateResult {
+  render(): any {
     return html`
 
 

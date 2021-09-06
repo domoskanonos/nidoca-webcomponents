@@ -31,7 +31,7 @@ export class NidocaTopAppBar extends LitElement {
   @property({type: String})
   cssStyle: string = "height:60px;width:100%;position:relativ;";
 
-  render(): TemplateResult {
+  render(): any {
     return html`
       <style>
         :host,

@@ -9,7 +9,7 @@ export class NidocaPageGallery extends LitElement {
   static styles = css``;
 
 
-  render(): TemplateResult {
+  render(): any {
     return html`
         <nidoca-gallery >
           ${["", "", "", "", "", "", "", "", ""].map(

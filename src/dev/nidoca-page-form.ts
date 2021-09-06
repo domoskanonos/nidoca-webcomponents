@@ -23,12 +23,12 @@ export class NidocaPageForm extends LitElement {
   elevationAssociatedElement: HTMLElement | undefined;
 
   @property({type: Object})
-  elevationContentElement: TemplateResult = html`sdjoidj`;
+  elevationContentElement: any = html`sdjoidj`;
 
   @query("#form")
   private form: NidocaForm | undefined;
 
-  render(): TemplateResult {
+  render(): any {
     return html`
       <nidoca-form
         id="form"

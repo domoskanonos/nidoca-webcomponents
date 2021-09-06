@@ -10,7 +10,7 @@ export class NidocaTabContent extends LitElement {
   @property({type: Boolean})
   selected: boolean = false;
 
-  render(): TemplateResult {
+  render(): any {
     return html`
       <nidoca-visible visibleType="${this.selected ? VisibleType.NORMAL : VisibleType.HIDE}">
         <slot></slot>

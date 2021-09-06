@@ -25,7 +25,7 @@ export class NidocaChip extends LitElement {
   @property({type: Boolean})
   clickable: boolean = true;
 
-  render(): TemplateResult {
+  render(): any {
     return html`
       <div class="chip ${this.clickable ? "clickable" : ""}">
         <slot></slot>

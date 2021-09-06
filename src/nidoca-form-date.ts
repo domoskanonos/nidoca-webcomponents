@@ -94,7 +94,7 @@ export class NidocaFormDate extends NidocaFormAbstractInputElement {
   @property({type: String})
   inputframeMode: InputframeMode = InputframeMode.NORMAL;
 
-  render(): TemplateResult {
+  render(): any {
     return html`
       <nidoca-form-inputframe
         label="${this.label}"

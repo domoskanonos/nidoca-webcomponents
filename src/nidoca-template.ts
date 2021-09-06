@@ -105,7 +105,7 @@ export class NidocaTemplate extends LitElement {
     });
   }
 
-  render(): TemplateResult {
+  render(): any {
     return html`
       <style>
         #sidebar {

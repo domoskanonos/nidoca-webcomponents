@@ -7,7 +7,7 @@ import {NidocaLayoutSpacerType} from "../nidoca-layout-spacer";
 @customElement("nidoca-page-settings")
 export class NidocaPageSettings extends LitElement {
   static styles = css``;
-  render(): TemplateResult {
+  render(): any {
     return html`
       <nidoca-layout-spacer nidocaSpacerSize="${NidocaLayoutSpacerSize.LITTLE}"></nidoca-layout-spacer>
       <nidoca-layout-flex-container

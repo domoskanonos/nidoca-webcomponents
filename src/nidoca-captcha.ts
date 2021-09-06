@@ -24,7 +24,7 @@ export class NidocaCaptcha extends LitElement {
   @query("#inputfield")
   private inputfield: NidocaFormText | undefined;
 
-  render(): TemplateResult {
+  render(): any {
     return html`
       <nidoca-form-text
         id="inputfield"

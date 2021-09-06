@@ -57,7 +57,7 @@ export class NidocaTabs extends LitElement {
     }
   }
 
-  render(): TemplateResult {
+  render(): any {
     return html`
       <nidoca-grid-container
         @nidoca-event-tab-clicked="${(event: CustomEvent) => this.tabClicked(event)}"

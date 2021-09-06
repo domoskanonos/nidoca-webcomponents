@@ -9,7 +9,7 @@ export class NidocaPrint extends LitElement {
     }
   `;
 
-  render(): TemplateResult {
+  render(): any {
     return html`<slot></slot>`;
   }
 

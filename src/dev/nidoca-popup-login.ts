@@ -4,7 +4,7 @@ import {customElement} from "lit/decorators.js";
 @customElement("nidoca-popup-login")
 export class NidocaPopupLogin extends LitElement {
   static styles = css``;
-  render(): TemplateResult {
+  render(): any {
     return html`
       Login
 

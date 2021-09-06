@@ -23,7 +23,7 @@ export class NidocaForm extends LitElement {
   @query("#slotElement")
   private slotElement: HTMLSlotElement | undefined;
 
-  render(): TemplateResult {
+  render(): any {
     return html`
       <form
         class="container"

@@ -46,9 +46,9 @@ export class NidocaDialog extends LitElement {
   show: boolean = false;
 
   @property({type: Object})
-  content: TemplateResult = html``;
+  content: any = html``;
 
-  render(): TemplateResult {
+  render(): any {
     return html`
       <nidoca-visible visibleType="${this.show ? VisibleType.NORMAL : VisibleType.HIDE}">
         <div class="fullScreen opacScreen"></div>

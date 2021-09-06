@@ -9,7 +9,7 @@ import {
 export class NidocaTopAppBar extends LitElement {
   static styles = css``;
 
-  render(): TemplateResult {
+  render(): any {
     return html`
       ${[NidocaColorScheme.PRIMARY, NidocaColorScheme.SECONDARY, NidocaColorScheme.SURFACE].map(
         (colorScheme) => html`

@@ -39,7 +39,7 @@ code {
    @property({type: String})
    code: string = "";
 
-   render() : TemplateResult {
+   render() : any {
       return html`
          <pre>
                 <code>${this.code}<slot></slot></code>

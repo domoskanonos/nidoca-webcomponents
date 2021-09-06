@@ -9,7 +9,7 @@ export class NidocaMovie extends LitElement {
   @property({type: String})
   src: string = "http://picsum.photos/400/300";
 
-  render(): TemplateResult {
+  render(): any {
     return html`
       <span>
         <iframe

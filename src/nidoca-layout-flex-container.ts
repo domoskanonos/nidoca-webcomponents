@@ -109,7 +109,7 @@ export class NidocaLayoutFlexContainer extends LitElement {
   @query("#slotElement")
   private slotElement: HTMLSlotElement | undefined;
 
-  render(): TemplateResult {
+  render(): any {
     return html`
       <style>
         ${this.toDeviceStyle("flexContainerDevice", this.devices, this.containerStyle)}

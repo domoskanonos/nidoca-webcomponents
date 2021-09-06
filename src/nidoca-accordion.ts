@@ -20,7 +20,7 @@ export class NidocaAccordion extends LitElement {
   @query("#accordionSlot")
   private accordionSlot: HTMLSlotElement | undefined;
 
-  render(): TemplateResult {
+  render(): any {
     return html`
       <nidoca-border
         .borderProperties="${[NidocaBorderProperty.TOP, NidocaBorderProperty.FULL_WIDTH]}"

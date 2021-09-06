@@ -31,7 +31,7 @@ export class NidocaPageGallery extends LitElement {
   elevationAssociatedElement: HTMLElement | undefined;
 
   @property({type: Object})
-  elevationContentElement: TemplateResult = html`
+  elevationContentElement: any = html`
     <nidoca-list .colorScheme=${NidocaColorScheme.SURFACE}>
       <nidoca-list-item text="Kündigung drucken" @click="${() => this.printElement?.print()}">hiuhiuh</nidoca-list-item>
       <nidoca-list-item icon="delete" title="Vertrag löschen"></nidoca-list-item>
@@ -44,7 +44,7 @@ export class NidocaPageGallery extends LitElement {
   @query("#print")
   printElement: NidocaPrint | undefined;
 
-  render(): TemplateResult {
+  render(): any {
     return html`
       <nidoca-layout-flex-container
         .flexDirection="${FlexDirection.COLUMN}"

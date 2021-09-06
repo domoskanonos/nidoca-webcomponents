@@ -48,7 +48,7 @@ export class NidocaButton extends LitElement {
   @property({type: String})
   text: string = "";
 
-  render(): TemplateResult {
+  render(): any {
     return html`
       <nidoca-ripple>
         <nidoca-layout-flex-container

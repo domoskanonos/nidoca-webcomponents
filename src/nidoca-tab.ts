@@ -31,7 +31,7 @@ export class NidocaTab extends LitElement {
   @property({type: String})
   text: string = "";
 
-  render(): TemplateResult {
+  render(): any {
     return html`
       <span class="tab ${this.selected ? "SELECTED" : ""}" @click="${() => this.tabClicked()}">
         ${this.text

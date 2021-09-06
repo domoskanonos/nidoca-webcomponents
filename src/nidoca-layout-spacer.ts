@@ -45,7 +45,7 @@ export class NidocaSpacer extends LitElement {
   @property({type: String})
   cssStyle: string = "";
 
-  render(): TemplateResult {
+  render(): any {
     return html`
       <style>
         ${this.toStyle(this.devices, this.spacerTypes, this.spacerSize)}

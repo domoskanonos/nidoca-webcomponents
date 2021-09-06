@@ -33,7 +33,7 @@ export class NidocaBoxShadow extends LitElement {
   @property({ type: String })
   shadowType: NidocaShadowType = NidocaShadowType.NONE;
 
-  render(): TemplateResult {
+  render(): any {
     return html` <span class="SHADOW ${this.shadowType}"><slot></slot></span> `;
   }
 }

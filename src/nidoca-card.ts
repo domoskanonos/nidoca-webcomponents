@@ -11,7 +11,7 @@ export class NidocaCard extends LitElement {
   @property({type: String})
   code: string = "";
 
-  render(): TemplateResult {
+  render(): any {
     return html`
       <nidoca-box-shadow .shadowType="${NidocaShadowType.KEY_LIGHT}">
         <nidoca-layout-flex-container

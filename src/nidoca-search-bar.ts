@@ -48,7 +48,7 @@ export class NidocaSearchBar extends LitElement {
   @query("#inputElement")
   private inputElement: HTMLInputElement | undefined;
 
-  render(): TemplateResult {
+  render(): any {
     return html`
       <nidoca-layout-flex-container
         .flexDirection="${NidocaFlexDirection.ROW}"

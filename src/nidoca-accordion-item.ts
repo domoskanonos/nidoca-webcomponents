@@ -20,7 +20,7 @@ export class NidocaAccordionItem extends LitElement {
   @property({type: Boolean})
   opened: boolean = false;
 
-  render(): TemplateResult {
+  render(): any {
     return html`
       <div class="ACCORDION_ITEM">
         <nidoca-border

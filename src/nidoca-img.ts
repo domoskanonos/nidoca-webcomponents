@@ -75,7 +75,7 @@ export class NidocaImg extends LitElement {
   @property({type: Array})
   richMediaProperties: RichMediaProperties[] = [RichMediaProperties.CLICKABLE, RichMediaProperties.FULL_WIDTH];
 
-  render(): TemplateResult {
+  render(): any {
     return html`
           <span class="${this.toRichMediaPropertiesString(this.richMediaProperties)}"><img src="${this.src}" /></span>
         `;

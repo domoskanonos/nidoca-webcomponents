@@ -10,7 +10,7 @@ export class NidocaWizard extends LitElement {
   @query("#wizardSlot")
   private wizardSlot: HTMLSlotElement | undefined;
 
-  render(): TemplateResult {
+  render(): any {
     return html`
       <nidoca-layout-flex-container
         .flexDirection="${FlexDirection.ROW}"

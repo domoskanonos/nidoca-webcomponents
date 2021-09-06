@@ -78,7 +78,7 @@ export class NidocaFormCombobox extends NidocaFormAbstractInputElement {
   @query("#selectElement")
   private selectElement: HTMLSelectElement | undefined;
 
-  render(): TemplateResult {
+  render(): any {
     return html`
       <nidoca-form-inputframe
         label="${this.label}"
