@@ -1,4 +1,4 @@
-import {css, html, TemplateResult, LitElement, PropertyValues} from "lit";
+import {css, html, LitElement, PropertyValues} from "lit";
 import {customElement, property, query} from "lit/decorators.js";
 import {NidocaColorScheme} from ".";
 import {NidocaListItem} from "./nidoca-list-item";

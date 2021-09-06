@@ -113,22 +113,19 @@ export class NidocaApp extends LitElement implements NidocaRouteListener {
         <nidoca-list slot="sidebar">
           <nidoca-list-item
             icon="home"
-            text="Home"
             .rendered="${true}"
             @click="${() => NidocaRouter.getUniqueInstance().navigate("main")}"
-          ></nidoca-list-item>
+          >Home</nidoca-list-item>
           <nidoca-list-item
             icon="home"
-            text="Gallery"
             .rendered="${true}"
             @click="${() => NidocaRouter.getUniqueInstance().navigate("gallery")}"
-          ></nidoca-list-item>
+          >Gallery</nidoca-list-item>
           <nidoca-list-item
             icon="home"
-            text="topAppBar"
             .rendered="${true}"
             @click="${() => NidocaRouter.getUniqueInstance().navigate("topAppBar")}"
-          ></nidoca-list-item>
+          >topAppBar</nidoca-list-item>
           <nidoca-list-item @click="${() => NidocaRouter.getUniqueInstance().navigate("list")}">Liste</nidoca-list-item>
           <nidoca-list-item @click="${() => NidocaRouter.getUniqueInstance().navigate("form")}">
             <nidoca-typography .typographyType="${NidocaTypographyType.H6}">Formular</nidoca-typography>

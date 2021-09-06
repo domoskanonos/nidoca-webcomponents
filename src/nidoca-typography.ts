@@ -1,4 +1,4 @@
-import {css, html, TemplateResult, LitElement} from "lit";
+import {css, html, LitElement} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
 
