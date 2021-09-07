@@ -10,7 +10,7 @@ module.exports = {
      * und kompiliert den Code neu, sobald Änderungen gemacht werden.
      * In diesem Fall ist der Haupteinstigespunkt die index.ts Datei unseres Blueprints.
      */
-    main: "./src/dev/index.app.ts",
+    main: "./src/app/index.app.ts",
   },
   devServer: {},
   resolve: {
@@ -31,6 +31,6 @@ module.exports = {
     ],
   },
   plugins: [
-    new HtmlWebpackPlugin({ template: "./src/dev/index.html" }),
+    new HtmlWebpackPlugin({ template: "./src/app/index.html" }),
   ],
 };

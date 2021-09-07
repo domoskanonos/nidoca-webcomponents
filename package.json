@@ -52,7 +52,7 @@
     "docs": "npm run typedocs && npm run docs-webcomponents",
     "prebuild": "npm install && npm run ts && npm run eslint && npm run lit-analyzer && npm run docs",
     "build:webcomponents": "webpack --config ./webpack.webcomponent.js ",
-    "build:all": "npm run prebuild && npm run build:webcomponents",
+    "build:app": "webpack --config ./webpack.app.js ",
     "preversion": "npm run build:all",
     "new-patch": "npm version patch -m \"new patch version: %s\" --force",
     "new-minor": "npm version minor -m \"new minor version: %s\" --force",
