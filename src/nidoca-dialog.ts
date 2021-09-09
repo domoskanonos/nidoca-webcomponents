@@ -34,7 +34,7 @@ export class NidocaDialog extends LitElement {
     }
 
     .dialogContainer {
-      width: min-content;
+      width: max-content;
       height: auto;
 
       padding: 0;
