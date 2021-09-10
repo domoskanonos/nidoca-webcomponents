@@ -23,6 +23,7 @@ export * from "./nidoca-layout-spacer";
 export * from "./nidoca-layout-flex-container";
 export * from "./nidoca-layout-floating-container";
 export * from "./nidoca-layout-section";
+export * from "./nidoca-layout-flex-device";
 
 export * from "./nidoca-icon";
 export * from "./nidoca-icon-extended";

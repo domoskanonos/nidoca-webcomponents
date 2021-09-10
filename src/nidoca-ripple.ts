@@ -8,6 +8,10 @@ import {query} from "lit/decorators.js";
 @customElement("nidoca-ripple")
 export class NidocaRipple extends LitElement {
   static styles = css`
+    :host {
+      display: inline-block;
+    }
+
     :root {
       --ripple-background: var(--app-color-surface-background-dark);
       --ripple-opacity: 0.8;
@@ -28,13 +32,13 @@ export class NidocaRipple extends LitElement {
       box-sizing: inherit;
     }
 
-    [anim='ripple'] {
+    [anim="ripple"] {
       position: relative;
       overflow: hidden;
     }
 
-    [anim='ripple']:before {
-      content: '';
+    [anim="ripple"]:before {
+      content: "";
       position: absolute;
       display: block;
       background: var(--ripple-background, white);

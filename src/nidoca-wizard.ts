@@ -1,6 +1,6 @@
 import {css, html, TemplateResult,LitElement} from "lit";
 import {customElement, query} from "lit/decorators.js";
-import {FlexAlignContent, FlexAlignItems, FlexDirection, FlexJustifyContent, FlexWrap} from ".";
+import {NidocaFlexAlignContent, NidocaFlexAlignItems, NidocaFlexDirection, NidocaFlexJustifyContent, NidocaFlexWrap} from ".";
 import {NidocaWizardStep, WizardStepState} from "./nidoca-wizard-step";
 
 @customElement("nidoca-wizard")
@@ -13,11 +13,11 @@ export class NidocaWizard extends LitElement {
   render(): any {
     return html`
       <nidoca-layout-flex-container
-        .flexDirection="${FlexDirection.ROW}"
-        .flexWrap="${FlexWrap.NO_WRAP}"
-        .flexJustifyContent="${FlexJustifyContent.FLEX_START}"
-        .flexAlignItems="${FlexAlignItems.FLEX_START}"
-        .flexAlignContent="${FlexAlignContent.SPACE_EVENLY}"
+        .flexDirection="${NidocaFlexDirection.ROW}"
+        .flexWrap="${NidocaFlexWrap.NO_WRAP}"
+        .flexJustifyContent="${NidocaFlexJustifyContent.FLEX_START}"
+        .flexAlignItems="${NidocaFlexAlignItems.FLEX_START}"
+        .flexAlignContent="${NidocaFlexAlignContent.SPACE_EVENLY}"
         containerStyle=""
         itemStyle=""
         @nidoca-event-wizard-step-clicked="${(event: CustomEvent) => this.stepClicked(event)}"

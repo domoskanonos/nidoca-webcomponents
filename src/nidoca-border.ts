@@ -18,7 +18,7 @@ export enum NidocaBorderProperty {
   FULL_HEIGHT = "FULL_HEIGHT",
 }
 
-export enum BorderSize {
+export enum NidocaBorderSize {
   THIN = "THIN",
   MEDIUM = "MEDIUM",
   THICK = "THICK",
@@ -103,7 +103,7 @@ export class NidocaBorder extends LitElement {
   borderProperties: NidocaBorderProperty[] = [NidocaBorderProperty.ALL];
 
   @property({type: String})
-  borderSize: BorderSize = BorderSize.THIN;
+  borderSize: NidocaBorderSize = NidocaBorderSize.THIN;
 
   render(): any {
     return html`

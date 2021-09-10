@@ -1,7 +1,7 @@
 import {css, html, LitElement, TemplateResult} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
-import {FlexAlignContent, FlexAlignItems, FlexDirection, FlexJustifyContent, FlexWrap} from ".";
+import {NidocaFlexAlignContent, NidocaFlexAlignItems, NidocaFlexDirection, NidocaFlexJustifyContent, NidocaFlexWrap} from ".";
 import {NidocaShadowType} from "./nidoca-box-shadow";
 
 @customElement("nidoca-card")
@@ -15,11 +15,11 @@ export class NidocaCard extends LitElement {
     return html`
       <nidoca-box-shadow .shadowType="${NidocaShadowType.KEY_LIGHT}">
         <nidoca-layout-flex-container
-          .flexDirection="${FlexDirection.COLUMN}"
-          .flexWrap="${FlexWrap.WRAP}"
-          .flexJustifyContent="${FlexJustifyContent.SPACE_BETWEEN}"
-          .flexAlignItems="${FlexAlignItems.FLEX_START}"
-          .flexAlignContent="${FlexAlignContent.FLEX_START}"
+          .flexDirection="${NidocaFlexDirection.COLUMN}"
+          .flexWrap="${NidocaFlexWrap.WRAP}"
+          .flexJustifyContent="${NidocaFlexJustifyContent.SPACE_BETWEEN}"
+          .flexAlignItems="${NidocaFlexAlignItems.FLEX_START}"
+          .flexAlignContent="${NidocaFlexAlignContent.FLEX_START}"
         >
           <slot name="media"></slot>
           <nidoca-layout-spacer>

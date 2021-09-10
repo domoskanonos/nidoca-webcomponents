@@ -3,11 +3,11 @@ import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
 import {query} from "lit/decorators.js";
 import {
-  FlexAlignContent as NidocaFlexAlignContent,
-  FlexAlignItems as NidocaFlexAlignItems,
-  FlexDirection as NidocaFlexDirection,
-  FlexJustifyContent as NidocaFlexJustifyContent,
-  FlexWrap as NidocaFlexWrap,
+  NidocaFlexAlignContent as NidocaFlexAlignContent,
+  NidocaFlexAlignItems as NidocaFlexAlignItems,
+  NidocaFlexDirection as NidocaFlexDirection,
+  NidocaFlexJustifyContent as NidocaFlexJustifyContent,
+  NidocaFlexWrap as NidocaFlexWrap,
 } from ".";
 import {NidocaLayoutSpacerType} from "./nidoca-layout-spacer";
 

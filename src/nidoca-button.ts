@@ -1,12 +1,13 @@
-import {css, html, LitElement, TemplateResult} from "lit";
+import {css, html, LitElement} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
-import {FlexAlignItems, FlexJustifyContent, FlexWrap} from "./nidoca-layout-flex-container";
+import {NidocaFlexAlignItems, NidocaFlexJustifyContent, NidocaFlexWrap} from "./nidoca-layout-flex-container";
 import {VisibleType} from "./nidoca-visible";
 import {NidocaLayoutSpacerSize} from "./nidoca-layout-spacer";
 import {NidocaTypographyType} from "./nidoca-typography";
+import {NidocaBorderSize, NidocaColorScheme} from ".";
 
-export enum ButtonType {
+export enum NidocaButtonType {
   CONTAINED = "CONTAINED",
   OUTLINED = "OUTLINED",
   TEXT = "TEXT",
@@ -15,7 +16,6 @@ export enum ButtonType {
 @customElement("nidoca-button")
 export class NidocaButton extends LitElement {
   static styles = css`
-    
     .BUTTON {
       cursor: pointer;
       text-transform: uppercase;
@@ -26,11 +26,6 @@ export class NidocaButton extends LitElement {
       line-height: 48px;
     }
 
-    .TEXT {
-      font-weight: 900;
-      color: var(--app-color-primary-background)
-    }
-
     @media only screen and (orientation: portrait) {
       button,
       .btn {
@@ -39,8 +34,11 @@ export class NidocaButton extends LitElement {
     }
   `;
 
-  @property({type: String})
-  buttonType: ButtonType = ButtonType.CONTAINED;
+  @property({type: NidocaColorScheme, converter: String})
+  colorScheme: NidocaColorScheme = NidocaColorScheme.PRIMARY;
+
+  @property({type: NidocaButtonType, converter: String})
+  buttonType: NidocaButtonType = NidocaButtonType.CONTAINED;
 
   @property({type: String})
   leadingIcon: string = "";
@@ -50,33 +48,64 @@ export class NidocaButton extends LitElement {
 
   render(): any {
     return html`
-      <nidoca-ripple>
-        <nidoca-layout-flex-container
-          class="BUTTON ${this.buttonType}"
-          @click="${() => {
-            this.clicked();
-          }}"
-          flexWrap="${FlexWrap.NO_WRAP}"
-          .flexJustifyContent="${FlexJustifyContent.CENTER}"
-          .flexAlignItems="${FlexAlignItems.CENTER}"
-        >
-          <nidoca-visible visibleType="${this.leadingIcon ? VisibleType.NORMAL : VisibleType.HIDE}">
-            <nidoca-icon .icon="${this.leadingIcon}"></nidoca-icon>
-          </nidoca-visible>
-          <nidoca-visible visibleType="${this.leadingIcon ? VisibleType.NORMAL : VisibleType.HIDE}"> </nidoca-visible>
-          <nidoca-typography text="${this.text}" typographyType="${NidocaTypographyType.BUTTON}">
-            <slot></slot>
-          </nidoca-typography>
+      <style>
+        .OUTLINED {
+          color: var(--app-color-${this.colorScheme}-background);
+          background-color: var(--app-color-${this.colorScheme});
+        }
 
-          <nidoca-visible visibleType="${this.buttonType == ButtonType.TEXT ? VisibleType.HIDE : VisibleType.NORMAL}">
-            <nidoca-layout-spacer spacerSize="${NidocaLayoutSpacerSize.MEDIUM}"></nidoca-layout-spacer>
-          </nidoca-visible>
-        </nidoca-layout-flex-container>
+        .CONTAINED {
+          color: var(--app-color-${this.colorScheme});
+          background-color: var(--app-color-${this.colorScheme}-background);
+        }
+
+        .TEXT {
+          font-weight: 900;
+          color: var(--app-color-${this.colorScheme}-background);
+        }
+      </style>
+      <nidoca-ripple>
+        <nidoca-border
+          colorScheme="${this.colorScheme}"
+          borderSize="${this.buttonType == NidocaButtonType.TEXT ? NidocaBorderSize.NONE : NidocaBorderSize.THIN}"
+        >
+          <nidoca-layout-flex-container
+            class="BUTTON ${this.buttonType}"
+            @click="${() => {
+              this.clicked();
+            }}"
+            flexWrap="${NidocaFlexWrap.NO_WRAP}"
+            .flexJustifyContent="${NidocaFlexJustifyContent.CENTER}"
+            .flexAlignItems="${NidocaFlexAlignItems.CENTER}"
+          >
+            <nidoca-visible visibleType="${this.leadingIcon ? VisibleType.NORMAL : VisibleType.HIDE}">
+              <nidoca-icon .icon="${this.leadingIcon}"></nidoca-icon>
+            </nidoca-visible>
+
+            <nidoca-visible
+              visibleType="${!this.leadingIcon && this.buttonType != NidocaButtonType.TEXT
+                ? VisibleType.NORMAL
+                : VisibleType.HIDE}"
+            >
+              <nidoca-layout-spacer spacerSize="${NidocaLayoutSpacerSize.MEDIUM}"> </nidoca-layout-spacer>
+            </nidoca-visible>
+
+            <nidoca-typography text="${this.text}" typographyType="${NidocaTypographyType.BUTTON}">
+              <slot></slot>
+            </nidoca-typography>
+
+            <nidoca-visible
+              visibleType="${this.buttonType != NidocaButtonType.TEXT ? VisibleType.NORMAL : VisibleType.HIDE}"
+            >
+              <nidoca-layout-spacer spacerSize="${NidocaLayoutSpacerSize.MEDIUM}"></nidoca-layout-spacer>
+            </nidoca-visible>
+          </nidoca-layout-flex-container>
+        </nidoca-border>
       </nidoca-ripple>
     `;
   }
 
-  clicked() {
+  clicked(): void {
     this.dispatchEvent(
       new CustomEvent("nidoca-event-button-clicked", {
         detail: this,

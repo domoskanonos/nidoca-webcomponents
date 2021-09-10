@@ -1,6 +1,6 @@
 import {css, html, LitElement, TemplateResult} from "lit";
 import {customElement} from "lit/decorators.js";
-import {ButtonType, NidocaTypographyType} from "..";
+import {NidocaButtonType, NidocaTypographyType} from "..";
 import {DUMMY_DESCRIPTION, DUMMY_IMAGE, DUMMY_TITLE} from "./constants";
 
 @customElement("nidoca-page-gallery")
@@ -23,8 +23,8 @@ export class NidocaPageGallery extends LitElement {
                   >${DUMMY_DESCRIPTION}
                 </nidoca-typography>
 
-                <nidoca-button buttonType="${ButtonType.TEXT}" slot="actions">Go</nidoca-button>
-                <nidoca-button buttonType="${ButtonType.TEXT}" slot="actions">Leave</nidoca-button>
+                <nidoca-button buttonType="${NidocaButtonType.TEXT}" slot="actions">Go</nidoca-button>
+                <nidoca-button buttonType="${NidocaButtonType.TEXT}" slot="actions">Leave</nidoca-button>
               </nidoca-card>
             `
           )}

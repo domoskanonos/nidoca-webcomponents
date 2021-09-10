@@ -48,6 +48,8 @@ export class NidocaPopupLogin extends LitElement {
       </nidoca-form>
 
       <nidoca-button @nidoca-event-button-clicked="${() => this.closePopup()}">Schließen</nidoca-button>
+
+      
     `;
   }
   closePopup(): void {

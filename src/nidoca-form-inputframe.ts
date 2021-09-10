@@ -1,9 +1,9 @@
 import {css, html, TemplateResult, LitElement} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
-import {NidocaBorderProperty, BorderSize} from "./nidoca-border";
+import {NidocaBorderProperty, NidocaBorderSize} from "./nidoca-border";
 import {VisibleType as NidocaVisibleType} from "./nidoca-visible";
-import {FlexAlignContent} from "./nidoca-layout-flex-container";
+import {NidocaFlexAlignContent} from "./nidoca-layout-flex-container";
 import {NidocaTypographyType} from "./nidoca-typography";
 import {NidocaLayoutSpacerType, NidocaLayoutSpacerSize} from "./nidoca-layout-spacer";
 import {NidocaColorScheme, NidocaFormDate} from ".";
@@ -61,7 +61,7 @@ export class NidocaFormInputframe extends LitElement {
             @input="${() => this.setShowLabel()}"
             class="main"
             .colorScheme="${this.colorScheme}"
-            .borderSize="${BorderSize.MEDIUM}"
+            .borderSize="${NidocaBorderSize.MEDIUM}"
             .borderProperties="${[
               NidocaBorderProperty.FULL_WIDTH,
               NidocaBorderProperty.BOTTOM_SELECTED,
@@ -74,7 +74,7 @@ export class NidocaFormInputframe extends LitElement {
               .spacerTypes="${[NidocaLayoutSpacerType.ALL]}"
             >
               <nidoca-layout-flex-container
-                .flexAlignContent="${FlexAlignContent.CENTER}"
+                .flexAlignContent="${NidocaFlexAlignContent.CENTER}"
                 itemStyle="flex-basis: 100%;"
               >
                 <nidoca-visible

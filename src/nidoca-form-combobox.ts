@@ -45,7 +45,7 @@ export class NidocaFormCombobox extends NidocaFormAbstractInputElement {
   @property()
   value: any = "";
 
-  @property({type: FormOutputData })
+  @property({type: FormOutputData})
   options: FormOutputData[] = [];
 
   @property({type: String})
@@ -159,13 +159,24 @@ export class NidocaFormCombobox extends NidocaFormAbstractInputElement {
     return this.value === option.key;
   }
 
-  static enumToOptions(enumeration: any, emptyElement: boolean = true): any[] {
+  static enumToOptions(enumeration: any, emptyElement: boolean = true): FormOutputData[] {
     const options: FormOutputData[] = [];
     if (emptyElement) {
       options.push(<FormOutputData>{key: "", value: ""});
     }
     Object.keys(enumeration).forEach((key) => {
       options.push(<FormOutputData>{key: key, value: enumeration[key]});
+    });
+    return options;
+  }
+
+  static stringArrayToOptions(stringArray: string[], emptyElement: boolean = true): FormOutputData[] {
+    const options: FormOutputData[] = [];
+    if (emptyElement) {
+      options.push(<FormOutputData>{key: "", value: ""});
+    }
+    stringArray.forEach((key: string) => {
+      options.push(<FormOutputData>{key: key, value: key});
     });
     return options;
   }

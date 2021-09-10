@@ -1,7 +1,7 @@
 import {css, html, TemplateResult,LitElement} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
-import {FlexAlignContent, FlexAlignItems, FlexDirection, FlexJustifyContent, FlexWrap, NidocaIconShadowType} from ".";
+import {NidocaFlexAlignContent, NidocaFlexAlignItems, NidocaFlexDirection, NidocaFlexJustifyContent, NidocaFlexWrap, NidocaIconShadowType} from ".";
 import {NidocaTypographyAlignment, NidocaTypographyType} from "./nidoca-typography";
 
 export enum WizardStepState {
@@ -45,20 +45,20 @@ export class NidocaWizardStep extends LitElement {
   render(): any {
     return html`
       <nidoca-layout-flex-container
-        .flexDirection="${FlexDirection.COLUMN}"
-        .flexWrap="${FlexWrap.NO_WRAP}"
-        .flexJustifyContent="${FlexJustifyContent.SPACE_EVENLY}"
-        .flexAlignItems="${FlexAlignItems.FLEX_START}"
-        .flexAlignContent="${FlexAlignContent.SPACE_EVENLY}"
+        .flexDirection="${NidocaFlexDirection.COLUMN}"
+        .flexWrap="${NidocaFlexWrap.NO_WRAP}"
+        .flexJustifyContent="${NidocaFlexJustifyContent.SPACE_EVENLY}"
+        .flexAlignItems="${NidocaFlexAlignItems.FLEX_START}"
+        .flexAlignContent="${NidocaFlexAlignContent.SPACE_EVENLY}"
         containerStyle=""
         itemStyle=""
       >
         <nidoca-layout-flex-container
-          .flexDirection="${FlexDirection.ROW}"
-          .flexWrap="${FlexWrap.NO_WRAP}"
-          .flexJustifyContent="${FlexJustifyContent.FLEX_START}"
-          .flexAlignItems="${FlexAlignItems.CENTER}"
-          .flexAlignContent="${FlexAlignContent.SPACE_EVENLY}"
+          .flexDirection="${NidocaFlexDirection.ROW}"
+          .flexWrap="${NidocaFlexWrap.NO_WRAP}"
+          .flexJustifyContent="${NidocaFlexJustifyContent.FLEX_START}"
+          .flexAlignItems="${NidocaFlexAlignItems.CENTER}"
+          .flexAlignContent="${NidocaFlexAlignContent.SPACE_EVENLY}"
           containerStyle=""
           itemStyle=""
         >

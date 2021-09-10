@@ -1,24 +1,21 @@
-import {css, html, LitElement, TemplateResult} from "lit";
+import {css, html, LitElement} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
-import {query} from "lit/decorators.js";
 
-import {NidocaDevice} from ".";
-
-export enum FlexDirection {
+export enum NidocaFlexDirection {
   ROW = "row",
   ROW_REVERSE = "rowData-reverse",
   COLUMN = "column",
   COLUMN_REVERSE = "column-reverse",
 }
 
-export enum FlexWrap {
+export enum NidocaFlexWrap {
   WRAP = "wrap",
   NO_WRAP = "nowrap",
   WRAP_REVERSE = "flexWrap-reverse",
 }
 
-export enum FlexJustifyContent {
+export enum NidocaFlexJustifyContent {
   FLEX_START = "flex-start",
   FLEX_END = "flex-end",
   CENTER = "center",
@@ -27,7 +24,7 @@ export enum FlexJustifyContent {
   SPACE_EVENLY = "space-evenly",
 }
 
-export enum FlexAlignItems {
+export enum NidocaFlexAlignItems {
   FLEX_START = "flex-start",
   FLEX_END = "flex-end",
   CENTER = "center",
@@ -41,7 +38,7 @@ export enum FlexAlignItems {
   UNSAFE = "unsafe",
 }
 
-export enum FlexAlignContent {
+export enum NidocaFlexAlignContent {
   FLEX_START = "flex-start",
   FLEX_END = "flex-end",
   CENTER = "center",
@@ -65,6 +62,7 @@ export class NidocaLayoutFlexContainer extends LitElement {
     *,
     ::slotted(*) {
       box-sizing: border-box;
+      display: inline-block;
     }
 
     .flexContainer,
@@ -73,6 +71,7 @@ export class NidocaLayoutFlexContainer extends LitElement {
       display: flex;
       overflow: auto;
       box-sizing: border-boxed;
+      width:100%;
     }
 
     .flexItem,
@@ -82,23 +81,20 @@ export class NidocaLayoutFlexContainer extends LitElement {
     }
   `;
 
-  @property({type: Array})
-  devices: NidocaDevice[] = [NidocaDevice.DESKTOP, NidocaDevice.TABLET, NidocaDevice.MOBILE];
+  @property({type: String})
+  flexDirection: NidocaFlexDirection = NidocaFlexDirection.ROW;
 
   @property({type: String})
-  flexDirection: FlexDirection = FlexDirection.ROW;
+  flexWrap: NidocaFlexWrap = NidocaFlexWrap.WRAP;
 
   @property({type: String})
-  flexWrap: FlexWrap = FlexWrap.WRAP;
+  flexJustifyContent: NidocaFlexJustifyContent = NidocaFlexJustifyContent.FLEX_START;
 
   @property({type: String})
-  flexJustifyContent: FlexJustifyContent = FlexJustifyContent.FLEX_START;
+  flexAlignItems: NidocaFlexAlignItems = NidocaFlexAlignItems.FLEX_START;
 
   @property({type: String})
-  flexAlignItems: FlexAlignItems = FlexAlignItems.FLEX_START;
-
-  @property({type: String})
-  flexAlignContent: FlexAlignContent = FlexAlignContent.FLEX_START;
+  flexAlignContent: NidocaFlexAlignContent = NidocaFlexAlignContent.FLEX_START;
 
   @property({type: String})
   containerStyle: string = "";
@@ -106,15 +102,8 @@ export class NidocaLayoutFlexContainer extends LitElement {
   @property({type: String})
   itemStyle: string = "";
 
-  @query("#slotElement")
-  private slotElement: HTMLSlotElement | undefined;
-
   render(): any {
     return html`
-      <style>
-        ${this.toDeviceStyle("flexContainerDevice", this.devices, this.containerStyle)}
-        ${this.toDeviceStyle("flexItemDevice", this.devices, this.itemStyle)}
-      </style>
       <slot
         class="flexContainer flexContainerDevice"
         style="flex-direction: ${this.flexDirection}; flex-wrap: ${this.flexWrap}; justify-content: ${this
@@ -125,7 +114,7 @@ export class NidocaLayoutFlexContainer extends LitElement {
     `;
   }
 
-  slotChanged(event: Event) : void {
+  slotChanged(event: Event): void {
     const slotElement: HTMLSlotElement = <HTMLSlotElement>event.target;
     this.changeSlotComponentsStyle(slotElement);
   }
@@ -145,14 +134,5 @@ export class NidocaLayoutFlexContainer extends LitElement {
         classList.add("flexItemDevice");
       }
     }
-  }
-
-  toDeviceStyle(className: string, devices: NidocaDevice[], style: string): string {
-    style = ".".concat(className).concat(", ::slotted(.").concat(className).concat(") {").concat(style).concat().concat("}");
-    let styleAll = "";
-    devices.forEach((device: NidocaDevice) => {
-      styleAll = styleAll.concat(device.asMediaStyle(style));
-    });
-    return styleAll;
   }
 }

@@ -2,11 +2,11 @@ import {html, LitElement, TemplateResult} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
 import {
-  FlexAlignContent,
-  FlexAlignItems,
-  FlexDirection,
-  FlexJustifyContent,
-  FlexWrap,
+  NidocaFlexAlignContent,
+  NidocaFlexAlignItems,
+  NidocaFlexDirection,
+  NidocaFlexJustifyContent,
+  NidocaFlexWrap,
   RichMediaProperties,
   NidocaTypographyType,
 } from ".";
@@ -25,11 +25,11 @@ export class NidocaAvatar extends LitElement {
 
   render(): any {
     return html`<nidoca-layout-flex-container
-      .flexDirection="${FlexDirection.COLUMN}"
-      .flexWrap="${FlexWrap.WRAP}"
-      .flexJustifyContent="${FlexJustifyContent.SPACE_BETWEEN}"
-      .flexAlignItems="${FlexAlignItems.CENTER}"
-      .flexAlignContent="${FlexAlignContent.CENTER}"
+      .flexDirection="${NidocaFlexDirection.COLUMN}"
+      .flexWrap="${NidocaFlexWrap.WRAP}"
+      .flexJustifyContent="${NidocaFlexJustifyContent.SPACE_BETWEEN}"
+      .flexAlignItems="${NidocaFlexAlignItems.CENTER}"
+      .flexAlignContent="${NidocaFlexAlignContent.CENTER}"
     >
       <nidoca-img src="${this.imgSrc}" .richMediaProperties="${[RichMediaProperties.ROUND]}"> </nidoca-img>
       <nidoca-layout-spacer spacerSize="${NidocaLayoutSpacerSize.LITTLE}">

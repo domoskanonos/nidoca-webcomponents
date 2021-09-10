@@ -1,7 +1,7 @@
 import {css, html, TemplateResult, LitElement} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
-import {FlexAlignContent, FlexAlignItems, FlexDirection, FlexJustifyContent, FlexWrap, NidocaColorScheme} from ".";
+import {NidocaFlexAlignContent, NidocaFlexAlignItems, NidocaFlexDirection, NidocaFlexJustifyContent, NidocaFlexWrap, NidocaColorScheme} from ".";
 
 @customElement("nidoca-top-app-bar")
 export class NidocaTopAppBar extends LitElement {
@@ -41,11 +41,11 @@ export class NidocaTopAppBar extends LitElement {
         }
       </style>
       <nidoca-layout-flex-container
-        .flexDirection="${FlexDirection.ROW}"
-        .flexWrap="${FlexWrap.NO_WRAP}"
-        .flexJustifyContent="${FlexJustifyContent.SPACE_BETWEEN}"
-        .flexAlignItems="${FlexAlignItems.CENTER}"
-        .flexAlignContent="${FlexAlignContent.SPACE_AROUND}"
+        .flexDirection="${NidocaFlexDirection.ROW}"
+        .flexWrap="${NidocaFlexWrap.NO_WRAP}"
+        .flexJustifyContent="${NidocaFlexJustifyContent.SPACE_BETWEEN}"
+        .flexAlignItems="${NidocaFlexAlignItems.CENTER}"
+        .flexAlignContent="${NidocaFlexAlignContent.SPACE_AROUND}"
         containerStyle="${this.cssStyle}"
         itemStyle=""
       >
