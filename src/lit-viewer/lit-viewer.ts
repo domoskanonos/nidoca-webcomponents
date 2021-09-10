@@ -38,11 +38,17 @@ export class LitViewer extends LitElement {
 
                   <div class="flexContainer">
                     ${this.clazzGuiWrapper.getPropertyGuiWrappers().map(
-                      (prop) => html` <div class="flexItem">
-                        <b>${prop.propertyWrapper.name}</b>
-                        <pre>${prop.propertyWrapper.getTypeName()}</pre>
-                        <div>${prop.getInputElement(this.clazzGuiWrapper)}</div>
-                      </div>`
+                      (prop) => html`
+                        <nidoca-card>
+                          <nidoca-typography slot="supportingText">${prop.propertyWrapper.name}</nidoca-typography>
+                          <nidoca-typography slot="supportingText"
+                            >${prop.propertyWrapper.getTypeName()}</nidoca-typography
+                          >
+                          <nidoca-typography slot="actions"
+                            >${prop.getInputElement(this.clazzGuiWrapper)}</nidoca-typography
+                          >
+                        </nidoca-card>
+                      `
                     )}
                   </div>
                 </div>

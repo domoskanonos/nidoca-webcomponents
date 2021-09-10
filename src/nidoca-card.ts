@@ -8,9 +8,6 @@ import {NidocaShadowType} from "./nidoca-box-shadow";
 export class NidocaCard extends LitElement {
   static styles = css``;
 
-  @property({type: String})
-  code: string = "";
-
   render(): any {
     return html`
       <nidoca-box-shadow .shadowType="${NidocaShadowType.KEY_LIGHT}">
