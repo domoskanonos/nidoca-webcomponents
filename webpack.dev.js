@@ -12,7 +12,9 @@ module.exports = {
      */
     main: "./src/app/index.app.ts",
   },
-  devServer: {},
+  devServer: {
+    port: 8080
+  },
   resolve: {
     // Informiere Webpack darüber, welche Dateien für den Bundle-Prozess berücksichigt werden sollen.
     extensions: [".ts", ".js", "css"],
