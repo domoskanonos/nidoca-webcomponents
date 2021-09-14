@@ -20,6 +20,10 @@ export class ClassWrapper<T extends LitElement> {
     return this.instance.constructor;
   }
 
+  public getSlots(): void {
+    
+  }
+
   public getProperties(): PropertyWrapper[] {
     const obj: any = this.instance.constructor;
     const propNames: any = Object.getOwnPropertyNames(obj);
