@@ -1,9 +1,9 @@
-import {customElement, html, LitElement, TemplateResult} from "lit-element";
+import { customElement, html, LitElement, TemplateResult } from "lit-element";
 
-import {ClassWrapper} from "./core/classWrapper";
-import {ClassGuiWrapper} from "./core/classGuiWrapper";
-import {css} from "lit-element";
-import {NidocaFormCombobox, NidocaShadowType} from "..";
+import { ClassWrapper } from "./core/classWrapper";
+import { ClassGuiWrapper } from "./core/classGuiWrapper";
+import { css } from "lit-element";
+import { NidocaFormCombobox, NidocaShadowType } from "..";
 
 @customElement("lit-viewer")
 export class LitViewer extends LitElement {
@@ -25,9 +25,18 @@ export class LitViewer extends LitElement {
           </nidoca-layout-spacer>
         </nidoca-box-shadow>
 
+
+
+        <nidoca-table
+        .headers="${["slotName"]}"
+        .rows="${this.toSlotHeaderRows(this.clazzGuiWrapper?.classWrapper.getSlotNames())}"
+      >
+      </nidoca-table>
+
+
         <div>
           ${this.clazzGuiWrapper
-            ? html`
+        ? html`
                 <div>
                   <h1>Attribute:</h1>
 
@@ -38,7 +47,7 @@ export class LitViewer extends LitElement {
 
                   <div class="flexContainer">
                     ${this.clazzGuiWrapper.getPropertyGuiWrappers().map(
-                      (prop) => html`
+          (prop) => html`
                         <nidoca-card>
                           <nidoca-typography slot="supportingText">${prop.propertyWrapper.name}</nidoca-typography>
                           <nidoca-typography slot="supportingText"
@@ -49,7 +58,7 @@ export class LitViewer extends LitElement {
                           >
                         </nidoca-card>
                       `
-                    )}
+        )}
                   </div>
                 </div>
 
@@ -77,11 +86,26 @@ export class LitViewer extends LitElement {
                   </div>
                 </div>
               `
-            : html``}
+        : html``}
         </div>
       </div>
     `;
   }
+
+  toSlotHeaderRows(arr: string[] | undefined) {
+    const retval: string[][] = [[]];
+    if (arr) {
+      arr.map((name) => {
+        const arr: string[] = [];
+        arr.push(name);
+        retval.push(arr);
+        return arr;
+
+      });
+    }
+    return retval;
+  }
+
 
   slotChanged(event: Event): void {
     const slotElement: HTMLSlotElement = <HTMLSlotElement>event.target;
@@ -92,4 +116,5 @@ export class LitViewer extends LitElement {
     }
     this.requestUpdate();
   }
+
 }

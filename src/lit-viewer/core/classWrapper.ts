@@ -1,5 +1,5 @@
-import {LitElement} from "lit-element";
-import {PropertyWrapper} from "./propertyWrapper";
+import { LitElement } from "lit-element";
+import { PropertyWrapper } from "./propertyWrapper";
 
 export class ClassWrapper<T extends LitElement> {
   public instance: T;
@@ -20,24 +20,40 @@ export class ClassWrapper<T extends LitElement> {
     return this.instance.constructor;
   }
 
-  public getSlots(): void {
-    
+  public getSlotNames(): string[] {
+    return this.getSlots().map((prop) => { return prop.name ? prop.name : "default" });
+  }
+
+  public getSlots(): HTMLSlotElement[] {
+    return this.getElementsByTagName("SLOT", this.instance.shadowRoot);
+  }
+
+  private getElementsByTagName(tagName: string, element: any | undefined | null): HTMLSlotElement[] {
+    let retval: HTMLSlotElement[] = [];
+    if (element) {
+      const elementTagName = element.tagName;
+      if (elementTagName == tagName) {
+        retval.push(<HTMLSlotElement>element);
+      }
+      if (element.children.length > 0) {
+        const elements = element?.children;
+        for (let i = 0; i < elements.length; i++) {
+          retval = retval.concat(this.getElementsByTagName(tagName, elements.item(i)));
+        }
+      }
+    }
+    return retval;
+  }
+
+
+  public getPropertieNames(): string[] {
+    const obj: any = this.instance.constructor;
+    const propNames: string[] = Object.getOwnPropertyNames(obj);
+    return propNames;
   }
 
   public getProperties(): PropertyWrapper[] {
-    const obj: any = this.instance.constructor;
-    const propNames: any = Object.getOwnPropertyNames(obj);
-    propNames.forEach((propName: string) => {
-      console.log("name: " + propName + " value: " + obj[propName]);
-    });
-
-    const newLocal = obj["elementProperties"];
-    console.log(newLocal);
-    //name: elementProperties value: [object Map]
-    //classWrapper.ts:19 name: __attributeToPropertyMap value: [object Map]
-
     const classProperties: Map<string, any> = (<any>this.instance.constructor)["elementProperties"];
-
     if (!classProperties) {
       throw new Error("selected item malformed");
     }
@@ -47,4 +63,5 @@ export class ClassWrapper<T extends LitElement> {
     }
     return classPropertyArray;
   }
+
 }

@@ -91,7 +91,7 @@ export class NidocaButton extends LitElement {
             </nidoca-visible>
 
             <nidoca-typography text="${this.text}" typographyType="${NidocaTypographyType.BUTTON}">
-              <slot></slot>
+            <slot></slot>
             </nidoca-typography>
 
             <nidoca-visible
