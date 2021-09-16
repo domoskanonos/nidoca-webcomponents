@@ -6,13 +6,14 @@ import {css} from "lit-element";
 import {NidocaFormCombobox, NidocaShadowType} from "..";
 import {PropertyGuiWrapper} from "./core/propertyGuiWrapper";
 import {NidocaLayoutSpacerType} from "../nidoca-layout-spacer";
+import {NidocaTypographyType} from "../nidoca-typography";
 
 @customElement("lit-viewer")
 export class LitViewer extends LitElement {
   static styles = css`
     .container {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr;
     }
   `;
 
@@ -30,17 +31,29 @@ export class LitViewer extends LitElement {
         <div>
           ${this.clazzGuiWrapper
             ? html`
+                <nidoca-layout-spacer .spacerTypes="${[NidocaLayoutSpacerType.TOP, NidocaLayoutSpacerType.BOTTOM]}">
+                  <nidoca-typography .typographyType="${NidocaTypographyType.H2}">Attribute</nidoca-typography>
+                </nidoca-layout-spacer>
+
                 <nidoca-table
                   .headers="${["name", "type", "values"]}"
                   .rows="${this.toAttributeRows(this.clazzGuiWrapper.getPropertyGuiWrappers())}"
                 >
                 </nidoca-table>
 
+                <nidoca-layout-spacer .spacerTypes="${[NidocaLayoutSpacerType.TOP, NidocaLayoutSpacerType.BOTTOM]}">
+                  <nidoca-typography .typographyType="${NidocaTypographyType.H2}">Slots</nidoca-typography>
+                </nidoca-layout-spacer>
+
                 <nidoca-table
-                  .headers="${["slotName"]}"
+                  .headers="${["name"]}"
                   .rows="${this.toSlotRows(this.clazzGuiWrapper?.classWrapper.getSlotNames())}"
                 >
                 </nidoca-table>
+
+                <nidoca-layout-spacer .spacerTypes="${[NidocaLayoutSpacerType.TOP, NidocaLayoutSpacerType.BOTTOM]}">
+                  <nidoca-typography .typographyType="${NidocaTypographyType.H2}">Quelltext</nidoca-typography>
+                </nidoca-layout-spacer>
 
                 <nidoca-tabs>
                   <nidoca-tab slot="tab">Javascript</nidoca-tab>

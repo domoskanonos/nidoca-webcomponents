@@ -33,7 +33,7 @@ ${this.getPropertyGuiWrappers()
   const element = document.getElementById("meinElement");
   ${this.getPropertyGuiWrappers()
     .map((propertyGuiWrapper) => {
-      return propertyGuiWrapper.getAsVanillaJS(this);
+      return propertyGuiWrapper.getAsJavascript(this);
     })
     .join("  ")}</script>
 `;

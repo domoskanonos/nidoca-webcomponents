@@ -132,7 +132,7 @@ export class PropertyGuiWrapper {
     }
   }
 
-  getAsVanillaJS(classGuiWrapper: ClassGuiWrapper<LitElement>): string {
+  getAsJavascript(classGuiWrapper: ClassGuiWrapper<LitElement>): string {
     const propertyType: PropertyType = this.propertyWrapper.getPropertyType();
     switch (propertyType) {
       case PropertyType.ENUMERATION:
