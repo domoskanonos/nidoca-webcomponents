@@ -1,14 +1,21 @@
-import {css, html, TemplateResult,LitElement} from "lit";
-import {customElement} from "lit/decorators.js";
+import {css, html, TemplateResult, LitElement} from "lit";
+import {customElement, property} from "lit/decorators.js";
 import {query} from "lit/decorators.js";
 import {NidocaTabContent} from "./nidoca-tab-content";
 import {NidocaTab} from "./nidoca-tab";
+import {NidocaColorScheme} from ".";
 
 @customElement("nidoca-tabs")
 export class NidocaTabs extends LitElement {
   static styles = css`
     slot {
       display: inline;
+    }
+
+    .container {
+      display: grid;
+      grid-template-rows: auto auto;
+      grid-template-columns: 100%;
     }
 
     #tabSlot {
@@ -27,64 +34,51 @@ export class NidocaTabs extends LitElement {
   @query("#tabContentSlot")
   private tabContentSlot: HTMLSlotElement | undefined;
 
+  @property({type: String})
+  colorScheme: NidocaColorScheme = NidocaColorScheme.PRIMARY;
+
+  @property({type: Number})
+  tabIndex: number = 0;
+
+  render(): any {
+    return html`
+      <div class="container" @nidoca-event-tab-clicked="${(event: CustomEvent) => this.tabClicked(event)}">
+        <slot id="tabSlot" name="tab"></slot>
+        <slot id="tabContentSlot" name="tabContent"></slot>
+      </div>
+    `;
+  }
+
   protected firstUpdated(_changedProperties: Map<PropertyKey, unknown>): void {
     super.firstUpdated(_changedProperties);
-    this.changeSelectedTabStyle();
+    this.tabIndexChanged();
   }
 
   protected update(changedProperties: Map<PropertyKey, unknown>): void {
     super.update(changedProperties);
-    if (changedProperties.get("tabType") != undefined) {
-      this.changeSelectedTabStyle();
+    if (changedProperties.get("tabIndex") != undefined) {
+      this.tabIndexChanged();
     }
   }
 
-  private changeSelectedTabStyle() {
+  private tabIndexChanged(): void {
+    this.updateNidocaTabElements();
+    this.updateNidocaTabContentElemnts();
+  }
+
+  private updateNidocaTabElements() {
     if (this.tabSlot != null) {
       const assignedElements: Element[] = this.tabSlot.assignedElements();
       console.log(assignedElements.length);
       const length: number = assignedElements.length;
       const widthPerTab = 100 / length;
+      const selectedElement: Element = assignedElements[this.tabIndex];
       for (let index = 0; index < assignedElements.length; index++) {
         const element: Element = assignedElements[index];
         if (element instanceof NidocaTab) {
+          element.colorScheme = this.colorScheme;
           element.style.width = String(widthPerTab).concat("%");
-          if (element.selected) {
-            element.classList.add("SELECTED");
-          }
-        }
-      }
-    }
-  }
-
-  render(): any {
-    return html`
-      <nidoca-grid-container
-        @nidoca-event-tab-clicked="${(event: CustomEvent) => this.tabClicked(event)}"
-        .gridTemplateRows="${["auto", "auto"]}"
-        .gridTemplateColumns="${["100%"]}"
-      >
-        <slot id="tabSlot" name="tab"></slot>
-        <slot id="tabContentSlot" name="tabContent"></slot>
-      </nidoca-grid-container>
-    `;
-  }
-
-  private tabClicked(event: CustomEvent): void {
-    const clickedTab: NidocaTab = event.detail;
-
-    if (clickedTab.selected) {
-      return;
-    }
-
-    let tabIndex: number = 0;
-    if (this.tabSlot != null) {
-      const assignedElements: Element[] = this.tabSlot.assignedElements();
-      for (let index = 0; index < assignedElements.length; index++) {
-        const element: Element = assignedElements[index];
-        if (element instanceof NidocaTab) {
-          if (element == clickedTab) {
-            tabIndex = index;
+          if (element == selectedElement) {
             element.selected = true;
             element.classList.add("SELECTED");
           } else {
@@ -94,21 +88,44 @@ export class NidocaTabs extends LitElement {
         }
       }
     }
+  }
 
-    console.log("tab selected, index = %s", tabIndex);
-
+  private updateNidocaTabContentElemnts() {
     let tabContentIndex: number = 0;
     if (this.tabContentSlot != null) {
       const assignedElements: Element[] = this.tabContentSlot.assignedElements();
       for (let index = 0; index < assignedElements.length; index++) {
         const tabContentElement: Element = assignedElements[index];
         if (tabContentElement instanceof NidocaTabContent) {
-          if (tabIndex == tabContentIndex) {
+          if (this.tabIndex == tabContentIndex) {
             tabContentElement.selected = true;
           } else {
             tabContentElement.selected = false;
           }
           tabContentIndex++;
+        }
+      }
+    }
+  }
+
+  private tabClicked(event: CustomEvent): void {
+    const clickedTab: NidocaTab = event.detail;
+    this.changeTabIndex(clickedTab);
+  }
+
+  private changeTabIndex(newTab: NidocaTab) {
+    if (newTab.selected) {
+      return;
+    }
+    if (this.tabSlot != null) {
+      const assignedElements: Element[] = this.tabSlot.assignedElements();
+      for (let index = 0; index < assignedElements.length; index++) {
+        const element: Element = assignedElements[index];
+        if (element instanceof NidocaTab) {
+          if (element == newTab) {
+            this.tabIndex = index;
+            break;
+          }
         }
       }
     }

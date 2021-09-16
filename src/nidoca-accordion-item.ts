@@ -4,7 +4,7 @@ import { property } from "lit/decorators.js";
 import {NidocaFlexAlignContent, NidocaFlexAlignItems, NidocaFlexDirection, NidocaFlexJustifyContent, NidocaFlexWrap} from ".";
 import {NidocaBorderProperty} from "./nidoca-border";
 import {NidocaLayoutSpacerType, NidocaLayoutSpacerSize} from "./nidoca-layout-spacer";
-import {VisibleType} from "./nidoca-visible";
+import {NidocaVisibleType} from "./nidoca-visible";
 
 @customElement("nidoca-accordion-item")
 export class NidocaAccordionItem extends LitElement {
@@ -45,7 +45,7 @@ export class NidocaAccordionItem extends LitElement {
             </nidoca-layout-spacer>
             <nidoca-icon icon="${this.opened ? "keyboard_arrow_down" : "keyboard_arrow_up"}"></nidoca-icon>
           </nidoca-layout-flex-container>
-          <nidoca-visible visibleType="${this.opened ? VisibleType.NORMAL : VisibleType.HIDE}">
+          <nidoca-visible visibleType="${this.opened ? NidocaVisibleType.NORMAL : NidocaVisibleType.HIDE}">
             <slot></slot>
           </nidoca-visible>
         </nidoca-border>

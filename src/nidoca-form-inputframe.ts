@@ -2,7 +2,7 @@ import {css, html, TemplateResult, LitElement} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
 import {NidocaBorderProperty, NidocaBorderSize} from "./nidoca-border";
-import {VisibleType as NidocaVisibleType} from "./nidoca-visible";
+import {NidocaVisibleType as NidocaVisibleType} from "./nidoca-visible";
 import {NidocaFlexAlignContent} from "./nidoca-layout-flex-container";
 import {NidocaTypographyType} from "./nidoca-typography";
 import {NidocaLayoutSpacerType, NidocaLayoutSpacerSize} from "./nidoca-layout-spacer";

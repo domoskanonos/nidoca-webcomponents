@@ -5,7 +5,7 @@ import {query} from "lit/decorators.js";
 import {NidocaColorScheme} from ".";
 import {FormOutputData, NidocaFormAbstractInputElement} from "./nidoca-form-abstract-input-element";
 import {NidocaTypographyType} from "./nidoca-typography";
-import {VisibleType} from "./nidoca-visible";
+import {NidocaVisibleType} from "./nidoca-visible";
 
 @customElement("nidoca-form-switch")
 export class NidocaFormSwitch extends NidocaFormAbstractInputElement {
@@ -122,7 +122,7 @@ export class NidocaFormSwitch extends NidocaFormAbstractInputElement {
         </nidoca-typography>
         <nidoca-visible
           slot="secondary"
-          visibleType="${this.infoText.length > 0 ? VisibleType.NORMAL : VisibleType.HIDE}"
+          visibleType="${this.infoText.length > 0 ? NidocaVisibleType.NORMAL : NidocaVisibleType.HIDE}"
         >
           <nidoca-typography
             .typographyType="${NidocaTypographyType.SUBTITLE2}"
@@ -142,7 +142,7 @@ export class NidocaFormSwitch extends NidocaFormAbstractInputElement {
         </label>
       </nidoca-list-item>
 
-      <nidoca-visible visibleType="${this.warningText ? VisibleType.NORMAL : VisibleType.HIDE}">
+      <nidoca-visible visibleType="${this.warningText ? NidocaVisibleType.NORMAL : NidocaVisibleType.HIDE}">
         <nidoca-typography
           style="color:var(--app-color-warning-background)"
           .typographyType="${NidocaTypographyType.BODY1}"
@@ -150,7 +150,7 @@ export class NidocaFormSwitch extends NidocaFormAbstractInputElement {
         ></nidoca-typography>
       </nidoca-visible>
 
-      <nidoca-visible visibleType="${this.errorText ? VisibleType.NORMAL : VisibleType.HIDE}">
+      <nidoca-visible visibleType="${this.errorText ? NidocaVisibleType.NORMAL : NidocaVisibleType.HIDE}">
         <nidoca-typography
           style="color:var(--app-color-error-background)"
           .typographyType="${NidocaTypographyType.BODY1}"

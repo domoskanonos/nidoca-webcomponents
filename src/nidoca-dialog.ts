@@ -1,7 +1,7 @@
 import {css, html, LitElement, TemplateResult} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
-import {VisibleType} from "./nidoca-visible";
+import {NidocaVisibleType} from "./nidoca-visible";
 import {NidocaTransitionType} from "./nidoca-transition";
 
 @customElement("nidoca-dialog")
@@ -50,7 +50,7 @@ export class NidocaDialog extends LitElement {
 
   render(): any {
     return html`
-      <nidoca-visible visibleType="${this.show ? VisibleType.NORMAL : VisibleType.HIDE}">
+      <nidoca-visible visibleType="${this.show ? NidocaVisibleType.NORMAL : NidocaVisibleType.HIDE}">
         <div class="fullScreen opacScreen"></div>
         <div class="fullScreen wrapperOutside">
           <div class="wrapperInside">

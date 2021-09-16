@@ -2,7 +2,7 @@ import {css, html, LitElement} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
 import {NidocaFlexAlignItems, NidocaFlexJustifyContent, NidocaFlexWrap} from "./nidoca-layout-flex-container";
-import {VisibleType} from "./nidoca-visible";
+import {NidocaVisibleType} from "./nidoca-visible";
 import {NidocaLayoutSpacerSize} from "./nidoca-layout-spacer";
 import {NidocaTypographyType} from "./nidoca-typography";
 import {NidocaBorderSize, NidocaColorScheme} from ".";
@@ -78,14 +78,14 @@ export class NidocaButton extends LitElement {
             .flexJustifyContent="${NidocaFlexJustifyContent.CENTER}"
             .flexAlignItems="${NidocaFlexAlignItems.CENTER}"
           >
-            <nidoca-visible visibleType="${this.leadingIcon ? VisibleType.NORMAL : VisibleType.HIDE}">
+            <nidoca-visible visibleType="${this.leadingIcon ? NidocaVisibleType.NORMAL : NidocaVisibleType.HIDE}">
               <nidoca-icon .icon="${this.leadingIcon}"></nidoca-icon>
             </nidoca-visible>
 
             <nidoca-visible
               visibleType="${!this.leadingIcon && this.buttonType != NidocaButtonType.TEXT
-                ? VisibleType.NORMAL
-                : VisibleType.HIDE}"
+                ? NidocaVisibleType.NORMAL
+                : NidocaVisibleType.HIDE}"
             >
               <nidoca-layout-spacer spacerSize="${NidocaLayoutSpacerSize.MEDIUM}"> </nidoca-layout-spacer>
             </nidoca-visible>
@@ -95,7 +95,7 @@ export class NidocaButton extends LitElement {
             </nidoca-typography>
 
             <nidoca-visible
-              visibleType="${this.buttonType != NidocaButtonType.TEXT ? VisibleType.NORMAL : VisibleType.HIDE}"
+              visibleType="${this.buttonType != NidocaButtonType.TEXT ? NidocaVisibleType.NORMAL : NidocaVisibleType.HIDE}"
             >
               <nidoca-layout-spacer spacerSize="${NidocaLayoutSpacerSize.MEDIUM}"></nidoca-layout-spacer>
             </nidoca-visible>

@@ -26,7 +26,7 @@ ${this.getPropertyGuiWrappers()
     return htmlString;
   }
 
-  public getVanillaJS(): string {
+  public getAsJavascript(): string {
     const htmlString: string = `
 <${this.classWrapper.getTagName()} id="meinElement"></${this.classWrapper.getTagName()}>
 <script>

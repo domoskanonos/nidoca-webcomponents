@@ -2,7 +2,7 @@ import {css, html, TemplateResult,LitElement} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
 
-export enum VisibleType {
+export enum NidocaVisibleType {
   HIDE = "HIDE",
   INVISIBLE = "INVISIBLE",
   NORMAL = "NORMAL",
@@ -24,7 +24,7 @@ export class NidocaVisible extends LitElement {
   `;
 
   @property({ type: String })
-  visibleType: VisibleType = VisibleType.NORMAL;
+  visibleType: NidocaVisibleType = NidocaVisibleType.NORMAL;
 
   render(): any {
     return html` <slot class="${this.visibleType}"></slot> `;

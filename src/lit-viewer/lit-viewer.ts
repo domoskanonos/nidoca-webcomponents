@@ -1,9 +1,11 @@
-import { customElement, html, LitElement, TemplateResult } from "lit-element";
+import {customElement, html, LitElement, TemplateResult} from "lit-element";
 
-import { ClassWrapper } from "./core/classWrapper";
-import { ClassGuiWrapper } from "./core/classGuiWrapper";
-import { css } from "lit-element";
-import { NidocaFormCombobox, NidocaShadowType } from "..";
+import {ClassWrapper} from "./core/classWrapper";
+import {ClassGuiWrapper} from "./core/classGuiWrapper";
+import {css} from "lit-element";
+import {NidocaFormCombobox, NidocaShadowType} from "..";
+import {PropertyGuiWrapper} from "./core/propertyGuiWrapper";
+import {NidocaLayoutSpacerType} from "../nidoca-layout-spacer";
 
 @customElement("lit-viewer")
 export class LitViewer extends LitElement {
@@ -25,74 +27,59 @@ export class LitViewer extends LitElement {
           </nidoca-layout-spacer>
         </nidoca-box-shadow>
 
-
-
-        <nidoca-table
-        .headers="${["slotName"]}"
-        .rows="${this.toSlotHeaderRows(this.clazzGuiWrapper?.classWrapper.getSlotNames())}"
-      >
-      </nidoca-table>
-
-
         <div>
           ${this.clazzGuiWrapper
-        ? html`
-                <div>
-                  <h1>Attribute:</h1>
+            ? html`
+                <nidoca-table
+                  .headers="${["name", "type", "values"]}"
+                  .rows="${this.toAttributeRows(this.clazzGuiWrapper.getPropertyGuiWrappers())}"
+                >
+                </nidoca-table>
 
-                  <nidoca-form-combobox
-                    .options="${NidocaFormCombobox.stringArrayToOptions(this.clazzGuiWrapper.getPropertieNames())}"
-                    @input="${() => alert("siodjhdofih")}"
-                  ></nidoca-form-combobox>
+                <nidoca-table
+                  .headers="${["slotName"]}"
+                  .rows="${this.toSlotRows(this.clazzGuiWrapper?.classWrapper.getSlotNames())}"
+                >
+                </nidoca-table>
 
-                  <div class="flexContainer">
-                    ${this.clazzGuiWrapper.getPropertyGuiWrappers().map(
-          (prop) => html`
-                        <nidoca-card>
-                          <nidoca-typography slot="supportingText">${prop.propertyWrapper.name}</nidoca-typography>
-                          <nidoca-typography slot="supportingText"
-                            >${prop.propertyWrapper.getTypeName()}</nidoca-typography
-                          >
-                          <nidoca-typography slot="actions"
-                            >${prop.getInputElement(this.clazzGuiWrapper)}</nidoca-typography
-                          >
-                        </nidoca-card>
-                      `
-        )}
-                  </div>
-                </div>
+                <nidoca-tabs>
+                  <nidoca-tab slot="tab">Javascript</nidoca-tab>
+                  <nidoca-tab slot="tab">Typescript</nidoca-tab>
+                  <nidoca-tab slot="tab">Lit</nidoca-tab>
+                  <nidoca-tab slot="tab">Angular</nidoca-tab>
 
-                <div class="flexContainer">
-                  <div class="flexItem">
-                    <h2>Html Quellcode:</h2>
-                    <pre>${this.clazzGuiWrapper.getAsHtml()}</pre>
-                  </div>
-                  <div class="flexItem">
-                    <h2>Lit Quellcode:</h2>
-                    <pre>${this.clazzGuiWrapper.getAsLit()}</pre>
-                  </div>
+                  <nidoca-tab-content slot="tabContent">
+                    <nidoca-layout-spacer .spacerTypes="${[NidocaLayoutSpacerType.TOP]}">
+                      <nidoca-code>${this.clazzGuiWrapper.getAsJavascript()}</nidoca-code>
+                    </nidoca-layout-spacer>
+                  </nidoca-tab-content>
 
-                  <div class="flexItem">
-                    <h2>Angular Quellcode:</h2>
-                    <pre>${this.clazzGuiWrapper.getAsHtml()}</pre>
-                  </div>
-                  <div class="flexItem">
-                    <h2>Typescript:</h2>
-                    <pre>${this.clazzGuiWrapper.getTypescript()}</pre>
-                  </div>
-                  <div class="flexItem">
-                    <h2>Vanilla JS:</h2>
-                    <pre>${this.clazzGuiWrapper.getVanillaJS()}</pre>
-                  </div>
-                </div>
+                  <nidoca-tab-content slot="tabContent">
+                    <nidoca-layout-spacer .spacerTypes="${[NidocaLayoutSpacerType.TOP]}">
+                      <nidoca-code>${this.clazzGuiWrapper.getTypescript()}</nidoca-code>
+                    </nidoca-layout-spacer>
+                  </nidoca-tab-content>
+
+                  <nidoca-tab-content slot="tabContent">
+                    <nidoca-layout-spacer .spacerTypes="${[NidocaLayoutSpacerType.TOP]}">
+                      <nidoca-code>${this.clazzGuiWrapper.getAsLit()}</nidoca-code>
+                    </nidoca-layout-spacer>
+                  </nidoca-tab-content>
+
+                  <nidoca-tab-content slot="tabContent">
+                    <nidoca-layout-spacer .spacerTypes="${[NidocaLayoutSpacerType.TOP]}">
+                      <nidoca-code>${this.clazzGuiWrapper.getAsHtml()}</nidoca-code>
+                    </nidoca-layout-spacer>
+                  </nidoca-tab-content>
+                </nidoca-tabs>
               `
-        : html``}
+            : html``}
         </div>
       </div>
     `;
   }
 
-  toSlotHeaderRows(arr: string[] | undefined) {
+  toSlotRows(arr: string[] | undefined) {
     const retval: string[][] = [[]];
     if (arr) {
       arr.map((name) => {
@@ -100,12 +87,25 @@ export class LitViewer extends LitElement {
         arr.push(name);
         retval.push(arr);
         return arr;
-
       });
     }
     return retval;
   }
 
+  toAttributeRows(arr: PropertyGuiWrapper[] | undefined) {
+    const retval: string[][] = [[]];
+    if (arr) {
+      arr.map((prop) => {
+        const arr: any[] = [];
+        arr.push(prop.propertyWrapper.name);
+        arr.push(prop.propertyWrapper.getTypeName());
+        arr.push(prop.getInputElement(this.clazzGuiWrapper));
+        retval.push(arr);
+        return arr;
+      });
+    }
+    return retval;
+  }
 
   slotChanged(event: Event): void {
     const slotElement: HTMLSlotElement = <HTMLSlotElement>event.target;
@@ -116,5 +116,4 @@ export class LitViewer extends LitElement {
     }
     this.requestUpdate();
   }
-
 }
