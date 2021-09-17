@@ -16,6 +16,11 @@ export enum NidocaButtonType {
 @customElement("nidoca-button")
 export class NidocaButton extends LitElement {
   static styles = css`
+    :host {
+      display: block;
+      width: max-content;
+    }
+
     .BUTTON {
       cursor: pointer;
       text-transform: uppercase;
@@ -91,11 +96,13 @@ export class NidocaButton extends LitElement {
             </nidoca-visible>
 
             <nidoca-typography text="${this.text}" typographyType="${NidocaTypographyType.BUTTON}">
-            <slot></slot>
+              <slot></slot>
             </nidoca-typography>
 
             <nidoca-visible
-              visibleType="${this.buttonType != NidocaButtonType.TEXT ? NidocaVisibleType.NORMAL : NidocaVisibleType.HIDE}"
+              visibleType="${this.buttonType != NidocaButtonType.TEXT
+                ? NidocaVisibleType.NORMAL
+                : NidocaVisibleType.HIDE}"
             >
               <nidoca-layout-spacer spacerSize="${NidocaLayoutSpacerSize.MEDIUM}"></nidoca-layout-spacer>
             </nidoca-visible>

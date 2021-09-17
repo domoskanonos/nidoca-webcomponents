@@ -7,6 +7,7 @@ import {PropertyGuiWrapper} from "./core/propertyGuiWrapper";
 import {NidocaLayoutSpacerType} from "../nidoca-layout-spacer";
 import {NidocaTypographyType} from "../nidoca-typography";
 import {property} from "lit/decorators.js";
+import {NidocaContainerSize} from "../nidoca-container";
 
 @customElement("lit-viewer")
 export class LitViewer extends LitElement {
@@ -25,14 +26,14 @@ export class LitViewer extends LitElement {
   public render(): TemplateResult {
     return html`
       <div class="container">
-        <nidoca-box-shadow style="width:100%; height:100%;" .shadowType="${NidocaShadowType.KEY_LIGHT}">
+        <nidoca-container .containerSize="${NidocaContainerSize._75}">
           <nidoca-layout-spacer>
             <slot @slotchange="${(event: Event) => this.slotChanged(event)}"></slot>
           </nidoca-layout-spacer>
-        </nidoca-box-shadow>
+        </nidoca-container>
 
-        <div>
-          ${this.clazzGuiWrapper
+        <nidoca-layout-spacer .spacerTypes="${[NidocaLayoutSpacerType.LEFT,NidocaLayoutSpacerType.RIGHT]}">
+        ${this.clazzGuiWrapper
             ? html`
                 ${this.clazzGuiWrapper?.hasProperties()
                   ? html`<nidoca-layout-spacer
@@ -83,7 +84,7 @@ export class LitViewer extends LitElement {
 
                   <nidoca-tab-content slot="tabContent">
                     <nidoca-layout-spacer .spacerTypes="${[NidocaLayoutSpacerType.TOP]}">
-                      <nidoca-code>${this.clazzGuiWrapper.getAsJavascript()}</nidoca-code>
+                      <nidoca-code style="width:100%;" >${this.clazzGuiWrapper.getAsJavascript()}</nidoca-code>
                     </nidoca-layout-spacer>
                   </nidoca-tab-content>
 
@@ -107,7 +108,7 @@ export class LitViewer extends LitElement {
                 </nidoca-tabs>
               `
             : html``}
-        </div>
+        </nidoca-layout-spacer>
       </div>
     `;
   }

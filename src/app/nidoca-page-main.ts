@@ -38,7 +38,7 @@ export class NidocaPageMain extends LitElement {
       <br />
 
       <lit-viewer .customEventNames="${["nidoca-button-event-clicked"]}">
-        <nidoca-button text="Mein Button" leadingIcon="home" .buttonType="${NidocaButtonType.OUTLINED}"></nidoca-button>
+        <nidoca-button text="Mein Button" leadingIcon="home" .buttonType="${NidocaButtonType.CONTAINED}"></nidoca-button>
       </lit-viewer>
 
       <nidoca-layout-section>

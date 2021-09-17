@@ -2,6 +2,8 @@ import {PropertyWrapper, PropertyType} from "./propertyWrapper";
 import {html, LitElement, TemplateResult} from "lit";
 import {ClassGuiWrapper} from "./classGuiWrapper";
 import {repeat} from "lit/directives/repeat.js";
+import {NidocaFormCombobox} from "../../nidoca-form-combobox";
+import { NidocaTextType } from "../..";
 
 export class PropertyGuiWrapper {
   public propertyWrapper: PropertyWrapper;
@@ -17,25 +19,23 @@ export class PropertyGuiWrapper {
     const propertyType: PropertyType = this.propertyWrapper.getPropertyType();
     switch (propertyType) {
       case PropertyType.STRING:
-        return html`<input
-          type="text"
+        return html`<nidoca-form-text .textType="${NidocaTextType.TEXT}"
           value="${classGuiWrapper.classWrapper.instance[this.propertyWrapper.name as keyof LitElement]}"
           @input="${(eventArg: any) => {
-            classGuiWrapper.classWrapper.instance[this.propertyWrapper.name] = eventArg.target.value;
+            classGuiWrapper.classWrapper.instance[this.propertyWrapper.name] = eventArg.target.getOutputData().value;
             classGuiWrapper.classWrapper.instance.requestUpdate();
             classGuiWrapper.showcaseElement.requestUpdate();
           }}"
-        />`;
+        /></nidoca-form-text>`;
       case PropertyType.NUMBER:
-        return html`<input
-          type="number"
+        return html`<nidoca-form-text .textType="${NidocaTextType.NUMBER}"
           value="${classGuiWrapper.classWrapper.instance[this.propertyWrapper.name as keyof LitElement]}"
           @input="${(eventArg: any) => {
-            classGuiWrapper.classWrapper.instance[this.propertyWrapper.name] = eventArg.target.value;
+            classGuiWrapper.classWrapper.instance[this.propertyWrapper.name] = eventArg.target.getOutputData().value;
             classGuiWrapper.classWrapper.instance.requestUpdate();
             classGuiWrapper.showcaseElement.requestUpdate();
           }}"
-        />`;
+        ></nidoca-form-text>`;
       case PropertyType.BOOLEAN: {
         return html`<input
           type="checkbox"
@@ -48,29 +48,18 @@ export class PropertyGuiWrapper {
       }
       case PropertyType.ENUMERATION: {
         const enumValues: any[] = this.propertyWrapper.getEnumValues();
-        return html`<select
-          @change="${(eventArg: any) => {
+        return html`<nidoca-form-combobox
+          .options="${NidocaFormCombobox.enumToOptions(this.propertyWrapper.getType(),false)}"
+          value="${classGuiWrapper.classWrapper.instance[this.propertyWrapper.name as keyof LitElement]}"
+          @input="${(eventArg: any) => {
             classGuiWrapper.classWrapper.instance[this.propertyWrapper.name] = this.propertyWrapper.getEnumValue(
-              eventArg.target.value
+              eventArg.target.getOutputData().value
             );
             classGuiWrapper.classWrapper.instance.requestUpdate();
             classGuiWrapper.showcaseElement.requestUpdate();
           }}"
         >
-          ${repeat(
-            enumValues,
-            (value) =>
-              html`
-                <option
-                  name="${value.key}"
-                  .selected="${classGuiWrapper.classWrapper.instance[this.propertyWrapper.name as keyof LitElement] ==
-                  value.key}"
-                >
-                  ${value.value}
-                </option>
-              `
-          )}
-        </select>`;
+        </nidoca-form-combobox>`;
       }
       case PropertyType.ARRAY:
       case PropertyType.CLAZZ:

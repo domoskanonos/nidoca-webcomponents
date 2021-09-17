@@ -29,7 +29,7 @@ export class NidocaSpacer extends LitElement {
     .spacer,
     ::slotted(.spacer) {
       box-sizing: border-box;
-      display: inline-block;
+      display: block;
     }
   `;
 
