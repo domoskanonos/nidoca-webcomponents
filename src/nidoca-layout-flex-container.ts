@@ -71,7 +71,7 @@ export class NidocaLayoutFlexContainer extends LitElement {
       display: flex;
       overflow: auto;
       box-sizing: border-boxed;
-      width:100%;
+      width: 100%;
     }
 
     .flexItem,
@@ -81,19 +81,19 @@ export class NidocaLayoutFlexContainer extends LitElement {
     }
   `;
 
-  @property({type: String})
+  @property({type: NidocaFlexWrap, converter: String})
   flexDirection: NidocaFlexDirection = NidocaFlexDirection.ROW;
 
-  @property({type: String})
+  @property({type: NidocaFlexWrap, converter: String})
   flexWrap: NidocaFlexWrap = NidocaFlexWrap.WRAP;
 
-  @property({type: String})
+  @property({type: NidocaFlexJustifyContent, converter: String})
   flexJustifyContent: NidocaFlexJustifyContent = NidocaFlexJustifyContent.FLEX_START;
 
-  @property({type: String})
+  @property({type: NidocaFlexAlignItems, converter: String})
   flexAlignItems: NidocaFlexAlignItems = NidocaFlexAlignItems.FLEX_START;
 
-  @property({type: String})
+  @property({type: NidocaFlexAlignContent, converter: String})
   flexAlignContent: NidocaFlexAlignContent = NidocaFlexAlignContent.FLEX_START;
 
   @property({type: String})

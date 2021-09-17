@@ -37,7 +37,7 @@ export class NidocaPageMain extends LitElement {
       <nidoca-typography text="Subtitel 2" typographyType="${NidocaTypographyType.SUBTITLE2}"> </nidoca-typography>
       <br />
 
-      <lit-viewer>
+      <lit-viewer .customEventNames="${["nidoca-button-event-clicked"]}">
         <nidoca-button text="Mein Button" leadingIcon="home" .buttonType="${NidocaButtonType.OUTLINED}"></nidoca-button>
       </lit-viewer>
 

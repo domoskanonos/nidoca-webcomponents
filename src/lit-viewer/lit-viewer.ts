@@ -1,12 +1,12 @@
 import {customElement, html, LitElement, TemplateResult} from "lit-element";
-
 import {ClassWrapper} from "./core/classWrapper";
 import {ClassGuiWrapper} from "./core/classGuiWrapper";
 import {css} from "lit-element";
-import {NidocaFormCombobox, NidocaShadowType} from "..";
+import {NidocaShadowType} from "..";
 import {PropertyGuiWrapper} from "./core/propertyGuiWrapper";
 import {NidocaLayoutSpacerType} from "../nidoca-layout-spacer";
 import {NidocaTypographyType} from "../nidoca-typography";
+import {property} from "lit/decorators.js";
 
 @customElement("lit-viewer")
 export class LitViewer extends LitElement {
@@ -18,6 +18,9 @@ export class LitViewer extends LitElement {
   `;
 
   private clazzGuiWrapper: ClassGuiWrapper<any> | null = null;
+
+  @property({type: Array})
+  customEventNames: string[] = [];
 
   public render(): TemplateResult {
     return html`
@@ -31,25 +34,42 @@ export class LitViewer extends LitElement {
         <div>
           ${this.clazzGuiWrapper
             ? html`
-                <nidoca-layout-spacer .spacerTypes="${[NidocaLayoutSpacerType.TOP, NidocaLayoutSpacerType.BOTTOM]}">
-                  <nidoca-typography .typographyType="${NidocaTypographyType.H2}">Attribute</nidoca-typography>
-                </nidoca-layout-spacer>
+                ${this.clazzGuiWrapper?.hasProperties()
+                  ? html`<nidoca-layout-spacer
+                        .spacerTypes="${[NidocaLayoutSpacerType.TOP, NidocaLayoutSpacerType.BOTTOM]}"
+                      >
+                        <nidoca-typography .typographyType="${NidocaTypographyType.H2}">Attribute</nidoca-typography>
+                      </nidoca-layout-spacer>
 
-                <nidoca-table
-                  .headers="${["name", "type", "values"]}"
-                  .rows="${this.toAttributeRows(this.clazzGuiWrapper.getPropertyGuiWrappers())}"
-                >
-                </nidoca-table>
+                      <nidoca-table
+                        .headers="${["name", "type", "values"]}"
+                        .rows="${this.toAttributeRows(this.clazzGuiWrapper.getPropertyGuiWrappers())}"
+                      >
+                      </nidoca-table>`
+                  : html``}
+                ${this.clazzGuiWrapper?.classWrapper.hasSlots()
+                  ? html` <nidoca-layout-spacer
+                        .spacerTypes="${[NidocaLayoutSpacerType.TOP, NidocaLayoutSpacerType.BOTTOM]}"
+                      >
+                        <nidoca-typography .typographyType="${NidocaTypographyType.H2}">Slots</nidoca-typography>
+                      </nidoca-layout-spacer>
 
-                <nidoca-layout-spacer .spacerTypes="${[NidocaLayoutSpacerType.TOP, NidocaLayoutSpacerType.BOTTOM]}">
-                  <nidoca-typography .typographyType="${NidocaTypographyType.H2}">Slots</nidoca-typography>
-                </nidoca-layout-spacer>
-
-                <nidoca-table
-                  .headers="${["name"]}"
-                  .rows="${this.toSlotRows(this.clazzGuiWrapper?.classWrapper.getSlotNames())}"
-                >
-                </nidoca-table>
+                      <nidoca-table
+                        .headers="${["name"]}"
+                        .rows="${this.toSlotRows(this.clazzGuiWrapper?.classWrapper.getSlotNames())}"
+                      >
+                      </nidoca-table>`
+                  : html``}
+                ${this.customEventNames.length > 0
+                  ? html`<nidoca-layout-spacer
+                        .spacerTypes="${[NidocaLayoutSpacerType.TOP, NidocaLayoutSpacerType.BOTTOM]}"
+                      >
+                        <nidoca-typography .typographyType="${NidocaTypographyType.H2}"
+                          >Custom Events</nidoca-typography
+                        > </nidoca-layout-spacer
+                      ><nidoca-table .headers="${["name"]}" .rows="${this.toCustomEventRows(this.customEventNames)}">
+                      </nidoca-table>`
+                  : html``}
 
                 <nidoca-layout-spacer .spacerTypes="${[NidocaLayoutSpacerType.TOP, NidocaLayoutSpacerType.BOTTOM]}">
                   <nidoca-typography .typographyType="${NidocaTypographyType.H2}">Quelltext</nidoca-typography>
@@ -92,6 +112,21 @@ export class LitViewer extends LitElement {
     `;
   }
 
+  toAttributeRows(arr: PropertyGuiWrapper[] | undefined) {
+    const retval: string[][] = [[]];
+    if (arr) {
+      arr.map((prop) => {
+        const arr: any[] = [];
+        arr.push(prop.propertyWrapper.name);
+        arr.push(prop.propertyWrapper.getTypeName());
+        arr.push(prop.getInputElement(this.clazzGuiWrapper));
+        retval.push(arr);
+        return arr;
+      });
+    }
+    return retval;
+  }
+
   toSlotRows(arr: string[] | undefined) {
     const retval: string[][] = [[]];
     if (arr) {
@@ -105,14 +140,12 @@ export class LitViewer extends LitElement {
     return retval;
   }
 
-  toAttributeRows(arr: PropertyGuiWrapper[] | undefined) {
+  toCustomEventRows(arr: string[] | undefined) {
     const retval: string[][] = [[]];
     if (arr) {
-      arr.map((prop) => {
-        const arr: any[] = [];
-        arr.push(prop.propertyWrapper.name);
-        arr.push(prop.propertyWrapper.getTypeName());
-        arr.push(prop.getInputElement(this.clazzGuiWrapper));
+      arr.map((name) => {
+        const arr: string[] = [];
+        arr.push(name);
         retval.push(arr);
         return arr;
       });

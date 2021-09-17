@@ -1,5 +1,5 @@
-import { LitElement } from "lit-element";
-import { PropertyWrapper } from "./propertyWrapper";
+import {LitElement} from "lit-element";
+import {PropertyWrapper} from "./propertyWrapper";
 
 export class ClassWrapper<T extends LitElement> {
   public instance: T;
@@ -21,11 +21,17 @@ export class ClassWrapper<T extends LitElement> {
   }
 
   public getSlotNames(): string[] {
-    return this.getSlots().map((prop) => { return prop.name ? prop.name : "default" });
+    return this.getSlots().map((prop) => {
+      return prop.name ? prop.name : "default";
+    });
   }
 
   public getSlots(): HTMLSlotElement[] {
     return this.getElementsByTagName("SLOT", this.instance.shadowRoot);
+  }
+
+  hasSlots(): boolen {
+    return this.getSlots().length > 0;
   }
 
   private getElementsByTagName(tagName: string, element: any | undefined | null): HTMLSlotElement[] {
@@ -45,7 +51,6 @@ export class ClassWrapper<T extends LitElement> {
     return retval;
   }
 
-
   public getPropertieNames(): string[] {
     const obj: any = this.instance.constructor;
     const propNames: string[] = Object.getOwnPropertyNames(obj);
@@ -63,5 +68,4 @@ export class ClassWrapper<T extends LitElement> {
     }
     return classPropertyArray;
   }
-
 }

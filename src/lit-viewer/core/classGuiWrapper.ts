@@ -109,4 +109,8 @@ ${this.classWrapper
     });
     return retval;
   }
+
+  hasProperties(): boolean {
+    return this.getPropertieNames().length > 0;
+  }
 }

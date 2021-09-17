@@ -19,6 +19,7 @@ export enum NidocaBorderProperty {
 }
 
 export enum NidocaBorderSize {
+  NONE = "NONE",
   THIN = "THIN",
   MEDIUM = "MEDIUM",
   THICK = "THICK",
@@ -47,6 +48,10 @@ export class NidocaBorder extends LitElement {
 
     .FULL_HEIGHT {
       height: 100%;
+    }
+
+    .NONE {
+      border-width: 0;
     }
 
     .THIN {
