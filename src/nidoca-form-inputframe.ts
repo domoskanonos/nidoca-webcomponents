@@ -3,7 +3,7 @@ import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
 import {NidocaBorderProperty, NidocaBorderSize} from "./nidoca-border";
 import {NidocaVisibleType as NidocaVisibleType} from "./nidoca-visible";
-import {NidocaFlexAlignContent} from "./nidoca-layout-flex-container";
+import {NidocaFlexLayoutAlignContent} from "./nidoca-flex-layout";
 import {NidocaTypographyType} from "./nidoca-typography";
 import {NidocaLayoutSpacerType, NidocaLayoutSpacerSize} from "./nidoca-layout-spacer";
 import {NidocaColorScheme, NidocaFormDate} from ".";
@@ -73,8 +73,8 @@ export class NidocaFormInputframe extends LitElement {
               spacerSize="${NidocaLayoutSpacerSize.SMALL}"
               .spacerTypes="${[NidocaLayoutSpacerType.ALL]}"
             >
-              <nidoca-layout-flex-container
-                .flexAlignContent="${NidocaFlexAlignContent.CENTER}"
+              <nidoca-flex-layout
+                .flexAlignContent="${NidocaFlexLayoutAlignContent.CENTER}"
                 itemStyle="flex-basis: 100%;"
               >
                 <nidoca-visible
@@ -88,7 +88,7 @@ export class NidocaFormInputframe extends LitElement {
                 </nidoca-visible>
 
                 <slot id="slotElement"></slot>
-              </nidoca-layout-flex-container>
+              </nidoca-flex-layout>
             </nidoca-layout-spacer>
           </nidoca-border>
 

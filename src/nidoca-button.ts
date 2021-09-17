@@ -1,9 +1,9 @@
 import {css, html, LitElement} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
-import {NidocaFlexAlignItems, NidocaFlexJustifyContent, NidocaFlexWrap} from "./nidoca-layout-flex-container";
+import {NidocaFlexLayoutAlignItems, NidocaFlexLayoutJustifyContent, NidocaFlexLayoutWrap} from "./nidoca-flex-layout";
 import {NidocaVisibleType} from "./nidoca-visible";
-import {NidocaLayoutSpacerSize} from "./nidoca-layout-spacer";
+import {NidocaLayoutSpacerSize, NidocaLayoutSpacerType} from "./nidoca-layout-spacer";
 import {NidocaTypographyType} from "./nidoca-typography";
 import {NidocaBorderSize, NidocaColorScheme} from ".";
 
@@ -28,7 +28,6 @@ export class NidocaButton extends LitElement {
       font-family: inherit;
       text-align: center;
       vertical-align: center;
-      line-height: 48px;
     }
 
     @media only screen and (orientation: portrait) {
@@ -74,14 +73,14 @@ export class NidocaButton extends LitElement {
           colorScheme="${this.colorScheme}"
           borderSize="${this.buttonType == NidocaButtonType.TEXT ? NidocaBorderSize.NONE : NidocaBorderSize.THIN}"
         >
-          <nidoca-layout-flex-container
+          <nidoca-flex-layout
             class="BUTTON ${this.buttonType}"
             @click="${() => {
               this.clicked();
             }}"
-            flexWrap="${NidocaFlexWrap.NO_WRAP}"
-            .flexJustifyContent="${NidocaFlexJustifyContent.CENTER}"
-            .flexAlignItems="${NidocaFlexAlignItems.CENTER}"
+            flexWrap="${NidocaFlexLayoutWrap.NO_WRAP}"
+            .flexJustifyContent="${NidocaFlexLayoutJustifyContent.CENTER}"
+            .flexAlignItems="${NidocaFlexLayoutAlignItems.CENTER}"
           >
             <nidoca-visible visibleType="${this.leadingIcon ? NidocaVisibleType.NORMAL : NidocaVisibleType.HIDE}">
               <nidoca-icon .icon="${this.leadingIcon}"></nidoca-icon>
@@ -95,9 +94,14 @@ export class NidocaButton extends LitElement {
               <nidoca-layout-spacer spacerSize="${NidocaLayoutSpacerSize.MEDIUM}"> </nidoca-layout-spacer>
             </nidoca-visible>
 
-            <nidoca-typography text="${this.text}" typographyType="${NidocaTypographyType.BUTTON}">
-              <slot></slot>
-            </nidoca-typography>
+            <nidoca-layout-spacer
+              spacerSize="${NidocaLayoutSpacerSize.BIG}"
+              .spacerTypes="${[NidocaLayoutSpacerType.TOP, NidocaLayoutSpacerType.BOTTOM]}"
+            >
+              <nidoca-typography text="${this.text}" typographyType="${NidocaTypographyType.BUTTON}">
+                <slot></slot>
+              </nidoca-typography>
+            </nidoca-layout-spacer>
 
             <nidoca-visible
               visibleType="${this.buttonType != NidocaButtonType.TEXT
@@ -106,7 +110,7 @@ export class NidocaButton extends LitElement {
             >
               <nidoca-layout-spacer spacerSize="${NidocaLayoutSpacerSize.MEDIUM}"></nidoca-layout-spacer>
             </nidoca-visible>
-          </nidoca-layout-flex-container>
+          </nidoca-flex-layout>
         </nidoca-border>
       </nidoca-ripple>
     `;

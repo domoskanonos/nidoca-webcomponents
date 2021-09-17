@@ -2,20 +2,20 @@ import {css, html, LitElement} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
 
-export enum NidocaFlexDirection {
+export enum NidocaFlexLayoutDirection {
   ROW = "row",
   ROW_REVERSE = "rowData-reverse",
   COLUMN = "column",
   COLUMN_REVERSE = "column-reverse",
 }
 
-export enum NidocaFlexWrap {
+export enum NidocaFlexLayoutWrap {
   WRAP = "wrap",
   NO_WRAP = "nowrap",
   WRAP_REVERSE = "flexWrap-reverse",
 }
 
-export enum NidocaFlexJustifyContent {
+export enum NidocaFlexLayoutJustifyContent {
   FLEX_START = "flex-start",
   FLEX_END = "flex-end",
   CENTER = "center",
@@ -24,7 +24,7 @@ export enum NidocaFlexJustifyContent {
   SPACE_EVENLY = "space-evenly",
 }
 
-export enum NidocaFlexAlignItems {
+export enum NidocaFlexLayoutAlignItems {
   FLEX_START = "flex-start",
   FLEX_END = "flex-end",
   CENTER = "center",
@@ -38,7 +38,7 @@ export enum NidocaFlexAlignItems {
   UNSAFE = "unsafe",
 }
 
-export enum NidocaFlexAlignContent {
+export enum NidocaFlexLayoutAlignContent {
   FLEX_START = "flex-start",
   FLEX_END = "flex-end",
   CENTER = "center",
@@ -55,8 +55,8 @@ export enum NidocaFlexAlignContent {
   UNSAFE = "unsafe",
 }
 
-@customElement("nidoca-layout-flex-container")
-export class NidocaLayoutFlexContainer extends LitElement {
+@customElement("nidoca-flex-layout")
+export class NidocaFlexLayout extends LitElement {
   static styles = css`
     :host,
     *,
@@ -81,26 +81,20 @@ export class NidocaLayoutFlexContainer extends LitElement {
     }
   `;
 
-  @property({type: NidocaFlexWrap, converter: String})
-  flexDirection: NidocaFlexDirection = NidocaFlexDirection.ROW;
+  @property({type: NidocaFlexLayoutWrap, converter: String})
+  flexDirection: NidocaFlexLayoutDirection = NidocaFlexLayoutDirection.ROW;
 
-  @property({type: NidocaFlexWrap, converter: String})
-  flexWrap: NidocaFlexWrap = NidocaFlexWrap.WRAP;
+  @property({type: NidocaFlexLayoutWrap, converter: String})
+  flexWrap: NidocaFlexLayoutWrap = NidocaFlexLayoutWrap.WRAP;
 
-  @property({type: NidocaFlexJustifyContent, converter: String})
-  flexJustifyContent: NidocaFlexJustifyContent = NidocaFlexJustifyContent.FLEX_START;
+  @property({type: NidocaFlexLayoutJustifyContent, converter: String})
+  flexJustifyContent: NidocaFlexLayoutJustifyContent = NidocaFlexLayoutJustifyContent.FLEX_START;
 
-  @property({type: NidocaFlexAlignItems, converter: String})
-  flexAlignItems: NidocaFlexAlignItems = NidocaFlexAlignItems.FLEX_START;
+  @property({type: NidocaFlexLayoutAlignItems, converter: String})
+  flexAlignItems: NidocaFlexLayoutAlignItems = NidocaFlexLayoutAlignItems.FLEX_START;
 
-  @property({type: NidocaFlexAlignContent, converter: String})
-  flexAlignContent: NidocaFlexAlignContent = NidocaFlexAlignContent.FLEX_START;
-
-  @property({type: String})
-  containerStyle: string = "";
-
-  @property({type: String})
-  itemStyle: string = "";
+  @property({type: NidocaFlexLayoutAlignContent, converter: String})
+  flexAlignContent: NidocaFlexLayoutAlignContent = NidocaFlexLayoutAlignContent.FLEX_START;
 
   render(): any {
     return html`

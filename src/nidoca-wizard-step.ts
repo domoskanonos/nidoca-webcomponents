@@ -1,7 +1,7 @@
 import {css, html, TemplateResult,LitElement} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
-import {NidocaFlexAlignContent, NidocaFlexAlignItems, NidocaFlexDirection, NidocaFlexJustifyContent, NidocaFlexWrap, NidocaIconShadowType} from ".";
+import {NidocaFlexLayoutAlignContent, NidocaFlexLayoutAlignItems, NidocaFlexLayoutDirection, NidocaFlexLayoutJustifyContent, NidocaFlexLayoutWrap, NidocaIconShadowType} from ".";
 import {NidocaTypographyAlignment, NidocaTypographyType} from "./nidoca-typography";
 
 export enum WizardStepState {
@@ -44,21 +44,21 @@ export class NidocaWizardStep extends LitElement {
 
   render(): any {
     return html`
-      <nidoca-layout-flex-container
-        .flexDirection="${NidocaFlexDirection.COLUMN}"
-        .flexWrap="${NidocaFlexWrap.NO_WRAP}"
-        .flexJustifyContent="${NidocaFlexJustifyContent.SPACE_EVENLY}"
-        .flexAlignItems="${NidocaFlexAlignItems.FLEX_START}"
-        .flexAlignContent="${NidocaFlexAlignContent.SPACE_EVENLY}"
+      <nidoca-flex-layout
+        .flexDirection="${NidocaFlexLayoutDirection.COLUMN}"
+        .flexWrap="${NidocaFlexLayoutWrap.NO_WRAP}"
+        .flexJustifyContent="${NidocaFlexLayoutJustifyContent.SPACE_EVENLY}"
+        .flexAlignItems="${NidocaFlexLayoutAlignItems.FLEX_START}"
+        .flexAlignContent="${NidocaFlexLayoutAlignContent.SPACE_EVENLY}"
         containerStyle=""
         itemStyle=""
       >
-        <nidoca-layout-flex-container
-          .flexDirection="${NidocaFlexDirection.ROW}"
-          .flexWrap="${NidocaFlexWrap.NO_WRAP}"
-          .flexJustifyContent="${NidocaFlexJustifyContent.FLEX_START}"
-          .flexAlignItems="${NidocaFlexAlignItems.CENTER}"
-          .flexAlignContent="${NidocaFlexAlignContent.SPACE_EVENLY}"
+        <nidoca-flex-layout
+          .flexDirection="${NidocaFlexLayoutDirection.ROW}"
+          .flexWrap="${NidocaFlexLayoutWrap.NO_WRAP}"
+          .flexJustifyContent="${NidocaFlexLayoutJustifyContent.FLEX_START}"
+          .flexAlignItems="${NidocaFlexLayoutAlignItems.CENTER}"
+          .flexAlignContent="${NidocaFlexLayoutAlignContent.SPACE_EVENLY}"
           containerStyle=""
           itemStyle=""
         >
@@ -81,7 +81,7 @@ export class NidocaWizardStep extends LitElement {
             color="${this.determineBackgroundColor(this.state)}"
             icon="label_important">
           </nidoca-icon>`}
-        </nidoca-layout-flex-container>
+        </nidoca-flex-layout>
         <nidoca-typography
           style="width:48px;"
           .typographyType="${NidocaTypographyType.OVERLINE}"
@@ -89,7 +89,7 @@ export class NidocaWizardStep extends LitElement {
           text="${this.title}"
           ><slot></slot>
         </nidoca-typography>
-      </nidoca-layout-flex-container>
+      </nidoca-flex-layout>
     `;
   }
 

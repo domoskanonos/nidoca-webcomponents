@@ -107,7 +107,7 @@
         <nidoca-border
           .borderProperties="${[ae.BOTTOM,ae.LEFT,ae.RIGHT,ae.FULL_WIDTH]}"
         >
-          <nidoca-layout-flex-container
+          <nidoca-flex-layout
             class="ACCORDION_HEADER"
             @click="${()=>this.toggle()}"
             .flexDirection="${Xe.ROW}"
@@ -120,7 +120,7 @@
               <nidoca-typography text="${this.header}"></nidoca-typography>
             </nidoca-layout-spacer>
             <nidoca-icon icon="${this.opened?"keyboard_arrow_down":"keyboard_arrow_up"}"></nidoca-icon>
-          </nidoca-layout-flex-container>
+          </nidoca-flex-layout>
           <nidoca-visible visibleType="${this.opened?ge.NORMAL:ge.HIDE}">
             <slot></slot>
           </nidoca-visible>
@@ -239,7 +239,7 @@
       text-transform: uppercase;
     }
   `,Ae([ne({type:String}),ke("design:type",String)],Ie.prototype,"typographyType",void 0),Ae([ne({type:String}),ke("design:type",String)],Ie.prototype,"typographyAlignment",void 0),Ae([ne({type:String}),ke("design:type",String)],Ie.prototype,"text",void 0),Ie=Ae([te("nidoca-typography")],Ie);var Le,Ce=function(e,t,o,n){var i,r=arguments.length,a=r<3?t:null===n?n=Object.getOwnPropertyDescriptor(t,o):n;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)a=Reflect.decorate(e,t,o,n);else for(var s=e.length-1;s>=0;s--)(i=e[s])&&(a=(r<3?i(a):r>3?i(t,o,a):i(t,o))||a);return r>3&&a&&Object.defineProperty(t,o,a),a},_e=function(e,t){if("object"==typeof Reflect&&"function"==typeof Reflect.metadata)return Reflect.metadata(e,t)};!function(e){e[e.CURRENT=0]="CURRENT",e[e.COMPLETED=1]="COMPLETED",e[e.OPEN=2]="OPEN",e[e.FINISH=3]="FINISH"}(Le||(Le={}));let Pe=class extends ee{constructor(){super(...arguments),this.icon="",this.title="",this.isLast=!1,this.first=!1}render(){return j`
-      <nidoca-layout-flex-container
+      <nidoca-flex-layout
         .flexDirection="${Xe.COLUMN}"
         .flexWrap="${Ve.NO_WRAP}"
         .flexJustifyContent="${qe.SPACE_EVENLY}"
@@ -248,7 +248,7 @@
         containerStyle=""
         itemStyle=""
       >
-        <nidoca-layout-flex-container
+        <nidoca-flex-layout
           .flexDirection="${Xe.ROW}"
           .flexWrap="${Ve.NO_WRAP}"
           .flexJustifyContent="${qe.FLEX_START}"
@@ -276,7 +276,7 @@
             color="${this.determineBackgroundColor(this.state)}"
             icon="label_important">
           </nidoca-icon>`}
-        </nidoca-layout-flex-container>
+        </nidoca-flex-layout>
         <nidoca-typography
           style="width:48px;"
           .typographyType="${Oe.OVERLINE}"
@@ -284,7 +284,7 @@
           text="${this.title}"
           ><slot></slot>
         </nidoca-typography>
-      </nidoca-layout-flex-container>
+      </nidoca-flex-layout>
     `}determineBackgroundColor(e){return e==Le.COMPLETED?"var(--app-color-primary)":e==Le.CURRENT?"var(--app-color-secondary-background)":"var(--app-color-surface-background)"}determineColor(e){return e==Le.FINISH?"var(--app-color-success)":e==Le.COMPLETED?"var(--mdc-theme-on-primary)":e==Le.CURRENT?"var(--app-color-secondary)":"var(--app-color-surface)"}stepClicked(){const e=new CustomEvent("nidoca-event-wizard-step-clicked",{detail:this.index,bubbles:!0,composed:!0});console.debug("dispatch custom event type: %s, detail: %s",e.type,JSON.stringify(e.detail)),this.dispatchEvent(e)}};Pe.styles=s`
     .wizard-step-connector {
       color: var(--app-color-surface);
@@ -298,7 +298,7 @@
       background-color: var(--app-color-primary);
     }
   `,Ce([ne({type:String}),_e("design:type",String)],Pe.prototype,"icon",void 0),Ce([ne({type:String}),_e("design:type",String)],Pe.prototype,"title",void 0),Ce([ne({type:Number}),_e("design:type",Object)],Pe.prototype,"state",void 0),Ce([ne({type:Boolean}),_e("design:type",Boolean)],Pe.prototype,"isLast",void 0),Pe=Ce([te("nidoca-wizard-step")],Pe);var je=function(e,t,o,n){var i,r=arguments.length,a=r<3?t:null===n?n=Object.getOwnPropertyDescriptor(t,o):n;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)a=Reflect.decorate(e,t,o,n);else for(var s=e.length-1;s>=0;s--)(i=e[s])&&(a=(r<3?i(a):r>3?i(t,o,a):i(t,o))||a);return r>3&&a&&Object.defineProperty(t,o,a),a};let Ne=class extends ee{render(){return j`
-      <nidoca-layout-flex-container
+      <nidoca-flex-layout
         .flexDirection="${Xe.ROW}"
         .flexWrap="${Ve.NO_WRAP}"
         .flexJustifyContent="${qe.FLEX_START}"
@@ -309,7 +309,7 @@
         @nidoca-event-wizard-step-clicked="${e=>this.stepClicked(e)}"
       >
         <slot id="wizardSlot" @slotchange="${e=>this.slotChanged(e)}"></slot>
-      </nidoca-layout-flex-container>
+      </nidoca-flex-layout>
     `}slotChanged(e){const t=e.target;if(null==t)return;const o=t.assignedElements();let n=0;for(let e=0;e<o.length;e++){const t=o[e];t instanceof Pe&&(t.index=e,t.state==Le.CURRENT&&(n=e),t.index==o.length-1&&(t.isLast=!0))}this.changeState(n)}stepClicked(e){const t=e.detail;console.debug("wizard step clicked, selectedStepIndex: %s",t),this.changeState(t)}changeState(e){if(this.wizardSlot){const t=this.wizardSlot.assignedElements();for(let o=0;o<t.length;o++){const n=t[o];n instanceof Pe&&void 0!==n.index&&(n.index<e?n.state=Le.COMPLETED:n.index==e?n.state=Le.CURRENT:n.state=Le.OPEN)}}}};Ne.styles=s``,je([ie("#wizardSlot"),function(e,t){if("object"==typeof Reflect&&"function"==typeof Reflect.metadata)return Reflect.metadata(e,t)}("design:type",Object)],Ne.prototype,"wizardSlot",void 0),Ne=je([te("nidoca-wizard")],Ne);var De=function(e,t,o,n){var i,r=arguments.length,a=r<3?t:null===n?n=Object.getOwnPropertyDescriptor(t,o):n;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)a=Reflect.decorate(e,t,o,n);else for(var s=e.length-1;s>=0;s--)(i=e[s])&&(a=(r<3?i(a):r>3?i(t,o,a):i(t,o))||a);return r>3&&a&&Object.defineProperty(t,o,a),a};let Be=class extends ee{constructor(){super(...arguments),this.clickable=!0}render(){return j`
       <div class="chip ${this.clickable?"clickable":""}">
         <slot></slot>
@@ -600,9 +600,9 @@ code {
       box-sizing: border-box;
       overflow: auto;
     }
-  `,Ze([ne({type:Array}),Qe("design:type",Array)],et.prototype,"devices",void 0),Ze([ne({type:String}),Qe("design:type",String)],et.prototype,"flexDirection",void 0),Ze([ne({type:String}),Qe("design:type",String)],et.prototype,"flexWrap",void 0),Ze([ne({type:String}),Qe("design:type",String)],et.prototype,"flexJustifyContent",void 0),Ze([ne({type:String}),Qe("design:type",String)],et.prototype,"flexAlignItems",void 0),Ze([ne({type:String}),Qe("design:type",String)],et.prototype,"flexAlignContent",void 0),Ze([ne({type:String}),Qe("design:type",String)],et.prototype,"containerStyle",void 0),Ze([ne({type:String}),Qe("design:type",String)],et.prototype,"itemStyle",void 0),Ze([ie("#slotElement"),Qe("design:type",Object)],et.prototype,"slotElement",void 0),et=Ze([te("nidoca-layout-flex-container")],et);var tt,ot=function(e,t,o,n){var i,r=arguments.length,a=r<3?t:null===n?n=Object.getOwnPropertyDescriptor(t,o):n;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)a=Reflect.decorate(e,t,o,n);else for(var s=e.length-1;s>=0;s--)(i=e[s])&&(a=(r<3?i(a):r>3?i(t,o,a):i(t,o))||a);return r>3&&a&&Object.defineProperty(t,o,a),a},nt=function(e,t){if("object"==typeof Reflect&&"function"==typeof Reflect.metadata)return Reflect.metadata(e,t)};!function(e){e.CONTAINED="CONTAINED",e.OUTLINED="OUTLINED",e.TEXT="TEXT"}(tt||(tt={}));let it=class extends ee{constructor(){super(...arguments),this.buttonType=tt.CONTAINED,this.leadingIcon="",this.text=""}render(){return j`
+  `,Ze([ne({type:Array}),Qe("design:type",Array)],et.prototype,"devices",void 0),Ze([ne({type:String}),Qe("design:type",String)],et.prototype,"flexDirection",void 0),Ze([ne({type:String}),Qe("design:type",String)],et.prototype,"flexWrap",void 0),Ze([ne({type:String}),Qe("design:type",String)],et.prototype,"flexJustifyContent",void 0),Ze([ne({type:String}),Qe("design:type",String)],et.prototype,"flexAlignItems",void 0),Ze([ne({type:String}),Qe("design:type",String)],et.prototype,"flexAlignContent",void 0),Ze([ne({type:String}),Qe("design:type",String)],et.prototype,"containerStyle",void 0),Ze([ne({type:String}),Qe("design:type",String)],et.prototype,"itemStyle",void 0),Ze([ie("#slotElement"),Qe("design:type",Object)],et.prototype,"slotElement",void 0),et=Ze([te("nidoca-flex-layout")],et);var tt,ot=function(e,t,o,n){var i,r=arguments.length,a=r<3?t:null===n?n=Object.getOwnPropertyDescriptor(t,o):n;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)a=Reflect.decorate(e,t,o,n);else for(var s=e.length-1;s>=0;s--)(i=e[s])&&(a=(r<3?i(a):r>3?i(t,o,a):i(t,o))||a);return r>3&&a&&Object.defineProperty(t,o,a),a},nt=function(e,t){if("object"==typeof Reflect&&"function"==typeof Reflect.metadata)return Reflect.metadata(e,t)};!function(e){e.CONTAINED="CONTAINED",e.OUTLINED="OUTLINED",e.TEXT="TEXT"}(tt||(tt={}));let it=class extends ee{constructor(){super(...arguments),this.buttonType=tt.CONTAINED,this.leadingIcon="",this.text=""}render(){return j`
       <nidoca-ripple>
-        <nidoca-layout-flex-container
+        <nidoca-flex-layout
           class="BUTTON ${this.buttonType}"
           @click="${()=>{this.clicked()}}"
           flexWrap="${Ve.NO_WRAP}"
@@ -620,7 +620,7 @@ code {
           <nidoca-visible visibleType="${this.buttonType==tt.TEXT?ge.HIDE:ge.NORMAL}">
             <nidoca-layout-spacer spacerSize="${he.MEDIUM}"></nidoca-layout-spacer>
           </nidoca-visible>
-        </nidoca-layout-flex-container>
+        </nidoca-flex-layout>
       </nidoca-ripple>
     `}clicked(){this.dispatchEvent(new CustomEvent("nidoca-event-button-clicked",{detail:this,bubbles:!0,composed:!0}))}};it.styles=s`
     
@@ -687,7 +687,7 @@ code {
               spacerSize="${he.SMALL}"
               .spacerTypes="${[de.ALL]}"
             >
-              <nidoca-layout-flex-container
+              <nidoca-flex-layout
                 .flexAlignContent="${Je.CENTER}"
                 itemStyle="flex-basis: 100%;"
               >
@@ -702,7 +702,7 @@ code {
                 </nidoca-visible>
 
                 <slot id="slotElement"></slot>
-              </nidoca-layout-flex-container>
+              </nidoca-flex-layout>
             </nidoca-layout-spacer>
           </nidoca-border>
 
@@ -1346,7 +1346,7 @@ ${this.value}</textarea
           background-color: var(--app-color-${this.colorScheme}-background);
         }
       </style>
-      <nidoca-layout-flex-container
+      <nidoca-flex-layout
         .flexDirection="${Xe.ROW}"
         .flexWrap="${Ve.NO_WRAP}"
         .flexJustifyContent="${qe.SPACE_BETWEEN}"
@@ -1364,7 +1364,7 @@ ${this.value}</textarea
         <span>
           <slot name="right"></slot>
         </span>
-      </nidoca-layout-flex-container>
+      </nidoca-flex-layout>
       ${this.prominent?j`<slot class="prominent" name="prominent"></slot>`:j``}
     `}};Bo.styles=s`
     :host {
@@ -1382,7 +1382,7 @@ ${this.value}</textarea
       flex-grow: 3;
     }
   `,No([ne({type:String}),Do("design:type","function"==typeof(jo=void 0!==e&&e)?jo:Object)],Bo.prototype,"colorScheme",void 0),No([ne({type:Boolean}),Do("design:type",Boolean)],Bo.prototype,"prominent",void 0),No([ne({type:String}),Do("design:type",String)],Bo.prototype,"cssStyle",void 0),Bo=No([te("nidoca-top-app-bar")],Bo);var Mo=function(e,t,o,n){var i,r=arguments.length,a=r<3?t:null===n?n=Object.getOwnPropertyDescriptor(t,o):n;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)a=Reflect.decorate(e,t,o,n);else for(var s=e.length-1;s>=0;s--)(i=e[s])&&(a=(r<3?i(a):r>3?i(t,o,a):i(t,o))||a);return r>3&&a&&Object.defineProperty(t,o,a),a},Ho=function(e,t){if("object"==typeof Reflect&&"function"==typeof Reflect.metadata)return Reflect.metadata(e,t)};let Uo=class extends ee{constructor(){super(...arguments),this.text="",this.rendered=!0}render(){return this.rendered?j`
-          <nidoca-layout-flex-container
+          <nidoca-flex-layout
             .flexItemProperties="${[]}"
             .flexDirection="${Xe.ROW}"
             .flexWrap="${Ve.NO_WRAP}"
@@ -1394,7 +1394,7 @@ ${this.value}</textarea
             <nidoca-layout-spacer spacerSize="${he.SMALL}" .spacerTypes="${[de.ALL]}">
               <nidoca-typography .typographyType="${Oe.H6}" text="${this.text}"></nidoca-typography>
             </nidoca-layout-spacer>
-          </nidoca-layout-flex-container>
+          </nidoca-flex-layout>
         `:j``}};Uo.styles=s``,Mo([ne({type:String}),Ho("design:type",String)],Uo.prototype,"text",void 0),Mo([ne({type:Boolean}),Ho("design:type",Boolean)],Uo.prototype,"rendered",void 0),Uo=Mo([te("nidoca-list-section")],Uo);var zo=function(e,t,o,n){var i,r=arguments.length,a=r<3?t:null===n?n=Object.getOwnPropertyDescriptor(t,o):n;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)a=Reflect.decorate(e,t,o,n);else for(var s=e.length-1;s>=0;s--)(i=e[s])&&(a=(r<3?i(a):r>3?i(t,o,a):i(t,o))||a);return r>3&&a&&Object.defineProperty(t,o,a),a},Wo=function(e,t){if("object"==typeof Reflect&&"function"==typeof Reflect.metadata)return Reflect.metadata(e,t)};let Fo=class extends ee{constructor(){super(...arguments),this.headers=["column 1","column 2"],this.rows=[["row 1",new ro],["row 2",new ro]]}render(){return j`
       <div>
         <table>
@@ -1573,7 +1573,7 @@ ${this.value}</textarea
       width: 100%;
     }
   `,en([ne({type:String}),tn("design:type","function"==typeof(Qo=void 0!==e&&e)?Qo:Object)],on.prototype,"colorScheme",void 0),en([ne({type:Boolean}),tn("design:type",Boolean)],on.prototype,"navigationClosed",void 0),en([ne({type:Boolean}),tn("design:type",Boolean)],on.prototype,"prominent",void 0),en([ie("#header"),tn("design:type",Object)],on.prototype,"headerElement",void 0),en([ie("#sidebar"),tn("design:type",Object)],on.prototype,"sidebarElement",void 0),en([ie("#content"),tn("design:type",Object)],on.prototype,"contentElement",void 0),on=en([te("nidoca-template"),tn("design:paramtypes",[])],on);var nn=function(e,t,o,n){var i,r=arguments.length,a=r<3?t:null===n?n=Object.getOwnPropertyDescriptor(t,o):n;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)a=Reflect.decorate(e,t,o,n);else for(var s=e.length-1;s>=0;s--)(i=e[s])&&(a=(r<3?i(a):r>3?i(t,o,a):i(t,o))||a);return r>3&&a&&Object.defineProperty(t,o,a),a},rn=function(e,t){if("object"==typeof Reflect&&"function"==typeof Reflect.metadata)return Reflect.metadata(e,t)};let an=class extends ee{constructor(){super(...arguments),this.value="",this.placeholder="",this.disabled=!1}render(){return j`
-      <nidoca-layout-flex-container
+      <nidoca-flex-layout
         .flexDirection="${Xe.ROW}"
         .flexWrap="${Ve.NO_WRAP}"
         .flexJustifyContent="${qe.FLEX_START}"
@@ -1594,7 +1594,7 @@ ${this.value}</textarea
         <nidoca-layout-spacer .spacerTypes="${[de.RIGHT]}">
           <nidoca-icon icon="close" @click="${()=>this.clearValue()}"></nidoca-icon>
         </nidoca-layout-spacer>
-      </nidoca-layout-flex-container>
+      </nidoca-flex-layout>
     `}clearValue(){this.value=""}valueChanged(){var e;return function(e,t,o,n){return new(o||(o=Promise))((function(i,r){function a(e){try{c(n.next(e))}catch(e){r(e)}}function s(e){try{c(n.throw(e))}catch(e){r(e)}}function c(e){var t;e.done?i(e.value):(t=e.value,t instanceof o?t:new o((function(e){e(t)}))).then(a,s)}c((n=n.apply(e,t||[])).next())}))}(this,void 0,void 0,(function*(){const t=new CustomEvent("nidoca-search-bar-event-value-changed",{detail:null===(e=this.inputElement)||void 0===e?void 0:e.value,bubbles:!0,composed:!0});console.debug("dispatch custom event type: %s, detail: %s",t.type,JSON.stringify(t.detail)),this.dispatchEvent(t)}))}};an.styles=s`
     :host {
       width: 100%;
@@ -2185,7 +2185,7 @@ ${this.value}</textarea
     slot {
       display: flex;
     }
-  `,un([ne({type:Boolean}),gn("design:type",Boolean)],mn.prototype,"show",void 0),un([ne({type:String}),gn("design:type","function"==typeof(fn=void 0!==e&&e)?fn:Object)],mn.prototype,"colorScheme",void 0),mn=un([te("nidoca-dialog-action")],mn);var bn=function(e,t,o,n){var i,r=arguments.length,a=r<3?t:null===n?n=Object.getOwnPropertyDescriptor(t,o):n;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)a=Reflect.decorate(e,t,o,n);else for(var s=e.length-1;s>=0;s--)(i=e[s])&&(a=(r<3?i(a):r>3?i(t,o,a):i(t,o))||a);return r>3&&a&&Object.defineProperty(t,o,a),a},vn=function(e,t){if("object"==typeof Reflect&&"function"==typeof Reflect.metadata)return Reflect.metadata(e,t)};let xn=class extends ee{constructor(){super(...arguments),this.imgSrc="",this.title="",this.description=""}render(){return j`<nidoca-layout-flex-container
+  `,un([ne({type:Boolean}),gn("design:type",Boolean)],mn.prototype,"show",void 0),un([ne({type:String}),gn("design:type","function"==typeof(fn=void 0!==e&&e)?fn:Object)],mn.prototype,"colorScheme",void 0),mn=un([te("nidoca-dialog-action")],mn);var bn=function(e,t,o,n){var i,r=arguments.length,a=r<3?t:null===n?n=Object.getOwnPropertyDescriptor(t,o):n;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)a=Reflect.decorate(e,t,o,n);else for(var s=e.length-1;s>=0;s--)(i=e[s])&&(a=(r<3?i(a):r>3?i(t,o,a):i(t,o))||a);return r>3&&a&&Object.defineProperty(t,o,a),a},vn=function(e,t){if("object"==typeof Reflect&&"function"==typeof Reflect.metadata)return Reflect.metadata(e,t)};let xn=class extends ee{constructor(){super(...arguments),this.imgSrc="",this.title="",this.description=""}render(){return j`<nidoca-flex-layout
       .flexDirection="${Xe.COLUMN}"
       .flexWrap="${Ve.WRAP}"
       .flexJustifyContent="${qe.SPACE_BETWEEN}"
@@ -2197,9 +2197,9 @@ ${this.value}</textarea
         <nidoca-typography typographyType="${Oe.H3}">${this.title}</nidoca-typography>
       </nidoca-layout-spacer>
       <nidoca-typography typographyType="${Oe.H5}">${this.description}</nidoca-typography>
-    </nidoca-layout-flex-container>`}};bn([ne({type:String}),vn("design:type",String)],xn.prototype,"imgSrc",void 0),bn([ne({type:String}),vn("design:type",String)],xn.prototype,"title",void 0),bn([ne({type:String}),vn("design:type",String)],xn.prototype,"description",void 0),xn=bn([te("nidoca-avatar")],xn);var En=function(e,t,o,n){var i,r=arguments.length,a=r<3?t:null===n?n=Object.getOwnPropertyDescriptor(t,o):n;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)a=Reflect.decorate(e,t,o,n);else for(var s=e.length-1;s>=0;s--)(i=e[s])&&(a=(r<3?i(a):r>3?i(t,o,a):i(t,o))||a);return r>3&&a&&Object.defineProperty(t,o,a),a};let Sn=class extends ee{constructor(){super(...arguments),this.code=""}render(){return j`
+    </nidoca-flex-layout>`}};bn([ne({type:String}),vn("design:type",String)],xn.prototype,"imgSrc",void 0),bn([ne({type:String}),vn("design:type",String)],xn.prototype,"title",void 0),bn([ne({type:String}),vn("design:type",String)],xn.prototype,"description",void 0),xn=bn([te("nidoca-avatar")],xn);var En=function(e,t,o,n){var i,r=arguments.length,a=r<3?t:null===n?n=Object.getOwnPropertyDescriptor(t,o):n;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)a=Reflect.decorate(e,t,o,n);else for(var s=e.length-1;s>=0;s--)(i=e[s])&&(a=(r<3?i(a):r>3?i(t,o,a):i(t,o))||a);return r>3&&a&&Object.defineProperty(t,o,a),a};let Sn=class extends ee{constructor(){super(...arguments),this.code=""}render(){return j`
       <nidoca-box-shadow .shadowType="${rt.KEY_LIGHT}">
-        <nidoca-layout-flex-container
+        <nidoca-flex-layout
           .flexDirection="${Xe.COLUMN}"
           .flexWrap="${Ve.WRAP}"
           .flexJustifyContent="${qe.SPACE_BETWEEN}"
@@ -2211,7 +2211,7 @@ ${this.value}</textarea
             <slot name="supportingText"></slot>
             <slot name="actions"></slot>
           </nidoca-layout-spacer>
-        </nidoca-layout-flex-container>
+        </nidoca-flex-layout>
         <slot></slot>
       </nidoca-box-shadow>
     `}};Sn.styles=s``,En([ne({type:String}),function(e,t){if("object"==typeof Reflect&&"function"==typeof Reflect.metadata)return Reflect.metadata(e,t)}("design:type",String)],Sn.prototype,"code",void 0),Sn=En([te("nidoca-card")],Sn);let $n=class extends ee{render(){return j`
@@ -2351,7 +2351,7 @@ ${this.value}</textarea
 
     `}};In.styles=s``,In=function(e,t,o,n){var i,r=arguments.length,a=r<3?t:null===n?n=Object.getOwnPropertyDescriptor(t,o):n;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)a=Reflect.decorate(e,t,o,n);else for(var s=e.length-1;s>=0;s--)(i=e[s])&&(a=(r<3?i(a):r>3?i(t,o,a):i(t,o))||a);return r>3&&a&&Object.defineProperty(t,o,a),a}([te("nidoca-page-gallery")],In);class Ln{constructor(){this.listeners=[],window.onpopstate=e=>{console.trace("onpopstate event: location: "+document.location+", state: "+JSON.stringify(e.state)),this.notifyListeners()},document.addEventListener("click",(e=>{if(!this.shouldIgnoreEvent(e)){const t=this.getAnchor(e);t&&!this.shouldIgnoreAnchor(t)&&(e.preventDefault(),t.hash.length>0&&this.navigate(t.hash))}}))}static getUniqueInstance(){return Ln.uniqueInstance||(Ln.uniqueInstance=new Ln),Ln.uniqueInstance}subscribe(e){console.trace("subscribe router listener"),this.listeners.push(e)}back(){history.back()}forward(){history.forward()}navigate(e,t=null){-1==e.indexOf("#")&&(e="#".concat(e)),console.trace("navigate to: %s",e),null!=t&&console.trace("state: %s",JSON.stringify(t)),document.location.hash!==e?(history.pushState(t,"",e),this.notifyListeners()):console.trace("you are already on page: "+e)}getCurrentState(){return history.state}getStateProperty(e){const t=this.getCurrentState();return null!=t?t[e]:null}getCurrentPage(){return document.location.hash.replace("#","")}getHash(){return document.location.hash}notifyListeners(){const e=this.getCurrentPage();this.listeners.forEach((t=>t.routeChanged(e)))}shouldIgnoreEvent(e){return e.defaultPrevented||0!==e.button||e.shiftKey||e.ctrlKey||e.altKey||e.metaKey}getAnchor(e){for(const t of e.composedPath?e.composedPath():[])if(this.isAnchor(t))return t;let t=e.target;for(;t&&!this.isAnchor(t);)t=t.parentNode;return t&&this.isAnchor(t)?t:null}isAnchor(e){return e.nodeName&&"a"===e.nodeName.toLowerCase()}shouldIgnoreAnchor(e){return!(!e.target||"_self"===e.target.toLowerCase())||(!!e.hasAttribute("download")||(e.origin||this.getAnchorOrigin(e))!==window.location.origin)}getAnchorOrigin(e){const t=e.port,o=e.protocol;return`${o}//${"http:"===o&&"80"===t||"https:"===o&&"443"===t?e.hostname:e.host}`}}let Cn=class extends ee{render(){return j`
       <nidoca-layout-spacer nidocaSpacerSize="${he.LITTLE}"></nidoca-layout-spacer>
-      <nidoca-layout-flex-container
+      <nidoca-flex-layout
         flexItemBasisValue="auto"
         .flexJustifyContent="${qe.FLEX_START}"
         .flexAlignItems="${Ke.CENTER}"
@@ -2367,13 +2367,13 @@ ${this.value}</textarea
           .spacerTypes="${[de.LEFT,de.RIGHT]}"
         ></nidoca-layout-spacer>
         <nidoca-typography .typographyType="${Oe.H3}">Settings</nidoca-typography>
-      </nidoca-layout-flex-container>
+      </nidoca-flex-layout>
       <nidoca-layout-spacer
         nidocaSpacerSize="${he.LITTLE}"
         .nidocaSpacerType="${[de.TOP,de.BOTTOM]}"
       >
       </nidoca-layout-spacer>
-      <nidoca-layout-flex-container
+      <nidoca-flex-layout
         .flexJustifyContent="${qe.FLEX_START}"
         .alignItems="${Ke.CENTER}"
       >
@@ -2383,7 +2383,7 @@ ${this.value}</textarea
         >
           <nidoca-typography .typographyType="${Oe.H6}">Spracheinstellungen</nidoca-typography>
         </nidoca-layout-spacer>
-      </nidoca-layout-flex-container>
+      </nidoca-flex-layout>
     `}};Cn.styles=s``,Cn=function(e,t,o,n){var i,r=arguments.length,a=r<3?t:null===n?n=Object.getOwnPropertyDescriptor(t,o):n;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)a=Reflect.decorate(e,t,o,n);else for(var s=e.length-1;s>=0;s--)(i=e[s])&&(a=(r<3?i(a):r>3?i(t,o,a):i(t,o))||a);return r>3&&a&&Object.defineProperty(t,o,a),a}([te("nidoca-page-settings")],Cn);var _n=function(e,t,o,n){var i,r=arguments.length,a=r<3?t:null===n?n=Object.getOwnPropertyDescriptor(t,o):n;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)a=Reflect.decorate(e,t,o,n);else for(var s=e.length-1;s>=0;s--)(i=e[s])&&(a=(r<3?i(a):r>3?i(t,o,a):i(t,o))||a);return r>3&&a&&Object.defineProperty(t,o,a),a},Pn=function(e,t){if("object"==typeof Reflect&&"function"==typeof Reflect.metadata)return Reflect.metadata(e,t)};let jn=class extends ee{constructor(){super(...arguments),this.prominent=!1,this.selectionMode=!1,this.elevationShow=!1,this.elevationContentElement=j`
     <nidoca-list .colorScheme=${e.SURFACE}>
       <nidoca-list-item text="Kündigung drucken" @click="${()=>{var e;return null===(e=this.printElement)||void 0===e?void 0:e.print()}}">hiuhiuh</nidoca-list-item>
@@ -2393,7 +2393,7 @@ ${this.value}</textarea
       <nidoca-list-item text="Alle abwählen" @click="${()=>this.selectionMode=!1}"></nidoca-list-item>
     </nidoca-list>
   `}render(){return j`
-      <nidoca-layout-flex-container
+      <nidoca-flex-layout
         .flexDirection="${Xe.COLUMN}"
         .flexWrap="${Ve.WRAP}"
         .flexJustifyContent="${qe.CENTER}"
@@ -2453,7 +2453,7 @@ ${this.value}</textarea
               </nidoca-list-item>
             `))}
         </nidoca-list>
-      </nidoca-layout-flex-container>
+      </nidoca-flex-layout>
 
       <nidoca-layout-spacer slot="topRight">
         <nidoca-icon

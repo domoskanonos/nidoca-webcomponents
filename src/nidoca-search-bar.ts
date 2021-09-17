@@ -3,12 +3,12 @@ import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
 import {query} from "lit/decorators.js";
 import {
-  NidocaFlexAlignContent as NidocaFlexAlignContent,
-  NidocaFlexAlignItems as NidocaFlexAlignItems,
-  NidocaFlexDirection as NidocaFlexDirection,
-  NidocaFlexJustifyContent as NidocaFlexJustifyContent,
-  NidocaFlexWrap as NidocaFlexWrap,
-} from ".";
+  NidocaFlexLayoutAlignContent,
+  NidocaFlexLayoutAlignItems,
+  NidocaFlexLayoutDirection,
+  NidocaFlexLayoutJustifyContent,
+  NidocaFlexLayoutWrap,
+} from "./nidoca-flex-layout";
 import {NidocaLayoutSpacerType} from "./nidoca-layout-spacer";
 
 @customElement("nidoca-search-bar")
@@ -50,12 +50,12 @@ export class NidocaSearchBar extends LitElement {
 
   render(): any {
     return html`
-      <nidoca-layout-flex-container
-        .flexDirection="${NidocaFlexDirection.ROW}"
-        .flexWrap="${NidocaFlexWrap.NO_WRAP}"
-        .flexJustifyContent="${NidocaFlexJustifyContent.FLEX_START}"
-        .flexAlignItems="${NidocaFlexAlignItems.FLEX_START}"
-        .flexAlignContent="${NidocaFlexAlignContent.FLEX_START}"
+      <nidoca-flex-layout
+        .flexDirection="${NidocaFlexLayoutDirection.ROW}"
+        .flexWrap="${NidocaFlexLayoutWrap.NO_WRAP}"
+        .flexJustifyContent="${NidocaFlexLayoutJustifyContent.FLEX_START}"
+        .flexAlignItems="${NidocaFlexLayoutAlignItems.FLEX_START}"
+        .flexAlignContent="${NidocaFlexLayoutAlignContent.FLEX_START}"
       >
         <nidoca-layout-spacer .spacerTypes="${[NidocaLayoutSpacerType.RIGHT]}">
           <nidoca-icon icon="search"></nidoca-icon>
@@ -71,7 +71,7 @@ export class NidocaSearchBar extends LitElement {
         <nidoca-layout-spacer .spacerTypes="${[NidocaLayoutSpacerType.RIGHT]}">
           <nidoca-icon icon="close" @click="${() => this.clearValue()}"></nidoca-icon>
         </nidoca-layout-spacer>
-      </nidoca-layout-flex-container>
+      </nidoca-flex-layout>
     `;
   }
 

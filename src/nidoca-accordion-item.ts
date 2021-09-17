@@ -1,7 +1,7 @@
 import {css, html, LitElement, TemplateResult} from "lit";
 import {customElement} from "lit/decorators.js";
 import { property } from "lit/decorators.js";
-import {NidocaFlexAlignContent, NidocaFlexAlignItems, NidocaFlexDirection, NidocaFlexJustifyContent, NidocaFlexWrap} from ".";
+import {NidocaFlexLayoutAlignContent, NidocaFlexLayoutAlignItems, NidocaFlexLayoutDirection, NidocaFlexLayoutJustifyContent, NidocaFlexLayoutWrap} from ".";
 import {NidocaBorderProperty} from "./nidoca-border";
 import {NidocaLayoutSpacerType, NidocaLayoutSpacerSize} from "./nidoca-layout-spacer";
 import {NidocaVisibleType} from "./nidoca-visible";
@@ -31,20 +31,20 @@ export class NidocaAccordionItem extends LitElement {
             NidocaBorderProperty.FULL_WIDTH,
           ]}"
         >
-          <nidoca-layout-flex-container
+          <nidoca-flex-layout
             class="ACCORDION_HEADER"
             @click="${() => this.toggle()}"
-            .flexDirection="${NidocaFlexDirection.ROW}"
-            .flexWrap="${NidocaFlexWrap.WRAP}"
-            .flexJustifyContent="${NidocaFlexJustifyContent.SPACE_BETWEEN}"
-            .flexAlignItems="${NidocaFlexAlignItems.CENTER}"
-            .flexAlignContent="${NidocaFlexAlignContent.CENTER}"
+            .flexDirection="${NidocaFlexLayoutDirection.ROW}"
+            .flexWrap="${NidocaFlexLayoutWrap.WRAP}"
+            .flexJustifyContent="${NidocaFlexLayoutJustifyContent.SPACE_BETWEEN}"
+            .flexAlignItems="${NidocaFlexLayoutAlignItems.CENTER}"
+            .flexAlignContent="${NidocaFlexLayoutAlignContent.CENTER}"
           >
             <nidoca-layout-spacer spacerSize="${NidocaLayoutSpacerSize.MEDIUM}" .spacerTypes="${[NidocaLayoutSpacerType.LEFT]}">
               <nidoca-typography text="${this.header}"></nidoca-typography>
             </nidoca-layout-spacer>
             <nidoca-icon icon="${this.opened ? "keyboard_arrow_down" : "keyboard_arrow_up"}"></nidoca-icon>
-          </nidoca-layout-flex-container>
+          </nidoca-flex-layout>
           <nidoca-visible visibleType="${this.opened ? NidocaVisibleType.NORMAL : NidocaVisibleType.HIDE}">
             <slot></slot>
           </nidoca-visible>

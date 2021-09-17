@@ -20,7 +20,7 @@ export * from "./nidoca-form-switch";
 export * from "./nidoca-form-abstract-input-element";
 
 export * from "./nidoca-layout-spacer";
-export * from "./nidoca-layout-flex-container";
+export * from "./nidoca-flex-layout";
 export * from "./nidoca-layout-floating-container";
 export * from "./nidoca-layout-section";
 export * from "./nidoca-layout-flex-device";

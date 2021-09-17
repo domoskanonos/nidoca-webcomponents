@@ -3,11 +3,11 @@ import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
 import {query} from "lit/decorators.js";
 import {
-  NidocaFlexAlignContent,
-  NidocaFlexAlignItems,
-  NidocaFlexDirection,
-  NidocaFlexJustifyContent,
-  NidocaFlexWrap,
+  NidocaFlexLayoutAlignContent,
+  NidocaFlexLayoutAlignItems,
+  NidocaFlexLayoutDirection,
+  NidocaFlexLayoutJustifyContent,
+  NidocaFlexLayoutWrap,
   NidocaColorScheme,
   NidocaTypographyType,
 } from "..";
@@ -46,12 +46,12 @@ export class NidocaPageGallery extends LitElement {
 
   render(): any {
     return html`
-      <nidoca-layout-flex-container
-        .flexDirection="${NidocaFlexDirection.COLUMN}"
-        .flexWrap="${NidocaFlexWrap.WRAP}"
-        .flexJustifyContent="${NidocaFlexJustifyContent.CENTER}"
-        .flexAlignItems="${NidocaFlexAlignItems.CENTER}"
-        .flexAlignContent="${NidocaFlexAlignContent.CENTER}"
+      <nidoca-flex-layout
+        .flexDirection="${NidocaFlexLayoutDirection.COLUMN}"
+        .flexWrap="${NidocaFlexLayoutWrap.WRAP}"
+        .flexJustifyContent="${NidocaFlexLayoutJustifyContent.CENTER}"
+        .flexAlignItems="${NidocaFlexLayoutAlignItems.CENTER}"
+        .flexAlignContent="${NidocaFlexLayoutAlignContent.CENTER}"
       >
         <nidoca-layout-spacer>
           <nidoca-typography typographyType="${NidocaTypographyType.H1}">Listenansicht mit Suche</nidoca-typography>
@@ -119,7 +119,7 @@ export class NidocaPageGallery extends LitElement {
             `
           )}
         </nidoca-list>
-      </nidoca-layout-flex-container>
+      </nidoca-flex-layout>
 
       <nidoca-layout-spacer slot="topRight">
         <nidoca-icon

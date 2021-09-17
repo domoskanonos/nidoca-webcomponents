@@ -1,7 +1,7 @@
 import {NidocaRouter} from "@domoskanonos/nidoca-router";
 import {css, html, LitElement, TemplateResult} from "lit";
 import {customElement} from "lit/decorators.js";
-import {NidocaTypographyType, NidocaFlexJustifyContent, NidocaLayoutSpacerSize, NidocaFlexAlignItems} from "../index";
+import {NidocaTypographyType, NidocaFlexLayoutJustifyContent, NidocaLayoutSpacerSize, NidocaFlexLayoutAlignItems} from "../index";
 import {NidocaLayoutSpacerType} from "../nidoca-layout-spacer";
 
 @customElement("nidoca-page-settings")
@@ -10,10 +10,10 @@ export class NidocaPageSettings extends LitElement {
   render(): any {
     return html`
       <nidoca-layout-spacer nidocaSpacerSize="${NidocaLayoutSpacerSize.LITTLE}"></nidoca-layout-spacer>
-      <nidoca-layout-flex-container
+      <nidoca-flex-layout
         flexItemBasisValue="auto"
-        .flexJustifyContent="${NidocaFlexJustifyContent.FLEX_START}"
-        .flexAlignItems="${NidocaFlexAlignItems.CENTER}"
+        .flexJustifyContent="${NidocaFlexLayoutJustifyContent.FLEX_START}"
+        .flexAlignItems="${NidocaFlexLayoutAlignItems.CENTER}"
       >
         <nidoca-icon
           icon="arrow_back"
@@ -26,15 +26,15 @@ export class NidocaPageSettings extends LitElement {
           .spacerTypes="${[NidocaLayoutSpacerType.LEFT, NidocaLayoutSpacerType.RIGHT]}"
         ></nidoca-layout-spacer>
         <nidoca-typography .typographyType="${NidocaTypographyType.H3}">Settings</nidoca-typography>
-      </nidoca-layout-flex-container>
+      </nidoca-flex-layout>
       <nidoca-layout-spacer
         nidocaSpacerSize="${NidocaLayoutSpacerSize.LITTLE}"
         .nidocaSpacerType="${[NidocaLayoutSpacerType.TOP, NidocaLayoutSpacerType.BOTTOM]}"
       >
       </nidoca-layout-spacer>
-      <nidoca-layout-flex-container
-        .flexJustifyContent="${NidocaFlexJustifyContent.FLEX_START}"
-        .alignItems="${NidocaFlexAlignItems.CENTER}"
+      <nidoca-flex-layout
+        .flexJustifyContent="${NidocaFlexLayoutJustifyContent.FLEX_START}"
+        .alignItems="${NidocaFlexLayoutAlignItems.CENTER}"
       >
         <nidoca-layout-spacer
           NidocaSpacerSize="${NidocaLayoutSpacerSize.LITTLE}"
@@ -42,7 +42,7 @@ export class NidocaPageSettings extends LitElement {
         >
           <nidoca-typography .typographyType="${NidocaTypographyType.H6}">Spracheinstellungen</nidoca-typography>
         </nidoca-layout-spacer>
-      </nidoca-layout-flex-container>
+      </nidoca-flex-layout>
     `;
   }
 }

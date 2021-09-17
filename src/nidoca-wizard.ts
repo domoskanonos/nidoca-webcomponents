@@ -1,6 +1,6 @@
 import {css, html, TemplateResult,LitElement} from "lit";
 import {customElement, query} from "lit/decorators.js";
-import {NidocaFlexAlignContent, NidocaFlexAlignItems, NidocaFlexDirection, NidocaFlexJustifyContent, NidocaFlexWrap} from ".";
+import {NidocaFlexLayoutAlignContent, NidocaFlexLayoutAlignItems, NidocaFlexLayoutDirection, NidocaFlexLayoutJustifyContent, NidocaFlexLayoutWrap} from ".";
 import {NidocaWizardStep, WizardStepState} from "./nidoca-wizard-step";
 
 @customElement("nidoca-wizard")
@@ -12,18 +12,18 @@ export class NidocaWizard extends LitElement {
 
   render(): any {
     return html`
-      <nidoca-layout-flex-container
-        .flexDirection="${NidocaFlexDirection.ROW}"
-        .flexWrap="${NidocaFlexWrap.NO_WRAP}"
-        .flexJustifyContent="${NidocaFlexJustifyContent.FLEX_START}"
-        .flexAlignItems="${NidocaFlexAlignItems.FLEX_START}"
-        .flexAlignContent="${NidocaFlexAlignContent.SPACE_EVENLY}"
+      <nidoca-flex-layout
+        .flexDirection="${NidocaFlexLayoutDirection.ROW}"
+        .flexWrap="${NidocaFlexLayoutWrap.NO_WRAP}"
+        .flexJustifyContent="${NidocaFlexLayoutJustifyContent.FLEX_START}"
+        .flexAlignItems="${NidocaFlexLayoutAlignItems.FLEX_START}"
+        .flexAlignContent="${NidocaFlexLayoutAlignContent.SPACE_EVENLY}"
         containerStyle=""
         itemStyle=""
         @nidoca-event-wizard-step-clicked="${(event: CustomEvent) => this.stepClicked(event)}"
       >
         <slot id="wizardSlot" @slotchange="${(event: Event) => this.slotChanged(event)}"></slot>
-      </nidoca-layout-flex-container>
+      </nidoca-flex-layout>
     `;
   }
 
