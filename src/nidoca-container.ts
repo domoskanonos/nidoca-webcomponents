@@ -1,6 +1,7 @@
 import {css, html, LitElement} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
+import {NidocaDevice} from ".";
 
 export enum NidocaContainerSize {
   _100 = "_100",
@@ -17,7 +18,6 @@ export class NidocaContainer extends LitElement {
     .container,
     ::slotted(.container) {
       margin: auto;
-      padding: 10px;
     }
 
     ._100,
@@ -49,6 +49,9 @@ export class NidocaContainer extends LitElement {
 
   @property({type: NidocaContainerSize, converter: String})
   containerSize: NidocaContainerSize = NidocaContainerSize.AUTO;
+
+  @property({type: Array})
+  devices: NidocaDevice[] = [NidocaDevice.DESKTOP, NidocaDevice.TABLET, NidocaDevice.MOBILE];
 
   render(): any {
     return html`

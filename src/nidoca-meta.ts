@@ -1,3 +1,5 @@
+import { NidocaContainerSize } from "./nidoca-container";
+
 export enum NidocaColorScheme {
   PRIMARY = "primary",
   SECONDARY = "secondary",
@@ -6,6 +8,8 @@ export enum NidocaColorScheme {
 }
 
 export class NidocaDevice {
+
+
   static readonly MOBILE = new NidocaDevice("MOBILE", 0, 640);
   static readonly TABLET = new NidocaDevice("TABLET", 641, 1007);
   static readonly DESKTOP = new NidocaDevice("DESKTOP", 1008, null);

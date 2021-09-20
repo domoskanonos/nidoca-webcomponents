@@ -30,7 +30,7 @@ export class ClassWrapper<T extends LitElement> {
     return this.getElementsByTagName("SLOT", this.instance.shadowRoot);
   }
 
-  hasSlots(): boolen {
+  hasSlots(): boolean {
     return this.getSlots().length > 0;
   }
 
