@@ -8,6 +8,7 @@ export enum NidocaContainerSize {
   _50 = "_50",
   _25 = "_25",
   MIN_CONTENT = "MIN_CONTENT",
+  AUTO = "AUTO",
 }
 
 @customElement("nidoca-container")
@@ -40,15 +41,19 @@ export class NidocaContainer extends LitElement {
     ::slotted(.MIN_CONTENT) {
       width: min-content;
     }
+    .AUTO,
+    ::slotted(.AUTO) {
+      width: auto;
+    }
   `;
 
   @property({type: NidocaContainerSize, converter: String})
-  containerSize: NidocaContainerSize = NidocaContainerSize._100;
+  containerSize: NidocaContainerSize = NidocaContainerSize.AUTO;
 
   render(): any {
     return html`
       <div class="container ${this.containerSize}">
-        <div class="container MIN_CONTENT">
+        <div class="container AUTO">
           <slot></slot>
         </div>
       </div>

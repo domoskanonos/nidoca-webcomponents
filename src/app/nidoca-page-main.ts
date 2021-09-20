@@ -1,6 +1,6 @@
 import {css, html, LitElement, TemplateResult} from "lit";
 import {customElement} from "lit/decorators.js";
-import {NidocaTypographyType} from "..";
+import {NidocaContainerSize, NidocaTypographyType} from "..";
 import {NidocaButtonType} from "../nidoca-button";
 import {DUMMY_DESCRIPTION, DUMMY_DESCRIPTION_SHORT, DUMMY_IMAGE, DUMMY_TITLE} from "./constants";
 
@@ -37,9 +37,27 @@ export class NidocaPageMain extends LitElement {
       <nidoca-typography text="Subtitel 2" typographyType="${NidocaTypographyType.SUBTITLE2}"> </nidoca-typography>
       <br />
 
-      <lit-viewer .customEventNames="${["nidoca-button-event-clicked"]}">
-        <nidoca-button text="Mein Button" leadingIcon="home" .buttonType="${NidocaButtonType.CONTAINED}"></nidoca-button>
-      </lit-viewer>
+      <nidoca-container containerSize="${NidocaContainerSize._50}">
+        <nidoca-typography typographyType="${NidocaTypographyType.H1}">Komponentenübersicht</nidoca-typography>
+        <nidoca-accordion>
+          <nidoca-accordion-item header="nidoca-button">
+            <lit-viewer .customEventNames="${["nidoca-button-event-clicked"]}">
+              <nidoca-button
+                text="Mein Button"
+                leadingIcon="home"
+                .buttonType="${NidocaButtonType.CONTAINED}"
+              ></nidoca-button>
+            </lit-viewer>
+          </nidoca-accordion-item>
+          <nidoca-accordion-item header="nidoca-container" .opened="${true}">
+            <lit-viewer>
+              <nidoca-container style="background-color: var(--app-color-secondary-background); display:block;">
+                <nidoca-img src="${DUMMY_IMAGE}"> </nidoca-img>
+              </nidoca-container>
+            </lit-viewer>
+          </nidoca-accordion-item>
+        </nidoca-accordion>
+      </nidoca-container>
 
       <nidoca-layout-section>
         <nidoca-img src="${DUMMY_IMAGE}"> </nidoca-img>

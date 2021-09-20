@@ -26,14 +26,22 @@ export class LitViewer extends LitElement {
   public render(): TemplateResult {
     return html`
       <div class="container">
+        <nidoca-typography .typographyType="${NidocaTypographyType.H2}">Tag</nidoca-typography>
+
+        <nidoca-code
+          >${"<"
+            .concat(this.clazzGuiWrapper ? this.clazzGuiWrapper.classWrapper.getTagName() : "")
+            .concat("/>")}</nidoca-code
+        >
+
         <nidoca-container .containerSize="${NidocaContainerSize._75}">
           <nidoca-layout-spacer>
             <slot @slotchange="${(event: Event) => this.slotChanged(event)}"></slot>
           </nidoca-layout-spacer>
         </nidoca-container>
 
-        <nidoca-layout-spacer .spacerTypes="${[NidocaLayoutSpacerType.LEFT,NidocaLayoutSpacerType.RIGHT]}">
-        ${this.clazzGuiWrapper
+        <nidoca-layout-spacer .spacerTypes="${[NidocaLayoutSpacerType.LEFT, NidocaLayoutSpacerType.RIGHT]}">
+          ${this.clazzGuiWrapper
             ? html`
                 ${this.clazzGuiWrapper?.hasProperties()
                   ? html`<nidoca-layout-spacer
@@ -84,7 +92,7 @@ export class LitViewer extends LitElement {
 
                   <nidoca-tab-content slot="tabContent">
                     <nidoca-layout-spacer .spacerTypes="${[NidocaLayoutSpacerType.TOP]}">
-                      <nidoca-code style="width:100%;" >${this.clazzGuiWrapper.getAsJavascript()}</nidoca-code>
+                      <nidoca-code style="width:100%;">${this.clazzGuiWrapper.getAsJavascript()}</nidoca-code>
                     </nidoca-layout-spacer>
                   </nidoca-tab-content>
 
