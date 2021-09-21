@@ -35,10 +35,11 @@ export class NidocaPageMain extends LitElement {
           .spacerTypes="${[NidocaLayoutSpacerType.TOP, NidocaLayoutSpacerType.BOTTOM]}"
         >
           <nidoca-typography typographyType="${NidocaTypographyType.CAPTION}"
-            >Nidoca Layout Komponenten dienen der Strukturierung deiner Seite. So kannst du deine Seite konfortable unterteilen und die Sicht für einzelne Entgeräte wie Mobile,Tablet und Destkop flexibel konfigurieren.</nidoca-typography
+            >Nidoca Layout Komponenten dienen der Strukturierung deiner Seite. So kannst du deine Seite konfortable
+            unterteilen und die Sicht für einzelne Entgeräte wie Mobile,Tablet und Destkop flexibel
+            konfigurieren.</nidoca-typography
           >
         </nidoca-layout-spacer>
-
 
         <nidoca-layout-spacer
           .spacerSize="${NidocaLayoutSpacerSize.MEDIUM}"
@@ -86,11 +87,8 @@ export class NidocaPageMain extends LitElement {
           </nidoca-accordion>
         </nidoca-layout-spacer>
 
-
-
-
         <nidoca-typography typographyType="${NidocaTypographyType.H3}">Kleine Komponenten</nidoca-typography>
-        
+
         <nidoca-layout-spacer
           .spacerSize="${NidocaLayoutSpacerSize.MEDIUM}"
           .spacerTypes="${[NidocaLayoutSpacerType.TOP, NidocaLayoutSpacerType.BOTTOM]}"
@@ -105,23 +103,28 @@ export class NidocaPageMain extends LitElement {
                 ></nidoca-button>
               </lit-viewer>
             </nidoca-accordion-item>
-            <nidoca-accordion-item header="nidoca-border">
-            <lit-viewer>
-              <nidoca-border style="background-color:green;">
-              
-              <nidoca-img src="http://lorempixel.com/320/200/"></nidoca-img>
-              </nidoca-border>
-            </lit-viewer>
-          </nidoca-accordion-item>
 
+            <nidoca-accordion-item header="nidoca-typography">
+              <lit-viewer>
+                <nidoca-typography
+                  >Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+                  labore et dolore magna aliquyam erat, sed diam voluptua.</nidoca-typography
+                >
+              </lit-viewer>
+            </nidoca-accordion-item>
+
+            <nidoca-accordion-item header="nidoca-border">
+              <lit-viewer>
+                <nidoca-border style="background-color:green;">
+                  <nidoca-img src="http://lorempixel.com/320/200/"></nidoca-img>
+                </nidoca-border>
+              </lit-viewer>
+            </nidoca-accordion-item>
           </nidoca-accordion>
         </nidoca-layout-spacer>
 
-
-
-
         <nidoca-typography typographyType="${NidocaTypographyType.H3}">Inhaltskomponenten</nidoca-typography>
-        
+
         <nidoca-layout-spacer
           .spacerSize="${NidocaLayoutSpacerSize.MEDIUM}"
           .spacerTypes="${[NidocaLayoutSpacerType.TOP, NidocaLayoutSpacerType.BOTTOM]}"
@@ -129,85 +132,51 @@ export class NidocaPageMain extends LitElement {
           <nidoca-accordion>
             <nidoca-accordion-item header="nidoca-accordion">
               <lit-viewer .customEventNames="${["nidoca-button-event-clicked"]}">
-               
-              
-              
-              
-              
-              <nidoca-accordion>
-              <nidoca-accordion-item header="Accordion 1">
-              <nidoca-spacer
-                ><nidoca-typography
-                  >Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                  diam nonumy eirmod tempor invidunt ut labore et dolore magna
-                  aliquyam erat, sed diam voluptua. At vero eos et accusam et
-                  justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
-                  takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum
-                  dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-                  eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-                  sed diam voluptua. At vero eos et accusam et justo duo dolores
-                  et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus
-                  est Lorem ipsum dolor sit amet.</nidoca-typography
-                ></nidoca-spacer
-              >
-            </nidoca-accordion-item>
-            <nidoca-accordion-item header="Accordion 2">
-              <nidoca-spacer
-                ><nidoca-typography
-                  >Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                  diam nonumy eirmod tempor invidunt ut labore et dolore magna
-                  aliquyam erat, sed diam voluptua. At vero eos et accusam et
-                  justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
-                  takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum
-                  dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-                  eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-                  sed diam voluptua. At vero eos et accusam et justo duo dolores
-                  et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus
-                  est Lorem ipsum dolor sit amet.</nidoca-typography
-                ></nidoca-spacer
-              >
-            </nidoca-accordion-item>
-            <nidoca-accordion-item header="Accordion 3">
-              <nidoca-spacer
-                ><nidoca-typography
-                  >Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                  diam nonumy eirmod tempor invidunt ut labore et dolore magna
-                  aliquyam erat, sed diam voluptua. At vero eos et accusam et
-                  justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
-                  takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum
-                  dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-                  eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-                  sed diam voluptua. At vero eos et accusam et justo duo dolores
-                  et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus
-                  est Lorem ipsum dolor sit amet.</nidoca-typography
-                ></nidoca-spacer
-              >
-            </nidoca-accordion-item>
-
-            </nidoca-accordion>
-
-
-
-
-
-
-
-
-
-
-
-
-
+                <nidoca-accordion>
+                  <nidoca-accordion-item header="Accordion 1">
+                    <nidoca-spacer
+                      ><nidoca-typography
+                        >Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
+                        ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo
+                        dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
+                        sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+                        invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
+                        justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
+                        ipsum dolor sit amet.</nidoca-typography
+                      ></nidoca-spacer
+                    >
+                  </nidoca-accordion-item>
+                  <nidoca-accordion-item header="Accordion 2">
+                    <nidoca-spacer
+                      ><nidoca-typography
+                        >Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
+                        ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo
+                        dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
+                        sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+                        invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
+                        justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
+                        ipsum dolor sit amet.</nidoca-typography
+                      ></nidoca-spacer
+                    >
+                  </nidoca-accordion-item>
+                  <nidoca-accordion-item header="Accordion 3">
+                    <nidoca-spacer
+                      ><nidoca-typography
+                        >Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
+                        ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo
+                        dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
+                        sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+                        invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
+                        justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
+                        ipsum dolor sit amet.</nidoca-typography
+                      ></nidoca-spacer
+                    >
+                  </nidoca-accordion-item>
+                </nidoca-accordion>
               </lit-viewer>
             </nidoca-accordion-item>
           </nidoca-accordion>
         </nidoca-layout-spacer>
-
-
-
-
-
-
       </nidoca-layout-container>
     `;
   }

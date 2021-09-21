@@ -31,7 +31,11 @@ export class PropertyWrapper {
       return RenderType.ENUMERATION;
     }
 
-    return this.getConverterTypeName();
+    let converterTypeName: RenderType | null = this.getConverterTypeName();
+    if (converterTypeName == null) {
+      converterTypeName = <RenderType>this.getTypeName();
+    }
+    return converterTypeName ? converterTypeName : RenderType.UNDEFINED;
   }
 
   isEnum() {

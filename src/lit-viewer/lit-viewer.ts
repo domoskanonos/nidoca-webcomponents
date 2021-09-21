@@ -39,6 +39,12 @@ export class LitViewer extends LitElement {
             .concat("/>")}</nidoca-code
         >
 
+
+        <nidoca-layout-spacer
+      .spacerTypes="${[NidocaLayoutSpacerType.TOP, NidocaLayoutSpacerType.BOTTOM]}"
+    > <nidoca-typography .typographyType="${NidocaTypographyType.H2}">Vorschau</nidoca-typography>
+    </nidoca-layout-spacer>
+
         <nidoca-layout-container .containerSize="${NidocaContainerSize._75}">
           <nidoca-layout-spacer>
             <slot @slotchange="${(event: Event) => this.slotChanged(event)}"></slot>
