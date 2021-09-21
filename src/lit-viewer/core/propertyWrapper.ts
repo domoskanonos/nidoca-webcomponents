@@ -41,10 +41,6 @@ export class PropertyWrapper {
     return false;
   }
 
-  getTypeName(): string {
-    return this.propertyValue.type.name;
-  }
-
   getEnumValues(): any[] {
     const enumValues: any[] = [];
     Object.values(this.getType()).forEach((value: any) => {
@@ -78,8 +74,12 @@ export class PropertyWrapper {
     return this.propertyValue?.type;
   }
 
+  getTypeName(): string {
+    return this.getType().name;
+  }
+
   public getConverterType(): any | undefined {
-    return this.propertyValue.converter ? this.propertyValue.converter : this.getType();
+    return this.propertyValue.converter;
   }
 
   public getConverterTypeName(): any | undefined {

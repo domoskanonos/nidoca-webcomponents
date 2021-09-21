@@ -67,10 +67,7 @@ export class PropertyGuiWrapper {
       case RenderType.ARRAY:
         return html`
           <nidoca-form-combobox
-            .options="${NidocaFormCombobox.toComboboxOptions(
-              propertyWrapper.getTypeName(),
-              propertyWrapper.getType()
-            )}"
+            .options="${NidocaFormCombobox.toComboboxOptions(propertyWrapper.getType(), propertyWrapper.getTypeName())}"
             .multiple="${true}"
             size="5"
             .value="${classWrapper.instance[propertyWrapper.propertyName as keyof LitElement]}"
