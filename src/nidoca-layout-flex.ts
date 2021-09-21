@@ -55,7 +55,7 @@ export enum NidocaFlexLayoutAlignContent {
   UNSAFE = "unsafe",
 }
 
-@customElement("nidoca-flex-layout")
+@customElement("nidoca-layout-flex")
 export class NidocaFlexLayout extends LitElement {
   static styles = css`
     :host,
@@ -81,7 +81,7 @@ export class NidocaFlexLayout extends LitElement {
     }
   `;
 
-  @property({type: NidocaFlexLayoutWrap, converter: String})
+  @property({type: NidocaFlexLayoutDirection, converter: String})
   flexDirection: NidocaFlexLayoutDirection = NidocaFlexLayoutDirection.ROW;
 
   @property({type: NidocaFlexLayoutWrap, converter: String})

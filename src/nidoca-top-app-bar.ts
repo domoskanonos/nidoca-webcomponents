@@ -40,7 +40,7 @@ export class NidocaTopAppBar extends LitElement {
           background-color: var(--app-color-${this.colorScheme}-background);
         }
       </style>
-      <nidoca-flex-layout
+      <nidoca-layout-flex
         .flexDirection="${NidocaFlexLayoutDirection.ROW}"
         .flexWrap="${NidocaFlexLayoutWrap.NO_WRAP}"
         .flexJustifyContent="${NidocaFlexLayoutJustifyContent.SPACE_BETWEEN}"
@@ -58,7 +58,7 @@ export class NidocaTopAppBar extends LitElement {
         <span>
           <slot name="right"></slot>
         </span>
-      </nidoca-flex-layout>
+      </nidoca-layout-flex>
       ${this.prominent ? html`<slot class="prominent" name="prominent"></slot>` : html``}
     `;
   }

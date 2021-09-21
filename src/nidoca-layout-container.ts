@@ -12,7 +12,7 @@ export enum NidocaContainerSize {
   AUTO = "AUTO",
 }
 
-@customElement("nidoca-container")
+@customElement("nidoca-layout-container")
 export class NidocaContainer extends LitElement {
   static styles = css`
     .container,
@@ -45,18 +45,22 @@ export class NidocaContainer extends LitElement {
     ::slotted(.AUTO) {
       width: auto;
     }
+    .FIT_CONTENT,
+    ::slotted(.FIT_CONTENT) {
+      width: fit-content;
+    }
   `;
 
   @property({type: NidocaContainerSize, converter: String})
-  containerSize: NidocaContainerSize = NidocaContainerSize.AUTO;
+  containerSize: NidocaContainerSize = NidocaContainerSize.MIN_CONTENT;
 
-  @property({type: Array})
+  @property({type: NidocaDevice, converter: Array})
   devices: NidocaDevice[] = [NidocaDevice.DESKTOP, NidocaDevice.TABLET, NidocaDevice.MOBILE];
 
   render(): any {
     return html`
-      <div class="container ${this.containerSize}">
-        <div class="container AUTO">
+      <div class="container ${NidocaDevice.applyDevices(this.containerSize, this.devices)}">
+        <div class="container FIT_CONTENT">
           <slot></slot>
         </div>
       </div>

@@ -31,7 +31,7 @@ export class NidocaAccordionItem extends LitElement {
             NidocaBorderProperty.FULL_WIDTH,
           ]}"
         >
-          <nidoca-flex-layout
+          <nidoca-layout-flex
             class="ACCORDION_HEADER"
             @click="${() => this.toggle()}"
             .flexDirection="${NidocaFlexLayoutDirection.ROW}"
@@ -44,7 +44,7 @@ export class NidocaAccordionItem extends LitElement {
               <nidoca-typography text="${this.header}"></nidoca-typography>
             </nidoca-layout-spacer>
             <nidoca-icon icon="${this.opened ? "keyboard_arrow_down" : "keyboard_arrow_up"}"></nidoca-icon>
-          </nidoca-flex-layout>
+          </nidoca-layout-flex>
           <nidoca-visible visibleType="${this.opened ? NidocaVisibleType.NORMAL : NidocaVisibleType.HIDE}">
             <slot></slot>
           </nidoca-visible>

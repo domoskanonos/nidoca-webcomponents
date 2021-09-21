@@ -24,7 +24,7 @@ export class NidocaAvatar extends LitElement {
   description: string = "";
 
   render(): any {
-    return html`<nidoca-flex-layout
+    return html`<nidoca-layout-flex
       .flexDirection="${NidocaFlexLayoutDirection.COLUMN}"
       .flexWrap="${NidocaFlexLayoutWrap.WRAP}"
       .flexJustifyContent="${NidocaFlexLayoutJustifyContent.SPACE_BETWEEN}"
@@ -36,6 +36,6 @@ export class NidocaAvatar extends LitElement {
         <nidoca-typography typographyType="${NidocaTypographyType.H3}">${this.title}</nidoca-typography>
       </nidoca-layout-spacer>
       <nidoca-typography typographyType="${NidocaTypographyType.H5}">${this.description}</nidoca-typography>
-    </nidoca-flex-layout>`;
+    </nidoca-layout-flex>`;
   }
 }

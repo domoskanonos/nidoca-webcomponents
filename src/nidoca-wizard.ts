@@ -12,7 +12,7 @@ export class NidocaWizard extends LitElement {
 
   render(): any {
     return html`
-      <nidoca-flex-layout
+      <nidoca-layout-flex
         .flexDirection="${NidocaFlexLayoutDirection.ROW}"
         .flexWrap="${NidocaFlexLayoutWrap.NO_WRAP}"
         .flexJustifyContent="${NidocaFlexLayoutJustifyContent.FLEX_START}"
@@ -23,7 +23,7 @@ export class NidocaWizard extends LitElement {
         @nidoca-event-wizard-step-clicked="${(event: CustomEvent) => this.stepClicked(event)}"
       >
         <slot id="wizardSlot" @slotchange="${(event: Event) => this.slotChanged(event)}"></slot>
-      </nidoca-flex-layout>
+      </nidoca-layout-flex>
     `;
   }
 

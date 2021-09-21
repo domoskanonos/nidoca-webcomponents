@@ -19,12 +19,12 @@ export * from "./nidoca-form-date";
 export * from "./nidoca-form-switch";
 export * from "./nidoca-form-abstract-input-element";
 
+export * from "./nidoca-layout-meta";
 export * from "./nidoca-layout-spacer";
-export * from "./nidoca-flex-layout";
-export * from "./nidoca-layout-floating-container";
 export * from "./nidoca-layout-section";
-export * from "./nidoca-layout-flex-device";
-export * from "./nidoca-container";
+export * from "./nidoca-layout-flex";
+export * from "./nidoca-layout-floating";
+export * from "./nidoca-layout-container";
 
 export * from "./nidoca-icon";
 export * from "./nidoca-icon-extended";

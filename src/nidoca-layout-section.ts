@@ -2,7 +2,7 @@ import {css, html, TemplateResult, LitElement} from "lit";
 import {customElement} from "lit/decorators.js";
 import {query} from "lit/decorators.js";
 import {NidocaBorderProperty} from "./nidoca-border";
-import {NidocaDevice} from "./nidoca-meta";
+import {NidocaDevice} from "./";
 
 @customElement("nidoca-layout-section")
 export class NidocaLayoutSection extends LitElement {

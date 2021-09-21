@@ -1,7 +1,7 @@
 import {css, html, TemplateResult, LitElement} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
-import {NidocaFlexLayoutAlignContent, NidocaFlexLayoutAlignItems, NidocaFlexLayoutDirection, NidocaFlexLayoutJustifyContent, NidocaFlexLayoutWrap} from "./nidoca-flex-layout";
+import {NidocaFlexLayoutAlignContent, NidocaFlexLayoutAlignItems, NidocaFlexLayoutDirection, NidocaFlexLayoutJustifyContent, NidocaFlexLayoutWrap} from "./nidoca-layout-flex";
 import {NidocaLayoutSpacerType, NidocaLayoutSpacerSize} from "./nidoca-layout-spacer";
 import {NidocaTypographyType} from "./nidoca-typography";
 
@@ -18,7 +18,7 @@ export class NidocaMenuSection extends LitElement {
   render(): any {
     return this.rendered
       ? html`
-          <nidoca-flex-layout
+          <nidoca-layout-flex
             .flexItemProperties="${[]}"
             .flexDirection="${NidocaFlexLayoutDirection.ROW}"
             .flexWrap="${NidocaFlexLayoutWrap.NO_WRAP}"
@@ -30,7 +30,7 @@ export class NidocaMenuSection extends LitElement {
             <nidoca-layout-spacer spacerSize="${NidocaLayoutSpacerSize.SMALL}" .spacerTypes="${[NidocaLayoutSpacerType.ALL]}">
               <nidoca-typography .typographyType="${NidocaTypographyType.H6}" text="${this.text}"></nidoca-typography>
             </nidoca-layout-spacer>
-          </nidoca-flex-layout>
+          </nidoca-layout-flex>
         `
       : html``;
   }

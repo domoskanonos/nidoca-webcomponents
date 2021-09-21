@@ -101,13 +101,13 @@ export class NidocaBorder extends LitElement {
     }
   `;
 
-  @property({type: String})
+  @property({type: NidocaColorScheme, converter: String})
   colorScheme: NidocaColorScheme = NidocaColorScheme.SURFACE;
 
-  @property({type: Array})
+  @property({type: NidocaBorderProperty, converter: Array})
   borderProperties: NidocaBorderProperty[] = [NidocaBorderProperty.ALL];
 
-  @property({type: String})
+  @property({type: NidocaBorderSize, converter: String})
   borderSize: NidocaBorderSize = NidocaBorderSize.THIN;
 
   render(): any {

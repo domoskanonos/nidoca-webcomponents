@@ -1,7 +1,7 @@
 import {css, html, LitElement} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
-import {NidocaFlexLayoutAlignItems, NidocaFlexLayoutJustifyContent, NidocaFlexLayoutWrap} from "./nidoca-flex-layout";
+import {NidocaFlexLayoutAlignItems, NidocaFlexLayoutJustifyContent, NidocaFlexLayoutWrap} from "./nidoca-layout-flex";
 import {NidocaVisibleType} from "./nidoca-visible";
 import {NidocaLayoutSpacerSize, NidocaLayoutSpacerType} from "./nidoca-layout-spacer";
 import {NidocaTypographyType} from "./nidoca-typography";
@@ -73,7 +73,7 @@ export class NidocaButton extends LitElement {
           colorScheme="${this.colorScheme}"
           borderSize="${this.buttonType == NidocaButtonType.TEXT ? NidocaBorderSize.NONE : NidocaBorderSize.THIN}"
         >
-          <nidoca-flex-layout
+          <nidoca-layout-flex
             class="BUTTON ${this.buttonType}"
             @click="${() => {
               this.clicked();
@@ -110,7 +110,7 @@ export class NidocaButton extends LitElement {
             >
               <nidoca-layout-spacer spacerSize="${NidocaLayoutSpacerSize.MEDIUM}"></nidoca-layout-spacer>
             </nidoca-visible>
-          </nidoca-flex-layout>
+          </nidoca-layout-flex>
         </nidoca-border>
       </nidoca-ripple>
     `;

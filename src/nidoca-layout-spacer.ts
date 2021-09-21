@@ -1,7 +1,7 @@
 import {css, html, TemplateResult, LitElement} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
-import {NidocaDevice} from "./nidoca-meta";
+import {NidocaDevice} from "./";
 
 export enum NidocaLayoutSpacerType {
   ALL = "ALL",
@@ -58,12 +58,12 @@ export class NidocaSpacer extends LitElement {
 
   private toStyle(
     devices: NidocaDevice[],
-    spacerProperties: NidocaLayoutSpacerType[],
+    spacerTypes: NidocaLayoutSpacerType[],
     spacerSize: NidocaLayoutSpacerSize
   ): string {
     const size = "var(".concat(spacerSize).concat(")");
     let style: string = "";
-    spacerProperties.forEach((spacerType: NidocaLayoutSpacerType) => {
+    spacerTypes.forEach((spacerType: NidocaLayoutSpacerType) => {
       switch (spacerType) {
         case NidocaLayoutSpacerType.LEFT:
           style = style.concat("padding-left:".concat(size).concat(";"));

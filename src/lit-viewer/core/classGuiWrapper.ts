@@ -71,7 +71,7 @@ const element : ${this.classWrapper.getClassName()} = document.getElementById("m
 ${this.classWrapper
   .getProperties()
   .map((propertyArg) => {
-    return `.${propertyArg.name}="\${this.${propertyArg.name}}"\n`;
+    return `.${propertyArg.propertyName}="\${this.${propertyArg.propertyName}}"\n`;
   })
   .join("")}></${this.classWrapper.getTagName()}>
 `;
@@ -84,7 +84,7 @@ ${this.classWrapper
       returnArray.push(
         html`
           <div>
-            <b>${prop.propertyWrapper.name}</b>
+            <b>${prop.propertyWrapper.propertyName}</b>
 
             <pre>${prop.propertyWrapper.getTypeName()}</pre>
             <div>${prop.getInputElement(this)}</div>
@@ -105,7 +105,7 @@ ${this.classWrapper
   public getPropertieNames(): string[] {
     const retval: string[] = [];
     this.getPropertyGuiWrappers().map((prop) => {
-      retval.push(prop.propertyWrapper.name);
+      retval.push(prop.propertyWrapper.propertyName);
     });
     return retval;
   }

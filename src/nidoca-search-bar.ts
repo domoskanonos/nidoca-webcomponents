@@ -8,7 +8,7 @@ import {
   NidocaFlexLayoutDirection,
   NidocaFlexLayoutJustifyContent,
   NidocaFlexLayoutWrap,
-} from "./nidoca-flex-layout";
+} from "./nidoca-layout-flex";
 import {NidocaLayoutSpacerType} from "./nidoca-layout-spacer";
 
 @customElement("nidoca-search-bar")
@@ -50,7 +50,7 @@ export class NidocaSearchBar extends LitElement {
 
   render(): any {
     return html`
-      <nidoca-flex-layout
+      <nidoca-layout-flex
         .flexDirection="${NidocaFlexLayoutDirection.ROW}"
         .flexWrap="${NidocaFlexLayoutWrap.NO_WRAP}"
         .flexJustifyContent="${NidocaFlexLayoutJustifyContent.FLEX_START}"
@@ -71,7 +71,7 @@ export class NidocaSearchBar extends LitElement {
         <nidoca-layout-spacer .spacerTypes="${[NidocaLayoutSpacerType.RIGHT]}">
           <nidoca-icon icon="close" @click="${() => this.clearValue()}"></nidoca-icon>
         </nidoca-layout-spacer>
-      </nidoca-flex-layout>
+      </nidoca-layout-flex>
     `;
   }
 

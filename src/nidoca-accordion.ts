@@ -48,5 +48,6 @@ export class NidocaAccordion extends LitElement {
       case AccordionType.MULTI:
         break;
     }
+    event.stopPropagation();
   }
 }

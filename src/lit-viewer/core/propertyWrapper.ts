@@ -1,7 +1,7 @@
-export enum PropertyType {
+export enum RenderType {
   STRING = "String",
   NUMBER = "Number",
-  BOOLEAN = "Boolean",
+  BOOLEAN = "boolean",
   CLAZZ = "Class",
   OBJECT = "Object",
   ENUMERATION = "Enum",
@@ -11,49 +11,38 @@ export enum PropertyType {
 
 export class PropertyWrapper {
   getClassName(): string {
-    const name = this.name;
-    return this.name.slice(0, 1).toUpperCase() + name.slice(1, this.name.length);
+    const name = this.propertyName;
+    return this.propertyName.slice(0, 1).toUpperCase() + name.slice(1, this.propertyName.length);
   }
 
-  public name: string;
-  public obj: any;
+  public propertyName: string;
+  public propertyValue: any;
 
-  constructor(name: string, obj: any) {
-    this.name = name;
-    this.obj = obj;
+  constructor(propertyName: string, propertyValue: any) {
+    this.propertyName = propertyName;
+    this.propertyValue = propertyValue;
   }
 
-  public getPropertyType(): PropertyType {
-    //console.log(JSON.stringify(this.obj));
-    const typeName: any | undefined = this.getType().name;
-    if (typeName == undefined) {
-      if (this.getType() instanceof Object) {
-        return PropertyType.ENUMERATION;
-      }
-      return PropertyType.UNDEFINED;
+  public getRenderType(): RenderType {
+    if (this.isArray()) {
+      return RenderType.ARRAY;
     }
-    if (typeName) {
-      switch (typeName) {
-        case "String":
-          return PropertyType.STRING;
-        case "Boolean":
-          return PropertyType.BOOLEAN;
-        case "Number":
-          return PropertyType.NUMBER;
-        case "Object":
-          return PropertyType.OBJECT;
-        case "Array":
-          return PropertyType.ARRAY;
-        default:
-          return PropertyType.CLAZZ;
-      }
-    } else {
-      return PropertyType.OBJECT;
+    if (this.isEnum()) {
+      return RenderType.ENUMERATION;
     }
+
+    return this.getConverterTypeName();
+  }
+
+  isEnum() {
+    if (this.getType() instanceof Object && !(this.propertyValue.type.name == RenderType.STRING)) {
+      return this.getType() instanceof Object;
+    }
+    return false;
   }
 
   getTypeName(): string {
-    return this.getPropertyType() == PropertyType.CLAZZ ? this.obj.type.name : this.getPropertyType();
+    return this.propertyValue.type.name;
   }
 
   getEnumValues(): any[] {
@@ -82,24 +71,30 @@ export class PropertyWrapper {
   }
 
   isArray(): boolean {
-    return Array.isArray(this.getType());
+    return this.getConverterTypeName() == "Array";
   }
 
   public getType(): any | undefined {
-    //console.log("getType: "+ typeof this.obj);
-    return this.obj ? this.obj.type : undefined;
+    return this.propertyValue?.type;
+  }
+
+  public getConverterType(): any | undefined {
+    return this.propertyValue.converter ? this.propertyValue.converter : this.getType();
+  }
+
+  public getConverterTypeName(): any | undefined {
+    return this.getConverterType()?.name;
   }
 
   public getTypeOf(): any | undefined {
-    console.log("Type of : " + typeof this.obj);
-    return typeof this.obj;
+    return typeof this.propertyValue;
   }
 
   public toString(): string {
     return JSON.stringify(
       {
-        name: this.obj.type.name,
-        prototype: this.obj,
+        name: this.propertyValue.type.name,
+        prototype: this.propertyValue,
       },
       null,
       2

@@ -11,7 +11,7 @@ export class NidocaCard extends LitElement {
   render(): any {
     return html`
       <nidoca-box-shadow .shadowType="${NidocaShadowType.KEY_LIGHT}">
-        <nidoca-flex-layout
+        <nidoca-layout-flex
           .flexDirection="${NidocaFlexLayoutDirection.COLUMN}"
           .flexWrap="${NidocaFlexLayoutWrap.WRAP}"
           .flexJustifyContent="${NidocaFlexLayoutJustifyContent.SPACE_BETWEEN}"
@@ -23,7 +23,7 @@ export class NidocaCard extends LitElement {
             <slot name="supportingText"></slot>
             <slot name="actions"></slot>
           </nidoca-layout-spacer>
-        </nidoca-flex-layout>
+        </nidoca-layout-flex>
         <slot></slot>
       </nidoca-box-shadow>
     `;

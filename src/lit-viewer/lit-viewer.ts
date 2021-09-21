@@ -2,12 +2,11 @@ import {customElement, html, LitElement, TemplateResult} from "lit-element";
 import {ClassWrapper} from "./core/classWrapper";
 import {ClassGuiWrapper} from "./core/classGuiWrapper";
 import {css} from "lit-element";
-import {NidocaShadowType} from "..";
 import {PropertyGuiWrapper} from "./core/propertyGuiWrapper";
 import {NidocaLayoutSpacerType} from "../nidoca-layout-spacer";
 import {NidocaTypographyType} from "../nidoca-typography";
 import {property} from "lit/decorators.js";
-import {NidocaContainerSize} from "../nidoca-container";
+import {NidocaContainerSize} from "../nidoca-layout-container";
 
 @customElement("lit-viewer")
 export class LitViewer extends LitElement {
@@ -26,21 +25,26 @@ export class LitViewer extends LitElement {
   public render(): TemplateResult {
     return html`
       <div class="container">
-        <nidoca-typography .typographyType="${NidocaTypographyType.H2}">Tag</nidoca-typography>
 
+      <nidoca-layout-spacer .spacerTypes="${[NidocaLayoutSpacerType.LEFT, NidocaLayoutSpacerType.RIGHT]}">
+
+
+      <nidoca-layout-spacer
+      .spacerTypes="${[NidocaLayoutSpacerType.TOP, NidocaLayoutSpacerType.BOTTOM]}"
+    > <nidoca-typography .typographyType="${NidocaTypographyType.H2}">Tag</nidoca-typography>
+    </nidoca-layout-spacer>
         <nidoca-code
           >${"<"
             .concat(this.clazzGuiWrapper ? this.clazzGuiWrapper.classWrapper.getTagName() : "")
             .concat("/>")}</nidoca-code
         >
 
-        <nidoca-container .containerSize="${NidocaContainerSize._75}">
+        <nidoca-layout-container .containerSize="${NidocaContainerSize._75}">
           <nidoca-layout-spacer>
             <slot @slotchange="${(event: Event) => this.slotChanged(event)}"></slot>
           </nidoca-layout-spacer>
-        </nidoca-container>
+        </nidoca-layout-container>
 
-        <nidoca-layout-spacer .spacerTypes="${[NidocaLayoutSpacerType.LEFT, NidocaLayoutSpacerType.RIGHT]}">
           ${this.clazzGuiWrapper
             ? html`
                 ${this.clazzGuiWrapper?.hasProperties()
@@ -51,7 +55,7 @@ export class LitViewer extends LitElement {
                       </nidoca-layout-spacer>
 
                       <nidoca-table
-                        .headers="${["name", "type", "values"]}"
+                        .headers="${["name", "type", "converter type", "render type", "values"]}"
                         .rows="${this.toAttributeRows(this.clazzGuiWrapper.getPropertyGuiWrappers())}"
                       >
                       </nidoca-table>`
@@ -126,8 +130,10 @@ export class LitViewer extends LitElement {
     if (arr) {
       arr.map((prop) => {
         const arr: any[] = [];
-        arr.push(prop.propertyWrapper.name);
+        arr.push(prop.propertyWrapper.propertyName);
         arr.push(prop.propertyWrapper.getTypeName());
+        arr.push(prop.propertyWrapper.getConverterTypeName());
+        arr.push(prop.propertyWrapper.getRenderType());
         arr.push(prop.getInputElement(this.clazzGuiWrapper));
         retval.push(arr);
         return arr;

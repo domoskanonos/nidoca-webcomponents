@@ -10,7 +10,7 @@ export class NidocaPageSettings extends LitElement {
   render(): any {
     return html`
       <nidoca-layout-spacer nidocaSpacerSize="${NidocaLayoutSpacerSize.LITTLE}"></nidoca-layout-spacer>
-      <nidoca-flex-layout
+      <nidoca-layout-flex
         flexItemBasisValue="auto"
         .flexJustifyContent="${NidocaFlexLayoutJustifyContent.FLEX_START}"
         .flexAlignItems="${NidocaFlexLayoutAlignItems.CENTER}"
@@ -26,13 +26,13 @@ export class NidocaPageSettings extends LitElement {
           .spacerTypes="${[NidocaLayoutSpacerType.LEFT, NidocaLayoutSpacerType.RIGHT]}"
         ></nidoca-layout-spacer>
         <nidoca-typography .typographyType="${NidocaTypographyType.H3}">Settings</nidoca-typography>
-      </nidoca-flex-layout>
+      </nidoca-layout-flex>
       <nidoca-layout-spacer
         nidocaSpacerSize="${NidocaLayoutSpacerSize.LITTLE}"
         .nidocaSpacerType="${[NidocaLayoutSpacerType.TOP, NidocaLayoutSpacerType.BOTTOM]}"
       >
       </nidoca-layout-spacer>
-      <nidoca-flex-layout
+      <nidoca-layout-flex
         .flexJustifyContent="${NidocaFlexLayoutJustifyContent.FLEX_START}"
         .alignItems="${NidocaFlexLayoutAlignItems.CENTER}"
       >
@@ -42,7 +42,7 @@ export class NidocaPageSettings extends LitElement {
         >
           <nidoca-typography .typographyType="${NidocaTypographyType.H6}">Spracheinstellungen</nidoca-typography>
         </nidoca-layout-spacer>
-      </nidoca-flex-layout>
+      </nidoca-layout-flex>
     `;
   }
 }

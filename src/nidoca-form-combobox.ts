@@ -180,4 +180,21 @@ export class NidocaFormCombobox extends NidocaFormAbstractInputElement {
     });
     return options;
   }
+
+  static toComboboxOptions(typeAsString: string, type: any = null): FormOutputData[] {
+    if (type == null) {
+      return [];
+    }
+
+    let retval: FormOutputData[] = [];
+
+    Object.values(type).forEach((value: any) => {
+      retval.push(<FormOutputData>{
+        key: value,
+        value: typeAsString.concat(".").concat(String(Object.keys(type)[Object.values(type).indexOf(value)])),
+      });
+    });
+
+    return retval;
+  }
 }

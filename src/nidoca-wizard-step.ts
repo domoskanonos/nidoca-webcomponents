@@ -44,7 +44,7 @@ export class NidocaWizardStep extends LitElement {
 
   render(): any {
     return html`
-      <nidoca-flex-layout
+      <nidoca-layout-flex
         .flexDirection="${NidocaFlexLayoutDirection.COLUMN}"
         .flexWrap="${NidocaFlexLayoutWrap.NO_WRAP}"
         .flexJustifyContent="${NidocaFlexLayoutJustifyContent.SPACE_EVENLY}"
@@ -53,7 +53,7 @@ export class NidocaWizardStep extends LitElement {
         containerStyle=""
         itemStyle=""
       >
-        <nidoca-flex-layout
+        <nidoca-layout-flex
           .flexDirection="${NidocaFlexLayoutDirection.ROW}"
           .flexWrap="${NidocaFlexLayoutWrap.NO_WRAP}"
           .flexJustifyContent="${NidocaFlexLayoutJustifyContent.FLEX_START}"
@@ -81,7 +81,7 @@ export class NidocaWizardStep extends LitElement {
             color="${this.determineBackgroundColor(this.state)}"
             icon="label_important">
           </nidoca-icon>`}
-        </nidoca-flex-layout>
+        </nidoca-layout-flex>
         <nidoca-typography
           style="width:48px;"
           .typographyType="${NidocaTypographyType.OVERLINE}"
@@ -89,7 +89,7 @@ export class NidocaWizardStep extends LitElement {
           text="${this.title}"
           ><slot></slot>
         </nidoca-typography>
-      </nidoca-flex-layout>
+      </nidoca-layout-flex>
     `;
   }
 
