@@ -7,7 +7,7 @@ import {
   NidocaFlexLayoutDirection,
   NidocaFlexLayoutJustifyContent,
   NidocaFlexLayoutWrap,
-  RichMediaProperties,
+  NidocaImgProperties,
   NidocaTypographyType,
 } from ".";
 import { NidocaLayoutSpacerSize } from "./nidoca-layout-spacer";
@@ -31,7 +31,7 @@ export class NidocaAvatar extends LitElement {
       .flexAlignItems="${NidocaFlexLayoutAlignItems.CENTER}"
       .flexAlignContent="${NidocaFlexLayoutAlignContent.CENTER}"
     >
-      <nidoca-img src="${this.imgSrc}" .richMediaProperties="${[RichMediaProperties.ROUND]}"> </nidoca-img>
+      <nidoca-img src="${this.imgSrc}" .richMediaProperties="${[NidocaImgProperties.ROUND]}"> </nidoca-img>
       <nidoca-layout-spacer spacerSize="${NidocaLayoutSpacerSize.LITTLE}">
         <nidoca-typography typographyType="${NidocaTypographyType.H3}">${this.title}</nidoca-typography>
       </nidoca-layout-spacer>

@@ -22,7 +22,7 @@ export class NidocaTopAppBar extends LitElement {
     }
   `;
 
-  @property({type: String})
+  @property({type: NidocaTheme})
   theme: NidocaTheme = NidocaTheme.PRIMARY;
 
   @property({type: Boolean})

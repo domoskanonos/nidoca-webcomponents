@@ -7,8 +7,8 @@ export class NidocaMovie extends LitElement {
   static styles = css``;
 
   @property({type: String})
-  src: string = "http://picsum.photos/400/300";
-
+  src: string = "";
+  
   render(): any {
     return html`
       <span>
@@ -21,4 +21,5 @@ export class NidocaMovie extends LitElement {
       ></span>
     `;
   }
+
 }

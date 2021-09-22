@@ -2,16 +2,11 @@ import {css, html, TemplateResult, LitElement} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
 
-export enum RichMediaType {
-  IMG = "IMG",
-  MOVIE = "MOVIE",
-}
-
-export enum RichMediaProperties {
-  ROUND = "ROUND",
-  CLICKABLE = "CLICKABLE",
-  ZOOM_WRAPPED = "ZOOM_WRAPPED",
-  FULL_WIDTH = "FULL_WIDTH",
+export class NidocaImgProperties {
+  static readonly ROUND = "ROUND";
+  static readonly CLICKABLE = "CLICKABLE";
+  static readonly ZOOM_WRAPPED = "ZOOM_WRAPPED";
+  static readonly FULL_WIDTH = "FULL_WIDTH";
 }
 
 @customElement("nidoca-img")
@@ -40,7 +35,7 @@ export class NidocaImg extends LitElement {
     .ZOOM_WRAPPED {
       overflow: hidden;
     }
-    
+
     .ZOOM_WRAPPED img:hover {
       transform: scale(1.1, 1.1);
       transition: transform 0.5s;
@@ -72,18 +67,18 @@ export class NidocaImg extends LitElement {
   @property({type: String})
   src: string = "http://picsum.photos/400/300";
 
-  @property({type: Array})
-  richMediaProperties: RichMediaProperties[] = [RichMediaProperties.CLICKABLE, RichMediaProperties.FULL_WIDTH];
+  @property({type: NidocaImgProperties, converter: Array})
+  richMediaProperties: NidocaImgProperties[] = [NidocaImgProperties.CLICKABLE, NidocaImgProperties.FULL_WIDTH];
 
   render(): any {
     return html`
-          <span class="${this.toRichMediaPropertiesString(this.richMediaProperties)}"><img src="${this.src}" /></span>
-        `;
+      <span class="${this.toRichMediaPropertiesString(this.richMediaProperties)}"><img src="${this.src}" /></span>
+    `;
   }
 
-  private toRichMediaPropertiesString(richMediaProperties: RichMediaProperties[]) {
+  private toRichMediaPropertiesString(richMediaProperties: NidocaImgProperties[]) {
     let richMediaPropertiesString: string = "";
-    richMediaProperties.forEach((propertie: RichMediaProperties) => {
+    richMediaProperties.forEach((propertie: NidocaImgProperties) => {
       richMediaPropertiesString = richMediaPropertiesString.concat(" ").concat(propertie);
     });
     return richMediaPropertiesString;

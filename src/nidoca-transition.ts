@@ -2,23 +2,23 @@ import {css, html, TemplateResult,LitElement} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
 
-export enum NidocaTransitionType {
-  CENTER = "CENTER",
-  LEFT = "LEFT",
-  RIGHT = "RIGHT",
-  TOP = "TOP",
-  BOTTOM = "BOTTOM",
-  SLIDE_CENTER = "SLIDE_CENTER",
-  SLIDE_LEFT = "SLIDE_LEFT",
-  SLIDE_RIGHT = "SLIDE_RIGHT",
-  SLIDE_TOP = "SLIDE_TOP",
-  SLIDE_BOTTOM = "SLIDE_BOTTOM",
+export class NidocaTransitionType {
+  static readonly CENTER = "CENTER";
+  static readonly LEFT = "LEFT";
+  static readonly RIGHT = "RIGHT";
+  static readonly TOP = "TOP";
+  static readonly BOTTOM = "BOTTOM";
+  static readonly SLIDE_CENTER = "SLIDE_CENTER";
+  static readonly SLIDE_LEFT = "SLIDE_LEFT";
+  static readonly SLIDE_RIGHT = "SLIDE_RIGHT";
+  static readonly SLIDE_TOP = "SLIDE_TOP";
+  static readonly SLIDE_BOTTOM = "SLIDE_BOTTOM";
 }
 
 @customElement("nidoca-transition")
 export class NidocaTransition extends LitElement {
 
-  @property({type: String})
+  @property({type: NidocaTransitionType})
   transitionType: NidocaTransitionType = NidocaTransitionType.CENTER;
 
   @property({type: Number})

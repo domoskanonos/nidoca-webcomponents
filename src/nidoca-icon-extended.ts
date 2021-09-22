@@ -3,12 +3,12 @@ import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
 import {NidocaTheme} from ".";
 
-export enum NidocaIconShadowType {
-  NONE = "NONE",
-  DEFAULT_SHADOW = "DEFAULT_SHADOW",
-  SHADOW_1 = "SHADOW_1",
-  SHADOW_2 = "SHADOW_2",
-  SHADOW_3 = "SHADOW_3",
+export class NidocaIconShadowType {
+  static readonly NONE = "NONE";
+  static readonly DEFAULT_SHADOW = "DEFAULT_SHADOW";
+  static readonly SHADOW_1 = "SHADOW_1";
+  static readonly SHADOW_2 = "SHADOW_2";
+  static readonly SHADOW_3 = "SHADOW_3";
 }
 
 @customElement("nidoca-icon-extended")
@@ -48,10 +48,10 @@ export class NidocaIconExtended extends LitElement {
   @property({type: String})
   icon: string = "";
 
-  @property({type: String})
+  @property({type: NidocaTheme})
   theme: NidocaTheme = NidocaTheme.PRIMARY;
 
-  @property({type: String})
+  @property({type: NidocaIconShadowType})
   shadowType: NidocaIconShadowType = NidocaIconShadowType.DEFAULT_SHADOW;
 
   @property({type: Boolean})

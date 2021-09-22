@@ -137,6 +137,128 @@ export class NidocaPageMain extends LitElement {
           .spacerTypes="${[NidocaLayoutSpacerType.TOP, NidocaLayoutSpacerType.BOTTOM]}"
         >
           <nidoca-accordion>
+            <nidoca-accordion-item header="nidoca-ripple">
+              <lit-viewer .customEventNames="${[]}">
+                <nidoca-ripple><nidoca-img src="http://lorempixel.com/640/480/"></nidoca-img></nidoca-ripple>
+              </lit-viewer>
+            </nidoca-accordion-item>
+
+            <nidoca-accordion-item header="nidoca-transition">
+              <lit-viewer .customEventNames="${[]}">
+                <nidoca-transition><nidoca-img src="http://lorempixel.com/640/480/"></nidoca-img></nidoca-transition>
+              </lit-viewer>
+            </nidoca-accordion-item>
+
+            <nidoca-accordion-item header="nidoca-wizard">
+              <lit-viewer .customEventNames="${[]}">
+                <nidoca-wizard>
+                  <nidoca-wizard-step>Aufgabe 1</nidoca-wizard-step>
+                  <nidoca-wizard-step>Aufgabe 2</nidoca-wizard-step>
+                  <nidoca-wizard-step>Aufgabe 3</nidoca-wizard-step>
+                  <nidoca-wizard-step>Aufgabe 4</nidoca-wizard-step>
+                </nidoca-wizard>
+              </lit-viewer>
+            </nidoca-accordion-item>
+
+            <nidoca-accordion-item header="nidoca-gallery">
+              <lit-viewer .customEventNames="${[]}">
+                <nidoca-gallery
+                  ><nidoca-img src="http://lorempixel.com/320/200/"></nidoca-img
+                  ><nidoca-img src="http://lorempixel.com/320/200/"></nidoca-img
+                  ><nidoca-img src="http://lorempixel.com/320/200/"></nidoca-img
+                  ><nidoca-img src="http://lorempixel.com/320/200/"></nidoca-img
+                  ><nidoca-img src="http://lorempixel.com/320/200/"></nidoca-img
+                  ><nidoca-img src="http://lorempixel.com/320/200/"></nidoca-img
+                  ><nidoca-img src="http://lorempixel.com/320/200/"></nidoca-img
+                ></nidoca-gallery>
+              </lit-viewer>
+            </nidoca-accordion-item>
+
+            <nidoca-accordion-item header="nidoca-top-app-bar">
+              <lit-viewer .customEventNames="${[]}">
+                <nidoca-top-app-bar>
+                  <nidoca-icon slot="right" icon="search" title="Suchen"></nidoca-icon>
+                  <nidoca-search-bar slot="prominent" placeholder="Suche..."></nidoca-search-bar>
+                  <nidoca-icon slot="right" title="Einstellungen" icon="more_vert" .clickable="${true}"></nidoca-icon>
+                  <nidoca-layout-spacer
+                    cssStyle="width:100%;"
+                    slot="left"
+                    .spacerSize="${NidocaLayoutSpacerSize.BIG}"
+                    .spacerTypes="${[NidocaLayoutSpacerType.LEFT]}"
+                  >
+                    <nidoca-typography .typographyType="${NidocaTypographyType.BODY1}"
+                      >Mein Title</nidoca-typography
+                    ></nidoca-layout-spacer
+                  >
+                </nidoca-top-app-bar>
+              </lit-viewer>
+            </nidoca-accordion-item>
+
+            <nidoca-accordion-item header="nidoca-link">
+              <lit-viewer .customEventNames="${[]}">
+                <nidoca-link text="Mein Link"></nidoca-link>
+              </lit-viewer>
+            </nidoca-accordion-item>
+
+            <nidoca-accordion-item header="nidoca-progress">
+              <lit-viewer .customEventNames="${[]}">
+                <nidoca-progress></nidoca-progress>
+              </lit-viewer>
+            </nidoca-accordion-item>
+
+            <nidoca-accordion-item header="nidoca-movie">
+              <lit-viewer .customEventNames="${[]}">
+                <nidoca-movie
+                  src="https://www.youtube.com/embed/lJIrF4YjHfQ?autoplay=1&cc_load_policy=1&controls=2&hl=en&rel=0&enablejsapi=1&origin=https%3A%2F%2Fsupport.google.com&widgetid=3"
+                ></nidoca-movie>
+              </lit-viewer>
+            </nidoca-accordion-item>
+
+            <nidoca-accordion-item header="nidoca-img">
+              <lit-viewer .customEventNames="${[]}">
+                <nidoca-img src="http://lorempixel.com/640/480/"></nidoca-img>
+              </lit-viewer>
+            </nidoca-accordion-item>
+
+            <nidoca-accordion-item header="nidoca-icon">
+              <lit-viewer .customEventNames="${[]}">
+                <nidoca-icon icon="home"><nidoca-layout-spacer></nidoca-layout-spacer></nidoca-icon>
+              </lit-viewer>
+            </nidoca-accordion-item>
+
+            <nidoca-accordion-item header="nidoca-icon-extended">
+              <lit-viewer .customEventNames="${[]}">
+                <nidoca-icon-extended icon="home"><nidoca-layout-spacer></nidoca-layout-spacer></nidoca-icon-extended>
+              </lit-viewer>
+            </nidoca-accordion-item>
+
+            <nidoca-accordion-item header="nidoca-elevation">
+              <lit-viewer .customEventNames="${[]}">
+                <nidoca-elevation><nidoca-img src="http://lorempixel.com/320/200/"></nidoca-img></nidoca-elevation>
+              </lit-viewer>
+            </nidoca-accordion-item>
+
+            <nidoca-accordion-item header="nidoca-border">
+              <lit-viewer .customEventNames="${[]}">
+                <nidoca-border><nidoca-layout-spacer></nidoca-layout-spacer></nidoca-border>
+              </lit-viewer>
+            </nidoca-accordion-item>
+
+            <nidoca-accordion-item header="nidoca-box-shadow">
+              <lit-viewer .customEventNames="${[]}">
+                <nidoca-box-shadow><nidoca-layout-spacer></nidoca-layout-spacer></nidoca-box-shadow>
+              </lit-viewer>
+            </nidoca-accordion-item>
+
+
+            <nidoca-accordion-item header="nidoca-template">
+            <lit-viewer .customEventNames="${[]}">
+              <nidoca-template>
+              </nidoca-template>
+            </lit-viewer>
+          </nidoca-accordion-item>
+
+
             <nidoca-accordion-item header="nidoca-accordion">
               <lit-viewer .customEventNames="${["nidoca-button-event-clicked"]}">
                 <nidoca-accordion>
@@ -333,58 +455,79 @@ export class NidocaPageMain extends LitElement {
 
             <nidoca-accordion-item header="nidoca-table">
               <lit-viewer .customEventNames="${[]}">
-                <nidoca-table .headers="${["name", "dsdsd"]}" .rows="${[
-      ["Hallo", "Hallo"],
-      ["Hallo", "Hallo"],
-    ]}"> </nidoca-table>
+                <nidoca-table
+                  .headers="${["name", "dsdsd"]}"
+                  .rows="${[
+                    ["Hallo", "Hallo"],
+                    ["Hallo", "Hallo"],
+                  ]}"
+                >
+                </nidoca-table>
+              </lit-viewer>
+            </nidoca-accordion-item>
+
+            <nidoca-accordion-item header="nidoca-captcha">
+              <lit-viewer .customEventNames="${[]}">
+                <nidoca-captcha> </nidoca-captcha>
+              </lit-viewer>
+            </nidoca-accordion-item>
+
+            <nidoca-accordion-item header="nidoca-avatar">
+              <lit-viewer .customEventNames="${[]}">
+                <nidoca-avatar
+                  imgSrc="http://lorempixel.com/320/200/"
+                  title="Max Mustermann"
+                  description="Softwareentwickler"
+                >
+                </nidoca-avatar>
+              </lit-viewer>
+            </nidoca-accordion-item>
+
+            <nidoca-accordion-item header="nidoca-code">
+              <lit-viewer .customEventNames="${[]}">
+                <nidoca-code> Some Code </nidoca-code>
+              </lit-viewer>
+            </nidoca-accordion-item>
+
+            <nidoca-accordion-item header="nidoca-dialog">
+              <lit-viewer .customEventNames="${[]}">
+                <nidoca-dialog
+                  @nidoca-event-button-clicked="${(event: CustomEvent) => {
+                    (<any>event.target).parentNode.show = false;
+                  }}"
+                  .show="${false}"
+                >
+                  <nidoca-button>Schließen</nidoca-button>
+                </nidoca-dialog>
+              </lit-viewer>
+            </nidoca-accordion-item>
+
+            <nidoca-accordion-item header="nidoca-dialog-action">
+              <lit-viewer .customEventNames="${[]}">
+                <nidoca-dialog-action
+                  @nidoca-event-button-clicked="${(event: CustomEvent) => {
+                    (<any>event.target).parentNode.show = false;
+                  }}"
+                  .show="${false}"
+                >
+                  <nidoca-typography slot="header" typographyType="${NidocaTypographyType.H1}"
+                    >Vertrag löschen ?</nidoca-typography
+                  >
+                  <nidoca-typography slot="text" typographyType="${NidocaTypographyType.BODY1}"
+                    >Möchtest du den Vertrag wirklich löschen ? Er geht unwiederruflich verloren.</nidoca-typography
+                  >
+                  <nidoca-button slot="action" buttonType="${NidocaButtonType.TEXT}">Ok</nidoca-button>
+                  <nidoca-layout-spacer
+                    slot="action"
+                    .spacerSize="${NidocaLayoutSpacerSize.BIG}"
+                    .spacerTypes="${[NidocaLayoutSpacerType.RIGHT]}"
+                  ></nidoca-layout-spacer>
+                  <nidoca-button slot="action" buttonType="${NidocaButtonType.TEXT}">Abbrechen</nidoca-button>
+                </nidoca-dialog-action>
               </lit-viewer>
             </nidoca-accordion-item>
           </nidoca-accordion>
-
-
-          <nidoca-accordion-item header="nidoca-captcha">
-          <lit-viewer .customEventNames="${[]}">
-            <nidoca-captcha> </nidoca-captcha>
-          </lit-viewer>
-        </nidoca-accordion-item>
-      </nidoca-accordion>
-
-
-      <nidoca-accordion-item header="nidoca-avatar">
-      <lit-viewer .customEventNames="${[]}">
-        <nidoca-avatar imgSrc="http://lorempixel.com/320/200/" title="Max Mustermann" description="Softwareentwickler"> </nidoca-avatar>
-      </lit-viewer>
-    </nidoca-accordion-item>
-
-
-    <nidoca-accordion-item header="nidoca-code">
-    <lit-viewer .customEventNames="${[]}">
-      <nidoca-code> Some Code </nidoca-code>
-    </lit-viewer>
-  </nidoca-accordion-item>
-
-
-  
-  <nidoca-accordion-item header="nidoca-dialog">
-  <lit-viewer .customEventNames="${[]}">
-    <nidoca-dialog @nidoca-event-button-clicked="${(event: CustomEvent) => {
-      (<any>event.target).parentNode.show = false;
-    }}" .show="${false}"> 
-    
-    Some Code
-    <nidoca-button>Close</nidoca-button>
-     
-    
-    
-    </nidoca-dialog>
-  </lit-viewer>
-</nidoca-accordion-item>
-
-
-    </nidoca-accordion>
-
-
-          </nidoca-layout-spacer>
+        </nidoca-layout-spacer>
       </nidoca-layout-container>
     `;
   }

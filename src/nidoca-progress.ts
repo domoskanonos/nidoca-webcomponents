@@ -2,9 +2,9 @@ import {css, html, TemplateResult, LitElement} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
 
-export enum ProgressType {
-  PROGRESS = "PROGRESS",
-  PROGRESS_CIRCULAR = "PROGRESS_CIRCULAR",
+export class ProgressType {
+  static readonly PROGRESS = "PROGRESS";
+  static readonly PROGRESS_CIRCULAR = "PROGRESS_CIRCULAR";
 }
 
 @customElement("nidoca-progress")
@@ -203,8 +203,8 @@ export class NidocaProgress extends LitElement {
     }
   `;
 
-  @property({type: String})
-  progressType: ProgressType = ProgressType.PROGRESS;
+  @property({type: ProgressType})
+  progressType: ProgressType = ProgressType.PROGRESS_CIRCULAR;
 
   render(): any {
     return html` <progress class="${this.progressType}"></progress> `;
