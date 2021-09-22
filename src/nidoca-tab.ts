@@ -1,7 +1,7 @@
 import {css, html, TemplateResult, LitElement} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
-import {NidocaColorScheme} from ".";
+import {NidocaTheme} from ".";
 import {NidocaTypographyType} from "./nidoca-typography";
 
 @customElement("nidoca-tab")
@@ -29,13 +29,13 @@ export class NidocaTab extends LitElement {
   text: string = "";
 
   @property({type: String})
-  colorScheme: NidocaColorScheme = NidocaColorScheme.PRIMARY;
+  theme: NidocaTheme = NidocaTheme.PRIMARY;
 
   render(): any {
     return html`
       <style>
         :host(.SELECTED) {
-          border-color: var(--app-color-${this.colorScheme}-background);
+          border-color: var(--app-color-${this.theme}-background);
         }
       </style>
       <span class="tab ${this.selected ? "SELECTED" : ""}" @click="${() => this.tabClicked()}">

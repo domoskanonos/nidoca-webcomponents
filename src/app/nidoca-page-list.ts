@@ -8,7 +8,7 @@ import {
   NidocaFlexLayoutDirection,
   NidocaFlexLayoutJustifyContent,
   NidocaFlexLayoutWrap,
-  NidocaColorScheme,
+  NidocaTheme,
   NidocaTypographyType,
 } from "..";
 import {NidocaLayoutSpacerSize, NidocaLayoutSpacerType} from "../nidoca-layout-spacer";
@@ -32,7 +32,7 @@ export class NidocaPageGallery extends LitElement {
 
   @property({type: Object})
   elevationContentElement: any = html`
-    <nidoca-list .colorScheme=${NidocaColorScheme.SURFACE}>
+    <nidoca-list .theme=${NidocaTheme.SURFACE}>
       <nidoca-list-item text="Kündigung drucken" @click="${() => this.printElement?.print()}">hiuhiuh</nidoca-list-item>
       <nidoca-list-item icon="delete" title="Vertrag löschen"></nidoca-list-item>
       <nidoca-list-item icon="share" title="Teilen"></nidoca-list-item>
@@ -149,7 +149,7 @@ export class NidocaPageGallery extends LitElement {
           >
         </nidoca-layout-spacer>
 
-        <nidoca-top-app-bar .prominent="${this.prominent}" .colorScheme="${NidocaColorScheme.SURFACE}">
+        <nidoca-top-app-bar .prominent="${this.prominent}" .theme="${NidocaTheme.SURFACE}">
           <nidoca-layout-spacer
             slot="left"
             spacerSize="${NidocaLayoutSpacerSize.MEDIUM}"

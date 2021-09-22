@@ -43,13 +43,14 @@ export class PropertyGuiWrapper {
           }}"
         ></nidoca-form-text>`;
       case RenderType.BOOLEAN: {
-        return html`<input
+        return html`<nidoca-form-switch
           type="checkbox"
+          .checked="${classWrapper.instance[propertyWrapper.propertyName as keyof LitElement]}"
           @input="${(eventArg: any) => {
-            classWrapper.instance[propertyWrapper.propertyName] = eventArg.target.checked;
+            classWrapper.instance[propertyWrapper.propertyName] = eventArg.target.getOutputData().value;
             classWrapper.instance.requestUpdate();
           }}"
-        />`;
+        ></nidoca-form-switch`;
       }
       case RenderType.COMBOBOX: {
         return html`<nidoca-form-combobox

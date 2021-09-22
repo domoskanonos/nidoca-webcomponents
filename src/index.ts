@@ -37,7 +37,6 @@ export * from "./nidoca-list";
 export * from "./nidoca-list-item";
 export * from "./nidoca-top-app-bar";
 export * from "./nidoca-list-section";
-export * from "./nidoca-visible";
 export * from "./nidoca-table";
 export * from "./nidoca-tabs";
 export * from "./nidoca-tab";

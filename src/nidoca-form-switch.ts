@@ -2,10 +2,9 @@ import {css, html, TemplateResult} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
 import {query} from "lit/decorators.js";
-import {NidocaColorScheme} from ".";
+import {NidocaTheme} from ".";
 import {FormOutputData, NidocaFormAbstractInputElement} from "./nidoca-form-abstract-input-element";
 import {NidocaTypographyType} from "./nidoca-typography";
-import {NidocaVisibleType} from "./nidoca-visible";
 
 @customElement("nidoca-form-switch")
 export class NidocaFormSwitch extends NidocaFormAbstractInputElement {
@@ -37,7 +36,7 @@ export class NidocaFormSwitch extends NidocaFormAbstractInputElement {
       left: 0;
       right: 0;
       bottom: 0;
-      background-color: #ccc;
+      background-color: var(--app-color-surface-background);
       -webkit-transition: 0.4s;
       transition: 0.4s;
     }
@@ -94,7 +93,7 @@ export class NidocaFormSwitch extends NidocaFormAbstractInputElement {
   checked: boolean = false;
 
   @property({type: String})
-  colorScheme: NidocaColorScheme = NidocaColorScheme.PRIMARY;
+  theme: NidocaTheme = NidocaTheme.PRIMARY;
 
   @query("#inputElement")
   private inputElement: HTMLInputElement | undefined;
@@ -103,16 +102,16 @@ export class NidocaFormSwitch extends NidocaFormAbstractInputElement {
     return html`
       <style>
         .slider:before {
-          background-color: var(--app-color-${this.colorScheme}-background-dark);
+          background-color: var(--app-color-${this.theme}-background-dark);
         }
         input:checked + .slider:before {
-          background-color: var(--app-color-${this.colorScheme}-background);
+          background-color: var(--app-color-${this.theme}-background);
         }
         input:checked + .slider {
-          background-color: var(--app-color-${this.colorScheme}-background-light);
+          background-color: var(--app-color-${this.theme}-background-light);
         }
         input:focus + .slider {
-          box-shadow: 0 0 20px var(--app-color-${this.colorScheme}-background);
+          box-shadow: 0 0 20px var(--app-color-${this.theme}-background);
         }
       </style>
 
@@ -120,15 +119,14 @@ export class NidocaFormSwitch extends NidocaFormAbstractInputElement {
         <nidoca-typography .typographyType="${NidocaTypographyType.SUBTITLE1}" text="${this.label}">
           <slot></slot>
         </nidoca-typography>
-        <nidoca-visible
-          slot="secondary"
-          visibleType="${this.infoText.length > 0 ? NidocaVisibleType.NORMAL : NidocaVisibleType.HIDE}"
-        >
-          <nidoca-typography
-            .typographyType="${NidocaTypographyType.SUBTITLE2}"
-            text="${this.infoText}"
-          ></nidoca-typography>
-        </nidoca-visible>
+
+        ${this.infoText.length > 0
+          ? html` <nidoca-typography
+              .typographyType="${NidocaTypographyType.SUBTITLE2}"
+              text="${this.infoText}"
+            ></nidoca-typography>`
+          : html``}
+
         <label class="switch" slot="meta">
           <input
             id="inputElement"
@@ -137,26 +135,29 @@ export class NidocaFormSwitch extends NidocaFormAbstractInputElement {
             ?checked="${this.checked}"
             ?required="${this.required}"
             ?disabled="${this.disabled}"
+            @input="${(eventArg: any) => {
+              this.checked = eventArg.target.checked;
+              console.log(this.checked);
+            }}"
           />
           <span class="slider round"></span>
         </label>
       </nidoca-list-item>
 
-      <nidoca-visible visibleType="${this.warningText ? NidocaVisibleType.NORMAL : NidocaVisibleType.HIDE}">
-        <nidoca-typography
-          style="color:var(--app-color-warning-background)"
-          .typographyType="${NidocaTypographyType.BODY1}"
-          text="${this.warningText}"
-        ></nidoca-typography>
-      </nidoca-visible>
-
-      <nidoca-visible visibleType="${this.errorText ? NidocaVisibleType.NORMAL : NidocaVisibleType.HIDE}">
-        <nidoca-typography
-          style="color:var(--app-color-error-background)"
-          .typographyType="${NidocaTypographyType.BODY1}"
-          text="${this.errorText}"
-        ></nidoca-typography>
-      </nidoca-visible>
+      ${this.warningText
+        ? html` <nidoca-typography
+            style="color:var(--app-color-warning-background)"
+            .typographyType="${NidocaTypographyType.BODY1}"
+            text="${this.warningText}"
+          ></nidoca-typography>`
+        : html``}
+      ${this.errorText
+        ? html` <nidoca-typography
+            style="color:var(--app-color-error-background)"
+            .typographyType="${NidocaTypographyType.BODY1}"
+            text="${this.errorText}"
+          ></nidoca-typography>`
+        : html``}
     `;
   }
 

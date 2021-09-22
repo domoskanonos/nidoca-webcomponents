@@ -2,10 +2,9 @@ import {css, html, LitElement} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
 import {NidocaFlexLayoutAlignItems, NidocaFlexLayoutJustifyContent, NidocaFlexLayoutWrap} from "./nidoca-layout-flex";
-import {NidocaVisibleType} from "./nidoca-visible";
 import {NidocaLayoutSpacerSize, NidocaLayoutSpacerType} from "./nidoca-layout-spacer";
 import {NidocaTypographyType} from "./nidoca-typography";
-import {NidocaBorderSize, NidocaColorScheme} from ".";
+import {NidocaBorderSize, NidocaTheme} from ".";
 
 export enum NidocaButtonType {
   CONTAINED = "CONTAINED",
@@ -38,8 +37,8 @@ export class NidocaButton extends LitElement {
     }
   `;
 
-  @property({type: NidocaColorScheme, converter: String})
-  colorScheme: NidocaColorScheme = NidocaColorScheme.PRIMARY;
+  @property({type: NidocaTheme, converter: String})
+  theme: NidocaTheme = NidocaTheme.PRIMARY;
 
   @property({type: NidocaButtonType, converter: String})
   buttonType: NidocaButtonType = NidocaButtonType.CONTAINED;
@@ -54,23 +53,23 @@ export class NidocaButton extends LitElement {
     return html`
       <style>
         .OUTLINED {
-          color: var(--app-color-${this.colorScheme}-background);
-          background-color: var(--app-color-${this.colorScheme});
+          color: var(--app-color-${this.theme}-background);
+          background-color: var(--app-color-${this.theme});
         }
 
         .CONTAINED {
-          color: var(--app-color-${this.colorScheme});
-          background-color: var(--app-color-${this.colorScheme}-background);
+          color: var(--app-color-${this.theme});
+          background-color: var(--app-color-${this.theme}-background);
         }
 
         .TEXT {
           font-weight: 900;
-          color: var(--app-color-${this.colorScheme}-background);
+          color: var(--app-color-${this.theme}-background);
         }
       </style>
       <nidoca-ripple>
         <nidoca-border
-          colorScheme="${this.colorScheme}"
+          theme="${this.theme}"
           borderSize="${this.buttonType == NidocaButtonType.TEXT ? NidocaBorderSize.NONE : NidocaBorderSize.THIN}"
         >
           <nidoca-layout-flex
@@ -82,17 +81,10 @@ export class NidocaButton extends LitElement {
             .flexJustifyContent="${NidocaFlexLayoutJustifyContent.CENTER}"
             .flexAlignItems="${NidocaFlexLayoutAlignItems.CENTER}"
           >
-            <nidoca-visible visibleType="${this.leadingIcon ? NidocaVisibleType.NORMAL : NidocaVisibleType.HIDE}">
-              <nidoca-icon .icon="${this.leadingIcon}"></nidoca-icon>
-            </nidoca-visible>
-
-            <nidoca-visible
-              visibleType="${!this.leadingIcon && this.buttonType != NidocaButtonType.TEXT
-                ? NidocaVisibleType.NORMAL
-                : NidocaVisibleType.HIDE}"
-            >
-              <nidoca-layout-spacer spacerSize="${NidocaLayoutSpacerSize.MEDIUM}"> </nidoca-layout-spacer>
-            </nidoca-visible>
+            ${this.leadingIcon ? html`<nidoca-icon .icon="${this.leadingIcon}"></nidoca-icon>` : html``}
+            ${this.leadingIcon && this.buttonType != NidocaButtonType.TEXT
+              ? html`<nidoca-layout-spacer spacerSize="${NidocaLayoutSpacerSize.MEDIUM}"> </nidoca-layout-spacer>`
+              : html``}
 
             <nidoca-layout-spacer
               spacerSize="${NidocaLayoutSpacerSize.BIG}"
@@ -103,13 +95,9 @@ export class NidocaButton extends LitElement {
               </nidoca-typography>
             </nidoca-layout-spacer>
 
-            <nidoca-visible
-              visibleType="${this.buttonType != NidocaButtonType.TEXT
-                ? NidocaVisibleType.NORMAL
-                : NidocaVisibleType.HIDE}"
-            >
-              <nidoca-layout-spacer spacerSize="${NidocaLayoutSpacerSize.MEDIUM}"></nidoca-layout-spacer>
-            </nidoca-visible>
+            ${this.buttonType != NidocaButtonType.TEXT
+              ? html`<nidoca-layout-spacer spacerSize="${NidocaLayoutSpacerSize.MEDIUM}"></nidoca-layout-spacer>`
+              : html``}
           </nidoca-layout-flex>
         </nidoca-border>
       </nidoca-ripple>

@@ -77,7 +77,6 @@ export class NidocaFlexLayout extends LitElement {
     .flexItem,
     ::slotted(.flexItem) {
       box-sizing: border-box;
-      overflow: auto;
     }
   `;
 

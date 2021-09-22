@@ -1,7 +1,7 @@
 import {css, html, LitElement, TemplateResult} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
-import {NidocaColorScheme} from ".";
+import {NidocaTheme as NidocaTheme} from ".";
 
 export enum NidocaBorderProperty {
   NONE = "NONE",
@@ -101,8 +101,8 @@ export class NidocaBorder extends LitElement {
     }
   `;
 
-  @property({type: NidocaColorScheme, converter: String})
-  colorScheme: NidocaColorScheme = NidocaColorScheme.SURFACE;
+  @property({type: NidocaTheme, converter: String})
+  theme: NidocaTheme = NidocaTheme.SURFACE;
 
   @property({type: NidocaBorderProperty, converter: Array})
   borderProperties: NidocaBorderProperty[] = [NidocaBorderProperty.ALL];
@@ -114,10 +114,10 @@ export class NidocaBorder extends LitElement {
     return html`
       <style>
         .BORDER {
-          border-color: var(--app-color-${this.colorScheme}-background);
+          border-color: var(--app-color-${this.theme}-background);
         }
         .BOTTOM_SELECTED:focus-within {
-          border-color: var(--app-color-${this.colorScheme}-selected);
+          border-color: var(--app-color-${this.theme}-selected);
         }
       </style>
 

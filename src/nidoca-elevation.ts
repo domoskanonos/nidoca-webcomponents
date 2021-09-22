@@ -1,7 +1,6 @@
 import {html, LitElement, TemplateResult, css} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
-import {NidocaVisibleType} from ".";
 
 @customElement("nidoca-elevation")
 export class NidocaElevation extends LitElement {
@@ -37,15 +36,15 @@ export class NidocaElevation extends LitElement {
   }
 
   render(): any {
-    return html`
-      <nidoca-visible visibleType="${this.show ? NidocaVisibleType.NORMAL : NidocaVisibleType.HIDE}">
-        <div class="container" style="${this.calculatePositionStyle(this.associatedElement)}">
-          <nidoca-border>
-            <slot id="slot"></slot>
-          </nidoca-border>
-        </div>
-      </nidoca-visible>
-    `;
+    return this.show
+      ? html`
+          <div class="container" style="${this.calculatePositionStyle(this.associatedElement)}">
+            <nidoca-border>
+              <slot id="slot"></slot>
+            </nidoca-border>
+          </div>
+        `
+      : html``;
   }
 
   calculatePositionStyle(basedOnComponent: HTMLElement | undefined): string {

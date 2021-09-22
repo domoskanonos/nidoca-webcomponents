@@ -2,11 +2,10 @@ import {css, html, TemplateResult, LitElement} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
 import {NidocaBorderProperty, NidocaBorderSize} from "./nidoca-border";
-import {NidocaVisibleType as NidocaVisibleType} from "./nidoca-visible";
 import {NidocaFlexLayoutAlignContent} from "./nidoca-layout-flex";
 import {NidocaTypographyType} from "./nidoca-typography";
 import {NidocaLayoutSpacerType, NidocaLayoutSpacerSize} from "./nidoca-layout-spacer";
-import {NidocaColorScheme, NidocaFormDate} from ".";
+import {NidocaTheme} from ".";
 import {query} from "lit/decorators.js";
 
 export enum InputframeMode {
@@ -34,7 +33,7 @@ export class NidocaFormInputframe extends LitElement {
   warningText: string = "";
 
   @property({type: String})
-  colorScheme: NidocaColorScheme = NidocaColorScheme.SURFACE;
+  theme: NidocaTheme = NidocaTheme.SURFACE;
 
   @property({type: String})
   inputframeMode: InputframeMode = InputframeMode.NORMAL;
@@ -47,12 +46,12 @@ export class NidocaFormInputframe extends LitElement {
       ? html`
           <style>
             .main {
-              color: var(--app-color-${this.colorScheme});
-              background-color: var(--app-color-${this.colorScheme}-background-light);
+              color: var(--app-color-${this.theme});
+              background-color: var(--app-color-${this.theme}-background-light);
             }
 
             :focus-within {
-              background-color: var(--app-color-${this.colorScheme}-background);
+              background-color: var(--app-color-${this.theme}-background);
             }
           </style>
           <nidoca-border
@@ -60,7 +59,7 @@ export class NidocaFormInputframe extends LitElement {
             @click="${() => this.setShowLabel()}"
             @input="${() => this.setShowLabel()}"
             class="main"
-            .colorScheme="${this.colorScheme}"
+            .theme="${this.theme}"
             .borderSize="${NidocaBorderSize.MEDIUM}"
             .borderProperties="${[
               NidocaBorderProperty.FULL_WIDTH,
@@ -77,43 +76,40 @@ export class NidocaFormInputframe extends LitElement {
                 .flexAlignContent="${NidocaFlexLayoutAlignContent.CENTER}"
                 itemStyle="flex-basis: 100%;"
               >
-                <nidoca-visible
-                  .visibleType="${this.showLabel ? NidocaVisibleType.NORMAL : NidocaVisibleType.INVISIBLE}"
-                >
-                  <nidoca-typography
-                    class="label"
-                    .typographyType="${NidocaTypographyType.CAPTION}"
-                    text="${this.label}"
-                  ></nidoca-typography>
-                </nidoca-visible>
-
+                ${this.showLabel
+                  ? html`
+                      <nidoca-typography
+                        class="label"
+                        .typographyType="${NidocaTypographyType.CAPTION}"
+                        text="${this.label}"
+                      ></nidoca-typography>
+                    `
+                  : html``}
                 <slot id="slotElement"></slot>
               </nidoca-layout-flex>
             </nidoca-layout-spacer>
           </nidoca-border>
 
-          <nidoca-visible visibleType="${this.infoText ? NidocaVisibleType.NORMAL : NidocaVisibleType.HIDE}">
-            <nidoca-typography
-              .typographyType="${NidocaTypographyType.BODY1}"
-              text="${this.infoText}"
-            ></nidoca-typography>
-          </nidoca-visible>
-
-          <nidoca-visible visibleType="${this.warningText ? NidocaVisibleType.NORMAL : NidocaVisibleType.HIDE}">
-            <nidoca-typography
-              style="color:var(--app-color-warning-background)"
-              .typographyType="${NidocaTypographyType.BODY1}"
-              text="${this.warningText}"
-            ></nidoca-typography>
-          </nidoca-visible>
-
-          <nidoca-visible visibleType="${this.errorText ? NidocaVisibleType.NORMAL : NidocaVisibleType.HIDE}">
-            <nidoca-typography
-              style="color:var(--app-color-error-background)"
-              .typographyType="${NidocaTypographyType.BODY1}"
-              text="${this.errorText}"
-            ></nidoca-typography>
-          </nidoca-visible>
+          ${this.infoText
+            ? html`<nidoca-typography
+                .typographyType="${NidocaTypographyType.BODY1}"
+                text="${this.infoText}"
+              ></nidoca-typography>`
+            : html``}
+          ${this.warningText
+            ? html` <nidoca-typography
+                style="color:var(--app-color-warning-background)"
+                .typographyType="${NidocaTypographyType.BODY1}"
+                text="${this.warningText}"
+              ></nidoca-typography>`
+            : html``}
+          ${this.errorText
+            ? html` <nidoca-typography
+                style="color:var(--app-color-error-background)"
+                .typographyType="${NidocaTypographyType.BODY1}"
+                text="${this.errorText}"
+              ></nidoca-typography>`
+            : html``}
         `
       : html`<slot id="slotElement"></slot>`;
   }

@@ -1,7 +1,7 @@
 import {css, html, LitElement} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
-import {NidocaColorScheme, NidocaDevice} from ".";
+import {NidocaTheme, NidocaDevice} from ".";
 import {NidocaShadowType as NidocaShadowType} from "./nidoca-box-shadow";
 
 @customElement("nidoca-dialog-action")
@@ -15,15 +15,15 @@ export class NidocaDialogAction extends LitElement {
   @property({type: Boolean})
   show: boolean = false;
   @property({type: String})
-  colorScheme: NidocaColorScheme = NidocaColorScheme.BACKGROUND;
+  theme: NidocaTheme = NidocaTheme.BACKGROUND;
 
   render(): any {
     return html`
       <style>
         .box {
           display: inline-block;
-          color: var(--app-color-${this.colorScheme});
-          background-color: var(--app-color-${this.colorScheme}-background);
+          color: var(--app-color-${this.theme});
+          background-color: var(--app-color-${this.theme}-background);
         }
         ${NidocaDevice.MOBILE.asMediaStyle("slot{min-width:320px;}")}
         ${NidocaDevice.TABLET.asMediaStyle("slot{min-width:480px;}")}

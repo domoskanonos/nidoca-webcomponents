@@ -1,7 +1,7 @@
 import {css, html, TemplateResult, LitElement} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
-import {NidocaColorScheme} from ".";
+import {NidocaTheme} from ".";
 
 export enum NidocaIconShadowType {
   NONE = "NONE",
@@ -49,7 +49,7 @@ export class NidocaIconExtended extends LitElement {
   icon: string = "";
 
   @property({type: String})
-  colorScheme: NidocaColorScheme = NidocaColorScheme.PRIMARY;
+  theme: NidocaTheme = NidocaTheme.PRIMARY;
 
   @property({type: String})
   shadowType: NidocaIconShadowType = NidocaIconShadowType.DEFAULT_SHADOW;
@@ -68,8 +68,8 @@ export class NidocaIconExtended extends LitElement {
       <style>
         .iconExtended {
           display: inline-block;
-          color: var(--app-color-${this.colorScheme});
-          background-color: var(--app-color-${this.colorScheme}-background);
+          color: var(--app-color-${this.theme});
+          background-color: var(--app-color-${this.theme}-background);
         }
       </style>
 

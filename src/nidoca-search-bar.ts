@@ -2,6 +2,7 @@ import {css, html, TemplateResult, LitElement} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
 import {query} from "lit/decorators.js";
+import {NidocaTheme} from ".";
 import {
   NidocaFlexLayoutAlignContent,
   NidocaFlexLayoutAlignItems,
@@ -36,6 +37,9 @@ export class NidocaSearchBar extends LitElement {
     }
   `;
 
+  @property({type: NidocaTheme, converter: String})
+  theme: NidocaTheme = NidocaTheme.PRIMARY;
+
   @property({type: String})
   value: string = "";
 
@@ -50,16 +54,21 @@ export class NidocaSearchBar extends LitElement {
 
   render(): any {
     return html`
+      <style>
+        .container {
+          color: var(--app-color-${this.theme});
+          background-color: var(--app-color-${this.theme}-background);
+        }
+      </style>
       <nidoca-layout-flex
+        class="container"
         .flexDirection="${NidocaFlexLayoutDirection.ROW}"
         .flexWrap="${NidocaFlexLayoutWrap.NO_WRAP}"
         .flexJustifyContent="${NidocaFlexLayoutJustifyContent.FLEX_START}"
-        .flexAlignItems="${NidocaFlexLayoutAlignItems.FLEX_START}"
+        .flexAlignItems="${NidocaFlexLayoutAlignItems.CENTER}"
         .flexAlignContent="${NidocaFlexLayoutAlignContent.FLEX_START}"
       >
-        <nidoca-layout-spacer .spacerTypes="${[NidocaLayoutSpacerType.RIGHT]}">
-          <nidoca-icon icon="search"></nidoca-icon>
-        </nidoca-layout-spacer>
+        <nidoca-icon icon="search"></nidoca-icon>
         <input
           id="inputElement"
           type="text"
@@ -68,9 +77,7 @@ export class NidocaSearchBar extends LitElement {
           ?disabled="${this.disabled}"
           @input="${() => this.valueChanged()}"
         />
-        <nidoca-layout-spacer .spacerTypes="${[NidocaLayoutSpacerType.RIGHT]}">
-          <nidoca-icon icon="close" @click="${() => this.clearValue()}"></nidoca-icon>
-        </nidoca-layout-spacer>
+        <nidoca-icon icon="close" @click="${() => this.clearValue()}"></nidoca-icon>
       </nidoca-layout-flex>
     `;
   }

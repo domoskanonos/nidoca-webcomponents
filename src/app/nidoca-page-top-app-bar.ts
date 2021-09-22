@@ -1,7 +1,7 @@
 import {css, html, LitElement, TemplateResult} from "lit";
 import {customElement} from "lit/decorators.js";
 import {
-  NidocaColorScheme,
+  NidocaTheme,
 } from "..";
 
 
@@ -11,9 +11,9 @@ export class NidocaTopAppBar extends LitElement {
 
   render(): any {
     return html`
-      ${[NidocaColorScheme.PRIMARY, NidocaColorScheme.SECONDARY, NidocaColorScheme.SURFACE].map(
-        (colorScheme) => html`
-          <nidoca-top-app-bar .prominent="${true}" .colorScheme="${colorScheme}">
+      ${[NidocaTheme.PRIMARY, NidocaTheme.SECONDARY, NidocaTheme.SURFACE].map(
+        (theme) => html`
+          <nidoca-top-app-bar .prominent="${true}" .theme="${theme}">
             <nidoca-icon
               slot="right"
               icon="search"

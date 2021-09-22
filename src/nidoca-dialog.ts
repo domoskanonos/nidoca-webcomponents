@@ -1,7 +1,6 @@
 import {css, html, LitElement, TemplateResult} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
-import {NidocaVisibleType} from "./nidoca-visible";
 import {NidocaTransitionType} from "./nidoca-transition";
 
 @customElement("nidoca-dialog")
@@ -45,25 +44,21 @@ export class NidocaDialog extends LitElement {
   @property({type: Boolean})
   show: boolean = false;
 
-  @property({type: Object})
-  content: any = html``;
-
   render(): any {
-    return html`
-      <nidoca-visible visibleType="${this.show ? NidocaVisibleType.NORMAL : NidocaVisibleType.HIDE}">
-        <div class="fullScreen opacScreen"></div>
-        <div class="fullScreen wrapperOutside">
-          <div class="wrapperInside">
-            <!-- Dialog -->
-            <nidoca-transition .transitionType="${NidocaTransitionType.SLIDE_CENTER}">
-              <div class="dialogContainer">
-                ${this.content}
-                <slot></slot>
-              </div>
-            </nidoca-transition>
+    return this.show
+      ? html`
+          <div class="fullScreen opacScreen"></div>
+          <div class="fullScreen wrapperOutside">
+            <div class="wrapperInside">
+              <!-- Dialog -->
+              <nidoca-transition .transitionType="${NidocaTransitionType.SLIDE_CENTER}">
+                <div class="dialogContainer">
+                  <slot></slot>
+                </div>
+              </nidoca-transition>
+            </div>
           </div>
-        </div>
-      </nidoca-visible>
-    `;
+        `
+      : html``;
   }
 }

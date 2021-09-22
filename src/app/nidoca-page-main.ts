@@ -1,7 +1,14 @@
 import {css, html, LitElement, TemplateResult} from "lit";
 import {customElement} from "lit/decorators.js";
-import {NidocaContainerSize, NidocaFlexLayoutAlignContent, NidocaTypographyType} from "..";
-import {NidocaButtonType} from "../nidoca-button";
+import {
+  NidocaContainerSize,
+  NidocaDateType,
+  NidocaDialog,
+  NidocaFlexLayoutAlignContent,
+  NidocaTextType,
+  NidocaTypographyType,
+} from "..";
+import {NidocaButton, NidocaButtonType} from "../nidoca-button";
 import {NidocaLayoutSpacerSize, NidocaLayoutSpacerType} from "../nidoca-layout-spacer";
 import {DUMMY_DESCRIPTION, DUMMY_DESCRIPTION_SHORT, DUMMY_IMAGE, DUMMY_TITLE} from "./constants";
 
@@ -176,39 +183,208 @@ export class NidocaPageMain extends LitElement {
               </lit-viewer>
             </nidoca-accordion-item>
 
+            <nidoca-accordion-item header="nidoca-card">
+              <lit-viewer .customEventNames="${[]}">
+                <nidoca-card>
+                  <nidoca-img src="http://lorempixel.com/320/200/"></nidoca-img>
+                  <nidoca-layout-spacer
+                    .spacerSize="${NidocaLayoutSpacerSize.MEDIUM}"
+                    .spacerTypes="${[
+                      NidocaLayoutSpacerType.TOP,
+                      NidocaLayoutSpacerType.LEFT,
+                      NidocaLayoutSpacerType.RIGHT,
+                    ]}"
+                  >
+                    <nidoca-typography .typographyType="${NidocaTypographyType.H4}">Meine Karte</nidoca-typography>
+                  </nidoca-layout-spacer>
 
+                  <nidoca-layout-spacer
+                    .spacerSize="${NidocaLayoutSpacerSize.MEDIUM}"
+                    .spacerTypes="${[
+                      NidocaLayoutSpacerType.TOP,
+                      NidocaLayoutSpacerType.LEFT,
+                      NidocaLayoutSpacerType.RIGHT,
+                    ]}"
+                  >
+                    <nidoca-typography .typographyType="${NidocaTypographyType.CAPTION}"
+                      >Lorem ipsum dolor sit amet.</nidoca-typography
+                    >
+                  </nidoca-layout-spacer>
 
-
-
-
-
+                  <nidoca-layout-spacer
+                    .spacerSize="${NidocaLayoutSpacerSize.MEDIUM}"
+                    .spacerTypes="${[
+                      NidocaLayoutSpacerType.TOP,
+                      NidocaLayoutSpacerType.LEFT,
+                      NidocaLayoutSpacerType.RIGHT,
+                    ]}"
+                  >
+                    <nidoca-typography
+                      .typographyType="${NidocaTypographyType.BODY1}"
+                      style="width:220px; display:block;"
+                      >Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
+                      ut labore et dolore magna aliquyam erat.</nidoca-typography
+                    >
+                  </nidoca-layout-spacer>
+                </nidoca-card>
+              </lit-viewer>
+            </nidoca-accordion-item>
 
             <nidoca-accordion-item header="nidoca-search-bar">
-            <lit-viewer .customEventNames="${["nidoca-search-bar-event-value-changed"]}">
-              <nidoca-search-bar></nidoca-search-bar>
-            </lit-viewer>
-          </nidoca-accordion-item>
+              <lit-viewer .customEventNames="${["nidoca-search-bar-event-value-changed"]}">
+                <nidoca-search-bar></nidoca-search-bar>
+              </lit-viewer>
+            </nidoca-accordion-item>
 
+            <nidoca-accordion-item header="nidoca-chip">
+              <lit-viewer .customEventNames="${["nidoca-search-bar-event-value-changed"]}">
+                <nidoca-chip>Mein Chip</nidoca-chip>
+              </lit-viewer>
+            </nidoca-accordion-item>
 
+            <nidoca-accordion-item header="nidoca-form">
+              <lit-viewer .customEventNames="${[]}">
+                <nidoca-form
+                  id="form"
+                  @nidoca-form-text-event-change="${() => {
+                    console.log("nidoca-form-text-event-change");
+                  }}"
+                  @nidoca-form-switch-event-change="${() => {
+                    console.log("nidoca-form-switch-event-change");
+                  }}"
+                >
+                  <nidoca-form-textarea name="textarea" label="Mein Text"></nidoca-form-textarea>
+                  <nidoca-form-text type="${NidocaTextType.TEXT}" name="text" label="Mein Textfeld"></nidoca-form-text>
+                  <nidoca-form-text type="${NidocaTextType.EMAIL}" name="email" label="Meine Email"></nidoca-form-text>
+                  <nidoca-form-text
+                    type="${NidocaTextType.NUMBER}"
+                    name="number"
+                    label="Meine Nummer"
+                  ></nidoca-form-text>
+                  <nidoca-form-text
+                    type="${NidocaTextType.PASSWORD}"
+                    name="password"
+                    label="Mein Passwort"
+                  ></nidoca-form-text>
+                  <nidoca-form-text type="${NidocaTextType.TEL}" name="tel" label="Mein Telefon"></nidoca-form-text>
+                  <nidoca-form-text type="${NidocaTextType.URL}" name="url" label="Meine URL"></nidoca-form-text>
+                  <nidoca-form-date type="${NidocaDateType.DATE}" name="date" label="Mein Textfeld"></nidoca-form-date>
+                  <nidoca-form-date
+                    type="${NidocaDateType.DATETIME_LOCAL}"
+                    name="dateLocal"
+                    label="Mein Textfeld"
+                  ></nidoca-form-date>
+                  <nidoca-form-date
+                    type="${NidocaDateType.MONTH}"
+                    name="month"
+                    label="Mein Textfeld"
+                  ></nidoca-form-date>
+                  <nidoca-form-date type="${NidocaDateType.TIME}" name="time" label="Mein Textfeld"></nidoca-form-date>
+                  <nidoca-form-date type="${NidocaDateType.WEEK}" name="week" label="Mein Textfeld"></nidoca-form-date>
+                  <nidoca-form-switch
+                    name="switch"
+                    label="Mein Auswahlfeld"
+                    assistiveText="Mein Auswahlfeld Informationstext"
+                    errorText="Mein Error Text"
+                    warningText="Mein Warning Text"
+                    .checked="${true}"
+                  ></nidoca-form-switch>
+                  <nidoca-form-combobox name="combobox" label="Meine Combobox"></nidoca-form-combobox>
+                </nidoca-form>
+              </lit-viewer>
+            </nidoca-accordion-item>
 
+            <nidoca-accordion-item header="nidoca-list">
+              <lit-viewer .customEventNames="${[]}">
+                <nidoca-list>
+                  <nidoca-list-item>
+                    <nidoca-layout-spacer
+                      .spacerSize="${NidocaLayoutSpacerSize.MEDIUM}"
+                      .spacerTypes="${[NidocaLayoutSpacerType.LEFT]}"
+                    >
+                      Home
+                    </nidoca-layout-spacer>
+                  </nidoca-list-item>
+                  <nidoca-list-item>
+                    <nidoca-layout-spacer
+                      .spacerSize="${NidocaLayoutSpacerSize.MEDIUM}"
+                      .spacerTypes="${[NidocaLayoutSpacerType.LEFT]}"
+                    >
+                      Gallery
+                    </nidoca-layout-spacer>
+                  </nidoca-list-item>
+                  <nidoca-list-item>
+                    <nidoca-layout-spacer
+                      .spacerSize="${NidocaLayoutSpacerSize.MEDIUM}"
+                      .spacerTypes="${[NidocaLayoutSpacerType.LEFT]}"
+                    >
+                      Home</nidoca-layout-spacer
+                    >
+                  </nidoca-list-item>
 
+                  <nidoca-list-item>
+                    <nidoca-typography .typographyType="${NidocaTypographyType.H6}">Formular</nidoca-typography>
+                    <nidoca-icon slot="graphic" icon="face">face</nidoca-icon>
+                    <nidoca-icon slot="meta" icon="arrow_right">arrow_right</nidoca-icon>
+                  </nidoca-list-item>
+                </nidoca-list>
+              </lit-viewer>
+            </nidoca-accordion-item>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            <nidoca-accordion-item header="nidoca-table">
+              <lit-viewer .customEventNames="${[]}">
+                <nidoca-table .headers="${["name", "dsdsd"]}" .rows="${[
+      ["Hallo", "Hallo"],
+      ["Hallo", "Hallo"],
+    ]}"> </nidoca-table>
+              </lit-viewer>
+            </nidoca-accordion-item>
           </nidoca-accordion>
-        </nidoca-layout-spacer>
+
+
+          <nidoca-accordion-item header="nidoca-captcha">
+          <lit-viewer .customEventNames="${[]}">
+            <nidoca-captcha> </nidoca-captcha>
+          </lit-viewer>
+        </nidoca-accordion-item>
+      </nidoca-accordion>
+
+
+      <nidoca-accordion-item header="nidoca-avatar">
+      <lit-viewer .customEventNames="${[]}">
+        <nidoca-avatar imgSrc="http://lorempixel.com/320/200/" title="Max Mustermann" description="Softwareentwickler"> </nidoca-avatar>
+      </lit-viewer>
+    </nidoca-accordion-item>
+
+
+    <nidoca-accordion-item header="nidoca-code">
+    <lit-viewer .customEventNames="${[]}">
+      <nidoca-code> Some Code </nidoca-code>
+    </lit-viewer>
+  </nidoca-accordion-item>
+
+
+  
+  <nidoca-accordion-item header="nidoca-dialog">
+  <lit-viewer .customEventNames="${[]}">
+    <nidoca-dialog @nidoca-event-button-clicked="${(event: CustomEvent) => {
+      (<any>event.target).parentNode.show = false;
+    }}" .show="${false}"> 
+    
+    Some Code
+    <nidoca-button>Close</nidoca-button>
+     
+    
+    
+    </nidoca-dialog>
+  </lit-viewer>
+</nidoca-accordion-item>
+
+
+    </nidoca-accordion>
+
+
+          </nidoca-layout-spacer>
       </nidoca-layout-container>
     `;
   }
