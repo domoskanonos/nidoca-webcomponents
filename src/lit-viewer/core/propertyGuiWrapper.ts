@@ -51,7 +51,7 @@ export class PropertyGuiWrapper {
           }}"
         />`;
       }
-      case RenderType.ENUMERATION: {
+      case RenderType.COMBOBOX: {
         return html`<nidoca-form-combobox
           .options="${NidocaFormCombobox.enumToOptions(propertyWrapper.getType(), false)}"
           value="${classWrapper.instance[propertyWrapper.propertyName as keyof LitElement]}"
@@ -78,7 +78,6 @@ export class PropertyGuiWrapper {
           >
           </nidoca-form-combobox>
         `;
-      case RenderType.CLAZZ:
       default:
         return html``;
     }
@@ -91,10 +90,9 @@ export class PropertyGuiWrapper {
         return `.${this.propertyWrapper.propertyName}="${
           classGuiWrapper.classWrapper.instance[this.propertyWrapper.propertyName as keyof LitElement]
         }"\n`;
-      case RenderType.CLAZZ:
       case RenderType.ARRAY:
         return "";
-      case RenderType.ENUMERATION:
+      case RenderType.COMBOBOX:
         return `${this.propertyWrapper.propertyName}="${this.propertyWrapper.getEnumKey(
           classGuiWrapper.classWrapper.instance[this.propertyWrapper.propertyName as keyof LitElement]
         )}"\n`;
@@ -106,11 +104,9 @@ export class PropertyGuiWrapper {
   }
 
   getAsLit(classGuiWrapper: ClassGuiWrapper<LitElement>): string {
-    const propertyType: RenderType = this.propertyWrapper.getConverterTypeName();
+    const propertyType: RenderType = this.propertyWrapper.getRenderType();
     switch (propertyType) {
-      case RenderType.CLAZZ:
-        return `.${this.propertyWrapper.propertyName}="\${new ${this.propertyWrapper.getClassName()}()}"\n`;
-      case RenderType.ENUMERATION:
+      case RenderType.COMBOBOX:
         return `.${
           this.propertyWrapper.propertyName
         }="\${${this.propertyWrapper.getClassName()}.${this.propertyWrapper.getEnumKey(
@@ -132,8 +128,7 @@ export class PropertyGuiWrapper {
   getAsJavascript(classGuiWrapper: ClassGuiWrapper<LitElement>): string {
     const propertyType: RenderType = this.propertyWrapper.getConverterTypeName();
     switch (propertyType) {
-      case RenderType.ENUMERATION:
-      case RenderType.CLAZZ:
+      case RenderType.COMBOBOX:
       case RenderType.ARRAY:
         return ``;
       case RenderType.STRING:
@@ -150,8 +145,7 @@ export class PropertyGuiWrapper {
   getAsTypescript(classGuiWrapper: ClassGuiWrapper<LitElement>): string {
     const propertyType: RenderType = this.propertyWrapper.getConverterTypeName();
     switch (propertyType) {
-      case RenderType.ENUMERATION:
-      case RenderType.CLAZZ:
+      case RenderType.COMBOBOX:
       case RenderType.ARRAY:
         return ``;
       case RenderType.STRING:

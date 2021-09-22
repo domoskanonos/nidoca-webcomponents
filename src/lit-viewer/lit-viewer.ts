@@ -94,7 +94,7 @@ export class LitViewer extends LitElement {
                   <nidoca-typography .typographyType="${NidocaTypographyType.H2}">Quelltext</nidoca-typography>
                 </nidoca-layout-spacer>
 
-                <nidoca-tabs>
+                <nidoca-tabs tabIndex="2">
                   <nidoca-tab slot="tab">Javascript</nidoca-tab>
                   <nidoca-tab slot="tab">Typescript</nidoca-tab>
                   <nidoca-tab slot="tab">Lit</nidoca-tab>

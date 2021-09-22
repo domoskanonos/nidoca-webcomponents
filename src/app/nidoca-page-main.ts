@@ -175,6 +175,38 @@ export class NidocaPageMain extends LitElement {
                 </nidoca-accordion>
               </lit-viewer>
             </nidoca-accordion-item>
+
+
+
+
+
+
+
+
+            <nidoca-accordion-item header="nidoca-search-bar">
+            <lit-viewer .customEventNames="${["nidoca-search-bar-event-value-changed"]}">
+              <nidoca-search-bar></nidoca-search-bar>
+            </lit-viewer>
+          </nidoca-accordion-item>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
           </nidoca-accordion>
         </nidoca-layout-spacer>
       </nidoca-layout-container>

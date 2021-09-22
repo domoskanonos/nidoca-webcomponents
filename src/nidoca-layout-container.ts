@@ -3,13 +3,13 @@ import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
 import {NidocaDevice} from ".";
 
-export enum NidocaContainerSize {
-  _100 = "_100",
-  _75 = "_75",
-  _50 = "_50",
-  _25 = "_25",
-  MIN_CONTENT = "MIN_CONTENT",
-  AUTO = "AUTO",
+export class NidocaContainerSize {
+  static readonly _100: string = "_100";
+  static readonly _75: string = "_75";
+  static readonly _50: string = "_50";
+  static readonly _25: string = "_25";
+  static readonly MIN_CONTENT: string = "MIN_CONTENT";
+  static readonly AUTO: string = "AUTO";
 }
 
 @customElement("nidoca-layout-container")
@@ -52,7 +52,7 @@ export class NidocaContainer extends LitElement {
   `;
 
   @property({type: NidocaContainerSize, converter: String})
-  containerSize: NidocaContainerSize = NidocaContainerSize.MIN_CONTENT;
+  containerSize: string = NidocaContainerSize.MIN_CONTENT;
 
   @property({type: NidocaDevice, converter: Array})
   devices: NidocaDevice[] = [NidocaDevice.DESKTOP, NidocaDevice.TABLET, NidocaDevice.MOBILE];
