@@ -69,7 +69,6 @@ export class NidocaTabs extends LitElement {
   private updateNidocaTabElements() {
     if (this.tabSlot != null) {
       const assignedElements: Element[] = this.tabSlot.assignedElements();
-      console.log(assignedElements.length);
       const length: number = assignedElements.length;
       const widthPerTab = 100 / length;
       const selectedElement: Element = assignedElements[this.tabIndex];

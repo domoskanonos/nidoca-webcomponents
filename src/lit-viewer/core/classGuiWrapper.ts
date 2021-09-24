@@ -59,8 +59,7 @@ const element : ${this.classWrapper.getClassName()} = document.getElementById("m
     .map((propertyGuiWrapper) => {
       return propertyGuiWrapper.getAsLit(this);
     })
-    .join("  ")}>
-</${this.classWrapper.getTagName()}>
+    .join("  ")}>${this.removeOwnTag(this.showcaseElement.innerHTML)}
 `;
     return htmlString;
   }
@@ -76,6 +75,13 @@ ${this.classWrapper
   .join("")}></${this.classWrapper.getTagName()}>
 `;
     return htmlString;
+  }
+
+  private removeOwnTag(innerHTML: string) {
+    if (innerHTML.indexOf(">") > -1) {
+      innerHTML = innerHTML.substr(innerHTML.indexOf(">") + 1, innerHTML.length);
+    }
+    return innerHTML;
   }
 
   public renderPropertyGui(): TemplateResult[] {

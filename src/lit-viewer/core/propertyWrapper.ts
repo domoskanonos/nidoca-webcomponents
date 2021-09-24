@@ -10,7 +10,6 @@ export enum RenderType {
 export class PropertyWrapper {
   getClassName(): string {
     const name = this.propertyName;
-    //return this.propertyName.slice(0, 1).toUpperCase() + name.slice(1, this.propertyName.length);
     return this.getTypeName() ? this.getTypeName() : this.getConverterTypeName();
   }
 
@@ -23,21 +22,20 @@ export class PropertyWrapper {
   }
 
   public getRenderType(): RenderType {
-    if (this.isArray()) {
+    if (this.isConverterTypeArray()) {
       return RenderType.ARRAY;
     }
 
-    if (!this.isPrimitive()) {
+    if (!this.isPrimitive() && !this.isArray()) {
       return RenderType.COMBOBOX;
     }
 
-    let renderType: RenderType | null = null;
-    if (renderType == null) {
-      return <RenderType>this.getTypeName();
+    if (this.isArray()) {
+      return RenderType.UNDEFINED;
     }
 
-    return RenderType.UNDEFINED;
-
+    const renderType = <RenderType>this.getTypeName();
+    return renderType;
   }
 
   getEnumValues(): any[] {
@@ -65,12 +63,16 @@ export class PropertyWrapper {
     }
   }
 
-  isArray(): boolean {
+  isConverterTypeArray(): boolean {
     return this.getConverterTypeName() == "Array";
   }
 
+  isArray(): boolean {
+    return this.getTypeName() == "Array";
+  }
+
   isPrimitive(): boolean {
-    return this.getTypeName() == "String" | this.getTypeName() == "Boolean"|| this.getTypeName() == "Number";
+    return this.getTypeName() == "String" || this.getTypeName() == "Boolean" || this.getTypeName() == "Number";
   }
 
   public getType(): any | undefined {

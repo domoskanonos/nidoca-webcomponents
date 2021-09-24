@@ -25,31 +25,25 @@ export class LitViewer extends LitElement {
   public render(): TemplateResult {
     return html`
       <div class="container">
-
-      <nidoca-layout-spacer .spacerTypes="${[NidocaLayoutSpacerType.LEFT, NidocaLayoutSpacerType.RIGHT]}">
-
-
-      <nidoca-layout-spacer
-      .spacerTypes="${[NidocaLayoutSpacerType.TOP, NidocaLayoutSpacerType.BOTTOM]}"
-    > <nidoca-typography .typographyType="${NidocaTypographyType.H2}">Tag</nidoca-typography>
-    </nidoca-layout-spacer>
-        <nidoca-code
-          >${"<"
-            .concat(this.clazzGuiWrapper ? this.clazzGuiWrapper.classWrapper.getTagName() : "")
-            .concat("/>")}</nidoca-code
-        >
-
-
-        <nidoca-layout-spacer
-      .spacerTypes="${[NidocaLayoutSpacerType.TOP, NidocaLayoutSpacerType.BOTTOM]}"
-    > <nidoca-typography .typographyType="${NidocaTypographyType.H2}">Vorschau</nidoca-typography>
-    </nidoca-layout-spacer>
-
-        <nidoca-layout-container .containerSize="${NidocaContainerSize._75}">
-          <nidoca-layout-spacer>
-            <slot @slotchange="${(event: Event) => this.slotChanged(event)}"></slot>
+        <nidoca-layout-spacer .spacerTypes="${[NidocaLayoutSpacerType.LEFT, NidocaLayoutSpacerType.RIGHT]}">
+          <nidoca-layout-spacer .spacerTypes="${[NidocaLayoutSpacerType.TOP, NidocaLayoutSpacerType.BOTTOM]}">
+            <nidoca-typography .typographyType="${NidocaTypographyType.H2}">Tag</nidoca-typography>
           </nidoca-layout-spacer>
-        </nidoca-layout-container>
+          <nidoca-code
+            >${"<"
+              .concat(this.clazzGuiWrapper ? this.clazzGuiWrapper.classWrapper.getTagName() : "")
+              .concat("/>")}</nidoca-code
+          >
+
+          <nidoca-layout-spacer .spacerTypes="${[NidocaLayoutSpacerType.TOP, NidocaLayoutSpacerType.BOTTOM]}">
+            <nidoca-typography .typographyType="${NidocaTypographyType.H2}">Vorschau</nidoca-typography>
+          </nidoca-layout-spacer>
+
+          <nidoca-layout-container .containerSize="${NidocaContainerSize._75}">
+            <nidoca-layout-spacer>
+              <slot @slotchange="${(event: Event) => this.slotChanged(event)}"></slot>
+            </nidoca-layout-spacer>
+          </nidoca-layout-container>
 
           ${this.clazzGuiWrapper
             ? html`
@@ -101,25 +95,25 @@ export class LitViewer extends LitElement {
                   <nidoca-tab slot="tab">Angular</nidoca-tab>
 
                   <nidoca-tab-content slot="tabContent">
-                    <nidoca-layout-spacer .spacerTypes="${[NidocaLayoutSpacerType.TOP]}">
+                    <nidoca-layout-spacer .spacerTypes="${[NidocaLayoutSpacerType.TOP, NidocaLayoutSpacerType.BOTTOM]}">
                       <nidoca-code style="width:100%;">${this.clazzGuiWrapper.getAsJavascript()}</nidoca-code>
                     </nidoca-layout-spacer>
                   </nidoca-tab-content>
 
                   <nidoca-tab-content slot="tabContent">
-                    <nidoca-layout-spacer .spacerTypes="${[NidocaLayoutSpacerType.TOP]}">
+                    <nidoca-layout-spacer .spacerTypes="${[NidocaLayoutSpacerType.TOP, NidocaLayoutSpacerType.BOTTOM]}">
                       <nidoca-code>${this.clazzGuiWrapper.getTypescript()}</nidoca-code>
                     </nidoca-layout-spacer>
                   </nidoca-tab-content>
 
                   <nidoca-tab-content slot="tabContent">
-                    <nidoca-layout-spacer .spacerTypes="${[NidocaLayoutSpacerType.TOP]}">
+                    <nidoca-layout-spacer .spacerTypes="${[NidocaLayoutSpacerType.TOP, NidocaLayoutSpacerType.BOTTOM]}">
                       <nidoca-code>${this.clazzGuiWrapper.getAsLit()}</nidoca-code>
                     </nidoca-layout-spacer>
                   </nidoca-tab-content>
 
                   <nidoca-tab-content slot="tabContent">
-                    <nidoca-layout-spacer .spacerTypes="${[NidocaLayoutSpacerType.TOP]}">
+                    <nidoca-layout-spacer .spacerTypes="${[NidocaLayoutSpacerType.TOP, NidocaLayoutSpacerType.BOTTOM]}">
                       <nidoca-code>${this.clazzGuiWrapper.getAsHtml()}</nidoca-code>
                     </nidoca-layout-spacer>
                   </nidoca-tab-content>

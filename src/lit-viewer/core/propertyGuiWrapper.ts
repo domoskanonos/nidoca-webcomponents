@@ -16,51 +16,50 @@ export class PropertyGuiWrapper {
     if (classGuiWrapper == null) {
       return html``;
     }
-    return this.renderPropertyInput(classGuiWrapper.classWrapper, this.propertyWrapper);
-  }
 
-  private renderPropertyInput(classWrapper: ClassWrapper<any> | null, propertyWrapper: PropertyWrapper) {
+    const classWrapper: ClassWrapper<any> | null = classGuiWrapper.classWrapper;
+
     if (classWrapper == null) {
       return html``;
     }
-    const propertyType: RenderType = propertyWrapper.getRenderType();
+    const propertyType: RenderType = this.propertyWrapper.getRenderType();
     switch (propertyType) {
       case RenderType.STRING:
         return html`<nidoca-form-text .textType="${NidocaTextType.TEXT}"
-          value="${classWrapper.instance[propertyWrapper.propertyName as keyof LitElement]}"
+          value="${classWrapper.instance[this.propertyWrapper.propertyName as keyof LitElement]}"
           @input="${(eventArg: any) => {
-            classWrapper.instance[propertyWrapper.propertyName] = eventArg.target.getOutputData().value;
-            classWrapper.instance.requestUpdate();
+            classWrapper.instance[this.propertyWrapper.propertyName] = eventArg.target.getOutputData().value;
+            classGuiWrapper.showcaseElement.requestUpdate();
           }}"
         /></nidoca-form-text>`;
       case RenderType.NUMBER:
         return html`<nidoca-form-text
           .textType="${NidocaTextType.NUMBER}"
-          value="${classWrapper.instance[propertyWrapper.propertyName as keyof LitElement]}"
+          value="${classWrapper.instance[this.propertyWrapper.propertyName as keyof LitElement]}"
           @input="${(eventArg: any) => {
-            classWrapper.instance[propertyWrapper.propertyName] = eventArg.target.getOutputData().value;
-            classWrapper.instance.requestUpdate();
+            classWrapper.instance[this.propertyWrapper.propertyName] = eventArg.target.getOutputData().value;
+            classGuiWrapper.showcaseElement.requestUpdate();
           }}"
         ></nidoca-form-text>`;
       case RenderType.BOOLEAN: {
         return html`<nidoca-form-switch
           type="checkbox"
-          .checked="${classWrapper.instance[propertyWrapper.propertyName as keyof LitElement]}"
+          .checked="${classWrapper.instance[this.propertyWrapper.propertyName as keyof LitElement]}"
           @input="${(eventArg: any) => {
-            classWrapper.instance[propertyWrapper.propertyName] = eventArg.target.getOutputData().value;
-            classWrapper.instance.requestUpdate();
+            classWrapper.instance[this.propertyWrapper.propertyName] = eventArg.target.getOutputData().value;
+            classGuiWrapper.showcaseElement.requestUpdate();
           }}"
         ></nidoca-form-switch`;
       }
       case RenderType.COMBOBOX: {
         return html`<nidoca-form-combobox
-          .options="${NidocaFormCombobox.enumToOptions(propertyWrapper.getType(), false)}"
-          value="${classWrapper.instance[propertyWrapper.propertyName as keyof LitElement]}"
+          .options="${NidocaFormCombobox.enumToOptions(this.propertyWrapper.getType(), false)}"
+          value="${classWrapper.instance[this.propertyWrapper.propertyName as keyof LitElement]}"
           @input="${(eventArg: any) => {
-            classWrapper.instance[propertyWrapper.propertyName] = propertyWrapper.getEnumValue(
+            classWrapper.instance[this.propertyWrapper.propertyName] = this.propertyWrapper.getEnumValue(
               eventArg.target.getOutputData().value
             );
-            classWrapper.instance.requestUpdate();
+            classGuiWrapper.showcaseElement.requestUpdate();
           }}"
         >
         </nidoca-form-combobox>`;
@@ -68,12 +67,15 @@ export class PropertyGuiWrapper {
       case RenderType.ARRAY:
         return html`
           <nidoca-form-combobox
-            .options="${NidocaFormCombobox.toComboboxOptions(propertyWrapper.getType(), propertyWrapper.getTypeName())}"
+            .options="${NidocaFormCombobox.toComboboxOptions(
+              this.propertyWrapper.getType(),
+              this.propertyWrapper.getTypeName()
+            )}"
             .multiple="${true}"
             size="5"
-            .value="${classWrapper.instance[propertyWrapper.propertyName as keyof LitElement]}"
+            .value="${classWrapper.instance[this.propertyWrapper.propertyName as keyof LitElement]}"
             @input="${(eventArg: any) => {
-              classWrapper.instance[propertyWrapper.propertyName] = eventArg.target.getOutputData().value;
+              classWrapper.instance[this.propertyWrapper.propertyName] = eventArg.target.getOutputData().value;
               classWrapper.instance.requestUpdate();
             }}"
           >
@@ -120,9 +122,7 @@ export class PropertyGuiWrapper {
       case RenderType.ARRAY:
         return `.${this.propertyWrapper.propertyName}="\${[]}"\n`;
       default:
-        return `.${this.propertyWrapper.propertyName}="\${${
-          classGuiWrapper.classWrapper.instance[this.propertyWrapper.propertyName as keyof LitElement]
-        }}"\n`;
+        return `.${this.propertyWrapper.propertyName}="\${}"\n`;
     }
   }
 
