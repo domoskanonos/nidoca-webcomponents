@@ -8,9 +8,9 @@ import {
   NidocaTextType,
   NidocaTypographyType,
 } from "..";
-import {NidocaButton, NidocaButtonType} from "../nidoca-button";
+import {NidocaButtonType} from "../nidoca-button";
 import {NidocaLayoutSpacerSize, NidocaLayoutSpacerType} from "../nidoca-layout-spacer";
-import {DUMMY_DESCRIPTION, DUMMY_DESCRIPTION_SHORT, DUMMY_IMAGE, DUMMY_TITLE} from "./constants";
+import {DUMMY_IMAGE} from "./constants";
 
 @customElement("nidoca-page-main")
 export class NidocaPageMain extends LitElement {
