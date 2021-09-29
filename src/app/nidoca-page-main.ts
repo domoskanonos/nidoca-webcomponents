@@ -94,43 +94,7 @@ export class NidocaPageMain extends LitElement {
           </nidoca-accordion>
         </nidoca-layout-spacer>
 
-        <nidoca-typography typographyType="${NidocaTypographyType.H3}">Kleine Komponenten</nidoca-typography>
-
-        <nidoca-layout-spacer
-          .spacerSize="${NidocaLayoutSpacerSize.MEDIUM}"
-          .spacerTypes="${[NidocaLayoutSpacerType.TOP, NidocaLayoutSpacerType.BOTTOM]}"
-        >
-          <nidoca-accordion>
-            <nidoca-accordion-item header="nidoca-button">
-              <lit-viewer .customEventNames="${["nidoca-button-event-clicked"]}">
-                <nidoca-button
-                  text="Mein Button"
-                  leadingIcon="home"
-                  .buttonType="${NidocaButtonType.CONTAINED}"
-                ></nidoca-button>
-              </lit-viewer>
-            </nidoca-accordion-item>
-
-            <nidoca-accordion-item header="nidoca-typography">
-              <lit-viewer>
-                <nidoca-typography
-                  >Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-                  labore et dolore magna aliquyam erat, sed diam voluptua.</nidoca-typography
-                >
-              </lit-viewer>
-            </nidoca-accordion-item>
-
-            <nidoca-accordion-item header="nidoca-border">
-              <lit-viewer>
-                <nidoca-border style="background-color:green;">
-                  <nidoca-img src="http://lorempixel.com/320/200/"></nidoca-img>
-                </nidoca-border>
-              </lit-viewer>
-            </nidoca-accordion-item>
-          </nidoca-accordion>
-        </nidoca-layout-spacer>
-
-        <nidoca-typography typographyType="${NidocaTypographyType.H3}">Inhaltskomponenten</nidoca-typography>
+        <nidoca-typography typographyType="${NidocaTypographyType.H3}">Hilfskomponenten</nidoca-typography>
 
         <nidoca-layout-spacer
           .spacerSize="${NidocaLayoutSpacerSize.MEDIUM}"
@@ -149,6 +113,109 @@ export class NidocaPageMain extends LitElement {
               </lit-viewer>
             </nidoca-accordion-item>
 
+            <nidoca-accordion-item header="nidoca-box-shadow">
+              <lit-viewer .customEventNames="${[]}">
+                <nidoca-box-shadow><nidoca-layout-spacer></nidoca-layout-spacer></nidoca-box-shadow>
+              </lit-viewer>
+            </nidoca-accordion-item>
+
+            <nidoca-accordion-item header="nidoca-border">
+              <lit-viewer>
+                <nidoca-border style="background-color:green;">
+                  <nidoca-img src="http://lorempixel.com/320/200/"></nidoca-img>
+                </nidoca-border>
+              </lit-viewer>
+            </nidoca-accordion-item>
+          </nidoca-accordion>
+        </nidoca-layout-spacer>
+
+        <nidoca-typography typographyType="${NidocaTypographyType.H3}">Autonome Komponenten</nidoca-typography>
+
+        <nidoca-typography typographyType="${NidocaTypographyType.CAPTION}"
+          >Hier findet ihr eine Übersicht über alle verfügbaren Komponenten, welche autonom verwendet werden können. Es
+          handelt sich um sehr kleinteilige Komponenten. Sie dienen oft als Grundlage für komplexere
+          Komponenten</nidoca-typography
+        >
+
+        <nidoca-layout-spacer
+          .spacerSize="${NidocaLayoutSpacerSize.MEDIUM}"
+          .spacerTypes="${[NidocaLayoutSpacerType.TOP, NidocaLayoutSpacerType.BOTTOM]}"
+        >
+          <nidoca-accordion>
+            <nidoca-accordion-item header="nidoca-typography">
+              <lit-viewer>
+                <nidoca-typography
+                  >Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+                  labore et dolore magna aliquyam erat, sed diam voluptua.</nidoca-typography
+                >
+              </lit-viewer>
+            </nidoca-accordion-item>
+            <nidoca-accordion-item header="nidoca-icon">
+              <lit-viewer .customEventNames="${["nidoca-event-icon-clicked"]}">
+                <nidoca-icon icon="home"><nidoca-layout-spacer></nidoca-layout-spacer></nidoca-icon>
+              </lit-viewer>
+            </nidoca-accordion-item>
+
+            <nidoca-accordion-item header="nidoca-progress">
+              <lit-viewer .customEventNames="${[]}">
+                <nidoca-progress></nidoca-progress>
+              </lit-viewer>
+            </nidoca-accordion-item>
+
+            <nidoca-accordion-item header="nidoca-link">
+              <lit-viewer .customEventNames="${[]}">
+                <nidoca-link text="Mein Link"></nidoca-link>
+              </lit-viewer>
+            </nidoca-accordion-item>
+
+            <nidoca-accordion-item header="nidoca-movie">
+              <lit-viewer .customEventNames="${[]}">
+                <nidoca-movie
+                  src="https://www.youtube.com/embed/lJIrF4YjHfQ?autoplay=1&cc_load_policy=1&controls=2&hl=en&rel=0&enablejsapi=1&origin=https%3A%2F%2Fsupport.google.com&widgetid=3"
+                ></nidoca-movie>
+              </lit-viewer>
+            </nidoca-accordion-item>
+
+            <nidoca-accordion-item header="nidoca-img">
+              <lit-viewer .customEventNames="${[]}">
+                <nidoca-img src="http://lorempixel.com/640/480/"></nidoca-img>
+              </lit-viewer>
+            </nidoca-accordion-item>
+          </nidoca-accordion>
+        </nidoca-layout-spacer>
+
+        <nidoca-typography typographyType="${NidocaTypographyType.H3}">Zusammengesetzte Komponenten</nidoca-typography>
+
+        <nidoca-typography typographyType="${NidocaTypographyType.CAPTION}"
+          >Hier findet ihr eine Übersicht über aller verfügbaren Komponenten, welche bereits aus kleineren Komponenten
+          zusammengesetzt werden. Sie hängen somit von anderen Komponenten ab und sind bereits
+          komplexer</nidoca-typography
+        >
+
+        <nidoca-layout-spacer
+          .spacerSize="${NidocaLayoutSpacerSize.MEDIUM}"
+          .spacerTypes="${[NidocaLayoutSpacerType.TOP, NidocaLayoutSpacerType.BOTTOM]}"
+        >
+          <nidoca-accordion>
+            <nidoca-accordion-item header="nidoca-button">
+              <lit-viewer .customEventNames="${["nidoca-button-event-clicked"]}">
+                <nidoca-button
+                  text="Mein Button"
+                  leadingIcon="home"
+                  .buttonType="${NidocaButtonType.CONTAINED}"
+                ></nidoca-button>
+              </lit-viewer>
+            </nidoca-accordion-item>
+          </nidoca-accordion>
+        </nidoca-layout-spacer>
+
+        <nidoca-typography typographyType="${NidocaTypographyType.H3}">Inhaltskomponenten</nidoca-typography>
+
+        <nidoca-layout-spacer
+          .spacerSize="${NidocaLayoutSpacerSize.MEDIUM}"
+          .spacerTypes="${[NidocaLayoutSpacerType.TOP, NidocaLayoutSpacerType.BOTTOM]}"
+        >
+          <nidoca-accordion>
             <nidoca-accordion-item header="nidoca-wizard">
               <lit-viewer .customEventNames="${[]}">
                 <nidoca-wizard>
@@ -194,38 +261,6 @@ export class NidocaPageMain extends LitElement {
               </lit-viewer>
             </nidoca-accordion-item>
 
-            <nidoca-accordion-item header="nidoca-link">
-              <lit-viewer .customEventNames="${[]}">
-                <nidoca-link text="Mein Link"></nidoca-link>
-              </lit-viewer>
-            </nidoca-accordion-item>
-
-            <nidoca-accordion-item header="nidoca-progress">
-              <lit-viewer .customEventNames="${[]}">
-                <nidoca-progress></nidoca-progress>
-              </lit-viewer>
-            </nidoca-accordion-item>
-
-            <nidoca-accordion-item header="nidoca-movie">
-              <lit-viewer .customEventNames="${[]}">
-                <nidoca-movie
-                  src="https://www.youtube.com/embed/lJIrF4YjHfQ?autoplay=1&cc_load_policy=1&controls=2&hl=en&rel=0&enablejsapi=1&origin=https%3A%2F%2Fsupport.google.com&widgetid=3"
-                ></nidoca-movie>
-              </lit-viewer>
-            </nidoca-accordion-item>
-
-            <nidoca-accordion-item header="nidoca-img">
-              <lit-viewer .customEventNames="${[]}">
-                <nidoca-img src="http://lorempixel.com/640/480/"></nidoca-img>
-              </lit-viewer>
-            </nidoca-accordion-item>
-
-            <nidoca-accordion-item header="nidoca-icon">
-              <lit-viewer .customEventNames="${[]}">
-                <nidoca-icon icon="home"><nidoca-layout-spacer></nidoca-layout-spacer></nidoca-icon>
-              </lit-viewer>
-            </nidoca-accordion-item>
-
             <nidoca-accordion-item header="nidoca-icon-extended">
               <lit-viewer .customEventNames="${[]}">
                 <nidoca-icon-extended icon="home"><nidoca-layout-spacer></nidoca-layout-spacer></nidoca-icon-extended>
@@ -244,20 +279,11 @@ export class NidocaPageMain extends LitElement {
               </lit-viewer>
             </nidoca-accordion-item>
 
-            <nidoca-accordion-item header="nidoca-box-shadow">
+            <nidoca-accordion-item header="nidoca-template">
               <lit-viewer .customEventNames="${[]}">
-                <nidoca-box-shadow><nidoca-layout-spacer></nidoca-layout-spacer></nidoca-box-shadow>
+                <nidoca-template> </nidoca-template>
               </lit-viewer>
             </nidoca-accordion-item>
-
-
-            <nidoca-accordion-item header="nidoca-template">
-            <lit-viewer .customEventNames="${[]}">
-              <nidoca-template>
-              </nidoca-template>
-            </lit-viewer>
-          </nidoca-accordion-item>
-
 
             <nidoca-accordion-item header="nidoca-accordion">
               <lit-viewer .customEventNames="${["nidoca-button-event-clicked"]}">
