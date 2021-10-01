@@ -2,7 +2,7 @@ import {css, html, TemplateResult, LitElement} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
 
-export enum TargetType {
+export enum NidocaTargetType {
   BLANK = "_blank",
   SELF = "_self",
   PARENT = "_parent",
@@ -29,7 +29,7 @@ export class NidocaLink extends LitElement {
   href: string = "";
 
   @property({type: String})
-  targetType: string = TargetType.SELF;
+  targetType: string = NidocaTargetType.SELF;
 
   render(): any {
     return html` <a href="${this.href}" .target="${this.targetType}">${this.text}<slot></slot></a> `;

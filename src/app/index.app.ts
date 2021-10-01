@@ -9,6 +9,7 @@ import "./nidoca-page-settings";
 import "./nidoca-page-list";
 import "./nidoca-page-form";
 import "./nidoca-page-top-app-bar";
+import "./nidoca-page-imprint";
 
 import "./nidoca-elevation-settings";
 

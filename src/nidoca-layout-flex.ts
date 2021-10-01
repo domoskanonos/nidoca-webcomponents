@@ -2,57 +2,57 @@ import {css, html, LitElement} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
 
-export enum NidocaFlexLayoutDirection {
-  ROW = "row",
-  ROW_REVERSE = "rowData-reverse",
-  COLUMN = "column",
-  COLUMN_REVERSE = "column-reverse",
+export class NidocaFlexLayoutDirection {
+  static readonly ROW = "row";
+  static readonly ROW_REVERSE = "rowData-reverse";
+  static readonly COLUMN = "column";
+  static readonly COLUMN_REVERSE = "column-reverse";
 }
 
-export enum NidocaFlexLayoutWrap {
-  WRAP = "wrap",
-  NO_WRAP = "nowrap",
-  WRAP_REVERSE = "flexWrap-reverse",
+export class NidocaFlexLayoutWrap {
+  static readonly WRAP = "wrap";
+  static readonly NO_WRAP = "nowrap";
+  static readonly WRAP_REVERSE = "flexWrap-reverse";
 }
 
-export enum NidocaFlexLayoutJustifyContent {
-  FLEX_START = "flex-start",
-  FLEX_END = "flex-end",
-  CENTER = "center",
-  SPACE_BETWEEN = "space-between",
-  SPACE_AROUND = "space-around",
-  SPACE_EVENLY = "space-evenly",
+export class NidocaFlexLayoutJustifyContent {
+  static readonly FLEX_START = "flex-start";
+  static readonly FLEX_END = "flex-end";
+  static readonly CENTER = "center";
+  static readonly SPACE_BETWEEN = "space-between";
+  static readonly SPACE_AROUND = "space-around";
+  static readonly SPACE_EVENLY = "space-evenly";
 }
 
-export enum NidocaFlexLayoutAlignItems {
-  FLEX_START = "flex-start",
-  FLEX_END = "flex-end",
-  CENTER = "center",
-  STRETCH = "stretch",
-  START = "start",
-  END = "end",
-  BASELINE = "baseline",
-  FIRST_BASELINE = "first baseline",
-  LAST_BASLINE = "last baseline",
-  SAFE = "safe",
-  UNSAFE = "unsafe",
+export class NidocaFlexLayoutAlignItems {
+  static readonly FLEX_START = "flex-start";
+  static readonly FLEX_END = "flex-end";
+  static readonly CENTER = "center";
+  static readonly STRETCH = "stretch";
+  static readonly START = "start";
+  static readonly END = "end";
+  static readonly BASELINE = "baseline";
+  static readonly FIRST_BASELINE = "first baseline";
+  static readonly LAST_BASLINE = "last baseline";
+  static readonly SAFE = "safe";
+  static readonly UNSAFE = "unsafe";
 }
 
-export enum NidocaFlexLayoutAlignContent {
-  FLEX_START = "flex-start",
-  FLEX_END = "flex-end",
-  CENTER = "center",
-  STRETCH = "stretch",
-  SPACE_AROUND = "space-around",
-  SPACE_EVENLY = "space-evenly",
-  SPACE_BETWEEN = "space-between",
-  START = "start",
-  END = "end",
-  BASELINE = "baseline",
-  FIRST_BASELINE = "first baseline",
-  LAST_BASLINE = "last baseline",
-  SAFE = "safe",
-  UNSAFE = "unsafe",
+export class NidocaFlexLayoutAlignContent {
+  static readonly FLEX_START = "flex-start";
+  static readonly FLEX_END = "flex-end";
+  static readonly CENTER = "center";
+  static readonly STRETCH = "stretch";
+  static readonly SPACE_AROUND = "space-around";
+  static readonly SPACE_EVENLY = "space-evenly";
+  static readonly SPACE_BETWEEN = "space-between";
+  static readonly START = "start";
+  static readonly END = "end";
+  static readonly BASELINE = "baseline";
+  static readonly FIRST_BASELINE = "first baseline";
+  static readonly LAST_BASLINE = "last baseline";
+  static readonly SAFE = "safe";
+  static readonly UNSAFE = "unsafe";
 }
 
 @customElement("nidoca-layout-flex")

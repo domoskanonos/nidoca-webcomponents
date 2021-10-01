@@ -55,6 +55,9 @@ export class NidocaApp extends LitElement implements NidocaRouteListener {
       case "form":
         this.currentPage = html`<nidoca-page-form></nidoca-page-form>`;
         break;
+      case "imprint":
+        this.currentPage = html`<nidoca-page-imprint></nidoca-page-imprint>`;
+        break;
       case "topAppBar":
         this.currentPage = html`<nidoca-page-top-app-bar></nidoca-page-top-app-bar>`;
         break;
@@ -115,17 +118,20 @@ export class NidocaApp extends LitElement implements NidocaRouteListener {
             icon="home"
             .rendered="${true}"
             @click="${() => NidocaRouter.getUniqueInstance().navigate("main")}"
-          >Home</nidoca-list-item>
+            >Home</nidoca-list-item
+          >
           <nidoca-list-item
             icon="home"
             .rendered="${true}"
             @click="${() => NidocaRouter.getUniqueInstance().navigate("gallery")}"
-          >Gallery</nidoca-list-item>
+            >Gallery</nidoca-list-item
+          >
           <nidoca-list-item
             icon="home"
             .rendered="${true}"
             @click="${() => NidocaRouter.getUniqueInstance().navigate("topAppBar")}"
-          >topAppBar</nidoca-list-item>
+            >topAppBar</nidoca-list-item
+          >
           <nidoca-list-item @click="${() => NidocaRouter.getUniqueInstance().navigate("list")}">Liste</nidoca-list-item>
           <nidoca-list-item @click="${() => NidocaRouter.getUniqueInstance().navigate("form")}">
             <nidoca-typography .typographyType="${NidocaTypographyType.H6}">Formular</nidoca-typography>
