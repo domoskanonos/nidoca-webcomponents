@@ -1,7 +1,7 @@
 import {css, html, TemplateResult, LitElement} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
-import {NidocaFlexLayoutAlignContent, NidocaFlexLayoutAlignItems, NidocaFlexLayoutDirection, NidocaFlexLayoutJustifyContent, NidocaFlexLayoutWrap} from "./nidoca-layout-flex";
+import {NidocaLayoutFlexAlignContent, NidocaLayoutFlexAlignItems, NidocaLayoutFlexDirection, NidocaLayoutFlexJustifyContent, NidocaLayoutFlexWrap} from "./nidoca-layout-flex";
 import {NidocaLayoutSpacerType, NidocaLayoutSpacerSize} from "./nidoca-layout-spacer";
 import {NidocaTypographyType} from "./nidoca-typography";
 
@@ -20,11 +20,11 @@ export class NidocaMenuSection extends LitElement {
       ? html`
           <nidoca-layout-flex
             .flexItemProperties="${[]}"
-            .flexDirection="${NidocaFlexLayoutDirection.ROW}"
-            .flexWrap="${NidocaFlexLayoutWrap.NO_WRAP}"
-            .flexJustifyContent="${NidocaFlexLayoutJustifyContent.FLEX_END}"
-            .flexAlignItems="${NidocaFlexLayoutAlignItems.CENTER}"
-            .flexAlignContent="${NidocaFlexLayoutAlignContent.FLEX_START}"
+            .flexDirection="${NidocaLayoutFlexDirection.ROW}"
+            .flexWrap="${NidocaLayoutFlexWrap.NO_WRAP}"
+            .flexJustifyContent="${NidocaLayoutFlexJustifyContent.FLEX_END}"
+            .flexAlignItems="${NidocaLayoutFlexAlignItems.CENTER}"
+            .flexAlignContent="${NidocaLayoutFlexAlignContent.FLEX_START}"
             itemStyle="flex-basis: 100%;"
           >
             <nidoca-layout-spacer spacerSize="${NidocaLayoutSpacerSize.SMALL}" .spacerTypes="${[NidocaLayoutSpacerType.ALL]}">

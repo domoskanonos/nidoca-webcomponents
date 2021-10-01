@@ -2,11 +2,11 @@ import {css, html, LitElement} from "lit";
 import {customElement} from "lit/decorators.js";
 import {NidocaContainerSize, NidocaTargetType, NidocaTypographyType} from "../index";
 import {
-  NidocaFlexLayoutAlignContent,
-  NidocaFlexLayoutAlignItems,
-  NidocaFlexLayoutDirection,
-  NidocaFlexLayoutJustifyContent,
-  NidocaFlexLayoutWrap,
+  NidocaLayoutFlexAlignContent,
+  NidocaLayoutFlexAlignItems,
+  NidocaLayoutFlexDirection,
+  NidocaLayoutFlexJustifyContent,
+  NidocaLayoutFlexWrap,
 } from "../nidoca-layout-flex";
 import {NidocaDevice} from "../nidoca-layout-meta";
 import {NidocaLayoutSpacerSize, NidocaLayoutSpacerType} from "../nidoca-layout-spacer";
@@ -23,11 +23,11 @@ export class NidocaPageSettings extends LitElement {
       >
         <nidoca-layout-container .containerSize="${NidocaContainerSize._50}" .devices="${[NidocaDevice.DESKTOP]}">
           <nidoca-layout-flex
-            .flexDirection="${NidocaFlexLayoutDirection.COLUMN}"
-            .flexWrap="${NidocaFlexLayoutWrap.NO_WRAP}"
-            .flexJustifyContent="${NidocaFlexLayoutJustifyContent.CENTER}"
-            .flexAlignItems="${NidocaFlexLayoutAlignItems.FLEX_START}"
-            .flexAlignContent="${NidocaFlexLayoutAlignContent.CENTER}"
+            .flexDirection="${NidocaLayoutFlexDirection.COLUMN}"
+            .flexWrap="${NidocaLayoutFlexWrap.NO_WRAP}"
+            .flexJustifyContent="${NidocaLayoutFlexJustifyContent.CENTER}"
+            .flexAlignItems="${NidocaLayoutFlexAlignItems.FLEX_START}"
+            .flexAlignContent="${NidocaLayoutFlexAlignContent.CENTER}"
           >
             <nidoca-layout-spacer
               spacerSize="${NidocaLayoutSpacerSize.MEDIUM}"

@@ -1,7 +1,7 @@
 import {css, html, TemplateResult,LitElement} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
-import {NidocaFlexLayoutAlignContent, NidocaFlexLayoutAlignItems, NidocaFlexLayoutDirection, NidocaFlexLayoutJustifyContent, NidocaFlexLayoutWrap, NidocaIconShadowType} from ".";
+import {NidocaLayoutFlexAlignContent, NidocaLayoutFlexAlignItems, NidocaLayoutFlexDirection, NidocaLayoutFlexJustifyContent, NidocaLayoutFlexWrap, NidocaIconShadowType} from ".";
 import {NidocaTypographyAlignment, NidocaTypographyType} from "./nidoca-typography";
 
 export enum WizardStepState {
@@ -45,20 +45,20 @@ export class NidocaWizardStep extends LitElement {
   render(): any {
     return html`
       <nidoca-layout-flex
-        .flexDirection="${NidocaFlexLayoutDirection.COLUMN}"
-        .flexWrap="${NidocaFlexLayoutWrap.NO_WRAP}"
-        .flexJustifyContent="${NidocaFlexLayoutJustifyContent.SPACE_EVENLY}"
-        .flexAlignItems="${NidocaFlexLayoutAlignItems.FLEX_START}"
-        .flexAlignContent="${NidocaFlexLayoutAlignContent.SPACE_EVENLY}"
+        .flexDirection="${NidocaLayoutFlexDirection.COLUMN}"
+        .flexWrap="${NidocaLayoutFlexWrap.NO_WRAP}"
+        .flexJustifyContent="${NidocaLayoutFlexJustifyContent.SPACE_EVENLY}"
+        .flexAlignItems="${NidocaLayoutFlexAlignItems.FLEX_START}"
+        .flexAlignContent="${NidocaLayoutFlexAlignContent.SPACE_EVENLY}"
         containerStyle=""
         itemStyle=""
       >
         <nidoca-layout-flex
-          .flexDirection="${NidocaFlexLayoutDirection.ROW}"
-          .flexWrap="${NidocaFlexLayoutWrap.NO_WRAP}"
-          .flexJustifyContent="${NidocaFlexLayoutJustifyContent.FLEX_START}"
-          .flexAlignItems="${NidocaFlexLayoutAlignItems.CENTER}"
-          .flexAlignContent="${NidocaFlexLayoutAlignContent.SPACE_EVENLY}"
+          .flexDirection="${NidocaLayoutFlexDirection.ROW}"
+          .flexWrap="${NidocaLayoutFlexWrap.NO_WRAP}"
+          .flexJustifyContent="${NidocaLayoutFlexJustifyContent.FLEX_START}"
+          .flexAlignItems="${NidocaLayoutFlexAlignItems.CENTER}"
+          .flexAlignContent="${NidocaLayoutFlexAlignContent.SPACE_EVENLY}"
           containerStyle=""
           itemStyle=""
         >

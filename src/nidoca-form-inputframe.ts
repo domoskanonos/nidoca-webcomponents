@@ -2,7 +2,7 @@ import {css, html, TemplateResult, LitElement} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
 import {NidocaBorderProperty, NidocaBorderSize} from "./nidoca-border";
-import {NidocaFlexLayoutAlignContent} from "./nidoca-layout-flex";
+import {NidocaLayoutFlexAlignContent} from "./nidoca-layout-flex";
 import {NidocaTypographyType} from "./nidoca-typography";
 import {NidocaLayoutSpacerType, NidocaLayoutSpacerSize} from "./nidoca-layout-spacer";
 import {NidocaTheme} from ".";
@@ -73,7 +73,7 @@ export class NidocaFormInputframe extends LitElement {
               .spacerTypes="${[NidocaLayoutSpacerType.ALL]}"
             >
               <nidoca-layout-flex
-                .flexAlignContent="${NidocaFlexLayoutAlignContent.CENTER}"
+                .flexAlignContent="${NidocaLayoutFlexAlignContent.CENTER}"
                 itemStyle="flex-basis: 100%;"
               >
                 ${this.showLabel

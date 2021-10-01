@@ -2,11 +2,11 @@ import {css, html, LitElement, TemplateResult} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
 import {
-  NidocaFlexLayoutAlignContent,
-  NidocaFlexLayoutAlignItems,
-  NidocaFlexLayoutDirection,
-  NidocaFlexLayoutJustifyContent,
-  NidocaFlexLayoutWrap,
+  NidocaLayoutFlexAlignContent,
+  NidocaLayoutFlexAlignItems,
+  NidocaLayoutFlexDirection,
+  NidocaLayoutFlexJustifyContent,
+  NidocaLayoutFlexWrap,
 } from ".";
 import {NidocaBorderProperty} from "./nidoca-border";
 import {NidocaLayoutSpacerType, NidocaLayoutSpacerSize} from "./nidoca-layout-spacer";
@@ -39,11 +39,11 @@ export class NidocaAccordionItem extends LitElement {
           <nidoca-layout-flex
             class="ACCORDION_HEADER"
             @click="${() => this.toggle()}"
-            .flexDirection="${NidocaFlexLayoutDirection.ROW}"
-            .flexWrap="${NidocaFlexLayoutWrap.WRAP}"
-            .flexJustifyContent="${NidocaFlexLayoutJustifyContent.SPACE_BETWEEN}"
-            .flexAlignItems="${NidocaFlexLayoutAlignItems.CENTER}"
-            .flexAlignContent="${NidocaFlexLayoutAlignContent.CENTER}"
+            .flexDirection="${NidocaLayoutFlexDirection.ROW}"
+            .flexWrap="${NidocaLayoutFlexWrap.WRAP}"
+            .flexJustifyContent="${NidocaLayoutFlexJustifyContent.SPACE_BETWEEN}"
+            .flexAlignItems="${NidocaLayoutFlexAlignItems.CENTER}"
+            .flexAlignContent="${NidocaLayoutFlexAlignContent.CENTER}"
           >
             <nidoca-layout-spacer
               spacerSize="${NidocaLayoutSpacerSize.MEDIUM}"

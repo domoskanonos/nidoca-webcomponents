@@ -1,7 +1,7 @@
 import {css, html, LitElement} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
-import {NidocaFlexLayoutAlignItems, NidocaFlexLayoutJustifyContent, NidocaFlexLayoutWrap} from "./nidoca-layout-flex";
+import {NidocaLayoutFlexAlignItems, NidocaLayoutFlexJustifyContent, NidocaLayoutFlexWrap} from "./nidoca-layout-flex";
 import {NidocaLayoutSpacerSize, NidocaLayoutSpacerType} from "./nidoca-layout-spacer";
 import {NidocaTypographyType} from "./nidoca-typography";
 import {NidocaBorderSize, NidocaTheme} from ".";
@@ -77,9 +77,9 @@ export class NidocaButton extends LitElement {
             @click="${() => {
               this.clicked();
             }}"
-            flexWrap="${NidocaFlexLayoutWrap.NO_WRAP}"
-            .flexJustifyContent="${NidocaFlexLayoutJustifyContent.CENTER}"
-            .flexAlignItems="${NidocaFlexLayoutAlignItems.CENTER}"
+            flexWrap="${NidocaLayoutFlexWrap.NO_WRAP}"
+            .flexJustifyContent="${NidocaLayoutFlexJustifyContent.CENTER}"
+            .flexAlignItems="${NidocaLayoutFlexAlignItems.CENTER}"
           >
             ${this.leadingIcon ? html`<nidoca-icon .icon="${this.leadingIcon}"></nidoca-icon>` : html``}
             ${this.leadingIcon && this.buttonType != NidocaButtonType.TEXT

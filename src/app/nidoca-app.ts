@@ -43,23 +43,14 @@ export class NidocaApp extends LitElement implements NidocaRouteListener {
   routeChanged(url: string): void {
     console.log("enter new page, url: %s", url);
     switch (url) {
-      case "gallery":
-        this.currentPage = html`<nidoca-page-gallery></nidoca-page-gallery>`;
+      case "components":
+        this.currentPage = html`<nidoca-page-components></nidoca-page-components>`;
         break;
       case "settings":
         this.currentPage = html`<nidoca-page-settings></nidoca-page-settings>`;
         break;
-      case "list":
-        this.currentPage = html`<nidoca-page-list></nidoca-page-list>`;
-        break;
-      case "form":
-        this.currentPage = html`<nidoca-page-form></nidoca-page-form>`;
-        break;
       case "imprint":
         this.currentPage = html`<nidoca-page-imprint></nidoca-page-imprint>`;
-        break;
-      case "topAppBar":
-        this.currentPage = html`<nidoca-page-top-app-bar></nidoca-page-top-app-bar>`;
         break;
       case "main":
       default:
@@ -114,49 +105,19 @@ export class NidocaApp extends LitElement implements NidocaRouteListener {
         <span slot="content">${this.currentPage}</span>
 
         <nidoca-list slot="sidebar">
-          <nidoca-list-item
-            icon="home"
-            .rendered="${true}"
-            @click="${() => NidocaRouter.getUniqueInstance().navigate("main")}"
-            >Home</nidoca-list-item
-          >
-          <nidoca-list-item
-            icon="home"
-            .rendered="${true}"
-            @click="${() => NidocaRouter.getUniqueInstance().navigate("gallery")}"
-            >Gallery</nidoca-list-item
-          >
-          <nidoca-list-item
-            icon="home"
-            .rendered="${true}"
-            @click="${() => NidocaRouter.getUniqueInstance().navigate("topAppBar")}"
-            >topAppBar</nidoca-list-item
-          >
-          <nidoca-list-item @click="${() => NidocaRouter.getUniqueInstance().navigate("list")}">Liste</nidoca-list-item>
-
-
-
-
-          
-
-          
-
-          <nidoca-list-item @click="${() => NidocaRouter.getUniqueInstance().navigate("imprint")}">
-          <nidoca-typography .typographyType="${NidocaTypographyType.H6}">Impressum</nidoca-typography>
-          <nidoca-icon slot="graphic" icon="gavel"></nidoca-icon>
-        </nidoca-list-item>
-
-
-          <nidoca-list-item @click="${() => NidocaRouter.getUniqueInstance().navigate("form")}">
-            <nidoca-typography .typographyType="${NidocaTypographyType.H6}">Formular</nidoca-typography>
-            <nidoca-icon slot="graphic" icon="face">face</nidoca-icon>
-            <nidoca-icon slot="meta" icon="arrow_right">arrow_right</nidoca-icon>
+          <nidoca-list-item @click="${() => NidocaRouter.getUniqueInstance().navigate("main")}">
+            <nidoca-typography .typographyType="${NidocaTypographyType.H6}">Start</nidoca-typography>
           </nidoca-list-item>
-
-
-
-
-
+          <nidoca-list-item @click="${() => NidocaRouter.getUniqueInstance().navigate("components")}">
+            <nidoca-typography .typographyType="${NidocaTypographyType.H6}">Komponenten</nidoca-typography>
+          </nidoca-list-item>
+          <nidoca-list-item @click="${() => NidocaRouter.getUniqueInstance().navigate("settings")}">
+            <nidoca-typography .typographyType="${NidocaTypographyType.H6}">Einstellungen</nidoca-typography>
+          </nidoca-list-item>
+          <nidoca-list-item @click="${() => NidocaRouter.getUniqueInstance().navigate("imprint")}">
+            <nidoca-typography .typographyType="${NidocaTypographyType.H6}">Impressum</nidoca-typography>
+            <nidoca-icon slot="graphic" icon="gavel"></nidoca-icon>
+          </nidoca-list-item>
         </nidoca-list>
       </nidoca-template>
       <nidoca-dialog
