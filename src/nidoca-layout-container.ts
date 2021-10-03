@@ -1,7 +1,7 @@
 import {css, html, LitElement} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
-import {NidocaDevice} from ".";
+import {NidocaDevice, NidocaTheme} from ".";
 
 export class NidocaContainerSize {
   static readonly _100: string = "_100";
@@ -57,8 +57,19 @@ export class NidocaContainer extends LitElement {
   @property({type: NidocaDevice, converter: Array})
   devices: NidocaDevice[] = [NidocaDevice.DESKTOP, NidocaDevice.TABLET, NidocaDevice.MOBILE];
 
+  @property({type: NidocaTheme, converter: String})
+  theme: NidocaTheme = NidocaTheme.PRIMARY;
+
   render(): any {
     return html`
+      <style>
+      .container,
+      ::slotted(.container) {
+          color: var(--app-color-${this.theme});
+          background-color: var(--app-color-${this.theme}-background);
+        }
+      </style>
+
       <div class="container ${NidocaDevice.applyDevices(this.containerSize, this.devices)}">
         <div class="container FIT_CONTENT">
           <slot></slot>

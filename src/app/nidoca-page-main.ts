@@ -2,6 +2,7 @@ import {NidocaRouter} from "@domoskanonos/nidoca-router";
 import {css, html, LitElement, TemplateResult} from "lit";
 import {customElement} from "lit/decorators.js";
 import {
+  NidocaContainerSize,
   NidocaDevice,
   NidocaLayoutFlexAlignContent,
   NidocaLayoutFlexAlignItems,
@@ -21,6 +22,14 @@ export class NidocaPageMain extends LitElement {
 
   render(): any {
     return html`
+
+
+    <nidoca-layout-container
+.containerSize="${NidocaContainerSize._50}"
+
+
+>
+
       <nidoca-layout-flex
         .flexDirection="${NidocaLayoutFlexDirection.COLUMN}"
         .flexWrap="${NidocaLayoutFlexWrap.NO_WRAP}"
@@ -70,6 +79,10 @@ export class NidocaPageMain extends LitElement {
           </nidoca-layout-flex>
         </nidoca-layout-spacer>
       </nidoca-layout-flex>
+
+      </nidoca-layout-container>
+
+
       <nidoca-layout-flex
         .flexDirection="${NidocaLayoutFlexDirection.ROW}"
         .flexWrap="${NidocaLayoutFlexWrap.WRAP}"
@@ -151,6 +164,8 @@ export class NidocaPageMain extends LitElement {
           </nidoca-layout-flex>
         </nidoca-layout-spacer>
       </nidoca-layout-flex>
+
+
     `;
   }
 }

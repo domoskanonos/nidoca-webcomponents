@@ -82,7 +82,7 @@ export class NidocaButton extends LitElement {
             .flexAlignItems="${NidocaLayoutFlexAlignItems.CENTER}"
           >
             ${this.leadingIcon ? html`<nidoca-icon .icon="${this.leadingIcon}"></nidoca-icon>` : html``}
-            ${this.leadingIcon && this.buttonType != NidocaButtonType.TEXT
+            ${!this.leadingIcon && this.buttonType != NidocaButtonType.TEXT
               ? html`<nidoca-layout-spacer spacerSize="${NidocaLayoutSpacerSize.MEDIUM}"> </nidoca-layout-spacer>`
               : html``}
 
