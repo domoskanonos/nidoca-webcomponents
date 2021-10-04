@@ -58,9 +58,9 @@ export class NidocaContainer extends LitElement {
   devices: NidocaDevice[] = [NidocaDevice.DESKTOP, NidocaDevice.TABLET, NidocaDevice.MOBILE];
 
   @property({type: NidocaTheme, converter: String})
-  theme: NidocaTheme = NidocaTheme.PRIMARY;
+  theme: NidocaTheme = NidocaTheme.BACKGROUND;
 
-  render(): any {
+  render(): unknown {
     return html`
       <style>
       .container,
@@ -70,6 +70,7 @@ export class NidocaContainer extends LitElement {
         }
       </style>
 
+      HUHU: ${this.theme}
       <div class="container ${NidocaDevice.applyDevices(this.containerSize, this.devices)}">
         <div class="container FIT_CONTENT">
           <slot></slot>
