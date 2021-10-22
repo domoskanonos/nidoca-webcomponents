@@ -1,6 +1,8 @@
 
 import "../index";
 
+import "./service/openapi-service";
+
 import "../lit-viewer/index";
 
 import "./nidoca-page-main";

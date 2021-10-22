@@ -15,10 +15,19 @@ import {
   NidocaTypographyType,
 } from "..";
 import {NidocaLayoutSpacerSize} from "../nidoca-layout-spacer";
+import { OpenApiService } from "./service/openapi-service";
 
 @customElement("nidoca-page-main")
 export class NidocaPageMain extends LitElement {
   static styles = css``;
+
+
+
+  constructor(){
+    super();
+    const client : OpenApiService = new OpenApiService("http://188.68.32.191:8080/api-docs/v3/openapi.json");
+    
+  }
 
   render(): any {
     return html`
