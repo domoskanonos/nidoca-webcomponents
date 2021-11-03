@@ -14,10 +14,6 @@ export interface Info {
   contact: Contact;
 }
 
-export interface Paths {
-  paths: [];
-}
-
 export interface Path {
   get: any;
   post: any;
@@ -29,25 +25,50 @@ export interface OpenApiInterface {
   openapi: string;
   servers: Server[];
   info: Info;
-  paths: Paths;
+  paths: never;
 }
 
 export class OpenApiService {
-  private openApiDefintion: OpenApiInterface = <OpenApiInterface>{};
+  private _openApiDefintion: OpenApiInterface | undefined;
 
-  constructor(private url: string) {
-    const responsePromise: Promise<Response> = fetch(url, {
-      method: "GET",
-    });
-    responsePromise.then((response: Response) => {
-      response.json().then((openApiDefinition: OpenApiInterface) => {
-        console.info("response status: ", openApiDefinition);
-        this.openApiDefintion = openApiDefinition;
-      });
-    });
+  public get openApiDefintion(): OpenApiInterface {
+    if (this._openApiDefintion == undefined) {
+      throw new Error("please use init function first.");
+    }
+    return this._openApiDefintion;
+  }
+  public set openApiDefintion(value: OpenApiInterface) {
+    this._openApiDefintion = value;
   }
 
-  getPathes(): Path[] {
-    return this.openApiDefintion.paths.paths;
+  init(url: string): void {
+    
+    let a;
+    (async function () {
+      a = await (await fetch(url, {method: "GET"})).json();
+    })();
+
+    console.log(a);
+    this._openApiDefintion = a;
+  }
+
+  getPathKeys(): string[] {
+    return Object.keys(this.openApiDefintion.paths);
+  }
+
+  getPathObjects(): Path[] {
+    const retval: Path[] = [];
+    this.getPathKeys().map((key: string) => {
+      retval.push(this.openApiDefintion?.paths[key]);
+    });
+    return retval;
+  }
+
+  getPathUrl(key: string): string {
+    return this.openApiDefintion.servers[0].url.concat(key);
+  }
+
+  getPathObject(key: string): Path {
+    return this.openApiDefintion?.paths[key];
   }
 }

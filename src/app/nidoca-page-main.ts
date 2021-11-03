@@ -1,5 +1,6 @@
 import {NidocaRouter} from "@domoskanonos/nidoca-router";
-import {css, html, LitElement, TemplateResult} from "lit";
+import {HttpRemoteRepository} from "@domoskanonos/nidoca-http";
+import {css, html, LitElement} from "lit";
 import {customElement} from "lit/decorators.js";
 import {
   NidocaContainerSize,
@@ -15,82 +16,69 @@ import {
   NidocaTypographyType,
 } from "..";
 import {NidocaLayoutSpacerSize} from "../nidoca-layout-spacer";
-import { OpenApiService } from "./service/openapi-service";
 
 @customElement("nidoca-page-main")
 export class NidocaPageMain extends LitElement {
   static styles = css``;
 
-
-
-  constructor(){
+  constructor() {
     super();
-    const client : OpenApiService = new OpenApiService("http://188.68.32.191:8080/api-docs/v3/openapi.json");
-    
   }
+
 
   render(): any {
     return html`
-
-
-    <nidoca-layout-container
-.containerSize="${NidocaContainerSize._50}"
-
-
->
-
-      <nidoca-layout-flex
-        .flexDirection="${NidocaLayoutFlexDirection.COLUMN}"
-        .flexWrap="${NidocaLayoutFlexWrap.NO_WRAP}"
-        .flexJustifyContent="${NidocaLayoutFlexJustifyContent.CENTER}"
-        .flexAlignItems="${NidocaLayoutFlexAlignItems.CENTER}"
-        .flexAlignContent="${NidocaLayoutFlexAlignContent.CENTER}"
-        containerStyle="width:100%; height:40vh; color: var(--app-color-primary); background-color:var(--app-color-primary-background-dark);"
-      >
-        <nidoca-typography .typographyType="${NidocaTypographyType.H1}">#nidoca</nidoca-typography>
-        <nidoca-layout-spacer>
-          <nidoca-typography .typographyAlignment="${NidocaTypographyAlignment.CENTER}">
-            nidoca is a lightweight open source ui framework, based on
-            <nidoca-link href="https://www.webcomponents.org/" targetType="${NidocaTargetType.BLANK}"
-              >WebComponents</nidoca-link
-            >,
-            <nidoca-link href="https://www.typescriptlang.org/" targetType="${NidocaTargetType.BLANK}"
-              >Typescript</nidoca-link
+      <nidoca-layout-container .containerSize="${NidocaContainerSize._50}">
+        <nidoca-layout-flex
+          .flexDirection="${NidocaLayoutFlexDirection.COLUMN}"
+          .flexWrap="${NidocaLayoutFlexWrap.NO_WRAP}"
+          .flexJustifyContent="${NidocaLayoutFlexJustifyContent.CENTER}"
+          .flexAlignItems="${NidocaLayoutFlexAlignItems.CENTER}"
+          .flexAlignContent="${NidocaLayoutFlexAlignContent.CENTER}"
+          containerStyle="width:100%; height:40vh; color: var(--app-color-primary); background-color:var(--app-color-primary-background-dark);"
+        >
+          <nidoca-typography .typographyType="${NidocaTypographyType.H1}">#nidoca</nidoca-typography>
+          <nidoca-layout-spacer>
+            <nidoca-typography .typographyAlignment="${NidocaTypographyAlignment.CENTER}">
+              nidoca is a lightweight open source ui framework, based on
+              <nidoca-link href="https://www.webcomponents.org/" targetType="${NidocaTargetType.BLANK}"
+                >WebComponents</nidoca-link
+              >,
+              <nidoca-link href="https://www.typescriptlang.org/" targetType="${NidocaTargetType.BLANK}"
+                >Typescript</nidoca-link
+              >
+              and
+              <nidoca-link href="https://lit-element.polymer-project.org/" targetType="${NidocaTargetType.BLANK}"
+                >LitElement</nidoca-link
+              >
+              aufbaut.
+            </nidoca-typography>
+          </nidoca-layout-spacer>
+          <nidoca-layout-spacer spacerSize="${NidocaLayoutSpacerSize.MAX}">
+            <nidoca-layout-flex
+              flexItemBasisValue="auto"
+              .flexDirection="${NidocaLayoutFlexDirection.ROW}"
+              .flexWrap="${NidocaLayoutFlexWrap.WRAP}"
+              .flexJustifyContent="${NidocaLayoutFlexJustifyContent.CENTER}"
+              .flexAlignItems="${NidocaLayoutFlexAlignItems.START}"
+              .flexAlignContent="${NidocaLayoutFlexAlignContent.FLEX_START}"
             >
-            and
-            <nidoca-link href="https://lit-element.polymer-project.org/" targetType="${NidocaTargetType.BLANK}"
-              >LitElement</nidoca-link
-            >
-            aufbaut.
-          </nidoca-typography>
-        </nidoca-layout-spacer>
-        <nidoca-layout-spacer spacerSize="${NidocaLayoutSpacerSize.MAX}">
-          <nidoca-layout-flex
-            flexItemBasisValue="auto"
-            .flexDirection="${NidocaLayoutFlexDirection.ROW}"
-            .flexWrap="${NidocaLayoutFlexWrap.WRAP}"
-            .flexJustifyContent="${NidocaLayoutFlexJustifyContent.CENTER}"
-            .flexAlignItems="${NidocaLayoutFlexAlignItems.START}"
-            .flexAlignContent="${NidocaLayoutFlexAlignContent.FLEX_START}"
-          >
-            <nidoca-layout-spacer>
-              <nidoca-button
-                .theme="${NidocaTheme.SECONDARY}"
-                text="Installation"
-                @nidoca-event-button-clicked="${() => {
-                  NidocaRouter.getUniqueInstance().navigate("components");
-                }}"
-              ></nidoca-button>
-            </nidoca-layout-spacer>
-            <nidoca-layout-spacer>
-              <nidoca-button .theme="${NidocaTheme.SECONDARY}" text="Dokumentation"></nidoca-button>
-            </nidoca-layout-spacer>
-          </nidoca-layout-flex>
-        </nidoca-layout-spacer>
-      </nidoca-layout-flex>
-
+              <nidoca-layout-spacer>
+                <nidoca-button
+                  .theme="${NidocaTheme.SECONDARY}"
+                  text="Installation"
+                  @nidoca-event-button-clicked="${() => {
+                    NidocaRouter.getUniqueInstance().navigate("components");
+                  }}"
+                ></nidoca-button>
+              </nidoca-layout-spacer>
+              <nidoca-layout-spacer>
+                <nidoca-button .theme="${NidocaTheme.SECONDARY}" text="Dokumentation"></nidoca-button>
+              </nidoca-layout-spacer>
+            </nidoca-layout-flex>
+          </nidoca-layout-spacer>
+        </nidoca-layout-flex>
       </nidoca-layout-container>
-
 
       <nidoca-layout-flex
         .flexDirection="${NidocaLayoutFlexDirection.ROW}"
@@ -173,8 +161,6 @@ export class NidocaPageMain extends LitElement {
           </nidoca-layout-flex>
         </nidoca-layout-spacer>
       </nidoca-layout-flex>
-
-
     `;
   }
 }

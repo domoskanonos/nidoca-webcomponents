@@ -4,9 +4,14 @@ import {property} from "lit/decorators.js";
 import {NidocaRouteListener, NidocaRouter} from "@domoskanonos/nidoca-router";
 import {NidocaTypographyType} from "..";
 import {NidocaTheme} from "../nidoca-meta";
+import { OpenApiGuiService } from "./service/openapi-gui-service";
+import { OpenApiService } from "./service/openapi-service";
+import { OpenApiRestService } from "./service/openapi-rest-service";
+import { OAS } from "./index.app";
 
 @customElement("nidoca-app")
 export class NidocaApp extends LitElement implements NidocaRouteListener {
+
   @property({type: Boolean})
   showPopup: boolean = false;
 
@@ -36,9 +41,6 @@ export class NidocaApp extends LitElement implements NidocaRouteListener {
     NidocaRouter.getUniqueInstance().subscribe(this);
   }
 
-  firstUpdated(): void {
-    this.routeChanged(NidocaRouter.getUniqueInstance().getCurrentPage());
-  }
 
   routeChanged(url: string): void {
     console.log("enter new page, url: %s", url);
@@ -105,6 +107,9 @@ export class NidocaApp extends LitElement implements NidocaRouteListener {
         <span slot="content">${this.currentPage}</span>
 
         <nidoca-list slot="sidebar">
+
+        ${OAS.getMenuListItems()}
+
           <nidoca-list-item @click="${() => NidocaRouter.getUniqueInstance().navigate("main")}">
             <nidoca-typography .typographyType="${NidocaTypographyType.H6}">Start</nidoca-typography>
           </nidoca-list-item>

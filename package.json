@@ -12,7 +12,8 @@
   "main": "lib/index.js",
   "module": "./src/index.js",
   "devDependencies": {
-    "@domoskanonos/nidoca-router": "1.0.2"
+    "@domoskanonos/nidoca-router": "1.0.2",
+    "@domoskanonos/nidoca-http": "1.0.13"
   },
   "dependencies": {
     "npm-check-updates": "11.8.4",
