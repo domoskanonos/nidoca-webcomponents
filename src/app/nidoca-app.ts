@@ -108,8 +108,6 @@ export class NidocaApp extends LitElement implements NidocaRouteListener {
 
         <nidoca-list slot="sidebar">
 
-        ${OAS.getMenuListItems()}
-
           <nidoca-list-item @click="${() => NidocaRouter.getUniqueInstance().navigate("main")}">
             <nidoca-typography .typographyType="${NidocaTypographyType.H6}">Start</nidoca-typography>
           </nidoca-list-item>

@@ -69,8 +69,6 @@ export class NidocaContainer extends LitElement {
           background-color: var(--app-color-${this.theme}-background);
         }
       </style>
-
-      HUHU: ${this.theme}
       <div class="container ${NidocaDevice.applyDevices(this.containerSize, this.devices)}">
         <div class="container FIT_CONTENT">
           <slot></slot>

@@ -21,7 +21,7 @@ export * from "./nidoca-app";
 
 
 
-import { OpenApiGuiService } from "./service/openapi-gui-service";
-export const OAS = new OpenApiGuiService();
-OAS.init("http://188.68.32.191:8080/api-docs/v3/openapi.json");
+//import { OpenApiGuiService } from "./service/openapi-gui-service";
+//export const OAS = new OpenApiGuiService();
+//OAS.init("http://188.68.32.191:8080/api-docs/v3/openapi.json");
 

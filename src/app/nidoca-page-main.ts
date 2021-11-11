@@ -25,10 +25,9 @@ export class NidocaPageMain extends LitElement {
     super();
   }
 
-
   render(): any {
     return html`
-      <nidoca-layout-container .containerSize="${NidocaContainerSize._50}">
+      <nidoca-layout-container .containerSize="${NidocaContainerSize._100}" .theme="${NidocaTheme.SURFACE}">
         <nidoca-layout-flex
           .flexDirection="${NidocaLayoutFlexDirection.COLUMN}"
           .flexWrap="${NidocaLayoutFlexWrap.NO_WRAP}"
@@ -37,7 +36,10 @@ export class NidocaPageMain extends LitElement {
           .flexAlignContent="${NidocaLayoutFlexAlignContent.CENTER}"
           containerStyle="width:100%; height:40vh; color: var(--app-color-primary); background-color:var(--app-color-primary-background-dark);"
         >
-          <nidoca-typography .typographyType="${NidocaTypographyType.H1}">#nidoca</nidoca-typography>
+          <nidoca-layout-spacer spacerSize="${NidocaLayoutSpacerSize.MAX}">
+            <nidoca-typography .typographyType="${NidocaTypographyType.H1}">nidoca webcomponents</nidoca-typography>
+          </nidoca-layout-spacer>
+
           <nidoca-layout-spacer>
             <nidoca-typography .typographyAlignment="${NidocaTypographyAlignment.CENTER}">
               nidoca is a lightweight open source ui framework, based on
@@ -48,8 +50,8 @@ export class NidocaPageMain extends LitElement {
                 >Typescript</nidoca-link
               >
               and
-              <nidoca-link href="https://lit-element.polymer-project.org/" targetType="${NidocaTargetType.BLANK}"
-                >LitElement</nidoca-link
+              <nidoca-link href="https://lit.dev/" targetType="${NidocaTargetType.BLANK}"
+                >Lit</nidoca-link
               >
               aufbaut.
             </nidoca-typography>
