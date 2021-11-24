@@ -59,7 +59,6 @@ export class NidocaLayoutFlexAlignContent {
 export class NidocaFlexLayout extends LitElement {
   static styles = css`
     :host,
-    *,
     ::slotted(*) {
       box-sizing: border-box;
       display: inline-block;
