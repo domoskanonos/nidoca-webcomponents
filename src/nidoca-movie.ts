@@ -9,7 +9,7 @@ export class NidocaMovie extends LitElement {
   @property({type: String})
   src: string = "";
   
-  render(): any {
+  render(): TemplateResult {
     return html`
       <span>
         <iframe

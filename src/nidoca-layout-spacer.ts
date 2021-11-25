@@ -1,4 +1,4 @@
-import {css, html, TemplateResult, LitElement} from "lit";
+import {css, html, TemplateResult, LitElement, HTMLTemplateResult} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
 import {NidocaDevice} from "./";
@@ -45,7 +45,7 @@ export class NidocaSpacer extends LitElement {
   @property({type: String})
   cssStyle: string = "";
 
-  render(): any {
+  render(): TemplateResult {
     return html`
       <style>
         ${this.toStyle(this.devices, this.spacerTypes, this.spacerSize)}

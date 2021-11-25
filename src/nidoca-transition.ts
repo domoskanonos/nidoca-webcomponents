@@ -522,7 +522,7 @@ export class NidocaTransition extends LitElement {
     }
   `;
 
-  render(): any {
+  render(): TemplateResult {
     return html` <div class="${this.transitionType}"><slot></slot></div> `;
   }
 }

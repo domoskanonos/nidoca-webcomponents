@@ -9,7 +9,7 @@ export class NidocaTabContent extends LitElement {
   @property({type: Boolean})
   selected: boolean = false;
 
-  render(): any {
+  render(): TemplateResult {
     return this.selected ? html`<slot></slot>` : html``;
   }
 }

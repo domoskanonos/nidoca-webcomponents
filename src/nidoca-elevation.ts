@@ -35,7 +35,7 @@ export class NidocaElevation extends LitElement {
     });
   }
 
-  render(): any {
+  render(): TemplateResult {
     return this.show
       ? html`
           <div class="container" style="${this.calculatePositionStyle(this.associatedElement)}">

@@ -43,7 +43,7 @@ export class NidocaListItem extends LitElement {
     }
   }
 
-  render(): any {
+  render(): TemplateResult {
     return html`
       <nidoca-ripple
         @mousedown="${() => this.downAction()}"

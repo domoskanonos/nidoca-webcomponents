@@ -5,7 +5,7 @@ import {customElement} from "lit/decorators.js";
 @customElement("nidoca-elevation-settings")
 export class NidocaElevationSettings extends LitElement {
   static styles = css``;
-  render(): any {
+  render(): TemplateResult {
     return html`
       <nidoca-list slot="sidebar">
         <nidoca-list-item

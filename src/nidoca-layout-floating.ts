@@ -33,7 +33,7 @@ export class NidocaLayoutFloatingContainer extends LitElement {
   @property({type: String})
   bottom: string = "auto";
 
-  render(): any {
+  render(): TemplateResult {
     return html`
       <slot
         class="floatingContainer"

@@ -42,7 +42,7 @@ export class NidocaWizardStep extends LitElement {
   index: number | undefined;
   first: boolean = false;
 
-  render(): any {
+  render(): TemplateResult {
     return html`
       <nidoca-layout-flex
         .flexDirection="${NidocaLayoutFlexDirection.COLUMN}"

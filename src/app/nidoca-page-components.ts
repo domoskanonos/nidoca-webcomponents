@@ -1,4 +1,4 @@
-import {css, html, LitElement, TemplateResult} from "lit";
+import {css, html, LitElement} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
 import {query} from "lit/decorators.js";
@@ -129,7 +129,7 @@ export class NidocaPageGallery extends LitElement {
   @query("#print")
   printElement: NidocaPrint | undefined;
 
-  render(): any {
+  render(): TemplateResult {
     return html`
       <nidoca-layout-spacer .spacerSize="${NidocaLayoutSpacerSize.BIG}" .spacerTypes="${[NidocaLayoutSpacerType.TOP]}">
       </nidoca-layout-spacer>

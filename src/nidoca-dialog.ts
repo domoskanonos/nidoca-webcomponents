@@ -44,7 +44,7 @@ export class NidocaDialog extends LitElement {
   @property({type: Boolean})
   show: boolean = false;
 
-  render(): any {
+  render(): TemplateResult {
     return this.show
       ? html`
           <div class="fullScreen opacScreen"></div>

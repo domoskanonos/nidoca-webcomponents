@@ -105,7 +105,7 @@ export class NidocaTemplate extends LitElement {
     });
   }
 
-  render(): any {
+  render(): TemplateResult {
     return html`
       <style>
         #sidebar {
@@ -114,7 +114,7 @@ export class NidocaTemplate extends LitElement {
         }
       </style>
       <div id="header" class="${this.navigationClosed ? "menuClosed" : ""}">
-        <nidoca-top-app-bar .prominent="${this.prominent}" .theme="${this.theme}">
+        <nidoca-top-app-bar style="width:100%;" .prominent="${this.prominent}" .theme="${this.theme}">
           <span slot="left">
             <slot class="slotHeader" name="topLeft"></slot>
           </span>

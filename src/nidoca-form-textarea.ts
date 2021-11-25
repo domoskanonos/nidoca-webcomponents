@@ -62,7 +62,7 @@ export class NidocaFormTextarea extends NidocaFormAbstractInputElement {
   @query("#inputElement")
   private inputElement: HTMLInputElement | undefined;
 
-  render(): any {
+  render(): TemplateResult {
     return html`
       <nidoca-form-inputframe
         label="${this.label}"

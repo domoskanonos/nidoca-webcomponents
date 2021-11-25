@@ -15,7 +15,7 @@ export class NidocaCard extends LitElement {
     }
   `;
 
-  render(): any {
+  render(): TemplateResult {
     return html`
       <nidoca-box-shadow .shadowType="${NidocaShadowType.KEY_LIGHT}">
       <slot class="slotContainer"></slot>

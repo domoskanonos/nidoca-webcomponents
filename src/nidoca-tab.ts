@@ -31,7 +31,7 @@ export class NidocaTab extends LitElement {
   @property({type: String})
   theme: NidocaTheme = NidocaTheme.PRIMARY;
 
-  render(): any {
+  render(): TemplateResult {
     return html`
       <style>
         :host(.SELECTED) {

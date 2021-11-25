@@ -23,7 +23,7 @@ export class NidocaAvatar extends LitElement {
   @property({type: String})
   description: string = "";
 
-  render(): any {
+  render(): TemplateResult {
     return html`<nidoca-layout-flex
       .flexDirection="${NidocaLayoutFlexDirection.COLUMN}"
       .flexWrap="${NidocaLayoutFlexWrap.WRAP}"

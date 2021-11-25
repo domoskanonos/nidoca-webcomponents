@@ -94,7 +94,7 @@ export class NidocaFlexLayout extends LitElement {
   @property({type: NidocaLayoutFlexAlignContent, converter: String})
   flexAlignContent: NidocaLayoutFlexAlignContent = NidocaLayoutFlexAlignContent.FLEX_START;
 
-  render(): any {
+  render(): TemplateResult {
     return html`
       <slot
         class="flexContainer flexContainerDevice"

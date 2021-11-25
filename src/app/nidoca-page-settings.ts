@@ -1,48 +1,62 @@
-import {NidocaRouter} from "@domoskanonos/nidoca-router";
-import {css, html, LitElement, TemplateResult} from "lit";
+import {css, html, HTMLTemplateResult, LitElement} from "lit";
 import {customElement} from "lit/decorators.js";
-import {NidocaTypographyType, NidocaLayoutFlexJustifyContent, NidocaLayoutSpacerSize, NidocaLayoutFlexAlignItems} from "../index";
+import {
+  NidocaTypographyType,
+  NidocaLayoutFlexJustifyContent,
+  NidocaLayoutSpacerSize,
+  NidocaLayoutFlexAlignItems,
+  NidocaLayoutFlexAlignContent,
+  NidocaDevice,
+  NidocaContainerSize,
+  NidocaLayoutFlexDirection,
+  NidocaLayoutFlexWrap,
+} from "../index";
 import {NidocaLayoutSpacerType} from "../nidoca-layout-spacer";
 
 @customElement("nidoca-page-settings")
 export class NidocaPageSettings extends LitElement {
   static styles = css``;
-  render(): any {
+  render(): TemplateResult {
     return html`
-      <nidoca-layout-spacer nidocaSpacerSize="${NidocaLayoutSpacerSize.LITTLE}"></nidoca-layout-spacer>
-      <nidoca-layout-flex
-        flexItemBasisValue="auto"
-        .flexJustifyContent="${NidocaLayoutFlexJustifyContent.FLEX_START}"
-        .flexAlignItems="${NidocaLayoutFlexAlignItems.CENTER}"
-      >
-        <nidoca-icon
-          icon="arrow_back"
-          .clickable="${true}"
-          .withIconSpace="${false}"
-          @nidoca-event-icon-clicked="${() => NidocaRouter.getUniqueInstance().back()}"
-        ></nidoca-icon>
-        <nidoca-layout-spacer
-          NidocaSpacerSize="${NidocaLayoutSpacerSize.SMALL}"
-          .spacerTypes="${[NidocaLayoutSpacerType.LEFT, NidocaLayoutSpacerType.RIGHT]}"
-        ></nidoca-layout-spacer>
-        <nidoca-typography .typographyType="${NidocaTypographyType.H3}">Settings</nidoca-typography>
-      </nidoca-layout-flex>
       <nidoca-layout-spacer
-        nidocaSpacerSize="${NidocaLayoutSpacerSize.LITTLE}"
-        .nidocaSpacerType="${[NidocaLayoutSpacerType.TOP, NidocaLayoutSpacerType.BOTTOM]}"
+        .devices="${[NidocaDevice.MOBILE, NidocaDevice.TABLET]}"
+        spacerSize="${NidocaLayoutSpacerSize.MEDIUM}"
+        .spacerTypes="${[NidocaLayoutSpacerType.LEFT, NidocaLayoutSpacerType.RIGHT]}"
       >
-      </nidoca-layout-spacer>
-      <nidoca-layout-flex
-        .flexJustifyContent="${NidocaLayoutFlexJustifyContent.FLEX_START}"
-        .alignItems="${NidocaLayoutFlexAlignItems.CENTER}"
-      >
-        <nidoca-layout-spacer
-          NidocaSpacerSize="${NidocaLayoutSpacerSize.LITTLE}"
-          .nidocaSpacerType="${[NidocaLayoutSpacerType.TOP, NidocaLayoutSpacerType.BOTTOM]}"
+        <nidoca-layout-container
+          .containerSize="${NidocaContainerSize._50}"
+          .devices="${[NidocaDevice.DESKTOP]}"
+          .contentSize="${NidocaContainerSize.AUTO}"
         >
-          <nidoca-typography .typographyType="${NidocaTypographyType.H6}">Spracheinstellungen</nidoca-typography>
-        </nidoca-layout-spacer>
-      </nidoca-layout-flex>
+          <nidoca-layout-flex
+            .flexDirection="${NidocaLayoutFlexDirection.COLUMN}"
+            .flexWrap="${NidocaLayoutFlexWrap.NO_WRAP}"
+            .flexJustifyContent="${NidocaLayoutFlexJustifyContent.CENTER}"
+            .flexAlignItems="${NidocaLayoutFlexAlignItems.FLEX_START}"
+            .flexAlignContent="${NidocaLayoutFlexAlignContent.CENTER}"
+          >
+            <nidoca-layout-spacer
+              spacerSize="${NidocaLayoutSpacerSize.MEDIUM}"
+              .spacerTypes="${[NidocaLayoutSpacerType.VERTICAL]}"
+            >
+              <nidoca-typography .typographyType="${NidocaTypographyType.H2}">Einstellungen</nidoca-typography>
+            </nidoca-layout-spacer>
+            <nidoca-layout-spacer
+              spacerSize="${NidocaLayoutSpacerSize.MEDIUM}"
+              .spacerTypes="${[NidocaLayoutSpacerType.VERTICAL]}"
+            ></nidoca-layout-spacer>
+            <nidoca-typography .typographyType="${NidocaTypographyType.H4}">Angaben gemäß § 5 TMG</nidoca-typography>
+            <nidoca-layout-spacer
+              spacerSize="${NidocaLayoutSpacerSize.SMALL}"
+              .spacerTypes="${[NidocaLayoutSpacerType.VERTICAL]}"
+            ></nidoca-layout-spacer>
+            <nidoca-typography .typographyType="${NidocaTypographyType.BODY1}">Dominik Bruhn</nidoca-typography>
+            <nidoca-typography .typographyType="${NidocaTypographyType.BODY1}"
+              >Holzwickeder Straße 109c</nidoca-typography
+            >
+          </nidoca-layout-flex>
+        </nidoca-layout-container>
+      </nidoca-layout-spacer>
     `;
   }
 }

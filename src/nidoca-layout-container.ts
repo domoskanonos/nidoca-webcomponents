@@ -9,6 +9,7 @@ export class NidocaContainerSize {
   static readonly _50: string = "_50";
   static readonly _25: string = "_25";
   static readonly MIN_CONTENT: string = "MIN_CONTENT";
+  static readonly FIT_CONTENT: string = "FIT_CONTENT";
   static readonly AUTO: string = "AUTO";
 }
 
@@ -54,6 +55,9 @@ export class NidocaContainer extends LitElement {
   @property({type: NidocaContainerSize, converter: String})
   containerSize: string = NidocaContainerSize.MIN_CONTENT;
 
+  @property({type: NidocaContainerSize, converter: String})
+  contentSize: string = NidocaContainerSize.FIT_CONTENT;
+
   @property({type: NidocaDevice, converter: Array})
   devices: NidocaDevice[] = [NidocaDevice.DESKTOP, NidocaDevice.TABLET, NidocaDevice.MOBILE];
 
@@ -63,14 +67,14 @@ export class NidocaContainer extends LitElement {
   render(): unknown {
     return html`
       <style>
-      .container,
-      ::slotted(.container) {
+        .container,
+        ::slotted(.container) {
           color: var(--app-color-${this.theme});
           background-color: var(--app-color-${this.theme}-background);
         }
       </style>
       <div class="container ${NidocaDevice.applyDevices(this.containerSize, this.devices)}">
-        <div class="container FIT_CONTENT">
+        <div class="container ${NidocaDevice.applyDevices(this.contentSize, this.devices)}">
           <slot></slot>
         </div>
       </div>

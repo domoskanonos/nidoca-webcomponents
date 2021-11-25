@@ -61,7 +61,7 @@ export class NidocaRipple extends LitElement {
   @query("#rippleContainer")
   private rippleContainerElement: HTMLSpanElement | undefined;
 
-  render(): any {
+  render(): TemplateResult {
     return html`
       <div id="rippleContainer" anim="ripple" @click="${(event: MouseEvent | TouchEvent) => this.clicked(event)}">
         <slot></slot>

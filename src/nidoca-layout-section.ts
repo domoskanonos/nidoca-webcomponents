@@ -18,7 +18,7 @@ export class NidocaLayoutSection extends LitElement {
 
   @query("#slotElement")
   private slotElement: HTMLSlotElement | undefined;
-  render(): any {
+  render(): TemplateResult {
     return html`<nidoca-border .borderProperties="${[NidocaBorderProperty.BOTTOM]}">
       <slot id="slotElement" @slotchange="${(event: Event) => this.slotChanged(event)}"> </slot
     ></nidoca-border>`;

@@ -1,5 +1,4 @@
 import {NidocaRouter} from "@domoskanonos/nidoca-router";
-import {HttpRemoteRepository} from "@domoskanonos/nidoca-http";
 import {css, html, LitElement} from "lit";
 import {customElement} from "lit/decorators.js";
 import {
@@ -25,7 +24,7 @@ export class NidocaPageMain extends LitElement {
     super();
   }
 
-  render(): any {
+  render(): TemplateResult {
     return html`
       <nidoca-layout-container .containerSize="${NidocaContainerSize._100}" .theme="${NidocaTheme.SURFACE}">
         <nidoca-layout-flex

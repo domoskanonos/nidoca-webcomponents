@@ -49,7 +49,7 @@ export class NidocaButton extends LitElement {
   @property({type: String})
   text: string = "";
 
-  render(): any {
+  render(): TemplateResult {
     return html`
       <style>
         .OUTLINED {

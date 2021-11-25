@@ -40,7 +40,7 @@ export class NidocaTabs extends LitElement {
   @property({type: Number})
   tabIndex: number = 0;
 
-  render(): any {
+  render(): TemplateResult {
     return html`
       <div class="container" @nidoca-event-tab-clicked="${(event: CustomEvent) => this.tabClicked(event)}">
         <slot id="tabSlot" name="tab"></slot>

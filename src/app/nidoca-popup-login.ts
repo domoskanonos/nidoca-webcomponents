@@ -21,7 +21,7 @@ export class NidocaPopupLogin extends LitElement {
   @property()
   errorMessage: string = "";
 
-  render(): any {
+  render(): TemplateResult {
     return html`
       <nidoca-form id="authenitcate-form">
         <nidoca-form-text

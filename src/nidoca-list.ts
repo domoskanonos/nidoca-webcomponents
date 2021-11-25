@@ -37,7 +37,7 @@ export class NidocaList extends LitElement {
     });
   }
 
-  render(): any {
+  render(): TemplateResult {
     return html`
       <style>
         ::slotted(nidoca-list-item) {

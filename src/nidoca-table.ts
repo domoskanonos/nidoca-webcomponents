@@ -45,7 +45,7 @@ export class NidocaTable extends LitElement {
     ["row 2", new NidocaIcon()],
   ];
 
-  render(): any {
+  render(): TemplateResult {
     return html`
       <div>
         <table>

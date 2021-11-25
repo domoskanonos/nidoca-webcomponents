@@ -97,7 +97,7 @@ export class NidocaFormText extends NidocaFormAbstractInputElement {
   @query("#inputElement")
   private inputElement: HTMLInputElement | undefined;
 
-  render(): any {
+  render(): TemplateResult {
     return this.type == NidocaTextType.HIDDEN
       ? html`<input id="inputElement" name="${this.name}" type="${this.type}" value="${this.value}" />`
       : html`

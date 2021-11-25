@@ -14,7 +14,7 @@ import {NidocaLayoutSpacerSize, NidocaLayoutSpacerType} from "../nidoca-layout-s
 @customElement("nidoca-page-imprint")
 export class NidocaPageSettings extends LitElement {
   static styles = css``;
-  render(): any {
+  render(): TemplateResult {
     return html`
       <nidoca-layout-spacer
         .devices="${[NidocaDevice.MOBILE, NidocaDevice.TABLET]}"

@@ -1,14 +1,21 @@
 import {css, html, TemplateResult, LitElement} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
-import {NidocaLayoutFlexAlignContent, NidocaLayoutFlexAlignItems, NidocaLayoutFlexDirection, NidocaLayoutFlexJustifyContent, NidocaLayoutFlexWrap, NidocaTheme} from ".";
+import {
+  NidocaLayoutFlexAlignContent,
+  NidocaLayoutFlexAlignItems,
+  NidocaLayoutFlexDirection,
+  NidocaLayoutFlexJustifyContent,
+  NidocaLayoutFlexWrap,
+  NidocaTheme,
+} from ".";
 
 @customElement("nidoca-top-app-bar")
 export class NidocaTopAppBar extends LitElement {
   static styles = css`
     :host {
       display: block;
-      width:100%;
+      width: 100%;
     }
 
     slot {
@@ -31,7 +38,7 @@ export class NidocaTopAppBar extends LitElement {
   @property({type: String})
   cssStyle: string = "height:60px;width:100%;position:relativ;";
 
-  render(): any {
+  render(): TemplateResult {
     return html`
       <style>
         :host,
@@ -41,6 +48,7 @@ export class NidocaTopAppBar extends LitElement {
         }
       </style>
       <nidoca-layout-flex
+        style="width:100%;"
         .flexDirection="${NidocaLayoutFlexDirection.ROW}"
         .flexWrap="${NidocaLayoutFlexWrap.NO_WRAP}"
         .flexJustifyContent="${NidocaLayoutFlexJustifyContent.SPACE_BETWEEN}"

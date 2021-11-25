@@ -52,7 +52,7 @@ export class NidocaSearchBar extends LitElement {
   @query("#inputElement")
   private inputElement: HTMLInputElement | undefined;
 
-  render(): any {
+  render(): TemplateResult {
     return html`
       <style>
         .container {

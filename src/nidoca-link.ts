@@ -31,7 +31,7 @@ export class NidocaLink extends LitElement {
   @property({type: String})
   targetType: string = NidocaTargetType.SELF;
 
-  render(): any {
+  render(): TemplateResult {
     return html` <a href="${this.href}" .target="${this.targetType}">${this.text}<slot></slot></a> `;
   }
 }

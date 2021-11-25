@@ -19,7 +19,7 @@ export class NidocaGallery extends LitElement {
     }
   `;
 
-  render(): any {
+  render(): TemplateResult {
     return html`
     
     <nidoca-layout-spacer .spacerTypes="${[NidocaLayoutSpacerType.BOTTOM]}">

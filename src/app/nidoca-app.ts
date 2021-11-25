@@ -4,10 +4,6 @@ import {property} from "lit/decorators.js";
 import {NidocaRouteListener, NidocaRouter} from "@domoskanonos/nidoca-router";
 import {NidocaTypographyType} from "..";
 import {NidocaTheme} from "../nidoca-meta";
-import { OpenApiGuiService } from "./service/openapi-gui-service";
-import { OpenApiService } from "./service/openapi-service";
-import { OpenApiRestService } from "./service/openapi-rest-service";
-import { OAS } from "./index.app";
 
 @customElement("nidoca-app")
 export class NidocaApp extends LitElement implements NidocaRouteListener {
@@ -61,7 +57,7 @@ export class NidocaApp extends LitElement implements NidocaRouteListener {
     }
   }
 
-  render(): any {
+  render(): TemplateResult {
     return html`
       <nidoca-template
         .prominent="${this.prominent}"
@@ -116,6 +112,7 @@ export class NidocaApp extends LitElement implements NidocaRouteListener {
           </nidoca-list-item>
           <nidoca-list-item @click="${() => NidocaRouter.getUniqueInstance().navigate("settings")}">
             <nidoca-typography .typographyType="${NidocaTypographyType.H6}">Einstellungen</nidoca-typography>
+            <nidoca-layout-spacer slot="graphic"></nidoca-layout-spacer>
           </nidoca-list-item>
           <nidoca-list-item @click="${() => NidocaRouter.getUniqueInstance().navigate("imprint")}">
             <nidoca-typography .typographyType="${NidocaTypographyType.H6}">Impressum</nidoca-typography>
@@ -125,9 +122,8 @@ export class NidocaApp extends LitElement implements NidocaRouteListener {
       </nidoca-template>
       <nidoca-dialog
         .show="${this.showPopup}"
-        .content="${this.popupContent}"
         @nidoca-popup-login-closePopup="${() => (this.showPopup = false)}"
-      >
+      >${this.popupContent}
       </nidoca-dialog>
       <nidoca-elevation
         .show="${this.elevationShow}"

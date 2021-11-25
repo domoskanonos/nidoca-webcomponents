@@ -15,7 +15,7 @@ export class NidocaMenuSection extends LitElement {
   @property({type: Boolean})
   rendered: boolean = true;
 
-  render(): any {
+  render(): TemplateResult {
     return this.rendered
       ? html`
           <nidoca-layout-flex

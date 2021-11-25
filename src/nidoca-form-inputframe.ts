@@ -41,7 +41,7 @@ export class NidocaFormInputframe extends LitElement {
   @query("#slotElement")
   private slotElement: HTMLSlotElement | undefined;
 
-  render(): any {
+  render(): TemplateResult {
     return this.inputframeMode == InputframeMode.NORMAL
       ? html`
           <style>

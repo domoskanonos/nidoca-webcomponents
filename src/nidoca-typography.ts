@@ -142,7 +142,7 @@ export class NidocaTypography extends LitElement {
   @property({type: String})
   text: string = "";
 
-  render(): any {
+  render(): TemplateResult {
     return html`
       <span class="TYPOGRAPHY ${this.typographyType}" style="${this.typographyAlignment}"
         >${this.text}<slot></slot

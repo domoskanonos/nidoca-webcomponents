@@ -110,7 +110,7 @@ export class NidocaBorder extends LitElement {
   @property({type: NidocaBorderSize, converter: String})
   borderSize: NidocaBorderSize = NidocaBorderSize.THIN;
 
-  render(): any {
+  render(): TemplateResult {
     return html`
       <style>
         .BORDER {
