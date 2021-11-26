@@ -1,4 +1,4 @@
-import {css, html, LitElement} from "lit";
+import {css, html, LitElement, TemplateResult} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
 
@@ -9,7 +9,6 @@ export class NidocaListItem extends LitElement {
       display: grid;
       cursor: pointer;
       grid-template-columns: 1fr 1fr minmax(auto, 100%) 1fr;
-      min-height: var(--line-height-massiv);
     }
 
     .slotGraphic,

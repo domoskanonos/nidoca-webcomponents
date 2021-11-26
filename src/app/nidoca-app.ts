@@ -2,12 +2,11 @@ import {html, LitElement} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
 import {NidocaRouteListener, NidocaRouter} from "@domoskanonos/nidoca-router";
-import {NidocaTypographyType} from "..";
+import {NidocaLayoutSpacerSize, NidocaLayoutSpacerType, NidocaMenuItemType, NidocaTypographyType} from "..";
 import {NidocaTheme} from "../nidoca-meta";
 
 @customElement("nidoca-app")
 export class NidocaApp extends LitElement implements NidocaRouteListener {
-
   @property({type: Boolean})
   showPopup: boolean = false;
 
@@ -36,7 +35,6 @@ export class NidocaApp extends LitElement implements NidocaRouteListener {
     super();
     NidocaRouter.getUniqueInstance().subscribe(this);
   }
-
 
   routeChanged(url: string): void {
     console.log("enter new page, url: %s", url);
@@ -102,28 +100,35 @@ export class NidocaApp extends LitElement implements NidocaRouteListener {
 
         <span slot="content">${this.currentPage}</span>
 
-        <nidoca-list slot="sidebar">
+        <nidoca-menu slot="sidebar">
 
-          <nidoca-list-item @click="${() => NidocaRouter.getUniqueInstance().navigate("main")}">
-            <nidoca-typography .typographyType="${NidocaTypographyType.H6}">Start</nidoca-typography>
-          </nidoca-list-item>
-          <nidoca-list-item @click="${() => NidocaRouter.getUniqueInstance().navigate("components")}">
-            <nidoca-typography .typographyType="${NidocaTypographyType.H6}">Komponenten</nidoca-typography>
-          </nidoca-list-item>
-          <nidoca-list-item @click="${() => NidocaRouter.getUniqueInstance().navigate("settings")}">
-            <nidoca-typography .typographyType="${NidocaTypographyType.H6}">Einstellungen</nidoca-typography>
-            <nidoca-layout-spacer slot="graphic"></nidoca-layout-spacer>
-          </nidoca-list-item>
-          <nidoca-list-item @click="${() => NidocaRouter.getUniqueInstance().navigate("imprint")}">
-            <nidoca-typography .typographyType="${NidocaTypographyType.H6}">Impressum</nidoca-typography>
-            <nidoca-icon slot="graphic" icon="gavel"></nidoca-icon>
-          </nidoca-list-item>
-        </nidoca-list>
+         
+          <nidoca-menu-item text="Start" @click="${() => NidocaRouter.getUniqueInstance().navigate("main")}">
+          </nidoca-menu-item>
+         
+         
+         
+          <nidoca-menu-item text="Allgemein" type="${NidocaMenuItemType.SECTION}">
+          </nidoca-menu-item>
+  
+
+       
+
+          
+          <nidoca-menu-item text="Einstellungen" @click="${() => NidocaRouter.getUniqueInstance().navigate("settings")}">
+          </nidoca-menu-item>
+         
+          
+          <nidoca-menu-item icon="gavel" text="Impressum" @click="${() => NidocaRouter.getUniqueInstance().navigate("imprint")}">
+          </nidoca-menu-item>
+
+
+        </nidoca-menu>
+
+
       </nidoca-template>
-      <nidoca-dialog
-        .show="${this.showPopup}"
-        @nidoca-popup-login-closePopup="${() => (this.showPopup = false)}"
-      >${this.popupContent}
+      <nidoca-dialog .show="${this.showPopup}" @nidoca-popup-login-closePopup="${() => (this.showPopup = false)}"
+        >${this.popupContent}
       </nidoca-dialog>
       <nidoca-elevation
         .show="${this.elevationShow}"

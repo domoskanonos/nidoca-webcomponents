@@ -1,9 +1,10 @@
 import {NidocaRouter} from "@domoskanonos/nidoca-router";
-import {css, html, LitElement} from "lit";
+import {css, html, LitElement, TemplateResult} from "lit";
 import {customElement} from "lit/decorators.js";
 import {
   NidocaContainerSize,
   NidocaDevice,
+  NidocaImgProperties,
   NidocaLayoutFlexAlignContent,
   NidocaLayoutFlexAlignItems,
   NidocaLayoutFlexDirection,
@@ -26,58 +27,37 @@ export class NidocaPageMain extends LitElement {
 
   render(): TemplateResult {
     return html`
-      <nidoca-layout-container .containerSize="${NidocaContainerSize._100}" .theme="${NidocaTheme.SURFACE}">
+      <nidoca-layout-container
+        .containerSize="${NidocaContainerSize._100}"
+        .contentSize="${NidocaContainerSize._100}"
+        .theme="${NidocaTheme.SURFACE}"
+      >
         <nidoca-layout-flex
-          .flexDirection="${NidocaLayoutFlexDirection.COLUMN}"
-          .flexWrap="${NidocaLayoutFlexWrap.NO_WRAP}"
-          .flexJustifyContent="${NidocaLayoutFlexJustifyContent.CENTER}"
-          .flexAlignItems="${NidocaLayoutFlexAlignItems.CENTER}"
-          .flexAlignContent="${NidocaLayoutFlexAlignContent.CENTER}"
-          containerStyle="width:100%; height:40vh; color: var(--app-color-primary); background-color:var(--app-color-primary-background-dark);"
+          .flexDirection="${NidocaLayoutFlexDirection.ROW}"
+          .flexWrap="${NidocaLayoutFlexWrap.WRAP}"
+          .flexJustifyContent="${NidocaLayoutFlexJustifyContent.FLEX_START}"
+          .flexAlignItems="${NidocaLayoutFlexAlignItems.FLEX_START}"
+          .flexAlignContent="${NidocaLayoutFlexAlignContent.FLEX_START}"
+          .devices="${[NidocaDevice.DESKTOP, NidocaDevice.TABLET]}"
         >
-          <nidoca-layout-spacer spacerSize="${NidocaLayoutSpacerSize.MAX}">
-            <nidoca-typography .typographyType="${NidocaTypographyType.H1}">nidoca webcomponents</nidoca-typography>
-          </nidoca-layout-spacer>
+          <nidoca-img
+            src="https://raw.githubusercontent.com/domoskanonos/nidoca-assets/main/logo.png"
+            .richMediaProperties="${[NidocaImgProperties.ROUND]}"
+          >
+          </nidoca-img>
 
-          <nidoca-layout-spacer>
-            <nidoca-typography .typographyAlignment="${NidocaTypographyAlignment.CENTER}">
-              nidoca is a lightweight open source ui framework, based on
-              <nidoca-link href="https://www.webcomponents.org/" targetType="${NidocaTargetType.BLANK}"
-                >WebComponents</nidoca-link
-              >,
-              <nidoca-link href="https://www.typescriptlang.org/" targetType="${NidocaTargetType.BLANK}"
-                >Typescript</nidoca-link
+          <nidoca-layout-container
+            .containerSize="${NidocaContainerSize._100}"
+            .contentSize="${NidocaContainerSize._100}"
+            .theme="${NidocaTheme.SURFACE}"
+          >
+            <nidoca-layout-spacer spacerSize="${NidocaLayoutSpacerSize.MAX}">
+              <nidoca-typography .typographyType="${NidocaTypographyType.H1}">Dancier</nidoca-typography>
+              <nidoca-typography .typographyType="${NidocaTypographyType.H3}"
+                >Connecting people through dance</nidoca-typography
               >
-              and
-              <nidoca-link href="https://lit.dev/" targetType="${NidocaTargetType.BLANK}"
-                >Lit</nidoca-link
-              >
-              aufbaut.
-            </nidoca-typography>
-          </nidoca-layout-spacer>
-          <nidoca-layout-spacer spacerSize="${NidocaLayoutSpacerSize.MAX}">
-            <nidoca-layout-flex
-              flexItemBasisValue="auto"
-              .flexDirection="${NidocaLayoutFlexDirection.ROW}"
-              .flexWrap="${NidocaLayoutFlexWrap.WRAP}"
-              .flexJustifyContent="${NidocaLayoutFlexJustifyContent.CENTER}"
-              .flexAlignItems="${NidocaLayoutFlexAlignItems.START}"
-              .flexAlignContent="${NidocaLayoutFlexAlignContent.FLEX_START}"
-            >
-              <nidoca-layout-spacer>
-                <nidoca-button
-                  .theme="${NidocaTheme.SECONDARY}"
-                  text="Installation"
-                  @nidoca-event-button-clicked="${() => {
-                    NidocaRouter.getUniqueInstance().navigate("components");
-                  }}"
-                ></nidoca-button>
-              </nidoca-layout-spacer>
-              <nidoca-layout-spacer>
-                <nidoca-button .theme="${NidocaTheme.SECONDARY}" text="Dokumentation"></nidoca-button>
-              </nidoca-layout-spacer>
-            </nidoca-layout-flex>
-          </nidoca-layout-spacer>
+            </nidoca-layout-spacer>
+          </nidoca-layout-container>
         </nidoca-layout-flex>
       </nidoca-layout-container>
 

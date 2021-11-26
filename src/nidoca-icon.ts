@@ -49,10 +49,14 @@ export class NidocaIcon extends LitElement {
   deactivated: boolean = false;
 
   @property({type: String})
-  cssStyle: string = "font-size: var(--icon-size); padding:var(--space-normal)";
-
-  @property({type: String})
   title: string = "";
+
+  constructor() {
+    super();
+    if (this.getAttribute("style") == null) {
+      this.setAttribute("style", "font-size: var(--icon-size); padding:var(--space-normal)");
+    }
+  }
 
   render(): TemplateResult {
     return html`
@@ -60,7 +64,6 @@ export class NidocaIcon extends LitElement {
         class="material-icons ${this.deactivated ? "deactivated" : ""} ${this.clickable ? "clickable" : ""}"
         title="${this.title}"
         @click="${this.clicked}"
-        style="${this.cssStyle}"
         >${this.icon}</i
       >
     `;

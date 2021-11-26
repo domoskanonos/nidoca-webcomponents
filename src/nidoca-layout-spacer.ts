@@ -14,13 +14,13 @@ export enum NidocaLayoutSpacerType {
 }
 
 export enum NidocaLayoutSpacerSize {
-  ZERO = "--space-zero",
-  LITTLE = "--space-little",
-  SMALL = "--space-small",
-  MEDIUM = "--space-medium",
-  NORMAL = "--space-normal",
-  BIG = "--space-big",
-  MAX = "--space-max",
+  ZERO = "var(--space-zero)",
+  LITTLE = "var(--space-little)",
+  SMALL = "var(--space-small)",
+  MEDIUM = "var(--space-medium)",
+  NORMAL = "var(--space-normal)",
+  BIG = "var(--space-big)",
+  MAX = "var(--space-max)",
 }
 
 @customElement("nidoca-layout-spacer")
@@ -40,7 +40,7 @@ export class NidocaSpacer extends LitElement {
   spacerTypes: NidocaLayoutSpacerType[] = [NidocaLayoutSpacerType.ALL];
 
   @property({type: String})
-  spacerSize: NidocaLayoutSpacerSize = NidocaLayoutSpacerSize.NORMAL;
+  spacerSize: string = NidocaLayoutSpacerSize.NORMAL;
 
   @property({type: String})
   cssStyle: string = "";
@@ -59,9 +59,9 @@ export class NidocaSpacer extends LitElement {
   private toStyle(
     devices: NidocaDevice[],
     spacerTypes: NidocaLayoutSpacerType[],
-    spacerSize: NidocaLayoutSpacerSize
+    spacerSize: string
   ): string {
-    const size = "var(".concat(spacerSize).concat(")");
+    const size = spacerSize;
     let style: string = "";
     spacerTypes.forEach((spacerType: NidocaLayoutSpacerType) => {
       switch (spacerType) {

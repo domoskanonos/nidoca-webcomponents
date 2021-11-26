@@ -6,18 +6,14 @@ import {NidocaLayoutSpacerType, NidocaLayoutSpacerSize} from "./nidoca-layout-sp
 import {NidocaTypographyType} from "./nidoca-typography";
 
 @customElement("nidoca-list-section")
-export class NidocaMenuSection extends LitElement {
+export class NidocaListSection extends LitElement {
   static styles = css``;
 
   @property({type: String})
   text: string = "";
 
-  @property({type: Boolean})
-  rendered: boolean = true;
-
   render(): TemplateResult {
-    return this.rendered
-      ? html`
+    return html`
           <nidoca-layout-flex
             .flexItemProperties="${[]}"
             .flexDirection="${NidocaLayoutFlexDirection.ROW}"
@@ -31,7 +27,6 @@ export class NidocaMenuSection extends LitElement {
               <nidoca-typography .typographyType="${NidocaTypographyType.H6}" text="${this.text}"></nidoca-typography>
             </nidoca-layout-spacer>
           </nidoca-layout-flex>
-        `
-      : html``;
+        `;
   }
 }

@@ -53,7 +53,7 @@ export class NidocaContainer extends LitElement {
   `;
 
   @property({type: NidocaContainerSize, converter: String})
-  containerSize: string = NidocaContainerSize.MIN_CONTENT;
+  containerSize: string = NidocaContainerSize.FIT_CONTENT;
 
   @property({type: NidocaContainerSize, converter: String})
   contentSize: string = NidocaContainerSize.FIT_CONTENT;

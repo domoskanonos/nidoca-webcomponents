@@ -20,6 +20,9 @@ export * from "./nidoca-form-switch";
 export * from "./nidoca-upload";
 export * from "./nidoca-form-abstract-input-element";
 
+export * from "./nidoca-menu-item";
+export * from "./nidoca-menu";
+
 export * from "./nidoca-layout-meta";
 export * from "./nidoca-layout-spacer";
 export * from "./nidoca-layout-section";
