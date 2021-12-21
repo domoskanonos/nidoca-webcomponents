@@ -78,8 +78,8 @@ export class NidocaImg extends LitElement {
 
   private toRichMediaPropertiesString(richMediaProperties: NidocaImgProperties[]) {
     let richMediaPropertiesString: string = "";
-    richMediaProperties.forEach((propertie: NidocaImgProperties) => {
-      richMediaPropertiesString = richMediaPropertiesString.concat(" ").concat(propertie);
+    richMediaProperties.forEach((_propertie: NidocaImgProperties) => {
+      richMediaPropertiesString = richMediaPropertiesString.concat(" ").concat("");
     });
     return richMediaPropertiesString;
   }

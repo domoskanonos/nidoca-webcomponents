@@ -1,8 +1,8 @@
-import {html, LitElement} from "lit";
+import {html, LitElement, TemplateResult} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
 import {NidocaRouteListener, NidocaRouter} from "@domoskanonos/nidoca-router";
-import {NidocaLayoutSpacerSize, NidocaLayoutSpacerType, NidocaMenuItemType, NidocaTypographyType} from "..";
+import {NidocaMenuItemType, NidocaTypographyType} from "..";
 import {NidocaTheme} from "../nidoca-meta";
 
 @customElement("nidoca-app")

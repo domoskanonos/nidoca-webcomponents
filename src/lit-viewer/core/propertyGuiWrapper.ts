@@ -49,7 +49,7 @@ export class PropertyGuiWrapper {
             classWrapper.instance[this.propertyWrapper.propertyName] = eventArg.target.getOutputData().value;
             classGuiWrapper.showcaseElement.requestUpdate();
           }}"
-        ></nidoca-form-switch`;
+        ></nidoca-form-switch>`;
       }
       case RenderType.COMBOBOX: {
         return html`<nidoca-form-combobox
@@ -131,7 +131,7 @@ export class PropertyGuiWrapper {
     switch (propertyType) {
       case RenderType.COMBOBOX:
       case RenderType.ARRAY:
-        return ``;
+        return "";
       case RenderType.STRING:
         return `element.${this.propertyWrapper.propertyName}="${
           classGuiWrapper.classWrapper.instance[this.propertyWrapper.propertyName as keyof LitElement]
@@ -148,7 +148,7 @@ export class PropertyGuiWrapper {
     switch (propertyType) {
       case RenderType.COMBOBOX:
       case RenderType.ARRAY:
-        return ``;
+        return "";
       case RenderType.STRING:
         return `element.${this.propertyWrapper.propertyName}="${
           classGuiWrapper.classWrapper.instance[this.propertyWrapper.propertyName as keyof LitElement]

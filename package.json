@@ -54,7 +54,7 @@
     "build:webcomponents": "webpack --config ./webpack.webcomponent.js ",
     "build:app": "webpack --config ./webpack.app.js ",
     "build:lit-viewer": "webpack --config ./webpack.lit-viewer.js ",
-    "preversion": "npm run build:webcomponents",
+    "preversion": "npm run prebuild",
     "new-patch": "npm version patch -m \"new patch version: %s\" --force",
     "new-minor": "npm version minor -m \"new minor version: %s\" --force",
     "new-major": "npm version major -m \"new major version: %s\" --force",

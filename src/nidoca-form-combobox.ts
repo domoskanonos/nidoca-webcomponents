@@ -186,7 +186,7 @@ export class NidocaFormCombobox extends NidocaFormAbstractInputElement {
       return [];
     }
 
-    let retval: FormOutputData[] = [];
+    const retval: FormOutputData[] = [];
 
     Object.values(type).forEach((item: any) => {
       let value: string = String(Object.keys(type)[Object.values(type).indexOf(item)]);
