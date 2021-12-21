@@ -18,7 +18,7 @@ export class NidocaTransitionType {
 @customElement("nidoca-transition")
 export class NidocaTransition extends LitElement {
 
-  @property({type: NidocaTransitionType})
+  @property({type: Object})
   transitionType: NidocaTransitionType = NidocaTransitionType.CENTER;
 
   @property({type: Number})
@@ -523,6 +523,6 @@ export class NidocaTransition extends LitElement {
   `;
 
   render(): TemplateResult {
-    return html` <div class="${this.transitionType}"><slot></slot></div> `;
+    return html` <div .class="${this.transitionType}"><slot></slot></div> `;
   }
 }

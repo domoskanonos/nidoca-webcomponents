@@ -207,6 +207,6 @@ export class NidocaProgress extends LitElement {
   progressType: ProgressType = ProgressType.PROGRESS_CIRCULAR;
 
   render(): TemplateResult {
-    return html` <progress class="${this.progressType}"></progress> `;
+    return html` <progress .class="${this.progressType}"></progress> `;
   }
 }

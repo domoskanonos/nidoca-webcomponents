@@ -69,7 +69,7 @@ export class NidocaButton extends LitElement {
       </style>
       <nidoca-ripple>
         <nidoca-border
-          theme="${this.theme}"
+          .theme="${this.theme}"
           borderSize="${this.buttonType == NidocaButtonType.TEXT ? NidocaBorderSize.NONE : NidocaBorderSize.THIN}"
         >
           <nidoca-layout-flex
@@ -77,7 +77,7 @@ export class NidocaButton extends LitElement {
             @click="${() => {
               this.clicked();
             }}"
-            flexWrap="${NidocaLayoutFlexWrap.NO_WRAP}"
+            .flexWrap="${NidocaLayoutFlexWrap.NO_WRAP}"
             .flexJustifyContent="${NidocaLayoutFlexJustifyContent.CENTER}"
             .flexAlignItems="${NidocaLayoutFlexAlignItems.CENTER}"
           >

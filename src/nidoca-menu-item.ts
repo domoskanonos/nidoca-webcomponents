@@ -10,14 +10,7 @@ export enum NidocaMenuItemType {
 
 @customElement("nidoca-menu-item")
 export class NidocaMenuItem extends LitElement {
-  static styles = css`
-    .container {
-    
-    }
-
-    .section {
-    }
-
+ static styles = css`
     .item {
       cursor: pointer;
     }
