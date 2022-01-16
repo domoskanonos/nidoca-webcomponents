@@ -3,3 +3,5 @@ node_modules
 public
 lit-viewer
 .vscode
+lib/app
+lib/lit-viewer
