@@ -25,10 +25,10 @@ export class NidocaIconWithDescription extends LitElement {
             style="font-size: 96px; padding:var(--space-normal);"
             backgroundColor="var(--app-color-surface-background)"
           ></nidoca-icon>
-          <nidoca-typography .typographyType="${NidocaTypographyType.H4}">${this.title}</nidoca-typography>
+          <nidoca-typography .typographyType="${NidocaTypographyType.H2}">${this.title}</nidoca-typography>
           <nidoca-layout-spacer>
             <nidoca-typography
-              .typographyType="${NidocaTypographyType.BODY1}"
+              .typographyType="${NidocaTypographyType.BODY2}"
               .typographyAlignment="${NidocaTypographyAlignment.CENTER}"
             >
               ${this.text}

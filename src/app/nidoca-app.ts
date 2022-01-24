@@ -14,7 +14,7 @@ export class NidocaApp extends LitElement implements NidocaRouteListener {
   popupContent: any = html``;
 
   @property({type: Boolean})
-  navigationClosed: boolean = true;
+  navigationClosed: boolean = false;
 
   @property({type: Boolean})
   prominent: boolean = false;
@@ -114,7 +114,7 @@ export class NidocaApp extends LitElement implements NidocaRouteListener {
        
 
           
-          <nidoca-menu-item text="Einstellungen" @click="${() => NidocaRouter.getUniqueInstance().navigate("settings")}">
+          <nidoca-menu-item icon="home" text="Einstellungen" @click="${() => NidocaRouter.getUniqueInstance().navigate("settings")}">
           </nidoca-menu-item>
          
           

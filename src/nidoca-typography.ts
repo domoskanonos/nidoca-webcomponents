@@ -109,13 +109,14 @@ export class NidocaTypography extends LitElement {
     .BODY1 {
       font-size: 1em;
       text-decoration-style: solid;
-      line-height: 1.5;
+      font-size: 1.5rem;
+      font-weight: 200;
     }
 
     .BODY2 {
-      font-size: 0.875rem;
       text-decoration-style: solid;
-      line-height: 1.5;
+      font-size: 1.25rem;
+      font-weight: 300;
     }
 
     .BUTTON {
