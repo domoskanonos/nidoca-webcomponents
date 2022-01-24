@@ -37,27 +37,17 @@ export class NidocaPageMain extends LitElement {
           .flexWrap="${NidocaLayoutFlexWrap.WRAP}"
           .flexJustifyContent="${NidocaLayoutFlexJustifyContent.FLEX_START}"
           .flexAlignItems="${NidocaLayoutFlexAlignItems.FLEX_START}"
-          .flexAlignContent="${NidocaLayoutFlexAlignContent.FLEX_START}"
+          .flexAlignContent="${NidocaLayoutFlexAlignContent.CENTER}"
           .devices="${[NidocaDevice.DESKTOP, NidocaDevice.TABLET]}"
         >
           <nidoca-img
-            src="https://raw.githubusercontent.com/domoskanonos/nidoca-assets/main/logo.png"
+            src="https://raw.githubusercontent.com/domoskanonos/devbox/main/assets/logo-ink.svg"
             .richMediaProperties="${[NidocaImgProperties.ROUND]}"
           >
           </nidoca-img>
+          <nidoca-typography .typographyType="${NidocaTypographyType.H1}">devbox</nidoca-typography>
 
-          <nidoca-layout-container
-            .containerSize="${NidocaContainerSize._100}"
-            .contentSize="${NidocaContainerSize._100}"
-            .theme="${NidocaTheme.SURFACE}"
-          >
-            <nidoca-layout-spacer spacerSize="${NidocaLayoutSpacerSize.MAX}">
-              <nidoca-typography .typographyType="${NidocaTypographyType.H1}">Dancier</nidoca-typography>
-              <nidoca-typography .typographyType="${NidocaTypographyType.H3}"
-                >Connecting people through dance</nidoca-typography
-              >
-            </nidoca-layout-spacer>
-          </nidoca-layout-container>
+          
         </nidoca-layout-flex>
       </nidoca-layout-container>
 

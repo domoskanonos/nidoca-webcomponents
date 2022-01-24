@@ -63,7 +63,7 @@ export class NidocaApp extends LitElement implements NidocaRouteListener {
         .theme="${NidocaTheme.PRIMARY}"
       >
         <nidoca-typography slot="topCenter" typographyType="${NidocaTypographyType.BODY1}"
-          >nidoca framework</nidoca-typography
+          >devbox</nidoca-typography
         >
         <nidoca-icon
           slot="topLeft"

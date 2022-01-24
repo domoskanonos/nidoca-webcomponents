@@ -64,17 +64,17 @@ export class NidocaTypography extends LitElement {
     }
 
     .H1 {
-      font-size: 2.75rem;
+      font-size: 3.5rem;
     }
 
     .H2,
     ::slotted(.H2) {
-      font-size: 2.5rem;
+      font-size: 2.75rem;
       vertical-align: top;
     }
 
     .H3 {
-      font-size: 2rem;
+      font-size: 2.5rem;
     }
 
     .H4 {
