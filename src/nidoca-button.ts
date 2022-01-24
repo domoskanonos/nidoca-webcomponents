@@ -2,7 +2,6 @@ import {css, html, LitElement, TemplateResult} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
 import {NidocaLayoutFlexAlignItems, NidocaLayoutFlexJustifyContent, NidocaLayoutFlexWrap} from "./nidoca-layout-flex";
-import {NidocaLayoutSpacerSize, NidocaLayoutSpacerType} from "./nidoca-layout-spacer";
 import {NidocaTypographyType} from "./nidoca-typography";
 import {NidocaBorderSize, NidocaTheme} from ".";
 
@@ -83,20 +82,17 @@ export class NidocaButton extends LitElement {
           >
             ${this.leadingIcon ? html`<nidoca-icon .icon="${this.leadingIcon}"></nidoca-icon>` : html``}
             ${!this.leadingIcon && this.buttonType != NidocaButtonType.TEXT
-              ? html`<nidoca-layout-spacer spacerSize="${NidocaLayoutSpacerSize.MEDIUM}"> </nidoca-layout-spacer>`
+              ? html`<nidoca-layout-spacer> </nidoca-layout-spacer>`
               : html``}
 
-            <nidoca-layout-spacer
-              spacerSize="${NidocaLayoutSpacerSize.BIG}"
-              .spacerTypes="${[NidocaLayoutSpacerType.TOP, NidocaLayoutSpacerType.BOTTOM]}"
-            >
+            <nidoca-layout-spacer left="var(--space-big)" right="var(--space-big)" top="var(--space-big)" bottom="var(--space-big)">
               <nidoca-typography text="${this.text}" typographyType="${NidocaTypographyType.BUTTON}">
                 <slot></slot>
               </nidoca-typography>
             </nidoca-layout-spacer>
 
             ${this.buttonType != NidocaButtonType.TEXT
-              ? html`<nidoca-layout-spacer spacerSize="${NidocaLayoutSpacerSize.MEDIUM}"></nidoca-layout-spacer>`
+              ? html`<nidoca-layout-spacer></nidoca-layout-spacer>`
               : html``}
           </nidoca-layout-flex>
         </nidoca-border>

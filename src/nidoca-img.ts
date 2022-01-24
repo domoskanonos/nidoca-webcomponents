@@ -3,15 +3,15 @@ import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
 
 export class NidocaImgProperties {
-  static readonly ROUND = "ROUND";
-  static readonly CLICKABLE = "CLICKABLE";
-  static readonly ZOOM_WRAPPED = "ZOOM_WRAPPED";
-  static readonly FULL_WIDTH = "FULL_WIDTH";
+    static readonly ROUND = "ROUND";
+    static readonly CLICKABLE = "CLICKABLE";
+    static readonly ZOOM_WRAPPED = "ZOOM_WRAPPED";
+    static readonly FULL_WIDTH = "FULL_WIDTH";
 }
 
 @customElement("nidoca-img")
 export class NidocaImg extends LitElement {
-  static styles = css`
+    static styles = css`
     :host,
     span {
       margin: 0;
@@ -64,23 +64,31 @@ export class NidocaImg extends LitElement {
     }
   `;
 
-  @property({type: String})
-  src: string = "http://picsum.photos/400/300";
+    @property({type: String})
+    src: string = "http://picsum.photos/400/300";
 
-  @property({type: NidocaImgProperties, converter: Array})
-  richMediaProperties: NidocaImgProperties[] = [NidocaImgProperties.CLICKABLE, NidocaImgProperties.FULL_WIDTH];
+    @property({type: String})
+    width: string = "100%";
 
-  render(): TemplateResult {
-    return html`
-      <span class="${this.toRichMediaPropertiesString(this.richMediaProperties)}"><img src="${this.src}" /></span>
-    `;
-  }
+    @property({type: String})
+    height: string = "100%";
 
-  private toRichMediaPropertiesString(richMediaProperties: NidocaImgProperties[]) {
-    let richMediaPropertiesString: string = "";
-    richMediaProperties.forEach((_propertie: NidocaImgProperties) => {
-      richMediaPropertiesString = richMediaPropertiesString.concat(" ").concat("");
-    });
-    return richMediaPropertiesString;
-  }
+    @property({type: NidocaImgProperties, converter: Array})
+    richMediaProperties: NidocaImgProperties[] = [NidocaImgProperties.CLICKABLE, NidocaImgProperties.FULL_WIDTH];
+
+    render(): TemplateResult {
+        return html`
+            <span class="${this.toRichMediaPropertiesString(this.richMediaProperties)}"><img width="${this.width}"
+                                                                                             height="${this.height}"
+                                                                                             src="${this.src}"/></span>
+        `;
+    }
+
+    private toRichMediaPropertiesString(richMediaProperties: NidocaImgProperties[]) {
+        let richMediaPropertiesString: string = "";
+        richMediaProperties.forEach((_propertie: NidocaImgProperties) => {
+            richMediaPropertiesString = richMediaPropertiesString.concat(" ").concat("");
+        });
+        return richMediaPropertiesString;
+    }
 }

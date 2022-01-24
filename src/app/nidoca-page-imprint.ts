@@ -9,7 +9,6 @@ import {
   NidocaLayoutFlexWrap,
 } from "../nidoca-layout-flex";
 import {NidocaDevice} from "../nidoca-layout-meta";
-import {NidocaLayoutSpacerSize, NidocaLayoutSpacerType} from "../nidoca-layout-spacer";
 
 @customElement("nidoca-page-imprint")
 export class NidocaPageSettings extends LitElement {
@@ -18,8 +17,6 @@ export class NidocaPageSettings extends LitElement {
     return html`
       <nidoca-layout-spacer
         .devices="${[NidocaDevice.MOBILE, NidocaDevice.TABLET]}"
-        spacerSize="${NidocaLayoutSpacerSize.MEDIUM}"
-        .spacerTypes="${[NidocaLayoutSpacerType.LEFT, NidocaLayoutSpacerType.RIGHT]}"
       >
         <nidoca-layout-container .containerSize="${NidocaContainerSize._50}" .devices="${[NidocaDevice.DESKTOP]}">
           <nidoca-layout-flex
@@ -30,19 +27,13 @@ export class NidocaPageSettings extends LitElement {
             .flexAlignContent="${NidocaLayoutFlexAlignContent.CENTER}"
           >
             <nidoca-layout-spacer
-              spacerSize="${NidocaLayoutSpacerSize.MEDIUM}"
-              .spacerTypes="${[NidocaLayoutSpacerType.VERTICAL]}"
             >
               <nidoca-typography .typographyType="${NidocaTypographyType.H2}">Impressum</nidoca-typography>
             </nidoca-layout-spacer>
             <nidoca-layout-spacer
-              spacerSize="${NidocaLayoutSpacerSize.MEDIUM}"
-              .spacerTypes="${[NidocaLayoutSpacerType.VERTICAL]}"
             ></nidoca-layout-spacer>
             <nidoca-typography .typographyType="${NidocaTypographyType.H4}">Angaben gemäß § 5 TMG</nidoca-typography>
             <nidoca-layout-spacer
-              spacerSize="${NidocaLayoutSpacerSize.SMALL}"
-              .spacerTypes="${[NidocaLayoutSpacerType.VERTICAL]}"
             ></nidoca-layout-spacer>
             <nidoca-typography .typographyType="${NidocaTypographyType.BODY1}">Dominik Bruhn</nidoca-typography>
             <nidoca-typography .typographyType="${NidocaTypographyType.BODY1}"
@@ -50,8 +41,6 @@ export class NidocaPageSettings extends LitElement {
             >
             <nidoca-typography .typographyType="${NidocaTypographyType.BODY1}">44309 Dortmund</nidoca-typography>
             <nidoca-layout-spacer
-              spacerSize="${NidocaLayoutSpacerSize.MEDIUM}"
-              .spacerTypes="${[NidocaLayoutSpacerType.VERTICAL]}"
             ></nidoca-layout-spacer>
             <nidoca-typography .typographyType="${NidocaTypographyType.BODY1}"
               >Telefonnummer: +49 152 052 488 62</nidoca-typography
@@ -60,13 +49,9 @@ export class NidocaPageSettings extends LitElement {
               >E-Mail: dominikbruhn [at] googlemail.com</nidoca-typography
             >
             <nidoca-layout-spacer
-              spacerSize="${NidocaLayoutSpacerSize.MEDIUM}"
-              .spacerTypes="${[NidocaLayoutSpacerType.VERTICAL]}"
             ></nidoca-layout-spacer>
             <nidoca-typography .typographyType="${NidocaTypographyType.H4}">Streitsschlichtung</nidoca-typography>
             <nidoca-layout-spacer
-              spacerSize="${NidocaLayoutSpacerSize.SMALL}"
-              .spacerTypes="${[NidocaLayoutSpacerType.VERTICAL]}"
             ></nidoca-layout-spacer>
             <nidoca-typography .typographyType="${NidocaTypographyType.BODY1}"
               >Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:
@@ -75,26 +60,18 @@ export class NidocaPageSettings extends LitElement {
               >. <br />Unsere E-Mail-Adresse und Telefonnummer finden Sie oben auf dieser Seite.</nidoca-typography
             >
             <nidoca-layout-spacer
-              spacerSize="${NidocaLayoutSpacerSize.MEDIUM}"
-              .spacerTypes="${[NidocaLayoutSpacerType.VERTICAL]}"
             ></nidoca-layout-spacer>
             <nidoca-typography .typographyType="${NidocaTypographyType.H4}">Streitschlichtung</nidoca-typography>
             <nidoca-layout-spacer
-              spacerSize="${NidocaLayoutSpacerSize.SMALL}"
-              .spacerTypes="${[NidocaLayoutSpacerType.VERTICAL]}"
             ></nidoca-layout-spacer>
             <nidoca-typography .typographyType="${NidocaTypographyType.BODY1}">
               Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer
               Verbraucherschlichtungsstelle teilzunehmen.
             </nidoca-typography>
             <nidoca-layout-spacer
-              spacerSize="${NidocaLayoutSpacerSize.MEDIUM}"
-              .spacerTypes="${[NidocaLayoutSpacerType.VERTICAL]}"
             ></nidoca-layout-spacer>
             <nidoca-typography .typographyType="${NidocaTypographyType.H4}">Haftungsinhalt</nidoca-typography>
             <nidoca-layout-spacer
-              spacerSize="${NidocaLayoutSpacerSize.SMALL}"
-              .spacerTypes="${[NidocaLayoutSpacerType.VERTICAL]}"
             ></nidoca-layout-spacer>
             <nidoca-typography .typographyType="${NidocaTypographyType.BODY1}">
               Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen
@@ -107,13 +84,9 @@ export class NidocaPageSettings extends LitElement {
               diese Inhalte umgehend entfernen.
             </nidoca-typography>
             <nidoca-layout-spacer
-              spacerSize="${NidocaLayoutSpacerSize.MEDIUM}"
-              .spacerTypes="${[NidocaLayoutSpacerType.VERTICAL]}"
             ></nidoca-layout-spacer>
             <nidoca-typography .typographyType="${NidocaTypographyType.H4}">Haftungslinks</nidoca-typography>
             <nidoca-layout-spacer
-              spacerSize="${NidocaLayoutSpacerSize.SMALL}"
-              .spacerTypes="${[NidocaLayoutSpacerType.VERTICAL]}"
             ></nidoca-layout-spacer>
             <nidoca-typography .typographyType="${NidocaTypographyType.BODY1}">
               Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben.
@@ -125,14 +98,10 @@ export class NidocaPageSettings extends LitElement {
               Rechtsverletzungen werden wir derartige Links umgehend entfernen.
             </nidoca-typography>
             <nidoca-layout-spacer
-              spacerSize="${NidocaLayoutSpacerSize.MEDIUM}"
-              .spacerTypes="${[NidocaLayoutSpacerType.VERTICAL]}"
             ></nidoca-layout-spacer>
 
             <nidoca-typography .typographyType="${NidocaTypographyType.H4}">Copyright</nidoca-typography>
             <nidoca-layout-spacer
-              spacerSize="${NidocaLayoutSpacerSize.SMALL}"
-              .spacerTypes="${[NidocaLayoutSpacerType.VERTICAL]}"
             ></nidoca-layout-spacer>
             <nidoca-typography .typographyType="${NidocaTypographyType.BODY1}">
               Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen
@@ -145,8 +114,6 @@ export class NidocaPageSettings extends LitElement {
               von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen.
             </nidoca-typography>
             <nidoca-layout-spacer
-              spacerSize="${NidocaLayoutSpacerSize.MEDIUM}"
-              .spacerTypes="${[NidocaLayoutSpacerType.VERTICAL]}"
             ></nidoca-layout-spacer>
             <nidoca-typography .typographyType="${NidocaTypographyType.BODY1}"
               >Quelle:

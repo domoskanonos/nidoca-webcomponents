@@ -11,7 +11,6 @@ import {
   NidocaTheme,
   NidocaTypographyType,
 } from "..";
-import {NidocaLayoutSpacerSize, NidocaLayoutSpacerType} from "../nidoca-layout-spacer";
 import {NidocaPrint} from "../nidoca-print";
 import {DUMMY_DESCRIPTION, DUMMY_DESCRIPTION_SHORT, DUMMY_IMAGE, DUMMY_TITLE} from "./constants";
 
@@ -131,15 +130,11 @@ export class NidocaPageGallery extends LitElement {
 
   render(): TemplateResult {
     return html`
-      <nidoca-layout-spacer .spacerSize="${NidocaLayoutSpacerSize.BIG}" .spacerTypes="${[NidocaLayoutSpacerType.TOP]}">
-      </nidoca-layout-spacer>
 
       <nidoca-layout-container containerSize="${NidocaContainerSize._50}">
         <nidoca-typography typographyType="${NidocaTypographyType.H1}">Komponentenübersicht</nidoca-typography>
 
         <nidoca-layout-spacer
-          .spacerSize="${NidocaLayoutSpacerSize.MEDIUM}"
-          .spacerTypes="${[NidocaLayoutSpacerType.TOP, NidocaLayoutSpacerType.BOTTOM]}"
         >
           <nidoca-typography typographyType="${NidocaTypographyType.CAPTION}"
             >Hier findet ihr eine Übersicht über alle verfügbaren Komponenten. Die einzelnen Komponenten sind in
@@ -151,8 +146,6 @@ export class NidocaPageGallery extends LitElement {
         <nidoca-typography typographyType="${NidocaTypographyType.H3}">Nidoca Layout Komponenten</nidoca-typography>
 
         <nidoca-layout-spacer
-          .spacerSize="${NidocaLayoutSpacerSize.MEDIUM}"
-          .spacerTypes="${[NidocaLayoutSpacerType.TOP, NidocaLayoutSpacerType.BOTTOM]}"
         >
           <nidoca-typography typographyType="${NidocaTypographyType.CAPTION}"
             >Nidoca Layout Komponenten dienen der Strukturierung deiner Seite. So kannst du deine Seite konfortable
@@ -162,8 +155,6 @@ export class NidocaPageGallery extends LitElement {
         </nidoca-layout-spacer>
 
         <nidoca-layout-spacer
-          .spacerSize="${NidocaLayoutSpacerSize.MEDIUM}"
-          .spacerTypes="${[NidocaLayoutSpacerType.TOP, NidocaLayoutSpacerType.BOTTOM]}"
         >
           <nidoca-accordion>
             <nidoca-accordion-item header="nidoca-layout-container">
@@ -207,8 +198,6 @@ export class NidocaPageGallery extends LitElement {
         <nidoca-typography typographyType="${NidocaTypographyType.H3}">Hilfskomponenten</nidoca-typography>
 
         <nidoca-layout-spacer
-          .spacerSize="${NidocaLayoutSpacerSize.MEDIUM}"
-          .spacerTypes="${[NidocaLayoutSpacerType.TOP, NidocaLayoutSpacerType.BOTTOM]}"
         >
           <nidoca-accordion>
             <nidoca-accordion-item header="nidoca-ripple">
@@ -248,8 +237,6 @@ export class NidocaPageGallery extends LitElement {
         >
 
         <nidoca-layout-spacer
-          .spacerSize="${NidocaLayoutSpacerSize.MEDIUM}"
-          .spacerTypes="${[NidocaLayoutSpacerType.TOP, NidocaLayoutSpacerType.BOTTOM]}"
         >
           <nidoca-accordion>
             <nidoca-accordion-item header="nidoca-typography">
@@ -301,8 +288,6 @@ export class NidocaPageGallery extends LitElement {
         >
 
         <nidoca-layout-spacer
-          .spacerSize="${NidocaLayoutSpacerSize.MEDIUM}"
-          .spacerTypes="${[NidocaLayoutSpacerType.TOP, NidocaLayoutSpacerType.BOTTOM]}"
         >
           <nidoca-accordion>
             <nidoca-accordion-item header="nidoca-button">
@@ -320,8 +305,6 @@ export class NidocaPageGallery extends LitElement {
         <nidoca-typography typographyType="${NidocaTypographyType.H3}">Inhaltskomponenten</nidoca-typography>
 
         <nidoca-layout-spacer
-          .spacerSize="${NidocaLayoutSpacerSize.MEDIUM}"
-          .spacerTypes="${[NidocaLayoutSpacerType.TOP, NidocaLayoutSpacerType.BOTTOM]}"
         >
           <nidoca-accordion>
             <nidoca-accordion-item header="nidoca-wizard">
@@ -358,8 +341,6 @@ export class NidocaPageGallery extends LitElement {
                   <nidoca-layout-spacer
                     cssStyle="width:100%;"
                     slot="left"
-                    .spacerSize="${NidocaLayoutSpacerSize.BIG}"
-                    .spacerTypes="${[NidocaLayoutSpacerType.LEFT]}"
                   >
                     <nidoca-typography .typographyType="${NidocaTypographyType.BODY1}"
                       >Mein Title</nidoca-typography
@@ -444,23 +425,11 @@ export class NidocaPageGallery extends LitElement {
                 <nidoca-card>
                   <nidoca-img src="http://lorempixel.com/320/200/"></nidoca-img>
                   <nidoca-layout-spacer
-                    .spacerSize="${NidocaLayoutSpacerSize.MEDIUM}"
-                    .spacerTypes="${[
-                      NidocaLayoutSpacerType.TOP,
-                      NidocaLayoutSpacerType.LEFT,
-                      NidocaLayoutSpacerType.RIGHT,
-                    ]}"
                   >
                     <nidoca-typography .typographyType="${NidocaTypographyType.H4}">Meine Karte</nidoca-typography>
                   </nidoca-layout-spacer>
 
                   <nidoca-layout-spacer
-                    .spacerSize="${NidocaLayoutSpacerSize.MEDIUM}"
-                    .spacerTypes="${[
-                      NidocaLayoutSpacerType.TOP,
-                      NidocaLayoutSpacerType.LEFT,
-                      NidocaLayoutSpacerType.RIGHT,
-                    ]}"
                   >
                     <nidoca-typography .typographyType="${NidocaTypographyType.CAPTION}"
                       >Lorem ipsum dolor sit amet.</nidoca-typography
@@ -468,12 +437,6 @@ export class NidocaPageGallery extends LitElement {
                   </nidoca-layout-spacer>
 
                   <nidoca-layout-spacer
-                    .spacerSize="${NidocaLayoutSpacerSize.MEDIUM}"
-                    .spacerTypes="${[
-                      NidocaLayoutSpacerType.TOP,
-                      NidocaLayoutSpacerType.LEFT,
-                      NidocaLayoutSpacerType.RIGHT,
-                    ]}"
                   >
                     <nidoca-typography
                       .typographyType="${NidocaTypographyType.BODY1}"
@@ -555,24 +518,18 @@ export class NidocaPageGallery extends LitElement {
                 <nidoca-list>
                   <nidoca-list-item>
                     <nidoca-layout-spacer
-                      .spacerSize="${NidocaLayoutSpacerSize.MEDIUM}"
-                      .spacerTypes="${[NidocaLayoutSpacerType.LEFT]}"
                     >
                       Home
                     </nidoca-layout-spacer>
                   </nidoca-list-item>
                   <nidoca-list-item>
                     <nidoca-layout-spacer
-                      .spacerSize="${NidocaLayoutSpacerSize.MEDIUM}"
-                      .spacerTypes="${[NidocaLayoutSpacerType.LEFT]}"
                     >
                       Gallery
                     </nidoca-layout-spacer>
                   </nidoca-list-item>
                   <nidoca-list-item>
                     <nidoca-layout-spacer
-                      .spacerSize="${NidocaLayoutSpacerSize.MEDIUM}"
-                      .spacerTypes="${[NidocaLayoutSpacerType.LEFT]}"
                     >
                       Home</nidoca-layout-spacer
                     >
@@ -653,8 +610,6 @@ export class NidocaPageGallery extends LitElement {
                   <nidoca-button slot="action" buttonType="${NidocaButtonType.TEXT}">Ok</nidoca-button>
                   <nidoca-layout-spacer
                     slot="action"
-                    .spacerSize="${NidocaLayoutSpacerSize.BIG}"
-                    .spacerTypes="${[NidocaLayoutSpacerType.RIGHT]}"
                   ></nidoca-layout-spacer>
                   <nidoca-button slot="action" buttonType="${NidocaButtonType.TEXT}">Abbrechen</nidoca-button>
                 </nidoca-dialog-action>

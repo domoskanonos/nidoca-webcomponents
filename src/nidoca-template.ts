@@ -3,7 +3,6 @@ import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
 import {query} from "lit/decorators.js";
 import {NidocaTheme} from ".";
-import {NidocaLayoutSpacerSize} from "./nidoca-layout-spacer";
 
 @customElement("nidoca-template")
 export class NidocaTemplate extends LitElement {
@@ -125,7 +124,7 @@ export class NidocaTemplate extends LitElement {
             <slot class="slotHeader" name="topRight"></slot>
           </span>
           <span class="slotProminent" slot="prominent">
-            <nidoca-layout-spacer spacerSize="${NidocaLayoutSpacerSize.LITTLE}">
+            <nidoca-layout-spacer>
               <slot class="slotHeader" name="prominent"></slot>
             </nidoca-layout-spacer>
           </span>

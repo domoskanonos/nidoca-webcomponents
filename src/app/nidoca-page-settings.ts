@@ -3,7 +3,6 @@ import {customElement} from "lit/decorators.js";
 import {
   NidocaTypographyType,
   NidocaLayoutFlexJustifyContent,
-  NidocaLayoutSpacerSize,
   NidocaLayoutFlexAlignItems,
   NidocaLayoutFlexAlignContent,
   NidocaDevice,
@@ -11,7 +10,6 @@ import {
   NidocaLayoutFlexDirection,
   NidocaLayoutFlexWrap,
 } from "../index";
-import {NidocaLayoutSpacerType} from "../nidoca-layout-spacer";
 
 @customElement("nidoca-page-settings")
 export class NidocaPageSettings extends LitElement {
@@ -20,8 +18,6 @@ export class NidocaPageSettings extends LitElement {
     return html`
       <nidoca-layout-spacer
         .devices="${[NidocaDevice.MOBILE, NidocaDevice.TABLET]}"
-        spacerSize="${NidocaLayoutSpacerSize.MEDIUM}"
-        .spacerTypes="${[NidocaLayoutSpacerType.LEFT, NidocaLayoutSpacerType.RIGHT]}"
       >
         <nidoca-layout-container
           .containerSize="${NidocaContainerSize._50}"
@@ -36,19 +32,13 @@ export class NidocaPageSettings extends LitElement {
             .flexAlignContent="${NidocaLayoutFlexAlignContent.CENTER}"
           >
             <nidoca-layout-spacer
-              spacerSize="${NidocaLayoutSpacerSize.MEDIUM}"
-              .spacerTypes="${[NidocaLayoutSpacerType.VERTICAL]}"
             >
               <nidoca-typography .typographyType="${NidocaTypographyType.H2}">Einstellungen</nidoca-typography>
             </nidoca-layout-spacer>
             <nidoca-layout-spacer
-              spacerSize="${NidocaLayoutSpacerSize.MEDIUM}"
-              .spacerTypes="${[NidocaLayoutSpacerType.VERTICAL]}"
             ></nidoca-layout-spacer>
             <nidoca-typography .typographyType="${NidocaTypographyType.H4}">Angaben gemäß § 5 TMG</nidoca-typography>
             <nidoca-layout-spacer
-              spacerSize="${NidocaLayoutSpacerSize.SMALL}"
-              .spacerTypes="${[NidocaLayoutSpacerType.VERTICAL]}"
             ></nidoca-layout-spacer>
             <nidoca-typography .typographyType="${NidocaTypographyType.BODY1}">Dominik Bruhn</nidoca-typography>
             <nidoca-typography .typographyType="${NidocaTypographyType.BODY1}"
