@@ -992,8 +992,8 @@ ${this.value}</textarea
       background-color: inherit;
       color: inherit;
     }
-  `,Je([rt({type:String}),Ze("design:type",String)],Qe.prototype,"height",void 0),Je([rt({type:String}),Ze("design:type",String)],Qe.prototype,"width",void 0),Je([rt({type:String}),Ze("design:type",String)],Qe.prototype,"left",void 0),Je([rt({type:String}),Ze("design:type",String)],Qe.prototype,"top",void 0),Je([rt({type:String}),Ze("design:type",String)],Qe.prototype,"right",void 0),Je([rt({type:String}),Ze("design:type",String)],Qe.prototype,"bottom",void 0),Qe=Je([Q("nidoca-layout-floating")],Qe);var to=function(t,e,o,n){var r,i=arguments.length,a=i<3?e:null===n?n=Object.getOwnPropertyDescriptor(e,o):n;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)a=Reflect.decorate(t,e,o,n);else for(var s=t.length-1;s>=0;s--)(r=t[s])&&(a=(i<3?r(a):i>3?r(e,o,a):r(e,o))||a);return i>3&&a&&Object.defineProperty(e,o,a),a},eo=function(t,e){if("object"==typeof Reflect&&"function"==typeof Reflect.metadata)return Reflect.metadata(t,e)};class oo{}oo._100="_100",oo._75="_75",oo._50="_50",oo._25="_25",oo.MIN_CONTENT="MIN_CONTENT",oo.AUTO="AUTO";let no=class extends Z{constructor(){super(...arguments),this.containerSize=oo.MIN_CONTENT,this.devices=[Ve.DESKTOP,Ve.TABLET,Ve.MOBILE]}render(){return I`
-      <div class="container ${Ve.applyDevices(this.containerSize,this.devices)}">
+  `,Je([rt({type:String}),Ze("design:type",String)],Qe.prototype,"height",void 0),Je([rt({type:String}),Ze("design:type",String)],Qe.prototype,"width",void 0),Je([rt({type:String}),Ze("design:type",String)],Qe.prototype,"left",void 0),Je([rt({type:String}),Ze("design:type",String)],Qe.prototype,"top",void 0),Je([rt({type:String}),Ze("design:type",String)],Qe.prototype,"right",void 0),Je([rt({type:String}),Ze("design:type",String)],Qe.prototype,"bottom",void 0),Qe=Je([Q("nidoca-layout-floating")],Qe);var to=function(t,e,o,n){var r,i=arguments.length,a=i<3?e:null===n?n=Object.getOwnPropertyDescriptor(e,o):n;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)a=Reflect.decorate(t,e,o,n);else for(var s=t.length-1;s>=0;s--)(r=t[s])&&(a=(i<3?r(a):i>3?r(e,o,a):r(e,o))||a);return i>3&&a&&Object.defineProperty(e,o,a),a},eo=function(t,e){if("object"==typeof Reflect&&"function"==typeof Reflect.metadata)return Reflect.metadata(t,e)};class oo{}oo._100="_100",oo._75="_75",oo._50="_50",oo._25="_25",oo.MIN_CONTENT="MIN_CONTENT",oo.AUTO="AUTO";let no=class extends Z{constructor(){super(...arguments),this.width=oo.MIN_CONTENT,this.devices=[Ve.DESKTOP,Ve.TABLET,Ve.MOBILE]}render(){return I`
+      <div class="container ${Ve.applyDevices(this.width,this.devices)}">
         <div class="container FIT_CONTENT">
           <slot></slot>
         </div>
@@ -1033,7 +1033,7 @@ ${this.value}</textarea
     ::slotted(.FIT_CONTENT) {
       width: fit-content;
     }
-  `,to([rt({type:oo,converter:String}),eo("design:type",String)],no.prototype,"containerSize",void 0),to([rt({type:Ve,converter:Array}),eo("design:type",Array)],no.prototype,"devices",void 0),no=to([Q("nidoca-layout-container")],no);var ro=function(t,e,o,n){var r,i=arguments.length,a=i<3?e:null===n?n=Object.getOwnPropertyDescriptor(e,o):n;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)a=Reflect.decorate(t,e,o,n);else for(var s=t.length-1;s>=0;s--)(r=t[s])&&(a=(i<3?r(a):i>3?r(e,o,a):r(e,o))||a);return i>3&&a&&Object.defineProperty(e,o,a),a},io=function(t,e){if("object"==typeof Reflect&&"function"==typeof Reflect.metadata)return Reflect.metadata(t,e)};let ao=class extends Z{constructor(){super(...arguments),this.icon="",this.clickable=!0,this.deactivated=!1,this.cssStyle="font-size: var(--icon-size); padding:var(--space-normal)",this.title=""}render(){return I`
+  `,to([rt({type:oo,converter:String}),eo("design:type",String)],no.prototype,"width",void 0),to([rt({type:Ve,converter:Array}),eo("design:type",Array)],no.prototype,"devices",void 0),no=to([Q("nidoca-layout-container")],no);var ro=function(t,e,o,n){var r,i=arguments.length,a=i<3?e:null===n?n=Object.getOwnPropertyDescriptor(e,o):n;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)a=Reflect.decorate(t,e,o,n);else for(var s=t.length-1;s>=0;s--)(r=t[s])&&(a=(i<3?r(a):i>3?r(e,o,a):r(e,o))||a);return i>3&&a&&Object.defineProperty(e,o,a),a},io=function(t,e){if("object"==typeof Reflect&&"function"==typeof Reflect.metadata)return Reflect.metadata(t,e)};let ao=class extends Z{constructor(){super(...arguments),this.icon="",this.clickable=!0,this.deactivated=!1,this.cssStyle="font-size: var(--icon-size); padding:var(--space-normal)",this.title=""}render(){return I`
       <i
         class="material-icons ${this.deactivated?"deactivated":""} ${this.clickable?"clickable":""}"
         title="${this.title}"
@@ -2324,7 +2324,7 @@ ${this.value}</textarea
     > <nidoca-typography .typographyType="${Dt.H2}">Vorschau</nidoca-typography>
     </nidoca-layout-spacer>
 
-        <nidoca-layout-container .containerSize="${oo._75}">
+        <nidoca-layout-container .width="${oo._75}">
           <nidoca-layout-spacer>
             <slot @slotchange="${t=>this.slotChanged(t)}"></slot>
           </nidoca-layout-spacer>

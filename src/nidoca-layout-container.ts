@@ -1,17 +1,7 @@
-import {css, html, LitElement, TemplateResult} from "lit";
+import {css, html, LitElement, PropertyValues} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
 import {NidocaDevice, NidocaTheme} from ".";
-
-export class NidocaContainerSize {
-  static readonly _100: string = "_100";
-  static readonly _75: string = "_75";
-  static readonly _50: string = "_50";
-  static readonly _25: string = "_25";
-  static readonly MIN_CONTENT: string = "MIN_CONTENT";
-  static readonly FIT_CONTENT: string = "FIT_CONTENT";
-  static readonly AUTO: string = "AUTO";
-}
 
 @customElement("nidoca-layout-container")
 export class NidocaContainer extends LitElement {
@@ -20,49 +10,41 @@ export class NidocaContainer extends LitElement {
     ::slotted(.container) {
       margin: auto;
     }
-
-    ._100,
-    ::slotted(._100) {
-      width: 100%;
-    }
-    ._75,
-    ::slotted(._75) {
-      width: 75%;
-    }
-    ._50,
-    ::slotted(._50) {
-      width: 50%;
-    }
-    ._25,
-    ::slotted(._25) {
-      width: 25%;
-    }
-
-    .MIN_CONTENT,
-    ::slotted(.MIN_CONTENT) {
-      width: min-content;
-    }
-    .AUTO,
-    ::slotted(.AUTO) {
-      width: auto;
-    }
-    .FIT_CONTENT,
-    ::slotted(.FIT_CONTENT) {
-      width: fit-content;
-    }
   `;
 
-  @property({type: NidocaContainerSize, converter: String})
-  containerSize: string = NidocaContainerSize.FIT_CONTENT;
+  @property({type: String})
+  width: string = "auto";
 
-  @property({type: NidocaContainerSize, converter: String})
-  contentSize: string = NidocaContainerSize.FIT_CONTENT;
+  @property({type: String})
+  height: string = "auto";
+
+  @property({type: String})
+  contentWidth: string = "auto";
+
+  @property({type: String})
+  contentHeight: string = "auto";
 
   @property({type: NidocaDevice, converter: Array})
   devices: NidocaDevice[] = [NidocaDevice.DESKTOP, NidocaDevice.TABLET, NidocaDevice.MOBILE];
 
   @property({type: NidocaTheme, converter: String})
   theme: NidocaTheme = NidocaTheme.BACKGROUND;
+
+  updated(_changedProperties: PropertyValues): void {
+    for (let i = 0; i < this.devices.length; i++) {
+      const device: NidocaDevice = this.devices[i];
+      if (device == NidocaDevice.getCurrentScreen()) {
+        if (_changedProperties.has("width")) {
+          this.style.width = this.width;
+        }
+        if (_changedProperties.has("height")) {
+          this.style.height = this.height;
+        }
+        break;
+      }
+    }
+    super.updated(_changedProperties);
+  }
 
   render(): unknown {
     return html`
@@ -73,11 +55,21 @@ export class NidocaContainer extends LitElement {
           background-color: var(--app-color-${this.theme}-background);
         }
       </style>
-      <div class="container ${NidocaDevice.applyDevices(this.containerSize, this.devices)}">
-        <div class="container ${NidocaDevice.applyDevices(this.contentSize, this.devices)}">
+      <div class="container">
+        <div style="${this.applyDevices(this.contentWidth, this.contentHeight, this.devices)}">
           <slot></slot>
         </div>
       </div>
     `;
+  }
+
+  applyDevices(width: string, height: string, devices: NidocaDevice[]): string {
+    for (let i = 0; i < devices.length; i++) {
+      const device: NidocaDevice = devices[i];
+      if (device == NidocaDevice.getCurrentScreen()) {
+        return `width:${width};height:${height};`;
+      }
+    }
+    return "";
   }
 }

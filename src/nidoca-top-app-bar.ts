@@ -1,14 +1,7 @@
 import {css, html, TemplateResult, LitElement} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
-import {
-  NidocaLayoutFlexAlignContent,
-  NidocaLayoutFlexAlignItems,
-  NidocaLayoutFlexDirection,
-  NidocaLayoutFlexJustifyContent,
-  NidocaLayoutFlexWrap,
-  NidocaTheme,
-} from ".";
+import {NidocaTheme} from ".";
 
 @customElement("nidoca-top-app-bar")
 export class NidocaTopAppBar extends LitElement {
@@ -47,15 +40,9 @@ export class NidocaTopAppBar extends LitElement {
           background-color: var(--app-color-${this.theme}-background);
         }
       </style>
-      <nidoca-layout-flex
-        style="width:100%;"
-        .flexDirection="${NidocaLayoutFlexDirection.ROW}"
-        .flexWrap="${NidocaLayoutFlexWrap.NO_WRAP}"
-        .flexJustifyContent="${NidocaLayoutFlexJustifyContent.SPACE_BETWEEN}"
-        .flexAlignItems="${NidocaLayoutFlexAlignItems.CENTER}"
-        .flexAlignContent="${NidocaLayoutFlexAlignContent.SPACE_AROUND}"
-        containerStyle="${this.cssStyle}"
-        itemStyle=""
+
+      <div
+        style="width:100%; display:flex;flex-direction:row;flex-wrap:nowrap;align-items:center;justify-content:space-between;align-content:space-around;"
       >
         <span>
           <slot name="left"></slot>
@@ -66,7 +53,7 @@ export class NidocaTopAppBar extends LitElement {
         <span>
           <slot name="right"></slot>
         </span>
-      </nidoca-layout-flex>
+      </div>
       ${this.prominent ? html`<slot class="prominent" name="prominent"></slot>` : html``}
     `;
   }

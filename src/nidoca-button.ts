@@ -1,7 +1,6 @@
 import {css, html, LitElement, TemplateResult} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
-import {NidocaLayoutFlexAlignItems, NidocaLayoutFlexJustifyContent, NidocaLayoutFlexWrap} from "./nidoca-layout-flex";
 import {NidocaTypographyType} from "./nidoca-typography";
 import {NidocaBorderSize, NidocaTheme} from ".";
 
@@ -71,30 +70,31 @@ export class NidocaButton extends LitElement {
           .theme="${this.theme}"
           borderSize="${this.buttonType == NidocaButtonType.TEXT ? NidocaBorderSize.NONE : NidocaBorderSize.THIN}"
         >
-          <nidoca-layout-flex
+          <div
             class="BUTTON ${this.buttonType}"
             @click="${() => {
               this.clicked();
             }}"
-            .flexWrap="${NidocaLayoutFlexWrap.NO_WRAP}"
-            .flexJustifyContent="${NidocaLayoutFlexJustifyContent.CENTER}"
-            .flexAlignItems="${NidocaLayoutFlexAlignItems.CENTER}"
+            style="display:flex;flex-wrap:nowrap;align-items:center;justify-content:center;"
           >
             ${this.leadingIcon ? html`<nidoca-icon .icon="${this.leadingIcon}"></nidoca-icon>` : html``}
             ${!this.leadingIcon && this.buttonType != NidocaButtonType.TEXT
               ? html`<nidoca-layout-spacer> </nidoca-layout-spacer>`
               : html``}
 
-            <nidoca-layout-spacer left="var(--space-big)" right="var(--space-big)" top="var(--space-big)" bottom="var(--space-big)">
+            <nidoca-layout-spacer
+              left="var(--space-big)"
+              right="var(--space-big)"
+              top="var(--space-big)"
+              bottom="var(--space-big)"
+            >
               <nidoca-typography text="${this.text}" typographyType="${NidocaTypographyType.BUTTON}">
                 <slot></slot>
               </nidoca-typography>
             </nidoca-layout-spacer>
 
-            ${this.buttonType != NidocaButtonType.TEXT
-              ? html`<nidoca-layout-spacer></nidoca-layout-spacer>`
-              : html``}
-          </nidoca-layout-flex>
+            ${this.buttonType != NidocaButtonType.TEXT ? html`<nidoca-layout-spacer></nidoca-layout-spacer>` : html``}
+          </div>
         </nidoca-border>
       </nidoca-ripple>
     `;

@@ -1,13 +1,6 @@
 import {css, html, LitElement, TemplateResult} from "lit";
 import {customElement} from "lit/decorators.js";
-import {NidocaContainerSize, NidocaTargetType, NidocaTypographyType} from "../index";
-import {
-  NidocaLayoutFlexAlignContent,
-  NidocaLayoutFlexAlignItems,
-  NidocaLayoutFlexDirection,
-  NidocaLayoutFlexJustifyContent,
-  NidocaLayoutFlexWrap,
-} from "../nidoca-layout-flex";
+import {NidocaTargetType, NidocaTypographyType} from "../index";
 import {NidocaDevice} from "../nidoca-layout-meta";
 
 @customElement("nidoca-page-imprint")
@@ -15,64 +8,48 @@ export class NidocaPageSettings extends LitElement {
   static styles = css``;
   render(): TemplateResult {
     return html`
-      <nidoca-layout-spacer
-        .devices="${[NidocaDevice.MOBILE, NidocaDevice.TABLET]}"
-      >
-        <nidoca-layout-container .containerSize="${NidocaContainerSize._50}" .devices="${[NidocaDevice.DESKTOP]}">
-          <nidoca-layout-flex
-            .flexDirection="${NidocaLayoutFlexDirection.COLUMN}"
-            .flexWrap="${NidocaLayoutFlexWrap.NO_WRAP}"
-            .flexJustifyContent="${NidocaLayoutFlexJustifyContent.CENTER}"
-            .flexAlignItems="${NidocaLayoutFlexAlignItems.FLEX_START}"
-            .flexAlignContent="${NidocaLayoutFlexAlignContent.CENTER}"
+      <nidoca-layout-spacer .devices="${[NidocaDevice.MOBILE, NidocaDevice.TABLET]}">
+        <nidoca-layout-container width="50%" .devices="${[NidocaDevice.DESKTOP]}">
+          <div
+            style="display:flex;flex-direction:row;flex-wrap:nowrap;align-items:flex-start;justify-content:center;align-content:center;"
           >
-            <nidoca-layout-spacer
-            >
+            <nidoca-layout-spacer>
               <nidoca-typography .typographyType="${NidocaTypographyType.H2}">Impressum</nidoca-typography>
             </nidoca-layout-spacer>
-            <nidoca-layout-spacer
-            ></nidoca-layout-spacer>
+            <nidoca-layout-spacer></nidoca-layout-spacer>
             <nidoca-typography .typographyType="${NidocaTypographyType.H4}">Angaben gemäß § 5 TMG</nidoca-typography>
-            <nidoca-layout-spacer
-            ></nidoca-layout-spacer>
+            <nidoca-layout-spacer></nidoca-layout-spacer>
             <nidoca-typography .typographyType="${NidocaTypographyType.BODY1}">Dominik Bruhn</nidoca-typography>
             <nidoca-typography .typographyType="${NidocaTypographyType.BODY1}"
               >Holzwickeder Straße 109c</nidoca-typography
             >
             <nidoca-typography .typographyType="${NidocaTypographyType.BODY1}">44309 Dortmund</nidoca-typography>
-            <nidoca-layout-spacer
-            ></nidoca-layout-spacer>
+            <nidoca-layout-spacer></nidoca-layout-spacer>
             <nidoca-typography .typographyType="${NidocaTypographyType.BODY1}"
               >Telefonnummer: +49 152 052 488 62</nidoca-typography
             >
             <nidoca-typography .typographyType="${NidocaTypographyType.BODY1}"
               >E-Mail: dominikbruhn [at] googlemail.com</nidoca-typography
             >
-            <nidoca-layout-spacer
-            ></nidoca-layout-spacer>
+            <nidoca-layout-spacer></nidoca-layout-spacer>
             <nidoca-typography .typographyType="${NidocaTypographyType.H4}">Streitsschlichtung</nidoca-typography>
-            <nidoca-layout-spacer
-            ></nidoca-layout-spacer>
+            <nidoca-layout-spacer></nidoca-layout-spacer>
             <nidoca-typography .typographyType="${NidocaTypographyType.BODY1}"
               >Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:
               <nidoca-link href="https://ec.europa.eu/consumers/odr" targetType="${NidocaTargetType.BLANK}"
                 >https://ec.europa.eu/consumers/odr</nidoca-link
               >. <br />Unsere E-Mail-Adresse und Telefonnummer finden Sie oben auf dieser Seite.</nidoca-typography
             >
-            <nidoca-layout-spacer
-            ></nidoca-layout-spacer>
+            <nidoca-layout-spacer></nidoca-layout-spacer>
             <nidoca-typography .typographyType="${NidocaTypographyType.H4}">Streitschlichtung</nidoca-typography>
-            <nidoca-layout-spacer
-            ></nidoca-layout-spacer>
+            <nidoca-layout-spacer></nidoca-layout-spacer>
             <nidoca-typography .typographyType="${NidocaTypographyType.BODY1}">
               Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer
               Verbraucherschlichtungsstelle teilzunehmen.
             </nidoca-typography>
-            <nidoca-layout-spacer
-            ></nidoca-layout-spacer>
+            <nidoca-layout-spacer></nidoca-layout-spacer>
             <nidoca-typography .typographyType="${NidocaTypographyType.H4}">Haftungsinhalt</nidoca-typography>
-            <nidoca-layout-spacer
-            ></nidoca-layout-spacer>
+            <nidoca-layout-spacer></nidoca-layout-spacer>
             <nidoca-typography .typographyType="${NidocaTypographyType.BODY1}">
               Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen
               Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet,
@@ -83,11 +60,9 @@ export class NidocaPageSettings extends LitElement {
               konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir
               diese Inhalte umgehend entfernen.
             </nidoca-typography>
-            <nidoca-layout-spacer
-            ></nidoca-layout-spacer>
+            <nidoca-layout-spacer></nidoca-layout-spacer>
             <nidoca-typography .typographyType="${NidocaTypographyType.H4}">Haftungslinks</nidoca-typography>
-            <nidoca-layout-spacer
-            ></nidoca-layout-spacer>
+            <nidoca-layout-spacer></nidoca-layout-spacer>
             <nidoca-typography .typographyType="${NidocaTypographyType.BODY1}">
               Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben.
               Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten
@@ -97,12 +72,10 @@ export class NidocaPageSettings extends LitElement {
               jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von
               Rechtsverletzungen werden wir derartige Links umgehend entfernen.
             </nidoca-typography>
-            <nidoca-layout-spacer
-            ></nidoca-layout-spacer>
+            <nidoca-layout-spacer></nidoca-layout-spacer>
 
             <nidoca-typography .typographyType="${NidocaTypographyType.H4}">Copyright</nidoca-typography>
-            <nidoca-layout-spacer
-            ></nidoca-layout-spacer>
+            <nidoca-layout-spacer></nidoca-layout-spacer>
             <nidoca-typography .typographyType="${NidocaTypographyType.BODY1}">
               Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen
               Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der
@@ -113,8 +86,7 @@ export class NidocaPageSettings extends LitElement {
               Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden
               von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen.
             </nidoca-typography>
-            <nidoca-layout-spacer
-            ></nidoca-layout-spacer>
+            <nidoca-layout-spacer></nidoca-layout-spacer>
             <nidoca-typography .typographyType="${NidocaTypographyType.BODY1}"
               >Quelle:
               <nidoca-link
@@ -123,7 +95,7 @@ export class NidocaPageSettings extends LitElement {
                 >https://www.e-recht24.de/impressum-generator.html</nidoca-link
               >
             </nidoca-typography>
-          </nidoca-layout-flex>
+          </div>
         </nidoca-layout-container>
       </nidoca-layout-spacer>
     `;

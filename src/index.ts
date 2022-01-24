@@ -26,7 +26,6 @@ export * from "./nidoca-menu";
 export * from "./nidoca-layout-meta";
 export * from "./nidoca-layout-spacer";
 export * from "./nidoca-layout-section";
-export * from "./nidoca-layout-flex";
 export * from "./nidoca-layout-floating";
 export * from "./nidoca-layout-container";
 
@@ -54,4 +53,6 @@ export * from "./nidoca-avatar";
 export * from "./nidoca-card";
 export * from "./nidoca-gallery";
 export * from "./nidoca-print";
+
+export* from "./nidoca-icon-with-description";
 

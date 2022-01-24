@@ -5,96 +5,97 @@ import {css} from "lit-element";
 import {PropertyGuiWrapper} from "./core/propertyGuiWrapper";
 import {NidocaTypographyType} from "../nidoca-typography";
 import {property} from "lit/decorators.js";
-import {NidocaContainerSize} from "../nidoca-layout-container";
 
 @customElement("lit-viewer")
 export class LitViewer extends LitElement {
-    static styles = css`
+  static styles = css`
     .container {
       display: grid;
       grid-template-columns: 1fr;
     }
   `;
 
-    private clazzGuiWrapper: ClassGuiWrapper<any> | null = null;
+  private clazzGuiWrapper: ClassGuiWrapper<any> | null = null;
 
-    @property({type: Array})
-    customEventNames: string[] = [];
+  @property({type: Array})
+  customEventNames: string[] = [];
 
-    public render(): TemplateResult {
-        return html`
-            <div class="container">
-                <nidoca-layout-spacer left="var(--space-little)" right="var(--space-little)"
-                >
-                    <nidoca-layout-spacer top="var(--space-little)" bottom="var(--space-little)"
-                    >
-                        <nidoca-typography .typographyType="${NidocaTypographyType.H2}">Tag</nidoca-typography>
-                    </nidoca-layout-spacer>
-                    <nidoca-code
-                    >${"<"
-                            .concat(this.clazzGuiWrapper ? this.clazzGuiWrapper.classWrapper.getTagName() : "")
-                            .concat("/>")}
-                    </nidoca-code
-                    >
+  public render(): TemplateResult {
+    return html`
+      <div class="container">
+        <nidoca-layout-spacer left="var(--space-little)" right="var(--space-little)">
+          <nidoca-layout-spacer top="var(--space-little)" bottom="var(--space-little)">
+            <nidoca-typography .typographyType="${NidocaTypographyType.H2}">Tag</nidoca-typography>
+          </nidoca-layout-spacer>
+          <nidoca-code
+            >${"<".concat(this.clazzGuiWrapper ? this.clazzGuiWrapper.classWrapper.getTagName() : "").concat("/>")}
+          </nidoca-code>
 
-                    <nidoca-layout-spacer top="var(--space-little)">
-                        <nidoca-typography .typographyType="${NidocaTypographyType.H2}">Vorschau</nidoca-typography>
-                    </nidoca-layout-spacer>
+          <nidoca-layout-spacer top="var(--space-little)">
+            <nidoca-typography .typographyType="${NidocaTypographyType.H2}">Vorschau</nidoca-typography>
+          </nidoca-layout-spacer>
 
-                    <nidoca-layout-container .containerSize="${NidocaContainerSize._75}">
-                        <nidoca-layout-spacer>
-                            <slot @slotchange="${(event: Event) => this.slotChanged(event)}"></slot>
-                        </nidoca-layout-spacer>
-                    </nidoca-layout-container>
+          <nidoca-layout-container width="75%">
+            <nidoca-layout-spacer>
+              <slot @slotchange="${(event: Event) => this.slotChanged(event)}"></slot>
+            </nidoca-layout-spacer>
+          </nidoca-layout-container>
 
-                    ${this.clazzGuiWrapper
-                            ? html`
-                                ${this.clazzGuiWrapper?.hasProperties()
-                                        ? html`
-                                            <nidoca-layout-spacer
-                                                    top="var(--space-little)" bottom="var(--space-little)"
-                                            >
-                                                <nidoca-typography .typographyType="${NidocaTypographyType.H2}">
-                                                    Attribute
-                                                </nidoca-typography>
-                                            </nidoca-layout-spacer>
+          ${this.clazzGuiWrapper
+            ? html`
+                                ${
+                                  this.clazzGuiWrapper?.hasProperties()
+                                    ? html` <nidoca-layout-spacer
+                                          top="var(--space-little)"
+                                          bottom="var(--space-little)"
+                                        >
+                                          <nidoca-typography .typographyType="${NidocaTypographyType.H2}">
+                                            Attribute
+                                          </nidoca-typography>
+                                        </nidoca-layout-spacer>
 
-                                            <nidoca-table
-                                                    .headers="${["name", "type", "converter type", "render type", "values"]}"
-                                                    .rows="${this.toAttributeRows(this.clazzGuiWrapper.getPropertyGuiWrappers())}"
-                                            >
-                                            </nidoca-table>`
-                                        : html``}
-                                ${this.clazzGuiWrapper?.classWrapper.hasSlots()
-                                        ? html`
-                                            <nidoca-layout-spacer
-                                                    top="var(--space-little)" bottom="var(--space-little)"
-                                            >
-                                                <nidoca-typography .typographyType="${NidocaTypographyType.H2}">Slots
-                                                </nidoca-typography>
-                                            </nidoca-layout-spacer>
+                                        <nidoca-table
+                                          .headers="${["name", "type", "converter type", "render type", "values"]}"
+                                          .rows="${this.toAttributeRows(this.clazzGuiWrapper.getPropertyGuiWrappers())}"
+                                        >
+                                        </nidoca-table>`
+                                    : html``
+                                }
+                                ${
+                                  this.clazzGuiWrapper?.classWrapper.hasSlots()
+                                    ? html` <nidoca-layout-spacer
+                                          top="var(--space-little)"
+                                          bottom="var(--space-little)"
+                                        >
+                                          <nidoca-typography .typographyType="${NidocaTypographyType.H2}"
+                                            >Slots
+                                          </nidoca-typography>
+                                        </nidoca-layout-spacer>
 
-                                            <nidoca-table
-                                                    .headers="${["name"]}"
-                                                    .rows="${this.toSlotRows(this.clazzGuiWrapper?.classWrapper.getSlotNames())}"
-                                            >
-                                            </nidoca-table>`
-                                        : html``}
-                                ${this.customEventNames.length > 0
-                                        ? html`
-                                            <nidoca-layout-spacer
-                                                    top="var(--space-little)" bottom="var(--space-little)"
-                                            >
-                                                <nidoca-typography .typographyType="${NidocaTypographyType.H2}"
-                                                >Custom Events
-                                                </nidoca-typography
-                                                >
-                                            </nidoca-layout-spacer
-                                            >
-                                            <nidoca-table .headers="${["name"]}"
-                                                          .rows="${this.toCustomEventRows(this.customEventNames)}">
-                                            </nidoca-table>`
-                                        : html``}
+                                        <nidoca-table
+                                          .headers="${["name"]}"
+                                          .rows="${this.toSlotRows(this.clazzGuiWrapper?.classWrapper.getSlotNames())}"
+                                        >
+                                        </nidoca-table>`
+                                    : html``
+                                }
+                                ${
+                                  this.customEventNames.length > 0
+                                    ? html` <nidoca-layout-spacer
+                                          top="var(--space-little)"
+                                          bottom="var(--space-little)"
+                                        >
+                                          <nidoca-typography .typographyType="${NidocaTypographyType.H2}"
+                                            >Custom Events
+                                          </nidoca-typography>
+                                        </nidoca-layout-spacer>
+                                        <nidoca-table
+                                          .headers="${["name"]}"
+                                          .rows="${this.toCustomEventRows(this.customEventNames)}"
+                                        >
+                                        </nidoca-table>`
+                                    : html``
+                                }
 
                                 <nidoca-layout-spacer
                                         top="var(--space-little)" bottom="var(--space-little)"
@@ -138,62 +139,62 @@ export class LitViewer extends LitElement {
                                     </nidoca-tab-content>
                                 </nidoca-tabs>
                             `
-                            : html``}
-                </nidoca-layout-spacer>
-            </div>
-        `;
-    }
+            : html``}
+        </nidoca-layout-spacer>
+      </div>
+    `;
+  }
 
-    toAttributeRows(arr: PropertyGuiWrapper[] | undefined) {
-        const retval: string[][] = [[]];
-        if (arr) {
-            arr.map((prop) => {
-                const arr: any[] = [];
-                arr.push(prop.propertyWrapper.propertyName);
-                arr.push(prop.propertyWrapper.getTypeName());
-                arr.push(prop.propertyWrapper.getConverterTypeName());
-                arr.push(prop.propertyWrapper.getRenderType());
-                arr.push(prop.getInputElement(this.clazzGuiWrapper));
-                retval.push(arr);
-                return arr;
-            });
-        }
-        return retval;
+  toAttributeRows(arr: PropertyGuiWrapper[] | undefined) {
+    const retval: string[][] = [[]];
+    if (arr) {
+      arr.map((prop) => {
+        const arr: any[] = [];
+        arr.push(prop.propertyWrapper.propertyName);
+        arr.push(prop.propertyWrapper.getTypeName());
+        arr.push(prop.propertyWrapper.getConverterTypeName());
+        arr.push(prop.propertyWrapper.getRenderType());
+        arr.push(prop.getInputElement(this.clazzGuiWrapper));
+        retval.push(arr);
+        return arr;
+      });
     }
+    return retval;
+  }
 
-    toSlotRows(arr: string[] | undefined) {
-        const retval: string[][] = [[]];
-        if (arr) {
-            arr.map((name) => {
-                const arr: string[] = [];
-                arr.push(name);
-                retval.push(arr);
-                return arr;
-            });
-        }
-        return retval;
+  toSlotRows(arr: string[] | undefined) {
+    const retval: string[][] = [[]];
+    if (arr) {
+      arr.map((name) => {
+        const arr: string[] = [];
+        arr.push(name);
+        retval.push(arr);
+        return arr;
+      });
     }
+    return retval;
+  }
 
-    toCustomEventRows(arr: string[] | undefined) {
-        const retval: string[][] = [[]];
-        if (arr) {
-            arr.map((name) => {
-                const arr: string[] = [];
-                arr.push(name);
-                retval.push(arr);
-                return arr;
-            });
-        }
-        return retval;
+  toCustomEventRows(arr: string[] | undefined) {
+    const retval: string[][] = [[]];
+    if (arr) {
+      arr.map((name) => {
+        const arr: string[] = [];
+        arr.push(name);
+        retval.push(arr);
+        return arr;
+      });
     }
+    return retval;
+  }
 
-    slotChanged(event: Event): void {
-        const slotElement: HTMLSlotElement = <HTMLSlotElement>event.target;
-        const elements: Element[] = slotElement.assignedElements();
-        const firstSlotElement = elements[0];
-        if (firstSlotElement instanceof LitElement) {
-            this.clazzGuiWrapper = new ClassGuiWrapper(this, new ClassWrapper(<LitElement>firstSlotElement));
-        }
-        this.requestUpdate();
+  slotChanged(event: Event): void {
+    const slotElement: HTMLSlotElement = <HTMLSlotElement>event.target;
+    const elements: Element[] = slotElement.assignedElements();
+    const firstSlotElement = elements[0];
+    if (firstSlotElement instanceof LitElement) {
+      this.clazzGuiWrapper = new ClassGuiWrapper(this, new ClassWrapper(<LitElement>firstSlotElement));
     }
+    this.requestUpdate();
+  }
 }

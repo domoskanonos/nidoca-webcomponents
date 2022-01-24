@@ -1,7 +1,7 @@
-import {css, html, TemplateResult,LitElement} from "lit";
+import {css, html, TemplateResult, LitElement} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
-import {NidocaLayoutFlexAlignContent, NidocaLayoutFlexAlignItems, NidocaLayoutFlexDirection, NidocaLayoutFlexJustifyContent, NidocaLayoutFlexWrap, NidocaIconShadowType} from ".";
+import {NidocaIconShadowType} from ".";
 import {NidocaTypographyAlignment, NidocaTypographyType} from "./nidoca-typography";
 
 export enum WizardStepState {
@@ -44,23 +44,11 @@ export class NidocaWizardStep extends LitElement {
 
   render(): TemplateResult {
     return html`
-      <nidoca-layout-flex
-        .flexDirection="${NidocaLayoutFlexDirection.COLUMN}"
-        .flexWrap="${NidocaLayoutFlexWrap.NO_WRAP}"
-        .flexJustifyContent="${NidocaLayoutFlexJustifyContent.SPACE_EVENLY}"
-        .flexAlignItems="${NidocaLayoutFlexAlignItems.FLEX_START}"
-        .flexAlignContent="${NidocaLayoutFlexAlignContent.SPACE_EVENLY}"
-        containerStyle=""
-        itemStyle=""
+      <div
+        style="display:flex;flex-direction:row;flex-wrap:nowrap;align-items:flex-start;justify-content:space-evenly;align-content:space-evenly;"
       >
-        <nidoca-layout-flex
-          .flexDirection="${NidocaLayoutFlexDirection.ROW}"
-          .flexWrap="${NidocaLayoutFlexWrap.NO_WRAP}"
-          .flexJustifyContent="${NidocaLayoutFlexJustifyContent.FLEX_START}"
-          .flexAlignItems="${NidocaLayoutFlexAlignItems.CENTER}"
-          .flexAlignContent="${NidocaLayoutFlexAlignContent.SPACE_EVENLY}"
-          containerStyle=""
-          itemStyle=""
+        <div
+          style="display:flex;flex-direction:row;flex-wrap:nowrap;align-items:center;justify-content:flex-start;align-content:space-evenly;"
         >
           <nidoca-icon
             icon="${this.icon}"
@@ -77,11 +65,11 @@ export class NidocaWizardStep extends LitElement {
           >
           </nidoca-icon>
 
-          ${this.isLast ? html`` : html`<nidoca-icon
-            color="${this.determineBackgroundColor(this.state)}"
-            icon="label_important">
-          </nidoca-icon>`}
-        </nidoca-layout-flex>
+          ${this.isLast
+            ? html``
+            : html`<nidoca-icon color="${this.determineBackgroundColor(this.state)}" icon="label_important">
+              </nidoca-icon>`}
+        </div>
         <nidoca-typography
           style="width:48px;"
           .typographyType="${NidocaTypographyType.OVERLINE}"
@@ -89,7 +77,7 @@ export class NidocaWizardStep extends LitElement {
           text="${this.title}"
           ><slot></slot>
         </nidoca-typography>
-      </nidoca-layout-flex>
+      </div>
     `;
   }
 
@@ -97,8 +85,8 @@ export class NidocaWizardStep extends LitElement {
     return state == WizardStepState.COMPLETED
       ? "var(--app-color-primary)"
       : state == WizardStepState.CURRENT
-        ? "var(--app-color-secondary-background)"
-        : "var(--app-color-surface-background)";
+      ? "var(--app-color-secondary-background)"
+      : "var(--app-color-surface-background)";
   }
 
   private determineColor(state: WizardStepState | undefined): string {

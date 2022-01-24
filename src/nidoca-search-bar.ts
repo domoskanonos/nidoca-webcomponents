@@ -3,14 +3,6 @@ import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
 import {query} from "lit/decorators.js";
 import {NidocaTheme} from ".";
-import {
-  NidocaLayoutFlexAlignContent,
-  NidocaLayoutFlexAlignItems,
-  NidocaLayoutFlexDirection,
-  NidocaLayoutFlexJustifyContent,
-  NidocaLayoutFlexWrap,
-} from "./nidoca-layout-flex";
-import {NidocaLayoutSpacerType} from "./nidoca-layout-spacer";
 
 @customElement("nidoca-search-bar")
 export class NidocaSearchBar extends LitElement {
@@ -60,14 +52,7 @@ export class NidocaSearchBar extends LitElement {
           background-color: var(--app-color-${this.theme}-background);
         }
       </style>
-      <nidoca-layout-flex
-        class="container"
-        .flexDirection="${NidocaLayoutFlexDirection.ROW}"
-        .flexWrap="${NidocaLayoutFlexWrap.NO_WRAP}"
-        .flexJustifyContent="${NidocaLayoutFlexJustifyContent.FLEX_START}"
-        .flexAlignItems="${NidocaLayoutFlexAlignItems.CENTER}"
-        .flexAlignContent="${NidocaLayoutFlexAlignContent.FLEX_START}"
-      >
+      <div style="display:flex;flex-direction:row;flex-wrap:nowrap;align-items:center;">
         <nidoca-icon icon="search"></nidoca-icon>
         <input
           id="inputElement"
@@ -78,7 +63,7 @@ export class NidocaSearchBar extends LitElement {
           @input="${() => this.valueChanged()}"
         />
         <nidoca-icon icon="close" @click="${() => this.clearValue()}"></nidoca-icon>
-      </nidoca-layout-flex>
+      </div>
     `;
   }
 
