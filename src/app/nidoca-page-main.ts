@@ -46,6 +46,12 @@ export class NidocaPageMain extends LitElement {
           </nidoca-layout-container>
         </div>
       </nidoca-layout-container>
+
+
+
+      <nidoca-form-contact></nidoca-form-contact>
+
+
     `;
   }
 }

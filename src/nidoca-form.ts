@@ -15,6 +15,13 @@ export class NidocaForm extends LitElement {
     .container {
       box-sizing: border-box;
     }
+    :host {
+      display: block;
+    }
+    #slot {
+      display: block;
+      width: 100%;
+    }
   `;
 
   @property({type: Boolean})
@@ -22,6 +29,13 @@ export class NidocaForm extends LitElement {
 
   @query("#slotElement")
   private slotElement: HTMLSlotElement | undefined;
+
+  constructor() {
+    super();
+    if (this.getAttribute("style") == null) {
+      this.setAttribute("style", "width:100%;");
+    }
+  }
 
   render(): TemplateResult {
     return html`

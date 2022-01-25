@@ -33,13 +33,13 @@ export class NidocaBorder extends LitElement {
       box-sizing: border-box;
       color: inherit;
       background-color: inherit;
-      float: left;
       clear: none;
-      display: contents;
+      display: inline-block
     }
 
     slot {
       display: inline-block;
+      width:100%;
     }
 
     .FULL_WIDTH {

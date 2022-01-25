@@ -13,7 +13,14 @@ export enum InputframeMode {
 
 @customElement("nidoca-form-inputframe")
 export class NidocaFormInputframe extends LitElement {
-  static styles = css``;
+  static styles = css`
+    :host,
+    slot,
+    .container {
+      display: block;
+      width: 100%;
+    }
+  `;
 
   @property({type: String})
   label: string = "";
@@ -30,11 +37,14 @@ export class NidocaFormInputframe extends LitElement {
   @property({type: String})
   warningText: string = "";
 
-  @property({type: String})
+  @property({type: Object})
   theme: NidocaTheme = NidocaTheme.SURFACE;
 
   @property({type: String})
   inputframeMode: InputframeMode = InputframeMode.NORMAL;
+
+  @property({type: String})
+  trailingIcon: string = "";
 
   @query("#slotElement")
   private slotElement: HTMLSlotElement | undefined;
@@ -43,7 +53,7 @@ export class NidocaFormInputframe extends LitElement {
     return this.inputframeMode == InputframeMode.NORMAL
       ? html`
           <style>
-            .main {
+            .container {
               color: var(--app-color-${this.theme});
               background-color: var(--app-color-${this.theme}-background-light);
             }
@@ -56,7 +66,7 @@ export class NidocaFormInputframe extends LitElement {
             @slotchange="${() => this.setShowLabel()}"
             @click="${() => this.setShowLabel()}"
             @input="${() => this.setShowLabel()}"
-            class="main"
+            class="container"
             .theme="${this.theme}"
             .borderSize="${NidocaBorderSize.MEDIUM}"
             .borderProperties="${[
@@ -65,21 +75,28 @@ export class NidocaFormInputframe extends LitElement {
               NidocaBorderProperty.BOTTOM,
             ]}"
           >
-            <nidoca-layout-spacer cssStyle="width:100%;">
-              <div style="display:flex;align-content:center;">
-                ${this.showLabel
-                  ? html`
-                      <nidoca-typography
-                        style="flex-basis:100%;"
-                        class="label"
-                        .typographyType="${NidocaTypographyType.CAPTION}"
-                        text="${this.label}"
-                      ></nidoca-typography>
-                    `
-                  : html``}
-                <slot style="flex-basis:100%;" id="slotElement"></slot>
-              </div>
-            </nidoca-layout-spacer>
+            <div style="display:flex;align-content:center;align-items:center;flex-direction:row;">
+              ${this.trailingIcon
+                ? html`<nidoca-layout-spacer left="var(--space-medium)"
+                    ><nidoca-icon style="font-size: var(--icon-size-big);" icon="${this.trailingIcon}"></nidoca-icon
+                  ></nidoca-layout-spacer>`
+                : html``}
+              <nidoca-layout-spacer left="var(--space-medium)">
+                <div style="display:flex;align-content:center;flex-direction:column;">
+                  ${this.showLabel
+                    ? html`
+                        <nidoca-typography
+                          style="flex-basis:100%;"
+                          class="label"
+                          .typographyType="${NidocaTypographyType.CAPTION}"
+                          text="${this.label}"
+                        ></nidoca-typography>
+                      `
+                    : html``}
+                  <slot style="flex-basis:100%;" id="slotElement"></slot>
+                </div>
+              </nidoca-layout-spacer>
+            </div>
           </nidoca-border>
 
           ${this.infoText

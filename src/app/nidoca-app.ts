@@ -48,6 +48,12 @@ export class NidocaApp extends LitElement implements NidocaRouteListener {
       case "imprint":
         this.currentPage = html`<nidoca-page-imprint></nidoca-page-imprint>`;
         break;
+      case "terms-of-use":
+        this.currentPage = html`<nidoca-page-terms-of-use></nidoca-page-terms-of-use>`;
+        break;
+      case "privacy":
+        this.currentPage = html`<nidoca-page-privacy></nidoca-page-privacy>`;
+        break;
       case "main":
       default:
         this.currentPage = html`<nidoca-page-main></nidoca-page-main>`;
@@ -62,8 +68,7 @@ export class NidocaApp extends LitElement implements NidocaRouteListener {
         .navigationClosed="${this.navigationClosed}"
         .theme="${NidocaTheme.PRIMARY}"
       >
-        <nidoca-typography slot="topCenter" typographyType="${NidocaTypographyType.BODY1}"
-          ></nidoca-typography>
+        <nidoca-typography slot="topCenter" typographyType="${NidocaTypographyType.BODY1}"></nidoca-typography>
         <nidoca-icon
           slot="topLeft"
           icon="${this.navigationClosed ? "menu" : "clear"}"
@@ -100,31 +105,32 @@ export class NidocaApp extends LitElement implements NidocaRouteListener {
         <span slot="content">${this.currentPage}</span>
 
         <nidoca-menu slot="sidebar">
-
-         
           <nidoca-menu-item text="Start" @click="${() => NidocaRouter.getUniqueInstance().navigate("main")}">
           </nidoca-menu-item>
-         
-         
-         
-          <nidoca-menu-item text="Allgemein" type="${NidocaMenuItemType.SECTION}">
-          </nidoca-menu-item>
-  
 
-       
+          <nidoca-menu-area text="Allgemein"></nidoca-menu-area>
 
-          
-          <nidoca-menu-item icon="home" text="Einstellungen" @click="${() => NidocaRouter.getUniqueInstance().navigate("settings")}">
-          </nidoca-menu-item>
-         
-          
-          <nidoca-menu-item icon="gavel" text="Impressum" @click="${() => NidocaRouter.getUniqueInstance().navigate("imprint")}">
+          <nidoca-menu-item
+            icon="home"
+            text="Einstellungen"
+            @click="${() => NidocaRouter.getUniqueInstance().navigate("settings")}"
+          >
           </nidoca-menu-item>
 
+          <nidoca-menu-area icon="gavel" text="Rechtliches"></nidoca-menu-area>
 
+          <nidoca-menu-item text="Impressum" @click="${() => NidocaRouter.getUniqueInstance().navigate("imprint")}">
+          </nidoca-menu-item>
+
+          <nidoca-menu-item text="Datenschutz" @click="${() => NidocaRouter.getUniqueInstance().navigate("privacy")}">
+          </nidoca-menu-item>
+
+          <nidoca-menu-item
+            text="Nutzungsbedingungen"
+            @click="${() => NidocaRouter.getUniqueInstance().navigate("terms-of-use")}"
+          >
+          </nidoca-menu-item>
         </nidoca-menu>
-
-
       </nidoca-template>
       <nidoca-dialog .show="${this.showPopup}" @nidoca-popup-login-closePopup="${() => (this.showPopup = false)}"
         >${this.popupContent}

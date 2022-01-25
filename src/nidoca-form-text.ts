@@ -92,6 +92,9 @@ export class NidocaFormText extends NidocaFormAbstractInputElement {
   warningText: string = "";
 
   @property({type: String})
+  trailingIcon: string = "";
+
+  @property({type: String})
   inputframeMode: InputframeMode = InputframeMode.NORMAL;
 
   @query("#inputElement")
@@ -107,6 +110,7 @@ export class NidocaFormText extends NidocaFormAbstractInputElement {
             .infoText="${this.infoText}"
             .warningText="${this.warningText}"
             .inputframeMode="${this.inputframeMode}"
+            trailingIcon="${this.trailingIcon}"
           >
             <input
               id="inputElement"

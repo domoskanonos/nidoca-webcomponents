@@ -13,9 +13,10 @@ export enum NidocaButtonType {
 @customElement("nidoca-button")
 export class NidocaButton extends LitElement {
   static styles = css`
-    :host {
+    :host,
+    .fullWidth {
       display: block;
-      width: max-content;
+      width: 100%;
     }
 
     .BUTTON {
@@ -65,8 +66,9 @@ export class NidocaButton extends LitElement {
           color: var(--app-color-${this.theme}-background);
         }
       </style>
-      <nidoca-ripple>
+      <nidoca-ripple class="fullWidth">
         <nidoca-border
+          class="fullWidth"
           .theme="${this.theme}"
           borderSize="${this.buttonType == NidocaButtonType.TEXT ? NidocaBorderSize.NONE : NidocaBorderSize.THIN}"
         >
@@ -83,6 +85,7 @@ export class NidocaButton extends LitElement {
               : html``}
 
             <nidoca-layout-spacer
+              class="fullWidth"
               left="var(--space-big)"
               right="var(--space-big)"
               top="var(--space-big)"

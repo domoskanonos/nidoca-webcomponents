@@ -6,6 +6,9 @@ import {NidocaDevice, NidocaTheme} from ".";
 @customElement("nidoca-layout-container")
 export class NidocaContainer extends LitElement {
   static styles = css`
+    :host {
+      display: block;
+    }
     .container,
     ::slotted(.container) {
       margin: auto;
@@ -13,16 +16,22 @@ export class NidocaContainer extends LitElement {
   `;
 
   @property({type: String})
-  width: string = "auto";
+  width: string = "";
 
   @property({type: String})
-  height: string = "auto";
+  height: string = "";
 
   @property({type: String})
-  contentWidth: string = "auto";
+  minWidth: string = "";
 
   @property({type: String})
-  contentHeight: string = "auto";
+  minHeight: string = "";
+
+  @property({type: String})
+  contentWidth: string = "";
+
+  @property({type: String})
+  contentHeight: string = "";
 
   @property({type: NidocaDevice, converter: Array})
   devices: NidocaDevice[] = [NidocaDevice.DESKTOP, NidocaDevice.TABLET, NidocaDevice.MOBILE];
@@ -34,11 +43,17 @@ export class NidocaContainer extends LitElement {
     for (let i = 0; i < this.devices.length; i++) {
       const device: NidocaDevice = this.devices[i];
       if (device == NidocaDevice.getCurrentScreen()) {
-        if (_changedProperties.has("width")) {
+        if (_changedProperties.has("width") && this.width != "") {
           this.style.width = this.width;
         }
-        if (_changedProperties.has("height")) {
+        if (_changedProperties.has("height") && this.height != "") {
           this.style.height = this.height;
+        }
+        if (_changedProperties.has("minWidth") && this.minWidth != "") {
+          this.style.minWidth = this.minWidth;
+        }
+        if (_changedProperties.has("minHeight") && this.minHeight != "") {
+          this.style.minHeight = this.minHeight;
         }
         break;
       }
@@ -67,7 +82,9 @@ export class NidocaContainer extends LitElement {
     for (let i = 0; i < devices.length; i++) {
       const device: NidocaDevice = devices[i];
       if (device == NidocaDevice.getCurrentScreen()) {
-        return `width:${width};height:${height};`;
+        return `${width != "" ? "width:".concat(width).concat(";") : ""}${
+          height != "" ? "height:".concat(height).concat(";") : ""
+        }`;
       }
     }
     return "";
