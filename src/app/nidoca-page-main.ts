@@ -48,6 +48,27 @@ export class NidocaPageMain extends LitElement {
       </nidoca-layout-container>
 
 
+      <nidoca-section-split-centered>
+
+      
+      <nidoca-img slot="left" src="https://picsum.photos/id/1/800/600/"></nidoca-img>
+
+      <div slot="right" style="display:flex; flex-direction:column;">
+
+      <nidoca-typography .typographyType="${NidocaTypographyType.H2}">ABOUT US</nidoca-typography>
+      <nidoca-layout-spacer bottom="var(--space-medium)"></nidoca-layout-spacer>
+      <nidoca-typography .typographyType="${NidocaTypographyType.BODY1}"><i>Corporate <b>Training and Development</b></i></nidoca-typography>
+      <nidoca-layout-spacer bottom="var(--space-medium)"></nidoca-layout-spacer>
+      <nidoca-typography .typographyType="${NidocaTypographyType.BODY1}">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</nidoca-typography>
+
+
+      </div>
+
+          
+
+
+      </nidoca-section-split-centered>
+
 
       <nidoca-form-contact></nidoca-form-contact>
 

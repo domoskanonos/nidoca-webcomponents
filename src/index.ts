@@ -55,5 +55,10 @@ export * from "./nidoca-card";
 export * from "./nidoca-gallery";
 export * from "./nidoca-print";
 
+
+
+export * from "./nidoca-section-split-centered";
+
+
 export * from "./nidoca-icon-with-description";
 export * from "./nidoca-form-contact";

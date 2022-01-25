@@ -11,9 +11,9 @@ export class NidocaDevice {
 
   static readonly MOBILE = new NidocaDevice("MOBILE", 0, 640);
   static readonly TABLET = new NidocaDevice("TABLET", 641, 1007);
-  static readonly DESKTOP = new NidocaDevice("DESKTOP", 1008, null);
+  static readonly DESKTOP = new NidocaDevice("DESKTOP", 1008);
 
-  constructor(private key: string, private minWidth: number | null, private maxWidth: number | null) {}
+  constructor(public key: string, public minWidth: number, public maxWidth: number = 10240) {}
 
   static getCurrentScreen(): NidocaDevice | null {
     let retval: NidocaDevice | null = null;

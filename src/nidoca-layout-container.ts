@@ -71,7 +71,7 @@ export class NidocaContainer extends LitElement {
         }
       </style>
       <div class="container">
-        <div style="${this.applyDevices(this.contentWidth, this.contentHeight, this.devices)}">
+        <div class="container" style="${this.applyDevices(this.contentWidth, this.contentHeight, this.devices)}">
           <slot></slot>
         </div>
       </div>
