@@ -1,8 +1,8 @@
 import {css, html, TemplateResult, LitElement} from "lit";
-import {customElement} from "lit/decorators.js";
+import {customElement, property} from "lit/decorators.js";
 import {NidocaDevice} from ".";
 
-@customElement("nidoca-section-split-centered")
+@customElement("nidoca-section-split")
 export class NidocaSectionSplitCentered extends LitElement {
   static styles = css`
     .parentContainer,
@@ -14,11 +14,10 @@ export class NidocaSectionSplitCentered extends LitElement {
       display: flex;
       flex-direction: row;
       flex-wrap: nowrap;
-      align-items: center;
+      align-items: flex-start;
       align-content: center;
       padding-top: var(--space-max);
       padding-bottom: var(--space-max);
-      width: 50%;
       margin: auto;
     }
 
@@ -49,10 +48,13 @@ export class NidocaSectionSplitCentered extends LitElement {
     }
   `;
 
+  @property({type: String})
+  width: string = "50%";
+
   render(): TemplateResult {
     return html`
       <div class="parentContainer">
-        <div class="container">
+        <div class="container" style="width:${this.width};">
           <slot class="item" name="left"></slot>
           <slot class="item" name="right"></slot>
         </div>

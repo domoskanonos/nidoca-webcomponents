@@ -45,7 +45,7 @@ export class NidocaFormCombobox extends NidocaFormAbstractInputElement {
   @property()
   value: any = "";
 
-  @property({type: FormOutputData})
+  @property({type: Array})
   options: FormOutputData[] = [];
 
   @property({type: String})

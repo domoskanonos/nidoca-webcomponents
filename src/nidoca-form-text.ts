@@ -7,6 +7,7 @@ import {InputframeMode} from ".";
 import {FormOutputData, NidocaFormAbstractInputElement} from "./nidoca-form-abstract-input-element";
 
 export enum NidocaTextType {
+  COLOR = "color",
   EMAIL = "email",
   HIDDEN = "hidden",
   NUMBER = "number",
@@ -41,7 +42,7 @@ export class NidocaFormText extends NidocaFormAbstractInputElement {
   `;
 
   @property({type: String})
-  type: NidocaTextType = NidocaTextType.TEXT;
+  type: string = NidocaTextType.TEXT;
 
   @property({type: String})
   name: string = "";
@@ -115,7 +116,7 @@ export class NidocaFormText extends NidocaFormAbstractInputElement {
             <input
               id="inputElement"
               name="${this.name}"
-              type="${this.type}"
+              .type="${this.type}"
               value="${this.value}"
               placeholder="${this.placeholder ? this.placeholder : this.label}"
               size="${ifDefined(this.size)}"

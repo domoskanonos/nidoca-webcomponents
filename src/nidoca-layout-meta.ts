@@ -1,3 +1,5 @@
+import { DESKTOP_MIN_WIDTH, MOBILE_MAX_WIDTH, MOBILE_MIN_WIDTH, TABLET_MAX_WIDTH, TABLE_MIN_WIDTH } from ".";
+
 export class NidocaDevice {
   static applyDevices(cssClass: string, devices: NidocaDevice[]): string {
     for (let i = 0; i < devices.length; i++) {
@@ -9,9 +11,9 @@ export class NidocaDevice {
     return "";
   }
 
-  static readonly MOBILE = new NidocaDevice("MOBILE", 0, 640);
-  static readonly TABLET = new NidocaDevice("TABLET", 641, 1007);
-  static readonly DESKTOP = new NidocaDevice("DESKTOP", 1008);
+  static readonly MOBILE = new NidocaDevice("MOBILE", MOBILE_MIN_WIDTH, MOBILE_MAX_WIDTH);
+  static readonly TABLET = new NidocaDevice("TABLET", TABLE_MIN_WIDTH, TABLET_MAX_WIDTH);
+  static readonly DESKTOP = new NidocaDevice("DESKTOP", DESKTOP_MIN_WIDTH);
 
   constructor(public key: string, public minWidth: number, public maxWidth: number = 10240) {}
 

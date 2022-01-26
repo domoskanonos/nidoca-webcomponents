@@ -1,3 +1,5 @@
+import {Nidoca} from "./nidoca-meta";
+
 export * from "./nidoca-meta";
 export * from "./nidoca-accordion";
 export * from "./nidoca-accordion-item";
@@ -55,10 +57,12 @@ export * from "./nidoca-card";
 export * from "./nidoca-gallery";
 export * from "./nidoca-print";
 
+export * from "./nidoca-section";
+export * from "./nidoca-section-centered-split";
 
-
-export * from "./nidoca-section-split-centered";
-
+export * from "./nidoca-article";
 
 export * from "./nidoca-icon-with-description";
 export * from "./nidoca-form-contact";
+
+Nidoca.getUniqueInstance().initDefaultComponents();

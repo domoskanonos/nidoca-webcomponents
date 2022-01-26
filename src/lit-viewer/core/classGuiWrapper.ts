@@ -1,16 +1,16 @@
 import {html, LitElement, TemplateResult} from "lit-element";
-import {LitViewer} from "..";
-import {FormOutputData} from "../..";
 import {ClassWrapper} from "./classWrapper";
 import {PropertyGuiWrapper} from "./propertyGuiWrapper";
 
 export class ClassGuiWrapper<T extends LitElement> {
   public classWrapper: ClassWrapper<T>;
 
-  public showcaseElement: LitViewer;
+  //public showcaseElement: LitViewer;
 
-  constructor(showcaseElement: LitViewer, classWrapper: ClassWrapper<T>) {
-    this.showcaseElement = showcaseElement;
+  //showcaseElement: LitViewer,
+  
+  constructor(classWrapper: ClassWrapper<T>) {
+    //this.showcaseElement = showcaseElement;
     this.classWrapper = classWrapper;
   }
 
@@ -52,6 +52,7 @@ const element : ${this.classWrapper.getClassName()} = document.getElementById("m
     return htmlString;
   }
 
+  //${this.removeOwnTag(this.showcaseElement.innerHTML)}
   public getAsLit(): string {
     const htmlString: string = `
 <${this.classWrapper.getTagName()}
@@ -59,7 +60,7 @@ const element : ${this.classWrapper.getClassName()} = document.getElementById("m
     .map((propertyGuiWrapper) => {
       return propertyGuiWrapper.getAsLit(this);
     })
-    .join("  ")}>${this.removeOwnTag(this.showcaseElement.innerHTML)}
+    .join("  ")}>
 `;
     return htmlString;
   }

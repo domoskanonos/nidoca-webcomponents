@@ -81,7 +81,7 @@ export class NidocaFormInputframe extends LitElement {
                     ><nidoca-icon style="font-size: var(--icon-size-big);" icon="${this.trailingIcon}"></nidoca-icon
                   ></nidoca-layout-spacer>`
                 : html``}
-              <nidoca-layout-spacer left="var(--space-medium)">
+              <nidoca-layout-spacer left="var(--space-medium)" style="width:100%;">
                 <div style="display:flex;align-content:center;flex-direction:column;">
                   ${this.showLabel
                     ? html`

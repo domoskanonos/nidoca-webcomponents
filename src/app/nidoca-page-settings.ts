@@ -1,10 +1,42 @@
 import {css, html, LitElement, TemplateResult} from "lit";
-import {customElement} from "lit/decorators.js";
-import {NidocaDevice, NidocaTypographyType} from "../index";
+import {customElement, property} from "lit/decorators.js";
+import {guard} from "lit/directives/guard.js";
+import {repeat} from "lit/directives/repeat.js";
+import {NidocaDevice, NidocaFormText, NidocaTextType, NidocaTypographyType} from "../index";
 
 @customElement("nidoca-page-settings")
 export class NidocaPageSettings extends LitElement {
   static styles = css``;
+
+  @property({type: Array})
+  cssVars: string[] = [];
+
+  constructor() {
+    super();
+    const getAllCSSVariableNames = (styleSheets: StyleSheetList = document.styleSheets) => {
+      const cssVars: string[] = [];
+
+      Array.from(styleSheets).forEach((styleSheet) => {
+        Array.from(styleSheet.cssRules).forEach((rule: any) => {
+          if (!rule || !rule["style"]) {
+            return;
+          }
+
+          const styleArray: string[] = rule["style"];
+          Array.from(styleArray).forEach((style: string) => {
+            if (style.startsWith("--") && cssVars.indexOf(style) == -1) {
+              cssVars.push(style);
+            }
+          });
+        });
+      });
+
+      return cssVars;
+    };
+
+    this.cssVars = getAllCSSVariableNames();
+  }
+
   render(): TemplateResult {
     return html`
       <nidoca-layout-spacer .devices="${[NidocaDevice.MOBILE, NidocaDevice.TABLET]}">
@@ -23,6 +55,30 @@ export class NidocaPageSettings extends LitElement {
           </div>
         </nidoca-layout-container>
       </nidoca-layout-spacer>
+
+      ${guard(
+        [this.cssVars],
+        () =>
+          html`
+            ${repeat(
+              this.cssVars,
+              (cssVar) => html`
+                <nidoca-form-text
+                  @input="${(event: InputEvent) => {
+                    document.documentElement.style.setProperty(
+                      cssVar,
+                      event.target ? (<NidocaFormText>event.target).getOutputData().value : ""
+                    );
+                  }}"
+                  type="${cssVar.indexOf("color") > -1 ? NidocaTextType.COLOR : NidocaTextType.TEXT}"
+                  name="${cssVar}"
+                  value="${getComputedStyle(document.documentElement).getPropertyValue(cssVar)}"
+                  label="${cssVar}"
+                ></nidoca-form-text>
+              `
+            )}
+          `
+      )}
     `;
   }
 }

@@ -34,6 +34,7 @@ export class NidocaApp extends LitElement implements NidocaRouteListener {
   constructor() {
     super();
     NidocaRouter.getUniqueInstance().subscribe(this);
+    this.routeChanged(NidocaRouter.getUniqueInstance().getCurrentPage());
   }
 
   routeChanged(url: string): void {
@@ -106,6 +107,14 @@ export class NidocaApp extends LitElement implements NidocaRouteListener {
 
         <nidoca-menu slot="sidebar">
           <nidoca-menu-item text="Start" @click="${() => NidocaRouter.getUniqueInstance().navigate("main")}">
+          </nidoca-menu-item>
+
+          <nidoca-menu-area text="Framework"></nidoca-menu-area>
+
+          <nidoca-menu-item
+            text="Komponenten"
+            @click="${() => NidocaRouter.getUniqueInstance().navigate("components")}"
+          >
           </nidoca-menu-item>
 
           <nidoca-menu-area text="Allgemein"></nidoca-menu-area>

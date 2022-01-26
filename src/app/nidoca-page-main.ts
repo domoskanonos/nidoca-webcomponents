@@ -9,15 +9,15 @@ export class NidocaPageMain extends LitElement {
   render(): TemplateResult {
     return html`
       <nidoca-layout-container width="100%" contentWidth="100%" .theme="${NidocaTheme.BACKGROUND}">
-        <nidoca-layout-spacer top="50px" bottom="50px">
+        <nidoca-layout-spacer top="250px" bottom="250px">
           <div style="display:flex;align-items:center;justify-content:center;align-content:flex-start;">
             <nidoca-img
-              width="200px"
+              width="100px"
               src="https://raw.githubusercontent.com/domoskanonos/devbox/main/assets/logo-ink.svg"
               .richMediaProperties="${[NidocaImgProperties.ROUND]}"
             >
             </nidoca-img>
-            <nidoca-typography .typographyType="${NidocaTypographyType.H1}">&nbsp;devbox</nidoca-typography>
+            <nidoca-typography .typographyType="${NidocaTypographyType.H1}">&nbsp;nidoca-webcomponents</nidoca-typography>
           </div>
         </nidoca-layout-spacer>
       </nidoca-layout-container>
@@ -48,26 +48,19 @@ export class NidocaPageMain extends LitElement {
       </nidoca-layout-container>
 
 
-      <nidoca-section-split-centered>
+      <nidoca-section-split>
 
       
       <nidoca-img slot="left" src="https://picsum.photos/id/1/800/600/"></nidoca-img>
 
-      <div slot="right" style="display:flex; flex-direction:column;">
 
-      <nidoca-typography .typographyType="${NidocaTypographyType.H2}">ABOUT US</nidoca-typography>
-      <nidoca-layout-spacer bottom="var(--space-medium)"></nidoca-layout-spacer>
-      <nidoca-typography .typographyType="${NidocaTypographyType.BODY1}"><i>Corporate <b>Training and Development</b></i></nidoca-typography>
-      <nidoca-layout-spacer bottom="var(--space-medium)"></nidoca-layout-spacer>
-      <nidoca-typography .typographyType="${NidocaTypographyType.BODY1}">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</nidoca-typography>
-
-
-      </div>
+      <nidoca-article slot="right"></nidoca-article>
+ 
 
           
 
 
-      </nidoca-section-split-centered>
+      </nidoca-section-split>
 
 
       <nidoca-form-contact></nidoca-form-contact>

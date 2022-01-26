@@ -16,7 +16,11 @@ export class ClassWrapper<T extends LitElement> {
     return this.instance.localName;
   }
 
-  public getClazz(): any {
+  getHTMLTag(): string {
+    return "<".concat(this.getTagName()).concat(">").concat("</").concat(this.getTagName()).concat(">");
+  }
+
+  public getClazz(): unknown {
     return this.instance.constructor;
   }
 

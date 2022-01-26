@@ -2,7 +2,7 @@ import {css, html, TemplateResult, LitElement, PropertyValues} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
 import {query} from "lit/decorators.js";
-import {NidocaTheme} from ".";
+import {MOBILE_MAX_WIDTH, NidocaTheme, TABLET_MAX_WIDTH, TABLE_MIN_WIDTH} from ".";
 
 @customElement("nidoca-template")
 export class NidocaTemplate extends LitElement {
@@ -51,7 +51,22 @@ export class NidocaTemplate extends LitElement {
       transition: all 0.35s ease;
     }
 
-    @media screen and (min-width: 521px) {
+    @media only screen and (min-width: ${TABLE_MIN_WIDTH}px) and (max-width: ${TABLET_MAX_WIDTH}px) {
+      #content {
+        padding-left: var(--space-medium);
+        padding-right: var(--space-medium);
+        background-color: green;
+      }
+    }
+
+    @media only screen and (max-width: ${MOBILE_MAX_WIDTH}px) {
+      #content {
+        padding-left: var(--space-big);
+        padding-right: var(--space-big);
+      }
+    }
+
+    @media screen and (min-width: ${MOBILE_MAX_WIDTH}px) {
       #content {
         transition: margin-left 0.35s linear;
         margin-left: 300px;
