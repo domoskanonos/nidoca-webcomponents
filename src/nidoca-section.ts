@@ -1,4 +1,4 @@
-import {css, html, LitElement, PropertyValues, TemplateResult} from "lit";
+import {css, html, LitElement, TemplateResult} from "lit";
 import {customElement, property, query} from "lit/decorators.js";
 import {NidocaDevice} from ".";
 
@@ -43,24 +43,8 @@ export class NidocaSection extends LitElement {
   @property({type: NidocaDevice, converter: Array})
   devices: NidocaDevice[] = [NidocaDevice.DESKTOP, NidocaDevice.TABLET];
 
-  @property({type: String})
-  width: string = "100%";
-
   @query("#container")
   private container: HTMLElement | undefined;
-
-  updated(_changedProperties: PropertyValues): void {
-    super.updated(_changedProperties);
-    if (_changedProperties.has("width") && this.width != "") {
-      for (let i = 0; i < this.devices.length; i++) {
-        const device: NidocaDevice = this.devices[i];
-        if (this.container != undefined && device == NidocaDevice.getCurrentScreen()) {
-          this.container.style.width = this.width;
-        }
-        break;
-      }
-    }
-  }
 
   render(): TemplateResult {
     return html`

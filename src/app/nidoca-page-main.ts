@@ -13,6 +13,7 @@ export class NidocaPageMain extends LitElement {
           <div style="display:flex;align-items:center;justify-content:center;align-content:flex-start;">
             <nidoca-img
               width="100px"
+              height="100px"
               src="https://raw.githubusercontent.com/domoskanonos/devbox/main/assets/logo-ink.svg"
             >
             </nidoca-img>
