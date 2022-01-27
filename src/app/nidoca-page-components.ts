@@ -12,8 +12,8 @@ export class NidocaPageGallery extends LitElement {
 
   render(): TemplateResult {
     return html`
-      <nidoca-section width="50%">
-        <nidoca-layout-spacer top="var(--space-max)">
+      <nidoca-section style="width:50%;">
+        <nidoca-layout-spacer top="var(--space-max)"  bottom="var(--space-max)">
           <nidoca-article
             title="Komponentenübersicht"
             text="Auf dieser Seite kannst du dir die einzelnen Komponenten von Nidoca anschauen. Mithilfe des Konfigurators, kannst du die Komponenten und deren Attribute verwalten und die Verwendung testen. Anschließend kannst du dir den Quellcode für deine entsprechende Umgebung kopieren und die Komponente verwenden."
@@ -31,7 +31,9 @@ export class NidocaPageGallery extends LitElement {
         </nidoca-layout-spacer>
       </nidoca-section>
 
-      <lit-viewer .element="${Nidoca.getUniqueInstance().registeredElementsMap.get(this.elementName)}"></lit-viewer>
+      <nidoca-section style="width:50%;">
+        <lit-viewer .element="${Nidoca.getUniqueInstance().registeredElementsMap.get(this.elementName)}"></lit-viewer>
+      </nidoca-section>
     `;
   }
 }

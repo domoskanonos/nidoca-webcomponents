@@ -1,7 +1,8 @@
 import {html, LitElement, TemplateResult} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
-import {NidocaImgProperties, NidocaTypographyType} from ".";
+import {NidocaTypographyType} from ".";
+import {NidocaImgProperties} from "./nidoca-img copy";
 
 @customElement("nidoca-avatar")
 export class NidocaAvatar extends LitElement {

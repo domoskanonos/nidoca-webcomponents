@@ -9,7 +9,7 @@ export class NidocaPageSettings extends LitElement {
   render(): TemplateResult {
     return html`
       <nidoca-layout-spacer top="var(--space-max)">
-        <nidoca-section width="50%">
+        <nidoca-section style="width:50%;">
           <nidoca-article title="Impressum" summary="Angaben gemäß § 5 TMG">
             <nidoca-typography .typographyType="${NidocaTypographyType.BODY1}">Dominik Bruhn</nidoca-typography>
             <nidoca-typography .typographyType="${NidocaTypographyType.BODY1}"
@@ -27,7 +27,7 @@ export class NidocaPageSettings extends LitElement {
         </nidoca-section>
       </nidoca-layout-spacer>
       <nidoca-layout-spacer top="var(--space-max)">
-        <nidoca-section width="50%">
+        <nidoca-section style="width:50%;">
           <nidoca-article title="Streitsschlichtung">
             <nidoca-typography .typographyType="${NidocaTypographyType.BODY1}"
               >Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:
@@ -44,7 +44,7 @@ export class NidocaPageSettings extends LitElement {
       </nidoca-layout-spacer>
 
       <nidoca-layout-spacer top="var(--space-max)">
-        <nidoca-section width="50%">
+        <nidoca-section style="width:50%;">
           <nidoca-article title="Haftungsinhalt">
             <nidoca-typography .typographyType="${NidocaTypographyType.BODY1}">
               Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen
@@ -61,7 +61,7 @@ export class NidocaPageSettings extends LitElement {
       </nidoca-layout-spacer>
 
       <nidoca-layout-spacer top="var(--space-max)">
-        <nidoca-section width="50%">
+        <nidoca-section style="width:50%;">
           <nidoca-article title="Haftungslinks">
             <nidoca-typography .typographyType="${NidocaTypographyType.BODY1}">
               Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben.
@@ -77,7 +77,7 @@ export class NidocaPageSettings extends LitElement {
       </nidoca-layout-spacer>
 
       <nidoca-layout-spacer top="var(--space-max)">
-        <nidoca-section width="50%">
+        <nidoca-section style="width:50%;">
           <nidoca-article title="Copyright">
             <nidoca-typography .typographyType="${NidocaTypographyType.BODY1}">
               Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen
@@ -94,7 +94,7 @@ export class NidocaPageSettings extends LitElement {
       </nidoca-layout-spacer>
 
       <nidoca-layout-spacer top="var(--space-max)" bottom="var(--space-max)">
-        <nidoca-section width="50%">
+        <nidoca-section style="width:50%;">
           <nidoca-article title="Quelle">
             <nidoca-link href="https://www.e-recht24.de/impressum-generator.html" targetType="${NidocaTargetType.BLANK}"
               >https://www.e-recht24.de/impressum-generator.html</nidoca-link

@@ -39,46 +39,38 @@ export class NidocaPageSettings extends LitElement {
 
   render(): TemplateResult {
     return html`
-      <nidoca-layout-spacer .devices="${[NidocaDevice.MOBILE, NidocaDevice.TABLET]}">
-        <nidoca-layout-container .devices="${[NidocaDevice.DESKTOP]}" width="50%" contentWidth="auto">
-          <div style="display.flex;">
-            <nidoca-layout-spacer>
-              <nidoca-typography .typographyType="${NidocaTypographyType.H2}">Einstellungen</nidoca-typography>
-            </nidoca-layout-spacer>
-            <nidoca-layout-spacer></nidoca-layout-spacer>
-            <nidoca-typography .typographyType="${NidocaTypographyType.H4}">Angaben gemäß § 5 TMG</nidoca-typography>
-            <nidoca-layout-spacer></nidoca-layout-spacer>
-            <nidoca-typography .typographyType="${NidocaTypographyType.BODY1}">Dominik Bruhn</nidoca-typography>
-            <nidoca-typography .typographyType="${NidocaTypographyType.BODY1}"
-              >Holzwickeder Straße 109c</nidoca-typography
-            >
-          </div>
-        </nidoca-layout-container>
-      </nidoca-layout-spacer>
+      <nidoca-layout-spacer top="var(--space-max)">
+        <nidoca-section style="width:50%;">
+          <nidoca-article title="CSS Variablen">
+            ${guard(
+              [this.cssVars],
+              () =>
+                html`
+                  ${repeat(
+                    this.cssVars,
+                    (cssVar) => html`
+                      <nidoca-form-text
+                      style="width:100%;"
+                        @input="${(event: InputEvent) => {
+                          document.documentElement.style.setProperty(
+                            cssVar,
+                            event.target ? (<NidocaFormText>event.target).getOutputData().value : ""
+                          );
+                        }}"
+                        type="${cssVar.indexOf("color") > -1 ? NidocaTextType.COLOR : NidocaTextType.TEXT}"
+                        name="${cssVar}"
+                        value="${getComputedStyle(document.documentElement).getPropertyValue(cssVar).trim()}"
+                        label="${cssVar}"
+                      ></nidoca-form-text>
+                      <nidoca-layout-spacer top="var(--space-medium)"></nidoca-layout-spacer>
 
-      ${guard(
-        [this.cssVars],
-        () =>
-          html`
-            ${repeat(
-              this.cssVars,
-              (cssVar) => html`
-                <nidoca-form-text
-                  @input="${(event: InputEvent) => {
-                    document.documentElement.style.setProperty(
-                      cssVar,
-                      event.target ? (<NidocaFormText>event.target).getOutputData().value : ""
-                    );
-                  }}"
-                  type="${cssVar.indexOf("color") > -1 ? NidocaTextType.COLOR : NidocaTextType.TEXT}"
-                  name="${cssVar}"
-                  value="${getComputedStyle(document.documentElement).getPropertyValue(cssVar)}"
-                  label="${cssVar}"
-                ></nidoca-form-text>
-              `
+                    `
+                  )}
+                `
             )}
-          `
-      )}
+          </nidoca-article>
+        </nidoca-section>
+      </nidoca-layout-spacer>
     `;
   }
 }

@@ -117,15 +117,6 @@ export class NidocaApp extends LitElement implements NidocaRouteListener {
           >
           </nidoca-menu-item>
 
-          <nidoca-menu-area text="Allgemein"></nidoca-menu-area>
-
-          <nidoca-menu-item
-            icon="home"
-            text="Einstellungen"
-            @click="${() => NidocaRouter.getUniqueInstance().navigate("settings")}"
-          >
-          </nidoca-menu-item>
-
           <nidoca-menu-area icon="gavel" text="Rechtliches"></nidoca-menu-area>
 
           <nidoca-menu-item text="Impressum" @click="${() => NidocaRouter.getUniqueInstance().navigate("imprint")}">
@@ -137,6 +128,15 @@ export class NidocaApp extends LitElement implements NidocaRouteListener {
           <nidoca-menu-item
             text="Nutzungsbedingungen"
             @click="${() => NidocaRouter.getUniqueInstance().navigate("terms-of-use")}"
+          >
+          </nidoca-menu-item>
+
+          <nidoca-menu-area text="Sonstiges"></nidoca-menu-area>
+
+          <nidoca-menu-item
+            icon="home"
+            text="Einstellungen"
+            @click="${() => NidocaRouter.getUniqueInstance().navigate("settings")}"
           >
           </nidoca-menu-item>
         </nidoca-menu>

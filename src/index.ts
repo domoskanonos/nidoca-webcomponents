@@ -58,7 +58,6 @@ export * from "./nidoca-gallery";
 export * from "./nidoca-print";
 
 export * from "./nidoca-section";
-export * from "./nidoca-section-centered-split";
 
 export * from "./nidoca-article";
 
@@ -66,3 +65,5 @@ export * from "./nidoca-icon-with-description";
 export * from "./nidoca-form-contact";
 
 Nidoca.getUniqueInstance().initDefaultComponents();
+
+//window.addEventListener("resize", () => {  this.requestUpdate(); });

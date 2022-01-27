@@ -41,8 +41,8 @@ export class LitViewer extends LitElement {
   public render(): TemplateResult {
     return this.clazzGuiWrapper
       ? html`
-          <nidoca-section-split width="100%">
-            <div slot="left">
+          <nidoca-section>
+            <div>
               <nidoca-layout-spacer top="var(--space-little)" bottom="var(--space-little)">
                 <nidoca-typography .typographyType="${NidocaTypographyType.H2}">Tag</nidoca-typography>
               </nidoca-layout-spacer>
@@ -79,7 +79,7 @@ export class LitViewer extends LitElement {
                 : html``}
             </div>
 
-            <nidoca-tabs tabIndex="0" slot="right">
+            <nidoca-tabs tabIndex="0">
               <nidoca-tab slot="tab">Vorschau</nidoca-tab>
               <nidoca-tab slot="tab">Javascript</nidoca-tab>
               <nidoca-tab slot="tab">Typescript</nidoca-tab>
@@ -118,7 +118,7 @@ export class LitViewer extends LitElement {
                 </nidoca-layout-spacer>
               </nidoca-tab-content>
             </nidoca-tabs>
-          </nidoca-section-split>
+          </nidoca-section>
         `
       : html``;
   }

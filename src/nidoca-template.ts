@@ -7,6 +7,7 @@ import {MOBILE_MAX_WIDTH, NidocaTheme, TABLET_MAX_WIDTH, TABLE_MIN_WIDTH} from "
 @customElement("nidoca-template")
 export class NidocaTemplate extends LitElement {
   static styles = css`
+
     .slotHeader {
       display: flex;
       align-items: center;
@@ -53,16 +54,11 @@ export class NidocaTemplate extends LitElement {
 
     @media only screen and (min-width: ${TABLE_MIN_WIDTH}px) and (max-width: ${TABLET_MAX_WIDTH}px) {
       #content {
-        padding-left: var(--space-medium);
-        padding-right: var(--space-medium);
-        background-color: green;
       }
     }
 
     @media only screen and (max-width: ${MOBILE_MAX_WIDTH}px) {
       #content {
-        padding-left: var(--space-big);
-        padding-right: var(--space-big);
       }
     }
 
