@@ -5,6 +5,9 @@ import {property} from "lit/decorators.js";
 @customElement("nidoca-icon")
 export class NidocaIcon extends LitElement {
   static styles = css`
+    :host {
+      line-height: 0;
+    }
     .material-icons {
       font-family: "Material Icons";
       font-weight: normal;

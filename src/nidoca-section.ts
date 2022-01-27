@@ -70,31 +70,43 @@ export class NidocaSection extends LitElement {
 
   slotChanged(event: Event): void {
     const slotElement: HTMLSlotElement = <HTMLSlotElement>event.target;
+    const slotWidth = slotElement.offsetWidth;
     const elements: Element[] = slotElement.assignedElements();
     const elementSize = elements.length;
     const modifyElements: HTMLElement[] = [];
+    let elementWidths: number = 0;
     for (let index = 0; index < elementSize; index++) {
       const element: Element = elements[index];
       element.setAttribute("class", "item");
       for (let i = 0; i < this.devices.length; i++) {
         const device: NidocaDevice = this.devices[i];
-        if (
-          element instanceof HTMLElement &&
-          element.style.width.length == 0 &&
-          element.style.flexBasis.length == 0 &&
-          device == NidocaDevice.getCurrentScreen()
-        ) {
-          modifyElements.push(element);
+        if (element instanceof HTMLElement) {
+          const elementWidthStyle = element.style.width;
+          if (elementWidthStyle.length == 0 && device == NidocaDevice.getCurrentScreen()) {
+            modifyElements.push(element);
+          } else {
+            const elementWidthToUpperCase = elementWidthStyle.toUpperCase();
+            const elementWidth: number =
+              elementWidthToUpperCase.indexOf("PX") > -1
+                ? Number(elementWidthToUpperCase.replace("PX", ""))
+                : (Number(elementWidthToUpperCase.replace("%", "")) / 100) * slotWidth;
+            elementWidths += elementWidth;
+          }
+          break;
         }
-        break;
       }
     }
-
-    Hier noch die Größe des eigentlichen Elements abziehen udn die parent größe als grundlage nehmen
+    let calculationPercent: number = 100;
+    if (elementWidths > 0) {
+      console.log(elementWidths);
+      console.log(slotWidth);
+      calculationPercent = 100 - 100 * (elementWidths / slotWidth);
+      console.log(calculationPercent);
+    }
     const modifyElementsSize = modifyElements.length;
     for (let index = 0; index < modifyElementsSize; index++) {
       const htmlElement: HTMLElement = modifyElements[index];
-      htmlElement.style.flexBasis = String(100 / modifyElementsSize) + "%";
+      htmlElement.style.width = String(calculationPercent / modifyElementsSize) + "%";
     }
   }
 }

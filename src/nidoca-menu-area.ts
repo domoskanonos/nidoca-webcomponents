@@ -17,9 +17,9 @@ export class NidocaMenuArea extends LitElement {
   render(): TemplateResult {
     return html`
       <div class="container">
-        <nidoca-layout-spacer left="10px" right="36px"></nidoca-layout-spacer>
+        <nidoca-layout-spacer left="10px"></nidoca-layout-spacer>
         ${this.text
-          ? html`<nidoca-typography .typographyType="${NidocaTypographyType.CAPTION}">${this.text}</nidoca-typography>`
+          ? html`<nidoca-typography .typographyType="${NidocaTypographyType.H5}">${this.text}</nidoca-typography>`
           : html``}
         <slot></slot>
       </div>
