@@ -70,7 +70,6 @@ export class NidocaFormInputframe extends LitElement {
             .theme="${this.theme}"
             .borderSize="${NidocaBorderSize.MEDIUM}"
             .borderProperties="${[
-              NidocaBorderProperty.FULL_WIDTH,
               NidocaBorderProperty.BOTTOM_SELECTED,
               NidocaBorderProperty.BOTTOM,
             ]}"

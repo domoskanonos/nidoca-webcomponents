@@ -2,7 +2,7 @@ import {css, html, LitElement, TemplateResult} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
 import {query} from "lit/decorators.js";
-import {NidocaBorderProperty} from ".";
+import {NidocaTheme} from ".";
 import {NidocaAccordionItem} from "./nidoca-accordion-item";
 
 export enum AccordionType {
@@ -12,22 +12,36 @@ export enum AccordionType {
 
 @customElement("nidoca-accordion")
 export class NidocaAccordion extends LitElement {
-  static styles = css``;
+  static styles = css`
+    :host {
+      border-top-style: solid;
+      border-width: thin;
+      display: block;
+      width: 100%;
+      box-sizing: border-box;
+    }
 
-  @property({type: AccordionType})
-  accordionType: AccordionType = AccordionType.SINGLE;
+    slot {
+      font-size: 0;
+    }
+  `;
+
+  @property({type: NidocaTheme, converter: String})
+  theme: NidocaTheme = NidocaTheme.SURFACE;
+
+  @property({type: AccordionType, converter: String})
+  accordionType: string = AccordionType.SINGLE;
 
   @query("#accordionSlot")
   private accordionSlot: HTMLSlotElement | undefined;
 
   render(): TemplateResult {
     return html`
-      <nidoca-border
-        .borderProperties="${[NidocaBorderProperty.TOP, NidocaBorderProperty.FULL_WIDTH]}"
+      ${NidocaTheme.getStyle(this.theme)}
+      <slot
         @nidoca-event-accordion-item-clicked="${(event: CustomEvent) => this.accordionSwitched(event)}"
-      >
-        <slot id="accordionSlot"></slot>
-      </nidoca-border>
+        id="accordionSlot"
+      ></slot>
     `;
   }
 

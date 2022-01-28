@@ -7,11 +7,9 @@ import {NidocaTheme} from ".";
 export class NidocaTopAppBar extends LitElement {
   static styles = css`
     :host {
-      height: 60px;
       width: 100%;
       position: relativ;
       display: block;
-      width: 100%;
     }
 
     slot {
@@ -25,7 +23,7 @@ export class NidocaTopAppBar extends LitElement {
     }
   `;
 
-  @property({type: String})
+  @property({type: NidocaTheme, converter: String})
   theme: string = NidocaTheme.PRIMARY;
 
   @property({type: Boolean})
@@ -33,16 +31,9 @@ export class NidocaTopAppBar extends LitElement {
 
   render(): TemplateResult {
     return html`
-      <style>
-        :host,
-        slot {
-          color: var(--app-color-${this.theme});
-          background-color: var(--app-color-${this.theme}-background);
-        }
-      </style>
-
+      ${NidocaTheme.getStyle(this.theme)}
       <div
-        style="width:100%; display:flex;flex-direction:row;flex-wrap:nowrap;align-items:center;justify-content:space-between;align-content:space-around;"
+        style="min-height: var(--line-height-massiv);display:flex;flex-direction:row;flex-wrap:nowrap;align-items:center;justify-content:space-between;align-content:space-around;"
       >
         <span>
           <slot name="left"></slot>

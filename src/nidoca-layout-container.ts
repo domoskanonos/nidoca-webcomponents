@@ -63,14 +63,8 @@ export class NidocaContainer extends LitElement {
 
   render(): unknown {
     return html`
-      <style>
-        .container,
-        ::slotted(.container) {
-          color: var(--app-color-${this.theme});
-          background-color: var(--app-color-${this.theme}-background);
-        }
-      </style>
-      <div class="container">
+      ${NidocaTheme.getStyle(this.theme)}
+      <div class="container theme">
         <div class="container" style="${this.applyDevices(this.contentWidth, this.contentHeight, this.devices)}">
           <slot></slot>
         </div>

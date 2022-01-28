@@ -4,7 +4,7 @@ export const TABLE_MIN_WIDTH = 641;
 export const TABLET_MAX_WIDTH = 1007;
 export const DESKTOP_MIN_WIDTH = 1008;
 
-import {html, TemplateResult} from "lit";
+import {html, HTMLTemplateResult, TemplateResult} from "lit";
 import {
   NidocaArticle,
   NidocaAvatar,
@@ -16,6 +16,7 @@ import {
   NidocaProgress,
   NidocaSearchBar,
   NidocaTypography,
+  NidocaTypographyType,
 } from ".";
 
 export class Nidoca {
@@ -112,16 +113,15 @@ export class Nidoca {
     );
 
     this._registeredElementsMap.set(
-      "nidoca-accordion-item",
-      html`<nidoca-accordion-item header="Mein Bild"
-        ><nidoca-img src="http://nidoca.eu/img/DSC02586.jpg"></nidoca-img
-      ></nidoca-accordion-item>`
-    );
-    this._registeredElementsMap.set(
       "nidoca-accordion",
-      html`<nidoca-accordion
-        ><nidoca-accordion-item header="Bild 1"
-          ><nidoca-img src="http://nidoca.eu/img/DSC02586.jpg"></nidoca-img></nidoca-accordion-item
+      html`<nidoca-accordion .theme="${NidocaTheme.PRIMARY}"
+        ><nidoca-accordion-item header="Lorem Ipsum" opened
+          ><nidoca-article
+            style="padding:25px;"
+            title="Lorem Ipsum"
+            summary="Lorem Ipsum Dolorem ipsum med en to."
+            text="Lorem Ipsum Dolorem ipsum med en to. Lorem Ipsum Dolorem ipsum med en to. Lorem Ipsum Dolorem ipsum med en to. Lorem Ipsum Dolorem ipsum med en to."
+          ></nidoca-article></nidoca-accordion-item
         ><nidoca-accordion-item header="Bild 2"
           ><nidoca-img src="http://nidoca.eu/img/DSC02586.jpg"></nidoca-img></nidoca-accordion-item
         ><nidoca-accordion-item header="Bild 3"
@@ -146,19 +146,23 @@ export class Nidoca {
     this._registeredElementsMap.set("nidoca-form-combobox", html`<nidoca-form-combobox></nidoca-form-combobox>`);
     this._registeredElementsMap.set("nidoca-form-date", html`<nidoca-form-date></nidoca-form-date>`);
     this._registeredElementsMap.set("nidoca-form-switch", html`<nidoca-form-switch></nidoca-form-switch>`);
-    this._registeredElementsMap.set("nidoca-text", html`<nidoca-text></nidoca-text>`);
-    this._registeredElementsMap.set("nidoca-textarea", html`<nidoca-textarea></nidoca-textarea>`);
+    this._registeredElementsMap.set("nidoca-form-text", html`<nidoca-form-text></nidoca-form-text>`);
+    this._registeredElementsMap.set("nidoca-form-textarea", html`<nidoca-form-textarea></nidoca-form-textarea>`);
     this._registeredElementsMap.set("nidoca-gallery", html`<nidoca-gallery></nidoca-gallery>`);
     this._registeredElementsMap.set("nidoca-link", html`<nidoca-link></nidoca-link>`);
     this._registeredElementsMap.set("nidoca-ripple", html`<nidoca-ripple></nidoca-ripple>`);
     this._registeredElementsMap.set("nidoca-tabs", html`<nidoca-tabs></nidoca-tabs>`);
     this._registeredElementsMap.set("nidoca-table", html`<nidoca-table></nidoca-table>`);
-    this._registeredElementsMap.set("nidoca-template", html`<nidoca-template></nidoca-template>`);
     this._registeredElementsMap.set(
       "nidoca-top-app-bar",
-      html`<nidoca-top-app-bar .theme="${NidocaTheme.PRIMARY}"
-        ><div slot="left">doifjsoidfjsoidfjdsoifj</div></nidoca-top-app-bar
-      >`
+      html`<nidoca-top-app-bar .theme="${NidocaTheme.PRIMARY}">
+        <nidoca-typography slot="center" type="${NidocaTypographyType.BODY1}">Top App Bar</nidoca-typography>
+        <nidoca-icon slot="left" clickable icon="menu"></nidoca-icon>
+        <nidoca-icon slot="right" icon="search"></nidoca-icon>
+        <nidoca-icon slot="right" icon="more_vert" clickable></nidoca-icon>
+
+        <nidoca-search-bar slot="prominent" placeholder="Suche..."></nidoca-search-bar>
+      </nidoca-top-app-bar>`
     );
     this._registeredElementsMap.set("nidoca-upload", html`<nidoca-upload></nidoca-upload>`);
     this._registeredElementsMap.set("nidoca-wizard", html`<nidoca-wizard></nidoca-wizard>`);
@@ -197,6 +201,17 @@ export class Nidoca {
 }
 
 export class NidocaTheme {
+  static getStyle(theme: NidocaTheme): HTMLTemplateResult {
+    return html`<style>
+      :host,
+      *,
+      ::slotted(*) {
+        color: var(--app-color-${theme});
+        background-color: var(--app-color-${theme}-background);
+        border-color: var(--app-color-${theme}-border);
+      }
+    </style>`;
+  }
   static readonly PRIMARY: string = "primary";
   static readonly SECONDARY: string = "secondary";
   static readonly SURFACE: string = "surface";

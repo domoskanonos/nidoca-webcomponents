@@ -5,7 +5,7 @@
           border-color: var(--app-color-${this.theme}-background);
         }
         .BOTTOM_SELECTED:focus-within {
-          border-color: var(--app-color-${this.theme}-selected);
+          border-color: var(--app-color-${this.theme}-border);
         }
       </style>
 

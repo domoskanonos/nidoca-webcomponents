@@ -41,7 +41,7 @@ export class LitViewer extends LitElement {
           <nidoca-code>${this.clazzGuiWrapper ? this.clazzGuiWrapper.classWrapper.getHTMLTag() : ""} </nidoca-code>
 
           <div style="padding-top:var(--space-medium);">
-            <nidoca-section style="height:100%;" .theme="${NidocaTheme.PRIMARY}"> ${this.element} </nidoca-section>
+            <nidoca-section> ${this.element} </nidoca-section>
           </div>
         </div>
 
