@@ -69,7 +69,7 @@ export class NidocaApp extends LitElement implements NidocaRouteListener {
         .navigationClosed="${this.navigationClosed}"
         .theme="${NidocaTheme.PRIMARY}"
       >
-        <nidoca-typography slot="topCenter" typographyType="${NidocaTypographyType.BODY1}"></nidoca-typography>
+        <nidoca-typography slot="topCenter" type="${NidocaTypographyType.BODY1}"></nidoca-typography>
         <nidoca-icon
           slot="topLeft"
           icon="${this.navigationClosed ? "menu" : "clear"}"

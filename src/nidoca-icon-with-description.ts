@@ -8,7 +8,7 @@ export class NidocaIconWithDescription extends LitElement {
   static styles = css``;
 
   @property({type: String})
-  title: string = "";
+  primaryText: string = "";
 
   @property({type: String})
   text: string = "";
@@ -25,11 +25,11 @@ export class NidocaIconWithDescription extends LitElement {
             style="font-size: 96px; padding:var(--space-normal);"
             backgroundColor="var(--app-color-surface-background)"
           ></nidoca-icon>
-          <nidoca-typography .typographyType="${NidocaTypographyType.H2}">${this.title}</nidoca-typography>
+          <nidoca-typography .type="${NidocaTypographyType.H2}">${this.primaryText}</nidoca-typography>
           <nidoca-layout-spacer>
             <nidoca-typography
-              .typographyType="${NidocaTypographyType.BODY2}"
-              .typographyAlignment="${NidocaTypographyAlignment.CENTER}"
+              .type="${NidocaTypographyType.BODY2}"
+              .textAlign="${NidocaTypographyAlignment.CENTER}"
             >
               ${this.text}
               <slot></slot>

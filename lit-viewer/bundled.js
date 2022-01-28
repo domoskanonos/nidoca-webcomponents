@@ -131,8 +131,8 @@
       >
         <slot id="accordionSlot"></slot>
       </nidoca-border>
-    `}accordionSwitched(t){const e=t.detail;switch(this.accordionType){case Lt.SINGLE:if(null!=this.accordionSlot){const t=this.accordionSlot.assignedElements();for(let o=0;o<t.length;o++){const n=t[o];n instanceof It&&n!=e&&(n.opened=!1)}}case Lt.MULTI:}t.stopPropagation()}};Bt.styles=i``,Pt([rt({type:Lt}),jt("design:type",String)],Bt.prototype,"accordionType",void 0),Pt([it("#accordionSlot"),jt("design:type",Object)],Bt.prototype,"accordionSlot",void 0),Bt=Pt([Q("nidoca-accordion")],Bt);var Dt,Mt,zt=function(t,e,o,n){var r,i=arguments.length,a=i<3?e:null===n?n=Object.getOwnPropertyDescriptor(e,o):n;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)a=Reflect.decorate(t,e,o,n);else for(var s=t.length-1;s>=0;s--)(r=t[s])&&(a=(i<3?r(a):i>3?r(e,o,a):r(e,o))||a);return i>3&&a&&Object.defineProperty(e,o,a),a},Wt=function(t,e){if("object"==typeof Reflect&&"function"==typeof Reflect.metadata)return Reflect.metadata(t,e)};!function(t){t.H1="H1",t.H2="H2",t.H3="H3",t.H4="H4",t.H5="H5",t.H6="H6",t.SUBTITLE1="SUBTITLE1",t.SUBTITLE2="SUBTITLE2",t.BODY1="BODY1",t.BODY2="BODY2",t.BUTTON="BUTTON",t.CAPTION="CAPTION",t.OVERLINE="OVERLINE"}(Dt||(Dt={})),function(t){t.JUSTIFY="text-align:justify;",t.JUSTIFY_ALL="text-align:justify-all;",t.LEFT="text-align: left;",t.RIGHT="text-align: right;",t.CENTER="text-align: center;",t.START="text-align: start;",t.END="text-align: end;",t.MATCH_PARENT="text-align: match-parent;",t.INHERIT="text-align: inherit;",t.INITIAL="text-align: initial;",t.UNSET="text-align: unset;"}(Mt||(Mt={}));let Ht=class extends Z{constructor(){super(...arguments),this.typographyType=Dt.BODY1,this.typographyAlignment=Mt.START,this.text=""}render(){return I`
-      <span class="TYPOGRAPHY ${this.typographyType}" style="${this.typographyAlignment}"
+    `}accordionSwitched(t){const e=t.detail;switch(this.accordionType){case Lt.SINGLE:if(null!=this.accordionSlot){const t=this.accordionSlot.assignedElements();for(let o=0;o<t.length;o++){const n=t[o];n instanceof It&&n!=e&&(n.opened=!1)}}case Lt.MULTI:}t.stopPropagation()}};Bt.styles=i``,Pt([rt({type:Lt}),jt("design:type",String)],Bt.prototype,"accordionType",void 0),Pt([it("#accordionSlot"),jt("design:type",Object)],Bt.prototype,"accordionSlot",void 0),Bt=Pt([Q("nidoca-accordion")],Bt);var Dt,Mt,zt=function(t,e,o,n){var r,i=arguments.length,a=i<3?e:null===n?n=Object.getOwnPropertyDescriptor(e,o):n;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)a=Reflect.decorate(t,e,o,n);else for(var s=t.length-1;s>=0;s--)(r=t[s])&&(a=(i<3?r(a):i>3?r(e,o,a):r(e,o))||a);return i>3&&a&&Object.defineProperty(e,o,a),a},Wt=function(t,e){if("object"==typeof Reflect&&"function"==typeof Reflect.metadata)return Reflect.metadata(t,e)};!function(t){t.H1="H1",t.H2="H2",t.H3="H3",t.H4="H4",t.H5="H5",t.H6="H6",t.SUBTITLE1="SUBTITLE1",t.SUBTITLE2="SUBTITLE2",t.BODY1="BODY1",t.BODY2="BODY2",t.BUTTON="BUTTON",t.CAPTION="CAPTION",t.OVERLINE="OVERLINE"}(Dt||(Dt={})),function(t){t.JUSTIFY="text-align:justify;",t.JUSTIFY_ALL="text-align:justify-all;",t.LEFT="text-align: left;",t.RIGHT="text-align: right;",t.CENTER="text-align: center;",t.START="text-align: start;",t.END="text-align: end;",t.MATCH_PARENT="text-align: match-parent;",t.INHERIT="text-align: inherit;",t.INITIAL="text-align: initial;",t.UNSET="text-align: unset;"}(Mt||(Mt={}));let Ht=class extends Z{constructor(){super(...arguments),this.type=Dt.BODY1,this.textAlign=Mt.START,this.text=""}render(){return I`
+      <span class="TYPOGRAPHY ${this.type}" style="${this.textAlign}"
         >${this.text}<slot></slot
       ></span>
     `}};Ht.styles=i`
@@ -232,7 +232,7 @@
       font-size: 0.625rem;
       text-transform: uppercase;
     }
-  `,zt([rt({type:Dt,converter:String}),Wt("design:type",String)],Ht.prototype,"typographyType",void 0),zt([rt({type:Mt,converter:String}),Wt("design:type",String)],Ht.prototype,"typographyAlignment",void 0),zt([rt({type:String}),Wt("design:type",String)],Ht.prototype,"text",void 0),Ht=zt([Q("nidoca-typography")],Ht);var Ut,Gt=function(t,e,o,n){var r,i=arguments.length,a=i<3?e:null===n?n=Object.getOwnPropertyDescriptor(e,o):n;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)a=Reflect.decorate(t,e,o,n);else for(var s=t.length-1;s>=0;s--)(r=t[s])&&(a=(i<3?r(a):i>3?r(e,o,a):r(e,o))||a);return i>3&&a&&Object.defineProperty(e,o,a),a},Ft=function(t,e){if("object"==typeof Reflect&&"function"==typeof Reflect.metadata)return Reflect.metadata(t,e)};!function(t){t[t.CURRENT=0]="CURRENT",t[t.COMPLETED=1]="COMPLETED",t[t.OPEN=2]="OPEN",t[t.FINISH=3]="FINISH"}(Ut||(Ut={}));let Yt=class extends Z{constructor(){super(...arguments),this.icon="",this.title="",this.isLast=!1,this.first=!1}render(){return I`
+  `,zt([rt({type:Dt,converter:String}),Wt("design:type",String)],Ht.prototype,"type",void 0),zt([rt({type:Mt,converter:String}),Wt("design:type",String)],Ht.prototype,"textAlign",void 0),zt([rt({type:String}),Wt("design:type",String)],Ht.prototype,"text",void 0),Ht=zt([Q("nidoca-typography")],Ht);var Ut,Gt=function(t,e,o,n){var r,i=arguments.length,a=i<3?e:null===n?n=Object.getOwnPropertyDescriptor(e,o):n;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)a=Reflect.decorate(t,e,o,n);else for(var s=t.length-1;s>=0;s--)(r=t[s])&&(a=(i<3?r(a):i>3?r(e,o,a):r(e,o))||a);return i>3&&a&&Object.defineProperty(e,o,a),a},Ft=function(t,e){if("object"==typeof Reflect&&"function"==typeof Reflect.metadata)return Reflect.metadata(t,e)};!function(t){t[t.CURRENT=0]="CURRENT",t[t.COMPLETED=1]="COMPLETED",t[t.OPEN=2]="OPEN",t[t.FINISH=3]="FINISH"}(Ut||(Ut={}));let Yt=class extends Z{constructor(){super(...arguments),this.icon="",this.title="",this.isLast=!1,this.first=!1}render(){return I`
       <nidoca-layout-flex
         .flexDirection="${ie.COLUMN}"
         .flexWrap="${ae.NO_WRAP}"
@@ -273,8 +273,8 @@
         </nidoca-layout-flex>
         <nidoca-typography
           style="width:48px;"
-          .typographyType="${Dt.OVERLINE}"
-          typographyAlignment="${Mt.CENTER}"
+          .type="${Dt.OVERLINE}"
+          textAlign="${Mt.CENTER}"
           text="${this.title}"
           ><slot></slot>
         </nidoca-typography>
@@ -625,7 +625,7 @@ code {
               spacerSize="${wt.BIG}"
               .spacerTypes="${[Ot.TOP,Ot.BOTTOM]}"
             >
-              <nidoca-typography text="${this.text}" typographyType="${Dt.BUTTON}">
+              <nidoca-typography text="${this.text}" type="${Dt.BUTTON}">
                 <slot></slot>
               </nidoca-typography>
             </nidoca-layout-spacer>
@@ -704,7 +704,7 @@ code {
                 ${this.showLabel?I`
                       <nidoca-typography
                         class="label"
-                        .typographyType="${Dt.CAPTION}"
+                        .type="${Dt.CAPTION}"
                         text="${this.label}"
                       ></nidoca-typography>
                     `:I``}
@@ -714,17 +714,17 @@ code {
           </nidoca-border>
 
           ${this.infoText?I`<nidoca-typography
-                .typographyType="${Dt.BODY1}"
+                .type="${Dt.BODY1}"
                 text="${this.infoText}"
               ></nidoca-typography>`:I``}
           ${this.warningText?I` <nidoca-typography
                 style="color:var(--app-color-warning-background)"
-                .typographyType="${Dt.BODY1}"
+                .type="${Dt.BODY1}"
                 text="${this.warningText}"
               ></nidoca-typography>`:I``}
           ${this.errorText?I` <nidoca-typography
                 style="color:var(--app-color-error-background)"
-                .typographyType="${Dt.BODY1}"
+                .type="${Dt.BODY1}"
                 text="${this.errorText}"
               ></nidoca-typography>`:I``}
         `:I`<slot id="slotElement"></slot>`}setShowLabel(){if(this.slotElement){const t=this.slotElement.assignedElements();for(let e=0;e<t.length;e++){const o=t[e];("SELECT"===o.tagName||"date"===o.getAttribute("type")||"datetime-local"===o.getAttribute("type")||"month"===o.getAttribute("type")||"time"===o.getAttribute("type")||"week"===o.getAttribute("type")||o instanceof HTMLInputElement)&&(this.showLabel=!0)}}}};Se.styles=i``,$e([rt({type:String}),Re("design:type",String)],Se.prototype,"label",void 0),$e([rt({type:Boolean}),Re("design:type",Boolean)],Se.prototype,"showLabel",void 0),$e([rt({type:String}),Re("design:type",String)],Se.prototype,"errorText",void 0),$e([rt({type:String}),Re("design:type",String)],Se.prototype,"infoText",void 0),$e([rt({type:String}),Re("design:type",String)],Se.prototype,"warningText",void 0),$e([rt({type:String}),Re("design:type","function"==typeof(Te=void 0!==vt&&vt)?Te:Object)],Se.prototype,"theme",void 0),$e([rt({type:String}),Re("design:type",String)],Se.prototype,"inputframeMode",void 0),$e([it("#slotElement"),Re("design:type",Object)],Se.prototype,"slotElement",void 0),Se=$e([Q("nidoca-form-inputframe")],Se);var Oe=function(t,e,o,n){var r,i=arguments.length,a=i<3?e:null===n?n=Object.getOwnPropertyDescriptor(e,o):n;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)a=Reflect.decorate(t,e,o,n);else for(var s=t.length-1;s>=0;s--)(r=t[s])&&(a=(i<3?r(a):i>3?r(e,o,a):r(e,o))||a);return i>3&&a&&Object.defineProperty(e,o,a),a},we=function(t,e){if("object"==typeof Reflect&&"function"==typeof Reflect.metadata)return Reflect.metadata(t,e)};let Ae=class extends Z{constructor(){super(...arguments),this.autocomplete=!0}render(){return I`
@@ -878,12 +878,12 @@ ${this.value}</textarea
       </style>
 
       <nidoca-list-item>
-        <nidoca-typography .typographyType="${Dt.SUBTITLE1}" text="${this.label}">
+        <nidoca-typography .type="${Dt.SUBTITLE1}" text="${this.label}">
           <slot></slot>
         </nidoca-typography>
 
         ${this.infoText.length>0?I` <nidoca-typography
-              .typographyType="${Dt.SUBTITLE2}"
+              .type="${Dt.SUBTITLE2}"
               text="${this.infoText}"
             ></nidoca-typography>`:I``}
 
@@ -903,12 +903,12 @@ ${this.value}</textarea
 
       ${this.warningText?I` <nidoca-typography
             style="color:var(--app-color-warning-background)"
-            .typographyType="${Dt.BODY1}"
+            .type="${Dt.BODY1}"
             text="${this.warningText}"
           ></nidoca-typography>`:I``}
       ${this.errorText?I` <nidoca-typography
             style="color:var(--app-color-error-background)"
-            .typographyType="${Dt.BODY1}"
+            .type="${Dt.BODY1}"
             text="${this.errorText}"
           ></nidoca-typography>`:I``}
     `}getOutputData(){return{key:this.name,value:this.checked}}validate(){return this.errorText="",null==this.inputElement||this.inputElement.validity.valid||this.inputElement.validationMessage==this.errorText||(this.errorText=this.inputElement.validationMessage),""==this.errorText}};Xe.styles=i`
@@ -1378,7 +1378,7 @@ ${this.value}</textarea
             itemStyle="flex-basis: 100%;"
           >
             <nidoca-layout-spacer spacerSize="${wt.SMALL}" .spacerTypes="${[Ot.ALL]}">
-              <nidoca-typography .typographyType="${Dt.H6}" text="${this.text}"></nidoca-typography>
+              <nidoca-typography .type="${Dt.H6}" text="${this.text}"></nidoca-typography>
             </nidoca-layout-spacer>
           </nidoca-layout-flex>
         `:I``}};Wo.styles=i``,Mo([rt({type:String}),zo("design:type",String)],Wo.prototype,"text",void 0),Mo([rt({type:Boolean}),zo("design:type",Boolean)],Wo.prototype,"rendered",void 0),Wo=Mo([Q("nidoca-list-section")],Wo);var Ho=function(t,e,o,n){var r,i=arguments.length,a=i<3?e:null===n?n=Object.getOwnPropertyDescriptor(e,o):n;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)a=Reflect.decorate(t,e,o,n);else for(var s=t.length-1;s>=0;s--)(r=t[s])&&(a=(i<3?r(a):i>3?r(e,o,a):r(e,o))||a);return i>3&&a&&Object.defineProperty(e,o,a),a},Uo=function(t,e){if("object"==typeof Reflect&&"function"==typeof Reflect.metadata)return Reflect.metadata(t,e)};let Go=class extends Z{constructor(){super(...arguments),this.headers=["column 1","column 2"],this.rows=[["row 1",new ao],["row 2",new ao]]}render(){return I`
@@ -1434,7 +1434,7 @@ ${this.value}</textarea
       <span class="tab ${this.selected?"SELECTED":""}" @click="${()=>this.tabClicked()}">
         ${this.text?I`
               <nidoca-typography
-                .typographyType="${Dt.OVERLINE}"
+                .type="${Dt.OVERLINE}"
                 text="${this.text}"
               ></nidoca-typography>
             `:I``}
@@ -2182,9 +2182,9 @@ ${this.value}</textarea
     >
       <nidoca-img src="${this.imgSrc}" .richMediaProperties="${[mo.ROUND]}"> </nidoca-img>
       <nidoca-layout-spacer spacerSize="${wt.LITTLE}">
-        <nidoca-typography typographyType="${Dt.H3}">${this.title}</nidoca-typography>
+        <nidoca-typography type="${Dt.H3}">${this.title}</nidoca-typography>
       </nidoca-layout-spacer>
-      <nidoca-typography typographyType="${Dt.H5}">${this.description}</nidoca-typography>
+      <nidoca-typography type="${Dt.H5}">${this.description}</nidoca-typography>
     </nidoca-layout-flex>`}};xn([rt({type:String}),Tn("design:type",String)],En.prototype,"imgSrc",void 0),xn([rt({type:String}),Tn("design:type",String)],En.prototype,"title",void 0),xn([rt({type:String}),Tn("design:type",String)],En.prototype,"description",void 0),En=xn([Q("nidoca-avatar")],En);let $n=class extends Z{render(){return I`
       <nidoca-box-shadow .shadowType="${be.KEY_LIGHT}">
       <slot class="slotContainer"></slot>
@@ -2312,7 +2312,7 @@ ${this.value}</textarea
 
       <nidoca-layout-spacer
       .spacerTypes="${[Ot.TOP,Ot.BOTTOM]}"
-    > <nidoca-typography .typographyType="${Dt.H2}">Tag</nidoca-typography>
+    > <nidoca-typography .type="${Dt.H2}">Tag</nidoca-typography>
     </nidoca-layout-spacer>
         <nidoca-code
           >${"<".concat(this.clazzGuiWrapper?this.clazzGuiWrapper.classWrapper.getTagName():"").concat("/>")}</nidoca-code
@@ -2321,7 +2321,7 @@ ${this.value}</textarea
 
         <nidoca-layout-spacer
       .spacerTypes="${[Ot.TOP,Ot.BOTTOM]}"
-    > <nidoca-typography .typographyType="${Dt.H2}">Vorschau</nidoca-typography>
+    > <nidoca-typography .type="${Dt.H2}">Vorschau</nidoca-typography>
     </nidoca-layout-spacer>
 
         <nidoca-layout-container .width="${oo._75}">
@@ -2334,7 +2334,7 @@ ${this.value}</textarea
                 ${(null===(t=this.clazzGuiWrapper)||void 0===t?void 0:t.hasProperties())?I`<nidoca-layout-spacer
                         .spacerTypes="${[Ot.TOP,Ot.BOTTOM]}"
                       >
-                        <nidoca-typography .typographyType="${Dt.H2}">Attribute</nidoca-typography>
+                        <nidoca-typography .type="${Dt.H2}">Attribute</nidoca-typography>
                       </nidoca-layout-spacer>
 
                       <nidoca-table
@@ -2345,7 +2345,7 @@ ${this.value}</textarea
                 ${(null===(e=this.clazzGuiWrapper)||void 0===e?void 0:e.classWrapper.hasSlots())?I` <nidoca-layout-spacer
                         .spacerTypes="${[Ot.TOP,Ot.BOTTOM]}"
                       >
-                        <nidoca-typography .typographyType="${Dt.H2}">Slots</nidoca-typography>
+                        <nidoca-typography .type="${Dt.H2}">Slots</nidoca-typography>
                       </nidoca-layout-spacer>
 
                       <nidoca-table
@@ -2356,14 +2356,14 @@ ${this.value}</textarea
                 ${this.customEventNames.length>0?I`<nidoca-layout-spacer
                         .spacerTypes="${[Ot.TOP,Ot.BOTTOM]}"
                       >
-                        <nidoca-typography .typographyType="${Dt.H2}"
+                        <nidoca-typography .type="${Dt.H2}"
                           >Custom Events</nidoca-typography
                         > </nidoca-layout-spacer
                       ><nidoca-table .headers="${["name"]}" .rows="${this.toCustomEventRows(this.customEventNames)}">
                       </nidoca-table>`:I``}
 
                 <nidoca-layout-spacer .spacerTypes="${[Ot.TOP,Ot.BOTTOM]}">
-                  <nidoca-typography .typographyType="${Dt.H2}">Quelltext</nidoca-typography>
+                  <nidoca-typography .type="${Dt.H2}">Quelltext</nidoca-typography>
                 </nidoca-layout-spacer>
 
                 <nidoca-tabs tabIndex="2">

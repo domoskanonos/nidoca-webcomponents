@@ -9,7 +9,7 @@ export class NidocaFormContact extends LitElement {
   render(): TemplateResult {
     return html`
       <nidoca-form id="authenitcate-form">
-        <nidoca-typography .typographyType="${NidocaTypographyType.H2}">Kontaktformular</nidoca-typography>
+        <nidoca-typography .type="${NidocaTypographyType.H2}">Kontaktformular</nidoca-typography>
         <nidoca-form-text name="name" .textType="${NidocaTextType.TEXT}" value="" label="name"></nidoca-form-text>
         <nidoca-layout-spacer bottom="var(--space-medium)"></nidoca-layout-spacer>
         <nidoca-form-text .textType="${NidocaTextType.EMAIL}" label="email" name="email"></nidoca-form-text>
@@ -30,7 +30,7 @@ export class NidocaFormContact extends LitElement {
         <nidoca-layout-spacer bottom="var(--space-medium)"></nidoca-layout-spacer>
         <nidoca-typography
           slot="errorMessages"
-          .typographyType="${NidocaTypographyType.OVERLINE}"
+          .type="${NidocaTypographyType.OVERLINE}"
           text="huhu"
         ></nidoca-typography>
       </nidoca-form>

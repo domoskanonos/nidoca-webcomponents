@@ -78,7 +78,7 @@ export class NidocaIconExtended extends LitElement {
           .deactivated="${this.deactivated}"
           .clickable="${this.clickable}"
           icon="${this.icon}"
-          title="${this.title}"
+          title="${this.primaryText}"
           cssStyle="${this.cssStyle}"
         ></nidoca-icon>
       </span>

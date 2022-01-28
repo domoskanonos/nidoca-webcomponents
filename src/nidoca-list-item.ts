@@ -1,6 +1,7 @@
 import {css, html, LitElement, TemplateResult} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
+import {NidocaTypographyType} from ".";
 
 @customElement("nidoca-list-item")
 export class NidocaListItem extends LitElement {
@@ -11,19 +12,23 @@ export class NidocaListItem extends LitElement {
       grid-template-columns: 1fr 1fr minmax(auto, 100%) 1fr;
     }
 
-    .slotGraphic,
-    .slotMeta,
-    .columnSelection {
+    .item {
       align-self: center;
       display: grid;
       align-items: center;
       grid-template-columns: 1fr;
+      flex-basis: 100%;
     }
 
     .containerTypography {
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
+      flex-wrap: wrap;
       align-self: center;
+    }
+
+    .spaceLeft {
+      padding-left: var(--space-medium);
     }
   `;
 
@@ -32,6 +37,12 @@ export class NidocaListItem extends LitElement {
 
   @property({type: Boolean})
   selected: boolean = false;
+
+  @property({type: String})
+  primaryText: string = "";
+
+  @property({type: String})
+  secondaryText: string = "";
 
   protected update(changedProperties: Map<PropertyKey, unknown>): void {
     super.update(changedProperties);
@@ -53,17 +64,27 @@ export class NidocaListItem extends LitElement {
         <div class="container">
           ${this.selectionMode
             ? html`<nidoca-icon
-                class="columnSelection"
+                class="item"
                 @click="${() => this.switchSelected()}"
                 icon="${this.selected ? "check_box" : "check_box_outline_blank"}"
               ></nidoca-icon>`
             : html`<span></span>`}
-          <slot name="graphic" class="slotGraphic"></slot>
-          <div class="containerTypography">
+          <slot name="graphic" class="item"></slot>
+          <div class="containerTypography ${this.selectionMode ? "" : "spaceLeft"}">
+            ${this.primaryText
+              ? html`<nidoca-typography class="item" .type="${NidocaTypographyType.BODY1}"
+                  >${this.primaryText}</nidoca-typography
+                >`
+              : html``}
             <slot></slot>
+            ${this.secondaryText
+              ? html`<nidoca-typography class="item" .type="${NidocaTypographyType.SUBTITLE1}"
+                  >${this.secondaryText}</nidoca-typography
+                >`
+              : html``}
             <slot name="secondary"></slot>
           </div>
-          <slot name="meta" class="slotMeta"></slot>
+          <slot name="meta" class="item"></slot>
         </div>
       </nidoca-ripple>
     `;

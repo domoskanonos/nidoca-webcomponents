@@ -31,7 +31,7 @@ export class NidocaWizardStep extends LitElement {
   icon: string = "";
 
   @property({type: String})
-  title: string = "";
+  primaryText: string = "";
 
   @property({type: Number})
   state: WizardStepState | undefined;
@@ -72,9 +72,9 @@ export class NidocaWizardStep extends LitElement {
         </div>
         <nidoca-typography
           style="width:48px;"
-          .typographyType="${NidocaTypographyType.OVERLINE}"
-          typographyAlignment="${NidocaTypographyAlignment.CENTER}"
-          text="${this.title}"
+          .type="${NidocaTypographyType.OVERLINE}"
+          textAlign="${NidocaTypographyAlignment.CENTER}"
+          text="${this.primaryText}"
           ><slot></slot>
         </nidoca-typography>
       </div>

@@ -116,13 +116,13 @@ export class NidocaFormSwitch extends NidocaFormAbstractInputElement {
       </style>
 
       <nidoca-list-item>
-        <nidoca-typography .typographyType="${NidocaTypographyType.SUBTITLE1}" text="${this.label}">
+        <nidoca-typography .type="${NidocaTypographyType.SUBTITLE1}" text="${this.label}">
           <slot></slot>
         </nidoca-typography>
 
         ${this.infoText.length > 0
           ? html` <nidoca-typography
-              .typographyType="${NidocaTypographyType.SUBTITLE2}"
+              .type="${NidocaTypographyType.SUBTITLE2}"
               text="${this.infoText}"
             ></nidoca-typography>`
           : html``}
@@ -147,14 +147,14 @@ export class NidocaFormSwitch extends NidocaFormAbstractInputElement {
       ${this.warningText
         ? html` <nidoca-typography
             style="color:var(--app-color-warning-background)"
-            .typographyType="${NidocaTypographyType.BODY1}"
+            .type="${NidocaTypographyType.BODY1}"
             text="${this.warningText}"
           ></nidoca-typography>`
         : html``}
       ${this.errorText
         ? html` <nidoca-typography
             style="color:var(--app-color-error-background)"
-            .typographyType="${NidocaTypographyType.BODY1}"
+            .type="${NidocaTypographyType.BODY1}"
             text="${this.errorText}"
           ></nidoca-typography>`
         : html``}

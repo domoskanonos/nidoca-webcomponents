@@ -11,16 +11,14 @@ export class NidocaPageSettings extends LitElement {
       <nidoca-layout-spacer top="var(--space-max)">
         <nidoca-section style="width:50%;">
           <nidoca-article title="Impressum" summary="Angaben gemäß § 5 TMG">
-            <nidoca-typography .typographyType="${NidocaTypographyType.BODY1}">Dominik Bruhn</nidoca-typography>
-            <nidoca-typography .typographyType="${NidocaTypographyType.BODY1}"
-              >Holzwickeder Straße 109c</nidoca-typography
-            >
-            <nidoca-typography .typographyType="${NidocaTypographyType.BODY1}">44309 Dortmund</nidoca-typography>
+            <nidoca-typography .type="${NidocaTypographyType.BODY1}">Dominik Bruhn</nidoca-typography>
+            <nidoca-typography .type="${NidocaTypographyType.BODY1}">Holzwickeder Straße 109c</nidoca-typography>
+            <nidoca-typography .type="${NidocaTypographyType.BODY1}">44309 Dortmund</nidoca-typography>
             <nidoca-layout-spacer></nidoca-layout-spacer>
-            <nidoca-typography .typographyType="${NidocaTypographyType.BODY1}"
+            <nidoca-typography .type="${NidocaTypographyType.BODY1}"
               >Telefonnummer: +49 152 052 488 62</nidoca-typography
             >
-            <nidoca-typography .typographyType="${NidocaTypographyType.BODY1}"
+            <nidoca-typography .type="${NidocaTypographyType.BODY1}"
               >E-Mail: dominikbruhn [at] googlemail.com</nidoca-typography
             >
           </nidoca-article>
@@ -29,13 +27,13 @@ export class NidocaPageSettings extends LitElement {
       <nidoca-layout-spacer top="var(--space-max)">
         <nidoca-section style="width:50%;">
           <nidoca-article title="Streitsschlichtung">
-            <nidoca-typography .typographyType="${NidocaTypographyType.BODY1}"
+            <nidoca-typography .type="${NidocaTypographyType.BODY1}"
               >Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:
               <nidoca-link href="https://ec.europa.eu/consumers/odr" targetType="${NidocaTargetType.BLANK}"
                 >https://ec.europa.eu/consumers/odr</nidoca-link
               >. <br />Unsere E-Mail-Adresse und Telefonnummer finden Sie oben auf dieser Seite.</nidoca-typography
             >
-            <nidoca-typography .typographyType="${NidocaTypographyType.BODY1}">
+            <nidoca-typography .type="${NidocaTypographyType.BODY1}">
               Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer
               Verbraucherschlichtungsstelle teilzunehmen.
             </nidoca-typography>
@@ -46,7 +44,7 @@ export class NidocaPageSettings extends LitElement {
       <nidoca-layout-spacer top="var(--space-max)">
         <nidoca-section style="width:50%;">
           <nidoca-article title="Haftungsinhalt">
-            <nidoca-typography .typographyType="${NidocaTypographyType.BODY1}">
+            <nidoca-typography .type="${NidocaTypographyType.BODY1}">
               Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen
               Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet,
               übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf
@@ -63,7 +61,7 @@ export class NidocaPageSettings extends LitElement {
       <nidoca-layout-spacer top="var(--space-max)">
         <nidoca-section style="width:50%;">
           <nidoca-article title="Haftungslinks">
-            <nidoca-typography .typographyType="${NidocaTypographyType.BODY1}">
+            <nidoca-typography .type="${NidocaTypographyType.BODY1}">
               Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben.
               Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten
               Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Die verlinkten Seiten
@@ -79,7 +77,7 @@ export class NidocaPageSettings extends LitElement {
       <nidoca-layout-spacer top="var(--space-max)">
         <nidoca-section style="width:50%;">
           <nidoca-article title="Copyright">
-            <nidoca-typography .typographyType="${NidocaTypographyType.BODY1}">
+            <nidoca-typography .type="${NidocaTypographyType.BODY1}">
               Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen
               Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der
               Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.
@@ -103,6 +101,22 @@ export class NidocaPageSettings extends LitElement {
         </nidoca-section>
       </nidoca-layout-spacer>
 
+      <div style="padding-top:var(--space-max); padding-bottom:var(--space-max);">
+        <nidoca-section style="width:50%;">
+          <nidoca-article title="Google Material Icons">
+            <nidoca-link href="https://fonts.google.com/icons" targetType="${NidocaTargetType.BLANK}"
+              >https://fonts.google.com/icons</nidoca-link
+            >
+          </nidoca-article>
+        </nidoca-section>
+        <nidoca-section style="width:50%;">
+          <nidoca-article title="Google Fonts">
+            <nidoca-link href=" https://fonts.google.com/" targetType="${NidocaTargetType.BLANK}">
+              https://fonts.google.com/</nidoca-link
+            >
+          </nidoca-article>
+        </nidoca-section>
+      </div>
     `;
   }
 }

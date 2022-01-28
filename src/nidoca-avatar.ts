@@ -10,7 +10,7 @@ export class NidocaAvatar extends LitElement {
   imgSrc: string = "";
 
   @property({type: String})
-  title: string = "";
+  primaryText: string = "";
 
   @property({type: String})
   description: string = "";
@@ -26,9 +26,9 @@ export class NidocaAvatar extends LitElement {
           top="var(--space-little)"
           bottom="var(--space-little)"
         >
-          <nidoca-typography typographyType="${NidocaTypographyType.H3}">${this.title}</nidoca-typography>
+          <nidoca-typography type="${NidocaTypographyType.H3}">${this.primaryText}</nidoca-typography>
         </nidoca-layout-spacer>
-        <nidoca-typography typographyType="${NidocaTypographyType.H5}">${this.description}</nidoca-typography>
+        <nidoca-typography type="${NidocaTypographyType.H5}">${this.description}</nidoca-typography>
   </div>
     </div>`;
   }

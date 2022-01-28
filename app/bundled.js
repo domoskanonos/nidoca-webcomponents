@@ -137,8 +137,8 @@
       >
         <slot id="accordionSlot"></slot>
       </nidoca-border>
-    `}accordionSwitched(e){const t=e.detail;switch(this.accordionType){case Se.SINGLE:if(null!=this.accordionSlot){const e=this.accordionSlot.assignedElements();for(let o=0;o<e.length;o++){const n=e[o];n instanceof Ee&&n!=t&&(n.opened=!1)}}break;case Se.MULTI:}}};Re.styles=s``,$e([ne({type:Se}),Te("design:type",String)],Re.prototype,"accordionType",void 0),$e([ie("#accordionSlot"),Te("design:type",Object)],Re.prototype,"accordionSlot",void 0),Re=$e([te("nidoca-accordion")],Re);var Oe,we,Ae=function(e,t,o,n){var i,r=arguments.length,a=r<3?t:null===n?n=Object.getOwnPropertyDescriptor(t,o):n;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)a=Reflect.decorate(e,t,o,n);else for(var s=e.length-1;s>=0;s--)(i=e[s])&&(a=(r<3?i(a):r>3?i(t,o,a):i(t,o))||a);return r>3&&a&&Object.defineProperty(t,o,a),a},ke=function(e,t){if("object"==typeof Reflect&&"function"==typeof Reflect.metadata)return Reflect.metadata(e,t)};!function(e){e.H1="H1",e.H2="H2",e.H3="H3",e.H4="H4",e.H5="H5",e.H6="H6",e.SUBTITLE1="SUBTITLE1",e.SUBTITLE2="SUBTITLE2",e.BODY1="BODY1",e.BODY2="BODY2",e.BUTTON="BUTTON",e.CAPTION="CAPTION",e.OVERLINE="OVERLINE"}(Oe||(Oe={})),function(e){e.JUSTIFY="text-align:justify;",e.JUSTIFY_ALL="text-align:justify-all;",e.LEFT="text-align: left;",e.RIGHT="text-align: right;",e.CENTER="text-align: center;",e.START="text-align: start;",e.END="text-align: end;",e.MATCH_PARENT="text-align: match-parent;",e.INHERIT="text-align: inherit;",e.INITIAL="text-align: initial;",e.UNSET="text-align: unset;"}(we||(we={}));let Ie=class extends ee{constructor(){super(...arguments),this.typographyType=Oe.BODY1,this.typographyAlignment=we.START,this.text=""}render(){return j`
-      <span class="TYPOGRAPHY ${this.typographyType}" style="${this.typographyAlignment}"
+    `}accordionSwitched(e){const t=e.detail;switch(this.accordionType){case Se.SINGLE:if(null!=this.accordionSlot){const e=this.accordionSlot.assignedElements();for(let o=0;o<e.length;o++){const n=e[o];n instanceof Ee&&n!=t&&(n.opened=!1)}}break;case Se.MULTI:}}};Re.styles=s``,$e([ne({type:Se}),Te("design:type",String)],Re.prototype,"accordionType",void 0),$e([ie("#accordionSlot"),Te("design:type",Object)],Re.prototype,"accordionSlot",void 0),Re=$e([te("nidoca-accordion")],Re);var Oe,we,Ae=function(e,t,o,n){var i,r=arguments.length,a=r<3?t:null===n?n=Object.getOwnPropertyDescriptor(t,o):n;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)a=Reflect.decorate(e,t,o,n);else for(var s=e.length-1;s>=0;s--)(i=e[s])&&(a=(r<3?i(a):r>3?i(t,o,a):i(t,o))||a);return r>3&&a&&Object.defineProperty(t,o,a),a},ke=function(e,t){if("object"==typeof Reflect&&"function"==typeof Reflect.metadata)return Reflect.metadata(e,t)};!function(e){e.H1="H1",e.H2="H2",e.H3="H3",e.H4="H4",e.H5="H5",e.H6="H6",e.SUBTITLE1="SUBTITLE1",e.SUBTITLE2="SUBTITLE2",e.BODY1="BODY1",e.BODY2="BODY2",e.BUTTON="BUTTON",e.CAPTION="CAPTION",e.OVERLINE="OVERLINE"}(Oe||(Oe={})),function(e){e.JUSTIFY="text-align:justify;",e.JUSTIFY_ALL="text-align:justify-all;",e.LEFT="text-align: left;",e.RIGHT="text-align: right;",e.CENTER="text-align: center;",e.START="text-align: start;",e.END="text-align: end;",e.MATCH_PARENT="text-align: match-parent;",e.INHERIT="text-align: inherit;",e.INITIAL="text-align: initial;",e.UNSET="text-align: unset;"}(we||(we={}));let Ie=class extends ee{constructor(){super(...arguments),this.type=Oe.BODY1,this.textAlign=we.START,this.text=""}render(){return j`
+      <span class="TYPOGRAPHY ${this.type}" style="${this.textAlign}"
         >${this.text}<slot></slot
       ></span>
     `}};Ie.styles=s`
@@ -238,7 +238,7 @@
       font-size: 0.625rem;
       text-transform: uppercase;
     }
-  `,Ae([ne({type:String}),ke("design:type",String)],Ie.prototype,"typographyType",void 0),Ae([ne({type:String}),ke("design:type",String)],Ie.prototype,"typographyAlignment",void 0),Ae([ne({type:String}),ke("design:type",String)],Ie.prototype,"text",void 0),Ie=Ae([te("nidoca-typography")],Ie);var Le,Ce=function(e,t,o,n){var i,r=arguments.length,a=r<3?t:null===n?n=Object.getOwnPropertyDescriptor(t,o):n;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)a=Reflect.decorate(e,t,o,n);else for(var s=e.length-1;s>=0;s--)(i=e[s])&&(a=(r<3?i(a):r>3?i(t,o,a):i(t,o))||a);return r>3&&a&&Object.defineProperty(t,o,a),a},_e=function(e,t){if("object"==typeof Reflect&&"function"==typeof Reflect.metadata)return Reflect.metadata(e,t)};!function(e){e[e.CURRENT=0]="CURRENT",e[e.COMPLETED=1]="COMPLETED",e[e.OPEN=2]="OPEN",e[e.FINISH=3]="FINISH"}(Le||(Le={}));let Pe=class extends ee{constructor(){super(...arguments),this.icon="",this.title="",this.isLast=!1,this.first=!1}render(){return j`
+  `,Ae([ne({type:String}),ke("design:type",String)],Ie.prototype,"type",void 0),Ae([ne({type:String}),ke("design:type",String)],Ie.prototype,"textAlign",void 0),Ae([ne({type:String}),ke("design:type",String)],Ie.prototype,"text",void 0),Ie=Ae([te("nidoca-typography")],Ie);var Le,Ce=function(e,t,o,n){var i,r=arguments.length,a=r<3?t:null===n?n=Object.getOwnPropertyDescriptor(t,o):n;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)a=Reflect.decorate(e,t,o,n);else for(var s=e.length-1;s>=0;s--)(i=e[s])&&(a=(r<3?i(a):r>3?i(t,o,a):i(t,o))||a);return r>3&&a&&Object.defineProperty(t,o,a),a},_e=function(e,t){if("object"==typeof Reflect&&"function"==typeof Reflect.metadata)return Reflect.metadata(e,t)};!function(e){e[e.CURRENT=0]="CURRENT",e[e.COMPLETED=1]="COMPLETED",e[e.OPEN=2]="OPEN",e[e.FINISH=3]="FINISH"}(Le||(Le={}));let Pe=class extends ee{constructor(){super(...arguments),this.icon="",this.title="",this.isLast=!1,this.first=!1}render(){return j`
       <nidoca-layout-flex
         .flexDirection="${Xe.COLUMN}"
         .flexWrap="${Ve.NO_WRAP}"
@@ -279,8 +279,8 @@
         </nidoca-layout-flex>
         <nidoca-typography
           style="width:48px;"
-          .typographyType="${Oe.OVERLINE}"
-          typographyAlignment="${we.CENTER}"
+          .type="${Oe.OVERLINE}"
+          textAlign="${we.CENTER}"
           text="${this.title}"
           ><slot></slot>
         </nidoca-typography>
@@ -613,7 +613,7 @@ code {
             <nidoca-icon .icon="${this.leadingIcon}"></nidoca-icon>
           </nidoca-visible>
           <nidoca-visible visibleType="${this.leadingIcon?ge.NORMAL:ge.HIDE}"> </nidoca-visible>
-          <nidoca-typography text="${this.text}" typographyType="${Oe.BUTTON}">
+          <nidoca-typography text="${this.text}" type="${Oe.BUTTON}">
             <slot></slot>
           </nidoca-typography>
 
@@ -696,7 +696,7 @@ code {
                 >
                   <nidoca-typography
                     class="label"
-                    .typographyType="${Oe.CAPTION}"
+                    .type="${Oe.CAPTION}"
                     text="${this.label}"
                   ></nidoca-typography>
                 </nidoca-visible>
@@ -708,7 +708,7 @@ code {
 
           <nidoca-visible visibleType="${this.infoText?ge.NORMAL:ge.HIDE}">
             <nidoca-typography
-              .typographyType="${Oe.BODY1}"
+              .type="${Oe.BODY1}"
               text="${this.infoText}"
             ></nidoca-typography>
           </nidoca-visible>
@@ -716,7 +716,7 @@ code {
           <nidoca-visible visibleType="${this.warningText?ge.NORMAL:ge.HIDE}">
             <nidoca-typography
               style="color:var(--app-color-warning-background)"
-              .typographyType="${Oe.BODY1}"
+              .type="${Oe.BODY1}"
               text="${this.warningText}"
             ></nidoca-typography>
           </nidoca-visible>
@@ -724,7 +724,7 @@ code {
           <nidoca-visible visibleType="${this.errorText?ge.NORMAL:ge.HIDE}">
             <nidoca-typography
               style="color:var(--app-color-error-background)"
-              .typographyType="${Oe.BODY1}"
+              .type="${Oe.BODY1}"
               text="${this.errorText}"
             ></nidoca-typography>
           </nidoca-visible>
@@ -930,7 +930,7 @@ ${this.value}</textarea
       </style>
 
       <nidoca-list-item>
-        <nidoca-typography .typographyType="${Oe.SUBTITLE1}" text="${this.label}">
+        <nidoca-typography .type="${Oe.SUBTITLE1}" text="${this.label}">
           <slot></slot>
         </nidoca-typography>
         <nidoca-visible
@@ -938,7 +938,7 @@ ${this.value}</textarea
           visibleType="${this.infoText.length>0?ge.NORMAL:ge.HIDE}"
         >
           <nidoca-typography
-            .typographyType="${Oe.SUBTITLE2}"
+            .type="${Oe.SUBTITLE2}"
             text="${this.infoText}"
           ></nidoca-typography>
         </nidoca-visible>
@@ -958,7 +958,7 @@ ${this.value}</textarea
       <nidoca-visible visibleType="${this.warningText?ge.NORMAL:ge.HIDE}">
         <nidoca-typography
           style="color:var(--app-color-warning-background)"
-          .typographyType="${Oe.BODY1}"
+          .type="${Oe.BODY1}"
           text="${this.warningText}"
         ></nidoca-typography>
       </nidoca-visible>
@@ -966,7 +966,7 @@ ${this.value}</textarea
       <nidoca-visible visibleType="${this.errorText?ge.NORMAL:ge.HIDE}">
         <nidoca-typography
           style="color:var(--app-color-error-background)"
-          .typographyType="${Oe.BODY1}"
+          .type="${Oe.BODY1}"
           text="${this.errorText}"
         ></nidoca-typography>
       </nidoca-visible>
@@ -1392,7 +1392,7 @@ ${this.value}</textarea
             itemStyle="flex-basis: 100%;"
           >
             <nidoca-layout-spacer spacerSize="${he.SMALL}" .spacerTypes="${[de.ALL]}">
-              <nidoca-typography .typographyType="${Oe.H6}" text="${this.text}"></nidoca-typography>
+              <nidoca-typography .type="${Oe.H6}" text="${this.text}"></nidoca-typography>
             </nidoca-layout-spacer>
           </nidoca-layout-flex>
         `:j``}};Uo.styles=s``,Mo([ne({type:String}),Ho("design:type",String)],Uo.prototype,"text",void 0),Mo([ne({type:Boolean}),Ho("design:type",Boolean)],Uo.prototype,"rendered",void 0),Uo=Mo([te("nidoca-list-section")],Uo);var zo=function(e,t,o,n){var i,r=arguments.length,a=r<3?t:null===n?n=Object.getOwnPropertyDescriptor(t,o):n;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)a=Reflect.decorate(e,t,o,n);else for(var s=e.length-1;s>=0;s--)(i=e[s])&&(a=(r<3?i(a):r>3?i(t,o,a):i(t,o))||a);return r>3&&a&&Object.defineProperty(t,o,a),a},Wo=function(e,t){if("object"==typeof Reflect&&"function"==typeof Reflect.metadata)return Reflect.metadata(e,t)};let Fo=class extends ee{constructor(){super(...arguments),this.headers=["column 1","column 2"],this.rows=[["row 1",new ro],["row 2",new ro]]}render(){return j`
@@ -1446,7 +1446,7 @@ ${this.value}</textarea
     `}};Go.styles=s``,Yo([ne({type:Boolean}),function(e,t){if("object"==typeof Reflect&&"function"==typeof Reflect.metadata)return Reflect.metadata(e,t)}("design:type",Boolean)],Go.prototype,"selected",void 0),Go=Yo([te("nidoca-tab-content")],Go);var Xo=function(e,t,o,n){var i,r=arguments.length,a=r<3?t:null===n?n=Object.getOwnPropertyDescriptor(t,o):n;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)a=Reflect.decorate(e,t,o,n);else for(var s=e.length-1;s>=0;s--)(i=e[s])&&(a=(r<3?i(a):r>3?i(t,o,a):i(t,o))||a);return r>3&&a&&Object.defineProperty(t,o,a),a},Vo=function(e,t){if("object"==typeof Reflect&&"function"==typeof Reflect.metadata)return Reflect.metadata(e,t)};let qo=class extends ee{constructor(){super(...arguments),this.selected=!1,this.text=""}render(){return j`
       <span class="tab ${this.selected?"SELECTED":""}" @click="${()=>this.tabClicked()}">
         ${this.text?j`
-              <nidoca-typography .typographyType="${Oe.OVERLINE}" text="${this.text}"></nidoca-typography>
+              <nidoca-typography .type="${Oe.OVERLINE}" text="${this.text}"></nidoca-typography>
             `:j``}
         <slot></slot>
       </span>
@@ -2194,9 +2194,9 @@ ${this.value}</textarea
     >
       <nidoca-img src="${this.imgSrc}" .richMediaProperties="${[uo.ROUND]}"> </nidoca-img>
       <nidoca-layout-spacer spacerSize="${he.LITTLE}">
-        <nidoca-typography typographyType="${Oe.H3}">${this.title}</nidoca-typography>
+        <nidoca-typography type="${Oe.H3}">${this.title}</nidoca-typography>
       </nidoca-layout-spacer>
-      <nidoca-typography typographyType="${Oe.H5}">${this.description}</nidoca-typography>
+      <nidoca-typography type="${Oe.H5}">${this.description}</nidoca-typography>
     </nidoca-layout-flex>`}};bn([ne({type:String}),vn("design:type",String)],xn.prototype,"imgSrc",void 0),bn([ne({type:String}),vn("design:type",String)],xn.prototype,"title",void 0),bn([ne({type:String}),vn("design:type",String)],xn.prototype,"description",void 0),xn=bn([te("nidoca-avatar")],xn);var En=function(e,t,o,n){var i,r=arguments.length,a=r<3?t:null===n?n=Object.getOwnPropertyDescriptor(t,o):n;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)a=Reflect.decorate(e,t,o,n);else for(var s=e.length-1;s>=0;s--)(i=e[s])&&(a=(r<3?i(a):r>3?i(t,o,a):i(t,o))||a);return r>3&&a&&Object.defineProperty(t,o,a),a};let Sn=class extends ee{constructor(){super(...arguments),this.code=""}render(){return j`
       <nidoca-box-shadow .shadowType="${rt.KEY_LIGHT}">
         <nidoca-layout-flex
@@ -2241,31 +2241,31 @@ ${this.value}</textarea
 
 
 
-<nidoca-typography text="Header 1" typographyType="${Oe.H1}"> </nidoca-typography>
+<nidoca-typography text="Header 1" type="${Oe.H1}"> </nidoca-typography>
 <br/>
-<nidoca-typography text="Header 2" typographyType="${Oe.H2}"> </nidoca-typography>
+<nidoca-typography text="Header 2" type="${Oe.H2}"> </nidoca-typography>
 <br/>
-<nidoca-typography text="Header 3" typographyType="${Oe.H3}"> </nidoca-typography>
+<nidoca-typography text="Header 3" type="${Oe.H3}"> </nidoca-typography>
 <br/>
-<nidoca-typography text="Header 4" typographyType="${Oe.H4}"> </nidoca-typography>
+<nidoca-typography text="Header 4" type="${Oe.H4}"> </nidoca-typography>
 <br/>
-<nidoca-typography text="Header 5" typographyType="${Oe.H5}"> </nidoca-typography>
+<nidoca-typography text="Header 5" type="${Oe.H5}"> </nidoca-typography>
 <br/>
-<nidoca-typography text="Header 6" typographyType="${Oe.H6}"> </nidoca-typography>
+<nidoca-typography text="Header 6" type="${Oe.H6}"> </nidoca-typography>
 <br/>
-<nidoca-typography text="Button" typographyType="${Oe.BUTTON}"> </nidoca-typography>
+<nidoca-typography text="Button" type="${Oe.BUTTON}"> </nidoca-typography>
 <br/>
-<nidoca-typography text="Mein Text Body 1" typographyType="${Oe.BODY1}"> </nidoca-typography>
+<nidoca-typography text="Mein Text Body 1" type="${Oe.BODY1}"> </nidoca-typography>
 <br/>
-<nidoca-typography text="Mein Text Body 2" typographyType="${Oe.BODY2}"> </nidoca-typography>
+<nidoca-typography text="Mein Text Body 2" type="${Oe.BODY2}"> </nidoca-typography>
 <br/>
-<nidoca-typography text="Caption" typographyType="${Oe.CAPTION}"> </nidoca-typography>
+<nidoca-typography text="Caption" type="${Oe.CAPTION}"> </nidoca-typography>
 <br/>
-<nidoca-typography text="Overline" typographyType="${Oe.OVERLINE}"> </nidoca-typography>
+<nidoca-typography text="Overline" type="${Oe.OVERLINE}"> </nidoca-typography>
 <br/>
-<nidoca-typography text="Subtitel 1" typographyType="${Oe.SUBTITLE1}"> </nidoca-typography>
+<nidoca-typography text="Subtitel 1" type="${Oe.SUBTITLE1}"> </nidoca-typography>
 <br/>
-<nidoca-typography text="Subtitel 2" typographyType="${Oe.SUBTITLE2}"> </nidoca-typography>
+<nidoca-typography text="Subtitel 2" type="${Oe.SUBTITLE2}"> </nidoca-typography>
 <br/>
 
 
@@ -2274,17 +2274,17 @@ ${this.value}</textarea
       <nidoca-layout-section>
         <nidoca-img src="${Rn}"> </nidoca-img>
         <nidoca-layout-spacer>
-          <nidoca-typography typographyType="${Oe.H1}">${An}</nidoca-typography>
-          <nidoca-typography typographyType="${Oe.BODY1}">${wn}</nidoca-typography>
+          <nidoca-typography type="${Oe.H1}">${An}</nidoca-typography>
+          <nidoca-typography type="${Oe.BODY1}">${wn}</nidoca-typography>
           <nidoca-button>Lorem Ipsum</nidoca-button>
         </nidoca-layout-spacer>
 
         <nidoca-icon-extended icon="home"></nidoca-icon-extended>
         <nidoca-dialog-action .show="${!1}">
-          <nidoca-typography slot="header" typographyType="${Oe.H1}"
+          <nidoca-typography slot="header" type="${Oe.H1}"
             >${An}</nidoca-typography
           >
-          <nidoca-typography slot="text" typographyType="${Oe.BODY1}"
+          <nidoca-typography slot="text" type="${Oe.BODY1}"
             >${wn}</nidoca-typography
           >
 
@@ -2296,9 +2296,9 @@ ${this.value}</textarea
 
       <nidoca-layout-section>
         <nidoca-layout-spacer>
-          <nidoca-typography typographyType="${Oe.H3}">${An}</nidoca-typography>
+          <nidoca-typography type="${Oe.H3}">${An}</nidoca-typography>
 
-          <nidoca-typography typographyType="${Oe.BODY1}">${wn}</nidoca-typography>
+          <nidoca-typography type="${Oe.BODY1}">${wn}</nidoca-typography>
         </nidoca-layout-spacer>
         <nidoca-img style="width:200px;height:500px" src="${Rn}"> </nidoca-img>
         <nidoca-img src="${Rn}"> </nidoca-img>
@@ -2307,8 +2307,8 @@ ${this.value}</textarea
 
       <nidoca-layout-section>
         <nidoca-layout-spacer>
-          <nidoca-typography typographyType="${Oe.H3}">${An}</nidoca-typography>
-          <nidoca-typography typographyType="${Oe.BODY1}">${wn}</nidoca-typography>
+          <nidoca-typography type="${Oe.H3}">${An}</nidoca-typography>
+          <nidoca-typography type="${Oe.BODY1}">${wn}</nidoca-typography>
         </nidoca-layout-spacer>
 
         <nidoca-avatar
@@ -2336,10 +2336,10 @@ ${this.value}</textarea
           ${["","","","","","","","",""].map((()=>j`
               <nidoca-card>
                 <nidoca-img slot="media" src="${Rn}"> </nidoca-img>
-                <nidoca-typography slot="supportingText" typographyType="${Oe.H3}"
+                <nidoca-typography slot="supportingText" type="${Oe.H3}"
                   >${On}</nidoca-typography
                 >
-                <nidoca-typography slot="supportingText" typographyType="${Oe.BODY1}"
+                <nidoca-typography slot="supportingText" type="${Oe.BODY1}"
                   >${wn}
                 </nidoca-typography>
 
@@ -2366,7 +2366,7 @@ ${this.value}</textarea
           NidocaSpacerSize="${he.SMALL}"
           .spacerTypes="${[de.LEFT,de.RIGHT]}"
         ></nidoca-layout-spacer>
-        <nidoca-typography .typographyType="${Oe.H3}">Settings</nidoca-typography>
+        <nidoca-typography .type="${Oe.H3}">Settings</nidoca-typography>
       </nidoca-layout-flex>
       <nidoca-layout-spacer
         nidocaSpacerSize="${he.LITTLE}"
@@ -2381,7 +2381,7 @@ ${this.value}</textarea
           NidocaSpacerSize="${he.LITTLE}"
           .nidocaSpacerType="${[de.TOP,de.BOTTOM]}"
         >
-          <nidoca-typography .typographyType="${Oe.H6}">Spracheinstellungen</nidoca-typography>
+          <nidoca-typography .type="${Oe.H6}">Spracheinstellungen</nidoca-typography>
         </nidoca-layout-spacer>
       </nidoca-layout-flex>
     `}};Cn.styles=s``,Cn=function(e,t,o,n){var i,r=arguments.length,a=r<3?t:null===n?n=Object.getOwnPropertyDescriptor(t,o):n;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)a=Reflect.decorate(e,t,o,n);else for(var s=e.length-1;s>=0;s--)(i=e[s])&&(a=(r<3?i(a):r>3?i(t,o,a):i(t,o))||a);return r>3&&a&&Object.defineProperty(t,o,a),a}([te("nidoca-page-settings")],Cn);var _n=function(e,t,o,n){var i,r=arguments.length,a=r<3?t:null===n?n=Object.getOwnPropertyDescriptor(t,o):n;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)a=Reflect.decorate(e,t,o,n);else for(var s=e.length-1;s>=0;s--)(i=e[s])&&(a=(r<3?i(a):r>3?i(t,o,a):i(t,o))||a);return r>3&&a&&Object.defineProperty(t,o,a),a},Pn=function(e,t){if("object"==typeof Reflect&&"function"==typeof Reflect.metadata)return Reflect.metadata(e,t)};let jn=class extends ee{constructor(){super(...arguments),this.prominent=!1,this.selectionMode=!1,this.elevationShow=!1,this.elevationContentElement=j`
@@ -2401,10 +2401,10 @@ ${this.value}</textarea
         .flexAlignContent="${Je.CENTER}"
       >
         <nidoca-layout-spacer>
-          <nidoca-typography typographyType="${Oe.H1}">Listenansicht mit Suche</nidoca-typography>
+          <nidoca-typography type="${Oe.H1}">Listenansicht mit Suche</nidoca-typography>
         </nidoca-layout-spacer>
         <nidoca-layout-spacer .spacerTypes="${[de.BOTTOM]}">
-          <nidoca-typography typographyType="${Oe.BODY1}"
+          <nidoca-typography type="${Oe.BODY1}"
             >Diese Listenansicht ist ein schönes Beispiel wie man eine Liste an Elementen anzeigt und verschiedene
             Funktionalität implementieren kann.</nidoca-typography
           >
@@ -2416,7 +2416,7 @@ ${this.value}</textarea
             spacerSize="${he.MEDIUM}"
             .spacerTypes=${[de.LEFT]}
           >
-            <nidoca-typography typographyType="${Oe.BODY1}"
+            <nidoca-typography type="${Oe.BODY1}"
               >Aufgaben</nidoca-typography
             ></nidoca-layout-spacer
           >
@@ -2444,8 +2444,8 @@ ${this.value}</textarea
         <nidoca-list .selectionMode="${this.selectionMode}">
           ${[{primary:"List Item",secondary:"Komponente muss schöner werden"},{primary:"List Item",secondary:"Komponente muss schöner werden"},{primary:"List Item",secondary:"Komponente muss schöner werden"},{primary:"List Item",secondary:"Komponente muss schöner werden"},{primary:"List Item",secondary:"Komponente muss schöner werden"}].map((e=>j`
               <nidoca-list-item
-                ><nidoca-typography .typographyType="${Oe.H6}">${e.primary}</nidoca-typography>
-                <nidoca-typography .typographyType="${Oe.BODY1}" slot="secondary"
+                ><nidoca-typography .type="${Oe.H6}">${e.primary}</nidoca-typography>
+                <nidoca-typography .type="${Oe.BODY1}" slot="secondary"
                   >${e.secondary}</nidoca-typography
                 >
                 <nidoca-icon slot="graphic" icon="face">face</nidoca-icon>
@@ -2555,7 +2555,7 @@ ${this.value}</textarea
         .navigationClosed="${this.navigationClosed}"
         .theme="${e.PRIMARY}"
       >
-        <nidoca-typography slot="topCenter" typographyType="${Oe.BODY1}"
+        <nidoca-typography slot="topCenter" type="${Oe.BODY1}"
           >nidoca framework</nidoca-typography
         >
         <nidoca-icon
@@ -2604,7 +2604,7 @@ ${this.value}</textarea
           >topAppBar</nidoca-list-item>
           <nidoca-list-item @click="${()=>Ln.getUniqueInstance().navigate("list")}">Liste</nidoca-list-item>
           <nidoca-list-item @click="${()=>Ln.getUniqueInstance().navigate("form")}">
-            <nidoca-typography .typographyType="${Oe.H6}">Formular</nidoca-typography>
+            <nidoca-typography .type="${Oe.H6}">Formular</nidoca-typography>
             <nidoca-icon slot="graphic" icon="face">face</nidoca-icon>
             <nidoca-icon slot="meta" icon="arrow_right">arrow_right</nidoca-icon>
           </nidoca-list-item>

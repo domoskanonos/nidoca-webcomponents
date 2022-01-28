@@ -40,7 +40,7 @@ export class NidocaMenuItem extends LitElement {
           : html` <nidoca-layout-spacer left="10px" right="36px"></nidoca-layout-spacer>`}
         ${this.text
           ? html`<nidoca-typography
-              .typographyType="${this.type == NidocaMenuItemType.ITEM
+              .type="${this.type == NidocaMenuItemType.ITEM
                 ? NidocaTypographyType.BODY1
                 : NidocaTypographyType.CAPTION}"
               >${this.text}</nidoca-typography

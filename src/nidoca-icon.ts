@@ -51,7 +51,7 @@ export class NidocaIcon extends LitElement {
   deactivated: boolean = false;
 
   @property({type: String})
-  title: string = "";
+  primaryText: string = "";
 
   constructor() {
     super();
@@ -64,7 +64,7 @@ export class NidocaIcon extends LitElement {
     return html`
       <i
         class="material-icons ${this.deactivated ? "deactivated" : ""} ${this.clickable ? "clickable" : ""}"
-        title="${this.title}"
+        title="${this.primaryText}"
         @click="${this.clicked}"
         >${this.icon}</i
       >

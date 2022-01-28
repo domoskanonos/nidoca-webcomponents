@@ -26,6 +26,7 @@ export class PropertyGuiWrapper {
     switch (propertyType) {
       case RenderType.STRING:
         return html`<nidoca-form-text .textType="${NidocaTextType.TEXT}"
+        label="${this.propertyWrapper.propertyName}"
           value="${classWrapper.instance[this.propertyWrapper.propertyName as keyof LitElement]}"
           @input="${(eventArg: any) => {
             classWrapper.instance[this.propertyWrapper.propertyName] = eventArg.target.getOutputData().value;
@@ -34,6 +35,7 @@ export class PropertyGuiWrapper {
         /></nidoca-form-text>`;
       case RenderType.NUMBER:
         return html`<nidoca-form-text
+          label="${this.propertyWrapper.propertyName}"
           .textType="${NidocaTextType.NUMBER}"
           value="${classWrapper.instance[this.propertyWrapper.propertyName as keyof LitElement]}"
           @input="${(eventArg: any) => {
@@ -43,6 +45,7 @@ export class PropertyGuiWrapper {
         ></nidoca-form-text>`;
       case RenderType.BOOLEAN: {
         return html`<nidoca-form-switch
+          label="${this.propertyWrapper.propertyName}"
           type="checkbox"
           .checked="${classWrapper.instance[this.propertyWrapper.propertyName as keyof LitElement]}"
           @input="${(eventArg: any) => {
@@ -53,6 +56,7 @@ export class PropertyGuiWrapper {
       }
       case RenderType.COMBOBOX: {
         return html`<nidoca-form-combobox
+          label="${this.propertyWrapper.propertyName}"
           .options="${NidocaFormCombobox.enumToOptions(this.propertyWrapper.getType(), false)}"
           value="${classWrapper.instance[this.propertyWrapper.propertyName as keyof LitElement]}"
           @input="${(eventArg: any) => {
@@ -67,6 +71,7 @@ export class PropertyGuiWrapper {
       case RenderType.ARRAY:
         return html`
           <nidoca-form-combobox
+            label="${this.propertyWrapper.propertyName}"
             .options="${NidocaFormCombobox.toComboboxOptions(
               this.propertyWrapper.getType(),
               this.propertyWrapper.getTypeName()

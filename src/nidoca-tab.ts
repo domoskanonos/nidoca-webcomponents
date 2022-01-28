@@ -42,7 +42,7 @@ export class NidocaTab extends LitElement {
         ${this.text
           ? html`
               <nidoca-typography
-                .typographyType="${NidocaTypographyType.OVERLINE}"
+                .type="${NidocaTypographyType.OVERLINE}"
                 text="${this.text}"
               ></nidoca-typography>
             `

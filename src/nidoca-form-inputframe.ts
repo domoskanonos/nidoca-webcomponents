@@ -88,7 +88,7 @@ export class NidocaFormInputframe extends LitElement {
                         <nidoca-typography
                           style="flex-basis:100%;"
                           class="label"
-                          .typographyType="${NidocaTypographyType.CAPTION}"
+                          .type="${NidocaTypographyType.CAPTION}"
                           text="${this.label}"
                         ></nidoca-typography>
                       `
@@ -101,21 +101,21 @@ export class NidocaFormInputframe extends LitElement {
 
           ${this.infoText
             ? html` <nidoca-typography
-                .typographyType="${NidocaTypographyType.BODY1}"
+                .type="${NidocaTypographyType.BODY1}"
                 text="${this.infoText}"
               ></nidoca-typography>`
             : html``}
           ${this.warningText
             ? html` <nidoca-typography
                 style="color:var(--app-color-warning-background)"
-                .typographyType="${NidocaTypographyType.BODY1}"
+                .type="${NidocaTypographyType.BODY1}"
                 text="${this.warningText}"
               ></nidoca-typography>`
             : html``}
           ${this.errorText
             ? html` <nidoca-typography
                 style="color:var(--app-color-error-background)"
-                .typographyType="${NidocaTypographyType.BODY1}"
+                .type="${NidocaTypographyType.BODY1}"
                 text="${this.errorText}"
               ></nidoca-typography>`
             : html``}

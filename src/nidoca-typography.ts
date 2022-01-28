@@ -35,6 +35,10 @@ export enum NidocaTypographyAlignment {
 @customElement("nidoca-typography")
 export class NidocaTypography extends LitElement {
   static styles = css`
+    :host {
+      display: block;
+    }
+
     .TYPOGRAPHY {
       display: inline-block;
     }
@@ -135,19 +139,15 @@ export class NidocaTypography extends LitElement {
   `;
 
   @property({type: NidocaTypographyType, converter: String})
-  typographyType: NidocaTypographyType = NidocaTypographyType.BODY1;
+  type: string = NidocaTypographyType.BODY1;
 
   @property({type: NidocaTypographyAlignment, converter: String})
-  typographyAlignment: NidocaTypographyAlignment = NidocaTypographyAlignment.START;
+  textAlign: string = NidocaTypographyAlignment.START;
 
   @property({type: String})
   text: string = "";
 
   render(): TemplateResult {
-    return html`
-      <span class="TYPOGRAPHY ${this.typographyType}" style="${this.typographyAlignment}"
-        >${this.text}<slot></slot
-      ></span>
-    `;
+    return html` <span class="TYPOGRAPHY ${this.type}" style="${this.textAlign}">${this.text}<slot></slot></span> `;
   }
 }

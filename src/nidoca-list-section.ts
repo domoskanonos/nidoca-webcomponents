@@ -16,7 +16,7 @@ export class NidocaListSection extends LitElement {
         style="display:flex;flex-direction:row;flex-wrap:nowrap;align-items:center;justify-content:flex-end;align-content:flex-start;"
       >
         <nidoca-layout-spacer style="flex-basis:100%;">
-          <nidoca-typography .typographyType="${NidocaTypographyType.H6}" text="${this.text}"></nidoca-typography>
+          <nidoca-typography .type="${NidocaTypographyType.H6}" text="${this.text}"></nidoca-typography>
         </nidoca-layout-spacer>
       </div>
     `;

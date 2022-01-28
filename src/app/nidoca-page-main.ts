@@ -1,6 +1,6 @@
 import {css, html, LitElement, TemplateResult} from "lit";
 import {customElement} from "lit/decorators.js";
-import {NidocaDevice, NidocaTheme, NidocaTypographyType} from "..";
+import {Nidoca, NidocaDevice, NidocaTheme, NidocaTypographyType} from "..";
 
 @customElement("nidoca-page-main")
 export class NidocaPageMain extends LitElement {
@@ -17,9 +17,7 @@ export class NidocaPageMain extends LitElement {
               src="https://raw.githubusercontent.com/domoskanonos/devbox/main/assets/logo-ink.svg"
             >
             </nidoca-img>
-            <nidoca-typography .typographyType="${NidocaTypographyType.H1}"
-              >&nbsp;nidoca-webcomponents</nidoca-typography
-            >
+            <nidoca-typography .type="${NidocaTypographyType.H1}">&nbsp;nidoca-webcomponents</nidoca-typography>
           </div>
         </nidoca-layout-spacer>
       </nidoca-section>
@@ -31,9 +29,9 @@ export class NidocaPageMain extends LitElement {
             icon="local_library"
             style="padding:var(--space-medium);"
           >
-            Nidoce ist eine Komponentenbibliothek mit über 30 Komponenten für den direkten Einsatz in deiner
-            Webanwendung. Egal ob normales HTML, Angular, React, Lit. Die Komponenten können dank der Webcomponent
-            Technologie überall in andere Frameworks eingebaungen werden.
+            Nidoce ist eine Komponentenbibliothek mit über ${Nidoca.getUniqueInstance().registeredElementNames.length}
+            Komponenten für den direkten Einsatz in deiner Webanwendung. Egal ob normales HTML, Angular, React, Lit. Die
+            Komponenten können dank der Webcomponent Technologie überall in andere Frameworks eingebaungen werden.
           </nidoca-icon-with-description>
           <nidoca-icon-with-description title="Leichtgewichtig" icon="code" style="padding:var(--space-medium);">
             Es ist ein sehr kleines, leichtes Komponenten-Framework, das nur 32 KB klein ist. Es enthält mehr als 30
@@ -48,13 +46,13 @@ export class NidocaPageMain extends LitElement {
       </nidoca-layout-container>
 
       <nidoca-section>
-        <nidoca-img src="https://picsum.photos/500"></nidoca-img>
-        <nidoca-img src="https://picsum.photos/600"></nidoca-img>
-        <nidoca-img src="https://picsum.photos/700"></nidoca-img>
-        <nidoca-img src="https://picsum.photos/800"></nidoca-img>
+        <nidoca-img src="http://nidoca.eu/img/1638344581876.jpg"></nidoca-img>
+        <nidoca-img src="http://nidoca.eu/img/DSC01380.jpg"></nidoca-img>
+        <nidoca-img src="http://nidoca.eu/img/1638344581857.jpg"></nidoca-img>
+        <nidoca-img src="http://nidoca.eu/img/DSC02560.jpg"></nidoca-img>
 
         <nidoca-article
-          style="padding:var(--space-max);"
+          style=""
           title="Lorem Ipsum"
           summary="Lorem Ipsum Dolorem ipsum med en to."
           text="Lorem Ipsum Dolorem ipsum med en to. Lorem Ipsum Dolorem ipsum med en to. Lorem Ipsum Dolorem ipsum med en to. Lorem Ipsum Dolorem ipsum med en to."
@@ -62,7 +60,7 @@ export class NidocaPageMain extends LitElement {
       </nidoca-section>
 
       <nidoca-section style="width:50%; padding:50px;">
-        <nidoca-img src="https://picsum.photos/id/1/800/600/"></nidoca-img>
+        <nidoca-img src="http://nidoca.eu/img/DSC02586.jpg"></nidoca-img>
         <nidoca-article
           style="padding-left:25px;"
           title="Lorem Ipsum"
@@ -79,7 +77,7 @@ export class NidocaPageMain extends LitElement {
             creative and technical paradigm for creating websites, so that they can react to the properties of the end
             device used, especially smartphones and tablet computers."
           >
-            <nidoca-typography slot="title" .typographyType="${NidocaTypographyType.H2}"
+            <nidoca-typography slot="title" .type="${NidocaTypographyType.H2}"
               >Responsive Komponenten</nidoca-typography
             >
           </nidoca-article>
@@ -92,9 +90,7 @@ export class NidocaPageMain extends LitElement {
             summary="Alle Komponenten erfüllen den Webcomponent Standart"
             text="Webkomponenten sind eine Gruppe von Web-Technologien, die es ermöglichen, benutzerdefinierte, wiederverwendbare HTML Elemente zu erstellen, deren Funktionalität gekapselt ist und damit vollständig getrennt von anderem Code."
           >
-            <nidoca-typography slot="title" .typographyType="${NidocaTypographyType.H2}"
-              >Webcomponents</nidoca-typography
-            >
+            <nidoca-typography slot="title" .type="${NidocaTypographyType.H2}">Webcomponents</nidoca-typography>
           </nidoca-article>
         </nidoca-section>
       </nidoca-layout-container>
@@ -104,6 +100,23 @@ export class NidocaPageMain extends LitElement {
           <nidoca-form-contact></nidoca-form-contact>
         </nidoca-section>
       </nidoca-layout-container>
+
+      <nidoca-section>
+        <nidoca-img src="http://nidoca.eu/img/IMG_0524.jpg"></nidoca-img>
+        <nidoca-article
+          title="Lorem Ipsum"
+          summary="Lorem Ipsum Dolorem ipsum med en to."
+          text="Lorem Ipsum Dolorem ipsum med en to. Lorem Ipsum Dolorem ipsum med en to. Lorem Ipsum Dolorem ipsum med en to. Lorem Ipsum Dolorem ipsum med en to."
+        ></nidoca-article>
+      </nidoca-section>
+      <nidoca-section>
+        <nidoca-article
+          title="Lorem Ipsum"
+          summary="Lorem Ipsum Dolorem ipsum med en to."
+          text="Lorem Ipsum Dolorem ipsum med en to. Lorem Ipsum Dolorem ipsum med en to. Lorem Ipsum Dolorem ipsum med en to. Lorem Ipsum Dolorem ipsum med en to."
+        ></nidoca-article>
+        <nidoca-img src="http://nidoca.eu/img/IMG_1825.jpg"></nidoca-img>
+      </nidoca-section>
     `;
   }
 }
