@@ -26,6 +26,7 @@ export class LitViewer extends LitElement {
 
   updated(_changedProperties: PropertyValues): void {
     if (_changedProperties.has("element") && this.element != undefined) {
+      this.element.style.flexBasis = "auto";
       this.clazzGuiWrapper = new WebcomponentGuiWrapper(new WebcomponentWrapper(<LitElement>this.element));
       this.requestUpdate();
     }
@@ -40,7 +41,7 @@ export class LitViewer extends LitElement {
           <nidoca-code>${this.clazzGuiWrapper ? this.clazzGuiWrapper.classWrapper.getHTMLTag() : ""} </nidoca-code>
 
           <div style="padding-top:var(--space-medium);">
-            <nidoca-layout-container .theme="${NidocaTheme.PRIMARY}"> ${this.element} </nidoca-layout-container>
+            <nidoca-section style="height:100%;" .theme="${NidocaTheme.PRIMARY}"> ${this.element} </nidoca-section>
           </div>
         </div>
 

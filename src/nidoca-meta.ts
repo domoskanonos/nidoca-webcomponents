@@ -110,6 +110,58 @@ export class Nidoca {
         <nidoca-menu-item icon="home" text="Einstellungen"> </nidoca-menu-item>
       </nidoca-menu>`
     );
+
+    this._registeredElementsMap.set(
+      "nidoca-accordion-item",
+      html`<nidoca-accordion-item header="Mein Bild"
+        ><nidoca-img src="http://nidoca.eu/img/DSC02586.jpg"></nidoca-img
+      ></nidoca-accordion-item>`
+    );
+    this._registeredElementsMap.set(
+      "nidoca-accordion",
+      html`<nidoca-accordion
+        ><nidoca-accordion-item header="Bild 1"
+          ><nidoca-img src="http://nidoca.eu/img/DSC02586.jpg"></nidoca-img></nidoca-accordion-item
+        ><nidoca-accordion-item header="Bild 2"
+          ><nidoca-img src="http://nidoca.eu/img/DSC02586.jpg"></nidoca-img></nidoca-accordion-item
+        ><nidoca-accordion-item header="Bild 3"
+          ><nidoca-img src="http://nidoca.eu/img/DSC02586.jpg"></nidoca-img></nidoca-accordion-item
+        ><nidoca-accordion-item header="Bild 4"
+          ><nidoca-img src="http://nidoca.eu/img/DSC02586.jpg"></nidoca-img></nidoca-accordion-item
+      ></nidoca-accordion>`
+    );
+    this._registeredElementsMap.set("nidoca-border", html`<nidoca-border></nidoca-border>`);
+    this._registeredElementsMap.set("nidoca-box-shadow", html`<nidoca-box-shadow></nidoca-box-shadow>`);
+    this._registeredElementsMap.set(
+      "nidoca-button",
+      html`<nidoca-button leadingIcon="home" buttonType="OUTLINED">Mein Button</nidoca-button>`
+    );
+    this._registeredElementsMap.set("nidoca-captcha", html`<nidoca-captcha></nidoca-captcha>`);
+    this._registeredElementsMap.set("nidoca-card", html`<nidoca-card></nidoca-card>`);
+    this._registeredElementsMap.set("nidoca-chip", html`<nidoca-chip>jojij</nidoca-chip>`);
+    this._registeredElementsMap.set("nidoca-code", html`<nidoca-code></nidoca-code>`);
+    this._registeredElementsMap.set("nidoca-dialog-action", html`<nidoca-dialog-action></nidoca-dialog-action>`);
+    this._registeredElementsMap.set("nidoca-elevation", html`<nidoca-elevation></nidoca-elevation>`);
+    this._registeredElementsMap.set("nidoca-dialog", html`<nidoca-dialog></nidoca-dialog>`);
+    this._registeredElementsMap.set("nidoca-form-combobox", html`<nidoca-form-combobox></nidoca-form-combobox>`);
+    this._registeredElementsMap.set("nidoca-form-date", html`<nidoca-form-date></nidoca-form-date>`);
+    this._registeredElementsMap.set("nidoca-form-switch", html`<nidoca-form-switch></nidoca-form-switch>`);
+    this._registeredElementsMap.set("nidoca-text", html`<nidoca-text></nidoca-text>`);
+    this._registeredElementsMap.set("nidoca-textarea", html`<nidoca-textarea></nidoca-textarea>`);
+    this._registeredElementsMap.set("nidoca-gallery", html`<nidoca-gallery></nidoca-gallery>`);
+    this._registeredElementsMap.set("nidoca-link", html`<nidoca-link></nidoca-link>`);
+    this._registeredElementsMap.set("nidoca-ripple", html`<nidoca-ripple></nidoca-ripple>`);
+    this._registeredElementsMap.set("nidoca-tabs", html`<nidoca-tabs></nidoca-tabs>`);
+    this._registeredElementsMap.set("nidoca-table", html`<nidoca-table></nidoca-table>`);
+    this._registeredElementsMap.set("nidoca-template", html`<nidoca-template></nidoca-template>`);
+    this._registeredElementsMap.set(
+      "nidoca-top-app-bar",
+      html`<nidoca-top-app-bar .theme="${NidocaTheme.PRIMARY}"
+        ><div slot="left">doifjsoidfjsoidfjdsoifj</div></nidoca-top-app-bar
+      >`
+    );
+    this._registeredElementsMap.set("nidoca-upload", html`<nidoca-upload></nidoca-upload>`);
+    this._registeredElementsMap.set("nidoca-wizard", html`<nidoca-wizard></nidoca-wizard>`);
   }
   private static uniqueInstance: Nidoca;
 

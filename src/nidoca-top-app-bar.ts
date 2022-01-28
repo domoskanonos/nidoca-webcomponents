@@ -7,6 +7,9 @@ import {NidocaTheme} from ".";
 export class NidocaTopAppBar extends LitElement {
   static styles = css`
     :host {
+      height: 60px;
+      width: 100%;
+      position: relativ;
       display: block;
       width: 100%;
     }
@@ -22,14 +25,11 @@ export class NidocaTopAppBar extends LitElement {
     }
   `;
 
-  @property({type: NidocaTheme})
-  theme: NidocaTheme = NidocaTheme.PRIMARY;
+  @property({type: String})
+  theme: string = NidocaTheme.PRIMARY;
 
   @property({type: Boolean})
   prominent: boolean = false;
-
-  @property({type: String})
-  cssStyle: string = "height:60px;width:100%;position:relativ;";
 
   render(): TemplateResult {
     return html`

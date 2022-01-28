@@ -8,7 +8,7 @@ export class NidocaPageGallery extends LitElement {
   static styles = css``;
 
   @property({type: String})
-  elementName: string = "nidoca-article";
+  elementName: string = "nidoca-top-app-bar";
 
   render(): TemplateResult {
     return html`

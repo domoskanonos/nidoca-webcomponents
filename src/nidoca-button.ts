@@ -84,17 +84,13 @@ export class NidocaButton extends LitElement {
               ? html`<nidoca-layout-spacer> </nidoca-layout-spacer>`
               : html``}
 
-            <nidoca-layout-spacer
-              class="fullWidth"
-              left="var(--space-big)"
-              right="var(--space-big)"
-              top="var(--space-big)"
-              bottom="var(--space-big)"
+            <nidoca-typography
+              style="padding:var(--space-big);"
+              text="${this.text}"
+              type="${NidocaTypographyType.BUTTON}"
             >
-              <nidoca-typography text="${this.text}" type="${NidocaTypographyType.BUTTON}">
-                <slot></slot>
-              </nidoca-typography>
-            </nidoca-layout-spacer>
+              <slot></slot>
+            </nidoca-typography>
 
             ${this.buttonType != NidocaButtonType.TEXT ? html`<nidoca-layout-spacer></nidoca-layout-spacer>` : html``}
           </div>

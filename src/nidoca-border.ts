@@ -14,8 +14,6 @@ export enum NidocaBorderProperty {
   TOP = "TOP",
   BOTTOM = "BOTTOM",
   BOTTOM_SELECTED = "BOTTOM_SELECTED",
-  FULL_WIDTH = "FULL_WIDTH",
-  FULL_HEIGHT = "FULL_HEIGHT",
 }
 
 export enum NidocaBorderSize {
@@ -34,20 +32,12 @@ export class NidocaBorder extends LitElement {
       color: inherit;
       background-color: inherit;
       clear: none;
-      display: inline-block
+      display: inline-block;
     }
 
     slot {
       display: inline-block;
-      width:100%;
-    }
-
-    .FULL_WIDTH {
       width: 100%;
-    }
-
-    .FULL_HEIGHT {
-      height: 100%;
     }
 
     .NONE {

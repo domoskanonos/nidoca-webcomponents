@@ -6,8 +6,14 @@ import {NidocaBorderProperty} from "./nidoca-border";
 @customElement("nidoca-accordion-item")
 export class NidocaAccordionItem extends LitElement {
   static styles = css`
-    .ACCORDION_HEADER {
-      cursor: pointer;
+    :host {
+      width: 100%;
+    }
+
+    .container {
+      display: block;
+      border: 1px solid black;
+      width: 100%;
     }
   `;
 
@@ -19,28 +25,19 @@ export class NidocaAccordionItem extends LitElement {
 
   render(): TemplateResult {
     return html`
-      <div class="ACCORDION_ITEM">
-        <nidoca-border
-          .borderProperties="${[
-            NidocaBorderProperty.BOTTOM,
-            NidocaBorderProperty.LEFT,
-            NidocaBorderProperty.RIGHT,
-            NidocaBorderProperty.FULL_WIDTH,
-          ]}"
+      <nidoca-border
+        style="width:100%;"
+        .borderProperties="${[NidocaBorderProperty.BOTTOM, NidocaBorderProperty.LEFT, NidocaBorderProperty.RIGHT]}"
+      >
+        <div
+          @click="${() => this.toggle()}"
+          style="display:flex;flex-direction:row;align-items:center;justify-content:space-between;align-content:center; cursor:pointer;"
         >
-          <div
-            class="ACCORDION_HEADER"
-            @click="${() => this.toggle()}"
-            style="display:flex;flex-direction:row;align-items:center;justify-content:space-between;align-content:center;"
-          >
-            <nidoca-layout-spacer left="var(--space-medium)">
-              <nidoca-typography text="${this.header}"></nidoca-typography>
-            </nidoca-layout-spacer>
-            <nidoca-icon icon="${this.opened ? "keyboard_arrow_down" : "keyboard_arrow_up"}"></nidoca-icon>
-          </div>
-          ${this.opened ? html` <slot></slot>` : html``}
-        </nidoca-border>
-      </div>
+          <nidoca-typography style="padding-left:var(--space-medium);" text="${this.header}"></nidoca-typography>
+          <nidoca-icon icon="${this.opened ? "keyboard_arrow_down" : "keyboard_arrow_up"}"></nidoca-icon>
+        </div>
+        ${this.opened ? html` <slot></slot>` : html``}
+      </nidoca-border>
     `;
   }
 
