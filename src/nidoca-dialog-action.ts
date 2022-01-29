@@ -14,7 +14,7 @@ export class NidocaDialogAction extends LitElement {
 
   @property({type: Boolean})
   show: boolean = false;
-  
+
   @property({type: NidocaTheme})
   theme: NidocaTheme = NidocaTheme.BACKGROUND;
 

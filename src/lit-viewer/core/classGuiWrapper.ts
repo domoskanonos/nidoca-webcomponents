@@ -8,7 +8,7 @@ export class ClassGuiWrapper<T extends LitElement> {
   //public showcaseElement: LitViewer;
 
   //showcaseElement: LitViewer,
-  
+
   constructor(classWrapper: ClassWrapper<T>) {
     //this.showcaseElement = showcaseElement;
     this.classWrapper = classWrapper;

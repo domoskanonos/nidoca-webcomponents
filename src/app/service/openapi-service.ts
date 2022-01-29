@@ -42,7 +42,6 @@ export class OpenApiService {
   }
 
   init(url: string): void {
-    
     let a;
     (async function () {
       a = await (await fetch(url, {method: "GET"})).json();

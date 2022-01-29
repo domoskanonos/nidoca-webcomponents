@@ -40,12 +40,7 @@ export class NidocaTab extends LitElement {
       </style>
       <span class="tab ${this.selected ? "SELECTED" : ""}" @click="${() => this.tabClicked()}">
         ${this.text
-          ? html`
-              <nidoca-typography
-                .type="${NidocaTypographyType.OVERLINE}"
-                text="${this.text}"
-              ></nidoca-typography>
-            `
+          ? html` <nidoca-typography .type="${NidocaTypographyType.OVERLINE}" text="${this.text}"></nidoca-typography> `
           : html``}
         <slot></slot>
       </span>

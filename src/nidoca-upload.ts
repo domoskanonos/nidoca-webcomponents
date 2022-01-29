@@ -4,19 +4,12 @@ import {property} from "lit/decorators.js";
 
 @customElement("nidoca-upload")
 export class NidocaUpload extends LitElement {
-   static styles = css`
+  static styles = css``;
 
-   `;
+  @property({type: String})
+  code: string = "";
 
-   @property({type: String})
-   code: string = "";
-
-   render() : any {
-      return html`
-         
-
-
-      `;
-   }
-
+  render(): any {
+    return html``;
+  }
 }

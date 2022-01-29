@@ -21,5 +21,5 @@
   "typedocOptions": {
     "entryPoints": ["./src"],
     "out": "docs"
-  } 
+  }
 }

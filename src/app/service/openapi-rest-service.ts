@@ -1,13 +1,10 @@
 import {OpenApiService} from "./openapi-service";
 
 export class OpenApiRestService {
+  constructor(private openApiService: OpenApiService) {}
 
-    constructor(private openApiService : OpenApiService){
-
-    }
-
-    async searchByPath(key: string): Promise<any> {
-        console.log(key);
+  async searchByPath(key: string): Promise<any> {
+    console.log(key);
     const url: string = this.openApiService.getPathUrl(key);
 
     const headers: any = {};
@@ -23,5 +20,4 @@ export class OpenApiRestService {
 
     return await (await fetch(url, requestOptions)).json();
   }
-
 }

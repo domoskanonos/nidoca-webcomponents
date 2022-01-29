@@ -117,7 +117,7 @@ export class NidocaProgress extends LitElement {
 
     .PROGRESS_CIRCULAR:indeterminate::before,
     .PROGRESS_CIRCULAR:indeterminate::-webkit-progress-value {
-      content: '';
+      content: "";
       display: block;
       box-sizing: border-box;
       margin-bottom: 0.25em;

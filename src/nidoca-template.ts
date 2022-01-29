@@ -7,7 +7,6 @@ import {MOBILE_MAX_WIDTH, NidocaTheme, TABLET_MAX_WIDTH, TABLE_MIN_WIDTH} from "
 @customElement("nidoca-template")
 export class NidocaTemplate extends LitElement {
   static styles = css`
-
     .slotHeader {
       display: flex;
       align-items: center;

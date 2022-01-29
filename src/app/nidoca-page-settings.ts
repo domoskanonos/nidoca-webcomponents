@@ -50,7 +50,7 @@ export class NidocaPageSettings extends LitElement {
                     this.cssVars,
                     (cssVar) => html`
                       <nidoca-form-text
-                      style="width:100%;"
+                        style="width:100%;"
                         @input="${(event: InputEvent) => {
                           document.documentElement.style.setProperty(
                             cssVar,
@@ -63,7 +63,6 @@ export class NidocaPageSettings extends LitElement {
                         label="${cssVar}"
                       ></nidoca-form-text>
                       <nidoca-layout-spacer top="var(--space-medium)"></nidoca-layout-spacer>
-
                     `
                   )}
                 `

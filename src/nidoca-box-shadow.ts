@@ -12,7 +12,6 @@ export enum NidocaShadowType {
 @customElement("nidoca-box-shadow")
 export class NidocaBoxShadow extends LitElement {
   static styles = css`
-
     .SHADOW {
       display: inline-block;
     }
@@ -30,7 +29,7 @@ export class NidocaBoxShadow extends LitElement {
     }
   `;
 
-  @property({ type: NidocaShadowType })
+  @property({type: NidocaShadowType})
   shadowType: NidocaShadowType = NidocaShadowType.KEY_LIGHT;
 
   render(): TemplateResult {

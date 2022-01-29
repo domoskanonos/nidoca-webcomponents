@@ -2,20 +2,19 @@ import {css, html, LitElement, PropertyValues, TemplateResult} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
 import {query} from "lit/decorators.js";
-import { NidocaFormText, NidocaTextType } from "./nidoca-form-text";
+import {NidocaFormText, NidocaTextType} from "./nidoca-form-text";
 
 @customElement("nidoca-captcha")
 export class NidocaCaptcha extends LitElement {
-
   static styles = css``;
 
-  @property({ type: Number })
+  @property({type: Number})
   min: number = 1;
 
-  @property({ type: Number })
+  @property({type: Number})
   max: number = 10;
 
-  @property({ type: String })
+  @property({type: String})
   errorText: string = "nidoca-captcha-wrong-value";
 
   private numberOne: number = 1;
@@ -30,11 +29,11 @@ export class NidocaCaptcha extends LitElement {
         id="inputfield"
         @nidoca-form-text-focusout="${() => this.validate()}"
         label="${"nidoca-captcha-label"
-        .concat(" ")
-        .concat(String(this.numberOne))
-        .concat(" + ")
-        .concat(String(this.numberTwo))
-        .concat(" = ?")}"
+          .concat(" ")
+          .concat(String(this.numberOne))
+          .concat(" + ")
+          .concat(String(this.numberTwo))
+          .concat(" = ?")}"
         name="captcha"
         trailingIcon="create"
         type="${NidocaTextType.NUMBER}"
@@ -43,8 +42,7 @@ export class NidocaCaptcha extends LitElement {
     `;
   }
 
-
-  updated(_changedProperties: PropertyValues) : void {
+  updated(_changedProperties: PropertyValues): void {
     if (_changedProperties.has("min") || _changedProperties.has("max")) {
       this.generateNewNumber();
     }
@@ -78,5 +76,4 @@ export class NidocaCaptcha extends LitElement {
     }
     return isValid;
   }
-
 }

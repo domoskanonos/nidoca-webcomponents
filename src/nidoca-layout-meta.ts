@@ -1,4 +1,4 @@
-import { DESKTOP_MIN_WIDTH, MOBILE_MAX_WIDTH, MOBILE_MIN_WIDTH, TABLET_MAX_WIDTH, TABLE_MIN_WIDTH } from ".";
+import {DESKTOP_MIN_WIDTH, MOBILE_MAX_WIDTH, MOBILE_MIN_WIDTH, TABLET_MAX_WIDTH, TABLE_MIN_WIDTH} from ".";
 
 export class NidocaDevice {
   static applyDevices(cssClass: string, devices: NidocaDevice[]): string {

@@ -4,11 +4,12 @@ import {customElement} from "lit/decorators.js";
 @customElement("nidoca-gallery")
 export class NidocaGallery extends LitElement {
   static styles = css`
-    slot, ::slotted(slot) {
+    slot,
+    ::slotted(slot) {
       display: flex;
       flex-direction: row;
-      flex-wrap:wrap;
-      justify-content:space-evenly;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
     }
 
     .flexItem,
@@ -20,11 +21,9 @@ export class NidocaGallery extends LitElement {
 
   render(): TemplateResult {
     return html`
-    
-    <nidoca-layout-spacer bottom="var(--space-little)" left="">
-    <slot id="slotElement" @slotchange="${(event: Event) => this.slotChanged(event)}"></slot>
-    </nidoca-layout-spacer>
-    
+      <nidoca-layout-spacer bottom="var(--space-little)" left="">
+        <slot id="slotElement" @slotchange="${(event: Event) => this.slotChanged(event)}"></slot>
+      </nidoca-layout-spacer>
     `;
   }
 
@@ -45,5 +44,4 @@ export class NidocaGallery extends LitElement {
       }
     }
   }
-
 }

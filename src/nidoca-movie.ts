@@ -4,8 +4,7 @@ import {property} from "lit/decorators.js";
 
 @customElement("nidoca-movie")
 export class NidocaMovie extends LitElement {
-  static styles = css`
-  `;
+  static styles = css``;
 
   @property({type: String})
   src: string = "";

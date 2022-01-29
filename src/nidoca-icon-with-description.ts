@@ -27,10 +27,7 @@ export class NidocaIconWithDescription extends LitElement {
           ></nidoca-icon>
           <nidoca-typography .type="${NidocaTypographyType.H2}">${this.primaryText}</nidoca-typography>
           <nidoca-layout-spacer>
-            <nidoca-typography
-              .type="${NidocaTypographyType.BODY2}"
-              .textAlign="${NidocaTypographyAlignment.CENTER}"
-            >
+            <nidoca-typography .type="${NidocaTypographyType.BODY2}" .textAlign="${NidocaTypographyAlignment.CENTER}">
               ${this.text}
               <slot></slot>
             </nidoca-typography>

@@ -7,21 +7,16 @@ export class OpenApiGuiService {
   private openApiRestClient: OpenApiRestService = new OpenApiRestService(this.openApiService);
 
   init(url: string): boolean {
-
     this.openApiService.init(url);
 
-    
     return true;
   }
 
   getMenuListItems(): NidocaListItem[] {
-      const retval : NidocaListItem[] = [];
-      this.openApiService.getPathObjects().forEach((path : Path)=> {
-
-        console.log(path.get);
-
-      });
+    const retval: NidocaListItem[] = [];
+    this.openApiService.getPathObjects().forEach((path: Path) => {
+      console.log(path.get);
+    });
     return retval;
   }
-
 }

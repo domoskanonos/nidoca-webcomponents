@@ -23,7 +23,7 @@ export class NidocaLayoutSection extends LitElement {
       <slot id="slotElement" @slotchange="${(event: Event) => this.slotChanged(event)}"> </slot
     ></nidoca-border>`;
   }
- 
+
   slotChanged(event: Event): void {
     const slotElement: HTMLSlotElement = <HTMLSlotElement>event.target;
     const elements: Element[] = slotElement.assignedElements();
@@ -44,5 +44,4 @@ export class NidocaLayoutSection extends LitElement {
       }
     }
   }
-  
 }
