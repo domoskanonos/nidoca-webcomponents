@@ -21,7 +21,7 @@ module.exports = {
   },
   mode: "production",
   output: {
-    path: path.resolve(__dirname).concat("/public"),
+    path: path.resolve(__dirname).concat("/build/public"),
     filename: "nidoca-webcomponents.js",
   }
 };
