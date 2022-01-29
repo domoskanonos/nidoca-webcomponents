@@ -2,7 +2,7 @@ import {html, LitElement, TemplateResult} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
 import {NidocaRouteListener, NidocaRouter} from "@domoskanonos/nidoca-router";
-import {NidocaMenuItemType, NidocaTypographyType} from "..";
+import {NidocaTypographyType} from "..";
 import {NidocaTheme} from "../nidoca-meta";
 
 @customElement("nidoca-app")
@@ -14,7 +14,7 @@ export class NidocaApp extends LitElement implements NidocaRouteListener {
   popupContent: any = html``;
 
   @property({type: Boolean})
-  navigationClosed: boolean = false;
+  navigationClosed: boolean = true;
 
   @property({type: Boolean})
   prominent: boolean = false;

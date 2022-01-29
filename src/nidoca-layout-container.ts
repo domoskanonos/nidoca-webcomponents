@@ -37,7 +37,7 @@ export class NidocaContainer extends LitElement {
   devices: NidocaDevice[] = [NidocaDevice.DESKTOP, NidocaDevice.TABLET, NidocaDevice.MOBILE];
 
   @property({type: NidocaTheme, converter: String})
-  theme: NidocaTheme = NidocaTheme.BACKGROUND;
+  theme: string | undefined;
 
   updated(_changedProperties: PropertyValues): void {
     for (let i = 0; i < this.devices.length; i++) {

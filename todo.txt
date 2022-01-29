@@ -1,3 +1,10 @@
 - Nidoca Layout Spacer wurde ausgebaut, Komponenten und Seiten anpassen.
 
 
+
+
+
+      input,
+      ::slotted(input) {
+        background-color: var(--app-color-${theme}-background-light);
+      }

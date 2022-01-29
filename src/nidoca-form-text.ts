@@ -3,7 +3,7 @@ import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
 import {query} from "lit/decorators.js";
 import {ifDefined} from "lit/directives/if-defined.js";
-import {InputframeMode} from ".";
+import {NidocaTheme, NidocaTypographyType} from ".";
 import {FormOutputData, NidocaFormAbstractInputElement} from "./nidoca-form-abstract-input-element";
 
 export enum NidocaTextType {
@@ -21,16 +21,37 @@ export enum NidocaTextType {
 @customElement("nidoca-form-text")
 export class NidocaFormText extends NidocaFormAbstractInputElement {
   static styles = css`
+    :host,
+    slot {
+      display: block;
+      width: 100%;
+    }
+    .parentContainer {
+      display: flex;
+      align-content: center;
+      align-items: center;
+      flex-direction: row;
+    }
+
+    .container {
+      width: 100%;
+      display: flex;
+      align-content: center;
+      flex-direction: column;
+    }
+
     input {
       font: inherit;
       box-sizing: border-box;
       width: 100%;
       border: none;
-      color: inherit;
-      background-color: inherit;
+      background: inherit;
       height: var(--line-height-large);
       line-height: var(--line-height-large);
+      padding-left: var(--space-medium);
+      padding-right: var(--space-medium);
     }
+
     input:focus {
       outline: none;
       box-shadow: none;
@@ -41,23 +62,38 @@ export class NidocaFormText extends NidocaFormAbstractInputElement {
     }
   `;
 
-  @property({type: String})
+  @property({type: NidocaTheme, converter: String})
+  theme: string | undefined;
+
+  @property({type: NidocaTextType, converter: String})
   type: string = NidocaTextType.TEXT;
+
+  @property({type: String})
+  label: string = "";
+
+  @property({type: String})
+  placeholder: string = "";
+
+  @property({type: String})
+  trailingIcon: string = "";
+
+  @property({type: String})
+  errorText: string = "";
+
+  @property({type: String})
+  infoText: string = "";
+
+  @property({type: String})
+  warningText: string = "";
 
   @property({type: String})
   name: string = "";
 
   @property()
-  value: any = "";
-
-  @property({type: String})
-  label: string = "";
+  value: string = "";
 
   @property({type: Boolean})
   required: boolean = false;
-
-  @property({type: String})
-  placeholder: string = "";
 
   @property({type: Boolean})
   disabled: boolean = false;
@@ -83,58 +119,90 @@ export class NidocaFormText extends NidocaFormAbstractInputElement {
   @property({type: Number})
   size: number | undefined;
 
-  @property({type: String})
-  errorText: string = "";
-
-  @property({type: String})
-  infoText: string = "";
-
-  @property({type: String})
-  warningText: string = "";
-
-  @property({type: String})
-  trailingIcon: string = "";
-
-  @property({type: String})
-  inputframeMode: InputframeMode = InputframeMode.NORMAL;
-
   @query("#inputElement")
   private inputElement: HTMLInputElement | undefined;
 
   render(): TemplateResult {
     return this.type == NidocaTextType.HIDDEN
       ? html`<input id="inputElement" name="${this.name}" type="${this.type}" value="${this.value}" />`
-      : html`
-          <nidoca-form-inputframe
-            label="${this.label}"
-            .errorText="${this.errorText}"
-            .infoText="${this.infoText}"
-            .warningText="${this.warningText}"
-            .inputframeMode="${this.inputframeMode}"
-            trailingIcon="${this.trailingIcon}"
-          >
-            <input
-              id="inputElement"
-              name="${this.name}"
-              .type="${this.type}"
-              value="${this.value}"
-              placeholder="${this.placeholder ? this.placeholder : this.label}"
-              size="${ifDefined(this.size)}"
-              minlength="${ifDefined(this.minlength)}"
-              maxlength="${ifDefined(this.maxlength)}"
-              min="${ifDefined(this.min)}"
-              max="${ifDefined(this.max)}"
-              step="${ifDefined(this.step)}"
-              ?required="${this.required}"
-              ?disabled="${this.disabled}"
-              ?checked="${this.checked}"
-            />
-          </nidoca-form-inputframe>
-        `;
+      : html` <style>
+            .parentContainer,
+            ::slotted(.parentContainer) {
+              color: var(--app-color-${this.theme});
+              background-color: var(--app-color-${this.theme}-background);
+            }
+            .border,
+            ::slotted(.border) {
+              border-color: var(--app-color-${this.theme}-border);
+              border-bottom-style: solid;
+            }
+            .border:focus-within,
+            ::slotted(.border:focus-within) {
+              border-color: var(--app-color-${this.theme}-border-selected);
+            }
+          </style>
+          <div class="parentContainer border">
+            ${this.trailingIcon
+              ? html`<nidoca-icon
+                  style="font-size: var(--icon-size-big);padding-left:var(--space-medium);"
+                  icon="${this.trailingIcon}"
+                ></nidoca-icon>`
+              : html``}
+            <div class="container">
+              <nidoca-typography
+                style="padding-left:var(--space-medium); padding-right:var(--space-medium);"
+                class="label"
+                .type="${NidocaTypographyType.CAPTION}"
+                text="${this.label}"
+              ></nidoca-typography>
+
+              <input
+                id="inputElement"
+                name="${this.name}"
+                .type="${this.type}"
+                value="${this.value}"
+                placeholder="${this.placeholder ? this.placeholder : this.label}"
+                size="${ifDefined(this.size)}"
+                minlength="${ifDefined(this.minlength)}"
+                maxlength="${ifDefined(this.maxlength)}"
+                min="${ifDefined(this.min)}"
+                max="${ifDefined(this.max)}"
+                step="${ifDefined(this.step)}"
+                ?required="${this.required}"
+                ?disabled="${this.disabled}"
+                ?checked="${this.checked}"
+              />
+            </div>
+          </div>
+
+          ${this.infoText || this.warningText || this.errorText
+            ? html`<div>
+                ${this.infoText
+                  ? html` <nidoca-typography
+                      .type="${NidocaTypographyType.SUBTITLE1}"
+                      text="${this.infoText}"
+                    ></nidoca-typography>`
+                  : html``}
+                ${this.warningText
+                  ? html` <nidoca-typography
+                      style="color:var(--app-color-warning-background)"
+                      .type="${NidocaTypographyType.SUBTITLE1}"
+                      text="${this.warningText}"
+                    ></nidoca-typography>`
+                  : html``}
+                ${this.errorText
+                  ? html` <nidoca-typography
+                      style="color:var(--app-color-error-background)"
+                      .type="${NidocaTypographyType.SUBTITLE1}"
+                      text="${this.errorText}"
+                    ></nidoca-typography>`
+                  : html``}
+              </div> `
+            : html``}`;
   }
 
   getOutputData(): FormOutputData {
-    const outputValue: any = this.inputElement?.value;
+    const outputValue: string | undefined = this.inputElement?.value;
     return <FormOutputData>{
       key: this.name,
       value: outputValue,

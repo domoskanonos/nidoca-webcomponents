@@ -2,6 +2,7 @@ import {css, html, TemplateResult, LitElement} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
 import {query} from "lit/decorators.js";
+import {NidocaTheme} from ".";
 import {NidocaFormAbstractInputElement} from "./nidoca-form-abstract-input-element";
 
 export class NidocaFormOutputData {
@@ -26,6 +27,9 @@ export class NidocaForm extends LitElement {
 
   @property({type: Boolean})
   autocomplete: boolean = true;
+
+  @property({type: NidocaTheme, converter: String})
+  theme: string | undefined;
 
   @query("#slotElement")
   private slotElement: HTMLSlotElement | undefined;

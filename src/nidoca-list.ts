@@ -1,5 +1,6 @@
 import {css, html, LitElement, PropertyValues, TemplateResult} from "lit";
 import {customElement, property, query} from "lit/decorators.js";
+import {NidocaTheme} from ".";
 import {NidocaListItem} from "./nidoca-list-item";
 
 @customElement("nidoca-list")
@@ -14,6 +15,9 @@ export class NidocaList extends LitElement {
       grid-template-columns: 1fr;
     }
   `;
+
+  @property({type: NidocaTheme, converter: String})
+  theme: string | undefined;
 
   @property({type: Boolean})
   selectionMode: boolean = false;
@@ -34,15 +38,26 @@ export class NidocaList extends LitElement {
   }
 
   render(): TemplateResult {
-    return html`
+    return html`<style>
+        :host,
+        *,
+        ::slotted(*) {
+          color: var(--app-color-${this.theme});
+          background-color: var(--app-color-${this.theme}-background);
+        }
+        ::slotted(nidoca-list-item) {
+          border-color: var(--app-color-${this.theme}-border);
+          border-bottom-style: solid;
+          border-width: thin;
+        }
+      </style>
       <slot
         @nidoca-event-list-item-unselect="${() => {
           this.selectionMode = this.getSelectedItems().length === 0;
         }}"
         class="slotList"
         id="slotElement"
-      ></slot>
-    `;
+      ></slot> `;
   }
 
   getItems(): NidocaListItem[] {

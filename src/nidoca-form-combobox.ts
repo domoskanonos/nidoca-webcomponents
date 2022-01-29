@@ -5,11 +5,30 @@ import {query} from "lit/decorators.js";
 import {repeat} from "lit/directives/repeat.js";
 import {guard} from "lit/directives/guard.js";
 import {FormOutputData, NidocaFormAbstractInputElement} from "./nidoca-form-abstract-input-element";
-import {InputframeMode} from ".";
+import {InputframeMode, NidocaTheme, NidocaTypographyType} from ".";
 
 @customElement("nidoca-form-combobox")
 export class NidocaFormCombobox extends NidocaFormAbstractInputElement {
   static styles = css`
+    :host,
+    slot {
+      display: block;
+      width: 100%;
+    }
+    .parentContainer {
+      display: flex;
+      align-content: center;
+      align-items: center;
+      flex-direction: row;
+    }
+
+    .container {
+      width: 100%;
+      display: flex;
+      align-content: center;
+      flex-direction: column;
+    }
+
     select {
       font: inherit;
       box-sizing: border-box;
@@ -19,6 +38,7 @@ export class NidocaFormCombobox extends NidocaFormAbstractInputElement {
       background-color: inherit;
       height: var(--line-height-large);
       line-height: var(--line-height-large);
+      padding-left: var(--space-medium);
     }
 
     select option {
@@ -42,14 +62,11 @@ export class NidocaFormCombobox extends NidocaFormAbstractInputElement {
     }
   `;
 
-  @property()
-  value: any = "";
-
-  @property({type: Array})
-  options: FormOutputData[] = [];
+  @property({type: NidocaTheme, converter: String})
+  theme: string | undefined;
 
   @property({type: String})
-  name: string = "";
+  trailingIcon: string = "";
 
   @property({type: String})
   label: string = "";
@@ -63,6 +80,15 @@ export class NidocaFormCombobox extends NidocaFormAbstractInputElement {
   @property({type: String})
   warningText: string = "";
 
+  @property()
+  value: string | string[] = "";
+
+  @property({type: Array})
+  options: FormOutputData[] = [];
+
+  @property({type: String})
+  name: string = "";
+
   @property({type: Boolean})
   required: boolean = true;
 
@@ -72,43 +98,87 @@ export class NidocaFormCombobox extends NidocaFormAbstractInputElement {
   @property({type: Number})
   size: number = 1;
 
-  @property({type: String})
-  inputframeMode: InputframeMode = InputframeMode.NORMAL;
-
   @query("#selectElement")
   private selectElement: HTMLSelectElement | undefined;
 
   render(): TemplateResult {
-    return html`
-      <nidoca-form-inputframe
-        label="${this.label}"
-        errorText="${this.errorText}"
-        infoText="${this.infoText}"
-        warningText="${this.warningText}"
-        .inputframeMode="${this.inputframeMode}"
-      >
-        <select
-          id="selectElement"
-          name="${this.name}"
-          size="${this.size}"
-          ?required="${this.required}"
-          ?multiple="${this.multiple}"
-        >
-          ${guard(
-            [this.value, this.options],
-            () => html`
-              ${repeat(this.options, (option: FormOutputData) =>
-                option == undefined
-                  ? html` <option></option>`
-                  : this.isSelectedOption(option)
-                  ? html` <option value="${option.key}" selected>${option.value}</option> `
-                  : html` <option value="${option.key}">${option.value}</option> `
-              )}
-            `
-          )}
-        </select>
-      </nidoca-form-inputframe>
-    `;
+    return html` <style>
+        .parentContainer,
+        ::slotted(.parentContainer) {
+          color: var(--app-color-${this.theme});
+          background-color: var(--app-color-${this.theme}-background);
+        }
+        .border,
+        ::slotted(.border) {
+          border-color: var(--app-color-${this.theme}-border);
+          border-bottom-style: solid;
+        }
+        .border:focus-within,
+        ::slotted(.border:focus-within) {
+          border-color: var(--app-color-${this.theme}-border-selected);
+        }
+      </style>
+      <div class="parentContainer border">
+        ${this.trailingIcon
+          ? html`<nidoca-icon
+              style="font-size: var(--icon-size-big);padding-left:var(--space-medium);"
+              icon="${this.trailingIcon}"
+            ></nidoca-icon>`
+          : html``}
+        <div class="container">
+          <nidoca-typography
+            style="padding-left:var(--space-medium); padding-right:var(--space-medium);"
+            class="label"
+            .type="${NidocaTypographyType.CAPTION}"
+            text="${this.label}"
+          ></nidoca-typography>
+          <select
+            id="selectElement"
+            name="${this.name}"
+            size="${this.size}"
+            ?required="${this.required}"
+            ?multiple="${this.multiple}"
+          >
+            ${guard(
+              [this.value, this.options],
+              () => html`
+                ${repeat(this.options, (option: FormOutputData) =>
+                  option == undefined
+                    ? html` <option></option>`
+                    : this.isSelectedOption(option)
+                    ? html` <option value="${option.key}" selected>${option.value}</option> `
+                    : html` <option value="${option.key}">${option.value}</option> `
+                )}
+              `
+            )}
+          </select>
+        </div>
+      </div>
+
+      ${this.infoText || this.warningText || this.errorText
+        ? html`<div>
+            ${this.infoText
+              ? html` <nidoca-typography
+                  .type="${NidocaTypographyType.SUBTITLE1}"
+                  text="${this.infoText}"
+                ></nidoca-typography>`
+              : html``}
+            ${this.warningText
+              ? html` <nidoca-typography
+                  style="color:var(--app-color-warning-background)"
+                  .type="${NidocaTypographyType.SUBTITLE1}"
+                  text="${this.warningText}"
+                ></nidoca-typography>`
+              : html``}
+            ${this.errorText
+              ? html` <nidoca-typography
+                  style="color:var(--app-color-error-background)"
+                  .type="${NidocaTypographyType.SUBTITLE1}"
+                  text="${this.errorText}"
+                ></nidoca-typography>`
+              : html``}
+          </div> `
+        : html``}`;
   }
 
   getOutputData(): FormOutputData {

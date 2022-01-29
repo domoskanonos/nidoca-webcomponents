@@ -35,13 +35,13 @@ export class NidocaMenuItem extends LitElement {
           ? html` <nidoca-icon
               slot="graphic"
               icon="${this.icon}"
-              style="padding-left:10px;padding-right:10px; font-size:24px;"
+              style="padding-right:var(--space-little); font-size:var(--icon-size);"
             ></nidoca-icon>`
           : html` <nidoca-layout-spacer left="10px" right="36px"></nidoca-layout-spacer>`}
         ${this.text
           ? html`<nidoca-typography
               .type="${this.type == NidocaMenuItemType.ITEM
-                ? NidocaTypographyType.BODY1
+                ? NidocaTypographyType.SUBTITLE1
                 : NidocaTypographyType.CAPTION}"
               >${this.text}</nidoca-typography
             >`

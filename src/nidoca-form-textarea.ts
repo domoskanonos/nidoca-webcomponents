@@ -2,13 +2,34 @@ import {css, html, TemplateResult} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
 import {query} from "lit/decorators.js";
-import {InputframeMode} from ".";
+import {InputframeMode, NidocaTheme, NidocaTypographyType} from ".";
 import {FormOutputData, NidocaFormAbstractInputElement} from "./nidoca-form-abstract-input-element";
 
 @customElement("nidoca-form-textarea")
 export class NidocaFormTextarea extends NidocaFormAbstractInputElement {
   static styles = css`
+    :host,
+    slot {
+      display: block;
+      width: 100%;
+    }
+    .parentContainer {
+      display: flex;
+      align-content: center;
+      align-items: center;
+      flex-direction: row;
+    }
+
+    .container {
+      width: 100%;
+      display: flex;
+      align-content: center;
+      flex-direction: column;
+    }
+
     textarea {
+      padding-left: var(--space-medium);
+      padding-right: var(--space-medium);
       font: inherit;
       box-sizing: border-box;
       width: 100%;
@@ -26,11 +47,23 @@ export class NidocaFormTextarea extends NidocaFormAbstractInputElement {
     }
   `;
 
+  @property({type: NidocaTheme, converter: String})
+  theme: string | undefined;
+
+  @property({type: String})
+  infoText: string = "";
+
+  @property({type: String})
+  warningText: string = "";
+
+  @property({type: String})
+  errorText: string = "";
+
   @property({type: String})
   name: string = "";
 
   @property()
-  value: any = "";
+  value: string = "";
 
   @property({type: String})
   label: string = "";
@@ -47,41 +80,73 @@ export class NidocaFormTextarea extends NidocaFormAbstractInputElement {
   @property({type: Number})
   rows: number = 5;
 
-  @property({type: String})
-  errorText: string = "";
-
-  @property({type: String})
-  infoText: string = "";
-
-  @property({type: String})
-  warningText: string = "";
-
-  @property({type: String})
-  inputframeMode: InputframeMode = InputframeMode.NORMAL;
-
   @query("#inputElement")
   private inputElement: HTMLInputElement | undefined;
 
   render(): TemplateResult {
     return html`
-      <nidoca-form-inputframe
-        label="${this.label}"
-        .errorText="${this.errorText}"
-        .infoText="${this.infoText}"
-        .warningText="${this.warningText}"
-        .inputframeMode="${this.inputframeMode}"
-      >
-        <textarea
-          id="inputElement"
-          name="${this.name}"
-          placeholder="${this.placeholder ? this.placeholder : this.label}"
-          rows="${this.rows}"
-          ?required="${this.required}"
-          ?disabled="${this.disabled}"
-        >
+      <style>
+        .parentContainer,
+        ::slotted(.parentContainer) {
+          color: var(--app-color-${this.theme});
+          background-color: var(--app-color-${this.theme}-background);
+        }
+        .border,
+        ::slotted(.border) {
+          border-color: var(--app-color-${this.theme}-border);
+          border-bottom-style: solid;
+        }
+        .border:focus-within,
+        ::slotted(.border:focus-within) {
+          border-color: var(--app-color-${this.theme}-border-selected);
+        }
+      </style>
+      <div class="parentContainer border">
+        <div class="container">
+          <nidoca-typography
+            style="padding-left:var(--space-medium); padding-right:var(--space-medium);"
+            class="label"
+            .type="${NidocaTypographyType.CAPTION}"
+            text="${this.label}"
+          ></nidoca-typography>
+
+          <textarea
+            id="inputElement"
+            name="${this.name}"
+            placeholder="${this.placeholder ? this.placeholder : this.label}"
+            rows="${this.rows}"
+            ?required="${this.required}"
+            ?disabled="${this.disabled}"
+          >
 ${this.value}</textarea
-        >
-      </nidoca-form-inputframe>
+          >
+        </div>
+      </div>
+
+      ${this.infoText || this.warningText || this.errorText
+        ? html`<div>
+            ${this.infoText
+              ? html` <nidoca-typography
+                  .type="${NidocaTypographyType.SUBTITLE1}"
+                  text="${this.infoText}"
+                ></nidoca-typography>`
+              : html``}
+            ${this.warningText
+              ? html` <nidoca-typography
+                  style="color:var(--app-color-warning-background)"
+                  .type="${NidocaTypographyType.SUBTITLE1}"
+                  text="${this.warningText}"
+                ></nidoca-typography>`
+              : html``}
+            ${this.errorText
+              ? html` <nidoca-typography
+                  style="color:var(--app-color-error-background)"
+                  .type="${NidocaTypographyType.SUBTITLE1}"
+                  text="${this.errorText}"
+                ></nidoca-typography>`
+              : html``}
+          </div> `
+        : html``}
     `;
   }
 

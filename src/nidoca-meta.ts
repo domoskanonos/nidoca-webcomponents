@@ -86,11 +86,9 @@ export class Nidoca {
     this.registeredElementsMap.set("nidoca-list-item", html`${nidocaListItem}`);
 
     //nidoca-list
-    const nidocaList = new NidocaList();
-    nidocaList.appendChild(nidocaListItem.cloneNode(true));
     this.registeredElementsMap.set(
       "nidoca-list",
-      html`<nidoca-list selectionMode stlye="padding:var(--space-big);"
+      html`<nidoca-list theme="primary" selectionMode stlye="padding:var(--space-big);"
         ><nidoca-list-item primaryText="List Item" secondaryText="List Item Secondary Text"></nidoca-list-item
         ><nidoca-list-item primaryText="List Item" secondaryText="List Item Secondary Text"></nidoca-list-item
         ><nidoca-list-item primaryText="List Item" secondaryText="List Item Secondary Text"></nidoca-list-item
@@ -99,7 +97,7 @@ export class Nidoca {
 
     this._registeredElementsMap.set(
       "nidoca-menu",
-      html` <nidoca-menu>
+      html` <nidoca-menu theme="primary">
         <nidoca-menu-item text="Start"></nidoca-menu-item>
         <nidoca-menu-area text="Framework"></nidoca-menu-area>
         <nidoca-menu-item text="Komponenten"> </nidoca-menu-item>
@@ -143,12 +141,80 @@ export class Nidoca {
     this._registeredElementsMap.set("nidoca-dialog-action", html`<nidoca-dialog-action></nidoca-dialog-action>`);
     this._registeredElementsMap.set("nidoca-elevation", html`<nidoca-elevation></nidoca-elevation>`);
     this._registeredElementsMap.set("nidoca-dialog", html`<nidoca-dialog></nidoca-dialog>`);
-    this._registeredElementsMap.set("nidoca-form-combobox", html`<nidoca-form-combobox></nidoca-form-combobox>`);
-    this._registeredElementsMap.set("nidoca-form-date", html`<nidoca-form-date></nidoca-form-date>`);
+    this._registeredElementsMap.set(
+      "nidoca-form-combobox",
+      html`<nidoca-form-combobox
+        theme="primary"
+        label="Mein Textfeld"
+        placeholder="Platzhalter"
+        trailingIcon="home"
+        infoText="Info"
+        warningText="Warnung"
+        errorText="Fehler"
+        name="text"
+        .options="${[
+          {key: "item1", value: "Item 1"},
+          {key: "item2", value: "Item 2"},
+        ]}"
+        value="item2"
+      ></nidoca-form-combobox>`
+    );
+    this._registeredElementsMap.set(
+      "nidoca-form-date",
+      html`<nidoca-form-date
+        theme="primary"
+        label="Geburtstag"
+        placeholder="Platzhalter"
+        trailingIcon="home"
+        infoText="Info"
+        warningText="Warnung"
+        errorText="Fehler"
+        name="text"
+      ></nidoca-form-date>`
+    );
     this._registeredElementsMap.set("nidoca-form-switch", html`<nidoca-form-switch></nidoca-form-switch>`);
-    this._registeredElementsMap.set("nidoca-form-text", html`<nidoca-form-text></nidoca-form-text>`);
-    this._registeredElementsMap.set("nidoca-form-textarea", html`<nidoca-form-textarea></nidoca-form-textarea>`);
-    this._registeredElementsMap.set("nidoca-gallery", html`<nidoca-gallery></nidoca-gallery>`);
+    this._registeredElementsMap.set(
+      "nidoca-form-text",
+      html`
+        <nidoca-form-text
+          style="width:100%;"
+          theme="primary"
+          label="Mein Textfeld"
+          placeholder="Platzhalter"
+          trailingIcon="home"
+          infoText="Info"
+          warningText="Warnung"
+          errorText="Fehler"
+          name="text"
+        >
+        </nidoca-form-text>
+      `
+    );
+    this._registeredElementsMap.set(
+      "nidoca-form-textarea",
+      html`<nidoca-form-textarea
+        style="width:100%;"
+        theme="primary"
+        label="Mein Textfeld"
+        placeholder="Platzhalter"
+        infoText="Info"
+        warningText="Warnung"
+        errorText="Fehler"
+        name="text"
+      ></nidoca-form-textarea>`
+    );
+    this._registeredElementsMap.set(
+      "nidoca-gallery",
+      html`<nidoca-gallery
+        ><nidoca-img src="http://nidoca.eu/img/DSC02586.jpg"></nidoca-img
+        ><nidoca-img src="http://nidoca.eu/img/DSC02586.jpg"></nidoca-img
+        ><nidoca-img src="http://nidoca.eu/img/DSC02586.jpg"></nidoca-img
+        ><nidoca-img src="http://nidoca.eu/img/DSC02586.jpg"></nidoca-img
+        ><nidoca-img src="http://nidoca.eu/img/DSC02586.jpg"></nidoca-img
+        ><nidoca-img src="http://nidoca.eu/img/DSC02586.jpg"></nidoca-img
+        ><nidoca-img src="http://nidoca.eu/img/DSC02586.jpg"></nidoca-img
+      ></nidoca-gallery>`
+    );
     this._registeredElementsMap.set("nidoca-link", html`<nidoca-link></nidoca-link>`);
     this._registeredElementsMap.set("nidoca-ripple", html`<nidoca-ripple></nidoca-ripple>`);
     this._registeredElementsMap.set("nidoca-tabs", html`<nidoca-tabs></nidoca-tabs>`);
@@ -201,16 +267,17 @@ export class Nidoca {
 }
 
 export class NidocaTheme {
-  static getStyle(theme: NidocaTheme): HTMLTemplateResult {
-    return html`<style>
-      :host,
-      *,
-      ::slotted(*) {
-        color: var(--app-color-${theme});
-        background-color: var(--app-color-${theme}-background);
-        border-color: var(--app-color-${theme}-border);
-      }
-    </style>`;
+  static getStyle(theme: NidocaTheme | undefined): HTMLTemplateResult {
+    return theme
+      ? html`<style>
+          :host,
+          *,
+          ::slotted(*) {
+            color: var(--app-color-${theme});
+            background-color: var(--app-color-${theme}-background);
+          }
+        </style>`
+      : html``;
   }
   static readonly PRIMARY: string = "primary";
   static readonly SECONDARY: string = "secondary";

@@ -2,8 +2,7 @@ import {css, html, TemplateResult} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
 import {query} from "lit/decorators.js";
-import {ifDefined} from "lit/directives/if-defined.js";
-import {InputframeMode} from ".";
+import {NidocaTheme, NidocaTypographyType} from ".";
 import {FormOutputData, NidocaFormAbstractInputElement} from "./nidoca-form-abstract-input-element";
 
 export enum NidocaDateType {
@@ -17,6 +16,24 @@ export enum NidocaDateType {
 @customElement("nidoca-form-date")
 export class NidocaFormDate extends NidocaFormAbstractInputElement {
   static styles = css`
+    :host,
+    slot {
+      display: block;
+      width: 100%;
+    }
+    .parentContainer {
+      display: flex;
+      align-content: center;
+      align-items: center;
+      flex-direction: row;
+    }
+
+    .container {
+      width: 100%;
+      display: flex;
+      align-content: center;
+      flex-direction: column;
+    }
     input {
       font: inherit;
       box-sizing: border-box;
@@ -26,6 +43,8 @@ export class NidocaFormDate extends NidocaFormAbstractInputElement {
       background-color: inherit;
       height: var(--line-height-large);
       line-height: var(--line-height-large);
+      padding-left: var(--space-medium);
+      padding-right: var(--space-medium);
     }
     input:focus {
       outline: none;
@@ -33,6 +52,12 @@ export class NidocaFormDate extends NidocaFormAbstractInputElement {
       background: inherit;
     }
   `;
+
+  @property({type: NidocaTheme, converter: String})
+  theme: string | undefined;
+
+  @property({type: String})
+  trailingIcon: string = "";
 
   @property()
   type: NidocaDateType = NidocaDateType.DATE;
@@ -55,30 +80,6 @@ export class NidocaFormDate extends NidocaFormAbstractInputElement {
   @property({type: Boolean})
   disabled: boolean = false;
 
-  @property({type: Boolean})
-  checked: boolean = false;
-
-  @property({type: Boolean})
-  multiple: boolean = false;
-
-  @property({type: Number})
-  maxlength: number | undefined;
-
-  @property({type: Number})
-  minlength: number | undefined;
-
-  @property({type: Number})
-  min: number | undefined;
-
-  @property({type: Number})
-  max: number | undefined;
-
-  @property({type: Number})
-  step: number | undefined;
-
-  @property({type: Number})
-  size: number | undefined;
-
   @property({type: String})
   errorText: string = "";
 
@@ -91,36 +92,73 @@ export class NidocaFormDate extends NidocaFormAbstractInputElement {
   @query("#inputElement")
   private inputElement: HTMLInputElement | undefined;
 
-  @property({type: String})
-  inputframeMode: InputframeMode = InputframeMode.NORMAL;
-
   render(): TemplateResult {
     return html`
-      <nidoca-form-inputframe
-        label="${this.label}"
-        errorText="${this.errorText}"
-        infoText="${this.infoText}"
-        warningText="${this.warningText}"
-        .inputframeMode="${this.inputframeMode}"
-      >
-        <input
-          id="inputElement"
-          name="${this.name}"
-          type="${this.type}"
-          value="${this.value}"
-          placeholder="${this.placeholder ? this.placeholder : this.label}"
-          size="${ifDefined(this.size)}"
-          minlength="${ifDefined(this.minlength)}"
-          maxlength="${ifDefined(this.maxlength)}"
-          min="${ifDefined(this.min)}"
-          max="${ifDefined(this.max)}"
-          step="${ifDefined(this.step)}"
-          ?required="${this.required}"
-          ?disabled="${this.disabled}"
-          ?checked="${this.checked}"
-          ?multiple="${this.multiple}"
-        />
-      </nidoca-form-inputframe>
+      <style>
+        .parentContainer,
+        ::slotted(.parentContainer) {
+          color: var(--app-color-${this.theme});
+          background-color: var(--app-color-${this.theme}-background);
+        }
+        .border,
+        ::slotted(.border) {
+          border-color: var(--app-color-${this.theme}-border);
+          border-bottom-style: solid;
+        }
+        .border:focus-within,
+        ::slotted(.border:focus-within) {
+          border-color: var(--app-color-${this.theme}-border-selected);
+        }
+      </style>
+      <div class="parentContainer border">
+        ${this.trailingIcon
+          ? html`<nidoca-icon
+              style="font-size: var(--icon-size-big);padding-left:var(--space-medium);"
+              icon="${this.trailingIcon}"
+            ></nidoca-icon>`
+          : html``}
+        <div class="container">
+          <nidoca-typography
+            style="padding-left:var(--space-medium); padding-right:var(--space-medium);"
+            class="label"
+            .type="${NidocaTypographyType.CAPTION}"
+            text="${this.label}"
+          ></nidoca-typography>
+          <input
+            id="inputElement"
+            name="${this.name}"
+            type="${this.type}"
+            value="${this.value}"
+            placeholder="${this.placeholder ? this.placeholder : this.label}"
+            ?required="${this.required}"
+            ?disabled="${this.disabled}"
+          />
+        </div>
+      </div>
+      ${this.infoText || this.warningText || this.errorText
+        ? html`<div>
+            ${this.infoText
+              ? html` <nidoca-typography
+                  .type="${NidocaTypographyType.SUBTITLE1}"
+                  text="${this.infoText}"
+                ></nidoca-typography>`
+              : html``}
+            ${this.warningText
+              ? html` <nidoca-typography
+                  style="color:var(--app-color-warning-background)"
+                  .type="${NidocaTypographyType.SUBTITLE1}"
+                  text="${this.warningText}"
+                ></nidoca-typography>`
+              : html``}
+            ${this.errorText
+              ? html` <nidoca-typography
+                  style="color:var(--app-color-error-background)"
+                  .type="${NidocaTypographyType.SUBTITLE1}"
+                  text="${this.errorText}"
+                ></nidoca-typography>`
+              : html``}
+          </div> `
+        : html``}
     `;
   }
 

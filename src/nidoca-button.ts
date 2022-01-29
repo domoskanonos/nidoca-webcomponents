@@ -37,7 +37,7 @@ export class NidocaButton extends LitElement {
   `;
 
   @property({type: NidocaTheme, converter: String})
-  theme: NidocaTheme = NidocaTheme.PRIMARY;
+  theme: string | undefined = NidocaTheme.PRIMARY;
 
   @property({type: NidocaButtonType, converter: String})
   buttonType: NidocaButtonType = NidocaButtonType.CONTAINED;
@@ -69,7 +69,6 @@ export class NidocaButton extends LitElement {
       <nidoca-ripple class="fullWidth">
         <nidoca-border
           class="fullWidth"
-          .theme="${this.theme}"
           borderSize="${this.buttonType == NidocaButtonType.TEXT ? NidocaBorderSize.NONE : NidocaBorderSize.THIN}"
         >
           <div
