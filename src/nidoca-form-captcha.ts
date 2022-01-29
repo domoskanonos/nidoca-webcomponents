@@ -2,11 +2,29 @@ import {css, html, LitElement, PropertyValues, TemplateResult} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
 import {query} from "lit/decorators.js";
+import {NidocaTheme} from ".";
 import {NidocaFormText, NidocaTextType} from "./nidoca-form-text";
 
-@customElement("nidoca-captcha")
-export class NidocaCaptcha extends LitElement {
-  static styles = css``;
+@customElement("nidoca-form-captcha")
+export class NidocaFormCaptcha extends LitElement {
+  static styles = css`
+    :host {
+      display: block;
+      width: 100%;
+    }
+  `;
+
+  @property({type: NidocaTheme, converter: String})
+  theme: string | undefined;
+
+  @property({type: String})
+  label: string = "";
+
+  @property({type: String})
+  placeholder: string = "";
+
+  @property({type: String})
+  name: string = "";
 
   @property({type: Number})
   min: number = 1;
@@ -15,7 +33,7 @@ export class NidocaCaptcha extends LitElement {
   max: number = 10;
 
   @property({type: String})
-  errorText: string = "nidoca-captcha-wrong-value";
+  errorText: string = "";
 
   private numberOne: number = 1;
   private numberTwo: number = 1;
@@ -26,15 +44,17 @@ export class NidocaCaptcha extends LitElement {
   render(): TemplateResult {
     return html`
       <nidoca-form-text
+        .theme="${this.theme}"
         id="inputfield"
-        @nidoca-form-text-focusout="${() => this.validate()}"
-        label="${"nidoca-captcha-label"
+        placeholder="${this.placeholder}"
+        label="${this.label
           .concat(" ")
           .concat(String(this.numberOne))
           .concat(" + ")
           .concat(String(this.numberTwo))
           .concat(" = ?")}"
-        name="captcha"
+        @nidoca-form-text-focusout="${() => this.validate()}"
+        name="${this.name}"
         trailingIcon="create"
         type="${NidocaTextType.NUMBER}"
         value=""

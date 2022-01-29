@@ -8,7 +8,7 @@ export class NidocaPageGallery extends LitElement {
   static styles = css``;
 
   @property({type: String})
-  elementName: string = "nidoca-progress";
+  elementName: string = "nidoca-elevation";
 
   render(): TemplateResult {
     return html`

@@ -33,7 +33,7 @@ export * from "./nidoca-icon-extended";
 export * from "./nidoca-ripple";
 export * from "./nidoca-img";
 export * from "./nidoca-movie";
-export * from "./nidoca-captcha";
+export * from "./nidoca-form-captcha";
 export * from "./nidoca-link";
 export * from "./nidoca-list";
 export * from "./nidoca-list-item";

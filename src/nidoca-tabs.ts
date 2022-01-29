@@ -8,6 +8,10 @@ import {NidocaTheme} from ".";
 @customElement("nidoca-tabs")
 export class NidocaTabs extends LitElement {
   static styles = css`
+    :host {
+      display: block;
+      width: 100%;
+    }
     slot {
       display: inline;
     }

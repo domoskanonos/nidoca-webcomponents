@@ -8,6 +8,11 @@ import {NidocaIcon} from "./nidoca-icon";
 @customElement("nidoca-table")
 export class NidocaTable extends LitElement {
   static styles = css`
+    :host {
+      display: block;
+      width: 100%;
+    }
+
     table,
     ::slotted(table) {
       border-spacing: 0;
