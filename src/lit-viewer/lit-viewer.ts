@@ -1,6 +1,6 @@
 import {customElement, html, LitElement, PropertyValues, TemplateResult} from "lit-element";
-import {ClassWrapper as WebcomponentWrapper} from "./core/classWrapper";
-import {ClassGuiWrapper as WebcomponentGuiWrapper} from "./core/classGuiWrapper";
+import {WebcomponentWrapper as WebcomponentWrapper} from "./core/webcomponentWrapper";
+import {WebcomponentGuiWrapper as WebcomponentGuiWrapper} from "./core/webcomponentGuiWrapper";
 import {css} from "lit-element";
 import {PropertyGuiWrapper} from "./core/propertyGuiWrapper";
 import {NidocaTypographyType} from "../nidoca-typography";
@@ -16,7 +16,7 @@ export class LitViewer extends LitElement {
     }
   `;
 
-  private clazzGuiWrapper: WebcomponentGuiWrapper<any> | null = null;
+  private webcomponentGuiWrapper: WebcomponentGuiWrapper<any> | null = null;
 
   @property({type: Array})
   customEventNames: string[] = [];
@@ -27,7 +27,7 @@ export class LitViewer extends LitElement {
   updated(_changedProperties: PropertyValues): void {
     if (_changedProperties.has("element") && this.element != undefined) {
       this.element.style.flexBasis = "auto";
-      this.clazzGuiWrapper = new WebcomponentGuiWrapper(new WebcomponentWrapper(<LitElement>this.element));
+      this.webcomponentGuiWrapper = new WebcomponentGuiWrapper(this, new WebcomponentWrapper(<LitElement>this.element));
       this.requestUpdate();
     }
   }
@@ -38,7 +38,9 @@ export class LitViewer extends LitElement {
           <nidoca-layout-spacer top="var(--space-little)" bottom="var(--space-little)">
             <nidoca-typography .type="${NidocaTypographyType.H2}">Tag</nidoca-typography>
           </nidoca-layout-spacer>
-          <nidoca-code>${this.clazzGuiWrapper ? this.clazzGuiWrapper.classWrapper.getHTMLTag() : ""} </nidoca-code>
+          <nidoca-code
+            >${this.webcomponentGuiWrapper ? this.webcomponentGuiWrapper.classWrapper.getHTMLTag() : ""}
+          </nidoca-code>
 
           <div style="padding-top:var(--space-medium);">
             <nidoca-section> ${this.element} </nidoca-section>
@@ -46,26 +48,26 @@ export class LitViewer extends LitElement {
         </div>
 
         <div style="padding-left:var(--space-medium)">
-          ${this.clazzGuiWrapper?.hasProperties()
+          ${this.webcomponentGuiWrapper?.hasProperties()
             ? html`
                 <nidoca-layout-spacer top="var(--space-little)" bottom="var(--space-little)">
                   <nidoca-typography .type="${NidocaTypographyType.H2}"> Attribute </nidoca-typography>
                 </nidoca-layout-spacer>
 
-                ${this.clazzGuiWrapper.getPropertyGuiWrappers().map((prop) => {
-                  return html`${prop.getInputElement(this.clazzGuiWrapper)}
+                ${this.webcomponentGuiWrapper.getPropertyGuiWrappers().map((prop) => {
+                  return html`${prop.getInputElement(this.webcomponentGuiWrapper)}
                     <div style="padding-bottom:var(--space-big);"></div>`;
                 })}
               `
             : html``}
-          ${this.clazzGuiWrapper?.classWrapper.hasSlots()
+          ${this.webcomponentGuiWrapper?.classWrapper.hasSlots()
             ? html` <nidoca-layout-spacer top="var(--space-little)" bottom="var(--space-little)">
                   <nidoca-typography .type="${NidocaTypographyType.H2}">Slots </nidoca-typography>
                 </nidoca-layout-spacer>
 
                 <nidoca-table
                   .headers="${["name"]}"
-                  .rows="${this.toSlotRows(this.clazzGuiWrapper.classWrapper.getSlotNames())}"
+                  .rows="${this.toSlotRows(this.webcomponentGuiWrapper.classWrapper.getSlotNames())}"
                 >
                 </nidoca-table>`
             : html``}
@@ -89,25 +91,25 @@ export class LitViewer extends LitElement {
 
         <nidoca-tab-content slot="tabContent">
           <nidoca-layout-spacer top="var(--space-little)" bottom="var(--space-little)">
-            <nidoca-code style="width:100%;">${this.clazzGuiWrapper?.getAsJavascript()} </nidoca-code>
+            <nidoca-code style="width:100%;">${this.webcomponentGuiWrapper?.getAsJavascript()} </nidoca-code>
           </nidoca-layout-spacer>
         </nidoca-tab-content>
 
         <nidoca-tab-content slot="tabContent">
           <nidoca-layout-spacer top="var(--space-little)" bottom="var(--space-little)">
-            <nidoca-code>${this.clazzGuiWrapper?.getTypescript()}</nidoca-code>
+            <nidoca-code>${this.webcomponentGuiWrapper?.getTypescript()}</nidoca-code>
           </nidoca-layout-spacer>
         </nidoca-tab-content>
 
         <nidoca-tab-content slot="tabContent">
           <nidoca-layout-spacer top="var(--space-little)" bottom="var(--space-little)">
-            <nidoca-code>${this.clazzGuiWrapper?.getAsLit()}</nidoca-code>
+            <nidoca-code>${this.webcomponentGuiWrapper?.getAsLit()}</nidoca-code>
           </nidoca-layout-spacer>
         </nidoca-tab-content>
 
         <nidoca-tab-content slot="tabContent">
           <nidoca-layout-spacer top="var(--space-little)" bottom="var(--space-little)">
-            <nidoca-code>${this.clazzGuiWrapper?.getAsHtml()}</nidoca-code>
+            <nidoca-code>${this.webcomponentGuiWrapper?.getAsHtml()}</nidoca-code>
           </nidoca-layout-spacer>
         </nidoca-tab-content>
       </nidoca-tabs>
@@ -118,7 +120,7 @@ export class LitViewer extends LitElement {
 
       <nidoca-table
         .headers="${["name", "type", "converter type", "render type"]}"
-        .rows="${this.toAttributeRows(this.clazzGuiWrapper?.getPropertyGuiWrappers())}"
+        .rows="${this.toAttributeRows(this.webcomponentGuiWrapper?.getPropertyGuiWrappers())}"
       >
       </nidoca-table>
       <slot @slotchange="${(event: Event) => this.slotChanged(event)}"></slot>`;

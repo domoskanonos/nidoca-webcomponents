@@ -10,7 +10,6 @@ import {
   NidocaAvatar,
   NidocaIcon,
   NidocaImg,
-  NidocaList,
   NidocaListItem,
   NidocaMovie,
   NidocaProgress,
@@ -51,9 +50,10 @@ export class Nidoca {
     this.registeredElementsMap.set("nidoca-movie", html`${nidocaMovie}`);
 
     //nidoca-search-bar
-    const searchbar = new NidocaSearchBar();
-    searchbar.placeholder = "Suche...";
-    this.registeredElementsMap.set("nidoca-search-bar", html`${searchbar}`);
+    this.registeredElementsMap.set(
+      "nidoca-search-bar",
+      html`<nidoca-search-bar theme="secondary" placeholder="Suche..."></nidoca-search-bar>`
+    );
 
     //nidoca-avatar
     const nidocaAvatar = new NidocaAvatar();
@@ -97,7 +97,7 @@ export class Nidoca {
 
     this._registeredElementsMap.set(
       "nidoca-menu",
-      html` <nidoca-menu theme="primary">
+      html` <nidoca-menu theme="secondary">
         <nidoca-menu-item text="Start"></nidoca-menu-item>
         <nidoca-menu-area text="Framework"></nidoca-menu-area>
         <nidoca-menu-item text="Komponenten"> </nidoca-menu-item>

@@ -1,18 +1,10 @@
 import {html, LitElement, TemplateResult} from "lit-element";
-import {ClassWrapper} from "./classWrapper";
+import {WebcomponentWrapper} from "./webcomponentWrapper";
 import {PropertyGuiWrapper} from "./propertyGuiWrapper";
+import {LitViewer} from "..";
 
-export class ClassGuiWrapper<T extends LitElement> {
-  public classWrapper: ClassWrapper<T>;
-
-  //public showcaseElement: LitViewer;
-
-  //showcaseElement: LitViewer,
-
-  constructor(classWrapper: ClassWrapper<T>) {
-    //this.showcaseElement = showcaseElement;
-    this.classWrapper = classWrapper;
-  }
+export class WebcomponentGuiWrapper<T extends LitElement> {
+  constructor(public parent: LitViewer, public classWrapper: WebcomponentWrapper<T>) {}
 
   public getAsHtml(): string {
     const htmlString: string = `

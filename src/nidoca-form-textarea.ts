@@ -2,7 +2,7 @@ import {css, html, TemplateResult} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
 import {query} from "lit/decorators.js";
-import {InputframeMode, NidocaTheme, NidocaTypographyType} from ".";
+import {NidocaTheme, NidocaTypographyType} from ".";
 import {FormOutputData, NidocaFormAbstractInputElement} from "./nidoca-form-abstract-input-element";
 
 @customElement("nidoca-form-textarea")

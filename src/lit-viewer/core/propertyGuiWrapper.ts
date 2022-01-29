@@ -1,9 +1,9 @@
 import {PropertyWrapper, RenderType} from "./propertyWrapper";
 import {html, LitElement, TemplateResult} from "lit";
-import {ClassGuiWrapper} from "./classGuiWrapper";
+import {WebcomponentGuiWrapper} from "./webcomponentGuiWrapper";
 import {NidocaFormCombobox} from "../../nidoca-form-combobox";
 import {NidocaTextType} from "../..";
-import {ClassWrapper} from "./classWrapper";
+import {WebcomponentWrapper} from "./webcomponentWrapper";
 
 export class PropertyGuiWrapper {
   public propertyWrapper: PropertyWrapper;
@@ -12,12 +12,12 @@ export class PropertyGuiWrapper {
     this.propertyWrapper = propertyWrapper;
   }
 
-  public getInputElement(classGuiWrapper: ClassGuiWrapper<any> | null): TemplateResult {
+  public getInputElement(classGuiWrapper: WebcomponentGuiWrapper<any> | null): TemplateResult {
     if (classGuiWrapper == null) {
       return html``;
     }
 
-    const classWrapper: ClassWrapper<any> | null = classGuiWrapper.classWrapper;
+    const classWrapper: WebcomponentWrapper<any> | null = classGuiWrapper.classWrapper;
 
     if (classWrapper == null) {
       return html``;
@@ -30,7 +30,7 @@ export class PropertyGuiWrapper {
           value="${classWrapper.instance[this.propertyWrapper.propertyName as keyof LitElement]}"
           @input="${(eventArg: any) => {
             classWrapper.instance[this.propertyWrapper.propertyName] = eventArg.target.getOutputData().value;
-            classGuiWrapper.showcaseElement.requestUpdate();
+            classGuiWrapper.parent.requestUpdate();
           }}"
         /></nidoca-form-text>`;
       case RenderType.NUMBER:
@@ -40,7 +40,7 @@ export class PropertyGuiWrapper {
           value="${classWrapper.instance[this.propertyWrapper.propertyName as keyof LitElement]}"
           @input="${(eventArg: any) => {
             classWrapper.instance[this.propertyWrapper.propertyName] = eventArg.target.getOutputData().value;
-            classGuiWrapper.showcaseElement.requestUpdate();
+            classGuiWrapper.parent.requestUpdate();
           }}"
         ></nidoca-form-text>`;
       case RenderType.BOOLEAN: {
@@ -50,20 +50,25 @@ export class PropertyGuiWrapper {
           .checked="${classWrapper.instance[this.propertyWrapper.propertyName as keyof LitElement]}"
           @input="${(eventArg: any) => {
             classWrapper.instance[this.propertyWrapper.propertyName] = eventArg.target.getOutputData().value;
-            classGuiWrapper.showcaseElement.requestUpdate();
+            classGuiWrapper.parent.requestUpdate();
           }}"
         ></nidoca-form-switch>`;
       }
       case RenderType.COMBOBOX: {
-        return html`<nidoca-form-combobox
+        return html` <nidoca-form-combobox
           label="${this.propertyWrapper.propertyName}"
           .options="${NidocaFormCombobox.enumToOptions(this.propertyWrapper.getType(), false)}"
-          value="${classWrapper.instance[this.propertyWrapper.propertyName as keyof LitElement]}"
+          value="${Object.keys(this.propertyWrapper.getType()).filter((key) => {
+            return (
+              this.propertyWrapper.getType()[key] ==
+              classWrapper.instance[this.propertyWrapper.propertyName as keyof LitElement]
+            );
+          })[0]}"
           @input="${(eventArg: any) => {
             classWrapper.instance[this.propertyWrapper.propertyName] = this.propertyWrapper.getEnumValue(
               eventArg.target.getOutputData().value
             );
-            classGuiWrapper.showcaseElement.requestUpdate();
+            classGuiWrapper.parent.requestUpdate();
           }}"
         >
         </nidoca-form-combobox>`;
@@ -91,7 +96,7 @@ export class PropertyGuiWrapper {
     }
   }
 
-  getAsHtml(classGuiWrapper: ClassGuiWrapper<LitElement>): string {
+  getAsHtml(classGuiWrapper: WebcomponentGuiWrapper<LitElement>): string {
     const propertyType: RenderType = this.propertyWrapper.getConverterTypeName();
     switch (propertyType) {
       case RenderType.BOOLEAN:
@@ -111,7 +116,7 @@ export class PropertyGuiWrapper {
     }
   }
 
-  getAsLit(classGuiWrapper: ClassGuiWrapper<LitElement>): string {
+  getAsLit(classGuiWrapper: WebcomponentGuiWrapper<LitElement>): string {
     const propertyType: RenderType = this.propertyWrapper.getRenderType();
     switch (propertyType) {
       case RenderType.COMBOBOX:
@@ -131,7 +136,7 @@ export class PropertyGuiWrapper {
     }
   }
 
-  getAsJavascript(classGuiWrapper: ClassGuiWrapper<LitElement>): string {
+  getAsJavascript(classGuiWrapper: WebcomponentGuiWrapper<LitElement>): string {
     const propertyType: RenderType = this.propertyWrapper.getConverterTypeName();
     switch (propertyType) {
       case RenderType.COMBOBOX:
@@ -148,7 +153,7 @@ export class PropertyGuiWrapper {
     }
   }
 
-  getAsTypescript(classGuiWrapper: ClassGuiWrapper<LitElement>): string {
+  getAsTypescript(classGuiWrapper: WebcomponentGuiWrapper<LitElement>): string {
     const propertyType: RenderType = this.propertyWrapper.getConverterTypeName();
     switch (propertyType) {
       case RenderType.COMBOBOX:
