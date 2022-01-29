@@ -23,7 +23,7 @@ module.exports = {
   },
   mode: "production",
   output: {
-    path: path.resolve(__dirname).concat("/build/lit-viewer"),
+    path: path.resolve(__dirname).concat("/docs/lit-viewer"),
     filename: "bundled.js",
   },
   plugins: [
