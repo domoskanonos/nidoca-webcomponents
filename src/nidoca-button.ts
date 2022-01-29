@@ -2,7 +2,7 @@ import {css, html, LitElement, TemplateResult} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
 import {NidocaTypographyType} from "./nidoca-typography";
-import {NidocaBorderSize, NidocaTheme} from ".";
+import {NidocaTheme} from ".";
 
 export enum NidocaButtonType {
   CONTAINED = "CONTAINED",
@@ -67,10 +67,7 @@ export class NidocaButton extends LitElement {
         }
       </style>
       <nidoca-ripple class="fullWidth">
-        <nidoca-border
-          class="fullWidth"
-          borderSize="${this.buttonType == NidocaButtonType.TEXT ? NidocaBorderSize.NONE : NidocaBorderSize.THIN}"
-        >
+        <div style="border:1px solid black;">
           <div
             class="BUTTON ${this.buttonType}"
             @click="${() => {
@@ -93,7 +90,7 @@ export class NidocaButton extends LitElement {
 
             ${this.buttonType != NidocaButtonType.TEXT ? html`<nidoca-layout-spacer></nidoca-layout-spacer>` : html``}
           </div>
-        </nidoca-border>
+        </div>
       </nidoca-ripple>
     `;
   }

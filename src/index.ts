@@ -9,7 +9,6 @@ export * from "./nidoca-chip";
 export * from "./nidoca-code";
 export * from "./nidoca-elevation";
 export * from "./nidoca-progress";
-export * from "./nidoca-border";
 export * from "./nidoca-button";
 export * from "./nidoca-box-shadow";
 export * from "./nidoca-form";
@@ -26,7 +25,6 @@ export * from "./nidoca-menu-item";
 export * from "./nidoca-menu";
 
 export * from "./nidoca-layout-meta";
-export * from "./nidoca-layout-section";
 export * from "./nidoca-layout-floating";
 export * from "./nidoca-layout-container";
 
