@@ -1,9 +1,9 @@
-import {PropertyWrapper, RenderType} from "./propertyWrapper";
+import {PropertyWrapper, RenderType} from "./property-wrapper";
 import {html, LitElement, TemplateResult} from "lit";
-import {WebcomponentGuiWrapper} from "./webcomponentGuiWrapper";
+import {WebcomponentGuiWrapper} from "./webcomponent-gui-wrapper";
 import {NidocaFormCombobox} from "../../nidoca-form-combobox";
 import {NidocaTextType} from "../..";
-import {WebcomponentWrapper} from "./webcomponentWrapper";
+import {WebcomponentWrapper} from "./webcomponent-wrapper";
 
 export class PropertyGuiWrapper {
   public propertyWrapper: PropertyWrapper;
@@ -12,12 +12,12 @@ export class PropertyGuiWrapper {
     this.propertyWrapper = propertyWrapper;
   }
 
-  public getInputElement(classGuiWrapper: WebcomponentGuiWrapper<any> | null): TemplateResult {
+  public getInputElement(classGuiWrapper: WebcomponentGuiWrapper | null): TemplateResult {
     if (classGuiWrapper == null) {
       return html``;
     }
 
-    const classWrapper: WebcomponentWrapper<any> | null = classGuiWrapper.classWrapper;
+    const classWrapper: WebcomponentWrapper | null = classGuiWrapper.classWrapper;
 
     if (classWrapper == null) {
       return html``;

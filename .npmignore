@@ -1,7 +1,7 @@
 app
 node_modules
 public
-lit-viewer
+webcomponent
 .vscode
 lib/app
-lib/lit-viewer
+lib/webcomponent

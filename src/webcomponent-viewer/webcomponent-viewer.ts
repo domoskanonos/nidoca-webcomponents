@@ -1,13 +1,13 @@
 import {customElement, html, LitElement, PropertyValues, TemplateResult} from "lit-element";
-import {WebcomponentWrapper as WebcomponentWrapper} from "./core/webcomponentWrapper";
-import {WebcomponentGuiWrapper as WebcomponentGuiWrapper} from "./core/webcomponentGuiWrapper";
+import {WebcomponentWrapper as WebcomponentWrapper} from "./core/webcomponent-wrapper";
+import {WebcomponentGuiWrapper as WebcomponentGuiWrapper} from "./core/webcomponent-gui-wrapper";
 import {css} from "lit-element";
-import {PropertyGuiWrapper} from "./core/propertyGuiWrapper";
+import {PropertyGuiWrapper} from "./core/property-gui-wrapper";
 import {NidocaTypographyType} from "../nidoca-typography";
 import {property} from "lit/decorators.js";
 import {NidocaTheme} from "..";
 
-@customElement("lit-viewer")
+@customElement("webcomponent-viewer")
 export class LitViewer extends LitElement {
   static styles = css`
     .container {
@@ -16,7 +16,7 @@ export class LitViewer extends LitElement {
     }
   `;
 
-  private webcomponentGuiWrapper: WebcomponentGuiWrapper<any> | null = null;
+  private webcomponentGuiWrapper: WebcomponentGuiWrapper | null = null;
 
   @property({type: Array})
   customEventNames: string[] = [];
@@ -27,7 +27,7 @@ export class LitViewer extends LitElement {
   updated(_changedProperties: PropertyValues): void {
     if (_changedProperties.has("element") && this.element != undefined) {
       this.element.style.flexBasis = "auto";
-      this.webcomponentGuiWrapper = new WebcomponentGuiWrapper(this, new WebcomponentWrapper(<LitElement>this.element));
+      this.webcomponentGuiWrapper = new WebcomponentGuiWrapper(this, new WebcomponentWrapper(this.element));
       this.requestUpdate();
     }
   }

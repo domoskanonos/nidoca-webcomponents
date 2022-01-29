@@ -2,7 +2,7 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  entry: "./src/lit-viewer/index.ts",
+  entry: "./src/webcomponent-viewer/index.ts",
   module: {
     rules: [
       {
@@ -23,13 +23,13 @@ module.exports = {
   },
   mode: "production",
   output: {
-    path: path.resolve().concat("/docs/lit-viewer"),
+    path: path.resolve().concat("/docs/webcomponent-viewer"),
     filename: "bundled.js",
   },
   plugins: [
     new HtmlWebpackPlugin({
       filename: "index.html",
-      template: "./src/lit-viewer/index.html",
+      template: "./src/webcomponent-viewer/index.html",
     }),
   ],
 };

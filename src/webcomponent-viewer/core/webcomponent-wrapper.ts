@@ -1,10 +1,9 @@
-import {LitElement} from "lit-element";
-import {PropertyWrapper} from "./propertyWrapper";
+import {PropertyWrapper} from "./property-wrapper";
 
-export class WebcomponentWrapper<T extends LitElement> {
-  public instance: T;
+export class WebcomponentWrapper {
+  public instance: any;
 
-  constructor(element: T) {
+  constructor(element: any) {
     this.instance = element;
   }
 

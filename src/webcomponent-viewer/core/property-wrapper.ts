@@ -9,7 +9,6 @@ export enum RenderType {
 
 export class PropertyWrapper {
   getClassName(): string {
-    const name = this.propertyName;
     return this.getTypeName() ? this.getTypeName() : this.getConverterTypeName();
   }
 

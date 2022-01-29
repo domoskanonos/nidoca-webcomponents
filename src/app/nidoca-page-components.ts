@@ -32,7 +32,7 @@ export class NidocaPageGallery extends LitElement {
       </nidoca-section>
 
       <nidoca-section style="width:50%;">
-        <lit-viewer> ${Nidoca.getUniqueInstance().registeredElementsMap.get(this.elementName)} </lit-viewer>
+        <webcomponent-viewer> ${Nidoca.getUniqueInstance().registeredElementsMap.get(this.elementName)} </webcomponent-viewer>
       </nidoca-section>
     `;
   }
