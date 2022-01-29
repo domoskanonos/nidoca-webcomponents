@@ -96,7 +96,7 @@ export class PropertyGuiWrapper {
     }
   }
 
-  getAsHtml(classGuiWrapper: WebcomponentGuiWrapper<LitElement>): string {
+  getAsHtml(classGuiWrapper: WebcomponentGuiWrapper): string {
     const propertyType: RenderType = this.propertyWrapper.getConverterTypeName();
     switch (propertyType) {
       case RenderType.BOOLEAN:
@@ -116,7 +116,7 @@ export class PropertyGuiWrapper {
     }
   }
 
-  getAsLit(classGuiWrapper: WebcomponentGuiWrapper<LitElement>): string {
+  getAsLit(classGuiWrapper: WebcomponentGuiWrapper): string {
     const propertyType: RenderType = this.propertyWrapper.getRenderType();
     switch (propertyType) {
       case RenderType.COMBOBOX:
@@ -136,7 +136,7 @@ export class PropertyGuiWrapper {
     }
   }
 
-  getAsJavascript(classGuiWrapper: WebcomponentGuiWrapper<LitElement>): string {
+  getAsJavascript(classGuiWrapper: WebcomponentGuiWrapper): string {
     const propertyType: RenderType = this.propertyWrapper.getConverterTypeName();
     switch (propertyType) {
       case RenderType.COMBOBOX:
@@ -153,7 +153,7 @@ export class PropertyGuiWrapper {
     }
   }
 
-  getAsTypescript(classGuiWrapper: WebcomponentGuiWrapper<LitElement>): string {
+  getAsTypescript(classGuiWrapper: WebcomponentGuiWrapper): string {
     const propertyType: RenderType = this.propertyWrapper.getConverterTypeName();
     switch (propertyType) {
       case RenderType.COMBOBOX:
