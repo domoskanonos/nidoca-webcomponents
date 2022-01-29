@@ -48,7 +48,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "typedocs": "typedoc src/index.ts",
-    "docs-webcomponents": "wca analyze \"src/**/*.{js,ts}\" --outDir docs/wca/webcomponents",
+    "docs-webcomponents": "wca analyze \"src/**/*.{js,ts}\" --outDir docs/documentation/webcomponents",
     "docs": "npm run typedocs && npm run docs-webcomponents",
     "prebuild": "npm install && npm run ts && npm run eslint && npm run lit-analyzer && npm run docs",
     "build:webcomponents": "webpack --config ./webpack.webcomponent.js ",
