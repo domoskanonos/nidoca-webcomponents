@@ -72,18 +72,10 @@ export class Nidoca {
     nidocaIcon.style.fontSize = "96px";
     this.registeredElementsMap.set("nidoca-icon", html`${nidocaIcon}`);
 
-    //nidoca-list-item
-    const nidocaListItem = new NidocaListItem();
-    nidocaListItem.selectionMode = true;
-    nidocaListItem.selected = true;
-    nidocaListItem.primaryText = "List Item";
-    nidocaListItem.secondaryText = "List Item Secondary Text";
-    this.registeredElementsMap.set("nidoca-list-item", html`${nidocaListItem}`);
-
     //nidoca-list
     this.registeredElementsMap.set(
       "nidoca-list",
-      html`<nidoca-list theme="primary" selectionMode stlye="padding:var(--space-6);"
+      html`<nidoca-list theme="primary" selectionMode
         ><nidoca-list-item primaryText="List Item" secondaryText="List Item Secondary Text"></nidoca-list-item
         ><nidoca-list-item primaryText="List Item" secondaryText="List Item Secondary Text"></nidoca-list-item
         ><nidoca-list-item primaryText="List Item" secondaryText="List Item Secondary Text"></nidoca-list-item
@@ -244,10 +236,10 @@ export class Nidoca {
     this._registeredElementsMap.set(
       "nidoca-top-app-bar",
       html`<nidoca-top-app-bar .theme="${NidocaTheme.PRIMARY}">
-        <nidoca-text slot="center" type="${NidocaTypographyType.BODY1}">Top App Bar</nidoca-text>
-        <nidoca-icon slot="left" clickable icon="menu"></nidoca-icon>
-        <nidoca-icon slot="right" icon="search"></nidoca-icon>
-        <nidoca-icon slot="right" icon="more_vert" clickable></nidoca-icon>
+        <nidoca-text slot="center" type="${NidocaTypographyType.BODY1}">Toolbar</nidoca-text>
+        <nidoca-icon slot="left" style="padding-left:var(--space)" clickable icon="menu"></nidoca-icon>
+        <nidoca-icon slot="right" style="padding-right:var(--space)" icon="search"></nidoca-icon>
+        <nidoca-icon slot="right" style="padding-right:var(--space)" icon="more_vert" clickable></nidoca-icon>
 
         <nidoca-search-bar slot="prominent" placeholder="Suche..."></nidoca-search-bar>
       </nidoca-top-app-bar>`
@@ -307,6 +299,7 @@ export class NidocaTheme {
           ::slotted(*) {
             color: var(--app-color-${theme});
             background-color: var(--app-color-${theme}-background);
+            border-color: var(--app-color-${theme}-border);
           }
         </style>`
       : html``;

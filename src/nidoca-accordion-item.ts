@@ -15,9 +15,16 @@ export class NidocaAccordionItem extends LitElement {
       box-sizing: border-box;
     }
 
-    .container {
-      display: block;
-      width: 100%;
+    .header {
+      height: var(--line-height-2);
+      line-height: var(--line-height-2);
+      padding-left: var(--space-2);
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      align-content: center;
+      cursor: pointer;
     }
   `;
 
@@ -29,11 +36,8 @@ export class NidocaAccordionItem extends LitElement {
 
   render(): TemplateResult {
     return html`
-      <div
-        @click="${() => this.toggle()}"
-        style="display:flex;flex-direction:row;align-items:center;justify-content:space-between;align-content:center; cursor:pointer;"
-      >
-        <nidoca-text style="padding-left:var(--space-3);" text="${this.header}"></nidoca-text>
+      <div @click="${() => this.toggle()}" class="header">
+        <nidoca-text text="${this.header}"></nidoca-text>
         <nidoca-icon icon="${this.opened ? "keyboard_arrow_down" : "keyboard_arrow_up"}"></nidoca-icon>
       </div>
       ${this.opened ? html` <slot></slot>` : html``}

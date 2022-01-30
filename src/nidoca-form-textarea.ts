@@ -84,8 +84,7 @@ export class NidocaFormTextarea extends NidocaFormAbstractInputElement {
   private inputElement: HTMLInputElement | undefined;
 
   render(): TemplateResult {
-    return html`
-      <style>
+    return html` <style>
         .parentContainer,
         ::slotted(.parentContainer) {
           color: var(--app-color-${this.theme});
@@ -124,12 +123,9 @@ ${this.value}</textarea
       </div>
 
       ${this.infoText || this.warningText || this.errorText
-        ? html`<div>
+        ? html`<div style="display:flex;flex-direction:column;">
             ${this.infoText
-              ? html` <nidoca-text
-                  .type="${NidocaTypographyType.SUBTITLE1}"
-                  text="${this.infoText}"
-                ></nidoca-text>`
+              ? html` <nidoca-text .type="${NidocaTypographyType.SUBTITLE1}" text="${this.infoText}"></nidoca-text>`
               : html``}
             ${this.warningText
               ? html` <nidoca-text
@@ -146,8 +142,7 @@ ${this.value}</textarea
                 ></nidoca-text>`
               : html``}
           </div> `
-        : html``}
-    `;
+        : html``}`;
   }
 
   getOutputData(): FormOutputData {

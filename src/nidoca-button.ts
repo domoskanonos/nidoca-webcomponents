@@ -21,6 +21,11 @@ export class NidocaButton extends LitElement {
 
     .BUTTON {
       cursor: pointer;
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: center;
+      justify-content: center;
+      height: var(--line-height-2);
       text-transform: uppercase;
       box-sizing: border-box;
       font-family: inherit;
@@ -81,7 +86,6 @@ export class NidocaButton extends LitElement {
           @click="${() => {
             this.clicked();
           }}"
-          style="display:flex;flex-wrap:nowrap;align-items:center;justify-content:center;height:var(--line-height-3)"
         >
           ${this.leadingIcon ? html`<nidoca-icon .icon="${this.leadingIcon}"></nidoca-icon>` : html``}
           ${!this.leadingIcon && this.buttonType != NidocaButtonType.TEXT

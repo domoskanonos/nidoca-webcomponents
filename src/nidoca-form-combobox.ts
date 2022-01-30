@@ -5,7 +5,7 @@ import {query} from "lit/decorators.js";
 import {repeat} from "lit/directives/repeat.js";
 import {guard} from "lit/directives/guard.js";
 import {FormOutputData, NidocaFormAbstractInputElement} from "./nidoca-form-abstract-input-element";
-import {InputframeMode, NidocaTheme, NidocaTypographyType} from ".";
+import {NidocaTheme, NidocaTypographyType} from ".";
 
 @customElement("nidoca-form-combobox")
 export class NidocaFormCombobox extends NidocaFormAbstractInputElement {
@@ -29,6 +29,12 @@ export class NidocaFormCombobox extends NidocaFormAbstractInputElement {
       flex-direction: column;
     }
 
+    option {
+      height: var(--line-height-2);
+      line-height: var(--line-height-2);
+      padding-left: var(--space-2);
+    }
+
     select {
       font: inherit;
       box-sizing: border-box;
@@ -36,14 +42,9 @@ export class NidocaFormCombobox extends NidocaFormAbstractInputElement {
       border: none;
       color: inherit;
       background-color: inherit;
-      height: var(--line-height-3);
-      line-height: var(--line-height-3);
-      padding-left: var(--space-3);
-    }
-
-    select option {
-      color: inherit;
-      background: inherit;
+      height: var(--line-height-2);
+      line-height: var(--line-height-2);
+      padding-left: var(--space-2);
     }
 
     select[multiple] {
@@ -117,6 +118,11 @@ export class NidocaFormCombobox extends NidocaFormAbstractInputElement {
         ::slotted(.border:focus-within) {
           border-color: var(--app-color-${this.theme}-border-selected);
         }
+
+        option {
+          color: var(--app-color-${this.theme});
+          background-color: var(--app-color-${this.theme}-background);
+        }
       </style>
       <div class="parentContainer border">
         ${this.trailingIcon
@@ -154,14 +160,10 @@ export class NidocaFormCombobox extends NidocaFormAbstractInputElement {
           </select>
         </div>
       </div>
-
       ${this.infoText || this.warningText || this.errorText
-        ? html`<div>
+        ? html`<div style="display:flex;flex-direction:column;">
             ${this.infoText
-              ? html` <nidoca-text
-                  .type="${NidocaTypographyType.SUBTITLE1}"
-                  text="${this.infoText}"
-                ></nidoca-text>`
+              ? html` <nidoca-text .type="${NidocaTypographyType.SUBTITLE1}" text="${this.infoText}"></nidoca-text>`
               : html``}
             ${this.warningText
               ? html` <nidoca-text

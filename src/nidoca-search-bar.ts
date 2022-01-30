@@ -12,8 +12,8 @@ export class NidocaSearchBar extends LitElement {
     }
 
     input {
-      height: var(--line-height-3);
-      line-height: var(--line-height-3);
+      height: var(--line-height-2);
+      line-height: var(--line-height-2);
       font: inherit;
       color: inherit;
       background-color: inherit;

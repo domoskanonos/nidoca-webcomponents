@@ -5,9 +5,12 @@ import {NidocaTheme} from ".";
 @customElement("nidoca-menu")
 export class NidocaMenu extends LitElement {
   static styles = css`
-    :host {
+    :host,
+    slot {
       display: block;
-      width: 100%;
+    }
+
+    slot {
       padding-left: var(--space-4);
       padding-right: var(--space-4);
     }

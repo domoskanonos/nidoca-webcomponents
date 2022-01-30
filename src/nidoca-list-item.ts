@@ -28,7 +28,7 @@ export class NidocaListItem extends LitElement {
     }
 
     .spaceLeft {
-      padding-left: var(--space-3);
+      padding-left: var(--space-2);
     }
   `;
 
@@ -64,21 +64,21 @@ export class NidocaListItem extends LitElement {
         <div class="container">
           ${this.selectionMode
             ? html`<nidoca-icon
-                class="item"
+                class="item spaceLeft"
                 @click="${() => this.switchSelected()}"
                 icon="${this.selected ? "check_box" : "check_box_outline_blank"}"
               ></nidoca-icon>`
             : html`<span></span>`}
           <slot name="graphic" class="item"></slot>
-          <div class="containerTypography ${this.selectionMode ? "" : "spaceLeft"}">
+          <div class="containerTypography">
             ${this.primaryText
-              ? html`<nidoca-text class="item" .type="${NidocaTypographyType.BODY1}"
+              ? html`<nidoca-text class="item spaceLeft" .type="${NidocaTypographyType.BODY1}"
                   >${this.primaryText}</nidoca-text
                 >`
               : html``}
             <slot></slot>
             ${this.secondaryText
-              ? html`<nidoca-text class="item" .type="${NidocaTypographyType.SUBTITLE1}"
+              ? html`<nidoca-text class="item spaceLeft" .type="${NidocaTypographyType.SUBTITLE1}"
                   >${this.secondaryText}</nidoca-text
                 >`
               : html``}

@@ -10,6 +10,17 @@ export class NidocaTopAppBar extends LitElement {
       width: 100%;
       position: relativ;
       display: block;
+      height: min-content;
+    }
+
+    .bar {
+      min-height: var(--line-height-2);
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      align-items: center;
+      justify-content: space-between;
+      align-content: space-around;
     }
 
     slot {
@@ -32,9 +43,7 @@ export class NidocaTopAppBar extends LitElement {
   render(): TemplateResult {
     return html`
       ${NidocaTheme.getStyle(this.theme)}
-      <div
-        style="min-height: var(--line-height-5);display:flex;flex-direction:row;flex-wrap:nowrap;align-items:center;justify-content:space-between;align-content:space-around;"
-      >
+      <div class="bar">
         <span>
           <slot name="left"></slot>
         </span>

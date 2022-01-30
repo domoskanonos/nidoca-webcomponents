@@ -24,8 +24,8 @@ export class NidocaPageGallery extends LitElement {
 
       ${Nidoca.getUniqueInstance().registeredElementNames.map(
         (elementName) => html`
-          <nidoca-section style="width:50%;">
-            <nidoca-text type="H1" text="${elementName}"></nidoca-text>
+          <nidoca-section style="width:50%;padding-top:var(--space)">
+            <nidoca-text type="H4" text="<${elementName}></${elementName}>"></nidoca-text>
             ${Nidoca.getUniqueInstance().registeredElementsMap.get(elementName)}
           </nidoca-section>
         `
