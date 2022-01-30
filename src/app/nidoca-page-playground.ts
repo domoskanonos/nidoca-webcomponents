@@ -1,10 +1,10 @@
 import {css, html, LitElement, TemplateResult} from "lit";
 import {customElement, property} from "lit/decorators.js";
 
-import {Nidoca} from "..";
+import {Nidoca, NidocaFormCombobox} from "..";
 
-@customElement("nidoca-page-components")
-export class NidocaPageGallery extends LitElement {
+@customElement("nidoca-page-playground")
+export class NidocaPagePlayground extends LitElement {
   static styles = css``;
 
   @property({type: String})
@@ -19,17 +19,23 @@ export class NidocaPageGallery extends LitElement {
             text="Auf dieser Seite kannst du dir die einzelnen Komponenten von Nidoca anschauen. Mithilfe des Konfigurators, kannst du die Komponenten und deren Attribute verwalten und die Verwendung testen. Anschließend kannst du dir den Quellcode für deine entsprechende Umgebung kopieren und die Komponente verwenden."
           ></nidoca-article>
           <nidoca-layout-spacer top="20px"></nidoca-layout-spacer>
+          <nidoca-form-combobox
+            name="components"
+            label="Komponenten"
+            value="${this.elementName}"
+            .options="${NidocaFormCombobox.stringArrayToOptions(Nidoca.getUniqueInstance().registeredElementNames)}"
+            @input="${(event: Event) => {
+              this.elementName = (<NidocaFormCombobox>event.target).getOutputData().value;
+            }}"
+          ></nidoca-form-combobox>
         </nidoca-layout-spacer>
       </nidoca-section>
 
-      ${Nidoca.getUniqueInstance().registeredElementNames.map(
-        (elementName) => html`
-          <nidoca-section style="width:50%;">
-            <nidoca-text type="H1" text="${elementName}"></nidoca-text>
-            ${Nidoca.getUniqueInstance().registeredElementsMap.get(elementName)}
-          </nidoca-section>
-        `
-      )}
+      <nidoca-section style="width:50%;">
+        <webcomponent-viewer>
+          ${Nidoca.getUniqueInstance().registeredElementsMap.get(this.elementName)}
+        </webcomponent-viewer>
+      </nidoca-section>
     `;
   }
 }

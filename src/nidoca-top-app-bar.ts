@@ -33,7 +33,7 @@ export class NidocaTopAppBar extends LitElement {
     return html`
       ${NidocaTheme.getStyle(this.theme)}
       <div
-        style="min-height: var(--line-height-massiv);display:flex;flex-direction:row;flex-wrap:nowrap;align-items:center;justify-content:space-between;align-content:space-around;"
+        style="min-height: var(--line-height-5);display:flex;flex-direction:row;flex-wrap:nowrap;align-items:center;justify-content:space-between;align-content:space-around;"
       >
         <span>
           <slot name="left"></slot>

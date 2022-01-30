@@ -2,7 +2,7 @@ import {css, html, TemplateResult, LitElement} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
 import {NidocaIconShadowType} from ".";
-import {NidocaTypographyAlignment, NidocaTypographyType} from "./nidoca-typography";
+import {NidocaTypographyType} from "./nidoca-text";
 
 export enum WizardStepState {
   CURRENT,
@@ -70,13 +70,9 @@ export class NidocaWizardStep extends LitElement {
             : html`<nidoca-icon color="${this.determineBackgroundColor(this.state)}" icon="label_important">
               </nidoca-icon>`}
         </div>
-        <nidoca-typography
-          style="width:48px;"
-          .type="${NidocaTypographyType.OVERLINE}"
-          textAlign="${NidocaTypographyAlignment.CENTER}"
-          text="${this.primaryText}"
+        <nidoca-text style="width:48px;" .type="${NidocaTypographyType.OVERLINE}" text="${this.primaryText}"
           ><slot></slot>
-        </nidoca-typography>
+        </nidoca-text>
       </div>
     `;
   }

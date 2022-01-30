@@ -1,5 +1,5 @@
-import {css, html, LitElement, TemplateResult} from "lit";
-import {customElement} from "lit/decorators.js";
+import {css, html, LitElement, PropertyValues, TemplateResult} from "lit";
+import {customElement, query} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
 
 export enum NidocaTypographyType {
@@ -18,29 +18,13 @@ export enum NidocaTypographyType {
   OVERLINE = "OVERLINE",
 }
 
-export enum NidocaTypographyAlignment {
-  JUSTIFY = "text-align:justify;",
-  JUSTIFY_ALL = "text-align:justify-all;",
-  LEFT = "text-align: left;",
-  RIGHT = "text-align: right;",
-  CENTER = "text-align: center;",
-  START = "text-align: start;",
-  END = "text-align: end;",
-  MATCH_PARENT = "text-align: match-parent;",
-  INHERIT = "text-align: inherit;",
-  INITIAL = "text-align: initial;",
-  UNSET = "text-align: unset;",
-}
-
-@customElement("nidoca-typography")
-export class NidocaTypography extends LitElement {
+@customElement("nidoca-text")
+export class NidocaText extends LitElement {
   static styles = css`
-    :host {
-      display: block;
-    }
-
-    .TYPOGRAPHY {
+    :host,
+    slot {
       display: inline-block;
+      line-height: 0;
     }
 
     .H1,
@@ -57,6 +41,7 @@ export class NidocaTypography extends LitElement {
     .CAPTION,
     .OVERLINE {
       text-overflow: ellipsis;
+      overflow: hidden;
       margin: 0;
       padding: 0;
       box-sizing: border-box;
@@ -141,13 +126,23 @@ export class NidocaTypography extends LitElement {
   @property({type: NidocaTypographyType, converter: String})
   type: string = NidocaTypographyType.BODY1;
 
-  @property({type: NidocaTypographyAlignment, converter: String})
-  textAlign: string = NidocaTypographyAlignment.START;
-
   @property({type: String})
   text: string = "";
 
+  @query("#slotElement")
+  private slotElement: HTMLSlotElement | undefined;
+
+  updated(changedProperties: PropertyValues): void {
+    super.updated(changedProperties);
+    changedProperties.forEach((_oldValue, propName) => {
+      if (this.slotElement && propName == "type") {
+        this.slotElement.classList.remove(...this.slotElement.classList);
+        this.slotElement.classList.add(this.type);
+      }
+    });
+  }
+
   render(): TemplateResult {
-    return html` <span class="TYPOGRAPHY ${this.type}" style="${this.textAlign}">${this.text}<slot></slot></span> `;
+    return html`<slot id="slotElement">${this.text}</slot>`;
   }
 }

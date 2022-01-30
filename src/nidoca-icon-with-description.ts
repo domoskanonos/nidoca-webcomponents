@@ -1,11 +1,18 @@
 import {css, html, TemplateResult, LitElement} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
-import {NidocaTypographyAlignment, NidocaTypographyType} from ".";
+import {NidocaTypographyType} from ".";
 
 @customElement("nidoca-icon-with-description")
 export class NidocaIconWithDescription extends LitElement {
-  static styles = css``;
+  static styles = css`
+    :host {
+      display: block;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  `;
 
   @property({type: String})
   primaryText: string = "";
@@ -18,22 +25,14 @@ export class NidocaIconWithDescription extends LitElement {
 
   render(): TemplateResult {
     return html`
-      <nidoca-layout-spacer top="48px" bottom="48px">
-        <div style="display:flex;flex-direction:column;align-items:center">
-          <nidoca-icon
-            icon="${this.icon}"
-            style="font-size: 96px; padding:var(--space-4);"
-            backgroundColor="var(--app-color-surface-background)"
-          ></nidoca-icon>
-          <nidoca-typography .type="${NidocaTypographyType.H2}">${this.primaryText}</nidoca-typography>
-          <nidoca-layout-spacer>
-            <nidoca-typography .type="${NidocaTypographyType.BODY2}" .textAlign="${NidocaTypographyAlignment.CENTER}">
-              ${this.text}
-              <slot></slot>
-            </nidoca-typography>
-          </nidoca-layout-spacer>
-        </div>
-      </nidoca-layout-spacer>
+      <nidoca-icon icon="${this.icon}" style="font-size: 8vw; padding:var(--space-4);"></nidoca-icon>
+      <nidoca-text
+        style="padding-left:var(--space-4);padding-right:var(--space-4);padding-bottom:var(--space-4);text-align:center;"
+        .type="${NidocaTypographyType.BODY2}"
+      >
+        ${this.text}
+        <slot></slot>
+      </nidoca-text>
     `;
   }
 }

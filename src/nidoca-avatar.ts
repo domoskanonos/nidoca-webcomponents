@@ -26,9 +26,9 @@ export class NidocaAvatar extends LitElement {
           top="var(--space)"
           bottom="var(--space)"
         >
-          <nidoca-typography type="${NidocaTypographyType.H3}">${this.primaryText}</nidoca-typography>
+          <nidoca-text type="${NidocaTypographyType.H3}">${this.primaryText}</nidoca-text>
         </nidoca-layout-spacer>
-        <nidoca-typography type="${NidocaTypographyType.H5}">${this.description}</nidoca-typography>
+        <nidoca-text type="${NidocaTypographyType.H5}">${this.description}</nidoca-text>
   </div>
     </div>`;
   }

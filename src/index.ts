@@ -44,7 +44,7 @@ export * from "./nidoca-tabs";
 export * from "./nidoca-tab";
 export * from "./nidoca-tab-content";
 export * from "./nidoca-template";
-export * from "./nidoca-typography";
+export * from "./nidoca-text";
 export * from "./nidoca-search-bar";
 export * from "./nidoca-dialog";
 export * from "./nidoca-dialog-action";

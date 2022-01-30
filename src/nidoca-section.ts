@@ -18,11 +18,6 @@ export class NidocaSection extends LitElement {
       justify-content: center;
     }
 
-    ::slotted(.item),
-    .item {
-      display: block;
-    }
-
     @media only screen and (min-width: ${NidocaDevice.TABLET.minWidth}px) and (max-width: ${NidocaDevice.TABLET
         .maxWidth}px) {
       .item {
@@ -84,7 +79,13 @@ export class NidocaSection extends LitElement {
     if (elementWidths > 0) {
       calculationPercent = 100 - 100 * (elementWidths / slotWidth);
     }
+
+    if (calculationPercent == 0) {
+      calculationPercent = 100 / elementSize;
+    }
+
     this.flexBasis = String(calculationPercent / modifyElements.length) + "%";
+
     this.requestUpdate();
   }
 }

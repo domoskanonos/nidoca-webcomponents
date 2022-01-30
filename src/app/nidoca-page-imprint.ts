@@ -11,15 +11,15 @@ export class NidocaPageSettings extends LitElement {
       <nidoca-layout-spacer top="var(--space-8)">
         <nidoca-section style="width:50%;">
           <nidoca-article title="Impressum" summary="Angaben gemäß § 5 TMG">
-            <nidoca-typography .type="${NidocaTypographyType.BODY1}">Dominik Bruhn</nidoca-typography>
-            <nidoca-typography .type="${NidocaTypographyType.BODY1}">Holzwickeder Straße 109c</nidoca-typography>
-            <nidoca-typography .type="${NidocaTypographyType.BODY1}">44309 Dortmund</nidoca-typography>
+            <nidoca-text .type="${NidocaTypographyType.BODY1}">Dominik Bruhn</nidoca-text>
+            <nidoca-text .type="${NidocaTypographyType.BODY1}">Holzwickeder Straße 109c</nidoca-text>
+            <nidoca-text .type="${NidocaTypographyType.BODY1}">44309 Dortmund</nidoca-text>
             <nidoca-layout-spacer></nidoca-layout-spacer>
-            <nidoca-typography .type="${NidocaTypographyType.BODY1}"
-              >Telefonnummer: +49 152 052 488 62</nidoca-typography
+            <nidoca-text .type="${NidocaTypographyType.BODY1}"
+              >Telefonnummer: +49 152 052 488 62</nidoca-text
             >
-            <nidoca-typography .type="${NidocaTypographyType.BODY1}"
-              >E-Mail: dominikbruhn [at] googlemail.com</nidoca-typography
+            <nidoca-text .type="${NidocaTypographyType.BODY1}"
+              >E-Mail: dominikbruhn [at] googlemail.com</nidoca-text
             >
           </nidoca-article>
         </nidoca-section>
@@ -27,16 +27,16 @@ export class NidocaPageSettings extends LitElement {
       <nidoca-layout-spacer top="var(--space-8)">
         <nidoca-section style="width:50%;">
           <nidoca-article title="Streitsschlichtung">
-            <nidoca-typography .type="${NidocaTypographyType.BODY1}"
+            <nidoca-text .type="${NidocaTypographyType.BODY1}"
               >Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:
               <nidoca-link href="https://ec.europa.eu/consumers/odr" targetType="${NidocaTargetType.BLANK}"
                 >https://ec.europa.eu/consumers/odr</nidoca-link
-              >. <br />Unsere E-Mail-Adresse und Telefonnummer finden Sie oben auf dieser Seite.</nidoca-typography
+              >. <br />Unsere E-Mail-Adresse und Telefonnummer finden Sie oben auf dieser Seite.</nidoca-text
             >
-            <nidoca-typography .type="${NidocaTypographyType.BODY1}">
+            <nidoca-text .type="${NidocaTypographyType.BODY1}">
               Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer
               Verbraucherschlichtungsstelle teilzunehmen.
-            </nidoca-typography>
+            </nidoca-text>
           </nidoca-article>
         </nidoca-section>
       </nidoca-layout-spacer>
@@ -44,7 +44,7 @@ export class NidocaPageSettings extends LitElement {
       <nidoca-layout-spacer top="var(--space-8)">
         <nidoca-section style="width:50%;">
           <nidoca-article title="Haftungsinhalt">
-            <nidoca-typography .type="${NidocaTypographyType.BODY1}">
+            <nidoca-text .type="${NidocaTypographyType.BODY1}">
               Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen
               Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet,
               übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf
@@ -53,7 +53,7 @@ export class NidocaPageSettings extends LitElement {
               bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer
               konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir
               diese Inhalte umgehend entfernen.
-            </nidoca-typography>
+            </nidoca-text>
           </nidoca-article>
         </nidoca-section>
       </nidoca-layout-spacer>
@@ -61,7 +61,7 @@ export class NidocaPageSettings extends LitElement {
       <nidoca-layout-spacer top="var(--space-8)">
         <nidoca-section style="width:50%;">
           <nidoca-article title="Haftungslinks">
-            <nidoca-typography .type="${NidocaTypographyType.BODY1}">
+            <nidoca-text .type="${NidocaTypographyType.BODY1}">
               Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben.
               Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten
               Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Die verlinkten Seiten
@@ -69,7 +69,7 @@ export class NidocaPageSettings extends LitElement {
               Zeitpunkt der Verlinkung nicht erkennbar. Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist
               jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von
               Rechtsverletzungen werden wir derartige Links umgehend entfernen.
-            </nidoca-typography>
+            </nidoca-text>
           </nidoca-article>
         </nidoca-section>
       </nidoca-layout-spacer>
@@ -77,7 +77,7 @@ export class NidocaPageSettings extends LitElement {
       <nidoca-layout-spacer top="var(--space-8)">
         <nidoca-section style="width:50%;">
           <nidoca-article title="Copyright">
-            <nidoca-typography .type="${NidocaTypographyType.BODY1}">
+            <nidoca-text .type="${NidocaTypographyType.BODY1}">
               Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen
               Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der
               Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.
@@ -86,7 +86,7 @@ export class NidocaPageSettings extends LitElement {
               beachtet. Insbesondere werden Inhalte Dritter als solche gekennzeichnet. Sollten Sie trotzdem auf eine
               Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden
               von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen.
-            </nidoca-typography>
+            </nidoca-text>
           </nidoca-article>
         </nidoca-section>
       </nidoca-layout-spacer>

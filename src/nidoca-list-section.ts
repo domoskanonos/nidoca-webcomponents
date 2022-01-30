@@ -1,7 +1,7 @@
 import {css, html, TemplateResult, LitElement} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
-import {NidocaTypographyType} from "./nidoca-typography";
+import {NidocaTypographyType} from "./nidoca-text";
 
 @customElement("nidoca-list-section")
 export class NidocaListSection extends LitElement {
@@ -15,9 +15,9 @@ export class NidocaListSection extends LitElement {
       <div
         style="display:flex;flex-direction:row;flex-wrap:nowrap;align-items:center;justify-content:flex-end;align-content:flex-start;"
       >
-        <nidoca-layout-spacer style="flex-basis:100%;">
-          <nidoca-typography .type="${NidocaTypographyType.H6}" text="${this.text}"></nidoca-typography>
-        </nidoca-layout-spacer>
+        <div style="flex-basis:100%;">
+          <nidoca-text .type="${NidocaTypographyType.H6}" text="${this.text}"></nidoca-text>
+        </div>
       </div>
     `;
   }

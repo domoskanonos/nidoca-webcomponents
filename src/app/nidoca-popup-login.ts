@@ -31,7 +31,7 @@ export class NidocaPopupLogin extends LitElement {
           bottom="var(--space-6)"
         >
           <nidoca-form id="authenitcate-form">
-            <nidoca-typography .type="${NidocaTypographyType.H1}">Anmeldung</nidoca-typography>
+            <nidoca-text .type="${NidocaTypographyType.H1}">Anmeldung</nidoca-text>
             <nidoca-form-text
               name="username"
               .textType="${NidocaTextType.EMAIL}"
@@ -51,11 +51,11 @@ export class NidocaPopupLogin extends LitElement {
             <nidoca-layout-spacer bottom="var(--space-3)"></nidoca-layout-spacer>
             <nidoca-button @nidoca-event-button-clicked="${() => this.closePopup()}">Schließen</nidoca-button>
             <nidoca-layout-spacer bottom="var(--space-3)"></nidoca-layout-spacer>
-            <nidoca-typography
+            <nidoca-text
               slot="errorMessages"
               .type="${NidocaTypographyType.OVERLINE}"
               text="${this.errorMessage}"
-            ></nidoca-typography>
+            ></nidoca-text>
           </nidoca-form>
         </nidoca-layout-spacer>
       </nidoca-layout-container>

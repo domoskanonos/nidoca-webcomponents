@@ -3,6 +3,7 @@ import "../index";
 import "../webcomponent-viewer/index";
 
 import "./nidoca-page-main";
+import "./nidoca-page-playground";
 import "./nidoca-page-components";
 import "./nidoca-page-imprint";
 import "./nidoca-page-settings";

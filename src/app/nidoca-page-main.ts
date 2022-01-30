@@ -9,7 +9,7 @@ export class NidocaPageMain extends LitElement {
   render(): TemplateResult {
     return html`
       <nidoca-section style="width:50%;">
-        <nidoca-layout-spacer top="250px" bottom="250px">
+        <div style="padding-top:20vh;padding-bottom:20vh;">
           <div style="display:flex;align-items:center;justify-content:center;align-content:flex-start;">
             <nidoca-img
               width="100px"
@@ -17,28 +17,25 @@ export class NidocaPageMain extends LitElement {
               src="https://raw.githubusercontent.com/domoskanonos/devbox/main/assets/logo-ink.svg"
             >
             </nidoca-img>
-            <nidoca-typography .type="${NidocaTypographyType.H1}">&nbsp;nidoca-webcomponents</nidoca-typography>
+            <nidoca-text .type="${NidocaTypographyType.H1}">&nbsp;nidoca-webcomponents</nidoca-text>
           </div>
-        </nidoca-layout-spacer>
+        </div>
       </nidoca-section>
 
       <nidoca-layout-container .theme="${NidocaTheme.PRIMARY}">
-        <nidoca-section .devices="${[NidocaDevice.DESKTOP]}">
-          <nidoca-icon-with-description
-            title="Komponentenbibliothek"
-            icon="local_library"
-            style="padding:var(--space-3);"
-          >
-            Nidoce ist eine Komponentenbibliothek mit über ${Nidoca.getUniqueInstance().registeredElementNames.length}
-            Komponenten für den direkten Einsatz in deiner Webanwendung. Egal ob normales HTML, Angular, React, Lit. Die
-            Komponenten können dank der Webcomponent Technologie überall in andere Frameworks eingebaungen werden.
+        <nidoca-section>
+          <nidoca-icon-with-description title="Komponentenbibliothek" icon="local_library">
+            Die Nidoca Webcomponents ist eine Sammlung von Webkomponenten mit über
+            ${Nidoca.getUniqueInstance().registeredElementNames.length} Komponenten. Diese sind für den direkten Einsatz
+            in deiner Webanwendung. Egal ob normales HTML, Angular, React, Lit. Die Komponenten können dank der
+            Webcomponent Technologie überall in andere Frameworks eingebaungen werden.
           </nidoca-icon-with-description>
-          <nidoca-icon-with-description title="Leichtgewichtig" icon="code" style="padding:var(--space-3);">
+          <nidoca-icon-with-description title="Leichtgewichtig" icon="code">
             Es ist ein sehr kleines, leichtes Komponenten-Framework, das nur 32 KB klein ist. Es enthält mehr als 30
             Komponenten und diverse Zusatzfunktionen wie Routing / Internationalisierung und Speicherung. Komponenten
             können einfach angepasst werden und sind sehr einfach erweiterbar. erstellen.
           </nidoca-icon-with-description>
-          <nidoca-icon-with-description title="Open Source" icon="code" style="padding:var(--space-3);">
+          <nidoca-icon-with-description title="Open Source" icon="lightbulb">
             Es ist ein Open-Source-Projekt, das Sie auf Github finden können. Du kannst das Projekt natürlich gerne
             finanziell unterstützen, wenn es dir gefällt.
           </nidoca-icon-with-description>
@@ -77,9 +74,7 @@ export class NidocaPageMain extends LitElement {
             creative and technical paradigm for creating websites, so that they can react to the properties of the end
             device used, especially smartphones and tablet computers."
           >
-            <nidoca-typography slot="title" .type="${NidocaTypographyType.H2}"
-              >Responsive Komponenten</nidoca-typography
-            >
+            <nidoca-text slot="title" .type="${NidocaTypographyType.H2}">Responsive Komponenten</nidoca-text>
           </nidoca-article>
         </nidoca-section>
       </nidoca-layout-container>
@@ -90,7 +85,7 @@ export class NidocaPageMain extends LitElement {
             summary="Alle Komponenten erfüllen den Webcomponent Standart"
             text="Webkomponenten sind eine Gruppe von Web-Technologien, die es ermöglichen, benutzerdefinierte, wiederverwendbare HTML Elemente zu erstellen, deren Funktionalität gekapselt ist und damit vollständig getrennt von anderem Code."
           >
-            <nidoca-typography slot="title" .type="${NidocaTypographyType.H2}">Webcomponents</nidoca-typography>
+            <nidoca-text slot="title" .type="${NidocaTypographyType.H2}">Webcomponents</nidoca-text>
           </nidoca-article>
         </nidoca-section>
       </nidoca-layout-container>
@@ -111,11 +106,11 @@ export class NidocaPageMain extends LitElement {
       </nidoca-section>
       <nidoca-section>
         <nidoca-article
-          title="Lorem Ipsum"
-          summary="Lorem Ipsum Dolorem ipsum med en to."
+          title="Komponentenframework"
+          summary="Es ist ein HTML Kom"
           text="Lorem Ipsum Dolorem ipsum med en to. Lorem Ipsum Dolorem ipsum med en to. Lorem Ipsum Dolorem ipsum med en to. Lorem Ipsum Dolorem ipsum med en to."
         ></nidoca-article>
-        <nidoca-img src="http://nidoca.eu/img/IMG_1825.jpg"></nidoca-img>
+        <nidoca-icon style="font-size:256px;" icon="donut_small"></nidoca-icon>
       </nidoca-section>
     `;
   }

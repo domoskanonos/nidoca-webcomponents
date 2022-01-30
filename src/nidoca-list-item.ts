@@ -72,14 +72,14 @@ export class NidocaListItem extends LitElement {
           <slot name="graphic" class="item"></slot>
           <div class="containerTypography ${this.selectionMode ? "" : "spaceLeft"}">
             ${this.primaryText
-              ? html`<nidoca-typography class="item" .type="${NidocaTypographyType.BODY1}"
-                  >${this.primaryText}</nidoca-typography
+              ? html`<nidoca-text class="item" .type="${NidocaTypographyType.BODY1}"
+                  >${this.primaryText}</nidoca-text
                 >`
               : html``}
             <slot></slot>
             ${this.secondaryText
-              ? html`<nidoca-typography class="item" .type="${NidocaTypographyType.SUBTITLE1}"
-                  >${this.secondaryText}</nidoca-typography
+              ? html`<nidoca-text class="item" .type="${NidocaTypographyType.SUBTITLE1}"
+                  >${this.secondaryText}</nidoca-text
                 >`
               : html``}
             <slot name="secondary"></slot>

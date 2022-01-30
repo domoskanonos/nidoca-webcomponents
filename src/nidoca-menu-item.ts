@@ -39,11 +39,11 @@ export class NidocaMenuItem extends LitElement {
             ></nidoca-icon>`
           : html` <nidoca-layout-spacer left="10px" right="36px"></nidoca-layout-spacer>`}
         ${this.text
-          ? html`<nidoca-typography
+          ? html`<nidoca-text
               .type="${this.type == NidocaMenuItemType.ITEM
                 ? NidocaTypographyType.SUBTITLE1
                 : NidocaTypographyType.CAPTION}"
-              >${this.text}</nidoca-typography
+              >${this.text}</nidoca-text
             >`
           : html``}
       </div>

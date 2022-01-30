@@ -1,7 +1,7 @@
 import {css, html, LitElement, TemplateResult} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
-import {NidocaTypographyType} from "./nidoca-typography";
+import {NidocaTypographyType} from "./nidoca-text";
 import {NidocaTheme} from ".";
 
 export enum NidocaButtonType {
@@ -26,6 +26,8 @@ export class NidocaButton extends LitElement {
       font-family: inherit;
       text-align: center;
       vertical-align: center;
+      border-style: solid;
+      border-width: var(--border-width);
     }
 
     @media only screen and (orientation: portrait) {
@@ -54,42 +56,43 @@ export class NidocaButton extends LitElement {
         .OUTLINED {
           color: var(--app-color-${this.theme}-background);
           background-color: var(--app-color-${this.theme});
+          border-color: var(--app-color-${this.theme}-border);
         }
 
         .CONTAINED {
           color: var(--app-color-${this.theme});
           background-color: var(--app-color-${this.theme}-background);
+          border-color: var(--app-color-${this.theme}-border);
         }
 
         .TEXT {
           font-weight: 900;
           color: var(--app-color-${this.theme}-background);
         }
+
+        .OUTLINED:focus-within,
+        ::slotted(.OUTLINED:focus-within) {
+          border-color: var(--app-color-${this.theme}-border-selected);
+        }
       </style>
       <nidoca-ripple class="fullWidth">
-        <div style="border:1px solid black;">
-          <div
-            class="BUTTON ${this.buttonType}"
-            @click="${() => {
-              this.clicked();
-            }}"
-            style="display:flex;flex-wrap:nowrap;align-items:center;justify-content:center;"
-          >
-            ${this.leadingIcon ? html`<nidoca-icon .icon="${this.leadingIcon}"></nidoca-icon>` : html``}
-            ${!this.leadingIcon && this.buttonType != NidocaButtonType.TEXT
-              ? html`<nidoca-layout-spacer> </nidoca-layout-spacer>`
-              : html``}
+        <div
+          class="BUTTON ${this.buttonType}"
+          @click="${() => {
+            this.clicked();
+          }}"
+          style="display:flex;flex-wrap:nowrap;align-items:center;justify-content:center;height:var(--line-height-3)"
+        >
+          ${this.leadingIcon ? html`<nidoca-icon .icon="${this.leadingIcon}"></nidoca-icon>` : html``}
+          ${!this.leadingIcon && this.buttonType != NidocaButtonType.TEXT
+            ? html`<nidoca-layout-spacer> </nidoca-layout-spacer>`
+            : html``}
 
-            <nidoca-typography
-              style="padding:var(--space-6);"
-              text="${this.text}"
-              type="${NidocaTypographyType.BUTTON}"
-            >
-              <slot></slot>
-            </nidoca-typography>
+          <nidoca-text text="${this.text}" type="${NidocaTypographyType.BUTTON}">
+            <slot></slot>
+          </nidoca-text>
 
-            ${this.buttonType != NidocaButtonType.TEXT ? html`<nidoca-layout-spacer></nidoca-layout-spacer>` : html``}
-          </div>
+          ${this.buttonType != NidocaButtonType.TEXT ? html`<nidoca-layout-spacer></nidoca-layout-spacer>` : html``}
         </div>
       </nidoca-ripple>
     `;

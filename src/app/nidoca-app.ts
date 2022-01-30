@@ -40,6 +40,9 @@ export class NidocaApp extends LitElement implements NidocaRouteListener {
   routeChanged(url: string): void {
     console.log("enter new page, url: %s", url);
     switch (url) {
+      case "playground":
+        this.currentPage = html`<nidoca-page-playground></nidoca-page-playground>`;
+        break;
       case "components":
         this.currentPage = html`<nidoca-page-components></nidoca-page-components>`;
         break;
@@ -69,7 +72,7 @@ export class NidocaApp extends LitElement implements NidocaRouteListener {
         .navigationClosed="${this.navigationClosed}"
         .theme="${NidocaTheme.PRIMARY}"
       >
-        <nidoca-typography slot="topCenter" type="${NidocaTypographyType.BODY1}"></nidoca-typography>
+        <nidoca-text slot="topCenter" type="${NidocaTypographyType.BODY1}"></nidoca-text>
         <nidoca-icon
           slot="topLeft"
           style="padding-left:var(--space-2);"
@@ -114,6 +117,9 @@ export class NidocaApp extends LitElement implements NidocaRouteListener {
           </nidoca-menu-item>
 
           <nidoca-menu-area text="Framework"></nidoca-menu-area>
+
+          <nidoca-menu-item text="Spielwiese" @click="${() => NidocaRouter.getUniqueInstance().navigate("playground")}">
+          </nidoca-menu-item>
 
           <nidoca-menu-item
             text="Komponenten"

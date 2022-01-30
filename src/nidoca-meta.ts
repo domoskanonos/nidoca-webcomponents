@@ -14,7 +14,7 @@ import {
   NidocaMovie,
   NidocaProgress,
   NidocaSearchBar,
-  NidocaTypography,
+  NidocaText,
   NidocaTypographyType,
 } from ".";
 
@@ -29,13 +29,8 @@ export class Nidoca {
       "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.";
     this.registeredElementsMap.set("nidoca-article", html`${nidocaArticle}`);
 
-    //nidoca-typography
-    const nidocaTypography = new NidocaTypography();
-    nidocaTypography.style.padding = "var(--space-3)";
-    nidocaTypography.text = "Typography";
-    nidocaTypography.type = "BODY1";
-    nidocaTypography.textAlign = "left";
-    this.registeredElementsMap.set("nidoca-typography", html`${nidocaTypography}`);
+    //nidoca-text
+    this.registeredElementsMap.set("nidoca-text", html`<nidoca-text>Ut enim ad minim veniam.</nidoca-text>`);
 
     //nidoca-img
     const nidocaImg = new NidocaImg();
@@ -131,11 +126,11 @@ export class Nidoca {
     this._registeredElementsMap.set("nidoca-box-shadow", html`<nidoca-box-shadow></nidoca-box-shadow>`);
     this._registeredElementsMap.set(
       "nidoca-button",
-      html`<nidoca-button leadingIcon="home" buttonType="OUTLINED">Mein Button</nidoca-button>`
+      html`<nidoca-button leadingIcon="home" buttonType="CONTAINED">Mein Button</nidoca-button>`
     );
     this._registeredElementsMap.set("nidoca-card", html`<nidoca-card></nidoca-card>`);
-    this._registeredElementsMap.set("nidoca-chip", html`<nidoca-chip>jojij</nidoca-chip>`);
-    this._registeredElementsMap.set("nidoca-code", html`<nidoca-code></nidoca-code>`);
+    this._registeredElementsMap.set("nidoca-chip", html`<nidoca-chip>Lorem Ipsum</nidoca-chip>`);
+    this._registeredElementsMap.set("nidoca-code", html`<nidoca-code>Lorem Ipsum</nidoca-code>`);
     this._registeredElementsMap.set("nidoca-dialog-action", html`<nidoca-dialog-action></nidoca-dialog-action>`);
     this._registeredElementsMap.set(
       "nidoca-elevation",
@@ -144,7 +139,7 @@ export class Nidoca {
           .show="${true}"
           .associatedElement="${undefined}"
           @nidoca-elevation-event-closeme="${() => alert("Hallo")}"
-        >joijiojoij
+          >Lorem Ipsum
         </nidoca-elevation>
       `
     );
@@ -152,7 +147,7 @@ export class Nidoca {
     this._registeredElementsMap.set(
       "nidoca-form-combobox",
       html`<nidoca-form-combobox
-        theme="primary"
+        theme="surface"
         label="Mein Textfeld"
         placeholder="Platzhalter"
         trailingIcon="home"
@@ -170,7 +165,7 @@ export class Nidoca {
     this._registeredElementsMap.set(
       "nidoca-form-date",
       html`<nidoca-form-date
-        theme="primary"
+        theme="background"
         label="Geburtstag"
         placeholder="Platzhalter"
         trailingIcon="home"
@@ -185,7 +180,6 @@ export class Nidoca {
       "nidoca-form-text",
       html`
         <nidoca-form-text
-          style="width:100%;"
           theme="primary"
           label="Mein Textfeld"
           placeholder="Platzhalter"
@@ -201,8 +195,7 @@ export class Nidoca {
     this._registeredElementsMap.set(
       "nidoca-form-textarea",
       html`<nidoca-form-textarea
-        style="width:100%;"
-        theme="primary"
+        theme="secondary"
         label="Mein Textfeld"
         placeholder="Platzhalter"
         infoText="Info"
@@ -251,7 +244,7 @@ export class Nidoca {
     this._registeredElementsMap.set(
       "nidoca-top-app-bar",
       html`<nidoca-top-app-bar .theme="${NidocaTheme.PRIMARY}">
-        <nidoca-typography slot="center" type="${NidocaTypographyType.BODY1}">Top App Bar</nidoca-typography>
+        <nidoca-text slot="center" type="${NidocaTypographyType.BODY1}">Top App Bar</nidoca-text>
         <nidoca-icon slot="left" clickable icon="menu"></nidoca-icon>
         <nidoca-icon slot="right" icon="search"></nidoca-icon>
         <nidoca-icon slot="right" icon="more_vert" clickable></nidoca-icon>
@@ -261,6 +254,16 @@ export class Nidoca {
     );
     this._registeredElementsMap.set("nidoca-upload", html`<nidoca-upload></nidoca-upload>`);
     this._registeredElementsMap.set("nidoca-wizard", html`<nidoca-wizard></nidoca-wizard>`);
+
+    this._registeredElementsMap.set(
+      "nidoca-icon-with-description",
+      html`<nidoca-icon-with-description title="Komponentenbibliothek" icon="local_library">
+        Die Nidoca Webcomponents ist eine Sammlung von Webkomponenten mit über
+        ${Nidoca.getUniqueInstance().registeredElementNames.length} Komponenten. Diese sind für den direkten Einsatz in
+        deiner Webanwendung. Egal ob normales HTML, Angular, React, Lit. Die Komponenten können dank der Webcomponent
+        Technologie überall in andere Frameworks eingebaungen werden.
+      </nidoca-icon-with-description>`
+    );
   }
   private static uniqueInstance: Nidoca;
 

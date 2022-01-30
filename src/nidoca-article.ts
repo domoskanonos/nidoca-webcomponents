@@ -30,18 +30,12 @@ export class NidocaArticle extends LitElement {
     return html`
       <div style="display:flex; flex-direction:column;">
         <slot name="title"></slot>
-        ${this.title
-          ? html`<nidoca-typography .type="${NidocaTypographyType.H2}">${this.title}</nidoca-typography>
-              <nidoca-layout-spacer bottom="var(--space-3)"></nidoca-layout-spacer>`
-          : html``}
+        ${this.title ? html`<nidoca-text .type="${NidocaTypographyType.H2}">${this.title}</nidoca-text> ` : html``}
         <slot name="summary"></slot>${this.summary
-          ? html`<nidoca-typography .type="${NidocaTypographyType.BODY1}"><i>${this.summary}</i></nidoca-typography>
-              <nidoca-layout-spacer bottom="var(--space-3)"></nidoca-layout-spacer>`
+          ? html`<nidoca-text .type="${NidocaTypographyType.BODY1}"><i>${this.summary}</i></nidoca-text> `
           : html``}
         <slot name="text"></slot>
-        ${this.text
-          ? html`<nidoca-typography .type="${NidocaTypographyType.BODY1}">${this.text}</nidoca-typography>`
-          : html``}
+        ${this.text ? html`<nidoca-text .type="${NidocaTypographyType.BODY1}">${this.text}</nidoca-text>` : html``}
         <slot></slot>
       </div>
     `;

@@ -36,8 +36,8 @@ export class NidocaFormCombobox extends NidocaFormAbstractInputElement {
       border: none;
       color: inherit;
       background-color: inherit;
-      height: var(--line-height-large);
-      line-height: var(--line-height-large);
+      height: var(--line-height-3);
+      line-height: var(--line-height-3);
       padding-left: var(--space-3);
     }
 
@@ -126,12 +126,12 @@ export class NidocaFormCombobox extends NidocaFormAbstractInputElement {
             ></nidoca-icon>`
           : html``}
         <div class="container">
-          <nidoca-typography
+          <nidoca-text
             style="padding-left:var(--space-3); padding-right:var(--space-3);"
             class="label"
             .type="${NidocaTypographyType.CAPTION}"
             text="${this.label}"
-          ></nidoca-typography>
+          ></nidoca-text>
           <select
             id="selectElement"
             name="${this.name}"
@@ -158,24 +158,24 @@ export class NidocaFormCombobox extends NidocaFormAbstractInputElement {
       ${this.infoText || this.warningText || this.errorText
         ? html`<div>
             ${this.infoText
-              ? html` <nidoca-typography
+              ? html` <nidoca-text
                   .type="${NidocaTypographyType.SUBTITLE1}"
                   text="${this.infoText}"
-                ></nidoca-typography>`
+                ></nidoca-text>`
               : html``}
             ${this.warningText
-              ? html` <nidoca-typography
+              ? html` <nidoca-text
                   style="color:var(--app-color-warning-background)"
                   .type="${NidocaTypographyType.SUBTITLE1}"
                   text="${this.warningText}"
-                ></nidoca-typography>`
+                ></nidoca-text>`
               : html``}
             ${this.errorText
-              ? html` <nidoca-typography
+              ? html` <nidoca-text
                   style="color:var(--app-color-error-background)"
                   .type="${NidocaTypographyType.SUBTITLE1}"
                   text="${this.errorText}"
-                ></nidoca-typography>`
+                ></nidoca-text>`
               : html``}
           </div> `
         : html``}`;
