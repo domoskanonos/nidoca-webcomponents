@@ -134,9 +134,7 @@ export class NidocaTemplate extends LitElement {
             <slot class="slotHeader" name="topRight"></slot>
           </span>
           <span class="slotProminent" slot="prominent">
-            <nidoca-layout-spacer>
-              <slot class="slotHeader" name="prominent"></slot>
-            </nidoca-layout-spacer>
+            <slot class="slotHeader" name="prominent"></slot>
           </span>
         </nidoca-top-app-bar>
       </div>
