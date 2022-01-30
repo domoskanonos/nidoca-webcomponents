@@ -8,12 +8,12 @@ export class NidocaPageGallery extends LitElement {
   static styles = css``;
 
   @property({type: String})
-  elementName: string = "nidoca-elevation";
+  elementName: string = "nidoca-form-text";
 
   render(): TemplateResult {
     return html`
       <nidoca-section style="width:50%;">
-        <nidoca-layout-spacer top="var(--space-max)" bottom="var(--space-max)">
+        <nidoca-layout-spacer top="var(--space-8)" bottom="var(--space-8)">
           <nidoca-article
             title="Komponentenübersicht"
             text="Auf dieser Seite kannst du dir die einzelnen Komponenten von Nidoca anschauen. Mithilfe des Konfigurators, kannst du die Komponenten und deren Attribute verwalten und die Verwendung testen. Anschließend kannst du dir den Quellcode für deine entsprechende Umgebung kopieren und die Komponente verwenden."

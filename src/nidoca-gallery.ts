@@ -15,13 +15,13 @@ export class NidocaGallery extends LitElement {
     .flexItem,
     ::slotted(.flexItem) {
       flex-basis: 24%;
-      padding-top: var(--space-medium);
+      padding-top: var(--space-3);
     }
   `;
 
   render(): TemplateResult {
     return html`
-      <nidoca-layout-spacer bottom="var(--space-little)" left="">
+      <nidoca-layout-spacer bottom="var(--space)" left="">
         <slot id="slotElement" @slotchange="${(event: Event) => this.slotChanged(event)}"></slot>
       </nidoca-layout-spacer>
     `;

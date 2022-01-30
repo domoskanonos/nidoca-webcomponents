@@ -73,8 +73,8 @@ export class NidocaTemplate extends LitElement {
     }
   `;
 
-  @property({type: String})
-  theme: NidocaTheme = NidocaTheme.PRIMARY;
+  @property({type: NidocaTheme, converter: String})
+  theme: string = NidocaTheme.PRIMARY;
 
   @property({type: Boolean})
   navigationClosed: boolean = true;
@@ -123,7 +123,7 @@ export class NidocaTemplate extends LitElement {
         }
       </style>
       <div id="header" class="${this.navigationClosed ? "menuClosed" : ""}">
-        <nidoca-top-app-bar style="width:100%;" .prominent="${this.prominent}" .theme="${this.theme}">
+        <nidoca-top-app-bar style="width:100%;" .prominent="${this.prominent}" theme="${this.theme}">
           <span slot="left">
             <slot class="slotHeader" name="topLeft"></slot>
           </span>

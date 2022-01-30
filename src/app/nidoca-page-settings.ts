@@ -39,7 +39,7 @@ export class NidocaPageSettings extends LitElement {
 
   render(): TemplateResult {
     return html`
-      <nidoca-layout-spacer top="var(--space-max)">
+      <nidoca-layout-spacer top="var(--space-8)">
         <nidoca-section style="width:50%;">
           <nidoca-article title="CSS Variablen">
             ${guard(
@@ -62,7 +62,7 @@ export class NidocaPageSettings extends LitElement {
                         value="${getComputedStyle(document.documentElement).getPropertyValue(cssVar).trim()}"
                         label="${cssVar}"
                       ></nidoca-form-text>
-                      <nidoca-layout-spacer top="var(--space-medium)"></nidoca-layout-spacer>
+                      <nidoca-layout-spacer top="var(--space-3)"></nidoca-layout-spacer>
                     `
                   )}
                 `

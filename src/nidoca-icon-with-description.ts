@@ -22,7 +22,7 @@ export class NidocaIconWithDescription extends LitElement {
         <div style="display:flex;flex-direction:column;align-items:center">
           <nidoca-icon
             icon="${this.icon}"
-            style="font-size: 96px; padding:var(--space-normal);"
+            style="font-size: 96px; padding:var(--space-4);"
             backgroundColor="var(--app-color-surface-background)"
           ></nidoca-icon>
           <nidoca-typography .type="${NidocaTypographyType.H2}">${this.primaryText}</nidoca-typography>

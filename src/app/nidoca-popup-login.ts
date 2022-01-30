@@ -25,10 +25,10 @@ export class NidocaPopupLogin extends LitElement {
     return html`
       <nidoca-layout-container minWidth="350px" maxWidth="80%" .theme="${NidocaTheme.BACKGROUND}">
         <nidoca-layout-spacer
-          left="var(--space-big)"
-          right="var(--space-big)"
-          top="var(--space-big)"
-          bottom="var(--space-big)"
+          left="var(--space-6)"
+          right="var(--space-6)"
+          top="var(--space-6)"
+          bottom="var(--space-6)"
         >
           <nidoca-form id="authenitcate-form">
             <nidoca-typography .type="${NidocaTypographyType.H1}">Anmeldung</nidoca-typography>
@@ -39,18 +39,18 @@ export class NidocaPopupLogin extends LitElement {
               label="username"
               trailingIcon="account_circle"
             ></nidoca-form-text>
-            <nidoca-layout-spacer bottom="var(--space-medium)"></nidoca-layout-spacer>
+            <nidoca-layout-spacer bottom="var(--space-3)"></nidoca-layout-spacer>
             <nidoca-form-text
               .textType="${NidocaTextType.PASSWORD}"
               label="password"
               name="password"
               trailingIcon="vpn_key"
             ></nidoca-form-text>
-            <nidoca-layout-spacer bottom="var(--space-medium)"></nidoca-layout-spacer>
+            <nidoca-layout-spacer bottom="var(--space-3)"></nidoca-layout-spacer>
             <nidoca-button text="Login" @nidoca-event-button-clicked="${() => alert("Login")}"></nidoca-button>
-            <nidoca-layout-spacer bottom="var(--space-medium)"></nidoca-layout-spacer>
+            <nidoca-layout-spacer bottom="var(--space-3)"></nidoca-layout-spacer>
             <nidoca-button @nidoca-event-button-clicked="${() => this.closePopup()}">Schließen</nidoca-button>
-            <nidoca-layout-spacer bottom="var(--space-medium)"></nidoca-layout-spacer>
+            <nidoca-layout-spacer bottom="var(--space-3)"></nidoca-layout-spacer>
             <nidoca-typography
               slot="errorMessages"
               .type="${NidocaTypographyType.OVERLINE}"

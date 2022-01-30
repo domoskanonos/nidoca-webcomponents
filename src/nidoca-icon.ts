@@ -7,6 +7,7 @@ export class NidocaIcon extends LitElement {
   static styles = css`
     :host {
       line-height: 0;
+      font-size: var(--icon-size);
     }
     .material-icons {
       font-family: "Material Icons";
@@ -56,7 +57,7 @@ export class NidocaIcon extends LitElement {
   constructor() {
     super();
     if (this.getAttribute("style") == null) {
-      this.setAttribute("style", "font-size: var(--icon-size); padding:var(--space-normal)");
+      //this.setAttribute("style", "padding:var(--space-4)");
     }
   }
 

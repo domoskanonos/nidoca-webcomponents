@@ -48,7 +48,7 @@ export class NidocaSearchBar extends LitElement {
     return html`
       ${NidocaTheme.getStyle(this.theme)}
       <div style="display:flex;flex-direction:row;flex-wrap:nowrap;align-items:center;">
-        <nidoca-icon icon="search"></nidoca-icon>
+        <nidoca-icon style="padding-right:var(--space);padding-left:var(--space);" icon="search"></nidoca-icon>
         <input
           id="inputElement"
           type="text"
@@ -57,7 +57,11 @@ export class NidocaSearchBar extends LitElement {
           ?disabled="${this.disabled}"
           @input="${() => this.valueChanged()}"
         />
-        <nidoca-icon icon="close" @click="${() => this.clearValue()}"></nidoca-icon>
+        <nidoca-icon
+          style="padding-right:var(--space);padding-left:var(--space);"
+          icon="close"
+          @click="${() => this.clearValue()}"
+        ></nidoca-icon>
       </div>
     `;
   }

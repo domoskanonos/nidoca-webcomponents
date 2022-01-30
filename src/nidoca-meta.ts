@@ -22,7 +22,7 @@ export class Nidoca {
   initDefaultComponents() {
     //nidoca-article
     const nidocaArticle = new NidocaArticle();
-    nidocaArticle.style.padding = "var(--space-medium)";
+    nidocaArticle.style.padding = "var(--space-3)";
     nidocaArticle.title = "Ut enim ad minim veniam";
     nidocaArticle.summary = "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip";
     nidocaArticle.text =
@@ -31,7 +31,7 @@ export class Nidoca {
 
     //nidoca-typography
     const nidocaTypography = new NidocaTypography();
-    nidocaTypography.style.padding = "var(--space-medium)";
+    nidocaTypography.style.padding = "var(--space-3)";
     nidocaTypography.text = "Typography";
     nidocaTypography.type = "BODY1";
     nidocaTypography.textAlign = "left";
@@ -57,7 +57,7 @@ export class Nidoca {
 
     //nidoca-avatar
     const nidocaAvatar = new NidocaAvatar();
-    nidocaAvatar.style.padding = "var(--space-medium)";
+    nidocaAvatar.style.padding = "var(--space-3)";
     nidocaAvatar.imgSrc = "https://github.com/domoskanonos/nidoca-assets/raw/main/avatar.jpg";
     nidocaAvatar.primaryText = "Dominik Bruhn";
     nidocaAvatar.description = "Softwareentwickler";
@@ -65,12 +65,12 @@ export class Nidoca {
 
     //nidoca-progress
     const nidocaProgress = new NidocaProgress();
-    nidocaProgress.style.padding = "var(--space-big)";
+    nidocaProgress.style.padding = "var(--space-6)";
     this.registeredElementsMap.set("nidoca-progress", html`${nidocaProgress}`);
 
     //nidoca-icon
     const nidocaIcon = new NidocaIcon();
-    nidocaIcon.style.padding = "var(--space-big)";
+    nidocaIcon.style.padding = "var(--space-6)";
     nidocaIcon.icon = "home";
     nidocaIcon.primaryText = "Home Icon";
     nidocaIcon.clickable = true;
@@ -88,7 +88,7 @@ export class Nidoca {
     //nidoca-list
     this.registeredElementsMap.set(
       "nidoca-list",
-      html`<nidoca-list theme="primary" selectionMode stlye="padding:var(--space-big);"
+      html`<nidoca-list theme="primary" selectionMode stlye="padding:var(--space-6);"
         ><nidoca-list-item primaryText="List Item" secondaryText="List Item Secondary Text"></nidoca-list-item
         ><nidoca-list-item primaryText="List Item" secondaryText="List Item Secondary Text"></nidoca-list-item
         ><nidoca-list-item primaryText="List Item" secondaryText="List Item Secondary Text"></nidoca-list-item

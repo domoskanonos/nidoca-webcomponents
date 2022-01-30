@@ -72,16 +72,19 @@ export class NidocaApp extends LitElement implements NidocaRouteListener {
         <nidoca-typography slot="topCenter" type="${NidocaTypographyType.BODY1}"></nidoca-typography>
         <nidoca-icon
           slot="topLeft"
+          style="padding-left:var(--space-2);"
           icon="${this.navigationClosed ? "menu" : "clear"}"
           .clickable="${true}"
           @nidoca-event-icon-clicked="${() => (this.navigationClosed = !this.navigationClosed)}"
         ></nidoca-icon>
         <nidoca-icon
+          style="padding-right:var(--space-2);"
           slot="topRight"
           icon="${this.prominent ? "search_off" : "search"}"
           @nidoca-event-icon-clicked="${() => (this.prominent = !this.prominent)}"
         ></nidoca-icon>
         <nidoca-icon
+          style="padding-right:var(--space-2);"
           slot="topRight"
           icon="person"
           @nidoca-event-icon-clicked="${() => {
@@ -89,8 +92,9 @@ export class NidocaApp extends LitElement implements NidocaRouteListener {
             this.popupContent = html`<nidoca-popup-login></nidoca-popup-login>`;
           }}"
         ></nidoca-icon>
-        <nidoca-icon slot="topRight" icon="share"></nidoca-icon>
+        <nidoca-icon slot="topRight" style="padding-right:var(--space-2);" icon="share"></nidoca-icon>
         <nidoca-icon
+          style="padding-right:var(--space-2);"
           slot="topRight"
           icon="more_vert"
           .clickable="${true}"

@@ -61,7 +61,7 @@ export class NidocaIconExtended extends LitElement {
   deactivated: boolean = false;
 
   @property({type: String})
-  cssStyle: string = "font-size: var(--icon-size); padding:var(--space-normal)";
+  cssStyle: string = "font-size: var(--icon-size); padding:var(--space-4)";
 
   render(): TemplateResult {
     return html`

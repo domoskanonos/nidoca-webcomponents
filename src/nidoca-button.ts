@@ -81,7 +81,7 @@ export class NidocaButton extends LitElement {
               : html``}
 
             <nidoca-typography
-              style="padding:var(--space-big);"
+              style="padding:var(--space-6);"
               text="${this.text}"
               type="${NidocaTypographyType.BUTTON}"
             >

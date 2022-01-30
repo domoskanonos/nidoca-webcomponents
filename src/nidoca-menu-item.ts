@@ -35,7 +35,7 @@ export class NidocaMenuItem extends LitElement {
           ? html` <nidoca-icon
               slot="graphic"
               icon="${this.icon}"
-              style="padding-right:var(--space-little); font-size:var(--icon-size);"
+              style="padding-right:var(--space); font-size:var(--icon-size);"
             ></nidoca-icon>`
           : html` <nidoca-layout-spacer left="10px" right="36px"></nidoca-layout-spacer>`}
         ${this.text

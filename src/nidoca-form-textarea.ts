@@ -28,8 +28,8 @@ export class NidocaFormTextarea extends NidocaFormAbstractInputElement {
     }
 
     textarea {
-      padding-left: var(--space-medium);
-      padding-right: var(--space-medium);
+      padding-left: var(--space-3);
+      padding-right: var(--space-3);
       font: inherit;
       box-sizing: border-box;
       width: 100%;
@@ -104,7 +104,7 @@ export class NidocaFormTextarea extends NidocaFormAbstractInputElement {
       <div class="parentContainer border">
         <div class="container">
           <nidoca-typography
-            style="padding-left:var(--space-medium); padding-right:var(--space-medium);"
+            style="padding-left:var(--space-3); padding-right:var(--space-3);"
             class="label"
             .type="${NidocaTypographyType.CAPTION}"
             text="${this.label}"

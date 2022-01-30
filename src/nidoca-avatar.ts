@@ -21,10 +21,10 @@ export class NidocaAvatar extends LitElement {
     >
         <nidoca-img src="${this.imgSrc}" .richMediaProperties="${[NidocaImgProperties.ROUND]}"> </nidoca-img>
         <nidoca-layout-spacer
-          left="var(--space-little)"
-          right="var(--space-little)"
-          top="var(--space-little)"
-          bottom="var(--space-little)"
+          left="var(--space)"
+          right="var(--space)"
+          top="var(--space)"
+          bottom="var(--space)"
         >
           <nidoca-typography type="${NidocaTypographyType.H3}">${this.primaryText}</nidoca-typography>
         </nidoca-layout-spacer>

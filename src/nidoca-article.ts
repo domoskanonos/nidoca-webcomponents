@@ -32,11 +32,11 @@ export class NidocaArticle extends LitElement {
         <slot name="title"></slot>
         ${this.title
           ? html`<nidoca-typography .type="${NidocaTypographyType.H2}">${this.title}</nidoca-typography>
-              <nidoca-layout-spacer bottom="var(--space-medium)"></nidoca-layout-spacer>`
+              <nidoca-layout-spacer bottom="var(--space-3)"></nidoca-layout-spacer>`
           : html``}
         <slot name="summary"></slot>${this.summary
           ? html`<nidoca-typography .type="${NidocaTypographyType.BODY1}"><i>${this.summary}</i></nidoca-typography>
-              <nidoca-layout-spacer bottom="var(--space-medium)"></nidoca-layout-spacer>`
+              <nidoca-layout-spacer bottom="var(--space-3)"></nidoca-layout-spacer>`
           : html``}
         <slot name="text"></slot>
         ${this.text

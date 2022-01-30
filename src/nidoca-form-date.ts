@@ -43,8 +43,8 @@ export class NidocaFormDate extends NidocaFormAbstractInputElement {
       background-color: inherit;
       height: var(--line-height-large);
       line-height: var(--line-height-large);
-      padding-left: var(--space-medium);
-      padding-right: var(--space-medium);
+      padding-left: var(--space-3);
+      padding-right: var(--space-3);
     }
     input:focus {
       outline: none;
@@ -113,13 +113,13 @@ export class NidocaFormDate extends NidocaFormAbstractInputElement {
       <div class="parentContainer border">
         ${this.trailingIcon
           ? html`<nidoca-icon
-              style="font-size: var(--icon-size-big);padding-left:var(--space-medium);"
+              style="font-size: var(--icon-size-big);padding-left:var(--space-3);"
               icon="${this.trailingIcon}"
             ></nidoca-icon>`
           : html``}
         <div class="container">
           <nidoca-typography
-            style="padding-left:var(--space-medium); padding-right:var(--space-medium);"
+            style="padding-left:var(--space-3); padding-right:var(--space-3);"
             class="label"
             .type="${NidocaTypographyType.CAPTION}"
             text="${this.label}"

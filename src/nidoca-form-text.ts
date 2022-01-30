@@ -40,16 +40,22 @@ export class NidocaFormText extends NidocaFormAbstractInputElement {
       flex-direction: column;
     }
 
+    .border {
+      border-bottom-style: solid;
+      border-width: var(--border-width);
+    }
+
     input {
       font: inherit;
       box-sizing: border-box;
       width: 100%;
       border: none;
       background: inherit;
+      color: inherit;
       height: var(--line-height-large);
       line-height: var(--line-height-large);
-      padding-left: var(--space-medium);
-      padding-right: var(--space-medium);
+      padding-left: var(--space-2);
+      padding-right: var(--space-2);
     }
 
     input:focus {
@@ -63,7 +69,7 @@ export class NidocaFormText extends NidocaFormAbstractInputElement {
   `;
 
   @property({type: NidocaTheme, converter: String})
-  theme: string | undefined;
+  theme: string = NidocaTheme.BACKGROUND;
 
   @property({type: NidocaTextType, converter: String})
   type: string = NidocaTextType.TEXT;
@@ -134,7 +140,6 @@ export class NidocaFormText extends NidocaFormAbstractInputElement {
             .border,
             ::slotted(.border) {
               border-color: var(--app-color-${this.theme}-border);
-              border-bottom-style: solid;
             }
             .border:focus-within,
             ::slotted(.border:focus-within) {
@@ -144,13 +149,13 @@ export class NidocaFormText extends NidocaFormAbstractInputElement {
           <div class="parentContainer border">
             ${this.trailingIcon
               ? html`<nidoca-icon
-                  style="font-size: var(--icon-size-big);padding-left:var(--space-medium);"
+                  style="font-size: var(--icon-size-big);padding-left:var(--space-2);"
                   icon="${this.trailingIcon}"
                 ></nidoca-icon>`
               : html``}
             <div class="container">
               <nidoca-typography
-                style="padding-left:var(--space-medium); padding-right:var(--space-medium);"
+                style="padding-left:var(--space-2); padding-right:var(--space-2);"
                 class="label"
                 .type="${NidocaTypographyType.CAPTION}"
                 text="${this.label}"

@@ -8,7 +8,7 @@ export class NidocaChip extends LitElement {
     .chip {
       display: inline-block;
       background: var(--app-color-surface-background-light);
-      padding: 0 var(--space-normal);
+      padding: 0 var(--space-4);
       border-radius: var(--line-height-large);
       line-height: var(--line-height-large);
     }

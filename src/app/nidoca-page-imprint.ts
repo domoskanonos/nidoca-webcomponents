@@ -8,7 +8,7 @@ export class NidocaPageSettings extends LitElement {
   static styles = css``;
   render(): TemplateResult {
     return html`
-      <nidoca-layout-spacer top="var(--space-max)">
+      <nidoca-layout-spacer top="var(--space-8)">
         <nidoca-section style="width:50%;">
           <nidoca-article title="Impressum" summary="Angaben gemäß § 5 TMG">
             <nidoca-typography .type="${NidocaTypographyType.BODY1}">Dominik Bruhn</nidoca-typography>
@@ -24,7 +24,7 @@ export class NidocaPageSettings extends LitElement {
           </nidoca-article>
         </nidoca-section>
       </nidoca-layout-spacer>
-      <nidoca-layout-spacer top="var(--space-max)">
+      <nidoca-layout-spacer top="var(--space-8)">
         <nidoca-section style="width:50%;">
           <nidoca-article title="Streitsschlichtung">
             <nidoca-typography .type="${NidocaTypographyType.BODY1}"
@@ -41,7 +41,7 @@ export class NidocaPageSettings extends LitElement {
         </nidoca-section>
       </nidoca-layout-spacer>
 
-      <nidoca-layout-spacer top="var(--space-max)">
+      <nidoca-layout-spacer top="var(--space-8)">
         <nidoca-section style="width:50%;">
           <nidoca-article title="Haftungsinhalt">
             <nidoca-typography .type="${NidocaTypographyType.BODY1}">
@@ -58,7 +58,7 @@ export class NidocaPageSettings extends LitElement {
         </nidoca-section>
       </nidoca-layout-spacer>
 
-      <nidoca-layout-spacer top="var(--space-max)">
+      <nidoca-layout-spacer top="var(--space-8)">
         <nidoca-section style="width:50%;">
           <nidoca-article title="Haftungslinks">
             <nidoca-typography .type="${NidocaTypographyType.BODY1}">
@@ -74,7 +74,7 @@ export class NidocaPageSettings extends LitElement {
         </nidoca-section>
       </nidoca-layout-spacer>
 
-      <nidoca-layout-spacer top="var(--space-max)">
+      <nidoca-layout-spacer top="var(--space-8)">
         <nidoca-section style="width:50%;">
           <nidoca-article title="Copyright">
             <nidoca-typography .type="${NidocaTypographyType.BODY1}">
@@ -91,7 +91,7 @@ export class NidocaPageSettings extends LitElement {
         </nidoca-section>
       </nidoca-layout-spacer>
 
-      <nidoca-layout-spacer top="var(--space-max)" bottom="var(--space-max)">
+      <nidoca-layout-spacer top="var(--space-8)" bottom="var(--space-8)">
         <nidoca-section style="width:50%;">
           <nidoca-article title="Quelle">
             <nidoca-link href="https://www.e-recht24.de/impressum-generator.html" targetType="${NidocaTargetType.BLANK}"
@@ -101,7 +101,7 @@ export class NidocaPageSettings extends LitElement {
         </nidoca-section>
       </nidoca-layout-spacer>
 
-      <div style="padding-top:var(--space-max); padding-bottom:var(--space-max);">
+      <div style="padding-top:var(--space-8); padding-bottom:var(--space-8);">
         <nidoca-section style="width:50%;">
           <nidoca-article title="Google Material Icons">
             <nidoca-link href="https://fonts.google.com/icons" targetType="${NidocaTargetType.BLANK}"

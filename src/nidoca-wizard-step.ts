@@ -17,11 +17,11 @@ export class NidocaWizardStep extends LitElement {
     .wizard-step-connector {
       color: var(--app-color-surface);
       background-color: var(--app-color-surface-background);
-      padding: var(--space-little);
+      padding: var(--space);
     }
 
     .wizard-step-connector.selected {
-      padding: var(--space-little);
+      padding: var(--space);
       color: var(--mdc-theme-on-primary);
       background-color: var(--app-color-primary);
     }

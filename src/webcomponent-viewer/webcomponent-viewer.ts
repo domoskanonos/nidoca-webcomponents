@@ -35,33 +35,33 @@ export class LitViewer extends LitElement {
   public render(): TemplateResult {
     return html` <nidoca-section .theme="${NidocaTheme.PRIMARY}">
         <div>
-          <nidoca-layout-spacer top="var(--space-little)" bottom="var(--space-little)">
+          <nidoca-layout-spacer top="var(--space)" bottom="var(--space)">
             <nidoca-typography .type="${NidocaTypographyType.H2}">Tag</nidoca-typography>
           </nidoca-layout-spacer>
           <nidoca-code
             >${this.webcomponentGuiWrapper ? this.webcomponentGuiWrapper.classWrapper.getHTMLTag() : ""}
           </nidoca-code>
 
-          <div style="padding-top:var(--space-medium);">
+          <div style="padding-top:var(--space-3);">
             <nidoca-section> ${this.element} </nidoca-section>
           </div>
         </div>
 
-        <div style="padding-left:var(--space-medium)">
+        <div style="padding-left:var(--space-3)">
           ${this.webcomponentGuiWrapper?.hasProperties()
             ? html`
-                <nidoca-layout-spacer top="var(--space-little)" bottom="var(--space-little)">
+                <nidoca-layout-spacer top="var(--space)" bottom="var(--space)">
                   <nidoca-typography .type="${NidocaTypographyType.H2}"> Attribute </nidoca-typography>
                 </nidoca-layout-spacer>
 
                 ${this.webcomponentGuiWrapper.getPropertyGuiWrappers().map((prop) => {
                   return html`${prop.getInputElement(this.webcomponentGuiWrapper)}
-                    <div style="padding-bottom:var(--space-big);"></div>`;
+                    <div style="padding-bottom:var(--space-6);"></div>`;
                 })}
               `
             : html``}
           ${this.webcomponentGuiWrapper?.classWrapper.hasSlots()
-            ? html` <nidoca-layout-spacer top="var(--space-little)" bottom="var(--space-little)">
+            ? html` <nidoca-layout-spacer top="var(--space)" bottom="var(--space)">
                   <nidoca-typography .type="${NidocaTypographyType.H2}">Slots </nidoca-typography>
                 </nidoca-layout-spacer>
 
@@ -72,7 +72,7 @@ export class LitViewer extends LitElement {
                 </nidoca-table>`
             : html``}
           ${this.customEventNames.length > 0
-            ? html` <nidoca-layout-spacer top="var(--space-little)" bottom="var(--space-little)">
+            ? html` <nidoca-layout-spacer top="var(--space)" bottom="var(--space)">
                   <nidoca-typography .type="${NidocaTypographyType.H2}">Custom Events </nidoca-typography>
                 </nidoca-layout-spacer>
                 <nidoca-table .headers="${["name"]}" .rows="${this.toCustomEventRows(this.customEventNames)}">
@@ -80,7 +80,7 @@ export class LitViewer extends LitElement {
             : html``}
         </div>
       </nidoca-section>
-      <nidoca-layout-spacer top="var(--space-little)" bottom="var(--space-little)">
+      <nidoca-layout-spacer top="var(--space)" bottom="var(--space)">
         <nidoca-typography .type="${NidocaTypographyType.H2}"> Quelltext </nidoca-typography>
       </nidoca-layout-spacer>
       <nidoca-tabs tabIndex="0">
@@ -90,31 +90,31 @@ export class LitViewer extends LitElement {
         <nidoca-tab slot="tab">Angular</nidoca-tab>
 
         <nidoca-tab-content slot="tabContent">
-          <nidoca-layout-spacer top="var(--space-little)" bottom="var(--space-little)">
+          <nidoca-layout-spacer top="var(--space)" bottom="var(--space)">
             <nidoca-code style="width:100%;">${this.webcomponentGuiWrapper?.getAsJavascript()} </nidoca-code>
           </nidoca-layout-spacer>
         </nidoca-tab-content>
 
         <nidoca-tab-content slot="tabContent">
-          <nidoca-layout-spacer top="var(--space-little)" bottom="var(--space-little)">
+          <nidoca-layout-spacer top="var(--space)" bottom="var(--space)">
             <nidoca-code>${this.webcomponentGuiWrapper?.getTypescript()}</nidoca-code>
           </nidoca-layout-spacer>
         </nidoca-tab-content>
 
         <nidoca-tab-content slot="tabContent">
-          <nidoca-layout-spacer top="var(--space-little)" bottom="var(--space-little)">
+          <nidoca-layout-spacer top="var(--space)" bottom="var(--space)">
             <nidoca-code>${this.webcomponentGuiWrapper?.getAsLit()}</nidoca-code>
           </nidoca-layout-spacer>
         </nidoca-tab-content>
 
         <nidoca-tab-content slot="tabContent">
-          <nidoca-layout-spacer top="var(--space-little)" bottom="var(--space-little)">
+          <nidoca-layout-spacer top="var(--space)" bottom="var(--space)">
             <nidoca-code>${this.webcomponentGuiWrapper?.getAsHtml()}</nidoca-code>
           </nidoca-layout-spacer>
         </nidoca-tab-content>
       </nidoca-tabs>
 
-      <nidoca-layout-spacer top="var(--space-little)" bottom="var(--space-little)">
+      <nidoca-layout-spacer top="var(--space)" bottom="var(--space)">
         <nidoca-typography .type="${NidocaTypographyType.H2}"> Attribute </nidoca-typography>
       </nidoca-layout-spacer>
 

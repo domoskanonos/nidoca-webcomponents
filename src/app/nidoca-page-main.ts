@@ -27,18 +27,18 @@ export class NidocaPageMain extends LitElement {
           <nidoca-icon-with-description
             title="Komponentenbibliothek"
             icon="local_library"
-            style="padding:var(--space-medium);"
+            style="padding:var(--space-3);"
           >
             Nidoce ist eine Komponentenbibliothek mit über ${Nidoca.getUniqueInstance().registeredElementNames.length}
             Komponenten für den direkten Einsatz in deiner Webanwendung. Egal ob normales HTML, Angular, React, Lit. Die
             Komponenten können dank der Webcomponent Technologie überall in andere Frameworks eingebaungen werden.
           </nidoca-icon-with-description>
-          <nidoca-icon-with-description title="Leichtgewichtig" icon="code" style="padding:var(--space-medium);">
+          <nidoca-icon-with-description title="Leichtgewichtig" icon="code" style="padding:var(--space-3);">
             Es ist ein sehr kleines, leichtes Komponenten-Framework, das nur 32 KB klein ist. Es enthält mehr als 30
             Komponenten und diverse Zusatzfunktionen wie Routing / Internationalisierung und Speicherung. Komponenten
             können einfach angepasst werden und sind sehr einfach erweiterbar. erstellen.
           </nidoca-icon-with-description>
-          <nidoca-icon-with-description title="Open Source" icon="code" style="padding:var(--space-medium);">
+          <nidoca-icon-with-description title="Open Source" icon="code" style="padding:var(--space-3);">
             Es ist ein Open-Source-Projekt, das Sie auf Github finden können. Du kannst das Projekt natürlich gerne
             finanziell unterstützen, wenn es dir gefällt.
           </nidoca-icon-with-description>
@@ -70,7 +70,7 @@ export class NidocaPageMain extends LitElement {
       </nidoca-section>
 
       <nidoca-layout-container .theme="${NidocaTheme.SECONDARY}">
-        <nidoca-section style="width:50%; padding-top:var(--space-max);padding-bottom:var(--space-max);">
+        <nidoca-section style="width:50%; padding-top:var(--space-8);padding-bottom:var(--space-8);">
           <nidoca-article
             summary="Die Komponenten sind für Desktop, Tablet und Mobile optimiert."
             text="The components looks good on all devices, because they are designed responsive. Responsive web design is a
@@ -85,7 +85,7 @@ export class NidocaPageMain extends LitElement {
       </nidoca-layout-container>
 
       <nidoca-layout-container .theme="${NidocaTheme.BACKGROUND}">
-        <nidoca-section style="width:50%; padding-top:var(--space-max);padding-bottom:var(--space-max);">
+        <nidoca-section style="width:50%; padding-top:var(--space-8);padding-bottom:var(--space-8);">
           <nidoca-article
             summary="Alle Komponenten erfüllen den Webcomponent Standart"
             text="Webkomponenten sind eine Gruppe von Web-Technologien, die es ermöglichen, benutzerdefinierte, wiederverwendbare HTML Elemente zu erstellen, deren Funktionalität gekapselt ist und damit vollständig getrennt von anderem Code."
@@ -96,7 +96,7 @@ export class NidocaPageMain extends LitElement {
       </nidoca-layout-container>
 
       <nidoca-layout-container .theme="${NidocaTheme.PRIMARY}">
-        <nidoca-section style="width:50%; padding:var(--space-max);">
+        <nidoca-section style="width:50%; padding:var(--space-8);">
           <nidoca-form-contact></nidoca-form-contact>
         </nidoca-section>
       </nidoca-layout-container>

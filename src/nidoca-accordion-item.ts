@@ -33,7 +33,7 @@ export class NidocaAccordionItem extends LitElement {
         @click="${() => this.toggle()}"
         style="display:flex;flex-direction:row;align-items:center;justify-content:space-between;align-content:center; cursor:pointer;"
       >
-        <nidoca-typography style="padding-left:var(--space-medium);" text="${this.header}"></nidoca-typography>
+        <nidoca-typography style="padding-left:var(--space-3);" text="${this.header}"></nidoca-typography>
         <nidoca-icon icon="${this.opened ? "keyboard_arrow_down" : "keyboard_arrow_up"}"></nidoca-icon>
       </div>
       ${this.opened ? html` <slot></slot>` : html``}

@@ -8,8 +8,8 @@ export class NidocaMenu extends LitElement {
     :host {
       display: block;
       width: 100%;
-      padding-left: var(--space-normal);
-      padding-right: var(--space-normal);
+      padding-left: var(--space-4);
+      padding-right: var(--space-4);
     }
   `;
 

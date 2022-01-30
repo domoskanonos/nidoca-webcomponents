@@ -28,7 +28,7 @@ export class NidocaListItem extends LitElement {
     }
 
     .spaceLeft {
-      padding-left: var(--space-medium);
+      padding-left: var(--space-3);
     }
   `;
 
