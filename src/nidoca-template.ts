@@ -6,7 +6,7 @@ import {MOBILE_MAX_WIDTH, NidocaTheme, TABLET_MAX_WIDTH, TABLE_MIN_WIDTH} from "
 
 @customElement("nidoca-template")
 export class NidocaTemplate extends LitElement {
-  static styles = css`
+    static styles = css`
     .slotHeader {
       display: flex;
       align-items: center;
@@ -16,16 +16,12 @@ export class NidocaTemplate extends LitElement {
       position: fixed;
       width: 100%;
       z-index: 1;
-      background-color: inherit;
-      color: inherit;
     }
 
-    .content {
-      display: flex;
+    #content {display: flex;
       flex-direction: column;
-    }
-
-    #content {
+      color: var(--app-color-background);
+      background-color: var(--app-color-background-background);
       overflow-y: scroll;
     }
 
@@ -36,6 +32,9 @@ export class NidocaTemplate extends LitElement {
     }
 
     #sidebar {
+    display:block;
+      color: var(--app-color-primary);
+      background-color: var(--app-color-primary-background);
       z-index: 1;
       position: fixed;
       width: 300px;
@@ -68,78 +67,67 @@ export class NidocaTemplate extends LitElement {
       }
     }
 
-    .slotProminent {
-      width: 100%;
-    }
   `;
 
-  @property({type: NidocaTheme, converter: String})
-  theme: string = NidocaTheme.PRIMARY;
+    @property({type: Boolean})
+    navigationClosed: boolean = true;
 
-  @property({type: Boolean})
-  navigationClosed: boolean = true;
+    @property({type: Boolean})
+    prominent: boolean = false;
 
-  @property({type: Boolean})
-  prominent: boolean = false;
+    @query("#header")
+    private headerElement: HTMLElement | undefined;
 
-  @query("#header")
-  private headerElement: HTMLElement | undefined;
+    @query("#sidebar")
+    private sidebarElement: HTMLElement | undefined;
 
-  @query("#sidebar")
-  private sidebarElement: HTMLElement | undefined;
+    @query("#content")
+    private contentElement: HTMLElement | undefined;
 
-  @query("#content")
-  private contentElement: HTMLElement | undefined;
+    constructor() {
+        super();
+        document.getElementsByTagName("html")[0].setAttribute("oncontextmenu", "return false"); // avoid right click context menu
+    }
 
-  constructor() {
-    super();
-    document.getElementsByTagName("html")[0].setAttribute("oncontextmenu", "return false"); // avoid right click context menu
-  }
+    protected updated(_changedProperties: PropertyValues): void {
+        super.updated(_changedProperties);
+        new Promise((resolve) => requestAnimationFrame(resolve)).then(() => {
+            if (this.headerElement != undefined) {
+                const height = this.headerElement.offsetHeight;
+                const topStyle = "top:".concat(String(height)).concat("px;");
+                const paddingTopStyle = "padding-top:".concat(String(height)).concat("px;");
+                console.debug("set header height to corresponding elements: %s", topStyle);
+                if (this.sidebarElement != undefined) {
+                    this.sidebarElement.setAttribute("style", topStyle);
+                }
+                if (this.contentElement != undefined) {
+                    this.contentElement.setAttribute("style", paddingTopStyle);
+                }
+            }
+        });
+    }
 
-  protected updated(_changedProperties: PropertyValues): void {
-    super.updated(_changedProperties);
-    new Promise((resolve) => requestAnimationFrame(resolve)).then(() => {
-      if (this.headerElement != undefined) {
-        const height = this.headerElement.offsetHeight;
-        const topStyle = "top:".concat(String(height)).concat("px;");
-        const paddingTopStyle = "padding-top:".concat(String(height)).concat("px;");
-        console.debug("set header height to corresponding elements: %s", topStyle);
-        if (this.sidebarElement != undefined) {
-          this.sidebarElement.setAttribute("style", topStyle);
-        }
-        if (this.contentElement != undefined) {
-          this.contentElement.setAttribute("style", paddingTopStyle);
-        }
-      }
-    });
-  }
-
-  render(): TemplateResult {
-    return html`
-      <style>
-        #sidebar {
-          color: var(--app-color-${this.theme});
-          background-color: var(--app-color-${this.theme}-background);
-        }
-      </style>
-      <div id="header" class="${this.navigationClosed ? "menuClosed" : ""}">
-        <nidoca-top-app-bar style="width:100%;" .prominent="${this.prominent}" theme="${this.theme}">
+    render(): TemplateResult {
+        return html`
+            <nidoca-top-app-bar id="header" class="${this.navigationClosed ? "menuClosed" : ""}"
+                                .prominent="${this.prominent}" theme="${NidocaTheme.PRIMARY}">
           <span slot="left">
             <slot class="slotHeader" name="topLeft"></slot>
           </span>
-          <span slot="center">
+                <span slot="center">
             <slot class="slotHeader" name="topCenter"></slot>
           </span>
-          <span slot="right">
+                <span slot="right">
             <slot class="slotHeader" name="topRight"></slot>
           </span>
-          <span class="slotProminent" slot="prominent">
+                <span style="width: 100%;" slot="prominent">
             <slot class="slotHeader" name="prominent"></slot>
           </span>
-        </nidoca-top-app-bar>
-      </div>
-      <div id="sidebar" class="${this.navigationClosed ? "menuClosed" : ""}"><slot name="sidebar"></slot></div>
-      <div id="content" class="${this.navigationClosed ? "menuClosed" : ""}"><slot name="content"></slot></div>
-    `;
-  }
+            </nidoca-top-app-bar>
+
+            <slot id="sidebar" class="${this.navigationClosed ? "menuClosed" : ""}" name="sidebar"></slot>
+
+            <slot id="content" class="${this.navigationClosed ? "menuClosed" : ""}" name="content"></slot>
+        `;
+    }
 }

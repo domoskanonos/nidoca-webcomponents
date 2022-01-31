@@ -7,7 +7,6 @@ export class NidocaIcon extends LitElement {
   static styles = css`
     :host {
       display: inline-block;
-      line-height: 0;
       font-size: var(--icon-size);
     }
     .material-icons {

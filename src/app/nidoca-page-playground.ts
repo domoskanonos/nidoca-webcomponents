@@ -8,7 +8,7 @@ export class NidocaPagePlayground extends LitElement {
   static styles = css``;
 
   @property({type: String})
-  elementName: string = "nidoca-button";
+  elementName: string = "nidoca-dialog";
 
   render(): TemplateResult {
     return html`

@@ -2992,7 +2992,7 @@ ${this.value}</textarea
           </nidoca-form>
         </nidoca-layout-spacer>
       </nidoca-layout-container>
-    `}closePopup(){this.dispatchEvent(new CustomEvent("nidoca-popup-login-closePopup",{detail:this,bubbles:!0,composed:!0}))}};Mn.styles=i``,Bn([re(),Ln("design:type",Object)],Mn.prototype,"username",void 0),Bn([re(),Ln("design:type",String)],Mn.prototype,"hrefResetPassword",void 0),Bn([re(),Ln("design:type",String)],Mn.prototype,"hrefRegister",void 0),Bn([ae("#authenitcate-form"),Ln("design:type",Object)],Mn.prototype,"formComponent",void 0),Bn([re(),Ln("design:type",String)],Mn.prototype,"errorMessage",void 0),Mn=Bn([ne("nidoca-popup-login")],Mn);var Wn=function(e,t,o,n){var i,r=arguments.length,a=r<3?t:null===n?n=Object.getOwnPropertyDescriptor(t,o):n;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)a=Reflect.decorate(e,t,o,n);else for(var s=e.length-1;s>=0;s--)(i=e[s])&&(a=(r<3?i(a):r>3?i(t,o,a):i(t,o))||a);return r>3&&a&&Object.defineProperty(t,o,a),a},zn=function(e,t){if("object"==typeof Reflect&&"function"==typeof Reflect.metadata)return Reflect.metadata(e,t)};let Un=class extends Q{constructor(){super(),this.showPopup=!1,this.popupContent=P``,this.navigationClosed=!0,this.prominent=!1,this.currentPage=P`<nidoca-page-main></nidoca-page-main>`,this.elevationShow=!1,_n.getUniqueInstance().subscribe(this),this.routeChanged(_n.getUniqueInstance().getCurrentPage())}routeChanged(e){switch(console.log("enter new page, url: %s",e),e){case"components":this.currentPage=P`<nidoca-page-components></nidoca-page-components>`;break;case"settings":this.currentPage=P`<nidoca-page-settings></nidoca-page-settings>`;break;case"imprint":this.currentPage=P`<nidoca-page-imprint></nidoca-page-imprint>`;break;case"terms-of-use":this.currentPage=P`<nidoca-page-terms-of-use></nidoca-page-terms-of-use>`;break;case"privacy":this.currentPage=P`<nidoca-page-privacy></nidoca-page-privacy>`;break;default:this.currentPage=P`<nidoca-page-main></nidoca-page-main>`}}render(){return P`
+    `}closePopup(){this.dispatchEvent(new CustomEvent("nidoca-form-login-closePopup",{detail:this,bubbles:!0,composed:!0}))}};Mn.styles=i``,Bn([re(),Ln("design:type",Object)],Mn.prototype,"username",void 0),Bn([re(),Ln("design:type",String)],Mn.prototype,"hrefResetPassword",void 0),Bn([re(),Ln("design:type",String)],Mn.prototype,"hrefRegister",void 0),Bn([ae("#authenitcate-form"),Ln("design:type",Object)],Mn.prototype,"formComponent",void 0),Bn([re(),Ln("design:type",String)],Mn.prototype,"errorMessage",void 0),Mn=Bn([ne("nidoca-form-login")],Mn);var Wn=function(e,t,o,n){var i,r=arguments.length,a=r<3?t:null===n?n=Object.getOwnPropertyDescriptor(t,o):n;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)a=Reflect.decorate(e,t,o,n);else for(var s=e.length-1;s>=0;s--)(i=e[s])&&(a=(r<3?i(a):r>3?i(t,o,a):i(t,o))||a);return r>3&&a&&Object.defineProperty(t,o,a),a},zn=function(e,t){if("object"==typeof Reflect&&"function"==typeof Reflect.metadata)return Reflect.metadata(e,t)};let Un=class extends Q{constructor(){super(),this.showPopup=!1,this.popupContent=P``,this.navigationClosed=!0,this.prominent=!1,this.currentPage=P`<nidoca-page-main></nidoca-page-main>`,this.elevationShow=!1,_n.getUniqueInstance().subscribe(this),this.routeChanged(_n.getUniqueInstance().getCurrentPage())}routeChanged(e){switch(console.log("enter new page, url: %s",e),e){case"components":this.currentPage=P`<nidoca-page-components></nidoca-page-components>`;break;case"settings":this.currentPage=P`<nidoca-page-settings></nidoca-page-settings>`;break;case"imprint":this.currentPage=P`<nidoca-page-imprint></nidoca-page-imprint>`;break;case"terms-of-use":this.currentPage=P`<nidoca-page-terms-of-use></nidoca-page-terms-of-use>`;break;case"privacy":this.currentPage=P`<nidoca-page-privacy></nidoca-page-privacy>`;break;default:this.currentPage=P`<nidoca-page-main></nidoca-page-main>`}}render(){return P`
       <nidoca-template
         .prominent="${this.prominent}"
         .navigationClosed="${this.navigationClosed}"
@@ -3013,7 +3013,7 @@ ${this.value}</textarea
         <nidoca-icon
           slot="topRight"
           icon="person"
-          @nidoca-event-icon-clicked="${()=>{this.showPopup=!0,this.popupContent=P`<nidoca-popup-login></nidoca-popup-login>`}}"
+          @nidoca-event-icon-clicked="${()=>{this.showPopup=!0,this.popupContent=P`<nidoca-form-login></nidoca-form-login>`}}"
         ></nidoca-icon>
         <nidoca-icon slot="topRight" icon="share"></nidoca-icon>
         <nidoca-icon
@@ -3063,7 +3063,7 @@ ${this.value}</textarea
           </nidoca-menu-item>
         </nidoca-menu>
       </nidoca-template>
-      <nidoca-dialog .show="${this.showPopup}" @nidoca-popup-login-closePopup="${()=>this.showPopup=!1}"
+      <nidoca-dialog .show="${this.showPopup}" @nidoca-form-login-closePopup="${()=>this.showPopup=!1}"
         >${this.popupContent}
       </nidoca-dialog>
       <nidoca-elevation

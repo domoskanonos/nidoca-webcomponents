@@ -12,6 +12,6 @@ import "./nidoca-page-terms-of-use";
 
 import "./nidoca-elevation-settings";
 
-import "./nidoca-popup-login";
+import "../nidoca-form-login";
 
 export * from "./nidoca-app";
