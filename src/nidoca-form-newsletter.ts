@@ -2,8 +2,8 @@ import {css, html, TemplateResult, LitElement} from "lit";
 import {customElement, property} from "lit/decorators.js";
 import {NidocaButtonType, NidocaTextType, NidocaTheme, NidocaTypographyType} from ".";
 
-@customElement("nidoca-form-contact")
-export class NidocaFormContact extends LitElement {
+@customElement("nidoca-form-newsletter")
+export class NidocaFormNewsletter extends LitElement {
   static styles = css`
     :host {
       padding: var(--space-6);
@@ -22,37 +22,16 @@ export class NidocaFormContact extends LitElement {
     return html`
       ${NidocaTheme.getStyle(this.theme)}
       <nidoca-form id="authenitcate-form">
-        <nidoca-text class="paddingBottom" .type="${NidocaTypographyType.H2}">Kontakt</nidoca-text>
+        <nidoca-text class="paddingBottom" .type="${NidocaTypographyType.H2}">Newsletter</nidoca-text>
         <nidoca-form-text
           .theme="${this.theme}"
           class="paddingBottom"
-          name="name"
-          .textType="${NidocaTextType.TEXT}"
-          value=""
-          label="name"
-        ></nidoca-form-text>
-        <nidoca-form-text
-          theme="${this.theme}"
-          class="paddingBottom"
-          .textType="${NidocaTextType.EMAIL}"
-          label="email"
           name="email"
-        ></nidoca-form-text>
-        <nidoca-form-text
-          .theme="${this.theme}"
-          class="paddingBottom"
-          name="title"
-          .textType="${NidocaTextType.TEXT}"
+          .textType="${NidocaTextType.EMAIL}"
           value=""
-          label="title"
+          label="Deine Email"
+          placeholder=" "
         ></nidoca-form-text>
-        <nidoca-form-textarea
-          .theme="${this.theme}"
-          class="paddingBottom"
-          label="message"
-          name="message"
-          trailingIcon="vpn_key"
-        ></nidoca-form-textarea>
         <nidoca-button
           theme="${NidocaTheme.getOposite(this.theme)}"
           class="paddingBottom"

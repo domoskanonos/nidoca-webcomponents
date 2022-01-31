@@ -68,8 +68,8 @@ export class NidocaFormText extends NidocaFormAbstractInputElement {
     }
   `;
 
-  @property({type: NidocaTheme, converter: String})
-  theme: string = NidocaTheme.BACKGROUND;
+@property({type: NidocaTheme, converter: String})
+theme: string | undefined = NidocaTheme.PRIMARY;
 
   @property({type: NidocaTextType, converter: String})
   type: string = NidocaTextType.TEXT;
