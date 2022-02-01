@@ -19,8 +19,13 @@ import {
 export class Nidoca {
   initDefaultComponents() {
     this._registeredElementsMap.set(
-      "nidoca-form-newsletter",
-      html` <nidoca-form-newsletter theme="${NidocaTheme.SURFACE}"></nidoca-form-newsletter>`
+        "nidoca-form-register",
+        html` <nidoca-form-register theme="${NidocaTheme.PRIMARY}"></nidoca-form-register>`
+    );
+
+    this._registeredElementsMap.set(
+        "nidoca-form-newsletter",
+        html` <nidoca-form-newsletter theme="${NidocaTheme.SURFACE}"></nidoca-form-newsletter>`
     );
 
     this._registeredElementsMap.set("nidoca-form-login", html` <nidoca-form-login></nidoca-form-login>`);

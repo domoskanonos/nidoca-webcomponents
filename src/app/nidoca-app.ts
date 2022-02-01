@@ -49,6 +49,10 @@ export class NidocaApp extends LitElement implements NidocaRouteListener {
                 this.currentPage = html`
                     <nidoca-page-components></nidoca-page-components>`;
                 break;
+            case "list":
+                this.currentPage = html`
+                    <nidoca-page-list></nidoca-page-list>`;
+                break;
             case "settings":
                 this.currentPage = html`
                     <nidoca-page-settings></nidoca-page-settings>`;
@@ -129,6 +133,10 @@ export class NidocaApp extends LitElement implements NidocaRouteListener {
 
                     <nidoca-menu-item text="Spielwiese"
                                       @click="${() => NidocaRouter.getUniqueInstance().navigate("playground")}">
+                    </nidoca-menu-item>
+
+                    <nidoca-menu-item text="Liste"
+                                      @click="${() => NidocaRouter.getUniqueInstance().navigate("list")}">
                     </nidoca-menu-item>
 
                     <nidoca-menu-item

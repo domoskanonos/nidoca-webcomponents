@@ -18,6 +18,7 @@ export * from "./nidoca-form-textarea";
 export * from "./nidoca-form-date";
 export * from "./nidoca-form-switch";
 export * from "./nidoca-form-newsletter";
+export * from "./nidoca-form-register";
 export * from "./nidoca-upload";
 export * from "./nidoca-form-abstract-input-element";
 

@@ -28,9 +28,6 @@ export class NidocaForm extends LitElement {
   @property({type: Boolean})
   autocomplete: boolean = true;
 
-  @property({type: NidocaTheme, converter: String})
-  theme: string | undefined;
-
   @query("#slotElement")
   private slotElement: HTMLSlotElement | undefined;
 
