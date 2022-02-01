@@ -3,7 +3,6 @@ import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
 import {NidocaRouteListener, NidocaRouter} from "@domoskanonos/nidoca-router";
 import {NidocaTypographyType} from "..";
-import {NidocaTheme} from "../nidoca-meta";
 
 @customElement("nidoca-app")
 export class NidocaApp extends LitElement implements NidocaRouteListener {
