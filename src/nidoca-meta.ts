@@ -18,10 +18,10 @@ import {
 
 export class Nidoca {
   initDefaultComponents() {
-
     this._registeredElementsMap.set(
       "nidoca-form-change-password",
       html` <nidoca-form-change-password
+        theme="${NidocaTheme.SECONDARY}"
         @nidoca-form-change-password-submit="${(event: CustomEvent) => alert(JSON.stringify(event.detail))}"
       ></nidoca-form-change-password>`
     );
