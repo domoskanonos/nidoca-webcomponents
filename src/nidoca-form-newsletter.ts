@@ -42,7 +42,7 @@ export class NidocaFormNewsletter extends LitElement {
                                   textType="${NidocaTextType.EMAIL}"
                                   label="${this.emailLabel}"
                                   name="email"
-                                  trailingIcon="account_circle"
+                                  trailingIcon="email"
                                   required
                                   minLength="4"
                                   pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$"
