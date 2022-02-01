@@ -1,7 +1,7 @@
 import {css, html, LitElement, TemplateResult} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
-import {NidocaFormTextType} from ".";
+import {NidocaFormTextType, NidocaTextType} from ".";
 
 @customElement("nidoca-list-item")
 export class NidocaListItem extends LitElement {
@@ -72,13 +72,13 @@ export class NidocaListItem extends LitElement {
           <slot name="graphic" class="item"></slot>
           <div class="containerTypography">
             ${this.primaryText
-              ? html`<nidoca-text class="item spaceLeft" .type="${NidocaFormTextType.BODY1}"
+              ? html`<nidoca-text class="item spaceLeft" .type="${NidocaTextType.BODY1}"
                   >${this.primaryText}</nidoca-text
                 >`
               : html``}
             <slot></slot>
             ${this.secondaryText
-              ? html`<nidoca-text class="item spaceLeft" .type="${NidocaFormTextType.SUBTITLE1}"
+              ? html`<nidoca-text class="item spaceLeft" .type="${NidocaTextType.SUBTITLE1}"
                   >${this.secondaryText}</nidoca-text
                 >`
               : html``}

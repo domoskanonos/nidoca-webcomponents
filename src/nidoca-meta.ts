@@ -6,14 +6,13 @@ export const DESKTOP_MIN_WIDTH = 1008;
 
 import {html, HTMLTemplateResult, TemplateResult} from "lit";
 import {
-  NidocaArticle,
   NidocaAvatar,
   NidocaButtonType,
   NidocaIcon,
   NidocaImg,
   NidocaMovie,
   NidocaProgress,
-  NidocaFormTextType,
+  NidocaTextType,
 } from ".";
 
 export class Nidoca {
@@ -287,7 +286,7 @@ export class Nidoca {
     this._registeredElementsMap.set(
       "nidoca-top-app-bar",
       html` <nidoca-top-app-bar .theme="${NidocaTheme.PRIMARY}">
-        <nidoca-text slot="center" type="${NidocaFormTextType.BODY1}">Toolbar</nidoca-text>
+        <nidoca-text slot="center" type="${NidocaTextType.BODY1}">Toolbar</nidoca-text>
         <nidoca-icon slot="left" style="padding-left:var(--space)" clickable icon="menu"></nidoca-icon>
         <nidoca-icon slot="right" style="padding-right:var(--space)" icon="search"></nidoca-icon>
         <nidoca-icon slot="right" style="padding-right:var(--space)" icon="more_vert" clickable></nidoca-icon>
