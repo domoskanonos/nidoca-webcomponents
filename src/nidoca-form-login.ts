@@ -17,23 +17,23 @@ export class NidocaFormLogin extends LitElement {
   
   `;
 
-    @property()
-    username: string | null = localStorage.getItem("nidoca-local-storage-authentication-username-value");
+    @property({type: NidocaTheme, converter: String})
+    theme: string | undefined = NidocaTheme.PRIMARY;
 
-    @property()
-    hrefResetPassword: string = "#reset_password";
+    @property({type: String, converter: String})
+    label: string = "Anmeldung";
 
-    @property()
-    hrefRegister: string = "#register";
+    @property({type: String, converter: String})
+    usernameLabel: string = "Benutzername/Email";
+
+    @property({type: String, converter: String})
+    passwordLabel: string = "Passwort";
+
+    @property({type: String, converter: String})
+    buttonLabel: string = "Anmelden";
 
     @query("#authenitcate-form")
     formComponent: NidocaForm | undefined;
-
-    @property()
-    errorMessage: string = "";
-
-    @property({type: NidocaTheme, converter: String})
-    theme: string | undefined = NidocaTheme.PRIMARY;
 
     render(): TemplateResult {
         return html`
@@ -42,45 +42,43 @@ export class NidocaFormLogin extends LitElement {
                 <nidoca-text class="paddingBottom" .type="${NidocaTypographyType.H1}">Anmeldung</nidoca-text>
 
                 <nidoca-form-text theme="${this.theme}" class="paddingBottom"
+                                  textType="${NidocaTextType.EMAIL}"
+                                  label="${this.usernameLabel}"
                                   name="username"
-                                  .textType="${NidocaTextType.EMAIL}"
-                                  .value="${this.username}"
-                                  label="username"
+                                  required
                                   trailingIcon="account_circle"
                 ></nidoca-form-text>
 
                 <nidoca-form-text theme="${this.theme}" class="paddingBottom"
-                                  .textType="${NidocaTextType.PASSWORD}"
+                                  textType="${NidocaTextType.PASSWORD}"
+                                  label="${this.passwordLabel}"
                                   label="password"
                                   name="password"
+                                  required
                                   trailingIcon="vpn_key"
                 ></nidoca-form-text>
 
                 <nidoca-button theme="${NidocaTheme.getOposite(this.theme)}" class="paddingBottom"
-                               @nidoca-event-button-clicked="${() => alert("Login")}">Login
+                               @nidoca-event-button-clicked="${() => this.login()}">${this.buttonLabel}
                 </nidoca-button>
 
-                <nidoca-button theme="${NidocaTheme.getOposite(this.theme)}" class="paddingBottom"
-                               @nidoca-event-button-clicked="${() => this.closePopup()}">Schließen
-                </nidoca-button>
 
-                <nidoca-text
-                        slot="errorMessages"
-                        .type="${NidocaTypographyType.OVERLINE}"
-                        text="${this.errorMessage}"
-                ></nidoca-text>
+                <slot></slot>
+
+
             </nidoca-form>
 
         `;
     }
 
-    closePopup(): void {
-        this.dispatchEvent(
-            new CustomEvent("nidoca-form-login-closePopup", {
-                detail: this,
+    private login() {
+        if (this.formComponent && this.formComponent.validate()) {
+            this.dispatchEvent(new CustomEvent("nidoca-form-login-submit", {
+                detail: this.formComponent.getOutputData(),
                 bubbles: true,
                 composed: true,
-            })
-        );
+            }));
+        }
     }
+
 }

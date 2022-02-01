@@ -316,8 +316,8 @@
       display: inline-block;
       background: var(--app-color-surface-background-light);
       padding: 0 var(--space-4);
-      border-radius: var(--line-height-3);
-      line-height: var(--line-height-3);
+      border-radius: var(--line-height);
+      line-height: var(--line-height);
     }
 
     .chip:hover {

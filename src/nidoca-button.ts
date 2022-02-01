@@ -25,7 +25,6 @@ export class NidocaButton extends LitElement {
       flex-wrap: nowrap;
       align-items: center;
       justify-content: center;
-      height: var(--line-height-2);
       text-transform: uppercase;
       box-sizing: border-box;
       font-family: inherit;

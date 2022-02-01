@@ -14,7 +14,6 @@ export class NidocaTopAppBar extends LitElement {
     }
 
     .bar {
-      min-height: var(--line-height-2);
       display: flex;
       flex-direction: row;
       flex-wrap: nowrap;

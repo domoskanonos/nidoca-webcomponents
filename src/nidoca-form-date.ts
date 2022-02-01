@@ -41,8 +41,6 @@ export class NidocaFormDate extends NidocaFormAbstractInputElement {
       border: none;
       color: inherit;
       background-color: inherit;
-      height: var(--line-height-3);
-      line-height: var(--line-height-3);
       padding-left: var(--space-3);
       padding-right: var(--space-3);
     }

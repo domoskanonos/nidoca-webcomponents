@@ -16,8 +16,6 @@ export class NidocaAccordionItem extends LitElement {
     }
 
     .header {
-      height: var(--line-height-2);
-      line-height: var(--line-height-2);
       padding-left: var(--space-2);
       display: flex;
       flex-direction: row;

@@ -13,11 +13,11 @@ export class NidocaFormOutputData {
 @customElement("nidoca-form")
 export class NidocaForm extends LitElement {
     static styles = css`
-    .container {
-      box-sizing: border-box;
-    }
     :host {
       display: block;
+    }
+    .container {
+      box-sizing: border-box;
     }
     #slot {
       display: block;
@@ -31,13 +31,6 @@ export class NidocaForm extends LitElement {
     @query("#slotElement")
     private slotElement: HTMLSlotElement | undefined;
 
-    constructor() {
-        super();
-        if (this.getAttribute("style") == null) {
-            this.setAttribute("style", "width:100%;");
-        }
-    }
-
     render(): TemplateResult {
         return html`
             <form
@@ -47,40 +40,6 @@ export class NidocaForm extends LitElement {
                 <slot id="slotElement"></slot>
             </form>
         `;
-    }
-
-    getInputElements(slotElement: HTMLSlotElement | undefined): NidocaFormAbstractInputElement[] {
-        if (slotElement == null) {
-            return [];
-        }
-        const inputElements: NidocaFormAbstractInputElement[] = [];
-        const elements: Element[] = slotElement.assignedElements({flatten: true});
-        for (let index = 0; index < elements.length; index++) {
-            const element: Element = elements[index];
-            this.recursiveInputElementSearch(element, inputElements);
-        }
-        return inputElements;
-    }
-
-    public validate(): boolean {
-        let valid: boolean = true;
-        for (const element of this.getInputElements(this.slotElement)) {
-            if (!element.validate()) {
-                if (valid) {
-                    //element.select();
-                    //element.parentElement?.scrollIntoView(true);
-                }
-                valid = false;
-            }
-        }
-        if (!valid) {
-            this.dispatchEvent(new CustomEvent("nidoca-form-validation failed", {
-                detail: this.getOutputData(),
-                bubbles: true,
-                composed: true,
-            }));
-        }
-        return valid;
     }
 
     public getOutputData(): NidocaFormOutputData {
@@ -99,6 +58,40 @@ export class NidocaForm extends LitElement {
         outputData.formData = formData;
 
         return outputData;
+    }
+
+    public validate(): boolean {
+        let valid: boolean = true;
+        for (const element of this.getInputElements(this.slotElement)) {
+            if (!element.validate()) {
+                if (valid) {
+                    //element.select();
+                    //element.parentElement?.scrollIntoView(true);
+                }
+                valid = false;
+            }
+        }
+        if (!valid) {
+            this.dispatchEvent(new CustomEvent("nidoca-form-validation-failed", {
+                detail: this.getOutputData(),
+                bubbles: true,
+                composed: true,
+            }));
+        }
+        return valid;
+    }
+
+    getInputElements(slotElement: HTMLSlotElement | undefined): NidocaFormAbstractInputElement[] {
+        if (slotElement == null) {
+            return [];
+        }
+        const inputElements: NidocaFormAbstractInputElement[] = [];
+        const elements: Element[] = slotElement.assignedElements({flatten: true});
+        for (let index = 0; index < elements.length; index++) {
+            const element: Element = elements[index];
+            this.recursiveInputElementSearch(element, inputElements);
+        }
+        return inputElements;
     }
 
     private recursiveInputElementSearch(element: Element, inputElements: NidocaFormAbstractInputElement[]) {

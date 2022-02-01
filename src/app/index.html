@@ -46,25 +46,45 @@
             --app-color-secondary-border-selected: #8d8d8d;
 
             --app-color-surface: #696868;
-            --app-color-surface-border: #9b9997;
-            --app-color-surface-border-selected: #9b9997;
             --app-color-surface-background: #e3e3e3;
             --app-color-surface-background-light: #f5f5f5;
             --app-color-surface-background-dark: #d6d4d4;
-
-            --app-color-success-background: #22bb33;
-            --app-color-error-background: #b00020;
-            --app-color-warning-background: #ffcc00;
-            --app-color-info-background: #40a6ce;
+            --app-color-surface-border: #9b9997;
+            --app-color-surface-border-selected: #9b9997;
 
             --app-color-success: #ffffff;
             --app-color-error: #ffffff;
             --color-warning: #ffffff;
             --app-color-info: #ffffff;
 
+            --app-color-success-background: #22bb33;
+            --app-color-error-background: #b00020;
+            --app-color-warning-background: #ffcc00;
+            --app-color-info-background: #40a6ce;
+
             --font-family: "Oswald", sans-serif;
+
+
             --letter-spacing: 2pt;
-            --font-size: 16px;
+
+            --line-height: 36px;
+            --font-line-height-multiplicator: 1.5;
+
+            --font-size: 18px;
+            --font-size-body-2: calc(var(--font-size) * 1);
+            --font-size-subtitle-1: calc(var(--font-size) * 1);
+            --font-size-subtitle-2: calc(var(--font-size) * 1);
+            --font-size-button: calc(var(--font-size) * 1);
+            --font-size-caption: calc(var(--font-size) * 1);
+
+            --font-size-h6: calc(var(--font-size) * 1.2);
+            --font-size-h5: calc(var(--font-size-h6) * 1.2);
+            --font-size-h4: calc(var(--font-size-h5) * 1.2);
+            --font-size-h3: calc(var(--font-size-h4) * 1.2);
+            --font-size-h2: calc(var(--font-size-h3) * 1.2);
+            --font-size-h1: calc(var(--font-size-h2) * 1.2);
+            --font-size-overline: calc(var(--font-size-h4) * 1);
+
 
             --space: 8px;
             --space-2: 16px;
@@ -72,12 +92,6 @@
             --space-4: 32px;
             --space-6: 48px;
             --space-8: 64px;
-
-            --line-height: 24px;
-            --line-height-2: 48px;
-            --line-height-3: 72px;
-            --line-height-4: 96px;
-            --line-height-5: 120px;
 
             --border-width: 2px;
 
@@ -99,6 +113,22 @@
             font-weight: 400;
             text-decoration: none;
         }
+
+        @media only screen and (max-width: 768px), only screen and (orientation: portrait) {
+            :root {
+                --font-size: calc(var(--font-size) * 0.8);
+                --font-line-height-multiplicator: 1.1;
+            }
+        }
+
+        @media only screen and (max-width: 1280px) {
+            :root {
+                --font-size: calc(var(--font-size) * 0.9);
+                --font-line-height-multiplicator: 1.2;
+            }
+        }
+
+
     </style>
 </head>
 <body>

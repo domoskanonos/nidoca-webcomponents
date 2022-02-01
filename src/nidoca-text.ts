@@ -40,95 +40,87 @@ export class NidocaText extends LitElement {
     .BUTTON,
     .CAPTION,
     .OVERLINE {
-      text-overflow: ellipsis;
-      overflow: hidden;
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      text-decoration: none;
-      white-space: normal;
-      word-wrap: normal;
-      word-break: break-word;
+      vertical-align: text-bottom;
     }
-    
-    .H1,
-    .H2,
-    .H3,
-    .H4,
-    .H5,
-    .H6,
-    .BODY1
-    {
-    line-height: var(--line-height-2);
-}
 
-    .H1 {
-      font-size: 3.5rem;
+    .H1,
+    ::slotted(.H1) {
+      font-size:var(--font-size-h1);
+      line-height: calc(var(--font-size-h1)*var(--font-line-height-multiplicator)); 
     }
 
     .H2,
     ::slotted(.H2) {
-      font-size: 2.75rem;
-      vertical-align: top;
+      font-size:var(--font-size-h2);
+      line-height: calc(var(--font-size-h2)*var(--font-line-height-multiplicator)); 
     }
 
-    .H3 {
-      font-size: 2.5rem;
-    }
-
-    .H4 {
-      font-size: 1.5rem;
-    }
-
-    .H5 {
-      font-size: 1.25rem;
-    }
-
-    .H6 {
-      font-size: 1.15rem;
+    .H3,
+    ::slotted(.H3) {
+      font-size:var(--font-size-h3);
+      line-height: calc(var(--font-size-h3)*var(--font-line-height-multiplicator)); 
     }
 
     .H4,
+    ::slotted(.H4) {
+      font-size:var(--font-size-h4);
+      line-height: calc(var(--font-size-h4)*var(--font-line-height-multiplicator)); 
+    }
+
     .H5,
+    ::slotted(.H5) {
+      font-size:var(--font-size-h5);
+      line-height: calc(var(--font-size-h5)*var(--font-line-height-multiplicator)); 
+    }
+
     .H6,
-    .OVERLINE,
-    .CAPTION,
-    .SUBTITLE2 {
-
+    ::slotted(.H6) {
+      font-size:var(--font-size-h6);
+      line-height: calc(var(--font-size-h6)*var(--font-line-height-multiplicator)); 
     }
 
-    .SUBTITLE1 {
-      font-size: 1rem;
+    .BODY1,
+    ::slotted(.BODY1) {
+      font-size:var(--font-size);
+      line-height: calc(var(--font-size)*var(--font-line-height-multiplicator)); 
     }
 
-    .SUBTITLE2 {
-      font-size: 0.875rem;
-    }
-
-    .BODY1 {
-      font-size: 1em;
+    .BODY2,
+    ::slotted(.BODY2) {
+      font-size:var(--font-size-body-2);
+      line-height: calc(var(--font-size-body-2)*var(--font-line-height-multiplicator)); 
       text-decoration-style: solid;
-      font-size: 1.5rem;
-      font-weight: 200;
     }
 
-    .BODY2 {
-      text-decoration-style: solid;
-      font-size: 1.25rem;
-      font-weight: 300;
+    .SUBTITLE1,
+    ::slotted(.SUBTITLE1) {
+       font-size:var(--font-size-subtitle-1);
+      line-height: calc(var(--font-size-subtitle-1)*var(--font-line-height-multiplicator)); 
     }
 
-    .BUTTON {
-      font-size: 0.875rem;
+    .SUBTITLE2,
+    ::slotted(.SUBTITLE2) {
+       font-size:var(--font-size-subtitle-2);
+      line-height: calc(var(--font-size-subtitle-2)*var(--font-line-height-multiplicator)); 
+    }
+
+    .BUTTON,
+    ::slotted(.BUTTON) {
+      font-size:var(--font-size-button);
+      line-height: calc(var(--font-size-button)*var(--font-line-height-multiplicator)); 
       text-transform: uppercase;
     }
 
-    .CAPTION {
-      font-size: 0.75rem;
-    }
+    .CAPTION,
+    ::slotted(.CAPTION) {
+       font-size:var(--font-size-caption);
+      line-height: calc(var(--font-size-caption)*var(--font-line-height-multiplicator)); 
+   }
 
-    .OVERLINE {
-      font-size: 0.625rem;
+    .OVERLINE,
+    ::slotted(.OVERLINE) {
+      font-size:var(--font-size-overline);
+      line-height: calc(var(--font-size-overline)*var(--font-line-height-multiplicator)); 
       text-transform: uppercase;
    }
     

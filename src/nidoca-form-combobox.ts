@@ -30,8 +30,6 @@ export class NidocaFormCombobox extends NidocaFormAbstractInputElement {
     }
 
     option {
-      height: var(--line-height-2);
-      line-height: var(--line-height-2);
       padding-left: var(--space-2);
     }
 
