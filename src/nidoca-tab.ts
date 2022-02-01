@@ -1,8 +1,7 @@
 import {css, html, TemplateResult, LitElement} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
-import {NidocaTheme} from ".";
-import {NidocaTextType} from "./nidoca-text";
+import {NidocaTheme, NidocaTextType} from ".";
 
 @customElement("nidoca-tab")
 export class NidocaTab extends LitElement {

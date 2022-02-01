@@ -1,7 +1,7 @@
 import {css, html, TemplateResult, LitElement} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
-import {NidocaTextType} from ".";
+import {NidocaFormTextType} from ".";
 
 export enum NidocaMenuItemType {
   ITEM = "item",
@@ -41,8 +41,8 @@ export class NidocaMenuItem extends LitElement {
         ${this.text
           ? html`<nidoca-text
               .type="${this.type == NidocaMenuItemType.ITEM
-                ? NidocaTextType.SUBTITLE1
-                : NidocaTextType.CAPTION}"
+                ? NidocaFormTextType.SUBTITLE1
+                : NidocaFormTextType.CAPTION}"
               >${this.text}</nidoca-text
             >`
           : html``}

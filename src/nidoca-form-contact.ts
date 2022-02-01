@@ -1,6 +1,6 @@
 import {css, html, TemplateResult, LitElement} from "lit";
 import {customElement, property} from "lit/decorators.js";
-import {NidocaButtonType, NidocaTextType, NidocaTheme, NidocaTypographyType} from ".";
+import {NidocaButtonType, NidocaFormTextType, NidocaTheme, NidocaTextType} from ".";
 
 @customElement("nidoca-form-contact")
 export class NidocaFormContact extends LitElement {
@@ -22,19 +22,19 @@ export class NidocaFormContact extends LitElement {
     return html`
       ${NidocaTheme.getStyle(this.theme)}
       <nidoca-form id="authenitcate-form">
-        <nidoca-text class="paddingBottom" .type="${NidocaTypographyType.H2}">Kontakt</nidoca-text>
+        <nidoca-text class="paddingBottom" .type="${NidocaTextType.H2}">Kontakt</nidoca-text>
         <nidoca-form-text
           .theme="${this.theme}"
           class="paddingBottom"
           name="name"
-          .textType="${NidocaTextType.TEXT}"
+          .textType="${NidocaFormTextType.TEXT}"
           value=""
           label="name"
         ></nidoca-form-text>
         <nidoca-form-text
           theme="${this.theme}"
           class="paddingBottom"
-          .textType="${NidocaTextType.EMAIL}"
+          .textType="${NidocaFormTextType.EMAIL}"
           label="email"
           name="email"
         ></nidoca-form-text>
@@ -42,7 +42,7 @@ export class NidocaFormContact extends LitElement {
           .theme="${this.theme}"
           class="paddingBottom"
           name="title"
-          .textType="${NidocaTextType.TEXT}"
+          .textType="${NidocaFormTextType.TEXT}"
           value=""
           label="title"
         ></nidoca-form-text>
@@ -64,7 +64,7 @@ export class NidocaFormContact extends LitElement {
           .theme="${this.theme}"
           class="paddingBottom"
           slot="errorMessages"
-          .type="${NidocaTypographyType.OVERLINE}"
+          .type="${NidocaTextType.OVERLINE}"
           text="huhu"
         ></nidoca-text>
       </nidoca-form>

@@ -1,7 +1,7 @@
 import {css, html, LitElement, TemplateResult} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
-import {NidocaTypographyType} from "./nidoca-text";
+import {NidocaTextType} from "./nidoca-text";
 import {NidocaTheme} from ".";
 
 export enum NidocaButtonType {
@@ -91,7 +91,7 @@ export class NidocaButton extends LitElement {
             ? html`<nidoca-layout-spacer> </nidoca-layout-spacer>`
             : html``}
 
-          <nidoca-text text="${this.text}" type="${NidocaTypographyType.BUTTON}">
+          <nidoca-text text="${this.text}" type="${NidocaTextType.BUTTON}">
             <slot></slot>
           </nidoca-text>
 

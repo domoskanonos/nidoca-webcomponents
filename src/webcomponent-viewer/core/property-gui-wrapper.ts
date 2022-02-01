@@ -2,7 +2,7 @@ import {PropertyWrapper, RenderType} from "./property-wrapper";
 import {html, LitElement, TemplateResult} from "lit";
 import {WebcomponentGuiWrapper} from "./webcomponent-gui-wrapper";
 import {NidocaFormCombobox} from "../../nidoca-form-combobox";
-import {NidocaTextType} from "../..";
+import {NidocaFormTextType} from "../..";
 import {WebcomponentWrapper} from "./webcomponent-wrapper";
 
 export class PropertyGuiWrapper {
@@ -25,7 +25,7 @@ export class PropertyGuiWrapper {
     const propertyType: RenderType = this.propertyWrapper.getRenderType();
     switch (propertyType) {
       case RenderType.STRING:
-        return html`<nidoca-form-text .textType="${NidocaTextType.TEXT}"
+        return html`<nidoca-form-text .textType="${NidocaFormTextType.TEXT}"
         label="${this.propertyWrapper.propertyName}"
           value="${classWrapper.instance[this.propertyWrapper.propertyName as keyof LitElement]}"
           @input="${(eventArg: any) => {
@@ -36,7 +36,7 @@ export class PropertyGuiWrapper {
       case RenderType.NUMBER:
         return html`<nidoca-form-text
           label="${this.propertyWrapper.propertyName}"
-          .textType="${NidocaTextType.NUMBER}"
+          .textType="${NidocaFormTextType.NUMBER}"
           value="${classWrapper.instance[this.propertyWrapper.propertyName as keyof LitElement]}"
           @input="${(eventArg: any) => {
             classWrapper.instance[this.propertyWrapper.propertyName] = eventArg.target.getOutputData().value;

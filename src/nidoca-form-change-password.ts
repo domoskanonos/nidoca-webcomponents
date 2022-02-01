@@ -1,7 +1,7 @@
 import {css, html, TemplateResult, LitElement} from "lit";
 import {customElement, property, query} from "lit/decorators.js";
 import {ifDefined} from "lit/directives/if-defined.js";
-import {NidocaForm, NidocaTextType, NidocaTheme, NidocaTypographyType} from ".";
+import {NidocaForm, NidocaFormTextType, NidocaTheme, NidocaTextType} from ".";
 
 @customElement("nidoca-form-change-password")
 export class NidocaFormChangePassword extends LitElement {
@@ -60,13 +60,13 @@ export class NidocaFormChangePassword extends LitElement {
     return html`
       ${NidocaTheme.getStyle(this.theme)}
       <nidoca-form id="form">
-        <nidoca-text class="paddingBottom" .type="${NidocaTypographyType.H1}">${this.label}</nidoca-text>
+        <nidoca-text class="paddingBottom" .type="${NidocaTextType.H1}">${this.label}</nidoca-text>
 
         <nidoca-form-text
           id="oldPassword"
           theme="${ifDefined(this.theme)}"
           class="paddingBottom"
-          textType="${NidocaTextType.PASSWORD}"
+          textType="${NidocaFormTextType.PASSWORD}"
           label="${this.oldPasswordLabel}"
           name="oldPassword"
           required
@@ -76,7 +76,7 @@ export class NidocaFormChangePassword extends LitElement {
           id="newPassword"
           theme="${ifDefined(this.theme)}"
           class="paddingBottom"
-          textType="${NidocaTextType.PASSWORD}"
+          textType="${NidocaFormTextType.PASSWORD}"
           label="${this.newPasswordLabel}"
           name="newPassword"
           required
@@ -86,7 +86,7 @@ export class NidocaFormChangePassword extends LitElement {
           id="repeatNewPassword"
           theme="${ifDefined(this.theme)}"
           class="paddingBottom"
-          textType="${NidocaTextType.PASSWORD}"
+          textType="${NidocaFormTextType.PASSWORD}"
           label="${this.repeatNewPasswordLabel}"
           name="repeatNewPassword"
           required
@@ -104,13 +104,13 @@ export class NidocaFormChangePassword extends LitElement {
 
       ${this.showErrorMessageSamePassword
         ? html`<nidoca-text
-            type="${NidocaTypographyType.CAPTION}"
+            type="${NidocaTextType.CAPTION}"
             text="${this.errorMessageSamePasswordLabel}"
           ></nidoca-text>`
         : html``}
       ${this.showErrorMessagePasswordDiff
         ? html`<nidoca-text
-            type="${NidocaTypographyType.CAPTION}"
+            type="${NidocaTextType.CAPTION}"
             text="${this.errorMessagePasswordDiffLabel}"
           ></nidoca-text>`
         : html``}

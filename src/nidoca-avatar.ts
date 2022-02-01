@@ -1,7 +1,7 @@
 import {html, LitElement, TemplateResult} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
-import {NidocaTypographyType} from ".";
+import {NidocaTextType} from ".";
 import {NidocaImgProperties} from "./nidoca-img copy";
 
 @customElement("nidoca-avatar")
@@ -26,9 +26,9 @@ export class NidocaAvatar extends LitElement {
           top="var(--space)"
           bottom="var(--space)"
         >
-          <nidoca-text type="${NidocaTypographyType.H3}">${this.primaryText}</nidoca-text>
+          <nidoca-text type="${NidocaTextType.H3}">${this.primaryText}</nidoca-text>
         </nidoca-layout-spacer>
-        <nidoca-text type="${NidocaTypographyType.H5}">${this.description}</nidoca-text>
+        <nidoca-text type="${NidocaTextType.H5}">${this.description}</nidoca-text>
   </div>
     </div>`;
   }

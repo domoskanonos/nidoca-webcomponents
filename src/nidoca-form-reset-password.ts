@@ -1,7 +1,7 @@
 import {css, html, TemplateResult, LitElement} from "lit";
 import {customElement, property, query} from "lit/decorators.js";
 import {ifDefined} from "lit/directives/if-defined.js";
-import {NidocaForm, NidocaTextType, NidocaTheme, NidocaTypographyType} from ".";
+import {NidocaForm, NidocaFormTextType, NidocaTheme, NidocaTextType} from ".";
 
 @customElement("nidoca-form-reset-password")
 export class NidocaFormResetPassword extends LitElement {
@@ -35,12 +35,12 @@ export class NidocaFormResetPassword extends LitElement {
     return html`
       ${NidocaTheme.getStyle(this.theme)}
       <nidoca-form id="form">
-        <nidoca-text class="paddingBottom" .type="${NidocaTypographyType.H1}">${this.label}</nidoca-text>
+        <nidoca-text class="paddingBottom" .type="${NidocaTextType.H1}">${this.label}</nidoca-text>
 
         <nidoca-form-text
           theme="${ifDefined(this.theme)}"
           class="paddingBottom"
-          textType="${NidocaTextType.EMAIL}"
+          textType="${NidocaFormTextType.EMAIL}"
           label="${this.emailLabel}"
           name="email"
           trailingIcon="email"

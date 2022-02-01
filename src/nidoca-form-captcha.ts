@@ -3,7 +3,7 @@ import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
 import {query} from "lit/decorators.js";
 import {NidocaTheme} from ".";
-import {NidocaFormText, NidocaTextType} from "./nidoca-form-text";
+import {NidocaFormText, NidocaFormTextType} from "./nidoca-form-text";
 
 @customElement("nidoca-form-captcha")
 export class NidocaFormCaptcha extends LitElement {
@@ -56,7 +56,7 @@ export class NidocaFormCaptcha extends LitElement {
         @nidoca-form-text-focusout="${() => this.validate()}"
         name="${this.name}"
         trailingIcon="create"
-        type="${NidocaTextType.NUMBER}"
+        type="${NidocaFormTextType.NUMBER}"
         value=""
       ></nidoca-form-text>
     `;

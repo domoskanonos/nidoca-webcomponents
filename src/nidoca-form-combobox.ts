@@ -5,7 +5,7 @@ import {query} from "lit/decorators.js";
 import {repeat} from "lit/directives/repeat.js";
 import {guard} from "lit/directives/guard.js";
 import {FormOutputData, NidocaFormAbstractInputElement} from "./nidoca-form-abstract-input-element";
-import {NidocaTheme, NidocaTypographyType} from ".";
+import {NidocaTheme, NidocaTextType} from ".";
 
 @customElement("nidoca-form-combobox")
 export class NidocaFormCombobox extends NidocaFormAbstractInputElement {
@@ -133,7 +133,7 @@ export class NidocaFormCombobox extends NidocaFormAbstractInputElement {
           <nidoca-text
             style="padding-left:var(--space-3); padding-right:var(--space-3);"
             class="label"
-            .type="${NidocaTypographyType.CAPTION}"
+            .type="${NidocaTextType.CAPTION}"
             text="${this.label}"
           ></nidoca-text>
           <select
@@ -161,19 +161,19 @@ export class NidocaFormCombobox extends NidocaFormAbstractInputElement {
       ${this.infoText || this.warningText || this.errorText
         ? html`<div style="display:flex;flex-direction:column;">
             ${this.infoText
-              ? html` <nidoca-text .type="${NidocaTypographyType.SUBTITLE1}" text="${this.infoText}"></nidoca-text>`
+              ? html` <nidoca-text .type="${NidocaTextType.SUBTITLE1}" text="${this.infoText}"></nidoca-text>`
               : html``}
             ${this.warningText
               ? html` <nidoca-text
                   style="color:var(--app-color-warning-background)"
-                  .type="${NidocaTypographyType.SUBTITLE1}"
+                  .type="${NidocaTextType.SUBTITLE1}"
                   text="${this.warningText}"
                 ></nidoca-text>`
               : html``}
             ${this.errorText
               ? html` <nidoca-text
                   style="color:var(--app-color-error-background)"
-                  .type="${NidocaTypographyType.SUBTITLE1}"
+                  .type="${NidocaTextType.SUBTITLE1}"
                   text="${this.errorText}"
                 ></nidoca-text>`
               : html``}

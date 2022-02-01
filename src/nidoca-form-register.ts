@@ -1,6 +1,6 @@
 import {css, html, LitElement, TemplateResult} from "lit";
 import {customElement, property, query} from "lit/decorators.js";
-import {NidocaForm, NidocaTextType, NidocaTheme, NidocaTextType} from "./index";
+import {NidocaForm, NidocaFormTextType, NidocaTheme, NidocaFormTextType} from "./index";
 
 @customElement("nidoca-form-register")
 export class NidocaFormRegister extends LitElement {
@@ -39,10 +39,10 @@ export class NidocaFormRegister extends LitElement {
         return html`
             ${NidocaTheme.getStyle(this.theme)}
             <nidoca-form id="form">
-                <nidoca-text class="paddingBottom" .type="${NidocaTextType.H1}">${this.label}</nidoca-text>
+                <nidoca-text class="paddingBottom" .type="${NidocaFormTextType.H1}">${this.label}</nidoca-text>
 
                 <nidoca-form-text theme="${this.theme}" class="paddingBottom"
-                                  textType="${NidocaTextType.EMAIL}"
+                                  textType="${NidocaFormTextType.EMAIL}"
                                   label="${this.emailLabel}"
                                   name="email"
                                   trailingIcon="account_circle"
@@ -52,7 +52,7 @@ export class NidocaFormRegister extends LitElement {
                 ></nidoca-form-text>
 
                 <nidoca-form-text theme="${this.theme}" class="paddingBottom"
-                                  textType="${NidocaTextType.PASSWORD}"
+                                  textType="${NidocaFormTextType.PASSWORD}"
                                   label="${this.passwordLabel}"
                                   name="password"
                                   trailingIcon="vpn_key"

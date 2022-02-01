@@ -2,7 +2,7 @@ import {css, html, LitElement, TemplateResult} from "lit";
 import {customElement, property} from "lit/decorators.js";
 import {guard} from "lit/directives/guard.js";
 import {repeat} from "lit/directives/repeat.js";
-import {NidocaDevice, NidocaFormText, NidocaTextType, NidocaTextType} from "../index";
+import {NidocaDevice, NidocaFormText, NidocaFormTextType, NidocaFormTextType} from "../index";
 
 @customElement("nidoca-page-settings")
 export class NidocaPageSettings extends LitElement {
@@ -57,7 +57,7 @@ export class NidocaPageSettings extends LitElement {
                             event.target ? (<NidocaFormText>event.target).getOutputData().value : ""
                           );
                         }}"
-                        type="${cssVar.indexOf("color") > -1 ? NidocaTextType.COLOR : NidocaTextType.TEXT}"
+                        type="${cssVar.indexOf("color") > -1 ? NidocaFormTextType.COLOR : NidocaFormTextType.TEXT}"
                         name="${cssVar}"
                         value="${getComputedStyle(document.documentElement).getPropertyValue(cssVar).trim()}"
                         label="${cssVar}"

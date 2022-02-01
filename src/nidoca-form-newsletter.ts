@@ -1,6 +1,6 @@
 import {css, html, TemplateResult, LitElement} from "lit";
 import {customElement, property, query} from "lit/decorators.js";
-import {NidocaForm, NidocaTextType, NidocaTheme, NidocaTextType} from ".";
+import {NidocaForm, NidocaFormTextType, NidocaTheme, NidocaFormTextType} from ".";
 
 @customElement("nidoca-form-newsletter")
 export class NidocaFormNewsletter extends LitElement {
@@ -36,10 +36,10 @@ export class NidocaFormNewsletter extends LitElement {
         return html`
             ${NidocaTheme.getStyle(this.theme)}
             <nidoca-form id="form">
-                <nidoca-text class="paddingBottom" .type="${NidocaTextType.H1}">${this.label}</nidoca-text>
+                <nidoca-text class="paddingBottom" .type="${NidocaFormTextType.H1}">${this.label}</nidoca-text>
 
                 <nidoca-form-text theme="${this.theme}" class="paddingBottom"
-                                  textType="${NidocaTextType.EMAIL}"
+                                  textType="${NidocaFormTextType.EMAIL}"
                                   label="${this.emailLabel}"
                                   name="email"
                                   trailingIcon="email"
