@@ -1,7 +1,7 @@
 import {css, html, TemplateResult, LitElement} from "lit";
 import {customElement, property, query} from "lit/decorators.js";
 import {ifDefined} from "lit/directives/if-defined.js";
-import {NidocaForm, NidocaFormTextType, NidocaTheme, NidocaTextType} from ".";
+import {NidocaForm, NidocaFormTextType, NidocaTheme, NidocaTextType, NidocaText, NidocaFormText} from ".";
 
 @customElement("nidoca-form-change-password")
 export class NidocaFormChangePassword extends LitElement {
@@ -38,13 +38,13 @@ export class NidocaFormChangePassword extends LitElement {
   formComponent: NidocaForm | undefined;
 
   @query("#oldPassword")
-  currentPasswordInputField: HTMLInputElement | undefined;
+  oldPasswordInputField: NidocaFormText | undefined;
 
   @query("#newPassword")
-  newPasswordInputField: HTMLInputElement | undefined;
+  newPasswordInputField: NidocaFormText | undefined;
 
   @query("#repeatNewPassword")
-  repeatNewPasswordInputField: HTMLInputElement | undefined;
+  repeatNewPasswordInputField: NidocaFormText | undefined;
 
   showErrorMessageSamePassword: boolean = false;
 
@@ -105,12 +105,14 @@ export class NidocaFormChangePassword extends LitElement {
       ${this.showErrorMessageSamePassword
         ? html`<nidoca-text
             type="${NidocaTextType.CAPTION}"
+            style="color:var(--app-color-error-background)"
             text="${this.errorMessageSamePasswordLabel}"
           ></nidoca-text>`
         : html``}
       ${this.showErrorMessagePasswordDiff
         ? html`<nidoca-text
             type="${NidocaTextType.CAPTION}"
+            style="color:var(--app-color-error-background)"
             text="${this.errorMessagePasswordDiffLabel}"
           ></nidoca-text>`
         : html``}
@@ -118,30 +120,29 @@ export class NidocaFormChangePassword extends LitElement {
   }
 
   private changePassword() {
+    if (!this.formComponent?.validate()) {
+      return;
+    }
+
     this.showErrorMessagePasswordDiff = false;
-    this.showErrorMessageSamePassword = false;
-    if (this.newPasswordInputField?.value != this.repeatNewPasswordInputField?.value) {
-      console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+    if (this.newPasswordInputField?.getOutputData().value != this.repeatNewPasswordInputField?.getOutputData().value) {
       this.showErrorMessagePasswordDiff = true;
     }
 
-    if (this.currentPasswordInputField?.value == this.newPasswordInputField?.value) {
-      console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+    this.showErrorMessageSamePassword = false;
+    if (this.oldPasswordInputField?.getOutputData().value == this.newPasswordInputField?.getOutputData().value) {
       this.showErrorMessageSamePassword = true;
     }
 
     if (!this.showErrorMessagePasswordDiff && !this.showErrorMessageSamePassword) {
-      if (this.formComponent && this.formComponent.validate()) {
-        this.dispatchEvent(
-          new CustomEvent("nidoca-form-change-password-submit", {
-            detail: this.formComponent.getOutputData(),
-            bubbles: true,
-            composed: true,
-          })
-        );
-      }
+      this.dispatchEvent(
+        new CustomEvent("nidoca-form-change-password-submit", {
+          detail: this.formComponent.getOutputData(),
+          bubbles: true,
+          composed: true,
+        })
+      );
     } else {
-      console.log("uihuih");
       this.requestUpdate();
     }
   }
