@@ -1,7 +1,7 @@
 import {css, html, TemplateResult, LitElement} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
-import {NidocaTypographyType} from ".";
+import {NidocaTextType} from ".";
 
 @customElement("nidoca-menu-area")
 export class NidocaMenuArea extends LitElement {
@@ -19,7 +19,7 @@ export class NidocaMenuArea extends LitElement {
       <div class="container">
         <nidoca-layout-spacer left="10px"></nidoca-layout-spacer>
         ${this.text
-          ? html`<nidoca-text .type="${NidocaTypographyType.H5}">${this.text}</nidoca-text>`
+          ? html`<nidoca-text .type="${NidocaTextType.H5}">${this.text}</nidoca-text>`
           : html``}
         <slot></slot>
       </div>

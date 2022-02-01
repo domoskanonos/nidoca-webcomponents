@@ -2,7 +2,7 @@ import {html, LitElement, TemplateResult} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
 import {NidocaRouteListener, NidocaRouter} from "@domoskanonos/nidoca-router";
-import {NidocaTypographyType} from "..";
+import {NidocaTextType} from "..";
 
 @customElement("nidoca-app")
 export class NidocaApp extends LitElement implements NidocaRouteListener {
@@ -82,7 +82,7 @@ export class NidocaApp extends LitElement implements NidocaRouteListener {
                     .prominent="${this.prominent}"
                     .navigationClosed="${this.navigationClosed}"
             >
-                <nidoca-text slot="topCenter" type="${NidocaTypographyType.BODY1}"></nidoca-text>
+                <nidoca-text slot="topCenter" type="${NidocaTextType.BODY1}"></nidoca-text>
                 <nidoca-icon
                         slot="topLeft"
                         style="padding-left:var(--space-2);"

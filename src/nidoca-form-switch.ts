@@ -4,7 +4,7 @@ import {property} from "lit/decorators.js";
 import {query} from "lit/decorators.js";
 import {NidocaTheme} from ".";
 import {FormOutputData, NidocaFormAbstractInputElement} from "./nidoca-form-abstract-input-element";
-import {NidocaTypographyType} from "./nidoca-text";
+import {NidocaTextType} from "./nidoca-text";
 
 @customElement("nidoca-form-switch")
 export class NidocaFormSwitch extends NidocaFormAbstractInputElement {
@@ -116,13 +116,13 @@ export class NidocaFormSwitch extends NidocaFormAbstractInputElement {
       </style>
 
       <nidoca-list-item>
-        <nidoca-text .type="${NidocaTypographyType.SUBTITLE1}" text="${this.label}">
+        <nidoca-text .type="${NidocaTextType.SUBTITLE1}" text="${this.label}">
           <slot></slot>
         </nidoca-text>
 
         ${this.infoText.length > 0
           ? html` <nidoca-text
-              .type="${NidocaTypographyType.SUBTITLE2}"
+              .type="${NidocaTextType.SUBTITLE2}"
               text="${this.infoText}"
             ></nidoca-text>`
           : html``}
@@ -147,14 +147,14 @@ export class NidocaFormSwitch extends NidocaFormAbstractInputElement {
       ${this.warningText
         ? html` <nidoca-text
             style="color:var(--app-color-warning-background)"
-            .type="${NidocaTypographyType.BODY1}"
+            .type="${NidocaTextType.BODY1}"
             text="${this.warningText}"
           ></nidoca-text>`
         : html``}
       ${this.errorText
         ? html` <nidoca-text
             style="color:var(--app-color-error-background)"
-            .type="${NidocaTypographyType.BODY1}"
+            .type="${NidocaTextType.BODY1}"
             text="${this.errorText}"
           ></nidoca-text>`
         : html``}

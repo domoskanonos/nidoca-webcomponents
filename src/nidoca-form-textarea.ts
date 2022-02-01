@@ -2,7 +2,7 @@ import {css, html, TemplateResult} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
 import {query} from "lit/decorators.js";
-import {NidocaTheme, NidocaTypographyType} from ".";
+import {NidocaTheme, NidocaTextType} from ".";
 import {FormOutputData, NidocaFormAbstractInputElement} from "./nidoca-form-abstract-input-element";
 
 @customElement("nidoca-form-textarea")
@@ -105,7 +105,7 @@ export class NidocaFormTextarea extends NidocaFormAbstractInputElement {
           <nidoca-text
             style="padding-left:var(--space-2); padding-right:var(--space-2);"
             class="label"
-            .type="${NidocaTypographyType.CAPTION}"
+            .type="${NidocaTextType.CAPTION}"
             text="${this.label}"
           ></nidoca-text>
 
@@ -125,19 +125,19 @@ ${this.value}</textarea
       ${this.infoText || this.warningText || this.errorText
         ? html`<div style="display:flex;flex-direction:column;">
             ${this.infoText
-              ? html` <nidoca-text .type="${NidocaTypographyType.SUBTITLE1}" text="${this.infoText}"></nidoca-text>`
+              ? html` <nidoca-text .type="${NidocaTextType.SUBTITLE1}" text="${this.infoText}"></nidoca-text>`
               : html``}
             ${this.warningText
               ? html` <nidoca-text
                   style="color:var(--app-color-warning-background)"
-                  .type="${NidocaTypographyType.SUBTITLE1}"
+                  .type="${NidocaTextType.SUBTITLE1}"
                   text="${this.warningText}"
                 ></nidoca-text>`
               : html``}
             ${this.errorText
               ? html` <nidoca-text
                   style="color:var(--app-color-error-background)"
-                  .type="${NidocaTypographyType.SUBTITLE1}"
+                  .type="${NidocaTextType.SUBTITLE1}"
                   text="${this.errorText}"
                 ></nidoca-text>`
               : html``}

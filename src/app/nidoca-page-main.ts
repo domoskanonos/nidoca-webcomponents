@@ -1,6 +1,6 @@
 import {css, html, LitElement, TemplateResult} from "lit";
 import {customElement} from "lit/decorators.js";
-import {Nidoca, NidocaDevice, NidocaTheme, NidocaTypographyType} from "..";
+import {Nidoca, NidocaDevice, NidocaTheme, NidocaTextType} from "..";
 
 @customElement("nidoca-page-main")
 export class NidocaPageMain extends LitElement {
@@ -17,7 +17,7 @@ export class NidocaPageMain extends LitElement {
               src="https://raw.githubusercontent.com/domoskanonos/devbox/main/assets/logo-ink.svg"
             >
             </nidoca-img>
-            <nidoca-text .type="${NidocaTypographyType.H1}">&nbsp;nidoca-webcomponents</nidoca-text>
+            <nidoca-text .type="${NidocaTextType.H1}">&nbsp;nidoca-webcomponents</nidoca-text>
           </div>
         </div>
       </nidoca-section>
@@ -74,7 +74,7 @@ export class NidocaPageMain extends LitElement {
             creative and technical paradigm for creating websites, so that they can react to the properties of the end
             device used, especially smartphones and tablet computers."
           >
-            <nidoca-text slot="title" .type="${NidocaTypographyType.H2}">Responsive Komponenten</nidoca-text>
+            <nidoca-text slot="title" .type="${NidocaTextType.H2}">Responsive Komponenten</nidoca-text>
           </nidoca-article>
         </nidoca-section>
       </nidoca-layout-container>
@@ -85,7 +85,7 @@ export class NidocaPageMain extends LitElement {
             summary="Alle Komponenten erfüllen den Webcomponent Standart"
             text="Webkomponenten sind eine Gruppe von Web-Technologien, die es ermöglichen, benutzerdefinierte, wiederverwendbare HTML Elemente zu erstellen, deren Funktionalität gekapselt ist und damit vollständig getrennt von anderem Code."
           >
-            <nidoca-text slot="title" .type="${NidocaTypographyType.H2}">Webcomponents</nidoca-text>
+            <nidoca-text slot="title" .type="${NidocaTextType.H2}">Webcomponents</nidoca-text>
           </nidoca-article>
         </nidoca-section>
       </nidoca-layout-container>
