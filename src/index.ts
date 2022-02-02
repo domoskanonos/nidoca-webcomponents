@@ -16,6 +16,7 @@ export * from "./nidoca-form-combobox";
 export * from "./nidoca-form-text";
 export * from "./nidoca-form-textarea";
 export * from "./nidoca-form-date";
+export * from "./nidoca-form-upload";
 export * from "./nidoca-form-switch";
 export * from "./nidoca-form-newsletter";
 export * from "./nidoca-form-reset-password";

@@ -18,6 +18,15 @@ import {
 export class Nidoca {
     initDefaultComponents() {
 
+        this._registeredElementsMap.set(
+            "nidoca-form-upload",
+            html`
+                <nidoca-form-upload
+                        theme="primary"
+                ></nidoca-form-upload>`
+        );
+
+
         //nidoca-list
         this.registeredElementsMap.set(
             "nidoca-list",
