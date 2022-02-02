@@ -680,7 +680,7 @@
         }
         .border:focus-within,
         ::slotted(.border:focus-within) {
-          border-color: var(--app-color-${this.theme}-border-selected);
+          border-color: var(--app-color-${this.theme}-selected);
         }
       </style>
       <div class="parentContainer border">
@@ -788,7 +788,7 @@
             }
             .border:focus-within,
             ::slotted(.border:focus-within) {
-              border-color: var(--app-color-${this.theme}-border-selected);
+              border-color: var(--app-color-${this.theme}-selected);
             }
           </style>
           <div class="parentContainer border">
@@ -892,7 +892,7 @@
         }
         .border:focus-within,
         ::slotted(.border:focus-within) {
-          border-color: var(--app-color-${this.theme}-border-selected);
+          border-color: var(--app-color-${this.theme}-selected);
         }
       </style>
       <div class="parentContainer border">
@@ -985,7 +985,7 @@ ${this.value}</textarea
         }
         .border:focus-within,
         ::slotted(.border:focus-within) {
-          border-color: var(--app-color-${this.theme}-border-selected);
+          border-color: var(--app-color-${this.theme}-selected);
         }
       </style>
       <div class="parentContainer border">
@@ -1243,7 +1243,7 @@ ${this.value}</textarea
     ::slotted(.container) {
       margin: auto;
     }
-  `,qe([pt({type:String}),Fe("design:type",String)],Xe.prototype,"width",void 0),qe([pt({type:String}),Fe("design:type",String)],Xe.prototype,"height",void 0),qe([pt({type:String}),Fe("design:type",String)],Xe.prototype,"minWidth",void 0),qe([pt({type:String}),Fe("design:type",String)],Xe.prototype,"minHeight",void 0),qe([pt({type:String}),Fe("design:type",String)],Xe.prototype,"contentWidth",void 0),qe([pt({type:String}),Fe("design:type",String)],Xe.prototype,"contentHeight",void 0),qe([pt({type:Ue,converter:Array}),Fe("design:type",Array)],Xe.prototype,"devices",void 0),qe([pt({type:lt,converter:String}),Fe("design:type",Object)],Xe.prototype,"theme",void 0),Xe=qe([ct("nidoca-layout-container")],Xe);var Ke=function(t,e,o,i){var n,r=arguments.length,a=r<3?e:null===i?i=Object.getOwnPropertyDescriptor(e,o):i;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)a=Reflect.decorate(t,e,o,i);else for(var s=t.length-1;s>=0;s--)(n=t[s])&&(a=(r<3?n(a):r>3?n(e,o,a):n(e,o))||a);return r>3&&a&&Object.defineProperty(e,o,a),a},Ve=function(t,e){if("object"==typeof Reflect&&"function"==typeof Reflect.metadata)return Reflect.metadata(t,e)};let Je=class extends tt{constructor(){super(),this.icon="",this.clickable=!0,this.deactivated=!1,this.primaryText="",null==this.getAttribute("style")&&this.setAttribute("style","font-size: var(--icon-size); padding:var(--space-4)")}render(){return P`
+  `,qe([pt({type:String}),Fe("design:type",String)],Xe.prototype,"width",void 0),qe([pt({type:String}),Fe("design:type",String)],Xe.prototype,"height",void 0),qe([pt({type:String}),Fe("design:type",String)],Xe.prototype,"minWidth",void 0),qe([pt({type:String}),Fe("design:type",String)],Xe.prototype,"minHeight",void 0),qe([pt({type:String}),Fe("design:type",String)],Xe.prototype,"contentWidth",void 0),qe([pt({type:String}),Fe("design:type",String)],Xe.prototype,"contentHeight",void 0),qe([pt({type:Ue,converter:Array}),Fe("design:type",Array)],Xe.prototype,"devices",void 0),qe([pt({type:lt,converter:String}),Fe("design:type",Object)],Xe.prototype,"theme",void 0),Xe=qe([ct("nidoca-container")],Xe);var Ke=function(t,e,o,i){var n,r=arguments.length,a=r<3?e:null===i?i=Object.getOwnPropertyDescriptor(e,o):i;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)a=Reflect.decorate(t,e,o,i);else for(var s=t.length-1;s>=0;s--)(n=t[s])&&(a=(r<3?n(a):r>3?n(e,o,a):n(e,o))||a);return r>3&&a&&Object.defineProperty(e,o,a),a},Ve=function(t,e){if("object"==typeof Reflect&&"function"==typeof Reflect.metadata)return Reflect.metadata(t,e)};let Je=class extends tt{constructor(){super(),this.icon="",this.clickable=!0,this.deactivated=!1,this.primaryText="",null==this.getAttribute("style")&&this.setAttribute("style","font-size: var(--icon-size); padding:var(--space-4)")}render(){return P`
       <i
         class="material-icons ${this.deactivated?"deactivated":""} ${this.clickable?"clickable":""}"
         title="${this.primaryText}"

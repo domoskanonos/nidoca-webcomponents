@@ -30,7 +30,7 @@ export * from "./nidoca-menu";
 
 export * from "./nidoca-layout-meta";
 export * from "./nidoca-layout-floating";
-export * from "./nidoca-layout-container";
+export * from "./nidoca-container";
 
 export * from "./nidoca-icon";
 export * from "./nidoca-icon-extended";
@@ -41,6 +41,7 @@ export * from "./nidoca-form-captcha";
 export * from "./nidoca-link";
 export * from "./nidoca-list";
 export * from "./nidoca-list-item";
+export * from "./nidoca-list-section";
 export * from "./nidoca-top-app-bar";
 export * from "./nidoca-list-section";
 export * from "./nidoca-table";
@@ -58,6 +59,7 @@ export * from "./nidoca-gallery";
 export * from "./nidoca-print";
 
 export * from "./nidoca-section";
+export * from "./nidoca-box";
 
 export * from "./nidoca-article";
 

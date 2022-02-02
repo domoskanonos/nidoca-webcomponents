@@ -7,7 +7,6 @@ export class NidocaFormLogin extends LitElement {
     static styles = css`
   
   :host {
-  padding:var(--space-6);
   display:block;
   }
   
@@ -37,37 +36,37 @@ export class NidocaFormLogin extends LitElement {
 
     render(): TemplateResult {
         return html`
-            ${NidocaTheme.getStyle(this.theme)}
-            <nidoca-form id="authenitcate-form">
-                <nidoca-text class="paddingBottom" .type="${NidocaTextType.H1}">Anmeldung</nidoca-text>
+            <nidoca-box theme="${this.theme}">
+                <nidoca-form id="authenitcate-form">
+                    <nidoca-text class="paddingBottom" .type="${NidocaTextType.H1}">Anmeldung</nidoca-text>
 
-                <nidoca-form-text theme="${this.theme}" class="paddingBottom"
-                                  textType="${NidocaFormTextType.EMAIL}"
-                                  label="${this.usernameLabel}"
-                                  name="username"
-                                  required
-                                  trailingIcon="account_circle"
-                ></nidoca-form-text>
+                    <nidoca-form-text theme="${this.theme}" class="paddingBottom"
+                                      textType="${NidocaFormTextType.EMAIL}"
+                                      label="${this.usernameLabel}"
+                                      name="username"
+                                      required
+                                      trailingIcon="account_circle"
+                    ></nidoca-form-text>
 
-                <nidoca-form-text theme="${this.theme}" class="paddingBottom"
-                                  textType="${NidocaFormTextType.PASSWORD}"
-                                  label="${this.passwordLabel}"
-                                  label="password"
-                                  name="password"
-                                  required
-                                  trailingIcon="vpn_key"
-                ></nidoca-form-text>
+                    <nidoca-form-text theme="${this.theme}" class="paddingBottom"
+                                      textType="${NidocaFormTextType.PASSWORD}"
+                                      label="${this.passwordLabel}"
+                                      label="password"
+                                      name="password"
+                                      required
+                                      trailingIcon="vpn_key"
+                    ></nidoca-form-text>
 
-                <nidoca-button theme="${NidocaTheme.getOposite(this.theme)}" class="paddingBottom"
-                               @nidoca-event-button-clicked="${() => this.login()}">${this.buttonLabel}
-                </nidoca-button>
-
-
-                <slot></slot>
+                    <nidoca-button theme="${NidocaTheme.getOposite(this.theme)}" class="paddingBottom"
+                                   @nidoca-event-button-clicked="${() => this.login()}">${this.buttonLabel}
+                    </nidoca-button>
 
 
-            </nidoca-form>
+                    <slot></slot>
 
+
+                </nidoca-form>
+            </nidoca-box>
         `;
     }
 

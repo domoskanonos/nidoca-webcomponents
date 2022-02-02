@@ -114,7 +114,7 @@ export class NidocaFormCombobox extends NidocaFormAbstractInputElement {
         }
         .border:focus-within,
         ::slotted(.border:focus-within) {
-          border-color: var(--app-color-${this.theme}-border-selected);
+          border-color: var(--app-color-${this.theme}-selected);
         }
 
         option {

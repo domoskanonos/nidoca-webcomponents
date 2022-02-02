@@ -1,13 +1,12 @@
 import {css, html, LitElement, TemplateResult} from "lit";
 import {customElement, property, query} from "lit/decorators.js";
-import {NidocaForm, NidocaFormTextType, NidocaTheme, NidocaFormTextType} from "./index";
+import {NidocaForm, NidocaTheme, NidocaTextType, NidocaFormTextType} from "./index";
 
 @customElement("nidoca-form-register")
 export class NidocaFormRegister extends LitElement {
     static styles = css`
   
   :host {
-  padding:var(--space-6);
   display:block;
   }
   
@@ -37,36 +36,37 @@ export class NidocaFormRegister extends LitElement {
 
     render(): TemplateResult {
         return html`
-            ${NidocaTheme.getStyle(this.theme)}
-            <nidoca-form id="form">
-                <nidoca-text class="paddingBottom" .type="${NidocaFormTextType.H1}">${this.label}</nidoca-text>
+            <nidoca-box theme="${this.theme}">
+                <nidoca-form id="form">
+                    <nidoca-text class="paddingBottom" .type="${NidocaTextType.H1}">${this.label}</nidoca-text>
 
-                <nidoca-form-text theme="${this.theme}" class="paddingBottom"
-                                  textType="${NidocaFormTextType.EMAIL}"
-                                  label="${this.emailLabel}"
-                                  name="email"
-                                  trailingIcon="account_circle"
-                                  required
-                                  minLength="4"
-                                  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$"
-                ></nidoca-form-text>
+                    <nidoca-form-text theme="${this.theme}" class="paddingBottom"
+                                      textType="${NidocaFormTextType.EMAIL}"
+                                      label="${this.emailLabel}"
+                                      name="email"
+                                      trailingIcon="account_circle"
+                                      required
+                                      minLength="4"
+                                      pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$"
+                    ></nidoca-form-text>
 
-                <nidoca-form-text theme="${this.theme}" class="paddingBottom"
-                                  textType="${NidocaFormTextType.PASSWORD}"
-                                  label="${this.passwordLabel}"
-                                  name="password"
-                                  trailingIcon="vpn_key"
-                                  required
-                                  minLength="8"
-                ></nidoca-form-text>
+                    <nidoca-form-text theme="${this.theme}" class="paddingBottom"
+                                      textType="${NidocaFormTextType.PASSWORD}"
+                                      label="${this.passwordLabel}"
+                                      name="password"
+                                      trailingIcon="vpn_key"
+                                      required
+                                      minLength="8"
+                    ></nidoca-form-text>
 
-                <nidoca-button theme="${NidocaTheme.getOposite(this.theme)}" class="paddingBottom"
-                               @nidoca-event-button-clicked="${() => this.register()}">${this.buttonLabel}
-                </nidoca-button>
+                    <nidoca-button theme="${NidocaTheme.getOposite(this.theme)}" class="paddingBottom"
+                                   @nidoca-event-button-clicked="${() => this.register()}">${this.buttonLabel}
+                    </nidoca-button>
 
-                <slot></slot>
-                
-            </nidoca-form>
+                    <slot></slot>
+
+                </nidoca-form>
+            </nidoca-box>
 
         `;
     }

@@ -680,7 +680,7 @@
         }
         .border:focus-within,
         ::slotted(.border:focus-within) {
-          border-color: var(--app-color-${this.theme}-border-selected);
+          border-color: var(--app-color-${this.theme}-selected);
         }
       </style>
       <div class="parentContainer border">
@@ -788,7 +788,7 @@
             }
             .border:focus-within,
             ::slotted(.border:focus-within) {
-              border-color: var(--app-color-${this.theme}-border-selected);
+              border-color: var(--app-color-${this.theme}-selected);
             }
           </style>
           <div class="parentContainer border">
@@ -892,7 +892,7 @@
         }
         .border:focus-within,
         ::slotted(.border:focus-within) {
-          border-color: var(--app-color-${this.theme}-border-selected);
+          border-color: var(--app-color-${this.theme}-selected);
         }
       </style>
       <div class="parentContainer border">
@@ -985,7 +985,7 @@ ${this.value}</textarea
         }
         .border:focus-within,
         ::slotted(.border:focus-within) {
-          border-color: var(--app-color-${this.theme}-border-selected);
+          border-color: var(--app-color-${this.theme}-selected);
         }
       </style>
       <div class="parentContainer border">
@@ -1243,7 +1243,7 @@ ${this.value}</textarea
     ::slotted(.container) {
       margin: auto;
     }
-  `,Wt([re({type:String}),zt("design:type",String)],Ut.prototype,"width",void 0),Wt([re({type:String}),zt("design:type",String)],Ut.prototype,"height",void 0),Wt([re({type:String}),zt("design:type",String)],Ut.prototype,"minWidth",void 0),Wt([re({type:String}),zt("design:type",String)],Ut.prototype,"minHeight",void 0),Wt([re({type:String}),zt("design:type",String)],Ut.prototype,"contentWidth",void 0),Wt([re({type:String}),zt("design:type",String)],Ut.prototype,"contentHeight",void 0),Wt([re({type:Dt,converter:Array}),zt("design:type",Array)],Ut.prototype,"devices",void 0),Wt([re({type:oe,converter:String}),zt("design:type",Object)],Ut.prototype,"theme",void 0),Ut=Wt([ne("nidoca-layout-container")],Ut);var Ht=function(e,t,o,n){var i,r=arguments.length,a=r<3?t:null===n?n=Object.getOwnPropertyDescriptor(t,o):n;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)a=Reflect.decorate(e,t,o,n);else for(var s=e.length-1;s>=0;s--)(i=e[s])&&(a=(r<3?i(a):r>3?i(t,o,a):i(t,o))||a);return r>3&&a&&Object.defineProperty(t,o,a),a},Gt=function(e,t){if("object"==typeof Reflect&&"function"==typeof Reflect.metadata)return Reflect.metadata(e,t)};let Yt=class extends Q{constructor(){super(),this.icon="",this.clickable=!0,this.deactivated=!1,this.primaryText="",null==this.getAttribute("style")&&this.setAttribute("style","font-size: var(--icon-size); padding:var(--space-4)")}render(){return P`
+  `,Wt([re({type:String}),zt("design:type",String)],Ut.prototype,"width",void 0),Wt([re({type:String}),zt("design:type",String)],Ut.prototype,"height",void 0),Wt([re({type:String}),zt("design:type",String)],Ut.prototype,"minWidth",void 0),Wt([re({type:String}),zt("design:type",String)],Ut.prototype,"minHeight",void 0),Wt([re({type:String}),zt("design:type",String)],Ut.prototype,"contentWidth",void 0),Wt([re({type:String}),zt("design:type",String)],Ut.prototype,"contentHeight",void 0),Wt([re({type:Dt,converter:Array}),zt("design:type",Array)],Ut.prototype,"devices",void 0),Wt([re({type:oe,converter:String}),zt("design:type",Object)],Ut.prototype,"theme",void 0),Ut=Wt([ne("nidoca-container")],Ut);var Ht=function(e,t,o,n){var i,r=arguments.length,a=r<3?t:null===n?n=Object.getOwnPropertyDescriptor(t,o):n;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)a=Reflect.decorate(e,t,o,n);else for(var s=e.length-1;s>=0;s--)(i=e[s])&&(a=(r<3?i(a):r>3?i(t,o,a):i(t,o))||a);return r>3&&a&&Object.defineProperty(t,o,a),a},Gt=function(e,t){if("object"==typeof Reflect&&"function"==typeof Reflect.metadata)return Reflect.metadata(e,t)};let Yt=class extends Q{constructor(){super(),this.icon="",this.clickable=!0,this.deactivated=!1,this.primaryText="",null==this.getAttribute("style")&&this.setAttribute("style","font-size: var(--icon-size); padding:var(--space-4)")}render(){return P`
       <i
         class="material-icons ${this.deactivated?"deactivated":""} ${this.clickable?"clickable":""}"
         title="${this.primaryText}"
@@ -2692,7 +2692,7 @@ ${this.value}</textarea
         </nidoca-layout-spacer>
       </nidoca-section>
 
-      <nidoca-layout-container .theme="${oe.PRIMARY}">
+      <nidoca-container .theme="${oe.PRIMARY}">
         <nidoca-section .devices="${[Dt.DESKTOP]}">
           <nidoca-icon-with-description
             title="Komponentenbibliothek"
@@ -2713,7 +2713,7 @@ ${this.value}</textarea
             finanziell unterstützen, wenn es dir gefällt.
           </nidoca-icon-with-description>
         </nidoca-section>
-      </nidoca-layout-container>
+      </nidoca-container>
 
       <nidoca-section>
         <nidoca-img src="http://nidoca.eu/img/1638344581876.jpg"></nidoca-img>
@@ -2739,7 +2739,7 @@ ${this.value}</textarea
         ></nidoca-article>
       </nidoca-section>
 
-      <nidoca-layout-container .theme="${oe.SECONDARY}">
+      <nidoca-container .theme="${oe.SECONDARY}">
         <nidoca-section style="width:50%; padding-top:var(--space-8);padding-bottom:var(--space-8);">
           <nidoca-article
             summary="Die Komponenten sind für Desktop, Tablet und Mobile optimiert."
@@ -2752,9 +2752,9 @@ ${this.value}</textarea
             >
           </nidoca-article>
         </nidoca-section>
-      </nidoca-layout-container>
+      </nidoca-container>
 
-      <nidoca-layout-container .theme="${oe.BACKGROUND}">
+      <nidoca-container .theme="${oe.BACKGROUND}">
         <nidoca-section style="width:50%; padding-top:var(--space-8);padding-bottom:var(--space-8);">
           <nidoca-article
             summary="Alle Komponenten erfüllen den Webcomponent Standart"
@@ -2763,13 +2763,13 @@ ${this.value}</textarea
             <nidoca-text slot="title" .type="${ge.H2}">Webcomponents</nidoca-text>
           </nidoca-article>
         </nidoca-section>
-      </nidoca-layout-container>
+      </nidoca-container>
 
-      <nidoca-layout-container .theme="${oe.PRIMARY}">
+      <nidoca-container .theme="${oe.PRIMARY}">
         <nidoca-section style="width:50%; padding:var(--space-8);">
           <nidoca-form-contact></nidoca-form-contact>
         </nidoca-section>
-      </nidoca-layout-container>
+      </nidoca-container>
 
       <nidoca-section>
         <nidoca-img src="http://nidoca.eu/img/IMG_0524.jpg"></nidoca-img>
@@ -2956,7 +2956,7 @@ ${this.value}</textarea
         ></nidoca-list-item>
       </nidoca-list>
     `}};Dn.styles=i``,Dn=function(e,t,o,n){var i,r=arguments.length,a=r<3?t:null===n?n=Object.getOwnPropertyDescriptor(t,o):n;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)a=Reflect.decorate(e,t,o,n);else for(var s=e.length-1;s>=0;s--)(i=e[s])&&(a=(r<3?i(a):r>3?i(t,o,a):i(t,o))||a);return r>3&&a&&Object.defineProperty(t,o,a),a}([ne("nidoca-elevation-settings")],Dn);var Bn=function(e,t,o,n){var i,r=arguments.length,a=r<3?t:null===n?n=Object.getOwnPropertyDescriptor(t,o):n;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)a=Reflect.decorate(e,t,o,n);else for(var s=e.length-1;s>=0;s--)(i=e[s])&&(a=(r<3?i(a):r>3?i(t,o,a):i(t,o))||a);return r>3&&a&&Object.defineProperty(t,o,a),a},Ln=function(e,t){if("object"==typeof Reflect&&"function"==typeof Reflect.metadata)return Reflect.metadata(e,t)};let Mn=class extends Q{constructor(){super(...arguments),this.username=localStorage.getItem("nidoca-local-storage-authentication-username-value"),this.hrefResetPassword="#reset_password",this.hrefRegister="#register",this.errorMessage=""}render(){return P`
-      <nidoca-layout-container minWidth="350px" maxWidth="80%" .theme="${oe.BACKGROUND}">
+      <nidoca-container minWidth="350px" maxWidth="80%" .theme="${oe.BACKGROUND}">
         <nidoca-layout-spacer
           left="var(--space-6)"
           right="var(--space-6)"
@@ -2991,7 +2991,7 @@ ${this.value}</textarea
             ></nidoca-text>
           </nidoca-form>
         </nidoca-layout-spacer>
-      </nidoca-layout-container>
+      </nidoca-container>
     `}closePopup(){this.dispatchEvent(new CustomEvent("nidoca-form-login-closePopup",{detail:this,bubbles:!0,composed:!0}))}};Mn.styles=i``,Bn([re(),Ln("design:type",Object)],Mn.prototype,"username",void 0),Bn([re(),Ln("design:type",String)],Mn.prototype,"hrefResetPassword",void 0),Bn([re(),Ln("design:type",String)],Mn.prototype,"hrefRegister",void 0),Bn([ae("#authenitcate-form"),Ln("design:type",Object)],Mn.prototype,"formComponent",void 0),Bn([re(),Ln("design:type",String)],Mn.prototype,"errorMessage",void 0),Mn=Bn([ne("nidoca-form-login")],Mn);var Wn=function(e,t,o,n){var i,r=arguments.length,a=r<3?t:null===n?n=Object.getOwnPropertyDescriptor(t,o):n;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)a=Reflect.decorate(e,t,o,n);else for(var s=e.length-1;s>=0;s--)(i=e[s])&&(a=(r<3?i(a):r>3?i(t,o,a):i(t,o))||a);return r>3&&a&&Object.defineProperty(t,o,a),a},zn=function(e,t){if("object"==typeof Reflect&&"function"==typeof Reflect.metadata)return Reflect.metadata(e,t)};let Un=class extends Q{constructor(){super(),this.showPopup=!1,this.popupContent=P``,this.navigationClosed=!0,this.prominent=!1,this.currentPage=P`<nidoca-page-main></nidoca-page-main>`,this.elevationShow=!1,_n.getUniqueInstance().subscribe(this),this.routeChanged(_n.getUniqueInstance().getCurrentPage())}routeChanged(e){switch(console.log("enter new page, url: %s",e),e){case"components":this.currentPage=P`<nidoca-page-components></nidoca-page-components>`;break;case"settings":this.currentPage=P`<nidoca-page-settings></nidoca-page-settings>`;break;case"imprint":this.currentPage=P`<nidoca-page-imprint></nidoca-page-imprint>`;break;case"terms-of-use":this.currentPage=P`<nidoca-page-terms-of-use></nidoca-page-terms-of-use>`;break;case"privacy":this.currentPage=P`<nidoca-page-privacy></nidoca-page-privacy>`;break;default:this.currentPage=P`<nidoca-page-main></nidoca-page-main>`}}render(){return P`
       <nidoca-template
         .prominent="${this.prominent}"

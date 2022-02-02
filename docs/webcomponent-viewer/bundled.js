@@ -680,7 +680,7 @@
             }
             .border:focus-within,
             ::slotted(.border:focus-within) {
-              border-color: var(--app-color-${this.theme}-border-selected);
+              border-color: var(--app-color-${this.theme}-selected);
             }
           </style>
           <div class="parentContainer border">
@@ -784,7 +784,7 @@
         }
         .border:focus-within,
         ::slotted(.border:focus-within) {
-          border-color: var(--app-color-${this.theme}-border-selected);
+          border-color: var(--app-color-${this.theme}-selected);
         }
       </style>
       <div class="parentContainer border">
@@ -877,7 +877,7 @@ ${this.value}</textarea
         }
         .border:focus-within,
         ::slotted(.border:focus-within) {
-          border-color: var(--app-color-${this.theme}-border-selected);
+          border-color: var(--app-color-${this.theme}-selected);
         }
       </style>
       <div class="parentContainer border">
@@ -1135,7 +1135,7 @@ ${this.value}</textarea
     ::slotted(.container) {
       margin: auto;
     }
-  `,We([st({type:String}),He("design:type",String)],Ue.prototype,"width",void 0),We([st({type:String}),He("design:type",String)],Ue.prototype,"height",void 0),We([st({type:String}),He("design:type",String)],Ue.prototype,"minWidth",void 0),We([st({type:String}),He("design:type",String)],Ue.prototype,"minHeight",void 0),We([st({type:String}),He("design:type",String)],Ue.prototype,"contentWidth",void 0),We([st({type:String}),He("design:type",String)],Ue.prototype,"contentHeight",void 0),We([st({type:Be,converter:Array}),He("design:type",Array)],Ue.prototype,"devices",void 0),We([st({type:St,converter:String}),He("design:type",Object)],Ue.prototype,"theme",void 0),Ue=We([et("nidoca-layout-container")],Ue);var ze=function(t,e,o,i){var n,r=arguments.length,a=r<3?e:null===i?i=Object.getOwnPropertyDescriptor(e,o):i;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)a=Reflect.decorate(t,e,o,i);else for(var s=t.length-1;s>=0;s--)(n=t[s])&&(a=(r<3?n(a):r>3?n(e,o,a):n(e,o))||a);return r>3&&a&&Object.defineProperty(e,o,a),a},Ge=function(t,e){if("object"==typeof Reflect&&"function"==typeof Reflect.metadata)return Reflect.metadata(t,e)};let Ye=class extends Q{constructor(){super(),this.icon="",this.clickable=!0,this.deactivated=!1,this.primaryText="",null==this.getAttribute("style")&&this.setAttribute("style","font-size: var(--icon-size); padding:var(--space-4)")}render(){return _`
+  `,We([st({type:String}),He("design:type",String)],Ue.prototype,"width",void 0),We([st({type:String}),He("design:type",String)],Ue.prototype,"height",void 0),We([st({type:String}),He("design:type",String)],Ue.prototype,"minWidth",void 0),We([st({type:String}),He("design:type",String)],Ue.prototype,"minHeight",void 0),We([st({type:String}),He("design:type",String)],Ue.prototype,"contentWidth",void 0),We([st({type:String}),He("design:type",String)],Ue.prototype,"contentHeight",void 0),We([st({type:Be,converter:Array}),He("design:type",Array)],Ue.prototype,"devices",void 0),We([st({type:St,converter:String}),He("design:type",Object)],Ue.prototype,"theme",void 0),Ue=We([et("nidoca-container")],Ue);var ze=function(t,e,o,i){var n,r=arguments.length,a=r<3?e:null===i?i=Object.getOwnPropertyDescriptor(e,o):i;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)a=Reflect.decorate(t,e,o,i);else for(var s=t.length-1;s>=0;s--)(n=t[s])&&(a=(r<3?n(a):r>3?n(e,o,a):n(e,o))||a);return r>3&&a&&Object.defineProperty(e,o,a),a},Ge=function(t,e){if("object"==typeof Reflect&&"function"==typeof Reflect.metadata)return Reflect.metadata(t,e)};let Ye=class extends Q{constructor(){super(),this.icon="",this.clickable=!0,this.deactivated=!1,this.primaryText="",null==this.getAttribute("style")&&this.setAttribute("style","font-size: var(--icon-size); padding:var(--space-4)")}render(){return _`
       <i
         class="material-icons ${this.deactivated?"deactivated":""} ${this.clickable?"clickable":""}"
         title="${this.primaryText}"
@@ -2458,7 +2458,7 @@ ${this.value}</textarea
         }
         .border:focus-within,
         ::slotted(.border:focus-within) {
-          border-color: var(--app-color-${this.theme}-border-selected);
+          border-color: var(--app-color-${this.theme}-selected);
         }
       </style>
       <div class="parentContainer border">

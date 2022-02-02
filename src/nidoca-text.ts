@@ -23,7 +23,7 @@ export class NidocaText extends LitElement {
   static styles = css`
     :host,
     slot {
-      display: inline-block;
+      display: block;
       color: inherit;
     }
 

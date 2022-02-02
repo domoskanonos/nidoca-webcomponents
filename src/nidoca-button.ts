@@ -76,7 +76,7 @@ export class NidocaButton extends LitElement {
 
         .OUTLINED:focus-within,
         ::slotted(.OUTLINED:focus-within) {
-          border-color: var(--app-color-${this.theme}-border-selected);
+          border-color: var(--app-color-${this.theme}-selected);
         }
       </style>
       <nidoca-ripple class="fullWidth">
