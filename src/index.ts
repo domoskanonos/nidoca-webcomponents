@@ -32,6 +32,7 @@ export * from "./nidoca-menu";
 export * from "./nidoca-layout-meta";
 export * from "./nidoca-layout-floating";
 export * from "./nidoca-container";
+export * from "./nidoca-split-screen";
 
 export * from "./nidoca-icon";
 export * from "./nidoca-icon-extended";
