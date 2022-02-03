@@ -104,6 +104,7 @@ export class NidocaListItem extends LitElement {
             } else {
                 eventName = "nidoca-event-list-item-click";
             }
+            console.log(eventName);
             this.dispatchEvent(
                 new CustomEvent(eventName, {
                     detail: this,
