@@ -20,10 +20,15 @@ export class NidocaList extends LitElement {
     theme: string | undefined;
 
     @property({type: Boolean})
-    selectionMode: boolean = false;
+    multiSelect: boolean = false;
 
     @query("#slotElement")
     private slotElement: HTMLSlotElement | undefined;
+
+    constructor() {
+        super();
+        this.theme = NidocaTheme.prototype.getParentTheme(this) || NidocaTheme.BACKGROUND;
+    }
 
     updated(changedProperties: PropertyValues): void {
         super.updated(changedProperties);
@@ -31,7 +36,7 @@ export class NidocaList extends LitElement {
             console.debug(`${this.tagName} : property ${String(propName)} changed. oldValue: ${oldValue}`);
             if (propName == "selectionMode") {
                 this.getItems().forEach((listItemComponent) => {
-                    listItemComponent.selectionMode = this.selectionMode;
+                    listItemComponent.multiSelect = this.multiSelect;
                 });
             }
         });
@@ -41,17 +46,23 @@ export class NidocaList extends LitElement {
         return html`
             <style>
 
+                slot {
+                    border-color: var(--app-color-${this.theme}-border);
+                    border-top-style: solid;
+                    border-width: thin;
+                }
+
                 ::slotted(nidoca-list-section) {
                     color: var(--app-color-${this.theme});
                     background-color: var(--app-color-${this.theme}-background-light);
                 }
-                
+
                 ::slotted(nidoca-list-item) {
                     color: var(--app-color-${this.theme});
                     background-color: var(--app-color-${this.theme}-background);
                 }
 
-                ::slotted(nidoca-list-item) {
+                ::slotted(nidoca-list-item), ::slotted(nidoca-list-section) {
                     border-color: var(--app-color-${this.theme}-border);
                     border-bottom-style: solid;
                     border-width: thin;
@@ -60,11 +71,17 @@ export class NidocaList extends LitElement {
                 ::slotted(nidoca-list-item:hover) {
                     background-color: var(--app-color-background-selected);
                 }
-
             </style>
             <slot
+                    @nidoca-event-list-item-click="${(event: CustomEvent) => {
+                        if (!this.multiSelect) {
+                            this.unselectAll();
+                        }
+                        event.detail.selected = true;
+                    }}"
+
                     @nidoca-event-list-item-unselect="${() => {
-                        this.selectionMode = this.getSelectedItems().length === 0;
+                        this.multiSelect = this.getSelectedItems().length === 0;
                     }}"
                     class="slotList"
                     id="slotElement"
@@ -126,6 +143,7 @@ export class NidocaList extends LitElement {
     }
 
     unselectAll(): void {
+        console.log("sdojsdoijsoidjsdioj " + this.getItems().length);
         this.getItems().forEach((item) => {
             item.selected = false;
         });

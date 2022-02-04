@@ -4,7 +4,7 @@ import {NidocaTheme} from ".";
 
 @customElement("nidoca-split-screen")
 export class NidocaSplitScreen extends LitElement {
-  static styles = css`
+    static styles = css`
     :host {
       display: flex;
       flex-direction: row;
@@ -20,12 +20,10 @@ export class NidocaSplitScreen extends LitElement {
 
     .sidebox {
       display: block;
-      color: blue;
-      background-color: green;
       z-index: 1;
       position: fixed;
       right: 0;
-      width: 300px;
+      width: 25vw;
       min-height: 100%;
       transition: all 0.35s linear;
       overflow-y: scroll;
@@ -33,15 +31,33 @@ export class NidocaSplitScreen extends LitElement {
     }
   `;
 
-  @property({type: NidocaTheme, converter: String})
-  theme: string | undefined;
+    @property({type: NidocaTheme, converter: String})
+    theme: string;
 
-  @property({type: Boolean, converter: String})
-  hideSidebox: boolean = true;
+    @property({type: Boolean, converter: String})
+    hideSidebox: boolean = true;
 
-  render(): TemplateResult {
-    return html` ${NidocaTheme.getStyle(this.theme)}
-      <slot class="listbox" name="left"></slot>
-      ${this.hideSidebox ? html`` : html`<slot class="sidebox" name="sidebox"></slot>`}`;
-  }
+    constructor() {
+        super();
+        this.theme = NidocaTheme.prototype.getParentTheme(this) || NidocaTheme.BACKGROUND;
+    }
+
+    render(): TemplateResult {
+        return html`
+            <style>
+                .listbox, .sidebox {
+                    color: var(--app-color-${this.theme});
+                    background-color: var(--app-color-${this.theme}-background);
+                }
+
+                .sidebox {
+                    border-color: var(--app-color-${this.theme}-border);
+                    border-left-style: solid;
+                    border-width: thin;
+                }
+            </style>
+            <slot class="listbox" name="left"></slot>
+            ${this.hideSidebox ? html`` : html`
+                <slot class="sidebox" name="sidebox"></slot>`}`;
+    }
 }

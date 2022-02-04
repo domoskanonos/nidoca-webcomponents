@@ -18,7 +18,7 @@ export class NidocaBox extends LitElement {
   `;
 
     @property({type: NidocaTheme, converter: String})
-    theme: string | undefined;
+    theme: string | undefined = NidocaTheme.BACKGROUND;
 
     render(): TemplateResult {
         return html`

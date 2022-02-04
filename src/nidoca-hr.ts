@@ -1,23 +1,22 @@
 import {css, html, TemplateResult, LitElement} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
-import {NidocaTextType} from "./nidoca-text";
 import {NidocaTheme} from "./nidoca-meta";
 
-@customElement("nidoca-list-section")
-export class NidocaListSection extends LitElement {
+@customElement("nidoca-hr")
+export class NidocaHr extends LitElement {
     static styles = css`
-  :host {
- display:block;
- padding-left: var(--space-2);
-
+    :host,
+    ::slotted(:host) {
+    padding-top:var(--space-2);
+    padding-bottom:var(--space-2);
+      
+      
+    }
   `;
 
     @property({type: NidocaTheme, converter: String})
-    theme: string | undefined;
-
-    @property({type: String})
-    text: string = "";
+    theme: string;
 
     constructor() {
         super();
@@ -26,9 +25,16 @@ export class NidocaListSection extends LitElement {
 
     render(): TemplateResult {
         return html`
-            <nidoca-text style="flex-basis:100%;" .type="${NidocaTextType.CAPTION}" text="${this.text}">
-                <slot></slot>
-            </nidoca-text>
+            <style>
+                hr {
+                    border-color: var(--app-color-${this.theme}-border);
+                    border-bottom-style: solid;
+                    border-width: thin;
+                }
+            </style>
+            <hr/>
+
+
         `;
     }
 }

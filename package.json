@@ -13,6 +13,7 @@
   "module": "./src/index.js",
   "devDependencies": {
     "@domoskanonos/nidoca-router": "1.0.2",
+    "@domoskanonos/nidoca-form-helper": "1.0.7",
     "@domoskanonos/nidoca-http": "1.0.13",
     "@domoskanonos/crudyboy-client": "1.0.2",
     "npm-check-updates": "12.1.0",

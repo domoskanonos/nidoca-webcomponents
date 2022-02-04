@@ -67,9 +67,6 @@ export class NidocaFormText extends NidocaFormAbstractInputElement {
     }
   `;
 
-    @property({type: NidocaTheme, converter: String})
-    theme: string | undefined = NidocaTheme.PRIMARY;
-
     @property({type: NidocaFormTextType, converter: String})
     type: string = NidocaFormTextType.TEXT;
 
@@ -130,6 +127,15 @@ export class NidocaFormText extends NidocaFormAbstractInputElement {
     @query("#inputElement")
     private inputElement: HTMLInputElement | undefined;
 
+    @property({type: NidocaTheme, converter: String})
+    theme: string;
+
+    constructor() {
+        super();
+        this.theme = NidocaTheme.prototype.getParentTheme(this) || NidocaTheme.BACKGROUND;
+    }
+
+
     render(): TemplateResult {
         return this.type == NidocaFormTextType.HIDDEN
             ? html`<input id="inputElement" name="${this.name}" type="${this.type}" value="${this.value}"/>`
@@ -161,7 +167,6 @@ export class NidocaFormText extends NidocaFormAbstractInputElement {
                                 : html``}
                         <div class="container">
                             <nidoca-text
-                                    style="padding-left:var(--space-2); padding-right:var(--space-2);"
                                     class="label"
                                     .type="${NidocaTextType.CAPTION}"
                                     text="${this.label}"

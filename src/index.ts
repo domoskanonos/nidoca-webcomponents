@@ -1,4 +1,5 @@
 import {Nidoca} from "./nidoca-meta";
+export {NidocaDevice} from "./nidoca-layout-meta";
 
 export * from "./nidoca-meta";
 export * from "./nidoca-accordion";
@@ -24,6 +25,8 @@ export * from "./nidoca-form-change-password";
 export * from "./nidoca-form-register";
 export * from "./nidoca-upload";
 export * from "./nidoca-form-abstract-input-element";
+
+export * from "./nidoca-hr";
 
 export * from "./nidoca-menu-area";
 export * from "./nidoca-menu-item";

@@ -5,7 +5,7 @@ import {NidocaTheme} from ".";
 
 @customElement("nidoca-top-app-bar")
 export class NidocaTopAppBar extends LitElement {
-  static styles = css`
+    static styles = css`
     :host {
       width: 100%;
       position: relativ;
@@ -33,27 +33,33 @@ export class NidocaTopAppBar extends LitElement {
     }
   `;
 
-  @property({type: NidocaTheme, converter: String})
-  theme: string = NidocaTheme.PRIMARY;
+    @property({type: NidocaTheme, converter: String})
+    theme: string;
 
-  @property({type: Boolean})
-  prominent: boolean = false;
+    @property({type: Boolean})
+    prominent: boolean = false;
 
-  render(): TemplateResult {
-    return html`
-      ${NidocaTheme.getStyle(this.theme)}
-      <div class="bar">
+    constructor() {
+        super();
+        this.theme = NidocaTheme.prototype.getParentTheme(this) || NidocaTheme.BACKGROUND;
+    }
+
+    render(): TemplateResult {
+        return html`
+            ${NidocaTheme.getStyle(this.theme)}
+            <div class="bar">
         <span>
           <slot name="left"></slot>
         </span>
-        <span>
+                <span>
           <slot name="center"></slot>
         </span>
-        <span>
+                <span>
           <slot name="right"></slot>
         </span>
-      </div>
-      ${this.prominent ? html`<slot class="prominent" name="prominent"></slot>` : html``}
-    `;
-  }
+            </div>
+            ${this.prominent ? html`
+                <slot class="prominent" name="prominent"></slot>` : html``}
+        `;
+    }
 }

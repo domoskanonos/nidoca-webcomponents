@@ -6,7 +6,7 @@ export const DESKTOP_MIN_WIDTH = 1008;
 
 import {html, HTMLTemplateResult, TemplateResult} from "lit";
 import {
-    NidocaAvatar,
+    NidocaAvatar, NidocaBox,
     NidocaButtonType,
     NidocaIcon,
     NidocaImg,
@@ -396,7 +396,7 @@ export class Nidoca {
 }
 
 export class NidocaTheme {
-    static getStyle(theme: NidocaTheme | undefined): HTMLTemplateResult {
+    static getStyle(theme: NidocaTheme | string | undefined): HTMLTemplateResult {
         return theme
             ? html`
                     <style>
@@ -431,5 +431,18 @@ export class NidocaTheme {
                     : theme == NidocaTheme.SECONDARY
                         ? NidocaTheme.PRIMARY
                         : NidocaTheme.SURFACE;
+    }
+
+    getParentTheme(element: HTMLElement): string | undefined {
+        let parentComponent: HTMLElement | null = element.parentElement;
+        while (parentComponent != null) {
+            if (parentComponent instanceof NidocaBox) {
+                if (parentComponent.theme != undefined) {
+                    return parentComponent.theme as keyof NidocaTheme;
+                }
+            }
+            parentComponent = parentComponent.parentElement;
+        }
+        return undefined;
     }
 }

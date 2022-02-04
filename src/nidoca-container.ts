@@ -1,7 +1,7 @@
 import {css, html, LitElement, PropertyValues} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
-import {NidocaDevice, NidocaTheme} from ".";
+import {NidocaTheme} from ".";
 
 @customElement("nidoca-container")
 export class NidocaContainer extends LitElement {
@@ -33,55 +33,20 @@ export class NidocaContainer extends LitElement {
     @property({type: String})
     contentHeight: string = "";
 
-    @property({type: NidocaDevice, converter: Array})
-    devices: NidocaDevice[] = [NidocaDevice.DESKTOP, NidocaDevice.TABLET, NidocaDevice.MOBILE];
-
     @property({type: NidocaTheme, converter: String})
     theme: string | undefined;
-
-    updated(_changedProperties: PropertyValues): void {
-        for (let i = 0; i < this.devices.length; i++) {
-            const device: NidocaDevice = this.devices[i];
-            if (device == NidocaDevice.getCurrentScreen()) {
-                if (_changedProperties.has("width") && this.width != "") {
-                    this.style.width = this.width;
-                }
-                if (_changedProperties.has("height") && this.height != "") {
-                    this.style.height = this.height;
-                }
-                if (_changedProperties.has("minWidth") && this.minWidth != "") {
-                    this.style.minWidth = this.minWidth;
-                }
-                if (_changedProperties.has("minHeight") && this.minHeight != "") {
-                    this.style.minHeight = this.minHeight;
-                }
-                break;
-            }
-        }
-        super.updated(_changedProperties);
-    }
 
     render(): unknown {
         return html`
             ${NidocaTheme.getStyle(this.theme)}
             <div class="container theme">
                 <div class="container"
-                     style="${this.applyDevices(this.contentWidth, this.contentHeight, this.devices)}">
+                     style="">
                     <slot></slot>
                 </div>
             </div>
         `;
     }
 
-    applyDevices(width: string, height: string, devices: NidocaDevice[]): string {
-        for (let i = 0; i < devices.length; i++) {
-            const device: NidocaDevice = devices[i];
-            if (device == NidocaDevice.getCurrentScreen()) {
-                return `${width != "" ? "width:".concat(width).concat(";") : ""}${
-                    height != "" ? "height:".concat(height).concat(";") : ""
-                }`;
-            }
-        }
-        return "";
-    }
+
 }

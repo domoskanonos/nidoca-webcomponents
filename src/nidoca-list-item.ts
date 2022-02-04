@@ -1,7 +1,7 @@
 import {css, html, LitElement, TemplateResult} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
-import {NidocaFormTextType, NidocaTextType} from ".";
+import {NidocaFormTextType, NidocaTextType, NidocaTheme} from ".";
 
 @customElement("nidoca-list-item")
 export class NidocaListItem extends LitElement {
@@ -29,8 +29,11 @@ export class NidocaListItem extends LitElement {
     }    
   `;
 
+    @property({type: NidocaTheme, converter: String})
+    theme: string | undefined;
+
     @property({type: Boolean})
-    selectionMode: boolean = false;
+    multiSelect: boolean = false;
 
     @property({type: Boolean})
     selected: boolean = false;
@@ -41,10 +44,15 @@ export class NidocaListItem extends LitElement {
     @property({type: String})
     secondaryText: string = "";
 
+    constructor() {
+        super();
+        this.theme = NidocaTheme.prototype.getParentTheme(this) || NidocaTheme.BACKGROUND;
+    }
+
     protected update(changedProperties: Map<PropertyKey, unknown>): void {
         super.update(changedProperties);
         if (changedProperties.get("selectionMode") != undefined) {
-            if (!this.selectionMode) {
+            if (!this.multiSelect) {
                 this.selected = false;
             }
         }
@@ -52,11 +60,16 @@ export class NidocaListItem extends LitElement {
 
     render(): TemplateResult {
         return html`
-            <div class="container" @mousedown="${() => this.downAction()}"
+            <style>
+                .selected {
+                    background-color: var(--app-color-${this.theme}-hover);
+                }
+            </style>
+            <div class="container ${this.selected ? "selected" : ""}" @mousedown="${() => this.downAction()}"
                  @mouseup="${() => this.upAction()}"
                  @pointerup="${() => this.upAction()}"
                  @pointerdown="${() => this.downAction()}">
-                ${this.selectionMode
+                ${this.multiSelect
                         ? html`
                             <nidoca-icon
                                     style="padding-right: var(--space-2);"
