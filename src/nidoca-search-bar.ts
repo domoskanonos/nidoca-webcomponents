@@ -14,8 +14,6 @@ export class NidocaSearchBar extends LitElement {
       flex-direction: row;
       flex-wrap: nowrap;
       align-items: center;
-      border-style: solid;
-      border-width: var(--border-width);
     }
 
     input {
@@ -59,15 +57,6 @@ export class NidocaSearchBar extends LitElement {
         ::slotted(*) {
           color: var(--app-color-${this.theme});
           background-color: var(--app-color-${this.theme}-background);
-        }
-        :host,
-        ::slotted(:host) {
-          border-color: var(--app-color-${this.theme}-border);
-        }
-
-        :host:focus-within,
-        ::slotted(:host:focus-within) {
-          border-color: var(--app-color-${this.theme}-selected);
         }
       </style>
       <nidoca-icon style="padding-right:var(--space);padding-left:var(--space);" icon="search"></nidoca-icon>

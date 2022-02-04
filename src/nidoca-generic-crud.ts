@@ -4,6 +4,7 @@ import {property} from "lit/decorators.js";
 import {NidocaFormTextType, NidocaSearchBar, NidocaTextType, NidocaTheme} from ".";
 import {NidocaHelperForm} from "@domoskanonos/nidoca-form-helper";
 import {NidocaDateHelper} from "@domoskanonos/nidoca-date-helper";
+import { guard } from "lit/directives/guard.js";
 
 export interface CRUDProperty {
   type: string;
@@ -13,7 +14,13 @@ export interface CRUDProperty {
 export abstract class GenericCRUDController<T> {
   abstract search(searchText: string): Promise<T[]>;
 
-  abstract save(item: T): Promise<T>;
+  abstract update(item: T): Promise<T>;
+
+  abstract persist(item: T): Promise<T>;
+
+  abstract delete(item: T): Promise<void>;
+
+  abstract getPrimaryIdKey(): string;
 
   abstract getPrimaryText(item: T): string;
 
@@ -83,16 +90,31 @@ export class NidocaGenericCRUD extends LitElement {
           <nidoca-box>
             <nidoca-text type="${NidocaTextType.H2}">Verträge</nidoca-text>
             <nidoca-text type="${NidocaTextType.CAPTION}">${this.items.length} Verträge</nidoca-text>
-            <nidoca-search-bar
-              id="searchbar"
-              @nidoca-search-bar-event-value-changed="${(event: CustomEvent) => {
-                this.controller?.search(event.detail).then((items: any[]) => {
-                  this.items = items;
+
+            <div style="display:flex;flex-direction:row;">
+              <nidoca-search-bar
+                style="flex-basis:auto;"
+                id="searchbar"
+                @nidoca-search-bar-event-value-changed="${(event: CustomEvent) => {
+                  this.controller?.search(event.detail).then((items: any[]) => {
+                    this.items = items;
+                    this.requestUpdate();
+                  });
+                }}"
+                theme="surface"
+              ></nidoca-search-bar>
+
+              <nidoca-button
+                style="flex-basis:200px;padding-left:var(--space-2)"
+                leadingIcon="add"
+                @nidoca-event-button-clicked="${() => {
+                  this.item = {};
+                  this.hideSidebox = false;
                   this.requestUpdate();
-                });
-              }}"
-              theme="surface"
-            ></nidoca-search-bar>
+                }}"
+                >Neuer Vertrag</nidoca-button
+              >
+            </div>
           </nidoca-box>
           <nidoca-list selectionMode>
             ${this.items.map((item, index) => {
@@ -124,8 +146,35 @@ export class NidocaGenericCRUD extends LitElement {
                 slot="right"
                 title="Speichern"
                 @click="${() => {
-                  this.controller?.save(this.item).then((item: any) => {
-                    this.item = item;
+                  if (this.item[this.getPrimaryIdKey()] == "") {
+                    this.item[this.getPrimaryIdKey()] = null;
+                    this.controller?.persist(this.item).then((item: any) => {
+                      this.item = item;
+                      this.controller?.search(this.searchbar ? this.searchbar.value : "").then((items: any[]) => {
+                        this.items = items;
+                        this.requestUpdate();
+                      });
+                    });
+                  } else {
+                    this.controller?.update(this.item).then((item: any) => {
+                      this.item = item;
+                      this.controller?.search(this.searchbar ? this.searchbar.value : "").then((items: any[]) => {
+                        this.items = items;
+                        this.requestUpdate();
+                      });
+                    });
+                  }
+                }}"
+              ></nidoca-icon>
+
+              <nidoca-icon
+                style="padding-right: var(--space-2);"
+                slot="right"
+                icon="delete"
+                clickable
+                @nidoca-event-icon-clicked="${() => {
+                  this.controller?.delete(this.item).then(() => {
+                    this.hideSidebox = true;
                     this.controller?.search(this.searchbar ? this.searchbar.value : "").then((items: any[]) => {
                       this.items = items;
                       this.requestUpdate();
@@ -133,6 +182,7 @@ export class NidocaGenericCRUD extends LitElement {
                   });
                 }}"
               ></nidoca-icon>
+
               <nidoca-icon
                 slot="right"
                 icon="close"
@@ -146,9 +196,15 @@ export class NidocaGenericCRUD extends LitElement {
           </nidoca-box>
 
           <nidoca-box>
-            <nidoca-form id="editElement" @input="${() => this.inputChanged()}">
+
+
+          ${guard(
+              [this.item],
+              () => html`
+              
+              <nidoca-form id="editElement" @input="${() => this.inputChanged()}">
               ${this.properties.map((property: CRUDProperty) => {
-                return html`${property.key == "id"
+                return html`${property.key == this.getPrimaryIdKey()
                     ? html`
                         <nidoca-form-text
                           type="${NidocaFormTextType.HIDDEN}"
@@ -186,10 +242,19 @@ export class NidocaGenericCRUD extends LitElement {
                   <div style="padding-bottom:var(--space-4)"></div> `;
               })}
             </nidoca-form>
+              
+              
+              
+              `)}
+
+        
           </nidoca-box>
         </div>
       </nidoca-split-screen>
     `;
+  }
+  getPrimaryIdKey() {
+    return this.controller ? this.controller.getPrimaryIdKey() : "id";
   }
   newSection(previousItem: any, item: any) {
     if (this.controller && previousItem) {

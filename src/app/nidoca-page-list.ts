@@ -11,14 +11,25 @@ export class VertragListController extends GenericCRUDController<Vertrag> {
     return this.crudyboy.search(0, 0, "name:asc", "name=".concat(searchText));
   }
 
-  save(item: Vertrag): Promise<Vertrag> {
-      console.log(JSON.stringify(item));
+  delete(item: Vertrag): Promise<void> {
+    return this.crudyboy.delete(item.id);
+  }
+
+  persist(item: Vertrag): Promise<Vertrag> {
+    return this.crudyboy.persist(item);
+  }
+
+  update(item: Vertrag): Promise<Vertrag> {
     return this.crudyboy.update(item);
   }
 
   getProperties(): CRUDProperty[] {
     const properties = this.fromModel(new Vertrag());
     return properties;
+  }
+
+  getPrimaryIdKey(): string {
+    return "id";
   }
 
   getPrimaryText(item: Vertrag): string {
