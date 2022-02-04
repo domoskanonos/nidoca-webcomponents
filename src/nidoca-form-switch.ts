@@ -93,10 +93,15 @@ export class NidocaFormSwitch extends NidocaFormAbstractInputElement {
   checked: boolean = false;
 
   @property({type: String})
-  theme: NidocaTheme = NidocaTheme.PRIMARY;
+  theme: string = NidocaTheme.PRIMARY;
 
   @query("#inputElement")
   private inputElement: HTMLInputElement | undefined;
+
+  constructor() {
+    super();
+    this.theme = NidocaTheme.prototype.getParentTheme(this) || NidocaTheme.BACKGROUND;
+  }
 
   render(): TemplateResult {
     return html`
@@ -116,15 +121,13 @@ export class NidocaFormSwitch extends NidocaFormAbstractInputElement {
       </style>
 
       <nidoca-list-item>
-        <nidoca-text .type="${NidocaTextType.SUBTITLE1}" text="${this.label}">
+        <nidoca-text type="${NidocaTextType.SUBTITLE1}">
+          ${this.label}
           <slot></slot>
         </nidoca-text>
 
         ${this.infoText.length > 0
-          ? html` <nidoca-text
-              .type="${NidocaTextType.SUBTITLE2}"
-              text="${this.infoText}"
-            ></nidoca-text>`
+          ? html` <nidoca-text type="${NidocaTextType.SUBTITLE2}" text="${this.infoText}"></nidoca-text>`
           : html``}
 
         <label class="switch" slot="meta">

@@ -106,7 +106,6 @@ export class NidocaFormTextarea extends NidocaFormAbstractInputElement {
             <div class="parentContainer border">
                 <div class="container">
                     <nidoca-text
-                            style="padding-left:var(--space-2); padding-right:var(--space-2);"
                             class="label"
                             .type="${NidocaTextType.CAPTION}"
                             text="${this.label}"
