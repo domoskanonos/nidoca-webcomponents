@@ -5,7 +5,10 @@ import {Vertrag} from "./model/vertrag";
 import {CRUDProperty, GenericCRUDController} from "..";
 
 export class VertragListController extends GenericCRUDController<Vertrag> {
-  private crudyboy: CrudyboyClient = new CrudyboyClient("http://localhost:8081", "/vertrag");
+  private crudyboy: CrudyboyClient = new CrudyboyClient(
+    "http://".concat(window.location.hostname).concat(":8081"),
+    "/vertrag"
+  );
 
   async search(searchText: string): Promise<Vertrag[]> {
     return this.crudyboy.search(0, 0, "name:asc", "name=".concat(searchText));
