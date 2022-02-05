@@ -57,7 +57,6 @@ export * from "./nidoca-template";
 export * from "./nidoca-text";
 export * from "./nidoca-search-bar";
 export * from "./nidoca-dialog";
-export * from "./nidoca-dialog-action";
 export * from "./nidoca-avatar";
 export * from "./nidoca-card";
 export * from "./nidoca-gallery";

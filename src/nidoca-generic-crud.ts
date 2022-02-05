@@ -1,14 +1,16 @@
 import {css, html, LitElement, PropertyValues} from "lit";
 import {customElement, query} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
-import {NidocaFormTextType, NidocaSearchBar, NidocaTextType, NidocaTheme} from ".";
+import {NidocaButtonType, NidocaForm, NidocaFormTextType, NidocaSearchBar, NidocaTextType, NidocaTheme} from ".";
 import {NidocaHelperForm} from "@domoskanonos/nidoca-form-helper";
 import {NidocaDateHelper} from "@domoskanonos/nidoca-date-helper";
-import { guard } from "lit/directives/guard.js";
+import {guard} from "lit/directives/guard.js";
 
 export interface CRUDProperty {
   type: string;
   key: string;
+  label: string;
+  required: boolean;
 }
 
 export abstract class GenericCRUDController<T> {
@@ -34,7 +36,10 @@ export abstract class GenericCRUDController<T> {
       const type: any = typeof model[key];
       properties.push(<CRUDProperty>{
         key: key,
-        type: type == "object" ? (model[key] instanceof Date ? "date" : "object") : type,
+        label: key.charAt(0).toUpperCase().concat(key.slice(1)),
+        type:
+          type == "object" ? (model[key] instanceof Date ? "date" : "object") : type == "boolean" ? "checkbox" : type,
+        required: false,
       });
     });
     return properties;
@@ -59,11 +64,17 @@ export class NidocaGenericCRUD extends LitElement {
   @property({type: Boolean, converter: String})
   hideSidebox: boolean = true;
 
+  @property({type: Boolean, converter: String})
+  showDeleteDialog: boolean = false;
+
   @property({type: NidocaTheme, converter: String})
   theme: string;
 
   @query("#searchbar")
   private searchbar: NidocaSearchBar | undefined;
+
+  @query("#editForm")
+  editForm: NidocaForm | undefined;
 
   constructor() {
     super();
@@ -146,23 +157,29 @@ export class NidocaGenericCRUD extends LitElement {
                 slot="right"
                 title="Speichern"
                 @click="${() => {
-                  if (this.item[this.getPrimaryIdKey()] == "") {
-                    this.item[this.getPrimaryIdKey()] = null;
-                    this.controller?.persist(this.item).then((item: any) => {
-                      this.item = item;
-                      this.controller?.search(this.searchbar ? this.searchbar.value : "").then((items: any[]) => {
-                        this.items = items;
-                        this.requestUpdate();
+                  if (this.editForm && this.editForm.validate()) {
+                    const nidocaFormHelper: NidocaHelperForm<any> = new NidocaHelperForm();
+                    this.item = nidocaFormHelper.getCurrent(this);
+                    if (this.item[this.getPrimaryIdKey()] == "") {
+                      this.item[this.getPrimaryIdKey()] = null;
+                      this.controller?.persist(this.item).then((item: any) => {
+                        this.item = item;
+                        this.controller?.search(this.searchbar ? this.searchbar.value : "").then((items: any[]) => {
+                          this.items = items;
+                          this.hideSidebox = true;
+                          this.requestUpdate();
+                        });
                       });
-                    });
-                  } else {
-                    this.controller?.update(this.item).then((item: any) => {
-                      this.item = item;
-                      this.controller?.search(this.searchbar ? this.searchbar.value : "").then((items: any[]) => {
-                        this.items = items;
-                        this.requestUpdate();
+                    } else {
+                      this.controller?.update(this.item).then((item: any) => {
+                        this.item = item;
+                        this.controller?.search(this.searchbar ? this.searchbar.value : "").then((items: any[]) => {
+                          this.items = items;
+                          this.hideSidebox = true;
+                          this.requestUpdate();
+                        });
                       });
-                    });
+                    }
                   }
                 }}"
               ></nidoca-icon>
@@ -173,13 +190,7 @@ export class NidocaGenericCRUD extends LitElement {
                 icon="delete"
                 clickable
                 @nidoca-event-icon-clicked="${() => {
-                  this.controller?.delete(this.item).then(() => {
-                    this.hideSidebox = true;
-                    this.controller?.search(this.searchbar ? this.searchbar.value : "").then((items: any[]) => {
-                      this.items = items;
-                      this.requestUpdate();
-                    });
-                  });
+                  this.showDeleteDialog = true;
                 }}"
               ></nidoca-icon>
 
@@ -196,61 +207,96 @@ export class NidocaGenericCRUD extends LitElement {
           </nidoca-box>
 
           <nidoca-box>
-
-
-          ${guard(
+            ${guard(
               [this.item],
               () => html`
-              
-              <nidoca-form id="editElement" @input="${() => this.inputChanged()}">
-              ${this.properties.map((property: CRUDProperty) => {
-                return html`${property.key == this.getPrimaryIdKey()
-                    ? html`
-                        <nidoca-form-text
-                          type="${NidocaFormTextType.HIDDEN}"
-                          name="${property.key}"
-                          value="${this.item[property.key]}"
-                        >
-                        </nidoca-form-text>
-                      `
-                    : property.type == "date"
-                    ? html` <nidoca-form-date
-                        name="${property.key}"
-                        label="${property.key}"
-                        value="${this.item[property.key]
-                          ? this.nidocaDateHelper.formatDate(this.item[property.key], "yyyy-MM-dd")
-                          : ""}"
-                      ></nidoca-form-date>`
-                    : property.type == "boolean"
-                    ? html` <nidoca-form-switch
-                        name="${property.key}"
-                        label="${property.key}"
-                        .checked="${this.item[property.key]}"
-                      ></nidoca-form-switch>`
-                    : property.type == "object"
-                    ? html``
-                    : html`
-                        <nidoca-form-text
-                          type="${property.type}"
-                          name="${property.key}"
-                          label="${property.key}"
-                          value="${this.item[property.key]}"
-                        >
-                        </nidoca-form-text>
-                      `}
+                <nidoca-form id="editForm">
+                  ${this.properties.map((property: CRUDProperty) => {
+                    return html`${property.key == this.getPrimaryIdKey()
+                        ? html`
+                            <nidoca-form-text
+                              type="${NidocaFormTextType.HIDDEN}"
+                              name="${property.key}"
+                              value="${this.item[property.key]}"
+                            >
+                            </nidoca-form-text>
+                          `
+                        : property.type == "date"
+                        ? html` <nidoca-form-date
+                            name="${property.key}"
+                            label="${property.label}"
+                            value="${this.item[property.key]
+                              ? this.nidocaDateHelper.formatDate(this.item[property.key], "yyyy-MM-dd")
+                              : ""}"
+                            ?required="${property.required}"
+                          ></nidoca-form-date>`
+                        : property.type == "checkbox"
+                        ? html` <nidoca-form-switch
+                            name="${property.key}"
+                            label="${property.label}"
+                            .checked="${this.item[property.key]}"
+                          ></nidoca-form-switch>`
+                        : property.type == "object"
+                        ? html``
+                        : property.type == "textarea"
+                        ? html`<nidoca-form-textarea
+                            type="${property.type}"
+                            name="${property.key}"
+                            label="${property.label}"
+                            value="${this.item[property.key]}"
+                            ?required="${property.required}"
+                          ></nidoca-form-textarea>`
+                        : html`
+                            <nidoca-form-text
+                              type="${property.type}"
+                              name="${property.key}"
+                              label="${property.label}"
+                              value="${this.item[property.key]}"
+                              ?required="${property.required}"
+                            >
+                            </nidoca-form-text>
+                          `}
 
-                  <div style="padding-bottom:var(--space-4)"></div> `;
-              })}
-            </nidoca-form>
-              
-              
-              
-              `)}
-
-        
+                      <div style="padding-bottom:var(--space-4)"></div> `;
+                  })}
+                </nidoca-form>
+              `
+            )}
           </nidoca-box>
         </div>
       </nidoca-split-screen>
+
+      <nidoca-dialog .show="${this.showDeleteDialog}">
+        <nidoca-box style="width:300px;">
+          <nidoca-text style="padding-bottom:var(--space-2);" type="${NidocaTextType.H2}"
+            >Element löschen ?
+          </nidoca-text>
+          <nidoca-text style="padding-bottom:var(--space-2);" type="${NidocaTextType.SUBTITLE1}"
+            >Möchtest du das Element wirklich löschen ? Es geht unwiederuflich verloren.
+          </nidoca-text>
+          <nidoca-button
+            style="padding-bottom:var(--space-2);"
+            type="${NidocaButtonType.TEXT}"
+            @click="${() => {
+              this.controller?.delete(this.item).then(() => {
+                this.hideSidebox = true;
+                this.controller?.search(this.searchbar ? this.searchbar.value : "").then((items: any[]) => {
+                  this.items = items;
+                  this.hideSidebox = true;
+                  this.requestUpdate();
+                });
+              });
+            }}"
+            >Ok
+          </nidoca-button>
+          <nidoca-button
+            style="padding-bottom:var(--space-2);"
+            type="${NidocaButtonType.TEXT}"
+            @click="${() => (this.showDeleteDialog = false)}"
+            >Abbrechen
+          </nidoca-button>
+        </nidoca-box>
+      </nidoca-dialog>
     `;
   }
   getPrimaryIdKey() {
@@ -272,10 +318,5 @@ export class NidocaGenericCRUD extends LitElement {
 
   getSecondaryText(item: any): string {
     return this.controller ? this.controller.getSecondaryText(item) : "";
-  }
-
-  inputChanged(): void {
-    const nidocaFormHelper: NidocaHelperForm<any> = new NidocaHelperForm();
-    this.item = nidocaFormHelper.getCurrent(this);
   }
 }

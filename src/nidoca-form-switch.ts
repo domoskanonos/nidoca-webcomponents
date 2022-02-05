@@ -36,7 +36,6 @@ export class NidocaFormSwitch extends NidocaFormAbstractInputElement {
       left: 0;
       right: 0;
       bottom: 0;
-      background-color: var(--app-color-surface-background);
       -webkit-transition: 0.4s;
       transition: 0.4s;
     }
@@ -47,7 +46,7 @@ export class NidocaFormSwitch extends NidocaFormAbstractInputElement {
       height: 24px;
       width: 24px;
       left: 0px;
-      bottom: -4px;
+      bottom: -3px;
 
       -webkit-transition: 0.4s;
       transition: 0.4s;
@@ -106,17 +105,20 @@ export class NidocaFormSwitch extends NidocaFormAbstractInputElement {
   render(): TemplateResult {
     return html`
       <style>
-        .slider:before {
-          background-color: var(--app-color-${this.theme}-background-dark);
+        .slider {
+          background-color: var(--app-color-${this.theme}-border);
         }
-        input:checked + .slider:before {
+        .slider:before {
           background-color: var(--app-color-${this.theme}-background);
         }
+        input:checked + .slider:before {
+          background-color: var(--app-color-${this.theme});
+        }
         input:checked + .slider {
-          background-color: var(--app-color-${this.theme}-background-light);
+          background-color: var(--app-color-${this.theme}-selected);
         }
         input:focus + .slider {
-          box-shadow: 0 0 20px var(--app-color-${this.theme}-background);
+          box-shadow: 0 0 20px var(--app-color-${this.theme}-border);
         }
       </style>
 
