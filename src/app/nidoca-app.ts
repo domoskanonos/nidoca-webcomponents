@@ -13,7 +13,7 @@ export class NidocaApp extends LitElement implements NidocaRouteListener {
   popupContent: any = html``;
 
   @property({type: Boolean})
-  navigationClosed: boolean = true;
+  navigationClosed: boolean = false;
 
   @property({type: Boolean})
   prominent: boolean = false;
