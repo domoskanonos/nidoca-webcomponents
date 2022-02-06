@@ -83,6 +83,8 @@ export * from "./nidoca-generic-crud";
 export * from "./nidoca-icon-with-description";
 export * from "./nidoca-form-contact";
 
+export * from "./nidoca-chart-js-wrapper";
+
 Nidoca.getUniqueInstance().initDefaultComponents();
 
 //window.addEventListener("resize", () => {  this.requestUpdate(); });

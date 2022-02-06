@@ -6,6 +6,7 @@ export class Vertrag {
   benutzername: string = "";
   adresse: string = "";
   email: string = "";
+  iban: string = "";
   vertragsnehmer: string = "";
   vertragsbeginn: Date = new Date();
   vertragsende: Date = new Date();

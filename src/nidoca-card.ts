@@ -5,6 +5,9 @@ import {NidocaShadowType} from "./nidoca-box-shadow";
 @customElement("nidoca-card")
 export class NidocaCard extends LitElement {
   static styles = css`
+    :host {
+      display: block;
+    }
     .slotContainer {
       display: flex;
       flex-direction: column;
