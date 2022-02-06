@@ -5,12 +5,12 @@ import {NidocaFormTextType, NidocaTextType, NidocaTheme} from ".";
 
 @customElement("nidoca-list-item")
 export class NidocaListItem extends LitElement {
-    static styles = css`
+  static styles = css`
     .container {
       display: grid;
       cursor: pointer;
       grid-template-columns: 1fr 1fr minmax(auto, 100%) 1fr;
-      padding: var(--space-2);     
+      padding: var(--space-2);
     }
 
     .item {
@@ -26,126 +26,124 @@ export class NidocaListItem extends LitElement {
       flex-direction: row;
       flex-wrap: wrap;
       align-self: center;
-    }    
+    }
   `;
 
-    @property({type: NidocaTheme, converter: String})
-    theme: string | undefined;
+  @property({type: NidocaTheme, converter: String})
+  theme: string | undefined;
 
-    @property({type: Boolean})
-    multiSelect: boolean = false;
+  @property({type: Boolean})
+  multiSelect: boolean = false;
 
-    @property({type: Boolean})
-    selected: boolean = false;
+  @property({type: Boolean})
+  selected: boolean = false;
 
-    @property({type: String})
-    primaryText: string = "";
+  @property({type: String})
+  primaryText: string = "";
 
-    @property({type: String})
-    secondaryText: string = "";
+  @property({type: String})
+  secondaryText: string = "";
 
-    constructor() {
-        super();
-        this.theme = NidocaTheme.prototype.getParentTheme(this) || NidocaTheme.BACKGROUND;
+  constructor() {
+    super();
+    this.theme = NidocaTheme.prototype.getParentTheme(this) || NidocaTheme.BACKGROUND;
+  }
+
+  protected update(changedProperties: Map<PropertyKey, unknown>): void {
+    super.update(changedProperties);
+    if (changedProperties.get("selectionMode") != undefined) {
+      if (!this.multiSelect) {
+        this.selected = false;
+      }
     }
+  }
 
-    protected update(changedProperties: Map<PropertyKey, unknown>): void {
-        super.update(changedProperties);
-        if (changedProperties.get("selectionMode") != undefined) {
-            if (!this.multiSelect) {
-                this.selected = false;
-            }
+  render(): TemplateResult {
+    return html`
+      <style>
+        .selected {
+          background-color: var(--app-color-${this.theme}-hover);
         }
-    }
-
-    render(): TemplateResult {
-        return html`
-            <style>
-                .selected {
-                    background-color: var(--app-color-${this.theme}-hover);
-                }
-            </style>
-            <div class="container ${this.selected ? "selected" : ""}" @mousedown="${() => this.downAction()}"
-                 @mouseup="${() => this.upAction()}"
-                 @pointerup="${() => this.upAction()}"
-                 @pointerdown="${() => this.downAction()}">
-                ${this.multiSelect
-                        ? html`
-                            <nidoca-icon
-                                    style="padding-right: var(--space-2);"
-                                    class="item"
-                                    @click="${() => this.switchSelected()}"
-                                    icon="${this.selected ? "check_box" : "check_box_outline_blank"}"
-                            ></nidoca-icon>`
-                        : html`<span></span>`}
-                <slot name="graphic" class="item"></slot>
-                <div class="containerTypography">
-                    ${this.primaryText
-                            ? html`
-                                <nidoca-text class="item" .type="${NidocaTextType.BODY1}"
+      </style>
+      <div
+        class="container ${this.selected ? "selected" : ""}"
+        @mousedown="${() => this.downAction()}"
+        @mouseup="${() => this.upAction()}"
+        @pointerup="${() => this.upAction()}"
+        @pointerdown="${() => this.downAction()}"
+      >
+        ${this.multiSelect
+          ? html` <nidoca-icon
+              style="padding-right: var(--space-2);"
+              class="item"
+              @click="${() => this.switchSelected()}"
+              icon="${this.selected ? "check_box" : "check_box_outline_blank"}"
+            ></nidoca-icon>`
+          : html`<span></span>`}
+        <slot name="graphic" class="item"></slot>
+        <div class="containerTypography">
+          ${this.primaryText
+            ? html`
+                                <nidoca-text-body class="item"
                                 >${this.primaryText}
                                 </nidoca-text
                                 >`
-                            : html``}
-                    <slot></slot>
-                    ${this.secondaryText
-                            ? html`
-                                <nidoca-text class="item" .type="${NidocaTextType.SUBTITLE1}"
-                                >${this.secondaryText}
-                                </nidoca-text
-                                >`
-                            : html``}
-                    <slot name="secondary"></slot>
-                </div>
-                <slot name="meta" class="item"></slot>
-            </div>
-        `;
-    }
+            : html``}
+          <slot></slot>
+          ${this.secondaryText
+            ? html` <nidoca-text-caption class="item">${this.secondaryText} </nidoca-text-caption>`
+            : html``}
+          <slot name="secondary"></slot>
+        </div>
+        <slot name="meta" class="item"></slot>
+      </div>
+    `;
+  }
 
-    private clickStart: number | null = null;
+  private clickStart: number | null = null;
 
-    downAction(): void {
-        this.clickStart = Date.now();
-    }
+  downAction(): void {
+    this.clickStart = Date.now();
+  }
 
-    upAction(): void {
-        if (this.clickStart) {
-            const diff: number = Date.now() - this.clickStart + 1;
-            let eventName: string = "";
-            if (diff > 500) {
-                eventName = "nidoca-event-list-item-long-click";
-            } else {
-                eventName = "nidoca-event-list-item-click";
-            }
-            console.log(eventName);
-            this.dispatchEvent(
-                new CustomEvent(eventName, {
-                    detail: this,
-                    bubbles: true,
-                    composed: true,
-                })
-            );
-        }
+  upAction(): void {
+    if (this.clickStart) {
+      const diff: number = Date.now() - this.clickStart + 1;
+      let eventName: string = "";
+      if (diff > 500) {
+        eventName = "nidoca-event-list-item-long-click";
+      } else {
+        eventName = "nidoca-event-list-item-click";
+      }
+      console.log(eventName);
+      this.dispatchEvent(
+        new CustomEvent(eventName, {
+          detail: this,
+          bubbles: true,
+          composed: true,
+        })
+      );
     }
+  }
 
-    switchSelected(): void {
-        this.selected = Boolean(!this.selected);
-        if (this.selected) {
-            this.dispatchEvent(
-                new CustomEvent("nidoca-event-list-item-select", {
-                    detail: this,
-                    bubbles: true,
-                    composed: true,
-                })
-            );
-        } else {
-            this.dispatchEvent(
-                new CustomEvent("nidoca-event-list-item-unselect", {
-                    detail: this,
-                    bubbles: true,
-                    composed: true,
-                })
-            );
-        }
+  switchSelected(): void {
+    this.selected = Boolean(!this.selected);
+    if (this.selected) {
+      this.dispatchEvent(
+        new CustomEvent("nidoca-event-list-item-select", {
+          detail: this,
+          bubbles: true,
+          composed: true,
+        })
+      );
+    } else {
+      this.dispatchEvent(
+        new CustomEvent("nidoca-event-list-item-unselect", {
+          detail: this,
+          bubbles: true,
+          composed: true,
+        })
+      );
     }
+  }
 }

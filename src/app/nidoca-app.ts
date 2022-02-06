@@ -73,7 +73,7 @@ export class NidocaApp extends LitElement implements NidocaRouteListener {
   render(): TemplateResult {
     return html`
       <nidoca-template .prominent="${this.prominent}" .navigationClosed="${this.navigationClosed}">
-        <nidoca-text slot="topCenter" type="${NidocaTextType.BODY1}"></nidoca-text>
+        <nidoca-text-body slot="topCenter""></nidoca-text-body>
         <nidoca-icon
           slot="topLeft"
           style="padding-left:var(--space-2);"

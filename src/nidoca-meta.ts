@@ -333,7 +333,7 @@ export class Nidoca {
             "nidoca-top-app-bar",
             html`
                 <nidoca-top-app-bar .theme="${NidocaTheme.PRIMARY}">
-                    <nidoca-text slot="center" type="${NidocaTextType.BODY1}">Toolbar</nidoca-text>
+                    <nidoca-text-body slot="center">Toolbar</nidoca-text-body>
                     <nidoca-icon slot="left" style="padding-left:var(--space)" clickable icon="menu"></nidoca-icon>
                     <nidoca-icon slot="right" style="padding-right:var(--space)" icon="search"></nidoca-icon>
                     <nidoca-icon slot="right" style="padding-right:var(--space)" icon="more_vert"

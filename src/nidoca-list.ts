@@ -54,7 +54,7 @@ export class NidocaList extends LitElement {
 
                 ::slotted(nidoca-list-section) {
                     color: var(--app-color-${this.theme});
-                    background-color: var(--app-color-${this.theme}-background-light);
+                    background-color: var(--app-color-${this.theme}-background-optional);
                 }
 
                 ::slotted(nidoca-list-item) {

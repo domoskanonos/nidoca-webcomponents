@@ -9,8 +9,9 @@ export class Vertrag {
   vertragsnehmer: string = "";
   vertragsbeginn: Date = new Date();
   vertragsende: Date = new Date();
-  kuendigungsfrist: Date = new Date();
+  kuendigungsfrist: number = 0;
   vertragsnummer: string = "";
+  ansprechpatrtner: string = "";
   supporttelefon: string = "";
   kosten: number = 0;
   abrechnungsperiode: number = 0;

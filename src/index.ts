@@ -54,9 +54,20 @@ export * from "./nidoca-tabs";
 export * from "./nidoca-tab";
 export * from "./nidoca-tab-content";
 export * from "./nidoca-template";
+
 export * from "./nidoca-text";
+export * from "./nidoca-text-body";
+export * from "./nidoca-text-caption";
+export * from "./nidoca-text-error";
+export * from "./nidoca-text-success";
+export * from "./nidoca-text-warning";
+export * from "./nidoca-text-info";
+
 export * from "./nidoca-search-bar";
+
 export * from "./nidoca-dialog";
+export * from "./nidoca-dialog-decision";
+
 export * from "./nidoca-avatar";
 export * from "./nidoca-card";
 export * from "./nidoca-gallery";

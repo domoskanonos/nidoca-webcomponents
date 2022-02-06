@@ -46,7 +46,7 @@ export class NidocaArticle extends LitElement {
                         : html``}
                 <slot name="text"></slot>
                 ${this.text ? html`
-                    <nidoca-text .type="${NidocaTextType.BODY1}">${this.text}</nidoca-text>` : html``}
+                    <nidoca-text-body>${this.text}</nidoca-text-body>` : html``}
                 <slot></slot>
             </div>
         `;

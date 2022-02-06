@@ -149,20 +149,8 @@ export class NidocaFormSwitch extends NidocaFormAbstractInputElement {
         </label>
       </nidoca-list-item>
 
-      ${this.warningText
-        ? html` <nidoca-text
-            style="color:var(--app-color-warning-background)"
-            .type="${NidocaTextType.BODY1}"
-            text="${this.warningText}"
-          ></nidoca-text>`
-        : html``}
-      ${this.errorText
-        ? html` <nidoca-text
-            style="color:var(--app-color-error-background)"
-            .type="${NidocaTextType.BODY1}"
-            text="${this.errorText}"
-          ></nidoca-text>`
-        : html``}
+      ${this.warningText ? html` <nidoca-text-error text="${this.warningText}"></nidoca-text-error>` : html``}
+      ${this.errorText ? html` <nidoca-text-error text="${this.errorText}"></nidoca-text-error>` : html``}
     `;
   }
 

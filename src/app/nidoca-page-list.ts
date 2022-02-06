@@ -31,6 +31,7 @@ export class VertragListController extends GenericCRUDController<Vertrag> {
     properties.forEach((propertie: CRUDProperty) => {
       if (propertie.key == "adresse" || propertie.key == "beschreibung") propertie.type = "textarea";
       if (propertie.key == "internetseite") propertie.type = "url";
+      //if (propertie.key == "kosten") propertie.step = "0.01";
       if (propertie.key == "name") propertie.required = true;
     });
     return properties;
