@@ -1,30 +1,30 @@
 export class PostgRESTClient {
-  constructor(private host: string, private path: string) {}
+  constructor(private host: string) {}
 
-  public async persist(item: any): Promise<any> {
-    const url: string = this.host.concat(this.path);
+  public async persist(path: string, item: any): Promise<any> {
+    const url: string = this.host.concat(path);
     const resp = await this.request(url, "POST", "application/json; charset=utf-8", item);
     console.log("persist item, value: %s", JSON.stringify(item));
     return this.parse(await resp.text())[0];
   }
 
-  public async update(id: any, item: any): Promise<boolean> {
-    const url: string = this.host.concat(this.path).concat("?id=eq.".concat(id));
+  public async update(path: string, id: any, item: any): Promise<boolean> {
+    const url: string = this.host.concat(path).concat("?id=eq.".concat(id));
     console.debug("update item value: %s", JSON.stringify(item));
     const resp = await this.request(url, "PUT", "application/json; charset=utf-8", item);
     console.log("item updated ? ".concat(String(resp.status)));
-    return resp.status == 204;
+    return resp.status == 200;
   }
 
-  public async delete(id: any): Promise<boolean> {
-    const url: string = this.host.concat(this.path).concat("?id=eq.").concat(id);
+  public async delete(path: string, id: any): Promise<boolean> {
+    const url: string = this.host.concat(path).concat("?id=eq.").concat(id);
     const resp = await this.request(url, "DELETE", "application/json; charset=utf-8", undefined);
     console.debug("delete item for id= %s", id);
     return resp.status == 200;
   }
 
-  public async search(params: string): Promise<any[]> {
-    const url: string = this.host.concat(this.path).concat(params);
+  public async search(path: string, params: string): Promise<any[]> {
+    const url: string = this.host.concat(path).concat(params);
 
     const resp = await this.request(url, "GET", "application/json; charset=utf-8", undefined);
 

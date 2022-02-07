@@ -8,6 +8,7 @@ export class Vertrag {
   email: string = "";
   iban: string = "";
   vertragsnehmer: string = "";
+  kategorie: string = "";
   vertragsbeginn: Date = new Date();
   vertragsende: Date = new Date();
   kuendigungsfrist: number = 0;
@@ -18,4 +19,9 @@ export class Vertrag {
   abrechnungsperiode: number = 0;
   aktiv: boolean = false;
   gekuendigt: boolean = false;
+}
+
+export interface VertragKategorie {
+  kategorie: string;
+  kosten: number;
 }

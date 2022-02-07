@@ -6,25 +6,26 @@ import {PostgRESTClient} from "./service/postgrest-client";
 
 export class VertragListController extends GenericCRUDController<Vertrag> {
   private postgrestClient: PostgRESTClient = new PostgRESTClient(
-    "http://".concat(window.location.hostname).concat(":3000"),
-    "/vertrag"
-  );
+    "http://".concat(window.location.hostname).concat(":3000"),);
 
   async search(searchText: string): Promise<Vertrag[]> {
-    return this.postgrestClient.search("?offset=0&limit=100&order=name.asc&name=like.*".concat(searchText).concat("*"));
+    return this.postgrestClient.search(
+      "/vertrag",
+      "?offset=0&limit=100&order=name.asc&name=like.*".concat(searchText).concat("*")
+    );
   }
 
   delete(item: Vertrag): Promise<boolean> {
-    return this.postgrestClient.delete(item.id);
+    return this.postgrestClient.delete("/vertrag", item.id);
   }
 
   persist(item: Vertrag): Promise<Vertrag> {
     delete item.id;
-    return this.postgrestClient.persist(item);
+    return this.postgrestClient.persist("/vertrag", item);
   }
 
   update(item: Vertrag): Promise<boolean> {
-    return this.postgrestClient.update(item.id, item);
+    return this.postgrestClient.update("/vertrag", item.id, item);
   }
 
   getProperties(): CRUDProperty[] {

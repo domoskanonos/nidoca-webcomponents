@@ -40,7 +40,10 @@ export * from "./nidoca-split-screen";
 export * from "./nidoca-icon";
 export * from "./nidoca-icon-extended";
 export * from "./nidoca-ripple";
+
 export * from "./nidoca-img";
+export * from "./nidoca-img-round";
+
 export * from "./nidoca-movie";
 export * from "./nidoca-form-captcha";
 export * from "./nidoca-link";
@@ -62,6 +65,7 @@ export * from "./nidoca-text-error";
 export * from "./nidoca-text-success";
 export * from "./nidoca-text-warning";
 export * from "./nidoca-text-info";
+export * from "./nidoca-h1";
 
 export * from "./nidoca-search-bar";
 

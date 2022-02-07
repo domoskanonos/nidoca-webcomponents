@@ -173,7 +173,6 @@ export class NidocaGenericCRUD extends LitElement {
                           if (currentItem[this.getPrimaryIdKey()] == "") {
                             currentItem[this.getPrimaryIdKey()] = null;
                             this.controller?.persist(currentItem).then((item: any) => {
-                              console.log("ioJOIJoij".concat(JSON.stringify(item)));
                               this.item = undefined;
                               this.hideSidebox = true;
                               this.updateList(item);

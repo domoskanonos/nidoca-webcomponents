@@ -1,6 +1,6 @@
 import {css, html, LitElement, TemplateResult} from "lit";
 import {customElement, property} from "lit/decorators.js";
-import {Vertrag} from "./model/vertrag";
+import {Vertrag, VertragKategorie} from "./model/vertrag";
 import {ChartConfiguration} from "chart.js";
 import {PostgRESTClient} from "./service/postgrest-client";
 
@@ -8,16 +8,16 @@ import {PostgRESTClient} from "./service/postgrest-client";
 export class NidocaPageDashboard extends LitElement {
   static styles = css``;
 
-  private client: PostgRESTClient = new PostgRESTClient(
-    "http://".concat(window.location.hostname).concat(":3000"),
-    "/vertrag"
-  );
+  private client: PostgRESTClient = new PostgRESTClient("http://".concat(window.location.hostname).concat(":3000"));
 
   @property()
   options: ChartConfiguration | undefined;
 
+  @property()
+  options2: ChartConfiguration | undefined;
+
   protected firstUpdated(): void {
-    this.client.search("").then((items: Vertrag[]) => {
+    this.client.search("/vertrag", "").then((items: Vertrag[]) => {
       const modifiedItemList = items
         .filter((item: Vertrag) => item.kosten > 0)
         .sort((item: Vertrag, compareItem: Vertrag) =>
@@ -54,17 +54,52 @@ export class NidocaPageDashboard extends LitElement {
         },
       };
     });
+
+    this.client.search("/vertrag_kategorie", "").then((items: VertragKategorie[]) => {
+      this.options2 = {
+        type: "pie",
+        data: {
+          labels: items.map((item: VertragKategorie) => item.kategorie),
+          datasets: [
+            {
+              label: "My First Dataset",
+              data: items.map((item: VertragKategorie) => item.kosten),
+              backgroundColor: ["rgb(255, 99, 132)", "rgb(54, 162, 235)", "rgb(255, 205, 86)"],
+              hoverOffset: 4,
+            },
+          ],
+        },
+      };
+    });
   }
 
   render(): TemplateResult {
-    return html`Dashboard
+    return html`
+      <nidoca-section style="width:50%;">
+        <div style="display:flex;align-items:center;justify-content:center;align-content:flex-start;">
+          <nidoca-img-round
+            width="150px;"
+            height="150px;"
+            src="https://github.com/domoskanonos/nidoca-assets/raw/main/avatar.jpg"
+          ></nidoca-img-round>
+          <nidoca-h1>Willkommen zurück Dominik</nidoca-h1>
+        </div>
+      </nidoca-section>
+      <nidoca-card style="padding:var(--space-2);">
+        <nidoca-box>
+          <nidoca-text-body>Kostenverteilung pro Monat in Euro</nidoca-text-body>
+          <nidoca-chart-js-wrapper style="display:block;width:25vw;height:50vh;" .options="${this.options}">
+          </nidoca-chart-js-wrapper>
+        </nidoca-box>
+      </nidoca-card>
 
       <nidoca-card style="padding:var(--space-2);">
         <nidoca-box>
-          <nidoca-text-body>Kostenverteilung pro Monat in Euro<nidoca-text-body>
-        <nidoca-chart-js-wrapper style="display:block;width:25vw;height:50vh;" .options="${this.options}">
-        </nidoca-chart-js-wrapper>
-        <nidoca-box>
-      </nidoca-card> `;
+          <nidoca-text-body>Kostenverteilung pro Kategorie</nidoca-text-body>
+          <nidoca-chart-js-wrapper style="display:block;width:25vw;height:25vw;" .options="${this.options2}">
+          </nidoca-chart-js-wrapper>
+        </nidoca-box>
+      </nidoca-card>
+    `;
   }
 }
