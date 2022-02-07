@@ -4,12 +4,14 @@ import {customElement, property} from "lit/decorators.js";
 import {Vertrag} from "./model/vertrag";
 import {ChartConfiguration} from "chart.js";
 
+
+
 @customElement("nidoca-page-dashboard")
 export class NidocaPageDashboard extends LitElement {
   static styles = css``;
 
   private crudyboy: CrudyboyClient = new CrudyboyClient(
-    "http://".concat(window.location.hostname).concat(":8081"),
+    "http://".concat(window.location.hostname).concat(":3000"),
     "/vertrag"
   );
 
@@ -17,7 +19,9 @@ export class NidocaPageDashboard extends LitElement {
   options: ChartConfiguration | undefined;
 
   protected firstUpdated(): void {
-    this.crudyboy.search(0, 0, "name:asc", "name=".concat("")).then((items: Vertrag[]) => {
+
+
+    this.crudyboy.search(0, 0, "", "").then((items: Vertrag[]) => {
       const modifiedItemList = items
         .filter((item: Vertrag) => item.kosten > 0)
         .sort((item: Vertrag, compareItem: Vertrag) =>
