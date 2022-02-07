@@ -1,10 +1,3 @@
-- Nidoca Layout Spacer wurde ausgebaut, Komponenten und Seiten anpassen.
+docker run -p 8080:8080 -e DB_ADDR=192.168.31.218 -e KEYCLOAK_USER=root -e DB_VENDOR=POSTGRES -e KEYCLOAK_PASSWORD=<password> -e DB_USER=postgres -e DB_PASSWORD=<password> -e DB_SCHEMA=public -e DB_DATABASE=keycloak -d jboss/keycloak
 
-
-
-
-
-      input,
-      ::slotted(input) {
-        background-color: var(--app-color-${theme}-background-light);
-      }
+docker run -p 3000:3000 -e PGRST_DB_URI="postgres://postgres:<password>@192.168.31.218/nidoca" -e PGRST_DB_SCHEMA="public" -e PGRST_DB_ANON_ROLE="postgres" -d postgrest/postgrest

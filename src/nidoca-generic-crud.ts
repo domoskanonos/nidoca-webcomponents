@@ -18,11 +18,11 @@ export interface CRUDProperty {
 export abstract class GenericCRUDController<T> {
   abstract search(searchText: string): Promise<T[]>;
 
-  abstract update(item: T): Promise<T>;
+  abstract update(item: T): Promise<boolean>;
 
   abstract persist(item: T): Promise<T>;
 
-  abstract delete(item: T): Promise<void>;
+  abstract delete(item: T): Promise<boolean>;
 
   abstract getPrimaryIdKey(): string;
 
@@ -173,15 +173,20 @@ export class NidocaGenericCRUD extends LitElement {
                           if (currentItem[this.getPrimaryIdKey()] == "") {
                             currentItem[this.getPrimaryIdKey()] = null;
                             this.controller?.persist(currentItem).then((item: any) => {
+                              console.log("ioJOIJoij".concat(JSON.stringify(item)));
                               this.item = undefined;
                               this.hideSidebox = true;
                               this.updateList(item);
                             });
                           } else {
-                            this.controller?.update(currentItem).then((item: any) => {
-                              this.item = undefined;
-                              this.hideSidebox = true;
-                              this.updateList(item);
+                            this.controller?.update(currentItem).then((success: boolean) => {
+                              if (success) {
+                                this.item = undefined;
+                                this.hideSidebox = true;
+                                this.updateList(currentItem);
+                              } else {
+                                this.errorMessage = "Fehler beim Speichern";
+                              }
                             });
                           }
                         } else {

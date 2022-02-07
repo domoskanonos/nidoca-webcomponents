@@ -1,29 +1,30 @@
 import {css, html, LitElement, TemplateResult} from "lit";
 import {customElement} from "lit/decorators.js";
-import {CrudyboyClient} from "@domoskanonos/crudyboy-client";
 import {Vertrag} from "./model/vertrag";
 import {CRUDProperty, GenericCRUDController} from "..";
+import {PostgRESTClient} from "./service/postgrest-client";
 
 export class VertragListController extends GenericCRUDController<Vertrag> {
-  private crudyboy: CrudyboyClient = new CrudyboyClient(
-    "http://".concat(window.location.hostname).concat(":8081"),
+  private postgrestClient: PostgRESTClient = new PostgRESTClient(
+    "http://".concat(window.location.hostname).concat(":3000"),
     "/vertrag"
   );
 
   async search(searchText: string): Promise<Vertrag[]> {
-    return this.crudyboy.search(0, 0, "name:asc", "name=".concat(searchText));
+    return this.postgrestClient.search("?offset=0&limit=100&order=name.asc&name=like.*".concat(searchText).concat("*"));
   }
 
-  delete(item: Vertrag): Promise<void> {
-    return this.crudyboy.delete(item.id);
+  delete(item: Vertrag): Promise<boolean> {
+    return this.postgrestClient.delete(item.id);
   }
 
   persist(item: Vertrag): Promise<Vertrag> {
-    return this.crudyboy.persist(item);
+    delete item.id;
+    return this.postgrestClient.persist(item);
   }
 
-  update(item: Vertrag): Promise<Vertrag> {
-    return this.crudyboy.update(item);
+  update(item: Vertrag): Promise<boolean> {
+    return this.postgrestClient.update(item.id, item);
   }
 
   getProperties(): CRUDProperty[] {
@@ -31,7 +32,6 @@ export class VertragListController extends GenericCRUDController<Vertrag> {
     properties.forEach((propertie: CRUDProperty) => {
       if (propertie.key == "adresse" || propertie.key == "beschreibung") propertie.type = "textarea";
       if (propertie.key == "internetseite") propertie.type = "url";
-      //if (propertie.key == "kosten") propertie.step = "0.01";
       if (propertie.key == "name") propertie.required = true;
     });
     return properties;

@@ -1,16 +1,14 @@
-import {CrudyboyClient} from "@domoskanonos/crudyboy-client";
 import {css, html, LitElement, TemplateResult} from "lit";
 import {customElement, property} from "lit/decorators.js";
 import {Vertrag} from "./model/vertrag";
 import {ChartConfiguration} from "chart.js";
-
-
+import {PostgRESTClient} from "./service/postgrest-client";
 
 @customElement("nidoca-page-dashboard")
 export class NidocaPageDashboard extends LitElement {
   static styles = css``;
 
-  private crudyboy: CrudyboyClient = new CrudyboyClient(
+  private client: PostgRESTClient = new PostgRESTClient(
     "http://".concat(window.location.hostname).concat(":3000"),
     "/vertrag"
   );
@@ -19,9 +17,7 @@ export class NidocaPageDashboard extends LitElement {
   options: ChartConfiguration | undefined;
 
   protected firstUpdated(): void {
-
-
-    this.crudyboy.search(0, 0, "", "").then((items: Vertrag[]) => {
+    this.client.search("").then((items: Vertrag[]) => {
       const modifiedItemList = items
         .filter((item: Vertrag) => item.kosten > 0)
         .sort((item: Vertrag, compareItem: Vertrag) =>
@@ -41,8 +37,9 @@ export class NidocaPageDashboard extends LitElement {
               indexAxis: "y",
               label: "Kosten pro Monat",
               data: modifiedItemList.map((item: Vertrag) => item.kosten / item.abrechnungsperiode),
-              backgroundColor: modifiedItemList.map(() => "#" + Math.floor(Math.random() * 16777215).toString(16)),
-              borderColor: modifiedItemList.map(() => "#" + Math.floor(Math.random() * 16777215).toString(16)),
+              backgroundColor: modifiedItemList.map(() =>
+                getComputedStyle(document.body).getPropertyValue("--app-color-background")
+              ),
               borderWidth: 0,
             },
           ],
