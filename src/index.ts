@@ -92,3 +92,4 @@ export * from "./nidoca-chart-js-wrapper";
 Nidoca.getUniqueInstance().initDefaultComponents();
 
 //window.addEventListener("resize", () => {  this.requestUpdate(); });
+

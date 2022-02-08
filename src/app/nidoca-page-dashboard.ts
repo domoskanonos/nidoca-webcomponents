@@ -8,7 +8,7 @@ import {PostgRESTClient} from "./service/postgrest-client";
 export class NidocaPageDashboard extends LitElement {
   static styles = css``;
 
-  private client: PostgRESTClient = new PostgRESTClient("http://".concat(window.location.hostname).concat(":3000"));
+  private client: PostgRESTClient = new PostgRESTClient("http://89.58.33.189");
 
   @property()
   options: ChartConfiguration | undefined;
@@ -88,7 +88,7 @@ export class NidocaPageDashboard extends LitElement {
       <nidoca-card style="padding:var(--space-2);">
         <nidoca-box>
           <nidoca-text-body>Kostenverteilung pro Monat in Euro</nidoca-text-body>
-          <nidoca-chart-js-wrapper style="display:block;width:25vw;height:50vh;" .options="${this.options}">
+          <nidoca-chart-js-wrapper style="display:block;width:15vw;height:15vw;" .options="${this.options}">
           </nidoca-chart-js-wrapper>
         </nidoca-box>
       </nidoca-card>
@@ -96,7 +96,7 @@ export class NidocaPageDashboard extends LitElement {
       <nidoca-card style="padding:var(--space-2);">
         <nidoca-box>
           <nidoca-text-body>Kostenverteilung pro Kategorie</nidoca-text-body>
-          <nidoca-chart-js-wrapper style="display:block;width:25vw;height:25vw;" .options="${this.options2}">
+          <nidoca-chart-js-wrapper style="display:block;width:15vw;height:15vw;" .options="${this.options2}">
           </nidoca-chart-js-wrapper>
         </nidoca-box>
       </nidoca-card>

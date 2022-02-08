@@ -1,5 +1,66 @@
+/**
+import Keycloak, {KeycloakConfig} from "keycloak-js";
+
+const cl = Keycloak(<KeycloakConfig>{clientId: "postgrest", realm: "master", url: "https://89.58.33.189:8443/auth"});
+
+console.log(cl.idToken);
+cl.init({})
+  .then(function (authenticated) {
+    console.log(authenticated);
+    //alert(authenticated ? "authenticated" : "not authenticated");
+  })
+  .catch(function () {
+    alert("failed to initialize");
+  });
+
+   */
+
+import KcAdminClient from "@keycloak/keycloak-admin-client";
+
+// To configure the client, pass an object to override any of these  options:
+// {
+//   baseUrl: 'http://127.0.0.1:8080/auth',
+//   realmName: 'master',
+//   requestConfig: {
+//     /* Axios request config options https://github.com/axios/axios#request-config */
+//   },
+// }
+const kcAdminClient = new KcAdminClient({
+  baseUrl: "https://89.58.33.189:8443/auth",
+  realmName: "master",
+});
+
+// Authorize with username / password
+kcAdminClient
+  .auth({
+    username: "auth_user_all",
+    password: "test",
+    grantType: "password",
+    clientId: "postgrest",
+    totp: "123456", // optional Time-based One-time Password if OTP is required in authentication flow
+  })
+  .then(() => {
+    console.log("HUIHIUHUIH");
+    console.log(kcAdminClient.baseUrl);
+    console.log(kcAdminClient.accessToken);
+  });
+
 export class PostgRESTClient {
-  constructor(private host: string) {}
+  constructor(private host: string) {
+    /*
+    
+    const headers: HeadersInit = {};
+    headers["Accept-Encoding"] = "*";
+    headers["Content-Type"] = "application/x-www-form-urlencoded";
+    const requestOptions: RequestInit = {
+      headers: headers,
+      method: "POST",
+    };
+    fetch("https://89.58.33.189:8443/auth/realms/master/protocol/openid-connect/token", requestOptions).then((response)=>{
+      console.info("response status: ", response.status);  
+    });
+  */
+  }
 
   public async persist(path: string, item: any): Promise<any> {
     const url: string = this.host.concat(path);
@@ -36,6 +97,8 @@ export class PostgRESTClient {
     headers["Accept-Encoding"] = "*";
     headers["Content-Type"] = contentType;
     headers["Prefer"] = "return=representation";
+    headers["Authorization"] = `Bearer ${kcAdminClient}`;
+
     const requestOptions: RequestInit = {
       headers: headers,
       method: method,

@@ -5,8 +5,9 @@ import {CRUDProperty, GenericCRUDController} from "..";
 import {PostgRESTClient} from "./service/postgrest-client";
 
 export class VertragListController extends GenericCRUDController<Vertrag> {
-  private postgrestClient: PostgRESTClient = new PostgRESTClient(
-    "http://".concat(window.location.hostname).concat(":3000"),);
+  //private postgrestClient: PostgRESTClient = new PostgRESTClient("http://".concat(window.location.hostname).concat(":3000"),);
+
+  private postgrestClient: PostgRESTClient = new PostgRESTClient("http://89.58.33.189");
 
   async search(searchText: string): Promise<Vertrag[]> {
     return this.postgrestClient.search(
