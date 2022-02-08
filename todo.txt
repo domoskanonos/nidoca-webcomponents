@@ -21,3 +21,6 @@ host	nidoca	authenticator	89.58.33.189/0	scram-sha-256
 http://89.58.33.189:8443/auth/realms/master/protocol/openid-connect/token
 
 https://89.58.33.189:8443/auth/realms/master/protocol/openid-connect/token
+
+
+https://89.58.33.189:8443/auth/realms/master/.well-known/openid-configuration
