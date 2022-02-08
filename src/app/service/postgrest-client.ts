@@ -16,7 +16,6 @@ cl.init({})
    */
 
 import KcAdminClient from "@keycloak/keycloak-admin-client";
-
 // To configure the client, pass an object to override any of these  options:
 // {
 //   baseUrl: 'http://127.0.0.1:8080/auth',
@@ -44,6 +43,8 @@ kcAdminClient
     console.log(kcAdminClient.baseUrl);
     console.log(kcAdminClient.accessToken);
   });
+
+const token: string =  "";
 
 export class PostgRESTClient {
   constructor(private host: string) {
@@ -97,7 +98,7 @@ export class PostgRESTClient {
     headers["Accept-Encoding"] = "*";
     headers["Content-Type"] = contentType;
     headers["Prefer"] = "return=representation";
-    headers["Authorization"] = `Bearer ${kcAdminClient}`;
+    headers["Authorization"] = `Bearer ${token}`;
 
     const requestOptions: RequestInit = {
       headers: headers,
