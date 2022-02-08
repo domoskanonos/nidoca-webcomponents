@@ -1,3 +1,8 @@
 docker run -p 8080:8080 -e DB_ADDR=192.168.31.218 -e KEYCLOAK_USER=root -e DB_VENDOR=POSTGRES -e KEYCLOAK_PASSWORD=<password> -e DB_USER=postgres -e DB_PASSWORD=<password> -e DB_SCHEMA=public -e DB_DATABASE=keycloak -d jboss/keycloak
 
 docker run -p 3000:3000 -e PGRST_DB_URI="postgres://authenticator:<password>@89.58.33.189/nidoca" -e PGRST_DB_SCHEMA="public" -e PGRST_DB_ANON_ROLE="web_anonym" -d postgrest/postgrest
+
+Postgres: in pg_hba.conf Anfragen von HOST erlauben:
+
+host	nidoca	authenticator	89.58.33.189/0	scram-sha-256
+
