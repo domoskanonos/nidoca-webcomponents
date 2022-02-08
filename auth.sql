@@ -1,7 +1,12 @@
-create role authenticator noinherit login password '<password>';
+CREATE ROLE authenticator noinherit login password '<password>';
 
-create role web_anonym nologin;
-grant web_anonym to authenticator;
+CREATE ROLE web_anonym nologin;
+GRANT web_anonym to authenticator;
 GRANT usage ON schema public TO web_anonym;
 GRANT SELECT ON ALL TABLES IN SCHEMA public TO web_anonym;
 
+CREATE ROLE auth_user_all nologin;
+GRANT auth_user_all to authenticator;
+GRANT usage on schema public to auth_user_all;
+GRANT ALL ON ALL TABLES IN SCHEMA public TO auth_user_all;
+GRANT SELECT ON ALL SEQUENCES IN SCHEMA public TO auth_user_all;
