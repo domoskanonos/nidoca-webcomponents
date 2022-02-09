@@ -33,19 +33,22 @@ const kcAdminClient = new KcAdminClient({
 
 export class PostgRESTClient {
   constructor(private host: string) {
-    /*
-    
+    console.log("GOGOGO");
+    /**
     const headers: HeadersInit = {};
-    headers["Accept-Encoding"] = "*";
+    //headers["Accept-Encoding"] = "*";
     headers["Content-Type"] = "application/x-www-form-urlencoded";
     const requestOptions: RequestInit = {
       headers: headers,
       method: "POST",
     };
-    fetch("https://89.58.33.189:8443/auth/realms/master/protocol/openid-connect/token", requestOptions).then((response)=>{
-      console.info("response status: ", response.status);  
-    });
-  */
+    fetch("https://89.58.33.189:8443/auth/realms/master/protocol/openid-connect/token", requestOptions).then(
+      (response) => {
+        console.info("response status: ", response.status);
+      }
+    );
+
+     */
   }
 
   /**

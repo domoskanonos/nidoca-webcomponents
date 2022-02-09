@@ -95,16 +95,16 @@ export class NidocaApp extends LitElement implements NidocaRouteListener {
           @nidoca-event-icon-clicked="${() => {
             this.showPopup = true;
             this.popupContent = html` <nidoca-form-login
+              @nidoca-event-icon-clicked="${() => (this.showPopup = false)}"
               @nidoca-form-login-submit="${(event: CustomEvent) => {
                 const postgrestClient: PostgRESTClient = new PostgRESTClient("http://89.58.33.189");
-                postgrestClient.login(event.detail.jsonObject.username, event.detail.jsonObject.password).then((ok:boolean)=>{
-
-                  if(ok){
-                    this.showPopup=false;
-                  }
-                  
-
-                });
+                postgrestClient
+                  .login(event.detail.jsonObject.username, event.detail.jsonObject.password)
+                  .then((ok: boolean) => {
+                    if (ok) {
+                      this.showPopup = false;
+                    }
+                  });
               }}"
             ></nidoca-form-login>`;
           }}"

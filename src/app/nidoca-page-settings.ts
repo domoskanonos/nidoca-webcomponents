@@ -2,7 +2,27 @@ import {css, html, LitElement, TemplateResult} from "lit";
 import {customElement, property} from "lit/decorators.js";
 import {guard} from "lit/directives/guard.js";
 import {repeat} from "lit/directives/repeat.js";
-import {NidocaDevice, NidocaFormText, NidocaFormTextType, NidocaFormTextType} from "../index";
+import {NidocaFormText, NidocaFormTextType} from "../index";
+
+import Oidc, {WebStorageStateStore} from "oidc-client";
+
+
+export const mgr = new Oidc.UserManager({
+  userStore: new WebStorageStateStore({}),
+  authority: "https://89.58.33.189:8443/auth/realms/master/.well-known/openid-configuration",
+  client_id: "postgrest",
+  redirect_uri: window.location.origin+"#main",
+  response_type: "id_token token",
+  scope: "openid profile address roles identityserver4api country subscriptionlevel offline_access",
+  post_logout_redirect_uri: window.location.origin + "/index.html",
+  silent_redirect_uri: window.location.origin + "/static/silent-renew.html",
+  accessTokenExpiringNotificationTime: 10,
+  automaticSilentRenew: true,
+  filterProtocolClaims: true,
+  loadUserInfo: true,
+});
+
+
 
 @customElement("nidoca-page-settings")
 export class NidocaPageSettings extends LitElement {
@@ -13,6 +33,12 @@ export class NidocaPageSettings extends LitElement {
 
   constructor() {
     super();
+
+    mgr.signinRedirect(() => {
+      console.log("huhuh");
+    });
+    
+
     const getAllCSSVariableNames = (styleSheets: StyleSheetList = document.styleSheets) => {
       const cssVars: string[] = [];
 
