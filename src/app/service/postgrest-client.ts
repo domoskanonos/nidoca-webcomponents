@@ -30,21 +30,6 @@ const kcAdminClient = new KcAdminClient({
 });
 
 // Authorize with username / password
-kcAdminClient
-  .auth({
-    username: "auth_user_all",
-    password: "test",
-    grantType: "password",
-    clientId: "postgrest",
-    totp: "123456", // optional Time-based One-time Password if OTP is required in authentication flow
-  })
-  .then(() => {
-    console.log("HUIHIUHUIH");
-    console.log(kcAdminClient.baseUrl);
-    console.log(kcAdminClient.accessToken);
-  });
-
-const token: string =  "";
 
 export class PostgRESTClient {
   constructor(private host: string) {
@@ -61,6 +46,27 @@ export class PostgRESTClient {
       console.info("response status: ", response.status);  
     });
   */
+  }
+
+  /**
+   *
+   * @returns
+   */
+
+  public async login(username: string, password: string) {
+    console.log(`login ${username}`);
+    try {
+      await kcAdminClient.auth({
+        username: username,
+        password: password,
+        grantType: "password",
+        clientId: "postgrest",
+      });
+    } catch (error) {
+      console.log(`Login false: ${error}`);
+      return false;
+    }
+    return true;
   }
 
   public async persist(path: string, item: any): Promise<any> {
@@ -98,7 +104,7 @@ export class PostgRESTClient {
     headers["Accept-Encoding"] = "*";
     headers["Content-Type"] = contentType;
     headers["Prefer"] = "return=representation";
-    headers["Authorization"] = `Bearer ${token}`;
+    headers["Authorization"] = `Bearer ${kcAdminClient.accessToken}`;
 
     const requestOptions: RequestInit = {
       headers: headers,

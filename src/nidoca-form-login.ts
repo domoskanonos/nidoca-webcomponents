@@ -74,8 +74,8 @@ export class NidocaFormLogin extends LitElement {
         if (this.formComponent && this.formComponent.validate()) {
             this.dispatchEvent(new CustomEvent("nidoca-form-login-submit", {
                 detail: this.formComponent.getOutputData(),
-                bubbles: true,
-                composed: true,
+                bubbles: false,
+                composed: false,
             }));
         }
     }
