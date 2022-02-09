@@ -1,25 +1,10 @@
 import {css, html, LitElement, TemplateResult} from "lit";
 import {customElement} from "lit/decorators.js";
 import {Nidoca, NidocaTheme, NidocaTextType} from "..";
-import { mgr } from "./nidoca-page-settings";
 
 @customElement("nidoca-page-main")
 export class NidocaPageMain extends LitElement {
   static styles = css``;
-
-
-  constructor(){
-    super();
-    mgr.getUser().then(function (user) {
-      if (user) {
-          console.log("User logged in", user.profile);
-      }
-      else {
-          console.log("User not logged in");
-      }
-  });
-  }
-
   render(): TemplateResult {
     return html`
       <nidoca-section style="width:50%;">

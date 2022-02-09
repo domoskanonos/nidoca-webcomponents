@@ -1,75 +1,48 @@
-/**
-import Keycloak, {KeycloakConfig} from "keycloak-js";
-
-const cl = Keycloak(<KeycloakConfig>{clientId: "postgrest", realm: "master", url: "https://89.58.33.189:8443/auth"});
-
-console.log(cl.idToken);
-cl.init({})
-  .then(function (authenticated) {
-    console.log(authenticated);
-    //alert(authenticated ? "authenticated" : "not authenticated");
-  })
-  .catch(function () {
-    alert("failed to initialize");
-  });
-
-   */
-
-import KcAdminClient from "@keycloak/keycloak-admin-client";
-// To configure the client, pass an object to override any of these  options:
-// {
-//   baseUrl: 'http://127.0.0.1:8080/auth',
-//   realmName: 'master',
-//   requestConfig: {
-//     /* Axios request config options https://github.com/axios/axios#request-config */
-//   },
-// }
-const kcAdminClient = new KcAdminClient({
-  baseUrl: "https://89.58.33.189:8443/auth",
-  realmName: "master",
-});
-
-// Authorize with username / password
+export interface JWT {
+  access_token: string;
+  expires_in: number;
+  expires_in_date: Date;
+  refresh_expires_in: number;
+  refresh_token: string;
+  token_type: string;
+  session_state: string;
+  scope: string;
+}
 
 export class PostgRESTClient {
-  constructor(private host: string) {
-    console.log("GOGOGO");
-    /**
-    const headers: HeadersInit = {};
-    //headers["Accept-Encoding"] = "*";
-    headers["Content-Type"] = "application/x-www-form-urlencoded";
-    const requestOptions: RequestInit = {
-      headers: headers,
-      method: "POST",
-    };
-    fetch("https://89.58.33.189:8443/auth/realms/master/protocol/openid-connect/token", requestOptions).then(
-      (response) => {
-        console.info("response status: ", response.status);
-      }
-    );
-
-     */
-  }
-
-  /**
-   *
-   * @returns
-   */
+  constructor(private host: string) {}
 
   public async login(username: string, password: string) {
     console.log(`login ${username}`);
-    try {
-      await kcAdminClient.auth({
+
+    const requestInit = <RequestInit>{
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      method: "POST",
+      body: new URLSearchParams({
+        grant_type: "password",
+        client_id: "postgrest",
         username: username,
         password: password,
-        grantType: "password",
-        clientId: "postgrest",
-      });
-    } catch (error) {
-      console.log(`Login false: ${error}`);
-      return false;
+      }),
+    };
+
+    return this.authorizeRequest(requestInit);
+  }
+
+  async authorizeRequest(requestInit: RequestInit): Promise<boolean> {
+    const response = await fetch(
+      "https://89.58.33.189:8443/auth/realms/master/protocol/openid-connect/token",
+      requestInit
+    );
+    if (response.status == 200) {
+      const jwtToken: JWT = await response.json();
+      jwtToken.expires_in_date = new Date(new Date().getTime() + jwtToken.expires_in);
+      sessionStorage.setItem("token", JSON.stringify(jwtToken));
     }
-    return true;
+    console.info("response status: ", response.status);
+    return response.status == 200;
   }
 
   public async persist(path: string, item: any): Promise<any> {
@@ -107,8 +80,7 @@ export class PostgRESTClient {
     headers["Accept-Encoding"] = "*";
     headers["Content-Type"] = contentType;
     headers["Prefer"] = "return=representation";
-    headers["Authorization"] = `Bearer ${kcAdminClient.accessToken}`;
-
+    await this.addAuthHeader(headers);
     const requestOptions: RequestInit = {
       headers: headers,
       method: method,
@@ -117,6 +89,32 @@ export class PostgRESTClient {
     const response = await fetch(url, requestOptions);
     console.info("response status: ", response.status);
     return response;
+  }
+
+  async addAuthHeader(headers: Record<string, string>) {
+    const tokenAsString = sessionStorage.getItem("token");
+    if (tokenAsString) {
+      const jwt: JWT = this.parse(tokenAsString);
+      if (jwt.expires_in_date.getTime() - 1 < new Date().getTime()) {
+        console.log("do");
+        if (
+          await this.authorizeRequest(<RequestInit>{
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded",
+            },
+            method: "POST",
+            body: new URLSearchParams({
+              client_id: "postgrest",
+              grant_type: "refresh_token",
+              refresh_token: jwt.refresh_token,
+            }),
+          })
+        ) {
+          console.log("token refresehd");
+        }
+      }
+      headers["Authorization"] = `Bearer ${jwt.access_token}`;
+    }
   }
 
   public parse(json: string): any {

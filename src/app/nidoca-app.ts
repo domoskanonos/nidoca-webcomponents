@@ -2,7 +2,6 @@ import {html, LitElement, TemplateResult} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
 import {NidocaRouteListener, NidocaRouter} from "@domoskanonos/nidoca-router";
-import {NidocaFormTextType, NidocaTextType} from "..";
 import {PostgRESTClient} from "./service/postgrest-client";
 
 @customElement("nidoca-app")
