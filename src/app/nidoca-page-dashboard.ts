@@ -82,7 +82,7 @@ export class NidocaPageDashboard extends LitElement {
             height="150px;"
             src="https://github.com/domoskanonos/nidoca-assets/raw/main/avatar.jpg"
           ></nidoca-img-round>
-          <nidoca-h1>Willkommen zurück Dominik</nidoca-h1>
+          <nidoca-text-h1>Willkommen zurück Dominik</nidoca-text-h1>
         </div>
       </nidoca-section>
       <nidoca-card style="padding:var(--space-2);">

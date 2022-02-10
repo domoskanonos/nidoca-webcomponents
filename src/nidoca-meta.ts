@@ -38,7 +38,7 @@ export class Nidoca {
       "nidoca-form-contact",
       html` <nidoca-form-contact
         @nidoca-form-contact-submit="${(event: CustomEvent) => alert(JSON.stringify(event.detail))}"
-        theme="${NidocaTheme.SECONDARY}"
+        theme="${NidocaTheme.BACKGROUND}"
       ></nidoca-form-contact>`
     );
 

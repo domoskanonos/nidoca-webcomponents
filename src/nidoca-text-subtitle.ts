@@ -2,16 +2,16 @@ import {css, html, TemplateResult} from "lit";
 import {customElement} from "lit/decorators.js";
 import {NidocaText} from ".";
 
-@customElement("nidoca-h1")
-export class NidocaH1 extends NidocaText {
+@customElement("nidoca-text-subtitle")
+export class NidocaTextSubtitle extends NidocaText {
   static styles = css`
     :host,
     slot,
     ::slotted(:host),
     ::slotted(slot) {
       display: block;
-      font-size: var(--font-size-h1);
-      line-height: calc(var(--font-size-h1) * var(--font-line-height-multiplicator));
+      font-size: var(--font-size-caption);
+      line-height: 1;
       font-weight: 400;
     }
   `;

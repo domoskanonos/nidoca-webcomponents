@@ -2,8 +2,8 @@ import {css, html, TemplateResult} from "lit";
 import {customElement} from "lit/decorators.js";
 import {NidocaText} from ".";
 
-@customElement("nidoca-text-caption")
-export class NidocaTextCaption extends NidocaText {
+@customElement("nidoca-text-button")
+export class NidocaTextButton extends NidocaText {
   static styles = css`
     :host,
     slot,
@@ -13,6 +13,7 @@ export class NidocaTextCaption extends NidocaText {
       font-size: var(--font-size-caption);
       line-height: 1;
       font-weight: 400;
+      text-transform: uppercase;
     }
   `;
   render(): TemplateResult {

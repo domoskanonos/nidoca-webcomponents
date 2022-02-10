@@ -2,15 +2,15 @@ import {css, html, TemplateResult} from "lit";
 import {customElement} from "lit/decorators.js";
 import {NidocaText} from ".";
 
-@customElement("nidoca-text-caption")
-export class NidocaTextCaption extends NidocaText {
+@customElement("nidoca-text-h2")
+export class NidocaTextH2 extends NidocaText {
   static styles = css`
     :host,
     slot,
     ::slotted(:host),
     ::slotted(slot) {
       display: block;
-      font-size: var(--font-size-caption);
+      font-size: var(--font-size-h1);
       line-height: 1;
       font-weight: 400;
     }

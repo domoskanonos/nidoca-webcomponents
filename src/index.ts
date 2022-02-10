@@ -1,4 +1,5 @@
 import {Nidoca} from "./nidoca-meta";
+
 export {NidocaDevice} from "./nidoca-layout-meta";
 
 export * from "./nidoca-meta";
@@ -59,13 +60,20 @@ export * from "./nidoca-tab-content";
 export * from "./nidoca-template";
 
 export * from "./nidoca-text";
+export * from "./nidoca-text-button";
+export * from "./nidoca-text-overline";
 export * from "./nidoca-text-body";
 export * from "./nidoca-text-caption";
 export * from "./nidoca-text-error";
 export * from "./nidoca-text-success";
 export * from "./nidoca-text-warning";
 export * from "./nidoca-text-info";
-export * from "./nidoca-h1";
+export * from "./nidoca-text-h1";
+export * from "./nidoca-text-h2";
+export * from "./nidoca-text-h3";
+export * from "./nidoca-text-h4";
+export * from "./nidoca-text-h5";
+export * from "./nidoca-text-h6";
 
 export * from "./nidoca-search-bar";
 
