@@ -2,13 +2,13 @@ import {css, html, LitElement, TemplateResult} from "lit";
 import {customElement, property} from "lit/decorators.js";
 import {Vertrag, VertragKategorie} from "./model/vertrag";
 import {ChartConfiguration} from "chart.js";
-import {PostgRESTClient} from "./service/postgrest-client";
+import {NidocaPostgrestClient} from "@domoskanonos/nidoca-postgrest-client";
 
 @customElement("nidoca-page-dashboard")
 export class NidocaPageDashboard extends LitElement {
   static styles = css``;
 
-  private client: PostgRESTClient = new PostgRESTClient("http://89.58.33.189");
+  private client: NidocaPostgrestClient = new NidocaPostgrestClient("http://89.58.33.189");
 
   @property()
   options: ChartConfiguration | undefined;

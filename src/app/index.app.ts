@@ -1,7 +1,5 @@
 import "../index";
 
-import "./service/nidoca-oauth-client";
-
 import "../webcomponent-viewer/index";
 
 import "./nidoca-page-main";

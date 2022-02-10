@@ -2,12 +2,11 @@ import {css, html, LitElement, TemplateResult} from "lit";
 import {customElement} from "lit/decorators.js";
 import {Vertrag} from "./model/vertrag";
 import {CRUDProperty, GenericCRUDController} from "..";
-import {PostgRESTClient} from "./service/postgrest-client";
+import {NidocaPostgrestClient} from "@domoskanonos/nidoca-postgrest-client";
+
 
 export class VertragListController extends GenericCRUDController<Vertrag> {
-  //private postgrestClient: PostgRESTClient = new PostgRESTClient("http://".concat(window.location.hostname).concat(":3000"),);
-
-  private postgrestClient: PostgRESTClient = new PostgRESTClient("http://89.58.33.189");
+  private postgrestClient: NidocaPostgrestClient = new NidocaPostgrestClient("http://89.58.33.189");
 
   async search(searchText: string): Promise<Vertrag[]> {
     return this.postgrestClient.search(
