@@ -36,7 +36,6 @@ export abstract class GenericCRUDController<T> {
     const properties: CRUDProperty[] = [];
     Object.keys(model).map((key) => {
       const type: any = typeof model[key];
-      console.log(type);
       properties.push(<CRUDProperty>{
         key: key,
         label: key.charAt(0).toUpperCase().concat(key.slice(1)),
