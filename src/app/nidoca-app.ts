@@ -32,11 +32,12 @@ export class NidocaApp extends LitElement implements NidocaRouteListener {
 
   constructor() {
     super();
-    NidocaOAuthClient.init("https://89.58.33.189:8443/auth/realms/master/.well-known/openid-configuration").then(
-      (ok: boolean) => {
-        console.log(`nidoca oauth client init ok ? ${ok}`);
-      }
-    );
+    NidocaOAuthClient.init(
+      "https://89.58.33.189/auth/realms/master/.well-known/openid-configuration",
+      "master-realm"
+    ).then((ok: boolean) => {
+      console.log(`nidoca oauth client init ok ? ${ok}`);
+    });
     NidocaRouter.getUniqueInstance().subscribe(this);
     this.routeChanged(NidocaRouter.getUniqueInstance().getCurrentPage());
   }
