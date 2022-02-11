@@ -14,7 +14,7 @@ export class NidocaTopAppBar extends LitElement {
       width: 100%;
       position: sticky;
       top:0;
-      height: calc(var(--line-height) * 3);
+      min-height: calc(var(--line-height) * 2);
     }
 
     .bar {

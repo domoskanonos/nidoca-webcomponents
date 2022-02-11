@@ -299,7 +299,7 @@ export class Nidoca {
     this._registeredElementsMap.set("nidoca-table", html` <nidoca-table></nidoca-table>`);
     this._registeredElementsMap.set(
       "nidoca-top-app-bar",
-      html` <nidoca-top-app-bar .theme="${NidocaTheme.PRIMARY}">
+      html` <nidoca-top-app-bar style="min-height: 48px;" .theme="${NidocaTheme.PRIMARY}">
         <nidoca-text-body slot="center">Toolbar</nidoca-text-body>
         <nidoca-icon slot="left" style="padding-left:var(--space)" clickable icon="menu"></nidoca-icon>
         <nidoca-icon slot="right" style="padding-right:var(--space)" icon="search"></nidoca-icon>
