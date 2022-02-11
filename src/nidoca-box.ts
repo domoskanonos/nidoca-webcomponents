@@ -5,26 +5,25 @@ import {NidocaTheme} from ".";
 
 @customElement("nidoca-box")
 export class NidocaBox extends LitElement {
-    static styles = css`
+  static styles = css`
     :host {
       display: block;
-      padding:var(--space-6)
+      padding: var(--space-6);
     }
     slot {
-    display:flex;
-    flex-direction: column;
-    flex-wrap: wrap;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
     }
   `;
 
-    @property({type: NidocaTheme, converter: String})
-    theme: string | undefined = NidocaTheme.BACKGROUND;
+  @property({type: NidocaTheme, converter: String})
+  theme: string | undefined = NidocaTheme.BACKGROUND;
 
-    render(): TemplateResult {
-        return html`
-            ${NidocaTheme.getStyle(this.theme)}
-            <slot></slot>
-        `;
-    }
-
+  render(): TemplateResult {
+    return html`
+      ${NidocaTheme.getStyle(this.theme)}
+      <slot></slot>
+    `;
+  }
 }

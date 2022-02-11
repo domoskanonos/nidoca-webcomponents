@@ -1,16 +1,17 @@
 export const MOBILE_MIN_WIDTH = 0;
 export const MOBILE_MAX_WIDTH = 640;
-export const TABLE_MIN_WIDTH = 641;
+export const TABLET_MIN_WIDTH = 641;
 export const TABLET_MAX_WIDTH = 1007;
 export const DESKTOP_MIN_WIDTH = 1008;
 
-import {html, HTMLTemplateResult, TemplateResult} from "lit";
+import {html, HTMLTemplateResult, LitElement, TemplateResult} from "lit";
 import {
   NidocaAvatar,
   NidocaBox,
   NidocaButtonType,
   NidocaIcon,
   NidocaImg,
+  NidocaMenu,
   NidocaMovie,
   NidocaProgress,
   NidocaTextType,
@@ -119,7 +120,7 @@ export class Nidoca {
     //nidoca-avatar
     this.registeredElementsMap.set(
       "nidoca-avatar",
-      html`<nidoca-avatar
+      html` <nidoca-avatar
         imgSrc="https://github.com/domoskanonos/nidoca-assets/raw/main/avatar.jpg"
         primaryText="Dominik Bruhn"
         description="Softwareentwickler"
@@ -392,12 +393,10 @@ export class NidocaTheme {
   }
 
   getParentTheme(element: HTMLElement): string | undefined {
-    let parentComponent: HTMLElement | null = element.parentElement;
+    let parentComponent: HTMLElement | null = element;
     while (parentComponent != null) {
-      if (parentComponent instanceof NidocaBox) {
-        if (parentComponent.theme != undefined) {
-          return parentComponent.theme as keyof NidocaTheme;
-        }
+      if ((<any>parentComponent).theme != undefined) {
+        return (<any>parentComponent).theme as keyof NidocaTheme;
       }
       parentComponent = parentComponent.parentElement;
     }

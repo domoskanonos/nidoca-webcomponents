@@ -4,7 +4,7 @@ import {NidocaText} from ".";
 
 @customElement("nidoca-text-h6")
 export class NidocaTextH6 extends NidocaText {
-    static styles = css`
+  static styles = css`
     :host,
     slot,
     ::slotted(:host),
@@ -16,16 +16,15 @@ export class NidocaTextH6 extends NidocaText {
     }
   `;
 
-    render(): TemplateResult {
-        return html`
-            <style>
-                :host,
-                slot,
-                ::slotted(:host),
-                ::slotted(slot) {
-                    color: var(--app-color-caption-${this.theme});
-                }
-            </style>
-            ${super.render()}`;
-    }
+  render(): TemplateResult {
+    return html` <style>
+        :host,
+        slot,
+        ::slotted(:host),
+        ::slotted(slot) {
+          color: var(--app-color-caption-${this.theme});
+        }
+      </style>
+      ${super.render()}`;
+  }
 }

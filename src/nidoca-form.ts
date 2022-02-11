@@ -6,13 +6,13 @@ import {NidocaTheme} from ".";
 import {NidocaFormAbstractInputElement} from "./nidoca-form-abstract-input-element";
 
 export class NidocaFormOutputData {
-    jsonObject: any;
-    formData: FormData = FormData.prototype;
+  jsonObject: any;
+  formData: FormData = FormData.prototype;
 }
 
 @customElement("nidoca-form")
 export class NidocaForm extends LitElement {
-    static styles = css`
+  static styles = css`
     :host {
       display: block;
     }
@@ -25,84 +25,82 @@ export class NidocaForm extends LitElement {
     }
   `;
 
-    @property({type: Boolean})
-    autocomplete: boolean = true;
+  @property({type: Boolean})
+  autocomplete: boolean = true;
 
-    @query("#slotElement")
-    private slotElement: HTMLSlotElement | undefined;
+  @query("#slotElement")
+  private slotElement: HTMLSlotElement | undefined;
 
-    render(): TemplateResult {
-        return html`
-            <form
-                    .?autocomplete="${this.autocomplete}"
-                    class="container"
-            >
-                <slot id="slotElement"></slot>
-            </form>
-        `;
+  render(): TemplateResult {
+    return html`
+      <form .?autocomplete="${this.autocomplete}" class="container">
+        <slot id="slotElement"></slot>
+      </form>
+    `;
+  }
+
+  public getOutputData(): NidocaFormOutputData {
+    const formData = new FormData();
+    const json: any = {};
+
+    for (const element of this.getInputElements(this.slotElement)) {
+      const elementOutputData = element.getOutputData();
+      json[elementOutputData.key] = elementOutputData.value;
+      formData.append(elementOutputData.key, elementOutputData.value);
     }
 
-    public getOutputData(): NidocaFormOutputData {
-        const formData = new FormData();
-        const json: any = {};
+    const outputData = <NidocaFormOutputData>{};
+    outputData.jsonObject = json;
 
-        for (const element of this.getInputElements(this.slotElement)) {
-            const elementOutputData = element.getOutputData();
-            json[elementOutputData.key] = elementOutputData.value;
-            formData.append(elementOutputData.key, elementOutputData.value);
+    outputData.formData = formData;
+
+    return outputData;
+  }
+
+  public validate(): boolean {
+    let valid: boolean = true;
+    for (const element of this.getInputElements(this.slotElement)) {
+      if (!element.validate()) {
+        if (valid) {
+          //element.select();
+          //element.parentElement?.scrollIntoView(true);
         }
-
-        const outputData = <NidocaFormOutputData>{};
-        outputData.jsonObject = json;
-
-        outputData.formData = formData;
-
-        return outputData;
+        valid = false;
+      }
     }
-
-    public validate(): boolean {
-        let valid: boolean = true;
-        for (const element of this.getInputElements(this.slotElement)) {
-            if (!element.validate()) {
-                if (valid) {
-                    //element.select();
-                    //element.parentElement?.scrollIntoView(true);
-                }
-                valid = false;
-            }
-        }
-        if (!valid) {
-            this.dispatchEvent(new CustomEvent("nidoca-form-validation-failed", {
-                detail: this.getOutputData(),
-                bubbles: true,
-                composed: true,
-            }));
-        }
-        return valid;
+    if (!valid) {
+      this.dispatchEvent(
+        new CustomEvent("nidoca-form-validation-failed", {
+          detail: this.getOutputData(),
+          bubbles: true,
+          composed: true,
+        })
+      );
     }
+    return valid;
+  }
 
-    getInputElements(slotElement: HTMLSlotElement | undefined): NidocaFormAbstractInputElement[] {
-        if (slotElement == null) {
-            return [];
-        }
-        const inputElements: NidocaFormAbstractInputElement[] = [];
-        const elements: Element[] = slotElement.assignedElements({flatten: true});
-        for (let index = 0; index < elements.length; index++) {
-            const element: Element = elements[index];
-            this.recursiveInputElementSearch(element, inputElements);
-        }
-        return inputElements;
+  getInputElements(slotElement: HTMLSlotElement | undefined): NidocaFormAbstractInputElement[] {
+    if (slotElement == null) {
+      return [];
     }
-
-    private recursiveInputElementSearch(element: Element, inputElements: NidocaFormAbstractInputElement[]) {
-        if (element instanceof NidocaFormAbstractInputElement) {
-            inputElements.push(element);
-        } else if (element.hasChildNodes()) {
-            const childrens: HTMLCollection = element.children;
-            for (const childElement of [].slice.call(childrens)) {
-                this.recursiveInputElementSearch(childElement, inputElements);
-            }
-        }
+    const inputElements: NidocaFormAbstractInputElement[] = [];
+    const elements: Element[] = slotElement.assignedElements({flatten: true});
+    for (let index = 0; index < elements.length; index++) {
+      const element: Element = elements[index];
+      this.recursiveInputElementSearch(element, inputElements);
     }
+    return inputElements;
+  }
 
+  private recursiveInputElementSearch(element: Element, inputElements: NidocaFormAbstractInputElement[]) {
+    if (element instanceof NidocaFormAbstractInputElement) {
+      inputElements.push(element);
+    } else if (element.hasChildNodes()) {
+      const childrens: HTMLCollection = element.children;
+      for (const childElement of [].slice.call(childrens)) {
+        this.recursiveInputElementSearch(childElement, inputElements);
+      }
+    }
+  }
 }

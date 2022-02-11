@@ -32,7 +32,6 @@ export class NidocaFormUpload extends NidocaFormAbstractInputElement {
       font-size: 96px;
       align-self: center;
     }
-    
   `;
 
   @property({type: NidocaTheme, converter: String})

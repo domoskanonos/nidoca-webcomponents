@@ -5,9 +5,9 @@ import {property} from "lit/decorators.js";
 @customElement("nidoca-code")
 export class NidocaCode extends LitElement {
   static styles = css`
-  :host {
-    font-size:0.75rem;
-  }
+    :host {
+      font-size: 0.75rem;
+    }
     pre {
       margin: 0;
       padding: 0;

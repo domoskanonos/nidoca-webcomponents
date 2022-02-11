@@ -5,7 +5,7 @@ import {NidocaTheme} from "./nidoca-meta";
 
 @customElement("nidoca-icon")
 export class NidocaIcon extends LitElement {
-    static styles = css`
+  static styles = css`
     :host {
       display: inline-block;
       font-size: var(--icon-size);
@@ -43,53 +43,53 @@ export class NidocaIcon extends LitElement {
     }
   `;
 
-    @property({type: String})
-    icon: string = "";
+  @property({type: String})
+  icon: string = "";
 
-    @property({type: Boolean})
-    clickable: boolean = true;
+  @property({type: Boolean})
+  clickable: boolean = true;
 
-    @property({type: Boolean})
-    deactivated: boolean = false;
+  @property({type: Boolean})
+  deactivated: boolean = false;
 
-    @property({type: String})
-    primaryText: string = "";
+  @property({type: String})
+  primaryText: string = "";
 
-    @property({type: NidocaTheme, converter: String})
-    theme: string;
+  @property({type: NidocaTheme, converter: String})
+  theme: string;
 
-    constructor() {
-        super();
-        this.theme = NidocaTheme.prototype.getParentTheme(this) || NidocaTheme.BACKGROUND;
-    }
+  constructor() {
+    super();
+    this.theme = NidocaTheme.prototype.getParentTheme(this) || NidocaTheme.BACKGROUND;
+  }
 
-    render(): TemplateResult {
-        return html`
-            <style>
-                :hover {
-                    background-color: var(--app-color-${this.theme}-hover);
-                }
-            </style>
-            <i
-                    class="material-icons ${this.deactivated ? "deactivated" : ""} ${this.clickable ? "clickable" : ""}"
-                    title="${this.primaryText}"
-                    @click="${this.clicked}"
-            >${this.icon}</i
-            >
-        `;
-    }
-
-    async clicked(): Promise<void> {
-        if (this.clickable && !this.deactivated) {
-            const customEventName = "nidoca-event-icon-clicked";
-            console.log("dispatch custom event: %s", customEventName);
-            this.dispatchEvent(
-                new CustomEvent(customEventName, {
-                    detail: this,
-                    bubbles: true,
-                    composed: true,
-                })
-            );
+  render(): TemplateResult {
+    return html`
+      <style>
+        :hover {
+          background-color: var(--app-color-${this.theme}-hover);
         }
+      </style>
+      <i
+        class="material-icons ${this.deactivated ? "deactivated" : ""} ${this.clickable ? "clickable" : ""}"
+        title="${this.primaryText}"
+        @click="${this.clicked}"
+        >${this.icon}</i
+      >
+    `;
+  }
+
+  async clicked(): Promise<void> {
+    if (this.clickable && !this.deactivated) {
+      const customEventName = "nidoca-event-icon-clicked";
+      console.log("dispatch custom event: %s", customEventName);
+      this.dispatchEvent(
+        new CustomEvent(customEventName, {
+          detail: this,
+          bubbles: true,
+          composed: true,
+        })
+      );
     }
+  }
 }

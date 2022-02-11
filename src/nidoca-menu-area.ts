@@ -18,9 +18,7 @@ export class NidocaMenuArea extends LitElement {
     return html`
       <div class="container">
         <nidoca-layout-spacer left="10px"></nidoca-layout-spacer>
-        ${this.text
-          ? html`<nidoca-text .type="${NidocaFormTextType.H5}">${this.text}</nidoca-text>`
-          : html``}
+        ${this.text ? html`<nidoca-text .type="${NidocaFormTextType.H5}">${this.text}</nidoca-text>` : html``}
         <slot></slot>
       </div>
     `;

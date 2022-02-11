@@ -4,7 +4,7 @@ import {NidocaTheme} from ".";
 
 @customElement("nidoca-menu")
 export class NidocaMenu extends LitElement {
-    static styles = css`
+  static styles = css`
     :host,
     slot {
       display: block;
@@ -16,12 +16,11 @@ export class NidocaMenu extends LitElement {
     }
   `;
 
-    @property({type: NidocaTheme, converter: String})
-    theme: string | undefined;
+  @property({type: NidocaTheme, converter: String})
+  theme: string | undefined = NidocaTheme.BACKGROUND;
 
-    render(): TemplateResult {
-        return html`
-            ${NidocaTheme.getStyle(this.theme)}
-            <slot></slot>`;
-    }
+  render(): TemplateResult {
+    return html` ${NidocaTheme.getStyle(this.theme)}
+      <slot></slot>`;
+  }
 }

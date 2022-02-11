@@ -4,7 +4,6 @@ import {Vertrag} from "./model/vertrag";
 import {CRUDProperty, GenericCRUDController} from "..";
 import {NidocaPostgrestClient} from "@domoskanonos/nidoca-postgrest-client";
 
-
 export class VertragListController extends GenericCRUDController<Vertrag> {
   private postgrestClient: NidocaPostgrestClient = new NidocaPostgrestClient("http://89.58.33.189");
 

@@ -1,12 +1,6 @@
 import {css, html, TemplateResult, LitElement} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
-import {NidocaFormTextType} from ".";
-
-export enum NidocaMenuItemType {
-  ITEM = "item",
-  SECTION = "section",
-}
 
 @customElement("nidoca-menu-item")
 export class NidocaMenuItem extends LitElement {
@@ -25,12 +19,9 @@ export class NidocaMenuItem extends LitElement {
   @property({type: String})
   icon: string = "";
 
-  @property({type: String})
-  type: string = NidocaMenuItemType.ITEM;
-
   render(): TemplateResult {
     return html`
-      <div class="container ${this.type}">
+      <div class="container" @click="${() => this.clicked()}">
         ${this.icon
           ? html` <nidoca-icon
               slot="graphic"
@@ -38,15 +29,18 @@ export class NidocaMenuItem extends LitElement {
               style="padding-right:var(--space); font-size:var(--icon-size);"
             ></nidoca-icon>`
           : html` <nidoca-layout-spacer left="10px" right="36px"></nidoca-layout-spacer>`}
-        ${this.text
-          ? html`<nidoca-text
-              .type="${this.type == NidocaMenuItemType.ITEM
-                ? NidocaFormTextType.SUBTITLE1
-                : NidocaFormTextType.CAPTION}"
-              >${this.text}</nidoca-text
-            >`
-          : html``}
+        ${this.text ? html` <nidoca-text-body>${this.text} </nidoca-text-body>` : html``}
       </div>
     `;
+  }
+
+  private clicked() {
+    this.dispatchEvent(
+      new CustomEvent("nidoca-event-menu-item-clicked", {
+        detail: this,
+        bubbles: true,
+        composed: true,
+      })
+    );
   }
 }

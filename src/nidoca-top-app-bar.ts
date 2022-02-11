@@ -3,14 +3,18 @@ import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
 import {NidocaTheme} from ".";
 
+/**
+ * state: stable
+ */
 @customElement("nidoca-top-app-bar")
 export class NidocaTopAppBar extends LitElement {
     static styles = css`
     :host {
-      width: 100%;
-      position: relativ;
       display: block;
-      height: min-content;
+      width: 100%;
+      position: sticky;
+      top:0;
+      height: calc(var(--line-height) * 3);
     }
 
     .bar {
@@ -20,6 +24,7 @@ export class NidocaTopAppBar extends LitElement {
       align-items: center;
       justify-content: space-between;
       align-content: space-around;
+      height:100%;
     }
 
     slot {
@@ -28,35 +33,23 @@ export class NidocaTopAppBar extends LitElement {
     }
 
     .prominent {
-      flex-basis: 100%;
-      flex-grow: 3;
+      display:block;
     }
   `;
 
     @property({type: NidocaTheme, converter: String})
-    theme: string;
+    theme: string | undefined = NidocaTheme.PRIMARY;
 
     @property({type: Boolean})
     prominent: boolean = false;
-
-    constructor() {
-        super();
-        this.theme = NidocaTheme.prototype.getParentTheme(this) || NidocaTheme.BACKGROUND;
-    }
 
     render(): TemplateResult {
         return html`
             ${NidocaTheme.getStyle(this.theme)}
             <div class="bar">
-        <span>
-          <slot name="left"></slot>
-        </span>
-                <span>
-          <slot name="center"></slot>
-        </span>
-                <span>
-          <slot name="right"></slot>
-        </span>
+                <slot name="left"></slot>
+                <slot name="center"></slot>
+                <slot name="right"></slot>
             </div>
             ${this.prominent ? html`
                 <slot class="prominent" name="prominent"></slot>` : html``}

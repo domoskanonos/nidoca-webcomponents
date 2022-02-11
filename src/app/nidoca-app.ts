@@ -3,6 +3,7 @@ import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
 import {NidocaRouteListener, NidocaRouter} from "@domoskanonos/nidoca-router";
 import {NidocaOAuthClient} from "@domoskanonos/nidoca-oauth-client";
+import {NidocaTheme} from "../nidoca-meta";
 
 @customElement("nidoca-app")
 export class NidocaApp extends LitElement implements NidocaRouteListener {
@@ -81,13 +82,7 @@ export class NidocaApp extends LitElement implements NidocaRouteListener {
             <nidoca-template .prominent="${this.prominent}" .navigationClosed="${this.navigationClosed}">
                 <nidoca-text-body slot="topCenter"
                 "></nidoca-text-body>
-                <nidoca-icon
-                        slot="topLeft"
-                        style="padding-left:var(--space-2);"
-                        icon="${this.navigationClosed ? "menu" : "clear"}"
-                        .clickable="${true}"
-                        @nidoca-event-icon-clicked="${() => (this.navigationClosed = !this.navigationClosed)}"
-                ></nidoca-icon>
+
                 <nidoca-icon
                         style="padding-right:var(--space-2);"
                         slot="topRight"
@@ -134,14 +129,14 @@ export class NidocaApp extends LitElement implements NidocaRouteListener {
 
                 <nidoca-avatar
                         style="width:150px;"
-                        slot="sidebar"
+                        slot="left"
                         imgSrc="https://github.com/domoskanonos/nidoca-assets/raw/main/avatar.jpg"
                 >
                     <nidoca-text-body>Dominik Bruhn</nidoca-text-body>
                     <nidoca-text-caption>Softwareentwickler</nidoca-text-caption>
                 </nidoca-avatar>
 
-                <nidoca-menu slot="sidebar">
+                <nidoca-menu slot="left">
                     <nidoca-menu-item text="Start" @click="${() => NidocaRouter.getUniqueInstance().navigate("main")}">
                     </nidoca-menu-item>
 

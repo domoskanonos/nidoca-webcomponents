@@ -16,14 +16,6 @@ export class NidocaTextBody extends NidocaText {
     }
   `;
   render(): TemplateResult {
-    return html` <style>
-        :host,
-        slot,
-        ::slotted(:host),
-        ::slotted(slot) {
-          color: var(--app-color-${this.theme});
-        }
-      </style>
-      ${super.render()}`;
+    return html` ${super.render()}`;
   }
 }

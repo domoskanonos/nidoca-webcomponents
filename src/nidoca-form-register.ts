@@ -4,81 +4,85 @@ import {NidocaForm, NidocaTheme, NidocaTextType, NidocaFormTextType} from "./ind
 
 @customElement("nidoca-form-register")
 export class NidocaFormRegister extends LitElement {
-    static styles = css`
-  
-  :host {
-  display:block;
-  }
-  
-  .paddingBottom {
-  padding-bottom: var(--space-3);
-}
-  
+  static styles = css`
+    :host {
+      display: block;
+    }
+
+    .paddingBottom {
+      padding-bottom: var(--space-3);
+    }
   `;
 
-    @property({type: NidocaTheme, converter: String})
-    theme: string | undefined = NidocaTheme.PRIMARY;
+  @property({type: NidocaTheme, converter: String})
+  theme: string | undefined = NidocaTheme.PRIMARY;
 
-    @property({type: String, converter: String})
-    label: string = "Registrieren";
+  @property({type: String, converter: String})
+  label: string = "Registrieren";
 
-    @property({type: String, converter: String})
-    emailLabel: string = "Email";
+  @property({type: String, converter: String})
+  emailLabel: string = "Email";
 
-    @property({type: String, converter: String})
-    passwordLabel: string = "Passwort";
+  @property({type: String, converter: String})
+  passwordLabel: string = "Passwort";
 
-    @property({type: String, converter: String})
-    buttonLabel: string = "Registrieren";
+  @property({type: String, converter: String})
+  buttonLabel: string = "Registrieren";
 
-    @query("#form")
-    formComponent: NidocaForm | undefined;
+  @query("#form")
+  formComponent: NidocaForm | undefined;
 
-    render(): TemplateResult {
-        return html`
-            <nidoca-box theme="${this.theme}">
-                <nidoca-form id="form">
-                    <nidoca-text class="paddingBottom" .type="${NidocaTextType.H1}">${this.label}</nidoca-text>
+  render(): TemplateResult {
+    return html`
+      <nidoca-box theme="${this.theme}">
+        <nidoca-form id="form">
+          <nidoca-text class="paddingBottom" .type="${NidocaTextType.H1}">${this.label}</nidoca-text>
 
-                    <nidoca-form-text theme="${this.theme}" class="paddingBottom"
-                                      textType="${NidocaFormTextType.EMAIL}"
-                                      label="${this.emailLabel}"
-                                      name="email"
-                                      trailingIcon="account_circle"
-                                      required
-                                      minLength="4"
-                                      pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$"
-                    ></nidoca-form-text>
+          <nidoca-form-text
+            theme="${this.theme}"
+            class="paddingBottom"
+            textType="${NidocaFormTextType.EMAIL}"
+            label="${this.emailLabel}"
+            name="email"
+            trailingIcon="account_circle"
+            required
+            minLength="4"
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$"
+          ></nidoca-form-text>
 
-                    <nidoca-form-text theme="${this.theme}" class="paddingBottom"
-                                      textType="${NidocaFormTextType.PASSWORD}"
-                                      label="${this.passwordLabel}"
-                                      name="password"
-                                      trailingIcon="vpn_key"
-                                      required
-                                      minLength="8"
-                    ></nidoca-form-text>
+          <nidoca-form-text
+            theme="${this.theme}"
+            class="paddingBottom"
+            textType="${NidocaFormTextType.PASSWORD}"
+            label="${this.passwordLabel}"
+            name="password"
+            trailingIcon="vpn_key"
+            required
+            minLength="8"
+          ></nidoca-form-text>
 
-                    <nidoca-button theme="${NidocaTheme.getOposite(this.theme)}" class="paddingBottom"
-                                   @nidoca-event-button-clicked="${() => this.register()}">${this.buttonLabel}
-                    </nidoca-button>
+          <nidoca-button
+            theme="${NidocaTheme.getOposite(this.theme)}"
+            class="paddingBottom"
+            @nidoca-event-button-clicked="${() => this.register()}"
+            >${this.buttonLabel}
+          </nidoca-button>
 
-                    <slot></slot>
+          <slot></slot>
+        </nidoca-form>
+      </nidoca-box>
+    `;
+  }
 
-                </nidoca-form>
-            </nidoca-box>
-
-        `;
+  private register() {
+    if (this.formComponent && this.formComponent.validate()) {
+      this.dispatchEvent(
+        new CustomEvent("nidoca-form-register-submit", {
+          detail: this.formComponent.getOutputData(),
+          bubbles: true,
+          composed: true,
+        })
+      );
     }
-
-    private register() {
-        if (this.formComponent && this.formComponent.validate()) {
-            this.dispatchEvent(new CustomEvent("nidoca-form-register-submit", {
-                detail: this.formComponent.getOutputData(),
-                bubbles: true,
-                composed: true,
-            }));
-        }
-    }
-
+  }
 }

@@ -6,7 +6,6 @@ export class FormOutputData {
 }
 
 export abstract class NidocaFormAbstractInputElement extends LitElement {
-
   abstract validate(): boolean;
 
   abstract getOutputData(): FormOutputData;

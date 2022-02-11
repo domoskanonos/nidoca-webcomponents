@@ -5,36 +5,32 @@ import {NidocaTheme} from "./nidoca-meta";
 
 @customElement("nidoca-hr")
 export class NidocaHr extends LitElement {
-    static styles = css`
+  static styles = css`
     :host,
     ::slotted(:host) {
-    padding-top:var(--space-2);
-    padding-bottom:var(--space-2);
-      
-      
+      padding-top: var(--space-2);
+      padding-bottom: var(--space-2);
     }
   `;
 
-    @property({type: NidocaTheme, converter: String})
-    theme: string;
+  @property({type: NidocaTheme, converter: String})
+  theme: string;
 
-    constructor() {
-        super();
-        this.theme = NidocaTheme.prototype.getParentTheme(this) || NidocaTheme.BACKGROUND;
-    }
+  constructor() {
+    super();
+    this.theme = NidocaTheme.prototype.getParentTheme(this) || NidocaTheme.BACKGROUND;
+  }
 
-    render(): TemplateResult {
-        return html`
-            <style>
-                hr {
-                    border-color: var(--app-color-${this.theme}-border);
-                    border-bottom-style: solid;
-                    border-width: thin;
-                }
-            </style>
-            <hr/>
-
-
-        `;
-    }
+  render(): TemplateResult {
+    return html`
+      <style>
+        hr {
+          border-color: var(--app-color-${this.theme}-border);
+          border-bottom-style: solid;
+          border-width: thin;
+        }
+      </style>
+      <hr />
+    `;
+  }
 }
