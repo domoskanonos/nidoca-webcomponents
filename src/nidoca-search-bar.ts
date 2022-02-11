@@ -9,11 +9,11 @@ export class NidocaSearchBar extends LitElement {
   static styles = css`
     :host {
       width: 100%;
-      height: fit-content;
       display: flex;
       flex-direction: row;
       flex-wrap: nowrap;
       align-items: center;
+      min-height: calc(var(--line-height) * 2);
     }
 
     input {
@@ -47,7 +47,7 @@ export class NidocaSearchBar extends LitElement {
 
   constructor() {
     super();
-    this.theme = NidocaTheme.prototype.getParentTheme(this) || NidocaTheme.BACKGROUND;
+    this.theme = NidocaTheme.prototype.getParentTheme(this) || NidocaTheme.PRIMARY;
   }
 
   render(): TemplateResult {
