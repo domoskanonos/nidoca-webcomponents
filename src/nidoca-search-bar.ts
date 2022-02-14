@@ -6,7 +6,7 @@ import {NidocaTheme} from ".";
 
 @customElement("nidoca-search-bar")
 export class NidocaSearchBar extends LitElement {
-  static styles = css`
+    static styles = css`
     :host {
       width: 100%;
       display: flex;
@@ -30,64 +30,63 @@ export class NidocaSearchBar extends LitElement {
     }
   `;
 
-  @property({type: String})
-  value: string = "";
+    @property({type: String})
+    value: string = "";
 
-  @property({type: String})
-  placeholder: string = "";
+    @property({type: String})
+    placeholder: string = "";
 
-  @property({type: Boolean})
-  disabled: boolean = false;
+    @property({type: Boolean})
+    disabled: boolean = false;
 
-  @query("#inputElement")
-  private inputElement: HTMLInputElement | undefined;
+    @query("#inputElement")
+    private inputElement: HTMLInputElement | undefined;
 
-  @property({type: NidocaTheme, converter: String})
-  theme: string;
+    @property({type: NidocaTheme, converter: String})
+    theme: string;
 
-  constructor() {
-    super();
-    this.theme = NidocaTheme.prototype.getParentTheme(this) || NidocaTheme.PRIMARY;
-  }
+    constructor() {
+        super();
+        this.theme = NidocaTheme.prototype.getParentTheme(this) || NidocaTheme.PRIMARY;
+    }
 
-  render(): TemplateResult {
-    return html`
-      <style>
-        *,
-        ::slotted(*) {
-          color: var(--app-color-${this.theme});
-          background-color: var(--app-color-${this.theme}-background);
-        }
-      </style>
-      <nidoca-icon style="padding-right:var(--space);padding-left:var(--space);" icon="search"></nidoca-icon>
-      <input
-        id="inputElement"
-        type="text"
-        value="${this.value}"
-        placeholder="${this.placeholder}"
-        ?disabled="${this.disabled}"
-        @input="${() => this.valueChanged()}"
-      />
-      <nidoca-icon
-        style="padding-right:var(--space);padding-left:var(--space);"
-        icon="close"
-        @click="${() => this.clearValue()}"
-      ></nidoca-icon>
-    `;
-  }
+    render(): TemplateResult {
+        return html`
+            <style>
+                :host, input {
+                    color: var(--app-color-${this.theme});
+                    background-color: var(--app-color-${this.theme}-background);
+                }
+            </style>
+            <nidoca-icon style="padding-right:var(--space);padding-left:var(--space);" icon="search"></nidoca-icon>
+            <input
+                    id="inputElement"
+                    type="text"
+                    value="${this.value}"
+                    placeholder="${this.placeholder}"
+                    ?disabled="${this.disabled}"
+                    @input="${() => this.valueChanged()}"
+            />
+            <nidoca-icon
+                    style="padding-right:var(--space);padding-left:var(--space);"
+                    icon="close"
+                    @click="${() => this.clearValue()}"
+            ></nidoca-icon>
+        `;
+    }
 
-  clearValue(): void {
-    this.value = "";
-  }
+    clearValue(): void {
+        this.value = "";
+    }
 
-  async valueChanged(): Promise<void> {
-    const eventName = "nidoca-search-bar-event-value-changed";
-    const customEvent = new CustomEvent(eventName, {
-      detail: this.inputElement?.value,
-      bubbles: true,
-      composed: true,
-    });
-    console.debug("dispatch custom event type: %s, detail: %s", customEvent.type, JSON.stringify(customEvent.detail));
-    this.dispatchEvent(customEvent);
-  }
+    async valueChanged(): Promise<void> {
+        const eventName = "nidoca-search-bar-event-value-changed";
+        const customEvent = new CustomEvent(eventName, {
+            detail: this.inputElement?.value,
+            bubbles: true,
+            composed: true,
+        });
+        console.debug("dispatch custom event type: %s, detail: %s", customEvent.type, JSON.stringify(customEvent.detail));
+        this.dispatchEvent(customEvent);
+    }
 }
