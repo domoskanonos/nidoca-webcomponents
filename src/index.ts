@@ -15,9 +15,12 @@ export * from "./nidoca-button";
 export * from "./nidoca-box-shadow";
 export * from "./nidoca-form";
 export * from "./nidoca-form-combobox";
+
 export * from "./nidoca-form-text";
-export * from "./nidoca-form-textarea";
 export * from "./nidoca-form-date";
+
+
+export * from "./nidoca-form-textarea";
 export * from "./nidoca-form-upload";
 export * from "./nidoca-form-switch";
 export * from "./nidoca-form-newsletter";

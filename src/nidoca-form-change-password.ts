@@ -1,7 +1,7 @@
 import {css, html, TemplateResult, LitElement} from "lit";
 import {customElement, property, query} from "lit/decorators.js";
 import {ifDefined} from "lit/directives/if-defined.js";
-import {NidocaForm, NidocaFormTextType, NidocaTheme, NidocaTextType, NidocaText, NidocaFormText} from ".";
+import {NidocaForm, NidocaFormTextType, NidocaTheme,  NidocaText, NidocaFormText} from ".";
 
 @customElement("nidoca-form-change-password")
 export class NidocaFormChangePassword extends LitElement {
@@ -16,7 +16,7 @@ export class NidocaFormChangePassword extends LitElement {
   `;
 
   @property({type: NidocaTheme, converter: String})
-  theme: string | undefined = NidocaTheme.PRIMARY;
+  theme: string = NidocaTheme.SURFACE;
 
   @property({type: String, converter: String})
   label: string = "Passwort ändern";
@@ -59,11 +59,11 @@ export class NidocaFormChangePassword extends LitElement {
     return html`
       <nidoca-box theme="${this.theme}">
         <nidoca-form id="form">
-          <nidoca-text class="paddingBottom" .type="${NidocaTextType.H1}">${this.label}</nidoca-text>
+          <nidoca-text-h2 class="paddingBottom">${this.label}</nidoca-text-h2>
 
           <nidoca-form-text
             id="oldPassword"
-            theme="${ifDefined(this.theme)}"
+            theme="${NidocaTheme.getOposite(this.theme)}"
             class="paddingBottom"
             textType="${NidocaFormTextType.PASSWORD}"
             label="${this.oldPasswordLabel}"
@@ -73,7 +73,7 @@ export class NidocaFormChangePassword extends LitElement {
 
           <nidoca-form-text
             id="newPassword"
-            theme="${ifDefined(this.theme)}"
+            theme="${NidocaTheme.getOposite(this.theme)}"
             class="paddingBottom"
             textType="${NidocaFormTextType.PASSWORD}"
             label="${this.newPasswordLabel}"
@@ -83,7 +83,7 @@ export class NidocaFormChangePassword extends LitElement {
 
           <nidoca-form-text
             id="repeatNewPassword"
-            theme="${ifDefined(this.theme)}"
+            theme="${NidocaTheme.getOposite(this.theme)}"
             class="paddingBottom"
             textType="${NidocaFormTextType.PASSWORD}"
             label="${this.repeatNewPasswordLabel}"
@@ -102,14 +102,12 @@ export class NidocaFormChangePassword extends LitElement {
         </nidoca-form>
         ${this.showErrorMessageSamePassword
           ? html` <nidoca-text
-              type="${NidocaTextType.CAPTION}"
               style="color:var(--app-color-error-background)"
               text="${this.errorMessageSamePasswordLabel}"
             ></nidoca-text>`
           : html``}
         ${this.showErrorMessagePasswordDiff
           ? html` <nidoca-text
-              type="${NidocaTextType.CAPTION}"
               style="color:var(--app-color-error-background)"
               text="${this.errorMessagePasswordDiffLabel}"
             ></nidoca-text>`

@@ -1,7 +1,7 @@
 import {css, html, LitElement, TemplateResult} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
-import {NidocaFormTextType, NidocaTextType, NidocaTheme} from ".";
+import {NidocaFormTextType,  NidocaTheme} from ".";
 
 @customElement("nidoca-list-item")
 export class NidocaListItem extends LitElement {

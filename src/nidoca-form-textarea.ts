@@ -2,7 +2,7 @@ import {css, html, TemplateResult} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
 import {query} from "lit/decorators.js";
-import {NidocaTheme, NidocaTextType} from ".";
+import {NidocaTheme} from ".";
 import {FormOutputData, NidocaFormAbstractInputElement} from "./nidoca-form-abstract-input-element";
 
 @customElement("nidoca-form-textarea")
@@ -18,6 +18,7 @@ export class NidocaFormTextarea extends NidocaFormAbstractInputElement {
       align-content: center;
       align-items: center;
       flex-direction: row;
+      padding: var(--space);
     }
 
     .container {
@@ -28,14 +29,13 @@ export class NidocaFormTextarea extends NidocaFormAbstractInputElement {
     }
 
     textarea {
-      padding-left: var(--space-2);
-      padding-right: var(--space-2);
       font: inherit;
       box-sizing: border-box;
       width: 100%;
       border: none;
       color: inherit;
       background-color: inherit;
+      line-height: var(--line-height-input);
     }
     textarea:focus {
       outline: none;
@@ -102,7 +102,7 @@ export class NidocaFormTextarea extends NidocaFormAbstractInputElement {
           border-color: var(--app-color-${this.theme}-selected);
         }
       </style>
-      <div class="parentContainer border">
+      <div class="parentContainer">
         <div class="container">
           <nidoca-text-caption class="label" text="${this.label}"></nidoca-text-caption>
 
@@ -119,28 +119,29 @@ ${this.value}</textarea
         </div>
       </div>
 
-      ${this.infoText || this.warningText || this.errorText
+    ${this.infoText || this.warningText || this.errorText
         ? html`
-            <div style="display:flex;flex-direction:column;">
-              ${this.infoText
-                ? html` <nidoca-text .type="${NidocaTextType.SUBTITLE1}" text="${this.infoText}"></nidoca-text>`
+          <div style="display:flex;flex-direction:column;">
+            ${this.infoText
+                ? html`
+                  <nidoca-text-info text="${this.infoText}"></nidoca-text-info>`
                 : html``}
-              ${this.warningText
-                ? html` <nidoca-text
-                    style="color:var(--app-color-warning-background)"
-                    .type="${NidocaTextType.SUBTITLE1}"
-                    text="${this.warningText}"
-                  ></nidoca-text>`
+            ${this.warningText
+                ? html`
+                  <nidoca-text-warning
+                      style="color:var(--app-color-warning-background)"
+                      text="${this.warningText}"
+                  ></nidoca-text-warning>`
                 : html``}
-              ${this.errorText
-                ? html` <nidoca-text
-                    style="color:var(--app-color-error-background)"
-                    .type="${NidocaTextType.SUBTITLE1}"
-                    text="${this.errorText}"
-                  ></nidoca-text>`
+            ${this.errorText
+                ? html`
+                  <nidoca-text-error
+                      style="color:var(--app-color-error-background)"
+                      text="${this.errorText}"
+                  ></nidoca-text-error>`
                 : html``}
-            </div>
-          `
+          </div>
+        `
         : html``}`;
   }
 

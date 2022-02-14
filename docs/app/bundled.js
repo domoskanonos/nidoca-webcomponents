@@ -79,7 +79,7 @@
         name="text"
         .options="${[{key:"item1",value:"Item 1"},{key:"item2",value:"Item 2"}]}"
         value="item2"
-      ></nidoca-form-combobox>`),this._registeredElementsMap.set("nidoca-form-date",A` <nidoca-form-date
+      ></nidoca-form-combobox>`),this._registeredElementsMap.set("nidoca-form-text",A` <nidoca-form-text
         theme="background"
         label="Geburtstag"
         placeholder="Platzhalter"
@@ -88,7 +88,7 @@
         warningText="Warnung"
         errorText="Fehler"
         name="text"
-      ></nidoca-form-date>`),this._registeredElementsMap.set("nidoca-form-switch",A` <nidoca-form-switch></nidoca-form-switch>`),this._registeredElementsMap.set("nidoca-form-text",A`
+      ></nidoca-form-text>`),this._registeredElementsMap.set("nidoca-form-switch",A` <nidoca-form-switch></nidoca-form-switch>`),this._registeredElementsMap.set("nidoca-form-text",A`
         <nidoca-form-text
           theme="primary"
           label="Mein Textfeld"
@@ -586,7 +586,7 @@
       vertical-align: center;
       border-style: solid;
       border-width: var(--border-width);
-      height: calc(var(--line-height) * 2);
+      height: calc(var(--line-height-input) * 2);
     }
 
     @media only screen and (orientation: portrait) {
@@ -1008,7 +1008,7 @@ ${this.value}</textarea
       box-shadow: none;
       background: inherit;
     }
-  `,ve([st({type:String}),we("design:type",String)],_e.prototype,"trailingIcon",void 0),ve([st(),we("design:type",String)],_e.prototype,"type",void 0),ve([st({type:String}),we("design:type",String)],_e.prototype,"name",void 0),ve([st({type:String}),we("design:type",String)],_e.prototype,"value",void 0),ve([st({type:String}),we("design:type",String)],_e.prototype,"label",void 0),ve([st({type:Boolean}),we("design:type",Boolean)],_e.prototype,"required",void 0),ve([st({type:String}),we("design:type",String)],_e.prototype,"placeholder",void 0),ve([st({type:Boolean}),we("design:type",Boolean)],_e.prototype,"disabled",void 0),ve([st({type:String}),we("design:type",String)],_e.prototype,"errorText",void 0),ve([st({type:String}),we("design:type",String)],_e.prototype,"infoText",void 0),ve([st({type:String}),we("design:type",String)],_e.prototype,"warningText",void 0),ve([lt("#inputElement"),we("design:type",Object)],_e.prototype,"inputElement",void 0),ve([st({type:it,converter:String}),we("design:type",String)],_e.prototype,"theme",void 0),_e=ve([nt("nidoca-form-date"),we("design:paramtypes",[])],_e);var Se=function(t,e,i,o){var n,r=arguments.length,s=r<3?e:null===o?o=Object.getOwnPropertyDescriptor(e,i):o;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)s=Reflect.decorate(t,e,i,o);else for(var a=t.length-1;a>=0;a--)(n=t[a])&&(s=(r<3?n(s):r>3?n(e,i,s):n(e,i))||s);return r>3&&s&&Object.defineProperty(e,i,s),s},ke=function(t,e){if("object"==typeof Reflect&&"function"==typeof Reflect.metadata)return Reflect.metadata(t,e)};let Re=class extends Yt{constructor(){super(...arguments),this.theme=it.PRIMARY}validate(){throw new Error("Method not implemented.")}getOutputData(){throw new Error("Method not implemented.")}render(){return A`
+  `,ve([st({type:String}),we("design:type",String)],_e.prototype,"trailingIcon",void 0),ve([st(),we("design:type",String)],_e.prototype,"type",void 0),ve([st({type:String}),we("design:type",String)],_e.prototype,"name",void 0),ve([st({type:String}),we("design:type",String)],_e.prototype,"value",void 0),ve([st({type:String}),we("design:type",String)],_e.prototype,"label",void 0),ve([st({type:Boolean}),we("design:type",Boolean)],_e.prototype,"required",void 0),ve([st({type:String}),we("design:type",String)],_e.prototype,"placeholder",void 0),ve([st({type:Boolean}),we("design:type",Boolean)],_e.prototype,"disabled",void 0),ve([st({type:String}),we("design:type",String)],_e.prototype,"errorText",void 0),ve([st({type:String}),we("design:type",String)],_e.prototype,"infoText",void 0),ve([st({type:String}),we("design:type",String)],_e.prototype,"warningText",void 0),ve([lt("#inputElement"),we("design:type",Object)],_e.prototype,"inputElement",void 0),ve([st({type:it,converter:String}),we("design:type",String)],_e.prototype,"theme",void 0),_e=ve([nt("nidoca-form-text"),we("design:paramtypes",[])],_e);var Se=function(t,e,i,o){var n,r=arguments.length,s=r<3?e:null===o?o=Object.getOwnPropertyDescriptor(e,i):o;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)s=Reflect.decorate(t,e,i,o);else for(var a=t.length-1;a>=0;a--)(n=t[a])&&(s=(r<3?n(s):r>3?n(e,i,s):n(e,i))||s);return r>3&&s&&Object.defineProperty(e,i,s),s},ke=function(t,e){if("object"==typeof Reflect&&"function"==typeof Reflect.metadata)return Reflect.metadata(t,e)};let Re=class extends Yt{constructor(){super(...arguments),this.theme=it.PRIMARY}validate(){throw new Error("Method not implemented.")}getOutputData(){throw new Error("Method not implemented.")}render(){return A`
       <nidoca-box theme="${he(this.theme)}">
         <div class="container">
           <nidoca-icon
@@ -1789,7 +1789,7 @@ ${this.value}</textarea
       justify-content: space-between;
       align-content: space-around;
       width: 100%;
-      min-height: calc(var(--line-height) * 2);
+      min-height: calc(var(--line-height-input) * 2);
     }
 
     slot {
@@ -2194,7 +2194,7 @@ ${this.value}</textarea
       flex-direction: row;
       flex-wrap: nowrap;
       align-items: center;
-      min-height: calc(var(--line-height) * 2);
+      min-height: calc(var(--line-height-input) * 2);
     }
 
     input {
@@ -3037,12 +3037,12 @@ ${this.value}</textarea
                                 value="${this.item[t.key]}"
                               >
                               </nidoca-form-text>
-                            `:"date"==t.type?A` <nidoca-form-date
+                            `:"date"==t.type?A` <nidoca-form-text
                               name="${t.key}"
                               label="${t.label}"
                               value="${this.item[t.key]?this.nidocaDateHelper.formatDate(this.item[t.key],"yyyy-MM-dd"):""}"
                               ?required="${t.required}"
-                            ></nidoca-form-date>`:"checkbox"==t.type?A` <nidoca-form-switch
+                            ></nidoca-form-text>`:"checkbox"==t.type?A` <nidoca-form-switch
                               name="${t.key}"
                               label="${t.label}"
                               .checked="${this.item[t.key]}"

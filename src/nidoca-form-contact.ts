@@ -1,6 +1,6 @@
 import {css, html, TemplateResult, LitElement} from "lit";
 import {customElement, property, query} from "lit/decorators.js";
-import {NidocaButtonType, NidocaFormTextType, NidocaTheme, NidocaTextType, NidocaForm} from ".";
+import {NidocaButtonType, NidocaFormTextType, NidocaTheme,  NidocaForm} from ".";
 
 @customElement("nidoca-form-contact")
 export class NidocaFormContact extends LitElement {
@@ -42,20 +42,20 @@ export class NidocaFormContact extends LitElement {
     return html`
       <nidoca-box theme="${this.theme}">
         <nidoca-form id="authenitcate-form">
-          <nidoca-text class="paddingBottom" .type="${NidocaTextType.H2}">${this.label}</nidoca-text>
+          <nidoca-text-h2 class="paddingBottom">${this.label}</nidoca-text-h2>
           <nidoca-form-text
-            .theme="${this.theme}"
+            theme="${NidocaTheme.getOposite(this.theme)}"
             class="paddingBottom"
             name="name"
-            .textType="${NidocaFormTextType.TEXT}"
+            textType="${NidocaFormTextType.TEXT}"
             value=""
             label="${this.nameLabel}"
             required
           ></nidoca-form-text>
           <nidoca-form-text
-            theme="${this.theme}"
+            theme="${NidocaTheme.getOposite(this.theme)}"
             class="paddingBottom"
-            .textType="${NidocaFormTextType.EMAIL}"
+            textType="${NidocaFormTextType.EMAIL}"
             label="${this.emailLabel}"
             name="email"
             pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$"
@@ -63,16 +63,16 @@ export class NidocaFormContact extends LitElement {
           ></nidoca-form-text>
           <nidoca-form-text
             label="${this.titleLabel}"
-            .theme="${this.theme}"
+            theme="${NidocaTheme.getOposite(this.theme)}"
             class="paddingBottom"
-            .textType="${NidocaFormTextType.TEXT}"
+            textType="${NidocaFormTextType.TEXT}"
             value=""
             label="title"
             required
           ></nidoca-form-text>
           <nidoca-form-textarea
             label="${this.messageLabel}"
-            .theme="${this.theme}"
+            theme="${NidocaTheme.getOposite(this.theme)}"
             class="paddingBottom"
             name="message"
             trailingIcon="vpn_key"

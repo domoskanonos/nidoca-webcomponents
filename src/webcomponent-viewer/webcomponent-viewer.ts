@@ -3,7 +3,6 @@ import {WebcomponentWrapper as WebcomponentWrapper} from "./core/webcomponent-wr
 import {WebcomponentGuiWrapper as WebcomponentGuiWrapper} from "./core/webcomponent-gui-wrapper";
 import {css} from "lit-element";
 import {PropertyGuiWrapper} from "./core/property-gui-wrapper";
-import {NidocaTextType} from "../nidoca-text";
 import {property} from "lit/decorators.js";
 import {NidocaTheme} from "..";
 
@@ -36,7 +35,7 @@ export class LitViewer extends LitElement {
     return html` <nidoca-section .theme="${NidocaTheme.PRIMARY}">
         <div>
           <nidoca-layout-spacer top="var(--space)" bottom="var(--space)">
-            <nidoca-text .type="${NidocaTextType.H2}">Tag</nidoca-text>
+            <nidoca-text>Tag</nidoca-text>
           </nidoca-layout-spacer>
           <nidoca-code
             >${this.webcomponentGuiWrapper ? this.webcomponentGuiWrapper.classWrapper.getHTMLTag() : ""}
@@ -51,7 +50,7 @@ export class LitViewer extends LitElement {
           ${this.webcomponentGuiWrapper?.hasProperties()
             ? html`
                 <nidoca-layout-spacer top="var(--space)" bottom="var(--space)">
-                  <nidoca-text .type="${NidocaTextType.H2}"> Attribute </nidoca-text>
+                  <nidoca-text> Attribute </nidoca-text>
                 </nidoca-layout-spacer>
 
                 ${this.webcomponentGuiWrapper.getPropertyGuiWrappers().map((prop) => {
@@ -62,7 +61,7 @@ export class LitViewer extends LitElement {
             : html``}
           ${this.webcomponentGuiWrapper?.classWrapper.hasSlots()
             ? html` <nidoca-layout-spacer top="var(--space)" bottom="var(--space)">
-                  <nidoca-text .type="${NidocaTextType.H2}">Slots </nidoca-text>
+                  <nidoca-text>Slots </nidoca-text>
                 </nidoca-layout-spacer>
 
                 <nidoca-table
@@ -73,7 +72,7 @@ export class LitViewer extends LitElement {
             : html``}
           ${this.customEventNames.length > 0
             ? html` <nidoca-layout-spacer top="var(--space)" bottom="var(--space)">
-                  <nidoca-text .type="${NidocaTextType.H2}">Custom Events </nidoca-text>
+                  <nidoca-text>Custom Events </nidoca-text>
                 </nidoca-layout-spacer>
                 <nidoca-table .headers="${["name"]}" .rows="${this.toCustomEventRows(this.customEventNames)}">
                 </nidoca-table>`
@@ -81,7 +80,7 @@ export class LitViewer extends LitElement {
         </div>
       </nidoca-section>
       <nidoca-layout-spacer top="var(--space)" bottom="var(--space)">
-        <nidoca-text .type="${NidocaTextType.H2}"> Quelltext </nidoca-text>
+        <nidoca-text> Quelltext </nidoca-text>
       </nidoca-layout-spacer>
       <nidoca-tabs tabIndex="0">
         <nidoca-tab slot="tab">Javascript</nidoca-tab>
@@ -115,7 +114,7 @@ export class LitViewer extends LitElement {
       </nidoca-tabs>
 
       <nidoca-layout-spacer top="var(--space)" bottom="var(--space)">
-        <nidoca-text .type="${NidocaTextType.H2}"> Attribute </nidoca-text>
+        <nidoca-text> Attribute </nidoca-text>
       </nidoca-layout-spacer>
 
       <nidoca-table

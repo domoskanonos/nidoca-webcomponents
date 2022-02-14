@@ -45,7 +45,7 @@
         name="text"
         .options="${[{key:"item1",value:"Item 1"},{key:"item2",value:"Item 2"}]}"
         value="item2"
-      ></nidoca-form-combobox>`),this._registeredElementsMap.set("nidoca-form-date",P`<nidoca-form-date
+      ></nidoca-form-combobox>`),this._registeredElementsMap.set("nidoca-form-text",P`<nidoca-form-text
         theme="primary"
         label="Geburtstag"
         placeholder="Platzhalter"
@@ -54,7 +54,7 @@
         warningText="Warnung"
         errorText="Fehler"
         name="text"
-      ></nidoca-form-date>`),this._registeredElementsMap.set("nidoca-form-switch",P`<nidoca-form-switch></nidoca-form-switch>`),this._registeredElementsMap.set("nidoca-form-text",P`
+      ></nidoca-form-text>`),this._registeredElementsMap.set("nidoca-form-switch",P`<nidoca-form-switch></nidoca-form-switch>`),this._registeredElementsMap.set("nidoca-form-text",P`
         <nidoca-form-text
           style="width:100%;"
           theme="primary"
@@ -1063,7 +1063,7 @@ ${this.value}</textarea
       box-shadow: none;
       background: inherit;
     }
-  `,Re([pt({type:lt,converter:String}),Te("design:type",Object)],ke.prototype,"theme",void 0),Re([pt({type:String}),Te("design:type",String)],ke.prototype,"trailingIcon",void 0),Re([pt(),Te("design:type",String)],ke.prototype,"type",void 0),Re([pt({type:String}),Te("design:type",String)],ke.prototype,"name",void 0),Re([pt({type:String}),Te("design:type",String)],ke.prototype,"value",void 0),Re([pt({type:String}),Te("design:type",String)],ke.prototype,"label",void 0),Re([pt({type:Boolean}),Te("design:type",Boolean)],ke.prototype,"required",void 0),Re([pt({type:String}),Te("design:type",String)],ke.prototype,"placeholder",void 0),Re([pt({type:Boolean}),Te("design:type",Boolean)],ke.prototype,"disabled",void 0),Re([pt({type:String}),Te("design:type",String)],ke.prototype,"errorText",void 0),Re([pt({type:String}),Te("design:type",String)],ke.prototype,"infoText",void 0),Re([pt({type:String}),Te("design:type",String)],ke.prototype,"warningText",void 0),Re([ht("#inputElement"),Te("design:type",Object)],ke.prototype,"inputElement",void 0),ke=Re([ct("nidoca-form-date")],ke);var Oe,Ie=function(t,e,o,i){var n,r=arguments.length,a=r<3?e:null===i?i=Object.getOwnPropertyDescriptor(e,o):i;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)a=Reflect.decorate(t,e,o,i);else for(var s=t.length-1;s>=0;s--)(n=t[s])&&(a=(r<3?n(a):r>3?n(e,o,a):n(e,o))||a);return r>3&&a&&Object.defineProperty(e,o,a),a},je=function(t,e){if("object"==typeof Reflect&&"function"==typeof Reflect.metadata)return Reflect.metadata(t,e)};let _e=class extends Jt{constructor(){super(...arguments),this.name="",this.label="",this.infoText="",this.errorText="",this.warningText="",this.required=!1,this.disabled=!1,this.checked=!1,this.theme=lt.PRIMARY}render(){return P`
+  `,Re([pt({type:lt,converter:String}),Te("design:type",Object)],ke.prototype,"theme",void 0),Re([pt({type:String}),Te("design:type",String)],ke.prototype,"trailingIcon",void 0),Re([pt(),Te("design:type",String)],ke.prototype,"type",void 0),Re([pt({type:String}),Te("design:type",String)],ke.prototype,"name",void 0),Re([pt({type:String}),Te("design:type",String)],ke.prototype,"value",void 0),Re([pt({type:String}),Te("design:type",String)],ke.prototype,"label",void 0),Re([pt({type:Boolean}),Te("design:type",Boolean)],ke.prototype,"required",void 0),Re([pt({type:String}),Te("design:type",String)],ke.prototype,"placeholder",void 0),Re([pt({type:Boolean}),Te("design:type",Boolean)],ke.prototype,"disabled",void 0),Re([pt({type:String}),Te("design:type",String)],ke.prototype,"errorText",void 0),Re([pt({type:String}),Te("design:type",String)],ke.prototype,"infoText",void 0),Re([pt({type:String}),Te("design:type",String)],ke.prototype,"warningText",void 0),Re([ht("#inputElement"),Te("design:type",Object)],ke.prototype,"inputElement",void 0),ke=Re([ct("nidoca-form-text")],ke);var Oe,Ie=function(t,e,o,i){var n,r=arguments.length,a=r<3?e:null===i?i=Object.getOwnPropertyDescriptor(e,o):i;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)a=Reflect.decorate(t,e,o,i);else for(var s=t.length-1;s>=0;s--)(n=t[s])&&(a=(r<3?n(a):r>3?n(e,o,a):n(e,o))||a);return r>3&&a&&Object.defineProperty(e,o,a),a},je=function(t,e){if("object"==typeof Reflect&&"function"==typeof Reflect.metadata)return Reflect.metadata(t,e)};let _e=class extends Jt{constructor(){super(...arguments),this.name="",this.label="",this.infoText="",this.errorText="",this.warningText="",this.required=!1,this.disabled=!1,this.checked=!1,this.theme=lt.PRIMARY}render(){return P`
       <style>
         .slider:before {
           background-color: var(--app-color-${this.theme}-background-dark);

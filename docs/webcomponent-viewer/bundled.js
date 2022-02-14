@@ -45,7 +45,7 @@
         name="text"
         .options="${[{key:"item1",value:"Item 1"},{key:"item2",value:"Item 2"}]}"
         value="item2"
-      ></nidoca-form-combobox>`),this._registeredElementsMap.set("nidoca-form-date",_`<nidoca-form-date
+      ></nidoca-form-combobox>`),this._registeredElementsMap.set("nidoca-form-text",_`<nidoca-form-text
         theme="primary"
         label="Geburtstag"
         placeholder="Platzhalter"
@@ -54,7 +54,7 @@
         warningText="Warnung"
         errorText="Fehler"
         name="text"
-      ></nidoca-form-date>`),this._registeredElementsMap.set("nidoca-form-switch",_`<nidoca-form-switch></nidoca-form-switch>`),this._registeredElementsMap.set("nidoca-form-text",_`
+      ></nidoca-form-text>`),this._registeredElementsMap.set("nidoca-form-switch",_`<nidoca-form-switch></nidoca-form-switch>`),this._registeredElementsMap.set("nidoca-form-text",_`
         <nidoca-form-text
           style="width:100%;"
           theme="primary"
@@ -955,7 +955,7 @@ ${this.value}</textarea
       box-shadow: none;
       background: inherit;
     }
-  `,ve([st({type:St,converter:String}),xe("design:type",Object)],$e.prototype,"theme",void 0),ve([st({type:String}),xe("design:type",String)],$e.prototype,"trailingIcon",void 0),ve([st(),xe("design:type",String)],$e.prototype,"type",void 0),ve([st({type:String}),xe("design:type",String)],$e.prototype,"name",void 0),ve([st({type:String}),xe("design:type",String)],$e.prototype,"value",void 0),ve([st({type:String}),xe("design:type",String)],$e.prototype,"label",void 0),ve([st({type:Boolean}),xe("design:type",Boolean)],$e.prototype,"required",void 0),ve([st({type:String}),xe("design:type",String)],$e.prototype,"placeholder",void 0),ve([st({type:Boolean}),xe("design:type",Boolean)],$e.prototype,"disabled",void 0),ve([st({type:String}),xe("design:type",String)],$e.prototype,"errorText",void 0),ve([st({type:String}),xe("design:type",String)],$e.prototype,"infoText",void 0),ve([st({type:String}),xe("design:type",String)],$e.prototype,"warningText",void 0),ve([ct("#inputElement"),xe("design:type",Object)],$e.prototype,"inputElement",void 0),$e=ve([et("nidoca-form-date")],$e);var we,Se=function(t,e,o,i){var n,r=arguments.length,a=r<3?e:null===i?i=Object.getOwnPropertyDescriptor(e,o):i;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)a=Reflect.decorate(t,e,o,i);else for(var s=t.length-1;s>=0;s--)(n=t[s])&&(a=(r<3?n(a):r>3?n(e,o,a):n(e,o))||a);return r>3&&a&&Object.defineProperty(e,o,a),a},Te=function(t,e){if("object"==typeof Reflect&&"function"==typeof Reflect.metadata)return Reflect.metadata(t,e)};let Ee=class extends $t{constructor(){super(...arguments),this.name="",this.label="",this.infoText="",this.errorText="",this.warningText="",this.required=!1,this.disabled=!1,this.checked=!1,this.theme=St.PRIMARY}render(){return _`
+  `,ve([st({type:St,converter:String}),xe("design:type",Object)],$e.prototype,"theme",void 0),ve([st({type:String}),xe("design:type",String)],$e.prototype,"trailingIcon",void 0),ve([st(),xe("design:type",String)],$e.prototype,"type",void 0),ve([st({type:String}),xe("design:type",String)],$e.prototype,"name",void 0),ve([st({type:String}),xe("design:type",String)],$e.prototype,"value",void 0),ve([st({type:String}),xe("design:type",String)],$e.prototype,"label",void 0),ve([st({type:Boolean}),xe("design:type",Boolean)],$e.prototype,"required",void 0),ve([st({type:String}),xe("design:type",String)],$e.prototype,"placeholder",void 0),ve([st({type:Boolean}),xe("design:type",Boolean)],$e.prototype,"disabled",void 0),ve([st({type:String}),xe("design:type",String)],$e.prototype,"errorText",void 0),ve([st({type:String}),xe("design:type",String)],$e.prototype,"infoText",void 0),ve([st({type:String}),xe("design:type",String)],$e.prototype,"warningText",void 0),ve([ct("#inputElement"),xe("design:type",Object)],$e.prototype,"inputElement",void 0),$e=ve([et("nidoca-form-text")],$e);var we,Se=function(t,e,o,i){var n,r=arguments.length,a=r<3?e:null===i?i=Object.getOwnPropertyDescriptor(e,o):i;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)a=Reflect.decorate(t,e,o,i);else for(var s=t.length-1;s>=0;s--)(n=t[s])&&(a=(r<3?n(a):r>3?n(e,o,a):n(e,o))||a);return r>3&&a&&Object.defineProperty(e,o,a),a},Te=function(t,e){if("object"==typeof Reflect&&"function"==typeof Reflect.metadata)return Reflect.metadata(t,e)};let Ee=class extends $t{constructor(){super(...arguments),this.name="",this.label="",this.infoText="",this.errorText="",this.warningText="",this.required=!1,this.disabled=!1,this.checked=!1,this.theme=St.PRIMARY}render(){return _`
       <style>
         .slider:before {
           background-color: var(--app-color-${this.theme}-background-dark);

@@ -1,7 +1,6 @@
 import {css, html, TemplateResult, LitElement} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
-import {NidocaTextType} from ".";
 
 @customElement("nidoca-article")
 export class NidocaArticle extends LitElement {
@@ -34,14 +33,14 @@ export class NidocaArticle extends LitElement {
       <div style="display:flex; flex-direction:column;">
         <slot name="caption"></slot>
         ${this.overline
-          ? html` <nidoca-text .type="${NidocaTextType.OVERLINE}">${this.overline}</nidoca-text> `
+          ? html` <nidoca-text>${this.overline}</nidoca-text> `
           : html``}
         <slot name="title"></slot>
-        ${this.title ? html` <nidoca-text .type="${NidocaTextType.H2}">${this.title}</nidoca-text> ` : html``}
+        ${this.title ? html` <nidoca-text-h2>${this.title}</nidoca-text-h2> ` : html``}
         <slot name="summary"></slot>
-        ${this.summary ? html` <nidoca-text .type="${NidocaTextType.BODY2}">${this.summary}</nidoca-text> ` : html``}
+        ${this.summary ? html` <nidoca-text-caption>${this.summary}</nidoca-text-caption> ` : html``}
         <slot name="text"></slot>
-        ${this.text ? html` <nidoca-text-body>${this.text}</nidoca-text-body>` : html``}
+        ${this.text ? html` <nidoca-text>${this.text}</nidoca-text>` : html``}
         <slot></slot>
       </div>
     `;

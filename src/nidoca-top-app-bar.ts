@@ -24,7 +24,7 @@ export class NidocaTopAppBar extends LitElement {
       justify-content: space-between;
       align-content: space-around;
       width: 100%;
-      min-height: calc(var(--line-height) * 2);
+      min-height: calc(var(--line-height-input) * 2);
     }
 
     slot {

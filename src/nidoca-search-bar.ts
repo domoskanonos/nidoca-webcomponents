@@ -9,8 +9,8 @@ export class NidocaSearchBar extends LitElement {
     static styles = css`
     
     :host {
-        display:block;
         width: 100%;
+        display:block;
     }
     
     .container {
@@ -19,17 +19,18 @@ export class NidocaSearchBar extends LitElement {
       flex-direction: row;
       flex-wrap: nowrap;
       align-items: center;
-      min-height: calc(var(--line-height) * 2);
       border-bottom-style: solid;
       border-width: var(--border-width);
+      padding: var(--space);
+      box-sizing:border-box;
     }
 
     input {
       font: inherit;
-      box-sizing: border-box;
       width: 100%;
       border: none;
       padding: 0;
+      line-height: var(--line-height-input);
     }
 
     input:focus {
@@ -66,6 +67,7 @@ export class NidocaSearchBar extends LitElement {
                 .container:focus-within,
                 ::slotted(.container:focus-within) {
                     border-color: var(--app-color-${this.theme}-selected);
+                    filter: brightness(var(--app-darken-2));
                 }
             </style>
             <div class="container border">
@@ -73,7 +75,7 @@ export class NidocaSearchBar extends LitElement {
                 <input
                         id="inputElement"
                         type="text"
-                        value="${this.value}"
+                        ?value="${this.value}"
                         placeholder="${this.placeholder}"
                         ?disabled="${this.disabled}"
                         @input="${() => this.valueChanged()}"

@@ -1,10 +1,9 @@
 import {css, html, LitElement, PropertyValues} from "lit";
 import {customElement, query} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
-import {NidocaButtonType, NidocaForm, NidocaFormTextType, NidocaSearchBar, NidocaTextType, NidocaTheme} from ".";
+import {NidocaForm, NidocaFormTextType, NidocaSearchBar,  NidocaTheme} from ".";
 import {NidocaHelperForm} from "@domoskanonos/nidoca-form-helper";
 import {NidocaDateHelper} from "@domoskanonos/nidoca-date-helper";
-import {guard} from "lit/directives/guard.js";
 import {ifDefined} from "lit/directives/if-defined.js";
 
 export interface CRUDProperty {
@@ -109,13 +108,14 @@ export class NidocaGenericCRUD extends LitElement {
       <nidoca-split-screen .hideSidebox="${this.hideSidebox}">
         <div slot="left">
           <nidoca-box>
-            <nidoca-text type="${NidocaTextType.H2}">Verträge</nidoca-text>
-            <nidoca-text type="${NidocaTextType.CAPTION}">${this.items.length} Verträge</nidoca-text>
+            <nidoca-text-h2>Verträge</nidoca-text-h2>
+            <nidoca-text-caption>${this.items.length} Verträge</nidoca-text-caption>
 
             <div style="display:flex;flex-direction:row;">
               <nidoca-search-bar
                 style="flex-basis:auto;"
                 id="searchbar"
+                placeholder="Suche..."
                 @nidoca-search-bar-event-value-changed="${(event: CustomEvent) => {
                   this.controller?.search(event.detail).then((items: any[]) => {
                     this.items = items;
@@ -237,14 +237,14 @@ export class NidocaGenericCRUD extends LitElement {
                               </nidoca-form-text>
                             `
                           : property.type == "date"
-                          ? html` <nidoca-form-date
+                          ? html` <nidoca-form-text
                               name="${property.key}"
                               label="${property.label}"
                               value="${this.item[property.key]
                                 ? this.nidocaDateHelper.formatDate(this.item[property.key], "yyyy-MM-dd")
                                 : ""}"
                               ?required="${property.required}"
-                            ></nidoca-form-date>`
+                            ></nidoca-form-text>`
                           : property.type == "checkbox"
                           ? html` <nidoca-form-switch
                               name="${property.key}"

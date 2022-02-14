@@ -16,14 +16,7 @@ export class NidocaTextSubtitle extends NidocaText {
     }
   `;
   render(): TemplateResult {
-    return html` <style>
-        :host,
-        slot,
-        ::slotted(:host),
-        ::slotted(slot) {
-          color: var(--app-color-caption-${this.theme});
-        }
-      </style>
+    return html`
       ${super.render()}`;
   }
 }

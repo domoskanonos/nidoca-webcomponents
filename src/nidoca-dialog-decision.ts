@@ -1,7 +1,7 @@
 import {css, html, TemplateResult, LitElement} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
-import {NidocaButtonType, NidocaTextType} from ".";
+import {NidocaButtonType} from ".";
 
 @customElement("nidoca-dialog-decision")
 export class NidocaDialogDecision extends LitElement {

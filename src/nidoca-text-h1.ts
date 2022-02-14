@@ -10,21 +10,10 @@ export class NidocaTextH1 extends NidocaText {
     ::slotted(:host),
     ::slotted(slot) {
       display: block;
-      font-size: var(--font-size-h1);
-      line-height: 1;
-      font-weight: 400;
+      font-weight:600;
+      font-size:calc(var(--font-size) * 4);
+      line-height:calc(var(--font-size) * 4);
     }
   `;
 
-  render(): TemplateResult {
-    return html` <style>
-        :host,
-        slot,
-        ::slotted(:host),
-        ::slotted(slot) {
-          color: var(--app-color-caption-${this.theme});
-        }
-      </style>
-      ${super.render()}`;
-  }
 }
