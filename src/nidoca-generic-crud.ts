@@ -122,7 +122,6 @@ export class NidocaGenericCRUD extends LitElement {
                     this.requestUpdate();
                   });
                 }}"
-                theme="surface"
               ></nidoca-search-bar>
 
               <nidoca-button

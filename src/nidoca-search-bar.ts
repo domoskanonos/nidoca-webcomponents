@@ -7,13 +7,21 @@ import {NidocaTheme} from ".";
 @customElement("nidoca-search-bar")
 export class NidocaSearchBar extends LitElement {
     static styles = css`
+    
     :host {
+        display:block;
+        width: 100%;
+    }
+    
+    .container {
       width: 100%;
       display: flex;
       flex-direction: row;
       flex-wrap: nowrap;
       align-items: center;
       min-height: calc(var(--line-height) * 2);
+      border-bottom-style: solid;
+      border-width: var(--border-width);
     }
 
     input {
@@ -28,6 +36,7 @@ export class NidocaSearchBar extends LitElement {
       outline: none;
       box-shadow: none;
     }
+    
   `;
 
     @property({type: String})
@@ -43,35 +52,38 @@ export class NidocaSearchBar extends LitElement {
     private inputElement: HTMLInputElement | undefined;
 
     @property({type: NidocaTheme, converter: String})
-    theme: string;
-
-    constructor() {
-        super();
-        this.theme = NidocaTheme.prototype.getParentTheme(this) || NidocaTheme.PRIMARY;
-    }
+    theme: string = NidocaTheme.SURFACE;
 
     render(): TemplateResult {
         return html`
             <style>
-                :host, input {
+                .container, input {
                     color: var(--app-color-${this.theme});
                     background-color: var(--app-color-${this.theme}-background);
+                    border-color: var(--app-color-${this.theme}-border);
+                }
+
+                .container:focus-within,
+                ::slotted(.container:focus-within) {
+                    border-color: var(--app-color-${this.theme}-selected);
                 }
             </style>
-            <nidoca-icon style="padding-right:var(--space);padding-left:var(--space);" icon="search"></nidoca-icon>
-            <input
-                    id="inputElement"
-                    type="text"
-                    value="${this.value}"
-                    placeholder="${this.placeholder}"
-                    ?disabled="${this.disabled}"
-                    @input="${() => this.valueChanged()}"
-            />
-            <nidoca-icon
-                    style="padding-right:var(--space);padding-left:var(--space);"
-                    icon="close"
-                    @click="${() => this.clearValue()}"
-            ></nidoca-icon>
+            <div class="container border">
+                <nidoca-icon style="padding-right:var(--space);padding-left:var(--space);" icon="search"></nidoca-icon>
+                <input
+                        id="inputElement"
+                        type="text"
+                        value="${this.value}"
+                        placeholder="${this.placeholder}"
+                        ?disabled="${this.disabled}"
+                        @input="${() => this.valueChanged()}"
+                />
+                <nidoca-icon
+                        style="padding-right:var(--space);padding-left:var(--space);"
+                        icon="close"
+                        @click="${() => this.clearValue()}"
+                ></nidoca-icon>
+            </div>
         `;
     }
 
