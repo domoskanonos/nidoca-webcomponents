@@ -8,10 +8,15 @@ export class NidocaMenuItem extends LitElement {
     .container {
       display: flex;
       cursor: pointer;
+      padding:var(--space);
     }
     
     .container:hover {
       backdrop-filter: brightness(var(--app-darken-1));
+    }
+    
+    .selected {
+      backdrop-filter: brightness(var(--app-darken-2));    
     }
       
   `;
@@ -22,9 +27,12 @@ export class NidocaMenuItem extends LitElement {
     @property({type: String})
     icon: string = "";
 
+    @property({type: Boolean})
+    selected: boolean = false;
+
     render(): TemplateResult {
         return html`
-            <div class="container" @click="${() => this.clicked()}">
+            <div class="container ${this.selected ? "selected" : ""}" @click="${() => this.clicked()}">
                 ${this.icon
                         ? html`
                             <nidoca-icon

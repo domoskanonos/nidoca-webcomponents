@@ -1,26 +1,51 @@
 import {css, html, TemplateResult, LitElement} from "lit";
-import {customElement, property} from "lit/decorators.js";
-import {NidocaTheme} from ".";
+import {customElement, property, query} from "lit/decorators.js";
+import {NidocaListItem, NidocaMenuItem, NidocaTheme, TABLET_MIN_WIDTH} from ".";
 
 @customElement("nidoca-menu")
 export class NidocaMenu extends LitElement {
-  static styles = css`
+    static styles = css`
     :host,
     slot {
       display: block;
     }
 
     slot {
-      padding-left: var(--space-4);
-      padding-right: var(--space-4);
+      padding: var(--space-2);
     }
   `;
 
-  @property({type: NidocaTheme, converter: String})
-  theme: string | undefined = NidocaTheme.BACKGROUND;
+    @property({type: NidocaTheme, converter: String})
+    theme: string | undefined = NidocaTheme.BACKGROUND;
 
-  render(): TemplateResult {
-    return html` ${NidocaTheme.getStyle(this.theme)}
-      <slot></slot>`;
-  }
+    @query("#slotElement")
+    private slotElement: HTMLSlotElement | undefined;
+
+    render(): TemplateResult {
+        return html` ${NidocaTheme.getStyle(this.theme)}
+        <slot id="slotElement"></slot>`;
+    }
+
+    protected firstUpdated() {
+        this.addEventListener("click", (event: MouseEvent) => {
+            if (this.slotElement != null) {
+                const slottedElements = this.slotElement.assignedElements();
+                for (let index = 0; index < slottedElements.length; index++) {
+                    const element = slottedElements[index];
+                    if (element instanceof NidocaMenuItem) {
+                        const rect = element.getBoundingClientRect();
+                        console.log("huhu");
+
+                        if (rect.top < event.y && rect.bottom > event.y && rect.left > event.x && rect.right < event.x) {
+                            console.log("Huhihuihiuhiuhiuh");
+                            element.selected = true;
+                        } else {
+                            element.selected = false;
+                        }
+                    }
+                }
+            }
+        });
+    }
+
 }
