@@ -5,7 +5,7 @@ import {CRUDProperty, GenericCRUDController} from "..";
 import {NidocaPostgrestClient} from "@domoskanonos/nidoca-postgrest-client";
 
 export class VertragListController extends GenericCRUDController<Vertrag> {
-  private postgrestClient: NidocaPostgrestClient = new NidocaPostgrestClient("http://89.58.33.189");
+  private postgrestClient: NidocaPostgrestClient = new NidocaPostgrestClient("https://api.nidoca.de");
 
   async search(searchText: string): Promise<Vertrag[]> {
     return this.postgrestClient.search(

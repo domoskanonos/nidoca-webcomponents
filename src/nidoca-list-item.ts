@@ -62,7 +62,7 @@ export class NidocaListItem extends LitElement {
     return html`
       <style>
         .selected {
-          background-color: var(--app-color-${this.theme}-hover);
+          backdrop-filter: contrast(var(--app-color-percent-selected));
         }
       </style>
       <div
@@ -84,7 +84,7 @@ export class NidocaListItem extends LitElement {
         <div class="containerTypography">
           ${this.primaryText
             ? html`
-                                <nidoca-text-body class="item"
+                                <nidoca-text class="item"
                                 >${this.primaryText}
                                 </nidoca-text
                                 >`

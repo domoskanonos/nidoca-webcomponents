@@ -4,14 +4,14 @@ import {property} from "lit/decorators.js";
 import {NidocaTheme} from ".";
 
 export enum NidocaButtonType {
-    CONTAINED = "CONTAINED",
-    OUTLINED = "OUTLINED",
-    TEXT = "TEXT",
+  CONTAINED = "CONTAINED",
+  OUTLINED = "OUTLINED",
+  TEXT = "TEXT",
 }
 
 @customElement("nidoca-button")
 export class NidocaButton extends LitElement {
-    static styles = css`
+  static styles = css`
     :host,
     .fullWidth {
       display: block;
@@ -31,10 +31,9 @@ export class NidocaButton extends LitElement {
       border-width: var(--border-width-min);
       padding: var(--space);
       height: var(--height-medium);
-      box-sizing:border-box;
-
+      box-sizing: border-box;
     }
-    
+
     @media only screen and (orientation: portrait) {
       button,
       .btn {
@@ -43,66 +42,65 @@ export class NidocaButton extends LitElement {
     }
   `;
 
-    @property({type: NidocaTheme, converter: String})
-    theme: string | undefined = NidocaTheme.PRIMARY;
+  @property({type: NidocaTheme, converter: String})
+  theme: string | undefined = NidocaTheme.PRIMARY;
 
-    @property({type: NidocaButtonType, converter: String})
-    buttonType: NidocaButtonType = NidocaButtonType.CONTAINED;
+  @property({type: NidocaButtonType, converter: String})
+  buttonType: NidocaButtonType = NidocaButtonType.CONTAINED;
 
-    @property({type: String})
-    leadingIcon: string = "";
+  @property({type: String})
+  leadingIcon: string = "";
 
-    @property({type: String})
-    text: string = "";
+  @property({type: String})
+  text: string = "";
 
-    render(): TemplateResult {
-        return html`
-            <style>
-                .OUTLINED {
-                    color: var(--app-color-${this.theme}-background);
-                    background-color: var(--app-color-${this.theme});
-                    border-color: var(--app-color-${this.theme}-background);
-                }
+  render(): TemplateResult {
+    return html`
+      <style>
+        .OUTLINED {
+          color: var(--app-color-${this.theme}-background);
+          background-color: var(--app-color-${this.theme});
+          border-color: var(--app-color-${this.theme}-background);
+        }
 
-                .CONTAINED {
-                    color: var(--app-color-${this.theme});
-                    background-color: var(--app-color-${this.theme}-background);
-                    border-color: var(--app-color-${this.theme}-background);
-                }
+        .CONTAINED {
+          color: var(--app-color-${this.theme});
+          background-color: var(--app-color-${this.theme}-background);
+          border-color: var(--app-color-${this.theme}-background);
+        }
 
-                .TEXT {
-                    color: var(--app-color-${this.theme}-background);
-                }
+        .TEXT {
+          color: var(--app-color-${this.theme}-background);
+        }
 
-                .TEXT:hover {
-                    background-color: var(--app-color-${this.theme});
-                }
+        :hover {
+          filter: contrast(var(--app-color-percent-hover));
+        }
+      </style>
+      <div
+        class="container ${this.buttonType}"
+        @click="${() => {
+          this.clicked();
+        }}"
+      >
+        ${this.leadingIcon
+          ? html` <nidoca-icon .clickable="${false}" .icon="${this.leadingIcon}"></nidoca-icon>`
+          : html``}
 
+        <nidoca-text-button text="${this.text}">
+          <slot></slot>
+        </nidoca-text-button>
+      </div>
+    `;
+  }
 
-            </style>
-            <div
-                    class="container ${this.buttonType}"
-                    @click="${() => {
-                        this.clicked();
-                    }}"
-            >
-                ${this.leadingIcon ? html`
-                    <nidoca-icon .clickable="${false}" .icon="${this.leadingIcon}"></nidoca-icon>` : html``}
-
-                <nidoca-text-button text="${this.text}">
-                    <slot></slot>
-                </nidoca-text-button>
-            </div>
-        `;
-    }
-
-    clicked(): void {
-        this.dispatchEvent(
-            new CustomEvent("nidoca-event-button-clicked", {
-                detail: this,
-                bubbles: true,
-                composed: true,
-            })
-        );
-    }
+  clicked(): void {
+    this.dispatchEvent(
+      new CustomEvent("nidoca-event-button-clicked", {
+        detail: this,
+        bubbles: true,
+        composed: true,
+      })
+    );
+  }
 }

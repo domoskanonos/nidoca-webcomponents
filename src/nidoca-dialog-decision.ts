@@ -25,10 +25,8 @@ export class NidocaDialogDecision extends LitElement {
   render(): TemplateResult {
     return html`<nidoca-dialog .show="${this.show}">
       <nidoca-box style="width:300px;">
-        <nidoca-text style="padding-bottom:var(--space-2);" type="${NidocaTextType.H2}">${this.title}</nidoca-text>
-        <nidoca-text style="padding-bottom:var(--space-2);" type="${NidocaTextType.SUBTITLE1}"
-          >${this.description}
-        </nidoca-text>
+        <nidoca-text-h2 style="padding-bottom:var(--space-2);">${this.title}</nidoca-text-h2>
+        <nidoca-text style="padding-bottom:var(--space-2);">${this.description} </nidoca-text>
         <nidoca-button
           style="padding-bottom:var(--space-2);"
           type="${NidocaButtonType.TEXT}"

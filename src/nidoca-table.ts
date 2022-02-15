@@ -3,6 +3,7 @@ import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
 import {guard} from "lit/directives/guard.js";
 import {repeat} from "lit/directives/repeat.js";
+import {NidocaTheme} from ".";
 import {NidocaIcon} from "./nidoca-icon";
 
 @customElement("nidoca-table")
@@ -25,21 +26,8 @@ export class NidocaTable extends LitElement {
       padding-left: var(--space-2);
       padding-right: var(--space-2);
       height: var(--height-medium);
-      box-sizing:border-box;
+      box-sizing: border-box;
       text-align: left;
-      border-bottom: 1px solid var(--app-color-surface-background);
-      border-left: 1px solid var(--app-color-surface-background);
-    }
-
-    tr > td:last-of-type,
-    th:last-of-type {
-      border-right: 1px solid var(--app-color-surface-background);
-    }
-
-    th {
-      border-top: 1px solid var(--app-color-surface-background);
-      background-color: var(--app-color-surface-background-dark);
-      color: var(--app-color);
     }
   `;
 
@@ -52,8 +40,29 @@ export class NidocaTable extends LitElement {
     ["row 2", new NidocaIcon()],
   ];
 
+  @property({type: NidocaTheme, converter: String})
+  theme: string = NidocaTheme.BACKGROUND;
+
   render(): TemplateResult {
     return html`
+      <style>
+        td,
+        th {
+          border-bottom: var(--border-width-min) solid var(--app-color-${this.theme}-border);
+          border-left: var(--border-width-min) solid var(--app-color-${this.theme}-border);
+        }
+
+        tr > td:last-of-type,
+        th:last-of-type {
+          border-right: var(--border-width-min) solid var(--app-color-${this.theme}-border);
+        }
+
+        th {
+          border-top: var(--border-width-min) solid var(--app-color-${this.theme}-border);
+          background-color: var(--app-color-${this.theme}-background);
+          color: var(--app-color-${this.theme});
+        }
+      </style>
       <div>
         <table>
           <thead>

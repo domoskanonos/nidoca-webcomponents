@@ -63,14 +63,14 @@ export class NidocaList extends LitElement {
 
         ::slotted(nidoca-list-item),
         ::slotted(nidoca-list-section) {
-          border-color: var(--app-color-${this.theme}-border);
           border-bottom-style: solid;
-          border-width: thin;
+          border-width: var(--border-width-min);
         }
         
         ::slotted(nidoca-list-item:hover) {
-          backdrop-filter: contrast(var(--app-color-percent-hover));
+          filter: contrast(var(--app-color-percent-hover));
         }
+
       </style>
       <slot
         @nidoca-event-list-item-click="${(event: CustomEvent) => {

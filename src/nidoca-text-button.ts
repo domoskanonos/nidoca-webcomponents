@@ -12,8 +12,8 @@ export class NidocaTextButton extends NidocaText {
       display: block;
       font-weight: 600;
       text-transform: uppercase;
-      font-size:calc(var(--font-size) * 0.9);
-      line-height:calc(var(--font-size) * 0.9);
+      font-size:calc(var(--font-size) * 0.8);
+      line-height:calc(var(--font-size) * 0.8);
       filter: brightness(var(--app-lighten-3));
     }
   `;

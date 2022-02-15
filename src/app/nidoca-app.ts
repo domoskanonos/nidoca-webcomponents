@@ -136,7 +136,7 @@ export class NidocaApp extends LitElement implements NidocaRouteListener {
                     <nidoca-text-caption>Softwareentwickler</nidoca-text-caption>
                 </nidoca-avatar>
 
-                <nidoca-menu slot="left">
+                <nidoca-menu slot="left" theme="primary">
                     <nidoca-menu-item text="Start" @click="${() => NidocaRouter.getUniqueInstance().navigate("main")}">
                     </nidoca-menu-item>
 

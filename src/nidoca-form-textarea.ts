@@ -18,6 +18,8 @@ export class NidocaFormTextarea extends NidocaFormAbstractInputElement {
       align-content: center;
       align-items: center;
       flex-direction: row;
+      border-bottom-style: solid;
+      border-width: var(--border-width-min);
       padding: var(--space);
     }
 
@@ -91,15 +93,14 @@ export class NidocaFormTextarea extends NidocaFormAbstractInputElement {
           background-color: var(--app-color-${this.theme}-background);
         }
 
-        .border,
-        ::slotted(.border) {
+        .parentContainer,
+        ::slotted(.parentContainer) {
           border-color: var(--app-color-${this.theme}-border);
-          border-bottom-style: solid;
         }
 
-        .border:focus-within,
-        ::slotted(.border:focus-within) {
-          border-color: var(--app-color-${this.theme}-selected);
+        .parentContainer:focus-within,
+        ::slotted(.parentContainer:focus-within) {
+          filter: contrast(var(--app-color-percent-hover));
         }
       </style>
       <div class="parentContainer">
@@ -119,29 +120,24 @@ ${this.value}</textarea
         </div>
       </div>
 
-    ${this.infoText || this.warningText || this.errorText
+      ${this.infoText || this.warningText || this.errorText
         ? html`
-          <div style="display:flex;flex-direction:column;">
-            ${this.infoText
-                ? html`
-                  <nidoca-text-info text="${this.infoText}"></nidoca-text-info>`
-                : html``}
-            ${this.warningText
-                ? html`
-                  <nidoca-text-warning
-                      style="color:var(--app-color-warning-background)"
-                      text="${this.warningText}"
+            <div style="display:flex;flex-direction:column;">
+              ${this.infoText ? html` <nidoca-text-info text="${this.infoText}"></nidoca-text-info>` : html``}
+              ${this.warningText
+                ? html` <nidoca-text-warning
+                    style="color:var(--app-color-warning-background)"
+                    text="${this.warningText}"
                   ></nidoca-text-warning>`
                 : html``}
-            ${this.errorText
-                ? html`
-                  <nidoca-text-error
-                      style="color:var(--app-color-error-background)"
-                      text="${this.errorText}"
+              ${this.errorText
+                ? html` <nidoca-text-error
+                    style="color:var(--app-color-error-background)"
+                    text="${this.errorText}"
                   ></nidoca-text-error>`
                 : html``}
-          </div>
-        `
+            </div>
+          `
         : html``}`;
   }
 

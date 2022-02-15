@@ -14,6 +14,11 @@ export class NidocaArticle extends LitElement {
       flex-wrap: wrap;
       align-items: flex-start;
     }
+
+    .paddingBottom {
+      padding-bottom:var(--space-2);
+    }
+
   `;
 
   @property({type: String})
@@ -31,16 +36,12 @@ export class NidocaArticle extends LitElement {
   render(): TemplateResult {
     return html`
       <div style="display:flex; flex-direction:column;">
-        <slot name="caption"></slot>
-        ${this.overline
-          ? html` <nidoca-text>${this.overline}</nidoca-text> `
+        ${this.overline ? html` <nidoca-text class="paddingBottom">${this.overline}</nidoca-text> ` : html``}
+        ${this.title ? html` <nidoca-text-h2 class="paddingBottom">${this.title}</nidoca-text-h2> ` : html``}
+        ${this.summary
+          ? html` <nidoca-text-caption class="paddingBottom">${this.summary}</nidoca-text-caption> `
           : html``}
-        <slot name="title"></slot>
-        ${this.title ? html` <nidoca-text-h2>${this.title}</nidoca-text-h2> ` : html``}
-        <slot name="summary"></slot>
-        ${this.summary ? html` <nidoca-text-caption>${this.summary}</nidoca-text-caption> ` : html``}
-        <slot name="text"></slot>
-        ${this.text ? html` <nidoca-text>${this.text}</nidoca-text>` : html``}
+        ${this.text ? html` <nidoca-text class="paddingBottom">${this.text}</nidoca-text>` : html``}
         <slot></slot>
       </div>
     `;

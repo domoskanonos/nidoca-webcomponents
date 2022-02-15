@@ -68,12 +68,12 @@ export class NidocaPageMain extends LitElement {
       <nidoca-container .theme="${NidocaTheme.SECONDARY}">
         <nidoca-section style="width:50%; padding-top:var(--space-8);padding-bottom:var(--space-8);">
           <nidoca-article
+            title="Responsive Komponenten"
             summary="Die Komponenten sind für Desktop, Tablet und Mobile optimiert."
             text="The components looks good on all devices, because they are designed responsive. Responsive web design is a
             creative and technical paradigm for creating websites, so that they can react to the properties of the end
             device used, especially smartphones and tablet computers."
           >
-            <nidoca-text slot="title">Responsive Komponenten</nidoca-text>
           </nidoca-article>
         </nidoca-section>
       </nidoca-container>
@@ -81,10 +81,10 @@ export class NidocaPageMain extends LitElement {
       <nidoca-container .theme="${NidocaTheme.BACKGROUND}">
         <nidoca-section style="width:50%; padding-top:var(--space-8);padding-bottom:var(--space-8);">
           <nidoca-article
+            title="Webcomponents"
             summary="Alle Komponenten erfüllen den Webcomponent Standart"
             text="Webkomponenten sind eine Gruppe von Web-Technologien, die es ermöglichen, benutzerdefinierte, wiederverwendbare HTML Elemente zu erstellen, deren Funktionalität gekapselt ist und damit vollständig getrennt von anderem Code."
           >
-            <nidoca-text slot="title">Webcomponents</nidoca-text>
           </nidoca-article>
         </nidoca-section>
       </nidoca-container>
