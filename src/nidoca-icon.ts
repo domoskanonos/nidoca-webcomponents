@@ -42,7 +42,7 @@ export class NidocaIcon extends LitElement {
         filter: brightness(var(--app-lighten-2));
     }
     
-     :hover {
+    .clickable:hover {
         filter: brightness(var(--app-darken-2));
      }
     

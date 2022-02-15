@@ -38,7 +38,9 @@ export class NidocaFormText extends NidocaFormAbstractInputElement {
       flex-direction: row;
       padding: var(--space);
       border-bottom-style: solid;
-      border-width: var(--border-width);
+      border-width: var(--border-width-min);
+      height: var(--height-max);
+      box-sizing:border-box;
     }
 
     .container {
@@ -55,7 +57,7 @@ export class NidocaFormText extends NidocaFormAbstractInputElement {
       border: none;
       background: inherit;
       color: inherit;
-      line-height: var(--line-height-input);
+      line-height: var(--height-min);
     }
 
     input:focus {

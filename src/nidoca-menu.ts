@@ -1,6 +1,6 @@
 import {css, html, TemplateResult, LitElement} from "lit";
 import {customElement, property, query} from "lit/decorators.js";
-import {NidocaListItem, NidocaMenuItem, NidocaTheme, TABLET_MIN_WIDTH} from ".";
+import {NidocaMenuItem, NidocaTheme} from ".";
 
 @customElement("nidoca-menu")
 export class NidocaMenu extends LitElement {
@@ -9,7 +9,6 @@ export class NidocaMenu extends LitElement {
     slot {
       display: block;
     }
-
     slot {
       padding: var(--space-2);
     }
@@ -22,8 +21,17 @@ export class NidocaMenu extends LitElement {
     private slotElement: HTMLSlotElement | undefined;
 
     render(): TemplateResult {
-        return html` ${NidocaTheme.getStyle(this.theme)}
-        <slot id="slotElement"></slot>`;
+        return html`
+            <style>
+                :host,
+                *,
+                ::slotted(*) {
+                    color: var(--app-color-${this.theme});
+                    background-color: var(--app-color-${this.theme}-background);
+                    border-color: var(--app-color-${this.theme}-border);
+                }
+            </style>
+            <slot id="slotElement"></slot>`;
     }
 
     protected firstUpdated() {
@@ -34,13 +42,12 @@ export class NidocaMenu extends LitElement {
                     const element = slottedElements[index];
                     if (element instanceof NidocaMenuItem) {
                         const rect = element.getBoundingClientRect();
-                        console.log("huhu");
-
-                        if (rect.top < event.y && rect.bottom > event.y && rect.left > event.x && rect.right < event.x) {
-                            console.log("Huhihuihiuhiuhiuh");
-                            element.selected = true;
-                        } else {
-                            element.selected = false;
+                        if (rect.left < event.x && rect.right > event.x) {
+                            if (rect.top < event.y && rect.bottom > event.y) {
+                                element.selected = true;
+                            } else {
+                                element.selected = false;
+                            }
                         }
                     }
                 }

@@ -25,6 +25,11 @@
 
       :root {
 
+        --height-min: 36px;
+        --height-medium: 54px;
+        --height-max: 72px;
+
+
         --space: 8px;
         --space-2: 16px;
         --space-3: 24px;
@@ -32,7 +37,9 @@
         --space-6: 48px;
         --space-8: 64px;
 
-        --border-width: 1px;
+        --border-width-min: 1px;
+        --border-width-medium: 2px;
+        --border-width-max: 4px;
 
         --app-darken-1: 90%;
         --app-darken-2: 80%;
@@ -47,16 +54,11 @@
         --app-color-background-border: #9b9997;
         --app-color-background-selected: #ffe831;
 
-
-
-
-
         --app-color-surface: #000000;
         --app-color-surface-background: #eaeaea;
         --app-color-surface-background-optional: #f8fafc;
         --app-color-surface-border: #9b9997;
         --app-color-surface-selected: #ce9c30;
-        --app-color-surface-hover: #e2e8f0;
 
 
         --app-color-primary: #e6e6e6;
@@ -68,9 +70,6 @@
         --app-color-secondary-background: #000000;
         --app-color-secondary-border: #808080;
         --app-color-secondary-selected: #808080;
-
-        --line-height-input: 36px;
-        --line-height-2: 48px;
 
         --font-size: 18px;
         --font-size-body-2: calc(var(--font-size) * 1);
@@ -89,6 +88,10 @@
 
         --icon-size: 28px;
         --icon-size-big: 36px;
+
+
+
+
       }
 
       *,::slotted(*) {

@@ -35,7 +35,7 @@ export class NidocaFormTextarea extends NidocaFormAbstractInputElement {
       border: none;
       color: inherit;
       background-color: inherit;
-      line-height: var(--line-height-input);
+      line-height: var(--height-min);
     }
     textarea:focus {
       outline: none;

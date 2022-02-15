@@ -42,7 +42,7 @@ export class NidocaMenuItem extends LitElement {
                             ></nidoca-icon>`
                         : html``}
                 ${this.text ? html`
-                    <nidoca-text-body>${this.text}</nidoca-text-body>` : html``}
+                    <nidoca-text>${this.text}</nidoca-text>` : html``}
             </div>
         `;
     }

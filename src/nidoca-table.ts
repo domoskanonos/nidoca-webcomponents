@@ -22,8 +22,10 @@ export class NidocaTable extends LitElement {
     td,
     th {
       vertical-align: center;
-      padding: var(--space-2);
-      box-sizing: border-box;
+      padding-left: var(--space-2);
+      padding-right: var(--space-2);
+      height: var(--height-medium);
+      box-sizing:border-box;
       text-align: left;
       border-bottom: 1px solid var(--app-color-surface-background);
       border-left: 1px solid var(--app-color-surface-background);

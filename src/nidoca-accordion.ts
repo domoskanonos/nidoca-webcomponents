@@ -27,7 +27,7 @@ export class NidocaAccordion extends LitElement {
   `;
 
   @property({type: NidocaTheme, converter: String})
-  theme: NidocaTheme = NidocaTheme.SURFACE;
+  theme: string = NidocaTheme.SURFACE;
 
   @property({type: AccordionType, converter: String})
   accordionType: string = AccordionType.SINGLE;

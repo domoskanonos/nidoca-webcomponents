@@ -4,12 +4,17 @@ import {property} from "lit/decorators.js";
 
 @customElement("nidoca-tab-content")
 export class NidocaTabContent extends LitElement {
-  static styles = css``;
+    static styles = css`
+      :host,slot {
+      display:block;
+    }
+  `;
 
-  @property({type: Boolean})
-  selected: boolean = false;
+    @property({type: Boolean})
+    selected: boolean = false;
 
-  render(): TemplateResult {
-    return this.selected ? html`<slot></slot>` : html``;
-  }
+    render(): TemplateResult {
+        return this.selected ? html`
+            <slot></slot>` : html``;
+    }
 }

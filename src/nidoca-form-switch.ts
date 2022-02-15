@@ -4,7 +4,6 @@ import {property} from "lit/decorators.js";
 import {query} from "lit/decorators.js";
 import {NidocaTheme} from ".";
 import {FormOutputData, NidocaFormAbstractInputElement} from "./nidoca-form-abstract-input-element";
-import {NidocaTextType} from "./nidoca-text";
 
 @customElement("nidoca-form-switch")
 export class NidocaFormSwitch extends NidocaFormAbstractInputElement {
@@ -13,6 +12,7 @@ export class NidocaFormSwitch extends NidocaFormAbstractInputElement {
       display: flex;
       flex-direction: column;
       width: 100%;
+      height: var(--height-max);
     }
 
     .switch {

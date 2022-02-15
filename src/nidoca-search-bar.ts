@@ -20,8 +20,9 @@ export class NidocaSearchBar extends LitElement {
       flex-wrap: nowrap;
       align-items: center;
       border-bottom-style: solid;
-      border-width: var(--border-width);
+      border-width: var(--border-width-min);
       padding: var(--space);
+      height: var(--height-medium);
       box-sizing:border-box;
     }
 
@@ -30,7 +31,7 @@ export class NidocaSearchBar extends LitElement {
       width: 100%;
       border: none;
       padding: 0;
-      line-height: var(--line-height-input);
+      line-height: var(--height-min);
     }
 
     input:focus {

@@ -18,22 +18,23 @@ export class NidocaButton extends LitElement {
       width: 100%;
     }
 
-    .BUTTON {
+    .container {
       cursor: pointer;
       display: flex;
       flex-wrap: nowrap;
       align-items: center;
       justify-content: center;
-      box-sizing: border-box;
       font-family: inherit;
       text-align: center;
       vertical-align: center;
       border-style: solid;
-      border-width: var(--border-width);
-      height: var(--line-height-input);
-      padding: var(--space-3);
-    }
+      border-width: var(--border-width-min);
+      padding: var(--space);
+      height: var(--height-medium);
+      box-sizing:border-box;
 
+    }
+    
     @media only screen and (orientation: portrait) {
       button,
       .btn {
@@ -70,30 +71,28 @@ export class NidocaButton extends LitElement {
                 }
 
                 .TEXT {
-                    font-weight: 900;
                     color: var(--app-color-${this.theme}-background);
                 }
 
-                .OUTLINED:focus-within,
-                ::slotted(.OUTLINED:focus-within) {
-                    border-color: var(--app-color-${this.theme}-selected);
+                .TEXT:hover {
+                    background-color: var(--app-color-${this.theme});
                 }
-            </style>
-            <nidoca-ripple class="fullWidth">
-                <div
-                        class="BUTTON ${this.buttonType}"
-                        @click="${() => {
-                            this.clicked();
-                        }}"
-                >
-                    ${this.leadingIcon ? html`
-                        <nidoca-icon .icon="${this.leadingIcon}"></nidoca-icon>` : html``}
 
-                    <nidoca-text-button text="${this.text}">
-                        <slot></slot>
-                    </nidoca-text-button>
-                </div>
-            </nidoca-ripple>
+
+            </style>
+            <div
+                    class="container ${this.buttonType}"
+                    @click="${() => {
+                        this.clicked();
+                    }}"
+            >
+                ${this.leadingIcon ? html`
+                    <nidoca-icon .clickable="${false}" .icon="${this.leadingIcon}"></nidoca-icon>` : html``}
+
+                <nidoca-text-button text="${this.text}">
+                    <slot></slot>
+                </nidoca-text-button>
+            </div>
         `;
     }
 

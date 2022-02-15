@@ -13,7 +13,7 @@ export class NidocaText extends LitElement {
       display: block;
       font-weight: 400;
       font-size:var(--font-size);
-      line-height:calc(var(--font-size) * 1.25);
+      line-height:calc(var(--font-size) * 1.5);
     }
   `;
 

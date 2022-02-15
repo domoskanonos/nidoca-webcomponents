@@ -13,7 +13,7 @@ export class NidocaTabs extends LitElement {
       width: 100%;
     }
     slot {
-      display: inline;
+       display:block;
     }
 
     .container {
@@ -39,7 +39,7 @@ export class NidocaTabs extends LitElement {
   private tabContentSlot: HTMLSlotElement | undefined;
 
   @property({type: String})
-  theme: NidocaTheme = NidocaTheme.PRIMARY;
+  theme: string = NidocaTheme.SURFACE;
 
   @property({type: Number})
   tabIndex: number = 0;

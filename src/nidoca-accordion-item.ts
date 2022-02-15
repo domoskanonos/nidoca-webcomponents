@@ -12,10 +12,11 @@ export class NidocaAccordionItem extends LitElement {
       border-width: thin;
       display: block;
       width: 100%;
-      box-sizing: border-box;
     }
 
     .header {
+      height: var(--height-medium);
+      box-sizing:border-box;
       padding-left: var(--space-2);
       display: flex;
       flex-direction: row;

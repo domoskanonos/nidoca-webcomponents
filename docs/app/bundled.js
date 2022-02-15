@@ -585,8 +585,8 @@
       text-align: center;
       vertical-align: center;
       border-style: solid;
-      border-width: var(--border-width);
-      height: calc(var(--line-height-input) * 2);
+      border-width: var(--border-width-min);
+      height: calc(var(--height-min) * 2);
     }
 
     @media only screen and (orientation: portrait) {
@@ -814,7 +814,7 @@
 
     .border {
       border-bottom-style: solid;
-      border-width: var(--border-width);
+      border-width: var(--border-width-min);
     }
 
     input {
@@ -1789,7 +1789,7 @@ ${this.value}</textarea
       justify-content: space-between;
       align-content: space-around;
       width: 100%;
-      min-height: calc(var(--line-height-input) * 2);
+      min-height: calc(var(--height-min) * 2);
     }
 
     slot {
@@ -2194,7 +2194,7 @@ ${this.value}</textarea
       flex-direction: row;
       flex-wrap: nowrap;
       align-items: center;
-      min-height: calc(var(--line-height-input) * 2);
+      min-height: calc(var(--height-min) * 2);
     }
 
     input {

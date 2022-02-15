@@ -124,8 +124,8 @@ export class NidocaGenericCRUD extends LitElement {
                 }}"
               ></nidoca-search-bar>
 
-              <nidoca-button
-                style="flex-basis:200px;padding-left:var(--space-2)"
+              <nidoca-button 
+                  style="flex-basis:250px;padding-left:var(--space-2)"
                 leadingIcon="add"
                 @nidoca-event-button-clicked="${() => {
                   this.initItem({});

@@ -5,49 +5,58 @@ import {NidocaTheme} from ".";
 
 @customElement("nidoca-tab")
 export class NidocaTab extends LitElement {
-  static styles = css`
+    static styles = css`
     :host {
-      border-color: var(--app-color-surface-background);
-      border-width: 4px;
-      border-bottom-style: solid;
-      margin-left: 2px;
-      margin-right: 2px;
+      display:block;
     }
-
-    .tab,
-    ::slotted(.tab) {
+ 
+    .container {
+      line-height: var(--height-min);
+      height: var(--height-min);
+      box-sizing:border-box;
       cursor: pointer;
-      box-sizing: border-box;
+      padding-right:var(--space);
     }
+    
+    slot {
+      display:block;
+      border-width: var(--border-width-max);
+      border-bottom-style: solid;
+      }
+
   `;
 
-  @property({type: Boolean})
-  selected: boolean = false;
+    @property({type: Boolean})
+    selected: boolean = false;
 
-  @property({type: String})
-  text: string = "";
+    @property({type: String})
+    text: string = "";
 
-  @property({type: String})
-  theme: string = NidocaTheme.PRIMARY;
+    @property({type: String})
+    theme: string = NidocaTheme.SURFACE;
 
-  render(): TemplateResult {
-    return html`
-      <style>
-        :host(.SELECTED) {
-          border-color: var(--app-color-${this.theme}-background);
-        }
-      </style>
-      <span class="tab ${this.selected ? "SELECTED" : ""}" @click="${() => this.tabClicked()}">
-        ${this.text
-          ? html` <nidoca-text  text="${this.text}"></nidoca-text> `
-          : html``}
-        <slot></slot>
-      </span>
-    `;
-  }
+    render(): TemplateResult {
+        return html`
+            <style>
+                slot {
+                    border-color: var(--app-color-${this.theme}-background);
+                }
+                slot.selected {
+                    border-color: var(--app-color-${this.theme}-selected);
+                }
+            </style>
+            <div class="container" @click="${() => this.tabClicked()}">
+                ${this.text
+                        ? html`
+                            <nidoca-text text="${this.text}"></nidoca-text> `
+                        : html``}
+                <slot class="${this.selected ? "selected" : ""}"></slot>
+            </div>
+        `;
+    }
 
-  private tabClicked(): void {
-    console.log("tab clicked.");
-    this.dispatchEvent(new CustomEvent("nidoca-event-tab-clicked", {detail: this, bubbles: true, composed: true}));
-  }
+    private tabClicked(): void {
+        console.log("tab clicked.");
+        this.dispatchEvent(new CustomEvent("nidoca-event-tab-clicked", {detail: this, bubbles: true, composed: true}));
+    }
 }

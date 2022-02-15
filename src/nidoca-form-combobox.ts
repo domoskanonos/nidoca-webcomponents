@@ -21,8 +21,10 @@ export class NidocaFormCombobox extends NidocaFormAbstractInputElement {
       align-items: center;
       flex-direction: row;
       border-bottom-style: solid;
-      border-width: var(--border-width);
+      border-width: var(--border-width-min);
       padding: var(--space);
+      height: var(--height-max);
+      box-sizing:border-box;
     }
 
     .container {
@@ -43,8 +45,8 @@ export class NidocaFormCombobox extends NidocaFormAbstractInputElement {
       border: none;
       color: inherit;
       background-color: inherit;
-      height: var(--line-height-input);
-      line-height: var(--line-height-input);
+      height: var(--height-min);
+      line-height: var(--height-min);
     }
 
     select[multiple] {

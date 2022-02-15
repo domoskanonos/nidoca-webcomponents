@@ -19,6 +19,8 @@ import {
 
 export class Nidoca {
     initDefaultComponents() {
+
+
         this._registeredElementsMap.set(
             "nidoca-form-upload",
             html`
@@ -322,9 +324,9 @@ export class Nidoca {
                     <nidoca-tab slot="tab">Tab 1</nidoca-tab>
                     <nidoca-tab slot="tab">Tab 2</nidoca-tab>
                     <nidoca-tab slot="tab">Tab 3</nidoca-tab>
-                    <nidoca-tab-content slot="tabContent"> Tab Inhalt 1</nidoca-tab-content>
-                    <nidoca-tab-content slot="tabContent"> Tab Inhalt 2</nidoca-tab-content>
-                    <nidoca-tab-content slot="tabContent"> Tab Inhalt 3</nidoca-tab-content>
+                    <nidoca-tab-content slot="tabContent"><nidoca-text>Tab Inhalt 1</nidoca-text></nidoca-tab-content>
+                    <nidoca-tab-content slot="tabContent"><nidoca-text>Tab Inhalt 2</nidoca-text></nidoca-tab-content>
+                    <nidoca-tab-content slot="tabContent"><nidoca-text>Tab Inhalt 3</nidoca-text></nidoca-tab-content>
                 </nidoca-tabs>
             `
         );
