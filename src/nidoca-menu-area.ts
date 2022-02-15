@@ -7,7 +7,10 @@ export class NidocaMenuArea extends LitElement {
     static styles = css`
     .container {
       display: flex;
-      padding:var(--space);
+      padding-left:var(--space-2);
+      padding-right:var(--space-2);
+      padding-top:var(--space);
+      padding-bottom:var(--space);
     }
   `;
 

@@ -10,12 +10,11 @@ export class NidocaMenu extends LitElement {
       display: block;
     }
     slot {
-      padding: var(--space-2);
     }
   `;
 
     @property({type: NidocaTheme, converter: String})
-    theme: string | undefined = NidocaTheme.BACKGROUND;
+    theme: string | undefined = NidocaTheme.SECONDARY;
 
     @query("#slotElement")
     private slotElement: HTMLSlotElement | undefined;

@@ -53,7 +53,7 @@ export class NidocaList extends LitElement {
 
         ::slotted(nidoca-list-section) {
           color: var(--app-color-${this.theme});
-          background-color: var(--app-color-${this.theme}-background-optional);
+          backdrop-filter: contrast(var(--app-color-percent-optional));
         }
 
         ::slotted(nidoca-list-item) {
@@ -67,9 +67,9 @@ export class NidocaList extends LitElement {
           border-bottom-style: solid;
           border-width: thin;
         }
-
+        
         ::slotted(nidoca-list-item:hover) {
-          background-color: var(--app-color-background-selected);
+          backdrop-filter: contrast(var(--app-color-percent-hover));
         }
       </style>
       <slot

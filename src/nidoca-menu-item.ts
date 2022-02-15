@@ -8,15 +8,18 @@ export class NidocaMenuItem extends LitElement {
     .container {
       display: flex;
       cursor: pointer;
-      padding:var(--space);
+      padding-left:var(--space-2);
+      padding-right:var(--space-2);
+      padding-top:var(--space);
+      padding-bottom:var(--space);
     }
     
     .container:hover {
-      backdrop-filter: invert(50%);    
+      backdrop-filter: contrast(var(--app-color-percent-hover));    
     }
     
     .selected {
-      backdrop-filter: invert(50%);    
+      backdrop-filter: contrast(var(--app-color-percent-selected));    
     }
       
   `;
