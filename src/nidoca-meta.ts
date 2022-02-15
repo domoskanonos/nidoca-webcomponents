@@ -162,7 +162,7 @@ export class Nidoca {
         this._registeredElementsMap.set(
             "nidoca-menu",
             html`
-                <nidoca-menu theme="secondary">
+                <nidoca-menu theme="primary">
                     <nidoca-menu-item text="Start"></nidoca-menu-item>
                     <nidoca-menu-area text="Framework"></nidoca-menu-area>
                     <nidoca-menu-item text="Komponenten"></nidoca-menu-item>

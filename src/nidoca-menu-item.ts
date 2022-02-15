@@ -12,11 +12,11 @@ export class NidocaMenuItem extends LitElement {
     }
     
     .container:hover {
-      backdrop-filter: brightness(var(--app-darken-1));
+      backdrop-filter: invert(50%);    
     }
     
     .selected {
-      backdrop-filter: brightness(var(--app-darken-2));    
+      backdrop-filter: invert(50%);    
     }
       
   `;
