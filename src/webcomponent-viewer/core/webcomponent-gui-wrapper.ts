@@ -1,10 +1,10 @@
 import {html, LitElement, TemplateResult} from "lit-element";
 import {WebcomponentWrapper} from "./webcomponent-wrapper";
 import {PropertyGuiWrapper} from "./property-gui-wrapper";
-import {LitViewer} from "..";
+import {WebcomponentViewer} from "..";
 
 export class WebcomponentGuiWrapper {
-  constructor(public parent: LitViewer, public classWrapper: WebcomponentWrapper) {}
+  constructor(public parent: WebcomponentViewer, public classWrapper: WebcomponentWrapper) {}
 
   public getAsHtml(): string {
     const htmlString: string = `
@@ -63,7 +63,7 @@ const element : ${this.classWrapper.getClassName()} = document.getElementById("m
 ${this.classWrapper
   .getProperties()
   .map((propertyArg) => {
-    return `.${propertyArg.propertyName}="\${this.${propertyArg.propertyName}}"\n`;
+    return `[${propertyArg.propertyName}]="\${this.${propertyArg.propertyName}}"\n`;
   })
   .join("")}></${this.classWrapper.getTagName()}>
 `;

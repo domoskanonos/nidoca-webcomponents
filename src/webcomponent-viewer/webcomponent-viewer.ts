@@ -7,7 +7,7 @@ import {property} from "lit/decorators.js";
 import {NidocaTheme} from "..";
 
 @customElement("webcomponent-viewer")
-export class LitViewer extends LitElement {
+export class WebcomponentViewer extends LitElement {
     static styles = css`
     .container {
       display: grid;
@@ -85,13 +85,20 @@ export class LitViewer extends LitElement {
 
             <nidoca-text-h2 class="paddingTopBottom">Quelltext</nidoca-text-h2>
             <nidoca-tabs tabIndex="0">
+                <nidoca-tab slot="tab">Angular</nidoca-tab>
                 <nidoca-tab slot="tab">Javascript</nidoca-tab>
                 <nidoca-tab slot="tab">Typescript</nidoca-tab>
                 <nidoca-tab slot="tab">Lit</nidoca-tab>
-                <nidoca-tab slot="tab">Angular</nidoca-tab>
+                <nidoca-tab slot="tab">Html</nidoca-tab>
+
 
                 <nidoca-tab-content slot="tabContent">
-                    <nidoca-code class="paddingTopBottom">${this.webcomponentGuiWrapper?.getAsJavascript()}</nidoca-code>
+                    <nidoca-code class="paddingTopBottom">${this.webcomponentGuiWrapper?.getAsAngular()}</nidoca-code>
+                </nidoca-tab-content>
+
+                <nidoca-tab-content slot="tabContent">
+                    <nidoca-code class="paddingTopBottom">${this.webcomponentGuiWrapper?.getAsJavascript()}
+                    </nidoca-code>
                 </nidoca-tab-content>
 
                 <nidoca-tab-content slot="tabContent">
