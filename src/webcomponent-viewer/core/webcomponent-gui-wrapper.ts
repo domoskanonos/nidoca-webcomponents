@@ -58,14 +58,12 @@ const element : ${this.classWrapper.getClassName()} = document.getElementById("m
   }
 
   public getAsAngular(): string {
-    const htmlString: string = `
-<${this.classWrapper.getTagName()}
-${this.classWrapper
-  .getProperties()
-  .map((propertyArg) => {
-    return `[${propertyArg.propertyName}]="\${this.${propertyArg.propertyName}}"\n`;
-  })
-  .join("")}></${this.classWrapper.getTagName()}>
+    const htmlString: string = `<${this.classWrapper.getTagName()}
+${this.getPropertyGuiWrappers()
+        .map((propertyGuiWrapper) => {
+          return propertyGuiWrapper.getAsAngular(this);
+        })
+        .join("  ")}></${this.classWrapper.getTagName()}>
 `;
     return htmlString;
   }
