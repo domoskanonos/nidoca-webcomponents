@@ -8,8 +8,9 @@ export class NidocaHr extends LitElement {
   static styles = css`
     :host,
     ::slotted(:host) {
-      padding-top: var(--space-2);
-      padding-bottom: var(--space-2);
+      display:block;
+      padding-top: var(--space-4);
+      padding-bottom: var(--space-4);
     }
   `;
 

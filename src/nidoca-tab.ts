@@ -8,6 +8,7 @@ export class NidocaTab extends LitElement {
     static styles = css`
     :host {
       display:block;
+      padding-right:var(--space);
     }
  
     .container {
@@ -15,13 +16,12 @@ export class NidocaTab extends LitElement {
       height: var(--height-min);
       box-sizing:border-box;
       cursor: pointer;
-      padding-right:var(--space);
+      border-width: var(--border-width-max);
+      border-bottom-style: solid;
     }
     
     slot {
       display:block;
-      border-width: var(--border-width-max);
-      border-bottom-style: solid;
       }
 
   `;
@@ -38,19 +38,19 @@ export class NidocaTab extends LitElement {
     render(): TemplateResult {
         return html`
             <style>
-                slot {
+                .container {
                     border-color: var(--app-color-${this.theme}-background);
                 }
-                slot.selected {
+                .selected {
                     border-color: var(--app-color-${this.theme}-selected);
                 }
             </style>
-            <div class="container" @click="${() => this.tabClicked()}">
+            <div class="container ${this.selected ? "selected" : ""}" @click="${() => this.tabClicked()}">
                 ${this.text
                         ? html`
                             <nidoca-text text="${this.text}"></nidoca-text> `
                         : html``}
-                <slot class="${this.selected ? "selected" : ""}"></slot>
+                <slot></slot>
             </div>
         `;
     }

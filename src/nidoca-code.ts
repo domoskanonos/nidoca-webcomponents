@@ -6,7 +6,7 @@ import {property} from "lit/decorators.js";
 export class NidocaCode extends LitElement {
   static styles = css`
     :host {
-      font-size: 0.75rem;
+      display:block;
     }
     pre {
       margin: 0;
@@ -17,7 +17,7 @@ export class NidocaCode extends LitElement {
     pre code {
       white-space: pre-line;
       display: block;
-      line-height: 1.75;
+      line-height: var(--height-min);
       padding: 1em 1.5em;
       overflow-x: auto;
     }
