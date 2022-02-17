@@ -1,7 +1,6 @@
 import {css, html, LitElement, TemplateResult} from "lit";
 import {customElement, property} from "lit/decorators.js";
-
-import {Nidoca, NidocaFormCombobox} from "..";
+import {Nidoca} from "..";
 
 @customElement("nidoca-page-playground")
 export class NidocaPagePlayground extends LitElement {
@@ -17,22 +16,14 @@ export class NidocaPagePlayground extends LitElement {
                         title="Komponentenübersicht"
                         text="Auf dieser Seite kannst du dir die einzelnen Komponenten von Nidoca anschauen. Mithilfe des Konfigurators, kannst du die Komponenten und deren Attribute verwalten und die Verwendung testen. Anschließend kannst du dir den Quellcode für deine entsprechende Umgebung kopieren und die Komponente verwenden."
                 ></nidoca-article>
-                <nidoca-layout-spacer top="20px"></nidoca-layout-spacer>
-                <nidoca-form-combobox
-                        name="components"
-                        label="Komponenten"
-                        value="${this.elementName}"
-                        .options="${NidocaFormCombobox.stringArrayToOptions(Nidoca.getUniqueInstance().registeredElementNames)}"
-                        @input="${(event: Event) => {
-                            this.elementName = (<NidocaFormCombobox>event.target).getOutputData().value;
-                        }}"
-                ></nidoca-form-combobox>
             </nidoca-section>
 
             <nidoca-section style="width:50%;">
-                <webcomponent-viewer>
-                    ${Nidoca.getUniqueInstance().registeredElementsMap.get(this.elementName)}
-                </webcomponent-viewer>
+                <webcomponent-viewer-container>
+                    ${Nidoca.getUniqueInstance().registeredElementNames.map((elementName: string) => html`
+                        ${Nidoca.getUniqueInstance().registeredElementsMap.get(elementName)}
+                    `)}
+                </webcomponent-viewer-container>
             </nidoca-section>
         `;
     }

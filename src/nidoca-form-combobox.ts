@@ -6,6 +6,7 @@ import {repeat} from "lit/directives/repeat.js";
 import {guard} from "lit/directives/guard.js";
 import {FormOutputData, NidocaFormAbstractInputElement} from "./nidoca-form-abstract-input-element";
 import {NidocaTheme} from ".";
+import {Theme} from "typedoc";
 
 @customElement("nidoca-form-combobox")
 export class NidocaFormCombobox extends NidocaFormAbstractInputElement {
@@ -66,7 +67,7 @@ export class NidocaFormCombobox extends NidocaFormAbstractInputElement {
   `;
 
     @property({type: NidocaTheme, converter: String})
-    theme: string | undefined;
+    theme: string = NidocaTheme.SURFACE;
 
     @property({type: String})
     trailingIcon: string = "";
