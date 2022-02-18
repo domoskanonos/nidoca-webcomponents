@@ -63,7 +63,7 @@ export class WebcomponentWrapper {
   public getProperties(): PropertyWrapper[] {
     const classProperties: Map<string, any> = (<any>this.instance.constructor)["elementProperties"];
     if (!classProperties) {
-      throw new Error("selected item malformed");
+      throw new Error("selected item malformed. no lit element ? wrong lit version ?");
     }
     const classPropertyArray: PropertyWrapper[] = [];
     for (const key of Array.from(classProperties.keys())) {
