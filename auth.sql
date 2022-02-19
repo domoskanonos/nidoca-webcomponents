@@ -1,3 +1,5 @@
+ALTER DATABASE nidoca SET "app.jwt_secret" TO '<jwt secret>';
+
 CREATE ROLE authenticator noinherit login password '<password>';
 
 CREATE ROLE web_anonym nologin;
