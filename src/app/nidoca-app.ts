@@ -98,10 +98,11 @@ export class NidocaApp extends LitElement implements NidocaRouteListener {
                           this.popupContent = html` <nidoca-form-login
                             @nidoca-event-icon-clicked="${() => (this.showPopup = false)}"
                             @nidoca-form-login-submit="${async (event: CustomEvent) => {
-                              const loggedIn = await NidocaOAuthClient.login(
+                              const loggedIn = await this.login(
                                 event.detail.jsonObject.username,
                                 event.detail.jsonObject.password
                               );
+
                               if (loggedIn) {
                                 this.showPopup = false;
                               }
@@ -195,5 +196,27 @@ export class NidocaApp extends LitElement implements NidocaRouteListener {
             >${this.elevationContentElement}
             </nidoca-elevation>
         `;
+  }
+
+  async login(username: string, password: string): Promise<boolean> {
+    console.log(`login ${username}`);
+    const response = await fetch("https://api.nidoca.com/rpc/login", <RequestInit>{
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+      body: JSON.stringify({
+        email: username,
+        pass: password,
+      }),
+    });
+
+    if (response.status == 200) {
+      console.log(await response.json());
+      //const jwtToken: JWT = await response.json();
+      //this.setToken(jwtToken);
+    }
+    console.info("login response status: ", response.status);
+    return response.status == 200;
   }
 }
