@@ -2,13 +2,11 @@ import {css, html, LitElement, TemplateResult} from "lit";
 import {customElement, property} from "lit/decorators.js";
 import {Vertrag, VertragKategorie} from "./model/vertrag";
 import {ChartConfiguration} from "chart.js";
-import {NidocaPostgrestClient} from "@domoskanonos/nidoca-postgrest-client";
+import {NidocaPostgrestClient} from "./service/nidoca-postgrest-client";
 
 @customElement("nidoca-page-dashboard")
 export class NidocaPageDashboard extends LitElement {
   static styles = css``;
-
-  private client: NidocaPostgrestClient = new NidocaPostgrestClient("http://89.58.33.189");
 
   @property()
   options: ChartConfiguration | undefined;
@@ -17,7 +15,7 @@ export class NidocaPageDashboard extends LitElement {
   options2: ChartConfiguration | undefined;
 
   protected firstUpdated(): void {
-    this.client.search("/vertrag", "").then((items: Vertrag[]) => {
+    NidocaPostgrestClient.search("/vertrag", "").then((items: Vertrag[]) => {
       const modifiedItemList = items
         .filter((item: Vertrag) => item.kosten > 0)
         .sort((item: Vertrag, compareItem: Vertrag) =>
@@ -55,7 +53,7 @@ export class NidocaPageDashboard extends LitElement {
       };
     });
 
-    this.client.search("/vertrag_kategorie", "").then((items: VertragKategorie[]) => {
+    NidocaPostgrestClient.search("/vertrag_kategorie", "").then((items: VertragKategorie[]) => {
       this.options2 = {
         type: "pie",
         data: {

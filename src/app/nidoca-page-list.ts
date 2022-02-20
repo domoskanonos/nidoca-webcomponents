@@ -2,29 +2,27 @@ import {css, html, LitElement, TemplateResult} from "lit";
 import {customElement} from "lit/decorators.js";
 import {Vertrag} from "./model/vertrag";
 import {CRUDProperty, GenericCRUDController} from "..";
-import {NidocaPostgrestClient} from "@domoskanonos/nidoca-postgrest-client";
+import {NidocaPostgrestClient} from "./service/nidoca-postgrest-client";
 
 export class VertragListController extends GenericCRUDController<Vertrag> {
-  private postgrestClient: NidocaPostgrestClient = new NidocaPostgrestClient("https://api.nidoca.de");
-
   async search(searchText: string): Promise<Vertrag[]> {
-    return this.postgrestClient.search(
+    return NidocaPostgrestClient.search(
       "/vertrag",
       "?offset=0&limit=100&order=name.asc&name=like.*".concat(searchText).concat("*")
     );
   }
 
   delete(item: Vertrag): Promise<boolean> {
-    return this.postgrestClient.delete("/vertrag", item.id);
+    return NidocaPostgrestClient.delete("/vertrag", item.id);
   }
 
   persist(item: Vertrag): Promise<Vertrag> {
     delete item.id;
-    return this.postgrestClient.persist("/vertrag", item);
+    return NidocaPostgrestClient.persist("/vertrag", item);
   }
 
   update(item: Vertrag): Promise<boolean> {
-    return this.postgrestClient.update("/vertrag", item.id, item);
+    return NidocaPostgrestClient.update("/vertrag", item.id, item);
   }
 
   getProperties(): CRUDProperty[] {
