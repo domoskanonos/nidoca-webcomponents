@@ -25,3 +25,10 @@ export interface VertragKategorie {
   kategorie: string;
   kosten: number;
 }
+
+export class Aufgabe {
+  id: number | undefined = 0;
+  title: string = "";
+  ablaufdatum: Date = new Date();
+  erledigt: boolean = false;
+}

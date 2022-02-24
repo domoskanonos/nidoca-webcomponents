@@ -7,10 +7,13 @@ import "./nidoca-page-dashboard";
 import "./nidoca-page-playground";
 import "./nidoca-page-components";
 import "./nidoca-page-imprint";
-import "./nidoca-page-list";
 import "./nidoca-page-settings";
 import "./nidoca-page-privacy";
 import "./nidoca-page-terms-of-use";
+
+import "./nidoca-page-list";
+import "./nidoca-page-aufgabe";
+
 
 import "./nidoca-elevation-settings";
 
