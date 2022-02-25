@@ -12,4 +12,4 @@ CREATE ROLE auth_user_all nologin;
 GRANT auth_user_all to authenticator;
 GRANT usage on schema public to auth_user_all;
 GRANT ALL ON ALL TABLES IN SCHEMA public TO auth_user_all;
-GRANT SELECT ON ALL SEQUENCES IN SCHEMA public TO auth_user_all;
+GRANT ALL ON ALL SEQUENCES IN SCHEMA public TO auth_user_all;
