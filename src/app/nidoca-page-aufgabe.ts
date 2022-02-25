@@ -3,56 +3,74 @@ import {customElement} from "lit/decorators.js";
 import {Aufgabe} from "./model/vertrag";
 import {CRUDProperty, GenericCRUDController} from "..";
 import {NidocaPostgrestClient} from "./service/nidoca-postgrest-client";
+import {NidocaDateHelper} from "@domoskanonos/nidoca-date-helper";
 
 export class AufgabeListController extends GenericCRUDController<Aufgabe> {
-  async search(searchText: string): Promise<Aufgabe[]> {
-    return NidocaPostgrestClient.search(
-      "/aufgabe",
-      "?offset=0&limit=100&order=titel.asc&titel=like.*".concat(searchText).concat("*")
-    );
-  }
 
-  delete(item: Aufgabe): Promise<boolean> {
-    return NidocaPostgrestClient.delete("/aufgabe", item.id);
-  }
+    async search(searchText: string): Promise<Aufgabe[]> {
+        return NidocaPostgrestClient.search(
+            this.getPath(),
+            "?offset=0&limit=100&order=ablaufdatum.asc&titel=like.*".concat(searchText).concat("*")
+        );
+    }
 
-  persist(item: Aufgabe): Promise<Aufgabe> {
-    delete item.id;
-    return NidocaPostgrestClient.persist("/aufgabe", item);
-  }
+    delete(item: Aufgabe): Promise<boolean> {
+        return NidocaPostgrestClient.delete(this.getPath(), item.id);
+    }
 
-  update(item: Aufgabe): Promise<boolean> {
-    return NidocaPostgrestClient.update("/aufgabe", item.id, item);
-  }
+    persist(item: Aufgabe): Promise<Aufgabe> {
+        delete item.id;
+        return NidocaPostgrestClient.persist(this.getPath(), item);
+    }
 
-  getProperties(): CRUDProperty[] {
-    const properties = this.fromModel(new Aufgabe());
-    properties.forEach((propertie: CRUDProperty) => {
-      if (propertie.key == "adresse" || propertie.key == "beschreibung") propertie.type = "textarea";
-      if (propertie.key == "internetseite") propertie.type = "url";
-      if (propertie.key == "name") propertie.required = true;
-    });
-    return properties;
-  }
+    update(item: Aufgabe): Promise<boolean> {
+        return NidocaPostgrestClient.update(this.getPath(), item.id, item);
+    }
 
-  getPrimaryIdKey(): string {
-    return "id";
-  }
+    getProperties(): CRUDProperty[] {
+        const properties = this.fromModel(new Aufgabe());
+        properties.forEach((propertie: CRUDProperty) => {
+            if (propertie.key == "beschreibung") propertie.type = "textarea";
+        });
+        return properties;
+    }
 
-  getPrimaryText(item: Aufgabe): string {
-    return item.title;
-  }
+    getPrimaryIdKey(): string {
+        return "id";
+    }
 
-  getSecondaryText(item: Aufgabe): string {
-    return String(item.erledigt);
-  }
+    getSectionText(item: Aufgabe): string {
+        const nidocaDateHelper: NidocaDateHelper = new NidocaDateHelper();
+        return nidocaDateHelper.formatDate(item.ablaufdatum, "dd.MM.yyyy")
+    }
+
+    newSection(previousItem: Aufgabe, item: Aufgabe): boolean {
+        if (previousItem) {
+            return item.ablaufdatum.getTime() > previousItem.ablaufdatum.getTime();
+        }
+        return false
+    }
+
+    getPrimaryText(item: Aufgabe): string {
+        return item.titel;
+    }
+
+    getSecondaryText(item: Aufgabe): string {
+        return String(item.beschreibung);
+    }
+
+    getPath(): string {
+        return "/aufgabe";
+    }
+
 }
 
 @customElement("nidoca-page-aufgabe")
 export class NidocaPageAufgabe extends LitElement {
-  static styles = css``;
+    static styles = css``;
 
-  render(): TemplateResult {
-    return html` <nidoca-generic-crud .controller="${new AufgabeListController()}"></nidoca-generic-crud> `;
-  }
+    render(): TemplateResult {
+        return html`
+            <nidoca-generic-crud .controller="${new AufgabeListController()}"></nidoca-generic-crud> `;
+    }
 }

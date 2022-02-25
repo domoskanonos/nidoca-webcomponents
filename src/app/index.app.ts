@@ -11,7 +11,7 @@ import "./nidoca-page-settings";
 import "./nidoca-page-privacy";
 import "./nidoca-page-terms-of-use";
 
-import "./nidoca-page-list";
+import "./nidoca-page-vertrag";
 import "./nidoca-page-aufgabe";
 
 
