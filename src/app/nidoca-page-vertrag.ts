@@ -1,73 +1,54 @@
 import {css, html, LitElement, TemplateResult} from "lit";
 import {customElement} from "lit/decorators.js";
-import {Aufgabe, Vertrag} from "./model/vertrag";
-import {CRUDProperty, GenericCRUDController} from "..";
+import {Vertrag} from "./model/vertrag";
+import {CRUDProperty, GenericPostgrestController} from "..";
 import {NidocaPostgrestClient} from "./service/nidoca-postgrest-client";
 
-export class VertragListController extends GenericCRUDController<Vertrag> {
-    async search(searchText: string): Promise<Vertrag[]> {
-        return NidocaPostgrestClient.search(
-            "/vertrag",
-            "?offset=0&limit=100&order=name.asc&name=like.*".concat(searchText).concat("*")
-        );
-    }
+export class VertragListController extends GenericPostgrestController<Vertrag> {
+  getModel() {
+    return new Vertrag();
+  }
 
-    delete(item: Vertrag): Promise<boolean> {
-        return NidocaPostgrestClient.delete("/vertrag", item.id);
-    }
+  getPath(): string {
+    return "/vertrag";
+  }
 
-    persist(item: Vertrag): Promise<Vertrag> {
-        delete item.id;
-        return NidocaPostgrestClient.persist("/vertrag", item);
-    }
+  getPrimaryText(item: Vertrag): string {
+    return item.name;
+  }
 
-    update(item: Vertrag): Promise<boolean> {
-        return NidocaPostgrestClient.update("/vertrag", item.id, item);
-    }
+  getSecondaryText(item: Vertrag): string {
+    return item.beschreibung;
+  }
 
-    getProperties(): CRUDProperty[] {
-        const properties = this.fromModel(new Vertrag());
-        properties.forEach((propertie: CRUDProperty) => {
-            if (propertie.key == "adresse" || propertie.key == "beschreibung") propertie.type = "textarea";
-            if (propertie.key == "internetseite") propertie.type = "url";
-            if (propertie.key == "name") propertie.required = true;
-        });
-        return properties;
-    }
+  getSectionKey(): string {
+    return "name";
+  }
 
-    getPrimaryIdKey(): string {
-        return "id";
-    }
+  getProperties(): CRUDProperty[] {
+    const properties = super.getProperties();
+    properties.forEach((propertie: CRUDProperty) => {
+      if (propertie.key == "adresse" || propertie.key == "beschreibung") propertie.type = "textarea";
+      if (propertie.key == "internetseite") propertie.type = "url";
+      if (propertie.key == "name") propertie.required = true;
+    });
+    return properties;
+  }
 
-    getPrimaryText(item: Vertrag): string {
-        return item.name;
-    }
-
-    getSecondaryText(item: Vertrag): string {
-        return item.beschreibung;
-    }
-
-    getSectionText(item: Vertrag): string {
-        return item.name.charAt(0);
-    }
-
-    newSection(previousItem: Vertrag, item: Vertrag): boolean {
-        if (previousItem) {
-            const previousSectionText = this.getSectionText(previousItem);
-            const sectionText = this.getSectionText(item);
-            return previousSectionText.charAt(0) != sectionText.charAt(0);
-        }
-        return false
-    }
+  async search(searchText: string): Promise<Vertrag[]> {
+    return NidocaPostgrestClient.search(
+      this.getPath(),
+      "?offset=0&limit=100&order=name.asc&name=like.*".concat(searchText).concat("*")
+    );
+  }
 
 }
 
 @customElement("nidoca-page-vertrag")
 export class NidocaPageVertrag extends LitElement {
-    static styles = css``;
+  static styles = css``;
 
-    render(): TemplateResult {
-        return html`
-            <nidoca-generic-crud .controller="${new VertragListController()}"></nidoca-generic-crud> `;
-    }
+  render(): TemplateResult {
+    return html` <nidoca-generic-crud .controller="${new VertragListController()}"></nidoca-generic-crud> `;
+  }
 }
