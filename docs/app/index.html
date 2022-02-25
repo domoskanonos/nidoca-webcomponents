@@ -8,36 +8,42 @@
       }
 
       :root {
+
+        --height-min: 36px;
+        --height-medium: 54px;
+        --height-max: 72px;
+
+        --space: 8px;
+        --space-2: 16px;
+        --space-3: 24px;
+        --space-4: 32px;
+        --space-6: 48px;
+        --space-8: 64px;
+
+        --border-width-min: 1px;
+        --border-width-medium: 2px;
+        --border-width-max: 4px;
+
+        --app-color-percent-selected: 70%;
+        --app-color-percent-hover: 80%;
+        --app-color-percent-optional: 60%;
+
         --app-color-background: #1e293b;
-        --app-color-caption-background: #5a5a5a;
         --app-color-background-background: #ffffff;
-        --app-color-background-background-optional: #f8fafc;
         --app-color-background-border: #9b9997;
-        --app-color-background-selected: #eef2ff;
-        --app-color-background-hover: #e2e8f0;
-        --app-color-success-background: #22bb33;
-        --app-color-error-background: #b00020;
-        --app-color-warning-background: #ffcc00;
-        --app-color-info-background: #40a6ce;
+
+        --app-color-surface: #000000;
+        --app-color-surface-background: #eaeaea;
+        --app-color-surface-border: #9b9997;
+
 
         --app-color-primary: #e6e6e6;
         --app-color-primary-background: #0F172A;
         --app-color-primary-border: #a6a6a6;
-        --app-color-primary-selected: #b2b2b2;
 
         --app-color-secondary: #ffffff;
-        --app-color-secondary-background: #000000;
+        --app-color-secondary-background: #b20505;
         --app-color-secondary-border: #808080;
-        --app-color-secondary-selected: #808080;
-
-        --app-color-surface: #696868;
-        --app-color-surface-background: #e3e3e3;
-        --app-color-surface-border: #9b9997;
-        --app-color-surface-selected: #9b9997;
-
-        --line-height: 24px;
-        --line-height-2: 48px;
-        --font-line-height-multiplicator: 1.5;
 
         --font-size: 18px;
         --font-size-body-2: calc(var(--font-size) * 1);
@@ -54,29 +60,24 @@
         --font-size-h1: calc(var(--font-size-h2) * 1.2);
         --font-size-overline: calc(var(--font-size-h4) * 1);
 
-        --space: 8px;
-        --space-2: 16px;
-        --space-3: 24px;
-        --space-4: 32px;
-        --space-6: 48px;
-        --space-8: 64px;
-
-        --border-width-min: 2px;
-
         --icon-size: 28px;
         --icon-size-big: 36px;
+
+      }
+
+      body {
+        margin:0;
+        padding:0;
       }
 
       *,::slotted(*) {
-        padding: 0;
-        margin: 0;
         word-wrap: break-word;
         box-sizing: border-box;
         text-rendering: optimizelegibility;
         font-family: 'Source Sans Pro', sans-serif;
         font-size: var(--font-size);
         letter-spacing: normal;
-        line-height: var(--height-min);
+        line-height:0;
         font-style: normal;
         text-decoration: none;
       }
@@ -84,13 +85,11 @@
       @media only screen and (max-width: 768px), only screen and (orientation: portrait) {
         :root {
           --font-size: calc(var(--font-size) * 0.8);
-          --font-line-height-multiplicator: 1.1;
         }
       }
 
       @media only screen and (max-width: 1280px) {
         :root {
           --font-size: calc(var(--font-size) * 0.9);
-          --font-line-height-multiplicator: 1.2;
         }
       }</style><script defer="defer" src="bundled.js"></script></head><body><nidoca-app></nidoca-app></body></html>
