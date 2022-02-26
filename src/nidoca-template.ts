@@ -44,7 +44,7 @@ export class NidocaTemplate extends LitElement {
   `;
 
     @property({type: Boolean})
-    hideLeft: boolean = false;
+    hideLeft: boolean = true;
 
     @property({type: Boolean})
     prominent: boolean = false;
