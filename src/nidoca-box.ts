@@ -14,7 +14,7 @@ export class NidocaBox extends LitElement {
       display: flex;
       flex-direction: column;
       flex-wrap: wrap;
-      align-items: center;
+      align-items: flex-start
     }
 
     @media only screen and (min-width: ${NidocaDevice.TABLET.minWidth}px) and (max-width: ${NidocaDevice.TABLET

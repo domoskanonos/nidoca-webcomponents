@@ -10,7 +10,7 @@ export class NidocaTextOverline extends NidocaText {
     ::slotted(:host),
     ::slotted(slot) {
       display: block;
-      font-size: var(--font-size-caption);
+      font-size: var(--font-size);
       line-height: 1;
       font-weight: 400;
       text-transform: uppercase;

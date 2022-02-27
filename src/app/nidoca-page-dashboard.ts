@@ -107,7 +107,7 @@ export class NidocaPageDashboard extends LitElement {
 
       <nidoca-card>
         <nidoca-box>
-          <nidoca-text-body>Kostenverteilung pro Kategorie</nidoca-text-body>
+          <nidoca-text-h2>Kostenverteilung pro Kategorie</nidoca-text-h2>
           <nidoca-chart-js-wrapper .options="${this.options2}"> </nidoca-chart-js-wrapper>
         </nidoca-box>
       </nidoca-card>

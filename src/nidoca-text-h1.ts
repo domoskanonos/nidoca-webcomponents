@@ -1,4 +1,4 @@
-import {css, html, TemplateResult} from "lit";
+import {css} from "lit";
 import {customElement} from "lit/decorators.js";
 import {NidocaText} from ".";
 
@@ -10,10 +10,9 @@ export class NidocaTextH1 extends NidocaText {
     ::slotted(:host),
     ::slotted(slot) {
       display: block;
-      font-weight:600;
-      font-size:calc(var(--font-size) * 4);
-      line-height:calc(var(--font-size) * 4);
+      font-weight: 600;
+      font-size: 130%;
+      line-height: 1.5em;
     }
   `;
-
 }
