@@ -91,19 +91,23 @@ export class NidocaApp extends LitElement implements NidocaRouteListener {
                         icon="person"
                         @nidoca-event-icon-clicked="${() => {
                           this.showPopup = true;
-                          this.popupContent = html` <nidoca-form-login
-                            @nidoca-event-icon-clicked="${() => (this.showPopup = false)}"
-                            @nidoca-form-login-submit="${async (event: CustomEvent) => {
-                              const loggedIn = await NidocaPostgrestClient.login(
-                                event.detail.jsonObject.username,
-                                event.detail.jsonObject.password
-                              );
+                          this.popupContent = html` <nidoca-icon
+                              @nidoca-event-icon-clicked="${() => (this.showPopup = false)}"
+                              icon="close"
+                              clickable
+                            ></nidoca-icon>
+                            <nidoca-form-login
+                              @nidoca-form-login-submit="${async (event: CustomEvent) => {
+                                const loggedIn = await NidocaPostgrestClient.login(
+                                  event.detail.jsonObject.username,
+                                  event.detail.jsonObject.password
+                                );
 
-                              if (loggedIn) {
-                                this.showPopup = false;
-                              }
-                            }}"
-                          ></nidoca-form-login>`;
+                                if (loggedIn) {
+                                  this.showPopup = false;
+                                }
+                              }}"
+                            ></nidoca-form-login>`;
                         }}"
                 ></nidoca-icon>
                 <nidoca-icon slot="topRight" style="padding-right:var(--space-2);" icon="share"></nidoca-icon>
@@ -147,10 +151,12 @@ export class NidocaApp extends LitElement implements NidocaRouteListener {
                                       @click="${() => NidocaRouter.getUniqueInstance().navigate("playground")}">
                     </nidoca-menu-item>
 
-                    <nidoca-menu-item text="Verträge" @click="${() => NidocaRouter.getUniqueInstance().navigate("vertrag")}">
+                    <nidoca-menu-item text="Verträge" @click="${() =>
+                      NidocaRouter.getUniqueInstance().navigate("vertrag")}">
                     </nidoca-menu-item>
 
-                    <nidoca-menu-item text="Aufgabe" @click="${() => NidocaRouter.getUniqueInstance().navigate("aufgabe")}">
+                    <nidoca-menu-item text="Aufgabe" @click="${() =>
+                      NidocaRouter.getUniqueInstance().navigate("aufgabe")}">
                     </nidoca-menu-item>
 
                     <nidoca-menu-item

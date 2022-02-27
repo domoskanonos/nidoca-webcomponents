@@ -7,6 +7,7 @@ export class NidocaFormRegister extends LitElement {
   static styles = css`
     :host {
       display: block;
+      width:100%;
     }
 
     .paddingBottom {

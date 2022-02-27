@@ -12,12 +12,17 @@ export enum NidocaShadowType {
 @customElement("nidoca-box-shadow")
 export class NidocaBoxShadow extends LitElement {
   static styles = css`
-    .SHADOW {
-      display: inline-block;
+    :host {
+      display: block;
+      padding: var(--space-2);
+    }
+
+    slot {
+      display: block;
     }
 
     .KEY_LIGHT {
-      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+      box-shadow: 0 var(--space) var(--space-2) rgba(0, 0, 0, 0.16), 0 var(--space) var(--space-2) rgba(0, 0, 0, 0.23);
     }
 
     .AMBIENT_LIGHT {
@@ -29,10 +34,10 @@ export class NidocaBoxShadow extends LitElement {
     }
   `;
 
-  @property({type: NidocaShadowType})
-  shadowType: NidocaShadowType = NidocaShadowType.KEY_LIGHT;
+  @property({type: NidocaShadowType, converter: String})
+  shadowType: string = NidocaShadowType.KEY_LIGHT;
 
   render(): TemplateResult {
-    return html` <span class="SHADOW ${this.shadowType}"><slot></slot></span> `;
+    return html`<slot class="container ${this.shadowType}"></slot>`;
   }
 }

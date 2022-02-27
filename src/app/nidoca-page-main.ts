@@ -7,7 +7,7 @@ export class NidocaPageMain extends LitElement {
   static styles = css``;
   render(): TemplateResult {
     return html`
-      <nidoca-section style="width:50%;">
+      <nidoca-section>
         <div style="padding-top:20vh;padding-bottom:20vh;">
           <div style="display:flex;align-items:center;justify-content:center;align-content:flex-start;">
             <nidoca-img
@@ -55,7 +55,7 @@ export class NidocaPageMain extends LitElement {
         ></nidoca-article>
       </nidoca-section>
 
-      <nidoca-section style="width:50%; padding:50px;">
+      <nidoca-section>
         <nidoca-img src="http://nidoca.eu/img/DSC02586.jpg"></nidoca-img>
         <nidoca-article
           style="padding-left:25px;"
@@ -66,7 +66,7 @@ export class NidocaPageMain extends LitElement {
       </nidoca-section>
 
       <nidoca-container .theme="${NidocaTheme.SECONDARY}">
-        <nidoca-section style="width:50%; padding-top:var(--space-8);padding-bottom:var(--space-8);">
+        <nidoca-section>
           <nidoca-article
             title="Responsive Komponenten"
             summary="Die Komponenten sind für Desktop, Tablet und Mobile optimiert."
@@ -79,7 +79,7 @@ export class NidocaPageMain extends LitElement {
       </nidoca-container>
 
       <nidoca-container .theme="${NidocaTheme.BACKGROUND}">
-        <nidoca-section style="width:50%; padding-top:var(--space-8);padding-bottom:var(--space-8);">
+        <nidoca-section>
           <nidoca-article
             title="Webcomponents"
             summary="Alle Komponenten erfüllen den Webcomponent Standart"
@@ -90,7 +90,7 @@ export class NidocaPageMain extends LitElement {
       </nidoca-container>
 
       <nidoca-container .theme="${NidocaTheme.PRIMARY}">
-        <nidoca-section style="width:50%; padding:var(--space-8);">
+        <nidoca-section>
           <nidoca-form-contact></nidoca-form-contact>
         </nidoca-section>
       </nidoca-container>

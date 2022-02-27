@@ -7,21 +7,17 @@ export class NidocaCard extends LitElement {
   static styles = css`
     :host {
       display: block;
+      margin: auto;
     }
-    .slotContainer {
-      display: flex;
-      flex-direction: column;
-      flex-wrap: nowrap;
-      justify-content: flex-start;
-      align-items: flex-start;
-      align-content: flex-start;
+    slot {
+      display: block;
     }
   `;
 
   render(): TemplateResult {
     return html`
       <nidoca-box-shadow .shadowType="${NidocaShadowType.KEY_LIGHT}">
-        <slot class="slotContainer"></slot>
+        <slot></slot>
       </nidoca-box-shadow>
     `;
   }

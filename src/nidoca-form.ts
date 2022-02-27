@@ -13,15 +13,13 @@ export class NidocaFormOutputData {
 @customElement("nidoca-form")
 export class NidocaForm extends LitElement {
   static styles = css`
-    :host {
-      display: block;
-    }
-    .container {
-      box-sizing: border-box;
-    }
-    #slot {
+    :host,
+    slot {
       display: block;
       width: 100%;
+    }
+    form {
+      box-sizing: border-box;
     }
   `;
 
@@ -33,7 +31,7 @@ export class NidocaForm extends LitElement {
 
   render(): TemplateResult {
     return html`
-      <form .?autocomplete="${this.autocomplete}" class="container">
+      <form .?autocomplete="${this.autocomplete}">
         <slot id="slotElement"></slot>
       </form>
     `;

@@ -11,14 +11,14 @@ export class NidocaPagePlayground extends LitElement {
 
     render(): TemplateResult {
         return html`
-            <nidoca-section style="width:50%;">
+            <nidoca-section>
                 <nidoca-article
                         title="Komponentenübersicht"
                         text="Auf dieser Seite kannst du dir die einzelnen Komponenten von Nidoca anschauen. Mithilfe des Konfigurators, kannst du die Komponenten und deren Attribute verwalten und die Verwendung testen. Anschließend kannst du dir den Quellcode für deine entsprechende Umgebung kopieren und die Komponente verwenden."
                 ></nidoca-article>
             </nidoca-section>
 
-            <nidoca-section style="width:50%;">
+            <nidoca-section>
                 <webcomponent-viewer-container>
                     ${Nidoca.getUniqueInstance().registeredElementNames.map((elementName: string) => html`
                         ${Nidoca.getUniqueInstance().registeredElementsMap.get(elementName)}

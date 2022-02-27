@@ -1,12 +1,13 @@
 import {css, html, TemplateResult, LitElement} from "lit";
 import {customElement, property, query} from "lit/decorators.js";
-import {NidocaButtonType, NidocaFormTextType, NidocaTheme,  NidocaForm} from ".";
+import {NidocaButtonType, NidocaFormTextType, NidocaTheme, NidocaForm} from ".";
 
 @customElement("nidoca-form-contact")
 export class NidocaFormContact extends LitElement {
   static styles = css`
     :host {
       display: block;
+      width: 100%;
     }
 
     .paddingBottom {

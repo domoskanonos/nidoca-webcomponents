@@ -41,7 +41,7 @@ export class NidocaPageSettings extends LitElement {
   render(): TemplateResult {
     return html`
       <nidoca-layout-spacer top="var(--space-8)">
-        <nidoca-section style="width:50%;">
+        <nidoca-section>
           <nidoca-article title="CSS Variablen">
             ${guard(
               [this.cssVars],

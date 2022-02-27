@@ -1,13 +1,13 @@
 import {css, html, TemplateResult, LitElement} from "lit";
 import {customElement, property, query} from "lit/decorators.js";
-import {ifDefined} from "lit/directives/if-defined.js";
-import {NidocaForm, NidocaFormTextType, NidocaTheme,  NidocaText, NidocaFormText} from ".";
+import {NidocaForm, NidocaFormTextType, NidocaTheme, NidocaFormText} from ".";
 
 @customElement("nidoca-form-change-password")
 export class NidocaFormChangePassword extends LitElement {
   static styles = css`
     :host {
       display: block;
+      width: 100%;
     }
 
     .paddingBottom {

@@ -5,37 +5,38 @@ import {customElement, property, queryAsync} from "lit/decorators.js";
 
 @customElement("nidoca-chart-js-wrapper")
 export class NidocaChartJSWrapper extends LitElement {
-    static styles = css`
+  static styles = css`
     :host {
       display: block;
+      width: 100%;
+      height: 100%;
     }
   `;
 
-    @queryAsync("#bar-chart")
-    canvas: Promise<HTMLCanvasElement> | undefined;
+  @queryAsync("#bar-chart")
+  canvas: Promise<HTMLCanvasElement> | undefined;
 
-    @property()
-    options: ChartConfiguration | undefined;
+  @property({type: Object, converter: Object})
+  options: ChartConfiguration | undefined;
 
-    updated(_changedProperties: PropertyValues) {
-        if (_changedProperties.has("options") && this.options) {
-            this.loadCanvas().then(() => {
-                console.log("canvas loaded.");
-            });
-        }
+  updated(_changedProperties: PropertyValues) {
+    if (_changedProperties.has("options") && this.options) {
+      this.loadCanvas().then(() => {
+        console.log("canvas loaded.");
+      });
     }
+  }
 
-    render(): TemplateResult {
-        return html`
-            <div style="width: 100%; height:100%;">
-                <canvas id="bar-chart" width="100%"></canvas>
-            </div>`;
-    }
+  render(): TemplateResult {
+    return html` <div style="width: 100%; height:100%;">
+      <canvas id="bar-chart" width="100%" height="100%"></canvas>
+    </div>`;
+  }
 
-    async loadCanvas() {
-        const loadedCanvas: HTMLCanvasElement | undefined = await this.canvas;
-        if (loadedCanvas && this.options) {
-            const chart = new Chart(loadedCanvas, this.options);
-        }
+  async loadCanvas() {
+    const loadedCanvas: HTMLCanvasElement | undefined = await this.canvas;
+    if (loadedCanvas && this.options) {
+      const chart = new Chart(loadedCanvas, this.options);
     }
+  }
 }
