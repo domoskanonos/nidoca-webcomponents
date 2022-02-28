@@ -15,7 +15,7 @@ export class NidocaLink extends LitElement {
     :host,
     ::slotted(:host) {
       display: inline-block;
-      line-height:calc(var(--font-size) * 1.25);
+      line-height:1.5em;
      }
     a {
       color: inherit;

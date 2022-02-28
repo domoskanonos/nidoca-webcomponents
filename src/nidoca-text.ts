@@ -11,7 +11,6 @@ export class NidocaText extends LitElement {
     ::slotted(slot) {
       display: block;
       font-weight: 400;
-      font-size: var(--font-size);
       line-height: 1.5em;
     }
   `;

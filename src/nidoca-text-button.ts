@@ -4,7 +4,7 @@ import {NidocaText} from ".";
 
 @customElement("nidoca-text-button")
 export class NidocaTextButton extends NidocaText {
-  static styles = css`
+    static styles = css`
     :host,
     slot,
     ::slotted(:host),
@@ -12,13 +12,13 @@ export class NidocaTextButton extends NidocaText {
       display: block;
       font-weight: 600;
       text-transform: uppercase;
-      font-size:calc(var(--font-size) * 0.8);
-      line-height:calc(var(--font-size) * 0.8);
+      line-height:1.5em;
       filter: brightness(var(--app-lighten-3));
     }
   `;
-  render(): TemplateResult {
-    return html`
-      ${super.render()}`;
-  }
+
+    render(): TemplateResult {
+        return html`
+            ${super.render()}`;
+    }
 }

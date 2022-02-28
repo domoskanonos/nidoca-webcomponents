@@ -7,46 +7,49 @@ import {Aufgabe} from "./model/vertrag";
 import {NidocaPostgrestClient} from "./service/nidoca-postgrest-client";
 
 export class AufgabeListController extends GenericPostgrestController<Aufgabe> {
-  getModel() {
-    return new Aufgabe();
-  }
-  getPath(): string {
-    return "/aufgabe";
-  }
+    getModel() {
+        return new Aufgabe();
+    }
 
-  getSectionKey(): string {
-    return "ablaufdatum";
-  }
+    getPath(): string {
+        return "/aufgabe";
+    }
 
-  getPrimaryText(item: Aufgabe): string {
-    return item.titel;
-  }
+    getSectionKey(): string {
+        return "ablaufdatum";
+    }
 
-  getSecondaryText(item: Aufgabe): string {
-    return item.beschreibung;
-  }
+    getPrimaryText(item: Aufgabe): string {
+        return item.titel;
+    }
 
-  getProperties(): CRUDProperty[] {
-    const properties = super.getProperties();
-    properties.forEach((propertie: CRUDProperty) => {
-      if (propertie.key == "beschreibung") propertie.type = "textarea";
-    });
-    return properties;
-  }
+    getSecondaryText(item: Aufgabe): string {
+        return item.beschreibung;
+    }
 
-  async search(searchText: string): Promise<Aufgabe[]> {
-    return NidocaPostgrestClient.search(
-      this.getPath(),
-      "?offset=0&limit=100&order=ablaufdatum.asc&titel=like.*".concat(searchText).concat("*")
-    );
-  }
+    getProperties(): CRUDProperty[] {
+        const properties = super.getProperties();
+        properties.forEach((propertie: CRUDProperty) => {
+            if (propertie.key == "beschreibung") propertie.type = "textarea";
+            if (propertie.key == "ablaufdatum") propertie.required = true;
+        });
+        return properties;
+    }
+
+    async search(searchText: string): Promise<Aufgabe[]> {
+        return NidocaPostgrestClient.search(
+            this.getPath(),
+            "?offset=0&limit=100&order=ablaufdatum.asc&titel=like.*".concat(searchText).concat("*")
+        );
+    }
 }
 
 @customElement("nidoca-page-aufgabe")
 export class NidocaPageAufgabe extends LitElement {
-  static styles = css``;
+    static styles = css``;
 
-  render(): TemplateResult {
-    return html` <nidoca-generic-crud .controller="${new AufgabeListController()}"></nidoca-generic-crud> `;
-  }
+    render(): TemplateResult {
+        return html`
+            <nidoca-generic-crud .controller="${new AufgabeListController()}"></nidoca-generic-crud> `;
+    }
 }

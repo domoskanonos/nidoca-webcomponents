@@ -6,108 +6,113 @@ import {NidocaPostgrestClient} from "./service/nidoca-postgrest-client";
 
 @customElement("nidoca-app")
 export class NidocaApp extends LitElement implements NidocaRouteListener {
-  @property({type: Boolean})
-  showPopup: boolean = false;
+    @property({type: Boolean})
+    showPopup: boolean = false;
 
-  @property({type: Object})
-  popupContent: any = html``;
+    @property({type: Object})
+    popupContent: any = html``;
 
-  @property({type: Boolean})
-  navigationClosed: boolean = false;
+    @property({type: Boolean})
+    navigationClosed: boolean = false;
 
-  @property({type: Boolean})
-  prominent: boolean = false;
+    @property({type: Boolean})
+    prominent: boolean = false;
 
-  @property({type: Object})
-  currentPage: any = html` <nidoca-page-main></nidoca-page-main>`;
+    @property({type: Object})
+    currentPage: any = html`
+        <nidoca-page-main></nidoca-page-main>`;
 
-  @property({type: Boolean})
-  elevationShow: boolean = false;
+    @property({type: Boolean})
+    elevationShow: boolean = false;
 
-  @property({type: Object})
-  elevationAssociatedElement: HTMLElement | undefined;
+    @property({type: Object})
+    elevationAssociatedElement: HTMLElement | undefined;
 
-  @property({type: Object})
-  elevationContentElement: any | undefined;
+    @property({type: Object})
+    elevationContentElement: any | undefined;
 
-  constructor() {
-    super();
-    NidocaRouter.getUniqueInstance().subscribe(this);
-    this.routeChanged(NidocaRouter.getUniqueInstance().getCurrentPage());
-  }
-
-  routeChanged(url: string): void {
-    console.log("enter new page, url: %s", url);
-    switch (url) {
-      case "dashboard":
-        this.currentPage = html` <nidoca-page-dashboard></nidoca-page-dashboard>`;
-        break;
-      case "playground":
-        this.currentPage = html` <nidoca-page-playground></nidoca-page-playground>`;
-        break;
-      case "components":
-        this.currentPage = html` <nidoca-page-components></nidoca-page-components>`;
-        break;
-      case "vertrag":
-        this.currentPage = html` <nidoca-page-vertrag></nidoca-page-vertrag>`;
-        break;
-      case "aufgabe":
-        this.currentPage = html` <nidoca-page-aufgabe></nidoca-page-aufgabe>`;
-        break;
-      case "settings":
-        this.currentPage = html` <nidoca-page-settings></nidoca-page-settings>`;
-        break;
-      case "imprint":
-        this.currentPage = html` <nidoca-page-imprint></nidoca-page-imprint>`;
-        break;
-      case "terms-of-use":
-        this.currentPage = html` <nidoca-page-terms-of-use></nidoca-page-terms-of-use>`;
-        break;
-      case "privacy":
-        this.currentPage = html` <nidoca-page-privacy></nidoca-page-privacy>`;
-        break;
-      case "main":
-      default:
-        this.currentPage = html` <nidoca-page-main></nidoca-page-main>`;
-        break;
+    constructor() {
+        super();
+        NidocaRouter.getUniqueInstance().subscribe(this);
+        this.routeChanged(NidocaRouter.getUniqueInstance().getCurrentPage());
     }
-  }
 
-  render(): TemplateResult {
-    return html`
+    routeChanged(url: string): void {
+        console.log("enter new page, url: %s", url);
+        switch (url) {
+            case "dashboard":
+                this.currentPage = html`
+                    <nidoca-page-dashboard></nidoca-page-dashboard>`;
+                break;
+            case "playground":
+                this.currentPage = html`
+                    <nidoca-page-playground></nidoca-page-playground>`;
+                break;
+            case "components":
+                this.currentPage = html`
+                    <nidoca-page-components></nidoca-page-components>`;
+                break;
+            case "vertrag":
+                this.currentPage = html`
+                    <nidoca-page-vertrag></nidoca-page-vertrag>`;
+                break;
+            case "aufgabe":
+                this.currentPage = html`
+                    <nidoca-page-aufgabe></nidoca-page-aufgabe>`;
+                break;
+            case "settings":
+                this.currentPage = html`
+                    <nidoca-page-settings></nidoca-page-settings>`;
+                break;
+            case "imprint":
+                this.currentPage = html`
+                    <nidoca-page-imprint></nidoca-page-imprint>`;
+                break;
+            case "terms-of-use":
+                this.currentPage = html`
+                    <nidoca-page-terms-of-use></nidoca-page-terms-of-use>`;
+                break;
+            case "privacy":
+                this.currentPage = html`
+                    <nidoca-page-privacy></nidoca-page-privacy>`;
+                break;
+            case "main":
+            default:
+                this.currentPage = html`
+                    <nidoca-page-main></nidoca-page-main>`;
+                break;
+        }
+    }
+
+    render(): TemplateResult {
+        return html`
             <nidoca-template .prominent="${this.prominent}" .navigationClosed="${this.navigationClosed}">
                 <nidoca-text-body slot="topCenter"
                 "></nidoca-text-body>
-
-                <nidoca-icon
-                        style="padding-right:var(--space-2);"
-                        slot="topRight"
-                        icon="${this.prominent ? "search_off" : "search"}"
-                        @nidoca-event-icon-clicked="${() => (this.prominent = !this.prominent)}"
-                ></nidoca-icon>
                 <nidoca-icon
                         style="padding-right:var(--space-2);"
                         slot="topRight"
                         icon="person"
                         @nidoca-event-icon-clicked="${() => {
-                          this.showPopup = true;
-                          this.popupContent = html` <nidoca-icon
-                              @nidoca-event-icon-clicked="${() => (this.showPopup = false)}"
-                              icon="close"
-                              clickable
-                            ></nidoca-icon>
-                            <nidoca-form-login
-                              @nidoca-form-login-submit="${async (event: CustomEvent) => {
-                                const loggedIn = await NidocaPostgrestClient.login(
-                                  event.detail.jsonObject.username,
-                                  event.detail.jsonObject.password
-                                );
+                            this.showPopup = true;
+                            this.popupContent = html`
+                                <nidoca-icon
+                                        @nidoca-event-icon-clicked="${() => (this.showPopup = false)}"
+                                        icon="close"
+                                        clickable
+                                ></nidoca-icon>
+                                <nidoca-form-login
+                                        @nidoca-form-login-submit="${async (event: CustomEvent) => {
+                                            const loggedIn = await NidocaPostgrestClient.login(
+                                                    event.detail.jsonObject.username,
+                                                    event.detail.jsonObject.password
+                                            );
 
-                                if (loggedIn) {
-                                  this.showPopup = false;
-                                }
-                              }}"
-                            ></nidoca-form-login>`;
+                                            if (loggedIn) {
+                                                this.showPopup = false;
+                                            }
+                                        }}"
+                                ></nidoca-form-login>`;
                         }}"
                 ></nidoca-icon>
                 <nidoca-icon slot="topRight" style="padding-right:var(--space-2);" icon="share"></nidoca-icon>
@@ -117,25 +122,16 @@ export class NidocaApp extends LitElement implements NidocaRouteListener {
                         icon="more_vert"
                         .clickable="${true}"
                         @nidoca-event-icon-clicked="${(event: CustomEvent) => {
-                          this.elevationShow = true;
-                          this.elevationAssociatedElement = <HTMLElement>event.target;
-                          this.elevationContentElement = html` <nidoca-elevation-settings></nidoca-elevation-settings>`;
+                            this.elevationShow = true;
+                            this.elevationAssociatedElement = <HTMLElement>event.target;
+                            this.elevationContentElement = html`
+                                <nidoca-elevation-settings></nidoca-elevation-settings>`;
                         }}"
                 ></nidoca-icon>
 
                 <nidoca-search-bar style="width:100%;" slot="prominent" placeholder="Suche..."></nidoca-search-bar>
 
                 <span slot="content">${this.currentPage}</span>
-
-
-                <nidoca-avatar
-                        style="width:150px;"
-                        slot="left"
-                        imgSrc="https://github.com/domoskanonos/nidoca-assets/raw/main/avatar.jpg"
-                >
-                    <nidoca-text-body>Dominik Bruhn</nidoca-text-body>
-                    <nidoca-text-caption>Softwareentwickler</nidoca-text-caption>
-                </nidoca-avatar>
 
                 <nidoca-menu slot="left" theme="primary">
                     <nidoca-menu-item text="Start" @click="${() => NidocaRouter.getUniqueInstance().navigate("main")}">
@@ -152,11 +148,11 @@ export class NidocaApp extends LitElement implements NidocaRouteListener {
                     </nidoca-menu-item>
 
                     <nidoca-menu-item text="Verträge" @click="${() =>
-                      NidocaRouter.getUniqueInstance().navigate("vertrag")}">
+                            NidocaRouter.getUniqueInstance().navigate("vertrag")}">
                     </nidoca-menu-item>
 
                     <nidoca-menu-item text="Aufgabe" @click="${() =>
-                      NidocaRouter.getUniqueInstance().navigate("aufgabe")}">
+                            NidocaRouter.getUniqueInstance().navigate("aufgabe")}">
                     </nidoca-menu-item>
 
                     <nidoca-menu-item
@@ -201,5 +197,5 @@ export class NidocaApp extends LitElement implements NidocaRouteListener {
             >${this.elevationContentElement}
             </nidoca-elevation>
         `;
-  }
+    }
 }

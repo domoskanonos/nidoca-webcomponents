@@ -1,16 +1,14 @@
 import {css, html, TemplateResult, LitElement} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
-import {NidocaTextType} from "./nidoca-text";
 import {NidocaTheme} from "./nidoca-meta";
 
 @customElement("nidoca-list-section")
 export class NidocaListSection extends LitElement {
   static styles = css`
   :host {
- display:block;
- padding-left: var(--space-2);
-
+     display:block;
+     padding-left: var(--space-2);  
   `;
 
   @property({type: NidocaTheme, converter: String})

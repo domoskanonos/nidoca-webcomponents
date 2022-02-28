@@ -10,7 +10,6 @@ export class NidocaTextSubtitle extends NidocaText {
     ::slotted(:host),
     ::slotted(slot) {
       display: block;
-      font-size: var(--font-size);
       line-height: 1;
       font-weight: 400;
     }

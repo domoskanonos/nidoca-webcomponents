@@ -31,7 +31,7 @@ export class NidocaTopAppBar extends LitElement {
     slot {
       display: flex;
       align-items: center;
-      flex-basis: 33.33%;
+      flex-basis: auto;
     }
 
     .prominent {

@@ -11,8 +11,7 @@ export class NidocaTextCaption extends NidocaText {
     ::slotted(slot) {
         display: block;
         font-weight: 400;
-        font-size:calc(var(--font-size) * 0.9);
-        line-height:calc(var(--font-size) * 1.1);
+        line-height:1.5em;
         filter: brightness(var(--app-lighten-3));
     }
     

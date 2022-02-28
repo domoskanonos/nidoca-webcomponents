@@ -10,8 +10,7 @@ export class NidocaTextBody extends NidocaText {
     ::slotted(:host),
     ::slotted(slot) {
       display: block;
-      font-size: var(--font-size);
-      line-height: 1.5;
+      line-height: 1.5em;
       font-weight: 400;
     }
   `;
