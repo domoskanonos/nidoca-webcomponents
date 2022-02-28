@@ -198,8 +198,6 @@ export class Nidoca {
                     </nidoca-accordion-item>
                 </nidoca-accordion>`
         );
-        this._registeredElementsMap.set("nidoca-box-shadow", html`
-            <nidoca-box-shadow></nidoca-box-shadow>`);
         this._registeredElementsMap.set(
             "nidoca-button",
             html`

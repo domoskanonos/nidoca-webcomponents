@@ -89,27 +89,39 @@ export class NidocaPageDashboard extends LitElement {
 
     render(): TemplateResult {
         return html`
-            <nidoca-card>
-                <nidoca-box>
-                    <nidoca-text-h2>Kostenverteilung pro Monat in Euro</nidoca-text-h2>
-                    <nidoca-chart-js-wrapper style="height:500px;" .options="${this.options}"></nidoca-chart-js-wrapper>
-                </nidoca-box>
-            </nidoca-card>
+            <nidoca-dashboard>
+                <nidoca-text-h1 style="padding: var(--space-2);width: 100%;">Dashboard</nidoca-text-h1>
 
-            <nidoca-card>
-                <nidoca-box>
-                    <nidoca-text-h2>Kostenverteilung pro Kategorie</nidoca-text-h2>
-                    <nidoca-chart-js-wrapper .options="${this.options2}"></nidoca-chart-js-wrapper>
-                </nidoca-box>
-            </nidoca-card>
-            <nidoca-card>
-                <nidoca-box>
-                    <nidoca-text-h2>Nächste Aufgaben</nidoca-text-h2>
+                <nidoca-dashboard-box-50>
+                    <nidoca-card>
+                        <nidoca-box>
+                            <nidoca-text-h2>Kostenverteilung pro Monat in Euro</nidoca-text-h2>
+                            <nidoca-chart-js-wrapper style="height:350px;"
+                                                     .options="${this.options}"></nidoca-chart-js-wrapper>
+                        </nidoca-box>
+                    </nidoca-card>
+                </nidoca-dashboard-box-50>
 
-                    <nidoca-table theme="surface" .headers="${["Titel", "Ablaufdatum"]}"
-                                  .rows="${this.aufgaben}"></nidoca-table>
-                </nidoca-box>
-            </nidoca-card>
+                <nidoca-dashboard-box-50>
+                    <nidoca-card>
+                        <nidoca-box>
+                            <nidoca-text-h2>Kostenverteilung pro Kategorie</nidoca-text-h2>
+                            <nidoca-chart-js-wrapper .options="${this.options2}"></nidoca-chart-js-wrapper>
+                        </nidoca-box>
+                    </nidoca-card>
+                </nidoca-dashboard-box-50>
+
+                <nidoca-dashboard-box-100>
+                    <nidoca-card>
+                        <nidoca-box>
+                            <nidoca-text-h2>Nächste Aufgaben</nidoca-text-h2>
+
+                            <nidoca-table theme="surface" .headers="${["Titel", "Ablaufdatum"]}"
+                                          .rows="${this.aufgaben}"></nidoca-table>
+                        </nidoca-box>
+                    </nidoca-card>
+                </nidoca-dashboard-box-100>
+            </nidoca-dashboard>
         `;
     }
 }

@@ -12,7 +12,6 @@ export * from "./nidoca-code";
 export * from "./nidoca-elevation";
 export * from "./nidoca-progress";
 export * from "./nidoca-button";
-export * from "./nidoca-box-shadow";
 export * from "./nidoca-form";
 export * from "./nidoca-form-combobox";
 
@@ -89,6 +88,7 @@ export * from "./nidoca-gallery";
 export * from "./nidoca-print";
 
 export * from "./nidoca-section";
+export * from "./nidoca-dashboard";
 export * from "./nidoca-box";
 
 export * from "./nidoca-article";

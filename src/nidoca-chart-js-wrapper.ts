@@ -29,7 +29,7 @@ export class NidocaChartJSWrapper extends LitElement {
 
   render(): TemplateResult {
     return html` <div style="width: 100%; height:100%;">
-      <canvas id="bar-chart" width="100%" height="100%"></canvas>
+      <canvas id="bar-chart" width="max-content" height="max-content"></canvas>
     </div>`;
   }
 

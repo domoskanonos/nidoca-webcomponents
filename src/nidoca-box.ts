@@ -9,6 +9,8 @@ export class NidocaBox extends LitElement {
     :host {
       display: block;
       padding: var(--space-6);
+      height:inherit;
+      box-sizing:border-box;
     }
     slot {
       display: flex;
