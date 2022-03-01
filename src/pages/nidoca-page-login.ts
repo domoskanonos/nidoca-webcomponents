@@ -1,0 +1,50 @@
+import {css, html, LitElement, TemplateResult} from "lit";
+import {customElement} from "lit/decorators.js";
+
+@customElement("nidoca-page-login")
+export class NidocaPageLogin extends LitElement {
+    static styles = css`
+    :host {
+        display:grid;
+        grid-template-columns: 1fr 1fr;
+        height: 100vh;
+        width: 100vw;
+    }
+    
+    .right {
+        background-color: var(--app-color-primary-background);
+    }
+    
+    .left {
+        margin: auto;
+        width:min-content;
+        height:min-content;
+    }
+
+    @media only screen and (max-width: 640px) {
+        :host {
+        grid-template-columns: 1fr;
+        }
+        .right {
+            display: block;
+            overflow: hidden;
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            opacity: 0.1;
+            z-index: -1
+        }
+    }
+`;
+
+    render(): TemplateResult {
+        return html`
+            <nidoca-form-login class="left"></nidoca-form-login>
+            <nidoca-img class="right"
+                        src="https://cdn.pixabay.com/photo/2018/03/10/12/00/teamwork-3213924_960_720.jpg"
+            ></nidoca-img>
+        `;
+    }
+
+
+}

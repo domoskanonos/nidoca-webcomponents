@@ -16,7 +16,7 @@ export class NidocaFormLogin extends LitElement {
   `;
 
   @property({type: NidocaTheme, converter: String})
-  theme: string | undefined = NidocaTheme.BACKGROUND;
+  theme: string | undefined = NidocaTheme.TRANSPARENT;
 
   @property({type: String, converter: String})
   label: string = "Anmeldung";
@@ -78,8 +78,8 @@ export class NidocaFormLogin extends LitElement {
       this.dispatchEvent(
         new CustomEvent("nidoca-form-login-submit", {
           detail: this.formComponent.getOutputData(),
-          bubbles: false,
-          composed: false,
+          bubbles: true,
+          composed: true,
         })
       );
     }

@@ -4,7 +4,7 @@ import {property} from "lit/decorators.js";
 
 @customElement("nidoca-img")
 export class NidocaImg extends LitElement {
-  static styles = css`
+    static styles = css`
     :host {
       font-size: 0;
     }
@@ -14,16 +14,16 @@ export class NidocaImg extends LitElement {
     }
   `;
 
-  @property({type: String})
-  src: string = "http://picsum.photos/400/300";
+    @property({type: String})
+    src: string = "";
 
-  @property({type: String})
-  width: string = "100%";
+    @property({type: String})
+    width: string = "100%";
 
-  @property({type: String})
-  height: string = "100%";
+    @property({type: String})
+    height: string = "100%";
 
-  render(): TemplateResult {
-    return html`<img width="${this.width}" height="${this.height}" src="${this.src}" />`;
-  }
+    render(): TemplateResult {
+        return this.src ? html`<img width="${this.width}" height="${this.height}" src="${this.src}"/>` : html``;
+    }
 }

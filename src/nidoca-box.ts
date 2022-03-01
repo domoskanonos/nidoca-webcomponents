@@ -5,18 +5,15 @@ import {NidocaDevice, NidocaTheme} from ".";
 
 @customElement("nidoca-box")
 export class NidocaBox extends LitElement {
-  static styles = css`
+    static styles = css`
     :host {
       display: block;
       padding: var(--space-6);
-      height:inherit;
       box-sizing:border-box;
     }
     slot {
-      display: flex;
-      flex-direction: column;
-      flex-wrap: wrap;
-      align-items: flex-start
+    display:block;
+      margin:auto;
     }
 
     @media only screen and (min-width: ${NidocaDevice.TABLET.minWidth}px) and (max-width: ${NidocaDevice.TABLET
@@ -33,13 +30,13 @@ export class NidocaBox extends LitElement {
     }
   `;
 
-  @property({type: NidocaTheme, converter: String})
-  theme: string | undefined = NidocaTheme.BACKGROUND;
+    @property({type: NidocaTheme, converter: String})
+    theme: string | undefined = NidocaTheme.TRANSPARENT;
 
-  render(): TemplateResult {
-    return html`
-      ${NidocaTheme.getStyle(this.theme)}
-      <slot></slot>
-    `;
-  }
+    render(): TemplateResult {
+        return html`
+            ${NidocaTheme.getStyle(this.theme)}
+            <slot></slot>
+        `;
+    }
 }

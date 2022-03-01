@@ -100,6 +100,8 @@ export * from "./nidoca-form-contact";
 
 export * from "./nidoca-chart-js-wrapper";
 
+export * from "./pages/nidoca-page-login";
+
 Nidoca.getUniqueInstance().initDefaultComponents();
 
 //window.addEventListener("resize", () => {  this.requestUpdate(); });

@@ -1,16 +1,12 @@
-import {html, LitElement, TemplateResult} from "lit";
+import {html, LitElement, PropertyValues, TemplateResult} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
 import {NidocaRouteListener, NidocaRouter} from "@domoskanonos/nidoca-router";
 import {NidocaPostgrestClient} from "./service/nidoca-postgrest-client";
+import {NidocaStore, NidocaStoreListener} from "./service/nidoca-store";
 
 @customElement("nidoca-app")
-export class NidocaApp extends LitElement implements NidocaRouteListener {
-    @property({type: Boolean})
-    showPopup: boolean = false;
-
-    @property({type: Object})
-    popupContent: any = html``;
+export class NidocaApp extends LitElement implements NidocaRouteListener, NidocaStoreListener {
 
     @property({type: Boolean})
     navigationClosed: boolean = false;
@@ -18,9 +14,12 @@ export class NidocaApp extends LitElement implements NidocaRouteListener {
     @property({type: Boolean})
     prominent: boolean = false;
 
+    @property({type: Boolean})
+    isLoggedIn: boolean = false;
+
     @property({type: Object})
     currentPage: any = html`
-        <nidoca-page-main></nidoca-page-main>`;
+        <nidoca-page-dashboard></nidoca-page-dashboard>`;
 
     @property({type: Boolean})
     elevationShow: boolean = false;
@@ -35,6 +34,25 @@ export class NidocaApp extends LitElement implements NidocaRouteListener {
         super();
         NidocaRouter.getUniqueInstance().subscribe(this);
         this.routeChanged(NidocaRouter.getUniqueInstance().getCurrentPage());
+        NidocaStore.addStoreListener(this);
+        NidocaStore.updateItem("isLoggedIn", NidocaPostgrestClient.isLoggedIn());
+
+    }
+
+    protected updated(_changedProperties: PropertyValues) {
+        super.updated(_changedProperties);
+        if (_changedProperties.has("isLoggedIn")) {
+            if (!this.isLoggedIn) {
+                console.log("route to login page.");
+                NidocaRouter.getUniqueInstance().navigate("login");
+            }
+        }
+    }
+
+    newItem(channel: string, item: any): void {
+        console.log(`receive item for channel: ${channel},item: ${item}`);
+        if (channel == "isLoggedIn")
+            this.isLoggedIn = item;
     }
 
     routeChanged(url: string): void {
@@ -85,36 +103,18 @@ export class NidocaApp extends LitElement implements NidocaRouteListener {
     }
 
     render(): TemplateResult {
-        return html`
+        return this.isLoggedIn ? html`
             <nidoca-template .prominent="${this.prominent}" .navigationClosed="${this.navigationClosed}">
                 <nidoca-text-body slot="topCenter"
                 "></nidoca-text-body>
                 <nidoca-icon
                         style="padding-right:var(--space-2);"
                         slot="topRight"
-                        icon="person"
                         @nidoca-event-icon-clicked="${() => {
-                            this.showPopup = true;
-                            this.popupContent = html`
-                                <nidoca-icon
-                                        @nidoca-event-icon-clicked="${() => (this.showPopup = false)}"
-                                        icon="close"
-                                        clickable
-                                ></nidoca-icon>
-                                <nidoca-form-login
-                                        @nidoca-form-login-submit="${async (event: CustomEvent) => {
-                                            const loggedIn = await NidocaPostgrestClient.login(
-                                                    event.detail.jsonObject.username,
-                                                    event.detail.jsonObject.password
-                                            );
+                            NidocaPostgrestClient.logout();
+                            NidocaStore.updateItem("isLoggedIn", NidocaPostgrestClient.isLoggedIn());
+                        }}" icon="logout"></nidoca-icon>
 
-                                            if (loggedIn) {
-                                                this.showPopup = false;
-                                            }
-                                        }}"
-                                ></nidoca-form-login>`;
-                        }}"
-                ></nidoca-icon>
                 <nidoca-icon slot="topRight" style="padding-right:var(--space-2);" icon="share"></nidoca-icon>
                 <nidoca-icon
                         style="padding-right:var(--space-2);"
@@ -134,7 +134,8 @@ export class NidocaApp extends LitElement implements NidocaRouteListener {
                 <span slot="content">${this.currentPage}</span>
 
                 <nidoca-menu slot="left" theme="primary">
-                    <nidoca-menu-item text="Start" @click="${() => NidocaRouter.getUniqueInstance().navigate("main")}">
+                    <nidoca-menu-item text="Start"
+                                      @click="${() => NidocaRouter.getUniqueInstance().navigate("main")}">
                     </nidoca-menu-item>
 
                     <nidoca-menu-item text="Dashboard"
@@ -187,15 +188,22 @@ export class NidocaApp extends LitElement implements NidocaRouteListener {
                     </nidoca-menu-item>
                 </nidoca-menu>
             </nidoca-template>
-            <nidoca-dialog .show="${this.showPopup}" @nidoca-form-login-closePopup="${() => (this.showPopup = false)}"
-            >${this.popupContent}
-            </nidoca-dialog>
             <nidoca-elevation
                     .show="${this.elevationShow}"
                     .associatedElement="${this.elevationAssociatedElement}"
                     @mouseout="${() => (this.elevationShow = false)}"
             >${this.elevationContentElement}
             </nidoca-elevation>
-        `;
+        ` : html`
+            <nidoca-page-login @nidoca-form-login-submit="${async (event: CustomEvent) => {
+                const loggedIn = await NidocaPostgrestClient.login(
+                        event.detail.jsonObject.username,
+                        event.detail.jsonObject.password
+                );
+                NidocaStore.updateItem("isLoggedIn", loggedIn);
+                if (loggedIn) {
+                    NidocaRouter.getUniqueInstance().navigate("dashboard");
+                }
+            }}"></nidoca-page-login>`;
     }
 }
