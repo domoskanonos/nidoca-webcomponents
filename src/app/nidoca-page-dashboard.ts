@@ -3,8 +3,8 @@ import {customElement, property} from "lit/decorators.js";
 import {Aufgabe, Vertrag, VertragKategorie} from "./model/vertrag";
 import {ChartConfiguration} from "chart.js";
 import {NidocaPostgrestClient} from "./service/nidoca-postgrest-client";
-import {NidocaIcon} from "../nidoca-icon";
 import {NidocaDateHelper} from "@domoskanonos/nidoca-date-helper";
+import {AppController} from "./service/app-controller";
 
 @customElement("nidoca-page-dashboard")
 export class NidocaPageDashboard extends LitElement {
@@ -20,27 +20,17 @@ export class NidocaPageDashboard extends LitElement {
     aufgaben: any[] = [[]];
 
     protected firstUpdated(): void {
-        NidocaPostgrestClient.search("/vertrag", "").then((items: Vertrag[]) => {
-            const modifiedItemList = items
-                .filter((item: Vertrag) => item.kosten > 0)
-                .sort((item: Vertrag, compareItem: Vertrag) =>
-                    item.kosten / item.abrechnungsperiode > compareItem.kosten / compareItem.abrechnungsperiode ? -1 : 1
-                );
-            let sum: number = 0;
-            modifiedItemList.forEach((item) => {
-                sum += item.kosten / item.abrechnungsperiode;
-            });
-            console.log(sum);
+        AppController.alleKostenpflichtigeVertraege().then((items: Vertrag[]) => {
             this.options = {
                 type: "bar",
                 data: {
-                    labels: modifiedItemList.map((item: Vertrag) => item.name),
+                    labels: items.map((item: Vertrag) => item.name),
                     datasets: [
                         {
                             indexAxis: "y",
                             label: "Kosten pro Monat",
-                            data: modifiedItemList.map((item: Vertrag) => item.kosten / item.abrechnungsperiode),
-                            backgroundColor: modifiedItemList.map(() =>
+                            data: items.map((item: Vertrag) => item.kosten / item.abrechnungsperiode),
+                            backgroundColor: items.map(() =>
                                 getComputedStyle(document.body).getPropertyValue("--app-color-background")
                             ),
                             borderWidth: 0,
