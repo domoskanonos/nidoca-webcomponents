@@ -92,6 +92,20 @@ export class NidocaPageDashboard extends LitElement {
             <nidoca-dashboard>
                 <nidoca-text-h1 style="padding: var(--space-2);width: 100%;">Dashboard</nidoca-text-h1>
 
+                <nidoca-dashboard-box-25>
+                    <nidoca-card></nidoca-card>
+                </nidoca-dashboard-box-25>
+                <nidoca-dashboard-box-25>
+                    <nidoca-card></nidoca-card>
+                </nidoca-dashboard-box-25>
+                <nidoca-dashboard-box-25>
+                    <nidoca-card></nidoca-card>
+                </nidoca-dashboard-box-25>
+                <nidoca-dashboard-box-25>
+                    <nidoca-card></nidoca-card>
+                </nidoca-dashboard-box-25>
+
+
                 <nidoca-dashboard-box-50>
                     <nidoca-card>
                         <nidoca-box>
