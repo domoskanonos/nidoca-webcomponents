@@ -7,14 +7,12 @@ export class NidocaCard extends LitElement {
     static styles = css`
     :host {
       display: block;
-      border-radius: 1rem;
-      border-bottom-style: solid;
-      border-width: var(--border-width-min);
       overflow:hidden;
-      box-shadow: 0 var(--space) var(--space) rgba(0, 0, 0, 0.08), 0 var(--space) var(--space) rgba(0, 0, 0, 0.23);
- 
-}
-
+      border-radius: 1rem;
+      border-style: solid;
+      border-width: var(--border-width-min);
+      margin:var(--space);
+      box-shadow: 0 var(--space) var(--space) rgba(0, 0, 0, 0.08), 0 var(--space) var(--space) rgba(0, 0, 0, 0.16); 
     }
     slot {
       height:100%;
