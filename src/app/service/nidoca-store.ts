@@ -24,7 +24,7 @@ export class NidocaStore {
 
     public static updateItem(channel: string, item: any) {
         NidocaStore._store.set(channel, item);
-        if (channel && item) {
+        if (channel) {
             NidocaStore._listeners.forEach((listener: NidocaStoreListener) => {
                 listener.newItem(channel, item);
             });

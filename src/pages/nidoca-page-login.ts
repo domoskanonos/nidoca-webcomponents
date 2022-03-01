@@ -41,7 +41,7 @@ export class NidocaPageLogin extends LitElement {
         return html`
             <nidoca-form-login class="left"></nidoca-form-login>
             <nidoca-img class="right"
-                        src="https://cdn.pixabay.com/photo/2018/03/10/12/00/teamwork-3213924_960_720.jpg"
+                        src="http://nidoca.eu/img/IMG_0524.jpg"
             ></nidoca-img>
         `;
     }
