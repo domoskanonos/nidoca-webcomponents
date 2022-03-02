@@ -4,6 +4,7 @@ import {ChartConfiguration} from "chart.js";
 import {ChannelsEnum} from "./service/app-controller";
 import {NidocaStore, NidocaStoreListener} from "./service/nidoca-store";
 import {DashboardController} from "./service/dashboard-controller";
+import {NidocaRouter} from "@domoskanonos/nidoca-router";
 
 @customElement("nidoca-page-dashboard")
 export class NidocaPageDashboard extends LitElement implements NidocaStoreListener {
@@ -51,9 +52,15 @@ export class NidocaPageDashboard extends LitElement implements NidocaStoreListen
             <nidoca-dashboard>
                 <nidoca-text-h1 style="padding: var(--space-2);width: 100%;">Dashboard</nidoca-text-h1>
                 <nidoca-dashboard-box-25>
-                    <nidoca-card>
-                        <nidoca-text-h1>${this.abgelaufeneAufgaben}</nidoca-text-h1>
-                    </nidoca-card>
+                    <nidoca-dashboard-card title="Aufgaben" clickable
+                                           @nidoca-event-dashboard-card-clicked="${() => NidocaRouter.getUniqueInstance().navigate("aufgabe")}">
+                        <nidoca-text-h1 style="text-align: center;color:var(--app-color-error-background);">
+                            ${this.abgelaufeneAufgaben}
+                        </nidoca-text-h1>
+                        <nidoca-text style="text-align: center;color:var(--app-color-error-background);">
+                            abgelaufen
+                        </nidoca-text>
+                    </nidoca-dashboard-card>
                 </nidoca-dashboard-box-25>
                 <nidoca-dashboard-box-25>
                     <nidoca-card></nidoca-card>
@@ -64,36 +71,25 @@ export class NidocaPageDashboard extends LitElement implements NidocaStoreListen
                 <nidoca-dashboard-box-25>
                     <nidoca-card></nidoca-card>
                 </nidoca-dashboard-box-25>
-
-
                 <nidoca-dashboard-box-50>
-                    <nidoca-card>
-                        <nidoca-box>
-                            <nidoca-text-h4>Kostenverteilung pro Monat in Euro</nidoca-text-h4>
-                            <nidoca-chart-js-wrapper style="height:350px;"
-                                                     .options="${this.options}"></nidoca-chart-js-wrapper>
-                        </nidoca-box>
-                    </nidoca-card>
+                    <nidoca-dashboard-card title="Kostenverteilung pro Monat in Euro">
+                        <nidoca-chart-js-wrapper style="height:350px;"
+                                                 .options="${this.options}"></nidoca-chart-js-wrapper>
+                    </nidoca-dashboard-card>
                 </nidoca-dashboard-box-50>
 
                 <nidoca-dashboard-box-50>
-                    <nidoca-card>
-                        <nidoca-box>
-                            <nidoca-text-h4>Kostenverteilung pro Kategorie</nidoca-text-h4>
-                            <nidoca-chart-js-wrapper .options="${this.options2}"></nidoca-chart-js-wrapper>
-                        </nidoca-box>
-                    </nidoca-card>
+                    <nidoca-dashboard-card title="Kostenverteilung pro Kategorie">
+                        <nidoca-chart-js-wrapper .options="${this.options2}"></nidoca-chart-js-wrapper>
+                    </nidoca-dashboard-card>
                 </nidoca-dashboard-box-50>
 
                 <nidoca-dashboard-box-100>
-                    <nidoca-card>
-                        <nidoca-box>
-                            <nidoca-text-h4>Nächste Aufgaben</nidoca-text-h4>
-                            ${this.aufgaben ? html`
-                                <nidoca-table theme="surface" .headers="${["Titel", "Ablaufdatum"]}"
-                                              .rows="${this.aufgaben}"></nidoca-table>` : html``}
-                        </nidoca-box>
-                    </nidoca-card>
+                    <nidoca-dashboard-card title="Nächste Aufgabe">
+                        ${this.aufgaben ? html`
+                            <nidoca-table theme="surface" .headers="${["Titel", "Ablaufdatum"]}"
+                                          .rows="${this.aufgaben}"></nidoca-table>` : html``}
+                    </nidoca-dashboard-card>
                 </nidoca-dashboard-box-100>
             </nidoca-dashboard>
         `;

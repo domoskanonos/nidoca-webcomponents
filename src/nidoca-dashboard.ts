@@ -38,6 +38,7 @@ export class NidocaDashboard extends LitElement {
 export class NidocaDashboardBox25 extends LitElement {
     static styles = css`
     :host {
+        display:block;
         width:25%;
     }
     `
@@ -53,6 +54,7 @@ export class NidocaDashboardBox50 extends LitElement {
     static styles = css`
     :host {
         width:50%;
+        display:block;
     }
     @media only screen and (max-width: 1919px) {
         :host {
@@ -73,6 +75,7 @@ export class NidocaDashboardBox100 extends LitElement {
     static styles = css`
     :host {
         width:100%;
+        display:block;
     }
     `
 
@@ -81,3 +84,48 @@ export class NidocaDashboardBox100 extends LitElement {
             <slot></slot>`;
     }
 }
+
+@customElement("nidoca-dashboard-card")
+export class NidocaDashboardCard extends LitElement {
+    static styles = css`
+    :host {
+        display:block;
+    }
+    
+    .clickable {
+        cursor: pointer;
+    }
+    
+    `
+
+    @property({type: Boolean})
+    clickable: boolean = true;
+
+    @property({type: String})
+    title: string = "";
+
+    render(): TemplateResult {
+        return html`
+            <nidoca-card @click="${() => this.clicked()}" class="${this.clickable ? "clickable" : ""}">
+                <nidoca-box>
+                    <nidoca-text-h6 style="padding-bottom: var(--space-2);">${this.title}</nidoca-text-h6>
+                    <slot></slot>
+                </nidoca-box>
+            </nidoca-card>
+        `;
+    }
+
+    private clicked() {
+        if (this.clickable) {
+            this.dispatchEvent(new CustomEvent("nidoca-event-dashboard-card-clicked", {
+                detail: this,
+                bubbles: true,
+                composed: true,
+            }));
+        }
+    }
+
+
+}
+
+
