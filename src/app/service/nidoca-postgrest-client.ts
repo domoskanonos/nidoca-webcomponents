@@ -51,7 +51,7 @@ export class NidocaPostgrestClient {
         const url: string = this.HOST.concat(path);
         const resp = await this.request(url, "POST", "application/json; charset=utf-8", item);
         console.log("persist item, value: %s", JSON.stringify(item));
-        return this.parse(await resp.text())[0];
+        return resp.status == 200 ? this.parse(await resp.text())[0] : undefined;
     }
 
     public static async update(path: string, id: any, item: any): Promise<boolean> {
@@ -69,12 +69,10 @@ export class NidocaPostgrestClient {
         return resp.status == 200;
     }
 
-    public static async search(path: string, params: string): Promise<any[]> {
+    public static async search(path: string, params: string): Promise<any[] | undefined> {
         const url: string = this.HOST.concat(path).concat(params);
-
         const resp = await this.request(url, "GET", "application/json; charset=utf-8", undefined);
-
-        return this.parse(await resp.text());
+        return resp.status == 200 ? this.parse(await resp.text()) : undefined;
     }
 
     public static async request(url: string, method: string, contentType: string, body: any): Promise<Response> {

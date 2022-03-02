@@ -5,6 +5,7 @@ export enum ChannelsEnum {
     isLoggedIn = "isLoggedIn",
     alleVertraege = 'alleVertraege',
     alleAufgaben = 'alleAufgaben',
+    abgelaufeneAufgaben = 'abgelaufeneAufgaben',
     alleVertragKategorie = 'alleVertragKategorie',
 }
 
@@ -14,6 +15,7 @@ export class AppController {
         NidocaStore.updateItem(ChannelsEnum.isLoggedIn, NidocaPostgrestClient.isLoggedIn());
         NidocaStore.updateItem(ChannelsEnum.alleVertraege, await NidocaPostgrestClient.search("/vertrag", ""));
         NidocaStore.updateItem(ChannelsEnum.alleAufgaben, await NidocaPostgrestClient.search("/aufgabe", "?offset=0&limit=100&order=ablaufdatum.asc"));
+        NidocaStore.updateItem(ChannelsEnum.abgelaufeneAufgaben, await NidocaPostgrestClient.search("/aufgabe", "?offset=0&limit=100&order=ablaufdatum.asc&ablaufdatum=lte.now()"));
         NidocaStore.updateItem(ChannelsEnum.alleVertragKategorie, await NidocaPostgrestClient.search("/vertrag_kategorie", ""));
     }
 

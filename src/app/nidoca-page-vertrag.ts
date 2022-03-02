@@ -5,50 +5,52 @@ import {CRUDProperty, GenericPostgrestController} from "..";
 import {NidocaPostgrestClient} from "./service/nidoca-postgrest-client";
 
 export class VertragListController extends GenericPostgrestController<Vertrag> {
-  getModel() {
-    return new Vertrag();
-  }
+    getModel() {
+        return new Vertrag();
+    }
 
-  getPath(): string {
-    return "/vertrag";
-  }
+    getPath(): string {
+        return "/vertrag";
+    }
 
-  getPrimaryText(item: Vertrag): string {
-    return item.name;
-  }
+    getPrimaryText(item: Vertrag): string {
+        return item.name;
+    }
 
-  getSecondaryText(item: Vertrag): string {
-    return item.beschreibung;
-  }
+    getSecondaryText(item: Vertrag): string {
+        return item.beschreibung;
+    }
 
-  getSectionKey(): string {
-    return "name";
-  }
+    getSectionKey(): string {
+        return "name";
+    }
 
-  getProperties(): CRUDProperty[] {
-    const properties = super.getProperties();
-    properties.forEach((propertie: CRUDProperty) => {
-      if (propertie.key == "adresse" || propertie.key == "beschreibung") propertie.type = "textarea";
-      if (propertie.key == "internetseite") propertie.type = "url";
-      if (propertie.key == "name") propertie.required = true;
-    });
-    return properties;
-  }
+    getProperties(): CRUDProperty[] {
+        const properties = super.getProperties();
+        properties.forEach((propertie: CRUDProperty) => {
+            if (propertie.key == "adresse" || propertie.key == "beschreibung") propertie.type = "textarea";
+            if (propertie.key == "internetseite") propertie.type = "url";
+            if (propertie.key == "name") propertie.required = true;
+        });
+        return properties;
+    }
 
-  async search(searchText: string): Promise<Vertrag[]> {
-    return NidocaPostgrestClient.search(
-      this.getPath(),
-      "?offset=0&limit=100&order=name.asc&name=like.*".concat(searchText).concat("*")
-    );
-  }
+    async search(searchText: string): Promise<Vertrag[]> {
+        const result: any[] | undefined = await NidocaPostgrestClient.search(
+            this.getPath(),
+            "?offset=0&limit=100&order=name.asc&name=like.*".concat(searchText).concat("*")
+        );
+        return result ? result : [];
+    }
 
 }
 
 @customElement("nidoca-page-vertrag")
 export class NidocaPageVertrag extends LitElement {
-  static styles = css``;
+    static styles = css``;
 
-  render(): TemplateResult {
-    return html` <nidoca-generic-crud .controller="${new VertragListController()}"></nidoca-generic-crud> `;
-  }
+    render(): TemplateResult {
+        return html`
+            <nidoca-generic-crud .controller="${new VertragListController()}"></nidoca-generic-crud> `;
+    }
 }

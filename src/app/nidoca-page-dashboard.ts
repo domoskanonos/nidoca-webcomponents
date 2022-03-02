@@ -16,7 +16,10 @@ export class NidocaPageDashboard extends LitElement implements NidocaStoreListen
     options2: ChartConfiguration | undefined = DashboardController.getVertraegeKategorieChartConfiguration();
 
     @property()
-    aufgaben: any[] = DashboardController.getAufgaben();
+    aufgaben: any[] | undefined = DashboardController.getAufgaben();
+
+    @property()
+    abgelaufeneAufgaben: number | undefined = DashboardController.getAnzahlAbgelaufeneAufgaben();
 
     constructor() {
         super();
@@ -35,6 +38,9 @@ export class NidocaPageDashboard extends LitElement implements NidocaStoreListen
             case ChannelsEnum.alleAufgaben:
                 this.aufgaben = DashboardController.getAufgaben();
                 break;
+            case ChannelsEnum.abgelaufeneAufgaben:
+                this.abgelaufeneAufgaben = DashboardController.getAnzahlAbgelaufeneAufgaben();
+                break;
         }
     }
 
@@ -45,7 +51,9 @@ export class NidocaPageDashboard extends LitElement implements NidocaStoreListen
             <nidoca-dashboard>
                 <nidoca-text-h1 style="padding: var(--space-2);width: 100%;">Dashboard</nidoca-text-h1>
                 <nidoca-dashboard-box-25>
-                    <nidoca-card></nidoca-card>
+                    <nidoca-card>
+                        <nidoca-text-h1>${this.abgelaufeneAufgaben}</nidoca-text-h1>
+                    </nidoca-card>
                 </nidoca-dashboard-box-25>
                 <nidoca-dashboard-box-25>
                     <nidoca-card></nidoca-card>
@@ -81,9 +89,9 @@ export class NidocaPageDashboard extends LitElement implements NidocaStoreListen
                     <nidoca-card>
                         <nidoca-box>
                             <nidoca-text-h4>Nächste Aufgaben</nidoca-text-h4>
-
-                            <nidoca-table theme="surface" .headers="${["Titel", "Ablaufdatum"]}"
-                                          .rows="${this.aufgaben}"></nidoca-table>
+                            ${this.aufgaben ? html`
+                                <nidoca-table theme="surface" .headers="${["Titel", "Ablaufdatum"]}"
+                                              .rows="${this.aufgaben}"></nidoca-table>` : html``}
                         </nidoca-box>
                     </nidoca-card>
                 </nidoca-dashboard-box-100>

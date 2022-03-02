@@ -6,7 +6,7 @@ import {ChartConfiguration} from "chart.js";
 
 export class DashboardController {
 
-    public static getAufgaben() {
+    public static getAufgaben(): Aufgabe[] | undefined {
         let aufgaben = NidocaStore.getItem(ChannelsEnum.alleAufgaben);
         return aufgaben ? aufgaben.map((aufgabe: Aufgabe) => {
             return [aufgabe.titel, new NidocaDateHelper().formatDate(aufgabe.ablaufdatum, "dd.MM.yyyy")]
@@ -85,4 +85,8 @@ export class DashboardController {
     }
 
 
+    static getAnzahlAbgelaufeneAufgaben(): number | undefined {
+        let item = NidocaStore.getItem(ChannelsEnum.abgelaufeneAufgaben);
+        return item ? item.length : undefined;
+    }
 }
