@@ -35,8 +35,6 @@ export class NidocaApp extends LitElement implements NidocaRouteListener, Nidoca
         NidocaRouter.getUniqueInstance().subscribe(this);
         this.routeChanged(NidocaRouter.getUniqueInstance().getCurrentPage());
         NidocaStore.addStoreListener(this);
-        NidocaStore.updateItem("isLoggedIn", NidocaPostgrestClient.isLoggedIn());
-
     }
 
     protected updated(_changedProperties: PropertyValues) {

@@ -18,5 +18,10 @@ import "./nidoca-page-aufgabe";
 import "./nidoca-elevation-settings";
 
 import "../nidoca-form-login";
+import {AppController} from "./service/app-controller";
 
 export * from "./nidoca-app";
+
+AppController.loadData().then(() => {
+    console.log("data loaeded.");
+})

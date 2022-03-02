@@ -1,13 +1,13 @@
-import {css, html, LitElement, TemplateResult} from "lit";
+import {css, html, LitElement, PropertyValues, TemplateResult} from "lit";
 import {customElement, property} from "lit/decorators.js";
-import {Aufgabe, Vertrag, VertragKategorie} from "./model/vertrag";
+import {Aufgabe, Vertrag} from "./model/vertrag";
 import {ChartConfiguration} from "chart.js";
-import {NidocaPostgrestClient} from "./service/nidoca-postgrest-client";
 import {NidocaDateHelper} from "@domoskanonos/nidoca-date-helper";
-import {AppController} from "./service/app-controller";
+import {AppController, ChannelsEnum} from "./service/app-controller";
+import {NidocaStore, NidocaStoreListener} from "./service/nidoca-store";
 
 @customElement("nidoca-page-dashboard")
-export class NidocaPageDashboard extends LitElement {
+export class NidocaPageDashboard extends LitElement implements NidocaStoreListener {
     static styles = css``;
 
     @property()
@@ -19,65 +19,43 @@ export class NidocaPageDashboard extends LitElement {
     @property()
     aufgaben: any[] = [[]];
 
-    protected firstUpdated(): void {
-        AppController.alleKostenpflichtigeVertraege().then((items: Vertrag[]) => {
-            this.options = {
-                type: "bar",
-                data: {
-                    labels: items.map((item: Vertrag) => item.name),
-                    datasets: [
-                        {
-                            indexAxis: "y",
-                            label: "Kosten pro Monat",
-                            data: items.map((item: Vertrag) => item.kosten / item.abrechnungsperiode),
-                            backgroundColor: items.map(() =>
-                                getComputedStyle(document.body).getPropertyValue("--app-color-background")
-                            ),
-                            borderWidth: 0,
-                        },
-                    ],
-                },
-                options: {
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            display: false,
-                        },
-                    },
-                },
-            };
-        });
+    constructor() {
+        super();
+        NidocaStore.addStoreListener(this);
+    }
 
-        NidocaPostgrestClient.search("/vertrag_kategorie", "").then((items: VertragKategorie[]) => {
-            this.options2 = {
-                type: "pie",
-                data: {
-                    labels: items.map((item: VertragKategorie) => item.kategorie),
-                    datasets: [
-                        {
-                            label: "My First Dataset",
-                            data: items.map((item: VertragKategorie) => item.kosten),
-                            backgroundColor: ["rgb(255, 99, 132)", "rgb(54, 162, 235)", "rgb(255, 205, 86)"],
-                            hoverOffset: 4,
-                        },
-                    ],
-                },
-            };
-        });
+    protected firstUpdated(_changedProperties: PropertyValues) {
+        super.firstUpdated(_changedProperties);
+    }
 
-        NidocaPostgrestClient.search("/aufgabe", "?offset=0&limit=100&order=ablaufdatum.asc&titel=like.*").then(
-            (aufgaben: Aufgabe[]) => {
+    newItem(channel: string, item: any): void {
+        console.log(`receive item for channel: ${channel},item: ${item}`);
+        switch (<ChannelsEnum>channel) {
+            case ChannelsEnum.alleVertragKategorie:
+                AppController.getVertraegeKategorieChartConfiguration(item).then((chartConfiguration: ChartConfiguration) => {
+                    this.options2 = chartConfiguration;
+                });
+                break;
+            case ChannelsEnum.alleVertraege:
+                //TODO:
+                AppController.alleKostenpflichtigeVertraegeChart(AppController.alleKostenpflichtigeVertraege(<Vertrag[]>item)).then((chartConfiguration: ChartConfiguration) => {
+                    this.options = chartConfiguration;
+                });
+                break;
+            case ChannelsEnum.alleAufgaben:
                 const nidocaDateHelper: NidocaDateHelper = new NidocaDateHelper();
                 const rows: any = [[]];
-                aufgaben.forEach((aufgabe: Aufgabe) => {
+                item.forEach((aufgabe: Aufgabe) => {
                     rows.push([aufgabe.titel, nidocaDateHelper.formatDate(aufgabe.ablaufdatum, "dd.MM.yyyy")]);
                 });
                 this.aufgaben = rows;
-            }
-        );
+                break;
+        }
     }
 
-    render(): TemplateResult {
+    render()
+        :
+        TemplateResult {
         return html`
             <nidoca-dashboard>
                 <nidoca-text-h1 style="padding: var(--space-2);width: 100%;">Dashboard</nidoca-text-h1>
@@ -128,4 +106,5 @@ export class NidocaPageDashboard extends LitElement {
             </nidoca-dashboard>
         `;
     }
+
 }
