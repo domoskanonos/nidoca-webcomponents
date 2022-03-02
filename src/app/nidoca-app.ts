@@ -4,6 +4,7 @@ import {property} from "lit/decorators.js";
 import {NidocaRouteListener, NidocaRouter} from "@domoskanonos/nidoca-router";
 import {NidocaPostgrestClient} from "./service/nidoca-postgrest-client";
 import {NidocaStore, NidocaStoreListener} from "./service/nidoca-store";
+import {ChannelsEnum} from "./service/app-controller";
 
 @customElement("nidoca-app")
 export class NidocaApp extends LitElement implements NidocaRouteListener, NidocaStoreListener {
@@ -34,7 +35,7 @@ export class NidocaApp extends LitElement implements NidocaRouteListener, Nidoca
         super();
         NidocaRouter.getUniqueInstance().subscribe(this);
         this.routeChanged(NidocaRouter.getUniqueInstance().getCurrentPage());
-        NidocaStore.addStoreListener(this);
+        NidocaStore.addListener(this);
     }
 
     protected updated(_changedProperties: PropertyValues) {
@@ -47,9 +48,9 @@ export class NidocaApp extends LitElement implements NidocaRouteListener, Nidoca
         }
     }
 
-    newItem(channel: string, item: any): void {
+    channelUpdated(channel: string, item: any): void {
         console.log(`receive item for channel: ${channel},item: ${item}`);
-        if (channel == "isLoggedIn")
+        if (channel == ChannelsEnum.isLoggedIn)
             this.isLoggedIn = item;
     }
 
@@ -110,7 +111,7 @@ export class NidocaApp extends LitElement implements NidocaRouteListener, Nidoca
                         slot="topRight"
                         @nidoca-event-icon-clicked="${() => {
                             NidocaPostgrestClient.logout();
-                            NidocaStore.updateItem("isLoggedIn", NidocaPostgrestClient.isLoggedIn());
+                            NidocaStore.updateItem(ChannelsEnum.isLoggedIn, NidocaPostgrestClient.isLoggedIn());
                         }}" icon="logout"></nidoca-icon>
 
                 <nidoca-icon slot="topRight" style="padding-right:var(--space-2);" icon="share"></nidoca-icon>
@@ -198,7 +199,7 @@ export class NidocaApp extends LitElement implements NidocaRouteListener, Nidoca
                         event.detail.jsonObject.username,
                         event.detail.jsonObject.password
                 );
-                NidocaStore.updateItem("isLoggedIn", loggedIn);
+                NidocaStore.updateItem(ChannelsEnum.isLoggedIn, loggedIn);
                 if (loggedIn) {
                     NidocaRouter.getUniqueInstance().navigate("dashboard");
                 }

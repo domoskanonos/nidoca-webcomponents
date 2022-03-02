@@ -11,8 +11,8 @@ export class NidocaTextH2 extends NidocaText {
     ::slotted(slot) {
       display: block;
       font-weight: 600;
-      font-size: 2.0em;
-      line-height: 2.5em;
+      font-size: 170%;
+      line-height: 1.5em;
     }
   `;
 }

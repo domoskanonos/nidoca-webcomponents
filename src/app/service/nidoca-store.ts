@@ -1,5 +1,5 @@
 export interface NidocaStoreListener {
-    newItem(channel: string, item: any): void;
+    channelUpdated(channel: string, newItem: any): void;
 }
 
 export class NidocaStore {
@@ -11,12 +11,12 @@ export class NidocaStore {
     private constructor() {
     }
 
-    public static addStoreListener(listener: NidocaStoreListener): void {
+    public static addListener(listener: NidocaStoreListener): void {
         console.log(`add nidoca store listener`);
         this._listeners.push(listener);
     }
 
-    public static removeStoreListener(listener: NidocaStoreListener) {
+    public static removeListener(listener: NidocaStoreListener) {
         this._listeners = this._listeners.filter((compareListener: NidocaStoreListener) => {
             return !Object.is(listener, compareListener);
         });
@@ -26,8 +26,12 @@ export class NidocaStore {
         NidocaStore._store.set(channel, item);
         if (channel) {
             NidocaStore._listeners.forEach((listener: NidocaStoreListener) => {
-                listener.newItem(channel, item);
+                listener.channelUpdated(channel, item);
             });
         }
+    }
+
+    static getItem(key: string): any {
+        return this._store.get(key);
     }
 }
