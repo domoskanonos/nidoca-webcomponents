@@ -1,7 +1,7 @@
 import {html, LitElement, PropertyValues, TemplateResult} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
-import {NidocaRouter} from "@domoskanonos/nidoca-router";
+import {NidocaRouteListener, NidocaRouter} from "@domoskanonos/nidoca-router";
 import {NidocaPostgrestClient} from "./service/nidoca-postgrest-client";
 import {NidocaStore, NidocaStoreListener} from "./service/nidoca-store";
 import {AppController, ChannelsEnum} from "./service/app-controller";
@@ -68,7 +68,7 @@ export const _APP_MODEL: AppModel = {
 
 
 @customElement("nidoca-my-app")
-export class NidocaMyApp extends LitElement implements NidocaStoreListener {
+export class NidocaMyApp extends LitElement implements NidocaStoreListener, NidocaRouteListener {
 
     @property({type: Array})
     pages: PageReference[] = [];
@@ -77,12 +77,17 @@ export class NidocaMyApp extends LitElement implements NidocaStoreListener {
     loggedIn: boolean = NidocaPostgrestClient.isLoggedIn();
 
     @property({type: Object})
-    currentPage: any = html`
-        <nidoca-page-dashboard></nidoca-page-dashboard>`;
+    route: string = "";
 
     constructor() {
         super();
+        NidocaRouter.getUniqueInstance().subscribe(this);
+        this.routeChanged(NidocaRouter.getUniqueInstance().getCurrentPage());
         NidocaStore.addListener(this);
+    }
+
+    routeChanged(relUrl: string): void {
+        this.route = relUrl;
     }
 
     channelUpdated(channel: string, item: any): void {
@@ -93,7 +98,7 @@ export class NidocaMyApp extends LitElement implements NidocaStoreListener {
 
     render(): TemplateResult {
         return html`
-            <nidoca-app .loggedIn="${this.loggedIn}" .pages="${_APP_MODEL.pages}"
+            <nidoca-app route="${this.route}" .loggedIn="${this.loggedIn}" .pages="${_APP_MODEL.pages}"
                         @nidoca-event-app-login="${async (event: CustomEvent) => {
                             const loggedIn = await NidocaPostgrestClient.login(
                                     event.detail.jsonObject.username,
@@ -103,6 +108,7 @@ export class NidocaMyApp extends LitElement implements NidocaStoreListener {
                             if (loggedIn) {
                                 AppController.loadData().then(() => {
                                     console.log("data loaded." + loggedIn);
+                                    this.route = "dashboard";
                                     this.loggedIn = loggedIn;
                                 });
                             }

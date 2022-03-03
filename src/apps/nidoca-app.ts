@@ -22,7 +22,7 @@ export interface PageReference {
 }
 
 @customElement("nidoca-app")
-export class NidocaApp extends LitElement implements NidocaRouteListener {
+export class NidocaApp extends LitElement {
 
     @property({type: Array})
     pages: PageReference[] = [];
@@ -30,34 +30,23 @@ export class NidocaApp extends LitElement implements NidocaRouteListener {
     @property({type: Boolean})
     loggedIn: boolean = false;
 
-    @property({type: Object})
-    currentPage: any = html`
-        <nidoca-page-dashboard></nidoca-page-dashboard>`;
+    @property({type: String, converter: String})
+    route: string | undefined;
 
-    constructor() {
-        super();
-        NidocaRouter.getUniqueInstance().subscribe(this);
-        this.routeChanged(NidocaRouter.getUniqueInstance().getCurrentPage());
-    }
+    currentPage: PageReference | undefined;
 
     protected updated(_changedProperties: PropertyValues) {
         super.updated(_changedProperties);
-        if (_changedProperties.has("loggedIn")) {
-            if (!this.loggedIn) {
-                console.log("route to login page.");
-                NidocaRouter.getUniqueInstance().navigate("login");
-            }
-        }
-    }
 
-    routeChanged(url: string): void {
-        console.log("enter new page, url: %s", url);
-        for (let i = 0; i < this.pages.length; i++) {
-            let pageReference = this.pages[i];
-            if (pageReference.route == url) {
-                this.currentPage = html`${document.createElement(pageReference.rootComponent)}`;
-                break;
+        if (_changedProperties.has("route")) {
+            for (let i = 0; i < this.pages.length; i++) {
+                let pageReference = this.pages[i];
+                if (pageReference.route == this.route) {
+                    this.currentPage = pageReference;
+                    break;
+                }
             }
+            this.requestUpdate();
         }
     }
 
@@ -79,7 +68,7 @@ export class NidocaApp extends LitElement implements NidocaRouteListener {
                             );
                         }}" icon="logout"></nidoca-icon>
 
-                <span slot="content">${this.currentPage}</span>
+                <span slot="content">${this.currentPage && this.currentPage.rootComponent ? html`${document.createElement(this.currentPage.rootComponent)}` : html``}</span>
 
                 <nidoca-menu slot="left" theme="primary">
                     ${this.pages.map((page: PageReference) => html`
