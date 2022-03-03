@@ -5,6 +5,8 @@ import {ChannelsEnum} from "./service/app-controller";
 import {NidocaStore, NidocaStoreListener} from "./service/nidoca-store";
 import {DashboardController} from "./service/dashboard-controller";
 import {NidocaRouter} from "@domoskanonos/nidoca-router";
+import {NidocaPostgrestClient} from "./service/nidoca-postgrest-client";
+import {Aufgabe} from "./model/vertrag";
 
 @customElement("nidoca-page-dashboard")
 export class NidocaPageDashboard extends LitElement implements NidocaStoreListener {
@@ -17,7 +19,7 @@ export class NidocaPageDashboard extends LitElement implements NidocaStoreListen
     options2: ChartConfiguration | undefined = DashboardController.getVertraegeKategorieChartConfiguration();
 
     @property()
-    aufgaben: any[] | undefined = DashboardController.getAufgaben();
+    aufgaben: Aufgabe[] | undefined = DashboardController.getAufgaben();
 
     @property()
     abgelaufeneAufgaben: number | undefined = DashboardController.getAnzahlAbgelaufeneAufgaben();
@@ -58,7 +60,10 @@ export class NidocaPageDashboard extends LitElement implements NidocaStoreListen
                 <nidoca-text-h1 style="padding: var(--space-2);width: 100%;">Dashboard</nidoca-text-h1>
                 <nidoca-dashboard-box-25>
                     <nidoca-dashboard-card title="Aufgaben" clickable
-                                           @nidoca-event-dashboard-card-clicked="${() => NidocaRouter.getUniqueInstance().navigate("aufgabe")}">
+                                           @nidoca-event-dashboard-card-clicked="${() => {
+                                               const aufgaben = DashboardController.getAbgelaufeneAufgaben();
+                                               NidocaRouter.getUniqueInstance().navigate("aufgabe", {searchParam: NidocaPostgrestClient.searchOr(aufgaben, "id")});
+                                           }}">
                         <nidoca-text-h1 style="text-align: center;color:var(--app-color-error-background);">
                             ${this.abgelaufeneAufgaben}
                         </nidoca-text-h1>
@@ -69,7 +74,10 @@ export class NidocaPageDashboard extends LitElement implements NidocaStoreListen
                 </nidoca-dashboard-box-25>
                 <nidoca-dashboard-box-25>
                     <nidoca-dashboard-card title="Aufgaben" clickable
-                                           @nidoca-event-dashboard-card-clicked="${() => NidocaRouter.getUniqueInstance().navigate("aufgabe")}">
+                                           @nidoca-event-dashboard-card-clicked="${() => {
+                                               const aufgaben = DashboardController.getOffeneAufgaben();
+                                               NidocaRouter.getUniqueInstance().navigate("aufgabe", {searchParam: NidocaPostgrestClient.searchOr(aufgaben, "id")});
+                                           }}">
                         <nidoca-text-h1 style="text-align: center;color:var(--app-color-info-background);">
                             ${this.offeneAufgaben}
                         </nidoca-text-h1>
@@ -81,9 +89,8 @@ export class NidocaPageDashboard extends LitElement implements NidocaStoreListen
                 <nidoca-dashboard-box-25>
                     <nidoca-dashboard-card title="Vertrag" clickable
                                            @nidoca-event-dashboard-card-clicked="${() => {
-                                               //TODO: Suche einschränken wenn auf Verträge gesprungen wird.
-                                               //const vertraege = DashboardController.getVertraegeVertragsendeErreichtUndNichtGekuendigt();
-                                               NidocaRouter.getUniqueInstance().navigate("vertrag")
+                                               const vertraege = DashboardController.getVertraegeVertragsendeErreichtUndNichtGekuendigt();
+                                               NidocaRouter.getUniqueInstance().navigate("vertrag", {searchParam: NidocaPostgrestClient.searchOr(vertraege, "id")});
                                            }}">
                         <nidoca-text-h1 style="text-align: center;color:var(--app-color-error-background);">
                             ${this.anzahlVertragsendeErreichtUndNichtGekuendigt}
@@ -94,7 +101,14 @@ export class NidocaPageDashboard extends LitElement implements NidocaStoreListen
                     </nidoca-dashboard-card>
                 </nidoca-dashboard-box-25>
                 <nidoca-dashboard-box-25>
-                    <nidoca-dashboard-card></nidoca-dashboard-card>
+                    <nidoca-dashboard-card title="Kosten Pro Monat">
+                        <nidoca-text-h1 style="text-align: center;color:var(--app-color-error-background);">
+                            ${DashboardController.getKostenProMonat()}
+                        </nidoca-text-h1>
+                        <nidoca-text style="text-align: center;color:var(--app-color-error-background);">
+                            kündigen
+                        </nidoca-text>
+                    </nidoca-dashboard-card>
                 </nidoca-dashboard-box-25>
                 <nidoca-dashboard-box-50>
                     <nidoca-dashboard-card title="Kostenverteilung pro Monat in Euro">

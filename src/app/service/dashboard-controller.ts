@@ -1,10 +1,21 @@
 import {ChannelsEnum} from "./app-controller";
 import {NidocaStore} from "./nidoca-store";
-import {Aufgabe, Vertrag, VertragKategorie} from "../model/vertrag";
+import {Aufgabe, VertragKategorie, Vertrag} from "../model/vertrag";
 import {NidocaDateHelper} from "@domoskanonos/nidoca-date-helper";
 import {ChartConfiguration} from "chart.js";
 
 export class DashboardController {
+
+
+    static getKostenProMonat(): number {
+        let alleKostenpflichtigeVertraege = DashboardController.alleKostenpflichtigeVertraege();
+        let kosten: number = 0;
+        if (alleKostenpflichtigeVertraege)
+            alleKostenpflichtigeVertraege.forEach((item: Vertrag) => {
+                kosten += item.kosten / item.abrechnungsperiode;
+            });
+        return kosten;
+    }
 
     static alleKostenpflichtigeVertraege(): Vertrag[] | undefined {
         let alleVertraege = NidocaStore.getItem(ChannelsEnum.alleVertraege);
@@ -12,19 +23,19 @@ export class DashboardController {
             return undefined;
         }
         return alleVertraege
-            .filter((item: Vertrag) => item.kosten > 0)
-            .sort((item: Vertrag, compareItem: Vertrag) =>
+            .filter((item: any) => item.kosten > 0)
+            .sort((item: any, compareItem: any) =>
                 item.kosten / item.abrechnungsperiode > compareItem.kosten / compareItem.abrechnungsperiode ? -1 : 1
             );
     }
 
-    static getVertraegeVertragsendeErreichtUndNichtGekuendigt(): Vertrag[] {
+    static getVertraegeVertragsendeErreichtUndNichtGekuendigt(): any[] {
         let alleVertraege = NidocaStore.getItem(ChannelsEnum.alleVertraege);
         if (alleVertraege == undefined) {
             return [];
         }
         return alleVertraege
-            .filter((item: Vertrag) => item.aktiv && !item.gekuendigt && item.vertragsende && (item.vertragsende.getTime() - item.kuendigungsfrist * 1000 * 60 * 60 * 24) < new Date().getTime());
+            .filter((item: any) => item.aktiv && !item.gekuendigt && item.vertragsende && (item.vertragsende.getTime() - item.kuendigungsfrist * 1000 * 60 * 60 * 24) < new Date().getTime());
     }
 
     static getAnzahlVertragsendeErreichtUndNichtGekuendigt(): number | undefined {
@@ -32,18 +43,18 @@ export class DashboardController {
     }
 
     static alleKostenpflichtigeVertraegeChart(): ChartConfiguration | undefined {
-        let vertraege: Vertrag[] | undefined = DashboardController.alleKostenpflichtigeVertraege();
+        let vertraege: any[] | undefined = DashboardController.alleKostenpflichtigeVertraege();
         if (vertraege == undefined)
             return undefined;
         let chartConfiguration: ChartConfiguration = {
             type: "bar",
             data: {
-                labels: vertraege.map((item: Vertrag) => item.name),
+                labels: vertraege.map((item: any) => item.name),
                 datasets: [
                     {
                         indexAxis: "y",
                         label: "Kosten pro Monat",
-                        data: vertraege.map((item: Vertrag) => item.kosten / item.abrechnungsperiode),
+                        data: vertraege.map((item: any) => item.kosten / item.abrechnungsperiode),
                         backgroundColor: vertraege.map(() =>
                             getComputedStyle(document.body).getPropertyValue("--app-color-background")
                         ),
@@ -93,13 +104,23 @@ export class DashboardController {
         }) : undefined;
     }
 
-    static getAnzahlAbgelaufeneAufgaben(): number | undefined {
+    static getAbgelaufeneAufgaben(): Aufgabe[] {
         let item = NidocaStore.getItem(ChannelsEnum.alleAufgaben);
-        return item ? item.filter((item: Aufgabe) => item.ablaufdatum.getTime() <= new Date().getTime()).length : undefined;
+        return item ? item.filter((item: Aufgabe) => item.ablaufdatum.getTime() <= new Date().getTime()) : [];
+    }
+
+
+    static getAnzahlAbgelaufeneAufgaben(): number | undefined {
+        return this.getAbgelaufeneAufgaben().length;
+    }
+
+    static getOffeneAufgaben(): Aufgabe[] {
+        let item = NidocaStore.getItem(ChannelsEnum.alleAufgaben);
+        return item ? item.filter((item: Aufgabe) => !item.erledigt) : [];
     }
 
     static getAnzahlOffeneAufgaben(): number | undefined {
-        let item = NidocaStore.getItem(ChannelsEnum.alleAufgaben);
-        return item ? item.filter((item: Aufgabe) => !item.erledigt).length : undefined;
+        return this.getOffeneAufgaben().length;
     }
+
 }

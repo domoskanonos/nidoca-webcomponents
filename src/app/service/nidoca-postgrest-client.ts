@@ -10,6 +10,25 @@ export class NidocaPostgrestClient {
     constructor(private host: string) {
     }
 
+    static searchOr(items: any[], key: string) {
+        let searchOr = ""
+        items.forEach((item: any) => {
+            console.log(JSON.stringify(item));
+            if (item[key]) {
+                if (searchOr.length == 0) {
+                    searchOr = "&or=(";
+                } else {
+                    searchOr = searchOr.concat(",");
+                }
+                searchOr = searchOr.concat(`${key}.eq.${item[key]}`);
+            }
+        });
+        if (searchOr.length > 0) {
+            searchOr = searchOr.concat(")");
+        }
+        return searchOr;
+    }
+
     static async login(username: string, password: string): Promise<boolean> {
         console.log(`login ${username}`);
         const response = await fetch(this.HOST.concat("/rpc/login"), <RequestInit>{

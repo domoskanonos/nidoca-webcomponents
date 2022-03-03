@@ -39,7 +39,7 @@ export class AufgabeListController extends GenericPostgrestController<Aufgabe> {
     async search(searchText: string): Promise<Aufgabe[]> {
         const result: any[] | undefined = await NidocaPostgrestClient.search(
             this.getPath(),
-            "?offset=0&limit=100&order=ablaufdatum.asc&titel=like.*".concat(searchText).concat("*")
+            "?offset=0&limit=100&order=ablaufdatum.asc&titel=like.*".concat(searchText).concat("*").concat(history.state ? history.state.searchParam ? history.state.searchParam : "" : "")
         );
         return result ? result : [];
     }

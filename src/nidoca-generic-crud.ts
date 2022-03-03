@@ -201,10 +201,8 @@ export class NidocaGenericCRUD extends LitElement {
                                 id="searchbar"
                                 placeholder="Suche..."
                                 @nidoca-search-bar-event-value-changed="${(event: CustomEvent) => {
-                                    this.controller?.search(event.detail).then((items: any[]) => {
-                                        this.items = items;
-                                        this.requestUpdate();
-                                    });
+                                    let searchText = event.detail;
+                                    this.search(searchText);
                                 }}"
                         ></nidoca-search-bar>
                     </nidoca-box>
@@ -384,12 +382,9 @@ export class NidocaGenericCRUD extends LitElement {
                     }}"
                     @nidoca-dialog-decision-yes="${() => {
                         this.controller?.delete(this.item).then(() => {
-                            this.controller?.search(this.searchbar ? this.searchbar.value : "").then((items: any[]) => {
-                                this.items = items;
-                                this.hideSidebox = true;
-                                this.showDeleteDialog = false;
-                                this.requestUpdate();
-                            });
+                            this.hideSidebox = true;
+                            this.showDeleteDialog = false;
+                            this.search(this.searchbar ? this.searchbar.value : "");
                         });
                     }}"
             >
@@ -410,6 +405,13 @@ export class NidocaGenericCRUD extends LitElement {
             >
             </nidoca-dialog-decision>
         `;
+    }
+
+    private search(searchText: string) {
+        this.controller?.search(searchText).then((items: any[]) => {
+            this.items = items;
+            this.requestUpdate();
+        });
     }
 
     updateList(item: any): void {

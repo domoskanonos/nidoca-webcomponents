@@ -4,7 +4,7 @@ import {Vertrag} from "./model/vertrag";
 import {CRUDProperty, GenericPostgrestController} from "..";
 import {NidocaPostgrestClient} from "./service/nidoca-postgrest-client";
 
-export class VertragListController extends GenericPostgrestController<Vertrag> {
+export class VertragListController extends GenericPostgrestController<any> {
     getModel() {
         return new Vertrag();
     }
@@ -13,11 +13,11 @@ export class VertragListController extends GenericPostgrestController<Vertrag> {
         return "/vertrag";
     }
 
-    getPrimaryText(item: Vertrag): string {
+    getPrimaryText(item: any): string {
         return item.name;
     }
 
-    getSecondaryText(item: Vertrag): string {
+    getSecondaryText(item: any): string {
         return item.beschreibung;
     }
 
@@ -35,7 +35,7 @@ export class VertragListController extends GenericPostgrestController<Vertrag> {
         return properties;
     }
 
-    async search(searchText: string): Promise<Vertrag[]> {
+    async search(searchText: string): Promise<any[]> {
         const result: any[] | undefined = await NidocaPostgrestClient.search(
             this.getPath(),
             "?offset=0&limit=100&order=name.asc&name=like.*".concat(searchText).concat("*")
