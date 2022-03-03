@@ -102,6 +102,8 @@ export * from "./nidoca-chart-js-wrapper";
 
 export * from "./pages/nidoca-page-login";
 
+export * from "./apps/nidoca-app";
+
 Nidoca.getUniqueInstance().initDefaultComponents();
 
 //window.addEventListener("resize", () => {  this.requestUpdate(); });

@@ -6,17 +6,14 @@ import {NidocaTheme} from "./nidoca-meta";
 export class NidocaCard extends LitElement {
     static styles = css`
     :host {
-      display: block;
-      overflow:hidden;
-      border-radius: 1rem;
-      border-style: solid;
-      border-width: var(--border-width-min);
-      margin:var(--space);
-      box-shadow: 0 var(--space) var(--space) rgba(0, 0, 0, 0.08), 0 var(--space) var(--space) rgba(0, 0, 0, 0.16); 
+        box-sizing:border-box;
+        display: block;
+        border-radius: 1rem;
+        border-style: solid;
+        border-width: var(--border-width-min);
+        box-shadow: 0 var(--space) var(--space) rgba(0, 0, 0, 0.08), 0 var(--space) var(--space) rgba(0, 0, 0, 0.16); 
     }
     slot {
-      height:100%;
-      width:100%;
       display: block;
     }
   `;
