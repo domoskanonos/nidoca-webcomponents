@@ -4,7 +4,7 @@ import {property} from "lit/decorators.js";
 import {NidocaRouteListener, NidocaRouter} from "@domoskanonos/nidoca-router";
 import {NidocaPostgrestClient} from "./service/nidoca-postgrest-client";
 import {NidocaStore, NidocaStoreListener} from "./service/nidoca-store";
-import {ChannelsEnum} from "./service/app-controller";
+import {AppController, ChannelsEnum} from "./service/app-controller";
 
 @customElement("nidoca-app")
 export class NidocaApp extends LitElement implements NidocaRouteListener, NidocaStoreListener {
@@ -16,7 +16,7 @@ export class NidocaApp extends LitElement implements NidocaRouteListener, Nidoca
     prominent: boolean = false;
 
     @property({type: Boolean})
-    isLoggedIn: boolean = false;
+    isLoggedIn: boolean = NidocaPostgrestClient.isLoggedIn();
 
     @property({type: Object})
     currentPage: any = html`
@@ -201,7 +201,10 @@ export class NidocaApp extends LitElement implements NidocaRouteListener, Nidoca
                 );
                 NidocaStore.updateItem(ChannelsEnum.isLoggedIn, loggedIn);
                 if (loggedIn) {
-                    NidocaRouter.getUniqueInstance().navigate("dashboard");
+                    AppController.loadData().then(() => {
+                        console.log("data loaded.");
+                        NidocaRouter.getUniqueInstance().navigate("dashboard");
+                    });
                 }
             }}"></nidoca-page-login>`;
     }

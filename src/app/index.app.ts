@@ -22,6 +22,3 @@ import {AppController} from "./service/app-controller";
 
 export * from "./nidoca-app";
 
-AppController.loadData().then(() => {
-    console.log("data loaeded.");
-})

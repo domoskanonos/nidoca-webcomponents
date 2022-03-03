@@ -41,6 +41,13 @@ export class NidocaDashboardBox25 extends LitElement {
         display:block;
         width:25%;
     }
+    
+    @media only screen and (max-width: 1919px) {
+        :host {
+        width:50%;
+        }
+    }
+    
     `
 
     render(): TemplateResult {
@@ -88,8 +95,16 @@ export class NidocaDashboardBox100 extends LitElement {
 @customElement("nidoca-dashboard-card")
 export class NidocaDashboardCard extends LitElement {
     static styles = css`
+    
     :host {
+        padding:var(--space-2);
+        box-sizing:border-box;
+    }
+    
+    :host, nidoca-card {
         display:block;
+        height:100%;
+        width:100%;
     }
     
     .clickable {

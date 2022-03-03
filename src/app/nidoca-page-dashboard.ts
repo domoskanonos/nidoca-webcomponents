@@ -22,6 +22,12 @@ export class NidocaPageDashboard extends LitElement implements NidocaStoreListen
     @property()
     abgelaufeneAufgaben: number | undefined = DashboardController.getAnzahlAbgelaufeneAufgaben();
 
+    @property()
+    offeneAufgaben: number | undefined = DashboardController.getAnzahlOffeneAufgaben();
+
+    @property()
+    anzahlVertragsendeErreichtUndNichtGekuendigt: number | undefined = DashboardController.getAnzahlVertragsendeErreichtUndNichtGekuendigt();
+
     constructor() {
         super();
         NidocaStore.addListener(this);
@@ -32,14 +38,13 @@ export class NidocaPageDashboard extends LitElement implements NidocaStoreListen
         switch (<ChannelsEnum>channel) {
             case ChannelsEnum.alleVertraege:
                 this.options = DashboardController.alleKostenpflichtigeVertraegeChart();
+                this.anzahlVertragsendeErreichtUndNichtGekuendigt = DashboardController.getAnzahlVertragsendeErreichtUndNichtGekuendigt();
                 break;
             case ChannelsEnum.alleVertragKategorie:
                 this.options2 = DashboardController.getVertraegeKategorieChartConfiguration();
                 break;
             case ChannelsEnum.alleAufgaben:
                 this.aufgaben = DashboardController.getAufgaben();
-                break;
-            case ChannelsEnum.abgelaufeneAufgaben:
                 this.abgelaufeneAufgaben = DashboardController.getAnzahlAbgelaufeneAufgaben();
                 break;
         }
@@ -63,13 +68,33 @@ export class NidocaPageDashboard extends LitElement implements NidocaStoreListen
                     </nidoca-dashboard-card>
                 </nidoca-dashboard-box-25>
                 <nidoca-dashboard-box-25>
-                    <nidoca-card></nidoca-card>
+                    <nidoca-dashboard-card title="Aufgaben" clickable
+                                           @nidoca-event-dashboard-card-clicked="${() => NidocaRouter.getUniqueInstance().navigate("aufgabe")}">
+                        <nidoca-text-h1 style="text-align: center;color:var(--app-color-info-background);">
+                            ${this.offeneAufgaben}
+                        </nidoca-text-h1>
+                        <nidoca-text style="text-align: center;color:var(--app-color-info-background);">
+                            offen
+                        </nidoca-text>
+                    </nidoca-dashboard-card>
                 </nidoca-dashboard-box-25>
                 <nidoca-dashboard-box-25>
-                    <nidoca-card></nidoca-card>
+                    <nidoca-dashboard-card title="Vertrag" clickable
+                                           @nidoca-event-dashboard-card-clicked="${() => {
+                                               //TODO: Suche einschränken wenn auf Verträge gesprungen wird.
+                                               //const vertraege = DashboardController.getVertraegeVertragsendeErreichtUndNichtGekuendigt();
+                                               NidocaRouter.getUniqueInstance().navigate("vertrag")
+                                           }}">
+                        <nidoca-text-h1 style="text-align: center;color:var(--app-color-error-background);">
+                            ${this.anzahlVertragsendeErreichtUndNichtGekuendigt}
+                        </nidoca-text-h1>
+                        <nidoca-text style="text-align: center;color:var(--app-color-error-background);">
+                            kündigen
+                        </nidoca-text>
+                    </nidoca-dashboard-card>
                 </nidoca-dashboard-box-25>
                 <nidoca-dashboard-box-25>
-                    <nidoca-card></nidoca-card>
+                    <nidoca-dashboard-card></nidoca-dashboard-card>
                 </nidoca-dashboard-box-25>
                 <nidoca-dashboard-box-50>
                     <nidoca-dashboard-card title="Kostenverteilung pro Monat in Euro">

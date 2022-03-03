@@ -6,27 +6,29 @@ import {ChartConfiguration} from "chart.js";
 
 export class DashboardController {
 
-    public static getAufgaben(): Aufgabe[] | undefined {
-        let aufgaben = NidocaStore.getItem(ChannelsEnum.alleAufgaben);
-        return aufgaben ? aufgaben.map((aufgabe: Aufgabe) => {
-            return [aufgabe.titel, new NidocaDateHelper().formatDate(aufgabe.ablaufdatum, "dd.MM.yyyy")]
-        }) : undefined;
-    }
-
-    /**
-     * muss in die DB
-     */
     static alleKostenpflichtigeVertraege(): Vertrag[] | undefined {
         let alleVertraege = NidocaStore.getItem(ChannelsEnum.alleVertraege);
         if (alleVertraege == undefined) {
             return undefined;
         }
-        const kostenpflichtigeVertraege = alleVertraege
+        return alleVertraege
             .filter((item: Vertrag) => item.kosten > 0)
             .sort((item: Vertrag, compareItem: Vertrag) =>
                 item.kosten / item.abrechnungsperiode > compareItem.kosten / compareItem.abrechnungsperiode ? -1 : 1
             );
-        return kostenpflichtigeVertraege;
+    }
+
+    static getVertraegeVertragsendeErreichtUndNichtGekuendigt(): Vertrag[] {
+        let alleVertraege = NidocaStore.getItem(ChannelsEnum.alleVertraege);
+        if (alleVertraege == undefined) {
+            return [];
+        }
+        return alleVertraege
+            .filter((item: Vertrag) => item.aktiv && !item.gekuendigt && item.vertragsende && (item.vertragsende.getTime() - item.kuendigungsfrist * 1000 * 60 * 60 * 24) < new Date().getTime());
+    }
+
+    static getAnzahlVertragsendeErreichtUndNichtGekuendigt(): number | undefined {
+        return this.getVertraegeVertragsendeErreichtUndNichtGekuendigt().length;
     }
 
     static alleKostenpflichtigeVertraegeChart(): ChartConfiguration | undefined {
@@ -84,9 +86,20 @@ export class DashboardController {
         return chartConfiguration;
     }
 
+    public static getAufgaben(): Aufgabe[] | undefined {
+        let aufgaben = NidocaStore.getItem(ChannelsEnum.alleAufgaben);
+        return aufgaben ? aufgaben.map((aufgabe: Aufgabe) => {
+            return [aufgabe.titel, new NidocaDateHelper().formatDate(aufgabe.ablaufdatum, "dd.MM.yyyy")]
+        }) : undefined;
+    }
 
     static getAnzahlAbgelaufeneAufgaben(): number | undefined {
-        let item = NidocaStore.getItem(ChannelsEnum.abgelaufeneAufgaben);
-        return item ? item.length : undefined;
+        let item = NidocaStore.getItem(ChannelsEnum.alleAufgaben);
+        return item ? item.filter((item: Aufgabe) => item.ablaufdatum.getTime() <= new Date().getTime()).length : undefined;
+    }
+
+    static getAnzahlOffeneAufgaben(): number | undefined {
+        let item = NidocaStore.getItem(ChannelsEnum.alleAufgaben);
+        return item ? item.filter((item: Aufgabe) => !item.erledigt).length : undefined;
     }
 }
