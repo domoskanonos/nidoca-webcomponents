@@ -217,7 +217,7 @@ export class NidocaFormText extends NidocaFormAbstractInputElement {
         const outputValue: string | undefined = this.inputElement?.value;
         return <FormOutputData>{
             key: this.name,
-            value: outputValue,
+            value: outputValue?.trim(),
         };
     }
 

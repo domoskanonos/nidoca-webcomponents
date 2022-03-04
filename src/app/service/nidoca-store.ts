@@ -32,8 +32,11 @@ export class NidocaStore {
     }
 
     static getItem(key: string): any | undefined {
+        if (key == undefined) {
+            return undefined;
+        }
         let item = sessionStorage.getItem(key);
-        return item ? NidocaStore.parse(item) : undefined;
+        return item != null ? NidocaStore.parse(item) : undefined;
     }
 
     public static parse(json: string): any {

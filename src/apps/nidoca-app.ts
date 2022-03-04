@@ -1,7 +1,6 @@
 import {html, LitElement, PropertyValues, TemplateResult} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
-import {NidocaRouteListener, NidocaRouter} from "@domoskanonos/nidoca-router";
 
 export enum PageReferenceType {
     anchor = "anchor",
@@ -10,11 +9,13 @@ export enum PageReferenceType {
 
 export interface AppModel {
     name: string;
-    pages: PageReference[];
+    root: PageReference;
 }
 
 export interface PageReference {
     type: PageReferenceType;
+    parent: PageReference;
+    childs: PageReference[];
     name: string;
     route: string;
     rootComponent: string;
@@ -25,7 +26,7 @@ export interface PageReference {
 export class NidocaApp extends LitElement {
 
     @property({type: Array})
-    pages: PageReference[] = [];
+    root: PageReference | undefined;
 
     @property({type: Boolean})
     loggedIn: boolean = false;
@@ -33,20 +34,24 @@ export class NidocaApp extends LitElement {
     @property({type: String, converter: String})
     route: string | undefined;
 
-    currentPage: PageReference | undefined;
+    contentComponent: HTMLElement | undefined;
 
     protected updated(_changedProperties: PropertyValues) {
         super.updated(_changedProperties);
-
+        if (_changedProperties.has("root") && this.root && this.root.childs) {
+            this.routeTo(this.root.childs[0]);
+        }
         if (_changedProperties.has("route")) {
-            for (let i = 0; i < this.pages.length; i++) {
-                let pageReference = this.pages[i];
-                if (pageReference.route == this.route) {
-                    this.currentPage = pageReference;
-                    break;
+            if (this.root) {
+                for (let i = 0; i < this.root.childs.length; i++) {
+                    let pageReference = this.root.childs[i];
+                    if (pageReference.route == this.route) {
+                        this.contentComponent = document.createElement(pageReference.rootComponent);
+                        break;
+                    }
                 }
+                this.requestUpdate();
             }
-            this.requestUpdate();
         }
     }
 
@@ -68,15 +73,16 @@ export class NidocaApp extends LitElement {
                             );
                         }}" icon="logout"></nidoca-icon>
 
-                <span slot="content">${this.currentPage && this.currentPage.rootComponent ? html`${document.createElement(this.currentPage.rootComponent)}` : html``}</span>
+                <span slot="content">${this.contentComponent ? html`${this.contentComponent}` : html``}</span>
 
                 <nidoca-menu slot="left" theme="primary">
-                    ${this.pages.map((page: PageReference) => html`
+                    ${this.root?.childs.map((page: PageReference) => html`
                         <nidoca-menu-item text="${page.name}"
-                                          @click="${() => NidocaRouter.getUniqueInstance().navigate(page.route)}"></nidoca-menu-item>`)}
+                                          @click="${() => {
+                                              this.routeTo(page);
+                                          }}"></nidoca-menu-item>`
+                    )}
                 </nidoca-menu>
-
-
             </nidoca-template>
         ` : html`
             <nidoca-page-login @nidoca-form-login-submit="${(event: CustomEvent) => {
@@ -88,5 +94,15 @@ export class NidocaApp extends LitElement {
                         })
                 );
             }}"></nidoca-page-login>`;
+    }
+
+    private routeTo(page: PageReference) {
+        this.dispatchEvent(
+            new CustomEvent("nidoca-event-app-route", {
+                detail: page.route,
+                bubbles: true,
+                composed: true,
+            })
+        );
     }
 }

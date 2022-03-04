@@ -1,5 +1,10 @@
-export interface JWT {
-    token: string;
+export class JWT {
+    constructor(public token: string, public role: string, public email: string, public exp: number) {
+    }
+
+    getExpireDate() {
+        return new Date(this.exp * 1000);
+    }
 }
 
 export class NidocaPostgrestClient {
@@ -43,24 +48,31 @@ export class NidocaPostgrestClient {
         });
 
         if (response.status == 200) {
-            const jwtToken: JWT = await response.json();
-            console.log(jwtToken);
-            this.setToken(jwtToken);
+            const jwtToken: string = (await response.json()).token;
+            if (jwtToken) {
+                localStorage.setItem(NidocaPostgrestClient.token_key, jwtToken);
+            }
+        } else {
+            console.warn("login response status: ", response.status);
         }
-        console.info("login response status: ", response.status);
         return response.status == 200;
     }
 
-    private static setToken(jwtToken: JWT | undefined) {
-        //jwtToken.expires_in_date = new Date(new Date().getTime() + jwtToken.expires_in);
-        //jwtToken.refresh_expires_in_date = new Date(new Date().getTime() + jwtToken.refresh_expires_in);
-        sessionStorage.setItem(NidocaPostgrestClient.token_key, jwtToken ? JSON.stringify(jwtToken) : "");
-    }
+    static parseJwt(token: string): JWT {
+        const base64Url = token.split('.')[1];
+        const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+        const jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
+            return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+        }).join(''));
+        const jwtObject: any = JSON.parse(jsonPayload);
+        const jwt: JWT = new JWT(token, jwtObject.role, jwtObject.email, jwtObject.exp);
+        return jwt;
+    };
 
     public static getToken(): JWT | undefined {
-        const tokenAsString = sessionStorage.getItem(NidocaPostgrestClient.token_key);
-        if (tokenAsString) {
-            const jwt: JWT = NidocaPostgrestClient.parse(tokenAsString);
+        const jwtToken = localStorage.getItem(NidocaPostgrestClient.token_key);
+        if (jwtToken) {
+            const jwt: JWT = this.parseJwt(jwtToken);
             return jwt;
         }
         return undefined;
@@ -136,6 +148,6 @@ export class NidocaPostgrestClient {
     }
 
     static logout() {
-        this.setToken(undefined);
+        localStorage.removeItem(this.token_key);
     }
 }

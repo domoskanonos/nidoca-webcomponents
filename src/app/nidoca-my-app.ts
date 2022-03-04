@@ -5,67 +5,52 @@ import {NidocaRouteListener, NidocaRouter} from "@domoskanonos/nidoca-router";
 import {NidocaPostgrestClient} from "./service/nidoca-postgrest-client";
 import {NidocaStore, NidocaStoreListener} from "./service/nidoca-store";
 import {AppController, ChannelsEnum} from "./service/app-controller";
-
-export enum PageReferenceType {
-    anchor = "anchor",
-    page = "page",
-}
-
-export interface AppModel {
-    name: string;
-    pages: PageReference[];
-}
-
-export interface PageReference {
-    type: PageReferenceType;
-    name: string;
-    route: string;
-    rootComponent: string;
-    icon: string;
-}
+import {AppModel, PageReference, PageReferenceType} from "../apps/nidoca-app";
 
 export const _APP_MODEL: AppModel = {
     name: "nidoca",
-    pages: [<PageReference>{
-        type: PageReferenceType.page,
-        name: "Dashboard",
-        route: "dashboard",
-        rootComponent: "nidoca-page-dashboard"
-    }, <PageReference>{
-        type: PageReferenceType.page,
-        name: "Verträge",
-        route: "vertrag",
-        rootComponent: "nidoca-page-vertrag"
-    }, <PageReference>{
-        type: PageReferenceType.page,
-        name: "Aufgaben",
-        route: "aufgabe",
-        rootComponent: "nidoca-page-aufgabe"
-    }, <PageReference>{
-        type: PageReferenceType.page,
-        name: "Impressum",
-        route: "imprint",
-        rootComponent: "nidoca-page-imprint"
-    }, <PageReference>{
-        type: PageReferenceType.page,
-        name: "Datenschutz",
-        route: "privacy",
-        rootComponent: "nidoca-page-privacy"
-    }, <PageReference>{
-        type: PageReferenceType.page,
-        name: "Nutzungsbedingungen",
-        route: "terms-of-use",
-        rootComponent: "nidoca-page-terms-of-use"
-    }, <PageReference>{
-        type: PageReferenceType.page,
-        icon: "home",
-        name: "Einstellungen",
-        route: "settings",
-        rootComponent: "nidoca-page-settings"
+    root: <PageReference>{
+        type: PageReferenceType.anchor,
+        childs: [<PageReference>{
+            type: PageReferenceType.page,
+            name: "Dashboard",
+            route: "dashboard",
+            rootComponent: "nidoca-page-dashboard"
+        }, <PageReference>{
+            type: PageReferenceType.page,
+            name: "Verträge",
+            route: "vertrag",
+            rootComponent: "nidoca-page-vertrag"
+        }, <PageReference>{
+            type: PageReferenceType.page,
+            name: "Aufgaben",
+            route: "aufgabe",
+            rootComponent: "nidoca-page-aufgabe"
+        }, <PageReference>{
+            type: PageReferenceType.page,
+            name: "Impressum",
+            route: "imprint",
+            rootComponent: "nidoca-page-imprint"
+        }, <PageReference>{
+            type: PageReferenceType.page,
+            name: "Datenschutz",
+            route: "privacy",
+            rootComponent: "nidoca-page-privacy"
+        }, <PageReference>{
+            type: PageReferenceType.page,
+            name: "Nutzungsbedingungen",
+            route: "terms-of-use",
+            rootComponent: "nidoca-page-terms-of-use"
+        }, <PageReference>{
+            type: PageReferenceType.page,
+            icon: "home",
+            name: "Einstellungen",
+            route: "settings",
+            rootComponent: "nidoca-page-settings"
+        }
+        ], route: "dashboard", name: "Root"
     }
-    ]
 }
-
 
 @customElement("nidoca-my-app")
 export class NidocaMyApp extends LitElement implements NidocaStoreListener, NidocaRouteListener {
@@ -98,7 +83,10 @@ export class NidocaMyApp extends LitElement implements NidocaStoreListener, Nido
 
     render(): TemplateResult {
         return html`
-            <nidoca-app route="${this.route}" .loggedIn="${this.loggedIn}" .pages="${_APP_MODEL.pages}"
+            <nidoca-app route="${this.route}" .loggedIn="${this.loggedIn}" .root="${_APP_MODEL.root}"
+                        @nidoca-event-app-route="${(event: CustomEvent) => {
+                            NidocaRouter.getUniqueInstance().navigate(event.detail);
+                        }}"
                         @nidoca-event-app-login="${async (event: CustomEvent) => {
                             const loggedIn = await NidocaPostgrestClient.login(
                                     event.detail.jsonObject.username,
