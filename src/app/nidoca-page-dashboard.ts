@@ -106,9 +106,9 @@ export class NidocaPageDashboard extends LitElement implements NidocaStoreListen
                 </nidoca-dashboard-box-25>
                 <nidoca-dashboard-box-25>
                     <nidoca-dashboard-card title="Kosten Pro Monat">
-                        <nidoca-text-h1 style="text-align: center;color:var(--app-color-error-background);">
+                        <nidoca-text-h3 style="text-align: center;color:var(--app-color-error-background);">
                             ${this.kostenProMonat ? this.kostenProMonat.toFixed(2) : "-"} €
-                        </nidoca-text-h1>
+                        </nidoca-text-h3>
                         <nidoca-text style="text-align: center;color:var(--app-color-error-background);">
                             kündigen
                         </nidoca-text>

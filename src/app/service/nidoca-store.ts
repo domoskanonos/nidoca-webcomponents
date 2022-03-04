@@ -23,7 +23,7 @@ export class NidocaStore {
     }
 
     public static updateItem(channel: string, item: any) {
-        sessionStorage.setItem(channel, JSON.stringify(item));
+        localStorage.setItem(channel, JSON.stringify(item));
         if (channel) {
             NidocaStore._listeners.forEach((listener: NidocaStoreListener) => {
                 listener.channelUpdated(channel, item);
@@ -35,7 +35,7 @@ export class NidocaStore {
         if (key == undefined) {
             return undefined;
         }
-        let item = sessionStorage.getItem(key);
+        let item = localStorage.getItem(key);
         return item != null ? NidocaStore.parse(item) : undefined;
     }
 
