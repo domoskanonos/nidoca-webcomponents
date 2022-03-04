@@ -30,6 +30,10 @@ export class NidocaPageDashboard extends LitElement implements NidocaStoreListen
     @property()
     anzahlVertragsendeErreichtUndNichtGekuendigt: number | undefined = DashboardController.getAnzahlVertragsendeErreichtUndNichtGekuendigt();
 
+    @property()
+    kostenProMonat: number | undefined = DashboardController.getKostenProMonat();
+
+
     constructor() {
         super();
         NidocaStore.addListener(this);
@@ -103,7 +107,7 @@ export class NidocaPageDashboard extends LitElement implements NidocaStoreListen
                 <nidoca-dashboard-box-25>
                     <nidoca-dashboard-card title="Kosten Pro Monat">
                         <nidoca-text-h1 style="text-align: center;color:var(--app-color-error-background);">
-                            ${DashboardController.getKostenProMonat()}
+                            ${this.kostenProMonat ? this.kostenProMonat.toFixed(2) : "-"} €
                         </nidoca-text-h1>
                         <nidoca-text style="text-align: center;color:var(--app-color-error-background);">
                             kündigen
