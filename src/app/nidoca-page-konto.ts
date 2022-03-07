@@ -34,9 +34,27 @@ export class KontoListController extends GenericPostgrestController<Konto> {
     }
 }
 
+import Mustache from "mustache";
+
+
 @customElement("nidoca-page-konto")
 export class NidocaPageKonto extends LitElement {
     static styles = css``;
+
+    constructor() {
+        super();
+        var view = {
+            title: "Joe",
+            calc: function () {
+                return 2 + 4;
+            }
+        };
+
+
+        var output = Mustache.render("{{title}} spends {{calc}}", view);
+        console.log(output);
+
+    }
 
     render(): TemplateResult {
         return html`
