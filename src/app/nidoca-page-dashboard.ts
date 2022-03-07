@@ -6,7 +6,7 @@ import {NidocaStore, NidocaStoreListener} from "./service/nidoca-store";
 import {DashboardController} from "./service/dashboard-controller";
 import {NidocaRouter} from "@domoskanonos/nidoca-router";
 import {NidocaPostgrestClient} from "./service/nidoca-postgrest-client";
-import {Aufgabe} from "./model/vertrag";
+import {Aufgabe} from "./model/aufgabe";
 
 @customElement("nidoca-page-dashboard")
 export class NidocaPageDashboard extends LitElement implements NidocaStoreListener {

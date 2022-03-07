@@ -11,7 +11,7 @@ export class NidocaPageSettings extends LitElement {
   `;
   render(): TemplateResult {
     return html`
-      <nidoca-section>
+      <nidoca-container>
         <nidoca-article title="Impressum" summary="Angaben gemäß § 5 TMG">
           <nidoca-text>Dominik Bruhn</nidoca-text>
           <nidoca-text>Holzwickeder Straße 109c</nidoca-text>
@@ -20,9 +20,9 @@ export class NidocaPageSettings extends LitElement {
           <nidoca-text>Telefonnummer: +49 152 052 488 62</nidoca-text>
           <nidoca-text>E-Mail: dominikbruhn [at] googlemail.com</nidoca-text>
         </nidoca-article>
-      </nidoca-section>
+      </nidoca-container>
 
-      <nidoca-section>
+      <nidoca-container>
         <nidoca-article title="Streitsschlichtung">
           <nidoca-text
             >Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:
@@ -35,9 +35,9 @@ export class NidocaPageSettings extends LitElement {
             Verbraucherschlichtungsstelle teilzunehmen.
           </nidoca-text>
         </nidoca-article>
-      </nidoca-section>
+      </nidoca-container>
 
-      <nidoca-section>
+      <nidoca-container>
         <nidoca-article title="Haftungsinhalt">
           <nidoca-text>
             Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen
@@ -50,9 +50,9 @@ export class NidocaPageSettings extends LitElement {
             Inhalte umgehend entfernen.
           </nidoca-text>
         </nidoca-article>
-      </nidoca-section>
+      </nidoca-container>
 
-      <nidoca-section>
+      <nidoca-container>
         <nidoca-article title="Haftungslinks">
           <nidoca-text>
             Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben.
@@ -64,9 +64,9 @@ export class NidocaPageSettings extends LitElement {
             Rechtsverletzungen werden wir derartige Links umgehend entfernen.
           </nidoca-text>
         </nidoca-article>
-      </nidoca-section>
+      </nidoca-container>
 
-      <nidoca-section>
+      <nidoca-container>
         <nidoca-article title="Copyright">
           <nidoca-text>
             Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen
@@ -79,24 +79,24 @@ export class NidocaPageSettings extends LitElement {
             Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen.
           </nidoca-text>
         </nidoca-article>
-      </nidoca-section>
+      </nidoca-container>
 
-      <nidoca-section>
+      <nidoca-container>
         <nidoca-article title="Quelle">
           <nidoca-link href="https://www.e-recht24.de/impressum-generator.html" targetType="${NidocaTargetType.BLANK}"
             >https://www.e-recht24.de/impressum-generator.html</nidoca-link
           >
         </nidoca-article>
-      </nidoca-section>
+      </nidoca-container>
 
       <div style="padding-top:var(--space-8); padding-bottom:var(--space-8);">
-        <nidoca-section>
+        <nidoca-container>
           <nidoca-article title="Google Material Icons">
             <nidoca-link href="https://fonts.google.com/icons" targetType="${NidocaTargetType.BLANK}"
               >https://fonts.google.com/icons</nidoca-link
             >
           </nidoca-article>
-        </nidoca-section>
+        </nidoca-container>
         <nidoca-section>
           <nidoca-article title="Google Fonts">
             <nidoca-link href=" https://fonts.google.com/" targetType="${NidocaTargetType.BLANK}">
