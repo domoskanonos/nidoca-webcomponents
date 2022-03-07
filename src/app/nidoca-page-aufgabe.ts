@@ -1,10 +1,9 @@
-import {NidocaDateHelper} from "@domoskanonos/nidoca-date-helper";
 import {css, html, LitElement, TemplateResult} from "lit";
 import {customElement} from "lit/decorators.js";
 import {GenericPostgrestController} from "..";
 import {CRUDProperty} from "../nidoca-generic-crud";
-import {Aufgabe} from "./model/vertrag";
 import {NidocaPostgrestClient} from "./service/nidoca-postgrest-client";
+import {Aufgabe} from "./model/aufgabe";
 
 export class AufgabeListController extends GenericPostgrestController<Aufgabe> {
     getModel() {

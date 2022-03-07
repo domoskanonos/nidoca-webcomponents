@@ -10,12 +10,17 @@ import {NidocaPostgrestClient} from "./app/service/nidoca-postgrest-client";
 export interface CRUDProperty {
     type: string;
     key: string;
-    label: string;
     required: boolean;
     step: string;
 }
 
+export enum CRUDLabelKeys {
+    MODEL_SINGLE = "MODEL_SINGLE",
+    MODEL_MULTI = "MODEL_MULTI"
+}
+
 export abstract class GenericCRUDController<T> {
+
     abstract search(searchText: string): Promise<T[]>;
 
     abstract update(item: T): Promise<boolean>;
@@ -38,27 +43,56 @@ export abstract class GenericCRUDController<T> {
 
     abstract getPrimaryIdKey(): string;
 
-    abstract getPrimaryText(item: T): string;
+    private labels: Map<string, string>;
 
-    abstract getSecondaryText(item: T): string;
+    private properties: CRUDProperty[];
 
-    abstract getProperties(): CRUDProperty[];
-
-    fromModel(model: any): CRUDProperty[] {
-        const properties: CRUDProperty[] = [];
+    constructor() {
+        let model: any = this.getModel();
+        this.labels = new Map<string, string>();
+        this.labels.set(CRUDLabelKeys.MODEL_SINGLE, model.constructor.name);
+        this.labels.set(CRUDLabelKeys.MODEL_MULTI, model.constructor.name);
+        Object.keys(model).map((key) => {
+            this.labels.set(key, key.charAt(0).toUpperCase().concat(key.slice(1)));
+        });
+        this.properties = [];
         Object.keys(model).map((key) => {
             const type: any = typeof model[key];
-            properties.push(<CRUDProperty>{
+            this.properties.push(<CRUDProperty>{
                 key: key,
-                label: key.charAt(0).toUpperCase().concat(key.slice(1)),
                 type:
                     type == "object" ? (model[key] instanceof Date ? "date" : "object") : type == "boolean" ? "checkbox" : type,
                 required: false,
                 step: type == "number" ? "any" : undefined,
             });
         });
-        return properties;
     }
+
+    getText(key: string): string | undefined {
+        return this.labels.get(key);
+    }
+
+    getPropertie(key: string): CRUDProperty | undefined {
+        const properties = this.getProperties();
+        for (let i = 0; i < properties.length; i++) {
+            const propertie: CRUDProperty = properties[i];
+            if (propertie.key == key) {
+                return propertie;
+            }
+        }
+        return undefined;
+    }
+
+    getProperties(): CRUDProperty[] {
+        return this.properties;
+    }
+
+    abstract getModel(): T;
+
+    abstract getPrimaryText(item: T): string;
+
+    abstract getSecondaryText(item: T): string;
+
 }
 
 export abstract class GenericPostgrestController<T> extends GenericCRUDController<T> {
@@ -73,21 +107,6 @@ export abstract class GenericPostgrestController<T> extends GenericCRUDControlle
 
     update(item: any): Promise<boolean> {
         return NidocaPostgrestClient.update(this.getPath(), item[this.getPrimaryIdKey()], item);
-    }
-
-    getProperties(): CRUDProperty[] {
-        return this.fromModel(this.getModel());
-    }
-
-    getPropertie(key: string): CRUDProperty | undefined {
-        const properties = this.getProperties();
-        for (let i = 0; i < properties.length; i++) {
-            const propertie: CRUDProperty = properties[i];
-            if (propertie.key == key) {
-                return propertie;
-            }
-        }
-        return undefined;
     }
 
     getPrimaryIdKey(): string {
@@ -126,8 +145,6 @@ export abstract class GenericPostgrestController<T> extends GenericCRUDControlle
         }
         return false;
     }
-
-    abstract getModel(): T;
 
     abstract getPath(): string;
 
@@ -194,8 +211,10 @@ export class NidocaGenericCRUD extends LitElement {
             <nidoca-split-screen .hideSidebox="${this.hideSidebox}">
                 <div slot="left">
                     <nidoca-box>
-                        <nidoca-text-h2>Verträge</nidoca-text-h2>
-                        <nidoca-text-caption>${this.items.length} Verträge</nidoca-text-caption>
+                        <nidoca-text-h2>${this.controller?.getText(CRUDLabelKeys.MODEL_SINGLE)}</nidoca-text-h2>
+                        <nidoca-text-caption>${this.items.length}
+                            ${this.controller?.getText(CRUDLabelKeys.MODEL_MULTI)}
+                        </nidoca-text-caption>
                         <nidoca-search-bar
                                 style="flex-basis:auto;"
                                 id="searchbar"
@@ -316,7 +335,7 @@ export class NidocaGenericCRUD extends LitElement {
                                                             ? html`
                                                                 <nidoca-form-date
                                                                         name="${property.key}"
-                                                                        label="${property.label}"
+                                                                        label="${this.controller?.getText(property.key)}"
                                                                         value="${this.item[property.key]
                                                                                 ? this.nidocaDateHelper.formatDate(this.item[property.key], "yyyy-MM-dd")
                                                                                 : ""}"
@@ -326,7 +345,7 @@ export class NidocaGenericCRUD extends LitElement {
                                                                     ? html`
                                                                         <nidoca-form-switch
                                                                                 name="${property.key}"
-                                                                                label="${property.label}"
+                                                                                label="${this.controller?.getText(property.key)}"
                                                                                 .checked="${this.item[property.key]}"
                                                                         ></nidoca-form-switch>`
                                                                     : property.type == "object"
@@ -336,7 +355,7 @@ export class NidocaGenericCRUD extends LitElement {
                                                                                         <nidoca-form-textarea
                                                                                                 type="${property.type}"
                                                                                                 name="${property.key}"
-                                                                                                label="${property.label}"
+                                                                                                label="${this.controller?.getText(property.key)}"
                                                                                                 value="${this.item[property.key]}"
                                                                                                 ?required="${property.required}"
                                                                                         ></nidoca-form-textarea>`
@@ -345,7 +364,7 @@ export class NidocaGenericCRUD extends LitElement {
                                                                                                 type="${property.type}"
                                                                                                 step="${ifDefined(property.step)}"
                                                                                                 name="${property.key}"
-                                                                                                label="${property.label}"
+                                                                                                label="${this.controller?.getText(property.key)}"
                                                                                                 value="${this.item[property.key]}"
                                                                                                 ?required="${property.required}"
                                                                                         >

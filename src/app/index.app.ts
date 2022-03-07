@@ -13,6 +13,7 @@ import "./nidoca-page-terms-of-use";
 
 import "./nidoca-page-vertrag";
 import "./nidoca-page-aufgabe";
+import "./nidoca-page-konto";
 
 
 import "./nidoca-elevation-settings";

@@ -28,6 +28,11 @@ export const _APP_MODEL: AppModel = {
             rootComponent: "nidoca-page-aufgabe"
         }, <PageReference>{
             type: PageReferenceType.page,
+            name: "Konto",
+            route: "konto",
+            rootComponent: "nidoca-page-konto"
+        }, <PageReference>{
+            type: PageReferenceType.page,
             name: "Impressum",
             route: "imprint",
             rootComponent: "nidoca-page-imprint"
