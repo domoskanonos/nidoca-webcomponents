@@ -1,4 +1,4 @@
-import {css, html, LitElement, PropertyValues} from "lit";
+import {css, html, LitElement, PropertyValues, TemplateResult} from "lit";
 import {customElement, query} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
 import {NidocaForm, NidocaFormTextType, NidocaSearchBar, NidocaTheme} from ".";
@@ -7,8 +7,10 @@ import {NidocaDateHelper} from "@domoskanonos/nidoca-date-helper";
 import {ifDefined} from "lit/directives/if-defined.js";
 import {NidocaPostgrestClient} from "./app/service/nidoca-postgrest-client";
 
+export type CRUDPropertyType = "id" | "object" | "date" | "checkbox" | "number" | "any" | "textarea" | "1:n";
+
 export interface CRUDProperty {
-    type: string;
+    type: CRUDPropertyType;
     key: string;
     required: boolean;
     step: string;
@@ -61,7 +63,7 @@ export abstract class GenericCRUDController<T> {
             this.properties.push(<CRUDProperty>{
                 key: key,
                 type:
-                    type == "object" ? (model[key] instanceof Date ? "date" : "object") : type == "boolean" ? "checkbox" : type,
+                    this.getPrimaryIdKey() == key ? "id" : type == "object" ? (model[key] instanceof Date ? "date" : "object") : type == "boolean" ? "checkbox" : type,
                 required: false,
                 step: type == "number" ? "any" : undefined,
             });
@@ -153,7 +155,11 @@ export abstract class GenericPostgrestController<T> extends GenericCRUDControlle
 
 @customElement("nidoca-generic-crud")
 export class NidocaGenericCRUD extends LitElement {
-    static styles = css``;
+    static styles = css`
+    .formElement{
+        padding-bottom:var(--space-2);
+    }
+    `;
 
     @property({type: Object, converter: Object})
     controller: GenericCRUDController<any> | undefined;
@@ -250,7 +256,8 @@ export class NidocaGenericCRUD extends LitElement {
                             ? html`
                                 <nidoca-box>
                                     <nidoca-top-app-bar theme="background">
-                                        <nidoca-text-body slot="left">${this.getPrimaryText(this.item)}
+                                        <nidoca-text-body slot="left">
+                                            ${this.controller?.getText(CRUDLabelKeys.MODEL_SINGLE)}
                                         </nidoca-text-body>
                                         <nidoca-icon
                                                 style="padding-right: var(--space-2);"
@@ -322,56 +329,74 @@ export class NidocaGenericCRUD extends LitElement {
                                 <nidoca-box>
                                     <nidoca-form id="editForm">
                                         ${this.properties.map((property: CRUDProperty) => {
-                                            return html`${property.key == this.getPrimaryIdKey()
-                                                    ? html`
+                                            let templateResult: TemplateResult;
+                                            switch (property.type) {
+                                                case "id":
+                                                    templateResult = html`
                                                         <nidoca-form-text
+                                                                class="formElement"
                                                                 type="${NidocaFormTextType.HIDDEN}"
                                                                 name="${property.key}"
                                                                 value="${this.item[property.key]}"
                                                         >
                                                         </nidoca-form-text>
-                                                    `
-                                                    : property.type == "date"
-                                                            ? html`
-                                                                <nidoca-form-date
-                                                                        name="${property.key}"
-                                                                        label="${this.controller?.getText(property.key)}"
-                                                                        value="${this.item[property.key]
-                                                                                ? this.nidocaDateHelper.formatDate(this.item[property.key], "yyyy-MM-dd")
-                                                                                : ""}"
-                                                                        ?required="${property.required}"
-                                                                ></nidoca-form-date>`
-                                                            : property.type == "checkbox"
-                                                                    ? html`
-                                                                        <nidoca-form-switch
-                                                                                name="${property.key}"
-                                                                                label="${this.controller?.getText(property.key)}"
-                                                                                .checked="${this.item[property.key]}"
-                                                                        ></nidoca-form-switch>`
-                                                                    : property.type == "object"
-                                                                            ? html``
-                                                                            : property.type == "textarea"
-                                                                                    ? html`
-                                                                                        <nidoca-form-textarea
-                                                                                                type="${property.type}"
-                                                                                                name="${property.key}"
-                                                                                                label="${this.controller?.getText(property.key)}"
-                                                                                                value="${this.item[property.key]}"
-                                                                                                ?required="${property.required}"
-                                                                                        ></nidoca-form-textarea>`
-                                                                                    : html`
-                                                                                        <nidoca-form-text
-                                                                                                type="${property.type}"
-                                                                                                step="${ifDefined(property.step)}"
-                                                                                                name="${property.key}"
-                                                                                                label="${this.controller?.getText(property.key)}"
-                                                                                                value="${this.item[property.key]}"
-                                                                                                ?required="${property.required}"
-                                                                                        >
-                                                                                        </nidoca-form-text>
-                                                                                    `}
-
-                                            <div style="padding-bottom:var(--space-4)"></div> `;
+                                                    `;
+                                                    break;
+                                                case "any":
+                                                case "object":
+                                                    templateResult = html``;
+                                                    break;
+                                                case "date":
+                                                    templateResult = html`
+                                                        <nidoca-form-date
+                                                                class="formElement"
+                                                                name="${property.key}"
+                                                                label="${this.controller?.getText(property.key)}"
+                                                                value="${this.item[property.key]
+                                                                        ? this.nidocaDateHelper.formatDate(this.item[property.key], "yyyy-MM-dd")
+                                                                        : ""}"
+                                                                ?required="${property.required}"
+                                                        ></nidoca-form-date>`;
+                                                    break;
+                                                case "checkbox":
+                                                    templateResult = html`
+                                                        <nidoca-form-switch
+                                                                class="formElement"
+                                                                name="${property.key}"
+                                                                label="${this.controller?.getText(property.key)}"
+                                                                .checked="${this.item[property.key]}"
+                                                        ></nidoca-form-switch>`;
+                                                    break;
+                                                case "textarea":
+                                                    templateResult = html`
+                                                        <nidoca-form-textarea
+                                                                class="formElement"
+                                                                type="${property.type}"
+                                                                name="${property.key}"
+                                                                label="${this.controller?.getText(property.key)}"
+                                                                value="${this.item[property.key]}"
+                                                                ?required="${property.required}"
+                                                        ></nidoca-form-textarea>`;
+                                                    break;
+                                                case "1:n":
+                                                    templateResult = html``;
+                                                    break;
+                                                case "number":
+                                                default:
+                                                    templateResult = html`
+                                                        <nidoca-form-text
+                                                                class="formElement"
+                                                                type="${property.type}"
+                                                                step="${ifDefined(property.step)}"
+                                                                name="${property.key}"
+                                                                label="${this.controller?.getText(property.key)}"
+                                                                value="${this.item[property.key]}"
+                                                                ?required="${property.required}"
+                                                        >
+                                                        </nidoca-form-text>`;
+                                                    break;
+                                            }
+                                            return templateResult;
                                         })}
                                     </nidoca-form>
                                 </nidoca-box>

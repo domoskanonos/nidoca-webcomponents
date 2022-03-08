@@ -18,6 +18,26 @@ export const _APP_MODEL: AppModel = {
             rootComponent: "nidoca-page-dashboard"
         }, <PageReference>{
             type: PageReferenceType.page,
+            name: "Kontakt",
+            route: "kontakt",
+            rootComponent: "nidoca-page-kontakt"
+        }, <PageReference>{
+            type: PageReferenceType.page,
+            name: "Projekt",
+            route: "projekt",
+            rootComponent: "nidoca-page-projekt"
+        }, <PageReference>{
+            type: PageReferenceType.page,
+            name: "Modul",
+            route: "modul",
+            rootComponent: "nidoca-page-modul"
+        }, <PageReference>{
+            type: PageReferenceType.page,
+            name: "Vorlage",
+            route: "vorlage",
+            rootComponent: "nidoca-page-vorlage"
+        }, <PageReference>{
+            type: PageReferenceType.page,
             name: "Verträge",
             route: "vertrag",
             rootComponent: "nidoca-page-vertrag"

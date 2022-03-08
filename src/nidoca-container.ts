@@ -1,4 +1,4 @@
-import {css, html, LitElement, PropertyValues} from "lit";
+import {css, html, LitElement} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
 import {NidocaTheme} from ".";
@@ -6,26 +6,44 @@ import {NidocaTheme} from ".";
 @customElement("nidoca-container")
 export class NidocaContainer extends LitElement {
     static styles = css`
+
     :host {
       display: block;
     }
-    .container,
-    ::slotted(.container) {
-      margin: auto;
+
+    slot {
+        display:block;
+        margin:auto;
+        width:min-content;
     }
+    
+    @media only screen and (min-width: 641px) and (max-width: 1918px) {
+        slot {
+            width:50%;
+        }
+    }
+    
+    @media only screen and (max-width: 640px) {
+        slot {
+            width:90%;
+        }
+    }
+    
+    @media only screen and (min-width: 1919px) {
+        slot {
+            width:75%;
+        }
+    }
+    
   `;
 
     @property({type: NidocaTheme, converter: String})
-    theme: string | undefined;
+    theme: string = NidocaTheme.BACKGROUND;
 
     render(): unknown {
         return html`
             ${NidocaTheme.getStyle(this.theme)}
-            <div class="container theme">
-                <div class="container" style="">
-                    <slot></slot>
-                </div>
-            </div>
+            <slot></slot>
         `;
     }
 }

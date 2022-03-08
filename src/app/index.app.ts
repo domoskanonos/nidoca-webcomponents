@@ -14,6 +14,9 @@ import "./nidoca-page-terms-of-use";
 import "./nidoca-page-vertrag";
 import "./nidoca-page-aufgabe";
 import "./nidoca-page-konto";
+import "./nidoca-page-kontakt";
+import "./nidoca-page-projekt";
+import "./nidoca-page-modul";
 
 
 import "./nidoca-elevation-settings";
