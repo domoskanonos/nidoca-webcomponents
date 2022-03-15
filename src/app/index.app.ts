@@ -17,12 +17,12 @@ import "./nidoca-page-konto";
 import "./nidoca-page-kontakt";
 import "./nidoca-page-projekt";
 import "./nidoca-page-modul";
+import "./nidoca-page-vorlage";
 
 
 import "./nidoca-elevation-settings";
 
 import "../nidoca-form-login";
-import {AppController} from "./service/app-controller";
 
 export * from "./nidoca-my-app";
 

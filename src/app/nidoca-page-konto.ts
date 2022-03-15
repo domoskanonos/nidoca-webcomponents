@@ -5,59 +5,43 @@ import {NidocaPostgrestClient} from "./service/nidoca-postgrest-client";
 import {Konto} from "./model/konto";
 
 export class KontoListController extends GenericPostgrestController<Konto> {
-    getModel() {
-        return new Konto();
-    }
+  getModel() {
+    return new Konto();
+  }
 
-    getPath(): string {
-        return "/konto";
-    }
+  getPath(): string {
+    return "/konto";
+  }
 
-    getSectionKey(): string {
-        return "url";
-    }
+  getSectionKey(): string {
+    return "url";
+  }
 
-    getPrimaryText(item: Konto): string {
-        return item.url;
-    }
+  getPrimaryText(item: Konto): string {
+    return item.url;
+  }
 
-    getSecondaryText(item: Konto): string {
-        return item.benutzername;
-    }
+  getSecondaryText(item: Konto): string {
+    return item.benutzername;
+  }
 
-    async search(searchText: string): Promise<Konto[]> {
-        const result: any[] | undefined = await NidocaPostgrestClient.search(
-            this.getPath(),
-            "?offset=0&limit=100&order=url.asc&url=like.*".concat(searchText).concat("*").concat(history.state ? history.state.searchParam ? history.state.searchParam : "" : "")
-        );
-        return result ? result : [];
-    }
+  async search(searchText: string): Promise<Konto[]> {
+    const result: any[] | undefined = await NidocaPostgrestClient.search(
+      this.getPath(),
+      "?offset=0&limit=100&order=url.asc&url=like.*"
+        .concat(searchText)
+        .concat("*")
+        .concat(history.state ? (history.state.searchParam ? history.state.searchParam : "") : "")
+    );
+    return result ? result : [];
+  }
 }
-
-import Mustache from "mustache";
-
 
 @customElement("nidoca-page-konto")
 export class NidocaPageKonto extends LitElement {
-    static styles = css``;
+  static styles = css``;
 
-    constructor() {
-        super();
-        var view = {
-            title: "Joe",
-            calc: function () {
-                return 2 + 4;
-            }
-        };
-
-
-        var output = Mustache.render("{{title}} spends {{calc}}", view);
-        console.log(output);
-
-    }
-
-    render(): TemplateResult {
-        return html`
-            <nidoca-generic-crud .controller="${new KontoListController()}"></nidoca-generic-crud> `;
-    }
+  render(): TemplateResult {
+    return html` <nidoca-generic-crud .controller="${new KontoListController()}"></nidoca-generic-crud> `;
+  }
 }
