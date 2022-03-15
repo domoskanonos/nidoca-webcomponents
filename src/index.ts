@@ -60,6 +60,7 @@ export * from "./nidoca-tabs";
 export * from "./nidoca-tab";
 export * from "./nidoca-tab-content";
 export * from "./nidoca-template";
+export * from "./nidoca-video";
 
 export * from "./nidoca-text";
 export * from "./nidoca-text-button";
