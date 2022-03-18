@@ -84,7 +84,8 @@ export class NidocaMyApp extends LitElement implements NidocaStoreListener, Nido
     pages: PageReference[] = [];
 
     @property({type: Boolean})
-    loggedIn: boolean = NidocaPostgrestClient.isLoggedIn();
+    //loggedIn: boolean = NidocaPostgrestClient.isLoggedIn();
+    loggedIn: boolean = true;
 
     @property({type: Object})
     route: string = "";

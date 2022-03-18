@@ -61,7 +61,7 @@ export * from "./nidoca-tab";
 export * from "./nidoca-tab-content";
 export * from "./nidoca-template";
 export * from "./nidoca-video";
-
+export * from "./nidoca-svg-2-webp";
 export * from "./nidoca-text";
 export * from "./nidoca-text-button";
 export * from "./nidoca-text-overline";
