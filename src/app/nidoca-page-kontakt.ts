@@ -1,6 +1,6 @@
 import {css, html, LitElement, TemplateResult} from "lit";
 import {customElement} from "lit/decorators.js";
-import {GenericPostgrestController} from "..";
+import {CRUDProperty, GenericPostgrestController} from "..";
 import {NidocaPostgrestClient} from "./service/nidoca-postgrest-client";
 import {Kontakt} from "./model/kontakt";
 
@@ -18,11 +18,19 @@ export class KontaktListController extends GenericPostgrestController<Kontakt> {
     }
 
     getPrimaryText(item: Kontakt): string {
-        return item.name;
+        return item.vorname;
     }
 
     getSecondaryText(item: Kontakt): string {
         return item.name;
+    }
+    
+    getProperties(): CRUDProperty[] {
+        const properties = super.getProperties();
+        properties.forEach((propertie: CRUDProperty) => {
+            if (propertie.key == "adresse") propertie.type = "textarea";
+        });
+        return properties;
     }
 
     async search(searchText: string): Promise<Kontakt[]> {
