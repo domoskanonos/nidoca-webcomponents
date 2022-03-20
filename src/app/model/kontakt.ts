@@ -5,4 +5,5 @@ export class Kontakt {
   email: string = "";
   adresse: string = "";
   telefon: string = "";
+  geburtstag: Date = new Date();
 }
