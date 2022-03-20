@@ -273,7 +273,7 @@ export class NidocaGenericCRUD extends LitElement {
                         this.errorMessage = "";
                         if (this.editForm && this.editForm.validate()) {
                           const nidocaFormHelper: NidocaHelperForm<any> = new NidocaHelperForm();
-                          const currentItem = nidocaFormHelper.getCurrent(this);
+                          const currentItem = nidocaFormHelper.getCurrent(this.editForm);
                           if (currentItem[this.getPrimaryIdKey()] == "") {
                             currentItem[this.getPrimaryIdKey()] = null;
                             this.controller?.persist(currentItem).then((item: any) => {
@@ -386,7 +386,7 @@ export class NidocaGenericCRUD extends LitElement {
                         default:
                           templateResult = html` <nidoca-form-text
                             class="formElement"
-                            type="${property.type}"
+                            type="text"
                             step="${ifDefined(property.step)}"
                             name="${property.key}"
                             label="${this.controller ? this.controller?.getText(property.key) : ""}"
