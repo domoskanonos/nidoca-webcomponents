@@ -16,7 +16,7 @@ export class NidocaPostgrestClient {
     }
 
     static searchOr(items: any[], key: string) {
-        let searchOr = ""
+        let searchOr = "";
         items.forEach((item: any) => {
             console.log(JSON.stringify(item));
             if (item[key]) {

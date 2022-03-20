@@ -8,7 +8,7 @@ export class DashboardController {
 
 
     static getKostenProMonat(): number {
-        let alleKostenpflichtigeVertraege = DashboardController.alleKostenpflichtigeVertraege();
+        const alleKostenpflichtigeVertraege = DashboardController.alleKostenpflichtigeVertraege();
         let kosten: number = 0;
         if (alleKostenpflichtigeVertraege)
             alleKostenpflichtigeVertraege.forEach((item: Vertrag) => {
@@ -18,7 +18,7 @@ export class DashboardController {
     }
 
     static alleKostenpflichtigeVertraege(): Vertrag[] | undefined {
-        let alleVertraege = NidocaStore.getItem(ChannelsEnum.alleVertraege);
+        const alleVertraege = NidocaStore.getItem(ChannelsEnum.alleVertraege);
         if (alleVertraege == undefined) {
             return undefined;
         }
@@ -30,7 +30,7 @@ export class DashboardController {
     }
 
     static getVertraegeVertragsendeErreichtUndNichtGekuendigt(): any[] {
-        let alleVertraege = NidocaStore.getItem(ChannelsEnum.alleVertraege);
+        const alleVertraege = NidocaStore.getItem(ChannelsEnum.alleVertraege);
         if (alleVertraege == undefined) {
             return [];
         }
@@ -43,10 +43,10 @@ export class DashboardController {
     }
 
     static alleKostenpflichtigeVertraegeChart(): ChartConfiguration | undefined {
-        let vertraege: any[] | undefined = DashboardController.alleKostenpflichtigeVertraege();
+        const vertraege: any[] | undefined = DashboardController.alleKostenpflichtigeVertraege();
         if (vertraege == undefined)
             return undefined;
-        let chartConfiguration: ChartConfiguration = {
+        const chartConfiguration: ChartConfiguration = {
             type: "bar",
             data: {
                 labels: vertraege.map((item: any) => item.name),
