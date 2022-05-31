@@ -9,8 +9,7 @@ export class NidocaImgProperties {
   static readonly FULL_WIDTH = "FULL_WIDTH";
 }
 
-@customElement("nidoca-img-roullnd")
-export class NidocaImgRound extends LitElement {
+export class NidocaImgRoundXX extends LitElement {
   static styles = css`
     :host,
     span {
