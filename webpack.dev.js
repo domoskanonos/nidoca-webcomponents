@@ -8,7 +8,7 @@ export default {
          * und kompiliert den Code neu, sobald Änderungen gemacht werden.
          * In diesem Fall ist der Haupteinstigespunkt die index.ts Datei unseres Blueprints.
          */
-        main: "./src/app/index.app.ts",
+        main: "./src/webcomponent-viewer/index.ts",
     },
     devServer: {
         port: 8080,
@@ -31,6 +31,6 @@ export default {
         ],
     },
     plugins: [
-        new HtmlWebpackPlugin({template: "./src/app/index.html"}),
+        new HtmlWebpackPlugin({template: "./src/webcomponent-viewer/index.html"}),
     ],
 };
