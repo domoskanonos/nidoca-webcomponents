@@ -1,7 +1,6 @@
 import {css, html, TemplateResult, LitElement} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
-import {NidocaFormTextType} from ".";
 
 @customElement("nidoca-icon-with-description")
 export class NidocaIconWithDescription extends LitElement {
@@ -28,7 +27,6 @@ export class NidocaIconWithDescription extends LitElement {
       <nidoca-icon icon="${this.icon}" style="font-size: 8vw; padding:var(--space-4);"></nidoca-icon>
       <nidoca-text
         style="padding-left:var(--space-4);padding-right:var(--space-4);padding-bottom:var(--space-4);text-align:center;"
-        .type="${NidocaFormTextType.BODY2}"
       >
         ${this.text}
         <slot></slot>

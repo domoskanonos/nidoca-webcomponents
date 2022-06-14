@@ -29,7 +29,6 @@ export class VertragListController extends GenericPostgrestController<any> {
         const properties = super.getProperties();
         properties.forEach((propertie: CRUDProperty) => {
             if (propertie.key == "adresse" || propertie.key == "beschreibung") propertie.type = "textarea";
-            if (propertie.key == "internetseite") propertie.type = "url";
             if (propertie.key == "name") propertie.required = true;
         });
         return properties;

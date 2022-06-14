@@ -1,8 +1,9 @@
 import {ChannelsEnum} from "./app-controller";
 import {NidocaStore} from "./nidoca-store";
-import {Aufgabe, VertragKategorie, Vertrag} from "../model/vertrag";
+import {VertragKategorie, Vertrag} from "../model/vertrag";
 import {NidocaDateHelper} from "@domoskanonos/nidoca-date-helper";
 import {ChartConfiguration} from "chart.js";
+import { Aufgabe } from "../model/aufgabe";
 
 export class DashboardController {
 
