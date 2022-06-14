@@ -15,7 +15,10 @@ jobs:
           node-version: '16'
       - run: npm i
       - run: npm run build:all
-      - run: npm config set always-auth true && npm config set _auth ${{secrets.NPM_TOKEN}} && npm config set email domoskanonos@googlemail.com && npm publish --access public
+      - run: npm config set always-auth true
+      - run: npm config set _auth ${{secrets.NPM_TOKEN}}
+      - run: npm config set email domoskanonos@googlemail.com
+      - run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
       - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
