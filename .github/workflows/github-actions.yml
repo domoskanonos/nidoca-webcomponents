@@ -10,15 +10,15 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v3
       - name: Setup Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: '16'
       - run: npm i
 #      - run: npm run build:all
       - run: echo "_auth ${{secrets.NPM_TOKEN}}"
-      - run: npm config set always-auth true
-      - run: npm config set _auth ${{secrets.NPM_TOKEN}}
-      - run: npm config set email domoskanonos@googlemail.com
+#      - run: npm config set always-auth true
+#      - run: npm config set _auth ${{secrets.NPM_TOKEN}}
+#      - run: npm config set email domoskanonos@googlemail.com
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
