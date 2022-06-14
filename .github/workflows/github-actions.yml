@@ -14,7 +14,7 @@ jobs:
         with:
           node-version: '16'
       - run: npm i
-      - run: npm run build:all
+#      - run: npm run build:all
       - run: npm config set always-auth true
       - run: npm config set _auth ${{secrets.NPM_TOKEN}}
       - run: npm config set email domoskanonos@googlemail.com
