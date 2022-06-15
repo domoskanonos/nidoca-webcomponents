@@ -27,6 +27,7 @@ jobs:
           folder: public
           repository-name: domoskanonos/nidoca-documentation
           target-folder: public
+          ssh-key: ${{ secrets.DEPLOY_DOCUMENTATION_TOKEN }}
   publish-npm:
     needs: build
     runs-on: ubuntu-latest
