@@ -1,7 +1,7 @@
-import path from "path";
-import HtmlWebpackPlugin from "html-webpack-plugin";
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require("path");
 
-export default {
+module.exports = {
     entry: "./src/index.ts",
     module: {
         rules: [
