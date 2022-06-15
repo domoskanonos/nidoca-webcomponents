@@ -23,7 +23,7 @@ export default {
   },
   mode: "production",
   output: {
-    path: path.resolve().concat("/docs/app"),
+    path: path.resolve().concat("/public/docs/app"),
     filename: "bundled.js",
   },
   plugins: [

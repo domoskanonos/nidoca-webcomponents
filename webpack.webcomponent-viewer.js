@@ -23,7 +23,7 @@ export default {
   },
   mode: "production",
   output: {
-    path: path.resolve().concat("/docs/webcomponent-viewer"),
+    path: path.resolve().concat("/public/docs/webcomponent-viewer"),
     filename: "bundled.js",
   },
   plugins: [
