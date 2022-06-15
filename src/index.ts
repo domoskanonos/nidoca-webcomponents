@@ -94,8 +94,6 @@ export * from "./nidoca-box";
 
 export * from "./nidoca-article";
 
-export * from "./nidoca-generic-crud";
-
 export * from "./nidoca-icon-with-description";
 export * from "./nidoca-form-contact";
 

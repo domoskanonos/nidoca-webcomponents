@@ -1,7 +1,7 @@
 import {css, html, LitElement, TemplateResult} from "lit";
 import {customElement} from "lit/decorators.js";
 import {Vertrag} from "./model/vertrag";
-import {CRUDProperty, GenericPostgrestController} from "..";
+import {CRUDProperty, GenericPostgrestController} from "./components/nidoca-generic-crud";
 import {NidocaPostgrestClient} from "./service/nidoca-postgrest-client";
 
 export class VertragListController extends GenericPostgrestController<any> {

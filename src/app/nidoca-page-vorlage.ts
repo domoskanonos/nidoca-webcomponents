@@ -1,6 +1,6 @@
 import {css, html, LitElement, TemplateResult} from "lit";
 import {customElement, property} from "lit/decorators.js";
-import {CRUDProperty, GenericPostgrestController} from "..";
+import {CRUDProperty, GenericPostgrestController} from "./components/nidoca-generic-crud";
 import {NidocaPostgrestClient} from "./service/nidoca-postgrest-client";
 import {Vorlage} from "./model/vorlage";
 import Mustache from "mustache";

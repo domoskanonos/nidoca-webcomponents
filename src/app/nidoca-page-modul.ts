@@ -1,6 +1,6 @@
 import {css, html, LitElement, TemplateResult} from "lit";
 import {customElement} from "lit/decorators.js";
-import {GenericPostgrestController} from "..";
+import {GenericPostgrestController} from "./components/nidoca-generic-crud";
 import {NidocaPostgrestClient} from "./service/nidoca-postgrest-client";
 import {Modul} from "./model/projekt";
 
