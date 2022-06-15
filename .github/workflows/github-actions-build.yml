@@ -36,6 +36,12 @@ jobs:
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: main
+          folder: public
+          repositorty-name: domoskanonos/nidoca-documentation
+          target-folder: public
       - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
       - run: echo "🖥️ The workflow is now ready to test your code on the runner."
       - name: List files in the repository
