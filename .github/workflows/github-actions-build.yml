@@ -23,12 +23,9 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
-
-name: Publish
-on: [push]
-branches: [master]
+  Build
 jobs:
-  Build:
+  publish-npm:
     runs-on: ubuntu-latest
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
