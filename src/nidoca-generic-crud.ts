@@ -72,7 +72,7 @@ export abstract class GenericCRUDController<T> {
             ? "checkbox"
             : type,
         required: false,
-        step: type == "number" ? "any" : undefined,
+        step: type == "number" ? 1 : undefined,
       });
     });
   }
