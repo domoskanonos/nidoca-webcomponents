@@ -3,5 +3,3 @@ node_modules
 public
 webcomponent
 .vscode
-lib/app
-lib/webcomponent
