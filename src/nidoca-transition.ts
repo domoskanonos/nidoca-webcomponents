@@ -1,7 +1,7 @@
 import {css, html, TemplateResult, LitElement} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
-import {ifDefined} from "lit/directives/if-defined";
+import {ifDefined} from "lit/directives/if-defined.js";
 
 export class NidocaTransitionType {
   static readonly CENTER = "CENTER";

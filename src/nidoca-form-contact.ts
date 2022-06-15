@@ -1,6 +1,6 @@
 import {css, html, TemplateResult, LitElement} from "lit";
 import {customElement, property, query} from "lit/decorators.js";
-import { ifDefined } from "lit/directives/if-defined";
+import { ifDefined } from "lit/directives/if-defined.js";
 import {NidocaButtonType, NidocaFormTextType, NidocaTheme, NidocaForm} from ".";
 
 @customElement("nidoca-form-contact")

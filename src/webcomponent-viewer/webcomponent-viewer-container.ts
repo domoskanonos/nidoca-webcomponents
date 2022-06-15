@@ -3,7 +3,7 @@ import {css} from "lit-element";
 import {property} from "lit/decorators.js";
 import {NidocaFormCombobox} from "../nidoca-form-combobox";
 import {FormOutputData} from "../nidoca-form-abstract-input-element";
-import { ifDefined } from "lit/directives/if-defined";
+import { ifDefined } from "lit/directives/if-defined.js";
 
 @customElement("webcomponent-viewer-container")
 export class WebcomponentViewerContainer extends LitElement {
