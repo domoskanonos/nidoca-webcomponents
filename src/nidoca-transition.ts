@@ -1,6 +1,7 @@
 import {css, html, TemplateResult, LitElement} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
+import {ifDefined} from "lit/directives/if-defined";
 
 export class NidocaTransitionType {
   static readonly CENTER = "CENTER";
@@ -17,8 +18,8 @@ export class NidocaTransitionType {
 
 @customElement("nidoca-transition")
 export class NidocaTransition extends LitElement {
-  @property({type: Object})
-  transitionType: NidocaTransitionType = NidocaTransitionType.CENTER;
+  @property({type: String})
+  transitionType: string = NidocaTransitionType.CENTER;
 
   @property({type: Number})
   duration: number = 0.5; // seconds
@@ -522,6 +523,6 @@ export class NidocaTransition extends LitElement {
   `;
 
   render(): TemplateResult {
-    return html` <div .class="${this.transitionType}"><slot></slot></div> `;
+    return html` <div class="${ifDefined(this.transitionType)}"><slot></slot></div> `;
   }
 }

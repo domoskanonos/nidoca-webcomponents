@@ -1,5 +1,6 @@
 import {css, html, LitElement, TemplateResult} from "lit";
 import {customElement, property, query} from "lit/decorators.js";
+import { ifDefined } from "lit/directives/if-defined";
 import {NidocaForm, NidocaTheme,  NidocaFormTextType} from "./index";
 
 @customElement("nidoca-form-register")
@@ -35,7 +36,7 @@ export class NidocaFormRegister extends LitElement {
 
   render(): TemplateResult {
     return html`
-      <nidoca-box theme="${this.theme}">
+      <nidoca-box theme="${ifDefined(this.theme)}">
         <nidoca-form id="form">
           <nidoca-text-h2 class="paddingBottom">${this.label}</nidoca-text-h2>
 

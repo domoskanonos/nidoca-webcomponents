@@ -2,6 +2,7 @@ import {css, html, LitElement, PropertyValues, TemplateResult} from "lit";
 import {customElement} from "lit/decorators.js";
 import {property} from "lit/decorators.js";
 import {query} from "lit/decorators.js";
+import { ifDefined } from "lit/directives/if-defined";
 import {NidocaTheme} from ".";
 import {NidocaFormText, NidocaFormTextType} from "./nidoca-form-text";
 
@@ -44,7 +45,7 @@ export class NidocaFormCaptcha extends LitElement {
   render(): TemplateResult {
     return html`
       <nidoca-form-text
-        .theme="${this.theme}"
+        theme="${ifDefined(this.theme)}"
         id="inputfield"
         placeholder="${this.placeholder}"
         label="${this.label

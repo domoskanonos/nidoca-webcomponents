@@ -76,7 +76,7 @@ export class NidocaSearchBar extends LitElement {
                 <input
                         id="inputElement"
                         type="text"
-                        ?value="${this.value}"
+                        value="${this.value}"
                         placeholder="${this.placeholder}"
                         ?disabled="${this.disabled}"
                         @input="${() => this.valueChanged()}"

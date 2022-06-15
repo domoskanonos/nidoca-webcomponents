@@ -9,8 +9,6 @@ export class NidocaMenu extends LitElement {
     slot {
       display: block;
     }
-    slot {
-    }
   `;
 
     @property({type: NidocaTheme, converter: String})

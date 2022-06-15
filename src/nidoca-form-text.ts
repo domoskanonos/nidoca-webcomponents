@@ -120,7 +120,7 @@ export class NidocaFormText extends NidocaFormAbstractInputElement {
     max: number | undefined;
 
     @property({type: String})
-    step: string | undefined;
+    step: number | undefined;
 
     @property({type: Number})
     size: number | undefined;

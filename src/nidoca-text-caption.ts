@@ -14,10 +14,6 @@ export class NidocaTextCaption extends NidocaText {
         line-height:1.5em;
         filter: brightness(var(--app-lighten-3));
     }
-    
-    #slotElement{
-    
-    }
-    
+        
   `;
 }

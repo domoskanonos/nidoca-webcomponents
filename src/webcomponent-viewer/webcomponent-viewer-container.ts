@@ -3,6 +3,7 @@ import {css} from "lit-element";
 import {property} from "lit/decorators.js";
 import {NidocaFormCombobox} from "../nidoca-form-combobox";
 import {FormOutputData} from "../nidoca-form-abstract-input-element";
+import { ifDefined } from "lit/directives/if-defined";
 
 @customElement("webcomponent-viewer-container")
 export class WebcomponentViewerContainer extends LitElement {
@@ -24,7 +25,7 @@ export class WebcomponentViewerContainer extends LitElement {
             <nidoca-form-combobox
                     name="components"
                     label="Komponenten"
-                    value="${this.elementName}"
+                    value="${ifDefined(this.elementName)}"
                     .options="${this.options}"
                     @input="${(event: Event) => {
                         this.elementName = (<NidocaFormCombobox>event.target).getOutputData().value;

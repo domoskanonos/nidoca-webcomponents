@@ -13,7 +13,7 @@ export interface CRUDProperty {
   type: CRUDPropertyType;
   key: string;
   required: boolean;
-  step: string;
+  step: number;
 }
 
 export enum CRUDLabelKeys {
