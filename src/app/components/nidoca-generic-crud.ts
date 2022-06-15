@@ -4,7 +4,7 @@ import {property} from "lit/decorators.js";
 import {NidocaForm, NidocaFormTextType, NidocaSearchBar, NidocaTheme} from "../..";
 import {NidocaHelperForm} from "@domoskanonos/nidoca-form-helper";
 import {NidocaDateHelper} from "@domoskanonos/nidoca-date-helper";
-import {ifDefined} from "lit/directives/if-defined.js.js";
+import {ifDefined} from "lit/directives/if-defined.js";
 import {NidocaPostgrestClient} from "../service/nidoca-postgrest-client";
 
 export type CRUDPropertyType = "id" | "object" | "date" | "checkbox" | "number" | "any" | "textarea" | "1:n";
