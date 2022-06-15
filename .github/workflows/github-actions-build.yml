@@ -25,7 +25,7 @@ jobs:
         with:
           branch: main
           folder: public
-          repositorty-name: domoskanonos/nidoca-documentation
+          repository-name: domoskanonos/nidoca-documentation
           target-folder: public
   publish-npm:
     needs: build
