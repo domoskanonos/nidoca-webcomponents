@@ -8,11 +8,8 @@ export class NidocaStore {
 
     //private static _store: Map<string, any> = new Map<string, any>();
 
-    private constructor() {
-    }
-
     public static addListener(listener: NidocaStoreListener): void {
-        console.log(`add nidoca store listener`);
+        console.log("add nidoca store listener");
         this._listeners.push(listener);
     }
 
@@ -35,7 +32,7 @@ export class NidocaStore {
         if (key == undefined) {
             return undefined;
         }
-        let item = localStorage.getItem(key);
+        const item = localStorage.getItem(key);
         return item != null ? NidocaStore.parse(item) : undefined;
     }
 

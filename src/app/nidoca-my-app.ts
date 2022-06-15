@@ -75,7 +75,7 @@ export const _APP_MODEL: AppModel = {
         }
         ], route: "dashboard", name: "Root"
     }
-}
+};
 
 @customElement("nidoca-my-app")
 export class NidocaMyApp extends LitElement implements NidocaStoreListener, NidocaRouteListener {

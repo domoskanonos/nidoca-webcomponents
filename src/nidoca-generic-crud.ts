@@ -49,7 +49,7 @@ export abstract class GenericCRUDController<T> {
   private properties: CRUDProperty[];
 
   constructor() {
-    let model: any = this.getModel();
+    const model: any = this.getModel();
     this.labels = new Map<string, string>();
     this.labels.set(CRUDLabelKeys.MODEL_SINGLE, model.constructor.name);
     this.labels.set(CRUDLabelKeys.MODEL_MULTI, model.constructor.name);

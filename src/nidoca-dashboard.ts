@@ -48,7 +48,7 @@ export class NidocaDashboardBox25 extends LitElement {
         }
     }
     
-    `
+    `;
 
     render(): TemplateResult {
         return html`
@@ -69,7 +69,7 @@ export class NidocaDashboardBox50 extends LitElement {
         }
     }
 
-    `
+    `;
 
     render(): TemplateResult {
         return html`
@@ -84,7 +84,7 @@ export class NidocaDashboardBox100 extends LitElement {
         width:100%;
         display:block;
     }
-    `
+    `;
 
     render(): TemplateResult {
         return html`
@@ -111,7 +111,7 @@ export class NidocaDashboardCard extends LitElement {
         cursor: pointer;
     }
     
-    `
+    `;
 
     @property({type: Boolean})
     clickable: boolean = true;

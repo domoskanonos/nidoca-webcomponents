@@ -44,10 +44,10 @@ export class NidocaVideo extends LitElement {
 
     private makeFoto() {
         if (this.canvasElement && this.videoElement) {
-            const context = this.canvasElement.getContext('2d');
+            const context = this.canvasElement.getContext("2d");
             if (context) {
                 context.drawImage(this.videoElement, 0, 0, this.canvasElement.width, this.canvasElement.height);
-                let image_data_url = this.canvasElement.toDataURL('image/jpeg');
+                const image_data_url = this.canvasElement.toDataURL("image/jpeg");
                 console.log(image_data_url);
             }
         }

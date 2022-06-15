@@ -76,12 +76,12 @@ export class DashboardController {
     }
 
     static getVertraegeKategorieChartConfiguration(): ChartConfiguration | undefined {
-        let alleVertraegeKategorie = NidocaStore.getItem(ChannelsEnum.alleVertragKategorie);
+        const alleVertraegeKategorie = NidocaStore.getItem(ChannelsEnum.alleVertragKategorie);
         if (alleVertraegeKategorie == undefined) {
             return undefined;
         }
 
-        let chartConfiguration: ChartConfiguration = {
+        const chartConfiguration: ChartConfiguration = {
             type: "pie",
             data: {
                 labels: alleVertraegeKategorie.map((item: VertragKategorie) => item.kategorie),
@@ -99,14 +99,14 @@ export class DashboardController {
     }
 
     public static getAufgaben(): Aufgabe[] | undefined {
-        let aufgaben = NidocaStore.getItem(ChannelsEnum.alleAufgaben);
+        const aufgaben = NidocaStore.getItem(ChannelsEnum.alleAufgaben);
         return aufgaben ? aufgaben.map((aufgabe: Aufgabe) => {
-            return [aufgabe.titel, new NidocaDateHelper().formatDate(aufgabe.ablaufdatum, "dd.MM.yyyy")]
+            return [aufgabe.titel, new NidocaDateHelper().formatDate(aufgabe.ablaufdatum, "dd.MM.yyyy")];
         }) : undefined;
     }
 
     static getAbgelaufeneAufgaben(): Aufgabe[] {
-        let item = NidocaStore.getItem(ChannelsEnum.alleAufgaben);
+        const item = NidocaStore.getItem(ChannelsEnum.alleAufgaben);
         return item ? item.filter((item: Aufgabe) => item.ablaufdatum.getTime() <= new Date().getTime()) : [];
     }
 
@@ -116,7 +116,7 @@ export class DashboardController {
     }
 
     static getOffeneAufgaben(): Aufgabe[] {
-        let item = NidocaStore.getItem(ChannelsEnum.alleAufgaben);
+        const item = NidocaStore.getItem(ChannelsEnum.alleAufgaben);
         return item ? item.filter((item: Aufgabe) => !item.erledigt) : [];
     }
 

@@ -36,7 +36,7 @@ export class NidocaChartJSWrapper extends LitElement {
   async loadCanvas() {
     const loadedCanvas: HTMLCanvasElement | undefined = await this.canvas;
     if (loadedCanvas && this.options) {
-      console.log(this.options)
+      console.log(this.options);
       const chart = new Chart(loadedCanvas, this.options);
     }
   }

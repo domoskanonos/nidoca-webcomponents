@@ -60,13 +60,13 @@ export class NidocaSvg2Webp extends LitElement {
 
     convert() {
         if (this.img) {
-            console.log("GO")
+            console.log("GO");
             this.img.onload = () => {
                 [[12, 12], [16, 16], [22, 22], [24, 24], [32, 32], [36, 36], [48, 48], [64, 64], [72, 72], [96, 96], [128, 128], [144, 144], [192, 192]].forEach((size: number[]) => {
-                    const canvas = document.createElement('canvas');
+                    const canvas = document.createElement("canvas");
                     canvas.width = size[0];
                     canvas.height = size[1];
-                    let context = canvas.getContext('2d');
+                    const context = canvas.getContext("2d");
                     if (context) {
                         if (this.img) {
                             this.img.crossOrigin = "anonymous";
@@ -89,7 +89,7 @@ export class NidocaSvg2Webp extends LitElement {
 
 
                                 }
-                            }, 'image/webp');
+                            }, "image/webp");
                         }
                     }
 
@@ -100,7 +100,7 @@ export class NidocaSvg2Webp extends LitElement {
                 this.requestUpdate();
 
 
-            }
+            };
         }
     }
 

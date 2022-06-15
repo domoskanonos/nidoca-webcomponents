@@ -44,7 +44,7 @@ export class NidocaApp extends LitElement {
         if (_changedProperties.has("route")) {
             if (this.root) {
                 for (let i = 0; i < this.root.childs.length; i++) {
-                    let pageReference = this.root.childs[i];
+                    const pageReference = this.root.childs[i];
                     if (pageReference.route == this.route) {
                         this.contentComponent = document.createElement(pageReference.rootComponent);
                         break;
