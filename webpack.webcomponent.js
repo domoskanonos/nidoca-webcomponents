@@ -22,7 +22,7 @@ module.exports = {
     },
     mode: "production",
     output: {
-        path: path.resolve().concat("/public/docs/webcomponents"),
+        path: path.resolve().concat("/public/webcomponents"),
         filename: "nidoca-webcomponents.js",
     }, plugins: [
         new HtmlWebpackPlugin({
