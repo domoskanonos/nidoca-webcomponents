@@ -24,7 +24,7 @@ jobs:
       - uses: JamesIves/github-pages-deploy-action@v4
         with:
           token: ${{ secrets.DEPLOY_DOCUMENTATION_TOKEN }}
-          branch: main
+          branch: ${GITHUB_REF##*/}
           folder: public
           repository-name: domoskanonos/nidoca-documentation
           target-folder: public
