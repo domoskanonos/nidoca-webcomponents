@@ -21,10 +21,11 @@ jobs:
       - run: npm run build:webcomponents
       - run: npm run build:app
       - run: npm run build:webcomponent-viewer
+      - uses: nelonoel/branch-name@v1
       - uses: JamesIves/github-pages-deploy-action@v4
         with:
           token: ${{ secrets.DEPLOY_DOCUMENTATION_TOKEN }}
-          branch: ${GITHUB_REF##*/}
+          branch: ${BRANCH_NAME}
           folder: public
           repository-name: domoskanonos/nidoca-documentation
           target-folder: public
