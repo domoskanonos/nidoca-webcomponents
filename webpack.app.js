@@ -23,7 +23,7 @@ module.exports = {
   },
   mode: "production",
   output: {
-    path: path.resolve().concat("/public/docs/app"),
+    path: path.resolve().concat("/public"),
     filename: "bundled.js",
   },
   plugins: [

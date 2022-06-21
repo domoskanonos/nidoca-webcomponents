@@ -1,6 +1,6 @@
 {
   "name": "@domoskanonos/nidoca-webcomponents",
-  "version": "1.0.57",
+  "version": "1.0.58",
   "license": "MIT",
   "keywords": [
     "webcomponent, html, typescript, shadow dom, slot, ui, frontend, lit element"
@@ -54,7 +54,7 @@
     "eslint:fix": "eslint src --fix",
     "lit-analyzer": "lit-analyzer \"src/**/*.{js,ts}\"",
     "typedocs": "typedoc src/index.ts",
-    "docs-webcomponents": "wca analyze \"src/**/*.{js,ts}\" --outDir public/docs/documentation/webcomponents",
+    "docs-webcomponents": "wca analyze \"src/**/*.{js,ts}\" --outDir public/documentation/webcomponents",
     "docs": "npm run typedocs && npm run docs-webcomponents",
     "prebuild": "npm install && npm run ts && npm run eslint && npm run lit-analyzer && npm run docs",
     "build:webcomponents": "webpack --config ./webpack.webcomponent.js ",
