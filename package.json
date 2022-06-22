@@ -53,7 +53,7 @@
     "eslint": "eslint src",
     "eslint:fix": "eslint src --fix",
     "lit-analyzer": "lit-analyzer \"src/**/*.{js,ts}\"",
-    "typedocs": "typedoc src/index.ts",
+    "typedocs": "typedoc --out public/typedocs src/index.ts",
     "docs-webcomponents": "wca analyze \"src/**/*.{js,ts}\" --outDir public/documentation/webcomponents",
     "docs": "npm run typedocs && npm run docs-webcomponents",
     "prebuild": "npm install && npm run ts && npm run eslint && npm run lit-analyzer && npm run docs",
