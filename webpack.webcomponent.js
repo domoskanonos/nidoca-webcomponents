@@ -33,7 +33,10 @@ module.exports = {
       template: "./src/index.html",
     }),
     new CopyPlugin({
-      patterns: [{from: "src/nidoca.css", to: "nidoca.css"}],
+      patterns: [
+        {from: "src/nidoca.css", to: "nidoca.css"},
+        {from: "src/logo.svg", to: "logo.svg"},
+      ],
     }),
   ],
 };

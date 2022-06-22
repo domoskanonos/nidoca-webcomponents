@@ -22,7 +22,6 @@ export class NidocaMyApp extends LitElement {
           >Typedoc</nidoca-link
         >
 
-
         <nidoca-link
           slot="topRight"
           style="padding-right:var(--space-2);"
@@ -31,25 +30,18 @@ export class NidocaMyApp extends LitElement {
           >Github</nidoca-link
         >
 
-
-        <span slot="content">Hallo
-
-
-
-        <nidoca-code>
-
-        https://domoskanonos.github.io/nidoca-documentation/webcomponents/nidoca-webcomponents.js
-
-
-        https://domoskanonos.github.io/nidoca-documentation/webcomponents/nidoca.css
-
-
-        </nidoca-code>
-
-
-
-
-        </span>
+        <div slot="content">
+          <div style="padding-top:20vh;padding-bottom:20vh;">
+            <div style="display:flex;align-items:center;justify-content:center;align-content:flex-start;">
+              <nidoca-img src="logo.svg" width="128px"></nidoca-img>
+              <nidoca-text-h1 style="padding-left:var(--space-2);">nidoca-webcomponents</nidoca-text-h1>
+            </div>
+          </div>
+          <nidoca-code>
+            https://domoskanonos.github.io/nidoca-documentation/webcomponents/nidoca-webcomponents.js
+            https://domoskanonos.github.io/nidoca-documentation/webcomponents/nidoca.css
+          </nidoca-code>
+        </div>
       </nidoca-template>
     `;
   }

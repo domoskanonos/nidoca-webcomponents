@@ -6,7 +6,7 @@ import {MOBILE_MAX_WIDTH, TABLET_MIN_WIDTH} from ".";
 
 @customElement("nidoca-template")
 export class NidocaTemplate extends LitElement {
-    static styles = css`
+  static styles = css`
     :host {
       display: flex;
       flex-direction: row;
@@ -27,11 +27,11 @@ export class NidocaTemplate extends LitElement {
       transition: all 0.35s ease;
       display: none;
     }
-    
+
     @media screen and (max-width: ${MOBILE_MAX_WIDTH}px) {
       #left {
         position: fixed;
-        z-index:1;
+        z-index: 1;
       }
     }
 
@@ -40,39 +40,38 @@ export class NidocaTemplate extends LitElement {
       height: 100vh;
       overflow: scroll;
     }
-    
   `;
 
-    @property({type: Boolean})
-    hideLeft: boolean = true;
+  @property({type: Boolean})
+  hideLeft: boolean = true;
 
-    @property({type: Boolean})
-    prominent: boolean = false;
+  @property({type: Boolean})
+  prominent: boolean = false;
 
-    @query("#header")
-    private headerElement: HTMLElement | undefined;
+  @query("#header")
+  private headerElement: HTMLElement | undefined;
 
-    @query("#left")
-    private leftElement: HTMLElement | undefined;
+  @query("#left")
+  private leftElement: HTMLElement | undefined;
 
-    @query("#content")
-    private contentElement: HTMLElement | undefined;
+  @query("#content")
+  private contentElement: HTMLElement | undefined;
 
-    constructor() {
-        super();
-        document.getElementsByTagName("html")[0].setAttribute("oncontextmenu", "return false"); // avoid right click context menu
-        this.addEventListener("click", (event: MouseEvent) => {
-            if (!this.hideLeft && this.leftElement) {
-                console.log("close");
-                const rect = this.leftElement.getBoundingClientRect();
-                this.hideLeft = TABLET_MIN_WIDTH > window.innerWidth && 0 <= event.x - rect.width;
-            }
-        });
-    }
+  constructor() {
+    super();
+    document.getElementsByTagName("html")[0].setAttribute("oncontextmenu", "return false"); // avoid right click context menu
+    this.addEventListener("click", (event: MouseEvent) => {
+      if (!this.hideLeft && this.leftElement) {
+        console.log("close");
+        const rect = this.leftElement.getBoundingClientRect();
+        this.hideLeft = TABLET_MIN_WIDTH > window.innerWidth && 0 <= event.x - rect.width;
+      }
+    });
+  }
 
-    protected updated(_changedProperties: PropertyValues): void {
-        super.updated(_changedProperties);
-        /*
+  protected updated(_changedProperties: PropertyValues): void {
+    super.updated(_changedProperties);
+    /*
             new Promise((resolve) => requestAnimationFrame(resolve)).then(() => {
               if (this.headerElement != undefined) {
                 const height = this.headerElement.offsetHeight;
@@ -88,49 +87,49 @@ export class NidocaTemplate extends LitElement {
               }
             });
              */
-    }
+  }
 
-    render(): TemplateResult {
-        return html`
-            <slot
-                    id="left"
-                    @nidoca-event-menu-item-clicked="${() => {
-                        if (TABLET_MIN_WIDTH > window.innerWidth) {
-                            this.hideLeft = true;
-                        }
-                    }}"
-                    class="${this.hideLeft ? "hideLeft" : ""}"
-                    name="left"
-            >
-            </slot>
+  render(): TemplateResult {
+    return html`
+      <slot
+        id="left"
+        @nidoca-event-menu-item-clicked="${() => {
+          if (TABLET_MIN_WIDTH > window.innerWidth) {
+            this.hideLeft = true;
+          }
+        }}"
+        class="${this.hideLeft ? "hideLeft" : ""}"
+        name="left"
+      >
+      </slot>
 
-            <div class="right">
-                <nidoca-top-app-bar theme="primary" id="header" .prominent="${this.prominent}">
-                    <nidoca-icon
-                            slot="left"
-                            style="padding-left:var(--space-2);"
-                            icon="menu"
-                            .clickable="${true}"
-                            @nidoca-event-icon-clicked="${() => {
-                                this.hideLeft = !this.hideLeft;
-                            }}"
-                    ></nidoca-icon>
-                    <span slot="left">
+      <div class="right">
+        <nidoca-top-app-bar theme="primary" id="header" .prominent="${this.prominent}">
+          <nidoca-icon
+            slot="left"
+            style="padding-left:var(--space-2);"
+            icon="menu"
+            .clickable="${true}"
+            @nidoca-event-icon-clicked="${() => {
+              this.hideLeft = !this.hideLeft;
+            }}"
+          ></nidoca-icon>
+
+          <span slot="left">
             <slot class="slotHeader" name="topLeft"></slot>
           </span>
-                    <span slot="center">
+          <span slot="center">
             <slot class="slotHeader" name="topCenter"></slot>
           </span>
-                    <span slot="right">
+          <span slot="right">
             <slot class="slotHeader" name="topRight"></slot>
           </span>
-                    <span style="width: 100%;" slot="prominent">
+          <span style="width: 100%;" slot="prominent">
             <slot class="slotHeader" name="prominent"></slot>
           </span>
-                </nidoca-top-app-bar>
-
-                <slot id="content" name="content"></slot>
-            </div>
-        `;
-    }
+        </nidoca-top-app-bar>
+        <slot id="content" name="content"></slot>
+      </div>
+    `;
+  }
 }
