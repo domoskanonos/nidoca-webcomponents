@@ -18,8 +18,8 @@ export class NidocaMyApp extends LitElement {
           slot="topRight"
           style="padding-right:var(--space-2);"
           targetType="_blank"
-          href="https://github.com/domoskanonos/nidoca-webcomponents"
-          >Github</nidoca-link
+          href="https://domoskanonos.github.io/nidoca-documentation/typedocs/index.html"
+          >Typedoc</nidoca-link
         >
 
 
@@ -32,7 +32,24 @@ export class NidocaMyApp extends LitElement {
         >
 
 
-        <span slot="content">Hallo</span>
+        <span slot="content">Hallo
+
+
+
+        <nidoca-code>
+
+        https://domoskanonos.github.io/nidoca-documentation/webcomponents/nidoca-webcomponents.js
+
+
+        https://domoskanonos.github.io/nidoca-documentation/webcomponents/nidoca.css
+
+
+        </nidoca-code>
+
+
+
+
+        </span>
       </nidoca-template>
     `;
   }
