@@ -33,9 +33,9 @@
     "typedoc": "0.22.10",
     "copy-webpack-plugin": "10.2.0",
     "html-webpack-plugin": "5.5.0",
-    "webpack": "5.66.0",
-    "webpack-cli": "4.9.1",
-    "webpack-dev-server": "4.7.3"
+    "webpack": "5.73.0",
+    "webpack-cli": "4.10.0",
+    "webpack-dev-server": "4.9.2"
   },
   "dependencies": {
     "typescript": "4.5",
@@ -53,7 +53,7 @@
     "eslint": "eslint src",
     "eslint:fix": "eslint src --fix",
     "lit-analyzer": "lit-analyzer \"src/**/*.{js,ts}\"",
-    "typedocs": "typedoc src/index.ts",
+    "typedocs": "typedoc --out public/typedocs src/index.ts",
     "docs-webcomponents": "wca analyze \"src/**/*.{js,ts}\" --outDir public/documentation/webcomponents",
     "docs": "npm run typedocs && npm run docs-webcomponents",
     "prebuild": "npm install && npm run ts && npm run eslint && npm run lit-analyzer && npm run docs",

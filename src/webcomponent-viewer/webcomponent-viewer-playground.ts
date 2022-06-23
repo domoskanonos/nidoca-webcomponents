@@ -3,7 +3,7 @@ import {customElement, property} from "lit/decorators.js";
 import {Nidoca} from "..";
 
 @customElement("webcomponent-viewer-playground")
-export class WebcomponentViewerContainer extends LitElement {
+export class WebcomponentViewerPlayground extends LitElement {
   static styles = css``;
 
   @property({type: String})

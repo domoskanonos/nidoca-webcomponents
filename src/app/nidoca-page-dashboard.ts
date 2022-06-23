@@ -59,8 +59,7 @@ export class NidocaPageDashboard extends LitElement implements NidocaStoreListen
 
   render(): TemplateResult {
     return html`
-      <nidoca-svg-2-webp></nidoca-svg-2-webp>
-
+      
       <nidoca-dashboard>
         <nidoca-text-h1 style="padding: var(--space-2);width: 100%;">Dashboard</nidoca-text-h1>
 

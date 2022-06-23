@@ -1,6 +1,5 @@
 import {css, html, LitElement, TemplateResult} from "lit";
 import {customElement} from "lit/decorators.js";
-import {NidocaTargetType} from "../index";
 
 @customElement("nidoca-page-imprint")
 export class NidocaPageSettings extends LitElement {
@@ -24,7 +23,7 @@ export class NidocaPageSettings extends LitElement {
                 <nidoca-article title="Streitsschlichtung">
                     <nidoca-text
                     >Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:
-                        <nidoca-link href="https://ec.europa.eu/consumers/odr" targetType="${NidocaTargetType.BLANK}"
+                        <nidoca-link href="https://ec.europa.eu/consumers/odr" targetType="_blanck"
                         >https://ec.europa.eu/consumers/odr
                         </nidoca-link
                         >
@@ -91,20 +90,20 @@ export class NidocaPageSettings extends LitElement {
                 </nidoca-article>
                 <nidoca-article title="Quelle">
                     <nidoca-link href="https://www.e-recht24.de/impressum-generator.html"
-                                 targetType="${NidocaTargetType.BLANK}"
+                                 targetType="_blanck"
                     >https://www.e-recht24.de/impressum-generator.html
                     </nidoca-link
                     >
                 </nidoca-article>
                 <div style="padding-top:var(--space-8); padding-bottom:var(--space-8);">
                     <nidoca-article title="Google Material Icons">
-                        <nidoca-link href="https://fonts.google.com/icons" targetType="${NidocaTargetType.BLANK}"
+                        <nidoca-link href="https://fonts.google.com/icons" targetType="_blanck"
                         >https://fonts.google.com/icons
                         </nidoca-link
                         >
                     </nidoca-article>
                     <nidoca-article title="Google Fonts">
-                        <nidoca-link href=" https://fonts.google.com/" targetType="${NidocaTargetType.BLANK}">
+                        <nidoca-link href=" https://fonts.google.com/" targetType="_blanck">
                             https://fonts.google.com/
                         </nidoca-link
                         >
