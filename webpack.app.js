@@ -1,4 +1,5 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
 const path = require("path");
 
 module.exports = {
@@ -7,7 +8,7 @@ module.exports = {
     rules: [
       {
         test: /\.ts$/,
-        use: { loader: "ts-loader", options: { transpileOnly: true } },
+        use: {loader: "ts-loader", options: {transpileOnly: true}},
       },
     ],
   },
@@ -30,6 +31,12 @@ module.exports = {
     new HtmlWebpackPlugin({
       filename: "index.html",
       template: "./src/app/index.html",
+    }),
+    new CopyPlugin({
+      patterns: [
+        {from: "src/nidoca.css", to: "nidoca.css"},
+        {from: "src/logo.svg", to: "logo.svg"},
+      ],
     }),
   ],
 };

@@ -6,20 +6,12 @@ import {Nidoca, NidocaTheme} from "..";
 export class NidocaPageMain extends LitElement {
   static styles = css``;
   render(): TemplateResult {
-    return html`
-      <nidoca-section>
-        <div style="padding-top:20vh;padding-bottom:20vh;">
-          <div style="display:flex;align-items:center;justify-content:center;align-content:flex-start;">
-            <nidoca-img
-              width="100px"
-              height="100px"
-              src="https://raw.githubusercontent.com/domoskanonos/devbox/main/assets/logo-ink.svg"
-            >
-            </nidoca-img>
-            <nidoca-text-h1>&nbsp;nidoca-webcomponents</nidoca-text-h1>
-          </div>
+    return html` <div style="padding-top:20vh;padding-bottom:20vh;">
+        <div style="display:flex;align-items:center;justify-content:center;align-content:flex-start;">
+          <nidoca-img src="logo.svg" width="128px"></nidoca-img>
+          <nidoca-text-h1 style="padding-left:var(--space-2);">nidoca-webcomponents</nidoca-text-h1>
         </div>
-      </nidoca-section>
+      </div>
 
       <nidoca-container .theme="${NidocaTheme.PRIMARY}">
         <nidoca-section>
@@ -41,76 +33,9 @@ export class NidocaPageMain extends LitElement {
         </nidoca-section>
       </nidoca-container>
 
-      <nidoca-section>
-        <nidoca-img src="http://nidoca.eu/img/1638344581876.jpg"></nidoca-img>
-        <nidoca-img src="http://nidoca.eu/img/DSC01380.jpg"></nidoca-img>
-        <nidoca-img src="http://nidoca.eu/img/1638344581857.jpg"></nidoca-img>
-        <nidoca-img src="http://nidoca.eu/img/DSC02560.jpg"></nidoca-img>
-
-        <nidoca-article
-          style=""
-          title="Lorem Ipsum"
-          summary="Lorem Ipsum Dolorem ipsum med en to."
-          text="Lorem Ipsum Dolorem ipsum med en to. Lorem Ipsum Dolorem ipsum med en to. Lorem Ipsum Dolorem ipsum med en to. Lorem Ipsum Dolorem ipsum med en to."
-        ></nidoca-article>
-      </nidoca-section>
-
-      <nidoca-section>
-        <nidoca-img src="http://nidoca.eu/img/DSC02586.jpg"></nidoca-img>
-        <nidoca-article
-          style="padding-left:25px;"
-          title="Lorem Ipsum"
-          summary="Lorem Ipsum Dolorem ipsum med en to."
-          text="Lorem Ipsum Dolorem ipsum med en to. Lorem Ipsum Dolorem ipsum med en to. Lorem Ipsum Dolorem ipsum med en to. Lorem Ipsum Dolorem ipsum med en to."
-        ></nidoca-article>
-      </nidoca-section>
-
-      <nidoca-container .theme="${NidocaTheme.SECONDARY}">
-        <nidoca-section>
-          <nidoca-article
-            title="Responsive Komponenten"
-            summary="Die Komponenten sind für Desktop, Tablet und Mobile optimiert."
-            text="The components looks good on all devices, because they are designed responsive. Responsive web design is a
-            creative and technical paradigm for creating websites, so that they can react to the properties of the end
-            device used, especially smartphones and tablet computers."
-          >
-          </nidoca-article>
-        </nidoca-section>
-      </nidoca-container>
-
-      <nidoca-container .theme="${NidocaTheme.BACKGROUND}">
-        <nidoca-section>
-          <nidoca-article
-            title="Webcomponents"
-            summary="Alle Komponenten erfüllen den Webcomponent Standart"
-            text="Webkomponenten sind eine Gruppe von Web-Technologien, die es ermöglichen, benutzerdefinierte, wiederverwendbare HTML Elemente zu erstellen, deren Funktionalität gekapselt ist und damit vollständig getrennt von anderem Code."
-          >
-          </nidoca-article>
-        </nidoca-section>
-      </nidoca-container>
-
-      <nidoca-container .theme="${NidocaTheme.PRIMARY}">
-        <nidoca-section>
-          <nidoca-form-contact></nidoca-form-contact>
-        </nidoca-section>
-      </nidoca-container>
-
-      <nidoca-section>
-        <nidoca-img src="http://nidoca.eu/img/IMG_0524.jpg"></nidoca-img>
-        <nidoca-article
-          title="Lorem Ipsum"
-          summary="Lorem Ipsum Dolorem ipsum med en to."
-          text="Lorem Ipsum Dolorem ipsum med en to. Lorem Ipsum Dolorem ipsum med en to. Lorem Ipsum Dolorem ipsum med en to. Lorem Ipsum Dolorem ipsum med en to."
-        ></nidoca-article>
-      </nidoca-section>
-      <nidoca-section>
-        <nidoca-article
-          title="Komponentenframework"
-          summary="Es ist ein HTML Kom"
-          text="Lorem Ipsum Dolorem ipsum med en to. Lorem Ipsum Dolorem ipsum med en to. Lorem Ipsum Dolorem ipsum med en to. Lorem Ipsum Dolorem ipsum med en to."
-        ></nidoca-article>
-        <nidoca-icon style="font-size:256px;" icon="donut_small"></nidoca-icon>
-      </nidoca-section>
-    `;
+      <nidoca-code>
+        https://domoskanonos.github.io/nidoca-documentation/webcomponents/nidoca-webcomponents.js
+        https://domoskanonos.github.io/nidoca-documentation/webcomponents/nidoca.css
+      </nidoca-code>`;
   }
 }

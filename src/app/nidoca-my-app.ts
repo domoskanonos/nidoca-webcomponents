@@ -1,9 +1,27 @@
-import {html, LitElement, TemplateResult} from "lit";
-import {customElement} from "lit/decorators.js";
+import {NidocaRouteListener, NidocaRouter} from "@domoskanonos/nidoca-router";
+import {html, LitElement, HTMLTemplateResult} from "lit";
+import {customElement, property} from "lit/decorators.js";
 
 @customElement("nidoca-my-app")
-export class NidocaMyApp extends LitElement {
-  render(): TemplateResult {
+export class NidocaMyApp extends LitElement implements NidocaRouteListener {
+  @property({type: Object})
+  content: TemplateResult = html``;
+
+  constructor() {
+    super();
+    NidocaRouter.getUniqueInstance().subscribe(this);
+    this.routeChanged(NidocaRouter.getUniqueInstance().getCurrentPage());
+  }
+
+  routeChanged(relUrl: string): void {
+    switch (relUrl) {
+      case "main":
+      default:
+        this.content = html`<nidoca-page-main></nidoca-page-main>`;
+    }
+  }
+
+  render(): HTMLTemplateResult {
     return html`
       <nidoca-template>
         <nidoca-link
@@ -30,18 +48,7 @@ export class NidocaMyApp extends LitElement {
           >Github</nidoca-link
         >
 
-        <div slot="content">
-          <div style="padding-top:20vh;padding-bottom:20vh;">
-            <div style="display:flex;align-items:center;justify-content:center;align-content:flex-start;">
-              <nidoca-img src="logo.svg" width="128px"></nidoca-img>
-              <nidoca-text-h1 style="padding-left:var(--space-2);">nidoca-webcomponents</nidoca-text-h1>
-            </div>
-          </div>
-          <nidoca-code>
-            https://domoskanonos.github.io/nidoca-documentation/webcomponents/nidoca-webcomponents.js
-            https://domoskanonos.github.io/nidoca-documentation/webcomponents/nidoca.css
-          </nidoca-code>
-        </div>
+        <div slot="content">${this.content}</div>
       </nidoca-template>
     `;
   }
