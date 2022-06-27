@@ -32,7 +32,7 @@ export class NidocaPageMain extends LitElement {
           </nidoca-icon-with-description>
         </nidoca-section>
       </nidoca-container>
-
+      https://jsfiddle.net/domoskanonos/04ndLcj7/10/
       <nidoca-code>
         https://domoskanonos.github.io/nidoca-documentation/webcomponents/nidoca-webcomponents.js
         https://domoskanonos.github.io/nidoca-documentation/webcomponents/nidoca.css
