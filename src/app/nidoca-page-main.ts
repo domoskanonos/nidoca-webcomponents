@@ -6,12 +6,12 @@ import {Nidoca, NidocaTheme} from "..";
 export class NidocaPageMain extends LitElement {
   static styles = css``;
   render(): TemplateResult {
-    return html` <div style="padding-top:20vh;padding-bottom:20vh;">
+    return html` <nidoca-container style="padding-top:20vh;padding-bottom:20vh;">
         <div style="display:flex;align-items:center;justify-content:center;align-content:flex-start;">
           <nidoca-img src="logo.svg" width="128px"></nidoca-img>
           <nidoca-text-h1 style="padding-left:var(--space-2);">nidoca-webcomponents</nidoca-text-h1>
-        </div>
-      </div>
+  </div>
+      </nidoca-container>
 
       <nidoca-container .theme="${NidocaTheme.PRIMARY}">
         <nidoca-section>

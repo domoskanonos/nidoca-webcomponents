@@ -25,15 +25,15 @@ div {
   --app-color-percent-optional: 60%;
 
   --app-color-background: #1e293b;
-  --app-color-background-background: #ffffff;
+  --app-color-background-background: #fefbe9;
   --app-color-background-border: #cececa;
 
   --app-color-surface: #000000;
-  --app-color-surface-background: #eaeaea;
-  --app-color-surface-border: #9b9997;
+  --app-color-surface-background: #fefbe9;
+  --app-color-surface-border: #050504;
 
   --app-color-primary: #404246;
-  --app-color-primary-background: #c5d0eb;
+  --app-color-primary-background: #e1eedd;
   --app-color-primary-border: #a6a6a6;
 
   --app-color-secondary: #ffffff;

@@ -15,6 +15,18 @@ export class NidocaMyApp extends LitElement implements NidocaRouteListener {
 
   routeChanged(relUrl: string): void {
     switch (relUrl) {
+      case "privacy":
+        this.content = html`<nidoca-page-privacy></nidoca-page-privacy>`;
+        break;
+      case "imprint":
+        this.content = html`<nidoca-page-imprint></nidoca-page-imprint>`;
+        break;
+      case "settings":
+        this.content = html`<nidoca-page-settings></nidoca-page-settings>`;
+        break;
+      case "terms-of-use":
+        this.content = html`<nidoca-page-terms-of-use></nidoca-page-terms-of-use>`;
+        break;
       case "main":
       default:
         this.content = html`<nidoca-page-main></nidoca-page-main>`;
@@ -50,22 +62,41 @@ export class NidocaMyApp extends LitElement implements NidocaRouteListener {
 
         <div slot="content">${this.content}</div>
 
+        <div slot="left" style="height:var(--height-medium);"></div>
         <nidoca-menu slot="left" theme="primary">
-          <nidoca-menu-item text="Start"></nidoca-menu-item>
-          <nidoca-menu-area text="Framework"></nidoca-menu-area>
-          <nidoca-menu-item text="Komponenten"></nidoca-menu-item>
+          <nidoca-menu-item
+            @nidoca-event-menu-item-clicked="${() => {
+              NidocaRouter.getUniqueInstance().navigate("#main");
+            }}"
+            icon="home"
+            text="Start"
+          ></nidoca-menu-item>
           <nidoca-menu-area icon="gavel" text="Rechtliches"></nidoca-menu-area>
-          <nidoca-menu-item text="Impressum"></nidoca-menu-item>
-          <nidoca-menu-item text="Datenschutz"></nidoca-menu-item>
+          <nidoca-menu-item
+            text="Impressum"
+            @nidoca-event-menu-item-clicked="${() => {
+              NidocaRouter.getUniqueInstance().navigate("#imprint");
+            }}"
+          ></nidoca-menu-item>
+          <nidoca-menu-item
+            text="Datenschutz"
+            @nidoca-event-menu-item-clicked="${() => {
+              NidocaRouter.getUniqueInstance().navigate("#privacy");
+            }}"
+          ></nidoca-menu-item>
           <nidoca-menu-item
             text="Nutzungsbedingungen"
             @nidoca-event-menu-item-clicked="${() => {
-              console.log("dlklodkji");
-              NidocaRouter.getUniqueInstance().navigate("#dodod");
+              NidocaRouter.getUniqueInstance().navigate("#terms-of-use");
             }}"
           ></nidoca-menu-item>
           <nidoca-menu-area text="Sonstiges"></nidoca-menu-area>
-          <nidoca-menu-item icon="home" text="Einstellungen"></nidoca-menu-item>
+          <nidoca-menu-item
+            text="Einstellungen"
+            @nidoca-event-menu-item-clicked="${() => {
+              NidocaRouter.getUniqueInstance().navigate("#settings");
+            }}"
+          ></nidoca-menu-item>
         </nidoca-menu>
       </nidoca-template>
     `;

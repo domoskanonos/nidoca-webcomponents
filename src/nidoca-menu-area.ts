@@ -4,26 +4,35 @@ import {property} from "lit/decorators.js";
 
 @customElement("nidoca-menu-area")
 export class NidocaMenuArea extends LitElement {
-    static styles = css`
+  static styles = css`
     .container {
       display: flex;
-      padding-left:var(--space-2);
-      padding-right:var(--space-2);
-      padding-top:var(--space);
-      padding-bottom:var(--space);
+      padding-left: var(--space-2);
+      padding-right: var(--space-2);
+      padding-top: var(--space);
+      padding-bottom: var(--space);
     }
   `;
 
-    @property({type: String})
-    text: string = "";
+  @property({type: String})
+  text: string = "";
 
-    render(): TemplateResult {
-        return html`
-            <div class="container">
-                ${this.text ? html`
-                    <nidoca-text-button>${this.text}</nidoca-text-button>` : html``}
-                <slot></slot>
-            </div>
-        `;
-    }
+  @property({type: String})
+  icon: string = "";
+
+  render(): TemplateResult {
+    return html`
+      <div class="container">
+        ${this.icon
+          ? html` <nidoca-icon
+              slot="graphic"
+              icon="${this.icon}"
+              style="padding-right:var(--space); font-size:var(--icon-size);"
+            ></nidoca-icon>`
+          : html``}
+        ${this.text ? html` <nidoca-text-button>${this.text}</nidoca-text-button>` : html``}
+        <slot></slot>
+      </div>
+    `;
+  }
 }
