@@ -20,6 +20,6 @@
   "exclude": ["node_modules", "src/app", "src/webcomponent-viewer"],
   "typedocOptions": {
     "entryPoints": ["./src"],
-    "out": "docs"
+    "out": "public/docs"
   }
 }
