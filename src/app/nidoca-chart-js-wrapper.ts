@@ -1,9 +1,9 @@
-import Chart from "chart.js/auto";
-import {ChartConfiguration} from "chart.js";
-import {css, html, TemplateResult, LitElement, PropertyValues} from "lit";
-import {customElement, property, queryAsync} from "lit/decorators.js";
+import Chart from 'chart.js/auto';
+import {ChartConfiguration} from 'chart.js';
+import {css, html, TemplateResult, LitElement, PropertyValues} from 'lit';
+import {customElement, property, queryAsync} from 'lit/decorators.js';
 
-@customElement("nidoca-chart-js-wrapper")
+@customElement('nidoca-chart-js-wrapper')
 export class NidocaChartJSWrapper extends LitElement {
   static styles = css`
     :host {
@@ -13,16 +13,16 @@ export class NidocaChartJSWrapper extends LitElement {
     }
   `;
 
-  @queryAsync("#bar-chart")
+  @queryAsync('#bar-chart')
   canvas: Promise<HTMLCanvasElement> | undefined;
 
   @property({type: Object, converter: Object})
   options: ChartConfiguration | undefined;
 
   updated(_changedProperties: PropertyValues) {
-    if (_changedProperties.has("options") && this.options) {
+    if (_changedProperties.has('options') && this.options) {
       this.loadCanvas().then(() => {
-        console.log("canvas loaded.");
+        console.log('canvas loaded.');
       });
     }
   }

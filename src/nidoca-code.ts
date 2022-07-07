@@ -1,12 +1,12 @@
-import {css, html, LitElement} from "lit";
-import {customElement} from "lit/decorators.js";
-import {property} from "lit/decorators.js";
+import {css, html, LitElement} from 'lit';
+import {customElement} from 'lit/decorators.js';
+import {property} from 'lit/decorators.js';
 
-@customElement("nidoca-code")
+@customElement('nidoca-code')
 export class NidocaCode extends LitElement {
   static styles = css`
     :host {
-      display:block;
+      display: block;
     }
     pre {
       margin: 0;
@@ -26,7 +26,7 @@ export class NidocaCode extends LitElement {
       background: var(--app-color-surface-background);
       border-radius: 0.375em;
       border: solid 1px var(--app-color-surface-background-dark);
-      font-family: "Courier New", monospace;
+      font-family: 'Courier New', monospace;
       font-size: 0.85em;
       position: relative;
     }
@@ -40,7 +40,7 @@ export class NidocaCode extends LitElement {
   `;
 
   @property({type: String})
-  code: string = "";
+  code: string = '';
 
   render(): any {
     return html`

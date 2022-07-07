@@ -1,9 +1,9 @@
-import {css, html, TemplateResult, LitElement} from "lit";
-import {customElement, property, query} from "lit/decorators.js";
-import { ifDefined } from "lit/directives/if-defined.js";
-import {NidocaForm, NidocaFormTextType, NidocaTheme} from ".";
+import {css, html, TemplateResult, LitElement} from 'lit';
+import {customElement, property, query} from 'lit/decorators.js';
+import {ifDefined} from 'lit/directives/if-defined.js';
+import {NidocaForm, NidocaFormTextType, NidocaTheme} from '.';
 
-@customElement("nidoca-form-newsletter")
+@customElement('nidoca-form-newsletter')
 export class NidocaFormNewsletter extends LitElement {
   static styles = css`
     :host {
@@ -20,15 +20,15 @@ export class NidocaFormNewsletter extends LitElement {
   theme: string | undefined = NidocaTheme.PRIMARY;
 
   @property({type: String, converter: String})
-  label: string = "Newsletter";
+  label: string = 'Newsletter';
 
   @property({type: String, converter: String})
-  emailLabel: string = "Deine Emailadresse";
+  emailLabel: string = 'Deine Emailadresse';
 
   @property({type: String, converter: String})
-  buttonLabel: string = "Registrieren";
+  buttonLabel: string = 'Registrieren';
 
-  @query("#form")
+  @query('#form')
   formComponent: NidocaForm | undefined;
 
   render(): TemplateResult {
@@ -65,7 +65,7 @@ export class NidocaFormNewsletter extends LitElement {
   private register() {
     if (this.formComponent && this.formComponent.validate()) {
       this.dispatchEvent(
-        new CustomEvent("nidoca-form-newsletter-submit", {
+        new CustomEvent('nidoca-form-newsletter-submit', {
           detail: this.formComponent.getOutputData(),
           bubbles: true,
           composed: true,

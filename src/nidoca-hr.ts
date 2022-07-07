@@ -1,14 +1,14 @@
-import {css, html, TemplateResult, LitElement} from "lit";
-import {customElement} from "lit/decorators.js";
-import {property} from "lit/decorators.js";
-import {NidocaTheme} from "./nidoca-meta";
+import {css, html, TemplateResult, LitElement} from 'lit';
+import {customElement} from 'lit/decorators.js';
+import {property} from 'lit/decorators.js';
+import {NidocaTheme} from './nidoca-meta';
 
-@customElement("nidoca-hr")
+@customElement('nidoca-hr')
 export class NidocaHr extends LitElement {
   static styles = css`
     :host,
     ::slotted(:host) {
-      display:block;
+      display: block;
       padding-top: var(--space-4);
       padding-bottom: var(--space-4);
     }

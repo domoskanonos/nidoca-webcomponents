@@ -1,7 +1,7 @@
-import {css, html, LitElement, TemplateResult} from "lit";
-import {customElement} from "lit/decorators.js";
+import {css, html, LitElement, TemplateResult} from 'lit';
+import {customElement} from 'lit/decorators.js';
 
-@customElement("nidoca-page-imprint")
+@customElement('nidoca-page-imprint')
 export class NidocaPageSettings extends LitElement {
   static styles = css`
     nidoca-article {

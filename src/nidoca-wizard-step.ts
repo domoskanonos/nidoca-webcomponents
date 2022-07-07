@@ -1,7 +1,7 @@
-import {css, html, TemplateResult, LitElement} from "lit";
-import {customElement} from "lit/decorators.js";
-import {property} from "lit/decorators.js";
-import {NidocaIconShadowType} from ".";
+import {css, html, TemplateResult, LitElement} from 'lit';
+import {customElement} from 'lit/decorators.js';
+import {property} from 'lit/decorators.js';
+import {NidocaIconShadowType} from '.';
 
 export enum WizardStepState {
   CURRENT,
@@ -10,7 +10,7 @@ export enum WizardStepState {
   FINISH,
 }
 
-@customElement("nidoca-wizard-step")
+@customElement('nidoca-wizard-step')
 export class NidocaWizardStep extends LitElement {
   static styles = css`
     .wizard-step-connector {
@@ -27,10 +27,10 @@ export class NidocaWizardStep extends LitElement {
   `;
 
   @property({type: String})
-  icon: string = "";
+  icon: string = '';
 
   @property({type: String})
-  primaryText: string = "";
+  primaryText: string = '';
 
   @property({type: Number})
   state: WizardStepState | undefined;
@@ -69,38 +69,36 @@ export class NidocaWizardStep extends LitElement {
             : html`<nidoca-icon color="${this.determineBackgroundColor(this.state)}" icon="label_important">
               </nidoca-icon>`}
         </div>
-        <nidoca-text style="width:48px;" text="${this.primaryText}"
-          ><slot></slot>
-        </nidoca-text>
+        <nidoca-text style="width:48px;" text="${this.primaryText}"><slot></slot> </nidoca-text>
       </div>
     `;
   }
 
   private determineBackgroundColor(state: WizardStepState | undefined): string {
     return state == WizardStepState.COMPLETED
-      ? "var(--app-color-primary)"
+      ? 'var(--app-color-primary)'
       : state == WizardStepState.CURRENT
-      ? "var(--app-color-secondary-background)"
-      : "var(--app-color-surface-background)";
+      ? 'var(--app-color-secondary-background)'
+      : 'var(--app-color-surface-background)';
   }
 
   private determineColor(state: WizardStepState | undefined): string {
     return state == WizardStepState.FINISH
-      ? "var(--app-color-success)"
+      ? 'var(--app-color-success)'
       : state == WizardStepState.COMPLETED
-      ? "var(--mdc-theme-on-primary)"
+      ? 'var(--mdc-theme-on-primary)'
       : state == WizardStepState.CURRENT
-      ? "var(--app-color-secondary)"
-      : "var(--app-color-surface)";
+      ? 'var(--app-color-secondary)'
+      : 'var(--app-color-surface)';
   }
 
   stepClicked() {
-    const customEvent = new CustomEvent("nidoca-event-wizard-step-clicked", {
+    const customEvent = new CustomEvent('nidoca-event-wizard-step-clicked', {
       detail: this.index,
       bubbles: true,
       composed: true,
     });
-    console.debug("dispatch custom event type: %s, detail: %s", customEvent.type, JSON.stringify(customEvent.detail));
+    console.debug('dispatch custom event type: %s, detail: %s', customEvent.type, JSON.stringify(customEvent.detail));
     this.dispatchEvent(customEvent);
   }
 }

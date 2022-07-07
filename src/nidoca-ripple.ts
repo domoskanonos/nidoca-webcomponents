@@ -1,11 +1,11 @@
-import {css, html, TemplateResult, LitElement} from "lit";
-import {customElement} from "lit/decorators.js";
-import {query} from "lit/decorators.js";
+import {css, html, TemplateResult, LitElement} from 'lit';
+import {customElement} from 'lit/decorators.js';
+import {query} from 'lit/decorators.js';
 
 /**
  * check src: https://codepen.io/jakob-e/pen/XZoZWQ
  */
-@customElement("nidoca-ripple")
+@customElement('nidoca-ripple')
 export class NidocaRipple extends LitElement {
   static styles = css`
     :host {
@@ -32,13 +32,13 @@ export class NidocaRipple extends LitElement {
       box-sizing: inherit;
     }
 
-    [anim="ripple"] {
+    [anim='ripple'] {
       position: relative;
       overflow: hidden;
     }
 
-    [anim="ripple"]:before {
-      content: "";
+    [anim='ripple']:before {
+      content: '';
       position: absolute;
       display: block;
       background: var(--ripple-background, white);
@@ -58,7 +58,7 @@ export class NidocaRipple extends LitElement {
     }
   `;
 
-  @query("#rippleContainer")
+  @query('#rippleContainer')
   private rippleContainerElement: HTMLSpanElement | undefined;
 
   render(): TemplateResult {
@@ -76,7 +76,7 @@ export class NidocaRipple extends LitElement {
       }
       const r = this.rippleContainerElement.getBoundingClientRect(),
         d = Math.sqrt(Math.pow(r.width, 2) + Math.pow(r.height, 2)) * 2;
-      this.rippleContainerElement.style.cssText = "--s: 0; --o: 1;";
+      this.rippleContainerElement.style.cssText = '--s: 0; --o: 1;';
       this.rippleContainerElement.offsetTop;
       if (event instanceof MouseEvent || event instanceof Touch) {
         this.rippleContainerElement.style.cssText = `--t: 1; --o: 0; --d: ${d}; --x:${event.clientX - r.left}; --y:${

@@ -1,9 +1,9 @@
-import {css, html, LitElement, PropertyValues, TemplateResult} from "lit";
-import {customElement, property, query} from "lit/decorators.js";
-import {NidocaTheme} from ".";
-import {NidocaListItem} from "./nidoca-list-item";
+import {css, html, LitElement, PropertyValues, TemplateResult} from 'lit';
+import {customElement, property, query} from 'lit/decorators.js';
+import {NidocaTheme} from '.';
+import {NidocaListItem} from './nidoca-list-item';
 
-@customElement("nidoca-list")
+@customElement('nidoca-list')
 export class NidocaList extends LitElement {
   static styles = css`
     :host {
@@ -22,7 +22,7 @@ export class NidocaList extends LitElement {
   @property({type: Boolean})
   multiSelect: boolean = false;
 
-  @query("#slotElement")
+  @query('#slotElement')
   private slotElement: HTMLSlotElement | undefined;
 
   constructor() {
@@ -34,7 +34,7 @@ export class NidocaList extends LitElement {
     super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {
       console.debug(`${this.tagName} : property ${String(propName)} changed. oldValue: ${oldValue}`);
-      if (propName == "selectionMode") {
+      if (propName == 'selectionMode') {
         this.getItems().forEach((listItemComponent) => {
           listItemComponent.multiSelect = this.multiSelect;
         });
@@ -66,11 +66,10 @@ export class NidocaList extends LitElement {
           border-bottom-style: solid;
           border-width: var(--border-width-min);
         }
-        
+
         ::slotted(nidoca-list-item:hover) {
           filter: contrast(var(--app-color-percent-hover));
         }
-
       </style>
       <slot
         @nidoca-event-list-item-click="${(event: CustomEvent) => {
@@ -143,7 +142,7 @@ export class NidocaList extends LitElement {
   }
 
   unselectAll(): void {
-    console.log("sdojsdoijsoidjsdioj " + this.getItems().length);
+    console.log('sdojsdoijsoidjsdioj ' + this.getItems().length);
     this.getItems().forEach((item) => {
       item.selected = false;
     });

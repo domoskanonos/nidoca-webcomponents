@@ -1,4 +1,4 @@
-import {PropertyWrapper} from "./property-wrapper";
+import {PropertyWrapper} from './property-wrapper';
 
 export class WebcomponentWrapper {
   public instance: any;
@@ -16,7 +16,7 @@ export class WebcomponentWrapper {
   }
 
   getHTMLTag(): string {
-    return "<".concat(this.getTagName()).concat(">").concat("</").concat(this.getTagName()).concat(">");
+    return '<'.concat(this.getTagName()).concat('>').concat('</').concat(this.getTagName()).concat('>');
   }
 
   public getClazz(): unknown {
@@ -25,12 +25,12 @@ export class WebcomponentWrapper {
 
   public getSlotNames(): string[] {
     return this.getSlots().map((prop) => {
-      return prop.name ? prop.name : "default";
+      return prop.name ? prop.name : 'default';
     });
   }
 
   public getSlots(): HTMLSlotElement[] {
-    return this.getElementsByTagName("SLOT", this.instance.shadowRoot);
+    return this.getElementsByTagName('SLOT', this.instance.shadowRoot);
   }
 
   hasSlots(): boolean {
@@ -61,9 +61,9 @@ export class WebcomponentWrapper {
   }
 
   public getProperties(): PropertyWrapper[] {
-    const classProperties: Map<string, any> = (<any>this.instance.constructor)["elementProperties"];
+    const classProperties: Map<string, any> = (<any>this.instance.constructor)['elementProperties'];
     if (!classProperties) {
-      throw new Error("selected item malformed. no lit element ? wrong lit version ?");
+      throw new Error('selected item malformed. no lit element ? wrong lit version ?');
     }
     const classPropertyArray: PropertyWrapper[] = [];
     for (const key of Array.from(classProperties.keys())) {

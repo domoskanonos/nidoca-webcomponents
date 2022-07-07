@@ -1,9 +1,9 @@
-import {css, html, LitElement, TemplateResult} from "lit";
-import {customElement, property} from "lit/decorators.js";
-import {CRUDProperty, GenericPostgrestController} from "./components/nidoca-generic-crud";
-import {NidocaPostgrestClient} from "./service/nidoca-postgrest-client";
-import {Vorlage} from "./model/vorlage";
-import Mustache from "mustache";
+import {css, html, LitElement, TemplateResult} from 'lit';
+import {customElement, property} from 'lit/decorators.js';
+import {CRUDProperty, GenericPostgrestController} from './components/nidoca-generic-crud';
+import {NidocaPostgrestClient} from './service/nidoca-postgrest-client';
+import {Vorlage} from './model/vorlage';
+import Mustache from 'mustache';
 
 export class VorlageListController extends GenericPostgrestController<Vorlage> {
   getModel() {
@@ -11,11 +11,11 @@ export class VorlageListController extends GenericPostgrestController<Vorlage> {
   }
 
   getPath(): string {
-    return "/vorlage";
+    return '/vorlage';
   }
 
   getSectionKey(): string {
-    return "url";
+    return 'url';
   }
 
   getPrimaryText(item: Vorlage): string {
@@ -29,8 +29,8 @@ export class VorlageListController extends GenericPostgrestController<Vorlage> {
   getProperties(): CRUDProperty[] {
     const properties = super.getProperties();
     properties.forEach((propertie: CRUDProperty) => {
-      if (propertie.key == "template") propertie.type = "textarea";
-      if (propertie.key == "json") propertie.type = "textarea";
+      if (propertie.key == 'template') propertie.type = 'textarea';
+      if (propertie.key == 'json') propertie.type = 'textarea';
     });
     return properties;
   }
@@ -38,16 +38,16 @@ export class VorlageListController extends GenericPostgrestController<Vorlage> {
   async search(searchText: string): Promise<Vorlage[]> {
     const result: any[] | undefined = await NidocaPostgrestClient.search(
       this.getPath(),
-      "?offset=0&limit=100&order=name.asc&name=like.*"
+      '?offset=0&limit=100&order=name.asc&name=like.*'
         .concat(searchText)
-        .concat("*")
-        .concat(history.state ? (history.state.searchParam ? history.state.searchParam : "") : "")
+        .concat('*')
+        .concat(history.state ? (history.state.searchParam ? history.state.searchParam : '') : '')
     );
     return result ? result : [];
   }
 }
 
-@customElement("nidoca-page-vorlage")
+@customElement('nidoca-page-vorlage')
 export class NidocaPageVorlage extends LitElement {
   static styles = css``;
 
@@ -75,6 +75,6 @@ export class NidocaPageVorlage extends LitElement {
       console.log(output);
       return output;
     }
-    return "";
+    return '';
   }
 }

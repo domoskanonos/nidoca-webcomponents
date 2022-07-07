@@ -1,7 +1,7 @@
-export const DUMMY_IMAGE: string = "https://github.com/domoskanonos/nidoca-assets/raw/main/dummy.jpg";
-export const DUMMY_TITLE: string = "Lorem ipsum dolor sit amet";
+export const DUMMY_IMAGE: string = 'https://github.com/domoskanonos/nidoca-assets/raw/main/dummy.jpg';
+export const DUMMY_TITLE: string = 'Lorem ipsum dolor sit amet';
 export const DUMMY_DESCRIPTION: string =
-  "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.";
-export const DUMMY_DESCRIPTION_SHORT: string = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr.";
+  'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.';
+export const DUMMY_DESCRIPTION_SHORT: string = 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.';
 export const DUMMY_DESCRIPTION_LONG: string =
-  "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.";
+  'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.';

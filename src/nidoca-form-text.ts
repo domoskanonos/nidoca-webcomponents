@@ -1,31 +1,31 @@
-import {css, html, TemplateResult} from "lit";
-import {customElement} from "lit/decorators.js";
-import {property} from "lit/decorators.js";
-import {query} from "lit/decorators.js";
-import {ifDefined} from "lit/directives/if-defined.js";
-import {NidocaTheme} from ".";
-import {FormOutputData, NidocaFormAbstractInputElement} from "./nidoca-form-abstract-input-element";
+import {css, html, TemplateResult} from 'lit';
+import {customElement} from 'lit/decorators.js';
+import {property} from 'lit/decorators.js';
+import {query} from 'lit/decorators.js';
+import {ifDefined} from 'lit/directives/if-defined.js';
+import {NidocaTheme} from '.';
+import {FormOutputData, NidocaFormAbstractInputElement} from './nidoca-form-abstract-input-element';
 
 export enum NidocaFormTextType {
-    COLOR = "color",
-    EMAIL = "email",
-    HIDDEN = "hidden",
-    NUMBER = "number",
-    PASSWORD = "password",
-    TEL = "tel",
-    TEXT = "text",
-    SEARCH = "search",
-    URL = "url",
-    DATE = "date",
-    DATETIME_LOCAL = "datetime-local",
-    MONTH = "month",
-    TIME = "time",
-    WEEK = "week",
+  COLOR = 'color',
+  EMAIL = 'email',
+  HIDDEN = 'hidden',
+  NUMBER = 'number',
+  PASSWORD = 'password',
+  TEL = 'tel',
+  TEXT = 'text',
+  SEARCH = 'search',
+  URL = 'url',
+  DATE = 'date',
+  DATETIME_LOCAL = 'datetime-local',
+  MONTH = 'month',
+  TIME = 'time',
+  WEEK = 'week',
 }
 
-@customElement("nidoca-form-text")
+@customElement('nidoca-form-text')
 export class NidocaFormText extends NidocaFormAbstractInputElement {
-    static styles = css`
+  static styles = css`
     :host,
     slot {
       display: block;
@@ -40,7 +40,7 @@ export class NidocaFormText extends NidocaFormAbstractInputElement {
       border-bottom-style: solid;
       border-width: var(--border-width-min);
       height: var(--height-max);
-      box-sizing:border-box;
+      box-sizing: border-box;
     }
 
     .container {
@@ -71,168 +71,160 @@ export class NidocaFormText extends NidocaFormAbstractInputElement {
     }
   `;
 
-    @property({type: NidocaFormTextType, converter: String})
-    type: string = NidocaFormTextType.TEXT;
+  @property({type: NidocaFormTextType, converter: String})
+  type: string = NidocaFormTextType.TEXT;
 
-    @property({type: String})
-    label: string = "";
+  @property({type: String})
+  label: string = '';
 
-    @property({type: String})
-    placeholder: string = "";
+  @property({type: String})
+  placeholder: string = '';
 
-    @property({type: String})
-    trailingIcon: string = "";
+  @property({type: String})
+  trailingIcon: string = '';
 
-    @property({type: String})
-    errorText: string = "";
+  @property({type: String})
+  errorText: string = '';
 
-    @property({type: String})
-    infoText: string = "";
+  @property({type: String})
+  infoText: string = '';
 
-    @property({type: String})
-    warningText: string = "";
+  @property({type: String})
+  warningText: string = '';
 
-    @property({type: String})
-    name: string = "";
+  @property({type: String})
+  name: string = '';
 
-    @property()
-    value: string = "";
+  @property()
+  value: string = '';
 
-    @property({type: Boolean})
-    required: boolean = false;
+  @property({type: Boolean})
+  required: boolean = false;
 
-    @property({type: Boolean})
-    disabled: boolean = false;
+  @property({type: Boolean})
+  disabled: boolean = false;
 
-    @property({type: Boolean})
-    checked: boolean = false;
+  @property({type: Boolean})
+  checked: boolean = false;
 
-    @property({type: Number})
-    maxlength: number | undefined;
+  @property({type: Number})
+  maxlength: number | undefined;
 
-    @property({type: Number})
-    minlength: number | undefined;
+  @property({type: Number})
+  minlength: number | undefined;
 
-    @property({type: Number})
-    min: number | undefined;
+  @property({type: Number})
+  min: number | undefined;
 
-    @property({type: Number})
-    max: number | undefined;
+  @property({type: Number})
+  max: number | undefined;
 
-    @property({type: String})
-    step: number | undefined;
+  @property({type: String})
+  step: number | undefined;
 
-    @property({type: Number})
-    size: number | undefined;
+  @property({type: Number})
+  size: number | undefined;
 
-    @property({type: String})
-    pattern: string | undefined;
+  @property({type: String})
+  pattern: string | undefined;
 
-    @query("#inputElement")
-    private inputElement: HTMLInputElement | undefined;
+  @query('#inputElement')
+  private inputElement: HTMLInputElement | undefined;
 
-    @property({type: NidocaTheme, converter: String})
-    theme: string = NidocaTheme.SURFACE;
+  @property({type: NidocaTheme, converter: String})
+  theme: string = NidocaTheme.SURFACE;
 
-    render(): TemplateResult {
-        return this.type == NidocaFormTextType.HIDDEN
-            ? html`<input id="inputElement" name="${this.name}" type="${this.type}" value="${this.value}"/>`
-            : html`
-                    <style>
-                        .parentContainer,
-                        ::slotted(.parentContainer) {
-                            color: var(--app-color-${this.theme});
-                            background-color: var(--app-color-${this.theme}-background);
-                        }
-
-                        .parentContainer,
-                        ::slotted(.parentContainer) {
-                            border-color: var(--app-color-${this.theme}-border);
-                        }
-
-                        .parentContainer:focus-within,
-                        ::slotted(.parentContainer:focus-within) {
-                            border-color: var(--app-color-${this.theme}-border);
-                            filter: contrast(var(--app-color-percent-selected));    
-                        }
-
-                    </style>
-                    <div class="parentContainer border">
-                        ${this.trailingIcon
-                                ? html`
-                                    <nidoca-icon
-                                            style="font-size: var(--icon-size-big);padding-left:var(--space);padding-right:var(--space);"
-                                            icon="${this.trailingIcon}"
-                                    ></nidoca-icon>`
-                                : html``}
-                        <div class="container">
-                            <nidoca-text-caption class="label" text="${this.label}"></nidoca-text-caption>
-                            <input
-                                    id="inputElement"
-                                    name="${this.name}"
-                                    .type="${this.type}"
-                                    value="${this.value}"
-                                    placeholder="${this.placeholder}"
-                                    size="${ifDefined(this.size)}"
-                                    minlength="${ifDefined(this.minlength)}"
-                                    maxlength="${ifDefined(this.maxlength)}"
-                                    pattern="${ifDefined(this.pattern)}"
-                                    min="${ifDefined(this.min)}"
-                                    max="${ifDefined(this.max)}"
-                                    step="${ifDefined(this.step)}"
-                                    ?required="${this.required}"
-                                    ?disabled="${this.disabled}"
-                                    ?checked="${this.checked}"
-                            />
-                        </div>
-                    </div>
-
-                    ${this.infoText || this.warningText || this.errorText
-                            ? html`
-                                <div style="display:flex;flex-direction:column;">
-                                    ${this.infoText
-                                            ? html`
-                                                <nidoca-text-info text="${this.infoText}"></nidoca-text-info>`
-                                            : html``}
-                                    ${this.warningText
-                                            ? html`
-                                                <nidoca-text-warning
-                                                        style="color:var(--app-color-warning-background)"
-                                                        text="${this.warningText}"
-                                                ></nidoca-text-warning>`
-                                            : html``}
-                                    ${this.errorText
-                                            ? html`
-                                                <nidoca-text-error
-                                                        style="color:var(--app-color-error-background)"
-                                                        text="${this.errorText}"
-                                                ></nidoca-text-error>`
-                                            : html``}
-                                </div>
-                            `
-                            : html``}`;
-    }
-
-    getOutputData(): FormOutputData {
-        const outputValue: string | undefined = this.inputElement?.value;
-        return <FormOutputData>{
-            key: this.name,
-            value: outputValue?.trim(),
-        };
-    }
-
-    public validate(): boolean {
-        this.errorText = "";
-        if (
-            this.inputElement != null &&
-            !this.inputElement.validity.valid &&
-            this.inputElement.validationMessage != this.errorText
-        ) {
-            this.errorText = this.inputElement.validationMessage;
-            if (this.inputElement.validity.patternMismatch && this.pattern) {
-                this.errorText = this.errorText.concat(" Format: ").concat(this.pattern);
+  render(): TemplateResult {
+    return this.type == NidocaFormTextType.HIDDEN
+      ? html`<input id="inputElement" name="${this.name}" type="${this.type}" value="${this.value}" />`
+      : html` <style>
+            .parentContainer,
+            ::slotted(.parentContainer) {
+              color: var(--app-color-${this.theme});
+              background-color: var(--app-color-${this.theme}-background);
             }
-        }
-        return this.errorText == "";
+
+            .parentContainer,
+            ::slotted(.parentContainer) {
+              border-color: var(--app-color-${this.theme}-border);
+            }
+
+            .parentContainer:focus-within,
+            ::slotted(.parentContainer:focus-within) {
+              border-color: var(--app-color-${this.theme}-border);
+              filter: contrast(var(--app-color-percent-selected));
+            }
+          </style>
+          <div class="parentContainer border">
+            ${this.trailingIcon
+              ? html` <nidoca-icon
+                  style="font-size: var(--icon-size-big);padding-left:var(--space);padding-right:var(--space);"
+                  icon="${this.trailingIcon}"
+                ></nidoca-icon>`
+              : html``}
+            <div class="container">
+              <nidoca-text-caption class="label" text="${this.label}"></nidoca-text-caption>
+              <input
+                id="inputElement"
+                name="${this.name}"
+                .type="${this.type}"
+                value="${this.value}"
+                placeholder="${this.placeholder}"
+                size="${ifDefined(this.size)}"
+                minlength="${ifDefined(this.minlength)}"
+                maxlength="${ifDefined(this.maxlength)}"
+                pattern="${ifDefined(this.pattern)}"
+                min="${ifDefined(this.min)}"
+                max="${ifDefined(this.max)}"
+                step="${ifDefined(this.step)}"
+                ?required="${this.required}"
+                ?disabled="${this.disabled}"
+                ?checked="${this.checked}"
+              />
+            </div>
+          </div>
+
+          ${this.infoText || this.warningText || this.errorText
+            ? html`
+                <div style="display:flex;flex-direction:column;">
+                  ${this.infoText ? html` <nidoca-text-info text="${this.infoText}"></nidoca-text-info>` : html``}
+                  ${this.warningText
+                    ? html` <nidoca-text-warning
+                        style="color:var(--app-color-warning-background)"
+                        text="${this.warningText}"
+                      ></nidoca-text-warning>`
+                    : html``}
+                  ${this.errorText
+                    ? html` <nidoca-text-error
+                        style="color:var(--app-color-error-background)"
+                        text="${this.errorText}"
+                      ></nidoca-text-error>`
+                    : html``}
+                </div>
+              `
+            : html``}`;
+  }
+
+  getOutputData(): FormOutputData {
+    const outputValue: string | undefined = this.inputElement?.value;
+    return <FormOutputData>{
+      key: this.name,
+      value: outputValue?.trim(),
+    };
+  }
+
+  public validate(): boolean {
+    this.errorText = '';
+    if (
+      this.inputElement != null &&
+      !this.inputElement.validity.valid &&
+      this.inputElement.validationMessage != this.errorText
+    ) {
+      this.errorText = this.inputElement.validationMessage;
+      if (this.inputElement.validity.patternMismatch && this.pattern) {
+        this.errorText = this.errorText.concat(' Format: ').concat(this.pattern);
+      }
     }
+    return this.errorText == '';
+  }
 }

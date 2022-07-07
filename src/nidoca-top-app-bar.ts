@@ -1,12 +1,12 @@
-import {css, html, TemplateResult, LitElement} from "lit";
-import {customElement} from "lit/decorators.js";
-import {property} from "lit/decorators.js";
-import {NidocaTheme} from ".";
+import {css, html, TemplateResult, LitElement} from 'lit';
+import {customElement} from 'lit/decorators.js';
+import {property} from 'lit/decorators.js';
+import {NidocaTheme} from '.';
 
 /**
  * state: stable
  */
-@customElement("nidoca-top-app-bar")
+@customElement('nidoca-top-app-bar')
 export class NidocaTopAppBar extends LitElement {
   static styles = css`
     :host {
@@ -25,7 +25,7 @@ export class NidocaTopAppBar extends LitElement {
       align-content: space-around;
       width: 100%;
       height: var(--height-medium);
-      box-sizing:border-box;
+      box-sizing: border-box;
     }
 
     slot {

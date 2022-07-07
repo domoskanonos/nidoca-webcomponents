@@ -1,8 +1,8 @@
-import {css, html, LitElement, TemplateResult} from "lit";
-import {customElement} from "lit/decorators.js";
-import {Nidoca, NidocaTheme} from "..";
+import {css, html, LitElement, TemplateResult} from 'lit';
+import {customElement} from 'lit/decorators.js';
+import {Nidoca, NidocaTheme} from '..';
 
-@customElement("nidoca-page-main")
+@customElement('nidoca-page-main')
 export class NidocaPageMain extends LitElement {
   static styles = css``;
   render(): TemplateResult {
@@ -10,7 +10,7 @@ export class NidocaPageMain extends LitElement {
         <div style="display:flex;align-items:center;justify-content:center;align-content:flex-start;">
           <nidoca-img src="logo.svg" width="128px"></nidoca-img>
           <nidoca-text-h1 style="padding-left:var(--space-2);">nidoca-webcomponents</nidoca-text-h1>
-  </div>
+        </div>
       </nidoca-container>
 
       <nidoca-container .theme="${NidocaTheme.PRIMARY}">

@@ -1,11 +1,11 @@
-import {css, html, TemplateResult} from "lit";
-import {customElement} from "lit/decorators.js";
-import {property} from "lit/decorators.js";
-import {query} from "lit/decorators.js";
-import {NidocaTheme} from ".";
-import {FormOutputData, NidocaFormAbstractInputElement} from "./nidoca-form-abstract-input-element";
+import {css, html, TemplateResult} from 'lit';
+import {customElement} from 'lit/decorators.js';
+import {property} from 'lit/decorators.js';
+import {query} from 'lit/decorators.js';
+import {NidocaTheme} from '.';
+import {FormOutputData, NidocaFormAbstractInputElement} from './nidoca-form-abstract-input-element';
 
-@customElement("nidoca-form-switch")
+@customElement('nidoca-form-switch')
 export class NidocaFormSwitch extends NidocaFormAbstractInputElement {
   static styles = css`
     :host {
@@ -42,7 +42,7 @@ export class NidocaFormSwitch extends NidocaFormAbstractInputElement {
 
     .slider:before {
       position: absolute;
-      content: "";
+      content: '';
       height: 24px;
       width: 24px;
       left: 0px;
@@ -68,19 +68,19 @@ export class NidocaFormSwitch extends NidocaFormAbstractInputElement {
   `;
 
   @property({type: String})
-  name: string = "";
+  name: string = '';
 
   @property({type: String})
-  label: string = "";
+  label: string = '';
 
   @property({type: String})
-  infoText: string = "";
+  infoText: string = '';
 
   @property({type: String})
-  errorText: string = "";
+  errorText: string = '';
 
   @property({type: String})
-  warningText: string = "";
+  warningText: string = '';
 
   @property({type: Boolean})
   required: boolean = false;
@@ -94,7 +94,7 @@ export class NidocaFormSwitch extends NidocaFormAbstractInputElement {
   @property({type: String})
   theme: string = NidocaTheme.PRIMARY;
 
-  @query("#inputElement")
+  @query('#inputElement')
   private inputElement: HTMLInputElement | undefined;
 
   constructor() {
@@ -166,7 +166,7 @@ export class NidocaFormSwitch extends NidocaFormAbstractInputElement {
   }
 
   public validate(): boolean {
-    this.errorText = "";
+    this.errorText = '';
     if (
       this.inputElement != null &&
       !this.inputElement.validity.valid &&
@@ -174,6 +174,6 @@ export class NidocaFormSwitch extends NidocaFormAbstractInputElement {
     ) {
       this.errorText = this.inputElement.validationMessage;
     }
-    return this.errorText == "";
+    return this.errorText == '';
   }
 }

@@ -1,9 +1,9 @@
-import {css, html, LitElement, TemplateResult} from "lit";
-import {customElement} from "lit/decorators.js";
-import {property} from "lit/decorators.js";
-import {NidocaTransitionType} from "./nidoca-transition";
+import {css, html, LitElement, TemplateResult} from 'lit';
+import {customElement} from 'lit/decorators.js';
+import {property} from 'lit/decorators.js';
+import {NidocaTransitionType} from './nidoca-transition';
 
-@customElement("nidoca-dialog")
+@customElement('nidoca-dialog')
 export class NidocaDialog extends LitElement {
   static styles = css`
     .fullScreen {

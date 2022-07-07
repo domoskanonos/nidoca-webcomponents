@@ -1,8 +1,8 @@
-import {css, html, TemplateResult, LitElement} from "lit";
-import {customElement, property, query} from "lit/decorators.js";
-import {NidocaForm, NidocaFormTextType, NidocaTheme, NidocaFormText} from ".";
+import {css, html, TemplateResult, LitElement} from 'lit';
+import {customElement, property, query} from 'lit/decorators.js';
+import {NidocaForm, NidocaFormTextType, NidocaTheme, NidocaFormText} from '.';
 
-@customElement("nidoca-form-change-password")
+@customElement('nidoca-form-change-password')
 export class NidocaFormChangePassword extends LitElement {
   static styles = css`
     :host {
@@ -19,41 +19,41 @@ export class NidocaFormChangePassword extends LitElement {
   theme: string = NidocaTheme.SURFACE;
 
   @property({type: String, converter: String})
-  label: string = "Passwort ändern";
+  label: string = 'Passwort ändern';
 
   @property({type: String, converter: String})
-  oldPasswordLabel: string = "Altes Passwort";
+  oldPasswordLabel: string = 'Altes Passwort';
 
   @property({type: String, converter: String})
-  newPasswordLabel: string = "Neues Passwort";
+  newPasswordLabel: string = 'Neues Passwort';
 
   @property({type: String, converter: String})
-  repeatNewPasswordLabel: string = "Wiederholen";
+  repeatNewPasswordLabel: string = 'Wiederholen';
 
   @property({type: String, converter: String})
-  buttonLabel: string = "Ändern";
+  buttonLabel: string = 'Ändern';
 
-  @query("#form")
+  @query('#form')
   formComponent: NidocaForm | undefined;
 
-  @query("#oldPassword")
+  @query('#oldPassword')
   oldPasswordInputField: NidocaFormText | undefined;
 
-  @query("#newPassword")
+  @query('#newPassword')
   newPasswordInputField: NidocaFormText | undefined;
 
-  @query("#repeatNewPassword")
+  @query('#repeatNewPassword')
   repeatNewPasswordInputField: NidocaFormText | undefined;
 
   showErrorMessageSamePassword: boolean = false;
 
   @property()
-  errorMessageSamePasswordLabel: string = "Altes und neues Passwort dürfen nicht übereinstimmen.";
+  errorMessageSamePasswordLabel: string = 'Altes und neues Passwort dürfen nicht übereinstimmen.';
 
   showErrorMessagePasswordDiff: boolean = false;
 
   @property()
-  errorMessagePasswordDiffLabel: string = "Die Passwörter stimmen nicht überein";
+  errorMessagePasswordDiffLabel: string = 'Die Passwörter stimmen nicht überein';
 
   render(): TemplateResult {
     return html`
@@ -133,7 +133,7 @@ export class NidocaFormChangePassword extends LitElement {
 
     if (!this.showErrorMessagePasswordDiff && !this.showErrorMessageSamePassword) {
       this.dispatchEvent(
-        new CustomEvent("nidoca-form-change-password-submit", {
+        new CustomEvent('nidoca-form-change-password-submit', {
           detail: this.formComponent.getOutputData(),
           bubbles: true,
           composed: true,

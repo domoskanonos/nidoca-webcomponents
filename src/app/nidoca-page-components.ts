@@ -1,9 +1,9 @@
-import {css, html, LitElement, TemplateResult} from "lit";
-import {customElement, property} from "lit/decorators.js";
+import {css, html, LitElement, TemplateResult} from 'lit';
+import {customElement, property} from 'lit/decorators.js';
 
-import {Nidoca} from "..";
+import {Nidoca} from '..';
 
-@customElement("nidoca-page-components")
+@customElement('nidoca-page-components')
 export class NidocaPageGallery extends LitElement {
   static styles = css``;
 

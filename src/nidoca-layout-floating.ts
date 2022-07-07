@@ -1,8 +1,8 @@
-import {css, html, LitElement, TemplateResult} from "lit";
-import {customElement} from "lit/decorators.js";
-import {property} from "lit/decorators.js";
+import {css, html, LitElement, TemplateResult} from 'lit';
+import {customElement} from 'lit/decorators.js';
+import {property} from 'lit/decorators.js';
 
-@customElement("nidoca-layout-floating")
+@customElement('nidoca-layout-floating')
 export class NidocaLayoutFloatingContainer extends LitElement {
   static styles = css`
     .floatingContainer {
@@ -15,22 +15,22 @@ export class NidocaLayoutFloatingContainer extends LitElement {
   `;
 
   @property({type: String})
-  height: string = "auto";
+  height: string = 'auto';
 
   @property({type: String})
-  width: string = "auto";
+  width: string = 'auto';
 
   @property({type: String})
-  left: string = "auto";
+  left: string = 'auto';
 
   @property({type: String})
-  top: string = "auto";
+  top: string = 'auto';
 
   @property({type: String})
-  right: string = "auto";
+  right: string = 'auto';
 
   @property({type: String})
-  bottom: string = "auto";
+  bottom: string = 'auto';
 
   render(): TemplateResult {
     return html`
@@ -42,23 +42,23 @@ export class NidocaLayoutFloatingContainer extends LitElement {
   }
 
   private toStyle(height: string, width: string, left: string, right: string, top: string, bottom: string) {
-    return "height:"
+    return 'height:'
       .concat(height)
-      .concat(";")
-      .concat("width:")
+      .concat(';')
+      .concat('width:')
       .concat(width)
-      .concat(";")
-      .concat("left:")
+      .concat(';')
+      .concat('left:')
       .concat(left)
-      .concat(";")
-      .concat("right:")
+      .concat(';')
+      .concat('right:')
       .concat(right)
-      .concat(";")
-      .concat("top:")
+      .concat(';')
+      .concat('top:')
       .concat(top)
-      .concat(";")
-      .concat("bottom:")
+      .concat(';')
+      .concat('bottom:')
       .concat(bottom)
-      .concat(";");
+      .concat(';');
   }
 }

@@ -1,8 +1,8 @@
-import {NidocaRouter} from "@domoskanonos/nidoca-router";
-import {css, html, LitElement, TemplateResult} from "lit";
-import {customElement} from "lit/decorators.js";
+import {NidocaRouter} from '@domoskanonos/nidoca-router';
+import {css, html, LitElement, TemplateResult} from 'lit';
+import {customElement} from 'lit/decorators.js';
 
-@customElement("nidoca-elevation-settings")
+@customElement('nidoca-elevation-settings')
 export class NidocaElevationSettings extends LitElement {
   static styles = css``;
   render(): TemplateResult {
@@ -13,14 +13,14 @@ export class NidocaElevationSettings extends LitElement {
           text="Home"
           href="#main"
           .rendered="${true}"
-          @click="${() => NidocaRouter.getUniqueInstance().navigate("main")}"
+          @click="${() => NidocaRouter.getUniqueInstance().navigate('main')}"
         ></nidoca-list-item>
         <nidoca-list-item
           icon="home"
           text="Gallery"
           href="#main"
           .rendered="${true}"
-          @click="${() => NidocaRouter.getUniqueInstance().navigate("gallery")}"
+          @click="${() => NidocaRouter.getUniqueInstance().navigate('gallery')}"
         ></nidoca-list-item>
       </nidoca-list>
     `;

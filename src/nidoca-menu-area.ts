@@ -1,8 +1,8 @@
-import {css, html, TemplateResult, LitElement} from "lit";
-import {customElement} from "lit/decorators.js";
-import {property} from "lit/decorators.js";
+import {css, html, TemplateResult, LitElement} from 'lit';
+import {customElement} from 'lit/decorators.js';
+import {property} from 'lit/decorators.js';
 
-@customElement("nidoca-menu-area")
+@customElement('nidoca-menu-area')
 export class NidocaMenuArea extends LitElement {
   static styles = css`
     .container {
@@ -15,10 +15,10 @@ export class NidocaMenuArea extends LitElement {
   `;
 
   @property({type: String})
-  text: string = "";
+  text: string = '';
 
   @property({type: String})
-  icon: string = "";
+  icon: string = '';
 
   render(): TemplateResult {
     return html`

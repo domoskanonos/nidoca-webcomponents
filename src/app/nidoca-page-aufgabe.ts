@@ -1,55 +1,57 @@
-import {css, html, LitElement, TemplateResult} from "lit";
-import {customElement} from "lit/decorators.js";
-import {GenericPostgrestController} from "./components/nidoca-generic-crud";
-import {CRUDProperty} from "../nidoca-generic-crud";
-import {NidocaPostgrestClient} from "./service/nidoca-postgrest-client";
-import {Aufgabe} from "./model/aufgabe";
+import {css, html, LitElement, TemplateResult} from 'lit';
+import {customElement} from 'lit/decorators.js';
+import {GenericPostgrestController} from './components/nidoca-generic-crud';
+import {CRUDProperty} from '../nidoca-generic-crud';
+import {NidocaPostgrestClient} from './service/nidoca-postgrest-client';
+import {Aufgabe} from './model/aufgabe';
 
 export class AufgabeListController extends GenericPostgrestController<Aufgabe> {
-    getModel() {
-        return new Aufgabe();
-    }
+  getModel() {
+    return new Aufgabe();
+  }
 
-    getPath(): string {
-        return "/aufgabe";
-    }
+  getPath(): string {
+    return '/aufgabe';
+  }
 
-    getSectionKey(): string {
-        return "ablaufdatum";
-    }
+  getSectionKey(): string {
+    return 'ablaufdatum';
+  }
 
-    getPrimaryText(item: Aufgabe): string {
-        return item.titel;
-    }
+  getPrimaryText(item: Aufgabe): string {
+    return item.titel;
+  }
 
-    getSecondaryText(item: Aufgabe): string {
-        return item.beschreibung;
-    }
+  getSecondaryText(item: Aufgabe): string {
+    return item.beschreibung;
+  }
 
-    getProperties(): CRUDProperty[] {
-        const properties = super.getProperties();
-        properties.forEach((propertie: CRUDProperty) => {
-            if (propertie.key == "beschreibung") propertie.type = "textarea";
-            if (propertie.key == "ablaufdatum") propertie.required = true;
-        });
-        return properties;
-    }
+  getProperties(): CRUDProperty[] {
+    const properties = super.getProperties();
+    properties.forEach((propertie: CRUDProperty) => {
+      if (propertie.key == 'beschreibung') propertie.type = 'textarea';
+      if (propertie.key == 'ablaufdatum') propertie.required = true;
+    });
+    return properties;
+  }
 
-    async search(searchText: string): Promise<Aufgabe[]> {
-        const result: any[] | undefined = await NidocaPostgrestClient.search(
-            this.getPath(),
-            "?offset=0&limit=100&order=ablaufdatum.asc&titel=like.*".concat(searchText).concat("*").concat(history.state ? history.state.searchParam ? history.state.searchParam : "" : "")
-        );
-        return result ? result : [];
-    }
+  async search(searchText: string): Promise<Aufgabe[]> {
+    const result: any[] | undefined = await NidocaPostgrestClient.search(
+      this.getPath(),
+      '?offset=0&limit=100&order=ablaufdatum.asc&titel=like.*'
+        .concat(searchText)
+        .concat('*')
+        .concat(history.state ? (history.state.searchParam ? history.state.searchParam : '') : '')
+    );
+    return result ? result : [];
+  }
 }
 
-@customElement("nidoca-page-aufgabe")
+@customElement('nidoca-page-aufgabe')
 export class NidocaPageAufgabe extends LitElement {
-    static styles = css``;
+  static styles = css``;
 
-    render(): TemplateResult {
-        return html`
-            <nidoca-generic-crud .controller="${new AufgabeListController()}"></nidoca-generic-crud> `;
-    }
+  render(): TemplateResult {
+    return html` <nidoca-generic-crud .controller="${new AufgabeListController()}"></nidoca-generic-crud> `;
+  }
 }

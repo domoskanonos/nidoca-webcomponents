@@ -1,12 +1,12 @@
-import {css, html, LitElement, PropertyValues, TemplateResult} from "lit";
-import {customElement} from "lit/decorators.js";
-import {property} from "lit/decorators.js";
-import {query} from "lit/decorators.js";
-import { ifDefined } from "lit/directives/if-defined.js";
-import {NidocaTheme} from ".";
-import {NidocaFormText, NidocaFormTextType} from "./nidoca-form-text";
+import {css, html, LitElement, PropertyValues, TemplateResult} from 'lit';
+import {customElement} from 'lit/decorators.js';
+import {property} from 'lit/decorators.js';
+import {query} from 'lit/decorators.js';
+import {ifDefined} from 'lit/directives/if-defined.js';
+import {NidocaTheme} from '.';
+import {NidocaFormText, NidocaFormTextType} from './nidoca-form-text';
 
-@customElement("nidoca-form-captcha")
+@customElement('nidoca-form-captcha')
 export class NidocaFormCaptcha extends LitElement {
   static styles = css`
     :host {
@@ -19,13 +19,13 @@ export class NidocaFormCaptcha extends LitElement {
   theme: string | undefined;
 
   @property({type: String})
-  label: string = "";
+  label: string = '';
 
   @property({type: String})
-  placeholder: string = "";
+  placeholder: string = '';
 
   @property({type: String})
-  name: string = "";
+  name: string = '';
 
   @property({type: Number})
   min: number = 1;
@@ -34,12 +34,12 @@ export class NidocaFormCaptcha extends LitElement {
   max: number = 10;
 
   @property({type: String})
-  errorText: string = "";
+  errorText: string = '';
 
   private numberOne: number = 1;
   private numberTwo: number = 1;
 
-  @query("#inputfield")
+  @query('#inputfield')
   private inputfield: NidocaFormText | undefined;
 
   render(): TemplateResult {
@@ -49,11 +49,11 @@ export class NidocaFormCaptcha extends LitElement {
         id="inputfield"
         placeholder="${this.placeholder}"
         label="${this.label
-          .concat(" ")
+          .concat(' ')
           .concat(String(this.numberOne))
-          .concat(" + ")
+          .concat(' + ')
           .concat(String(this.numberTwo))
-          .concat(" = ?")}"
+          .concat(' = ?')}"
         @nidoca-form-text-focusout="${() => this.validate()}"
         name="${this.name}"
         trailingIcon="create"
@@ -64,7 +64,7 @@ export class NidocaFormCaptcha extends LitElement {
   }
 
   updated(_changedProperties: PropertyValues): void {
-    if (_changedProperties.has("min") || _changedProperties.has("max")) {
+    if (_changedProperties.has('min') || _changedProperties.has('max')) {
       this.generateNewNumber();
     }
     super.updated(_changedProperties);
@@ -91,7 +91,7 @@ export class NidocaFormCaptcha extends LitElement {
   public validate(): boolean {
     const isValid: boolean = this.isValid();
     if (isValid && this.inputfield != undefined) {
-      this.inputfield.errorText = "";
+      this.inputfield.errorText = '';
     } else if (this.inputfield != undefined) {
       this.inputfield.errorText = this.errorText;
     }

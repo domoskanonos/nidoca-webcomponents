@@ -1,7 +1,7 @@
-import {html, LitElement, TemplateResult} from "lit-element";
-import {WebcomponentWrapper} from "./webcomponent-wrapper";
-import {PropertyGuiWrapper} from "./property-gui-wrapper";
-import {WebcomponentViewer} from "..";
+import {html, LitElement, TemplateResult} from 'lit-element';
+import {WebcomponentWrapper} from './webcomponent-wrapper';
+import {PropertyGuiWrapper} from './property-gui-wrapper';
+import {WebcomponentViewer} from '..';
 
 export class WebcomponentGuiWrapper {
   constructor(public parent: WebcomponentViewer, public classWrapper: WebcomponentWrapper) {}
@@ -13,7 +13,7 @@ ${this.getPropertyGuiWrappers()
   .map((propertyGuiWrapper) => {
     return propertyGuiWrapper.getAsHtml(this);
   })
-  .join("")}></${this.classWrapper.getTagName()}>
+  .join('')}></${this.classWrapper.getTagName()}>
 `;
     return htmlString;
   }
@@ -27,7 +27,7 @@ ${this.getPropertyGuiWrappers()
     .map((propertyGuiWrapper) => {
       return propertyGuiWrapper.getAsJavascript(this);
     })
-    .join("  ")}</script>
+    .join('  ')}</script>
 `;
     return htmlString;
   }
@@ -39,7 +39,7 @@ const element : ${this.classWrapper.getClassName()} = document.getElementById("m
     .map((propertyGuiWrapper) => {
       return propertyGuiWrapper.getAsTypescript(this);
     })
-    .join("  ")}
+    .join('  ')}
 `;
     return htmlString;
   }
@@ -52,7 +52,7 @@ const element : ${this.classWrapper.getClassName()} = document.getElementById("m
     .map((propertyGuiWrapper) => {
       return propertyGuiWrapper.getAsLit(this);
     })
-    .join("  ")}>
+    .join('  ')}>
 `;
     return htmlString;
   }
@@ -60,17 +60,17 @@ const element : ${this.classWrapper.getClassName()} = document.getElementById("m
   public getAsAngular(): string {
     const htmlString: string = `<${this.classWrapper.getTagName()}
 ${this.getPropertyGuiWrappers()
-        .map((propertyGuiWrapper) => {
-          return propertyGuiWrapper.getAsAngular(this);
-        })
-        .join("  ")}></${this.classWrapper.getTagName()}>
+  .map((propertyGuiWrapper) => {
+    return propertyGuiWrapper.getAsAngular(this);
+  })
+  .join('  ')}></${this.classWrapper.getTagName()}>
 `;
     return htmlString;
   }
 
   private removeOwnTag(innerHTML: string) {
-    if (innerHTML.indexOf(">") > -1) {
-      innerHTML = innerHTML.substr(innerHTML.indexOf(">") + 1, innerHTML.length);
+    if (innerHTML.indexOf('>') > -1) {
+      innerHTML = innerHTML.substr(innerHTML.indexOf('>') + 1, innerHTML.length);
     }
     return innerHTML;
   }

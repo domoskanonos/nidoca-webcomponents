@@ -1,153 +1,156 @@
 export class JWT {
-    constructor(public token: string, public role: string, public email: string, public exp: number) {
-    }
+  constructor(public token: string, public role: string, public email: string, public exp: number) {}
 
-    getExpireDate() {
-        return new Date(this.exp * 1000);
-    }
+  getExpireDate() {
+    return new Date(this.exp * 1000);
+  }
 }
 
 export class NidocaPostgrestClient {
-    private static token_key: string = "token";
+  private static token_key: string = 'token';
 
-    public static HOST: string = "https://api.nidoca.com";
+  public static HOST: string = 'https://api.nidoca.com';
 
-    constructor(private host: string) {
-    }
+  constructor(private host: string) {}
 
-    static searchOr(items: any[], key: string) {
-        let searchOr = "";
-        items.forEach((item: any) => {
-            console.log(JSON.stringify(item));
-            if (item[key]) {
-                if (searchOr.length == 0) {
-                    searchOr = "&or=(";
-                } else {
-                    searchOr = searchOr.concat(",");
-                }
-                searchOr = searchOr.concat(`${key}.eq.${item[key]}`);
-            }
-        });
-        if (searchOr.length > 0) {
-            searchOr = searchOr.concat(")");
-        }
-        return searchOr;
-    }
-
-    static async login(username: string, password: string): Promise<boolean> {
-        console.log(`login ${username}`);
-        const response = await fetch(this.HOST.concat("/rpc/login"), <RequestInit>{
-            headers: {
-                "Content-Type": "application/json",
-            },
-            method: "POST",
-            body: JSON.stringify({
-                email: username,
-                pass: password,
-            }),
-        });
-
-        if (response.status == 200) {
-            const jwtToken: string = (await response.json()).token;
-            if (jwtToken) {
-                localStorage.setItem(NidocaPostgrestClient.token_key, jwtToken);
-            }
+  static searchOr(items: any[], key: string) {
+    let searchOr = '';
+    items.forEach((item: any) => {
+      console.log(JSON.stringify(item));
+      if (item[key]) {
+        if (searchOr.length == 0) {
+          searchOr = '&or=(';
         } else {
-            console.warn("login response status: ", response.status);
+          searchOr = searchOr.concat(',');
         }
-        return response.status == 200;
+        searchOr = searchOr.concat(`${key}.eq.${item[key]}`);
+      }
+    });
+    if (searchOr.length > 0) {
+      searchOr = searchOr.concat(')');
     }
+    return searchOr;
+  }
 
-    static parseJwt(token: string): JWT {
-        const base64Url = token.split(".")[1];
-        const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
-        const jsonPayload = decodeURIComponent(atob(base64).split("").map(function (c) {
-            return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
-        }).join(""));
-        const jwtObject: any = JSON.parse(jsonPayload);
-        const jwt: JWT = new JWT(token, jwtObject.role, jwtObject.email, jwtObject.exp);
-        return jwt;
+  static async login(username: string, password: string): Promise<boolean> {
+    console.log(`login ${username}`);
+    const response = await fetch(this.HOST.concat('/rpc/login'), <RequestInit>{
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      method: 'POST',
+      body: JSON.stringify({
+        email: username,
+        pass: password,
+      }),
+    });
+
+    if (response.status == 200) {
+      const jwtToken: string = (await response.json()).token;
+      if (jwtToken) {
+        localStorage.setItem(NidocaPostgrestClient.token_key, jwtToken);
+      }
+    } else {
+      console.warn('login response status: ', response.status);
     }
+    return response.status == 200;
+  }
 
-    public static getToken(): JWT | undefined {
-        const jwtToken = localStorage.getItem(NidocaPostgrestClient.token_key);
-        if (jwtToken) {
-            const jwt: JWT = this.parseJwt(jwtToken);
-            return jwt;
+  static parseJwt(token: string): JWT {
+    const base64Url = token.split('.')[1];
+    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    const jsonPayload = decodeURIComponent(
+      atob(base64)
+        .split('')
+        .map(function (c) {
+          return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+        })
+        .join('')
+    );
+    const jwtObject: any = JSON.parse(jsonPayload);
+    const jwt: JWT = new JWT(token, jwtObject.role, jwtObject.email, jwtObject.exp);
+    return jwt;
+  }
+
+  public static getToken(): JWT | undefined {
+    const jwtToken = localStorage.getItem(NidocaPostgrestClient.token_key);
+    if (jwtToken) {
+      const jwt: JWT = this.parseJwt(jwtToken);
+      return jwt;
+    }
+    return undefined;
+  }
+
+  public static async persist(path: string, item: any): Promise<any> {
+    const url: string = this.HOST.concat(path);
+    const resp = await this.request(url, 'POST', 'application/json; charset=utf-8', item);
+    console.log('persist item, value: %s', JSON.stringify(item));
+    return resp.status == 200 ? this.parse(await resp.text())[0] : undefined;
+  }
+
+  public static async update(path: string, id: any, item: any): Promise<boolean> {
+    const url: string = this.HOST.concat(path).concat('?id=eq.'.concat(id));
+    console.debug('update item value: %s', JSON.stringify(item));
+    const resp = await this.request(url, 'PUT', 'application/json; charset=utf-8', item);
+    console.log('item updated ? '.concat(String(resp.status)));
+    return resp.status == 200;
+  }
+
+  public static async delete(path: string, id: any): Promise<boolean> {
+    const url: string = this.HOST.concat(path).concat('?id=eq.').concat(id);
+    const resp = await this.request(url, 'DELETE', 'application/json; charset=utf-8', undefined);
+    console.debug('delete item for id= %s', id);
+    return resp.status == 200;
+  }
+
+  public static async search(path: string, params: string): Promise<any[] | undefined> {
+    const url: string = this.HOST.concat(path).concat(params);
+    const resp = await this.request(url, 'GET', 'application/json; charset=utf-8', undefined);
+    return resp.status == 200 ? this.parse(await resp.text()) : undefined;
+  }
+
+  public static async request(url: string, method: string, contentType: string, body: any): Promise<Response> {
+    const headers: HeadersInit = {};
+    headers['Accept-Encoding'] = '*';
+    headers['Content-Type'] = contentType;
+    headers['Prefer'] = 'return=representation';
+    const jwt = this.getToken();
+    if (jwt) headers['Authorization'] = `Bearer ${jwt.token}`;
+
+    const requestOptions: RequestInit = {
+      headers: headers,
+      method: method,
+      body: JSON.stringify(body),
+    };
+    const response = await fetch(url, requestOptions);
+    console.info('response status: ', response.status);
+    return response;
+  }
+
+  public static parse(json: string): any {
+    const regexISO = /(\d{4}-\d{2}-\d{2})[A-Z]+(\d{2}:\d{2}:\d{2}).([0-9+-:]+)/;
+    const regexJavaLocalDate = /(\d{4}-\d{2}-\d{2})/;
+    const regexs: any[] = [regexISO, regexJavaLocalDate];
+    return JSON.parse(json, function (_key, value) {
+      if (typeof value === 'string') {
+        for (let i = 0; i < regexs.length; i++) {
+          const regex = regexs[i];
+          const isoMatched = regex.exec(value);
+          if (isoMatched) {
+            value = new Date(value);
+            break;
+          }
         }
-        return undefined;
-    }
+      }
+      return value;
+    });
+  }
 
-    public static async persist(path: string, item: any): Promise<any> {
-        const url: string = this.HOST.concat(path);
-        const resp = await this.request(url, "POST", "application/json; charset=utf-8", item);
-        console.log("persist item, value: %s", JSON.stringify(item));
-        return resp.status == 200 ? this.parse(await resp.text())[0] : undefined;
-    }
+  static isLoggedIn() {
+    return this.getToken() != undefined;
+  }
 
-    public static async update(path: string, id: any, item: any): Promise<boolean> {
-        const url: string = this.HOST.concat(path).concat("?id=eq.".concat(id));
-        console.debug("update item value: %s", JSON.stringify(item));
-        const resp = await this.request(url, "PUT", "application/json; charset=utf-8", item);
-        console.log("item updated ? ".concat(String(resp.status)));
-        return resp.status == 200;
-    }
-
-    public static async delete(path: string, id: any): Promise<boolean> {
-        const url: string = this.HOST.concat(path).concat("?id=eq.").concat(id);
-        const resp = await this.request(url, "DELETE", "application/json; charset=utf-8", undefined);
-        console.debug("delete item for id= %s", id);
-        return resp.status == 200;
-    }
-
-    public static async search(path: string, params: string): Promise<any[] | undefined> {
-        const url: string = this.HOST.concat(path).concat(params);
-        const resp = await this.request(url, "GET", "application/json; charset=utf-8", undefined);
-        return resp.status == 200 ? this.parse(await resp.text()) : undefined;
-    }
-
-    public static async request(url: string, method: string, contentType: string, body: any): Promise<Response> {
-        const headers: HeadersInit = {};
-        headers["Accept-Encoding"] = "*";
-        headers["Content-Type"] = contentType;
-        headers["Prefer"] = "return=representation";
-        const jwt = this.getToken();
-        if (jwt) headers["Authorization"] = `Bearer ${jwt.token}`;
-
-        const requestOptions: RequestInit = {
-            headers: headers,
-            method: method,
-            body: JSON.stringify(body),
-        };
-        const response = await fetch(url, requestOptions);
-        console.info("response status: ", response.status);
-        return response;
-    }
-
-    public static parse(json: string): any {
-        const regexISO = /(\d{4}-\d{2}-\d{2})[A-Z]+(\d{2}:\d{2}:\d{2}).([0-9+-:]+)/;
-        const regexJavaLocalDate = /(\d{4}-\d{2}-\d{2})/;
-        const regexs: any[] = [regexISO, regexJavaLocalDate];
-        return JSON.parse(json, function (_key, value) {
-            if (typeof value === "string") {
-                for (let i = 0; i < regexs.length; i++) {
-                    const regex = regexs[i];
-                    const isoMatched = regex.exec(value);
-                    if (isoMatched) {
-                        value = new Date(value);
-                        break;
-                    }
-                }
-            }
-            return value;
-        });
-    }
-
-    static isLoggedIn() {
-        return this.getToken() != undefined;
-    }
-
-    static logout() {
-        localStorage.removeItem(this.token_key);
-    }
+  static logout() {
+    localStorage.removeItem(this.token_key);
+  }
 }

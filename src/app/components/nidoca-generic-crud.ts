@@ -1,13 +1,13 @@
-import {css, html, LitElement, PropertyValues, TemplateResult} from "lit";
-import {customElement, query} from "lit/decorators.js";
-import {property} from "lit/decorators.js";
-import {NidocaForm, NidocaFormTextType, NidocaSearchBar, NidocaTheme} from "../..";
-import {NidocaHelperForm} from "@domoskanonos/nidoca-form-helper";
-import {NidocaDateHelper} from "@domoskanonos/nidoca-date-helper";
-import {ifDefined} from "lit/directives/if-defined.js";
-import {NidocaPostgrestClient} from "../service/nidoca-postgrest-client";
+import {css, html, LitElement, PropertyValues, TemplateResult} from 'lit';
+import {customElement, query} from 'lit/decorators.js';
+import {property} from 'lit/decorators.js';
+import {NidocaForm, NidocaFormTextType, NidocaSearchBar, NidocaTheme} from '../..';
+import {NidocaHelperForm} from '@domoskanonos/nidoca-form-helper';
+import {NidocaDateHelper} from '@domoskanonos/nidoca-date-helper';
+import {ifDefined} from 'lit/directives/if-defined.js';
+import {NidocaPostgrestClient} from '../service/nidoca-postgrest-client';
 
-export type CRUDPropertyType = "id" | "object" | "date" | "checkbox" | "number" | "any" | "textarea" | "1:n";
+export type CRUDPropertyType = 'id' | 'object' | 'date' | 'checkbox' | 'number' | 'any' | 'textarea' | '1:n';
 
 export interface CRUDProperty {
   type: CRUDPropertyType;
@@ -17,8 +17,8 @@ export interface CRUDProperty {
 }
 
 export enum CRUDLabelKeys {
-  MODEL_SINGLE = "MODEL_SINGLE",
-  MODEL_MULTI = "MODEL_MULTI",
+  MODEL_SINGLE = 'MODEL_SINGLE',
+  MODEL_MULTI = 'MODEL_MULTI',
 }
 
 export abstract class GenericCRUDController<T> {
@@ -63,23 +63,23 @@ export abstract class GenericCRUDController<T> {
         key: key,
         type:
           this.getPrimaryIdKey() == key
-            ? "id"
-            : type == "object"
+            ? 'id'
+            : type == 'object'
             ? model[key] instanceof Date
-              ? "date"
-              : "object"
-            : type == "boolean"
-            ? "checkbox"
+              ? 'date'
+              : 'object'
+            : type == 'boolean'
+            ? 'checkbox'
             : type,
         required: false,
-        step: type == "number" ? 1 : undefined,
+        step: type == 'number' ? 1 : undefined,
       });
     });
   }
 
   getText(key: string): string {
     const value = this.labels.get(key);
-    return value ? value : "";
+    return value ? value : '';
   }
 
   getPropertie(key: string): CRUDProperty | undefined {
@@ -119,7 +119,7 @@ export abstract class GenericPostgrestController<T> extends GenericCRUDControlle
   }
 
   getPrimaryIdKey(): string {
-    return "id";
+    return 'id';
   }
 
   getSectionText(item: any): string {
@@ -128,13 +128,13 @@ export abstract class GenericPostgrestController<T> extends GenericCRUDControlle
     const sectionPropertie = this.getPropertie(sectionKey);
     if (sectionPropertie) {
       switch (sectionPropertie.type) {
-        case "date":
-          return nidocaDateHelper.formatDate(item.ablaufdatum, "dd.MM.yyyy");
+        case 'date':
+          return nidocaDateHelper.formatDate(item.ablaufdatum, 'dd.MM.yyyy');
         default:
           return item.name.charAt(0);
       }
     }
-    return "";
+    return '';
   }
 
   newSection(previousItem: any, item: any): boolean {
@@ -145,7 +145,7 @@ export abstract class GenericPostgrestController<T> extends GenericCRUDControlle
         const previousSectionText = this.getSectionText(previousItem);
         const sectionText = this.getSectionText(item);
         switch (sectionPropertie.type) {
-          case "date":
+          case 'date':
             return item[sectionKey].getTime() > previousItem[sectionKey].getTime();
           default:
             return previousSectionText.charAt(0) != sectionText.charAt(0);
@@ -160,7 +160,7 @@ export abstract class GenericPostgrestController<T> extends GenericCRUDControlle
   abstract getSectionKey(): string;
 }
 
-@customElement("nidoca-generic-crud")
+@customElement('nidoca-generic-crud')
 export class NidocaGenericCRUD extends LitElement {
   static styles = css`
     .formElement {
@@ -192,14 +192,14 @@ export class NidocaGenericCRUD extends LitElement {
   @property({type: NidocaTheme, converter: String})
   theme: string;
 
-  @query("#searchbar")
+  @query('#searchbar')
   private searchbar: NidocaSearchBar | undefined;
 
-  @query("#editForm")
+  @query('#editForm')
   editForm: NidocaForm | undefined;
 
   @property({type: String, converter: String})
-  errorMessage: string = "";
+  errorMessage: string = '';
 
   constructor() {
     super();
@@ -209,9 +209,9 @@ export class NidocaGenericCRUD extends LitElement {
   updated(changedProperties: PropertyValues): void {
     super.updated(changedProperties);
     changedProperties.forEach((_oldValue, propName) => {
-      if (propName == "controller" && this.controller) {
+      if (propName == 'controller' && this.controller) {
         this.properties = this.controller.getProperties();
-        this.controller.search("").then((items: any[]) => {
+        this.controller.search('').then((items: any[]) => {
           this.items = items;
           this.requestUpdate();
         });
@@ -270,11 +270,11 @@ export class NidocaGenericCRUD extends LitElement {
                       slot="right"
                       title="Speichern"
                       @nidoca-event-icon-clicked="${() => {
-                        this.errorMessage = "";
+                        this.errorMessage = '';
                         if (this.editForm && this.editForm.validate()) {
                           const nidocaFormHelper: NidocaHelperForm<any> = new NidocaHelperForm();
                           const currentItem = nidocaFormHelper.getCurrent(this.editForm);
-                          if (currentItem[this.getPrimaryIdKey()] == "") {
+                          if (currentItem[this.getPrimaryIdKey()] == '') {
                             currentItem[this.getPrimaryIdKey()] = null;
                             this.controller?.persist(currentItem).then((item: any) => {
                               this.item = undefined;
@@ -288,12 +288,12 @@ export class NidocaGenericCRUD extends LitElement {
                                 this.hideSidebox = true;
                                 this.updateList(currentItem);
                               } else {
-                                this.errorMessage = "Fehler beim Speichern";
+                                this.errorMessage = 'Fehler beim Speichern';
                               }
                             });
                           }
                         } else {
-                          this.errorMessage = "Das Formular enthält Fehler. Bitte überprüfen Sie den Inhalt";
+                          this.errorMessage = 'Das Formular enthält Fehler. Bitte überprüfen Sie den Inhalt';
                         }
                       }}"
                     ></nidoca-icon>
@@ -335,7 +335,7 @@ export class NidocaGenericCRUD extends LitElement {
                     ${this.properties.map((property: CRUDProperty) => {
                       let templateResult: TemplateResult;
                       switch (property.type) {
-                        case "id":
+                        case 'id':
                           templateResult = html`
                             <nidoca-form-text
                               class="formElement"
@@ -346,50 +346,50 @@ export class NidocaGenericCRUD extends LitElement {
                             </nidoca-form-text>
                           `;
                           break;
-                        case "any":
-                        case "object":
+                        case 'any':
+                        case 'object':
                           templateResult = html``;
                           break;
-                        case "date":
+                        case 'date':
                           templateResult = html` <nidoca-form-date
                             class="formElement"
                             name="${property.key}"
-                            label="${this.controller ? this.controller?.getText(property.key) : ""}"
+                            label="${this.controller ? this.controller?.getText(property.key) : ''}"
                             value="${this.item[property.key]
-                              ? this.nidocaDateHelper.formatDate(this.item[property.key], "yyyy-MM-dd")
-                              : ""}"
+                              ? this.nidocaDateHelper.formatDate(this.item[property.key], 'yyyy-MM-dd')
+                              : ''}"
                             ?required="${property.required}"
                           ></nidoca-form-date>`;
                           break;
-                        case "checkbox":
+                        case 'checkbox':
                           templateResult = html` <nidoca-form-switch
                             class="formElement"
                             name="${property.key}"
-                            label="${this.controller ? this.controller?.getText(property.key) : ""}"
+                            label="${this.controller ? this.controller?.getText(property.key) : ''}"
                             .checked="${this.item[property.key]}"
                           ></nidoca-form-switch>`;
                           break;
-                        case "textarea":
+                        case 'textarea':
                           templateResult = html` <nidoca-form-textarea
                             class="formElement"
                             type="${property.type}"
                             name="${property.key}"
-                            label="${this.controller ? this.controller?.getText(property.key) : ""}"
+                            label="${this.controller ? this.controller?.getText(property.key) : ''}"
                             value="${this.item[property.key]}"
                             ?required="${property.required}"
                           ></nidoca-form-textarea>`;
                           break;
-                        case "1:n":
+                        case '1:n':
                           templateResult = html``;
                           break;
-                        case "number":
+                        case 'number':
                         default:
                           templateResult = html` <nidoca-form-text
                             class="formElement"
                             type="text"
                             step="${ifDefined(property.step)}"
                             name="${property.key}"
-                            label="${this.controller ? this.controller?.getText(property.key) : ""}"
+                            label="${this.controller ? this.controller?.getText(property.key) : ''}"
                             value="${this.item[property.key]}"
                             ?required="${property.required}"
                           >
@@ -429,7 +429,7 @@ export class NidocaGenericCRUD extends LitElement {
           this.controller?.delete(this.item).then(() => {
             this.hideSidebox = true;
             this.showDeleteDialog = false;
-            this.search(this.searchbar ? this.searchbar.value : "");
+            this.search(this.searchbar ? this.searchbar.value : '');
           });
         }}"
       >
@@ -481,19 +481,19 @@ export class NidocaGenericCRUD extends LitElement {
     this.item = item;
     this.hideSidebox = false;
     this.dispatchEvent(
-      new CustomEvent("nidoca-event-generic-crud-new-item", {detail: item, bubbles: true, composed: true})
+      new CustomEvent('nidoca-event-generic-crud-new-item', {detail: item, bubbles: true, composed: true})
     );
   }
 
   getPrimaryIdKey() {
-    return this.controller ? this.controller.getPrimaryIdKey() : "id";
+    return this.controller ? this.controller.getPrimaryIdKey() : 'id';
   }
 
   getPrimaryText(item: any): string {
-    return this.controller ? this.controller.getPrimaryText(item) : "";
+    return this.controller ? this.controller.getPrimaryText(item) : '';
   }
 
   getSecondaryText(item: any): string {
-    return this.controller ? this.controller.getSecondaryText(item) : "";
+    return this.controller ? this.controller.getSecondaryText(item) : '';
   }
 }

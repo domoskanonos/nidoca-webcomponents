@@ -1,17 +1,17 @@
-import {css, html, TemplateResult, LitElement} from "lit";
-import {customElement} from "lit/decorators.js";
-import {property} from "lit/decorators.js";
-import {NidocaTheme} from "./nidoca-meta";
+import {css, html, TemplateResult, LitElement} from 'lit';
+import {customElement} from 'lit/decorators.js';
+import {property} from 'lit/decorators.js';
+import {NidocaTheme} from './nidoca-meta';
 
-@customElement("nidoca-icon")
+@customElement('nidoca-icon')
 export class NidocaIcon extends LitElement {
-    static styles = css`
+  static styles = css`
     :host {
       display: inline-block;
       font-size: var(--icon-size);
     }
     .material-icons {
-      font-family: "Material Icons";
+      font-family: 'Material Icons';
       font-weight: normal;
       font-style: normal;
       display: inline-block;
@@ -31,7 +31,7 @@ export class NidocaIcon extends LitElement {
       -moz-osx-font-smoothing: grayscale;
 
       /* Support for IE. */
-      font-feature-settings: "liga";
+      font-feature-settings: 'liga';
     }
 
     .clickable {
@@ -39,49 +39,48 @@ export class NidocaIcon extends LitElement {
     }
 
     .deactivated {
-        filter: brightness(var(--app-lighten-2));
+      filter: brightness(var(--app-lighten-2));
     }
-    
+
     .clickable:hover {
-        filter: brightness(var(--app-darken-2));
-     }
-    
+      filter: brightness(var(--app-darken-2));
+    }
   `;
 
-    @property({type: String})
-    icon: string = "";
+  @property({type: String})
+  icon: string = '';
 
-    @property({type: Boolean})
-    clickable: boolean = true;
+  @property({type: Boolean})
+  clickable: boolean = true;
 
-    @property({type: Boolean})
-    deactivated: boolean = false;
+  @property({type: Boolean})
+  deactivated: boolean = false;
 
-    @property({type: String})
-    primaryText: string = "";
+  @property({type: String})
+  primaryText: string = '';
 
-    render(): TemplateResult {
-        return html`
-            <i
-                    class="material-icons ${this.deactivated ? "deactivated" : ""} ${this.clickable ? "clickable" : ""}"
-                    title="${this.primaryText}"
-                    @click="${this.clicked}"
-            >${this.icon}</i
-            >
-        `;
+  render(): TemplateResult {
+    return html`
+      <i
+        class="material-icons ${this.deactivated ? 'deactivated' : ''} ${this.clickable ? 'clickable' : ''}"
+        title="${this.primaryText}"
+        @click="${this.clicked}"
+        >${this.icon}</i
+      >
+    `;
+  }
+
+  async clicked(): Promise<void> {
+    if (this.clickable && !this.deactivated) {
+      const customEventName = 'nidoca-event-icon-clicked';
+      console.log('dispatch custom event: %s', customEventName);
+      this.dispatchEvent(
+        new CustomEvent(customEventName, {
+          detail: this,
+          bubbles: true,
+          composed: true,
+        })
+      );
     }
-
-    async clicked(): Promise<void> {
-        if (this.clickable && !this.deactivated) {
-            const customEventName = "nidoca-event-icon-clicked";
-            console.log("dispatch custom event: %s", customEventName);
-            this.dispatchEvent(
-                new CustomEvent(customEventName, {
-                    detail: this,
-                    bubbles: true,
-                    composed: true,
-                })
-            );
-        }
-    }
+  }
 }

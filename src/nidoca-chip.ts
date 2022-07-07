@@ -1,8 +1,8 @@
-import {css, html, LitElement, TemplateResult} from "lit";
-import {customElement} from "lit/decorators.js";
-import {property} from "lit/decorators.js";
+import {css, html, LitElement, TemplateResult} from 'lit';
+import {customElement} from 'lit/decorators.js';
+import {property} from 'lit/decorators.js';
 
-@customElement("nidoca-chip")
+@customElement('nidoca-chip')
 export class NidocaChip extends LitElement {
   static styles = css`
     .chip {
@@ -27,7 +27,7 @@ export class NidocaChip extends LitElement {
 
   render(): TemplateResult {
     return html`
-      <div class="chip ${this.clickable ? "clickable" : ""}">
+      <div class="chip ${this.clickable ? 'clickable' : ''}">
         <slot></slot>
       </div>
     `;

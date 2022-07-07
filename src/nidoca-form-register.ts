@@ -1,14 +1,14 @@
-import {css, html, LitElement, TemplateResult} from "lit";
-import {customElement, property, query} from "lit/decorators.js";
-import { ifDefined } from "lit/directives/if-defined.js";
-import {NidocaForm, NidocaTheme,  NidocaFormTextType} from "./index";
+import {css, html, LitElement, TemplateResult} from 'lit';
+import {customElement, property, query} from 'lit/decorators.js';
+import {ifDefined} from 'lit/directives/if-defined.js';
+import {NidocaForm, NidocaTheme, NidocaFormTextType} from './index';
 
-@customElement("nidoca-form-register")
+@customElement('nidoca-form-register')
 export class NidocaFormRegister extends LitElement {
   static styles = css`
     :host {
       display: block;
-      width:100%;
+      width: 100%;
     }
 
     .paddingBottom {
@@ -20,18 +20,18 @@ export class NidocaFormRegister extends LitElement {
   theme: string | undefined = NidocaTheme.PRIMARY;
 
   @property({type: String, converter: String})
-  label: string = "Registrieren";
+  label: string = 'Registrieren';
 
   @property({type: String, converter: String})
-  emailLabel: string = "Email";
+  emailLabel: string = 'Email';
 
   @property({type: String, converter: String})
-  passwordLabel: string = "Passwort";
+  passwordLabel: string = 'Passwort';
 
   @property({type: String, converter: String})
-  buttonLabel: string = "Registrieren";
+  buttonLabel: string = 'Registrieren';
 
-  @query("#form")
+  @query('#form')
   formComponent: NidocaForm | undefined;
 
   render(): TemplateResult {
@@ -79,7 +79,7 @@ export class NidocaFormRegister extends LitElement {
   private register() {
     if (this.formComponent && this.formComponent.validate()) {
       this.dispatchEvent(
-        new CustomEvent("nidoca-form-register-submit", {
+        new CustomEvent('nidoca-form-register-submit', {
           detail: this.formComponent.getOutputData(),
           bubbles: true,
           composed: true,

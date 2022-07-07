@@ -1,8 +1,8 @@
-import {css, html, TemplateResult, LitElement} from "lit";
-import {customElement, property, query} from "lit/decorators.js";
-import {NidocaForm, NidocaFormTextType, NidocaTheme} from ".";
+import {css, html, TemplateResult, LitElement} from 'lit';
+import {customElement, property, query} from 'lit/decorators.js';
+import {NidocaForm, NidocaFormTextType, NidocaTheme} from '.';
 
-@customElement("nidoca-form-reset-password")
+@customElement('nidoca-form-reset-password')
 export class NidocaFormResetPassword extends LitElement {
   static styles = css`
     :host {
@@ -19,15 +19,15 @@ export class NidocaFormResetPassword extends LitElement {
   theme: string = NidocaTheme.PRIMARY;
 
   @property({type: String, converter: String})
-  label: string = "Passwort zurücksetzen";
+  label: string = 'Passwort zurücksetzen';
 
   @property({type: String, converter: String})
-  emailLabel: string = "Deine Emailadresse";
+  emailLabel: string = 'Deine Emailadresse';
 
   @property({type: String, converter: String})
-  buttonLabel: string = "Zurücksetzen";
+  buttonLabel: string = 'Zurücksetzen';
 
-  @query("#form")
+  @query('#form')
   formComponent: NidocaForm | undefined;
 
   render(): TemplateResult {
@@ -64,7 +64,7 @@ export class NidocaFormResetPassword extends LitElement {
   private register() {
     if (this.formComponent && this.formComponent.validate()) {
       this.dispatchEvent(
-        new CustomEvent("nidoca-form-reset-password-submit", {
+        new CustomEvent('nidoca-form-reset-password-submit', {
           detail: this.formComponent.getOutputData(),
           bubbles: true,
           composed: true,

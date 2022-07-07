@@ -1,19 +1,19 @@
-import {css, html, TemplateResult, LitElement, PropertyValues} from "lit";
-import {customElement, query} from "lit/decorators.js";
-import {property} from "lit/decorators.js";
-import {NidocaIcon, NidocaTheme} from ".";
+import {css, html, TemplateResult, LitElement, PropertyValues} from 'lit';
+import {customElement, query} from 'lit/decorators.js';
+import {property} from 'lit/decorators.js';
+import {NidocaIcon, NidocaTheme} from '.';
 
 export class NidocaIconShadowType {
-    static readonly NONE = "NONE";
-    static readonly DEFAULT_SHADOW = "DEFAULT_SHADOW";
-    static readonly SHADOW_1 = "SHADOW_1";
-    static readonly SHADOW_2 = "SHADOW_2";
-    static readonly SHADOW_3 = "SHADOW_3";
+  static readonly NONE = 'NONE';
+  static readonly DEFAULT_SHADOW = 'DEFAULT_SHADOW';
+  static readonly SHADOW_1 = 'SHADOW_1';
+  static readonly SHADOW_2 = 'SHADOW_2';
+  static readonly SHADOW_3 = 'SHADOW_3';
 }
 
-@customElement("nidoca-icon-extended")
+@customElement('nidoca-icon-extended')
 export class NidocaIconExtended extends LitElement {
-    static styles = css`
+  static styles = css`
     .round {
       -moz-border-radius: 50%;
       -webkit-border-radius: 50%;
@@ -45,53 +45,53 @@ export class NidocaIconExtended extends LitElement {
     }
   `;
 
-    @property({type: String})
-    theme: string = NidocaTheme.PRIMARY;
+  @property({type: String})
+  theme: string = NidocaTheme.PRIMARY;
 
-    @property({type: Object})
-    shadowType: NidocaIconShadowType = NidocaIconShadowType.DEFAULT_SHADOW;
+  @property({type: Object})
+  shadowType: NidocaIconShadowType = NidocaIconShadowType.DEFAULT_SHADOW;
 
-    @property({type: String})
-    icon: string = "";
+  @property({type: String})
+  icon: string = '';
 
-    @property({type: Boolean})
-    clickable: boolean = true;
+  @property({type: Boolean})
+  clickable: boolean = true;
 
-    @property({type: Boolean})
-    deactivated: boolean = false;
+  @property({type: Boolean})
+  deactivated: boolean = false;
 
-    render(): TemplateResult {
-        return html`
-            <style>
-                .iconExtended {
-                    display: inline-block;
-                    color: var(--app-color-${this.theme});
-                    background-color: var(--app-color-${this.theme}-background);
-                }
-            </style>
+  render(): TemplateResult {
+    return html`
+      <style>
+        .iconExtended {
+          display: inline-block;
+          color: var(--app-color-${this.theme});
+          background-color: var(--app-color-${this.theme}-background);
+        }
+      </style>
 
-            <span class="iconExtended round ${this.shadowType}">
+      <span class="iconExtended round ${this.shadowType}">
         <nidoca-icon
-                .deactivated="${this.deactivated}"
-                .clickable="${this.clickable}"
-                icon="${this.icon}"
-                style="font-size: inherit;"
+          .deactivated="${this.deactivated}"
+          .clickable="${this.clickable}"
+          icon="${this.icon}"
+          style="font-size: inherit;"
         ></nidoca-icon>
       </span>
-        `;
-    }
+    `;
+  }
 
-    async clicked(): Promise<void> {
-        if (this.clickable && !this.deactivated) {
-            const customEventName = "nidoca-event-icon-clicked";
-            console.log("dispatch custom event: %s", customEventName);
-            this.dispatchEvent(
-                new CustomEvent(customEventName, {
-                    detail: this,
-                    bubbles: true,
-                    composed: true,
-                })
-            );
-        }
+  async clicked(): Promise<void> {
+    if (this.clickable && !this.deactivated) {
+      const customEventName = 'nidoca-event-icon-clicked';
+      console.log('dispatch custom event: %s', customEventName);
+      this.dispatchEvent(
+        new CustomEvent(customEventName, {
+          detail: this,
+          bubbles: true,
+          composed: true,
+        })
+      );
     }
+  }
 }
