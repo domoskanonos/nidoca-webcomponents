@@ -1,6 +1,5 @@
 import {css, html, LitElement, TemplateResult} from 'lit';
 import {customElement} from 'lit/decorators.js';
-import {Nidoca, NidocaTheme} from '..';
 
 @customElement('nidoca-page-main')
 export class NidocaPageMain extends LitElement {
@@ -13,13 +12,12 @@ export class NidocaPageMain extends LitElement {
         </div>
       </nidoca-container>
 
-      <nidoca-container .theme="${NidocaTheme.PRIMARY}">
+      <nidoca-container theme="primary">
         <nidoca-section>
           <nidoca-icon-with-description title="Komponentenbibliothek" icon="local_library">
-            Die Nidoca Webcomponents ist eine Sammlung von Webkomponenten mit über
-            ${Nidoca.getUniqueInstance().registeredElementNames.length} Komponenten. Diese sind für den direkten Einsatz
-            in deiner Webanwendung. Egal ob normales HTML, Angular, React, Lit. Die Komponenten können dank der
-            Webcomponent Technologie überall in andere Frameworks eingebaungen werden.
+            Die Nidoca Webcomponents ist eine Sammlung von Webkomponenten mit über 36 Komponenten. Diese sind für den
+            direkten Einsatz in deiner Webanwendung. Egal ob normales HTML, Angular, React, Lit. Die Komponenten können
+            dank der Webcomponent Technologie überall in andere Frameworks eingebaungen werden.
           </nidoca-icon-with-description>
           <nidoca-icon-with-description title="Leichtgewichtig" icon="code">
             Es ist ein sehr kleines, leichtes Komponenten-Framework, das nur 32 KB klein ist. Es enthält mehr als 30

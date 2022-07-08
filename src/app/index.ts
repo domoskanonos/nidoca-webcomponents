@@ -1,26 +1,9 @@
 import '../index';
 
-import '../webcomponent-viewer/index';
-
 import './nidoca-page-main';
-import './nidoca-page-dashboard';
-import './nidoca-page-playground';
-import './nidoca-page-components';
 import './nidoca-page-imprint';
 import './nidoca-page-settings';
 import './nidoca-page-privacy';
 import './nidoca-page-terms-of-use';
-
-import './nidoca-page-vertrag';
-import './nidoca-page-aufgabe';
-import './nidoca-page-konto';
-import './nidoca-page-kontakt';
-import './nidoca-page-projekt';
-import './nidoca-page-modul';
-import './nidoca-page-vorlage';
-
-import './nidoca-elevation-settings';
-
-import '../nidoca-form-login';
 
 export * from './nidoca-my-app';

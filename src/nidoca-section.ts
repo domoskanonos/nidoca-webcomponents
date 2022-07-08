@@ -1,6 +1,5 @@
 import {css, html, LitElement, TemplateResult} from 'lit';
 import {customElement} from 'lit/decorators.js';
-import {NidocaDevice} from '.';
 
 @customElement('nidoca-section')
 export class NidocaSection extends LitElement {
@@ -18,14 +17,13 @@ export class NidocaSection extends LitElement {
       justify-content: center;
     }
 
-    @media only screen and (min-width: ${NidocaDevice.TABLET.minWidth}px) and (max-width: ${NidocaDevice.TABLET
-        .maxWidth}px) {
+    @media only screen and (min-width: 641px) and (max-width: 1007px) {
       .item {
         flex-basis: 100%;
       }
     }
 
-    @media only screen and (max-width: ${NidocaDevice.MOBILE.maxWidth}px) {
+    @media only screen and (max-width: 10240px) {
       .container {
         width: 100%;
         flex-direction: column;

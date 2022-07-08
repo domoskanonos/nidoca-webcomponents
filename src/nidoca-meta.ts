@@ -1,20 +1,4 @@
-export const MOBILE_MIN_WIDTH = 0;
-export const MOBILE_MAX_WIDTH = 640;
-export const TABLET_MIN_WIDTH = 641;
-export const TABLET_MAX_WIDTH = 1007;
-export const DESKTOP_MIN_WIDTH = 1008;
-
-import {html, HTMLTemplateResult, LitElement, TemplateResult} from 'lit';
-import {
-  NidocaAvatar,
-  NidocaBox,
-  NidocaButtonType,
-  NidocaIcon,
-  NidocaImg,
-  NidocaMenu,
-  NidocaMovie,
-  NidocaProgress,
-} from '.';
+import {html, HTMLTemplateResult} from 'lit';
 
 export class NidocaTheme {
   static getStyle(theme: NidocaTheme | string | undefined): HTMLTemplateResult {
