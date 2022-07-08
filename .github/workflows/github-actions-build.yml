@@ -12,15 +12,7 @@ jobs:
         with:
           node-version: '16.x'
           registry-url: 'https://registry.npmjs.org'
-      - run: npm i
-      - run: npm run ts
-      - run: npm run eslint
-      - run: npm run lit-analyzer
-      - run: npm run typedocs
-      - run: npm run docs-webcomponents
-      - run: npm run build:webcomponents
-      - run: npm run build:app
-      - run: npm run build:webcomponent-viewer
+      - run: npm build
       - uses: JamesIves/github-pages-deploy-action@v4
         with:
           token: ${{ secrets.DEPLOY_DOCUMENTATION_TOKEN }}
