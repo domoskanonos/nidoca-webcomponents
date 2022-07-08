@@ -1,9 +1,8 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyPlugin = require('copy-webpack-plugin');
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import CopyPlugin from 'copy-webpack-plugin';
+import path from 'path';
 
-const path = require('path');
-
-module.exports = {
+export default {
   entry: './src/index.ts',
   module: {
     rules: [
