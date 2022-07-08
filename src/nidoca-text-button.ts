@@ -1,10 +1,10 @@
-import {css, html, TemplateResult} from "lit";
-import {customElement} from "lit/decorators.js";
-import {NidocaText} from ".";
+import {css, html, TemplateResult} from 'lit';
+import {customElement} from 'lit/decorators.js';
+import {NidocaText} from '.';
 
-@customElement("nidoca-text-button")
+@customElement('nidoca-text-button')
 export class NidocaTextButton extends NidocaText {
-    static styles = css`
+  static styles = css`
     :host,
     slot,
     ::slotted(:host),
@@ -12,13 +12,12 @@ export class NidocaTextButton extends NidocaText {
       display: block;
       font-weight: 600;
       text-transform: uppercase;
-      line-height:1.5em;
+      line-height: 1.5em;
       filter: brightness(var(--app-lighten-3));
     }
   `;
 
-    render(): TemplateResult {
-        return html`
-            ${super.render()}`;
-    }
+  render(): TemplateResult {
+    return html` ${super.render()}`;
+  }
 }

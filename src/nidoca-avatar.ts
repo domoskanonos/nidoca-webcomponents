@@ -1,9 +1,9 @@
-import {css, html, LitElement, TemplateResult} from "lit";
-import {customElement} from "lit/decorators.js";
-import {property} from "lit/decorators.js";
-import {NidocaImgProperties} from "./nidoca-img copy";
+import {css, html, LitElement, TemplateResult} from 'lit';
+import {customElement} from 'lit/decorators.js';
+import {property} from 'lit/decorators.js';
+import {NidocaImgProperties} from './nidoca-img copy';
 
-@customElement("nidoca-avatar")
+@customElement('nidoca-avatar')
 export class NidocaAvatar extends LitElement {
   static styles = css`
     :host {
@@ -12,7 +12,7 @@ export class NidocaAvatar extends LitElement {
   `;
 
   @property({type: String})
-  imgSrc: string = "";
+  imgSrc: string = '';
 
   render(): TemplateResult {
     return html`

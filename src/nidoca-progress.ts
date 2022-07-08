@@ -1,14 +1,14 @@
-import {css, html, TemplateResult, LitElement} from "lit";
-import {customElement} from "lit/decorators.js";
-import {property} from "lit/decorators.js";
-import {NidocaTheme} from ".";
+import {css, html, TemplateResult, LitElement} from 'lit';
+import {customElement} from 'lit/decorators.js';
+import {property} from 'lit/decorators.js';
+import {NidocaTheme} from '.';
 
 export class ProgressType {
-  static readonly PROGRESS = "PROGRESS";
-  static readonly PROGRESS_CIRCULAR = "PROGRESS_CIRCULAR";
+  static readonly PROGRESS = 'PROGRESS';
+  static readonly PROGRESS_CIRCULAR = 'PROGRESS_CIRCULAR';
 }
 
-@customElement("nidoca-progress")
+@customElement('nidoca-progress')
 export class NidocaProgress extends LitElement {
   static styles = css``;
 
@@ -132,7 +132,7 @@ export class NidocaProgress extends LitElement {
 
         .PROGRESS_CIRCULAR:indeterminate::before,
         .PROGRESS_CIRCULAR:indeterminate::-webkit-progress-value {
-          content: "";
+          content: '';
           display: block;
           box-sizing: border-box;
           margin-bottom: 0.25em;

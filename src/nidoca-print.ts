@@ -1,7 +1,7 @@
-import {css, html, TemplateResult, LitElement} from "lit";
-import {customElement} from "lit/decorators.js";
+import {css, html, TemplateResult, LitElement} from 'lit';
+import {customElement} from 'lit/decorators.js';
 
-@customElement("nidoca-print")
+@customElement('nidoca-print')
 export class NidocaPrint extends LitElement {
   static styles = css`
     :host {
@@ -14,7 +14,7 @@ export class NidocaPrint extends LitElement {
   }
 
   print(): void {
-    const printWindow: Window | null = window.open("");
+    const printWindow: Window | null = window.open('');
     if (printWindow) {
       printWindow.document.write(this.innerHTML);
       printWindow.print();

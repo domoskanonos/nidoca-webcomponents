@@ -1,8 +1,8 @@
-import {css, html, TemplateResult, LitElement} from "lit";
-import {customElement} from "lit/decorators.js";
-import {property} from "lit/decorators.js";
+import {css, html, TemplateResult, LitElement} from 'lit';
+import {customElement} from 'lit/decorators.js';
+import {property} from 'lit/decorators.js';
 
-@customElement("nidoca-article")
+@customElement('nidoca-article')
 export class NidocaArticle extends LitElement {
   static styles = css`
     :host {
@@ -16,22 +16,21 @@ export class NidocaArticle extends LitElement {
     }
 
     .paddingBottom {
-      padding-bottom:var(--space-2);
+      padding-bottom: var(--space-2);
     }
-
   `;
 
   @property({type: String})
-  overline: string = "";
+  overline: string = '';
 
   @property({type: String})
-  title: string = "";
+  title: string = '';
 
   @property({type: String})
-  summary: string = "";
+  summary: string = '';
 
   @property({type: String})
-  text: string = "";
+  text: string = '';
 
   render(): TemplateResult {
     return html`

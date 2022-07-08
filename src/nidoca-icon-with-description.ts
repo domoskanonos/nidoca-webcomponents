@@ -1,8 +1,8 @@
-import {css, html, TemplateResult, LitElement} from "lit";
-import {customElement} from "lit/decorators.js";
-import {property} from "lit/decorators.js";
+import {css, html, TemplateResult, LitElement} from 'lit';
+import {customElement} from 'lit/decorators.js';
+import {property} from 'lit/decorators.js';
 
-@customElement("nidoca-icon-with-description")
+@customElement('nidoca-icon-with-description')
 export class NidocaIconWithDescription extends LitElement {
   static styles = css`
     :host {
@@ -14,13 +14,13 @@ export class NidocaIconWithDescription extends LitElement {
   `;
 
   @property({type: String})
-  primaryText: string = "";
+  primaryText: string = '';
 
   @property({type: String})
-  text: string = "";
+  text: string = '';
 
   @property({type: String})
-  icon: string = "";
+  icon: string = '';
 
   render(): TemplateResult {
     return html`

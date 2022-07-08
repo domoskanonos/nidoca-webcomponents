@@ -1,9 +1,9 @@
-import {css, html, LitElement, TemplateResult} from "lit";
-import {customElement} from "lit/decorators.js";
-import {property} from "lit/decorators.js";
-import {NidocaFormTextType,  NidocaTheme} from ".";
+import {css, html, LitElement, TemplateResult} from 'lit';
+import {customElement} from 'lit/decorators.js';
+import {property} from 'lit/decorators.js';
+import {NidocaFormTextType, NidocaTheme} from '.';
 
-@customElement("nidoca-list-item")
+@customElement('nidoca-list-item')
 export class NidocaListItem extends LitElement {
   static styles = css`
     .container {
@@ -39,10 +39,10 @@ export class NidocaListItem extends LitElement {
   selected: boolean = false;
 
   @property({type: String})
-  primaryText: string = "";
+  primaryText: string = '';
 
   @property({type: String})
-  secondaryText: string = "";
+  secondaryText: string = '';
 
   constructor() {
     super();
@@ -51,7 +51,7 @@ export class NidocaListItem extends LitElement {
 
   protected update(changedProperties: Map<PropertyKey, unknown>): void {
     super.update(changedProperties);
-    if (changedProperties.get("selectionMode") != undefined) {
+    if (changedProperties.get('selectionMode') != undefined) {
       if (!this.multiSelect) {
         this.selected = false;
       }
@@ -66,7 +66,7 @@ export class NidocaListItem extends LitElement {
         }
       </style>
       <div
-        class="container ${this.selected ? "selected" : ""}"
+        class="container ${this.selected ? 'selected' : ''}"
         @mousedown="${() => this.downAction()}"
         @mouseup="${() => this.upAction()}"
         @pointerup="${() => this.upAction()}"
@@ -77,18 +77,12 @@ export class NidocaListItem extends LitElement {
               style="padding-right: var(--space-2);"
               class="item"
               @click="${() => this.switchSelected()}"
-              icon="${this.selected ? "check_box" : "check_box_outline_blank"}"
+              icon="${this.selected ? 'check_box' : 'check_box_outline_blank'}"
             ></nidoca-icon>`
           : html`<span></span>`}
         <slot name="graphic" class="item"></slot>
         <div class="containerTypography">
-          ${this.primaryText
-            ? html`
-                                <nidoca-text class="item"
-                                >${this.primaryText}
-                                </nidoca-text
-                                >`
-            : html``}
+          ${this.primaryText ? html` <nidoca-text class="item">${this.primaryText} </nidoca-text>` : html``}
           <slot></slot>
           ${this.secondaryText
             ? html` <nidoca-text-caption class="item">${this.secondaryText} </nidoca-text-caption>`
@@ -109,11 +103,11 @@ export class NidocaListItem extends LitElement {
   upAction(): void {
     if (this.clickStart) {
       const diff: number = Date.now() - this.clickStart + 1;
-      let eventName: string = "";
+      let eventName: string = '';
       if (diff > 500) {
-        eventName = "nidoca-event-list-item-long-click";
+        eventName = 'nidoca-event-list-item-long-click';
       } else {
-        eventName = "nidoca-event-list-item-click";
+        eventName = 'nidoca-event-list-item-click';
       }
       console.log(eventName);
       this.dispatchEvent(
@@ -130,7 +124,7 @@ export class NidocaListItem extends LitElement {
     this.selected = Boolean(!this.selected);
     if (this.selected) {
       this.dispatchEvent(
-        new CustomEvent("nidoca-event-list-item-select", {
+        new CustomEvent('nidoca-event-list-item-select', {
           detail: this,
           bubbles: true,
           composed: true,
@@ -138,7 +132,7 @@ export class NidocaListItem extends LitElement {
       );
     } else {
       this.dispatchEvent(
-        new CustomEvent("nidoca-event-list-item-unselect", {
+        new CustomEvent('nidoca-event-list-item-unselect', {
           detail: this,
           bubbles: true,
           composed: true,

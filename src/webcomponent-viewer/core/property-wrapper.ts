@@ -1,10 +1,10 @@
 export enum RenderType {
-  STRING = "String",
-  NUMBER = "Number",
-  BOOLEAN = "Boolean",
-  COMBOBOX = "Class",
-  ARRAY = "Array",
-  UNDEFINED = "undefined",
+  STRING = 'String',
+  NUMBER = 'Number',
+  BOOLEAN = 'Boolean',
+  COMBOBOX = 'Class',
+  ARRAY = 'Array',
+  UNDEFINED = 'undefined',
 }
 
 export class PropertyWrapper {
@@ -63,15 +63,15 @@ export class PropertyWrapper {
   }
 
   isConverterTypeArray(): boolean {
-    return this.getConverterTypeName() == "Array";
+    return this.getConverterTypeName() == 'Array';
   }
 
   isArray(): boolean {
-    return this.getTypeName() == "Array";
+    return this.getTypeName() == 'Array';
   }
 
   isPrimitive(): boolean {
-    return this.getTypeName() == "String" || this.getTypeName() == "Boolean" || this.getTypeName() == "Number";
+    return this.getTypeName() == 'String' || this.getTypeName() == 'Boolean' || this.getTypeName() == 'Number';
   }
 
   public getType(): any | undefined {

@@ -1,8 +1,8 @@
-import {css, html, LitElement, TemplateResult} from "lit";
-import {customElement} from "lit/decorators.js";
-import {GenericPostgrestController} from "./components/nidoca-generic-crud";
-import {NidocaPostgrestClient} from "./service/nidoca-postgrest-client";
-import {Konto} from "./model/konto";
+import {css, html, LitElement, TemplateResult} from 'lit';
+import {customElement} from 'lit/decorators.js';
+import {GenericPostgrestController} from './components/nidoca-generic-crud';
+import {NidocaPostgrestClient} from './service/nidoca-postgrest-client';
+import {Konto} from './model/konto';
 
 export class KontoListController extends GenericPostgrestController<Konto> {
   getModel() {
@@ -10,11 +10,11 @@ export class KontoListController extends GenericPostgrestController<Konto> {
   }
 
   getPath(): string {
-    return "/konto";
+    return '/konto';
   }
 
   getSectionKey(): string {
-    return "url";
+    return 'url';
   }
 
   getPrimaryText(item: Konto): string {
@@ -28,16 +28,16 @@ export class KontoListController extends GenericPostgrestController<Konto> {
   async search(searchText: string): Promise<Konto[]> {
     const result: any[] | undefined = await NidocaPostgrestClient.search(
       this.getPath(),
-      "?offset=0&limit=100&order=url.asc&url=like.*"
+      '?offset=0&limit=100&order=url.asc&url=like.*'
         .concat(searchText)
-        .concat("*")
-        .concat(history.state ? (history.state.searchParam ? history.state.searchParam : "") : "")
+        .concat('*')
+        .concat(history.state ? (history.state.searchParam ? history.state.searchParam : '') : '')
     );
     return result ? result : [];
   }
 }
 
-@customElement("nidoca-page-konto")
+@customElement('nidoca-page-konto')
 export class NidocaPageKonto extends LitElement {
   static styles = css``;
 

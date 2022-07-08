@@ -1,15 +1,15 @@
-import {css, html, LitElement, TemplateResult} from "lit";
-import {customElement} from "lit/decorators.js";
-import {property} from "lit/decorators.js";
-import {NidocaTheme} from ".";
+import {css, html, LitElement, TemplateResult} from 'lit';
+import {customElement} from 'lit/decorators.js';
+import {property} from 'lit/decorators.js';
+import {NidocaTheme} from '.';
 
 export enum NidocaButtonType {
-  CONTAINED = "CONTAINED",
-  OUTLINED = "OUTLINED",
-  TEXT = "TEXT",
+  CONTAINED = 'CONTAINED',
+  OUTLINED = 'OUTLINED',
+  TEXT = 'TEXT',
 }
 
-@customElement("nidoca-button")
+@customElement('nidoca-button')
 export class NidocaButton extends LitElement {
   static styles = css`
     :host,
@@ -49,10 +49,10 @@ export class NidocaButton extends LitElement {
   buttonType: NidocaButtonType = NidocaButtonType.CONTAINED;
 
   @property({type: String})
-  leadingIcon: string = "";
+  leadingIcon: string = '';
 
   @property({type: String})
-  text: string = "";
+  text: string = '';
 
   render(): TemplateResult {
     return html`
@@ -96,7 +96,7 @@ export class NidocaButton extends LitElement {
 
   clicked(): void {
     this.dispatchEvent(
-      new CustomEvent("nidoca-event-button-clicked", {
+      new CustomEvent('nidoca-event-button-clicked', {
         detail: this,
         bubbles: true,
         composed: true,

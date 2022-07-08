@@ -1,8 +1,8 @@
-import {css, html, LitElement, TemplateResult} from "lit";
-import {customElement} from "lit/decorators.js";
-import {property} from "lit/decorators.js";
+import {css, html, LitElement, TemplateResult} from 'lit';
+import {customElement} from 'lit/decorators.js';
+import {property} from 'lit/decorators.js';
 
-@customElement("nidoca-text")
+@customElement('nidoca-text')
 export class NidocaText extends LitElement {
   static styles = css`
     :host,
@@ -16,7 +16,7 @@ export class NidocaText extends LitElement {
   `;
 
   @property({type: String})
-  text: string = "";
+  text: string = '';
 
   render(): TemplateResult {
     return html` <slot id="slotElement">${this.text}</slot>`;

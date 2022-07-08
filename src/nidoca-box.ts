@@ -1,19 +1,19 @@
-import {css, html, LitElement, TemplateResult} from "lit";
-import {customElement} from "lit/decorators.js";
-import {property} from "lit/decorators.js";
-import {NidocaDevice, NidocaTheme} from ".";
+import {css, html, LitElement, TemplateResult} from 'lit';
+import {customElement} from 'lit/decorators.js';
+import {property} from 'lit/decorators.js';
+import {NidocaDevice, NidocaTheme} from '.';
 
-@customElement("nidoca-box")
+@customElement('nidoca-box')
 export class NidocaBox extends LitElement {
-    static styles = css`
+  static styles = css`
     :host {
       display: block;
       padding: var(--space-6);
-      box-sizing:border-box;
+      box-sizing: border-box;
     }
     slot {
-    display:block;
-      margin:auto;
+      display: block;
+      margin: auto;
     }
 
     @media only screen and (min-width: ${NidocaDevice.TABLET.minWidth}px) and (max-width: ${NidocaDevice.TABLET
@@ -30,13 +30,13 @@ export class NidocaBox extends LitElement {
     }
   `;
 
-    @property({type: NidocaTheme, converter: String})
-    theme: string | undefined = NidocaTheme.TRANSPARENT;
+  @property({type: NidocaTheme, converter: String})
+  theme: string | undefined = NidocaTheme.TRANSPARENT;
 
-    render(): TemplateResult {
-        return html`
-            ${NidocaTheme.getStyle(this.theme)}
-            <slot></slot>
-        `;
-    }
+  render(): TemplateResult {
+    return html`
+      ${NidocaTheme.getStyle(this.theme)}
+      <slot></slot>
+    `;
+  }
 }

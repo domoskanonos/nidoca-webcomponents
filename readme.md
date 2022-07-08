@@ -16,3 +16,7 @@ visit showcase page: [nidoca.de](http://nidoca.de)
 ### usage
 #### install npm
     npm i @domoskanonos/nidoca-webcomponents
+
+
+Farbschema ideen:
+https://99designs.de/blog/design-kreativitaet/farbschemata-webseiten/

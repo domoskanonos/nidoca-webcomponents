@@ -1,16 +1,16 @@
-import {css, html, LitElement, TemplateResult} from "lit";
-import {customElement} from "lit/decorators.js";
-import {property} from "lit/decorators.js";
-import {query} from "lit/decorators.js";
-import {NidocaTheme} from ".";
-import {NidocaAccordionItem} from "./nidoca-accordion-item";
+import {css, html, LitElement, TemplateResult} from 'lit';
+import {customElement} from 'lit/decorators.js';
+import {property} from 'lit/decorators.js';
+import {query} from 'lit/decorators.js';
+import {NidocaTheme} from '.';
+import {NidocaAccordionItem} from './nidoca-accordion-item';
 
 export enum AccordionType {
-  SINGLE = "SINGLE",
-  MULTI = "MULTI",
+  SINGLE = 'SINGLE',
+  MULTI = 'MULTI',
 }
 
-@customElement("nidoca-accordion")
+@customElement('nidoca-accordion')
 export class NidocaAccordion extends LitElement {
   static styles = css`
     :host {
@@ -32,7 +32,7 @@ export class NidocaAccordion extends LitElement {
   @property({type: AccordionType, converter: String})
   accordionType: string = AccordionType.SINGLE;
 
-  @query("#accordionSlot")
+  @query('#accordionSlot')
   private accordionSlot: HTMLSlotElement | undefined;
 
   render(): TemplateResult {

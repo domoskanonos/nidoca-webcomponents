@@ -1,12 +1,12 @@
-import {css, html, TemplateResult, LitElement} from "lit";
-import {customElement} from "lit/decorators.js";
-import {property} from "lit/decorators.js";
+import {css, html, TemplateResult, LitElement} from 'lit';
+import {customElement} from 'lit/decorators.js';
+import {property} from 'lit/decorators.js';
 
 export class NidocaImgProperties {
-  static readonly ROUND = "ROUND";
-  static readonly CLICKABLE = "CLICKABLE";
-  static readonly ZOOM_WRAPPED = "ZOOM_WRAPPED";
-  static readonly FULL_WIDTH = "FULL_WIDTH";
+  static readonly ROUND = 'ROUND';
+  static readonly CLICKABLE = 'CLICKABLE';
+  static readonly ZOOM_WRAPPED = 'ZOOM_WRAPPED';
+  static readonly FULL_WIDTH = 'FULL_WIDTH';
 }
 
 export class NidocaImgRoundXX extends LitElement {
@@ -64,13 +64,13 @@ export class NidocaImgRoundXX extends LitElement {
   `;
 
   @property({type: String})
-  src: string = "http://picsum.photos/400/300";
+  src: string = 'http://picsum.photos/400/300';
 
   @property({type: String})
-  width: string = "100%";
+  width: string = '100%';
 
   @property({type: String})
-  height: string = "100%";
+  height: string = '100%';
 
   @property({type: NidocaImgProperties, converter: Array})
   richMediaProperties: NidocaImgProperties[] = [NidocaImgProperties.CLICKABLE, NidocaImgProperties.FULL_WIDTH];
@@ -84,9 +84,9 @@ export class NidocaImgRoundXX extends LitElement {
   }
 
   private toRichMediaPropertiesString(richMediaProperties: NidocaImgProperties[]) {
-    let richMediaPropertiesString: string = "";
+    let richMediaPropertiesString: string = '';
     richMediaProperties.forEach((_propertie: NidocaImgProperties) => {
-      richMediaPropertiesString = richMediaPropertiesString.concat(" ").concat("");
+      richMediaPropertiesString = richMediaPropertiesString.concat(' ').concat('');
     });
     return richMediaPropertiesString;
   }

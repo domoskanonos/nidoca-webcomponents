@@ -1,12 +1,12 @@
-import {css, html, TemplateResult, LitElement} from "lit";
-import {customElement, query} from "lit/decorators.js";
-import {NidocaWizardStep, WizardStepState} from "./nidoca-wizard-step";
+import {css, html, TemplateResult, LitElement} from 'lit';
+import {customElement, query} from 'lit/decorators.js';
+import {NidocaWizardStep, WizardStepState} from './nidoca-wizard-step';
 
-@customElement("nidoca-wizard")
+@customElement('nidoca-wizard')
 export class NidocaWizard extends LitElement {
   static styles = css``;
 
-  @query("#wizardSlot")
+  @query('#wizardSlot')
   private wizardSlot: HTMLSlotElement | undefined;
 
   render(): TemplateResult {
@@ -44,7 +44,7 @@ export class NidocaWizard extends LitElement {
 
   stepClicked(event: CustomEvent<any>) {
     const selectedStepIndex: number = event.detail;
-    console.debug("wizard step clicked, selectedStepIndex: %s", selectedStepIndex);
+    console.debug('wizard step clicked, selectedStepIndex: %s', selectedStepIndex);
     this.changeState(selectedStepIndex);
   }
 

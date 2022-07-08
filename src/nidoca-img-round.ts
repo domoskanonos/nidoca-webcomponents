@@ -1,8 +1,8 @@
-import {css, html, TemplateResult} from "lit";
-import {customElement} from "lit/decorators.js";
-import {NidocaImg} from "./nidoca-img";
+import {css, html, TemplateResult} from 'lit';
+import {customElement} from 'lit/decorators.js';
+import {NidocaImg} from './nidoca-img';
 
-@customElement("nidoca-img-round")
+@customElement('nidoca-img-round')
 export class NidocaImgRound extends NidocaImg {
   static styles = css`
     :host {

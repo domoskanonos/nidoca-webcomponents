@@ -1,8 +1,8 @@
-import {css} from "lit";
-import {customElement} from "lit/decorators.js";
-import {NidocaText} from ".";
+import {css} from 'lit';
+import {customElement} from 'lit/decorators.js';
+import {NidocaText} from '.';
 
-@customElement("nidoca-text-overline")
+@customElement('nidoca-text-overline')
 export class NidocaTextOverline extends NidocaText {
   static styles = css`
     :host,
@@ -15,5 +15,4 @@ export class NidocaTextOverline extends NidocaText {
       text-transform: uppercase;
     }
   `;
-
 }

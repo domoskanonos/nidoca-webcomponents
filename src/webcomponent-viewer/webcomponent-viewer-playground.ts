@@ -1,13 +1,13 @@
-import {css, html, LitElement, TemplateResult} from "lit";
-import {customElement, property} from "lit/decorators.js";
-import {Nidoca} from "..";
+import {css, html, LitElement, TemplateResult} from 'lit';
+import {customElement, property} from 'lit/decorators.js';
+import {Nidoca} from '..';
 
-@customElement("webcomponent-viewer-playground")
+@customElement('webcomponent-viewer-playground')
 export class WebcomponentViewerPlayground extends LitElement {
   static styles = css``;
 
   @property({type: String})
-  elementName: string = "nidoca-tabs";
+  elementName: string = 'nidoca-tabs';
 
   render(): TemplateResult {
     return html`
