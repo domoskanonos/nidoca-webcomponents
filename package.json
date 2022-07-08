@@ -13,7 +13,7 @@
   "main": "lib/index.js",
   "module": "./src/index.js",
   "devDependencies": {
-    "@domoskanonos/nidoca-base": "1.0.9",
+    "@domoskanonos/nidoca-base": "1.0.8",
     "@domoskanonos/nidoca-router": "1.0.2",
     "@domoskanonos/nidoca-form-helper": "1.0.10",
     "@domoskanonos/nidoca-date-helper": "1.0.4"
