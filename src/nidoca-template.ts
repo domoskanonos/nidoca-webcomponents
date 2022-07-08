@@ -3,7 +3,6 @@ import {customElement} from 'lit/decorators.js';
 import {property} from 'lit/decorators.js';
 import {query} from 'lit/decorators.js';
 
-
 @customElement('nidoca-template')
 export class NidocaTemplate extends LitElement {
   static styles = css`
@@ -94,7 +93,7 @@ export class NidocaTemplate extends LitElement {
       <slot
         id="left"
         @nidoca-event-menu-item-clicked="${() => {
-          if (TABLET_MIN_WIDTH > window.innerWidth) {
+          if (641 > window.innerWidth) {
             this.hideLeft = true;
           }
         }}"
