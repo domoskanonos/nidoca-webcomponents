@@ -1,10 +1,9 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
-
 const path = require('path');
 
 module.exports = {
-  entry: './src/index.ts',
+  entry: './src/app/index.ts',
   module: {
     rules: [
       {
@@ -14,7 +13,8 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ['.ts', '.js'],
+    // Informiere Webpack darüber, welche Dateien für den Bundle-Prozess berücksichigt werden sollen.
+    extensions: ['.ts', '.js', 'css'],
   },
   optimization: {
     minimize: true,
@@ -24,13 +24,13 @@ module.exports = {
   },
   mode: 'production',
   output: {
-    path: path.resolve().concat('/public/webcomponents'),
-    filename: 'nidoca-webcomponents.js',
+    path: path.resolve().concat('/public'),
+    filename: 'bundled.js',
   },
   plugins: [
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: './src/index.html',
+      template: './src/app/index.html',
     }),
     new CopyPlugin({
       patterns: [
