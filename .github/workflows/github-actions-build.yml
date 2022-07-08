@@ -12,7 +12,7 @@ jobs:
         with:
           node-version: '16.x'
           registry-url: 'https://registry.npmjs.org'
-      - run: npm build
+      - run: npm run build
       - uses: JamesIves/github-pages-deploy-action@v4
         with:
           token: ${{ secrets.DEPLOY_DOCUMENTATION_TOKEN }}
