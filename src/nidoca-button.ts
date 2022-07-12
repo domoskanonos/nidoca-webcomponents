@@ -1,7 +1,7 @@
 import {css, html, LitElement, TemplateResult} from 'lit';
 import {customElement} from 'lit/decorators.js';
 import {property} from 'lit/decorators.js';
-import {NidocaTheme, NidocaThemeHelper} from '.';
+import {NidocaTheme} from './nidoca-meta';
 
 export enum NidocaButtonType {
   CONTAINED = 'CONTAINED',
@@ -83,9 +83,11 @@ export class NidocaButton extends LitElement {
           this.clicked();
         }}"
       >
-        ${this.leadingIcon
-          ? html` <nidoca-icon .clickable="${false}" .icon="${this.leadingIcon}"></nidoca-icon>`
-          : html``}
+        ${
+          this.leadingIcon
+            ? html` <nidoca-icon .clickable="${false}" .icon="${this.leadingIcon}"></nidoca-icon>`
+            : html``
+        }
 
         <nidoca-text-button text="${this.text}">
           <slot></slot>
