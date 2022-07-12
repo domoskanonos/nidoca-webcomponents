@@ -3,7 +3,7 @@
     "target": "es2015",
     "declaration": true,
     "outDir": "lib",
-    "module": "CommonJS",
+    "module": "es2015",
     "rootDir": "./src",
     "downlevelIteration": true,
     "strict": true,
@@ -17,7 +17,7 @@
     "skipLibCheck": true
   },
   "include": ["src/**/*.ts", "src/__test__/**/*.ts"],
-  "exclude": ["node_modules", "src/app", "src/webcomponent-viewer"],
+  "exclude": ["node_modules", "src/app"],
   "typedocOptions": {
     "entryPoints": ["./src"],
     "out": "public/docs"

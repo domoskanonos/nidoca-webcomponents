@@ -1,7 +1,7 @@
-import HtmlWebpackPlugin from 'html-webpack-plugin';
-import CopyPlugin from 'copy-webpack-plugin';
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
-export default {
+module.exports = {
   target: 'web',
   entry: {
     /**

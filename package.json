@@ -8,15 +8,10 @@
     "webcomponent, html, typescript, shadow dom, slot, ui, frontend, lit element"
   ],
   "description": "nidoca framework (nidoca-core)",
-  "files": [
-    "lib/**/*"
-  ],
-  "type": "module",
-  "main": "lib/index.js",
-  "module": "./src/index.js",
   "devDependencies": {
     "@domoskanonos/nidoca-base": "1.0.9",
-    "@domoskanonos/nidoca-router": "1.0.2"
+    "@domoskanonos/nidoca-router": "1.0.2",
+    "typedoc": "0.23.7"
   },
   "dependencies": {},
   "author": "Dominik Bruhn",
