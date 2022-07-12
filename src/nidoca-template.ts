@@ -2,7 +2,6 @@ import {css, html, TemplateResult, LitElement, PropertyValues} from 'lit';
 import {customElement} from 'lit/decorators.js';
 import {property} from 'lit/decorators.js';
 import {query} from 'lit/decorators.js';
-import {MOBILE_MAX_WIDTH, TABLET_MIN_WIDTH} from '.';
 
 @customElement('nidoca-template')
 export class NidocaTemplate extends LitElement {
@@ -28,7 +27,7 @@ export class NidocaTemplate extends LitElement {
       display: none;
     }
 
-    @media screen and (max-width: ${MOBILE_MAX_WIDTH}px) {
+    @media screen and (max-width: 640px) {
       #left {
         position: fixed;
         z-index: 1;
@@ -64,7 +63,7 @@ export class NidocaTemplate extends LitElement {
       if (!this.hideLeft && this.leftElement) {
         console.log('close');
         const rect = this.leftElement.getBoundingClientRect();
-        this.hideLeft = TABLET_MIN_WIDTH > window.innerWidth && 0 <= event.x - rect.width;
+        this.hideLeft = 641 > window.innerWidth && 0 <= event.x - rect.width;
       }
     });
   }
@@ -94,7 +93,7 @@ export class NidocaTemplate extends LitElement {
       <slot
         id="left"
         @nidoca-event-menu-item-clicked="${() => {
-          if (TABLET_MIN_WIDTH > window.innerWidth) {
+          if (641 > window.innerWidth) {
             this.hideLeft = true;
           }
         }}"

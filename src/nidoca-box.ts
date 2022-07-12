@@ -1,7 +1,7 @@
 import {css, html, LitElement, TemplateResult} from 'lit';
 import {customElement} from 'lit/decorators.js';
 import {property} from 'lit/decorators.js';
-import {NidocaDevice, NidocaTheme} from '.';
+import {NidocaTheme} from '.';
 
 @customElement('nidoca-box')
 export class NidocaBox extends LitElement {
@@ -16,14 +16,13 @@ export class NidocaBox extends LitElement {
       margin: auto;
     }
 
-    @media only screen and (min-width: ${NidocaDevice.TABLET.minWidth}px) and (max-width: ${NidocaDevice.TABLET
-        .maxWidth}px) {
+    @media only screen and (min-width: 641px) and (max-width: 1007px) {
       :host {
         padding: var(--space-4);
       }
     }
 
-    @media only screen and (max-width: ${NidocaDevice.MOBILE.maxWidth}px) {
+    @media only screen and (max-width: 640px) {
       :host {
         padding: var(--space-2);
       }

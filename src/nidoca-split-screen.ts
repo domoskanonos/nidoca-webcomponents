@@ -1,6 +1,6 @@
 import {css, html, TemplateResult, LitElement} from 'lit';
 import {customElement, property} from 'lit/decorators.js';
-import {NidocaDevice, NidocaTheme} from '.';
+import {NidocaTheme} from '.';
 
 @customElement('nidoca-split-screen')
 export class NidocaSplitScreen extends LitElement {
@@ -30,14 +30,13 @@ export class NidocaSplitScreen extends LitElement {
       max-height: 100%;
     }
 
-    @media only screen and (min-width: ${NidocaDevice.TABLET.minWidth}px) and (max-width: ${NidocaDevice.TABLET
-        .maxWidth}px) {
+    @media only screen and (min-width: 641px) and (max-width: 1007px) {
       .sidebox {
         width: 50vw;
       }
     }
 
-    @media only screen and (max-width: ${NidocaDevice.MOBILE.maxWidth}px) {
+    @media only screen and (max-width: 640px) {
       .sidebox {
         width: 100%;
       }
