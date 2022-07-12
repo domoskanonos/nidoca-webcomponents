@@ -16,12 +16,15 @@ and [lit](https://lit.dev/).
 
 ### usage
 #### install npm
-    npm i @domoskanonos/nidoca-webcomponents
+    $ npm i @domoskanonos/nidoca-webcomponents
 
 #### native web
+```html
   <script src="https://domoskanonos.github.io/nidoca-webcomponents/webcomponents/nidoca-webcomponents.js"></script>
   <style>@import url('https://domoskanonos.github.io/nidoca-webcomponents/webcomponents/nidoca.css');</style>
+
   <nidoca-button>Mein Button</nidoca-button>
+```
 
 <!--
 ```
