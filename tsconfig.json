@@ -1,10 +1,9 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
-    "lib": ["es2020", "DOM"],
+    "target": "es2015",
     "declaration": true,
     "outDir": "lib",
-    "module": "ES2020",
+    "module": "CommonJS",
     "rootDir": "./src",
     "downlevelIteration": true,
     "strict": true,
@@ -13,7 +12,6 @@
     "noFallthroughCasesInSwitch": true,
     "moduleResolution": "node",
     "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "skipLibCheck": true
