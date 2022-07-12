@@ -48,2708 +48,499 @@
       "kind": "javascript-module",
       "path": "lib/index.js",
       "declarations": [],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaDevice",
-          "declaration": {
-            "name": "NidocaDevice",
-            "module": "./nidoca-layout-meta"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./nidoca-meta"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./nidoca-accordion"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./nidoca-accordion-item"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./nidoca-wizard-step"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./nidoca-wizard"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./nidoca-chip"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./nidoca-code"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./nidoca-elevation"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./nidoca-progress"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./nidoca-button"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./nidoca-form"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./nidoca-form-combobox"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./nidoca-form-text"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./nidoca-form-date"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./nidoca-form-textarea"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./nidoca-form-upload"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./nidoca-form-switch"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./nidoca-form-newsletter"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./nidoca-form-reset-password"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./nidoca-form-change-password"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./nidoca-form-register"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./nidoca-upload"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./nidoca-form-abstract-input-element"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./nidoca-hr"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./nidoca-menu-area"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./nidoca-menu-item"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./nidoca-menu"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./nidoca-layout-meta"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./nidoca-layout-floating"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./nidoca-container"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./nidoca-split-screen"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./nidoca-icon"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./nidoca-icon-extended"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./nidoca-ripple"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./nidoca-img"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./nidoca-img-round"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./nidoca-movie"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./nidoca-form-captcha"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./nidoca-link"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./nidoca-list"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./nidoca-list-item"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./nidoca-list-section"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./nidoca-top-app-bar"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./nidoca-list-section"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./nidoca-table"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./nidoca-tabs"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./nidoca-tab"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./nidoca-tab-content"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./nidoca-template"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./nidoca-video"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./nidoca-svg-2-webp"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./nidoca-text"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./nidoca-text-button"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./nidoca-text-overline"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./nidoca-text-body"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./nidoca-text-caption"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./nidoca-text-error"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./nidoca-text-success"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./nidoca-text-warning"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./nidoca-text-info"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./nidoca-text-h1"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./nidoca-text-h2"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./nidoca-text-h3"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./nidoca-text-h4"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./nidoca-text-h5"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./nidoca-text-h6"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./nidoca-search-bar"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./nidoca-dialog"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./nidoca-dialog-decision"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./nidoca-avatar"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./nidoca-card"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./nidoca-gallery"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./nidoca-print"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./nidoca-section"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./nidoca-dashboard"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./nidoca-box"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./nidoca-article"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./nidoca-icon-with-description"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./nidoca-form-contact"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./pages/nidoca-page-login"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./apps/nidoca-app"
-          }
-        }
-      ]
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-accordion-item.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "NidocaAccordionItem",
-          "default": "class NidocaAccordionItem extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.header = '';\n        this.opened = false;\n    }\n    render() {\n        return html `\n      <div @click=\"${() => this.toggle()}\" class=\"header\">\n        <nidoca-text text=\"${this.header}\"></nidoca-text>\n        <nidoca-icon icon=\"${this.opened ? 'keyboard_arrow_down' : 'keyboard_arrow_up'}\"></nidoca-icon>\n      </div>\n      ${this.opened ? html ` <slot></slot>` : html ``}\n    `;\n    }\n    toggle() {\n        console.log('accordion clicked, state=' + this.opened);\n        this.opened = Boolean(!this.opened);\n        console.log('accordion clicked, after state=' + this.opened);\n        this.dispatchEvent(new CustomEvent('nidoca-event-accordion-item-clicked', {\n            detail: this,\n            bubbles: true,\n            composed: true,\n        }));\n    }\n}"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaAccordionItem",
-          "declaration": {
-            "name": "NidocaAccordionItem",
-            "module": "lib/nidoca-accordion-item.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-accordion.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "AccordionType"
-        },
-        {
-          "kind": "variable",
-          "name": "NidocaAccordion",
-          "default": "class NidocaAccordion extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.theme = NidocaTheme.surface;\n        this.accordionType = AccordionType.SINGLE;\n    }\n    render() {\n        return html `\n      ${NidocaThemeHelper.getStyle(this.theme)}\n      <slot\n        @nidoca-event-accordion-item-clicked=\"${(event) => this.accordionSwitched(event)}\"\n        id=\"accordionSlot\"\n      ></slot>\n    `;\n    }\n    accordionSwitched(event) {\n        const accordionItemComponent = event.detail;\n        switch (this.accordionType) {\n            case AccordionType.SINGLE:\n                if (this.accordionSlot != null) {\n                    const assignedElements = this.accordionSlot.assignedElements();\n                    for (let index = 0; index < assignedElements.length; index++) {\n                        const element = assignedElements[index];\n                        if (element instanceof NidocaAccordionItem && element != accordionItemComponent) {\n                            element.opened = false;\n                        }\n                    }\n                }\n                break;\n            case AccordionType.MULTI:\n                break;\n        }\n        event.stopPropagation();\n    }\n}"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "AccordionType",
-          "declaration": {
-            "name": "AccordionType",
-            "module": "lib/nidoca-accordion.js"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "NidocaAccordion",
-          "declaration": {
-            "name": "NidocaAccordion",
-            "module": "lib/nidoca-accordion.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-article.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "NidocaArticle",
-          "default": "class NidocaArticle extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.overline = '';\n        this.title = '';\n        this.summary = '';\n        this.text = '';\n    }\n    render() {\n        return html `\n      <div style=\"display:flex; flex-direction:column;\">\n        ${this.overline ? html ` <nidoca-text class=\"paddingBottom\">${this.overline}</nidoca-text> ` : html ``}\n        ${this.title ? html ` <nidoca-text-h2 class=\"paddingBottom\">${this.title}</nidoca-text-h2> ` : html ``}\n        ${this.summary\n            ? html ` <nidoca-text-caption class=\"paddingBottom\">${this.summary}</nidoca-text-caption> `\n            : html ``}\n        ${this.text ? html ` <nidoca-text class=\"paddingBottom\">${this.text}</nidoca-text>` : html ``}\n        <slot></slot>\n      </div>\n    `;\n    }\n}"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaArticle",
-          "declaration": {
-            "name": "NidocaArticle",
-            "module": "lib/nidoca-article.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-avatar.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "NidocaAvatar",
-          "default": "class NidocaAvatar extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.imgSrc = '';\n    }\n    render() {\n        return html `\n            <div\n                    style=\"display:flex;flex-direction:column;align-items:center;justify-content:space-between;align-content:center;\"\n            >\n                <nidoca-img-round src=\"${this.imgSrc}\" .richMediaProperties=\"${[\n            NidocaImgProperties.ROUND,\n        ]}\"></nidoca-img-round>\n                <nidoca-layout-spacer\n                        left=\"var(--space)\"\n                        right=\"var(--space)\"\n                        top=\"var(--space)\"\n                        bottom=\"var(--space)\"\n                >\n                    <slot></slot>\n                </nidoca-layout-spacer>\n            </div>\n            </div>`;\n    }\n}"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaAvatar",
-          "declaration": {
-            "name": "NidocaAvatar",
-            "module": "lib/nidoca-avatar.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-box.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "NidocaBox",
-          "default": "class NidocaBox extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.theme = NidocaTheme.transparent;\n    }\n    render() {\n        return html `\n      ${NidocaThemeHelper.getStyle(this.theme)}\n      <slot></slot>\n    `;\n    }\n}"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaBox",
-          "declaration": {
-            "name": "NidocaBox",
-            "module": "lib/nidoca-box.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-button.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "NidocaButtonType"
-        },
-        {
-          "kind": "variable",
-          "name": "NidocaButton",
-          "default": "class NidocaButton extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.theme = NidocaTheme.primary;\n        this.buttonType = NidocaButtonType.CONTAINED;\n        this.leadingIcon = '';\n        this.text = '';\n    }\n    render() {\n        return html `\n      <style>\n        .OUTLINED {\n          color: var(--app-color-${this.theme}-background);\n          background-color: var(--app-color-${this.theme});\n          border-color: var(--app-color-${this.theme}-background);\n        }\n\n        .CONTAINED {\n          color: var(--app-color-${this.theme});\n          background-color: var(--app-color-${this.theme}-background);\n          border-color: var(--app-color-${this.theme}-background);\n        }\n\n        .TEXT {\n          color: var(--app-color-${this.theme}-background);\n        }\n\n        :hover {\n          filter: contrast(var(--app-color-percent-hover));\n        }\n      </style>\n      <div\n        class=\"container ${this.buttonType}\"\n        @click=\"${() => {\n            this.clicked();\n        }}\"\n      >\n        ${this.leadingIcon\n            ? html ` <nidoca-icon .clickable=\"${false}\" .icon=\"${this.leadingIcon}\"></nidoca-icon>`\n            : html ``}\n\n        <nidoca-text-button text=\"${this.text}\">\n          <slot></slot>\n        </nidoca-text-button>\n      </div>\n    `;\n    }\n    clicked() {\n        this.dispatchEvent(new CustomEvent('nidoca-event-button-clicked', {\n            detail: this,\n            bubbles: true,\n            composed: true,\n        }));\n    }\n}"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaButtonType",
-          "declaration": {
-            "name": "NidocaButtonType",
-            "module": "lib/nidoca-button.js"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "NidocaButton",
-          "declaration": {
-            "name": "NidocaButton",
-            "module": "lib/nidoca-button.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-card.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "NidocaCard",
-          "default": "class NidocaCard extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.theme = NidocaTheme.surface;\n    }\n    render() {\n        return html `\n      <style>\n        :host {\n          border-color: var(--app-color-${this.theme}-border);\n        }\n      </style>\n      <slot></slot>\n    `;\n    }\n}"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaCard",
-          "declaration": {
-            "name": "NidocaCard",
-            "module": "lib/nidoca-card.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-chip.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "NidocaChip",
-          "default": "class NidocaChip extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.clickable = true;\n    }\n    render() {\n        return html `\n      <div class=\"chip ${this.clickable ? 'clickable' : ''}\">\n        <slot></slot>\n      </div>\n    `;\n    }\n}"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaChip",
-          "declaration": {
-            "name": "NidocaChip",
-            "module": "lib/nidoca-chip.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-code.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "NidocaCode",
-          "default": "class NidocaCode extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.code = '';\n    }\n    render() {\n        return html `\n      <pre>\n                <code>${this.code}<slot></slot></code>\n            </pre>\n    `;\n    }\n}"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaCode",
-          "declaration": {
-            "name": "NidocaCode",
-            "module": "lib/nidoca-code.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-container.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "NidocaContainer",
-          "default": "class NidocaContainer extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.theme = NidocaTheme.background;\n    }\n    render() {\n        return html `\n      ${NidocaThemeHelper.getStyle(this.theme)}\n      <slot></slot>\n    `;\n    }\n}"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaContainer",
-          "declaration": {
-            "name": "NidocaContainer",
-            "module": "lib/nidoca-container.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-dashboard.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "NidocaDashboard",
-          "default": "class NidocaDashboard extends LitElement {\n    render() {\n        return html ` <slot></slot>`;\n    }\n}"
-        },
-        {
-          "kind": "variable",
-          "name": "NidocaDashboardBox25",
-          "default": "class NidocaDashboardBox25 extends LitElement {\n    render() {\n        return html ` <slot></slot>`;\n    }\n}"
-        },
-        {
-          "kind": "variable",
-          "name": "NidocaDashboardBox50",
-          "default": "class NidocaDashboardBox50 extends LitElement {\n    render() {\n        return html ` <slot></slot>`;\n    }\n}"
-        },
-        {
-          "kind": "variable",
-          "name": "NidocaDashboardBox100",
-          "default": "class NidocaDashboardBox100 extends LitElement {\n    render() {\n        return html ` <slot></slot>`;\n    }\n}"
-        },
-        {
-          "kind": "variable",
-          "name": "NidocaDashboardCard",
-          "default": "class NidocaDashboardCard extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.clickable = true;\n        this.title = '';\n    }\n    render() {\n        return html `\n      <nidoca-card @click=\"${() => this.clicked()}\" class=\"${this.clickable ? 'clickable' : ''}\">\n        <nidoca-box>\n          <nidoca-text-h6 style=\"padding-bottom: var(--space-2);\">${this.title}</nidoca-text-h6>\n          <slot></slot>\n        </nidoca-box>\n      </nidoca-card>\n    `;\n    }\n    clicked() {\n        if (this.clickable) {\n            this.dispatchEvent(new CustomEvent('nidoca-event-dashboard-card-clicked', {\n                detail: this,\n                bubbles: true,\n                composed: true,\n            }));\n        }\n    }\n}"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaDashboard",
-          "declaration": {
-            "name": "NidocaDashboard",
-            "module": "lib/nidoca-dashboard.js"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "NidocaDashboardBox25",
-          "declaration": {
-            "name": "NidocaDashboardBox25",
-            "module": "lib/nidoca-dashboard.js"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "NidocaDashboardBox50",
-          "declaration": {
-            "name": "NidocaDashboardBox50",
-            "module": "lib/nidoca-dashboard.js"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "NidocaDashboardBox100",
-          "declaration": {
-            "name": "NidocaDashboardBox100",
-            "module": "lib/nidoca-dashboard.js"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "NidocaDashboardCard",
-          "declaration": {
-            "name": "NidocaDashboardCard",
-            "module": "lib/nidoca-dashboard.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-dialog-decision.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "NidocaDialogDecision",
-          "default": "class NidocaDialogDecision extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.show = false;\n        this.title = 'Ja oder Nein ?';\n        this.description = 'Entscheide dich';\n        this.labelButtonYes = 'Ja';\n        this.labelButtonNo = 'Nein';\n    }\n    render() {\n        return html `<nidoca-dialog .show=\"${this.show}\">\n      <nidoca-box style=\"width:300px;\">\n        <nidoca-text-h2 style=\"padding-bottom:var(--space-2);\">${this.title}</nidoca-text-h2>\n        <nidoca-text style=\"padding-bottom:var(--space-2);\">${this.description} </nidoca-text>\n        <nidoca-button\n          style=\"padding-bottom:var(--space-2);\"\n          type=\"${NidocaButtonType.TEXT}\"\n          @click=\"${() => {\n            this.dispatchEvent(new CustomEvent('nidoca-dialog-decision-yes', {\n                detail: this,\n                bubbles: true,\n                composed: true,\n            }));\n        }}\"\n          >${this.labelButtonYes}\n        </nidoca-button>\n        <nidoca-button\n          style=\"padding-bottom:var(--space-2);\"\n          type=\"${NidocaButtonType.TEXT}\"\n          @click=\"${() => {\n            this.dispatchEvent(new CustomEvent('nidoca-dialog-decision-no', {\n                detail: this,\n                bubbles: true,\n                composed: true,\n            }));\n        }}\"\n          >${this.labelButtonNo}\n        </nidoca-button>\n      </nidoca-box>\n    </nidoca-dialog>`;\n    }\n}"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaDialogDecision",
-          "declaration": {
-            "name": "NidocaDialogDecision",
-            "module": "lib/nidoca-dialog-decision.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-dialog.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "NidocaDialog",
-          "default": "class NidocaDialog extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.show = false;\n    }\n    render() {\n        return this.show\n            ? html `\n          <div class=\"fullScreen opacScreen\"></div>\n          <div class=\"fullScreen wrapperOutside\">\n            <div class=\"wrapperInside\">\n              <!-- Dialog -->\n              <nidoca-transition .transitionType=\"${NidocaTransitionType.SLIDE_CENTER}\">\n                <div class=\"dialogContainer\">\n                  <slot></slot>\n                </div>\n              </nidoca-transition>\n            </div>\n          </div>\n        `\n            : html ``;\n    }\n}"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaDialog",
-          "declaration": {
-            "name": "NidocaDialog",
-            "module": "lib/nidoca-dialog.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-elevation.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "NidocaElevation",
-          "default": "class NidocaElevation extends LitElement {\n    constructor() {\n        super();\n        this.show = false;\n        addEventListener('click', (me) => {\n            var _a;\n            const rect = (_a = this.associatedElement) === null || _a === void 0 ? void 0 : _a.getBoundingClientRect();\n            if (rect) {\n                if (rect.top > me.clientY || rect.right < me.clientX || rect.left > me.clientX || rect.bottom < me.clientY) {\n                    this.dispatchEvent(new CustomEvent('nidoca-elevation-event-closeme', {\n                        detail: this,\n                        bubbles: true,\n                        composed: true,\n                    }));\n                }\n            }\n        });\n    }\n    render() {\n        return this.show\n            ? html `\n          <div class=\"container\" style=\"${this.calculatePositionStyle(this.associatedElement)}\">\n            <nidoca-border>\n              <slot id=\"slot\"></slot>\n            </nidoca-border>\n          </div>\n        `\n            : html ``;\n    }\n    calculatePositionStyle(basedOnComponent) {\n        let style = '';\n        if (basedOnComponent) {\n            const rect = basedOnComponent.getBoundingClientRect();\n            if (rect.right > window.innerWidth / 2) {\n                style += `right:${window.innerWidth - rect.right}px;`;\n            }\n            else {\n                style += `left:${rect.left}px;`;\n            }\n            if (rect.top > window.innerHeight / 2) {\n                style += `bottom:${rect.height + window.innerHeight - rect.top}px;`;\n            }\n            else {\n                style += `top:${rect.bottom}px;`;\n            }\n        }\n        return style;\n    }\n}"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaElevation",
-          "declaration": {
-            "name": "NidocaElevation",
-            "module": "lib/nidoca-elevation.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-form-abstract-input-element.js",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "FormOutputData",
-          "members": [
-            {
-              "kind": "field",
-              "name": "key",
-              "type": {
-                "text": "string"
-              },
-              "default": "''"
-            }
-          ]
-        },
-        {
-          "kind": "class",
-          "description": "",
-          "name": "NidocaFormAbstractInputElement",
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "FormOutputData",
-          "declaration": {
-            "name": "FormOutputData",
-            "module": "lib/nidoca-form-abstract-input-element.js"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "NidocaFormAbstractInputElement",
-          "declaration": {
-            "name": "NidocaFormAbstractInputElement",
-            "module": "lib/nidoca-form-abstract-input-element.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-form-captcha.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "NidocaFormCaptcha",
-          "default": "class NidocaFormCaptcha extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.label = '';\n        this.placeholder = '';\n        this.name = '';\n        this.min = 1;\n        this.max = 10;\n        this.errorText = '';\n        this.numberOne = 1;\n        this.numberTwo = 1;\n    }\n    render() {\n        return html `\n      <nidoca-form-text\n        theme=\"${ifDefined(this.theme)}\"\n        id=\"inputfield\"\n        placeholder=\"${this.placeholder}\"\n        label=\"${this.label\n            .concat(' ')\n            .concat(String(this.numberOne))\n            .concat(' + ')\n            .concat(String(this.numberTwo))\n            .concat(' = ?')}\"\n        @nidoca-form-text-focusout=\"${() => this.validate()}\"\n        name=\"${this.name}\"\n        trailingIcon=\"create\"\n        type=\"${NidocaFormTextType.NUMBER}\"\n        value=\"\"\n      ></nidoca-form-text>\n    `;\n    }\n    updated(_changedProperties) {\n        if (_changedProperties.has('min') || _changedProperties.has('max')) {\n            this.generateNewNumber();\n        }\n        super.updated(_changedProperties);\n    }\n    generateNewNumber() {\n        this.numberOne = Math.round(this.getRandomNumber(this.min, this.max));\n        this.numberTwo = Math.round(this.getRandomNumber(this.min, this.max));\n        this.requestUpdate();\n    }\n    getRandomNumber(min, max) {\n        return Math.random() * (max - min) + min;\n    }\n    isValid() {\n        if (this.inputfield != undefined) {\n            return this.numberOne + this.numberTwo == Number(this.inputfield.getOutputData().value);\n        }\n        else {\n            return false;\n        }\n    }\n    validate() {\n        const isValid = this.isValid();\n        if (isValid && this.inputfield != undefined) {\n            this.inputfield.errorText = '';\n        }\n        else if (this.inputfield != undefined) {\n            this.inputfield.errorText = this.errorText;\n        }\n        return isValid;\n    }\n}"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaFormCaptcha",
-          "declaration": {
-            "name": "NidocaFormCaptcha",
-            "module": "lib/nidoca-form-captcha.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-form-change-password.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "NidocaFormChangePassword",
-          "default": "class NidocaFormChangePassword extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.theme = NidocaTheme.surface;\n        this.label = 'Passwort ändern';\n        this.oldPasswordLabel = 'Altes Passwort';\n        this.newPasswordLabel = 'Neues Passwort';\n        this.repeatNewPasswordLabel = 'Wiederholen';\n        this.buttonLabel = 'Ändern';\n        this.showErrorMessageSamePassword = false;\n        this.errorMessageSamePasswordLabel = 'Altes und neues Passwort dürfen nicht übereinstimmen.';\n        this.showErrorMessagePasswordDiff = false;\n        this.errorMessagePasswordDiffLabel = 'Die Passwörter stimmen nicht überein';\n    }\n    render() {\n        return html `\n      <nidoca-box theme=\"${this.theme}\">\n        <nidoca-form id=\"form\">\n          <nidoca-text-h2 class=\"paddingBottom\">${this.label}</nidoca-text-h2>\n\n          <nidoca-form-text\n            id=\"oldPassword\"\n            theme=\"${NidocaThemeHelper.getOposite(this.theme)}\"\n            class=\"paddingBottom\"\n            textType=\"${NidocaFormTextType.PASSWORD}\"\n            label=\"${this.oldPasswordLabel}\"\n            name=\"oldPassword\"\n            required\n          ></nidoca-form-text>\n\n          <nidoca-form-text\n            id=\"newPassword\"\n            theme=\"${NidocaThemeHelper.getOposite(this.theme)}\"\n            class=\"paddingBottom\"\n            textType=\"${NidocaFormTextType.PASSWORD}\"\n            label=\"${this.newPasswordLabel}\"\n            name=\"newPassword\"\n            required\n          ></nidoca-form-text>\n\n          <nidoca-form-text\n            id=\"repeatNewPassword\"\n            theme=\"${NidocaThemeHelper.getOposite(this.theme)}\"\n            class=\"paddingBottom\"\n            textType=\"${NidocaFormTextType.PASSWORD}\"\n            label=\"${this.repeatNewPasswordLabel}\"\n            name=\"repeatNewPassword\"\n            required\n          ></nidoca-form-text>\n\n          <nidoca-button\n            theme=\"${NidocaThemeHelper.getOposite(this.theme)}\"\n            class=\"paddingBottom\"\n            @nidoca-event-button-clicked=\"${() => this.changePassword()}\"\n            >${this.buttonLabel}\n          </nidoca-button>\n\n          <slot></slot>\n        </nidoca-form>\n        ${this.showErrorMessageSamePassword\n            ? html ` <nidoca-text\n              style=\"color:var(--app-color-error-background)\"\n              text=\"${this.errorMessageSamePasswordLabel}\"\n            ></nidoca-text>`\n            : html ``}\n        ${this.showErrorMessagePasswordDiff\n            ? html ` <nidoca-text\n              style=\"color:var(--app-color-error-background)\"\n              text=\"${this.errorMessagePasswordDiffLabel}\"\n            ></nidoca-text>`\n            : html ``}\n      </nidoca-box>\n    `;\n    }\n    changePassword() {\n        var _a, _b, _c, _d, _e;\n        if (!((_a = this.formComponent) === null || _a === void 0 ? void 0 : _a.validate())) {\n            return;\n        }\n        this.showErrorMessagePasswordDiff = false;\n        if (((_b = this.newPasswordInputField) === null || _b === void 0 ? void 0 : _b.getOutputData().value) != ((_c = this.repeatNewPasswordInputField) === null || _c === void 0 ? void 0 : _c.getOutputData().value)) {\n            this.showErrorMessagePasswordDiff = true;\n        }\n        this.showErrorMessageSamePassword = false;\n        if (((_d = this.oldPasswordInputField) === null || _d === void 0 ? void 0 : _d.getOutputData().value) == ((_e = this.newPasswordInputField) === null || _e === void 0 ? void 0 : _e.getOutputData().value)) {\n            this.showErrorMessageSamePassword = true;\n        }\n        if (!this.showErrorMessagePasswordDiff && !this.showErrorMessageSamePassword) {\n            this.dispatchEvent(new CustomEvent('nidoca-form-change-password-submit', {\n                detail: this.formComponent.getOutputData(),\n                bubbles: true,\n                composed: true,\n            }));\n        }\n        else {\n            this.requestUpdate();\n        }\n    }\n}"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaFormChangePassword",
-          "declaration": {
-            "name": "NidocaFormChangePassword",
-            "module": "lib/nidoca-form-change-password.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-form-combobox.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "NidocaFormCombobox",
-          "default": "class NidocaFormCombobox extends NidocaFormAbstractInputElement {\n    constructor() {\n        super(...arguments);\n        this.theme = NidocaTheme.surface;\n        this.trailingIcon = '';\n        this.label = '';\n        this.errorText = '';\n        this.infoText = '';\n        this.warningText = '';\n        this.value = '';\n        this.options = [];\n        this.name = '';\n        this.required = true;\n        this.multiple = false;\n        this.size = 1;\n    }\n    render() {\n        return html ` <style>\n        .parentContainer,\n        ::slotted(.parentContainer) {\n          color: var(--app-color-${this.theme});\n          background-color: var(--app-color-${this.theme}-background);\n          border-color: var(--app-color-${this.theme}-border);\n        }\n\n        .parentContainer:focus-within,\n        ::slotted(.parentContainer:focus-within) {\n          border-color: var(--app-color-${this.theme}-selected);\n          filter: brightness(var(--app-darken-1));\n        }\n\n        option {\n          color: var(--app-color-${this.theme});\n          background-color: var(--app-color-${this.theme}-background);\n        }\n      </style>\n      <div class=\"parentContainer\">\n        ${this.trailingIcon\n            ? html ` <nidoca-icon\n              style=\"font-size: var(--icon-size-big);padding-left:var(--space);padding-right:var(--space);\"\n              icon=\"${this.trailingIcon}\"\n            ></nidoca-icon>`\n            : html ``}\n        <div class=\"container\">\n          <nidoca-text-caption class=\"label\" text=\"${this.label}\"></nidoca-text-caption>\n          <select\n            id=\"selectElement\"\n            name=\"${this.name}\"\n            size=\"${this.size}\"\n            ?required=\"${this.required}\"\n            ?multiple=\"${this.multiple}\"\n          >\n            ${guard([this.value, this.options], () => html `\n                ${repeat(this.options, (option) => option == undefined\n            ? html ` <option></option>`\n            : this.isSelectedOption(option)\n                ? html ` <option value=\"${option.key}\" selected>${option.value}</option> `\n                : html ` <option value=\"${option.key}\">${option.value}</option> `)}\n              `)}\n          </select>\n        </div>\n      </div>\n      ${this.infoText || this.warningText || this.errorText\n            ? html `\n            <div style=\"display:flex;flex-direction:column;\">\n              ${this.infoText ? html ` <nidoca-text-info text=\"${this.infoText}\"></nidoca-text-info>` : html ``}\n              ${this.warningText\n                ? html ` <nidoca-text-warning\n                    style=\"color:var(--app-color-warning-background)\"\n                    text=\"${this.warningText}\"\n                  ></nidoca-text-warning>`\n                : html ``}\n              ${this.errorText\n                ? html ` <nidoca-text-error\n                    style=\"color:var(--app-color-error-background)\"\n                    text=\"${this.errorText}\"\n                  ></nidoca-text-error>`\n                : html ``}\n            </div>\n          `\n            : html ``}`;\n    }\n    getOutputData() {\n        let outputValue = this.value;\n        if (this.selectElement != null && this.multiple) {\n            outputValue = [];\n            for (let i = 0, len = this.selectElement.options.length; i < len; i++) {\n                const opt = this.selectElement.options[i];\n                if (opt.selected) {\n                    outputValue.push(this.options[i].key);\n                }\n            }\n        }\n        else if (this.selectElement != null) {\n            if (this.selectElement.value.length == 0) {\n                outputValue = null;\n            }\n            else {\n                outputValue = this.selectElement.value;\n            }\n        }\n        return {\n            key: this.name,\n            value: outputValue,\n        };\n    }\n    validate() {\n        this.errorText = '';\n        if (this.selectElement != null &&\n            !this.selectElement.validity.valid &&\n            this.selectElement.validationMessage != this.errorText) {\n            this.errorText = this.selectElement.validationMessage;\n        }\n        return this.errorText.length == 0;\n    }\n    isSelectedOption(option) {\n        if (this.multiple) {\n            let isSelected = false;\n            for (const val of this.value) {\n                isSelected = option.key === val;\n                if (isSelected) {\n                    return true;\n                }\n            }\n        }\n        return this.value === option.key;\n    }\n    static enumToOptions(enumeration, emptyElement = true) {\n        const options = [];\n        if (emptyElement) {\n            options.push({ key: '', value: '' });\n        }\n        Object.keys(enumeration).forEach((key) => {\n            options.push({ key: key, value: enumeration[key] });\n        });\n        return options;\n    }\n    static stringArrayToOptions(stringArray, emptyElement = true) {\n        const options = [];\n        if (emptyElement) {\n            options.push({ key: '', value: '' });\n        }\n        stringArray.forEach((key) => {\n            options.push({ key: key, value: key });\n        });\n        return options;\n    }\n    static toComboboxOptions(type = null, typeName = null) {\n        if (type == null) {\n            return [];\n        }\n        const retval = [];\n        Object.values(type).forEach((item) => {\n            let value = String(Object.keys(type)[Object.values(type).indexOf(item)]);\n            if (typeName) {\n                value = value.concat(typeName);\n            }\n            retval.push({\n                key: item,\n                value: value,\n            });\n        });\n        return retval;\n    }\n}"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaFormCombobox",
-          "declaration": {
-            "name": "NidocaFormCombobox",
-            "module": "lib/nidoca-form-combobox.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-form-contact.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "NidocaFormContact",
-          "default": "class NidocaFormContact extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.theme = NidocaTheme.primary;\n        this.label = 'Deine Nachricht';\n        this.nameLabel = 'Dein Name';\n        this.emailLabel = 'Deine Email';\n        this.titleLabel = 'Betreff';\n        this.messageLabel = 'Deine Nachricht';\n        this.buttonLabel = 'Senden';\n    }\n    render() {\n        return html `\n      <nidoca-box theme=\"${ifDefined(this.theme)}\">\n        <nidoca-form id=\"authenitcate-form\">\n          <nidoca-text-h2 class=\"paddingBottom\">${this.label}</nidoca-text-h2>\n          <nidoca-form-text\n            theme=\"${NidocaThemeHelper.getOposite(this.theme)}\"\n            class=\"paddingBottom\"\n            name=\"name\"\n            textType=\"${NidocaFormTextType.TEXT}\"\n            value=\"\"\n            label=\"${this.nameLabel}\"\n            required\n          ></nidoca-form-text>\n          <nidoca-form-text\n            theme=\"${NidocaThemeHelper.getOposite(this.theme)}\"\n            class=\"paddingBottom\"\n            textType=\"${NidocaFormTextType.EMAIL}\"\n            label=\"${this.emailLabel}\"\n            name=\"email\"\n            pattern=\"[a-z0-9._%+-]+@[a-z0-9.-]+\\\\.[a-z]{2,4}$\"\n            required\n          ></nidoca-form-text>\n          <nidoca-form-text\n            label=\"${this.titleLabel}\"\n            theme=\"${NidocaThemeHelper.getOposite(this.theme)}\"\n            class=\"paddingBottom\"\n            textType=\"${NidocaFormTextType.TEXT}\"\n            value=\"\"\n            label=\"title\"\n            required\n          ></nidoca-form-text>\n          <nidoca-form-textarea\n            label=\"${this.messageLabel}\"\n            theme=\"${NidocaThemeHelper.getOposite(this.theme)}\"\n            class=\"paddingBottom\"\n            name=\"message\"\n            trailingIcon=\"vpn_key\"\n            required\n          ></nidoca-form-textarea>\n          <nidoca-button\n            theme=\"${NidocaThemeHelper.getOposite(this.theme)}\"\n            class=\"paddingBottom\"\n            @nidoca-event-button-clicked=\"${() => this.sendMessage()}\"\n            .buttonType=\"${NidocaButtonType.CONTAINED}\"\n            >${this.buttonLabel}\n          </nidoca-button>\n        </nidoca-form>\n      </nidoca-box>\n    `;\n    }\n    sendMessage() {\n        if (this.formComponent && this.formComponent.validate()) {\n            this.dispatchEvent(new CustomEvent('nidoca-form-contact-submit', {\n                detail: this.formComponent.getOutputData(),\n                bubbles: true,\n                composed: true,\n            }));\n        }\n    }\n}"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaFormContact",
-          "declaration": {
-            "name": "NidocaFormContact",
-            "module": "lib/nidoca-form-contact.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-form-date.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "NidocaFormDate",
-          "default": "class NidocaFormDate extends NidocaFormText {\n    constructor() {\n        super();\n        this.type = NidocaFormTextType.DATE;\n    }\n}"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaFormDate",
-          "declaration": {
-            "name": "NidocaFormDate",
-            "module": "lib/nidoca-form-date.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-form-login.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "NidocaFormLogin",
-          "default": "class NidocaFormLogin extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.theme = NidocaTheme.transparent;\n        this.label = 'Anmeldung';\n        this.usernameLabel = 'Benutzername/Email';\n        this.passwordLabel = 'Passwort';\n        this.buttonLabel = 'Anmelden';\n    }\n    render() {\n        return html `\n      <nidoca-box theme=\"${ifDefined(this.theme)}\">\n        <nidoca-form id=\"authenitcate-form\">\n          <nidoca-text-h2 class=\"paddingBottom\">${this.label}</nidoca-text-h2>\n\n          <nidoca-form-text\n            theme=\"${NidocaThemeHelper.getOposite(this.theme)}\"\n            class=\"paddingBottom\"\n            type=\"${NidocaFormTextType.EMAIL}\"\n            label=\"${this.usernameLabel}\"\n            name=\"username\"\n            required\n            trailingIcon=\"account_circle\"\n          ></nidoca-form-text>\n\n          <nidoca-form-text\n            theme=\"${NidocaThemeHelper.getOposite(this.theme)}\"\n            class=\"paddingBottom\"\n            type=\"${NidocaFormTextType.PASSWORD}\"\n            label=\"${this.passwordLabel}\"\n            label=\"password\"\n            name=\"password\"\n            required\n            trailingIcon=\"vpn_key\"\n          ></nidoca-form-text>\n\n          <nidoca-button\n            theme=\"${NidocaThemeHelper.getOposite(this.theme)}\"\n            class=\"paddingBottom\"\n            @nidoca-event-button-clicked=\"${() => this.login()}\"\n            >${this.buttonLabel}\n          </nidoca-button>\n\n          <slot></slot>\n        </nidoca-form>\n      </nidoca-box>\n    `;\n    }\n    login() {\n        if (this.formComponent && this.formComponent.validate()) {\n            this.dispatchEvent(new CustomEvent('nidoca-form-login-submit', {\n                detail: this.formComponent.getOutputData(),\n                bubbles: true,\n                composed: true,\n            }));\n        }\n    }\n}"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaFormLogin",
-          "declaration": {
-            "name": "NidocaFormLogin",
-            "module": "lib/nidoca-form-login.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-form-newsletter.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "NidocaFormNewsletter",
-          "default": "class NidocaFormNewsletter extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.theme = NidocaTheme.primary;\n        this.label = 'Newsletter';\n        this.emailLabel = 'Deine Emailadresse';\n        this.buttonLabel = 'Registrieren';\n    }\n    render() {\n        return html `\n      <nidoca-box theme=\"${ifDefined(this.theme)}\">\n        <nidoca-form id=\"form\">\n          <nidoca-text-h2 class=\"paddingBottom\">${this.label}</nidoca-text-h2>\n\n          <nidoca-form-text\n            theme=\"${NidocaThemeHelper.getOposite(this.theme)}\"\n            class=\"paddingBottom\"\n            textType=\"${NidocaFormTextType.EMAIL}\"\n            label=\"${this.emailLabel}\"\n            name=\"email\"\n            trailingIcon=\"email\"\n            required\n            minLength=\"4\"\n            pattern=\"[a-z0-9._%+-]+@[a-z0-9.-]+\\\\.[a-z]{2,4}$\"\n          ></nidoca-form-text>\n\n          <nidoca-button\n            theme=\"${NidocaThemeHelper.getOposite(this.theme)}\"\n            class=\"paddingBottom\"\n            @nidoca-event-button-clicked=\"${() => this.register()}\"\n            >${this.buttonLabel}\n          </nidoca-button>\n\n          <slot></slot>\n        </nidoca-form>\n      </nidoca-box>\n    `;\n    }\n    register() {\n        if (this.formComponent && this.formComponent.validate()) {\n            this.dispatchEvent(new CustomEvent('nidoca-form-newsletter-submit', {\n                detail: this.formComponent.getOutputData(),\n                bubbles: true,\n                composed: true,\n            }));\n        }\n    }\n}"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaFormNewsletter",
-          "declaration": {
-            "name": "NidocaFormNewsletter",
-            "module": "lib/nidoca-form-newsletter.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-form-register.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "NidocaFormRegister",
-          "default": "class NidocaFormRegister extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.theme = NidocaTheme.primary;\n        this.label = 'Registrieren';\n        this.emailLabel = 'Email';\n        this.passwordLabel = 'Passwort';\n        this.buttonLabel = 'Registrieren';\n    }\n    render() {\n        return html `\n      <nidoca-box theme=\"${ifDefined(this.theme)}\">\n        <nidoca-form id=\"form\">\n          <nidoca-text-h2 class=\"paddingBottom\">${this.label}</nidoca-text-h2>\n\n          <nidoca-form-text\n            theme=\"${NidocaThemeHelper.getOposite(this.theme)}\"\n            class=\"paddingBottom\"\n            textType=\"${NidocaFormTextType.EMAIL}\"\n            label=\"${this.emailLabel}\"\n            name=\"email\"\n            trailingIcon=\"account_circle\"\n            required\n            minLength=\"4\"\n            pattern=\"[a-z0-9._%+-]+@[a-z0-9.-]+\\\\.[a-z]{2,4}$\"\n          ></nidoca-form-text>\n\n          <nidoca-form-text\n            theme=\"${NidocaThemeHelper.getOposite(this.theme)}\"\n            class=\"paddingBottom\"\n            textType=\"${NidocaFormTextType.PASSWORD}\"\n            label=\"${this.passwordLabel}\"\n            name=\"password\"\n            trailingIcon=\"vpn_key\"\n            required\n            minLength=\"8\"\n          ></nidoca-form-text>\n\n          <nidoca-button\n            theme=\"${NidocaThemeHelper.getOposite(this.theme)}\"\n            class=\"paddingBottom\"\n            @nidoca-event-button-clicked=\"${() => this.register()}\"\n            >${this.buttonLabel}\n          </nidoca-button>\n\n          <slot></slot>\n        </nidoca-form>\n      </nidoca-box>\n    `;\n    }\n    register() {\n        if (this.formComponent && this.formComponent.validate()) {\n            this.dispatchEvent(new CustomEvent('nidoca-form-register-submit', {\n                detail: this.formComponent.getOutputData(),\n                bubbles: true,\n                composed: true,\n            }));\n        }\n    }\n}"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaFormRegister",
-          "declaration": {
-            "name": "NidocaFormRegister",
-            "module": "lib/nidoca-form-register.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-form-reset-password.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "NidocaFormResetPassword",
-          "default": "class NidocaFormResetPassword extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.theme = NidocaTheme.primary;\n        this.label = 'Passwort zurücksetzen';\n        this.emailLabel = 'Deine Emailadresse';\n        this.buttonLabel = 'Zurücksetzen';\n    }\n    render() {\n        return html `\n      <nidoca-box theme=\"${this.theme}\">\n        <nidoca-form id=\"form\">\n          <nidoca-text-h2 class=\"paddingBottom\">${this.label}</nidoca-text-h2>\n\n          <nidoca-form-text\n            theme=\"${NidocaThemeHelper.getOposite(this.theme)}\"\n            class=\"paddingBottom\"\n            textType=\"${NidocaFormTextType.EMAIL}\"\n            label=\"${this.emailLabel}\"\n            name=\"email\"\n            trailingIcon=\"email\"\n            required\n            minLength=\"4\"\n            pattern=\"[a-z0-9._%+-]+@[a-z0-9.-]+\\\\.[a-z]{2,4}$\"\n          ></nidoca-form-text>\n\n          <nidoca-button\n            theme=\"${NidocaThemeHelper.getOposite(this.theme)}\"\n            class=\"paddingBottom\"\n            @nidoca-event-button-clicked=\"${() => this.register()}\"\n            >${this.buttonLabel}\n          </nidoca-button>\n\n          <slot></slot>\n        </nidoca-form>\n      </nidoca-box>\n    `;\n    }\n    register() {\n        if (this.formComponent && this.formComponent.validate()) {\n            this.dispatchEvent(new CustomEvent('nidoca-form-reset-password-submit', {\n                detail: this.formComponent.getOutputData(),\n                bubbles: true,\n                composed: true,\n            }));\n        }\n    }\n}"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaFormResetPassword",
-          "declaration": {
-            "name": "NidocaFormResetPassword",
-            "module": "lib/nidoca-form-reset-password.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-form-switch.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "NidocaFormSwitch",
-          "default": "class NidocaFormSwitch extends NidocaFormAbstractInputElement {\n    constructor() {\n        super();\n        this.name = '';\n        this.label = '';\n        this.infoText = '';\n        this.errorText = '';\n        this.warningText = '';\n        this.required = false;\n        this.disabled = false;\n        this.checked = false;\n        this.theme = NidocaTheme.primary;\n        this.theme = NidocaThemeHelper.prototype.getParentTheme(this) || NidocaTheme.background;\n    }\n    render() {\n        return html `\n      <style>\n        .slider {\n          background-color: var(--app-color-${this.theme}-border);\n        }\n\n        .slider:before {\n          background-color: var(--app-color-${this.theme}-background);\n        }\n\n        input:checked + .slider:before {\n          background-color: var(--app-color-${this.theme});\n        }\n\n        input:checked + .slider {\n          background-color: var(--app-color-${this.theme}-selected);\n        }\n\n        input:focus + .slider {\n          box-shadow: 0 0 20px var(--app-color-${this.theme}-border);\n        }\n      </style>\n\n      <nidoca-list-item>\n        <nidoca-text-subtitle>\n          ${this.label}\n          <slot></slot>\n        </nidoca-text-subtitle>\n\n        ${this.infoText.length > 0\n            ? html ` <nidoca-text-caption text=\"${this.infoText}\"></nidoca-text-caption>`\n            : html ``}\n\n        <label class=\"switch\" slot=\"meta\">\n          <input\n            id=\"inputElement\"\n            name=\"${this.name}\"\n            type=\"checkbox\"\n            ?checked=\"${this.checked}\"\n            ?required=\"${this.required}\"\n            ?disabled=\"${this.disabled}\"\n            @input=\"${(eventArg) => {\n            this.checked = eventArg.target.checked;\n            console.log(this.checked);\n        }}\"\n          />\n          <span class=\"slider round\"></span>\n        </label>\n      </nidoca-list-item>\n\n      ${this.warningText ? html ` <nidoca-text-error text=\"${this.warningText}\"></nidoca-text-error>` : html ``}\n      ${this.errorText ? html ` <nidoca-text-error text=\"${this.errorText}\"></nidoca-text-error>` : html ``}\n    `;\n    }\n    getOutputData() {\n        return {\n            key: this.name,\n            value: this.checked,\n        };\n    }\n    validate() {\n        this.errorText = '';\n        if (this.inputElement != null &&\n            !this.inputElement.validity.valid &&\n            this.inputElement.validationMessage != this.errorText) {\n            this.errorText = this.inputElement.validationMessage;\n        }\n        return this.errorText == '';\n    }\n}"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaFormSwitch",
-          "declaration": {
-            "name": "NidocaFormSwitch",
-            "module": "lib/nidoca-form-switch.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-form-text.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "NidocaFormTextType"
-        },
-        {
-          "kind": "variable",
-          "name": "NidocaFormText",
-          "default": "class NidocaFormText extends NidocaFormAbstractInputElement {\n    constructor() {\n        super(...arguments);\n        this.type = NidocaFormTextType.TEXT;\n        this.label = '';\n        this.placeholder = '';\n        this.trailingIcon = '';\n        this.errorText = '';\n        this.infoText = '';\n        this.warningText = '';\n        this.name = '';\n        this.value = '';\n        this.required = false;\n        this.disabled = false;\n        this.checked = false;\n        this.theme = NidocaTheme.surface;\n    }\n    render() {\n        return this.type == NidocaFormTextType.HIDDEN\n            ? html `<input id=\"inputElement\" name=\"${this.name}\" type=\"${this.type}\" value=\"${this.value}\" />`\n            : html ` <style>\n            .parentContainer,\n            ::slotted(.parentContainer) {\n              color: var(--app-color-${this.theme});\n              background-color: var(--app-color-${this.theme}-background);\n            }\n\n            .parentContainer,\n            ::slotted(.parentContainer) {\n              border-color: var(--app-color-${this.theme}-border);\n            }\n\n            .parentContainer:focus-within,\n            ::slotted(.parentContainer:focus-within) {\n              border-color: var(--app-color-${this.theme}-border);\n              filter: contrast(var(--app-color-percent-selected));\n            }\n          </style>\n          <div class=\"parentContainer border\">\n            ${this.trailingIcon\n                ? html ` <nidoca-icon\n                  style=\"font-size: var(--icon-size-big);padding-left:var(--space);padding-right:var(--space);\"\n                  icon=\"${this.trailingIcon}\"\n                ></nidoca-icon>`\n                : html ``}\n            <div class=\"container\">\n              <nidoca-text-caption class=\"label\" text=\"${this.label}\"></nidoca-text-caption>\n              <input\n                id=\"inputElement\"\n                name=\"${this.name}\"\n                .type=\"${this.type}\"\n                value=\"${this.value}\"\n                placeholder=\"${this.placeholder}\"\n                size=\"${ifDefined(this.size)}\"\n                minlength=\"${ifDefined(this.minlength)}\"\n                maxlength=\"${ifDefined(this.maxlength)}\"\n                pattern=\"${ifDefined(this.pattern)}\"\n                min=\"${ifDefined(this.min)}\"\n                max=\"${ifDefined(this.max)}\"\n                step=\"${ifDefined(this.step)}\"\n                ?required=\"${this.required}\"\n                ?disabled=\"${this.disabled}\"\n                ?checked=\"${this.checked}\"\n              />\n            </div>\n          </div>\n\n          ${this.infoText || this.warningText || this.errorText\n                ? html `\n                <div style=\"display:flex;flex-direction:column;\">\n                  ${this.infoText ? html ` <nidoca-text-info text=\"${this.infoText}\"></nidoca-text-info>` : html ``}\n                  ${this.warningText\n                    ? html ` <nidoca-text-warning\n                        style=\"color:var(--app-color-warning-background)\"\n                        text=\"${this.warningText}\"\n                      ></nidoca-text-warning>`\n                    : html ``}\n                  ${this.errorText\n                    ? html ` <nidoca-text-error\n                        style=\"color:var(--app-color-error-background)\"\n                        text=\"${this.errorText}\"\n                      ></nidoca-text-error>`\n                    : html ``}\n                </div>\n              `\n                : html ``}`;\n    }\n    getOutputData() {\n        var _a;\n        const outputValue = (_a = this.inputElement) === null || _a === void 0 ? void 0 : _a.value;\n        return {\n            key: this.name,\n            value: outputValue === null || outputValue === void 0 ? void 0 : outputValue.trim(),\n        };\n    }\n    validate() {\n        this.errorText = '';\n        if (this.inputElement != null &&\n            !this.inputElement.validity.valid &&\n            this.inputElement.validationMessage != this.errorText) {\n            this.errorText = this.inputElement.validationMessage;\n            if (this.inputElement.validity.patternMismatch && this.pattern) {\n                this.errorText = this.errorText.concat(' Format: ').concat(this.pattern);\n            }\n        }\n        return this.errorText == '';\n    }\n}"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaFormTextType",
-          "declaration": {
-            "name": "NidocaFormTextType",
-            "module": "lib/nidoca-form-text.js"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "NidocaFormText",
-          "declaration": {
-            "name": "NidocaFormText",
-            "module": "lib/nidoca-form-text.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-form-textarea.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "NidocaFormTextarea",
-          "default": "class NidocaFormTextarea extends NidocaFormAbstractInputElement {\n    constructor() {\n        super(...arguments);\n        this.theme = NidocaTheme.surface;\n        this.infoText = '';\n        this.warningText = '';\n        this.errorText = '';\n        this.name = '';\n        this.value = '';\n        this.label = '';\n        this.required = false;\n        this.placeholder = '';\n        this.disabled = false;\n        this.rows = 5;\n    }\n    render() {\n        return html ` <style>\n        .parentContainer,\n        ::slotted(.parentContainer) {\n          color: var(--app-color-${this.theme});\n          background-color: var(--app-color-${this.theme}-background);\n        }\n\n        .parentContainer,\n        ::slotted(.parentContainer) {\n          border-color: var(--app-color-${this.theme}-border);\n        }\n\n        .parentContainer:focus-within,\n        ::slotted(.parentContainer:focus-within) {\n          filter: contrast(var(--app-color-percent-hover));\n        }\n      </style>\n      <div class=\"parentContainer\">\n        <div class=\"container\">\n          <nidoca-text-caption class=\"label\" text=\"${this.label}\"></nidoca-text-caption>\n\n          <textarea\n            id=\"inputElement\"\n            name=\"${this.name}\"\n            placeholder=\"${this.placeholder}\"\n            rows=\"${this.rows}\"\n            ?required=\"${this.required}\"\n            ?disabled=\"${this.disabled}\"\n          >\n${this.value}</textarea\n          >\n        </div>\n      </div>\n\n      ${this.infoText || this.warningText || this.errorText\n            ? html `\n            <div style=\"display:flex;flex-direction:column;\">\n              ${this.infoText ? html ` <nidoca-text-info text=\"${this.infoText}\"></nidoca-text-info>` : html ``}\n              ${this.warningText\n                ? html ` <nidoca-text-warning\n                    style=\"color:var(--app-color-warning-background)\"\n                    text=\"${this.warningText}\"\n                  ></nidoca-text-warning>`\n                : html ``}\n              ${this.errorText\n                ? html ` <nidoca-text-error\n                    style=\"color:var(--app-color-error-background)\"\n                    text=\"${this.errorText}\"\n                  ></nidoca-text-error>`\n                : html ``}\n            </div>\n          `\n            : html ``}`;\n    }\n    getOutputData() {\n        var _a;\n        const outputValue = (_a = this.inputElement) === null || _a === void 0 ? void 0 : _a.value;\n        return {\n            key: this.name,\n            value: outputValue,\n        };\n    }\n    validate() {\n        this.errorText = '';\n        if (this.inputElement != null &&\n            !this.inputElement.validity.valid &&\n            this.inputElement.validationMessage != this.errorText) {\n            this.errorText = this.inputElement.validationMessage;\n        }\n        return this.errorText == '';\n    }\n}"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaFormTextarea",
-          "declaration": {
-            "name": "NidocaFormTextarea",
-            "module": "lib/nidoca-form-textarea.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-form-upload.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "NidocaFormUpload",
-          "default": "class NidocaFormUpload extends NidocaFormAbstractInputElement {\n    constructor() {\n        super(...arguments);\n        this.theme = NidocaTheme.primary;\n    }\n    validate() {\n        throw new Error('Method not implemented.');\n    }\n    getOutputData() {\n        throw new Error('Method not implemented.');\n    }\n    render() {\n        return html `\n      <nidoca-box theme=\"${ifDefined(this.theme)}\">\n        <div class=\"container\">\n          <nidoca-icon\n            clickable\n            class=\"icon\"\n            @nidoca-event-icon-clicked=\"${() => this.upload()}\"\n            icon=\"cloud_upload\"\n          ></nidoca-icon>\n\n          Upload your Files\n          <input style=\"display:none;\" id=\"inputElement\" name=\"file\" type=\"file\" />\n        </div>\n      </nidoca-box>\n    `;\n    }\n    upload() {\n        var _a;\n        (_a = this.inputElement) === null || _a === void 0 ? void 0 : _a.click();\n    }\n}"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaFormUpload",
-          "declaration": {
-            "name": "NidocaFormUpload",
-            "module": "lib/nidoca-form-upload.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-form.js",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "NidocaFormOutputData",
-          "members": [
-            {
-              "kind": "field",
-              "name": "formData"
-            }
-          ]
-        },
-        {
-          "kind": "variable",
-          "name": "NidocaForm",
-          "default": "class NidocaForm extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.autocomplete = true;\n    }\n    render() {\n        return html `\n      <form autocomplete=\"${this.autocomplete ? 'on' : 'off'}\">\n        <slot id=\"slotElement\"></slot>\n      </form>\n    `;\n    }\n    getOutputData() {\n        const formData = new FormData();\n        const json = {};\n        for (const element of this.getInputElements(this.slotElement)) {\n            const elementOutputData = element.getOutputData();\n            json[elementOutputData.key] = elementOutputData.value;\n            formData.append(elementOutputData.key, elementOutputData.value);\n        }\n        const outputData = {};\n        outputData.jsonObject = json;\n        outputData.formData = formData;\n        return outputData;\n    }\n    validate() {\n        let valid = true;\n        for (const element of this.getInputElements(this.slotElement)) {\n            if (!element.validate()) {\n                if (valid) {\n                    //element.select();\n                    //element.parentElement?.scrollIntoView(true);\n                }\n                valid = false;\n            }\n        }\n        if (!valid) {\n            this.dispatchEvent(new CustomEvent('nidoca-form-validation-failed', {\n                detail: this.getOutputData(),\n                bubbles: true,\n                composed: true,\n            }));\n        }\n        return valid;\n    }\n    getInputElements(slotElement) {\n        if (slotElement == null) {\n            return [];\n        }\n        const inputElements = [];\n        const elements = slotElement.assignedElements({ flatten: true });\n        for (let index = 0; index < elements.length; index++) {\n            const element = elements[index];\n            this.recursiveInputElementSearch(element, inputElements);\n        }\n        return inputElements;\n    }\n    recursiveInputElementSearch(element, inputElements) {\n        if (element instanceof NidocaFormAbstractInputElement) {\n            inputElements.push(element);\n        }\n        else if (element.hasChildNodes()) {\n            const childrens = element.children;\n            for (const childElement of [].slice.call(childrens)) {\n                this.recursiveInputElementSearch(childElement, inputElements);\n            }\n        }\n    }\n}"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaFormOutputData",
-          "declaration": {
-            "name": "NidocaFormOutputData",
-            "module": "lib/nidoca-form.js"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "NidocaForm",
-          "declaration": {
-            "name": "NidocaForm",
-            "module": "lib/nidoca-form.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-gallery.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "NidocaGallery",
-          "default": "class NidocaGallery extends LitElement {\n    render() {\n        return html `\n      <nidoca-layout-spacer bottom=\"var(--space)\" left=\"\">\n        <slot id=\"slotElement\" @slotchange=\"${(event) => this.slotChanged(event)}\"></slot>\n      </nidoca-layout-spacer>\n    `;\n    }\n    slotChanged(event) {\n        const slotElement = event.target;\n        if (slotElement == undefined) {\n            return;\n        }\n        const elements = slotElement.assignedElements();\n        for (let index = 0; index < elements.length; index++) {\n            const element = elements[index];\n            const classList = element.classList;\n            if (!classList.contains('flexItem')) {\n                classList.add('flexItem');\n            }\n            if (!classList.contains('flexItemDevice')) {\n                classList.add('flexItemDevice');\n            }\n        }\n    }\n}"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaGallery",
-          "declaration": {
-            "name": "NidocaGallery",
-            "module": "lib/nidoca-gallery.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-hr.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "NidocaHr",
-          "default": "class NidocaHr extends LitElement {\n    constructor() {\n        super();\n        this.theme = NidocaThemeHelper.prototype.getParentTheme(this) || NidocaTheme.background;\n    }\n    render() {\n        return html `\n      <style>\n        hr {\n          border-color: var(--app-color-${this.theme}-border);\n          border-bottom-style: solid;\n          border-width: thin;\n        }\n      </style>\n      <hr />\n    `;\n    }\n}"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaHr",
-          "declaration": {
-            "name": "NidocaHr",
-            "module": "lib/nidoca-hr.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-icon-extended.js",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "NidocaIconShadowType"
-        },
-        {
-          "kind": "variable",
-          "name": "NidocaIconExtended",
-          "default": "class NidocaIconExtended extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.theme = NidocaTheme.primary;\n        this.shadowType = NidocaIconShadowType.DEFAULT_SHADOW;\n        this.icon = '';\n        this.clickable = true;\n        this.deactivated = false;\n    }\n    render() {\n        return html `\n      <style>\n        .iconExtended {\n          display: inline-block;\n          color: var(--app-color-${this.theme});\n          background-color: var(--app-color-${this.theme}-background);\n        }\n      </style>\n\n      <span class=\"iconExtended round ${this.shadowType}\">\n        <nidoca-icon\n          .deactivated=\"${this.deactivated}\"\n          .clickable=\"${this.clickable}\"\n          icon=\"${this.icon}\"\n          style=\"font-size: inherit;\"\n        ></nidoca-icon>\n      </span>\n    `;\n    }\n    clicked() {\n        return __awaiter(this, void 0, void 0, function* () {\n            if (this.clickable && !this.deactivated) {\n                const customEventName = 'nidoca-event-icon-clicked';\n                console.log('dispatch custom event: %s', customEventName);\n                this.dispatchEvent(new CustomEvent(customEventName, {\n                    detail: this,\n                    bubbles: true,\n                    composed: true,\n                }));\n            }\n        });\n    }\n}"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaIconShadowType",
-          "declaration": {
-            "name": "NidocaIconShadowType",
-            "module": "lib/nidoca-icon-extended.js"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "NidocaIconExtended",
-          "declaration": {
-            "name": "NidocaIconExtended",
-            "module": "lib/nidoca-icon-extended.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-icon-with-description.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "NidocaIconWithDescription",
-          "default": "class NidocaIconWithDescription extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.primaryText = '';\n        this.text = '';\n        this.icon = '';\n    }\n    render() {\n        return html `\n      <nidoca-icon icon=\"${this.icon}\" style=\"font-size: 8vw; padding:var(--space-4);\"></nidoca-icon>\n      <nidoca-text\n        style=\"padding-left:var(--space-4);padding-right:var(--space-4);padding-bottom:var(--space-4);text-align:center;\"\n      >\n        ${this.text}\n        <slot></slot>\n      </nidoca-text>\n    `;\n    }\n}"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaIconWithDescription",
-          "declaration": {
-            "name": "NidocaIconWithDescription",
-            "module": "lib/nidoca-icon-with-description.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-icon.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "NidocaIcon",
-          "default": "class NidocaIcon extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.icon = '';\n        this.clickable = true;\n        this.deactivated = false;\n        this.primaryText = '';\n    }\n    render() {\n        return html `\n      <i\n        class=\"material-icons ${this.deactivated ? 'deactivated' : ''} ${this.clickable ? 'clickable' : ''}\"\n        title=\"${this.primaryText}\"\n        @click=\"${this.clicked}\"\n        >${this.icon}</i\n      >\n    `;\n    }\n    clicked() {\n        return __awaiter(this, void 0, void 0, function* () {\n            if (this.clickable && !this.deactivated) {\n                const customEventName = 'nidoca-event-icon-clicked';\n                console.log('dispatch custom event: %s', customEventName);\n                this.dispatchEvent(new CustomEvent(customEventName, {\n                    detail: this,\n                    bubbles: true,\n                    composed: true,\n                }));\n            }\n        });\n    }\n}"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaIcon",
-          "declaration": {
-            "name": "NidocaIcon",
-            "module": "lib/nidoca-icon.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-img copy.js",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "NidocaImgProperties"
-        },
-        {
-          "kind": "class",
-          "description": "",
-          "name": "NidocaImgRoundXX",
-          "members": [
-            {
-              "kind": "method",
-              "name": "render"
-            },
-            {
-              "kind": "method",
-              "name": "toRichMediaPropertiesString",
-              "parameters": [
-                {
-                  "name": "richMediaProperties"
-                }
-              ]
-            },
-            {
-              "kind": "field",
-              "name": "src",
-              "type": {
-                "text": "string"
-              },
-              "default": "'http://picsum.photos/400/300'"
-            },
-            {
-              "kind": "field",
-              "name": "width",
-              "type": {
-                "text": "string"
-              },
-              "default": "'100%'"
-            },
-            {
-              "kind": "field",
-              "name": "height",
-              "type": {
-                "text": "string"
-              },
-              "default": "'100%'"
-            },
-            {
-              "kind": "field",
-              "name": "richMediaProperties",
-              "type": {
-                "text": "array"
-              },
-              "default": "[NidocaImgProperties.CLICKABLE, NidocaImgProperties.FULL_WIDTH]"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaImgProperties",
-          "declaration": {
-            "name": "NidocaImgProperties",
-            "module": "lib/nidoca-img copy.js"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "NidocaImgRoundXX",
-          "declaration": {
-            "name": "NidocaImgRoundXX",
-            "module": "lib/nidoca-img copy.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-img-round.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "NidocaImgRound",
-          "default": "class NidocaImgRound extends NidocaImg {\n    render() {\n        return html `<img width=\"${this.width}\" height=\"${this.height}\" src=\"${this.src}\" />`;\n    }\n}"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaImgRound",
-          "declaration": {
-            "name": "NidocaImgRound",
-            "module": "lib/nidoca-img-round.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-img.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "NidocaImg",
-          "default": "class NidocaImg extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.src = '';\n        this.width = '100%';\n        this.height = '100%';\n    }\n    render() {\n        return this.src ? html `<img width=\"${this.width}\" height=\"${this.height}\" src=\"${this.src}\" />` : html ``;\n    }\n}"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaImg",
-          "declaration": {
-            "name": "NidocaImg",
-            "module": "lib/nidoca-img.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-layout-floating.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "NidocaLayoutFloatingContainer",
-          "default": "class NidocaLayoutFloatingContainer extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.height = 'auto';\n        this.width = 'auto';\n        this.left = 'auto';\n        this.top = 'auto';\n        this.right = 'auto';\n        this.bottom = 'auto';\n    }\n    render() {\n        return html `\n      <slot\n        class=\"floatingContainer\"\n        style=\"${this.toStyle(this.height, this.width, this.left, this.right, this.top, this.bottom)}\"\n      ></slot>\n    `;\n    }\n    toStyle(height, width, left, right, top, bottom) {\n        return 'height:'\n            .concat(height)\n            .concat(';')\n            .concat('width:')\n            .concat(width)\n            .concat(';')\n            .concat('left:')\n            .concat(left)\n            .concat(';')\n            .concat('right:')\n            .concat(right)\n            .concat(';')\n            .concat('top:')\n            .concat(top)\n            .concat(';')\n            .concat('bottom:')\n            .concat(bottom)\n            .concat(';');\n    }\n}"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaLayoutFloatingContainer",
-          "declaration": {
-            "name": "NidocaLayoutFloatingContainer",
-            "module": "lib/nidoca-layout-floating.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-layout-meta.js",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "NidocaDevice",
-          "members": [
-            {
-              "kind": "method",
-              "name": "asMediaStyle",
-              "parameters": [
-                {
-                  "name": "style"
-                }
-              ]
-            },
-            {
-              "kind": "field",
-              "name": "key",
-              "default": "key"
-            },
-            {
-              "kind": "field",
-              "name": "minWidth",
-              "default": "minWidth"
-            },
-            {
-              "kind": "field",
-              "name": "maxWidth",
-              "default": "maxWidth"
-            }
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaDevice",
-          "declaration": {
-            "name": "NidocaDevice",
-            "module": "lib/nidoca-layout-meta.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-link.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "NidocaLink",
-          "default": "class NidocaLink extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.text = '';\n        this.href = '';\n        this.targetType = '_self';\n    }\n    render() {\n        return html `<a href=\"${this.href}\" .target=\"${this.targetType}\">\n      <nidoca-text>${this.text}</nidoca-text>\n      <slot></slot>\n    </a> `;\n    }\n}"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaLink",
-          "declaration": {
-            "name": "NidocaLink",
-            "module": "lib/nidoca-link.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-list-item.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "NidocaListItem",
-          "default": "class NidocaListItem extends LitElement {\n    constructor() {\n        super();\n        this.multiSelect = false;\n        this.selected = false;\n        this.primaryText = '';\n        this.secondaryText = '';\n        this.clickStart = null;\n        this.theme = NidocaThemeHelper.prototype.getParentTheme(this) || NidocaTheme.background;\n    }\n    update(changedProperties) {\n        super.update(changedProperties);\n        if (changedProperties.get('selectionMode') != undefined) {\n            if (!this.multiSelect) {\n                this.selected = false;\n            }\n        }\n    }\n    render() {\n        return html `\n      <style>\n        .selected {\n          backdrop-filter: contrast(var(--app-color-percent-selected));\n        }\n      </style>\n      <div\n        class=\"container ${this.selected ? 'selected' : ''}\"\n        @mousedown=\"${() => this.downAction()}\"\n        @mouseup=\"${() => this.upAction()}\"\n        @pointerup=\"${() => this.upAction()}\"\n        @pointerdown=\"${() => this.downAction()}\"\n      >\n        ${this.multiSelect\n            ? html ` <nidoca-icon\n              style=\"padding-right: var(--space-2);\"\n              class=\"item\"\n              @click=\"${() => this.switchSelected()}\"\n              icon=\"${this.selected ? 'check_box' : 'check_box_outline_blank'}\"\n            ></nidoca-icon>`\n            : html `<span></span>`}\n        <slot name=\"graphic\" class=\"item\"></slot>\n        <div class=\"containerTypography\">\n          ${this.primaryText ? html ` <nidoca-text class=\"item\">${this.primaryText} </nidoca-text>` : html ``}\n          <slot></slot>\n          ${this.secondaryText\n            ? html ` <nidoca-text-caption class=\"item\">${this.secondaryText} </nidoca-text-caption>`\n            : html ``}\n          <slot name=\"secondary\"></slot>\n        </div>\n        <slot name=\"meta\" class=\"item\"></slot>\n      </div>\n    `;\n    }\n    downAction() {\n        this.clickStart = Date.now();\n    }\n    upAction() {\n        if (this.clickStart) {\n            const diff = Date.now() - this.clickStart + 1;\n            let eventName = '';\n            if (diff > 500) {\n                eventName = 'nidoca-event-list-item-long-click';\n            }\n            else {\n                eventName = 'nidoca-event-list-item-click';\n            }\n            console.log(eventName);\n            this.dispatchEvent(new CustomEvent(eventName, {\n                detail: this,\n                bubbles: true,\n                composed: true,\n            }));\n        }\n    }\n    switchSelected() {\n        this.selected = Boolean(!this.selected);\n        if (this.selected) {\n            this.dispatchEvent(new CustomEvent('nidoca-event-list-item-select', {\n                detail: this,\n                bubbles: true,\n                composed: true,\n            }));\n        }\n        else {\n            this.dispatchEvent(new CustomEvent('nidoca-event-list-item-unselect', {\n                detail: this,\n                bubbles: true,\n                composed: true,\n            }));\n        }\n    }\n}"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaListItem",
-          "declaration": {
-            "name": "NidocaListItem",
-            "module": "lib/nidoca-list-item.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-list-section.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "NidocaListSection",
-          "default": "class NidocaListSection extends LitElement {\n    constructor() {\n        super();\n        this.text = '';\n        this.theme = NidocaThemeHelper.prototype.getParentTheme(this) || NidocaTheme.background;\n    }\n    render() {\n        return html `\n      <nidoca-text-caption style=\"flex-basis:100%;\" text=\"${this.text}\">\n        <slot></slot>\n      </nidoca-text-caption>\n    `;\n    }\n}"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaListSection",
-          "declaration": {
-            "name": "NidocaListSection",
-            "module": "lib/nidoca-list-section.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-list.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "NidocaList",
-          "default": "class NidocaList extends LitElement {\n    constructor() {\n        super();\n        this.multiSelect = false;\n        this.theme = NidocaThemeHelper.prototype.getParentTheme(this) || NidocaTheme.background;\n    }\n    updated(changedProperties) {\n        super.updated(changedProperties);\n        changedProperties.forEach((oldValue, propName) => {\n            console.debug(`${this.tagName} : property ${String(propName)} changed. oldValue: ${oldValue}`);\n            if (propName == 'selectionMode') {\n                this.getItems().forEach((listItemComponent) => {\n                    listItemComponent.multiSelect = this.multiSelect;\n                });\n            }\n        });\n    }\n    render() {\n        return html `\n      <style>\n        slot {\n          border-color: var(--app-color-${this.theme}-border);\n          border-top-style: solid;\n          border-width: thin;\n        }\n\n        ::slotted(nidoca-list-section) {\n          color: var(--app-color-${this.theme});\n          backdrop-filter: contrast(var(--app-color-percent-optional));\n        }\n\n        ::slotted(nidoca-list-item) {\n          color: var(--app-color-${this.theme});\n          background-color: var(--app-color-${this.theme}-background);\n        }\n\n        ::slotted(nidoca-list-item),\n        ::slotted(nidoca-list-section) {\n          border-bottom-style: solid;\n          border-width: var(--border-width-min);\n        }\n\n        ::slotted(nidoca-list-item:hover) {\n          filter: contrast(var(--app-color-percent-hover));\n        }\n      </style>\n      <slot\n        @nidoca-event-list-item-click=\"${(event) => {\n            if (!this.multiSelect) {\n                this.unselectAll();\n            }\n            event.detail.selected = true;\n        }}\"\n        @nidoca-event-list-item-unselect=\"${() => {\n            this.multiSelect = this.getSelectedItems().length === 0;\n        }}\"\n        class=\"slotList\"\n        id=\"slotElement\"\n      ></slot>\n    `;\n    }\n    getItems() {\n        const all = [];\n        if (this.slotElement != null) {\n            const slottedElements = this.slotElement.assignedElements();\n            for (let index = 0; index < slottedElements.length; index++) {\n                const element = slottedElements[index];\n                if (element instanceof NidocaListItem) {\n                    all.push(element);\n                }\n            }\n        }\n        return all;\n    }\n    getSelectedItems() {\n        const selection = [];\n        if (this.slotElement != null) {\n            const slottedElements = this.slotElement.assignedElements();\n            for (let index = 0; index < slottedElements.length; index++) {\n                const element = slottedElements[index];\n                if (element instanceof NidocaListItem) {\n                    if (element.selected) {\n                        selection.push(element);\n                    }\n                }\n            }\n        }\n        return selection;\n    }\n    getSelectedIndexes() {\n        const selection = [];\n        if (this.slotElement != null) {\n            const slottedElements = this.slotElement.assignedElements();\n            let nliIndex = 0;\n            for (let i = 0; i < slottedElements.length; i++) {\n                const element = slottedElements[i];\n                if (element instanceof NidocaListItem) {\n                    if (element.selected) {\n                        selection.push(nliIndex);\n                    }\n                    nliIndex++;\n                }\n            }\n        }\n        return selection;\n    }\n    selectAll() {\n        this.getItems().forEach((item) => {\n            item.selected = true;\n        });\n    }\n    unselectAll() {\n        console.log('sdojsdoijsoidjsdioj ' + this.getItems().length);\n        this.getItems().forEach((item) => {\n            item.selected = false;\n        });\n    }\n}"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaList",
-          "declaration": {
-            "name": "NidocaList",
-            "module": "lib/nidoca-list.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-menu-area.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "NidocaMenuArea",
-          "default": "class NidocaMenuArea extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.text = '';\n        this.icon = '';\n    }\n    render() {\n        return html `\n      <div class=\"container\">\n        ${this.icon\n            ? html ` <nidoca-icon\n              slot=\"graphic\"\n              icon=\"${this.icon}\"\n              style=\"padding-right:var(--space); font-size:var(--icon-size);\"\n            ></nidoca-icon>`\n            : html ``}\n        ${this.text ? html ` <nidoca-text-button>${this.text}</nidoca-text-button>` : html ``}\n        <slot></slot>\n      </div>\n    `;\n    }\n}"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaMenuArea",
-          "declaration": {
-            "name": "NidocaMenuArea",
-            "module": "lib/nidoca-menu-area.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-menu-item.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "NidocaMenuItem",
-          "default": "class NidocaMenuItem extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.text = '';\n        this.icon = '';\n        this.selected = false;\n    }\n    render() {\n        return html `\n      <div class=\"container ${this.selected ? 'selected' : ''}\" @click=\"${() => this.clicked()}\">\n        ${this.icon\n            ? html ` <nidoca-icon\n              slot=\"graphic\"\n              icon=\"${this.icon}\"\n              style=\"padding-right:var(--space); font-size:var(--icon-size);\"\n            ></nidoca-icon>`\n            : html ``}\n        ${this.text ? html ` <nidoca-text>${this.text}</nidoca-text>` : html ``}\n      </div>\n    `;\n    }\n    clicked() {\n        this.dispatchEvent(new CustomEvent('nidoca-event-menu-item-clicked', {\n            detail: this,\n            bubbles: true,\n            composed: true,\n        }));\n    }\n}"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaMenuItem",
-          "declaration": {
-            "name": "NidocaMenuItem",
-            "module": "lib/nidoca-menu-item.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-menu.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "NidocaMenu",
-          "default": "class NidocaMenu extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.theme = NidocaTheme.secondary;\n    }\n    render() {\n        return html ` <style>\n        :host,\n        *,\n        ::slotted(*) {\n          color: var(--app-color-${this.theme});\n          background-color: var(--app-color-${this.theme}-background);\n          border-color: var(--app-color-${this.theme}-border);\n        }\n      </style>\n      <slot id=\"slotElement\"></slot>`;\n    }\n    firstUpdated() {\n        this.addEventListener('click', (event) => {\n            if (this.slotElement != null) {\n                const slottedElements = this.slotElement.assignedElements();\n                for (let index = 0; index < slottedElements.length; index++) {\n                    const element = slottedElements[index];\n                    if (element instanceof NidocaMenuItem) {\n                        const rect = element.getBoundingClientRect();\n                        if (rect.left < event.x && rect.right > event.x) {\n                            if (rect.top < event.y && rect.bottom > event.y) {\n                                element.selected = true;\n                            }\n                            else {\n                                element.selected = false;\n                            }\n                        }\n                    }\n                }\n            }\n        });\n    }\n}"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaMenu",
-          "declaration": {
-            "name": "NidocaMenu",
-            "module": "lib/nidoca-menu.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-meta.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "NidocaTheme"
-        },
-        {
-          "kind": "class",
-          "description": "",
-          "name": "NidocaThemeHelper",
-          "members": [
-            {
-              "kind": "method",
-              "name": "getStyle",
-              "static": true,
-              "parameters": [
-                {
-                  "name": "theme"
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "getOposite",
-              "static": true,
-              "parameters": [
-                {
-                  "name": "theme"
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "getParentTheme",
-              "parameters": [
-                {
-                  "name": "element"
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaTheme",
-          "declaration": {
-            "name": "NidocaTheme",
-            "module": "lib/nidoca-meta.js"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "NidocaThemeHelper",
-          "declaration": {
-            "name": "NidocaThemeHelper",
-            "module": "lib/nidoca-meta.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-movie.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "NidocaMovie",
-          "default": "class NidocaMovie extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.src = '';\n    }\n    render() {\n        return html `\n      <span>\n        <iframe\n          src=\"${this.src}\"\n          frameborder=\"0\"\n          allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\"\n          allowfullscreen\n        ></iframe\n      ></span>\n    `;\n    }\n}"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaMovie",
-          "declaration": {
-            "name": "NidocaMovie",
-            "module": "lib/nidoca-movie.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-print.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "NidocaPrint",
-          "default": "class NidocaPrint extends LitElement {\n    render() {\n        return html `<slot></slot>`;\n    }\n    print() {\n        const printWindow = window.open('');\n        if (printWindow) {\n            printWindow.document.write(this.innerHTML);\n            printWindow.print();\n            printWindow.close();\n        }\n    }\n}"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaPrint",
-          "declaration": {
-            "name": "NidocaPrint",
-            "module": "lib/nidoca-print.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-progress.js",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "ProgressType"
-        },
-        {
-          "kind": "variable",
-          "name": "NidocaProgress",
-          "default": "class NidocaProgress extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.progressType = ProgressType.PROGRESS;\n    }\n    render() {\n        return html ` <style>\n        :host {\n          width: 100%;\n          display: block;\n        }\n\n        .PROGRESS {\n          color: var(--app-color-${this.theme}-background);\n          -webkit-appearance: none;\n          -moz-appearance: none;\n          appearance: none;\n          border: none;\n          height: 0.25em;\n          background-color: #dddddd;\n          font-size: 16px;\n          width: 100%;\n        }\n\n        .PROGRESS::-webkit-progress-bar {\n          background-color: transparent;\n        }\n\n        /* Determinate */\n        .PROGRESS::-webkit-progress-value {\n          background-color: currentColor;\n          transition: all 0.2s;\n        }\n\n        .PROGRESS::-moz-progress-bar {\n          background-color: currentColor;\n          transition: all 0.2s;\n        }\n\n        .PROGRESS::-ms-fill {\n          border: none;\n          background-color: currentColor;\n          transition: all 0.2s;\n        }\n\n        /* Indeterminate */\n        .PROGRESS:indeterminate {\n          background-size: 200% 100%;\n          background-image: linear-gradient(\n            to right,\n            transparent 50%,\n            currentColor 50%,\n            currentColor 60%,\n            transparent 60%,\n            transparent 71.5%,\n            currentColor 71.5%,\n            currentColor 84%,\n            transparent 84%\n          );\n          animation: progresslinear 2s infinite linear;\n        }\n\n        .PROGRESS:indeterminate::-moz-progress-bar {\n          background-color: transparent;\n        }\n\n        .PROGRESS:indeterminate::-ms-fill {\n          animation-name: none;\n        }\n\n        @keyframes progresslinear {\n          0% {\n            background-size: 200% 100%;\n            background-position: left -31.25% top 0%;\n          }\n          50% {\n            background-size: 800% 100%;\n            background-position: left -49% top 0%;\n          }\n          100% {\n            background-size: 400% 100%;\n            background-position: left -102% top 0%;\n          }\n        }\n\n        .PROGRESS_CIRCULAR {\n          -webkit-appearance: none;\n          -moz-appearance: none;\n          appearance: none;\n          box-sizing: border-box;\n          border: none;\n          border-radius: 50%;\n          padding: 0.25em;\n          width: 3em;\n          height: 3em;\n          color: var(--app-color-${this.theme}-background);\n          background-color: transparent;\n          font-size: 16px;\n          overflow: hidden;\n          margin-top: 30px;\n        }\n\n        .PROGRESS_CIRCULAR::-webkit-progress-bar {\n          background-color: transparent;\n        }\n\n        /* Indeterminate */\n        .PROGRESS_CIRCULAR:indeterminate {\n          mask-image: linear-gradient(transparent 50%, black 50%), linear-gradient(to right, transparent 50%, black 50%);\n          animation: progress-circular 6s infinite cubic-bezier(0.3, 0.6, 1, 1);\n        }\n\n        :-ms-lang(x),\n        .PROGRESS_CIRCULAR:indeterminate {\n          animation: none;\n        }\n\n        .PROGRESS_CIRCULAR:indeterminate::before,\n        .PROGRESS_CIRCULAR:indeterminate::-webkit-progress-value {\n          content: '';\n          display: block;\n          box-sizing: border-box;\n          margin-bottom: 0.25em;\n          border: solid 0.25em transparent;\n          border-top-color: currentColor;\n          border-radius: 50%;\n          width: 100% !important;\n          height: 100%;\n          background-color: transparent;\n          animation: progress-circular-pseudo 0.75s infinite linear alternate;\n        }\n\n        .PROGRESS_CIRCULAR:indeterminate::-moz-progress-bar {\n          box-sizing: border-box;\n          border: solid 0.25em transparent;\n          border-top-color: currentColor;\n          border-radius: 50%;\n          width: 100%;\n          height: 100%;\n          background-color: transparent;\n          animation: progress-circular-pseudo 0.75s infinite linear alternate;\n        }\n\n        .PROGRESS_CIRCULAR:indeterminate::-ms-fill {\n          animation-name: -ms-ring;\n        }\n\n        @keyframes progress-circular {\n          0% {\n            transform: rotate(0deg);\n          }\n          12.5% {\n            transform: rotate(180deg);\n            animation-timing-function: linear;\n          }\n          25% {\n            transform: rotate(630deg);\n          }\n          37.5% {\n            transform: rotate(810deg);\n            animation-timing-function: linear;\n          }\n          50% {\n            transform: rotate(1260deg);\n          }\n          62.5% {\n            transform: rotate(1440deg);\n            animation-timing-function: linear;\n          }\n          75% {\n            transform: rotate(1890deg);\n          }\n          87.5% {\n            transform: rotate(2070deg);\n            animation-timing-function: linear;\n          }\n          100% {\n            transform: rotate(2520deg);\n          }\n        }\n\n        @keyframes progress-circular-pseudo {\n          0% {\n            transform: rotate(-30deg);\n          }\n          29.4% {\n            border-left-color: transparent;\n          }\n          29.41% {\n            border-left-color: currentColor;\n          }\n          64.7% {\n            border-bottom-color: transparent;\n          }\n          64.71% {\n            border-bottom-color: currentColor;\n          }\n          100% {\n            border-left-color: currentColor;\n            border-bottom-color: currentColor;\n            transform: rotate(225deg);\n          }\n        }\n      </style>\n\n      <progress class=\"${this.progressType}\"></progress>`;\n    }\n}"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "ProgressType",
-          "declaration": {
-            "name": "ProgressType",
-            "module": "lib/nidoca-progress.js"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "NidocaProgress",
-          "declaration": {
-            "name": "NidocaProgress",
-            "module": "lib/nidoca-progress.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-ripple.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "NidocaRipple",
-          "default": "class NidocaRipple extends LitElement {\n    render() {\n        return html `\n      <div id=\"rippleContainer\" anim=\"ripple\" @click=\"${(event) => this.clicked(event)}\">\n        <slot></slot>\n      </div>\n    `;\n    }\n    clicked(event) {\n        if (this.rippleContainerElement != undefined) {\n            if (event instanceof TouchEvent) {\n                event = event.touches ? event.touches[0] : event;\n            }\n            const r = this.rippleContainerElement.getBoundingClientRect(), d = Math.sqrt(Math.pow(r.width, 2) + Math.pow(r.height, 2)) * 2;\n            this.rippleContainerElement.style.cssText = '--s: 0; --o: 1;';\n            this.rippleContainerElement.offsetTop;\n            if (event instanceof MouseEvent || event instanceof Touch) {\n                this.rippleContainerElement.style.cssText = `--t: 1; --o: 0; --d: ${d}; --x:${event.clientX - r.left}; --y:${event.clientY - r.top};`;\n            }\n        }\n    }\n}",
-          "description": "check src: https://codepen.io/jakob-e/pen/XZoZWQ"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaRipple",
-          "declaration": {
-            "name": "NidocaRipple",
-            "module": "lib/nidoca-ripple.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-search-bar.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "NidocaSearchBar",
-          "default": "class NidocaSearchBar extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.value = '';\n        this.placeholder = '';\n        this.disabled = false;\n        this.theme = NidocaTheme.surface;\n    }\n    render() {\n        return html `\n      <style>\n        .container,\n        input {\n          color: var(--app-color-${this.theme});\n          background-color: var(--app-color-${this.theme}-background);\n          border-color: var(--app-color-${this.theme}-border);\n        }\n\n        .container:focus-within,\n        ::slotted(.container:focus-within) {\n          border-color: var(--app-color-${this.theme}-selected);\n          filter: contrast(var(--app-color-percent-selected));\n        }\n      </style>\n      <div class=\"container border\">\n        <nidoca-icon style=\"padding-right:var(--space);padding-left:var(--space);\" icon=\"search\"></nidoca-icon>\n        <input\n          id=\"inputElement\"\n          type=\"text\"\n          value=\"${this.value}\"\n          placeholder=\"${this.placeholder}\"\n          ?disabled=\"${this.disabled}\"\n          @input=\"${() => this.valueChanged()}\"\n        />\n        <nidoca-icon\n          style=\"padding-right:var(--space);padding-left:var(--space);\"\n          icon=\"close\"\n          @click=\"${() => this.clearValue()}\"\n        ></nidoca-icon>\n      </div>\n    `;\n    }\n    clearValue() {\n        this.value = '';\n    }\n    valueChanged() {\n        var _a;\n        return __awaiter(this, void 0, void 0, function* () {\n            const eventName = 'nidoca-search-bar-event-value-changed';\n            const customEvent = new CustomEvent(eventName, {\n                detail: (_a = this.inputElement) === null || _a === void 0 ? void 0 : _a.value,\n                bubbles: true,\n                composed: true,\n            });\n            console.debug('dispatch custom event type: %s, detail: %s', customEvent.type, JSON.stringify(customEvent.detail));\n            this.dispatchEvent(customEvent);\n        });\n    }\n}"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaSearchBar",
-          "declaration": {
-            "name": "NidocaSearchBar",
-            "module": "lib/nidoca-search-bar.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-section.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "NidocaSection",
-          "default": "class NidocaSection extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.flexBasis = 'auto';\n    }\n    render() {\n        return html `\n      <style>\n        .item,\n        ::slotted(.item) {\n          flex-basis: ${this.flexBasis};\n        }\n      </style>\n      <slot id=\"container\" class=\"container\" @slotchange=\"${(event) => this.slotChanged(event)}\"></slot>\n    `;\n    }\n    slotChanged(event) {\n        const slotElement = event.target;\n        const slotWidth = slotElement.offsetWidth;\n        const elements = slotElement.assignedElements();\n        const elementSize = elements.length;\n        const modifyElements = [];\n        let elementWidths = 0;\n        for (let index = 0; index < elementSize; index++) {\n            const element = elements[index];\n            element.setAttribute('class', 'item');\n            if (element instanceof HTMLElement) {\n                const elementWidthStyle = element.style.width;\n                if (elementWidthStyle.length == 0) {\n                    modifyElements.push(element);\n                }\n                else {\n                    const elementWidthToUpperCase = elementWidthStyle.toUpperCase();\n                    const elementWidth = elementWidthToUpperCase.indexOf('PX') > -1\n                        ? Number(elementWidthToUpperCase.replace('PX', ''))\n                        : (Number(elementWidthToUpperCase.replace('%', '')) / 100) * slotWidth;\n                    elementWidths += elementWidth;\n                }\n            }\n        }\n        let calculationPercent = 100;\n        if (elementWidths > 0) {\n            calculationPercent = 100 - 100 * (elementWidths / slotWidth);\n        }\n        if (calculationPercent == 0) {\n            calculationPercent = 100 / elementSize;\n        }\n        this.flexBasis = String(calculationPercent / modifyElements.length) + '%';\n        this.requestUpdate();\n    }\n}"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaSection",
-          "declaration": {
-            "name": "NidocaSection",
-            "module": "lib/nidoca-section.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-split-screen.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "NidocaSplitScreen",
-          "default": "class NidocaSplitScreen extends LitElement {\n    constructor() {\n        super();\n        this.hideSidebox = true;\n        this.theme = NidocaThemeHelper.prototype.getParentTheme(this) || NidocaTheme.background;\n    }\n    render() {\n        return html ` <style>\n        .listbox,\n        .sidebox {\n          color: var(--app-color-${this.theme});\n          background-color: var(--app-color-${this.theme}-background);\n        }\n\n        .sidebox {\n          border-color: var(--app-color-${this.theme}-border);\n          border-left-style: solid;\n          border-width: thin;\n        }\n      </style>\n      <slot class=\"listbox\" name=\"left\"></slot>\n      ${this.hideSidebox ? html `` : html ` <slot class=\"sidebox\" name=\"sidebox\"></slot>`}`;\n    }\n}"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaSplitScreen",
-          "declaration": {
-            "name": "NidocaSplitScreen",
-            "module": "lib/nidoca-split-screen.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-svg-2-webp.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "NidocaSvg2Webp",
-          "default": "class NidocaSvg2Webp extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.src = 'https://raw.githubusercontent.com/domoskanonos/devbox/main/assets/logo-ink.svg';\n        this.canvasElements = [];\n        this.storeCanvasElements = [];\n    }\n    render() {\n        return html `\n      <img style=\"display: none;\" id=\"img\" src=\"${this.src}\" />\n\n      ${this.canvasElements.map((canvas) => {\n            return html `${canvas}`;\n        })}\n    `;\n    }\n    updated(changedProperties) {\n        super.updated(changedProperties);\n        changedProperties.forEach((oldValue, propName) => {\n            console.debug(`${this.tagName} : property ${String(propName)} changed. oldValue: ${oldValue}`);\n            if (propName == 'src') {\n                this.convert();\n                const playstoreImages = [\n                    ['App-Symbol', 512, 512],\n                    ['Vorstellungsgrafik', 1024, 500],\n                    ['screenshoot_dummy', 1920, 1080],\n                ];\n                //const formData = new FormData();\n                //formData.append('file1', blob1, 'file1.pdf'); // blob1 is a `Blob` object.\n                //formData.append('file2', blob2, 'file2.pdf'); // blob2 is another `Blob` object.\n                //fetch('https://example.com/upload/', { method: 'post', body: formData, });\n            }\n        });\n    }\n    convert() {\n        if (this.img) {\n            console.log('GO');\n            this.img.onload = () => {\n                [\n                    [12, 12],\n                    [16, 16],\n                    [22, 22],\n                    [24, 24],\n                    [32, 32],\n                    [36, 36],\n                    [48, 48],\n                    [64, 64],\n                    [72, 72],\n                    [96, 96],\n                    [128, 128],\n                    [144, 144],\n                    [192, 192],\n                ].forEach((size) => {\n                    const canvas = document.createElement('canvas');\n                    canvas.width = size[0];\n                    canvas.height = size[1];\n                    const context = canvas.getContext('2d');\n                    if (context) {\n                        if (this.img) {\n                            this.img.crossOrigin = 'anonymous';\n                            //context.drawImage(this.img, 0, 0);\n                            context.drawImage(this.img, 0, 0, size[0], size[1]);\n                            canvas.toBlob((blob) => {\n                                if (blob) {\n                                    // Now we have a `blob` containing webp data\n                                    // Use the file rename trick to turn it back into a file\n                                    //const myImage = new File([blob], 'my-new-name.webp', {type: blob.type});\n                                    //const a = document.createElement(\"a\");\n                                    //document.body.appendChild(a);\n                                    //a.style.display = \"none\";\n                                    //const url = window.URL.createObjectURL(blob);\n                                    //a.href = url;\n                                    //a.download = \"my-new-name.webp\";\n                                    //a.click();\n                                    //window.URL.revokeObjectURL(url);\n                                }\n                            }, 'image/webp');\n                        }\n                    }\n                    this.canvasElements.push(canvas);\n                });\n                this.requestUpdate();\n            };\n        }\n    }\n}"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaSvg2Webp",
-          "declaration": {
-            "name": "NidocaSvg2Webp",
-            "module": "lib/nidoca-svg-2-webp.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-tab-content.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "NidocaTabContent",
-          "default": "class NidocaTabContent extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.selected = false;\n    }\n    render() {\n        return this.selected ? html ` <slot></slot>` : html ``;\n    }\n}"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaTabContent",
-          "declaration": {
-            "name": "NidocaTabContent",
-            "module": "lib/nidoca-tab-content.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-tab.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "NidocaTab",
-          "default": "class NidocaTab extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.selected = false;\n        this.text = '';\n        this.theme = NidocaTheme.surface;\n    }\n    render() {\n        return html `\n      <style>\n        .container {\n          border-color: var(--app-color-${this.theme}-background);\n        }\n        .selected {\n          border-color: var(--app-color-${this.theme}-selected);\n        }\n      </style>\n      <div class=\"container ${this.selected ? 'selected' : ''}\" @click=\"${() => this.tabClicked()}\">\n        ${this.text ? html ` <nidoca-text text=\"${this.text}\"></nidoca-text> ` : html ``}\n        <slot></slot>\n      </div>\n    `;\n    }\n    tabClicked() {\n        console.log('tab clicked.');\n        this.dispatchEvent(new CustomEvent('nidoca-event-tab-clicked', { detail: this, bubbles: true, composed: true }));\n    }\n}"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaTab",
-          "declaration": {
-            "name": "NidocaTab",
-            "module": "lib/nidoca-tab.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-table.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "NidocaTable",
-          "default": "class NidocaTable extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.headers = ['column 1', 'column 2'];\n        this.rows = [\n            ['row 1', new NidocaIcon()],\n            ['row 2', new NidocaIcon()],\n        ];\n        this.theme = NidocaTheme.background;\n    }\n    render() {\n        return html `\n      <style>\n        td,\n        th {\n          border-bottom: var(--border-width-min) solid var(--app-color-${this.theme}-border);\n          border-left: var(--border-width-min) solid var(--app-color-${this.theme}-border);\n        }\n\n        tr > td:last-of-type,\n        th:last-of-type {\n          border-right: var(--border-width-min) solid var(--app-color-${this.theme}-border);\n        }\n\n        th {\n          border-top: var(--border-width-min) solid var(--app-color-${this.theme}-border);\n          background-color: var(--app-color-${this.theme}-background);\n          color: var(--app-color-${this.theme});\n        }\n      </style>\n      <div>\n        <table>\n          <thead>\n            ${guard([this.headers], () => html ` ${repeat(this.headers, (header) => html ` <th colspan=\"1\" rowspan=\"1\">${header}</th> `)} `)}\n          </thead>\n          <tbody>\n            ${guard([this.rows], () => html `\n                  ${repeat(this.rows, (row) => html `\n                        <tr>\n                          ${repeat(row, (column) => html ` <td colspan=\"1\" rowspan=\"1\">${column}</td> `)}\n                        </tr>\n                      `)}\n                `)}\n          </tbody>\n        </table>\n      </div>\n    `;\n    }\n}"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaTable",
-          "declaration": {
-            "name": "NidocaTable",
-            "module": "lib/nidoca-table.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-tabs.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "NidocaTabs",
-          "default": "class NidocaTabs extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.theme = NidocaTheme.surface;\n        this.tabIndex = 0;\n    }\n    render() {\n        return html `\n      <div class=\"container\" @nidoca-event-tab-clicked=\"${(event) => this.tabClicked(event)}\">\n        <slot id=\"tabSlot\" name=\"tab\"></slot>\n        <slot id=\"tabContentSlot\" name=\"tabContent\"></slot>\n      </div>\n    `;\n    }\n    firstUpdated(_changedProperties) {\n        super.firstUpdated(_changedProperties);\n        this.tabIndexChanged();\n    }\n    update(changedProperties) {\n        super.update(changedProperties);\n        if (changedProperties.get('tabIndex') != undefined) {\n            this.tabIndexChanged();\n        }\n    }\n    tabIndexChanged() {\n        this.updateNidocaTabElements();\n        this.updateNidocaTabContentElemnts();\n    }\n    updateNidocaTabElements() {\n        if (this.tabSlot != null) {\n            const assignedElements = this.tabSlot.assignedElements();\n            const length = assignedElements.length;\n            const widthPerTab = 100 / length;\n            const selectedElement = assignedElements[this.tabIndex];\n            for (let index = 0; index < assignedElements.length; index++) {\n                const element = assignedElements[index];\n                if (element instanceof NidocaTab) {\n                    element.theme = this.theme;\n                    element.style.width = String(widthPerTab).concat('%');\n                    if (element == selectedElement) {\n                        element.selected = true;\n                        element.classList.add('SELECTED');\n                    }\n                    else {\n                        element.selected = false;\n                        element.classList.remove('SELECTED');\n                    }\n                }\n            }\n        }\n    }\n    updateNidocaTabContentElemnts() {\n        let tabContentIndex = 0;\n        if (this.tabContentSlot != null) {\n            const assignedElements = this.tabContentSlot.assignedElements();\n            for (let index = 0; index < assignedElements.length; index++) {\n                const tabContentElement = assignedElements[index];\n                if (tabContentElement instanceof NidocaTabContent) {\n                    if (this.tabIndex == tabContentIndex) {\n                        tabContentElement.selected = true;\n                    }\n                    else {\n                        tabContentElement.selected = false;\n                    }\n                    tabContentIndex++;\n                }\n            }\n        }\n    }\n    tabClicked(event) {\n        const clickedTab = event.detail;\n        this.changeTabIndex(clickedTab);\n    }\n    changeTabIndex(newTab) {\n        if (newTab.selected) {\n            return;\n        }\n        if (this.tabSlot != null) {\n            const assignedElements = this.tabSlot.assignedElements();\n            for (let index = 0; index < assignedElements.length; index++) {\n                const element = assignedElements[index];\n                if (element instanceof NidocaTab) {\n                    if (element == newTab) {\n                        this.tabIndex = index;\n                        break;\n                    }\n                }\n            }\n        }\n    }\n}"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaTabs",
-          "declaration": {
-            "name": "NidocaTabs",
-            "module": "lib/nidoca-tabs.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-template.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "NidocaTemplate",
-          "default": "class NidocaTemplate extends LitElement {\n    constructor() {\n        super();\n        this.hideLeft = true;\n        this.prominent = false;\n        document.getElementsByTagName('html')[0].setAttribute('oncontextmenu', 'return false'); // avoid right click context menu\n        this.addEventListener('click', (event) => {\n            if (!this.hideLeft && this.leftElement) {\n                console.log('close');\n                const rect = this.leftElement.getBoundingClientRect();\n                this.hideLeft = 641 > window.innerWidth && 0 <= event.x - rect.width;\n            }\n        });\n    }\n    updated(_changedProperties) {\n        super.updated(_changedProperties);\n        /*\n                new Promise((resolve) => requestAnimationFrame(resolve)).then(() => {\n                  if (this.headerElement != undefined) {\n                    const height = this.headerElement.offsetHeight;\n                    const topStyle = \"top:\".concat(String(height)).concat(\"px;\");\n                    const paddingTopStyle = \"padding-top:\".concat(String(height)).concat(\"px;\");\n                    console.debug(\"set header height to corresponding elements: %s\", topStyle);\n                    if (this.leftElement != undefined) {\n                      this.leftElement.setAttribute(\"style\", topStyle);\n                    }\n                    if (this.contentElement != undefined) {\n                      this.contentElement.setAttribute(\"style\", paddingTopStyle);\n                    }\n                  }\n                });\n                 */\n    }\n    render() {\n        return html `\n      <slot\n        id=\"left\"\n        @nidoca-event-menu-item-clicked=\"${() => {\n            if (641 > window.innerWidth) {\n                this.hideLeft = true;\n            }\n        }}\"\n        class=\"${this.hideLeft ? 'hideLeft' : ''}\"\n        name=\"left\"\n      >\n      </slot>\n\n      <div class=\"right\">\n        <nidoca-top-app-bar theme=\"primary\" id=\"header\" .prominent=\"${this.prominent}\">\n          <nidoca-icon\n            slot=\"left\"\n            style=\"padding-left:var(--space-2);\"\n            icon=\"menu\"\n            .clickable=\"${true}\"\n            @nidoca-event-icon-clicked=\"${() => {\n            this.hideLeft = !this.hideLeft;\n        }}\"\n          ></nidoca-icon>\n\n          <span slot=\"left\">\n            <slot class=\"slotHeader\" name=\"topLeft\"></slot>\n          </span>\n          <span slot=\"center\">\n            <slot class=\"slotHeader\" name=\"topCenter\"></slot>\n          </span>\n          <span slot=\"right\">\n            <slot class=\"slotHeader\" name=\"topRight\"></slot>\n          </span>\n          <span style=\"width: 100%;\" slot=\"prominent\">\n            <slot class=\"slotHeader\" name=\"prominent\"></slot>\n          </span>\n        </nidoca-top-app-bar>\n        <slot id=\"content\" name=\"content\"></slot>\n      </div>\n    `;\n    }\n}"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaTemplate",
-          "declaration": {
-            "name": "NidocaTemplate",
-            "module": "lib/nidoca-template.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-text-body.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "NidocaTextBody",
-          "default": "class NidocaTextBody extends NidocaText {\n    render() {\n        return html ` ${super.render()}`;\n    }\n}"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaTextBody",
-          "declaration": {
-            "name": "NidocaTextBody",
-            "module": "lib/nidoca-text-body.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-text-button.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "NidocaTextButton",
-          "default": "class NidocaTextButton extends NidocaText {\n    render() {\n        return html ` ${super.render()}`;\n    }\n}"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaTextButton",
-          "declaration": {
-            "name": "NidocaTextButton",
-            "module": "lib/nidoca-text-button.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-text-caption.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "NidocaTextCaption",
-          "default": "class NidocaTextCaption extends NidocaText {\n}"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaTextCaption",
-          "declaration": {
-            "name": "NidocaTextCaption",
-            "module": "lib/nidoca-text-caption.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-text-error.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "NidocaTextError",
-          "default": "class NidocaTextError extends NidocaTextCaption {\n    constructor() {\n        super();\n        this.style.color = 'red';\n    }\n}"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaTextError",
-          "declaration": {
-            "name": "NidocaTextError",
-            "module": "lib/nidoca-text-error.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-text-h1.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "NidocaTextH1",
-          "default": "class NidocaTextH1 extends NidocaText {\n}"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaTextH1",
-          "declaration": {
-            "name": "NidocaTextH1",
-            "module": "lib/nidoca-text-h1.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-text-h2.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "NidocaTextH2",
-          "default": "class NidocaTextH2 extends NidocaText {\n}"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaTextH2",
-          "declaration": {
-            "name": "NidocaTextH2",
-            "module": "lib/nidoca-text-h2.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-text-h3.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "NidocaTextH3",
-          "default": "class NidocaTextH3 extends NidocaText {\n}"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaTextH3",
-          "declaration": {
-            "name": "NidocaTextH3",
-            "module": "lib/nidoca-text-h3.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-text-h4.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "NidocaTextH4",
-          "default": "class NidocaTextH4 extends NidocaText {\n}"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaTextH4",
-          "declaration": {
-            "name": "NidocaTextH4",
-            "module": "lib/nidoca-text-h4.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-text-h5.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "NidocaTextH5",
-          "default": "class NidocaTextH5 extends NidocaText {\n}"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaTextH5",
-          "declaration": {
-            "name": "NidocaTextH5",
-            "module": "lib/nidoca-text-h5.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-text-h6.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "NidocaTextH6",
-          "default": "class NidocaTextH6 extends NidocaText {\n}"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaTextH6",
-          "declaration": {
-            "name": "NidocaTextH6",
-            "module": "lib/nidoca-text-h6.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-text-info.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "NidocaTextInfo",
-          "default": "class NidocaTextInfo extends NidocaTextCaption {\n    constructor() {\n        super();\n        this.style.color = 'blue';\n    }\n}"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaTextInfo",
-          "declaration": {
-            "name": "NidocaTextInfo",
-            "module": "lib/nidoca-text-info.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-text-overline.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "NidocaTextOverline",
-          "default": "class NidocaTextOverline extends NidocaText {\n}"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaTextOverline",
-          "declaration": {
-            "name": "NidocaTextOverline",
-            "module": "lib/nidoca-text-overline.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-text-subtitle.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "NidocaTextSubtitle",
-          "default": "class NidocaTextSubtitle extends NidocaText {\n    render() {\n        return html ` ${super.render()}`;\n    }\n}"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaTextSubtitle",
-          "declaration": {
-            "name": "NidocaTextSubtitle",
-            "module": "lib/nidoca-text-subtitle.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-text-success.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "NidocaTextSuccess",
-          "default": "class NidocaTextSuccess extends NidocaTextCaption {\n    constructor() {\n        super();\n        this.style.color = 'green';\n    }\n}"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaTextSuccess",
-          "declaration": {
-            "name": "NidocaTextSuccess",
-            "module": "lib/nidoca-text-success.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-text-warning.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "NidocaTextWarning",
-          "default": "class NidocaTextWarning extends NidocaTextCaption {\n    constructor() {\n        super();\n        this.style.color = 'yellow';\n    }\n}"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaTextWarning",
-          "declaration": {
-            "name": "NidocaTextWarning",
-            "module": "lib/nidoca-text-warning.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-text.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "NidocaText",
-          "default": "class NidocaText extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.text = '';\n    }\n    render() {\n        return html ` <slot id=\"slotElement\">${this.text}</slot>`;\n    }\n}"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaText",
-          "declaration": {
-            "name": "NidocaText",
-            "module": "lib/nidoca-text.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-top-app-bar.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "NidocaTopAppBar",
-          "default": "class NidocaTopAppBar extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.theme = NidocaTheme.primary;\n        this.prominent = false;\n    }\n    render() {\n        return html `\n      ${NidocaThemeHelper.getStyle(this.theme)}\n      <div class=\"bar\">\n        <slot name=\"left\" style=\"justify-content:flex-start;\"></slot>\n        <slot name=\"center\" style=\"justify-content:center;\"></slot>\n        <slot name=\"right\" style=\"justify-content:flex-end;\"></slot>\n      </div>\n      ${this.prominent ? html ` <slot class=\"prominent\" name=\"prominent\"></slot>` : html ``}\n    `;\n    }\n}",
-          "description": "state: stable"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaTopAppBar",
-          "declaration": {
-            "name": "NidocaTopAppBar",
-            "module": "lib/nidoca-top-app-bar.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-transition.js",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "NidocaTransitionType"
-        },
-        {
-          "kind": "variable",
-          "name": "NidocaTransition",
-          "default": "class NidocaTransition extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.transitionType = NidocaTransitionType.CENTER;\n        this.duration = 0.5; // seconds\n    }\n    render() {\n        return html ` <div class=\"${ifDefined(this.transitionType)}\"><slot></slot></div> `;\n    }\n}"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaTransitionType",
-          "declaration": {
-            "name": "NidocaTransitionType",
-            "module": "lib/nidoca-transition.js"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "NidocaTransition",
-          "declaration": {
-            "name": "NidocaTransition",
-            "module": "lib/nidoca-transition.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-upload.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "NidocaUpload",
-          "default": "class NidocaUpload extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.code = '';\n    }\n    render() {\n        return html ``;\n    }\n}"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaUpload",
-          "declaration": {
-            "name": "NidocaUpload",
-            "module": "lib/nidoca-upload.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-video.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "NidocaVideo",
-          "default": "class NidocaVideo extends LitElement {\n    firstUpdated(_changedProperties) {\n        super.firstUpdated(_changedProperties);\n        navigator.mediaDevices.getUserMedia({ video: true, audio: false }).then((stream) => {\n            if (this.videoElement) {\n                this.videoElement.srcObject = stream;\n            }\n        });\n    }\n    render() {\n        return html `\n      <video id=\"video\" width=\"320\" height=\"240\" autoplay></video>\n      <button id=\"click-photo\" @click=\"${() => this.makeFoto()}\">Click Photo</button>\n      <canvas id=\"canvas\" width=\"320\" height=\"240\"></canvas>\n    `;\n    }\n    makeFoto() {\n        if (this.canvasElement && this.videoElement) {\n            const context = this.canvasElement.getContext('2d');\n            if (context) {\n                context.drawImage(this.videoElement, 0, 0, this.canvasElement.width, this.canvasElement.height);\n                const image_data_url = this.canvasElement.toDataURL('image/jpeg');\n                console.log(image_data_url);\n            }\n        }\n    }\n}"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaVideo",
-          "declaration": {
-            "name": "NidocaVideo",
-            "module": "lib/nidoca-video.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-wizard-step.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "WizardStepState"
-        },
-        {
-          "kind": "variable",
-          "name": "NidocaWizardStep",
-          "default": "class NidocaWizardStep extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.icon = '';\n        this.primaryText = '';\n        this.isLast = false;\n        this.first = false;\n    }\n    render() {\n        return html `\n      <div\n        style=\"display:flex;flex-direction:row;flex-wrap:nowrap;align-items:flex-start;justify-content:space-evenly;align-content:space-evenly;\"\n      >\n        <div\n          style=\"display:flex;flex-direction:row;flex-wrap:nowrap;align-items:center;justify-content:flex-start;align-content:space-evenly;\"\n        >\n          <nidoca-icon\n            icon=\"${this.icon}\"\n            .iconShadowType=\"${NidocaIconShadowType.NONE}\"\n            .withIconSpace=\"${false}\"\n            .round=\"${true}\"\n            .clickable=\"${true}\"\n            .deactivated=\"${false}\"\n            color=\"${this.determineColor(this.state)}\"\n            backgroundColor=\"${this.determineBackgroundColor(this.state)}\"\n            size=\"24\"\n            @nidoca-event-icon-clicked=\"${() => this.stepClicked()}\"\n            sizeUnit=\"px\"\n          >\n          </nidoca-icon>\n\n          ${this.isLast\n            ? html ``\n            : html `<nidoca-icon color=\"${this.determineBackgroundColor(this.state)}\" icon=\"label_important\">\n              </nidoca-icon>`}\n        </div>\n        <nidoca-text style=\"width:48px;\" text=\"${this.primaryText}\"><slot></slot> </nidoca-text>\n      </div>\n    `;\n    }\n    determineBackgroundColor(state) {\n        return state == WizardStepState.COMPLETED\n            ? 'var(--app-color-primary)'\n            : state == WizardStepState.CURRENT\n                ? 'var(--app-color-secondary-background)'\n                : 'var(--app-color-surface-background)';\n    }\n    determineColor(state) {\n        return state == WizardStepState.FINISH\n            ? 'var(--app-color-success)'\n            : state == WizardStepState.COMPLETED\n                ? 'var(--mdc-theme-on-primary)'\n                : state == WizardStepState.CURRENT\n                    ? 'var(--app-color-secondary)'\n                    : 'var(--app-color-surface)';\n    }\n    stepClicked() {\n        const customEvent = new CustomEvent('nidoca-event-wizard-step-clicked', {\n            detail: this.index,\n            bubbles: true,\n            composed: true,\n        });\n        console.debug('dispatch custom event type: %s, detail: %s', customEvent.type, JSON.stringify(customEvent.detail));\n        this.dispatchEvent(customEvent);\n    }\n}"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "WizardStepState",
-          "declaration": {
-            "name": "WizardStepState",
-            "module": "lib/nidoca-wizard-step.js"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "NidocaWizardStep",
-          "declaration": {
-            "name": "NidocaWizardStep",
-            "module": "lib/nidoca-wizard-step.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/nidoca-wizard.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "NidocaWizard",
-          "default": "class NidocaWizard extends LitElement {\n    render() {\n        return html `\n      <div\n        style=\"display:flex;flex-direction:row;flex-wrap:nowrap;align-items:flex-start;justify-content:flex-start;align-content:space-evenly;\"\n        @nidoca-event-wizard-step-clicked=\"${(event) => this.stepClicked(event)}\"\n      >\n        <slot id=\"wizardSlot\" @slotchange=\"${(event) => this.slotChanged(event)}\"></slot>\n      </div>\n    `;\n    }\n    slotChanged(event) {\n        const slotElement = event.target;\n        if (slotElement == undefined) {\n            return;\n        }\n        const elements = slotElement.assignedElements();\n        let selectedStepIndex = 0;\n        for (let index = 0; index < elements.length; index++) {\n            const element = elements[index];\n            if (element instanceof NidocaWizardStep) {\n                element.index = index;\n                if (element.state == WizardStepState.CURRENT) {\n                    selectedStepIndex = index;\n                }\n                if (element.index == elements.length - 1) {\n                    element.isLast = true;\n                }\n            }\n        }\n        this.changeState(selectedStepIndex);\n    }\n    stepClicked(event) {\n        const selectedStepIndex = event.detail;\n        console.debug('wizard step clicked, selectedStepIndex: %s', selectedStepIndex);\n        this.changeState(selectedStepIndex);\n    }\n    changeState(selectedStepIndex) {\n        if (this.wizardSlot) {\n            const elements = this.wizardSlot.assignedElements();\n            for (let index = 0; index < elements.length; index++) {\n                const element = elements[index];\n                if (element instanceof NidocaWizardStep) {\n                    if (element.index !== undefined) {\n                        if (element.index < selectedStepIndex) {\n                            element.state = WizardStepState.COMPLETED;\n                        }\n                        else if (element.index == selectedStepIndex) {\n                            element.state = WizardStepState.CURRENT;\n                        }\n                        else {\n                            element.state = WizardStepState.OPEN;\n                        }\n                    }\n                }\n            }\n        }\n    }\n}"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaWizard",
-          "declaration": {
-            "name": "NidocaWizard",
-            "module": "lib/nidoca-wizard.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
@@ -10990,56 +8781,14 @@
     {
       "kind": "javascript-module",
       "path": "lib/apps/nidoca-app.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "PageReferenceType"
-        },
-        {
-          "kind": "variable",
-          "name": "NidocaApp",
-          "default": "class NidocaApp extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.loggedIn = false;\n    }\n    updated(_changedProperties) {\n        super.updated(_changedProperties);\n        if (_changedProperties.has('root') && this.root && this.root.childs) {\n            this.routeTo(this.root.childs[0]);\n        }\n        if (_changedProperties.has('route')) {\n            if (this.root) {\n                for (let i = 0; i < this.root.childs.length; i++) {\n                    const pageReference = this.root.childs[i];\n                    if (pageReference.route == this.route) {\n                        this.contentComponent = document.createElement(pageReference.rootComponent);\n                        break;\n                    }\n                }\n                this.requestUpdate();\n            }\n        }\n    }\n    render() {\n        var _a;\n        return this.loggedIn\n            ? html `\n            <nidoca-template>\n                <nidoca-text-body slot=\"topCenter\"\n                \"></nidoca-text-body>\n                <nidoca-icon\n                        style=\"padding-right:var(--space-2);\"\n                        slot=\"topRight\"\n                        @nidoca-event-icon-clicked=\"${() => {\n                this.dispatchEvent(new CustomEvent('nidoca-event-app-logout', {\n                    detail: this,\n                    bubbles: true,\n                    composed: true,\n                }));\n            }}\" icon=\"logout\"></nidoca-icon>\n\n                <span slot=\"content\">${this.contentComponent ? html `${this.contentComponent}` : html ``}</span>\n\n                <nidoca-menu slot=\"left\" theme=\"primary\">\n                    ${(_a = this.root) === null || _a === void 0 ? void 0 : _a.childs.map((page) => html ` <nidoca-menu-item\n                        text=\"${page.name}\"\n                        @click=\"${() => {\n                this.routeTo(page);\n            }}\"\n                      ></nidoca-menu-item>`)}\n                </nidoca-menu>\n            </nidoca-template>\n        `\n            : html ` <nidoca-page-login\n          @nidoca-form-login-submit=\"${(event) => {\n                this.dispatchEvent(new CustomEvent('nidoca-event-app-login', {\n                    detail: event.detail,\n                    bubbles: true,\n                    composed: true,\n                }));\n            }}\"\n        ></nidoca-page-login>`;\n    }\n    routeTo(page) {\n        this.dispatchEvent(new CustomEvent('nidoca-event-app-route', {\n            detail: page.route,\n            bubbles: true,\n            composed: true,\n        }));\n    }\n}"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "PageReferenceType",
-          "declaration": {
-            "name": "PageReferenceType",
-            "module": "lib/apps/nidoca-app.js"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "NidocaApp",
-          "declaration": {
-            "name": "NidocaApp",
-            "module": "lib/apps/nidoca-app.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
       "path": "lib/pages/nidoca-page-login.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "NidocaPageLogin",
-          "default": "class NidocaPageLogin extends LitElement {\n    render() {\n        return html `\n      <nidoca-form-login class=\"left\"></nidoca-form-login>\n      <nidoca-img class=\"right\" src=\"http://nidoca.eu/img/IMG_0524.jpg\"></nidoca-img>\n    `;\n    }\n}"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaPageLogin",
-          "declaration": {
-            "name": "NidocaPageLogin",
-            "module": "lib/pages/nidoca-page-login.js"
-          }
-        }
-      ]
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
