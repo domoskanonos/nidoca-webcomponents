@@ -5,7 +5,7 @@ import {query} from 'lit/decorators.js';
 import {repeat} from 'lit/directives/repeat.js';
 import {guard} from 'lit/directives/guard.js';
 import {FormOutputData, NidocaFormAbstractInputElement} from './nidoca-form-abstract-input-element';
-import {NidocaTheme} from './nidoca-meta.js';
+import {NidocaTheme} from './nidoca-meta';
 
 @customElement('nidoca-form-combobox')
 export class NidocaFormCombobox extends NidocaFormAbstractInputElement {

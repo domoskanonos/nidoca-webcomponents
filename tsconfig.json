@@ -3,7 +3,7 @@
     "target": "es2015",
     "declaration": true,
     "outDir": "lib",
-    "module": "es2015",
+    "module": "NodeNext",
     "rootDir": "./src",
     "downlevelIteration": true,
     "strict": true,
