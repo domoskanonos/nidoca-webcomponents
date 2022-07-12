@@ -22,13 +22,3 @@ Farbschema ideen:
 https://99designs.de/blog/design-kreativitaet/farbschemata-webseiten/
 
 
-<!--
-```
-<custom-element-demo>
-  <template>
-    <link rel="import" href="https://domoskanonos.github.io/nidoca-documentation/webcomponents/index.html">
-    <nidoca-button></nidoca-button>
-  </template>
-</custom-element-demo>
-```
--->
