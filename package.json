@@ -14,9 +14,7 @@
   "module": "./src/index.js",
   "devDependencies": {
     "@domoskanonos/nidoca-base": "1.0.9",
-    "@domoskanonos/nidoca-router": "1.0.2",
-    "@domoskanonos/nidoca-form-helper": "1.0.10",
-    "@domoskanonos/nidoca-date-helper": "1.0.4"
+    "@domoskanonos/nidoca-router": "1.0.2"
   },
   "dependencies": {},
   "author": "Dominik Bruhn",
@@ -33,11 +31,12 @@
     "test:watch": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js --watch --passWithNoTests",
     "typedoc": "npx typedoc",
     "lit-analyzer": "lit-analyzer \"src/**/*.{js,ts}\"",
-    "cc": "custom-elements-manifest analyze",
-    "docs-webcomponents": "wca analyze \"src/**/*.{js,ts}\" --outDir public/webcomponents/wc-docs",
+    "cc": "custom-elements-manifest analyze --outdir public/",
+    "docs-webcomponents": "wca analyze \"src/**/*.{js,ts}\" --outDir public/wc-docs",
     "docs:watch": "typedoc --watch",
     "docs": "npm run lit-analyzer && npm run cc && npm run docs-webcomponents && npm run typedoc",
-    "build-frontend": "webpack --config ./webpack.js",
-    "build": "npm i && npm run ts && npm run prettier-check && npm run eslint &&  npm run lit-analyzer && npm run test && npm run docs && npm run build-frontend"
+    "build": "webpack --config ./webpack.js",
+    "build:app": "webpack --config ./webpack.app.js",
+    "build:all": "npm i && npm run ts && npm run prettier-check && npm run eslint &&  npm run lit-analyzer && npm run test && npm run docs && npm run build && npm run build:app"
   }
 }
