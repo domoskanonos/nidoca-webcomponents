@@ -1,147 +1,143 @@
-import {css, html, LitElement, TemplateResult} from "lit";
-import {customElement} from "lit/decorators.js";
-import {property} from "lit/decorators.js";
-import {NidocaTheme, NidocaThemeHelper} from ".";
+import {css, html, LitElement, TemplateResult} from 'lit';
+import {customElement} from 'lit/decorators.js';
+import {property} from 'lit/decorators.js';
+import {NidocaTheme, NidocaThemeHelper} from '.';
 
-@customElement("nidoca-list-item")
+@customElement('nidoca-list-item')
 export class NidocaListItem extends LitElement {
-   static styles = css`
-      .container {
-         display: grid;
-         cursor: pointer;
-         grid-template-columns: 1fr 1fr minmax(auto, 100%) 1fr;
-         padding: var(--space-2);
+  static styles = css`
+    .container {
+      display: grid;
+      cursor: pointer;
+      grid-template-columns: 1fr 1fr minmax(auto, 100%) 1fr;
+      padding: var(--space-2);
+    }
+
+    .item {
+      align-self: center;
+      display: grid;
+      align-items: center;
+      grid-template-columns: 1fr;
+      flex-basis: 100%;
+    }
+
+    .containerTypography {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-self: center;
+    }
+  `;
+
+  @property({type: NidocaTheme, converter: String})
+  theme: string | undefined;
+
+  @property({type: Boolean})
+  multiSelect: boolean = false;
+
+  @property({type: Boolean})
+  selected: boolean = false;
+
+  @property({type: String})
+  primaryText: string = '';
+
+  @property({type: String})
+  secondaryText: string = '';
+
+  constructor() {
+    super();
+    this.theme = NidocaThemeHelper.prototype.getParentTheme(this) || NidocaTheme.background;
+  }
+
+  protected update(changedProperties: Map<PropertyKey, unknown>): void {
+    super.update(changedProperties);
+    if (changedProperties.get('selectionMode') != undefined) {
+      if (!this.multiSelect) {
+        this.selected = false;
       }
+    }
+  }
 
-      .item {
-         align-self: center;
-         display: grid;
-         align-items: center;
-         grid-template-columns: 1fr;
-         flex-basis: 100%;
-      }
+  render(): TemplateResult {
+    return html`
+      <style>
+        .selected {
+          backdrop-filter: contrast(var(--app-color-percent-selected));
+        }
+      </style>
+      <div
+        class="container ${this.selected ? 'selected' : ''}"
+        @mousedown="${() => this.downAction()}"
+        @mouseup="${() => this.upAction()}"
+        @pointerup="${() => this.upAction()}"
+        @pointerdown="${() => this.downAction()}"
+      >
+        ${this.multiSelect
+          ? html` <nidoca-icon
+              style="padding-right: var(--space-2);"
+              class="item"
+              @click="${() => this.switchSelected()}"
+              icon="${this.selected ? 'check_box' : 'check_box_outline_blank'}"
+            ></nidoca-icon>`
+          : html`<span></span>`}
+        <slot name="graphic" class="item"></slot>
+        <div class="containerTypography">
+          ${this.primaryText ? html` <nidoca-text class="item">${this.primaryText} </nidoca-text>` : html``}
+          <slot></slot>
+          ${this.secondaryText
+            ? html` <nidoca-text-caption class="item">${this.secondaryText} </nidoca-text-caption>`
+            : html``}
+          <slot name="secondary"></slot>
+        </div>
+        <slot name="meta" class="item"></slot>
+      </div>
+    `;
+  }
 
-      .containerTypography {
-         display: flex;
-         flex-direction: row;
-         flex-wrap: wrap;
-         align-self: center;
-      }
-   `;
+  private clickStart: number | null = null;
 
-   @property({type: NidocaTheme, converter: String})
-   theme: string | undefined;
+  downAction(): void {
+    this.clickStart = Date.now();
+  }
 
-   @property({type: Boolean})
-   multiSelect: boolean = false;
-
-   @property({type: Boolean})
-   selected: boolean = false;
-
-   @property({type: String})
-   primaryText: string = "";
-
-   @property({type: String})
-   secondaryText: string = "";
-
-   constructor() {
-      super();
-      this.theme = NidocaThemeHelper.prototype.getParentTheme(this) || NidocaTheme.background;
-   }
-
-   protected update(changedProperties: Map<PropertyKey, unknown>): void {
-      super.update(changedProperties);
-      if (changedProperties.get("selectionMode") != undefined) {
-         if (!this.multiSelect) {
-            this.selected = false;
-         }
-      }
-   }
-
-   render(): TemplateResult {
-      return html`
-         <style>
-            .selected {
-               backdrop-filter: contrast(var(--app-color-percent-selected));
-            }
-         </style>
-         <div
-            class="container ${this.selected ? "selected" : ""}"
-            @mousedown="${() => this.downAction()}"
-            @mouseup="${() => this.upAction()}"
-            @pointerup="${() => this.upAction()}"
-            @pointerdown="${() => this.downAction()}"
-         >
-            ${this.multiSelect
-               ? html` <nidoca-icon
-                    style="padding-right: var(--space-2);"
-                    class="item"
-                    @click="${() => this.switchSelected()}"
-                    icon="${this.selected ? "check_box" : "check_box_outline_blank"}"
-                 ></nidoca-icon>`
-               : html`<span></span>`}
-            <slot name="graphic" class="item"></slot>
-            <div class="containerTypography">
-               ${this.primaryText
-                  ? html` <nidoca-text class="item">${this.primaryText} </nidoca-text>`
-                  : html``}
-               <slot></slot>
-               ${this.secondaryText
-                  ? html` <nidoca-text-caption class="item"
-                       >${this.secondaryText}
-                    </nidoca-text-caption>`
-                  : html``}
-               <slot name="secondary"></slot>
-            </div>
-            <slot name="meta" class="item"></slot>
-         </div>
-      `;
-   }
-
-   private clickStart: number | null = null;
-
-   downAction(): void {
-      this.clickStart = Date.now();
-   }
-
-   upAction(): void {
-      if (this.clickStart) {
-         const diff: number = Date.now() - this.clickStart + 1;
-         let eventName: string = "";
-         if (diff > 500) {
-            eventName = "nidoca-event-list-item-long-click";
-         } else {
-            eventName = "nidoca-event-list-item-click";
-         }
-         console.log(eventName);
-         this.dispatchEvent(
-            new CustomEvent(eventName, {
-               detail: this,
-               bubbles: true,
-               composed: true,
-            })
-         );
-      }
-   }
-
-   switchSelected(): void {
-      this.selected = Boolean(!this.selected);
-      if (this.selected) {
-         this.dispatchEvent(
-            new CustomEvent("nidoca-event-list-item-select", {
-               detail: this,
-               bubbles: true,
-               composed: true,
-            })
-         );
+  upAction(): void {
+    if (this.clickStart) {
+      const diff: number = Date.now() - this.clickStart + 1;
+      let eventName: string = '';
+      if (diff > 500) {
+        eventName = 'nidoca-event-list-item-long-click';
       } else {
-         this.dispatchEvent(
-            new CustomEvent("nidoca-event-list-item-unselect", {
-               detail: this,
-               bubbles: true,
-               composed: true,
-            })
-         );
+        eventName = 'nidoca-event-list-item-click';
       }
-   }
+      console.log(eventName);
+      this.dispatchEvent(
+        new CustomEvent(eventName, {
+          detail: this,
+          bubbles: true,
+          composed: true,
+        })
+      );
+    }
+  }
+
+  switchSelected(): void {
+    this.selected = Boolean(!this.selected);
+    if (this.selected) {
+      this.dispatchEvent(
+        new CustomEvent('nidoca-event-list-item-select', {
+          detail: this,
+          bubbles: true,
+          composed: true,
+        })
+      );
+    } else {
+      this.dispatchEvent(
+        new CustomEvent('nidoca-event-list-item-unselect', {
+          detail: this,
+          bubbles: true,
+          composed: true,
+        })
+      );
+    }
+  }
 }

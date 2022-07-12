@@ -1,44 +1,44 @@
 {
-   "name": "@domoskanonos/nidoca-webcomponents",
-   "version": "1.0.63",
-   "homepage": "https://domoskanonos.github.io/nidoca-documentation/",
-   "repository": "https://github.com/domoskanonos/nidoca-webcomponents.git",
-   "license": "MIT",
-   "keywords": [
-      "webcomponent, html, typescript, shadow dom, slot, ui, frontend, lit element"
-   ],
-   "description": "nidoca framework (nidoca-core)",
-   "files": [
-      "lib/**/*"
-   ],
-   "type": "module",
-   "main": "lib/index.js",
-   "module": "./src/index.js",
-   "devDependencies": {
-      "@domoskanonos/nidoca-base": "1.0.9",
-      "@domoskanonos/nidoca-router": "1.0.2"
-   },
-   "dependencies": {},
-   "author": "Dominik Bruhn",
-   "scripts": {
-      "check-updates": "ncu",
-      "upgrade": "ncu -u",
-      "start": "webpack serve --config webpack.local.js",
-      "ts": "tsc -p ./",
-      "prettier-check": "npx prettier --check \"./**/*.{ts,json,js,html}\"",
-      "prettier-fix": "npx prettier --write \"./**/*.{ts,json,js,html}\"",
-      "eslint": "eslint src",
-      "eslint:fix": "eslint src --fix",
-      "test": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js --coverage --passWithNoTests",
-      "test:watch": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js --watch --passWithNoTests",
-      "typedoc": "npx typedoc",
-      "lit-analyzer": "lit-analyzer \"src/**/*.{js,ts}\"",
-      "cc": "custom-elements-manifest analyze --outdir public/",
-      "docs-webcomponents": "wca analyze \"src/**/*.{js,ts}\" --outDir public/wc-docs",
-      "docs:watch": "typedoc --watch",
-      "docs": "npm run lit-analyzer && npm run cc && npm run docs-webcomponents && npm run typedoc",
-      "build": "webpack --config ./webpack.js",
-      "build:app": "webpack --config ./webpack.app.js",
-      "build:all": "npm i && npm run ts && npm run prettier-check && npm run eslint &&  npm run lit-analyzer && npm run test && npm run docs && npm run build && npm run build:app"
-   }
+  "name": "@domoskanonos/nidoca-webcomponents",
+  "version": "1.0.63",
+  "homepage": "https://domoskanonos.github.io/nidoca-documentation/",
+  "repository": "https://github.com/domoskanonos/nidoca-webcomponents.git",
+  "license": "MIT",
+  "keywords": [
+    "webcomponent, html, typescript, shadow dom, slot, ui, frontend, lit element"
+  ],
+  "description": "nidoca framework (nidoca-core)",
+  "files": [
+    "lib/**/*"
+  ],
+  "type": "module",
+  "main": "lib/index.js",
+  "module": "./src/index.js",
+  "devDependencies": {
+    "@domoskanonos/nidoca-base": "1.0.9",
+    "@domoskanonos/nidoca-router": "1.0.2"
+  },
+  "dependencies": {},
+  "author": "Dominik Bruhn",
+  "scripts": {
+    "check-updates": "ncu",
+    "upgrade": "ncu -u",
+    "start": "webpack serve --config webpack.local.js",
+    "ts": "tsc -p ./",
+    "prettier-check": "npx prettier --check \"./**/*.{ts,json,js,html}\"",
+    "prettier-fix": "npx prettier --write \"./**/*.{ts,json,js,html}\"",
+    "eslint": "eslint src",
+    "eslint:fix": "eslint src --fix",
+    "test": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js --coverage --passWithNoTests",
+    "test:watch": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js --watch --passWithNoTests",
+    "typedoc": "npx typedoc",
+    "lit-analyzer": "lit-analyzer \"src/**/*.{js,ts}\"",
+    "cc": "custom-elements-manifest analyze --outdir public/",
+    "docs-webcomponents": "wca analyze \"src/**/*.{js,ts}\" --outDir public/wc-docs",
+    "docs:watch": "typedoc --watch",
+    "docs": "npm run lit-analyzer && npm run cc && npm run docs-webcomponents && npm run typedoc",
+    "build": "webpack --config ./webpack.js",
+    "build:app": "webpack --config ./webpack.app.js",
+    "build:all": "npm i && npm run ts && npm run prettier-check && npm run eslint &&  npm run lit-analyzer && npm run test && npm run docs && npm run build && npm run build:app"
+  }
 }

@@ -1,41 +1,41 @@
-import {css, html, LitElement, TemplateResult} from "lit";
-import {customElement} from "lit/decorators.js";
-import {property} from "lit/decorators.js";
-import {NidocaTheme, NidocaThemeHelper} from ".";
+import {css, html, LitElement, TemplateResult} from 'lit';
+import {customElement} from 'lit/decorators.js';
+import {property} from 'lit/decorators.js';
+import {NidocaTheme, NidocaThemeHelper} from '.';
 
-@customElement("nidoca-box")
+@customElement('nidoca-box')
 export class NidocaBox extends LitElement {
-   static styles = css`
+  static styles = css`
+    :host {
+      display: block;
+      padding: var(--space-6);
+      box-sizing: border-box;
+    }
+    slot {
+      display: block;
+      margin: auto;
+    }
+
+    @media only screen and (min-width: 641px) and (max-width: 1007px) {
       :host {
-         display: block;
-         padding: var(--space-6);
-         box-sizing: border-box;
+        padding: var(--space-4);
       }
-      slot {
-         display: block;
-         margin: auto;
+    }
+
+    @media only screen and (max-width: 640px) {
+      :host {
+        padding: var(--space-2);
       }
+    }
+  `;
 
-      @media only screen and (min-width: 641px) and (max-width: 1007px) {
-         :host {
-            padding: var(--space-4);
-         }
-      }
+  @property({type: NidocaTheme, converter: String})
+  theme: string | undefined = NidocaTheme.transparent;
 
-      @media only screen and (max-width: 640px) {
-         :host {
-            padding: var(--space-2);
-         }
-      }
-   `;
-
-   @property({type: NidocaTheme, converter: String})
-   theme: string | undefined = NidocaTheme.transparent;
-
-   render(): TemplateResult {
-      return html`
-         ${NidocaThemeHelper.getStyle(this.theme)}
-         <slot></slot>
-      `;
-   }
+  render(): TemplateResult {
+    return html`
+      ${NidocaThemeHelper.getStyle(this.theme)}
+      <slot></slot>
+    `;
+  }
 }

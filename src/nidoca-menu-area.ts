@@ -1,38 +1,38 @@
-import {css, html, TemplateResult, LitElement} from "lit";
-import {customElement} from "lit/decorators.js";
-import {property} from "lit/decorators.js";
+import {css, html, TemplateResult, LitElement} from 'lit';
+import {customElement} from 'lit/decorators.js';
+import {property} from 'lit/decorators.js';
 
-@customElement("nidoca-menu-area")
+@customElement('nidoca-menu-area')
 export class NidocaMenuArea extends LitElement {
-   static styles = css`
-      .container {
-         display: flex;
-         padding-left: var(--space-2);
-         padding-right: var(--space-2);
-         padding-top: var(--space);
-         padding-bottom: var(--space);
-      }
-   `;
+  static styles = css`
+    .container {
+      display: flex;
+      padding-left: var(--space-2);
+      padding-right: var(--space-2);
+      padding-top: var(--space);
+      padding-bottom: var(--space);
+    }
+  `;
 
-   @property({type: String})
-   text: string = "";
+  @property({type: String})
+  text: string = '';
 
-   @property({type: String})
-   icon: string = "";
+  @property({type: String})
+  icon: string = '';
 
-   render(): TemplateResult {
-      return html`
-         <div class="container">
-            ${this.icon
-               ? html` <nidoca-icon
-                    slot="graphic"
-                    icon="${this.icon}"
-                    style="padding-right:var(--space); font-size:var(--icon-size);"
-                 ></nidoca-icon>`
-               : html``}
-            ${this.text ? html` <nidoca-text-button>${this.text}</nidoca-text-button>` : html``}
-            <slot></slot>
-         </div>
-      `;
-   }
+  render(): TemplateResult {
+    return html`
+      <div class="container">
+        ${this.icon
+          ? html` <nidoca-icon
+              slot="graphic"
+              icon="${this.icon}"
+              style="padding-right:var(--space); font-size:var(--icon-size);"
+            ></nidoca-icon>`
+          : html``}
+        ${this.text ? html` <nidoca-text-button>${this.text}</nidoca-text-button>` : html``}
+        <slot></slot>
+      </div>
+    `;
+  }
 }

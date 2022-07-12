@@ -1,84 +1,74 @@
-import {PropertyWrapper} from "./property-wrapper";
+import {PropertyWrapper} from './property-wrapper';
 
 export class WebcomponentWrapper {
-   public instance: any;
+  public instance: any;
 
-   constructor(element: any) {
-      this.instance = element;
-   }
+  constructor(element: any) {
+    this.instance = element;
+  }
 
-   public getClassName() {
-      return this.instance.constructor.name;
-   }
+  public getClassName() {
+    return this.instance.constructor.name;
+  }
 
-   getTagName(): string {
-      return this.instance.localName;
-   }
+  getTagName(): string {
+    return this.instance.localName;
+  }
 
-   getHTMLTag(): string {
-      return "<"
-         .concat(this.getTagName())
-         .concat(">")
-         .concat("</")
-         .concat(this.getTagName())
-         .concat(">");
-   }
+  getHTMLTag(): string {
+    return '<'.concat(this.getTagName()).concat('>').concat('</').concat(this.getTagName()).concat('>');
+  }
 
-   public getClazz(): unknown {
-      return this.instance.constructor;
-   }
+  public getClazz(): unknown {
+    return this.instance.constructor;
+  }
 
-   public getSlotNames(): string[] {
-      return this.getSlots().map((prop) => {
-         return prop.name ? prop.name : "default";
-      });
-   }
+  public getSlotNames(): string[] {
+    return this.getSlots().map((prop) => {
+      return prop.name ? prop.name : 'default';
+    });
+  }
 
-   public getSlots(): HTMLSlotElement[] {
-      return this.getElementsByTagName("SLOT", this.instance.shadowRoot);
-   }
+  public getSlots(): HTMLSlotElement[] {
+    return this.getElementsByTagName('SLOT', this.instance.shadowRoot);
+  }
 
-   hasSlots(): boolean {
-      return this.getSlots().length > 0;
-   }
+  hasSlots(): boolean {
+    return this.getSlots().length > 0;
+  }
 
-   private getElementsByTagName(
-      tagName: string,
-      element: any | undefined | null
-   ): HTMLSlotElement[] {
-      let retval: HTMLSlotElement[] = [];
-      if (element) {
-         const elementTagName = element.tagName;
-         if (elementTagName == tagName) {
-            retval.push(<HTMLSlotElement>element);
-         }
-         if (element.children.length > 0) {
-            const elements = element?.children;
-            for (let i = 0; i < elements.length; i++) {
-               retval = retval.concat(this.getElementsByTagName(tagName, elements.item(i)));
-            }
-         }
+  private getElementsByTagName(tagName: string, element: any | undefined | null): HTMLSlotElement[] {
+    let retval: HTMLSlotElement[] = [];
+    if (element) {
+      const elementTagName = element.tagName;
+      if (elementTagName == tagName) {
+        retval.push(<HTMLSlotElement>element);
       }
-      return retval;
-   }
-
-   public getPropertieNames(): string[] {
-      const obj: any = this.instance.constructor;
-      const propNames: string[] = Object.getOwnPropertyNames(obj);
-      return propNames;
-   }
-
-   public getProperties(): PropertyWrapper[] {
-      const classProperties: Map<string, any> = (<any>this.instance.constructor)[
-         "elementProperties"
-      ];
-      if (!classProperties) {
-         throw new Error("selected item malformed. no lit element ? wrong lit version ?");
+      if (element.children.length > 0) {
+        const elements = element?.children;
+        for (let i = 0; i < elements.length; i++) {
+          retval = retval.concat(this.getElementsByTagName(tagName, elements.item(i)));
+        }
       }
-      const classPropertyArray: PropertyWrapper[] = [];
-      for (const key of Array.from(classProperties.keys())) {
-         classPropertyArray.push(new PropertyWrapper(key, classProperties.get(key)));
-      }
-      return classPropertyArray;
-   }
+    }
+    return retval;
+  }
+
+  public getPropertieNames(): string[] {
+    const obj: any = this.instance.constructor;
+    const propNames: string[] = Object.getOwnPropertyNames(obj);
+    return propNames;
+  }
+
+  public getProperties(): PropertyWrapper[] {
+    const classProperties: Map<string, any> = (<any>this.instance.constructor)['elementProperties'];
+    if (!classProperties) {
+      throw new Error('selected item malformed. no lit element ? wrong lit version ?');
+    }
+    const classPropertyArray: PropertyWrapper[] = [];
+    for (const key of Array.from(classProperties.keys())) {
+      classPropertyArray.push(new PropertyWrapper(key, classProperties.get(key)));
+    }
+    return classPropertyArray;
+  }
 }

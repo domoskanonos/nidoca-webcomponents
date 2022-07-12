@@ -1,12 +1,12 @@
-import {LitElement} from "lit";
+import {LitElement} from 'lit';
 
 export class FormOutputData {
-   key: string = "";
-   value: any;
+  key: string = '';
+  value: any;
 }
 
 export abstract class NidocaFormAbstractInputElement extends LitElement {
-   abstract validate(): boolean;
+  abstract validate(): boolean;
 
-   abstract getOutputData(): FormOutputData;
+  abstract getOutputData(): FormOutputData;
 }

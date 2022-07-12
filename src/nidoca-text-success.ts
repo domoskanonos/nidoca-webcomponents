@@ -1,10 +1,10 @@
-import {customElement} from "lit/decorators.js";
-import {NidocaTextCaption} from ".";
+import {customElement} from 'lit/decorators.js';
+import {NidocaTextCaption} from '.';
 
-@customElement("nidoca-text-success")
+@customElement('nidoca-text-success')
 export class NidocaTextSuccess extends NidocaTextCaption {
-   constructor() {
-      super();
-      this.style.color = "green";
-   }
+  constructor() {
+    super();
+    this.style.color = 'green';
+  }
 }
