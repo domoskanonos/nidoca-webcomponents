@@ -5,7 +5,8 @@ import {customElement} from 'lit/decorators.js';
 export class NidocaPageMain extends LitElement {
   static styles = css``;
   render(): TemplateResult {
-    return html` <nidoca-container style="padding-top:20vh;padding-bottom:20vh;">
+    return html`
+      <nidoca-container style="padding-top:20vh;padding-bottom:20vh;">
         <div style="display:flex;align-items:center;justify-content:center;align-content:flex-start;">
           <nidoca-img src="logo.svg" width="128px"></nidoca-img>
           <nidoca-text-h1 style="padding-left:var(--space-2);">nidoca-webcomponents</nidoca-text-h1>
@@ -30,10 +31,19 @@ export class NidocaPageMain extends LitElement {
           </nidoca-icon-with-description>
         </nidoca-section>
       </nidoca-container>
-      https://jsfiddle.net/domoskanonos/04ndLcj7/10/
-      <nidoca-code>
-        https://domoskanonos.github.io/nidoca-documentation/webcomponents/nidoca-webcomponents.js
-        https://domoskanonos.github.io/nidoca-documentation/webcomponents/nidoca.css
-      </nidoca-code>`;
+
+      <nidoca-container theme="background">
+        <nidoca-icon-with-description title="HTML" icon="code">
+          So einfach kannst du die Komponenten in deine HTML Seite einbinden und verwenden:
+        </nidoca-icon-with-description>
+        <nidoca-code
+          >&lt;script
+          src=&quot;https://domoskanonos.github.io/nidoca-webcomponents/webcomponents/nidoca-webcomponents.js&quot;&gt;&lt;/script&gt;
+          &lt;style&gt;@import
+          url(&#39;https://domoskanonos.github.io/nidoca-webcomponents/webcomponents/nidoca.css&#39;);&lt;/style&gt;
+          &lt;nidoca-button&gt;Mein Button&lt;/nidoca-button&gt;
+        </nidoca-code>
+      </nidoca-container>
+    `;
   }
 }

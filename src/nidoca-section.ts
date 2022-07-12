@@ -17,13 +17,7 @@ export class NidocaSection extends LitElement {
       justify-content: center;
     }
 
-    @media only screen and (min-width: 641px) and (max-width: 1007px) {
-      .item {
-        flex-basis: 100%;
-      }
-    }
-
-    @media only screen and (max-width: 10240px) {
+    @media only screen and (max-width: 1007px) {
       .container {
         width: 100%;
         flex-direction: column;

@@ -25,7 +25,7 @@ export class NidocaCode extends LitElement {
     code {
       background: var(--app-color-surface-background);
       border-radius: 0.375em;
-      border: solid 1px var(--app-color-surface-background-dark);
+      border: solid 1px var(--app-color-surface-border);
       font-family: 'Courier New', monospace;
       font-size: 0.85em;
       position: relative;

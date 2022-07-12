@@ -13,12 +13,12 @@ export class NidocaContainer extends LitElement {
     slot {
       display: block;
       margin: auto;
-      width: min-content;
+      width: auto;
     }
 
     @media only screen and (min-width: 641px) and (max-width: 1918px) {
       slot {
-        width: 50%;
+        width: 70%;
       }
     }
 
@@ -30,7 +30,7 @@ export class NidocaContainer extends LitElement {
 
     @media only screen and (min-width: 1919px) {
       slot {
-        width: 75%;
+        width: 50%;
       }
     }
   `;
