@@ -20,8 +20,8 @@
     "upgrade": "ncu -u",
     "start": "webpack serve --config webpack.local.js",
     "ts": "tsc -p ./",
-    "prettier-check": "npx prettier --check \"./**/*.{ts,json,js,html}\"",
-    "prettier-fix": "npx prettier --write \"./**/*.{ts,json,js,html}\"",
+    "prettier:check": "npx prettier --check \"./**/*.{ts,json,js,html}\"",
+    "prettier:fix": "npx prettier --write \"./**/*.{ts,json,js,html}\"",
     "eslint": "eslint src",
     "eslint:fix": "eslint src --fix",
     "test": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js --coverage --passWithNoTests",
@@ -34,6 +34,6 @@
     "docs": "npm run lit-analyzer && npm run cc && npm run docs-webcomponents && npm run typedoc",
     "build": "webpack --config ./webpack.js",
     "build:app": "webpack --config ./webpack.app.js",
-    "build:all": "npm i && npm run ts && npm run prettier-check && npm run eslint &&  npm run lit-analyzer && npm run test && npm run docs && npm run build && npm run build:app"
+    "build:all": "npm i && npm run ts && npm run prettier:check && npm run eslint &&  npm run lit-analyzer && npm run test && npm run docs && npm run build && npm run build:app"
   }
 }
