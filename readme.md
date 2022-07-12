@@ -5,7 +5,7 @@ nidoca is a lightweight ui-framework based on
 [typescript](https://www.typescriptlang.org/)
 and [lit](https://lit.dev/).
 
-visit showcase page: [nidoca.de](http://nidoca.de)
+visit documentation: [https://domoskanonos.github.io/nidoca-webcomponents](https://domoskanonos.github.io/nidoca-webcomponents)
 
 |project info||
 |:-------------|:-------------|
