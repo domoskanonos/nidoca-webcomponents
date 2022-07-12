@@ -6,6 +6,8 @@ nidoca is a lightweight ui-framework based on
 and [lit](https://lit.dev/).
 
 visit documentation: [https://domoskanonos.github.io/nidoca-webcomponents](https://domoskanonos.github.io/nidoca-webcomponents)
+visit showcase: [https://domoskanonos.github.io/nidoca-lit-viewer](https://domoskanonos.github.io/nidoca-lit-viewer)
+
 
 |project info||
 |:-------------|:-------------|
