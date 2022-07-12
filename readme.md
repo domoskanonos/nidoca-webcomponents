@@ -18,7 +18,7 @@ and [lit](https://lit.dev/).
 #### install npm
     $ npm i @domoskanonos/nidoca-webcomponents
 
-#### native web
+#### html
 ```html
   <script src="https://domoskanonos.github.io/nidoca-webcomponents/webcomponents/nidoca-webcomponents.js"></script>
   <style>@import url('https://domoskanonos.github.io/nidoca-webcomponents/webcomponents/nidoca.css');</style>
