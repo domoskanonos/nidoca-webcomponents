@@ -18,11 +18,6 @@ visit documentation: [https://domoskanonos.github.io/nidoca-webcomponents](https
 #### install npm
     npm i @domoskanonos/nidoca-webcomponents
 
-
-Farbschema ideen:
-https://99designs.de/blog/design-kreativitaet/farbschemata-webseiten/
-
-
 <!--
 ```
 <custom-element-demo>
