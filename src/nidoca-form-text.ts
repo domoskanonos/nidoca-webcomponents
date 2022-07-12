@@ -3,7 +3,7 @@ import {customElement} from 'lit/decorators.js';
 import {property} from 'lit/decorators.js';
 import {query} from 'lit/decorators.js';
 import {ifDefined} from 'lit/directives/if-defined.js';
-import {NidocaTheme} from './nidoca-meta';
+import {NidocaTheme} from './nidoca-meta.js';
 import {FormOutputData, NidocaFormAbstractInputElement} from './nidoca-form-abstract-input-element';
 
 export enum NidocaFormTextType {

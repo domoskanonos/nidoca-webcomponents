@@ -1,7 +1,7 @@
 import {css, html, LitElement, TemplateResult} from 'lit';
 import {customElement} from 'lit/decorators.js';
 import {property} from 'lit/decorators.js';
-import {NidocaTheme} from './nidoca-meta';
+import {NidocaTheme} from './nidoca-meta.js';
 
 export enum NidocaButtonType {
   CONTAINED = 'CONTAINED',
