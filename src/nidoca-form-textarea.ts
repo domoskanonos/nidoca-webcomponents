@@ -2,7 +2,7 @@ import {css, html, TemplateResult} from 'lit';
 import {customElement} from 'lit/decorators.js';
 import {property} from 'lit/decorators.js';
 import {query} from 'lit/decorators.js';
-import {NidocaTheme} from '.';
+import {NidocaTheme, NidocaThemeHelper} from '.';
 import {FormOutputData, NidocaFormAbstractInputElement} from './nidoca-form-abstract-input-element';
 
 @customElement('nidoca-form-textarea')
@@ -50,7 +50,7 @@ export class NidocaFormTextarea extends NidocaFormAbstractInputElement {
   `;
 
   @property({type: NidocaTheme, converter: String})
-  theme: string = NidocaTheme.SURFACE;
+  theme: string = NidocaTheme.surface;
 
   @property({type: String})
   infoText: string = '';

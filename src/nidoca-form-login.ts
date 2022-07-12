@@ -1,7 +1,7 @@
 import {css, html, LitElement, TemplateResult} from 'lit';
 import {customElement, property, query} from 'lit/decorators.js';
 import {ifDefined} from 'lit/directives/if-defined.js';
-import {NidocaForm, NidocaFormTextType, NidocaTheme} from './index';
+import {NidocaForm, NidocaFormTextType, NidocaTheme, NidocaThemeHelper} from './index';
 
 @customElement('nidoca-form-login')
 export class NidocaFormLogin extends LitElement {
@@ -17,7 +17,7 @@ export class NidocaFormLogin extends LitElement {
   `;
 
   @property({type: NidocaTheme, converter: String})
-  theme: string | undefined = NidocaTheme.TRANSPARENT;
+  theme: string | undefined = NidocaTheme.transparent;
 
   @property({type: String, converter: String})
   label: string = 'Anmeldung';
@@ -41,7 +41,7 @@ export class NidocaFormLogin extends LitElement {
           <nidoca-text-h2 class="paddingBottom">${this.label}</nidoca-text-h2>
 
           <nidoca-form-text
-            theme="${NidocaTheme.getOposite(this.theme)}"
+            theme="${NidocaThemeHelper.getOposite(this.theme)}"
             class="paddingBottom"
             type="${NidocaFormTextType.EMAIL}"
             label="${this.usernameLabel}"
@@ -51,7 +51,7 @@ export class NidocaFormLogin extends LitElement {
           ></nidoca-form-text>
 
           <nidoca-form-text
-            theme="${NidocaTheme.getOposite(this.theme)}"
+            theme="${NidocaThemeHelper.getOposite(this.theme)}"
             class="paddingBottom"
             type="${NidocaFormTextType.PASSWORD}"
             label="${this.passwordLabel}"
@@ -62,7 +62,7 @@ export class NidocaFormLogin extends LitElement {
           ></nidoca-form-text>
 
           <nidoca-button
-            theme="${NidocaTheme.getOposite(this.theme)}"
+            theme="${NidocaThemeHelper.getOposite(this.theme)}"
             class="paddingBottom"
             @nidoca-event-button-clicked="${() => this.login()}"
             >${this.buttonLabel}

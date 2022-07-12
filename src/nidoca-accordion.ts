@@ -2,7 +2,7 @@ import {css, html, LitElement, TemplateResult} from 'lit';
 import {customElement} from 'lit/decorators.js';
 import {property} from 'lit/decorators.js';
 import {query} from 'lit/decorators.js';
-import {NidocaTheme} from '.';
+import {NidocaTheme, NidocaThemeHelper} from '.';
 import {NidocaAccordionItem} from './nidoca-accordion-item';
 
 export enum AccordionType {
@@ -27,7 +27,7 @@ export class NidocaAccordion extends LitElement {
   `;
 
   @property({type: NidocaTheme, converter: String})
-  theme: string = NidocaTheme.SURFACE;
+  theme: string = NidocaTheme.surface;
 
   @property({type: AccordionType, converter: String})
   accordionType: string = AccordionType.SINGLE;
@@ -37,7 +37,7 @@ export class NidocaAccordion extends LitElement {
 
   render(): TemplateResult {
     return html`
-      ${NidocaTheme.getStyle(this.theme)}
+      ${NidocaThemeHelper.getStyle(this.theme)}
       <slot
         @nidoca-event-accordion-item-clicked="${(event: CustomEvent) => this.accordionSwitched(event)}"
         id="accordionSlot"

@@ -3,7 +3,7 @@ import {customElement} from 'lit/decorators.js';
 import {property} from 'lit/decorators.js';
 import {query} from 'lit/decorators.js';
 import {ifDefined} from 'lit/directives/if-defined.js';
-import {NidocaTheme} from '.';
+import {NidocaTheme, NidocaThemeHelper} from '.';
 import {FormOutputData, NidocaFormAbstractInputElement} from './nidoca-form-abstract-input-element';
 
 export enum NidocaFormTextType {
@@ -132,7 +132,7 @@ export class NidocaFormText extends NidocaFormAbstractInputElement {
   private inputElement: HTMLInputElement | undefined;
 
   @property({type: NidocaTheme, converter: String})
-  theme: string = NidocaTheme.SURFACE;
+  theme: string = NidocaTheme.surface;
 
   render(): TemplateResult {
     return this.type == NidocaFormTextType.HIDDEN

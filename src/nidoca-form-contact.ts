@@ -1,7 +1,7 @@
 import {css, html, TemplateResult, LitElement} from 'lit';
 import {customElement, property, query} from 'lit/decorators.js';
 import {ifDefined} from 'lit/directives/if-defined.js';
-import {NidocaButtonType, NidocaFormTextType, NidocaTheme, NidocaForm} from '.';
+import {NidocaButtonType, NidocaFormTextType, NidocaTheme, NidocaForm, NidocaThemeHelper} from '.';
 
 @customElement('nidoca-form-contact')
 export class NidocaFormContact extends LitElement {
@@ -17,7 +17,7 @@ export class NidocaFormContact extends LitElement {
   `;
 
   @property({type: NidocaTheme, converter: String})
-  theme: string | undefined = NidocaTheme.PRIMARY;
+  theme: string | undefined = NidocaTheme.primary;
 
   @property({type: String, converter: String})
   label: string = 'Deine Nachricht';
@@ -46,7 +46,7 @@ export class NidocaFormContact extends LitElement {
         <nidoca-form id="authenitcate-form">
           <nidoca-text-h2 class="paddingBottom">${this.label}</nidoca-text-h2>
           <nidoca-form-text
-            theme="${NidocaTheme.getOposite(this.theme)}"
+            theme="${NidocaThemeHelper.getOposite(this.theme)}"
             class="paddingBottom"
             name="name"
             textType="${NidocaFormTextType.TEXT}"
@@ -55,7 +55,7 @@ export class NidocaFormContact extends LitElement {
             required
           ></nidoca-form-text>
           <nidoca-form-text
-            theme="${NidocaTheme.getOposite(this.theme)}"
+            theme="${NidocaThemeHelper.getOposite(this.theme)}"
             class="paddingBottom"
             textType="${NidocaFormTextType.EMAIL}"
             label="${this.emailLabel}"
@@ -65,7 +65,7 @@ export class NidocaFormContact extends LitElement {
           ></nidoca-form-text>
           <nidoca-form-text
             label="${this.titleLabel}"
-            theme="${NidocaTheme.getOposite(this.theme)}"
+            theme="${NidocaThemeHelper.getOposite(this.theme)}"
             class="paddingBottom"
             textType="${NidocaFormTextType.TEXT}"
             value=""
@@ -74,14 +74,14 @@ export class NidocaFormContact extends LitElement {
           ></nidoca-form-text>
           <nidoca-form-textarea
             label="${this.messageLabel}"
-            theme="${NidocaTheme.getOposite(this.theme)}"
+            theme="${NidocaThemeHelper.getOposite(this.theme)}"
             class="paddingBottom"
             name="message"
             trailingIcon="vpn_key"
             required
           ></nidoca-form-textarea>
           <nidoca-button
-            theme="${NidocaTheme.getOposite(this.theme)}"
+            theme="${NidocaThemeHelper.getOposite(this.theme)}"
             class="paddingBottom"
             @nidoca-event-button-clicked="${() => this.sendMessage()}"
             .buttonType="${NidocaButtonType.CONTAINED}"

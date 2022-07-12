@@ -1,9 +1,16 @@
 import {html, HTMLTemplateResult} from 'lit';
 
-export class NidocaTheme {
+export enum NidocaTheme {
+  primary = 'primary',
+  secondary = 'secondary',
+  surface = 'surface',
+  background = 'background',
+  transparent = 'transparent',
+}
+export class NidocaThemeHelper {
   static getStyle(theme: NidocaTheme | string | undefined): HTMLTemplateResult {
     return theme
-      ? theme == NidocaTheme.TRANSPARENT
+      ? theme == NidocaTheme.transparent
         ? html``
         : html` <style>
             :host,
@@ -22,29 +29,23 @@ export class NidocaTheme {
       : html``;
   }
 
-  static readonly PRIMARY: string = 'primary';
-  static readonly SECONDARY: string = 'secondary';
-  static readonly SURFACE: string = 'surface';
-  static readonly BACKGROUND: string = 'background';
-  static readonly TRANSPARENT: string = 'transparent';
-
   static getOposite(theme: string | undefined) {
-    return theme == NidocaTheme.BACKGROUND
-      ? NidocaTheme.SURFACE
-      : theme == NidocaTheme.PRIMARY
-      ? NidocaTheme.SECONDARY
-      : theme == NidocaTheme.PRIMARY
-      ? NidocaTheme.SECONDARY
-      : theme == NidocaTheme.SECONDARY
-      ? NidocaTheme.PRIMARY
-      : NidocaTheme.BACKGROUND;
+    return theme == NidocaTheme.background
+      ? NidocaTheme.surface
+      : theme == NidocaTheme.primary
+      ? NidocaTheme.secondary
+      : theme == NidocaTheme.primary
+      ? NidocaTheme.secondary
+      : theme == NidocaTheme.secondary
+      ? NidocaTheme.primary
+      : NidocaTheme.background;
   }
 
   getParentTheme(element: HTMLElement): string | undefined {
     let parentComponent: HTMLElement | null = element;
     while (parentComponent != null) {
       if ((<any>parentComponent).theme != undefined) {
-        return (<any>parentComponent).theme as keyof NidocaTheme;
+        return (<any>parentComponent).theme;
       }
       parentComponent = parentComponent.parentElement;
     }

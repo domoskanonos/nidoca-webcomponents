@@ -1,7 +1,7 @@
 import {css, html, TemplateResult, LitElement} from 'lit';
 import {customElement} from 'lit/decorators.js';
 import {property} from 'lit/decorators.js';
-import {NidocaTheme} from '.';
+import {NidocaTheme, NidocaThemeHelper} from '.';
 
 @customElement('nidoca-tab')
 export class NidocaTab extends LitElement {
@@ -32,7 +32,7 @@ export class NidocaTab extends LitElement {
   text: string = '';
 
   @property({type: String})
-  theme: string = NidocaTheme.SURFACE;
+  theme: string = NidocaTheme.surface;
 
   render(): TemplateResult {
     return html`

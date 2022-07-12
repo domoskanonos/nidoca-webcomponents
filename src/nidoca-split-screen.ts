@@ -1,6 +1,6 @@
 import {css, html, TemplateResult, LitElement} from 'lit';
 import {customElement, property} from 'lit/decorators.js';
-import {NidocaTheme} from '.';
+import {NidocaTheme, NidocaThemeHelper} from '.';
 
 @customElement('nidoca-split-screen')
 export class NidocaSplitScreen extends LitElement {
@@ -51,7 +51,7 @@ export class NidocaSplitScreen extends LitElement {
 
   constructor() {
     super();
-    this.theme = NidocaTheme.prototype.getParentTheme(this) || NidocaTheme.BACKGROUND;
+    this.theme = NidocaThemeHelper.prototype.getParentTheme(this) || NidocaTheme.background;
   }
 
   render(): TemplateResult {

@@ -1,7 +1,7 @@
 import {css, html, LitElement} from 'lit';
 import {customElement} from 'lit/decorators.js';
 import {property} from 'lit/decorators.js';
-import {NidocaTheme} from '.';
+import {NidocaTheme, NidocaThemeHelper} from '.';
 
 @customElement('nidoca-container')
 export class NidocaContainer extends LitElement {
@@ -36,11 +36,11 @@ export class NidocaContainer extends LitElement {
   `;
 
   @property({type: NidocaTheme, converter: String})
-  theme: string = NidocaTheme.BACKGROUND;
+  theme: string = NidocaTheme.background;
 
   render(): unknown {
     return html`
-      ${NidocaTheme.getStyle(this.theme)}
+      ${NidocaThemeHelper.getStyle(this.theme)}
       <slot></slot>
     `;
   }

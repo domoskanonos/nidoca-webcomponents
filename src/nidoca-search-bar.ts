@@ -2,7 +2,7 @@ import {css, html, TemplateResult, LitElement} from 'lit';
 import {customElement} from 'lit/decorators.js';
 import {property} from 'lit/decorators.js';
 import {query} from 'lit/decorators.js';
-import {NidocaTheme} from '.';
+import {NidocaTheme, NidocaThemeHelper} from '.';
 
 @customElement('nidoca-search-bar')
 export class NidocaSearchBar extends LitElement {
@@ -52,7 +52,7 @@ export class NidocaSearchBar extends LitElement {
   private inputElement: HTMLInputElement | undefined;
 
   @property({type: NidocaTheme, converter: String})
-  theme: string = NidocaTheme.SURFACE;
+  theme: string = NidocaTheme.surface;
 
   render(): TemplateResult {
     return html`

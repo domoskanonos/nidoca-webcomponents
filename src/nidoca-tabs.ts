@@ -3,7 +3,7 @@ import {customElement, property} from 'lit/decorators.js';
 import {query} from 'lit/decorators.js';
 import {NidocaTabContent} from './nidoca-tab-content';
 import {NidocaTab} from './nidoca-tab';
-import {NidocaTheme} from '.';
+import {NidocaTheme, NidocaThemeHelper} from '.';
 
 @customElement('nidoca-tabs')
 export class NidocaTabs extends LitElement {
@@ -39,7 +39,7 @@ export class NidocaTabs extends LitElement {
   private tabContentSlot: HTMLSlotElement | undefined;
 
   @property({type: String})
-  theme: string = NidocaTheme.SURFACE;
+  theme: string = NidocaTheme.surface;
 
   @property({type: Number})
   tabIndex: number = 0;

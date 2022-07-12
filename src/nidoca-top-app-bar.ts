@@ -1,7 +1,7 @@
 import {css, html, TemplateResult, LitElement} from 'lit';
 import {customElement} from 'lit/decorators.js';
 import {property} from 'lit/decorators.js';
-import {NidocaTheme} from '.';
+import {NidocaTheme, NidocaThemeHelper} from '.';
 
 /**
  * state: stable
@@ -40,14 +40,14 @@ export class NidocaTopAppBar extends LitElement {
   `;
 
   @property({type: NidocaTheme, converter: String})
-  theme: string | undefined = NidocaTheme.PRIMARY;
+  theme: string | undefined = NidocaTheme.primary;
 
   @property({type: Boolean})
   prominent: boolean = false;
 
   render(): TemplateResult {
     return html`
-      ${NidocaTheme.getStyle(this.theme)}
+      ${NidocaThemeHelper.getStyle(this.theme)}
       <div class="bar">
         <slot name="left" style="justify-content:flex-start;"></slot>
         <slot name="center" style="justify-content:center;"></slot>

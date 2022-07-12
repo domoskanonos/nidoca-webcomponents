@@ -12,7 +12,7 @@ export class NidocaMenu extends LitElement {
   `;
 
   @property({type: NidocaTheme, converter: String})
-  theme: string | undefined = NidocaTheme.SECONDARY;
+  theme: string | undefined = NidocaTheme.secondary;
 
   @query('#slotElement')
   private slotElement: HTMLSlotElement | undefined;

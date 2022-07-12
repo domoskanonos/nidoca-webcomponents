@@ -1,6 +1,6 @@
 import {css, html, TemplateResult, LitElement} from 'lit';
 import {customElement, property, query} from 'lit/decorators.js';
-import {NidocaForm, NidocaFormTextType, NidocaTheme} from '.';
+import {NidocaForm, NidocaFormTextType, NidocaTheme, NidocaThemeHelper} from '.';
 
 @customElement('nidoca-form-reset-password')
 export class NidocaFormResetPassword extends LitElement {
@@ -16,7 +16,7 @@ export class NidocaFormResetPassword extends LitElement {
   `;
 
   @property({type: NidocaTheme, converter: String})
-  theme: string = NidocaTheme.PRIMARY;
+  theme: string = NidocaTheme.primary;
 
   @property({type: String, converter: String})
   label: string = 'Passwort zurücksetzen';
@@ -37,7 +37,7 @@ export class NidocaFormResetPassword extends LitElement {
           <nidoca-text-h2 class="paddingBottom">${this.label}</nidoca-text-h2>
 
           <nidoca-form-text
-            theme="${NidocaTheme.getOposite(this.theme)}"
+            theme="${NidocaThemeHelper.getOposite(this.theme)}"
             class="paddingBottom"
             textType="${NidocaFormTextType.EMAIL}"
             label="${this.emailLabel}"
@@ -49,7 +49,7 @@ export class NidocaFormResetPassword extends LitElement {
           ></nidoca-form-text>
 
           <nidoca-button
-            theme="${NidocaTheme.getOposite(this.theme)}"
+            theme="${NidocaThemeHelper.getOposite(this.theme)}"
             class="paddingBottom"
             @nidoca-event-button-clicked="${() => this.register()}"
             >${this.buttonLabel}

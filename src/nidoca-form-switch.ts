@@ -2,7 +2,7 @@ import {css, html, TemplateResult} from 'lit';
 import {customElement} from 'lit/decorators.js';
 import {property} from 'lit/decorators.js';
 import {query} from 'lit/decorators.js';
-import {NidocaTheme} from '.';
+import {NidocaTheme, NidocaThemeHelper} from '.';
 import {FormOutputData, NidocaFormAbstractInputElement} from './nidoca-form-abstract-input-element';
 
 @customElement('nidoca-form-switch')
@@ -92,14 +92,14 @@ export class NidocaFormSwitch extends NidocaFormAbstractInputElement {
   checked: boolean = false;
 
   @property({type: String})
-  theme: string = NidocaTheme.PRIMARY;
+  theme: string = NidocaTheme.primary;
 
   @query('#inputElement')
   private inputElement: HTMLInputElement | undefined;
 
   constructor() {
     super();
-    this.theme = NidocaTheme.prototype.getParentTheme(this) || NidocaTheme.BACKGROUND;
+    this.theme = NidocaThemeHelper.prototype.getParentTheme(this) || NidocaTheme.background;
   }
 
   render(): TemplateResult {

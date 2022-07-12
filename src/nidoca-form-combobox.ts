@@ -5,7 +5,7 @@ import {query} from 'lit/decorators.js';
 import {repeat} from 'lit/directives/repeat.js';
 import {guard} from 'lit/directives/guard.js';
 import {FormOutputData, NidocaFormAbstractInputElement} from './nidoca-form-abstract-input-element';
-import {NidocaTheme} from '.';
+import {NidocaTheme, NidocaThemeHelper} from '.';
 
 @customElement('nidoca-form-combobox')
 export class NidocaFormCombobox extends NidocaFormAbstractInputElement {
@@ -66,7 +66,7 @@ export class NidocaFormCombobox extends NidocaFormAbstractInputElement {
   `;
 
   @property({type: NidocaTheme, converter: String})
-  theme: string = NidocaTheme.SURFACE;
+  theme: string = NidocaTheme.surface;
 
   @property({type: String})
   trailingIcon: string = '';

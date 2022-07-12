@@ -1,6 +1,6 @@
 import {css, html, LitElement, PropertyValues, TemplateResult} from 'lit';
 import {customElement, property, query} from 'lit/decorators.js';
-import {NidocaTheme} from '.';
+import {NidocaTheme, NidocaThemeHelper} from '.';
 import {NidocaListItem} from './nidoca-list-item';
 
 @customElement('nidoca-list')
@@ -27,7 +27,7 @@ export class NidocaList extends LitElement {
 
   constructor() {
     super();
-    this.theme = NidocaTheme.prototype.getParentTheme(this) || NidocaTheme.BACKGROUND;
+    this.theme = NidocaThemeHelper.prototype.getParentTheme(this) || NidocaTheme.background;
   }
 
   updated(changedProperties: PropertyValues): void {

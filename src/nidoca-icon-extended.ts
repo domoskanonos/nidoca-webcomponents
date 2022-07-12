@@ -46,7 +46,7 @@ export class NidocaIconExtended extends LitElement {
   `;
 
   @property({type: String})
-  theme: string = NidocaTheme.PRIMARY;
+  theme: string = NidocaTheme.primary;
 
   @property({type: Object})
   shadowType: NidocaIconShadowType = NidocaIconShadowType.DEFAULT_SHADOW;

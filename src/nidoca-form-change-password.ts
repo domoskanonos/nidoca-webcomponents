@@ -1,6 +1,6 @@
 import {css, html, TemplateResult, LitElement} from 'lit';
 import {customElement, property, query} from 'lit/decorators.js';
-import {NidocaForm, NidocaFormTextType, NidocaTheme, NidocaFormText} from '.';
+import {NidocaForm, NidocaFormTextType, NidocaTheme, NidocaFormText, NidocaThemeHelper} from '.';
 
 @customElement('nidoca-form-change-password')
 export class NidocaFormChangePassword extends LitElement {
@@ -16,7 +16,7 @@ export class NidocaFormChangePassword extends LitElement {
   `;
 
   @property({type: NidocaTheme, converter: String})
-  theme: string = NidocaTheme.SURFACE;
+  theme: string = NidocaTheme.surface;
 
   @property({type: String, converter: String})
   label: string = 'Passwort ändern';
@@ -63,7 +63,7 @@ export class NidocaFormChangePassword extends LitElement {
 
           <nidoca-form-text
             id="oldPassword"
-            theme="${NidocaTheme.getOposite(this.theme)}"
+            theme="${NidocaThemeHelper.getOposite(this.theme)}"
             class="paddingBottom"
             textType="${NidocaFormTextType.PASSWORD}"
             label="${this.oldPasswordLabel}"
@@ -73,7 +73,7 @@ export class NidocaFormChangePassword extends LitElement {
 
           <nidoca-form-text
             id="newPassword"
-            theme="${NidocaTheme.getOposite(this.theme)}"
+            theme="${NidocaThemeHelper.getOposite(this.theme)}"
             class="paddingBottom"
             textType="${NidocaFormTextType.PASSWORD}"
             label="${this.newPasswordLabel}"
@@ -83,7 +83,7 @@ export class NidocaFormChangePassword extends LitElement {
 
           <nidoca-form-text
             id="repeatNewPassword"
-            theme="${NidocaTheme.getOposite(this.theme)}"
+            theme="${NidocaThemeHelper.getOposite(this.theme)}"
             class="paddingBottom"
             textType="${NidocaFormTextType.PASSWORD}"
             label="${this.repeatNewPasswordLabel}"
@@ -92,7 +92,7 @@ export class NidocaFormChangePassword extends LitElement {
           ></nidoca-form-text>
 
           <nidoca-button
-            theme="${NidocaTheme.getOposite(this.theme)}"
+            theme="${NidocaThemeHelper.getOposite(this.theme)}"
             class="paddingBottom"
             @nidoca-event-button-clicked="${() => this.changePassword()}"
             >${this.buttonLabel}

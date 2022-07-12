@@ -1,6 +1,6 @@
 import {css, html, LitElement, TemplateResult} from 'lit';
 import {customElement, property} from 'lit/decorators.js';
-import {NidocaTheme} from './nidoca-meta';
+import {NidocaTheme, NidocaThemeHelper} from './nidoca-meta';
 
 @customElement('nidoca-card')
 export class NidocaCard extends LitElement {
@@ -19,7 +19,7 @@ export class NidocaCard extends LitElement {
   `;
 
   @property({type: NidocaTheme, converter: String})
-  theme: string = NidocaTheme.SURFACE;
+  theme: string = NidocaTheme.surface;
 
   render(): TemplateResult {
     return html`

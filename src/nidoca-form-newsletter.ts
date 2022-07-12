@@ -1,7 +1,7 @@
 import {css, html, TemplateResult, LitElement} from 'lit';
 import {customElement, property, query} from 'lit/decorators.js';
 import {ifDefined} from 'lit/directives/if-defined.js';
-import {NidocaForm, NidocaFormTextType, NidocaTheme} from '.';
+import {NidocaForm, NidocaFormTextType, NidocaTheme, NidocaThemeHelper} from '.';
 
 @customElement('nidoca-form-newsletter')
 export class NidocaFormNewsletter extends LitElement {
@@ -17,7 +17,7 @@ export class NidocaFormNewsletter extends LitElement {
   `;
 
   @property({type: NidocaTheme, converter: String})
-  theme: string | undefined = NidocaTheme.PRIMARY;
+  theme: string | undefined = NidocaTheme.primary;
 
   @property({type: String, converter: String})
   label: string = 'Newsletter';
@@ -38,7 +38,7 @@ export class NidocaFormNewsletter extends LitElement {
           <nidoca-text-h2 class="paddingBottom">${this.label}</nidoca-text-h2>
 
           <nidoca-form-text
-            theme="${NidocaTheme.getOposite(this.theme)}"
+            theme="${NidocaThemeHelper.getOposite(this.theme)}"
             class="paddingBottom"
             textType="${NidocaFormTextType.EMAIL}"
             label="${this.emailLabel}"
@@ -50,7 +50,7 @@ export class NidocaFormNewsletter extends LitElement {
           ></nidoca-form-text>
 
           <nidoca-button
-            theme="${NidocaTheme.getOposite(this.theme)}"
+            theme="${NidocaThemeHelper.getOposite(this.theme)}"
             class="paddingBottom"
             @nidoca-event-button-clicked="${() => this.register()}"
             >${this.buttonLabel}
