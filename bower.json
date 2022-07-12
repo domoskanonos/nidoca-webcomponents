@@ -1,0 +1,29 @@
+{
+  "name": "@domoskanonos/nidoca-webcomponents",
+  "description": "nidoca framework (nidoca-core)",
+  "main": "lib/index.js",
+  "authors": [
+    "Dominik Bruhn"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "webcomponent",
+    "html",
+    "typescript",
+    "shadow",
+    "dom",
+    "slot",
+    "ui",
+    "frontend",
+    "lit",
+    "element"
+  ],
+  "homepage": "https://github.com/domoskanonos/nidoca-webcomponents",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
