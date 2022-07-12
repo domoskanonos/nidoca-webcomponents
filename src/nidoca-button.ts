@@ -83,11 +83,9 @@ export class NidocaButton extends LitElement {
           this.clicked();
         }}"
       >
-        ${
-          this.leadingIcon
-            ? html` <nidoca-icon .clickable="${false}" .icon="${this.leadingIcon}"></nidoca-icon>`
-            : html``
-        }
+        ${this.leadingIcon
+          ? html` <nidoca-icon .clickable="${false}" .icon="${this.leadingIcon}"></nidoca-icon>`
+          : html``}
 
         <nidoca-text-button text="${this.text}">
           <slot></slot>
