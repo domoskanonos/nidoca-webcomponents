@@ -15,7 +15,7 @@ jobs:
       - run: npm run build:all
       - uses: JamesIves/github-pages-deploy-action@v4
         with:
-          branch: github-pages
+          branch: gh-pages
           folder: public
           target-folder: /
   publish-npm:
