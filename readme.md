@@ -25,15 +25,3 @@ and [lit](https://lit.dev/).
 
   <nidoca-button>Mein Button</nidoca-button>
 ```
-
-<!--
-```
-<custom-element-demo>
-  <template>
-    <script src="https://domoskanonos.github.io/nidoca-webcomponents/webcomponents/nidoca-webcomponents.js"></script>
-    <style>@import url('https://domoskanonos.github.io/nidoca-webcomponents/webcomponents/nidoca.css');</style>
-    <nidoca-button>Mein Button</nidoca-button>
-  </template>
-</custom-element-demo>
-```
--->
