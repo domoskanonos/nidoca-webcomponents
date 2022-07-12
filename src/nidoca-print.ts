@@ -1,24 +1,24 @@
-import {css, html, TemplateResult, LitElement} from 'lit';
-import {customElement} from 'lit/decorators.js';
+import {css, html, TemplateResult, LitElement} from "lit";
+import {customElement} from "lit/decorators.js";
 
-@customElement('nidoca-print')
+@customElement("nidoca-print")
 export class NidocaPrint extends LitElement {
-  static styles = css`
-    :host {
-      display: none;
-    }
-  `;
+   static styles = css`
+      :host {
+         display: none;
+      }
+   `;
 
-  render(): TemplateResult {
-    return html`<slot></slot>`;
-  }
+   render(): TemplateResult {
+      return html`<slot></slot>`;
+   }
 
-  print(): void {
-    const printWindow: Window | null = window.open('');
-    if (printWindow) {
-      printWindow.document.write(this.innerHTML);
-      printWindow.print();
-      printWindow.close();
-    }
-  }
+   print(): void {
+      const printWindow: Window | null = window.open("");
+      if (printWindow) {
+         printWindow.document.write(this.innerHTML);
+         printWindow.print();
+         printWindow.close();
+      }
+   }
 }
