@@ -22,3 +22,14 @@ Farbschema ideen:
 https://99designs.de/blog/design-kreativitaet/farbschemata-webseiten/
 
 
+<!--
+```
+<custom-element-demo>
+  <template>
+    <script src="https://domoskanonos.github.io/nidoca-webcomponents/webcomponents/nidoca-webcomponents.js"></script>
+    <style>@import url('https://domoskanonos.github.io/nidoca-webcomponents/webcomponents/nidoca.css');</style>
+    <nidoca-button>Mein Button</nidoca-button>
+  </template>
+</custom-element-demo>
+```
+-->
