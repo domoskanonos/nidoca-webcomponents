@@ -1,6 +1,6 @@
-# nidoca framework (nidoca-webcomponents)
+# nidoca webcomponents
 
-nidoca is a lightweight ui-framework based on
+nidoca webcomponents is a library of webcomponents based on
 [webcomponents](https://www.webcomponents.org/),
 [typescript](https://www.typescriptlang.org/)
 and [lit](https://lit.dev/).
@@ -15,7 +15,7 @@ and [lit](https://lit.dev/).
 |donation|<nobr>[![donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=SWGKEVSK2PDEE)</nobr>|
 
 ### usage
-#### install npm
+#### npm
     $ npm i @domoskanonos/nidoca-webcomponents
 
 #### html
@@ -27,6 +27,7 @@ and [lit](https://lit.dev/).
 ```
 
 <!--
+#### webcomponents.org
 ```
 <custom-element-demo>
   <template>
