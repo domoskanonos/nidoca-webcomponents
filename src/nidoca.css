@@ -26,21 +26,21 @@ div {
   --app-color-percent-hover: 80%;
   --app-color-percent-optional: 60%;
 
-  --app-color-background: #1e293b;
-  --app-color-background-background: #fefbe9;
-  --app-color-background-border: #cececa;
+  --app-color-background: #353535;
+  --app-color-background-background: #ffffff;
+  --app-color-background-border: #868686;
 
-  --app-color-surface: #000000;
-  --app-color-surface-background: #fefbe9;
-  --app-color-surface-border: #050504;
-
-  --app-color-primary: #404246;
-  --app-color-primary-background: #e1eedd;
-  --app-color-primary-border: #a6a6a6;
+  --app-color-primary: #ececec;
+  --app-color-primary-background: #2C4776;
+  --app-color-primary-border: #868686;
 
   --app-color-secondary: #ffffff;
   --app-color-secondary-background: #b20505;
   --app-color-secondary-border: #808080;
+
+  --app-color-surface: #353535;
+  --app-color-surface-background: #ececec;
+  --app-color-surface-border: #646464;
 
   --app-color-error-background: #c45353;
   --app-color-info-background: #5380c4;
