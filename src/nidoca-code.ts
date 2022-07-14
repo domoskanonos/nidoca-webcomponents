@@ -1,6 +1,7 @@
 import {css, html, LitElement} from 'lit';
 import {customElement} from 'lit/decorators.js';
 import {property} from 'lit/decorators.js';
+import {NidocaTheme} from './nidoca-meta';
 
 @customElement('nidoca-code')
 export class NidocaCode extends LitElement {
@@ -23,9 +24,7 @@ export class NidocaCode extends LitElement {
     }
 
     code {
-      background: var(--app-color-surface-background);
       border-radius: 0.375em;
-      border: solid 1px var(--app-color-surface-border);
       font-family: 'Courier New', monospace;
       font-size: 0.85em;
       position: relative;
@@ -42,8 +41,18 @@ export class NidocaCode extends LitElement {
   @property({type: String})
   code: string = '';
 
-  render(): any {
+  @property({type: String})
+  theme: string = NidocaTheme.surface;
+
+  render(): unknown {
     return html`
+      <style>
+        code {
+          color: var(--app-color-${this.theme});
+          background: var(--app-color-${this.theme}-background);
+          border: solid 1px var(--app-color-${this.theme}-border);
+        }
+      </style>
       <pre>
                 <code>${this.code}<slot></slot></code>
             </pre>

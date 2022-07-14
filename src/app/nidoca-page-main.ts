@@ -36,7 +36,7 @@ export class NidocaPageMain extends LitElement {
         <nidoca-icon-with-description title="HTML" icon="code">
           So einfach kannst du die Komponenten in deine HTML Seite einbinden und verwenden:
         </nidoca-icon-with-description>
-        <nidoca-code
+        <nidoca-code style="padding-bottom:var(--space-4)"
           >&lt;script
           src=&quot;https://domoskanonos.github.io/nidoca-webcomponents/webcomponents/nidoca-webcomponents.js&quot;&gt;&lt;/script&gt;
           &lt;style&gt;@import

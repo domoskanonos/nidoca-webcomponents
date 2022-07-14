@@ -14,28 +14,11 @@ export class NidocaContainer extends LitElement {
       display: block;
       margin: auto;
       width: auto;
-    }
-
-    @media only screen and (min-width: 641px) and (max-width: 1918px) {
-      slot {
-        width: 70%;
-      }
-    }
-
-    @media only screen and (max-width: 640px) {
-      slot {
-        width: 90%;
-      }
-    }
-
-    @media only screen and (min-width: 1919px) {
-      slot {
-        width: 50%;
-      }
+      max-width: var(--max-width);
     }
   `;
 
-  @property({type: NidocaTheme, converter: String})
+  @property({type: String})
   theme: string = NidocaTheme.background;
 
   render(): unknown {

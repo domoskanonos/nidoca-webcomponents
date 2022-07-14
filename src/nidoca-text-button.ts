@@ -18,6 +18,6 @@ export class NidocaTextButton extends NidocaText {
   `;
 
   render(): TemplateResult {
-    return html` ${super.render()}`;
+    return html`${super.render()}`;
   }
 }

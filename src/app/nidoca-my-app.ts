@@ -40,7 +40,7 @@ export class NidocaMyApp extends LitElement implements NidocaRouteListener {
           slot="topRight"
           style="padding-right:var(--space-2);"
           targetType="_self"
-          href="https://domoskanonos.github.io/nidoca-documentation/"
+          href="https://domoskanonos.github.io/nidoca-webcomponents/"
           >Homepage</nidoca-link
         >
 
@@ -48,7 +48,7 @@ export class NidocaMyApp extends LitElement implements NidocaRouteListener {
           slot="topRight"
           style="padding-right:var(--space-2);"
           targetType="_blank"
-          href="https://domoskanonos.github.io/nidoca-documentation/typedocs/index.html"
+          href="https://domoskanonos.github.io/nidoca-webcomponents/typedocs/index.html"
           >Typedoc</nidoca-link
         >
 
