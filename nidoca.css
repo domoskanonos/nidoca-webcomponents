@@ -5,6 +5,8 @@ div {
 }
 
 :root {
+  --max-width: 1280px;
+
   --height-min: 36px;
   --height-medium: 54px;
   --height-max: 72px;
@@ -59,7 +61,7 @@ body {
   word-wrap: break-word;
   box-sizing: border-box;
   text-rendering: optimizelegibility;
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
   font-size: 18px;
   letter-spacing: normal;
   line-height: 0;
