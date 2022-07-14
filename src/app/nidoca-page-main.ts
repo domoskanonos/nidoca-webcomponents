@@ -12,8 +12,6 @@ export class NidocaPageMain extends LitElement {
           <nidoca-text-h1 style="padding-left:var(--space-2);">nidoca-webcomponents</nidoca-text-h1>
         </div>
       </nidoca-container>
-      <nidoca-button text="fdfdf"></nidoca-button>
-
       <nidoca-container theme="primary">
         <nidoca-section>
           <nidoca-icon-with-description title="Komponentenbibliothek" icon="local_library">
