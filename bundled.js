@@ -403,7 +403,8 @@
       >
         ${this.leadingIcon?A` <nidoca-icon .clickable="${!1}" .icon="${this.leadingIcon}"></nidoca-icon>`:A``}
 
-        <nidoca-text-button text="${this.text}">
+        <nidoca-text-button
+          >${this.text}
           <slot></slot>
         </nidoca-text-button>
       </div>
@@ -2877,7 +2878,6 @@ ${this.value}</textarea
           <nidoca-text-h1 style="padding-left:var(--space-2);">nidoca-webcomponents</nidoca-text-h1>
         </div>
       </nidoca-container>
-
       <nidoca-container theme="primary">
         <nidoca-section>
           <nidoca-icon-with-description title="Komponentenbibliothek" icon="local_library">

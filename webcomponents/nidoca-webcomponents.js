@@ -403,7 +403,8 @@
       >
         ${this.leadingIcon?D` <nidoca-icon .clickable="${!1}" .icon="${this.leadingIcon}"></nidoca-icon>`:D``}
 
-        <nidoca-text-button text="${this.text}">
+        <nidoca-text-button
+          >${this.text}
           <slot></slot>
         </nidoca-text-button>
       </div>
