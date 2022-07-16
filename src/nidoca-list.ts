@@ -34,7 +34,7 @@ export class NidocaList extends LitElement {
     super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {
       console.debug(`${this.tagName} : property ${String(propName)} changed. oldValue: ${oldValue}`);
-      if (propName == 'selectionMode') {
+      if (propName == 'multiSelect') {
         this.getItems().forEach((listItemComponent) => {
           listItemComponent.multiSelect = this.multiSelect;
         });

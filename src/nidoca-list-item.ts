@@ -51,7 +51,7 @@ export class NidocaListItem extends LitElement {
 
   protected update(changedProperties: Map<PropertyKey, unknown>): void {
     super.update(changedProperties);
-    if (changedProperties.get('selectionMode') != undefined) {
+    if (changedProperties.get('multiSelect') != undefined) {
       if (!this.multiSelect) {
         this.selected = false;
       }
