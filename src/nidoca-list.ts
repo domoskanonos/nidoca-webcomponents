@@ -36,7 +36,7 @@ export class NidocaList extends LitElement {
       console.debug(`${this.tagName} : property ${String(propName)} changed. oldValue: ${oldValue}`);
       if (propName == 'multiSelect') {
         this.getItems().forEach((listItemComponent) => {
-          listItemComponent.multiSelect = this.multiSelect;
+          listItemComponent.selectable = this.multiSelect;
         });
       }
     });
@@ -71,19 +71,7 @@ export class NidocaList extends LitElement {
           filter: contrast(var(--app-color-percent-hover));
         }
       </style>
-      <slot
-        @nidoca-event-list-item-click="${(event: CustomEvent) => {
-          if (!this.multiSelect) {
-            this.unselectAll();
-          }
-          event.detail.selected = true;
-        }}"
-        @nidoca-event-list-item-unselect="${() => {
-          this.multiSelect = this.getSelectedItems().length === 0;
-        }}"
-        class="slotList"
-        id="slotElement"
-      ></slot>
+      <slot class="slotList" id="slotElement"></slot>
     `;
   }
 

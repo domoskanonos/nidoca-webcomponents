@@ -6,6 +6,13 @@ export class NidocaPageMain extends LitElement {
   static styles = css``;
   render(): TemplateResult {
     return html`
+      <nidoca-list theme="secondary" multiSelect>
+        <nidoca-list-section>A</nidoca-list-section>
+        <nidoca-list-item primaryText="List Item" secondaryText="List Item Secondary Text"></nidoca-list-item>
+        <nidoca-list-item primaryText="List Item" secondaryText="List Item Secondary Text"></nidoca-list-item>
+        <nidoca-list-item primaryText="List Item" secondaryText="List Item Secondary Text"></nidoca-list-item>
+      </nidoca-list>
+
       <nidoca-container style="padding-top:20vh;padding-bottom:20vh;">
         <div style="display:flex;align-items:center;justify-content:center;align-content:flex-start;">
           <nidoca-img src="logo.svg" width="128px"></nidoca-img>

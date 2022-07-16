@@ -33,7 +33,7 @@ export class NidocaListItem extends LitElement {
   theme: string | undefined;
 
   @property({type: Boolean})
-  multiSelect: boolean = false;
+  selectable: boolean = false;
 
   @property({type: Boolean})
   selected: boolean = false;
@@ -49,15 +49,6 @@ export class NidocaListItem extends LitElement {
     this.theme = NidocaThemeHelper.prototype.getParentTheme(this) || NidocaTheme.background;
   }
 
-  protected update(changedProperties: Map<PropertyKey, unknown>): void {
-    super.update(changedProperties);
-    if (changedProperties.get('multiSelect') != undefined) {
-      if (!this.multiSelect) {
-        this.selected = false;
-      }
-    }
-  }
-
   render(): TemplateResult {
     return html`
       <style>
@@ -65,14 +56,8 @@ export class NidocaListItem extends LitElement {
           backdrop-filter: contrast(var(--app-color-percent-selected));
         }
       </style>
-      <div
-        class="container ${this.selected ? 'selected' : ''}"
-        @mousedown="${() => this.downAction()}"
-        @mouseup="${() => this.upAction()}"
-        @pointerup="${() => this.upAction()}"
-        @pointerdown="${() => this.downAction()}"
-      >
-        ${this.multiSelect
+      <div class="container ${this.selected ? 'selected' : ''}">
+        ${this.selectable
           ? html` <nidoca-icon
               style="padding-right: var(--space-2);"
               class="item"
@@ -92,32 +77,6 @@ export class NidocaListItem extends LitElement {
         <slot name="meta" class="item"></slot>
       </div>
     `;
-  }
-
-  private clickStart: number | null = null;
-
-  downAction(): void {
-    this.clickStart = Date.now();
-  }
-
-  upAction(): void {
-    if (this.clickStart) {
-      const diff: number = Date.now() - this.clickStart + 1;
-      let eventName: string = '';
-      if (diff > 500) {
-        eventName = 'nidoca-event-list-item-long-click';
-      } else {
-        eventName = 'nidoca-event-list-item-click';
-      }
-      console.log(eventName);
-      this.dispatchEvent(
-        new CustomEvent(eventName, {
-          detail: this,
-          bubbles: true,
-          composed: true,
-        })
-      );
-    }
   }
 
   switchSelected(): void {
