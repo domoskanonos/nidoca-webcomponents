@@ -1418,20 +1418,14 @@ ${this.value}</textarea
       color: inherit;
       background-color: inherit;
     }
-  `,mo([at({type:String}),bo("design:type",String)],vo.prototype,"text",void 0),mo([at({type:String}),bo("design:type",String)],vo.prototype,"href",void 0),mo([at({type:String}),bo("design:type",String)],vo.prototype,"targetType",void 0),vo=mo([nt("nidoca-link")],vo);var xo=function(t,e,o,i){var n,r=arguments.length,a=r<3?e:null===i?i=Object.getOwnPropertyDescriptor(e,o):i;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)a=Reflect.decorate(t,e,o,i);else for(var s=t.length-1;s>=0;s--)(n=t[s])&&(a=(r<3?n(a):r>3?n(e,o,a):n(e,o))||a);return r>3&&a&&Object.defineProperty(e,o,a),a},wo=function(t,e){if("object"==typeof Reflect&&"function"==typeof Reflect.metadata)return Reflect.metadata(t,e)};let $o=class extends tt{constructor(){super(),this.multiSelect=!1,this.selected=!1,this.primaryText="",this.secondaryText="",this.clickStart=null,this.theme=it.prototype.getParentTheme(this)||ot.background}update(t){super.update(t),null!=t.get("multiSelect")&&(this.multiSelect||(this.selected=!1))}render(){return D`
+  `,mo([at({type:String}),bo("design:type",String)],vo.prototype,"text",void 0),mo([at({type:String}),bo("design:type",String)],vo.prototype,"href",void 0),mo([at({type:String}),bo("design:type",String)],vo.prototype,"targetType",void 0),vo=mo([nt("nidoca-link")],vo);var xo=function(t,e,o,i){var n,r=arguments.length,a=r<3?e:null===i?i=Object.getOwnPropertyDescriptor(e,o):i;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)a=Reflect.decorate(t,e,o,i);else for(var s=t.length-1;s>=0;s--)(n=t[s])&&(a=(r<3?n(a):r>3?n(e,o,a):n(e,o))||a);return r>3&&a&&Object.defineProperty(e,o,a),a},wo=function(t,e){if("object"==typeof Reflect&&"function"==typeof Reflect.metadata)return Reflect.metadata(t,e)};let $o=class extends tt{constructor(){super(),this.selectable=!1,this.selected=!1,this.primaryText="",this.secondaryText="",this.theme=it.prototype.getParentTheme(this)||ot.background}render(){return D`
       <style>
         .selected {
           backdrop-filter: contrast(var(--app-color-percent-selected));
         }
       </style>
-      <div
-        class="container ${this.selected?"selected":""}"
-        @mousedown="${()=>this.downAction()}"
-        @mouseup="${()=>this.upAction()}"
-        @pointerup="${()=>this.upAction()}"
-        @pointerdown="${()=>this.downAction()}"
-      >
-        ${this.multiSelect?D` <nidoca-icon
+      <div class="container ${this.selected?"selected":""}">
+        ${this.selectable?D` <nidoca-icon
               style="padding-right: var(--space-2);"
               class="item"
               @click="${()=>this.switchSelected()}"
@@ -1446,7 +1440,7 @@ ${this.value}</textarea
         </div>
         <slot name="meta" class="item"></slot>
       </div>
-    `}downAction(){this.clickStart=Date.now()}upAction(){if(this.clickStart){let t="";t=Date.now()-this.clickStart+1>500?"nidoca-event-list-item-long-click":"nidoca-event-list-item-click",console.log(t),this.dispatchEvent(new CustomEvent(t,{detail:this,bubbles:!0,composed:!0}))}}switchSelected(){this.selected=Boolean(!this.selected),this.selected?this.dispatchEvent(new CustomEvent("nidoca-event-list-item-select",{detail:this,bubbles:!0,composed:!0})):this.dispatchEvent(new CustomEvent("nidoca-event-list-item-unselect",{detail:this,bubbles:!0,composed:!0}))}};$o.styles=r`
+    `}switchSelected(){this.selected=Boolean(!this.selected),this.selected?this.dispatchEvent(new CustomEvent("nidoca-event-list-item-select",{detail:this,bubbles:!0,composed:!0})):this.dispatchEvent(new CustomEvent("nidoca-event-list-item-unselect",{detail:this,bubbles:!0,composed:!0}))}};$o.styles=r`
     .container {
       display: grid;
       cursor: pointer;
@@ -1468,7 +1462,7 @@ ${this.value}</textarea
       flex-wrap: wrap;
       align-self: center;
     }
-  `,xo([at({type:ot,converter:String}),wo("design:type",Object)],$o.prototype,"theme",void 0),xo([at({type:Boolean}),wo("design:type",Boolean)],$o.prototype,"multiSelect",void 0),xo([at({type:Boolean}),wo("design:type",Boolean)],$o.prototype,"selected",void 0),xo([at({type:String}),wo("design:type",String)],$o.prototype,"primaryText",void 0),xo([at({type:String}),wo("design:type",String)],$o.prototype,"secondaryText",void 0),$o=xo([nt("nidoca-list-item"),wo("design:paramtypes",[])],$o);var Ro=function(t,e,o,i){var n,r=arguments.length,a=r<3?e:null===i?i=Object.getOwnPropertyDescriptor(e,o):i;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)a=Reflect.decorate(t,e,o,i);else for(var s=t.length-1;s>=0;s--)(n=t[s])&&(a=(r<3?n(a):r>3?n(e,o,a):n(e,o))||a);return r>3&&a&&Object.defineProperty(e,o,a),a},So=function(t,e){if("object"==typeof Reflect&&"function"==typeof Reflect.metadata)return Reflect.metadata(t,e)};let ko=class extends tt{constructor(){super(),this.multiSelect=!1,this.theme=it.prototype.getParentTheme(this)||ot.background}updated(t){super.updated(t),t.forEach(((t,e)=>{console.debug(`${this.tagName} : property ${String(e)} changed. oldValue: ${t}`),"multiSelect"==e&&this.getItems().forEach((t=>{t.multiSelect=this.multiSelect}))}))}render(){return D`
+  `,xo([at({type:ot,converter:String}),wo("design:type",Object)],$o.prototype,"theme",void 0),xo([at({type:Boolean}),wo("design:type",Boolean)],$o.prototype,"selectable",void 0),xo([at({type:Boolean}),wo("design:type",Boolean)],$o.prototype,"selected",void 0),xo([at({type:String}),wo("design:type",String)],$o.prototype,"primaryText",void 0),xo([at({type:String}),wo("design:type",String)],$o.prototype,"secondaryText",void 0),$o=xo([nt("nidoca-list-item"),wo("design:paramtypes",[])],$o);var Ro=function(t,e,o,i){var n,r=arguments.length,a=r<3?e:null===i?i=Object.getOwnPropertyDescriptor(e,o):i;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)a=Reflect.decorate(t,e,o,i);else for(var s=t.length-1;s>=0;s--)(n=t[s])&&(a=(r<3?n(a):r>3?n(e,o,a):n(e,o))||a);return r>3&&a&&Object.defineProperty(e,o,a),a},So=function(t,e){if("object"==typeof Reflect&&"function"==typeof Reflect.metadata)return Reflect.metadata(t,e)};let ko=class extends tt{constructor(){super(),this.multiSelect=!1,this.theme=it.prototype.getParentTheme(this)||ot.background}updated(t){super.updated(t),t.forEach(((t,e)=>{console.debug(`${this.tagName} : property ${String(e)} changed. oldValue: ${t}`),"multiSelect"==e&&this.getItems().forEach((t=>{t.selectable=this.multiSelect}))}))}render(){return D`
       <style>
         slot {
           border-color: var(--app-color-${this.theme}-border);
@@ -1496,12 +1490,7 @@ ${this.value}</textarea
           filter: contrast(var(--app-color-percent-hover));
         }
       </style>
-      <slot
-        @nidoca-event-list-item-click="${t=>{this.multiSelect||this.unselectAll(),t.detail.selected=!0}}"
-        @nidoca-event-list-item-unselect="${()=>{this.multiSelect=0===this.getSelectedItems().length}}"
-        class="slotList"
-        id="slotElement"
-      ></slot>
+      <slot class="slotList" id="slotElement"></slot>
     `}getItems(){const t=[];if(null!=this.slotElement){const e=this.slotElement.assignedElements();for(let o=0;o<e.length;o++){const i=e[o];i instanceof $o&&t.push(i)}}return t}getSelectedItems(){const t=[];if(null!=this.slotElement){const e=this.slotElement.assignedElements();for(let o=0;o<e.length;o++){const i=e[o];i instanceof $o&&i.selected&&t.push(i)}}return t}getSelectedIndexes(){const t=[];if(null!=this.slotElement){const e=this.slotElement.assignedElements();let o=0;for(let i=0;i<e.length;i++){const n=e[i];n instanceof $o&&(n.selected&&t.push(o),o++)}}return t}selectAll(){this.getItems().forEach((t=>{t.selected=!0}))}unselectAll(){console.log("sdojsdoijsoidjsdioj "+this.getItems().length),this.getItems().forEach((t=>{t.selected=!1}))}};ko.styles=r`
     :host {
       width: 100%;
