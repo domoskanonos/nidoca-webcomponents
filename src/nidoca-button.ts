@@ -57,19 +57,19 @@ export class NidocaButton extends LitElement {
   render(): TemplateResult {
     return html`
       <style>
-        .OUTLINED {
+        .outlined {
           color: var(--app-color-${this.theme}-background);
           background-color: var(--app-color-${this.theme});
           border-color: var(--app-color-${this.theme}-background);
         }
 
-        .CONTAINED {
+        .contained {
           color: var(--app-color-${this.theme});
           background-color: var(--app-color-${this.theme}-background);
           border-color: var(--app-color-${this.theme}-background);
         }
 
-        .TEXT {
+        .text {
           color: var(--app-color-${this.theme}-background);
         }
 
