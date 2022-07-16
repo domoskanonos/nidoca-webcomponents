@@ -29,7 +29,7 @@ export class NidocaDialogDecision extends LitElement {
         <nidoca-text style="padding-bottom:var(--space-2);">${this.description} </nidoca-text>
         <nidoca-button
           style="padding-bottom:var(--space-2);"
-          type="${NidocaButtonType.TEXT}"
+          type="${NidocaButtonType.text}"
           @click="${() => {
             this.dispatchEvent(
               new CustomEvent('nidoca-dialog-decision-yes', {
@@ -43,7 +43,7 @@ export class NidocaDialogDecision extends LitElement {
         </nidoca-button>
         <nidoca-button
           style="padding-bottom:var(--space-2);"
-          type="${NidocaButtonType.TEXT}"
+          type="${NidocaButtonType.text}"
           @click="${() => {
             this.dispatchEvent(
               new CustomEvent('nidoca-dialog-decision-no', {

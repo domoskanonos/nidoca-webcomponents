@@ -6,8 +6,8 @@ import {NidocaTheme, NidocaThemeHelper} from '.';
 import {NidocaAccordionItem} from './nidoca-accordion-item';
 
 export enum AccordionType {
-  SINGLE = 'SINGLE',
-  MULTI = 'MULTI',
+  single = 'single',
+  multi = 'multi',
 }
 
 @customElement('nidoca-accordion')
@@ -30,7 +30,7 @@ export class NidocaAccordion extends LitElement {
   theme: string = NidocaTheme.surface;
 
   @property({type: AccordionType, converter: String})
-  accordionType: string = AccordionType.SINGLE;
+  accordionType: string = AccordionType.single;
 
   @query('#accordionSlot')
   private accordionSlot: HTMLSlotElement | undefined;
@@ -48,7 +48,7 @@ export class NidocaAccordion extends LitElement {
   private accordionSwitched(event: CustomEvent) {
     const accordionItemComponent: NidocaAccordionItem = event.detail;
     switch (this.accordionType) {
-      case AccordionType.SINGLE:
+      case AccordionType.single:
         if (this.accordionSlot != null) {
           const assignedElements: Element[] = this.accordionSlot.assignedElements();
           for (let index = 0; index < assignedElements.length; index++) {
@@ -59,7 +59,7 @@ export class NidocaAccordion extends LitElement {
           }
         }
         break;
-      case AccordionType.MULTI:
+      case AccordionType.multi:
         break;
     }
     event.stopPropagation();

@@ -65,7 +65,7 @@ export class NidocaFormChangePassword extends LitElement {
             id="oldPassword"
             theme="${NidocaThemeHelper.getOposite(this.theme)}"
             class="paddingBottom"
-            textType="${NidocaFormTextType.PASSWORD}"
+            textType="${NidocaFormTextType.password}"
             label="${this.oldPasswordLabel}"
             name="oldPassword"
             required
@@ -75,7 +75,7 @@ export class NidocaFormChangePassword extends LitElement {
             id="newPassword"
             theme="${NidocaThemeHelper.getOposite(this.theme)}"
             class="paddingBottom"
-            textType="${NidocaFormTextType.PASSWORD}"
+            textType="${NidocaFormTextType.password}"
             label="${this.newPasswordLabel}"
             name="newPassword"
             required
@@ -85,7 +85,7 @@ export class NidocaFormChangePassword extends LitElement {
             id="repeatNewPassword"
             theme="${NidocaThemeHelper.getOposite(this.theme)}"
             class="paddingBottom"
-            textType="${NidocaFormTextType.PASSWORD}"
+            textType="${NidocaFormTextType.password}"
             label="${this.repeatNewPasswordLabel}"
             name="repeatNewPassword"
             required

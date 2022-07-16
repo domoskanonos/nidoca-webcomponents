@@ -49,7 +49,7 @@ export class NidocaFormContact extends LitElement {
             theme="${NidocaThemeHelper.getOposite(this.theme)}"
             class="paddingBottom"
             name="name"
-            textType="${NidocaFormTextType.TEXT}"
+            textType="${NidocaFormTextType.text}"
             value=""
             label="${this.nameLabel}"
             required
@@ -57,7 +57,7 @@ export class NidocaFormContact extends LitElement {
           <nidoca-form-text
             theme="${NidocaThemeHelper.getOposite(this.theme)}"
             class="paddingBottom"
-            textType="${NidocaFormTextType.EMAIL}"
+            textType="${NidocaFormTextType.email}"
             label="${this.emailLabel}"
             name="email"
             pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$"
@@ -67,7 +67,7 @@ export class NidocaFormContact extends LitElement {
             label="${this.titleLabel}"
             theme="${NidocaThemeHelper.getOposite(this.theme)}"
             class="paddingBottom"
-            textType="${NidocaFormTextType.TEXT}"
+            textType="${NidocaFormTextType.text}"
             value=""
             label="title"
             required
@@ -84,7 +84,7 @@ export class NidocaFormContact extends LitElement {
             theme="${NidocaThemeHelper.getOposite(this.theme)}"
             class="paddingBottom"
             @nidoca-event-button-clicked="${() => this.sendMessage()}"
-            .buttonType="${NidocaButtonType.CONTAINED}"
+            .buttonType="${NidocaButtonType.contained}"
             >${this.buttonLabel}
           </nidoca-button>
         </nidoca-form>

@@ -43,7 +43,7 @@ export class NidocaFormRegister extends LitElement {
           <nidoca-form-text
             theme="${NidocaThemeHelper.getOposite(this.theme)}"
             class="paddingBottom"
-            textType="${NidocaFormTextType.EMAIL}"
+            textType="${NidocaFormTextType.email}"
             label="${this.emailLabel}"
             name="email"
             trailingIcon="account_circle"
@@ -55,7 +55,7 @@ export class NidocaFormRegister extends LitElement {
           <nidoca-form-text
             theme="${NidocaThemeHelper.getOposite(this.theme)}"
             class="paddingBottom"
-            textType="${NidocaFormTextType.PASSWORD}"
+            textType="${NidocaFormTextType.password}"
             label="${this.passwordLabel}"
             name="password"
             trailingIcon="vpn_key"

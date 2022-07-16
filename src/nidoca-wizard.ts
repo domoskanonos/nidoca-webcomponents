@@ -31,7 +31,7 @@ export class NidocaWizard extends LitElement {
       const element: Element = elements[index];
       if (element instanceof NidocaWizardStep) {
         element.index = index;
-        if (element.state == WizardStepState.CURRENT) {
+        if (element.state == WizardStepState.current) {
           selectedStepIndex = index;
         }
         if (element.index == elements.length - 1) {
@@ -56,11 +56,11 @@ export class NidocaWizard extends LitElement {
         if (element instanceof NidocaWizardStep) {
           if (element.index !== undefined) {
             if (element.index < selectedStepIndex) {
-              element.state = WizardStepState.COMPLETED;
+              element.state = WizardStepState.completed;
             } else if (element.index == selectedStepIndex) {
-              element.state = WizardStepState.CURRENT;
+              element.state = WizardStepState.current;
             } else {
-              element.state = WizardStepState.OPEN;
+              element.state = WizardStepState.open;
             }
           }
         }

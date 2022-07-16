@@ -40,7 +40,7 @@ export class NidocaFormNewsletter extends LitElement {
           <nidoca-form-text
             theme="${NidocaThemeHelper.getOposite(this.theme)}"
             class="paddingBottom"
-            textType="${NidocaFormTextType.EMAIL}"
+            textType="${NidocaFormTextType.email}"
             label="${this.emailLabel}"
             name="email"
             trailingIcon="email"

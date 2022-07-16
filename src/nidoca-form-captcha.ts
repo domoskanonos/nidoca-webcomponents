@@ -57,7 +57,7 @@ export class NidocaFormCaptcha extends LitElement {
         @nidoca-form-text-focusout="${() => this.validate()}"
         name="${this.name}"
         trailingIcon="create"
-        type="${NidocaFormTextType.NUMBER}"
+        type="${NidocaFormTextType.number}"
         value=""
       ></nidoca-form-text>
     `;

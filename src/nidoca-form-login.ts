@@ -43,7 +43,7 @@ export class NidocaFormLogin extends LitElement {
           <nidoca-form-text
             theme="${NidocaThemeHelper.getOposite(this.theme)}"
             class="paddingBottom"
-            type="${NidocaFormTextType.EMAIL}"
+            type="${NidocaFormTextType.email}"
             label="${this.usernameLabel}"
             name="username"
             required
@@ -53,7 +53,7 @@ export class NidocaFormLogin extends LitElement {
           <nidoca-form-text
             theme="${NidocaThemeHelper.getOposite(this.theme)}"
             class="paddingBottom"
-            type="${NidocaFormTextType.PASSWORD}"
+            type="${NidocaFormTextType.password}"
             label="${this.passwordLabel}"
             label="password"
             name="password"

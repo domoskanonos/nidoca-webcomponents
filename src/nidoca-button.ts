@@ -4,9 +4,9 @@ import {property} from 'lit/decorators.js';
 import {NidocaTheme} from './nidoca-meta';
 
 export enum NidocaButtonType {
-  CONTAINED = 'CONTAINED',
-  OUTLINED = 'OUTLINED',
-  TEXT = 'TEXT',
+  contained = 'contained',
+  outlined = 'outlined',
+  text = 'text',
 }
 
 @customElement('nidoca-button')
@@ -46,7 +46,7 @@ export class NidocaButton extends LitElement {
   theme: string | undefined = NidocaTheme.primary;
 
   @property({type: NidocaButtonType, converter: String})
-  buttonType: NidocaButtonType = NidocaButtonType.CONTAINED;
+  buttonType: NidocaButtonType = NidocaButtonType.contained;
 
   @property({type: String})
   leadingIcon: string = '';

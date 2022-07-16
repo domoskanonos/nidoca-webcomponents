@@ -5,6 +5,6 @@ import {NidocaFormText, NidocaFormTextType} from '.';
 export class NidocaFormDate extends NidocaFormText {
   constructor() {
     super();
-    this.type = NidocaFormTextType.DATE;
+    this.type = NidocaFormTextType.date;
   }
 }

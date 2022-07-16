@@ -7,20 +7,19 @@ import {NidocaTheme} from './nidoca-meta';
 import {FormOutputData, NidocaFormAbstractInputElement} from './nidoca-form-abstract-input-element';
 
 export enum NidocaFormTextType {
-  COLOR = 'color',
-  EMAIL = 'email',
-  HIDDEN = 'hidden',
-  NUMBER = 'number',
-  PASSWORD = 'password',
-  TEL = 'tel',
-  TEXT = 'text',
-  SEARCH = 'search',
-  URL = 'url',
-  DATE = 'date',
-  DATETIME_LOCAL = 'datetime-local',
-  MONTH = 'month',
-  TIME = 'time',
-  WEEK = 'week',
+  color = 'color',
+  email = 'email',
+  hidden = 'hidden',
+  number = 'number',
+  password = 'password',
+  tel = 'tel',
+  text = 'text',
+  search = 'search',
+  url = 'url',
+  date = 'date',
+  month = 'month',
+  time = 'time',
+  week = 'week',
 }
 
 @customElement('nidoca-form-text')
@@ -72,7 +71,7 @@ export class NidocaFormText extends NidocaFormAbstractInputElement {
   `;
 
   @property({type: NidocaFormTextType, converter: String})
-  type: string = NidocaFormTextType.TEXT;
+  type: string = NidocaFormTextType.text;
 
   @property({type: String})
   label: string = '';
@@ -135,7 +134,7 @@ export class NidocaFormText extends NidocaFormAbstractInputElement {
   theme: string = NidocaTheme.surface;
 
   render(): TemplateResult {
-    return this.type == NidocaFormTextType.HIDDEN
+    return this.type == NidocaFormTextType.hidden
       ? html`<input id="inputElement" name="${this.name}" type="${this.type}" value="${this.value}" />`
       : html` <style>
             .parentContainer,

@@ -48,7 +48,7 @@ export class NidocaMyApp extends LitElement implements NidocaRouteListener {
           slot="topRight"
           style="padding-right:var(--space-2);"
           targetType="_blank"
-          href="https://domoskanonos.github.io/nidoca-webcomponents/typedocs/index.html"
+          href="https://domoskanonos.github.io/nidoca-webcomponents/docs/index.html"
           >Typedoc</nidoca-link
         >
 

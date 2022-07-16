@@ -4,10 +4,10 @@ import {property} from 'lit/decorators.js';
 import {NidocaIconShadowType} from '.';
 
 export enum WizardStepState {
-  CURRENT,
-  COMPLETED,
-  OPEN,
-  FINISH,
+  current,
+  completed,
+  open,
+  finish,
 }
 
 @customElement('nidoca-wizard-step')
@@ -75,19 +75,19 @@ export class NidocaWizardStep extends LitElement {
   }
 
   private determineBackgroundColor(state: WizardStepState | undefined): string {
-    return state == WizardStepState.COMPLETED
+    return state == WizardStepState.completed
       ? 'var(--app-color-primary)'
-      : state == WizardStepState.CURRENT
+      : state == WizardStepState.current
       ? 'var(--app-color-secondary-background)'
       : 'var(--app-color-surface-background)';
   }
 
   private determineColor(state: WizardStepState | undefined): string {
-    return state == WizardStepState.FINISH
+    return state == WizardStepState.finish
       ? 'var(--app-color-success)'
-      : state == WizardStepState.COMPLETED
+      : state == WizardStepState.completed
       ? 'var(--mdc-theme-on-primary)'
-      : state == WizardStepState.CURRENT
+      : state == WizardStepState.current
       ? 'var(--app-color-secondary)'
       : 'var(--app-color-surface)';
   }
