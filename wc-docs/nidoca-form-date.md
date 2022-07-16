@@ -21,7 +21,7 @@
 | `step`         | `step`         | `number \| undefined`     |           |
 | `theme`        | `theme`        | `string`                  | "surface" |
 | `trailingIcon` | `trailingIcon` | `string`                  | ""        |
-| `type`         | `type`         | `NidocaFormTextType.DATE` | "date"    |
+| `type`         | `type`         | `NidocaFormTextType.date` | "date"    |
 | `value`        | `value`        | `string`                  | ""        |
 | `warningText`  | `warningText`  | `string`                  | ""        |
 

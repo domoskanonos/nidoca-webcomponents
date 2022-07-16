@@ -4,7 +4,7 @@
 
 | Property      | Attribute     | Type                  | Default     |
 |---------------|---------------|-----------------------|-------------|
-| `buttonType`  | `buttonType`  | `NidocaButtonType`    | "CONTAINED" |
+| `buttonType`  | `buttonType`  | `NidocaButtonType`    | "contained" |
 | `leadingIcon` | `leadingIcon` | `string`              | ""          |
 | `text`        | `text`        | `string`              | ""          |
 | `theme`       | `theme`       | `string \| undefined` | "primary"   |

@@ -4,5 +4,5 @@
 
 | Property        | Attribute       | Type     | Default   |
 |-----------------|-----------------|----------|-----------|
-| `accordionType` | `accordionType` | `string` | "SINGLE"  |
+| `accordionType` | `accordionType` | `string` | "single"  |
 | `theme`         | `theme`         | `string` | "surface" |
