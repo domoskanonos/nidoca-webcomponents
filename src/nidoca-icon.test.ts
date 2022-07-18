@@ -9,7 +9,7 @@ describe('nidoca-icon', () => {
   });
 
   it('check reactive lit properties', async () => {
-    const template = '<nidoca-icon icon="home" clickable deactivated primaryText="MeinText"></nidoca-icon>';
+    const template = '<nidoca-icon icon="home" clickable deactivated primaryText="Mein Text"></nidoca-icon>';
     const element: NidocaIcon = await fixture(template);
     expect(element).toBeInstanceOf(NidocaIcon);
     expect(element.icon).toEqual('home');
