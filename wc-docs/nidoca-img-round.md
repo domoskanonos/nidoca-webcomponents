@@ -4,6 +4,6 @@
 
 | Property | Attribute | Type     | Default |
 |----------|-----------|----------|---------|
-| `height` | `height`  | `string` | "100%"  |
+| `height` | `height`  | `string` | "auto"  |
 | `src`    | `src`     | `string` | ""      |
-| `width`  | `width`   | `string` | "100%"  |
+| `width`  | `width`   | `string` | "auto"  |

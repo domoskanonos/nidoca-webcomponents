@@ -2,10 +2,10 @@
 
 ## Properties
 
-| Property      | Attribute     | Type                  | Default |
-|---------------|---------------|-----------------------|---------|
-| `multiSelect` | `multiSelect` | `boolean`             | false   |
-| `theme`       | `theme`       | `string \| undefined` |         |
+| Property      | Attribute     | Type      | Default   |
+|---------------|---------------|-----------|-----------|
+| `multiSelect` | `multiSelect` | `boolean` | false     |
+| `theme`       | `theme`       | `string`  | "surface" |
 
 ## Methods
 

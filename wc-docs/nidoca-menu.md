@@ -2,6 +2,6 @@
 
 ## Properties
 
-| Property | Attribute | Type                  | Default     |
-|----------|-----------|-----------------------|-------------|
-| `theme`  | `theme`   | `string \| undefined` | "secondary" |
+| Property | Attribute | Type     | Default   |
+|----------|-----------|----------|-----------|
+| `theme`  | `theme`   | `string` | "surface" |

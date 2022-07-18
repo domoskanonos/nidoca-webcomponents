@@ -22,25 +22,24 @@ div {
   --border-width-medium: 2px;
   --border-width-max: 4px;
 
-  --app-color-percent-selected: 70%;
-  --app-color-percent-hover: 80%;
-  --app-color-percent-optional: 60%;
-
-  --app-color-background: #353535;
-  --app-color-background-background: #ffffff;
-  --app-color-background-border: #868686;
-
-  --app-color-primary: #ececec;
-  --app-color-primary-background: #2C4776;
+  --app-color-text-primary: #ececec;
+  --app-color-subtext-primary: #ececec;
+  --app-color-primary-background: #2c4776;
   --app-color-primary-border: #868686;
+  --app-color-primary-hover: #6c84af;
 
-  --app-color-secondary: #ffffff;
+  --app-color-text-secondary: #ffffff;
+  --app-color-subtext-secondary: #ffffff;
   --app-color-secondary-background: #b20505;
   --app-color-secondary-border: #808080;
+  --app-color-secondary-hover: #770202;
 
-  --app-color-surface: #353535;
-  --app-color-surface-background: #ececec;
-  --app-color-surface-border: #646464;
+  --app-color-text-surface: #353535;
+  --app-color-subtext-surface: #5a5a5a;
+  --app-color-surface-background: #ffffff;
+  --app-color-surface-border: #c9c9c9;
+  --app-color-surface-hover: #eeeeee;
+  --app-color-surface-selected: #c7c7c7;
 
   --app-color-error-background: #c45353;
   --app-color-info-background: #5380c4;

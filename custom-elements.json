@@ -811,7 +811,7 @@
         {
           "kind": "variable",
           "name": "NidocaButton",
-          "default": "class NidocaButton extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.theme = NidocaTheme.primary;\n        this.buttonType = NidocaButtonType.contained;\n        this.leadingIcon = '';\n        this.text = '';\n    }\n    render() {\n        return html `\n      <style>\n        .outlined {\n          color: var(--app-color-${this.theme}-background);\n          background-color: var(--app-color-${this.theme});\n          border-color: var(--app-color-${this.theme}-background);\n        }\n\n        .contained {\n          color: var(--app-color-${this.theme});\n          background-color: var(--app-color-${this.theme}-background);\n          border-color: var(--app-color-${this.theme}-background);\n        }\n\n        .text {\n          color: var(--app-color-${this.theme}-background);\n        }\n\n        :hover {\n          filter: contrast(var(--app-color-percent-hover));\n        }\n      </style>\n      <div\n        class=\"container ${this.buttonType}\"\n        @click=\"${() => {\n            this.clicked();\n        }}\"\n      >\n        ${this.leadingIcon\n            ? html ` <nidoca-icon .clickable=\"${false}\" .icon=\"${this.leadingIcon}\"></nidoca-icon>`\n            : html ``}\n\n        <nidoca-text-button\n          >${this.text}\n          <slot></slot>\n        </nidoca-text-button>\n      </div>\n    `;\n    }\n    clicked() {\n        this.dispatchEvent(new CustomEvent('nidoca-event-button-clicked', {\n            detail: this,\n            bubbles: true,\n            composed: true,\n        }));\n    }\n}"
+          "default": "class NidocaButton extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.theme = NidocaTheme.primary;\n        this.buttonType = NidocaButtonType.contained;\n        this.leadingIcon = '';\n        this.text = '';\n    }\n    render() {\n        return html `\n      <style>\n        .outlined {\n          color: var(--app-color-${this.theme}-background);\n          background-color: var(--app-color-text-${this.theme});\n          border-color: var(--app-color-${this.theme}-background);\n        }\n\n        .contained {\n          color: var(--app-color-text-${this.theme});\n          background-color: var(--app-color-${this.theme}-background);\n          border-color: var(--app-color-${this.theme}-background);\n        }\n\n        .text {\n          color: var(--app-color-${this.theme}-background);\n        }\n\n        :hover {\n          background-color: var(--app-color-${this.theme}-hover);\n        }\n      </style>\n      <div\n        class=\"container ${this.buttonType}\"\n        @click=\"${() => {\n            this.clicked();\n        }}\"\n      >\n        ${this.leadingIcon\n            ? html ` <nidoca-icon .clickable=\"${false}\" .icon=\"${this.leadingIcon}\"></nidoca-icon>`\n            : html ``}\n\n        <nidoca-text-button\n          >${this.text}\n          <slot></slot>\n        </nidoca-text-button>\n      </div>\n    `;\n    }\n    clicked() {\n        this.dispatchEvent(new CustomEvent('nidoca-event-button-clicked', {\n            detail: this,\n            bubbles: true,\n            composed: true,\n        }));\n    }\n}"
         }
       ],
       "exports": [
@@ -882,7 +882,7 @@
         {
           "kind": "variable",
           "name": "NidocaCode",
-          "default": "class NidocaCode extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.code = '';\n        this.theme = NidocaTheme.surface;\n    }\n    render() {\n        return html `\n      <style>\n        code {\n          color: var(--app-color-${this.theme});\n          background: var(--app-color-${this.theme}-background);\n          border: solid 1px var(--app-color-${this.theme}-border);\n        }\n      </style>\n      <pre>\n                <code>${this.code}<slot></slot></code>\n            </pre>\n    `;\n    }\n}"
+          "default": "class NidocaCode extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.code = '';\n        this.theme = NidocaTheme.surface;\n    }\n    render() {\n        return html `\n      <style>\n        code {\n          color: var(--app-color-text-${this.theme});\n          background: var(--app-color-${this.theme}-background);\n          border: solid 1px var(--app-color-${this.theme}-border);\n        }\n      </style>\n      <pre>\n                <code>${this.code}<slot></slot></code>\n            </pre>\n    `;\n    }\n}"
         }
       ],
       "exports": [
@@ -1151,7 +1151,7 @@
         {
           "kind": "variable",
           "name": "NidocaFormCombobox",
-          "default": "class NidocaFormCombobox extends NidocaFormAbstractInputElement {\n    constructor() {\n        super(...arguments);\n        this.theme = NidocaTheme.surface;\n        this.trailingIcon = '';\n        this.label = '';\n        this.errorText = '';\n        this.infoText = '';\n        this.warningText = '';\n        this.value = '';\n        this.options = [];\n        this.name = '';\n        this.required = true;\n        this.multiple = false;\n        this.size = 1;\n    }\n    render() {\n        return html ` <style>\n        .parentContainer,\n        ::slotted(.parentContainer) {\n          color: var(--app-color-${this.theme});\n          background-color: var(--app-color-${this.theme}-background);\n          border-color: var(--app-color-${this.theme}-border);\n        }\n\n        .parentContainer:focus-within,\n        ::slotted(.parentContainer:focus-within) {\n          border-color: var(--app-color-${this.theme}-selected);\n          filter: brightness(var(--app-darken-1));\n        }\n\n        option {\n          color: var(--app-color-${this.theme});\n          background-color: var(--app-color-${this.theme}-background);\n        }\n      </style>\n      <div class=\"parentContainer\">\n        ${this.trailingIcon\n            ? html ` <nidoca-icon\n              style=\"font-size: var(--icon-size-big);padding-left:var(--space);padding-right:var(--space);\"\n              icon=\"${this.trailingIcon}\"\n            ></nidoca-icon>`\n            : html ``}\n        <div class=\"container\">\n          <nidoca-text-caption class=\"label\" text=\"${this.label}\"></nidoca-text-caption>\n          <select\n            id=\"selectElement\"\n            name=\"${this.name}\"\n            size=\"${this.size}\"\n            ?required=\"${this.required}\"\n            ?multiple=\"${this.multiple}\"\n          >\n            ${guard([this.value, this.options], () => html `\n                ${repeat(this.options, (option) => option == undefined\n            ? html ` <option></option>`\n            : this.isSelectedOption(option)\n                ? html ` <option value=\"${option.key}\" selected>${option.value}</option> `\n                : html ` <option value=\"${option.key}\">${option.value}</option> `)}\n              `)}\n          </select>\n        </div>\n      </div>\n      ${this.infoText || this.warningText || this.errorText\n            ? html `\n            <div style=\"display:flex;flex-direction:column;\">\n              ${this.infoText ? html ` <nidoca-text-info text=\"${this.infoText}\"></nidoca-text-info>` : html ``}\n              ${this.warningText\n                ? html ` <nidoca-text-warning\n                    style=\"color:var(--app-color-warning-background)\"\n                    text=\"${this.warningText}\"\n                  ></nidoca-text-warning>`\n                : html ``}\n              ${this.errorText\n                ? html ` <nidoca-text-error\n                    style=\"color:var(--app-color-error-background)\"\n                    text=\"${this.errorText}\"\n                  ></nidoca-text-error>`\n                : html ``}\n            </div>\n          `\n            : html ``}`;\n    }\n    getOutputData() {\n        let outputValue = this.value;\n        if (this.selectElement != null && this.multiple) {\n            outputValue = [];\n            for (let i = 0, len = this.selectElement.options.length; i < len; i++) {\n                const opt = this.selectElement.options[i];\n                if (opt.selected) {\n                    outputValue.push(this.options[i].key);\n                }\n            }\n        }\n        else if (this.selectElement != null) {\n            if (this.selectElement.value.length == 0) {\n                outputValue = null;\n            }\n            else {\n                outputValue = this.selectElement.value;\n            }\n        }\n        return {\n            key: this.name,\n            value: outputValue,\n        };\n    }\n    validate() {\n        this.errorText = '';\n        if (this.selectElement != null &&\n            !this.selectElement.validity.valid &&\n            this.selectElement.validationMessage != this.errorText) {\n            this.errorText = this.selectElement.validationMessage;\n        }\n        return this.errorText.length == 0;\n    }\n    isSelectedOption(option) {\n        if (this.multiple) {\n            let isSelected = false;\n            for (const val of this.value) {\n                isSelected = option.key === val;\n                if (isSelected) {\n                    return true;\n                }\n            }\n        }\n        return this.value === option.key;\n    }\n    static enumToOptions(enumeration, emptyElement = true) {\n        const options = [];\n        if (emptyElement) {\n            options.push({ key: '', value: '' });\n        }\n        Object.keys(enumeration).forEach((key) => {\n            options.push({ key: key, value: enumeration[key] });\n        });\n        return options;\n    }\n    static stringArrayToOptions(stringArray, emptyElement = true) {\n        const options = [];\n        if (emptyElement) {\n            options.push({ key: '', value: '' });\n        }\n        stringArray.forEach((key) => {\n            options.push({ key: key, value: key });\n        });\n        return options;\n    }\n    static toComboboxOptions(type = null, typeName = null) {\n        if (type == null) {\n            return [];\n        }\n        const retval = [];\n        Object.values(type).forEach((item) => {\n            let value = String(Object.keys(type)[Object.values(type).indexOf(item)]);\n            if (typeName) {\n                value = value.concat(typeName);\n            }\n            retval.push({\n                key: item,\n                value: value,\n            });\n        });\n        return retval;\n    }\n}"
+          "default": "class NidocaFormCombobox extends NidocaFormAbstractInputElement {\n    constructor() {\n        super(...arguments);\n        this.theme = NidocaTheme.surface;\n        this.trailingIcon = '';\n        this.label = '';\n        this.errorText = '';\n        this.infoText = '';\n        this.warningText = '';\n        this.value = '';\n        this.options = [];\n        this.name = '';\n        this.required = true;\n        this.multiple = false;\n        this.size = 1;\n    }\n    render() {\n        return html ` <style>\n        .parentContainer,\n        ::slotted(.parentContainer) {\n          color: var(--app-color-text-${this.theme});\n          background-color: var(--app-color-${this.theme}-background);\n          border-color: var(--app-color-${this.theme}-border);\n        }\n\n        .parentContainer:focus-within,\n        ::slotted(.parentContainer:focus-within) {\n          border-color: var(--app-color-${this.theme}-selected);\n          filter: brightness(var(--app-darken-1));\n        }\n\n        option {\n          color: var(--app-color-text-${this.theme});\n          background-color: var(--app-color-${this.theme}-background);\n        }\n      </style>\n      <div class=\"parentContainer\">\n        ${this.trailingIcon\n            ? html ` <nidoca-icon\n              style=\"font-size: var(--icon-size-big);padding-left:var(--space);padding-right:var(--space);\"\n              icon=\"${this.trailingIcon}\"\n            ></nidoca-icon>`\n            : html ``}\n        <div class=\"container\">\n          <nidoca-text-caption class=\"label\" text=\"${this.label}\"></nidoca-text-caption>\n          <select\n            id=\"selectElement\"\n            name=\"${this.name}\"\n            size=\"${this.size}\"\n            ?required=\"${this.required}\"\n            ?multiple=\"${this.multiple}\"\n          >\n            ${guard([this.value, this.options], () => html `\n                ${repeat(this.options, (option) => option == undefined\n            ? html ` <option></option>`\n            : this.isSelectedOption(option)\n                ? html ` <option value=\"${option.key}\" selected>${option.value}</option> `\n                : html ` <option value=\"${option.key}\">${option.value}</option> `)}\n              `)}\n          </select>\n        </div>\n      </div>\n      ${this.infoText || this.warningText || this.errorText\n            ? html `\n            <div style=\"display:flex;flex-direction:column;\">\n              ${this.infoText ? html ` <nidoca-text-info text=\"${this.infoText}\"></nidoca-text-info>` : html ``}\n              ${this.warningText\n                ? html ` <nidoca-text-warning\n                    style=\"color:var(--app-color-warning-background)\"\n                    text=\"${this.warningText}\"\n                  ></nidoca-text-warning>`\n                : html ``}\n              ${this.errorText\n                ? html ` <nidoca-text-error\n                    style=\"color:var(--app-color-error-background)\"\n                    text=\"${this.errorText}\"\n                  ></nidoca-text-error>`\n                : html ``}\n            </div>\n          `\n            : html ``}`;\n    }\n    getOutputData() {\n        let outputValue = this.value;\n        if (this.selectElement != null && this.multiple) {\n            outputValue = [];\n            for (let i = 0, len = this.selectElement.options.length; i < len; i++) {\n                const opt = this.selectElement.options[i];\n                if (opt.selected) {\n                    outputValue.push(this.options[i].key);\n                }\n            }\n        }\n        else if (this.selectElement != null) {\n            if (this.selectElement.value.length == 0) {\n                outputValue = null;\n            }\n            else {\n                outputValue = this.selectElement.value;\n            }\n        }\n        return {\n            key: this.name,\n            value: outputValue,\n        };\n    }\n    validate() {\n        this.errorText = '';\n        if (this.selectElement != null &&\n            !this.selectElement.validity.valid &&\n            this.selectElement.validationMessage != this.errorText) {\n            this.errorText = this.selectElement.validationMessage;\n        }\n        return this.errorText.length == 0;\n    }\n    isSelectedOption(option) {\n        if (this.multiple) {\n            let isSelected = false;\n            for (const val of this.value) {\n                isSelected = option.key === val;\n                if (isSelected) {\n                    return true;\n                }\n            }\n        }\n        return this.value === option.key;\n    }\n    static enumToOptions(enumeration, emptyElement = true) {\n        const options = [];\n        if (emptyElement) {\n            options.push({ key: '', value: '' });\n        }\n        Object.keys(enumeration).forEach((key) => {\n            options.push({ key: key, value: enumeration[key] });\n        });\n        return options;\n    }\n    static stringArrayToOptions(stringArray, emptyElement = true) {\n        const options = [];\n        if (emptyElement) {\n            options.push({ key: '', value: '' });\n        }\n        stringArray.forEach((key) => {\n            options.push({ key: key, value: key });\n        });\n        return options;\n    }\n    static toComboboxOptions(type = null, typeName = null) {\n        if (type == null) {\n            return [];\n        }\n        const retval = [];\n        Object.values(type).forEach((item) => {\n            let value = String(Object.keys(type)[Object.values(type).indexOf(item)]);\n            if (typeName) {\n                value = value.concat(typeName);\n            }\n            retval.push({\n                key: item,\n                value: value,\n            });\n        });\n        return retval;\n    }\n}"
         }
       ],
       "exports": [
@@ -1298,7 +1298,7 @@
         {
           "kind": "variable",
           "name": "NidocaFormSwitch",
-          "default": "class NidocaFormSwitch extends NidocaFormAbstractInputElement {\n    constructor() {\n        super();\n        this.name = '';\n        this.label = '';\n        this.infoText = '';\n        this.errorText = '';\n        this.warningText = '';\n        this.required = false;\n        this.disabled = false;\n        this.checked = false;\n        this.theme = NidocaTheme.primary;\n        this.theme = NidocaThemeHelper.prototype.getParentTheme(this) || NidocaTheme.background;\n    }\n    render() {\n        return html `\n      <style>\n        .slider {\n          background-color: var(--app-color-${this.theme}-border);\n        }\n\n        .slider:before {\n          background-color: var(--app-color-${this.theme}-background);\n        }\n\n        input:checked + .slider:before {\n          background-color: var(--app-color-${this.theme});\n        }\n\n        input:checked + .slider {\n          background-color: var(--app-color-${this.theme}-selected);\n        }\n\n        input:focus + .slider {\n          box-shadow: 0 0 20px var(--app-color-${this.theme}-border);\n        }\n      </style>\n\n      <nidoca-list-item>\n        <nidoca-text-subtitle>\n          ${this.label}\n          <slot></slot>\n        </nidoca-text-subtitle>\n\n        ${this.infoText.length > 0\n            ? html ` <nidoca-text-caption text=\"${this.infoText}\"></nidoca-text-caption>`\n            : html ``}\n\n        <label class=\"switch\" slot=\"meta\">\n          <input\n            id=\"inputElement\"\n            name=\"${this.name}\"\n            type=\"checkbox\"\n            ?checked=\"${this.checked}\"\n            ?required=\"${this.required}\"\n            ?disabled=\"${this.disabled}\"\n            @input=\"${(eventArg) => {\n            this.checked = eventArg.target.checked;\n            console.log(this.checked);\n        }}\"\n          />\n          <span class=\"slider round\"></span>\n        </label>\n      </nidoca-list-item>\n\n      ${this.warningText ? html ` <nidoca-text-error text=\"${this.warningText}\"></nidoca-text-error>` : html ``}\n      ${this.errorText ? html ` <nidoca-text-error text=\"${this.errorText}\"></nidoca-text-error>` : html ``}\n    `;\n    }\n    getOutputData() {\n        return {\n            key: this.name,\n            value: this.checked,\n        };\n    }\n    validate() {\n        this.errorText = '';\n        if (this.inputElement != null &&\n            !this.inputElement.validity.valid &&\n            this.inputElement.validationMessage != this.errorText) {\n            this.errorText = this.inputElement.validationMessage;\n        }\n        return this.errorText == '';\n    }\n}"
+          "default": "class NidocaFormSwitch extends NidocaFormAbstractInputElement {\n    constructor() {\n        super();\n        this.name = '';\n        this.label = '';\n        this.infoText = '';\n        this.errorText = '';\n        this.warningText = '';\n        this.required = false;\n        this.disabled = false;\n        this.checked = false;\n        this.theme = NidocaTheme.primary;\n        this.theme = NidocaThemeHelper.prototype.getParentTheme(this) || NidocaTheme.background;\n    }\n    render() {\n        return html `\n      <style>\n        .slider {\n          background-color: var(--app-color-${this.theme}-border);\n        }\n\n        .slider:before {\n          background-color: var(--app-color-${this.theme}-background);\n        }\n\n        input:checked + .slider:before {\n          background-color: var(--app-color-text-${this.theme});\n        }\n\n        input:checked + .slider {\n          background-color: var(--app-color-${this.theme}-selected);\n        }\n\n        input:focus + .slider {\n          box-shadow: 0 0 20px var(--app-color-${this.theme}-border);\n        }\n      </style>\n\n      <nidoca-list-item>\n        <nidoca-text-subtitle>\n          ${this.label}\n          <slot></slot>\n        </nidoca-text-subtitle>\n\n        ${this.infoText.length > 0\n            ? html ` <nidoca-text-caption text=\"${this.infoText}\"></nidoca-text-caption>`\n            : html ``}\n\n        <label class=\"switch\" slot=\"meta\">\n          <input\n            id=\"inputElement\"\n            name=\"${this.name}\"\n            type=\"checkbox\"\n            ?checked=\"${this.checked}\"\n            ?required=\"${this.required}\"\n            ?disabled=\"${this.disabled}\"\n            @input=\"${(eventArg) => {\n            this.checked = eventArg.target.checked;\n            console.log(this.checked);\n        }}\"\n          />\n          <span class=\"slider round\"></span>\n        </label>\n      </nidoca-list-item>\n\n      ${this.warningText ? html ` <nidoca-text-error text=\"${this.warningText}\"></nidoca-text-error>` : html ``}\n      ${this.errorText ? html ` <nidoca-text-error text=\"${this.errorText}\"></nidoca-text-error>` : html ``}\n    `;\n    }\n    getOutputData() {\n        return {\n            key: this.name,\n            value: this.checked,\n        };\n    }\n    validate() {\n        this.errorText = '';\n        if (this.inputElement != null &&\n            !this.inputElement.validity.valid &&\n            this.inputElement.validationMessage != this.errorText) {\n            this.errorText = this.inputElement.validationMessage;\n        }\n        return this.errorText == '';\n    }\n}"
         }
       ],
       "exports": [
@@ -1323,7 +1323,7 @@
         {
           "kind": "variable",
           "name": "NidocaFormText",
-          "default": "class NidocaFormText extends NidocaFormAbstractInputElement {\n    constructor() {\n        super(...arguments);\n        this.type = NidocaFormTextType.text;\n        this.label = '';\n        this.placeholder = '';\n        this.trailingIcon = '';\n        this.errorText = '';\n        this.infoText = '';\n        this.warningText = '';\n        this.name = '';\n        this.value = '';\n        this.required = false;\n        this.disabled = false;\n        this.checked = false;\n        this.theme = NidocaTheme.surface;\n    }\n    render() {\n        return this.type == NidocaFormTextType.hidden\n            ? html `<input id=\"inputElement\" name=\"${this.name}\" type=\"${this.type}\" value=\"${this.value}\" />`\n            : html ` <style>\n            .parentContainer,\n            ::slotted(.parentContainer) {\n              color: var(--app-color-${this.theme});\n              background-color: var(--app-color-${this.theme}-background);\n            }\n\n            .parentContainer,\n            ::slotted(.parentContainer) {\n              border-color: var(--app-color-${this.theme}-border);\n            }\n\n            .parentContainer:focus-within,\n            ::slotted(.parentContainer:focus-within) {\n              border-color: var(--app-color-${this.theme}-border);\n              filter: contrast(var(--app-color-percent-selected));\n            }\n          </style>\n          <div class=\"parentContainer border\">\n            ${this.trailingIcon\n                ? html ` <nidoca-icon\n                  style=\"font-size: var(--icon-size-big);padding-left:var(--space);padding-right:var(--space);\"\n                  icon=\"${this.trailingIcon}\"\n                ></nidoca-icon>`\n                : html ``}\n            <div class=\"container\">\n              <nidoca-text-caption class=\"label\" text=\"${this.label}\"></nidoca-text-caption>\n              <input\n                id=\"inputElement\"\n                name=\"${this.name}\"\n                .type=\"${this.type}\"\n                value=\"${this.value}\"\n                placeholder=\"${this.placeholder}\"\n                size=\"${ifDefined(this.size)}\"\n                minlength=\"${ifDefined(this.minlength)}\"\n                maxlength=\"${ifDefined(this.maxlength)}\"\n                pattern=\"${ifDefined(this.pattern)}\"\n                min=\"${ifDefined(this.min)}\"\n                max=\"${ifDefined(this.max)}\"\n                step=\"${ifDefined(this.step)}\"\n                ?required=\"${this.required}\"\n                ?disabled=\"${this.disabled}\"\n                ?checked=\"${this.checked}\"\n              />\n            </div>\n          </div>\n\n          ${this.infoText || this.warningText || this.errorText\n                ? html `\n                <div style=\"display:flex;flex-direction:column;\">\n                  ${this.infoText ? html ` <nidoca-text-info text=\"${this.infoText}\"></nidoca-text-info>` : html ``}\n                  ${this.warningText\n                    ? html ` <nidoca-text-warning\n                        style=\"color:var(--app-color-warning-background)\"\n                        text=\"${this.warningText}\"\n                      ></nidoca-text-warning>`\n                    : html ``}\n                  ${this.errorText\n                    ? html ` <nidoca-text-error\n                        style=\"color:var(--app-color-error-background)\"\n                        text=\"${this.errorText}\"\n                      ></nidoca-text-error>`\n                    : html ``}\n                </div>\n              `\n                : html ``}`;\n    }\n    getOutputData() {\n        var _a;\n        const outputValue = (_a = this.inputElement) === null || _a === void 0 ? void 0 : _a.value;\n        return {\n            key: this.name,\n            value: outputValue === null || outputValue === void 0 ? void 0 : outputValue.trim(),\n        };\n    }\n    validate() {\n        this.errorText = '';\n        if (this.inputElement != null &&\n            !this.inputElement.validity.valid &&\n            this.inputElement.validationMessage != this.errorText) {\n            this.errorText = this.inputElement.validationMessage;\n            if (this.inputElement.validity.patternMismatch && this.pattern) {\n                this.errorText = this.errorText.concat(' Format: ').concat(this.pattern);\n            }\n        }\n        return this.errorText == '';\n    }\n}"
+          "default": "class NidocaFormText extends NidocaFormAbstractInputElement {\n    constructor() {\n        super(...arguments);\n        this.type = NidocaFormTextType.text;\n        this.label = '';\n        this.placeholder = '';\n        this.trailingIcon = '';\n        this.errorText = '';\n        this.infoText = '';\n        this.warningText = '';\n        this.name = '';\n        this.value = '';\n        this.required = false;\n        this.disabled = false;\n        this.checked = false;\n        this.theme = NidocaTheme.surface;\n    }\n    render() {\n        return this.type == NidocaFormTextType.hidden\n            ? html `<input id=\"inputElement\" name=\"${this.name}\" type=\"${this.type}\" value=\"${this.value}\" />`\n            : html ` <style>\n            .parentContainer,\n            ::slotted(.parentContainer) {\n              color: var(--app-color-text-${this.theme});\n              background-color: var(--app-color-${this.theme}-background);\n            }\n\n            .parentContainer,\n            ::slotted(.parentContainer) {\n              border-color: var(--app-color-${this.theme}-border);\n            }\n\n            .parentContainer:focus-within,\n            ::slotted(.parentContainer:focus-within) {\n              border-color: var(--app-color-${this.theme}-border);\n              background-color: var(--app-color-${this.theme}-selected);\n            }\n          </style>\n          <div class=\"parentContainer border\">\n            ${this.trailingIcon\n                ? html ` <nidoca-icon\n                  style=\"font-size: var(--icon-size-big);padding-left:var(--space);padding-right:var(--space);\"\n                  icon=\"${this.trailingIcon}\"\n                ></nidoca-icon>`\n                : html ``}\n            <div class=\"container\">\n              <nidoca-text-caption class=\"label\" text=\"${this.label}\"></nidoca-text-caption>\n              <input\n                id=\"inputElement\"\n                name=\"${this.name}\"\n                .type=\"${this.type}\"\n                value=\"${this.value}\"\n                placeholder=\"${this.placeholder}\"\n                size=\"${ifDefined(this.size)}\"\n                minlength=\"${ifDefined(this.minlength)}\"\n                maxlength=\"${ifDefined(this.maxlength)}\"\n                pattern=\"${ifDefined(this.pattern)}\"\n                min=\"${ifDefined(this.min)}\"\n                max=\"${ifDefined(this.max)}\"\n                step=\"${ifDefined(this.step)}\"\n                ?required=\"${this.required}\"\n                ?disabled=\"${this.disabled}\"\n                ?checked=\"${this.checked}\"\n              />\n            </div>\n          </div>\n\n          ${this.infoText || this.warningText || this.errorText\n                ? html `\n                <div style=\"display:flex;flex-direction:column;\">\n                  ${this.infoText ? html ` <nidoca-text-info text=\"${this.infoText}\"></nidoca-text-info>` : html ``}\n                  ${this.warningText\n                    ? html ` <nidoca-text-warning\n                        style=\"color:var(--app-color-warning-background)\"\n                        text=\"${this.warningText}\"\n                      ></nidoca-text-warning>`\n                    : html ``}\n                  ${this.errorText\n                    ? html ` <nidoca-text-error\n                        style=\"color:var(--app-color-error-background)\"\n                        text=\"${this.errorText}\"\n                      ></nidoca-text-error>`\n                    : html ``}\n                </div>\n              `\n                : html ``}`;\n    }\n    getOutputData() {\n        var _a;\n        const outputValue = (_a = this.inputElement) === null || _a === void 0 ? void 0 : _a.value;\n        return {\n            key: this.name,\n            value: outputValue === null || outputValue === void 0 ? void 0 : outputValue.trim(),\n        };\n    }\n    validate() {\n        this.errorText = '';\n        if (this.inputElement != null &&\n            !this.inputElement.validity.valid &&\n            this.inputElement.validationMessage != this.errorText) {\n            this.errorText = this.inputElement.validationMessage;\n            if (this.inputElement.validity.patternMismatch && this.pattern) {\n                this.errorText = this.errorText.concat(' Format: ').concat(this.pattern);\n            }\n        }\n        return this.errorText == '';\n    }\n}"
         }
       ],
       "exports": [
@@ -1352,7 +1352,7 @@
         {
           "kind": "variable",
           "name": "NidocaFormTextarea",
-          "default": "class NidocaFormTextarea extends NidocaFormAbstractInputElement {\n    constructor() {\n        super(...arguments);\n        this.theme = NidocaTheme.surface;\n        this.infoText = '';\n        this.warningText = '';\n        this.errorText = '';\n        this.name = '';\n        this.value = '';\n        this.label = '';\n        this.required = false;\n        this.placeholder = '';\n        this.disabled = false;\n        this.rows = 5;\n    }\n    render() {\n        return html ` <style>\n        .parentContainer,\n        ::slotted(.parentContainer) {\n          color: var(--app-color-${this.theme});\n          background-color: var(--app-color-${this.theme}-background);\n        }\n\n        .parentContainer,\n        ::slotted(.parentContainer) {\n          border-color: var(--app-color-${this.theme}-border);\n        }\n\n        .parentContainer:focus-within,\n        ::slotted(.parentContainer:focus-within) {\n          filter: contrast(var(--app-color-percent-hover));\n        }\n      </style>\n      <div class=\"parentContainer\">\n        <div class=\"container\">\n          <nidoca-text-caption class=\"label\" text=\"${this.label}\"></nidoca-text-caption>\n\n          <textarea\n            id=\"inputElement\"\n            name=\"${this.name}\"\n            placeholder=\"${this.placeholder}\"\n            rows=\"${this.rows}\"\n            ?required=\"${this.required}\"\n            ?disabled=\"${this.disabled}\"\n          >\n${this.value}</textarea\n          >\n        </div>\n      </div>\n\n      ${this.infoText || this.warningText || this.errorText\n            ? html `\n            <div style=\"display:flex;flex-direction:column;\">\n              ${this.infoText ? html ` <nidoca-text-info text=\"${this.infoText}\"></nidoca-text-info>` : html ``}\n              ${this.warningText\n                ? html ` <nidoca-text-warning\n                    style=\"color:var(--app-color-warning-background)\"\n                    text=\"${this.warningText}\"\n                  ></nidoca-text-warning>`\n                : html ``}\n              ${this.errorText\n                ? html ` <nidoca-text-error\n                    style=\"color:var(--app-color-error-background)\"\n                    text=\"${this.errorText}\"\n                  ></nidoca-text-error>`\n                : html ``}\n            </div>\n          `\n            : html ``}`;\n    }\n    getOutputData() {\n        var _a;\n        const outputValue = (_a = this.inputElement) === null || _a === void 0 ? void 0 : _a.value;\n        return {\n            key: this.name,\n            value: outputValue,\n        };\n    }\n    validate() {\n        this.errorText = '';\n        if (this.inputElement != null &&\n            !this.inputElement.validity.valid &&\n            this.inputElement.validationMessage != this.errorText) {\n            this.errorText = this.inputElement.validationMessage;\n        }\n        return this.errorText == '';\n    }\n}"
+          "default": "class NidocaFormTextarea extends NidocaFormAbstractInputElement {\n    constructor() {\n        super(...arguments);\n        this.theme = NidocaTheme.surface;\n        this.infoText = '';\n        this.warningText = '';\n        this.errorText = '';\n        this.name = '';\n        this.value = '';\n        this.label = '';\n        this.required = false;\n        this.placeholder = '';\n        this.disabled = false;\n        this.rows = 5;\n    }\n    render() {\n        return html ` <style>\n        .parentContainer,\n        ::slotted(.parentContainer) {\n          color: var(--app-color-text-${this.theme});\n          background-color: var(--app-color-${this.theme}-background);\n        }\n\n        .parentContainer,\n        ::slotted(.parentContainer) {\n          border-color: var(--app-color-${this.theme}-border);\n        }\n\n        .parentContainer:focus-within,\n        ::slotted(.parentContainer:focus-within) {\n          background-color: var(--app-color-${this.theme}-hover);\n        }\n      </style>\n      <div class=\"parentContainer\">\n        <div class=\"container\">\n          <nidoca-text-caption class=\"label\" text=\"${this.label}\"></nidoca-text-caption>\n\n          <textarea\n            id=\"inputElement\"\n            name=\"${this.name}\"\n            placeholder=\"${this.placeholder}\"\n            rows=\"${this.rows}\"\n            ?required=\"${this.required}\"\n            ?disabled=\"${this.disabled}\"\n          >\n${this.value}</textarea\n          >\n        </div>\n      </div>\n\n      ${this.infoText || this.warningText || this.errorText\n            ? html `\n            <div style=\"display:flex;flex-direction:column;\">\n              ${this.infoText ? html ` <nidoca-text-info text=\"${this.infoText}\"></nidoca-text-info>` : html ``}\n              ${this.warningText\n                ? html ` <nidoca-text-warning\n                    style=\"color:var(--app-color-warning-background)\"\n                    text=\"${this.warningText}\"\n                  ></nidoca-text-warning>`\n                : html ``}\n              ${this.errorText\n                ? html ` <nidoca-text-error\n                    style=\"color:var(--app-color-error-background)\"\n                    text=\"${this.errorText}\"\n                  ></nidoca-text-error>`\n                : html ``}\n            </div>\n          `\n            : html ``}`;\n    }\n    getOutputData() {\n        var _a;\n        const outputValue = (_a = this.inputElement) === null || _a === void 0 ? void 0 : _a.value;\n        return {\n            key: this.name,\n            value: outputValue,\n        };\n    }\n    validate() {\n        this.errorText = '';\n        if (this.inputElement != null &&\n            !this.inputElement.validity.valid &&\n            this.inputElement.validationMessage != this.errorText) {\n            this.errorText = this.inputElement.validationMessage;\n        }\n        return this.errorText == '';\n    }\n}"
         }
       ],
       "exports": [
@@ -1481,7 +1481,7 @@
         {
           "kind": "variable",
           "name": "NidocaIconExtended",
-          "default": "class NidocaIconExtended extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.theme = NidocaTheme.primary;\n        this.shadowType = NidocaIconShadowType.DEFAULT_SHADOW;\n        this.icon = '';\n        this.clickable = true;\n        this.deactivated = false;\n    }\n    render() {\n        return html `\n      <style>\n        .iconExtended {\n          display: inline-block;\n          color: var(--app-color-${this.theme});\n          background-color: var(--app-color-${this.theme}-background);\n        }\n      </style>\n\n      <span class=\"iconExtended round ${this.shadowType}\">\n        <nidoca-icon\n          .deactivated=\"${this.deactivated}\"\n          .clickable=\"${this.clickable}\"\n          icon=\"${this.icon}\"\n          style=\"font-size: inherit;\"\n        ></nidoca-icon>\n      </span>\n    `;\n    }\n    clicked() {\n        return __awaiter(this, void 0, void 0, function* () {\n            if (this.clickable && !this.deactivated) {\n                const customEventName = 'nidoca-event-icon-clicked';\n                console.log('dispatch custom event: %s', customEventName);\n                this.dispatchEvent(new CustomEvent(customEventName, {\n                    detail: this,\n                    bubbles: true,\n                    composed: true,\n                }));\n            }\n        });\n    }\n}"
+          "default": "class NidocaIconExtended extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.theme = NidocaTheme.primary;\n        this.shadowType = NidocaIconShadowType.DEFAULT_SHADOW;\n        this.icon = '';\n        this.clickable = true;\n        this.deactivated = false;\n    }\n    render() {\n        return html `\n      <style>\n        .iconExtended {\n          display: inline-block;\n          color: var(--app-color-text-${this.theme});\n          background-color: var(--app-color-${this.theme}-background);\n        }\n      </style>\n\n      <span class=\"iconExtended round ${this.shadowType}\">\n        <nidoca-icon\n          .deactivated=\"${this.deactivated}\"\n          .clickable=\"${this.clickable}\"\n          icon=\"${this.icon}\"\n          style=\"font-size: inherit;\"\n        ></nidoca-icon>\n      </span>\n    `;\n    }\n    clicked() {\n        return __awaiter(this, void 0, void 0, function* () {\n            if (this.clickable && !this.deactivated) {\n                const customEventName = 'nidoca-event-icon-clicked';\n                console.log('dispatch custom event: %s', customEventName);\n                this.dispatchEvent(new CustomEvent(customEventName, {\n                    detail: this,\n                    bubbles: true,\n                    composed: true,\n                }));\n            }\n        });\n    }\n}"
         }
       ],
       "exports": [
@@ -1659,7 +1659,7 @@
         {
           "kind": "variable",
           "name": "NidocaImg",
-          "default": "class NidocaImg extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.src = '';\n        this.width = '100%';\n        this.height = '100%';\n    }\n    render() {\n        return this.src ? html `<img width=\"${this.width}\" height=\"${this.height}\" src=\"${this.src}\" />` : html ``;\n    }\n}"
+          "default": "class NidocaImg extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.src = '';\n        this.width = 'auto';\n        this.height = 'auto';\n    }\n    render() {\n        return this.src ? html `<img width=\"${this.width}\" height=\"${this.height}\" src=\"${this.src}\" />` : html ``;\n    }\n}"
         }
       ],
       "exports": [
@@ -1769,7 +1769,7 @@
         {
           "kind": "variable",
           "name": "NidocaListItem",
-          "default": "class NidocaListItem extends LitElement {\n    constructor() {\n        super();\n        this.selectable = false;\n        this.selected = false;\n        this.primaryText = '';\n        this.secondaryText = '';\n        this.theme = NidocaThemeHelper.prototype.getParentTheme(this) || NidocaTheme.background;\n    }\n    render() {\n        return html `\n      <style>\n        .selected {\n          backdrop-filter: contrast(var(--app-color-percent-selected));\n        }\n      </style>\n      <div class=\"container ${this.selected ? 'selected' : ''}\">\n        ${this.selectable\n            ? html ` <nidoca-icon\n              style=\"padding-right: var(--space-2);\"\n              class=\"item\"\n              @click=\"${() => this.switchSelected()}\"\n              icon=\"${this.selected ? 'check_box' : 'check_box_outline_blank'}\"\n            ></nidoca-icon>`\n            : html `<span></span>`}\n        <slot name=\"graphic\" class=\"item\"></slot>\n        <div class=\"containerTypography\">\n          ${this.primaryText ? html ` <nidoca-text class=\"item\">${this.primaryText} </nidoca-text>` : html ``}\n          <slot></slot>\n          ${this.secondaryText\n            ? html ` <nidoca-text-caption class=\"item\">${this.secondaryText} </nidoca-text-caption>`\n            : html ``}\n          <slot name=\"secondary\"></slot>\n        </div>\n        <slot name=\"meta\" class=\"item\"></slot>\n      </div>\n    `;\n    }\n    switchSelected() {\n        this.selected = Boolean(!this.selected);\n        if (this.selected) {\n            this.dispatchEvent(new CustomEvent('nidoca-event-list-item-select', {\n                detail: this,\n                bubbles: true,\n                composed: true,\n            }));\n        }\n        else {\n            this.dispatchEvent(new CustomEvent('nidoca-event-list-item-unselect', {\n                detail: this,\n                bubbles: true,\n                composed: true,\n            }));\n        }\n    }\n}"
+          "default": "class NidocaListItem extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.theme = NidocaTheme.secondary;\n        this.selected = false;\n        this.primaryText = '';\n        this.secondaryText = '';\n    }\n    render() {\n        return html `\n      <style>\n        .container {\n          color: var(--app-color-text-${this.theme});\n          background-color: var(--app-color-${this.theme}-background);\n          border-color: var(--app-color-${this.theme}-border);\n          border-bottom-style: solid;\n          border-width: thin;\n        }\n        .selected {\n          background-color: var(--app-color-${this.theme}-selected);\n        }\n      </style>\n      <div @click=\"${() => this.switchSelected()}\" class=\"container ${this.selected ? 'selected' : ''}\">\n        <slot name=\"left\" class=\"item left\"></slot>\n        <div class=\"containerTypography\">\n          ${this.primaryText\n            ? html ` <nidoca-text-body theme=\"${this.theme}\" class=\"item\">${this.primaryText} </nidoca-text-body>`\n            : html ``}\n          <slot></slot>\n          ${this.secondaryText\n            ? html ` <nidoca-text-caption theme=\"${this.theme}\" class=\"item\"\n                >${this.secondaryText}\n              </nidoca-text-caption>`\n            : html ``}\n          <slot name=\"secondary\"></slot>\n        </div>\n        <slot name=\"right\" class=\"item right\"></slot>\n      </div>\n    `;\n    }\n    switchSelected() {\n        this.selected = Boolean(!this.selected);\n        this.dispatchEvent(new CustomEvent('nidoca-event-list-item-clicked', {\n            detail: this.selected,\n            bubbles: true,\n            composed: true,\n        }));\n    }\n}"
         }
       ],
       "exports": [
@@ -1811,7 +1811,7 @@
         {
           "kind": "variable",
           "name": "NidocaList",
-          "default": "class NidocaList extends LitElement {\n    constructor() {\n        super();\n        this.multiSelect = false;\n        this.theme = NidocaThemeHelper.prototype.getParentTheme(this) || NidocaTheme.background;\n    }\n    updated(changedProperties) {\n        super.updated(changedProperties);\n        changedProperties.forEach((oldValue, propName) => {\n            console.debug(`${this.tagName} : property ${String(propName)} changed. oldValue: ${oldValue}`);\n            if (propName == 'multiSelect') {\n                this.getItems().forEach((listItemComponent) => {\n                    listItemComponent.selectable = this.multiSelect;\n                });\n            }\n        });\n    }\n    render() {\n        return html `\n      <style>\n        slot {\n          border-color: var(--app-color-${this.theme}-border);\n          border-top-style: solid;\n          border-width: thin;\n        }\n\n        ::slotted(nidoca-list-section) {\n          color: var(--app-color-${this.theme});\n          backdrop-filter: contrast(var(--app-color-percent-optional));\n        }\n\n        ::slotted(nidoca-list-item) {\n          color: var(--app-color-${this.theme});\n          background-color: var(--app-color-${this.theme}-background);\n        }\n\n        ::slotted(nidoca-list-item),\n        ::slotted(nidoca-list-section) {\n          border-bottom-style: solid;\n          border-width: var(--border-width-min);\n        }\n\n        ::slotted(nidoca-list-item:hover) {\n          filter: contrast(var(--app-color-percent-hover));\n        }\n      </style>\n      <slot class=\"slotList\" id=\"slotElement\"></slot>\n    `;\n    }\n    getItems() {\n        const all = [];\n        if (this.slotElement != null) {\n            const slottedElements = this.slotElement.assignedElements();\n            for (let index = 0; index < slottedElements.length; index++) {\n                const element = slottedElements[index];\n                if (element instanceof NidocaListItem) {\n                    all.push(element);\n                }\n            }\n        }\n        return all;\n    }\n    getSelectedItems() {\n        const selection = [];\n        if (this.slotElement != null) {\n            const slottedElements = this.slotElement.assignedElements();\n            for (let index = 0; index < slottedElements.length; index++) {\n                const element = slottedElements[index];\n                if (element instanceof NidocaListItem) {\n                    if (element.selected) {\n                        selection.push(element);\n                    }\n                }\n            }\n        }\n        return selection;\n    }\n    getSelectedIndexes() {\n        const selection = [];\n        if (this.slotElement != null) {\n            const slottedElements = this.slotElement.assignedElements();\n            let nliIndex = 0;\n            for (let i = 0; i < slottedElements.length; i++) {\n                const element = slottedElements[i];\n                if (element instanceof NidocaListItem) {\n                    if (element.selected) {\n                        selection.push(nliIndex);\n                    }\n                    nliIndex++;\n                }\n            }\n        }\n        return selection;\n    }\n    selectAll() {\n        this.getItems().forEach((item) => {\n            item.selected = true;\n        });\n    }\n    unselectAll() {\n        console.log('sdojsdoijsoidjsdioj ' + this.getItems().length);\n        this.getItems().forEach((item) => {\n            item.selected = false;\n        });\n    }\n}"
+          "default": "class NidocaList extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.theme = NidocaTheme.surface;\n        this.multiSelect = false;\n    }\n    updated(changedProperties) {\n        super.updated(changedProperties);\n        changedProperties.forEach((_oldValue, propName) => {\n            if (propName == 'theme') {\n                this.getItems().forEach((listItemComponent) => {\n                    listItemComponent.theme = this.theme;\n                });\n            }\n        });\n    }\n    render() {\n        return html `\n      <style>\n        ::slotted(nidoca-list-section) {\n          color: var(--app-color-text-${this.theme});\n          background-color: var(--app-color-${this.theme}-hover);\n        }\n\n        ::slotted(nidoca-list-section) {\n          border-color: var(--app-color-${this.theme}-border);\n          border-bottom-style: solid;\n          border-width: thin;\n        }\n\n        ::slotted(nidoca-list-item:hover) {\n          background-color: var(--app-color-${this.theme}-hover);\n        }\n      </style>\n      <slot\n        @nidoca-event-list-item-clicked=\"${(event) => {\n            if (!this.multiSelect) {\n                this.unselectAll();\n                const nidocaListItem = event.target;\n                nidocaListItem.selected = true;\n            }\n        }}\"\n        class=\"slotList\"\n        id=\"slotElement\"\n      ></slot>\n    `;\n    }\n    getItems() {\n        const all = [];\n        if (this.slotElement != null) {\n            const slottedElements = this.slotElement.assignedElements();\n            for (let index = 0; index < slottedElements.length; index++) {\n                const element = slottedElements[index];\n                if (element instanceof NidocaListItem) {\n                    all.push(element);\n                }\n            }\n        }\n        return all;\n    }\n    getSelectedItems() {\n        const selection = [];\n        if (this.slotElement != null) {\n            const slottedElements = this.slotElement.assignedElements();\n            for (let index = 0; index < slottedElements.length; index++) {\n                const element = slottedElements[index];\n                if (element instanceof NidocaListItem) {\n                    if (element.selected) {\n                        selection.push(element);\n                    }\n                }\n            }\n        }\n        return selection;\n    }\n    getSelectedIndexes() {\n        const selection = [];\n        if (this.slotElement != null) {\n            const slottedElements = this.slotElement.assignedElements();\n            let nliIndex = 0;\n            for (let i = 0; i < slottedElements.length; i++) {\n                const element = slottedElements[i];\n                if (element instanceof NidocaListItem) {\n                    if (element.selected) {\n                        selection.push(nliIndex);\n                    }\n                    nliIndex++;\n                }\n            }\n        }\n        return selection;\n    }\n    selectAll() {\n        this.getItems().forEach((item) => {\n            item.selected = true;\n        });\n    }\n    unselectAll() {\n        console.log('sdojsdoijsoidjsdioj ' + this.getItems().length);\n        this.getItems().forEach((item) => {\n            item.selected = false;\n        });\n    }\n}"
         }
       ],
       "exports": [
@@ -1853,7 +1853,7 @@
         {
           "kind": "variable",
           "name": "NidocaMenuItem",
-          "default": "class NidocaMenuItem extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.text = '';\n        this.icon = '';\n        this.selected = false;\n    }\n    render() {\n        return html `\n      <div class=\"container ${this.selected ? 'selected' : ''}\" @click=\"${() => this.clicked()}\">\n        ${this.icon\n            ? html ` <nidoca-icon\n              slot=\"graphic\"\n              icon=\"${this.icon}\"\n              style=\"padding-right:var(--space); font-size:var(--icon-size);\"\n            ></nidoca-icon>`\n            : html ``}\n        ${this.text ? html ` <nidoca-text>${this.text}</nidoca-text>` : html ``}\n      </div>\n    `;\n    }\n    clicked() {\n        this.dispatchEvent(new CustomEvent('nidoca-event-menu-item-clicked', {\n            detail: this,\n            bubbles: true,\n            composed: true,\n        }));\n    }\n}"
+          "default": "class NidocaMenuItem extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.text = '';\n        this.icon = '';\n        this.selected = false;\n        this.theme = NidocaTheme.surface;\n    }\n    render() {\n        return html `\n      <style>\n        .container:hover {\n          background-color: var(--app-color-${this.theme}-hover);\n        }\n      </style>\n      <div class=\"container ${this.selected ? 'selected' : ''}\" @click=\"${() => this.clicked()}\">\n        ${this.icon\n            ? html ` <nidoca-icon\n              slot=\"graphic\"\n              icon=\"${this.icon}\"\n              style=\"padding-right:var(--space); font-size:var(--icon-size);\"\n            ></nidoca-icon>`\n            : html ``}\n        ${this.text ? html ` <nidoca-text-body theme=\"${this.theme}\">${this.text}</nidoca-text-body>` : html ``}\n      </div>\n    `;\n    }\n    clicked() {\n        this.dispatchEvent(new CustomEvent('nidoca-event-menu-item-clicked', {\n            detail: this,\n            bubbles: true,\n            composed: true,\n        }));\n    }\n}"
         }
       ],
       "exports": [
@@ -1874,7 +1874,7 @@
         {
           "kind": "variable",
           "name": "NidocaMenu",
-          "default": "class NidocaMenu extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.theme = NidocaTheme.secondary;\n    }\n    render() {\n        return html ` <style>\n        :host,\n        *,\n        ::slotted(*) {\n          color: var(--app-color-${this.theme});\n          background-color: var(--app-color-${this.theme}-background);\n          border-color: var(--app-color-${this.theme}-border);\n        }\n      </style>\n      <slot id=\"slotElement\"></slot>`;\n    }\n    firstUpdated() {\n        this.addEventListener('click', (event) => {\n            if (this.slotElement != null) {\n                const slottedElements = this.slotElement.assignedElements();\n                for (let index = 0; index < slottedElements.length; index++) {\n                    const element = slottedElements[index];\n                    if (element instanceof NidocaMenuItem) {\n                        const rect = element.getBoundingClientRect();\n                        if (rect.left < event.x && rect.right > event.x) {\n                            if (rect.top < event.y && rect.bottom > event.y) {\n                                element.selected = true;\n                            }\n                            else {\n                                element.selected = false;\n                            }\n                        }\n                    }\n                }\n            }\n        });\n    }\n}"
+          "default": "class NidocaMenu extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.theme = NidocaTheme.surface;\n    }\n    render() {\n        return html ` <style>\n        :host,\n        *,\n        ::slotted(*) {\n          color: var(--app-color-text-${this.theme});\n          background-color: var(--app-color-${this.theme}-background);\n          border-color: var(--app-color-${this.theme}-border);\n        }\n      </style>\n      <slot id=\"slotElement\"></slot>`;\n    }\n    updated(changedProperties) {\n        super.updated(changedProperties);\n        changedProperties.forEach((_oldValue, propName) => {\n            if (propName == 'theme') {\n                if (this.slotElement != null) {\n                    const slottedElements = this.slotElement.assignedElements();\n                    for (let index = 0; index < slottedElements.length; index++) {\n                        const element = slottedElements[index];\n                        if (element instanceof NidocaMenuItem) {\n                            element.theme = this.theme;\n                        }\n                    }\n                }\n            }\n        });\n    }\n    firstUpdated() {\n        this.addEventListener('click', (event) => {\n            if (this.slotElement != null) {\n                const slottedElements = this.slotElement.assignedElements();\n                for (let index = 0; index < slottedElements.length; index++) {\n                    const element = slottedElements[index];\n                    if (element instanceof NidocaMenuItem) {\n                        const rect = element.getBoundingClientRect();\n                        if (rect.left < event.x && rect.right > event.x) {\n                            if (rect.top < event.y && rect.bottom > event.y) {\n                                element.selected = true;\n                            }\n                            else {\n                                element.selected = false;\n                            }\n                        }\n                    }\n                }\n            }\n        });\n    }\n}"
         }
       ],
       "exports": [
@@ -2057,7 +2057,7 @@
         {
           "kind": "variable",
           "name": "NidocaSearchBar",
-          "default": "class NidocaSearchBar extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.value = '';\n        this.placeholder = '';\n        this.disabled = false;\n        this.theme = NidocaTheme.surface;\n    }\n    render() {\n        return html `\n      <style>\n        .container,\n        input {\n          color: var(--app-color-${this.theme});\n          background-color: var(--app-color-${this.theme}-background);\n          border-color: var(--app-color-${this.theme}-border);\n        }\n\n        .container:focus-within,\n        ::slotted(.container:focus-within) {\n          border-color: var(--app-color-${this.theme}-selected);\n          filter: contrast(var(--app-color-percent-selected));\n        }\n      </style>\n      <div class=\"container border\">\n        <nidoca-icon style=\"padding-right:var(--space);padding-left:var(--space);\" icon=\"search\"></nidoca-icon>\n        <input\n          id=\"inputElement\"\n          type=\"text\"\n          value=\"${this.value}\"\n          placeholder=\"${this.placeholder}\"\n          ?disabled=\"${this.disabled}\"\n          @input=\"${() => this.valueChanged()}\"\n        />\n        <nidoca-icon\n          style=\"padding-right:var(--space);padding-left:var(--space);\"\n          icon=\"close\"\n          @click=\"${() => this.clearValue()}\"\n        ></nidoca-icon>\n      </div>\n    `;\n    }\n    clearValue() {\n        this.value = '';\n    }\n    valueChanged() {\n        var _a;\n        return __awaiter(this, void 0, void 0, function* () {\n            const eventName = 'nidoca-search-bar-event-value-changed';\n            const customEvent = new CustomEvent(eventName, {\n                detail: (_a = this.inputElement) === null || _a === void 0 ? void 0 : _a.value,\n                bubbles: true,\n                composed: true,\n            });\n            console.debug('dispatch custom event type: %s, detail: %s', customEvent.type, JSON.stringify(customEvent.detail));\n            this.dispatchEvent(customEvent);\n        });\n    }\n}"
+          "default": "class NidocaSearchBar extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.value = '';\n        this.placeholder = '';\n        this.disabled = false;\n        this.theme = NidocaTheme.surface;\n    }\n    render() {\n        return html `\n      <style>\n        .container,\n        input {\n          color: var(--app-color-text-${this.theme});\n          background-color: var(--app-color-${this.theme}-background);\n          border-color: var(--app-color-${this.theme}-border);\n        }\n\n        .container:focus-within,\n        ::slotted(.container:focus-within) {\n          border-color: var(--app-color-${this.theme}-selected);\n          background-color: var(--app-color-${this.theme}-selected);\n        }\n      </style>\n      <div class=\"container border\">\n        <nidoca-icon style=\"padding-right:var(--space);padding-left:var(--space);\" icon=\"search\"></nidoca-icon>\n        <input\n          id=\"inputElement\"\n          type=\"text\"\n          value=\"${this.value}\"\n          placeholder=\"${this.placeholder}\"\n          ?disabled=\"${this.disabled}\"\n          @input=\"${() => this.valueChanged()}\"\n        />\n        <nidoca-icon\n          style=\"padding-right:var(--space);padding-left:var(--space);\"\n          icon=\"close\"\n          @click=\"${() => this.clearValue()}\"\n        ></nidoca-icon>\n      </div>\n    `;\n    }\n    clearValue() {\n        this.value = '';\n    }\n    valueChanged() {\n        var _a;\n        return __awaiter(this, void 0, void 0, function* () {\n            const eventName = 'nidoca-search-bar-event-value-changed';\n            const customEvent = new CustomEvent(eventName, {\n                detail: (_a = this.inputElement) === null || _a === void 0 ? void 0 : _a.value,\n                bubbles: true,\n                composed: true,\n            });\n            console.debug('dispatch custom event type: %s, detail: %s', customEvent.type, JSON.stringify(customEvent.detail));\n            this.dispatchEvent(customEvent);\n        });\n    }\n}"
         }
       ],
       "exports": [
@@ -2099,7 +2099,7 @@
         {
           "kind": "variable",
           "name": "NidocaSplitScreen",
-          "default": "class NidocaSplitScreen extends LitElement {\n    constructor() {\n        super();\n        this.hideSidebox = true;\n        this.theme = NidocaThemeHelper.prototype.getParentTheme(this) || NidocaTheme.background;\n    }\n    render() {\n        return html ` <style>\n        .listbox,\n        .sidebox {\n          color: var(--app-color-${this.theme});\n          background-color: var(--app-color-${this.theme}-background);\n        }\n\n        .sidebox {\n          border-color: var(--app-color-${this.theme}-border);\n          border-left-style: solid;\n          border-width: thin;\n        }\n      </style>\n      <slot class=\"listbox\" name=\"left\"></slot>\n      ${this.hideSidebox ? html `` : html ` <slot class=\"sidebox\" name=\"sidebox\"></slot>`}`;\n    }\n}"
+          "default": "class NidocaSplitScreen extends LitElement {\n    constructor() {\n        super();\n        this.hideSidebox = true;\n        this.theme = NidocaThemeHelper.prototype.getParentTheme(this) || NidocaTheme.background;\n    }\n    render() {\n        return html ` <style>\n        .listbox,\n        .sidebox {\n          color: var(--app-color-text-${this.theme});\n          background-color: var(--app-color-${this.theme}-background);\n        }\n\n        .sidebox {\n          border-color: var(--app-color-${this.theme}-border);\n          border-left-style: solid;\n          border-width: thin;\n        }\n      </style>\n      <slot class=\"listbox\" name=\"left\"></slot>\n      ${this.hideSidebox ? html `` : html ` <slot class=\"sidebox\" name=\"sidebox\"></slot>`}`;\n    }\n}"
         }
       ],
       "exports": [
@@ -2183,7 +2183,7 @@
         {
           "kind": "variable",
           "name": "NidocaTable",
-          "default": "class NidocaTable extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.headers = ['column 1', 'column 2'];\n        this.rows = [\n            ['row 1', new NidocaIcon()],\n            ['row 2', new NidocaIcon()],\n        ];\n        this.theme = NidocaTheme.background;\n    }\n    render() {\n        return html `\n      <style>\n        td,\n        th {\n          border-bottom: var(--border-width-min) solid var(--app-color-${this.theme}-border);\n          border-left: var(--border-width-min) solid var(--app-color-${this.theme}-border);\n        }\n\n        tr > td:last-of-type,\n        th:last-of-type {\n          border-right: var(--border-width-min) solid var(--app-color-${this.theme}-border);\n        }\n\n        th {\n          border-top: var(--border-width-min) solid var(--app-color-${this.theme}-border);\n          background-color: var(--app-color-${this.theme}-background);\n          color: var(--app-color-${this.theme});\n        }\n      </style>\n      <div>\n        <table>\n          <thead>\n            ${guard([this.headers], () => html ` ${repeat(this.headers, (header) => html ` <th colspan=\"1\" rowspan=\"1\">${header}</th> `)} `)}\n          </thead>\n          <tbody>\n            ${guard([this.rows], () => html `\n                  ${repeat(this.rows, (row) => html `\n                        <tr>\n                          ${repeat(row, (column) => html ` <td colspan=\"1\" rowspan=\"1\">${column}</td> `)}\n                        </tr>\n                      `)}\n                `)}\n          </tbody>\n        </table>\n      </div>\n    `;\n    }\n}"
+          "default": "class NidocaTable extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.headers = ['column 1', 'column 2'];\n        this.rows = [\n            ['row 1', new NidocaIcon()],\n            ['row 2', new NidocaIcon()],\n        ];\n        this.theme = NidocaTheme.background;\n    }\n    render() {\n        return html `\n      <style>\n        td,\n        th {\n          border-bottom: var(--border-width-min) solid var(--app-color-${this.theme}-border);\n          border-left: var(--border-width-min) solid var(--app-color-${this.theme}-border);\n        }\n\n        tr > td:last-of-type,\n        th:last-of-type {\n          border-right: var(--border-width-min) solid var(--app-color-${this.theme}-border);\n        }\n\n        th {\n          border-top: var(--border-width-min) solid var(--app-color-${this.theme}-border);\n          background-color: var(--app-color-${this.theme}-background);\n          color: var(--app-color-text-${this.theme});\n        }\n      </style>\n      <div>\n        <table>\n          <thead>\n            ${guard([this.headers], () => html ` ${repeat(this.headers, (header) => html ` <th colspan=\"1\" rowspan=\"1\">${header}</th> `)} `)}\n          </thead>\n          <tbody>\n            ${guard([this.rows], () => html `\n                  ${repeat(this.rows, (row) => html `\n                        <tr>\n                          ${repeat(row, (column) => html ` <td colspan=\"1\" rowspan=\"1\">${column}</td> `)}\n                        </tr>\n                      `)}\n                `)}\n          </tbody>\n        </table>\n      </div>\n    `;\n    }\n}"
         }
       ],
       "exports": [
@@ -2246,7 +2246,7 @@
         {
           "kind": "variable",
           "name": "NidocaTextBody",
-          "default": "class NidocaTextBody extends NidocaText {\n    render() {\n        return html ` ${super.render()}`;\n    }\n}"
+          "default": "class NidocaTextBody extends NidocaText {\n    render() {\n        return html ` <slot style=\"color: var(--app-color-text-${this.theme});\">${this.text}</slot>`;\n    }\n}"
         }
       ],
       "exports": [
@@ -2288,7 +2288,7 @@
         {
           "kind": "variable",
           "name": "NidocaTextCaption",
-          "default": "class NidocaTextCaption extends NidocaText {\n}"
+          "default": "class NidocaTextCaption extends NidocaText {\n    render() {\n        return html ` <slot style=\"color: var(--app-color-subtext-${this.theme});\">${this.text}</slot>`;\n    }\n}"
         }
       ],
       "exports": [
@@ -2561,7 +2561,7 @@
         {
           "kind": "variable",
           "name": "NidocaText",
-          "default": "class NidocaText extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.text = '';\n    }\n    render() {\n        return html ` <slot id=\"slotElement\">${this.text}</slot>`;\n    }\n}"
+          "default": "class NidocaText extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.theme = NidocaTheme.primary;\n        this.text = '';\n    }\n    render() {\n        return html ` <slot>${this.text}</slot>`;\n    }\n}"
         }
       ],
       "exports": [
@@ -2684,7 +2684,7 @@
         {
           "kind": "variable",
           "name": "NidocaWizardStep",
-          "default": "class NidocaWizardStep extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.icon = '';\n        this.primaryText = '';\n        this.isLast = false;\n        this.first = false;\n    }\n    render() {\n        return html `\n      <div\n        style=\"display:flex;flex-direction:row;flex-wrap:nowrap;align-items:flex-start;justify-content:space-evenly;align-content:space-evenly;\"\n      >\n        <div\n          style=\"display:flex;flex-direction:row;flex-wrap:nowrap;align-items:center;justify-content:flex-start;align-content:space-evenly;\"\n        >\n          <nidoca-icon\n            icon=\"${this.icon}\"\n            .iconShadowType=\"${NidocaIconShadowType.NONE}\"\n            .withIconSpace=\"${false}\"\n            .round=\"${true}\"\n            .clickable=\"${true}\"\n            .deactivated=\"${false}\"\n            color=\"${this.determineColor(this.state)}\"\n            backgroundColor=\"${this.determineBackgroundColor(this.state)}\"\n            size=\"24\"\n            @nidoca-event-icon-clicked=\"${() => this.stepClicked()}\"\n            sizeUnit=\"px\"\n          >\n          </nidoca-icon>\n\n          ${this.isLast\n            ? html ``\n            : html `<nidoca-icon color=\"${this.determineBackgroundColor(this.state)}\" icon=\"label_important\">\n              </nidoca-icon>`}\n        </div>\n        <nidoca-text style=\"width:48px;\" text=\"${this.primaryText}\"><slot></slot> </nidoca-text>\n      </div>\n    `;\n    }\n    determineBackgroundColor(state) {\n        return state == WizardStepState.completed\n            ? 'var(--app-color-primary)'\n            : state == WizardStepState.current\n                ? 'var(--app-color-secondary-background)'\n                : 'var(--app-color-surface-background)';\n    }\n    determineColor(state) {\n        return state == WizardStepState.finish\n            ? 'var(--app-color-success)'\n            : state == WizardStepState.completed\n                ? 'var(--mdc-theme-on-primary)'\n                : state == WizardStepState.current\n                    ? 'var(--app-color-secondary)'\n                    : 'var(--app-color-surface)';\n    }\n    stepClicked() {\n        const customEvent = new CustomEvent('nidoca-event-wizard-step-clicked', {\n            detail: this.index,\n            bubbles: true,\n            composed: true,\n        });\n        console.debug('dispatch custom event type: %s, detail: %s', customEvent.type, JSON.stringify(customEvent.detail));\n        this.dispatchEvent(customEvent);\n    }\n}"
+          "default": "class NidocaWizardStep extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.icon = '';\n        this.primaryText = '';\n        this.isLast = false;\n        this.first = false;\n    }\n    render() {\n        return html `\n      <div\n        style=\"display:flex;flex-direction:row;flex-wrap:nowrap;align-items:flex-start;justify-content:space-evenly;align-content:space-evenly;\"\n      >\n        <div\n          style=\"display:flex;flex-direction:row;flex-wrap:nowrap;align-items:center;justify-content:flex-start;align-content:space-evenly;\"\n        >\n          <nidoca-icon\n            icon=\"${this.icon}\"\n            .iconShadowType=\"${NidocaIconShadowType.NONE}\"\n            .withIconSpace=\"${false}\"\n            .round=\"${true}\"\n            .clickable=\"${true}\"\n            .deactivated=\"${false}\"\n            color=\"${this.determineColor(this.state)}\"\n            backgroundColor=\"${this.determineBackgroundColor(this.state)}\"\n            size=\"24\"\n            @nidoca-event-icon-clicked=\"${() => this.stepClicked()}\"\n            sizeUnit=\"px\"\n          >\n          </nidoca-icon>\n\n          ${this.isLast\n            ? html ``\n            : html `<nidoca-icon color=\"${this.determineBackgroundColor(this.state)}\" icon=\"label_important\">\n              </nidoca-icon>`}\n        </div>\n        <nidoca-text style=\"width:48px;\" text=\"${this.primaryText}\"><slot></slot> </nidoca-text>\n      </div>\n    `;\n    }\n    determineBackgroundColor(state) {\n        return state == WizardStepState.completed\n            ? 'var(--app-color-text-primary)'\n            : state == WizardStepState.current\n                ? 'var(--app-color-secondary-background)'\n                : 'var(--app-color-surface-background)';\n    }\n    determineColor(state) {\n        return state == WizardStepState.finish\n            ? 'var(--app-color-success)'\n            : state == WizardStepState.completed\n                ? 'var(--mdc-theme-on-primary)'\n                : state == WizardStepState.current\n                    ? 'var(--app-color-text-secondary)'\n                    : 'var(--app-color-text-surface)';\n    }\n    stepClicked() {\n        const customEvent = new CustomEvent('nidoca-event-wizard-step-clicked', {\n            detail: this.index,\n            bubbles: true,\n            composed: true,\n        });\n        console.debug('dispatch custom event type: %s, detail: %s', customEvent.type, JSON.stringify(customEvent.detail));\n        this.dispatchEvent(customEvent);\n    }\n}"
         }
       ],
       "exports": [
@@ -7364,7 +7364,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "'100%'",
+              "default": "'auto'",
               "inheritedFrom": {
                 "name": "NidocaImg",
                 "module": "src/nidoca-img.ts"
@@ -7376,7 +7376,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "'100%'",
+              "default": "'auto'",
               "inheritedFrom": {
                 "name": "NidocaImg",
                 "module": "src/nidoca-img.ts"
@@ -7429,7 +7429,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "'100%'"
+              "default": "'auto'"
             },
             {
               "kind": "field",
@@ -7437,7 +7437,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "'100%'"
+              "default": "'auto'"
             },
             {
               "kind": "method",
@@ -7721,22 +7721,14 @@
               "kind": "field",
               "name": "styles",
               "static": true,
-              "default": "css`\n    .container {\n      display: grid;\n      cursor: pointer;\n      grid-template-columns: 1fr 1fr minmax(auto, 100%) 1fr;\n      padding: var(--space-2);\n    }\n\n    .item {\n      align-self: center;\n      display: grid;\n      align-items: center;\n      grid-template-columns: 1fr;\n      flex-basis: 100%;\n    }\n\n    .containerTypography {\n      display: flex;\n      flex-direction: row;\n      flex-wrap: wrap;\n      align-self: center;\n    }\n  `"
+              "default": "css`\n    .container {\n      display: grid;\n      cursor: pointer;\n      grid-template-columns: min-content 1fr min-content;\n      padding: var(--space-2);\n    }\n\n    .item {\n      display: grid;\n      align-items: center;\n      grid-template-columns: 1fr;\n      flex-basis: 100%;\n    }\n\n    .left {\n      padding-right: var(--space-2);\n    }\n\n    .right {\n      padding-left: var(--space-2);\n    }\n\n    .containerTypography {\n      display: flex;\n      flex-direction: row;\n      flex-wrap: wrap;\n      align-self: center;\n    }\n  `"
             },
             {
               "kind": "field",
               "name": "theme",
               "type": {
-                "text": "string | undefined"
+                "text": "string"
               }
-            },
-            {
-              "kind": "field",
-              "name": "selectable",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false"
             },
             {
               "kind": "field",
@@ -7783,13 +7775,7 @@
           ],
           "events": [
             {
-              "name": "nidoca-event-list-item-select",
-              "type": {
-                "text": "CustomEvent"
-              }
-            },
-            {
-              "name": "nidoca-event-list-item-unselect",
+              "name": "nidoca-event-list-item-clicked",
               "type": {
                 "text": "CustomEvent"
               }
@@ -7890,7 +7876,7 @@
               "kind": "field",
               "name": "theme",
               "type": {
-                "text": "string | undefined"
+                "text": "string"
               }
             },
             {
@@ -8071,7 +8057,7 @@
               "kind": "field",
               "name": "styles",
               "static": true,
-              "default": "css`\n    .container {\n      display: flex;\n      cursor: pointer;\n      padding-left: var(--space-2);\n      padding-right: var(--space-2);\n      padding-top: var(--space);\n      padding-bottom: var(--space);\n    }\n\n    .container:hover {\n      backdrop-filter: contrast(var(--app-color-percent-hover));\n    }\n\n    .selected {\n      backdrop-filter: contrast(var(--app-color-percent-selected));\n    }\n  `"
+              "default": "css`\n    .container {\n      display: flex;\n      cursor: pointer;\n      padding-left: var(--space-2);\n      padding-right: var(--space-2);\n      padding-top: var(--space);\n      padding-bottom: var(--space);\n    }\n\n    .selected {\n      backdrop-filter: contrast(var(--app-color-percent-selected));\n    }\n  `"
             },
             {
               "kind": "field",
@@ -8096,6 +8082,13 @@
                 "text": "boolean"
               },
               "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "theme",
+              "type": {
+                "text": "string"
+              }
             },
             {
               "kind": "method",
@@ -8157,7 +8150,7 @@
               "kind": "field",
               "name": "theme",
               "type": {
-                "text": "string | undefined"
+                "text": "string"
               }
             },
             {
@@ -8176,6 +8169,23 @@
                   "text": "TemplateResult"
                 }
               }
+            },
+            {
+              "kind": "method",
+              "name": "updated",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "changedProperties",
+                  "type": {
+                    "text": "PropertyValues"
+                  }
+                }
+              ]
             },
             {
               "kind": "method",
@@ -9227,7 +9237,7 @@
               "kind": "field",
               "name": "styles",
               "static": true,
-              "default": "css`\n    :host {\n      display: flex;\n      flex-direction: row;\n      width: 100vw;\n      height: 100vh;\n    }\n\n    #left {\n      display: block;\n      color: var(--app-color-primary);\n      background-color: var(--app-color-primary-background);\n      min-width: 280px;\n      min-height: 100%;\n      max-height: 100%;\n    }\n\n    #left.hideLeft {\n      transition: all 0.35s ease;\n      display: none;\n    }\n\n    @media screen and (max-width: 640px) {\n      #left {\n        position: fixed;\n        z-index: 1;\n      }\n    }\n\n    .right {\n      width: 100%;\n      height: 100vh;\n      overflow: scroll;\n    }\n  `"
+              "default": "css`\n    :host {\n      display: flex;\n      flex-direction: row;\n      width: 100vw;\n      height: 100vh;\n    }\n\n    #left {\n      display: block;\n      color: var(--app-color-text-primary);\n      background-color: var(--app-color-primary-background);\n      min-width: 280px;\n      min-height: 100%;\n      max-height: 100%;\n    }\n\n    #left.hideLeft {\n      transition: all 0.35s ease;\n      display: none;\n    }\n\n    @media screen and (max-width: 640px) {\n      #left {\n        position: fixed;\n        z-index: 1;\n      }\n    }\n\n    .right {\n      width: 100%;\n      height: 100vh;\n      overflow: scroll;\n    }\n  `"
             },
             {
               "kind": "field",
@@ -9328,7 +9338,7 @@
               "kind": "field",
               "name": "styles",
               "static": true,
-              "default": "css`\n    :host,\n    slot,\n    ::slotted(:host),\n    ::slotted(slot) {\n      display: block;\n      line-height: 1.5em;\n      font-weight: 400;\n    }\n  `",
+              "default": "css`\n    :host,\n    slot,\n    ::slotted(:host),\n    ::slotted(slot) {\n      display: block;\n      line-height: 1.25em;\n      font-weight: 600;\n      font-size: 105%;\n    }\n  `",
               "inheritedFrom": {
                 "name": "NidocaText",
                 "module": "src/nidoca-text.ts"
@@ -9341,6 +9351,17 @@
                 "type": {
                   "text": "TemplateResult"
                 }
+              },
+              "inheritedFrom": {
+                "name": "NidocaText",
+                "module": "src/nidoca-text.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "theme",
+              "type": {
+                "text": "string | undefined"
               },
               "inheritedFrom": {
                 "name": "NidocaText",
@@ -9411,6 +9432,17 @@
             },
             {
               "kind": "field",
+              "name": "theme",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "NidocaText",
+                "module": "src/nidoca-text.ts"
+              }
+            },
+            {
+              "kind": "field",
               "name": "text",
               "type": {
                 "text": "string"
@@ -9452,19 +9484,7 @@
               "kind": "field",
               "name": "styles",
               "static": true,
-              "default": "css`\n    :host,\n    slot,\n    ::slotted(:host),\n    ::slotted(slot) {\n      display: block;\n      font-weight: 400;\n      line-height: 1.5em;\n      filter: brightness(var(--app-lighten-3));\n    }\n  `",
-              "inheritedFrom": {
-                "name": "NidocaText",
-                "module": "src/nidoca-text.ts"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "text",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
+              "default": "css`\n    :host,\n    slot,\n    ::slotted(:host),\n    ::slotted(slot) {\n      display: block;\n      font-weight: 400;\n      line-height: 1.25em;\n    }\n  `",
               "inheritedFrom": {
                 "name": "NidocaText",
                 "module": "src/nidoca-text.ts"
@@ -9482,11 +9502,34 @@
                 "name": "NidocaText",
                 "module": "src/nidoca-text.ts"
               }
+            },
+            {
+              "kind": "field",
+              "name": "theme",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "NidocaText",
+                "module": "src/nidoca-text.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "text",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "inheritedFrom": {
+                "name": "NidocaText",
+                "module": "src/nidoca-text.ts"
+              }
             }
           ],
           "superclass": {
             "name": "NidocaText",
-            "module": "/src/"
+            "module": "/src/nidoca-text"
           }
         }
       ],
@@ -9522,19 +9565,7 @@
               "kind": "field",
               "name": "styles",
               "static": true,
-              "default": "css`\n    :host,\n    slot,\n    ::slotted(:host),\n    ::slotted(slot) {\n      display: block;\n      font-weight: 400;\n      line-height: 1.5em;\n      filter: brightness(var(--app-lighten-3));\n    }\n  `",
-              "inheritedFrom": {
-                "name": "NidocaText",
-                "module": "src/nidoca-text.ts"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "text",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
+              "default": "css`\n    :host,\n    slot,\n    ::slotted(:host),\n    ::slotted(slot) {\n      display: block;\n      font-weight: 400;\n      line-height: 1.25em;\n    }\n  `",
               "inheritedFrom": {
                 "name": "NidocaText",
                 "module": "src/nidoca-text.ts"
@@ -9548,6 +9579,29 @@
                   "text": "TemplateResult"
                 }
               },
+              "inheritedFrom": {
+                "name": "NidocaText",
+                "module": "src/nidoca-text.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "theme",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "NidocaText",
+                "module": "src/nidoca-text.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "text",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
               "inheritedFrom": {
                 "name": "NidocaText",
                 "module": "src/nidoca-text.ts"
@@ -9585,6 +9639,17 @@
               "name": "styles",
               "static": true,
               "default": "css`\n    :host,\n    slot,\n    ::slotted(:host),\n    ::slotted(slot) {\n      display: block;\n      font-weight: 600;\n      font-size: 200%;\n      line-height: 1em;\n    }\n  `",
+              "inheritedFrom": {
+                "name": "NidocaText",
+                "module": "src/nidoca-text.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "theme",
+              "type": {
+                "text": "string | undefined"
+              },
               "inheritedFrom": {
                 "name": "NidocaText",
                 "module": "src/nidoca-text.ts"
@@ -9654,6 +9719,17 @@
             },
             {
               "kind": "field",
+              "name": "theme",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "NidocaText",
+                "module": "src/nidoca-text.ts"
+              }
+            },
+            {
+              "kind": "field",
               "name": "text",
               "type": {
                 "text": "string"
@@ -9709,6 +9785,17 @@
               "name": "styles",
               "static": true,
               "default": "css`\n    :host,\n    slot,\n    ::slotted(:host),\n    ::slotted(slot) {\n      display: block;\n      font-weight: 600;\n      font-size: 150%;\n      line-height: 1.5em;\n    }\n  `",
+              "inheritedFrom": {
+                "name": "NidocaText",
+                "module": "src/nidoca-text.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "theme",
+              "type": {
+                "text": "string | undefined"
+              },
               "inheritedFrom": {
                 "name": "NidocaText",
                 "module": "src/nidoca-text.ts"
@@ -9778,6 +9865,17 @@
             },
             {
               "kind": "field",
+              "name": "theme",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "NidocaText",
+                "module": "src/nidoca-text.ts"
+              }
+            },
+            {
+              "kind": "field",
               "name": "text",
               "type": {
                 "text": "string"
@@ -9833,6 +9931,17 @@
               "name": "styles",
               "static": true,
               "default": "css`\n    :host,\n    slot,\n    ::slotted(:host),\n    ::slotted(slot) {\n      display: block;\n      font-weight: 400;\n      font-size: 110%;\n      line-height: 1.5em;\n    }\n  `",
+              "inheritedFrom": {
+                "name": "NidocaText",
+                "module": "src/nidoca-text.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "theme",
+              "type": {
+                "text": "string | undefined"
+              },
               "inheritedFrom": {
                 "name": "NidocaText",
                 "module": "src/nidoca-text.ts"
@@ -9902,6 +10011,17 @@
             },
             {
               "kind": "field",
+              "name": "theme",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "NidocaText",
+                "module": "src/nidoca-text.ts"
+              }
+            },
+            {
+              "kind": "field",
               "name": "text",
               "type": {
                 "text": "string"
@@ -9964,19 +10084,7 @@
               "kind": "field",
               "name": "styles",
               "static": true,
-              "default": "css`\n    :host,\n    slot,\n    ::slotted(:host),\n    ::slotted(slot) {\n      display: block;\n      font-weight: 400;\n      line-height: 1.5em;\n      filter: brightness(var(--app-lighten-3));\n    }\n  `",
-              "inheritedFrom": {
-                "name": "NidocaText",
-                "module": "src/nidoca-text.ts"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "text",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
+              "default": "css`\n    :host,\n    slot,\n    ::slotted(:host),\n    ::slotted(slot) {\n      display: block;\n      font-weight: 400;\n      line-height: 1.25em;\n    }\n  `",
               "inheritedFrom": {
                 "name": "NidocaText",
                 "module": "src/nidoca-text.ts"
@@ -9990,6 +10098,29 @@
                   "text": "TemplateResult"
                 }
               },
+              "inheritedFrom": {
+                "name": "NidocaText",
+                "module": "src/nidoca-text.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "theme",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "NidocaText",
+                "module": "src/nidoca-text.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "text",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
               "inheritedFrom": {
                 "name": "NidocaText",
                 "module": "src/nidoca-text.ts"
@@ -10027,6 +10158,17 @@
               "name": "styles",
               "static": true,
               "default": "css`\n    :host,\n    slot,\n    ::slotted(:host),\n    ::slotted(slot) {\n      display: block;\n      line-height: 1;\n      font-weight: 400;\n      text-transform: uppercase;\n    }\n  `",
+              "inheritedFrom": {
+                "name": "NidocaText",
+                "module": "src/nidoca-text.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "theme",
+              "type": {
+                "text": "string | undefined"
+              },
               "inheritedFrom": {
                 "name": "NidocaText",
                 "module": "src/nidoca-text.ts"
@@ -10109,6 +10251,17 @@
             },
             {
               "kind": "field",
+              "name": "theme",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "NidocaText",
+                "module": "src/nidoca-text.ts"
+              }
+            },
+            {
+              "kind": "field",
               "name": "text",
               "type": {
                 "text": "string"
@@ -10158,19 +10311,7 @@
               "kind": "field",
               "name": "styles",
               "static": true,
-              "default": "css`\n    :host,\n    slot,\n    ::slotted(:host),\n    ::slotted(slot) {\n      display: block;\n      font-weight: 400;\n      line-height: 1.5em;\n      filter: brightness(var(--app-lighten-3));\n    }\n  `",
-              "inheritedFrom": {
-                "name": "NidocaText",
-                "module": "src/nidoca-text.ts"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "text",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
+              "default": "css`\n    :host,\n    slot,\n    ::slotted(:host),\n    ::slotted(slot) {\n      display: block;\n      font-weight: 400;\n      line-height: 1.25em;\n    }\n  `",
               "inheritedFrom": {
                 "name": "NidocaText",
                 "module": "src/nidoca-text.ts"
@@ -10184,6 +10325,29 @@
                   "text": "TemplateResult"
                 }
               },
+              "inheritedFrom": {
+                "name": "NidocaText",
+                "module": "src/nidoca-text.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "theme",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "NidocaText",
+                "module": "src/nidoca-text.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "text",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
               "inheritedFrom": {
                 "name": "NidocaText",
                 "module": "src/nidoca-text.ts"
@@ -10228,19 +10392,7 @@
               "kind": "field",
               "name": "styles",
               "static": true,
-              "default": "css`\n    :host,\n    slot,\n    ::slotted(:host),\n    ::slotted(slot) {\n      display: block;\n      font-weight: 400;\n      line-height: 1.5em;\n      filter: brightness(var(--app-lighten-3));\n    }\n  `",
-              "inheritedFrom": {
-                "name": "NidocaText",
-                "module": "src/nidoca-text.ts"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "text",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
+              "default": "css`\n    :host,\n    slot,\n    ::slotted(:host),\n    ::slotted(slot) {\n      display: block;\n      font-weight: 400;\n      line-height: 1.25em;\n    }\n  `",
               "inheritedFrom": {
                 "name": "NidocaText",
                 "module": "src/nidoca-text.ts"
@@ -10254,6 +10406,29 @@
                   "text": "TemplateResult"
                 }
               },
+              "inheritedFrom": {
+                "name": "NidocaText",
+                "module": "src/nidoca-text.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "theme",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "NidocaText",
+                "module": "src/nidoca-text.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "text",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
               "inheritedFrom": {
                 "name": "NidocaText",
                 "module": "src/nidoca-text.ts"
@@ -10291,6 +10466,13 @@
               "name": "styles",
               "static": true,
               "default": "css`\n    :host,\n    slot,\n    ::slotted(:host),\n    ::slotted(slot) {\n      display: block;\n      font-weight: 400;\n      line-height: 1.5em;\n    }\n  `"
+            },
+            {
+              "kind": "field",
+              "name": "theme",
+              "type": {
+                "text": "string | undefined"
+              }
             },
             {
               "kind": "field",
@@ -10347,7 +10529,7 @@
               "kind": "field",
               "name": "theme",
               "type": {
-                "text": "string | undefined"
+                "text": "string"
               }
             },
             {
@@ -10698,7 +10880,7 @@
               "kind": "field",
               "name": "styles",
               "static": true,
-              "default": "css`\n    .wizard-step-connector {\n      color: var(--app-color-surface);\n      background-color: var(--app-color-surface-background);\n      padding: var(--space);\n    }\n\n    .wizard-step-connector.selected {\n      padding: var(--space);\n      color: var(--mdc-theme-on-primary);\n      background-color: var(--app-color-primary);\n    }\n  `"
+              "default": "css`\n    .wizard-step-connector {\n      color: var(--app-color-surface);\n      background-color: var(--app-color-surface-background);\n      padding: var(--space);\n    }\n\n    .wizard-step-connector.selected {\n      padding: var(--space);\n      color: var(--mdc-theme-on-primary);\n      background-color: var(--app-text-color-primary);\n    }\n  `"
             },
             {
               "kind": "field",
@@ -11459,7 +11641,7 @@
               "kind": "field",
               "name": "styles",
               "static": true,
-              "default": "css`\n    :host {\n      display: grid;\n      grid-template-columns: 1fr 1fr;\n      height: 100vh;\n      width: 100vw;\n    }\n\n    .right {\n      background-color: var(--app-color-primary-background);\n    }\n\n    .left {\n      margin: auto;\n      width: min-content;\n      height: min-content;\n    }\n\n    @media only screen and (max-width: 640px) {\n      :host {\n        grid-template-columns: 1fr;\n      }\n      .right {\n        display: block;\n        overflow: hidden;\n        position: absolute;\n        height: 100%;\n        width: 100%;\n        opacity: 0.1;\n        z-index: -1;\n      }\n    }\n  `"
+              "default": "css`\n    :host {\n      display: grid;\n      grid-template-columns: 1fr 1fr;\n      height: 100vh;\n      width: 100vw;\n    }\n\n    .right {\n      background-color: var(--app-color-text-primary-background);\n    }\n\n    .left {\n      margin: auto;\n      width: min-content;\n      height: min-content;\n    }\n\n    @media only screen and (max-width: 640px) {\n      :host {\n        grid-template-columns: 1fr;\n      }\n      .right {\n        display: block;\n        overflow: hidden;\n        position: absolute;\n        height: 100%;\n        width: 100%;\n        opacity: 0.1;\n        z-index: -1;\n      }\n    }\n  `"
             },
             {
               "kind": "method",

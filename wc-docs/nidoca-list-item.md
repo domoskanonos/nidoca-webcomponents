@@ -2,13 +2,12 @@
 
 ## Properties
 
-| Property        | Attribute       | Type                  | Default |
-|-----------------|-----------------|-----------------------|---------|
-| `primaryText`   | `primaryText`   | `string`              | ""      |
-| `secondaryText` | `secondaryText` | `string`              | ""      |
-| `selectable`    | `selectable`    | `boolean`             | false   |
-| `selected`      | `selected`      | `boolean`             | false   |
-| `theme`         | `theme`         | `string \| undefined` |         |
+| Property        | Attribute       | Type      | Default     |
+|-----------------|-----------------|-----------|-------------|
+| `primaryText`   | `primaryText`   | `string`  | ""          |
+| `secondaryText` | `secondaryText` | `string`  | ""          |
+| `selected`      | `selected`      | `boolean` | false       |
+| `theme`         | `theme`         | `string`  | "secondary" |
 
 ## Methods
 
@@ -18,7 +17,6 @@
 
 ## Events
 
-| Event                             | Type                |
-|-----------------------------------|---------------------|
-| `nidoca-event-list-item-select`   | `CustomEvent<this>` |
-| `nidoca-event-list-item-unselect` | `CustomEvent<this>` |
+| Event                            | Type                   |
+|----------------------------------|------------------------|
+| `nidoca-event-list-item-clicked` | `CustomEvent<boolean>` |

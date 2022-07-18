@@ -2,11 +2,12 @@
 
 ## Properties
 
-| Property   | Attribute  | Type      | Default |
-|------------|------------|-----------|---------|
-| `icon`     | `icon`     | `string`  | ""      |
-| `selected` | `selected` | `boolean` | false   |
-| `text`     | `text`     | `string`  | ""      |
+| Property   | Attribute  | Type      | Default   |
+|------------|------------|-----------|-----------|
+| `icon`     | `icon`     | `string`  | ""        |
+| `selected` | `selected` | `boolean` | false     |
+| `text`     | `text`     | `string`  | ""        |
+| `theme`    | `theme`    | `string`  | "surface" |
 
 ## Events
 
