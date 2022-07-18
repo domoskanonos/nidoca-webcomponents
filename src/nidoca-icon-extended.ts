@@ -65,7 +65,7 @@ export class NidocaIconExtended extends LitElement {
       <style>
         .iconExtended {
           display: inline-block;
-          color: var(--app-color-${this.theme});
+          color: var(--app-color-text-${this.theme});
           background-color: var(--app-color-${this.theme}-background);
         }
       </style>

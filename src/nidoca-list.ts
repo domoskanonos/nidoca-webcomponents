@@ -1,6 +1,6 @@
 import {css, html, LitElement, PropertyValues, TemplateResult} from 'lit';
 import {customElement, property, query} from 'lit/decorators.js';
-import {NidocaTheme, NidocaThemeHelper} from '.';
+import {NidocaTheme} from '.';
 import {NidocaListItem} from './nidoca-list-item';
 
 @customElement('nidoca-list')
@@ -16,8 +16,8 @@ export class NidocaList extends LitElement {
     }
   `;
 
-  @property({type: NidocaTheme, converter: String})
-  theme: string | undefined;
+  @property({type: String})
+  theme: string = NidocaTheme.surface;
 
   @property({type: Boolean})
   multiSelect: boolean = false;
@@ -25,18 +25,12 @@ export class NidocaList extends LitElement {
   @query('#slotElement')
   private slotElement: HTMLSlotElement | undefined;
 
-  constructor() {
-    super();
-    this.theme = NidocaThemeHelper.prototype.getParentTheme(this) || NidocaTheme.background;
-  }
-
   updated(changedProperties: PropertyValues): void {
     super.updated(changedProperties);
-    changedProperties.forEach((oldValue, propName) => {
-      console.debug(`${this.tagName} : property ${String(propName)} changed. oldValue: ${oldValue}`);
-      if (propName == 'multiSelect') {
+    changedProperties.forEach((_oldValue, propName) => {
+      if (propName == 'theme') {
         this.getItems().forEach((listItemComponent) => {
-          listItemComponent.selectable = this.multiSelect;
+          listItemComponent.theme = this.theme;
         });
       }
     });
@@ -45,33 +39,32 @@ export class NidocaList extends LitElement {
   render(): TemplateResult {
     return html`
       <style>
-        slot {
+        ::slotted(nidoca-list-section) {
+          color: var(--app-color-text-${this.theme});
+          background-color: var(--app-color-${this.theme}-hover);
+        }
+
+        ::slotted(nidoca-list-section) {
           border-color: var(--app-color-${this.theme}-border);
-          border-top-style: solid;
+          border-bottom-style: solid;
           border-width: thin;
         }
 
-        ::slotted(nidoca-list-section) {
-          color: var(--app-color-${this.theme});
-          backdrop-filter: contrast(var(--app-color-percent-optional));
-        }
-
-        ::slotted(nidoca-list-item) {
-          color: var(--app-color-${this.theme});
-          background-color: var(--app-color-${this.theme}-background);
-        }
-
-        ::slotted(nidoca-list-item),
-        ::slotted(nidoca-list-section) {
-          border-bottom-style: solid;
-          border-width: var(--border-width-min);
-        }
-
         ::slotted(nidoca-list-item:hover) {
-          filter: contrast(var(--app-color-percent-hover));
+          background-color: var(--app-color-${this.theme}-hover);
         }
       </style>
-      <slot class="slotList" id="slotElement"></slot>
+      <slot
+        @nidoca-event-list-item-clicked="${(event: CustomEvent) => {
+          if (!this.multiSelect) {
+            this.unselectAll();
+            const nidocaListItem: NidocaListItem = <NidocaListItem>event.target;
+            nidocaListItem.selected = true;
+          }
+        }}"
+        class="slotList"
+        id="slotElement"
+      ></slot>
     `;
   }
 

@@ -58,7 +58,7 @@ export class NidocaSplitScreen extends LitElement {
     return html` <style>
         .listbox,
         .sidebox {
-          color: var(--app-color-${this.theme});
+          color: var(--app-color-text-${this.theme});
           background-color: var(--app-color-${this.theme}-background);
         }
 

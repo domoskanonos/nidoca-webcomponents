@@ -139,7 +139,7 @@ export class NidocaFormText extends NidocaFormAbstractInputElement {
       : html` <style>
             .parentContainer,
             ::slotted(.parentContainer) {
-              color: var(--app-color-${this.theme});
+              color: var(--app-color-text-${this.theme});
               background-color: var(--app-color-${this.theme}-background);
             }
 
@@ -151,7 +151,7 @@ export class NidocaFormText extends NidocaFormAbstractInputElement {
             .parentContainer:focus-within,
             ::slotted(.parentContainer:focus-within) {
               border-color: var(--app-color-${this.theme}-border);
-              filter: contrast(var(--app-color-percent-selected));
+              background-color: var(--app-color-${this.theme}-selected);
             }
           </style>
           <div class="parentContainer border">

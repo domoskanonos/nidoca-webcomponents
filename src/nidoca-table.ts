@@ -60,7 +60,7 @@ export class NidocaTable extends LitElement {
         th {
           border-top: var(--border-width-min) solid var(--app-color-${this.theme}-border);
           background-color: var(--app-color-${this.theme}-background);
-          color: var(--app-color-${this.theme});
+          color: var(--app-color-text-${this.theme});
         }
       </style>
       <div>

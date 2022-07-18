@@ -59,7 +59,7 @@ export class NidocaSearchBar extends LitElement {
       <style>
         .container,
         input {
-          color: var(--app-color-${this.theme});
+          color: var(--app-color-text-${this.theme});
           background-color: var(--app-color-${this.theme}-background);
           border-color: var(--app-color-${this.theme}-border);
         }
@@ -67,7 +67,7 @@ export class NidocaSearchBar extends LitElement {
         .container:focus-within,
         ::slotted(.container:focus-within) {
           border-color: var(--app-color-${this.theme}-selected);
-          filter: contrast(var(--app-color-percent-selected));
+          background-color: var(--app-color-${this.theme}-selected);
         }
       </style>
       <div class="container border">

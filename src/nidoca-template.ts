@@ -15,7 +15,7 @@ export class NidocaTemplate extends LitElement {
 
     #left {
       display: block;
-      color: var(--app-color-primary);
+      color: var(--app-color-text-primary);
       background-color: var(--app-color-primary-background);
       min-width: 280px;
       min-height: 100%;

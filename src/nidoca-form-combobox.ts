@@ -108,7 +108,7 @@ export class NidocaFormCombobox extends NidocaFormAbstractInputElement {
     return html` <style>
         .parentContainer,
         ::slotted(.parentContainer) {
-          color: var(--app-color-${this.theme});
+          color: var(--app-color-text-${this.theme});
           background-color: var(--app-color-${this.theme}-background);
           border-color: var(--app-color-${this.theme}-border);
         }
@@ -120,7 +120,7 @@ export class NidocaFormCombobox extends NidocaFormAbstractInputElement {
         }
 
         option {
-          color: var(--app-color-${this.theme});
+          color: var(--app-color-text-${this.theme});
           background-color: var(--app-color-${this.theme}-background);
         }
       </style>

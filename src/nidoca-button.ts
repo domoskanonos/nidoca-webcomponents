@@ -59,12 +59,12 @@ export class NidocaButton extends LitElement {
       <style>
         .outlined {
           color: var(--app-color-${this.theme}-background);
-          background-color: var(--app-color-${this.theme});
+          background-color: var(--app-color-text-${this.theme});
           border-color: var(--app-color-${this.theme}-background);
         }
 
         .contained {
-          color: var(--app-color-${this.theme});
+          color: var(--app-color-text-${this.theme});
           background-color: var(--app-color-${this.theme}-background);
           border-color: var(--app-color-${this.theme}-background);
         }
@@ -74,7 +74,7 @@ export class NidocaButton extends LitElement {
         }
 
         :hover {
-          filter: contrast(var(--app-color-percent-hover));
+          background-color: var(--app-color-${this.theme}-hover);
         }
       </style>
       <div

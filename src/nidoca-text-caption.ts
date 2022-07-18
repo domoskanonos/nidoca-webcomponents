@@ -1,6 +1,6 @@
-import {css} from 'lit';
+import {css, html, TemplateResult} from 'lit';
 import {customElement} from 'lit/decorators.js';
-import {NidocaText} from '.';
+import {NidocaText} from './nidoca-text';
 
 @customElement('nidoca-text-caption')
 export class NidocaTextCaption extends NidocaText {
@@ -11,8 +11,11 @@ export class NidocaTextCaption extends NidocaText {
     ::slotted(slot) {
       display: block;
       font-weight: 400;
-      line-height: 1.5em;
-      filter: brightness(var(--app-lighten-3));
+      line-height: 1.25em;
     }
   `;
+
+  render(): TemplateResult {
+    return html` <slot style="color: var(--app-color-subtext-${this.theme});">${this.text}</slot>`;
+  }
 }

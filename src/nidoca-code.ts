@@ -48,7 +48,7 @@ export class NidocaCode extends LitElement {
     return html`
       <style>
         code {
-          color: var(--app-color-${this.theme});
+          color: var(--app-color-text-${this.theme});
           background: var(--app-color-${this.theme}-background);
           border: solid 1px var(--app-color-${this.theme}-border);
         }

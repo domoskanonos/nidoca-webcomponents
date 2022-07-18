@@ -1,4 +1,4 @@
-import {css, html, TemplateResult, LitElement} from 'lit';
+import {css, html, TemplateResult, LitElement, PropertyValues} from 'lit';
 import {customElement, property, query} from 'lit/decorators.js';
 import {NidocaMenuItem, NidocaTheme} from '.';
 
@@ -11,8 +11,8 @@ export class NidocaMenu extends LitElement {
     }
   `;
 
-  @property({type: NidocaTheme, converter: String})
-  theme: string | undefined = NidocaTheme.secondary;
+  @property({type: String})
+  theme: string = NidocaTheme.surface;
 
   @query('#slotElement')
   private slotElement: HTMLSlotElement | undefined;
@@ -22,12 +22,29 @@ export class NidocaMenu extends LitElement {
         :host,
         *,
         ::slotted(*) {
-          color: var(--app-color-${this.theme});
+          color: var(--app-color-text-${this.theme});
           background-color: var(--app-color-${this.theme}-background);
           border-color: var(--app-color-${this.theme}-border);
         }
       </style>
       <slot id="slotElement"></slot>`;
+  }
+
+  updated(changedProperties: PropertyValues): void {
+    super.updated(changedProperties);
+    changedProperties.forEach((_oldValue, propName) => {
+      if (propName == 'theme') {
+        if (this.slotElement != null) {
+          const slottedElements = this.slotElement.assignedElements();
+          for (let index = 0; index < slottedElements.length; index++) {
+            const element = slottedElements[index];
+            if (element instanceof NidocaMenuItem) {
+              element.theme = this.theme;
+            }
+          }
+        }
+      }
+    });
   }
 
   protected firstUpdated() {

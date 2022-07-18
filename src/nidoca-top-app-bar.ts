@@ -39,8 +39,8 @@ export class NidocaTopAppBar extends LitElement {
     }
   `;
 
-  @property({type: NidocaTheme, converter: String})
-  theme: string | undefined = NidocaTheme.primary;
+  @property({type: String, converter: String})
+  theme: string = NidocaTheme.primary;
 
   @property({type: Boolean})
   prominent: boolean = false;

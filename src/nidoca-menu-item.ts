@@ -1,6 +1,7 @@
 import {css, html, TemplateResult, LitElement} from 'lit';
 import {customElement} from 'lit/decorators.js';
 import {property} from 'lit/decorators.js';
+import {NidocaTheme} from './nidoca-meta';
 
 @customElement('nidoca-menu-item')
 export class NidocaMenuItem extends LitElement {
@@ -12,10 +13,6 @@ export class NidocaMenuItem extends LitElement {
       padding-right: var(--space-2);
       padding-top: var(--space);
       padding-bottom: var(--space);
-    }
-
-    .container:hover {
-      backdrop-filter: contrast(var(--app-color-percent-hover));
     }
 
     .selected {
@@ -32,8 +29,16 @@ export class NidocaMenuItem extends LitElement {
   @property({type: Boolean})
   selected: boolean = false;
 
+  @property({type: String})
+  theme: string = NidocaTheme.surface;
+
   render(): TemplateResult {
     return html`
+      <style>
+        .container:hover {
+          background-color: var(--app-color-${this.theme}-hover);
+        }
+      </style>
       <div class="container ${this.selected ? 'selected' : ''}" @click="${() => this.clicked()}">
         ${this.icon
           ? html` <nidoca-icon
@@ -42,7 +47,7 @@ export class NidocaMenuItem extends LitElement {
               style="padding-right:var(--space); font-size:var(--icon-size);"
             ></nidoca-icon>`
           : html``}
-        ${this.text ? html` <nidoca-text>${this.text}</nidoca-text>` : html``}
+        ${this.text ? html` <nidoca-text-body theme="${this.theme}">${this.text}</nidoca-text-body>` : html``}
       </div>
     `;
   }

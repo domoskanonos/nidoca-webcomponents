@@ -12,7 +12,7 @@ export class NidocaPageLogin extends LitElement {
     }
 
     .right {
-      background-color: var(--app-color-primary-background);
+      background-color: var(--app-color-text-primary-background);
     }
 
     .left {

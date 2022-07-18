@@ -114,7 +114,7 @@ export class NidocaFormSwitch extends NidocaFormAbstractInputElement {
         }
 
         input:checked + .slider:before {
-          background-color: var(--app-color-${this.theme});
+          background-color: var(--app-color-text-${this.theme});
         }
 
         input:checked + .slider {

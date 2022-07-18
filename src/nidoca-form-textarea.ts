@@ -89,7 +89,7 @@ export class NidocaFormTextarea extends NidocaFormAbstractInputElement {
     return html` <style>
         .parentContainer,
         ::slotted(.parentContainer) {
-          color: var(--app-color-${this.theme});
+          color: var(--app-color-text-${this.theme});
           background-color: var(--app-color-${this.theme}-background);
         }
 
@@ -100,7 +100,7 @@ export class NidocaFormTextarea extends NidocaFormAbstractInputElement {
 
         .parentContainer:focus-within,
         ::slotted(.parentContainer:focus-within) {
-          filter: contrast(var(--app-color-percent-hover));
+          background-color: var(--app-color-${this.theme}-hover);
         }
       </style>
       <div class="parentContainer">

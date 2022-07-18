@@ -18,10 +18,10 @@ export class NidocaImg extends LitElement {
   src: string = '';
 
   @property({type: String})
-  width: string = '100%';
+  width: string = 'auto';
 
   @property({type: String})
-  height: string = '100%';
+  height: string = 'auto';
 
   render(): TemplateResult {
     return this.src ? html`<img width="${this.width}" height="${this.height}" src="${this.src}" />` : html``;
