@@ -1,7 +1,6 @@
 import {css, html, TemplateResult, LitElement} from 'lit';
 import {customElement} from 'lit/decorators.js';
 import {property} from 'lit/decorators.js';
-import {NidocaTheme, NidocaThemeHelper} from './nidoca-meta';
 
 @customElement('nidoca-icon')
 export class NidocaIcon extends LitElement {
