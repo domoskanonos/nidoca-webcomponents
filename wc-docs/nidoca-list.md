@@ -4,7 +4,7 @@
 
 | Property      | Attribute     | Type      | Default   |
 |---------------|---------------|-----------|-----------|
-| `multiSelect` | `multiSelect` | `boolean` | false     |
+| `multiselect` | `multiselect` | `boolean` | false     |
 | `theme`       | `theme`       | `string`  | "surface" |
 
 ## Methods

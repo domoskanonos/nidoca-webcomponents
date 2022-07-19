@@ -2,12 +2,12 @@
 
 ## Properties
 
-| Property        | Attribute       | Type      | Default     |
-|-----------------|-----------------|-----------|-------------|
-| `primaryText`   | `primaryText`   | `string`  | ""          |
-| `secondaryText` | `secondaryText` | `string`  | ""          |
-| `selected`      | `selected`      | `boolean` | false       |
-| `theme`         | `theme`         | `string`  | "secondary" |
+| Property        | Attribute       | Type      | Default   |
+|-----------------|-----------------|-----------|-----------|
+| `primaryText`   | `primaryText`   | `string`  | ""        |
+| `secondaryText` | `secondaryText` | `string`  | ""        |
+| `selected`      | `selected`      | `boolean` | false     |
+| `theme`         | `theme`         | `string`  | "surface" |
 
 ## Methods
 
