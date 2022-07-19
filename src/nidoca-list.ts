@@ -16,7 +16,7 @@ export class NidocaList extends LitElement {
     }
   `;
 
-  @property({type: String})
+  @property({type: NidocaTheme, converter: String})
   theme: string = NidocaTheme.surface;
 
   @property({type: Boolean})
