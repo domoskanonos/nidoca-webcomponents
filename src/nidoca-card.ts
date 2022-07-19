@@ -1,6 +1,6 @@
 import {css, html, LitElement, TemplateResult} from 'lit';
 import {customElement, property} from 'lit/decorators.js';
-import {NidocaTheme, NidocaThemeHelper} from './nidoca-meta';
+import {NidocaTheme} from './nidoca-meta';
 
 @customElement('nidoca-card')
 export class NidocaCard extends LitElement {
@@ -14,7 +14,10 @@ export class NidocaCard extends LitElement {
       box-shadow: 0 var(--space) var(--space) rgba(0, 0, 0, 0.08), 0 var(--space) var(--space) rgba(0, 0, 0, 0.16);
     }
     slot {
-      display: block;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
     }
   `;
 
@@ -25,6 +28,7 @@ export class NidocaCard extends LitElement {
     return html`
       <style>
         :host {
+          background-color: var(--app-color-${this.theme}-background);
           border-color: var(--app-color-${this.theme}-border);
         }
       </style>

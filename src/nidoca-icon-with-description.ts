@@ -25,12 +25,12 @@ export class NidocaIconWithDescription extends LitElement {
   render(): TemplateResult {
     return html`
       <nidoca-icon icon="${this.icon}" style="font-size: 8vw; padding:var(--space-4);"></nidoca-icon>
-      <nidoca-text
+      <nidoca-text-body
         style="padding-left:var(--space-4);padding-right:var(--space-4);padding-bottom:var(--space-4);text-align:center;"
       >
         ${this.text}
         <slot></slot>
-      </nidoca-text>
+      </nidoca-text-body>
     `;
   }
 }

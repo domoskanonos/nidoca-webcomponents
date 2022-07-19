@@ -1,41 +1,26 @@
 import {css, html, LitElement, TemplateResult} from 'lit';
 import {customElement} from 'lit/decorators.js';
+import {NidocaImgRound} from '../nidoca-img-round';
+import {NidocaList} from '../nidoca-list';
+import {NidocaListItem} from '../nidoca-list-item';
+import {NidocaListSection} from '../nidoca-list-section';
 
 @customElement('nidoca-page-main')
 export class NidocaPageMain extends LitElement {
   static styles = css``;
   render(): TemplateResult {
     return html`
-      <nidoca-container style="padding-top:20vh;padding-bottom:20vh;">
+      <nidoca-container style="">
         <div style="display:flex;align-items:center;justify-content:center;align-content:flex-start;">
           <nidoca-img src="logo.svg" width="128px"></nidoca-img>
-          <nidoca-text-h1 style="padding-left:var(--space-2);">nidoca-webcomponents</nidoca-text-h1>
+          <nidoca-text-h2 style="padding-left:var(--space-2);">nidoca-webcomponents</nidoca-text-h2>
         </div>
       </nidoca-container>
+      <!--
       <nidoca-container theme="primary">
-        <nidoca-section>
-          <nidoca-icon-with-description title="Komponentenbibliothek" icon="local_library">
-            Die Nidoca Webcomponents ist eine Sammlung von Webkomponenten mit über 36 Komponenten. Diese sind für den
-            direkten Einsatz in deiner Webanwendung. Egal ob normales HTML, Angular, React, Lit. Die Komponenten können
-            dank der Webcomponent Technologie überall in andere Frameworks eingebaungen werden.
-          </nidoca-icon-with-description>
-          <nidoca-icon-with-description title="Leichtgewichtig" icon="code">
-            Es ist ein sehr kleines, leichtes Komponenten-Framework, das nur 32 KB klein ist. Es enthält mehr als 30
-            Komponenten und diverse Zusatzfunktionen wie Routing / Internationalisierung und Speicherung. Komponenten
-            können einfach angepasst werden und sind sehr einfach erweiterbar. erstellen.
-          </nidoca-icon-with-description>
-          <nidoca-icon-with-description title="Open Source" icon="lightbulb">
-            Es ist ein Open-Source-Projekt, das Sie auf Github finden können. Du kannst das Projekt natürlich gerne
-            finanziell unterstützen, wenn es dir gefällt.
-          </nidoca-icon-with-description>
-        </nidoca-section>
-      </nidoca-container>
+        <nidoca-text-h1 style="text-align:center;">HTML Einbindung</nidoca-text-h1>
 
-      <nidoca-container theme="background">
-        <nidoca-icon-with-description title="HTML" icon="code">
-          So einfach kannst du die Komponenten in deine HTML Seite einbinden und verwenden:
-        </nidoca-icon-with-description>
-        <nidoca-code style="padding-bottom:var(--space-4)"
+        <nidoca-code
           >&lt;script
           src=&quot;https://domoskanonos.github.io/nidoca-webcomponents/webcomponents/nidoca-webcomponents.js&quot;&gt;&lt;/script&gt;
           &lt;style&gt;@import
@@ -43,6 +28,49 @@ export class NidocaPageMain extends LitElement {
           &lt;nidoca-button&gt;Mein Button&lt;/nidoca-button&gt;
         </nidoca-code>
       </nidoca-container>
+  -->
+      <nidoca-container>
+        <nidoca-text-h1 style="text-align:center;">Komponenten</nidoca-text-h1>
+      </nidoca-container>
+
+      ${this.getComponentHtml(NidocaImgRound, new NidocaImgRound(), 'Rundes Bild')}
+      ${this.getComponentHtml(
+        NidocaListSection,
+        new NidocaListSection(),
+        'Unterkomponente für die Komponente <nidoca-list/>'
+      )}
+      ${this.getComponentHtml(
+        NidocaListItem,
+        new NidocaListItem(),
+        'Unterkomponente für die Komponente <nidoca-list/>'
+      )}
+      ${this.getComponentHtml(
+        NidocaList,
+        new NidocaList(),
+        'Listenkomponente für mobile und Desktop Anwendungen. Unterkomponenten dieser Komponente sind nidoca-list-section und nidoca-list-item'
+      )}
     `;
+  }
+
+  getComponentHtml(clazz: any, instance: any, text: string) {
+    return html` <nidoca-container>
+      <nidoca-section style="padding:var(--space-4);">
+        <nidoca-card theme="primary" style="padding:var(--space-4); heigth:500px;"> ${clazz.example()} </nidoca-card>
+        <nidoca-article
+          style="padding:var(--space-4);"
+          theme="surface"
+          overline="<${instance.tagName}></${instance.tagName}>"
+          title="${instance.tagName}"
+          text="${text}"
+        >
+          <nidoca-button
+            style="width:250px;"
+            @nidoca-event-button-clicked="${() =>
+              window.open('https://domoskanonos.github.io/nidoca-lit-viewer/', '_blank')}"
+            >Ausprobieren</nidoca-button
+          >
+        </nidoca-article>
+      </nidoca-section>
+    </nidoca-container>`;
   }
 }

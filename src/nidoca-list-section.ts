@@ -1,7 +1,7 @@
 import {css, html, TemplateResult, LitElement} from 'lit';
 import {customElement} from 'lit/decorators.js';
 import {property} from 'lit/decorators.js';
-import {NidocaTheme, NidocaThemeHelper} from './nidoca-meta';
+import {NidocaTheme} from './nidoca-meta';
 
 @customElement('nidoca-list-section')
 export class NidocaListSection extends LitElement {
@@ -9,24 +9,40 @@ export class NidocaListSection extends LitElement {
   :host {
      display:block;
      padding-left: var(--space-2);  
+     width:100%;
+     box-sizing:border-box;
   `;
 
   @property({type: NidocaTheme, converter: String})
-  theme: string | undefined;
+  theme: string = NidocaTheme.surface;
 
   @property({type: String})
   text: string = '';
 
-  constructor() {
-    super();
-    this.theme = NidocaThemeHelper.prototype.getParentTheme(this) || NidocaTheme.background;
-  }
-
   render(): TemplateResult {
     return html`
-      <nidoca-text-caption style="flex-basis:100%;" text="${this.text}">
+      <style>
+        :host {
+          color: var(--app-color-text-${this.theme});
+          background-color: var(--app-color-${this.theme}-background-dark);
+          border-color: var(--app-color-${this.theme}-border);
+          border-bottom-style: solid;
+          border-width: thin;
+        }
+
+        :host {
+          border-color: var(--app-color-${this.theme}-border);
+          border-bottom-style: solid;
+          border-width: thin;
+        }
+      </style>
+      <nidoca-text-body theme="${this.theme}" style="flex-basis:100%;" text="${this.text}">
         <slot></slot>
-      </nidoca-text-caption>
+      </nidoca-text-body>
     `;
+  }
+
+  static example(): TemplateResult {
+    return html`<nidoca-list-section>Section A</nidoca-list-section>`;
   }
 }

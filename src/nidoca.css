@@ -25,20 +25,28 @@ div {
   --app-color-text-primary: #ececec;
   --app-color-subtext-primary: #ececec;
   --app-color-primary-background: #2c4776;
+  --app-color-primary-background-light: #ffffff;
+  --app-color-primary-background-dark: #e6e6e6;
   --app-color-primary-border: #868686;
   --app-color-primary-hover: #6c84af;
+  --app-color-primary-selected: #770202;
 
   --app-color-text-secondary: #ffffff;
   --app-color-subtext-secondary: #ffffff;
   --app-color-secondary-background: #b20505;
+  --app-color-secondary-background-light: #ffffff;
+  --app-color-secondary-background-dark: #e6e6e6;
   --app-color-secondary-border: #808080;
   --app-color-secondary-hover: #770202;
+  --app-color-secondary-selected: #770202;
 
   --app-color-text-surface: #353535;
   --app-color-subtext-surface: #5a5a5a;
   --app-color-surface-background: #ffffff;
+  --app-color-surface-background-light: #ffffff;
+  --app-color-surface-background-dark: #e6e6e6;
   --app-color-surface-border: #c9c9c9;
-  --app-color-surface-hover: #eeeeee;
+  --app-color-surface-hover: #b4b2b2;
   --app-color-surface-selected: #c7c7c7;
 
   --app-color-error-background: #c45353;

@@ -1,6 +1,7 @@
 import {css, html, TemplateResult, LitElement} from 'lit';
 import {customElement} from 'lit/decorators.js';
 import {property} from 'lit/decorators.js';
+import {NidocaTheme} from './nidoca-meta';
 
 @customElement('nidoca-article')
 export class NidocaArticle extends LitElement {
@@ -20,6 +21,9 @@ export class NidocaArticle extends LitElement {
     }
   `;
 
+  @property({type: NidocaTheme, converter: String})
+  theme: string = NidocaTheme.primary;
+
   @property({type: String})
   overline: string = '';
 
@@ -35,12 +39,20 @@ export class NidocaArticle extends LitElement {
   render(): TemplateResult {
     return html`
       <div style="display:flex; flex-direction:column;">
-        ${this.overline ? html` <nidoca-text class="paddingBottom">${this.overline}</nidoca-text> ` : html``}
-        ${this.title ? html` <nidoca-text-h2 class="paddingBottom">${this.title}</nidoca-text-h2> ` : html``}
-        ${this.summary
-          ? html` <nidoca-text-caption class="paddingBottom">${this.summary}</nidoca-text-caption> `
+        ${this.overline
+          ? html` <nidoca-text-body theme="${this.theme}" class="paddingBottom">${this.overline}</nidoca-text-body> `
           : html``}
-        ${this.text ? html` <nidoca-text class="paddingBottom">${this.text}</nidoca-text>` : html``}
+        ${this.title
+          ? html` <nidoca-text-h2 theme="${this.theme}" class="paddingBottom">${this.title}</nidoca-text-h2> `
+          : html``}
+        ${this.summary
+          ? html`
+              <nidoca-text-caption theme="${this.theme}" class="paddingBottom">${this.summary}</nidoca-text-caption>
+            `
+          : html``}
+        ${this.text
+          ? html` <nidoca-text-body theme="${this.theme}" class="paddingBottom">${this.text}</nidoca-text-body>`
+          : html``}
         <slot></slot>
       </div>
     `;

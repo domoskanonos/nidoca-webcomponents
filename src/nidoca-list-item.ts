@@ -1,7 +1,7 @@
 import {css, html, LitElement, TemplateResult} from 'lit';
 import {customElement} from 'lit/decorators.js';
 import {property} from 'lit/decorators.js';
-import {NidocaTheme} from '.';
+import {NidocaImgRound, NidocaTheme} from '.';
 
 @customElement('nidoca-list-item')
 export class NidocaListItem extends LitElement {
@@ -36,17 +36,17 @@ export class NidocaListItem extends LitElement {
     }
   `;
 
-  @property({type: String})
-  theme: string = NidocaTheme.secondary;
-
-  @property({type: Boolean})
-  selected: boolean = false;
+  @property({type: NidocaTheme, converter: String})
+  theme: string = NidocaTheme.surface;
 
   @property({type: String})
   primaryText: string = '';
 
   @property({type: String})
   secondaryText: string = '';
+
+  @property({type: Boolean})
+  selected: boolean = false;
 
   render(): TemplateResult {
     return html`
@@ -58,7 +58,10 @@ export class NidocaListItem extends LitElement {
           border-bottom-style: solid;
           border-width: thin;
         }
-        .selected {
+        .container:hover {
+          background-color: var(--app-color-${this.theme}-hover);
+        }
+        .container.selected {
           background-color: var(--app-color-${this.theme}-selected);
         }
       </style>
@@ -90,5 +93,12 @@ export class NidocaListItem extends LitElement {
         composed: true,
       })
     );
+  }
+
+  static example(slotName: string = ''): TemplateResult {
+    return html`<nidoca-list-item slot="${slotName}" primaryText="List Item" secondaryText="List Item Secondary Text">
+      ${NidocaImgRound.example('left')}
+      <nidoca-icon slot="right" icon="menu"></nidoca-icon>
+    </nidoca-list-item>`;
   }
 }

@@ -91,7 +91,7 @@ export * from './nidoca-box';
 
 export * from './nidoca-article';
 
-export * from './nidoca-icon-with-description';
+export * from './nidoca-article';
 export * from './nidoca-form-contact';
 
 export * from './pages/nidoca-page-login';

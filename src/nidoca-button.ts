@@ -43,7 +43,7 @@ export class NidocaButton extends LitElement {
   `;
 
   @property({type: NidocaTheme, converter: String})
-  theme: string | undefined = NidocaTheme.primary;
+  theme: string = NidocaTheme.primary;
 
   @property({type: NidocaButtonType, converter: String})
   buttonType: NidocaButtonType = NidocaButtonType.contained;

@@ -1,6 +1,6 @@
 import {css, html, LitElement, PropertyValues, TemplateResult} from 'lit';
 import {customElement, property, query} from 'lit/decorators.js';
-import {NidocaTheme} from '.';
+import {NidocaListSection, NidocaTheme} from '.';
 import {NidocaListItem} from './nidoca-list-item';
 
 @customElement('nidoca-list')
@@ -9,7 +9,7 @@ export class NidocaList extends LitElement {
     :host {
       width: 100%;
     }
-    .slotList {
+    #slotElement {
       display: grid;
       grid-template-rows: 1fr;
       grid-template-columns: 1fr;
@@ -20,7 +20,7 @@ export class NidocaList extends LitElement {
   theme: string = NidocaTheme.surface;
 
   @property({type: Boolean})
-  multiSelect: boolean = false;
+  multiselect: boolean = false;
 
   @query('#slotElement')
   private slotElement: HTMLSlotElement | undefined;
@@ -38,31 +38,14 @@ export class NidocaList extends LitElement {
 
   render(): TemplateResult {
     return html`
-      <style>
-        ::slotted(nidoca-list-section) {
-          color: var(--app-color-text-${this.theme});
-          background-color: var(--app-color-${this.theme}-hover);
-        }
-
-        ::slotted(nidoca-list-section) {
-          border-color: var(--app-color-${this.theme}-border);
-          border-bottom-style: solid;
-          border-width: thin;
-        }
-
-        ::slotted(nidoca-list-item:hover) {
-          background-color: var(--app-color-${this.theme}-hover);
-        }
-      </style>
       <slot
         @nidoca-event-list-item-clicked="${(event: CustomEvent) => {
-          if (!this.multiSelect) {
+          if (!this.multiselect) {
             this.unselectAll();
             const nidocaListItem: NidocaListItem = <NidocaListItem>event.target;
             nidocaListItem.selected = true;
           }
         }}"
-        class="slotList"
         id="slotElement"
       ></slot>
     `;
@@ -123,9 +106,14 @@ export class NidocaList extends LitElement {
   }
 
   unselectAll(): void {
-    console.log('sdojsdoijsoidjsdioj ' + this.getItems().length);
     this.getItems().forEach((item) => {
       item.selected = false;
     });
+  }
+
+  static example(): TemplateResult {
+    return html`<nidoca-list theme="surface">
+      ${NidocaListSection.example()} ${NidocaListItem.example()} ${NidocaListItem.example()} ${NidocaListItem.example()}
+    </nidoca-list>`;
   }
 }

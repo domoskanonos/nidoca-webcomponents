@@ -60,6 +60,14 @@ export class NidocaMyApp extends LitElement implements NidocaRouteListener {
           >Github</nidoca-link
         >
 
+        <nidoca-link
+          slot="topRight"
+          style="padding-right:var(--space-2);"
+          targetType="_blank"
+          href="https://domoskanonos.github.io/nidoca-lit-viewer/"
+          >Spielwiese</nidoca-link
+        >
+
         <div slot="content">${this.content}</div>
 
         <div slot="left" style="height:var(--height-medium);"></div>
