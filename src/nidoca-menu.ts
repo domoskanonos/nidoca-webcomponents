@@ -67,4 +67,20 @@ export class NidocaMenu extends LitElement {
       }
     });
   }
+
+  static example(slotName: string = ''): TemplateResult {
+    return html`
+      <nidoca-menu slot="${slotName}" theme="primary">
+        <nidoca-menu-item text="Start"></nidoca-menu-item>
+        <nidoca-menu-area text="Framework"></nidoca-menu-area>
+        <nidoca-menu-item text="Komponenten"></nidoca-menu-item>
+        <nidoca-menu-area icon="gavel" text="Rechtliches"></nidoca-menu-area>
+        <nidoca-menu-item text="Impressum"></nidoca-menu-item>
+        <nidoca-menu-item text="Datenschutz"></nidoca-menu-item>
+        <nidoca-menu-item text="Nutzungsbedingungen"></nidoca-menu-item>
+        <nidoca-menu-area text="Sonstiges"></nidoca-menu-area>
+        <nidoca-menu-item icon="home" text="Einstellungen"></nidoca-menu-item>
+      </nidoca-menu>
+    `;
+  }
 }

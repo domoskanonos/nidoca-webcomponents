@@ -112,7 +112,7 @@ export class NidocaList extends LitElement {
   }
 
   static example(): TemplateResult {
-    return html`<nidoca-list theme="surface">
+    return html`<nidoca-list theme="primary">
       ${NidocaListSection.example()} ${NidocaListItem.example()} ${NidocaListItem.example()} ${NidocaListItem.example()}
     </nidoca-list>`;
   }

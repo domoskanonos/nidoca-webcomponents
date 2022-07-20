@@ -96,7 +96,12 @@ export class NidocaListItem extends LitElement {
   }
 
   static example(slotName: string = ''): TemplateResult {
-    return html`<nidoca-list-item slot="${slotName}" primaryText="List Item" secondaryText="List Item Secondary Text">
+    return html`<nidoca-list-item
+      theme="primary"
+      slot="${slotName}"
+      primaryText="List Item"
+      secondaryText="List Item Secondary Text"
+    >
       ${NidocaImgRound.example('left')}
       <nidoca-icon slot="right" icon="menu"></nidoca-icon>
     </nidoca-list-item>`;

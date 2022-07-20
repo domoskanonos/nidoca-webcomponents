@@ -38,7 +38,7 @@ export class NidocaArticle extends LitElement {
 
   render(): TemplateResult {
     return html`
-      <div style="display:flex; flex-direction:column;">
+      <div style="background-color: var(--app-color-${this.theme}-background); display:flex; flex-direction:column;">
         ${this.overline
           ? html` <nidoca-text-body theme="${this.theme}" class="paddingBottom">${this.overline}</nidoca-text-body> `
           : html``}
@@ -56,5 +56,17 @@ export class NidocaArticle extends LitElement {
         <slot></slot>
       </div>
     `;
+  }
+
+  static example(slotName: string = ''): TemplateResult {
+    return html`<nidoca-article
+      theme="surface"
+      slot="${slotName}"
+      style="padding:25px;"
+      overline="Lorem Ipsum Dolorem"
+      title="Lorem Ipsum"
+      summary="Lorem Ipsum Dolorem ipsum med en to."
+      text="Lorem Ipsum Dolorem ipsum med en to. Lorem Ipsum Dolorem ipsum med en to. Lorem Ipsum Dolorem ipsum med en to. Lorem Ipsum Dolorem ipsum med en to."
+    ></nidoca-article>`;
   }
 }

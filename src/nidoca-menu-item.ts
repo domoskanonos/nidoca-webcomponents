@@ -61,4 +61,8 @@ export class NidocaMenuItem extends LitElement {
       })
     );
   }
+
+  static example(slotName: string = ''): TemplateResult {
+    return html`<nidoca-menu-item slot="${slotName}" text="Start" icon="home"></nidoca-menu-item>`;
+  }
 }

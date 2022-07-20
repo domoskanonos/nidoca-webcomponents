@@ -1,6 +1,7 @@
 import {css, html, LitElement, TemplateResult} from 'lit';
 import {customElement} from 'lit/decorators.js';
 import {property} from 'lit/decorators.js';
+import {NidocaTheme} from './nidoca-meta';
 
 @customElement('nidoca-accordion-item')
 export class NidocaAccordionItem extends LitElement {
@@ -27,6 +28,9 @@ export class NidocaAccordionItem extends LitElement {
     }
   `;
 
+  @property({type: NidocaTheme, converter: String})
+  theme: string = NidocaTheme.surface;
+
   @property({type: String})
   header: string = '';
 
@@ -36,7 +40,7 @@ export class NidocaAccordionItem extends LitElement {
   render(): TemplateResult {
     return html`
       <div @click="${() => this.toggle()}" class="header">
-        <nidoca-text text="${this.header}"></nidoca-text>
+        <nidoca-text theme="${this.theme}" text="${this.header}"></nidoca-text>
         <nidoca-icon icon="${this.opened ? 'keyboard_arrow_down' : 'keyboard_arrow_up'}"></nidoca-icon>
       </div>
       ${this.opened ? html` <slot></slot>` : html``}

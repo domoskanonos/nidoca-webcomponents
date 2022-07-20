@@ -47,13 +47,32 @@ export class NidocaTopAppBar extends LitElement {
 
   render(): TemplateResult {
     return html`
-      ${NidocaThemeHelper.getStyle(this.theme)}
+      <style>
+        * {
+          color: var(--app-color-text-${this.theme});
+          background-color: var(--app-color-${this.theme}-background);
+          border-color: var(--app-color-${this.theme}-border);
+        }
+      </style>
+
       <div class="bar">
         <slot name="left" style="justify-content:flex-start;"></slot>
         <slot name="center" style="justify-content:center;"></slot>
         <slot name="right" style="justify-content:flex-end;"></slot>
       </div>
       ${this.prominent ? html` <slot class="prominent" name="prominent"></slot>` : html``}
+    `;
+  }
+
+  static example(slotName: string = ''): TemplateResult {
+    return html`
+      <nidoca-top-app-bar slot="${slotName}" style="min-height: 48px;" theme="primary" prominent>
+        <nidoca-text-body slot="center">Toolbar</nidoca-text-body>
+        <nidoca-icon slot="left" style="padding-left:var(--space)" clickable icon="menu"></nidoca-icon>
+        <nidoca-icon slot="right" style="padding-right:var(--space)" icon="search"></nidoca-icon>
+        <nidoca-icon slot="right" style="padding-right:var(--space)" icon="more_vert" clickable></nidoca-icon>
+        <nidoca-search-bar theme="primary" slot="prominent" placeholder="Suche..."></nidoca-search-bar>
+      </nidoca-top-app-bar>
     `;
   }
 }

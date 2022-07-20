@@ -2,7 +2,7 @@ import {css, html, TemplateResult, LitElement} from 'lit';
 import {customElement} from 'lit/decorators.js';
 import {property} from 'lit/decorators.js';
 import {query} from 'lit/decorators.js';
-import {NidocaTheme, NidocaThemeHelper} from '.';
+import {NidocaTheme} from '.';
 
 @customElement('nidoca-search-bar')
 export class NidocaSearchBar extends LitElement {
@@ -65,7 +65,7 @@ export class NidocaSearchBar extends LitElement {
         }
 
         .container:focus-within,
-        ::slotted(.container:focus-within) {
+        input:focus-within {
           border-color: var(--app-color-${this.theme}-selected);
           background-color: var(--app-color-${this.theme}-selected);
         }
@@ -102,5 +102,9 @@ export class NidocaSearchBar extends LitElement {
     });
     console.debug('dispatch custom event type: %s, detail: %s', customEvent.type, JSON.stringify(customEvent.detail));
     this.dispatchEvent(customEvent);
+  }
+
+  static example(slotName: string = ''): TemplateResult {
+    return html`<nidoca-search-bar slot="${slotName}" theme="primary" placeholder="Suche..."></nidoca-search-bar>`;
   }
 }

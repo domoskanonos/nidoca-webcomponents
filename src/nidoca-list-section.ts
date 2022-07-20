@@ -43,6 +43,6 @@ export class NidocaListSection extends LitElement {
   }
 
   static example(): TemplateResult {
-    return html`<nidoca-list-section>Section A</nidoca-list-section>`;
+    return html`<nidoca-list-section theme="primary">Section A</nidoca-list-section>`;
   }
 }

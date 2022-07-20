@@ -82,4 +82,10 @@ export class NidocaIcon extends LitElement {
       );
     }
   }
+
+  static example(slotName: string = ''): TemplateResult {
+    return html`
+      <nidoca-icon slot="${slotName}" style="padding-left:var(--space)" clickable icon="menu"></nidoca-icon>
+    `;
+  }
 }

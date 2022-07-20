@@ -1,9 +1,20 @@
 import {css, html, LitElement, TemplateResult} from 'lit';
 import {customElement} from 'lit/decorators.js';
+import {NidocaAccordion} from '../nidoca-accordion';
+import {NidocaArticle} from '../nidoca-article';
+import {NidocaAvatar} from '../nidoca-avatar';
+import {NidocaButton} from '../nidoca-button';
+import {NidocaChip} from '../nidoca-chip';
+import {NidocaImg} from '../nidoca-img';
 import {NidocaImgRound} from '../nidoca-img-round';
 import {NidocaList} from '../nidoca-list';
 import {NidocaListItem} from '../nidoca-list-item';
 import {NidocaListSection} from '../nidoca-list-section';
+import {NidocaMenu} from '../nidoca-menu';
+import {NidocaMenuArea} from '../nidoca-menu-area';
+import {NidocaMenuItem} from '../nidoca-menu-item';
+import {NidocaSearchBar} from '../nidoca-search-bar';
+import {NidocaTopAppBar} from '../nidoca-top-app-bar';
 
 @customElement('nidoca-page-main')
 export class NidocaPageMain extends LitElement {
@@ -33,7 +44,18 @@ export class NidocaPageMain extends LitElement {
         <nidoca-text-h1 style="text-align:center;">Komponenten</nidoca-text-h1>
       </nidoca-container>
 
+      ${this.getComponentHtml(NidocaTopAppBar, new NidocaTopAppBar(), 'Top App Bar Komponente')}
+      ${this.getComponentHtml(NidocaChip, new NidocaChip(), 'Chip Komponente')}
+      ${this.getComponentHtml(NidocaArticle, new NidocaArticle(), 'Artikel Komponente')}
+      ${this.getComponentHtml(NidocaAccordion, new NidocaAccordion(), 'Accordion Komponente')}
+      ${this.getComponentHtml(NidocaButton, new NidocaButton(), 'Button')}
+      ${this.getComponentHtml(NidocaMenu, new NidocaMenu(), 'Menü')}
+      ${this.getComponentHtml(NidocaMenuItem, new NidocaMenuItem(), 'Menüelement')}
+      ${this.getComponentHtml(NidocaMenuArea, new NidocaMenuArea(), 'Menübereich')}
+      ${this.getComponentHtml(NidocaSearchBar, new NidocaSearchBar(), 'Suchfeld')}
+      ${this.getComponentHtml(NidocaImg, new NidocaImg(), 'Einfaches Bild')}
       ${this.getComponentHtml(NidocaImgRound, new NidocaImgRound(), 'Rundes Bild')}
+      ${this.getComponentHtml(NidocaAvatar, new NidocaAvatar(), 'Avatar Komponente, Bild mit Text')}
       ${this.getComponentHtml(
         NidocaListSection,
         new NidocaListSection(),
@@ -55,7 +77,7 @@ export class NidocaPageMain extends LitElement {
   getComponentHtml(clazz: any, instance: any, text: string) {
     return html` <nidoca-container>
       <nidoca-section style="padding:var(--space-4);">
-        <nidoca-card theme="primary" style="padding:var(--space-4); heigth:500px;"> ${clazz.example()} </nidoca-card>
+        <nidoca-card theme="surface" style="padding:var(--space-4); heigth:500px;"> ${clazz.example()} </nidoca-card>
         <nidoca-article
           style="padding:var(--space-4);"
           theme="surface"

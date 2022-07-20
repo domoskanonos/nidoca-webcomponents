@@ -11,6 +11,7 @@ export class NidocaText extends LitElement {
     ::slotted(:host),
     ::slotted(slot) {
       display: block;
+      font-size: 1em;
       font-weight: 400;
       line-height: 1.5em;
     }
@@ -23,6 +24,6 @@ export class NidocaText extends LitElement {
   text: string = '';
 
   render(): TemplateResult {
-    return html` <slot>${this.text}</slot>`;
+    return html` <slot style="color: var(--app-color-text-${this.theme});">${this.text}</slot>`;
   }
 }

@@ -35,4 +35,8 @@ export class NidocaMenuArea extends LitElement {
       </div>
     `;
   }
+
+  static example(slotName: string = ''): TemplateResult {
+    return html`<nidoca-menu-area slot="${slotName}" icon="gavel" text="Rechtliches"></nidoca-menu-area>`;
+  }
 }

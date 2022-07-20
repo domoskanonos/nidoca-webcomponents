@@ -1,8 +1,8 @@
-import {css, html, LitElement, TemplateResult} from 'lit';
+import {css, html, LitElement, TemplateResult, PropertyValues} from 'lit';
 import {customElement} from 'lit/decorators.js';
 import {property} from 'lit/decorators.js';
 import {query} from 'lit/decorators.js';
-import {NidocaTheme, NidocaThemeHelper} from '.';
+import {NidocaArticle, NidocaTheme, NidocaThemeHelper} from '.';
 import {NidocaAccordionItem} from './nidoca-accordion-item';
 
 export enum AccordionType {
@@ -20,10 +20,6 @@ export class NidocaAccordion extends LitElement {
       width: 100%;
       box-sizing: border-box;
     }
-
-    slot {
-      font-size: 0;
-    }
   `;
 
   @property({type: NidocaTheme, converter: String})
@@ -34,6 +30,23 @@ export class NidocaAccordion extends LitElement {
 
   @query('#accordionSlot')
   private accordionSlot: HTMLSlotElement | undefined;
+
+  updated(changedProperties: PropertyValues): void {
+    super.updated(changedProperties);
+    changedProperties.forEach((_oldValue, propName) => {
+      if (propName == 'theme') {
+        if (this.accordionSlot != null) {
+          const slottedElements = this.accordionSlot.assignedElements();
+          for (let index = 0; index < slottedElements.length; index++) {
+            const element = slottedElements[index];
+            if (element instanceof NidocaAccordionItem) {
+              element.theme = this.theme;
+            }
+          }
+        }
+      }
+    });
+  }
 
   render(): TemplateResult {
     return html`
@@ -63,5 +76,14 @@ export class NidocaAccordion extends LitElement {
         break;
     }
     event.stopPropagation();
+  }
+
+  static example(slotName: string = ''): TemplateResult {
+    return html`<nidoca-accordion slot="${slotName}" theme="surface">
+      <nidoca-accordion-item header="Lorem Ipsum" opened> ${NidocaArticle.example()} </nidoca-accordion-item>
+      <nidoca-accordion-item header="Lorem Ipsum 2"> ${NidocaArticle.example()} </nidoca-accordion-item>
+      <nidoca-accordion-item header="Lorem Ipsum 3"> ${NidocaArticle.example()} </nidoca-accordion-item>
+      <nidoca-accordion-item header="Lorem Ipsum 4"> ${NidocaArticle.example()} </nidoca-accordion-item>
+    </nidoca-accordion>`;
   }
 }

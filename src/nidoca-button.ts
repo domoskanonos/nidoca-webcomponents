@@ -104,4 +104,8 @@ export class NidocaButton extends LitElement {
       })
     );
   }
+
+  static example(slotName: string = ''): TemplateResult {
+    return html`<nidoca-button slot="${slotName}" text="Start" icon="home"></nidoca-button>`;
+  }
 }

@@ -36,6 +36,7 @@ module.exports = {
       patterns: [
         {from: 'src/nidoca.css', to: 'nidoca.css'},
         {from: 'src/logo.svg', to: 'logo.svg'},
+        {from: 'src/face.jpg', to: 'face.jpg'},
       ],
     }),
   ],
