@@ -2,6 +2,8 @@
 
 ## Properties
 
-| Property    | Attribute   | Type      | Default |
-|-------------|-------------|-----------|---------|
-| `clickable` | `clickable` | `boolean` | true    |
+| Property    | Attribute   | Type      | Default   |
+|-------------|-------------|-----------|-----------|
+| `clickable` | `clickable` | `boolean` | true      |
+| `text`      | `text`      | `string`  | ""        |
+| `theme`     | `theme`     | `string`  | "surface" |

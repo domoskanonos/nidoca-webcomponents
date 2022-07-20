@@ -2,10 +2,11 @@
 
 ## Properties
 
-| Property | Attribute | Type      | Default |
-|----------|-----------|-----------|---------|
-| `header` | `header`  | `string`  | ""      |
-| `opened` | `opened`  | `boolean` | false   |
+| Property | Attribute | Type      | Default   |
+|----------|-----------|-----------|-----------|
+| `header` | `header`  | `string`  | ""        |
+| `opened` | `opened`  | `boolean` | false     |
+| `theme`  | `theme`   | `string`  | "surface" |
 
 ## Methods
 
