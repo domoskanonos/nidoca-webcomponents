@@ -19,7 +19,7 @@ export class NidocaContainer extends LitElement {
   `;
 
   @property({type: String})
-  theme: string = NidocaTheme.background;
+  theme: string = NidocaTheme.plain;
 
   render(): unknown {
     return html`

@@ -3,7 +3,7 @@ import {customElement} from 'lit/decorators.js';
 import {property} from 'lit/decorators.js';
 import {guard} from 'lit/directives/guard.js';
 import {repeat} from 'lit/directives/repeat.js';
-import {NidocaTheme, NidocaThemeHelper} from '.';
+import {NidocaTheme} from '.';
 import {NidocaIcon} from './nidoca-icon';
 
 @customElement('nidoca-table')
@@ -41,7 +41,7 @@ export class NidocaTable extends LitElement {
   ];
 
   @property({type: NidocaTheme, converter: String})
-  theme: string = NidocaTheme.background;
+  theme: string = NidocaTheme.plain;
 
   render(): TemplateResult {
     return html`

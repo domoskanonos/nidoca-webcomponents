@@ -10,8 +10,8 @@ export class NidocaTextH4 extends NidocaText {
     ::slotted(:host),
     ::slotted(slot) {
       display: block;
-      font-weight: 400;
-      font-size: 115%;
+      font-weight: 600;
+      font-size: 130%;
       line-height: 1.5em;
     }
   `;

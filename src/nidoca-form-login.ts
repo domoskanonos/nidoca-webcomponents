@@ -17,7 +17,7 @@ export class NidocaFormLogin extends LitElement {
   `;
 
   @property({type: NidocaTheme, converter: String})
-  theme: string | undefined = NidocaTheme.transparent;
+  theme: string | undefined = NidocaTheme.plain;
 
   @property({type: String, converter: String})
   label: string = 'Anmeldung';

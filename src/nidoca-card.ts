@@ -22,7 +22,7 @@ export class NidocaCard extends LitElement {
   `;
 
   @property({type: NidocaTheme, converter: String})
-  theme: string = NidocaTheme.surface;
+  theme: string = NidocaTheme.plain;
 
   render(): TemplateResult {
     return html`

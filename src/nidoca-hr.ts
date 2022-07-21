@@ -19,7 +19,7 @@ export class NidocaHr extends LitElement {
 
   constructor() {
     super();
-    this.theme = NidocaThemeHelper.prototype.getParentTheme(this) || NidocaTheme.background;
+    this.theme = NidocaThemeHelper.prototype.getParentTheme(this) || NidocaTheme.plain;
   }
 
   render(): TemplateResult {

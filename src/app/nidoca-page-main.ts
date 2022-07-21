@@ -5,6 +5,7 @@ import {NidocaArticle} from '../nidoca-article';
 import {NidocaAvatar} from '../nidoca-avatar';
 import {NidocaButton} from '../nidoca-button';
 import {NidocaChip} from '../nidoca-chip';
+import {NidocaCode} from '../nidoca-code';
 import {NidocaImg} from '../nidoca-img';
 import {NidocaImgRound} from '../nidoca-img-round';
 import {NidocaList} from '../nidoca-list';
@@ -14,6 +15,9 @@ import {NidocaMenu} from '../nidoca-menu';
 import {NidocaMenuArea} from '../nidoca-menu-area';
 import {NidocaMenuItem} from '../nidoca-menu-item';
 import {NidocaSearchBar} from '../nidoca-search-bar';
+import {NidocaTab} from '../nidoca-tab';
+import {NidocaTabs} from '../nidoca-tabs';
+import {NidocaText} from '../nidoca-text';
 import {NidocaTopAppBar} from '../nidoca-top-app-bar';
 
 @customElement('nidoca-page-main')
@@ -44,6 +48,9 @@ export class NidocaPageMain extends LitElement {
         <nidoca-text-h1 style="text-align:center;">Komponenten</nidoca-text-h1>
       </nidoca-container>
 
+      ${this.getComponentHtml(NidocaCode, new NidocaCode(), 'Komponente um Quellcode darzustellen.')}
+      ${this.getComponentHtml(NidocaTabs, new NidocaTabs(), 'Top App Bar Komponente')}
+      ${this.getComponentHtml(NidocaText, new NidocaText(), 'Typography Komponenten')}
       ${this.getComponentHtml(NidocaTopAppBar, new NidocaTopAppBar(), 'Top App Bar Komponente')}
       ${this.getComponentHtml(NidocaChip, new NidocaChip(), 'Chip Komponente')}
       ${this.getComponentHtml(NidocaArticle, new NidocaArticle(), 'Artikel Komponente')}
@@ -77,10 +84,10 @@ export class NidocaPageMain extends LitElement {
   getComponentHtml(clazz: any, instance: any, text: string) {
     return html` <nidoca-container>
       <nidoca-section style="padding:var(--space-4);">
-        <nidoca-card theme="surface" style="padding:var(--space-4); heigth:500px;"> ${clazz.example()} </nidoca-card>
+        <nidoca-card style="padding:var(--space-4); heigth:500px;"> ${clazz.example()} </nidoca-card>
         <nidoca-article
           style="padding:var(--space-4);"
-          theme="surface"
+          theme="plain"
           overline="<${instance.tagName}></${instance.tagName}>"
           title="${instance.tagName}"
           text="${text}"

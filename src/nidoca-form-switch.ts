@@ -99,7 +99,7 @@ export class NidocaFormSwitch extends NidocaFormAbstractInputElement {
 
   constructor() {
     super();
-    this.theme = NidocaThemeHelper.prototype.getParentTheme(this) || NidocaTheme.background;
+    this.theme = NidocaThemeHelper.prototype.getParentTheme(this) || NidocaTheme.plain;
   }
 
   render(): TemplateResult {

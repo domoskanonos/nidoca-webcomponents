@@ -16,6 +16,11 @@ export class NidocaTextCaption extends NidocaText {
   `;
 
   render(): TemplateResult {
-    return html` <slot style="color: var(--app-color-subtext-${this.theme});">${this.text}</slot>`;
+    return html`<style>
+        slot {
+          color: var(--app-color-subtext-${this.theme});
+        }
+      </style>
+      <slot>${this.text}</slot>`;
   }
 }

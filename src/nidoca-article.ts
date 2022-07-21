@@ -22,7 +22,7 @@ export class NidocaArticle extends LitElement {
   `;
 
   @property({type: NidocaTheme, converter: String})
-  theme: string = NidocaTheme.primary;
+  theme: string = NidocaTheme.plain;
 
   @property({type: String})
   overline: string = '';
@@ -60,7 +60,7 @@ export class NidocaArticle extends LitElement {
 
   static example(slotName: string = ''): TemplateResult {
     return html`<nidoca-article
-      theme="surface"
+      theme="plain"
       slot="${slotName}"
       style="padding:25px;"
       overline="Lorem Ipsum Dolorem"

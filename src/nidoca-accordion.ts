@@ -23,7 +23,7 @@ export class NidocaAccordion extends LitElement {
   `;
 
   @property({type: NidocaTheme, converter: String})
-  theme: string = NidocaTheme.surface;
+  theme: string = NidocaTheme.plain;
 
   @property({type: AccordionType, converter: String})
   accordionType: string = AccordionType.single;
@@ -79,7 +79,7 @@ export class NidocaAccordion extends LitElement {
   }
 
   static example(slotName: string = ''): TemplateResult {
-    return html`<nidoca-accordion slot="${slotName}" theme="surface">
+    return html`<nidoca-accordion slot="${slotName}" theme="plain">
       <nidoca-accordion-item header="Lorem Ipsum" opened> ${NidocaArticle.example()} </nidoca-accordion-item>
       <nidoca-accordion-item header="Lorem Ipsum 2"> ${NidocaArticle.example()} </nidoca-accordion-item>
       <nidoca-accordion-item header="Lorem Ipsum 3"> ${NidocaArticle.example()} </nidoca-accordion-item>

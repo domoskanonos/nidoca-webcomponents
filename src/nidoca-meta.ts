@@ -4,13 +4,12 @@ export enum NidocaTheme {
   primary = 'primary',
   secondary = 'secondary',
   surface = 'surface',
-  background = 'background',
-  transparent = 'transparent',
+  plain = 'plain',
 }
 export class NidocaThemeHelper {
   static getStyle(theme: NidocaTheme | string | undefined): HTMLTemplateResult {
     return theme
-      ? theme == NidocaTheme.transparent
+      ? theme == NidocaTheme.plain
         ? html``
         : html` <style>
             :host,
@@ -30,7 +29,7 @@ export class NidocaThemeHelper {
   }
 
   static getOposite(theme: string | undefined) {
-    return theme == NidocaTheme.background
+    return theme == NidocaTheme.plain
       ? NidocaTheme.surface
       : theme == NidocaTheme.primary
       ? NidocaTheme.secondary
@@ -38,7 +37,7 @@ export class NidocaThemeHelper {
       ? NidocaTheme.secondary
       : theme == NidocaTheme.secondary
       ? NidocaTheme.primary
-      : NidocaTheme.background;
+      : NidocaTheme.plain;
   }
 
   getParentTheme(element: HTMLElement): string | undefined {

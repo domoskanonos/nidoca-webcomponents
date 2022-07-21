@@ -12,7 +12,7 @@ export class NidocaTextH1 extends NidocaText {
       display: block;
       font-weight: 600;
       font-size: 200%;
-      line-height: 1.25em;
+      line-height: 1.1em;
     }
   `;
 }

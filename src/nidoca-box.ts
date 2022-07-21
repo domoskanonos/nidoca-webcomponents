@@ -30,7 +30,7 @@ export class NidocaBox extends LitElement {
   `;
 
   @property({type: NidocaTheme, converter: String})
-  theme: string | undefined = NidocaTheme.transparent;
+  theme: string | undefined = NidocaTheme.plain;
 
   render(): TemplateResult {
     return html`

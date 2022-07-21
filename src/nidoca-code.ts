@@ -1,4 +1,4 @@
-import {css, html, LitElement} from 'lit';
+import {css, html, LitElement, TemplateResult} from 'lit';
 import {customElement} from 'lit/decorators.js';
 import {property} from 'lit/decorators.js';
 import {NidocaTheme} from './nidoca-meta';
@@ -42,14 +42,14 @@ export class NidocaCode extends LitElement {
   code: string = '';
 
   @property({type: String})
-  theme: string = NidocaTheme.surface;
+  theme: string = NidocaTheme.plain;
 
   render(): unknown {
     return html`
       <style>
         code {
           color: var(--app-color-text-${this.theme});
-          background: var(--app-color-${this.theme}-background);
+          background-color: var(--app-color-${this.theme}-background);
           border: solid 1px var(--app-color-${this.theme}-border);
         }
       </style>
@@ -57,5 +57,9 @@ export class NidocaCode extends LitElement {
                 <code>${this.code}<slot></slot></code>
             </pre>
     `;
+  }
+
+  static example(slotName: string = ''): TemplateResult {
+    return html`<nidoca-code slot="${slotName}" theme="surface"> my code </nidoca-code>`;
   }
 }

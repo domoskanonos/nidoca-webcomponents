@@ -11,19 +11,50 @@ export class NidocaText extends LitElement {
     ::slotted(:host),
     ::slotted(slot) {
       display: block;
-      font-size: 1em;
+      line-height: 1.25em;
       font-weight: 400;
-      line-height: 1.5em;
+      font-size: 100%;
+    }
+
+    slot {
     }
   `;
 
   @property({type: NidocaTheme, converter: String})
-  theme: string | undefined = NidocaTheme.primary;
+  theme: string | undefined = NidocaTheme.surface;
 
   @property({type: String})
   text: string = '';
 
   render(): TemplateResult {
-    return html` <slot style="color: var(--app-color-text-${this.theme});">${this.text}</slot>`;
+    return html`<style>
+        slot {
+          color: var(--app-color-text-${this.theme});
+        }
+      </style>
+      <slot>${this.text}</slot>`;
+  }
+
+  static example(slotName: string = ''): TemplateResult {
+    return html`
+      <div slot="${slotName}">
+        <nidoca-text-h1>nidoca-text-h1</nidoca-text-h1>
+        <nidoca-text-h2>nidoca-text-h2</nidoca-text-h2>
+        <nidoca-text-h3>nidoca-text-h3</nidoca-text-h3>
+        <nidoca-text-h4>nidoca-text-h4</nidoca-text-h4>
+        <nidoca-text-h5>nidoca-text-h5</nidoca-text-h5>
+        <nidoca-text-h6>nidoca-text-h6</nidoca-text-h6>
+        <nidoca-text>nidoca-text</nidoca-text>
+        <nidoca-text-body>nidoca-text-body</nidoca-text-body>
+        <nidoca-text-overline>nidoca-text-overline</nidoca-text-overline>
+        <nidoca-text-subtitle>nidoca-text-subtitle</nidoca-text-subtitle>
+        <nidoca-text-caption>nidoca-text-caption</nidoca-text-caption>
+        <nidoca-text-button>nidoca-text-button</nidoca-text-button>
+        <nidoca-text-error>nidoca-text-error</nidoca-text-error>
+        <nidoca-text-warning>nidoca-text-warning</nidoca-text-warning>
+        <nidoca-text-info>nidoca-text-info</nidoca-text-info>
+        <nidoca-text-success>nidoca-text-success</nidoca-text-success>
+      </div>
+    `;
   }
 }

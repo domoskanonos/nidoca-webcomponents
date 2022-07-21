@@ -59,10 +59,12 @@ export * from './nidoca-tab-content';
 export * from './nidoca-template';
 export * from './nidoca-video';
 export * from './nidoca-svg-2-webp';
+
 export * from './nidoca-text';
+export * from './nidoca-text-body';
 export * from './nidoca-text-button';
 export * from './nidoca-text-overline';
-export * from './nidoca-text-body';
+export * from './nidoca-text-subtitle';
 export * from './nidoca-text-caption';
 export * from './nidoca-text-error';
 export * from './nidoca-text-success';

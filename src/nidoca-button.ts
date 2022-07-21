@@ -87,7 +87,7 @@ export class NidocaButton extends LitElement {
           ? html` <nidoca-icon .clickable="${false}" .icon="${this.leadingIcon}"></nidoca-icon>`
           : html``}
 
-        <nidoca-text-button
+        <nidoca-text-button theme="${this.theme}"
           >${this.text}
           <slot></slot>
         </nidoca-text-button>

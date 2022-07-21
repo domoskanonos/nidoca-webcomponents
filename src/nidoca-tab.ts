@@ -38,10 +38,14 @@ export class NidocaTab extends LitElement {
     return html`
       <style>
         .container {
-          border-color: var(--app-color-${this.theme}-background);
+          color: var(--app-color-text-${this.theme}-background);
+          border-color: var(--app-color-${this.theme}-background-light);
         }
         .selected {
           border-color: var(--app-color-${this.theme}-selected);
+        }
+        :hover {
+          border-color: var(--app-color-${this.theme}-hover);
         }
       </style>
       <div class="container ${this.selected ? 'selected' : ''}" @click="${() => this.tabClicked()}">
