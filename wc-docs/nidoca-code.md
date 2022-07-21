@@ -2,7 +2,7 @@
 
 ## Properties
 
-| Property | Attribute | Type     | Default   |
-|----------|-----------|----------|-----------|
-| `code`   | `code`    | `string` | ""        |
-| `theme`  | `theme`   | `string` | "surface" |
+| Property | Attribute | Type     | Default |
+|----------|-----------|----------|---------|
+| `code`   | `code`    | `string` | ""      |
+| `theme`  | `theme`   | `string` | "plain" |

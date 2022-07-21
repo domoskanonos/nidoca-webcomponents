@@ -8,7 +8,7 @@
 | `formComponent` |                 | `NidocaForm \| undefined` |                      |
 | `label`         | `label`         | `string`                  | "Anmeldung"          |
 | `passwordLabel` | `passwordLabel` | `string`                  | "Passwort"           |
-| `theme`         | `theme`         | `string \| undefined`     | "transparent"        |
+| `theme`         | `theme`         | `string \| undefined`     | "plain"              |
 | `usernameLabel` | `usernameLabel` | `string`                  | "Benutzername/Email" |
 
 ## Events

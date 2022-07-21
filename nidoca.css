@@ -22,6 +22,15 @@ div {
   --border-width-medium: 2px;
   --border-width-max: 4px;
 
+  --app-color-text-plain: #353535;
+  --app-color-subtext-plain: #5a5a5a;
+  --app-color-plain-background: #ffffff;
+  --app-color-plain-background-light: #f0f0f0;
+  --app-color-plain-background-dark: #494949;
+  --app-color-plain-border: #c9c9c9;
+  --app-color-plain-hover: #b4b2b2;
+  --app-color-plain-selected: #c7c7c7;
+
   --app-color-text-primary: #ececec;
   --app-color-subtext-primary: #ececec;
   --app-color-primary-background: #2c4776;
@@ -42,14 +51,15 @@ div {
 
   --app-color-text-surface: #353535;
   --app-color-subtext-surface: #5a5a5a;
-  --app-color-surface-background: #ffffff;
-  --app-color-surface-background-light: #b4b4b4;
+  --app-color-surface-background: #cecece;
+  --app-color-surface-background-light: #f0f0f0;
   --app-color-surface-background-dark: #494949;
   --app-color-surface-border: #c9c9c9;
   --app-color-surface-hover: #b4b2b2;
   --app-color-surface-selected: #c7c7c7;
 
   --app-color-error-background: #c45353;
+  --app-color-warning-background: #ecd448;
   --app-color-info-background: #5380c4;
   --app-color-success-background: #9dce56;
 
