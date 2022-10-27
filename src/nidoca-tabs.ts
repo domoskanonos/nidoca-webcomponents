@@ -23,11 +23,11 @@ export class NidocaTabs extends LitElement {
     }
 
     #tabSlot {
+      display: flex;
       margin: 0px auto;
       text-align: center;
       width: 100% !important;
-      display: flex;
-      align-items: center;
+      align-items: end;
       justify-content: center;
     }
   `;
@@ -137,9 +137,9 @@ export class NidocaTabs extends LitElement {
   static example(slotName: string = ''): TemplateResult {
     return html`
       <nidoca-tabs theme="surface" slot="${slotName}" tabIndex="0">
-        <nidoca-tab slot="tab">Tab 1</nidoca-tab>
-        <nidoca-tab slot="tab">Tab 2</nidoca-tab>
-        <nidoca-tab slot="tab">Tab 3</nidoca-tab>
+        <nidoca-tab slot="tab"><nidoca-text>Tab 1</nidoca-text></nidoca-tab>
+        <nidoca-tab slot="tab"><nidoca-text>Tab 2</nidoca-text></nidoca-tab>
+        <nidoca-tab slot="tab"><nidoca-text>Tab 3</nidoca-text></nidoca-tab>
         <nidoca-tab-content slot="tabContent"> ${NidocaArticle.example()} </nidoca-tab-content>
         <nidoca-tab-content slot="tabContent"> ${NidocaArticle.example()} </nidoca-tab-content>
         <nidoca-tab-content slot="tabContent"> ${NidocaArticle.example()} </nidoca-tab-content>

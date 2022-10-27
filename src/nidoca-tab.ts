@@ -1,19 +1,18 @@
-import {css, html, TemplateResult, LitElement} from 'lit';
-import {customElement} from 'lit/decorators.js';
-import {property} from 'lit/decorators.js';
-import {NidocaTheme, NidocaThemeHelper} from '.';
+import { css, html, TemplateResult, LitElement } from 'lit';
+import { customElement } from 'lit/decorators.js';
+import { property } from 'lit/decorators.js';
+import { NidocaTheme, NidocaThemeHelper } from '.';
 
 @customElement('nidoca-tab')
 export class NidocaTab extends LitElement {
   static styles = css`
     :host {
       display: block;
-      padding-right: var(--space);
+      margin-right: var(--space);
+      overflow:hidden;
     }
 
     .container {
-      line-height: var(--height-min);
-      height: var(--height-min);
       box-sizing: border-box;
       cursor: pointer;
       border-width: var(--border-width-max);
@@ -25,13 +24,13 @@ export class NidocaTab extends LitElement {
     }
   `;
 
-  @property({type: Boolean})
+  @property({ type: Boolean })
   selected: boolean = false;
 
-  @property({type: String})
+  @property({ type: String })
   text: string = '';
 
-  @property({type: String})
+  @property({ type: String })
   theme: string = NidocaTheme.surface;
 
   render(): TemplateResult {
@@ -57,6 +56,6 @@ export class NidocaTab extends LitElement {
 
   private tabClicked(): void {
     console.log('tab clicked.');
-    this.dispatchEvent(new CustomEvent('nidoca-event-tab-clicked', {detail: this, bubbles: true, composed: true}));
+    this.dispatchEvent(new CustomEvent('nidoca-event-tab-clicked', { detail: this, bubbles: true, composed: true }));
   }
 }
