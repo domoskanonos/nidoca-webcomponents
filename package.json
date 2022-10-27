@@ -9,7 +9,7 @@
   ],
   "description": "nidoca framework (nidoca-core)",
   "devDependencies": {
-    "@domoskanonos/nidoca-base": "1.0.9",
+    "@domoskanonos/nidoca-base": "1.1.1",
     "@domoskanonos/nidoca-router": "1.0.2",
     "typedoc": "0.23.7"
   },
