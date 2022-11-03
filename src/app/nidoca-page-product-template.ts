@@ -38,9 +38,9 @@ export class NidocaPageProductTemplate extends LitElement {
             summary="Digitales Produkt, direkter Download, kostenloser Versand"
           >
             <nidoca-text-body>
-            Mit dieser Auktionsvorlage verbessern Sie Ihre Verkaufschancen und erhöhen Ihren Umsatz.
-            Durch das moderne Design und responsive Layout heben Sie sich deutlich von der Konkurrenz ab 
-            und überzeugen durch ein seriösen, ausdrucksstarken Auftritt.
+              Mit dieser Auktionsvorlage verbessern Sie Ihre Verkaufschancen und erhöhen Ihren Umsatz. Durch das moderne
+              Design und responsive Layout heben Sie sich deutlich von der Konkurrenz ab und überzeugen durch ein
+              seriösen, ausdrucksstarken Auftritt.
             </nidoca-text-body>
 
             <nidoca-section style="padding-top:var(--space-2);">
@@ -93,39 +93,38 @@ export class NidocaPageProductTemplate extends LitElement {
 
         <nidoca-hr text="Ihre Vorteile"></nidoca-hr>
 
-<nidoca-section style="padding-bottom:var(--space-3);">
-  <nidoca-infobox icon="handshake" class="infobox">
-    <nidoca-text-h5 theme="surface">Weiterer Vertriebskanal</nidoca-text-h5>
-    <nidoca-text-body theme="surface"
-      >Gemeinsam sind wir stark. Wenn wir einander helfen, können wir alles erreichen. Wir wollen unsere
-      Community stärken.</nidoca-text-body
-    >
-  </nidoca-infobox>
-  <nidoca-infobox icon="handshake" class="infobox">
-    <nidoca-text-h5 theme="surface">Zeit sparen</nidoca-text-h5>
-    <nidoca-text-body theme="surface"
-      >Gemeinsam sind wir stark. Wenn wir einander helfen, können wir alles erreichen. Wir wollen unsere
-      Community stärken.</nidoca-text-body
-    >
-  </nidoca-infobox>
+        <nidoca-section style="padding-bottom:var(--space-3);">
+          <nidoca-infobox icon="handshake" class="infobox">
+            <nidoca-text-h5 theme="surface">Weiterer Vertriebskanal</nidoca-text-h5>
+            <nidoca-text-body theme="surface"
+              >Gemeinsam sind wir stark. Wenn wir einander helfen, können wir alles erreichen. Wir wollen unsere
+              Community stärken.</nidoca-text-body
+            >
+          </nidoca-infobox>
+          <nidoca-infobox icon="handshake" class="infobox">
+            <nidoca-text-h5 theme="surface">Zeit sparen</nidoca-text-h5>
+            <nidoca-text-body theme="surface"
+              >Gemeinsam sind wir stark. Wenn wir einander helfen, können wir alles erreichen. Wir wollen unsere
+              Community stärken.</nidoca-text-body
+            >
+          </nidoca-infobox>
 
-  <nidoca-infobox icon="handshake" class="infobox">
-    <nidoca-text-h5 theme="surface">Community</nidoca-text-h5>
-    <nidoca-text-body theme="surface"
-      >Gemeinsam sind wir stark. Wenn wir einander helfen, können wir alles erreichen. Wir wollen unsere
-      Community stärken.</nidoca-text-body
-    >
-  </nidoca-infobox>
+          <nidoca-infobox icon="handshake" class="infobox">
+            <nidoca-text-h5 theme="surface">Community</nidoca-text-h5>
+            <nidoca-text-body theme="surface"
+              >Gemeinsam sind wir stark. Wenn wir einander helfen, können wir alles erreichen. Wir wollen unsere
+              Community stärken.</nidoca-text-body
+            >
+          </nidoca-infobox>
 
-  <nidoca-infobox icon="handshake" class="infobox">
-    <nidoca-text-h5 theme="surface">Community</nidoca-text-h5>
-    <nidoca-text-body theme="surface"
-      >Gemeinsam sind wir stark. Wenn wir einander helfen, können wir alles erreichen. Wir wollen unsere
-      Community stärken.</nidoca-text-body
-    >
-  </nidoca-infobox>
-</nidoca-section>
-
+          <nidoca-infobox icon="handshake" class="infobox">
+            <nidoca-text-h5 theme="surface">Community</nidoca-text-h5>
+            <nidoca-text-body theme="surface"
+              >Gemeinsam sind wir stark. Wenn wir einander helfen, können wir alles erreichen. Wir wollen unsere
+              Community stärken.</nidoca-text-body
+            >
+          </nidoca-infobox>
+        </nidoca-section>
 
         <nidoca-section style="padding-top:var(--space-8);">
           <nidoca-article title="Digital-U GmbH">

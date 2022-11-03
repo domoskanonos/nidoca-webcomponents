@@ -1,5 +1,5 @@
-import { css, html, LitElement, TemplateResult } from 'lit';
-import { customElement, state } from 'lit/decorators.js';
+import {css, html, LitElement, TemplateResult} from 'lit';
+import {customElement, state} from 'lit/decorators.js';
 
 @customElement('nidoca-section')
 export class NidocaSection extends LitElement {
@@ -7,7 +7,7 @@ export class NidocaSection extends LitElement {
     :host {
       display: block;
       margin: auto;
-      width:100%;
+      width: 100%;
     }
 
     .container {
@@ -41,7 +41,10 @@ export class NidocaSection extends LitElement {
         flex-direction: column;
         flex-wrap: wrap;
       }
-      ::slotted(.item_count_1),::slotted(.item_count_2),::slotted(.item_count_3),::slotted(.item_count_4) {
+      ::slotted(.item_count_1),
+      ::slotted(.item_count_2),
+      ::slotted(.item_count_3),
+      ::slotted(.item_count_4) {
         flex-basis: 100%;
         width: 100%;
       }
