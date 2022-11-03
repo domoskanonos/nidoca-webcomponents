@@ -1,0 +1,101 @@
+:host,
+span,
+div {
+  display: block;
+}
+
+:root {
+  --max-width: 1280px;
+
+  --height-min: 36px;
+  --height-medium: 54px;
+  --height-max: 72px;
+
+  --space: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-6: 48px;
+  --space-8: 64px;
+
+  --border-width-min: 1px;
+  --border-width-medium: 2px;
+  --border-width-max: 4px;
+
+  --app-color-text-plain: #353535;
+  --app-color-subtext-plain: #5a5a5a;
+  --app-color-plain-background: #ffffff;
+  --app-color-plain-background-light: #f0f0f0;
+  --app-color-plain-background-dark: #494949;
+  --app-color-plain-border: #c9c9c9;
+  --app-color-plain-hover: #b4b2b2;
+  --app-color-plain-selected: #c7c7c7;
+
+  --app-color-text-primary: #ececec;
+  --app-color-subtext-primary: #ececec;
+  --app-color-primary-background: #2c4776;
+  --app-color-primary-background-light: #ffffff;
+  --app-color-primary-background-dark: #1f3152;
+  --app-color-primary-border: #868686;
+  --app-color-primary-hover: #6c84af;
+  --app-color-primary-selected: #2d3649;
+
+  --app-color-text-secondary: #ffffff;
+  --app-color-subtext-secondary: #ffffff;
+  --app-color-secondary-background: #b20505;
+  --app-color-secondary-background-light: #ffffff;
+  --app-color-secondary-background-dark: #e6e6e6;
+  --app-color-secondary-border: #808080;
+  --app-color-secondary-hover: #770202;
+  --app-color-secondary-selected: #770202;
+
+  --app-color-text-surface: #353535;
+  --app-color-subtext-surface: #5a5a5a;
+  --app-color-surface-background: #f3f3f3;
+  --app-color-surface-background-light: #f0f0f0;
+  --app-color-surface-background-dark: #494949;
+  --app-color-surface-border: #c9c9c9;
+  --app-color-surface-hover: #b4b2b2;
+  --app-color-surface-selected: #c7c7c7;
+
+  --app-color-error-background: #c45353;
+  --app-color-warning-background: #ecd448;
+  --app-color-info-background: #5380c4;
+  --app-color-success-background: #9dce56;
+
+  --icon-size: 28px;
+  --icon-size-big: 36px;
+  --icon-size-max: 48px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+::slotted(*) {
+  word-wrap: break-word;
+  box-sizing: border-box;
+  text-rendering: optimizelegibility;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 18px;
+  letter-spacing: normal;
+  line-height: 0;
+  font-style: normal;
+  text-decoration: none;
+}
+
+@media only screen and (min-width: 641px) and (max-width: 1007px) {
+  *,
+  ::slotted(*) {
+    font-size: 16px;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  *,
+  ::slotted(*) {
+    font-size: 14px;
+  }
+}

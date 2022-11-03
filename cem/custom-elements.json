@@ -835,7 +835,7 @@
         {
           "kind": "variable",
           "name": "NidocaButton",
-          "default": "class NidocaButton extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.theme = NidocaTheme.primary;\n        this.buttonType = NidocaButtonType.contained;\n        this.leadingIcon = '';\n        this.text = '';\n    }\n    render() {\n        return html `\n      <style>\n        .outlined {\n          color: var(--app-color-${this.theme}-background);\n          background-color: var(--app-color-text-${this.theme});\n          border-color: var(--app-color-${this.theme}-background);\n        }\n\n        .contained {\n          color: var(--app-color-text-${this.theme});\n          background-color: var(--app-color-${this.theme}-background);\n          border-color: var(--app-color-${this.theme}-background);\n        }\n\n        .text {\n          color: var(--app-color-${this.theme}-background);\n        }\n\n        :hover {\n          background-color: var(--app-color-${this.theme}-hover);\n        }\n      </style>\n      <div\n        class=\"container ${this.buttonType}\"\n        @click=\"${() => {\n            this.clicked();\n        }}\"\n      >\n        ${this.leadingIcon\n            ? html ` <nidoca-icon .clickable=\"${false}\" .icon=\"${this.leadingIcon}\"></nidoca-icon>`\n            : html ``}\n\n        <nidoca-text-button theme=\"${this.theme}\"\n          >${this.text}\n          <slot></slot>\n        </nidoca-text-button>\n      </div>\n    `;\n    }\n    clicked() {\n        this.dispatchEvent(new CustomEvent('nidoca-event-button-clicked', {\n            detail: this,\n            bubbles: true,\n            composed: true,\n        }));\n    }\n    static example(slotName = '') {\n        return html `<nidoca-button slot=\"${slotName}\" text=\"Start\" icon=\"home\"></nidoca-button>`;\n    }\n}"
+          "default": "class NidocaButton extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.theme = NidocaTheme.primary;\n        this.buttonType = NidocaButtonType.contained;\n        this.icon = '';\n        this.text = '';\n    }\n    render() {\n        return html `\n      <style>\n        .outlined {\n          color: var(--app-color-${this.theme}-background);\n          background-color: var(--app-color-text-${this.theme});\n          border-color: var(--app-color-${this.theme}-background);\n        }\n\n        .contained {\n          color: var(--app-color-text-${this.theme});\n          background-color: var(--app-color-${this.theme}-background);\n          border-color: var(--app-color-${this.theme}-background);\n        }\n\n        .text {\n          color: var(--app-color-${this.theme}-background);\n        }\n\n        :hover {\n          background-color: var(--app-color-${this.theme}-hover);\n        }\n      </style>\n      <div\n        class=\"container ${this.buttonType}\"\n        @click=\"${() => {\n            this.clicked();\n        }}\"\n      >\n        ${this.icon\n            ? html ` <nidoca-icon\n              .clickable=\"${false}\"\n              .icon=\"${this.icon}\"\n              style=\"padding-right:var(--space);\"\n            ></nidoca-icon>`\n            : html ``}\n\n        <nidoca-text-button theme=\"${this.theme}\"\n          >${this.text}\n          <slot></slot>\n        </nidoca-text-button>\n      </div>\n    `;\n    }\n    clicked() {\n        this.dispatchEvent(new CustomEvent('nidoca-event-button-clicked', {\n            detail: this,\n            bubbles: true,\n            composed: true,\n        }));\n    }\n    static example(slotName = '') {\n        return html `<nidoca-button slot=\"${slotName}\" text=\"Start\" icon=\"home\"></nidoca-button>`;\n    }\n}"
         }
       ],
       "exports": [
@@ -1479,7 +1479,7 @@
         {
           "kind": "variable",
           "name": "NidocaHr",
-          "default": "class NidocaHr extends LitElement {\n    constructor() {\n        super();\n        this.theme = NidocaThemeHelper.prototype.getParentTheme(this) || NidocaTheme.plain;\n    }\n    render() {\n        return html `\n      <style>\n        hr {\n          border-color: var(--app-color-${this.theme}-border);\n          border-bottom-style: solid;\n          border-width: thin;\n        }\n      </style>\n      <hr />\n    `;\n    }\n}"
+          "default": "class NidocaHr extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.theme = NidocaTheme.plain;\n        this.text = '';\n    }\n    render() {\n        return html `\n      <style>\n        .hr {\n          border-color: var(--app-color-${this.theme}-border);\n          background-color: var(--app-color-${this.theme}-background);\n        }\n      </style>\n      <nidoca-text-body>${this.text}</nidoca-text-body>\n\n      <div class=\"hr\"></div>\n    `;\n    }\n}"
         }
       ],
       "exports": [
@@ -1575,7 +1575,7 @@
         {
           "kind": "variable",
           "name": "NidocaImgSlider",
-          "default": "class NidocaImgSlider extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.theme = NidocaTheme.plain;\n    }\n    render() {\n        return html `\n      <style>\n        :host {\n          background-color: var(--app-color-${this.theme}-background);\n        }\n      </style>\n\n      <slot></slot>\n    `;\n    }\n}"
+          "default": "class NidocaImgSlider extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.theme = NidocaTheme.plain;\n    }\n    render() {\n        return html `\n      <style>\n        :host {\n          background-color: var(--app-color-${this.theme}-background);\n        }\n      </style>\n\n      <div class=\"container\">${this.selected ? this.selected : html ``}</div>\n\n      <slot @slotchange=\"${(event) => this.slotChanged(event)}\"></slot>\n    `;\n    }\n    slotChanged(event) {\n        const slotElement = event.target;\n        if (slotElement == undefined) {\n            return;\n        }\n        const elements = slotElement.assignedElements();\n        for (let index = 0; index < elements.length; index++) {\n            const element = elements[index];\n            if (element instanceof NidocaImg) {\n                if (this.selected == undefined && index == 0) {\n                    this.selected = element.cloneNode(true);\n                }\n                element.addEventListener('click', (event) => {\n                    if (event.target) {\n                        this.selected = event.target.cloneNode(true);\n                    }\n                });\n                element.width = '148px';\n                const classList = element.classList;\n                if (!classList.contains('img')) {\n                    classList.add('img');\n                }\n            }\n        }\n    }\n}"
         }
       ],
       "exports": [
@@ -2036,7 +2036,7 @@
         {
           "kind": "variable",
           "name": "NidocaSection",
-          "default": "class NidocaSection extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.flexBasis = 'auto';\n    }\n    render() {\n        return html `\n      <style>\n        .item,\n        ::slotted(.item) {\n          flex-basis: ${this.flexBasis};\n        }\n      </style>\n      <slot id=\"container\" class=\"container\" @slotchange=\"${(event) => this.slotChanged(event)}\"></slot>\n    `;\n    }\n    slotChanged(event) {\n        const slotElement = event.target;\n        const slotWidth = slotElement.offsetWidth;\n        const elements = slotElement.assignedElements();\n        const elementSize = elements.length;\n        const modifyElements = [];\n        let elementWidths = 0;\n        for (let index = 0; index < elementSize; index++) {\n            const element = elements[index];\n            element.classList.add('item');\n            if (element instanceof HTMLElement) {\n                const elementWidthStyle = element.style.width;\n                if (elementWidthStyle.length == 0) {\n                    modifyElements.push(element);\n                }\n                else {\n                    const elementWidthToUpperCase = elementWidthStyle.toUpperCase();\n                    const elementWidth = elementWidthToUpperCase.indexOf('PX') > -1\n                        ? Number(elementWidthToUpperCase.replace('PX', ''))\n                        : (Number(elementWidthToUpperCase.replace('%', '')) / 100) * slotWidth;\n                    elementWidths += elementWidth;\n                }\n            }\n        }\n        let calculationPercent = 100;\n        if (elementWidths > 0) {\n            calculationPercent = 100 - 100 * (elementWidths / slotWidth);\n        }\n        if (calculationPercent == 0) {\n            calculationPercent = 100 / elementSize;\n        }\n        this.flexBasis = String(calculationPercent / modifyElements.length) + '%';\n        this.requestUpdate();\n    }\n}"
+          "default": "class NidocaSection extends LitElement {\n    render() {\n        return html `\n      <slot id=\"container\" class=\"container\" @slotchange=\"${(event) => this.slotChanged(event)}\"></slot>\n    `;\n    }\n    slotChanged(event) {\n        const slotElement = event.target;\n        const elements = slotElement.assignedElements();\n        const elementSize = elements.length;\n        for (let index = 0; index < elementSize; index++) {\n            const element = elements[index];\n            const classList = element.classList;\n            const itemClazz = 'item_count_' + elementSize;\n            if (!classList.contains(itemClazz)) {\n                classList.add(itemClazz);\n            }\n        }\n    }\n}"
         }
       ],
       "exports": [
@@ -3846,7 +3846,7 @@
             },
             {
               "kind": "field",
-              "name": "leadingIcon",
+              "name": "icon",
               "type": {
                 "text": "string"
               },
@@ -6993,7 +6993,7 @@
               "kind": "field",
               "name": "styles",
               "static": true,
-              "default": "css`\n    :host,\n    ::slotted(:host) {\n      display: block;\n      padding-top: var(--space-4);\n      padding-bottom: var(--space-4);\n    }\n  `"
+              "default": "css`\n    :host,\n    ::slotted(:host) {\n      display: block;\n      width: 100%;\n      padding-right: var(--space-2);\n      padding-left: var(--space-2);\n      padding-top: var(--space-4);\n      padding-bottom: var(--space-4);\n      text-align: center;\n    }\n    ::slotted(slot),\n    div {\n      display: block;\n    }\n    .hr {\n      border-bottom-style: solid;\n      border-width: thin;\n    }\n  `"
             },
             {
               "kind": "field",
@@ -7001,6 +7001,14 @@
               "type": {
                 "text": "string"
               }
+            },
+            {
+              "kind": "field",
+              "name": "text",
+              "type": {
+                "text": "string"
+              },
+              "default": "''"
             },
             {
               "kind": "method",
@@ -7400,13 +7408,20 @@
               "kind": "field",
               "name": "styles",
               "static": true,
-              "default": "css`\n    :host,\n    ::slotted(:host) {\n      display: block;\n    }\n  `"
+              "default": "css`\n    :host,\n    ::slotted(:host) {\n      display: flex;\n      flex-direction: column;\n      align-items: center;\n      align-content: center;\n      align-self: center;\n    }\n\n    slot,\n    ::slotted(slot) {\n      display: flex;\n      flex-direction: row;\n      overflow-x: scroll;\n      width: 100%;\n    }\n\n    ::slotted(.img) {\n      cursor: pointer;\n    }\n\n    .container {\n      text-align: center;\n    }\n  `"
             },
             {
               "kind": "field",
               "name": "theme",
               "type": {
                 "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "selected",
+              "type": {
+                "text": "NidocaImg | undefined"
               }
             },
             {
@@ -7417,6 +7432,23 @@
                   "text": "TemplateResult"
                 }
               }
+            },
+            {
+              "kind": "method",
+              "name": "slotChanged",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
             }
           ],
           "superclass": {
@@ -8908,16 +8940,7 @@
               "kind": "field",
               "name": "styles",
               "static": true,
-              "default": "css`\n    :host {\n      display: block;\n      margin: auto;\n    }\n\n    .container {\n      display: flex;\n      flex-direction: row;\n      flex-wrap: nowrap;\n      align-content: center;\n      justify-content: center;\n    }\n\n    @media only screen and (max-width: 1007px) {\n      .container {\n        width: 100%;\n        flex-direction: column;\n        flex-wrap: wrap;\n      }\n      .item {\n        flex-basis: 100%;\n      }\n    }\n  `"
-            },
-            {
-              "kind": "field",
-              "name": "flexBasis",
-              "type": {
-                "text": "string"
-              },
-              "privacy": "private",
-              "default": "'auto'"
+              "default": "css`\n    :host {\n      display: block;\n      margin: auto;\n      width: 100%;\n    }\n\n    .container {\n      display: flex;\n      flex-direction: row;\n      flex-wrap: nowrap;\n      align-content: center;\n      justify-content: center;\n    }\n\n    ::slotted(.item_count_1) {\n      flex-basis: 100%;\n      width: 100%;\n    }\n    ::slotted(.item_count_2) {\n      flex-basis: 50%;\n      width: 50%;\n    }\n    ::slotted(.item_count_3) {\n      flex-basis: 33.3%;\n      width: 33.3%;\n    }\n    ::slotted(.item_count_4) {\n      flex-basis: 25%;\n      width: 25%;\n    }\n\n    @media only screen and (max-width: 1007px) {\n      .container {\n        width: 100%;\n        flex-direction: column;\n        flex-wrap: wrap;\n      }\n      ::slotted(.item_count_1),\n      ::slotted(.item_count_2),\n      ::slotted(.item_count_3),\n      ::slotted(.item_count_4) {\n        flex-basis: 100%;\n        width: 100%;\n      }\n    }\n  `"
             },
             {
               "kind": "method",

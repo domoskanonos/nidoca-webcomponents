@@ -2,6 +2,7 @@
 
 ## Properties
 
-| Property | Attribute | Type     |
-|----------|-----------|----------|
-| `theme`  | `theme`   | `string` |
+| Property | Attribute | Type     | Default |
+|----------|-----------|----------|---------|
+| `text`   | `text`    | `string` | ""      |
+| `theme`  | `theme`   | `string` | "plain" |

@@ -2,12 +2,12 @@
 
 ## Properties
 
-| Property      | Attribute     | Type               | Default     |
-|---------------|---------------|--------------------|-------------|
-| `buttonType`  | `buttonType`  | `NidocaButtonType` | "contained" |
-| `leadingIcon` | `leadingIcon` | `string`           | ""          |
-| `text`        | `text`        | `string`           | ""          |
-| `theme`       | `theme`       | `string`           | "primary"   |
+| Property     | Attribute    | Type               | Default     |
+|--------------|--------------|--------------------|-------------|
+| `buttonType` | `buttonType` | `NidocaButtonType` | "contained" |
+| `icon`       | `icon`       | `string`           | ""          |
+| `text`       | `text`       | `string`           | ""          |
+| `theme`      | `theme`      | `string`           | "primary"   |
 
 ## Methods
 
