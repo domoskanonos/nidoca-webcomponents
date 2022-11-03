@@ -9,29 +9,40 @@ export class NidocaHr extends LitElement {
     :host,
     ::slotted(:host) {
       display: block;
+      width: 100%;
+      padding-right: var(--space-2);
+      padding-left: var(--space-2);
       padding-top: var(--space-4);
       padding-bottom: var(--space-4);
+      text-align: center;
+    }
+    ::slotted(slot),
+    div {
+      display: block;
+    }
+    .hr {
+      border-bottom-style: solid;
+      border-width: thin;
     }
   `;
 
   @property({type: NidocaTheme, converter: String})
-  theme: string;
+  theme: string = NidocaTheme.plain;
 
-  constructor() {
-    super();
-    this.theme = NidocaThemeHelper.prototype.getParentTheme(this) || NidocaTheme.plain;
-  }
+  @property({type: String, converter: String})
+  text: string = '';
 
   render(): TemplateResult {
     return html`
       <style>
-        hr {
+        .hr {
           border-color: var(--app-color-${this.theme}-border);
-          border-bottom-style: solid;
-          border-width: thin;
+          background-color: var(--app-color-${this.theme}-background);
         }
       </style>
-      <hr />
+      <nidoca-text-body>${this.text}</nidoca-text-body>
+
+      <div class="hr"></div>
     `;
   }
 }

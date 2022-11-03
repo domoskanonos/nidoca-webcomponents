@@ -1,15 +1,19 @@
-import { css, html, TemplateResult, LitElement } from 'lit';
-import { customElement } from 'lit/decorators.js';
-import { property, state } from 'lit/decorators.js';
-import { NidocaImg } from './nidoca-img';
-import { NidocaTheme } from './nidoca-meta';
+import {css, html, TemplateResult, LitElement} from 'lit';
+import {customElement} from 'lit/decorators.js';
+import {property, state} from 'lit/decorators.js';
+import {NidocaImg} from './nidoca-img';
+import {NidocaTheme} from './nidoca-meta';
 
 @customElement('nidoca-img-slider')
 export class NidocaImgSlider extends LitElement {
   static styles = css`
     :host,
     ::slotted(:host) {
-      display: block;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      align-content: center;
+      align-self: center;
     }
 
     slot,
@@ -25,12 +29,11 @@ export class NidocaImgSlider extends LitElement {
     }
 
     .container {
-      text-align:center;
+      text-align: center;
     }
-
   `;
 
-  @property({ type: NidocaTheme, converter: String })
+  @property({type: NidocaTheme, converter: String})
   theme: string = NidocaTheme.plain;
 
   @state()

@@ -49,7 +49,7 @@ export class NidocaButton extends LitElement {
   buttonType: NidocaButtonType = NidocaButtonType.contained;
 
   @property({type: String})
-  leadingIcon: string = '';
+  icon: string = '';
 
   @property({type: String})
   text: string = '';
@@ -83,8 +83,12 @@ export class NidocaButton extends LitElement {
           this.clicked();
         }}"
       >
-        ${this.leadingIcon
-          ? html` <nidoca-icon .clickable="${false}" .icon="${this.leadingIcon}"></nidoca-icon>`
+        ${this.icon
+          ? html` <nidoca-icon
+              .clickable="${false}"
+              .icon="${this.icon}"
+              style="padding-right:var(--space);"
+            ></nidoca-icon>`
           : html``}
 
         <nidoca-text-button theme="${this.theme}"
