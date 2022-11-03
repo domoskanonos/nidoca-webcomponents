@@ -34,8 +34,8 @@ export class NidocaMyApp extends LitElement implements NidocaRouteListener {
         this.content = html`<nidoca-page-main></nidoca-page-main>`;
         break;
       default:
-        this.content = html`<nidoca-page-product-template></nidoca-page-product-template>`;
-      //this.content = html`<nidoca-page-main></nidoca-page-main>`;
+        //this.content = html`<nidoca-page-product-template></nidoca-page-product-template>`;
+        this.content = html`<nidoca-page-main></nidoca-page-main>`;
     }
   }
 
