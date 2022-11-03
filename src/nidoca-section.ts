@@ -1,5 +1,5 @@
 import {css, html, LitElement, TemplateResult} from 'lit';
-import {customElement} from 'lit/decorators.js';
+import {customElement, state} from 'lit/decorators.js';
 
 @customElement('nidoca-section')
 export class NidocaSection extends LitElement {
@@ -25,20 +25,24 @@ export class NidocaSection extends LitElement {
       }
       .item {
         flex-basis: 100%;
+        width: 100%;
       }
     }
   `;
 
-  private flexBasis: string = 'auto';
+  @state()
+  private width: string = 'auto';
 
   render(): TemplateResult {
     return html`
       <style>
         .item,
         ::slotted(.item) {
-          flex-basis: ${this.flexBasis};
+          flex-basis: ${this.width};
+          width: ${this.width};
         }
       </style>
+
       <slot id="container" class="container" @slotchange="${(event: Event) => this.slotChanged(event)}"></slot>
     `;
   }
@@ -52,7 +56,10 @@ export class NidocaSection extends LitElement {
     let elementWidths: number = 0;
     for (let index = 0; index < elementSize; index++) {
       const element: Element = elements[index];
-      element.classList.add('item');
+      const classList = element.classList;
+      if (!classList.contains('item')) {
+        classList.add('item');
+      }
       if (element instanceof HTMLElement) {
         const elementWidthStyle = element.style.width;
         if (elementWidthStyle.length == 0) {
@@ -76,8 +83,6 @@ export class NidocaSection extends LitElement {
       calculationPercent = 100 / elementSize;
     }
 
-    this.flexBasis = String(calculationPercent / modifyElements.length) + '%';
-
-    this.requestUpdate();
+    this.width = String(calculationPercent / modifyElements.length) + '%';
   }
 }

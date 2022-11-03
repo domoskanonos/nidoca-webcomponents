@@ -28,7 +28,7 @@
     "cc": "custom-elements-manifest analyze --outdir public/cem",
     "docs-webcomponents": "wca analyze \"src/**/*.{js,ts}\" --outDir public/webcomponents",
     "docs": "npm run typedoc && npm run cc && npm run docs-webcomponents",
-    "build-frontend": "webpack --config ./webpack.js",
+    "build-frontend": "webpack --config ./webpack.js && webpack --config ./webpack.app.js",
     "build": "npm i && npm run ts && npm run prettier:check && npm run eslint &&  npm run lit-analyzer && npm run docs && npm run build-frontend"
   }
 }

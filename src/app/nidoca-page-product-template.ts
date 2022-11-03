@@ -1,6 +1,6 @@
-import {css, html, LitElement, TemplateResult} from 'lit';
-import {customElement} from 'lit/decorators.js';
-import {NidocaArticle} from '../nidoca-article';
+import { css, html, LitElement, TemplateResult } from 'lit';
+import { customElement } from 'lit/decorators.js';
+import { NidocaArticle } from '../nidoca-article';
 
 @customElement('nidoca-page-product-template')
 export class NidocaPageProductTemplate extends LitElement {
@@ -13,6 +13,18 @@ export class NidocaPageProductTemplate extends LitElement {
     return html`
       <nidoca-section>
         <nidoca-img-slider>
+        <nidoca-img src="https://cdn.pixabay.com/photo/2015/05/31/15/07/coffee-792113__340.jpg"></nidoca-img>
+          <nidoca-img src="https://cdn.pixabay.com/photo/2014/10/23/20/51/iphone-500291__340.jpg"></nidoca-img>
+          <nidoca-img src="https://cdn.pixabay.com/photo/2016/11/19/15/32/laptop-1839876__340.jpg"></nidoca-img>
+          <nidoca-img src="https://cdn.pixabay.com/photo/2015/05/31/15/07/coffee-792113__340.jpg"></nidoca-img>
+          <nidoca-img src="https://cdn.pixabay.com/photo/2014/10/23/20/51/iphone-500291__340.jpg"></nidoca-img>
+          <nidoca-img src="https://cdn.pixabay.com/photo/2016/11/19/15/32/laptop-1839876__340.jpg"></nidoca-img>
+          <nidoca-img src="https://cdn.pixabay.com/photo/2015/05/31/15/07/coffee-792113__340.jpg"></nidoca-img>
+          <nidoca-img src="https://cdn.pixabay.com/photo/2014/10/23/20/51/iphone-500291__340.jpg"></nidoca-img>
+          <nidoca-img src="https://cdn.pixabay.com/photo/2016/11/19/15/32/laptop-1839876__340.jpg"></nidoca-img>
+          <nidoca-img src="https://cdn.pixabay.com/photo/2015/05/31/15/07/coffee-792113__340.jpg"></nidoca-img>
+          <nidoca-img src="https://cdn.pixabay.com/photo/2014/10/23/20/51/iphone-500291__340.jpg"></nidoca-img>
+          <nidoca-img src="https://cdn.pixabay.com/photo/2016/11/19/15/32/laptop-1839876__340.jpg"></nidoca-img>
           <nidoca-img src="https://cdn.pixabay.com/photo/2015/05/31/15/07/coffee-792113__340.jpg"></nidoca-img>
           <nidoca-img src="https://cdn.pixabay.com/photo/2014/10/23/20/51/iphone-500291__340.jpg"></nidoca-img>
           <nidoca-img src="https://cdn.pixabay.com/photo/2016/11/19/15/32/laptop-1839876__340.jpg"></nidoca-img>
@@ -50,7 +62,7 @@ export class NidocaPageProductTemplate extends LitElement {
         </nidoca-article>
       </nidoca-section>
 
-      <nidoca-section>
+      <nidoca-section style="padding-bottom:var(--space-3);">
         <nidoca-infobox icon="handshake" class="infobox">
           <nidoca-text-h5 theme="surface">Weiterer Vertriebskanal</nidoca-text-h5>
           <nidoca-text-body theme="surface"
@@ -83,6 +95,19 @@ export class NidocaPageProductTemplate extends LitElement {
           >
         </nidoca-infobox>
       </nidoca-section>
+
+
+      <nidoca-section>
+
+
+      <nidoca-article         
+      title="dortmund.digital"
+> <nidoca-text-body>
+            Schauen Sie sich unsere Bewertungen an.
+          </nidoca-text-body></nidoca-article>
+
+      </nidoca-section>
+
     `;
   }
 }
