@@ -1,28 +1,28 @@
-import {css, html, TemplateResult} from "lit";
-import {customElement} from "lit/decorators.js";
-import {property} from "lit/decorators.js";
-import {query} from "lit/decorators.js";
-import {ifDefined} from "lit/directives/if-defined.js";
-import {NidocaTheme} from "./nidoca-meta";
-import {FormOutputData, NidocaFormAbstractInputElement} from "./nidoca-form-abstract-input-element";
+import {css, html, TemplateResult} from 'lit';
+import {customElement} from 'lit/decorators.js';
+import {property} from 'lit/decorators.js';
+import {query} from 'lit/decorators.js';
+import {ifDefined} from 'lit/directives/if-defined.js';
+import {NidocaTheme} from './nidoca-meta';
+import {FormOutputData, NidocaFormAbstractInputElement} from './nidoca-form-abstract-input-element';
 
 export enum NidocaFormTextType {
-  color = "color",
-  email = "email",
-  hidden = "hidden",
-  number = "number",
-  password = "password",
-  tel = "tel",
-  text = "text",
-  search = "search",
-  url = "url",
-  date = "date",
-  month = "month",
-  time = "time",
-  week = "week",
+  color = 'color',
+  email = 'email',
+  hidden = 'hidden',
+  number = 'number',
+  password = 'password',
+  tel = 'tel',
+  text = 'text',
+  search = 'search',
+  url = 'url',
+  date = 'date',
+  month = 'month',
+  time = 'time',
+  week = 'week',
 }
 
-@customElement("nidoca-form-text")
+@customElement('nidoca-form-text')
 export class NidocaFormText extends NidocaFormAbstractInputElement {
   static styles = css`
     :host,
@@ -74,28 +74,28 @@ export class NidocaFormText extends NidocaFormAbstractInputElement {
   type: string = NidocaFormTextType.text;
 
   @property({type: String})
-  label: string = "";
+  label: string = '';
 
   @property({type: String})
-  placeholder: string = "";
+  placeholder: string = '';
 
   @property({type: String})
-  trailingIcon: string = "";
+  trailingIcon: string = '';
 
   @property({type: String})
-  errorText: string = "";
+  errorText: string = '';
 
   @property({type: String})
-  infoText: string = "";
+  infoText: string = '';
 
   @property({type: String})
-  warningText: string = "";
+  warningText: string = '';
 
   @property({type: String})
-  name: string = "";
+  name: string = '';
 
   @property()
-  value: string = "";
+  value: string = '';
 
   @property({type: Boolean})
   required: boolean = false;
@@ -127,7 +127,7 @@ export class NidocaFormText extends NidocaFormAbstractInputElement {
   @property({type: String})
   pattern: string | undefined;
 
-  @query("#inputElement")
+  @query('#inputElement')
   private inputElement: HTMLInputElement | undefined;
 
   @property({type: NidocaTheme, converter: String})
@@ -213,7 +213,7 @@ export class NidocaFormText extends NidocaFormAbstractInputElement {
   }
 
   public validate(): boolean {
-    this.errorText = "";
+    this.errorText = '';
     if (
       this.inputElement != null &&
       !this.inputElement.validity.valid &&
@@ -221,9 +221,9 @@ export class NidocaFormText extends NidocaFormAbstractInputElement {
     ) {
       this.errorText = this.inputElement.validationMessage;
       if (this.inputElement.validity.patternMismatch && this.pattern) {
-        this.errorText = this.errorText.concat(" Format: ").concat(this.pattern);
+        this.errorText = this.errorText.concat(' Format: ').concat(this.pattern);
       }
     }
-    return this.errorText == "";
+    return this.errorText == '';
   }
 }

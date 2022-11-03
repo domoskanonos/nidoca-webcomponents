@@ -1,9 +1,9 @@
-import {css, html, LitElement, TemplateResult} from "lit";
-import {customElement} from "lit/decorators.js";
-import {property} from "lit/decorators.js";
-import {NidocaTheme} from "./nidoca-meta";
+import {css, html, LitElement, TemplateResult} from 'lit';
+import {customElement} from 'lit/decorators.js';
+import {property} from 'lit/decorators.js';
+import {NidocaTheme} from './nidoca-meta';
 
-@customElement("nidoca-chip")
+@customElement('nidoca-chip')
 export class NidocaChip extends LitElement {
   static styles = css`
     .chip {
@@ -25,7 +25,7 @@ export class NidocaChip extends LitElement {
   theme: string = NidocaTheme.surface;
 
   @property({type: String})
-  text: string = "";
+  text: string = '';
 
   render(): TemplateResult {
     return html`
@@ -37,13 +37,13 @@ export class NidocaChip extends LitElement {
           background-color: var(--app-color-${this.theme}-background-light);
         }
       </style>
-      <div class="chip ${this.clickable ? "clickable" : ""}">
+      <div class="chip ${this.clickable ? 'clickable' : ''}">
         <nidoca-text-body theme="${this.theme}">${this.text}</nidoca-text-body>
         <slot></slot>
       </div>
     `;
   }
-  static example(slotName: string = ""): TemplateResult {
+  static example(slotName: string = ''): TemplateResult {
     return html`<nidoca-chip slot="${slotName}" clickable text="Mein Chip"></nidoca-chip>`;
   }
 }

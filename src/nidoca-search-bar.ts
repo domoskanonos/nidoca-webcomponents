@@ -1,10 +1,10 @@
-import {css, html, TemplateResult, LitElement} from "lit";
-import {customElement} from "lit/decorators.js";
-import {property} from "lit/decorators.js";
-import {query} from "lit/decorators.js";
-import {NidocaTheme} from ".";
+import {css, html, TemplateResult, LitElement} from 'lit';
+import {customElement} from 'lit/decorators.js';
+import {property} from 'lit/decorators.js';
+import {query} from 'lit/decorators.js';
+import {NidocaTheme} from '.';
 
-@customElement("nidoca-search-bar")
+@customElement('nidoca-search-bar')
 export class NidocaSearchBar extends LitElement {
   static styles = css`
     :host {
@@ -40,15 +40,15 @@ export class NidocaSearchBar extends LitElement {
   `;
 
   @property({type: String})
-  value: string = "";
+  value: string = '';
 
   @property({type: String})
-  placeholder: string = "";
+  placeholder: string = '';
 
   @property({type: Boolean})
   disabled: boolean = false;
 
-  @query("#inputElement")
+  @query('#inputElement')
   private inputElement: HTMLInputElement | undefined;
 
   @property({type: NidocaTheme, converter: String})
@@ -90,21 +90,21 @@ export class NidocaSearchBar extends LitElement {
   }
 
   clearValue(): void {
-    this.value = "";
+    this.value = '';
   }
 
   async valueChanged(): Promise<void> {
-    const eventName = "nidoca-search-bar-event-value-changed";
+    const eventName = 'nidoca-search-bar-event-value-changed';
     const customEvent = new CustomEvent(eventName, {
       detail: this.inputElement?.value,
       bubbles: true,
       composed: true,
     });
-    console.debug("dispatch custom event type: %s, detail: %s", customEvent.type, JSON.stringify(customEvent.detail));
+    console.debug('dispatch custom event type: %s, detail: %s', customEvent.type, JSON.stringify(customEvent.detail));
     this.dispatchEvent(customEvent);
   }
 
-  static example(slotName: string = ""): TemplateResult {
+  static example(slotName: string = ''): TemplateResult {
     return html`<nidoca-search-bar slot="${slotName}" theme="primary" placeholder="Suche..."></nidoca-search-bar>`;
   }
 }

@@ -1,29 +1,29 @@
-import {css, html, LitElement, TemplateResult} from "lit";
-import {customElement} from "lit/decorators.js";
-import {NidocaAccordion} from "../nidoca-accordion";
-import {NidocaArticle} from "../nidoca-article";
-import {NidocaAvatar} from "../nidoca-avatar";
-import {NidocaButton} from "../nidoca-button";
-import {NidocaChip} from "../nidoca-chip";
-import {NidocaCode} from "../nidoca-code";
-import {NidocaIcon} from "../nidoca-icon";
-import {NidocaIconExtended} from "../nidoca-icon-extended";
-import {NidocaImg} from "../nidoca-img";
-import {NidocaImgRound} from "../nidoca-img-round";
-import {NidocaInfobox} from "../nidoca-infobox";
-import {NidocaList} from "../nidoca-list";
-import {NidocaListItem} from "../nidoca-list-item";
-import {NidocaListSection} from "../nidoca-list-section";
-import {NidocaMenu} from "../nidoca-menu";
-import {NidocaMenuArea} from "../nidoca-menu-area";
-import {NidocaMenuItem} from "../nidoca-menu-item";
-import {NidocaSearchBar} from "../nidoca-search-bar";
-import {NidocaTab} from "../nidoca-tab";
-import {NidocaTabs} from "../nidoca-tabs";
-import {NidocaText} from "../nidoca-text";
-import {NidocaTopAppBar} from "../nidoca-top-app-bar";
+import {css, html, LitElement, TemplateResult} from 'lit';
+import {customElement} from 'lit/decorators.js';
+import {NidocaAccordion} from '../nidoca-accordion';
+import {NidocaArticle} from '../nidoca-article';
+import {NidocaAvatar} from '../nidoca-avatar';
+import {NidocaButton} from '../nidoca-button';
+import {NidocaChip} from '../nidoca-chip';
+import {NidocaCode} from '../nidoca-code';
+import {NidocaIcon} from '../nidoca-icon';
+import {NidocaIconExtended} from '../nidoca-icon-extended';
+import {NidocaImg} from '../nidoca-img';
+import {NidocaImgRound} from '../nidoca-img-round';
+import {NidocaInfobox} from '../nidoca-infobox';
+import {NidocaList} from '../nidoca-list';
+import {NidocaListItem} from '../nidoca-list-item';
+import {NidocaListSection} from '../nidoca-list-section';
+import {NidocaMenu} from '../nidoca-menu';
+import {NidocaMenuArea} from '../nidoca-menu-area';
+import {NidocaMenuItem} from '../nidoca-menu-item';
+import {NidocaSearchBar} from '../nidoca-search-bar';
+import {NidocaTab} from '../nidoca-tab';
+import {NidocaTabs} from '../nidoca-tabs';
+import {NidocaText} from '../nidoca-text';
+import {NidocaTopAppBar} from '../nidoca-top-app-bar';
 
-@customElement("nidoca-page-main")
+@customElement('nidoca-page-main')
 export class NidocaPageMain extends LitElement {
   static styles = css``;
   render(): TemplateResult {
@@ -51,39 +51,39 @@ export class NidocaPageMain extends LitElement {
         <nidoca-text-h1 style="text-align:center;">Komponenten</nidoca-text-h1>
       </nidoca-container>
 
-      ${this.getComponentHtml(NidocaInfobox, new NidocaInfobox(), "Infobox Komponente.")}
-      ${this.getComponentHtml(NidocaIconExtended, new NidocaIconExtended(), "Standard Icon Komponente.")}
-      ${this.getComponentHtml(NidocaIcon, new NidocaIcon(), "Standard Icon Komponente.")}
-      ${this.getComponentHtml(NidocaIcon, new NidocaIcon(), "Standard Icon Komponente.")}
-      ${this.getComponentHtml(NidocaCode, new NidocaCode(), "Komponente um Quellcode darzustellen.")}
-      ${this.getComponentHtml(NidocaTabs, new NidocaTabs(), "Top App Bar Komponente")}
-      ${this.getComponentHtml(NidocaText, new NidocaText(), "Typography Komponenten")}
-      ${this.getComponentHtml(NidocaTopAppBar, new NidocaTopAppBar(), "Top App Bar Komponente")}
-      ${this.getComponentHtml(NidocaChip, new NidocaChip(), "Chip Komponente")}
-      ${this.getComponentHtml(NidocaArticle, new NidocaArticle(), "Artikel Komponente")}
-      ${this.getComponentHtml(NidocaAccordion, new NidocaAccordion(), "Accordion Komponente")}
-      ${this.getComponentHtml(NidocaButton, new NidocaButton(), "Button")}
-      ${this.getComponentHtml(NidocaMenu, new NidocaMenu(), "Menü")}
-      ${this.getComponentHtml(NidocaMenuItem, new NidocaMenuItem(), "Menüelement")}
-      ${this.getComponentHtml(NidocaMenuArea, new NidocaMenuArea(), "Menübereich")}
-      ${this.getComponentHtml(NidocaSearchBar, new NidocaSearchBar(), "Suchfeld")}
-      ${this.getComponentHtml(NidocaImg, new NidocaImg(), "Einfaches Bild")}
-      ${this.getComponentHtml(NidocaImgRound, new NidocaImgRound(), "Rundes Bild")}
-      ${this.getComponentHtml(NidocaAvatar, new NidocaAvatar(), "Avatar Komponente, Bild mit Text")}
+      ${this.getComponentHtml(NidocaInfobox, new NidocaInfobox(), 'Infobox Komponente.')}
+      ${this.getComponentHtml(NidocaIconExtended, new NidocaIconExtended(), 'Standard Icon Komponente.')}
+      ${this.getComponentHtml(NidocaIcon, new NidocaIcon(), 'Standard Icon Komponente.')}
+      ${this.getComponentHtml(NidocaIcon, new NidocaIcon(), 'Standard Icon Komponente.')}
+      ${this.getComponentHtml(NidocaCode, new NidocaCode(), 'Komponente um Quellcode darzustellen.')}
+      ${this.getComponentHtml(NidocaTabs, new NidocaTabs(), 'Top App Bar Komponente')}
+      ${this.getComponentHtml(NidocaText, new NidocaText(), 'Typography Komponenten')}
+      ${this.getComponentHtml(NidocaTopAppBar, new NidocaTopAppBar(), 'Top App Bar Komponente')}
+      ${this.getComponentHtml(NidocaChip, new NidocaChip(), 'Chip Komponente')}
+      ${this.getComponentHtml(NidocaArticle, new NidocaArticle(), 'Artikel Komponente')}
+      ${this.getComponentHtml(NidocaAccordion, new NidocaAccordion(), 'Accordion Komponente')}
+      ${this.getComponentHtml(NidocaButton, new NidocaButton(), 'Button')}
+      ${this.getComponentHtml(NidocaMenu, new NidocaMenu(), 'Menü')}
+      ${this.getComponentHtml(NidocaMenuItem, new NidocaMenuItem(), 'Menüelement')}
+      ${this.getComponentHtml(NidocaMenuArea, new NidocaMenuArea(), 'Menübereich')}
+      ${this.getComponentHtml(NidocaSearchBar, new NidocaSearchBar(), 'Suchfeld')}
+      ${this.getComponentHtml(NidocaImg, new NidocaImg(), 'Einfaches Bild')}
+      ${this.getComponentHtml(NidocaImgRound, new NidocaImgRound(), 'Rundes Bild')}
+      ${this.getComponentHtml(NidocaAvatar, new NidocaAvatar(), 'Avatar Komponente, Bild mit Text')}
       ${this.getComponentHtml(
         NidocaListSection,
         new NidocaListSection(),
-        "Unterkomponente für die Komponente <nidoca-list/>"
+        'Unterkomponente für die Komponente <nidoca-list/>'
       )}
       ${this.getComponentHtml(
         NidocaListItem,
         new NidocaListItem(),
-        "Unterkomponente für die Komponente <nidoca-list/>"
+        'Unterkomponente für die Komponente <nidoca-list/>'
       )}
       ${this.getComponentHtml(
         NidocaList,
         new NidocaList(),
-        "Listenkomponente für mobile und Desktop Anwendungen. Unterkomponenten dieser Komponente sind nidoca-list-section und nidoca-list-item"
+        'Listenkomponente für mobile und Desktop Anwendungen. Unterkomponenten dieser Komponente sind nidoca-list-section und nidoca-list-item'
       )}
     `;
   }
@@ -102,7 +102,7 @@ export class NidocaPageMain extends LitElement {
           <nidoca-button
             style="width:250px;"
             @nidoca-event-button-clicked="${() =>
-              window.open("https://domoskanonos.github.io/nidoca-lit-viewer/", "_blank")}"
+              window.open('https://domoskanonos.github.io/nidoca-lit-viewer/', '_blank')}"
             >Ausprobieren</nidoca-button
           >
         </nidoca-article>

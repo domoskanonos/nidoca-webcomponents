@@ -1,19 +1,19 @@
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const CopyPlugin = require("copy-webpack-plugin");
-const path = require("path");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
+const path = require('path');
 
 module.exports = {
-  entry: "./src/index.ts",
+  entry: './src/index.ts',
   module: {
     rules: [
       {
         test: /\.ts$/,
-        use: {loader: "ts-loader", options: {transpileOnly: true}},
+        use: {loader: 'ts-loader', options: {transpileOnly: true}},
       },
     ],
   },
   resolve: {
-    extensions: [".ts", ".js"],
+    extensions: ['.ts', '.js'],
   },
   optimization: {
     minimize: true,
@@ -21,21 +21,21 @@ module.exports = {
   performance: {
     maxEntrypointSize: 700000,
   },
-  mode: "production",
+  mode: 'production',
   output: {
-    path: path.resolve().concat("/public/webcomponents"),
-    filename: "nidoca-webcomponents.js",
+    path: path.resolve().concat('/public/webcomponents'),
+    filename: 'nidoca-webcomponents.js',
   },
   plugins: [
     new HtmlWebpackPlugin({
-      filename: "index.html",
-      template: "./src/index.html",
+      filename: 'index.html',
+      template: './src/index.html',
     }),
     new CopyPlugin({
       patterns: [
-        {from: "src/nidoca.css", to: "nidoca.css"},
-        {from: "src/logo.svg", to: "logo.svg"},
-        {from: "src/face.jpg", to: "face.jpg"},
+        {from: 'src/nidoca.css', to: 'nidoca.css'},
+        {from: 'src/logo.svg', to: 'logo.svg'},
+        {from: 'src/face.jpg', to: 'face.jpg'},
       ],
     }),
   ],

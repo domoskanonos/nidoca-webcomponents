@@ -1,9 +1,9 @@
-import {css, html, TemplateResult, LitElement} from "lit";
-import {customElement} from "lit/decorators.js";
-import {property} from "lit/decorators.js";
-import {NidocaTheme} from "./nidoca-meta";
+import {css, html, TemplateResult, LitElement} from 'lit';
+import {customElement} from 'lit/decorators.js';
+import {property} from 'lit/decorators.js';
+import {NidocaTheme} from './nidoca-meta';
 
-@customElement("nidoca-list-section")
+@customElement('nidoca-list-section')
 export class NidocaListSection extends LitElement {
   static styles = css`
   :host {
@@ -17,7 +17,7 @@ export class NidocaListSection extends LitElement {
   theme: string = NidocaTheme.surface;
 
   @property({type: String})
-  text: string = "";
+  text: string = '';
 
   render(): TemplateResult {
     return html`

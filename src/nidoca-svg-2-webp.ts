@@ -1,19 +1,19 @@
-import {css, html, LitElement, PropertyValues} from "lit";
-import {customElement, query} from "lit/decorators.js";
-import {property} from "lit/decorators.js";
+import {css, html, LitElement, PropertyValues} from 'lit';
+import {customElement, query} from 'lit/decorators.js';
+import {property} from 'lit/decorators.js';
 
-@customElement("nidoca-svg-2-webp")
+@customElement('nidoca-svg-2-webp')
 export class NidocaSvg2Webp extends LitElement {
   static styles = css``;
 
   @property({type: String})
-  src: string = "https://raw.githubusercontent.com/domoskanonos/devbox/main/assets/logo-ink.svg";
+  src: string = 'https://raw.githubusercontent.com/domoskanonos/devbox/main/assets/logo-ink.svg';
 
   canvasElements: HTMLCanvasElement[] = [];
 
   storeCanvasElements: HTMLCanvasElement[] = [];
 
-  @query("#img")
+  @query('#img')
   private img: HTMLImageElement | undefined;
 
   render(): any {
@@ -30,13 +30,13 @@ export class NidocaSvg2Webp extends LitElement {
     super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {
       console.debug(`${this.tagName} : property ${String(propName)} changed. oldValue: ${oldValue}`);
-      if (propName == "src") {
+      if (propName == 'src') {
         this.convert();
 
         const playstoreImages = [
-          ["App-Symbol", 512, 512],
-          ["Vorstellungsgrafik", 1024, 500],
-          ["screenshoot_dummy", 1920, 1080],
+          ['App-Symbol', 512, 512],
+          ['Vorstellungsgrafik', 1024, 500],
+          ['screenshoot_dummy', 1920, 1080],
         ];
 
         //const formData = new FormData();
@@ -49,7 +49,7 @@ export class NidocaSvg2Webp extends LitElement {
 
   convert() {
     if (this.img) {
-      console.log("GO");
+      console.log('GO');
       this.img.onload = () => {
         [
           [12, 12],
@@ -66,13 +66,13 @@ export class NidocaSvg2Webp extends LitElement {
           [144, 144],
           [192, 192],
         ].forEach((size: number[]) => {
-          const canvas = document.createElement("canvas");
+          const canvas = document.createElement('canvas');
           canvas.width = size[0];
           canvas.height = size[1];
-          const context = canvas.getContext("2d");
+          const context = canvas.getContext('2d');
           if (context) {
             if (this.img) {
-              this.img.crossOrigin = "anonymous";
+              this.img.crossOrigin = 'anonymous';
               //context.drawImage(this.img, 0, 0);
               context.drawImage(this.img, 0, 0, size[0], size[1]);
               canvas.toBlob((blob) => {
@@ -89,7 +89,7 @@ export class NidocaSvg2Webp extends LitElement {
                   //a.click();
                   //window.URL.revokeObjectURL(url);
                 }
-              }, "image/webp");
+              }, 'image/webp');
             }
           }
 

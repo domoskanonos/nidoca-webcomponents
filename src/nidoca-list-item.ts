@@ -1,9 +1,9 @@
-import {css, html, LitElement, TemplateResult} from "lit";
-import {customElement} from "lit/decorators.js";
-import {property} from "lit/decorators.js";
-import {NidocaImgRound, NidocaTheme} from ".";
+import {css, html, LitElement, TemplateResult} from 'lit';
+import {customElement} from 'lit/decorators.js';
+import {property} from 'lit/decorators.js';
+import {NidocaImgRound, NidocaTheme} from '.';
 
-@customElement("nidoca-list-item")
+@customElement('nidoca-list-item')
 export class NidocaListItem extends LitElement {
   static styles = css`
     .container {
@@ -40,10 +40,10 @@ export class NidocaListItem extends LitElement {
   theme: string = NidocaTheme.surface;
 
   @property({type: String})
-  primaryText: string = "";
+  primaryText: string = '';
 
   @property({type: String})
-  secondaryText: string = "";
+  secondaryText: string = '';
 
   @property({type: Boolean})
   selected: boolean = false;
@@ -65,7 +65,7 @@ export class NidocaListItem extends LitElement {
           background-color: var(--app-color-${this.theme}-selected);
         }
       </style>
-      <div @click="${() => this.switchSelected()}" class="container ${this.selected ? "selected" : ""}">
+      <div @click="${() => this.switchSelected()}" class="container ${this.selected ? 'selected' : ''}">
         <slot name="left" class="item left"></slot>
         <div class="containerTypography">
           ${this.primaryText
@@ -87,7 +87,7 @@ export class NidocaListItem extends LitElement {
   switchSelected(): void {
     this.selected = Boolean(!this.selected);
     this.dispatchEvent(
-      new CustomEvent("nidoca-event-list-item-clicked", {
+      new CustomEvent('nidoca-event-list-item-clicked', {
         detail: this.selected,
         bubbles: true,
         composed: true,
@@ -95,14 +95,14 @@ export class NidocaListItem extends LitElement {
     );
   }
 
-  static example(slotName: string = ""): TemplateResult {
+  static example(slotName: string = ''): TemplateResult {
     return html`<nidoca-list-item
       theme="primary"
       slot="${slotName}"
       primaryText="List Item"
       secondaryText="List Item Secondary Text"
     >
-      ${NidocaImgRound.example("left")}
+      ${NidocaImgRound.example('left')}
       <nidoca-icon slot="right" icon="menu"></nidoca-icon>
     </nidoca-list-item>`;
   }

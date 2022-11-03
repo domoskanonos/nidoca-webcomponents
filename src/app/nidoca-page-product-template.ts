@@ -1,8 +1,8 @@
-import {css, html, LitElement, TemplateResult} from "lit";
-import {customElement} from "lit/decorators.js";
-import {NidocaArticle} from "../nidoca-article";
+import {css, html, LitElement, TemplateResult} from 'lit';
+import {customElement} from 'lit/decorators.js';
+import {NidocaArticle} from '../nidoca-article';
 
-@customElement("nidoca-page-product-template")
+@customElement('nidoca-page-product-template')
 export class NidocaPageProductTemplate extends LitElement {
   static styles = css`
     .infobox {
@@ -34,17 +34,17 @@ export class NidocaPageProductTemplate extends LitElement {
           </nidoca-text-body>
 
           <nidoca-button style="width:175px;">Sofort-Kaufen</nidoca-button>
-          <nidoca-button @click="${() => window.open("https://www.ebay.de/usr/dortmund.digital", "_blanck")}"
+          <nidoca-button @click="${() => window.open('https://www.ebay.de/usr/dortmund.digital', '_blanck')}"
             >Verkäuferprofil</nidoca-button
           >
 
           <nidoca-button
-            @click="${() => window.open("https://feedback.ebay.de/fdbk/feedback_profile/dortmund.digital", "_blanck")}"
+            @click="${() => window.open('https://feedback.ebay.de/fdbk/feedback_profile/dortmund.digital', '_blanck')}"
             >Unsere Bewertungen</nidoca-button
           >
 
           <nidoca-button
-            @click="${() => window.open("https://www.ebay.de/contact/sendmsg?&recipient=dortmund.digital", "_blanck")}"
+            @click="${() => window.open('https://www.ebay.de/contact/sendmsg?&recipient=dortmund.digital', '_blanck')}"
             >Kontakt</nidoca-button
           >
         </nidoca-article>

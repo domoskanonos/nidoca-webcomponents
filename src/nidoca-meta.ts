@@ -1,10 +1,10 @@
-import {html, HTMLTemplateResult} from "lit";
+import {html, HTMLTemplateResult} from 'lit';
 
 export enum NidocaTheme {
-  primary = "primary",
-  secondary = "secondary",
-  surface = "surface",
-  plain = "plain",
+  primary = 'primary',
+  secondary = 'secondary',
+  surface = 'surface',
+  plain = 'plain',
 }
 export class NidocaThemeHelper {
   static getStyle(theme: NidocaTheme | string | undefined): HTMLTemplateResult {

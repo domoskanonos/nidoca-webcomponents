@@ -1,8 +1,8 @@
-import {css, html, TemplateResult, LitElement} from "lit";
-import {customElement} from "lit/decorators.js";
-import {property} from "lit/decorators.js";
+import {css, html, TemplateResult, LitElement} from 'lit';
+import {customElement} from 'lit/decorators.js';
+import {property} from 'lit/decorators.js';
 
-@customElement("nidoca-icon")
+@customElement('nidoca-icon')
 export class NidocaIcon extends LitElement {
   static styles = css`
     :host {
@@ -10,7 +10,7 @@ export class NidocaIcon extends LitElement {
       font-size: var(--icon-size);
     }
     .material-icons {
-      font-family: "Material Icons";
+      font-family: 'Material Icons';
       font-weight: normal;
       font-style: normal;
       display: inline-block;
@@ -30,7 +30,7 @@ export class NidocaIcon extends LitElement {
       -moz-osx-font-smoothing: grayscale;
 
       /* Support for IE. */
-      font-feature-settings: "liga";
+      font-feature-settings: 'liga';
     }
 
     .clickable {
@@ -47,7 +47,7 @@ export class NidocaIcon extends LitElement {
   `;
 
   @property({type: String})
-  icon: string = "";
+  icon: string = '';
 
   @property({type: Boolean})
   clickable: boolean = true;
@@ -56,12 +56,12 @@ export class NidocaIcon extends LitElement {
   deactivated: boolean = false;
 
   @property({type: String})
-  title: string = "";
+  title: string = '';
 
   render(): TemplateResult {
     return html`
       <i
-        class="material-icons ${this.deactivated ? "deactivated" : ""} ${this.clickable ? "clickable" : ""}"
+        class="material-icons ${this.deactivated ? 'deactivated' : ''} ${this.clickable ? 'clickable' : ''}"
         title="${this.title}"
         @click="${this.clicked}"
         >${this.icon}</i
@@ -71,8 +71,8 @@ export class NidocaIcon extends LitElement {
 
   async clicked(): Promise<void> {
     if (this.clickable && !this.deactivated) {
-      const customEventName = "nidoca-event-icon-clicked";
-      console.log("dispatch custom event: %s", customEventName);
+      const customEventName = 'nidoca-event-icon-clicked';
+      console.log('dispatch custom event: %s', customEventName);
       this.dispatchEvent(
         new CustomEvent(customEventName, {
           detail: this,
@@ -83,7 +83,7 @@ export class NidocaIcon extends LitElement {
     }
   }
 
-  static example(slotName: string = ""): TemplateResult {
+  static example(slotName: string = ''): TemplateResult {
     return html`
       <nidoca-icon
         slot="${slotName}"

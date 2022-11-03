@@ -1,17 +1,17 @@
-import {css, html, LitElement, PropertyValues} from "lit";
-import {customElement, query} from "lit/decorators.js";
+import {css, html, LitElement, PropertyValues} from 'lit';
+import {customElement, query} from 'lit/decorators.js';
 
-@customElement("nidoca-video")
+@customElement('nidoca-video')
 export class NidocaVideo extends LitElement {
   static styles = css``;
 
-  @query("#video")
+  @query('#video')
   private videoElement: HTMLVideoElement | undefined;
 
-  @query("#canvas")
+  @query('#canvas')
   private canvasElement: HTMLCanvasElement | undefined;
 
-  @query("#click-photo")
+  @query('#click-photo')
   private buttonElement: HTMLButtonElement | undefined;
 
   protected firstUpdated(_changedProperties: PropertyValues) {
@@ -33,10 +33,10 @@ export class NidocaVideo extends LitElement {
 
   private makeFoto() {
     if (this.canvasElement && this.videoElement) {
-      const context = this.canvasElement.getContext("2d");
+      const context = this.canvasElement.getContext('2d');
       if (context) {
         context.drawImage(this.videoElement, 0, 0, this.canvasElement.width, this.canvasElement.height);
-        const image_data_url = this.canvasElement.toDataURL("image/jpeg");
+        const image_data_url = this.canvasElement.toDataURL('image/jpeg');
         console.log(image_data_url);
       }
     }

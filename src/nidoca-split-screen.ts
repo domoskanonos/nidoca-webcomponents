@@ -1,8 +1,8 @@
-import {css, html, TemplateResult, LitElement} from "lit";
-import {customElement, property} from "lit/decorators.js";
-import {NidocaTheme, NidocaThemeHelper} from ".";
+import {css, html, TemplateResult, LitElement} from 'lit';
+import {customElement, property} from 'lit/decorators.js';
+import {NidocaTheme, NidocaThemeHelper} from '.';
 
-@customElement("nidoca-split-screen")
+@customElement('nidoca-split-screen')
 export class NidocaSplitScreen extends LitElement {
   static styles = css`
     :host {

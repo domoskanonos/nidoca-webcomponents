@@ -1,15 +1,15 @@
-import {css, html, LitElement, TemplateResult} from "lit";
-import {customElement} from "lit/decorators.js";
-import {property} from "lit/decorators.js";
-import {NidocaTheme} from "./nidoca-meta";
+import {css, html, LitElement, TemplateResult} from 'lit';
+import {customElement} from 'lit/decorators.js';
+import {property} from 'lit/decorators.js';
+import {NidocaTheme} from './nidoca-meta';
 
 export enum NidocaButtonType {
-  contained = "contained",
-  outlined = "outlined",
-  text = "text",
+  contained = 'contained',
+  outlined = 'outlined',
+  text = 'text',
 }
 
-@customElement("nidoca-button")
+@customElement('nidoca-button')
 export class NidocaButton extends LitElement {
   static styles = css`
     :host,
@@ -49,10 +49,10 @@ export class NidocaButton extends LitElement {
   buttonType: NidocaButtonType = NidocaButtonType.contained;
 
   @property({type: String})
-  leadingIcon: string = "";
+  leadingIcon: string = '';
 
   @property({type: String})
-  text: string = "";
+  text: string = '';
 
   render(): TemplateResult {
     return html`
@@ -97,7 +97,7 @@ export class NidocaButton extends LitElement {
 
   clicked(): void {
     this.dispatchEvent(
-      new CustomEvent("nidoca-event-button-clicked", {
+      new CustomEvent('nidoca-event-button-clicked', {
         detail: this,
         bubbles: true,
         composed: true,
@@ -105,7 +105,7 @@ export class NidocaButton extends LitElement {
     );
   }
 
-  static example(slotName: string = ""): TemplateResult {
+  static example(slotName: string = ''): TemplateResult {
     return html`<nidoca-button slot="${slotName}" text="Start" icon="home"></nidoca-button>`;
   }
 }

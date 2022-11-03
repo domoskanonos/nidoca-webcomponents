@@ -1,8 +1,8 @@
-import {css, html, TemplateResult, LitElement} from "lit";
-import {customElement} from "lit/decorators.js";
-import {property} from "lit/decorators.js";
+import {css, html, TemplateResult, LitElement} from 'lit';
+import {customElement} from 'lit/decorators.js';
+import {property} from 'lit/decorators.js';
 
-@customElement("nidoca-img")
+@customElement('nidoca-img')
 export class NidocaImg extends LitElement {
   static styles = css`
     :host {
@@ -20,24 +20,24 @@ export class NidocaImg extends LitElement {
   `;
 
   @property({type: String})
-  src: string = "";
+  src: string = '';
 
   @property({type: String})
-  width: string = "auto";
+  width: string = 'auto';
 
   @property({type: String})
-  height: string = "auto";
+  height: string = 'auto';
 
   @property({type: Boolean})
   zoom: boolean = false;
 
   render(): TemplateResult {
     return this.src
-      ? html`<img class="${this.zoom ? "zoom" : ""}" width="${this.width}" height="${this.height}" src="${this.src}" />`
+      ? html`<img class="${this.zoom ? 'zoom' : ''}" width="${this.width}" height="${this.height}" src="${this.src}" />`
       : html``;
   }
 
-  static example(slotName: string = ""): TemplateResult {
+  static example(slotName: string = ''): TemplateResult {
     return html`<nidoca-img width="64px" width="64px" slot="${slotName}" src="face.jpg"></nidoca-img>`;
   }
 }

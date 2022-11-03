@@ -1,9 +1,9 @@
-import {css, html, TemplateResult, LitElement} from "lit";
-import {customElement} from "lit/decorators.js";
-import {property} from "lit/decorators.js";
-import {NidocaTheme, NidocaThemeHelper} from ".";
+import {css, html, TemplateResult, LitElement} from 'lit';
+import {customElement} from 'lit/decorators.js';
+import {property} from 'lit/decorators.js';
+import {NidocaTheme, NidocaThemeHelper} from '.';
 
-@customElement("nidoca-tab")
+@customElement('nidoca-tab')
 export class NidocaTab extends LitElement {
   static styles = css`
     :host {
@@ -28,7 +28,7 @@ export class NidocaTab extends LitElement {
   selected: boolean = false;
 
   @property({type: String})
-  text: string = "";
+  text: string = '';
 
   @property({type: String})
   theme: string = NidocaTheme.surface;
@@ -47,7 +47,7 @@ export class NidocaTab extends LitElement {
           border-color: var(--app-color-${this.theme}-hover);
         }
       </style>
-      <div class="container ${this.selected ? "selected" : ""}" @click="${() => this.tabClicked()}">
+      <div class="container ${this.selected ? 'selected' : ''}" @click="${() => this.tabClicked()}">
         ${this.text ? html` <nidoca-text text="${this.text}"></nidoca-text> ` : html``}
         <slot></slot>
       </div>
@@ -55,7 +55,7 @@ export class NidocaTab extends LitElement {
   }
 
   private tabClicked(): void {
-    console.log("tab clicked.");
-    this.dispatchEvent(new CustomEvent("nidoca-event-tab-clicked", {detail: this, bubbles: true, composed: true}));
+    console.log('tab clicked.');
+    this.dispatchEvent(new CustomEvent('nidoca-event-tab-clicked', {detail: this, bubbles: true, composed: true}));
   }
 }

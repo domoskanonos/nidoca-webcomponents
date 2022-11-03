@@ -1,10 +1,10 @@
-import {html, LitElement, PropertyValues, TemplateResult} from "lit";
-import {customElement} from "lit/decorators.js";
-import {property} from "lit/decorators.js";
+import {html, LitElement, PropertyValues, TemplateResult} from 'lit';
+import {customElement} from 'lit/decorators.js';
+import {property} from 'lit/decorators.js';
 
 export enum PageReferenceType {
-  anchor = "anchor",
-  page = "page",
+  anchor = 'anchor',
+  page = 'page',
 }
 
 export interface AppModel {
@@ -22,7 +22,7 @@ export interface PageReference {
   icon: string;
 }
 
-@customElement("nidoca-app")
+@customElement('nidoca-app')
 export class NidocaApp extends LitElement {
   @property({type: Array})
   root: PageReference | undefined;
@@ -37,10 +37,10 @@ export class NidocaApp extends LitElement {
 
   protected updated(_changedProperties: PropertyValues) {
     super.updated(_changedProperties);
-    if (_changedProperties.has("root") && this.root && this.root.childs) {
+    if (_changedProperties.has('root') && this.root && this.root.childs) {
       this.routeTo(this.root.childs[0]);
     }
-    if (_changedProperties.has("route")) {
+    if (_changedProperties.has('route')) {
       if (this.root) {
         for (let i = 0; i < this.root.childs.length; i++) {
           const pageReference = this.root.childs[i];
@@ -65,7 +65,7 @@ export class NidocaApp extends LitElement {
                         slot="topRight"
                         @nidoca-event-icon-clicked="${() => {
                           this.dispatchEvent(
-                            new CustomEvent("nidoca-event-app-logout", {
+                            new CustomEvent('nidoca-event-app-logout', {
                               detail: this,
                               bubbles: true,
                               composed: true,
@@ -90,7 +90,7 @@ export class NidocaApp extends LitElement {
       : html` <nidoca-page-login
           @nidoca-form-login-submit="${(event: CustomEvent) => {
             this.dispatchEvent(
-              new CustomEvent("nidoca-event-app-login", {
+              new CustomEvent('nidoca-event-app-login', {
                 detail: event.detail,
                 bubbles: true,
                 composed: true,
@@ -102,7 +102,7 @@ export class NidocaApp extends LitElement {
 
   private routeTo(page: PageReference) {
     this.dispatchEvent(
-      new CustomEvent("nidoca-event-app-route", {
+      new CustomEvent('nidoca-event-app-route', {
         detail: page.route,
         bubbles: true,
         composed: true,

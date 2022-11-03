@@ -1,11 +1,11 @@
-import {css, html, TemplateResult} from "lit";
-import {customElement} from "lit/decorators.js";
-import {property} from "lit/decorators.js";
-import {query} from "lit/decorators.js";
-import {NidocaTheme, NidocaThemeHelper} from ".";
-import {FormOutputData, NidocaFormAbstractInputElement} from "./nidoca-form-abstract-input-element";
+import {css, html, TemplateResult} from 'lit';
+import {customElement} from 'lit/decorators.js';
+import {property} from 'lit/decorators.js';
+import {query} from 'lit/decorators.js';
+import {NidocaTheme, NidocaThemeHelper} from '.';
+import {FormOutputData, NidocaFormAbstractInputElement} from './nidoca-form-abstract-input-element';
 
-@customElement("nidoca-form-textarea")
+@customElement('nidoca-form-textarea')
 export class NidocaFormTextarea extends NidocaFormAbstractInputElement {
   static styles = css`
     :host,
@@ -53,28 +53,28 @@ export class NidocaFormTextarea extends NidocaFormAbstractInputElement {
   theme: string = NidocaTheme.surface;
 
   @property({type: String})
-  infoText: string = "";
+  infoText: string = '';
 
   @property({type: String})
-  warningText: string = "";
+  warningText: string = '';
 
   @property({type: String})
-  errorText: string = "";
+  errorText: string = '';
 
   @property({type: String})
-  name: string = "";
+  name: string = '';
 
   @property()
-  value: string = "";
+  value: string = '';
 
   @property({type: String})
-  label: string = "";
+  label: string = '';
 
   @property({type: Boolean})
   required: boolean = false;
 
   @property({type: String})
-  placeholder: string = "";
+  placeholder: string = '';
 
   @property({type: Boolean})
   disabled: boolean = false;
@@ -82,7 +82,7 @@ export class NidocaFormTextarea extends NidocaFormAbstractInputElement {
   @property({type: Number})
   rows: number = 5;
 
-  @query("#inputElement")
+  @query('#inputElement')
   private inputElement: HTMLInputElement | undefined;
 
   render(): TemplateResult {
@@ -150,7 +150,7 @@ ${this.value}</textarea
   }
 
   public validate(): boolean {
-    this.errorText = "";
+    this.errorText = '';
     if (
       this.inputElement != null &&
       !this.inputElement.validity.valid &&
@@ -158,6 +158,6 @@ ${this.value}</textarea
     ) {
       this.errorText = this.inputElement.validationMessage;
     }
-    return this.errorText == "";
+    return this.errorText == '';
   }
 }

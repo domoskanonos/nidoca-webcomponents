@@ -1,16 +1,16 @@
-import {css, html, TemplateResult, LitElement} from "lit";
-import {customElement} from "lit/decorators.js";
-import {property} from "lit/decorators.js";
-import {query} from "lit/decorators.js";
-import {NidocaTheme, NidocaThemeHelper} from ".";
-import {NidocaFormAbstractInputElement} from "./nidoca-form-abstract-input-element";
+import {css, html, TemplateResult, LitElement} from 'lit';
+import {customElement} from 'lit/decorators.js';
+import {property} from 'lit/decorators.js';
+import {query} from 'lit/decorators.js';
+import {NidocaTheme, NidocaThemeHelper} from '.';
+import {NidocaFormAbstractInputElement} from './nidoca-form-abstract-input-element';
 
 export class NidocaFormOutputData {
   jsonObject: any;
   formData: FormData = FormData.prototype;
 }
 
-@customElement("nidoca-form")
+@customElement('nidoca-form')
 export class NidocaForm extends LitElement {
   static styles = css`
     :host,
@@ -26,12 +26,12 @@ export class NidocaForm extends LitElement {
   @property({type: Boolean})
   autocomplete: boolean = true;
 
-  @query("#slotElement")
+  @query('#slotElement')
   private slotElement: HTMLSlotElement | undefined;
 
   render(): TemplateResult {
     return html`
-      <form autocomplete="${this.autocomplete ? "on" : "off"}">
+      <form autocomplete="${this.autocomplete ? 'on' : 'off'}">
         <slot id="slotElement"></slot>
       </form>
     `;
@@ -68,7 +68,7 @@ export class NidocaForm extends LitElement {
     }
     if (!valid) {
       this.dispatchEvent(
-        new CustomEvent("nidoca-form-validation-failed", {
+        new CustomEvent('nidoca-form-validation-failed', {
           detail: this.getOutputData(),
           bubbles: true,
           composed: true,

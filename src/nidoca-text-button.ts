@@ -1,8 +1,8 @@
-import {css, html, TemplateResult} from "lit";
-import {customElement} from "lit/decorators.js";
-import {NidocaText} from ".";
+import {css, html, TemplateResult} from 'lit';
+import {customElement} from 'lit/decorators.js';
+import {NidocaText} from '.';
 
-@customElement("nidoca-text-button")
+@customElement('nidoca-text-button')
 export class NidocaTextButton extends NidocaText {
   static styles = css`
     :host,

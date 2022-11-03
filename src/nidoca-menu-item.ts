@@ -1,9 +1,9 @@
-import {css, html, TemplateResult, LitElement} from "lit";
-import {customElement} from "lit/decorators.js";
-import {property} from "lit/decorators.js";
-import {NidocaTheme} from "./nidoca-meta";
+import {css, html, TemplateResult, LitElement} from 'lit';
+import {customElement} from 'lit/decorators.js';
+import {property} from 'lit/decorators.js';
+import {NidocaTheme} from './nidoca-meta';
 
-@customElement("nidoca-menu-item")
+@customElement('nidoca-menu-item')
 export class NidocaMenuItem extends LitElement {
   static styles = css`
     .container {
@@ -21,10 +21,10 @@ export class NidocaMenuItem extends LitElement {
   `;
 
   @property({type: String})
-  text: string = "";
+  text: string = '';
 
   @property({type: String})
-  icon: string = "";
+  icon: string = '';
 
   @property({type: Boolean})
   selected: boolean = false;
@@ -39,7 +39,7 @@ export class NidocaMenuItem extends LitElement {
           background-color: var(--app-color-${this.theme}-hover);
         }
       </style>
-      <div class="container ${this.selected ? "selected" : ""}" @click="${() => this.clicked()}">
+      <div class="container ${this.selected ? 'selected' : ''}" @click="${() => this.clicked()}">
         ${this.icon
           ? html` <nidoca-icon
               slot="graphic"
@@ -54,7 +54,7 @@ export class NidocaMenuItem extends LitElement {
 
   private clicked() {
     this.dispatchEvent(
-      new CustomEvent("nidoca-event-menu-item-clicked", {
+      new CustomEvent('nidoca-event-menu-item-clicked', {
         detail: this,
         bubbles: true,
         composed: true,
@@ -62,7 +62,7 @@ export class NidocaMenuItem extends LitElement {
     );
   }
 
-  static example(slotName: string = ""): TemplateResult {
+  static example(slotName: string = ''): TemplateResult {
     return html`<nidoca-menu-item slot="${slotName}" text="Start" icon="home"></nidoca-menu-item>`;
   }
 }

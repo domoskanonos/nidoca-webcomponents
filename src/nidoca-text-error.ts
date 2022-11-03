@@ -1,8 +1,8 @@
-import {html, TemplateResult} from "lit";
-import {customElement} from "lit/decorators.js";
-import {NidocaTextCaption} from ".";
+import {html, TemplateResult} from 'lit';
+import {customElement} from 'lit/decorators.js';
+import {NidocaTextCaption} from '.';
 
-@customElement("nidoca-text-error")
+@customElement('nidoca-text-error')
 export class NidocaTextError extends NidocaTextCaption {
   render(): TemplateResult {
     return html`<style>
