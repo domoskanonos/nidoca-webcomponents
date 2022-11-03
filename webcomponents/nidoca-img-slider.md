@@ -1,4 +1,4 @@
-# nidoca-card
+# nidoca-img-slider
 
 ## Properties
 

@@ -7,7 +7,7 @@
 | `clickable`   | `clickable`   | `boolean` | true    |
 | `deactivated` | `deactivated` | `boolean` | false   |
 | `icon`        | `icon`        | `string`  | ""      |
-| `primaryText` | `primaryText` | `string`  | ""      |
+| `title`       | `title`       | `string`  | ""      |
 
 ## Methods
 

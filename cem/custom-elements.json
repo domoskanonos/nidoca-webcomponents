@@ -326,6 +326,14 @@
           "name": "*",
           "declaration": {
             "name": "*",
+            "package": "./nidoca-img-slider"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
             "package": "./nidoca-movie"
           }
         },
@@ -598,6 +606,14 @@
           "name": "*",
           "declaration": {
             "name": "*",
+            "package": "./nidoca-infobox"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
             "package": "./nidoca-avatar"
           }
         },
@@ -752,7 +768,7 @@
         {
           "kind": "variable",
           "name": "NidocaArticle",
-          "default": "class NidocaArticle extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.theme = NidocaTheme.plain;\n        this.overline = '';\n        this.title = '';\n        this.summary = '';\n        this.text = '';\n    }\n    render() {\n        return html `\n      <div style=\"background-color: var(--app-color-${this.theme}-background); display:flex; flex-direction:column;\">\n        ${this.overline\n            ? html ` <nidoca-text-body theme=\"${this.theme}\" class=\"paddingBottom\">${this.overline}</nidoca-text-body> `\n            : html ``}\n        ${this.title\n            ? html ` <nidoca-text-h2 theme=\"${this.theme}\" class=\"paddingBottom\">${this.title}</nidoca-text-h2> `\n            : html ``}\n        ${this.summary\n            ? html `\n              <nidoca-text-caption theme=\"${this.theme}\" class=\"paddingBottom\">${this.summary}</nidoca-text-caption>\n            `\n            : html ``}\n        ${this.text\n            ? html ` <nidoca-text-body theme=\"${this.theme}\" class=\"paddingBottom\">${this.text}</nidoca-text-body>`\n            : html ``}\n        <slot></slot>\n      </div>\n    `;\n    }\n    static example(slotName = '') {\n        return html `<nidoca-article\n      theme=\"plain\"\n      slot=\"${slotName}\"\n      style=\"padding:25px;\"\n      overline=\"Lorem Ipsum Dolorem\"\n      title=\"Lorem Ipsum\"\n      summary=\"Lorem Ipsum Dolorem ipsum med en to.\"\n      text=\"Lorem Ipsum Dolorem ipsum med en to. Lorem Ipsum Dolorem ipsum med en to. Lorem Ipsum Dolorem ipsum med en to. Lorem Ipsum Dolorem ipsum med en to.\"\n    ></nidoca-article>`;\n    }\n}"
+          "default": "class NidocaArticle extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.theme = NidocaTheme.plain;\n        this.overline = '';\n        this.title = '';\n        this.summary = '';\n        this.text = '';\n    }\n    render() {\n        return html `\n      <div style=\"background-color: var(--app-color-${this.theme}-background); display:flex; flex-direction:column;\">\n        ${this.overline\n            ? html ` <nidoca-text-body theme=\"${this.theme}\" class=\"paddingBottom\">${this.overline}</nidoca-text-body> `\n            : html ``}\n        ${this.title\n            ? html ` <nidoca-text-h2 theme=\"${this.theme}\" class=\"paddingBottom\">${this.title}</nidoca-text-h2> `\n            : html ``}\n        ${this.summary\n            ? html `\n              <nidoca-text-caption theme=\"${this.theme}\" class=\"paddingBottom\">${this.summary}</nidoca-text-caption>\n            `\n            : html ``}\n        ${this.text\n            ? html ` <nidoca-text-body theme=\"${this.theme}\" class=\"paddingBottom\">${this.text}</nidoca-text-body>`\n            : html ``}\n        <slot></slot>\n      </div>\n    `;\n    }\n    static example(slotName = '', theme = 'plain') {\n        return html `<nidoca-article\n      theme=\"${theme}\"\n      slot=\"${slotName}\"\n      style=\"padding:25px;\"\n      overline=\"Lorem Ipsum Dolorem\"\n      title=\"Lorem Ipsum\"\n      summary=\"Lorem Ipsum Dolorem ipsum med en to.\"\n      text=\"Lorem Ipsum Dolorem ipsum med en to. Lorem Ipsum Dolorem ipsum med en to. Lorem Ipsum Dolorem ipsum med en to. Lorem Ipsum Dolorem ipsum med en to.\"\n    ></nidoca-article>`;\n    }\n}"
         }
       ],
       "exports": [
@@ -848,7 +864,7 @@
         {
           "kind": "variable",
           "name": "NidocaCard",
-          "default": "class NidocaCard extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.theme = NidocaTheme.plain;\n    }\n    render() {\n        return html `\n      <style>\n        :host {\n          background-color: var(--app-color-${this.theme}-background);\n          border-color: var(--app-color-${this.theme}-border);\n        }\n      </style>\n      <slot></slot>\n    `;\n    }\n}"
+          "default": "class NidocaCard extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.theme = NidocaTheme.surface;\n    }\n    render() {\n        return html `\n      <style>\n        :host {\n          background-color: var(--app-color-${this.theme}-background-light);\n          border-color: var(--app-color-${this.theme}-border);\n        }\n      </style>\n      <slot></slot>\n    `;\n    }\n}"
         }
       ],
       "exports": [
@@ -1482,14 +1498,13 @@
       "path": "lib/nidoca-icon-extended.js",
       "declarations": [
         {
-          "kind": "class",
-          "description": "",
+          "kind": "variable",
           "name": "NidocaIconShadowType"
         },
         {
           "kind": "variable",
           "name": "NidocaIconExtended",
-          "default": "class NidocaIconExtended extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.theme = NidocaTheme.primary;\n        this.shadowType = NidocaIconShadowType.DEFAULT_SHADOW;\n        this.icon = '';\n        this.clickable = true;\n        this.deactivated = false;\n    }\n    render() {\n        return html `\n      <style>\n        .iconExtended {\n          display: inline-block;\n          color: var(--app-color-text-${this.theme});\n          background-color: var(--app-color-${this.theme}-background);\n        }\n      </style>\n\n      <span class=\"iconExtended round ${this.shadowType}\">\n        <nidoca-icon\n          .deactivated=\"${this.deactivated}\"\n          .clickable=\"${this.clickable}\"\n          icon=\"${this.icon}\"\n          style=\"font-size: inherit;\"\n        ></nidoca-icon>\n      </span>\n    `;\n    }\n    clicked() {\n        return __awaiter(this, void 0, void 0, function* () {\n            if (this.clickable && !this.deactivated) {\n                const customEventName = 'nidoca-event-icon-clicked';\n                console.log('dispatch custom event: %s', customEventName);\n                this.dispatchEvent(new CustomEvent(customEventName, {\n                    detail: this,\n                    bubbles: true,\n                    composed: true,\n                }));\n            }\n        });\n    }\n}"
+          "default": "class NidocaIconExtended extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.theme = NidocaTheme.primary;\n        this.shadowType = NidocaIconShadowType.shadow_1;\n        this.icon = '';\n        this.clickable = true;\n        this.deactivated = false;\n        this.title = '';\n    }\n    render() {\n        return html `\n      <style>\n        .iconExtended {\n          display: inline-block;\n          color: var(--app-color-text-${this.theme});\n          background-color: var(--app-color-${this.theme}-background);\n        }\n      </style>\n\n      <span class=\"iconExtended icon ${this.shadowType}\">\n        <nidoca-icon\n          .deactivated=\"${this.deactivated}\"\n          .clickable=\"${this.clickable}\"\n          icon=\"${this.icon}\"\n        ></nidoca-icon>\n      </span>\n    `;\n    }\n    clicked() {\n        return __awaiter(this, void 0, void 0, function* () {\n            if (this.clickable && !this.deactivated) {\n                const customEventName = 'nidoca-event-icon-clicked';\n                console.log('dispatch custom event: %s', customEventName);\n                this.dispatchEvent(new CustomEvent(customEventName, {\n                    detail: this,\n                    bubbles: true,\n                    composed: true,\n                }));\n            }\n        });\n    }\n    static example(slotName = '') {\n        return html `\n      <nidoca-icon-extended\n        slot=\"${slotName}\"\n        style=\"padding-left:var(--space)\"\n        clickable\n        icon=\"home\"\n        title=\"Mein Icon\"\n      ></nidoca-icon-extended>\n    `;\n    }\n}"
         }
       ],
       "exports": [
@@ -1513,33 +1528,12 @@
     },
     {
       "kind": "javascript-module",
-      "path": "lib/nidoca-icon-with-description.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "NidocaIconWithDescription",
-          "default": "class NidocaIconWithDescription extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.primaryText = '';\n        this.text = '';\n        this.icon = '';\n    }\n    render() {\n        return html `\n      <nidoca-icon icon=\"${this.icon}\" style=\"font-size: 8vw; padding:var(--space-4);\"></nidoca-icon>\n      <nidoca-text-body\n        style=\"padding-left:var(--space-4);padding-right:var(--space-4);padding-bottom:var(--space-4);text-align:center;\"\n      >\n        ${this.text}\n        <slot></slot>\n      </nidoca-text-body>\n    `;\n    }\n}"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaIconWithDescription",
-          "declaration": {
-            "name": "NidocaIconWithDescription",
-            "module": "lib/nidoca-icon-with-description.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "lib/nidoca-icon.js",
       "declarations": [
         {
           "kind": "variable",
           "name": "NidocaIcon",
-          "default": "class NidocaIcon extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.icon = '';\n        this.clickable = true;\n        this.deactivated = false;\n        this.primaryText = '';\n    }\n    render() {\n        return html `\n      <i\n        class=\"material-icons ${this.deactivated ? 'deactivated' : ''} ${this.clickable ? 'clickable' : ''}\"\n        title=\"${this.primaryText}\"\n        @click=\"${this.clicked}\"\n        >${this.icon}</i\n      >\n    `;\n    }\n    clicked() {\n        return __awaiter(this, void 0, void 0, function* () {\n            if (this.clickable && !this.deactivated) {\n                const customEventName = 'nidoca-event-icon-clicked';\n                console.log('dispatch custom event: %s', customEventName);\n                this.dispatchEvent(new CustomEvent(customEventName, {\n                    detail: this,\n                    bubbles: true,\n                    composed: true,\n                }));\n            }\n        });\n    }\n    static example(slotName = '') {\n        return html `\n      <nidoca-icon slot=\"${slotName}\" style=\"padding-left:var(--space)\" clickable icon=\"menu\"></nidoca-icon>\n    `;\n    }\n}"
+          "default": "class NidocaIcon extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.icon = '';\n        this.clickable = true;\n        this.deactivated = false;\n        this.title = '';\n    }\n    render() {\n        return html `\n      <i\n        class=\"material-icons ${this.deactivated ? 'deactivated' : ''} ${this.clickable ? 'clickable' : ''}\"\n        title=\"${this.title}\"\n        @click=\"${this.clicked}\"\n        >${this.icon}</i\n      >\n    `;\n    }\n    clicked() {\n        return __awaiter(this, void 0, void 0, function* () {\n            if (this.clickable && !this.deactivated) {\n                const customEventName = 'nidoca-event-icon-clicked';\n                console.log('dispatch custom event: %s', customEventName);\n                this.dispatchEvent(new CustomEvent(customEventName, {\n                    detail: this,\n                    bubbles: true,\n                    composed: true,\n                }));\n            }\n        });\n    }\n    static example(slotName = '') {\n        return html `\n      <nidoca-icon\n        slot=\"${slotName}\"\n        style=\"padding-left:var(--space)\"\n        clickable\n        icon=\"menu\"\n        title=\"Mein Icon\"\n      ></nidoca-icon>\n    `;\n    }\n}"
         }
       ],
       "exports": [
@@ -1576,6 +1570,27 @@
     },
     {
       "kind": "javascript-module",
+      "path": "lib/nidoca-img-slider.js",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "NidocaImgSlider",
+          "default": "class NidocaImgSlider extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.theme = NidocaTheme.plain;\n    }\n    render() {\n        return html `\n      <style>\n        :host {\n          background-color: var(--app-color-${this.theme}-background);\n        }\n      </style>\n\n      <slot></slot>\n    `;\n    }\n}"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "NidocaImgSlider",
+          "declaration": {
+            "name": "NidocaImgSlider",
+            "module": "lib/nidoca-img-slider.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "lib/nidoca-img.js",
       "declarations": [
         {
@@ -1591,6 +1606,27 @@
           "declaration": {
             "name": "NidocaImg",
             "module": "lib/nidoca-img.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/nidoca-infobox.js",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "NidocaInfobox",
+          "default": "class NidocaInfobox extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.icon = '';\n    }\n    render() {\n        return html `\n      <nidoca-icon-extended class=\"icon\" icon=\"${this.icon}\"></nidoca-icon-extended>\n      <nidoca-card class=\"card\">\n        <slot></slot>\n      </nidoca-card>\n    `;\n    }\n    static example(slotName = '', theme = 'surface') {\n        return html `\n      <nidoca-infobox slot=\"${slotName}\" icon=\"handshake\" style=\"width:250px; height:250px;\">\n        <nidoca-text-h5 theme=\"${theme}\">Community</nidoca-text-h5>\n        <nidoca-text-body theme=\"${theme}\"\n          >Gemeinsam sind wir stark. Wenn wir einander helfen, können wir alles erreichen. Wir wollen unsere Community\n          stärken.</nidoca-text-body\n        >\n      </nidoca-infobox>\n    `;\n    }\n}"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "NidocaInfobox",
+          "declaration": {
+            "name": "NidocaInfobox",
+            "module": "lib/nidoca-infobox.js"
           }
         }
       ]
@@ -2000,7 +2036,7 @@
         {
           "kind": "variable",
           "name": "NidocaSection",
-          "default": "class NidocaSection extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.flexBasis = 'auto';\n    }\n    render() {\n        return html `\n      <style>\n        .item,\n        ::slotted(.item) {\n          flex-basis: ${this.flexBasis};\n        }\n      </style>\n      <slot id=\"container\" class=\"container\" @slotchange=\"${(event) => this.slotChanged(event)}\"></slot>\n    `;\n    }\n    slotChanged(event) {\n        const slotElement = event.target;\n        const slotWidth = slotElement.offsetWidth;\n        const elements = slotElement.assignedElements();\n        const elementSize = elements.length;\n        const modifyElements = [];\n        let elementWidths = 0;\n        for (let index = 0; index < elementSize; index++) {\n            const element = elements[index];\n            element.setAttribute('class', 'item');\n            if (element instanceof HTMLElement) {\n                const elementWidthStyle = element.style.width;\n                if (elementWidthStyle.length == 0) {\n                    modifyElements.push(element);\n                }\n                else {\n                    const elementWidthToUpperCase = elementWidthStyle.toUpperCase();\n                    const elementWidth = elementWidthToUpperCase.indexOf('PX') > -1\n                        ? Number(elementWidthToUpperCase.replace('PX', ''))\n                        : (Number(elementWidthToUpperCase.replace('%', '')) / 100) * slotWidth;\n                    elementWidths += elementWidth;\n                }\n            }\n        }\n        let calculationPercent = 100;\n        if (elementWidths > 0) {\n            calculationPercent = 100 - 100 * (elementWidths / slotWidth);\n        }\n        if (calculationPercent == 0) {\n            calculationPercent = 100 / elementSize;\n        }\n        this.flexBasis = String(calculationPercent / modifyElements.length) + '%';\n        this.requestUpdate();\n    }\n}"
+          "default": "class NidocaSection extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.flexBasis = 'auto';\n    }\n    render() {\n        return html `\n      <style>\n        .item,\n        ::slotted(.item) {\n          flex-basis: ${this.flexBasis};\n        }\n      </style>\n      <slot id=\"container\" class=\"container\" @slotchange=\"${(event) => this.slotChanged(event)}\"></slot>\n    `;\n    }\n    slotChanged(event) {\n        const slotElement = event.target;\n        const slotWidth = slotElement.offsetWidth;\n        const elements = slotElement.assignedElements();\n        const elementSize = elements.length;\n        const modifyElements = [];\n        let elementWidths = 0;\n        for (let index = 0; index < elementSize; index++) {\n            const element = elements[index];\n            element.classList.add('item');\n            if (element instanceof HTMLElement) {\n                const elementWidthStyle = element.style.width;\n                if (elementWidthStyle.length == 0) {\n                    modifyElements.push(element);\n                }\n                else {\n                    const elementWidthToUpperCase = elementWidthStyle.toUpperCase();\n                    const elementWidth = elementWidthToUpperCase.indexOf('PX') > -1\n                        ? Number(elementWidthToUpperCase.replace('PX', ''))\n                        : (Number(elementWidthToUpperCase.replace('%', '')) / 100) * slotWidth;\n                    elementWidths += elementWidth;\n                }\n            }\n        }\n        let calculationPercent = 100;\n        if (elementWidths > 0) {\n            calculationPercent = 100 - 100 * (elementWidths / slotWidth);\n        }\n        if (calculationPercent == 0) {\n            calculationPercent = 100 / elementSize;\n        }\n        this.flexBasis = String(calculationPercent / modifyElements.length) + '%';\n        this.requestUpdate();\n    }\n}"
         }
       ],
       "exports": [
@@ -2606,7 +2642,7 @@
         {
           "kind": "variable",
           "name": "NidocaWizardStep",
-          "default": "class NidocaWizardStep extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.icon = '';\n        this.primaryText = '';\n        this.isLast = false;\n        this.first = false;\n    }\n    render() {\n        return html `\n      <div\n        style=\"display:flex;flex-direction:row;flex-wrap:nowrap;align-items:flex-start;justify-content:space-evenly;align-content:space-evenly;\"\n      >\n        <div\n          style=\"display:flex;flex-direction:row;flex-wrap:nowrap;align-items:center;justify-content:flex-start;align-content:space-evenly;\"\n        >\n          <nidoca-icon\n            icon=\"${this.icon}\"\n            .iconShadowType=\"${NidocaIconShadowType.NONE}\"\n            .withIconSpace=\"${false}\"\n            .round=\"${true}\"\n            .clickable=\"${true}\"\n            .deactivated=\"${false}\"\n            color=\"${this.determineColor(this.state)}\"\n            backgroundColor=\"${this.determineBackgroundColor(this.state)}\"\n            size=\"24\"\n            @nidoca-event-icon-clicked=\"${() => this.stepClicked()}\"\n            sizeUnit=\"px\"\n          >\n          </nidoca-icon>\n\n          ${this.isLast\n            ? html ``\n            : html `<nidoca-icon color=\"${this.determineBackgroundColor(this.state)}\" icon=\"label_important\">\n              </nidoca-icon>`}\n        </div>\n        <nidoca-text style=\"width:48px;\" text=\"${this.primaryText}\"><slot></slot> </nidoca-text>\n      </div>\n    `;\n    }\n    determineBackgroundColor(state) {\n        return state == WizardStepState.completed\n            ? 'var(--app-color-text-primary)'\n            : state == WizardStepState.current\n                ? 'var(--app-color-secondary-background)'\n                : 'var(--app-color-surface-background)';\n    }\n    determineColor(state) {\n        return state == WizardStepState.finish\n            ? 'var(--app-color-success)'\n            : state == WizardStepState.completed\n                ? 'var(--mdc-theme-on-primary)'\n                : state == WizardStepState.current\n                    ? 'var(--app-color-text-secondary)'\n                    : 'var(--app-color-text-surface)';\n    }\n    stepClicked() {\n        const customEvent = new CustomEvent('nidoca-event-wizard-step-clicked', {\n            detail: this.index,\n            bubbles: true,\n            composed: true,\n        });\n        console.debug('dispatch custom event type: %s, detail: %s', customEvent.type, JSON.stringify(customEvent.detail));\n        this.dispatchEvent(customEvent);\n    }\n}"
+          "default": "class NidocaWizardStep extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.icon = '';\n        this.primaryText = '';\n        this.isLast = false;\n        this.first = false;\n    }\n    render() {\n        return html `\n      <div\n        style=\"display:flex;flex-direction:row;flex-wrap:nowrap;align-items:flex-start;justify-content:space-evenly;align-content:space-evenly;\"\n      >\n        <div\n          style=\"display:flex;flex-direction:row;flex-wrap:nowrap;align-items:center;justify-content:flex-start;align-content:space-evenly;\"\n        >\n          <nidoca-icon\n            icon=\"${this.icon}\"\n            .iconShadowType=\"${NidocaIconShadowType.none}\"\n            .withIconSpace=\"${false}\"\n            .round=\"${true}\"\n            .clickable=\"${true}\"\n            .deactivated=\"${false}\"\n            color=\"${this.determineColor(this.state)}\"\n            backgroundColor=\"${this.determineBackgroundColor(this.state)}\"\n            size=\"24\"\n            @nidoca-event-icon-clicked=\"${() => this.stepClicked()}\"\n            sizeUnit=\"px\"\n          >\n          </nidoca-icon>\n\n          ${this.isLast\n            ? html ``\n            : html `<nidoca-icon color=\"${this.determineBackgroundColor(this.state)}\" icon=\"label_important\">\n              </nidoca-icon>`}\n        </div>\n        <nidoca-text style=\"width:48px;\" text=\"${this.primaryText}\"><slot></slot> </nidoca-text>\n      </div>\n    `;\n    }\n    determineBackgroundColor(state) {\n        return state == WizardStepState.completed\n            ? 'var(--app-color-text-primary)'\n            : state == WizardStepState.current\n                ? 'var(--app-color-secondary-background)'\n                : 'var(--app-color-surface-background)';\n    }\n    determineColor(state) {\n        return state == WizardStepState.finish\n            ? 'var(--app-color-success)'\n            : state == WizardStepState.completed\n                ? 'var(--mdc-theme-on-primary)'\n                : state == WizardStepState.current\n                    ? 'var(--app-color-text-secondary)'\n                    : 'var(--app-color-text-surface)';\n    }\n    stepClicked() {\n        const customEvent = new CustomEvent('nidoca-event-wizard-step-clicked', {\n            detail: this.index,\n            bubbles: true,\n            composed: true,\n        });\n        console.debug('dispatch custom event type: %s, detail: %s', customEvent.type, JSON.stringify(customEvent.detail));\n        this.dispatchEvent(customEvent);\n    }\n}"
         }
       ],
       "exports": [
@@ -2955,6 +2991,14 @@
           "name": "*",
           "declaration": {
             "name": "*",
+            "package": "./nidoca-img-slider"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
             "package": "./nidoca-movie"
           }
         },
@@ -3220,6 +3264,14 @@
           "declaration": {
             "name": "*",
             "package": "./nidoca-dialog-decision"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "./nidoca-infobox"
           }
         },
         {
@@ -3525,7 +3577,7 @@
               "kind": "field",
               "name": "styles",
               "static": true,
-              "default": "css`\n    :host {\n      display: block;\n    }\n    slot {\n      display: flex;\n      flex-direction: column;\n      flex-wrap: wrap;\n      align-items: flex-start;\n    }\n\n    .paddingBottom {\n      padding-bottom: var(--space-2);\n    }\n  `"
+              "default": "css`\n    :host {\n      display: block;\n    }\n    slot {\n      display: flex;\n      flex-direction: column;\n      flex-wrap: wrap;\n      align-items: flex-start;\n    }\n\n    .paddingBottom {\n      padding-bottom: var(--space);\n    }\n  `"
             },
             {
               "kind": "field",
@@ -3588,6 +3640,13 @@
                 {
                   "name": "slotName",
                   "default": "''",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "theme",
+                  "default": "'plain'",
                   "type": {
                     "text": "string"
                   }
@@ -3878,7 +3937,7 @@
               "kind": "field",
               "name": "styles",
               "static": true,
-              "default": "css`\n    :host {\n      box-sizing: border-box;\n      display: block;\n      border-radius: 1rem;\n      border-style: solid;\n      border-width: var(--border-width-min);\n      box-shadow: 0 var(--space) var(--space) rgba(0, 0, 0, 0.08), 0 var(--space) var(--space) rgba(0, 0, 0, 0.16);\n    }\n    slot {\n      display: flex;\n      justify-content: center;\n      align-items: center;\n      height: 100%;\n    }\n  `"
+              "default": "css`\n    :host {\n      box-sizing: border-box;\n      display: block;\n      border-radius: 1rem;\n      border-style: solid;\n      border-width: var(--border-width-min);\n      box-shadow: 0 var(--space) var(--space) rgba(0, 0, 0, 0.08), 0 var(--space) var(--space) rgba(0, 0, 0, 0.16);\n      height: 100%;\n    }\n    slot {\n      display: flex;\n      justify-content: center;\n      align-items: center;\n      height: 100%;\n    }\n  `"
             },
             {
               "kind": "field",
@@ -6978,65 +7037,13 @@
         {
           "kind": "class",
           "description": "",
-          "name": "NidocaIconShadowType",
-          "members": [
-            {
-              "kind": "field",
-              "name": "NONE",
-              "type": {
-                "text": "string"
-              },
-              "static": true,
-              "default": "'NONE'"
-            },
-            {
-              "kind": "field",
-              "name": "DEFAULT_SHADOW",
-              "type": {
-                "text": "string"
-              },
-              "static": true,
-              "default": "'DEFAULT_SHADOW'"
-            },
-            {
-              "kind": "field",
-              "name": "SHADOW_1",
-              "type": {
-                "text": "string"
-              },
-              "static": true,
-              "default": "'SHADOW_1'"
-            },
-            {
-              "kind": "field",
-              "name": "SHADOW_2",
-              "type": {
-                "text": "string"
-              },
-              "static": true,
-              "default": "'SHADOW_2'"
-            },
-            {
-              "kind": "field",
-              "name": "SHADOW_3",
-              "type": {
-                "text": "string"
-              },
-              "static": true,
-              "default": "'SHADOW_3'"
-            }
-          ]
-        },
-        {
-          "kind": "class",
-          "description": "",
           "name": "NidocaIconExtended",
           "members": [
             {
               "kind": "field",
               "name": "styles",
               "static": true,
-              "default": "css`\n    .round {\n      -moz-border-radius: 50%;\n      -webkit-border-radius: 50%;\n      border-radius: 50%;\n    }\n\n    .DEFAULT_SHADOW {\n      -moz-box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.16), 0 3px 3px 0 rgba(0, 0, 0, 0.23);\n      -webkit-box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.16), 0 3px 3px 0 rgba(0, 0, 0, 0.23);\n      box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.16), 0 3px 3px 0 rgba(0, 0, 0, 0.23);\n    }\n\n    .SHADOW_1 {\n      -moz-box-shadow: 0 1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24);\n      -webkit-box-shadow: 0 1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24);\n      box-shadow: 0 1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24);\n    }\n\n    .SHADOW_2 {\n      -moz-box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.19), 0 6px 3px 0 rgba(0, 0, 0, 0.23);\n      -webkit-box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.19), 0 6px 3px 0 rgba(0, 0, 0, 0.23);\n      box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.19), 0 6px 3px 0 rgba(0, 0, 0, 0.23);\n    }\n\n    .SHADOW_3 {\n      -moz-box-shadow: 0 14px 14px 0 rgba(0, 0, 0, 0.25), 0 10px 5px 0 rgba(0, 0, 0, 0.22);\n      -webkit-box-shadow: 0 14px 14px 0 rgba(0, 0, 0, 0.25), 0 10px 5px 0 rgba(0, 0, 0, 0.22);\n      box-shadow: 0 14px 14px 0 rgba(0, 0, 0, 0.25), 0 10px 5px 0 rgba(0, 0, 0, 0.22);\n    }\n  `"
+              "default": "css`\n    .icon {\n      padding: var(--space);\n      -moz-border-radius: 50%;\n      -webkit-border-radius: 50%;\n      border-radius: 50%;\n    }\n\n    .default {\n      -moz-box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.16), 0 3px 3px 0 rgba(0, 0, 0, 0.23);\n      -webkit-box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.16), 0 3px 3px 0 rgba(0, 0, 0, 0.23);\n      box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.16), 0 3px 3px 0 rgba(0, 0, 0, 0.23);\n    }\n\n    .shadow_1 {\n      -moz-box-shadow: 0 1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24);\n      -webkit-box-shadow: 0 1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24);\n      box-shadow: 0 1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24);\n    }\n\n    .shadow_2 {\n      -moz-box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.19), 0 6px 3px 0 rgba(0, 0, 0, 0.23);\n      -webkit-box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.19), 0 6px 3px 0 rgba(0, 0, 0, 0.23);\n      box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.19), 0 6px 3px 0 rgba(0, 0, 0, 0.23);\n    }\n\n    .shadow_3 {\n      -moz-box-shadow: 0 14px 14px 0 rgba(0, 0, 0, 0.25), 0 10px 5px 0 rgba(0, 0, 0, 0.22);\n      -webkit-box-shadow: 0 14px 14px 0 rgba(0, 0, 0, 0.25), 0 10px 5px 0 rgba(0, 0, 0, 0.22);\n      box-shadow: 0 14px 14px 0 rgba(0, 0, 0, 0.25), 0 10px 5px 0 rgba(0, 0, 0, 0.22);\n    }\n  `"
             },
             {
               "kind": "field",
@@ -7077,6 +7084,14 @@
               "default": "false"
             },
             {
+              "kind": "field",
+              "name": "title",
+              "type": {
+                "text": "string"
+              },
+              "default": "''"
+            },
+            {
               "kind": "method",
               "name": "render",
               "return": {
@@ -7093,6 +7108,25 @@
                   "text": "Promise<void>"
                 }
               }
+            },
+            {
+              "kind": "method",
+              "name": "example",
+              "static": true,
+              "return": {
+                "type": {
+                  "text": "TemplateResult"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "slotName",
+                  "default": "''",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ]
             }
           ],
           "events": [
@@ -7113,85 +7147,10 @@
       "exports": [
         {
           "kind": "js",
-          "name": "NidocaIconShadowType",
-          "declaration": {
-            "name": "NidocaIconShadowType",
-            "module": "src/nidoca-icon-extended.ts"
-          }
-        },
-        {
-          "kind": "js",
           "name": "NidocaIconExtended",
           "declaration": {
             "name": "NidocaIconExtended",
             "module": "src/nidoca-icon-extended.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/nidoca-icon-with-description.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "NidocaIconWithDescription",
-          "members": [
-            {
-              "kind": "field",
-              "name": "styles",
-              "static": true,
-              "default": "css`\n    :host {\n      display: block;\n      display: flex;\n      flex-direction: column;\n      align-items: center;\n    }\n  `"
-            },
-            {
-              "kind": "field",
-              "name": "primaryText",
-              "type": {
-                "text": "string"
-              },
-              "default": "''"
-            },
-            {
-              "kind": "field",
-              "name": "text",
-              "type": {
-                "text": "string"
-              },
-              "default": "''"
-            },
-            {
-              "kind": "field",
-              "name": "icon",
-              "type": {
-                "text": "string"
-              },
-              "default": "''"
-            },
-            {
-              "kind": "method",
-              "name": "render",
-              "return": {
-                "type": {
-                  "text": "TemplateResult"
-                }
-              }
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NidocaIconWithDescription",
-          "declaration": {
-            "name": "NidocaIconWithDescription",
-            "module": "src/nidoca-icon-with-description.ts"
           }
         }
       ]
@@ -7237,7 +7196,7 @@
             },
             {
               "kind": "field",
-              "name": "primaryText",
+              "name": "title",
               "type": {
                 "text": "string"
               },
@@ -7430,6 +7389,56 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/nidoca-img-slider.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "NidocaImgSlider",
+          "members": [
+            {
+              "kind": "field",
+              "name": "styles",
+              "static": true,
+              "default": "css`\n    :host,\n    ::slotted(:host) {\n      display: block;\n    }\n  `"
+            },
+            {
+              "kind": "field",
+              "name": "theme",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "render",
+              "return": {
+                "type": {
+                  "text": "TemplateResult"
+                }
+              }
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "NidocaImgSlider",
+          "declaration": {
+            "name": "NidocaImgSlider",
+            "module": "src/nidoca-img-slider.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/nidoca-img.ts",
       "declarations": [
         {
@@ -7518,6 +7527,83 @@
           "declaration": {
             "name": "NidocaImg",
             "module": "src/nidoca-img.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/nidoca-infobox.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "NidocaInfobox",
+          "members": [
+            {
+              "kind": "field",
+              "name": "styles",
+              "static": true,
+              "default": "css`\n    :host {\n      display: block;\n      text-align: center;\n    }\n    slot {\n      display: block;\n      padding-top: var(--icon-size);\n      padding-left: var(--space-2);\n      padding-right: var(--space-2);\n      padding-bottom: var(--space-2);\n    }\n\n    .card {\n      display: block;\n      margin-top: calc(((var(--icon-size) / 2) +var(--space)) * -1);\n    }\n  `"
+            },
+            {
+              "kind": "field",
+              "name": "icon",
+              "type": {
+                "text": "string"
+              },
+              "default": "''"
+            },
+            {
+              "kind": "method",
+              "name": "render",
+              "return": {
+                "type": {
+                  "text": "TemplateResult"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "example",
+              "static": true,
+              "return": {
+                "type": {
+                  "text": "TemplateResult"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "slotName",
+                  "default": "''",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "theme",
+                  "default": "'surface'",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ]
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "NidocaInfobox",
+          "declaration": {
+            "name": "NidocaInfobox",
+            "module": "src/nidoca-infobox.ts"
           }
         }
       ]
@@ -10007,7 +10093,7 @@
               "kind": "field",
               "name": "styles",
               "static": true,
-              "default": "css`\n    :host,\n    slot,\n    ::slotted(:host),\n    ::slotted(slot) {\n      display: block;\n      font-weight: 600;\n      font-size: 170%;\n      line-height: 1.5em;\n    }\n  `",
+              "default": "css`\n    :host,\n    slot,\n    ::slotted(:host),\n    ::slotted(slot) {\n      display: block;\n      font-weight: 600;\n      font-size: 170%;\n      line-height: 1.2em;\n    }\n  `",
               "inheritedFrom": {
                 "name": "NidocaText",
                 "module": "src/nidoca-text.ts"
@@ -11625,24 +11711,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "coverage/lcov-report/block-navigation.js",
-      "declarations": [],
-      "exports": []
-    },
-    {
-      "kind": "javascript-module",
-      "path": "coverage/lcov-report/prettify.js",
-      "declarations": [],
-      "exports": []
-    },
-    {
-      "kind": "javascript-module",
-      "path": "coverage/lcov-report/sorter.js",
-      "declarations": [],
-      "exports": []
-    },
-    {
-      "kind": "javascript-module",
       "path": "lib/apps/nidoca-app.js",
       "declarations": [
         {
@@ -11978,6 +12046,49 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/app/nidoca-page-product-template.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "NidocaPageProductTemplate",
+          "members": [
+            {
+              "kind": "field",
+              "name": "styles",
+              "static": true,
+              "default": "css`\n    .infobox {\n      padding: var(--space-2);\n    }\n  `"
+            },
+            {
+              "kind": "method",
+              "name": "render",
+              "return": {
+                "type": {
+                  "text": "TemplateResult"
+                }
+              }
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "NidocaPageProductTemplate",
+          "declaration": {
+            "name": "NidocaPageProductTemplate",
+            "module": "src/app/nidoca-page-product-template.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/app/nidoca-page-settings.ts",
       "declarations": [
         {
@@ -12234,6 +12345,18 @@
           }
         }
       ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "public/docs/assets/main.js",
+      "declarations": [],
+      "exports": []
+    },
+    {
+      "kind": "javascript-module",
+      "path": "public/docs/assets/search.js",
+      "declarations": [],
+      "exports": []
     }
   ]
 }
