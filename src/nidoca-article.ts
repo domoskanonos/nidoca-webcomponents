@@ -1,9 +1,9 @@
-import {css, html, TemplateResult, LitElement} from 'lit';
-import {customElement} from 'lit/decorators.js';
-import {property} from 'lit/decorators.js';
-import {NidocaTheme} from './nidoca-meta';
+import {css, html, TemplateResult, LitElement} from "lit";
+import {customElement} from "lit/decorators.js";
+import {property} from "lit/decorators.js";
+import {NidocaTheme} from "./nidoca-meta";
 
-@customElement('nidoca-article')
+@customElement("nidoca-article")
 export class NidocaArticle extends LitElement {
   static styles = css`
     :host {
@@ -25,16 +25,16 @@ export class NidocaArticle extends LitElement {
   theme: string = NidocaTheme.plain;
 
   @property({type: String})
-  overline: string = '';
+  overline: string = "";
 
   @property({type: String})
-  title: string = '';
+  title: string = "";
 
   @property({type: String})
-  summary: string = '';
+  summary: string = "";
 
   @property({type: String})
-  text: string = '';
+  text: string = "";
 
   render(): TemplateResult {
     return html`
@@ -58,7 +58,7 @@ export class NidocaArticle extends LitElement {
     `;
   }
 
-  static example(slotName: string = '', theme: string = 'plain'): TemplateResult {
+  static example(slotName: string = "", theme: string = "plain"): TemplateResult {
     return html`<nidoca-article
       theme="${theme}"
       slot="${slotName}"

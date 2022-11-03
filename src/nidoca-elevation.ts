@@ -1,8 +1,8 @@
-import {html, LitElement, TemplateResult, css} from 'lit';
-import {customElement} from 'lit/decorators.js';
-import {property} from 'lit/decorators.js';
+import {html, LitElement, TemplateResult, css} from "lit";
+import {customElement} from "lit/decorators.js";
+import {property} from "lit/decorators.js";
 
-@customElement('nidoca-elevation')
+@customElement("nidoca-elevation")
 export class NidocaElevation extends LitElement {
   static styles = css`
     .container {
@@ -19,12 +19,12 @@ export class NidocaElevation extends LitElement {
 
   constructor() {
     super();
-    addEventListener('click', (me: MouseEvent) => {
+    addEventListener("click", (me: MouseEvent) => {
       const rect = this.associatedElement?.getBoundingClientRect();
       if (rect) {
         if (rect.top > me.clientY || rect.right < me.clientX || rect.left > me.clientX || rect.bottom < me.clientY) {
           this.dispatchEvent(
-            new CustomEvent('nidoca-elevation-event-closeme', {
+            new CustomEvent("nidoca-elevation-event-closeme", {
               detail: this,
               bubbles: true,
               composed: true,
@@ -48,7 +48,7 @@ export class NidocaElevation extends LitElement {
   }
 
   calculatePositionStyle(basedOnComponent: HTMLElement | undefined): string {
-    let style: string = '';
+    let style: string = "";
     if (basedOnComponent) {
       const rect = basedOnComponent.getBoundingClientRect();
       if (rect.right > window.innerWidth / 2) {

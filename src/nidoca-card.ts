@@ -1,8 +1,8 @@
-import {css, html, LitElement, TemplateResult} from 'lit';
-import {customElement, property} from 'lit/decorators.js';
-import {NidocaTheme} from './nidoca-meta';
+import {css, html, LitElement, TemplateResult} from "lit";
+import {customElement, property} from "lit/decorators.js";
+import {NidocaTheme} from "./nidoca-meta";
 
-@customElement('nidoca-card')
+@customElement("nidoca-card")
 export class NidocaCard extends LitElement {
   static styles = css`
     :host {

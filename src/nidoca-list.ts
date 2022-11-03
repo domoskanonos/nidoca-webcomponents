@@ -1,9 +1,9 @@
-import {css, html, LitElement, PropertyValues, TemplateResult} from 'lit';
-import {customElement, property, query} from 'lit/decorators.js';
-import {NidocaListSection, NidocaTheme} from '.';
-import {NidocaListItem} from './nidoca-list-item';
+import {css, html, LitElement, PropertyValues, TemplateResult} from "lit";
+import {customElement, property, query} from "lit/decorators.js";
+import {NidocaListSection, NidocaTheme} from ".";
+import {NidocaListItem} from "./nidoca-list-item";
 
-@customElement('nidoca-list')
+@customElement("nidoca-list")
 export class NidocaList extends LitElement {
   static styles = css`
     :host {
@@ -22,13 +22,13 @@ export class NidocaList extends LitElement {
   @property({type: Boolean})
   multiselect: boolean = false;
 
-  @query('#slotElement')
+  @query("#slotElement")
   private slotElement: HTMLSlotElement | undefined;
 
   updated(changedProperties: PropertyValues): void {
     super.updated(changedProperties);
     changedProperties.forEach((_oldValue, propName) => {
-      if (propName == 'theme') {
+      if (propName == "theme") {
         this.getItems().forEach((listItemComponent) => {
           listItemComponent.theme = this.theme;
         });

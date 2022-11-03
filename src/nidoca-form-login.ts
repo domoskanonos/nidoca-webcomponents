@@ -1,9 +1,9 @@
-import {css, html, LitElement, TemplateResult} from 'lit';
-import {customElement, property, query} from 'lit/decorators.js';
-import {ifDefined} from 'lit/directives/if-defined.js';
-import {NidocaForm, NidocaFormTextType, NidocaTheme, NidocaThemeHelper} from './index';
+import {css, html, LitElement, TemplateResult} from "lit";
+import {customElement, property, query} from "lit/decorators.js";
+import {ifDefined} from "lit/directives/if-defined.js";
+import {NidocaForm, NidocaFormTextType, NidocaTheme, NidocaThemeHelper} from "./index";
 
-@customElement('nidoca-form-login')
+@customElement("nidoca-form-login")
 export class NidocaFormLogin extends LitElement {
   static styles = css`
     :host {
@@ -20,18 +20,18 @@ export class NidocaFormLogin extends LitElement {
   theme: string | undefined = NidocaTheme.plain;
 
   @property({type: String, converter: String})
-  label: string = 'Anmeldung';
+  label: string = "Anmeldung";
 
   @property({type: String, converter: String})
-  usernameLabel: string = 'Benutzername/Email';
+  usernameLabel: string = "Benutzername/Email";
 
   @property({type: String, converter: String})
-  passwordLabel: string = 'Passwort';
+  passwordLabel: string = "Passwort";
 
   @property({type: String, converter: String})
-  buttonLabel: string = 'Anmelden';
+  buttonLabel: string = "Anmelden";
 
-  @query('#authenitcate-form')
+  @query("#authenitcate-form")
   formComponent: NidocaForm | undefined;
 
   render(): TemplateResult {
@@ -77,7 +77,7 @@ export class NidocaFormLogin extends LitElement {
   private login() {
     if (this.formComponent && this.formComponent.validate()) {
       this.dispatchEvent(
-        new CustomEvent('nidoca-form-login-submit', {
+        new CustomEvent("nidoca-form-login-submit", {
           detail: this.formComponent.getOutputData(),
           bubbles: true,
           composed: true,

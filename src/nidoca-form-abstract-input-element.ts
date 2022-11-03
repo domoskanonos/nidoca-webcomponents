@@ -1,7 +1,7 @@
-import {LitElement} from 'lit';
+import {LitElement} from "lit";
 
 export class FormOutputData {
-  key: string = '';
+  key: string = "";
   value: any;
 }
 

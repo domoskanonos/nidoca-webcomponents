@@ -1,18 +1,18 @@
-import {css, html, TemplateResult} from 'lit';
-import {customElement} from 'lit/decorators.js';
-import {property} from 'lit/decorators.js';
-import {query} from 'lit/decorators.js';
-import {ifDefined} from 'lit/directives/if-defined.js';
-import {NidocaTheme, NidocaThemeHelper} from '.';
-import {FormOutputData, NidocaFormAbstractInputElement} from './nidoca-form-abstract-input-element';
+import {css, html, TemplateResult} from "lit";
+import {customElement} from "lit/decorators.js";
+import {property} from "lit/decorators.js";
+import {query} from "lit/decorators.js";
+import {ifDefined} from "lit/directives/if-defined.js";
+import {NidocaTheme, NidocaThemeHelper} from ".";
+import {FormOutputData, NidocaFormAbstractInputElement} from "./nidoca-form-abstract-input-element";
 
-@customElement('nidoca-form-upload')
+@customElement("nidoca-form-upload")
 export class NidocaFormUpload extends NidocaFormAbstractInputElement {
   validate(): boolean {
-    throw new Error('Method not implemented.');
+    throw new Error("Method not implemented.");
   }
   getOutputData(): FormOutputData {
-    throw new Error('Method not implemented.');
+    throw new Error("Method not implemented.");
   }
   static styles = css`
     :host,
@@ -37,7 +37,7 @@ export class NidocaFormUpload extends NidocaFormAbstractInputElement {
   @property({type: NidocaTheme, converter: String})
   theme: string | undefined = NidocaTheme.primary;
 
-  @query('#inputElement')
+  @query("#inputElement")
   private inputElement: HTMLInputElement | undefined;
 
   render(): TemplateResult {

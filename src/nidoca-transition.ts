@@ -1,22 +1,22 @@
-import {css, html, TemplateResult, LitElement} from 'lit';
-import {customElement} from 'lit/decorators.js';
-import {property} from 'lit/decorators.js';
-import {ifDefined} from 'lit/directives/if-defined.js';
+import {css, html, TemplateResult, LitElement} from "lit";
+import {customElement} from "lit/decorators.js";
+import {property} from "lit/decorators.js";
+import {ifDefined} from "lit/directives/if-defined.js";
 
 export class NidocaTransitionType {
-  static readonly CENTER = 'CENTER';
-  static readonly LEFT = 'LEFT';
-  static readonly RIGHT = 'RIGHT';
-  static readonly TOP = 'TOP';
-  static readonly BOTTOM = 'BOTTOM';
-  static readonly SLIDE_CENTER = 'SLIDE_CENTER';
-  static readonly SLIDE_LEFT = 'SLIDE_LEFT';
-  static readonly SLIDE_RIGHT = 'SLIDE_RIGHT';
-  static readonly SLIDE_TOP = 'SLIDE_TOP';
-  static readonly SLIDE_BOTTOM = 'SLIDE_BOTTOM';
+  static readonly CENTER = "CENTER";
+  static readonly LEFT = "LEFT";
+  static readonly RIGHT = "RIGHT";
+  static readonly TOP = "TOP";
+  static readonly BOTTOM = "BOTTOM";
+  static readonly SLIDE_CENTER = "SLIDE_CENTER";
+  static readonly SLIDE_LEFT = "SLIDE_LEFT";
+  static readonly SLIDE_RIGHT = "SLIDE_RIGHT";
+  static readonly SLIDE_TOP = "SLIDE_TOP";
+  static readonly SLIDE_BOTTOM = "SLIDE_BOTTOM";
 }
 
-@customElement('nidoca-transition')
+@customElement("nidoca-transition")
 export class NidocaTransition extends LitElement {
   @property({type: String})
   transitionType: string = NidocaTransitionType.CENTER;

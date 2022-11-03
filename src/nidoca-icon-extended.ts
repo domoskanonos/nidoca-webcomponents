@@ -1,16 +1,16 @@
-import {css, html, TemplateResult, LitElement} from 'lit';
-import {customElement} from 'lit/decorators.js';
-import {property} from 'lit/decorators.js';
-import {NidocaTheme} from '.';
+import {css, html, TemplateResult, LitElement} from "lit";
+import {customElement} from "lit/decorators.js";
+import {property} from "lit/decorators.js";
+import {NidocaTheme} from ".";
 
 export enum NidocaIconShadowType {
-  none = 'none',
-  shadow_1 = 'shadow_1',
-  shadow_2 = 'shadow_2',
-  shadow_3 = 'shadow_3',
+  none = "none",
+  shadow_1 = "shadow_1",
+  shadow_2 = "shadow_2",
+  shadow_3 = "shadow_3",
 }
 
-@customElement('nidoca-icon-extended')
+@customElement("nidoca-icon-extended")
 export class NidocaIconExtended extends LitElement {
   static styles = css`
     .icon {
@@ -52,16 +52,16 @@ export class NidocaIconExtended extends LitElement {
   shadowType: NidocaIconShadowType = NidocaIconShadowType.shadow_1;
 
   @property({type: String})
-  icon: string = '';
+  icon: string = "";
 
   @property({type: Boolean})
   clickable: boolean = true;
 
   @property({type: Boolean})
   deactivated: boolean = false;
-  
+
   @property({type: String})
-  title: string = '';
+  title: string = "";
 
   render(): TemplateResult {
     return html`
@@ -85,8 +85,8 @@ export class NidocaIconExtended extends LitElement {
 
   async clicked(): Promise<void> {
     if (this.clickable && !this.deactivated) {
-      const customEventName = 'nidoca-event-icon-clicked';
-      console.log('dispatch custom event: %s', customEventName);
+      const customEventName = "nidoca-event-icon-clicked";
+      console.log("dispatch custom event: %s", customEventName);
       this.dispatchEvent(
         new CustomEvent(customEventName, {
           detail: this,
@@ -97,7 +97,7 @@ export class NidocaIconExtended extends LitElement {
     }
   }
 
-  static example(slotName: string = ''): TemplateResult {
+  static example(slotName: string = ""): TemplateResult {
     return html`
       <nidoca-icon-extended
         slot="${slotName}"

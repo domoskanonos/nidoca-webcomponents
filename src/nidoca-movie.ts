@@ -1,13 +1,13 @@
-import {css, html, TemplateResult, LitElement} from 'lit';
-import {customElement} from 'lit/decorators.js';
-import {property} from 'lit/decorators.js';
+import {css, html, TemplateResult, LitElement} from "lit";
+import {customElement} from "lit/decorators.js";
+import {property} from "lit/decorators.js";
 
-@customElement('nidoca-movie')
+@customElement("nidoca-movie")
 export class NidocaMovie extends LitElement {
   static styles = css``;
 
   @property({type: String})
-  src: string = '';
+  src: string = "";
 
   render(): TemplateResult {
     return html`

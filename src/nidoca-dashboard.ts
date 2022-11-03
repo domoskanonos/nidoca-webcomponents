@@ -1,8 +1,8 @@
-import {css, html, TemplateResult, LitElement} from 'lit';
-import {customElement} from 'lit/decorators.js';
-import {property} from 'lit/decorators.js';
+import {css, html, TemplateResult, LitElement} from "lit";
+import {customElement} from "lit/decorators.js";
+import {property} from "lit/decorators.js";
 
-@customElement('nidoca-dashboard')
+@customElement("nidoca-dashboard")
 export class NidocaDashboard extends LitElement {
   static styles = css`
     :host {
@@ -31,7 +31,7 @@ export class NidocaDashboard extends LitElement {
   }
 }
 
-@customElement('nidoca-dashboard-box-25')
+@customElement("nidoca-dashboard-box-25")
 export class NidocaDashboardBox25 extends LitElement {
   static styles = css`
     :host {
@@ -51,7 +51,7 @@ export class NidocaDashboardBox25 extends LitElement {
   }
 }
 
-@customElement('nidoca-dashboard-box-50')
+@customElement("nidoca-dashboard-box-50")
 export class NidocaDashboardBox50 extends LitElement {
   static styles = css`
     :host {
@@ -70,7 +70,7 @@ export class NidocaDashboardBox50 extends LitElement {
   }
 }
 
-@customElement('nidoca-dashboard-box-100')
+@customElement("nidoca-dashboard-box-100")
 export class NidocaDashboardBox100 extends LitElement {
   static styles = css`
     :host {
@@ -84,7 +84,7 @@ export class NidocaDashboardBox100 extends LitElement {
   }
 }
 
-@customElement('nidoca-dashboard-card')
+@customElement("nidoca-dashboard-card")
 export class NidocaDashboardCard extends LitElement {
   static styles = css`
     :host {
@@ -108,11 +108,11 @@ export class NidocaDashboardCard extends LitElement {
   clickable: boolean = true;
 
   @property({type: String})
-  title: string = '';
+  title: string = "";
 
   render(): TemplateResult {
     return html`
-      <nidoca-card @click="${() => this.clicked()}" class="${this.clickable ? 'clickable' : ''}">
+      <nidoca-card @click="${() => this.clicked()}" class="${this.clickable ? "clickable" : ""}">
         <nidoca-box>
           <nidoca-text-h6 style="padding-bottom: var(--space-2);">${this.title}</nidoca-text-h6>
           <slot></slot>
@@ -124,7 +124,7 @@ export class NidocaDashboardCard extends LitElement {
   private clicked() {
     if (this.clickable) {
       this.dispatchEvent(
-        new CustomEvent('nidoca-event-dashboard-card-clicked', {
+        new CustomEvent("nidoca-event-dashboard-card-clicked", {
           detail: this,
           bubbles: true,
           composed: true,

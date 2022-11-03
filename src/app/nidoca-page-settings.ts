@@ -1,10 +1,10 @@
-import {css, html, LitElement, PropertyValueMap, TemplateResult} from 'lit';
-import {customElement, property} from 'lit/decorators.js';
-import {guard} from 'lit/directives/guard.js';
-import {repeat} from 'lit/directives/repeat.js';
-import {NidocaFormText, NidocaFormTextType} from '../index';
+import {css, html, LitElement, PropertyValueMap, TemplateResult} from "lit";
+import {customElement, property} from "lit/decorators.js";
+import {guard} from "lit/directives/guard.js";
+import {repeat} from "lit/directives/repeat.js";
+import {NidocaFormText, NidocaFormTextType} from "../index";
 
-@customElement('nidoca-page-settings')
+@customElement("nidoca-page-settings")
 export class NidocaPageSettings extends LitElement {
   static styles = css``;
 
@@ -17,13 +17,13 @@ export class NidocaPageSettings extends LitElement {
 
       Array.from(styleSheets).forEach((styleSheet) => {
         Array.from(styleSheet.cssRules).forEach((rule: any) => {
-          if (!rule || !rule['style']) {
+          if (!rule || !rule["style"]) {
             return;
           }
 
-          const styleArray: string[] = rule['style'];
+          const styleArray: string[] = rule["style"];
           Array.from(styleArray).forEach((style: string) => {
-            if (style.startsWith('--') && cssVars.indexOf(style) == -1) {
+            if (style.startsWith("--") && cssVars.indexOf(style) == -1) {
               cssVars.push(style);
             }
           });
@@ -53,10 +53,10 @@ export class NidocaPageSettings extends LitElement {
                       @input="${(event: InputEvent) => {
                         document.documentElement.style.setProperty(
                           cssVar,
-                          event.target ? (<NidocaFormText>event.target).getOutputData().value : ''
+                          event.target ? (<NidocaFormText>event.target).getOutputData().value : ""
                         );
                       }}"
-                      type="${cssVar.indexOf('color') > -1 ? NidocaFormTextType.COLOR : NidocaFormTextType.TEXT}"
+                      type="${cssVar.indexOf("color") > -1 ? NidocaFormTextType.COLOR : NidocaFormTextType.TEXT}"
                       name="${cssVar}"
                       value="${getComputedStyle(document.documentElement).getPropertyValue(cssVar).trim()}"
                       label="${cssVar}"

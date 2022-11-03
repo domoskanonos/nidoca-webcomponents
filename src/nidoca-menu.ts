@@ -1,8 +1,8 @@
-import {css, html, TemplateResult, LitElement, PropertyValues} from 'lit';
-import {customElement, property, query} from 'lit/decorators.js';
-import {NidocaMenuItem, NidocaTheme} from '.';
+import {css, html, TemplateResult, LitElement, PropertyValues} from "lit";
+import {customElement, property, query} from "lit/decorators.js";
+import {NidocaMenuItem, NidocaTheme} from ".";
 
-@customElement('nidoca-menu')
+@customElement("nidoca-menu")
 export class NidocaMenu extends LitElement {
   static styles = css`
     :host,
@@ -14,7 +14,7 @@ export class NidocaMenu extends LitElement {
   @property({type: String})
   theme: string = NidocaTheme.surface;
 
-  @query('#slotElement')
+  @query("#slotElement")
   private slotElement: HTMLSlotElement | undefined;
 
   render(): TemplateResult {
@@ -33,7 +33,7 @@ export class NidocaMenu extends LitElement {
   updated(changedProperties: PropertyValues): void {
     super.updated(changedProperties);
     changedProperties.forEach((_oldValue, propName) => {
-      if (propName == 'theme') {
+      if (propName == "theme") {
         if (this.slotElement != null) {
           const slottedElements = this.slotElement.assignedElements();
           for (let index = 0; index < slottedElements.length; index++) {
@@ -48,7 +48,7 @@ export class NidocaMenu extends LitElement {
   }
 
   protected firstUpdated() {
-    this.addEventListener('click', (event: MouseEvent) => {
+    this.addEventListener("click", (event: MouseEvent) => {
       if (this.slotElement != null) {
         const slottedElements = this.slotElement.assignedElements();
         for (let index = 0; index < slottedElements.length; index++) {
@@ -68,7 +68,7 @@ export class NidocaMenu extends LitElement {
     });
   }
 
-  static example(slotName: string = ''): TemplateResult {
+  static example(slotName: string = ""): TemplateResult {
     return html`
       <nidoca-menu slot="${slotName}" theme="primary">
         <nidoca-menu-item text="Start"></nidoca-menu-item>

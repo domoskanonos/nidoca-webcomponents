@@ -1,9 +1,9 @@
-import {css, html, TemplateResult, LitElement} from 'lit';
-import {customElement, property, query} from 'lit/decorators.js';
-import {ifDefined} from 'lit/directives/if-defined.js';
-import {NidocaButtonType, NidocaFormTextType, NidocaTheme, NidocaForm, NidocaThemeHelper} from '.';
+import {css, html, TemplateResult, LitElement} from "lit";
+import {customElement, property, query} from "lit/decorators.js";
+import {ifDefined} from "lit/directives/if-defined.js";
+import {NidocaButtonType, NidocaFormTextType, NidocaTheme, NidocaForm, NidocaThemeHelper} from ".";
 
-@customElement('nidoca-form-contact')
+@customElement("nidoca-form-contact")
 export class NidocaFormContact extends LitElement {
   static styles = css`
     :host {
@@ -20,24 +20,24 @@ export class NidocaFormContact extends LitElement {
   theme: string | undefined = NidocaTheme.primary;
 
   @property({type: String, converter: String})
-  label: string = 'Deine Nachricht';
+  label: string = "Deine Nachricht";
 
   @property({type: String, converter: String})
-  nameLabel: string = 'Dein Name';
+  nameLabel: string = "Dein Name";
 
   @property({type: String, converter: String})
-  emailLabel: string = 'Deine Email';
+  emailLabel: string = "Deine Email";
 
   @property({type: String, converter: String})
-  titleLabel: string = 'Betreff';
+  titleLabel: string = "Betreff";
 
   @property({type: String, converter: String})
-  messageLabel: string = 'Deine Nachricht';
+  messageLabel: string = "Deine Nachricht";
 
   @property({type: String, converter: String})
-  buttonLabel: string = 'Senden';
+  buttonLabel: string = "Senden";
 
-  @query('#authenitcate-form')
+  @query("#authenitcate-form")
   formComponent: NidocaForm | undefined;
 
   render(): TemplateResult {
@@ -95,7 +95,7 @@ export class NidocaFormContact extends LitElement {
   private sendMessage() {
     if (this.formComponent && this.formComponent.validate()) {
       this.dispatchEvent(
-        new CustomEvent('nidoca-form-contact-submit', {
+        new CustomEvent("nidoca-form-contact-submit", {
           detail: this.formComponent.getOutputData(),
           bubbles: true,
           composed: true,

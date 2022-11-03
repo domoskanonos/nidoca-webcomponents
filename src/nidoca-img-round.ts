@@ -1,8 +1,8 @@
-import {css, html, TemplateResult} from 'lit';
-import {customElement} from 'lit/decorators.js';
-import {NidocaImg} from './nidoca-img';
+import {css, html, TemplateResult} from "lit";
+import {customElement} from "lit/decorators.js";
+import {NidocaImg} from "./nidoca-img";
 
-@customElement('nidoca-img-round')
+@customElement("nidoca-img-round")
 export class NidocaImgRound extends NidocaImg {
   static styles = css`
     :host {
@@ -23,7 +23,7 @@ export class NidocaImgRound extends NidocaImg {
     }
   `;
 
-  static example(slotName: string = ''): TemplateResult {
+  static example(slotName: string = ""): TemplateResult {
     return html`<nidoca-img-round width="64px" width="64px" slot="${slotName}" src="face.jpg"></nidoca-img-round>`;
   }
 }

@@ -1,16 +1,16 @@
-import {css, html, LitElement, TemplateResult, PropertyValues} from 'lit';
-import {customElement} from 'lit/decorators.js';
-import {property} from 'lit/decorators.js';
-import {query} from 'lit/decorators.js';
-import {NidocaArticle, NidocaTheme, NidocaThemeHelper} from '.';
-import {NidocaAccordionItem} from './nidoca-accordion-item';
+import {css, html, LitElement, TemplateResult, PropertyValues} from "lit";
+import {customElement} from "lit/decorators.js";
+import {property} from "lit/decorators.js";
+import {query} from "lit/decorators.js";
+import {NidocaArticle, NidocaTheme, NidocaThemeHelper} from ".";
+import {NidocaAccordionItem} from "./nidoca-accordion-item";
 
 export enum AccordionType {
-  single = 'single',
-  multi = 'multi',
+  single = "single",
+  multi = "multi",
 }
 
-@customElement('nidoca-accordion')
+@customElement("nidoca-accordion")
 export class NidocaAccordion extends LitElement {
   static styles = css`
     :host {
@@ -28,13 +28,13 @@ export class NidocaAccordion extends LitElement {
   @property({type: AccordionType, converter: String})
   accordionType: string = AccordionType.single;
 
-  @query('#accordionSlot')
+  @query("#accordionSlot")
   private accordionSlot: HTMLSlotElement | undefined;
 
   updated(changedProperties: PropertyValues): void {
     super.updated(changedProperties);
     changedProperties.forEach((_oldValue, propName) => {
-      if (propName == 'theme') {
+      if (propName == "theme") {
         if (this.accordionSlot != null) {
           const slottedElements = this.accordionSlot.assignedElements();
           for (let index = 0; index < slottedElements.length; index++) {
@@ -78,7 +78,7 @@ export class NidocaAccordion extends LitElement {
     event.stopPropagation();
   }
 
-  static example(slotName: string = ''): TemplateResult {
+  static example(slotName: string = ""): TemplateResult {
     return html`<nidoca-accordion slot="${slotName}" theme="plain">
       <nidoca-accordion-item header="Lorem Ipsum" opened> ${NidocaArticle.example()} </nidoca-accordion-item>
       <nidoca-accordion-item header="Lorem Ipsum 2"> ${NidocaArticle.example()} </nidoca-accordion-item>

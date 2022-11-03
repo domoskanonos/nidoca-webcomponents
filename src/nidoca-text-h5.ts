@@ -1,8 +1,8 @@
-import {css} from 'lit';
-import {customElement} from 'lit/decorators.js';
-import {NidocaText} from '.';
+import {css} from "lit";
+import {customElement} from "lit/decorators.js";
+import {NidocaText} from ".";
 
-@customElement('nidoca-text-h5')
+@customElement("nidoca-text-h5")
 export class NidocaTextH5 extends NidocaText {
   static styles = css`
     :host,

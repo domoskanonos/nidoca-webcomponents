@@ -1,9 +1,9 @@
-import {css, html, TemplateResult, LitElement} from 'lit';
-import {customElement} from 'lit/decorators.js';
-import {property} from 'lit/decorators.js';
-import {NidocaTheme, NidocaThemeHelper} from './nidoca-meta';
+import {css, html, TemplateResult, LitElement} from "lit";
+import {customElement} from "lit/decorators.js";
+import {property} from "lit/decorators.js";
+import {NidocaTheme, NidocaThemeHelper} from "./nidoca-meta";
 
-@customElement('nidoca-hr')
+@customElement("nidoca-hr")
 export class NidocaHr extends LitElement {
   static styles = css`
     :host,

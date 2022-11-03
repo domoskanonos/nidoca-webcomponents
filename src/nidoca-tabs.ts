@@ -1,11 +1,11 @@
-import {css, html, TemplateResult, LitElement} from 'lit';
-import {customElement, property} from 'lit/decorators.js';
-import {query} from 'lit/decorators.js';
-import {NidocaTabContent} from './nidoca-tab-content';
-import {NidocaTab} from './nidoca-tab';
-import {NidocaArticle, NidocaTheme} from '.';
+import {css, html, TemplateResult, LitElement} from "lit";
+import {customElement, property} from "lit/decorators.js";
+import {query} from "lit/decorators.js";
+import {NidocaTabContent} from "./nidoca-tab-content";
+import {NidocaTab} from "./nidoca-tab";
+import {NidocaArticle, NidocaTheme} from ".";
 
-@customElement('nidoca-tabs')
+@customElement("nidoca-tabs")
 export class NidocaTabs extends LitElement {
   static styles = css`
     :host {
@@ -32,10 +32,10 @@ export class NidocaTabs extends LitElement {
     }
   `;
 
-  @query('#tabSlot')
+  @query("#tabSlot")
   private tabSlot: HTMLSlotElement | undefined;
 
-  @query('#tabContentSlot')
+  @query("#tabContentSlot")
   private tabContentSlot: HTMLSlotElement | undefined;
 
   @property({type: String})
@@ -60,7 +60,7 @@ export class NidocaTabs extends LitElement {
 
   protected update(changedProperties: Map<PropertyKey, unknown>): void {
     super.update(changedProperties);
-    if (changedProperties.get('tabIndex') != undefined) {
+    if (changedProperties.get("tabIndex") != undefined) {
       this.tabIndexChanged();
     }
   }
@@ -80,13 +80,13 @@ export class NidocaTabs extends LitElement {
         const element: Element = assignedElements[index];
         if (element instanceof NidocaTab) {
           element.theme = this.theme;
-          element.style.width = String(widthPerTab).concat('%');
+          element.style.width = String(widthPerTab).concat("%");
           if (element == selectedElement) {
             element.selected = true;
-            element.classList.add('SELECTED');
+            element.classList.add("SELECTED");
           } else {
             element.selected = false;
-            element.classList.remove('SELECTED');
+            element.classList.remove("SELECTED");
           }
         }
       }
@@ -134,7 +134,7 @@ export class NidocaTabs extends LitElement {
     }
   }
 
-  static example(slotName: string = ''): TemplateResult {
+  static example(slotName: string = ""): TemplateResult {
     return html`
       <nidoca-tabs theme="surface" slot="${slotName}" tabIndex="0">
         <nidoca-tab slot="tab"><nidoca-text>Tab 1</nidoca-text></nidoca-tab>

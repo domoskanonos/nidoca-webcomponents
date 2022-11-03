@@ -1,9 +1,9 @@
-import {css, html, LitElement, TemplateResult} from 'lit';
-import {customElement} from 'lit/decorators.js';
-import {property} from 'lit/decorators.js';
-import {NidocaArticle} from './nidoca-article';
+import {css, html, LitElement, TemplateResult} from "lit";
+import {customElement} from "lit/decorators.js";
+import {property} from "lit/decorators.js";
+import {NidocaArticle} from "./nidoca-article";
 
-@customElement('nidoca-infobox')
+@customElement("nidoca-infobox")
 export class NidocaInfobox extends LitElement {
   static styles = css`
     :host {
@@ -25,7 +25,7 @@ export class NidocaInfobox extends LitElement {
   `;
 
   @property({type: String})
-  icon: string = '';
+  icon: string = "";
 
   render(): TemplateResult {
     return html`
@@ -36,12 +36,13 @@ export class NidocaInfobox extends LitElement {
     `;
   }
 
-  static example(slotName: string = '', theme: string = 'surface'): TemplateResult {
+  static example(slotName: string = "", theme: string = "surface"): TemplateResult {
     return html`
       <nidoca-infobox slot="${slotName}" icon="handshake" style="width:250px; height:250px;">
         <nidoca-text-h5 theme="${theme}">Community</nidoca-text-h5>
         <nidoca-text-body theme="${theme}"
-          >Gemeinsam sind wir stark. Wenn wir einander helfen, können wir alles erreichen. Wir wollen unsere Community stärken.</nidoca-text-body
+          >Gemeinsam sind wir stark. Wenn wir einander helfen, können wir alles erreichen. Wir wollen unsere Community
+          stärken.</nidoca-text-body
         >
       </nidoca-infobox>
     `;

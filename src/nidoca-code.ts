@@ -1,9 +1,9 @@
-import {css, html, LitElement, TemplateResult} from 'lit';
-import {customElement} from 'lit/decorators.js';
-import {property} from 'lit/decorators.js';
-import {NidocaTheme} from './nidoca-meta';
+import {css, html, LitElement, TemplateResult} from "lit";
+import {customElement} from "lit/decorators.js";
+import {property} from "lit/decorators.js";
+import {NidocaTheme} from "./nidoca-meta";
 
-@customElement('nidoca-code')
+@customElement("nidoca-code")
 export class NidocaCode extends LitElement {
   static styles = css`
     :host {
@@ -25,7 +25,7 @@ export class NidocaCode extends LitElement {
 
     code {
       border-radius: 0.375em;
-      font-family: 'Courier New', monospace;
+      font-family: "Courier New", monospace;
       font-size: 0.85em;
       position: relative;
     }
@@ -39,7 +39,7 @@ export class NidocaCode extends LitElement {
   `;
 
   @property({type: String})
-  code: string = '';
+  code: string = "";
 
   @property({type: String})
   theme: string = NidocaTheme.plain;
@@ -59,7 +59,7 @@ export class NidocaCode extends LitElement {
     `;
   }
 
-  static example(slotName: string = ''): TemplateResult {
+  static example(slotName: string = ""): TemplateResult {
     return html`<nidoca-code slot="${slotName}" theme="surface"> my code </nidoca-code>`;
   }
 }

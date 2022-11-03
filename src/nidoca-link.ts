@@ -1,10 +1,10 @@
-import {css, html, TemplateResult, LitElement} from 'lit';
-import {customElement} from 'lit/decorators.js';
-import {property} from 'lit/decorators.js';
+import {css, html, TemplateResult, LitElement} from "lit";
+import {customElement} from "lit/decorators.js";
+import {property} from "lit/decorators.js";
 
-export type NidocaTargetType = '_blank' | '_self' | '_parent' | '_top';
+export type NidocaTargetType = "_blank" | "_self" | "_parent" | "_top";
 
-@customElement('nidoca-link')
+@customElement("nidoca-link")
 export class NidocaLink extends LitElement {
   static styles = css`
     :host,
@@ -19,13 +19,13 @@ export class NidocaLink extends LitElement {
   `;
 
   @property({type: String})
-  text: string = '';
+  text: string = "";
 
   @property({type: String})
-  href: string = '';
+  href: string = "";
 
   @property({type: String})
-  targetType: string = '_self';
+  targetType: string = "_self";
 
   render(): TemplateResult {
     return html`<a href="${this.href}" .target="${this.targetType}">

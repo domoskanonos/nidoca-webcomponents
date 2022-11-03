@@ -1,9 +1,9 @@
-import {css, html, TemplateResult, LitElement, PropertyValues} from 'lit';
-import {customElement} from 'lit/decorators.js';
-import {property} from 'lit/decorators.js';
-import {query} from 'lit/decorators.js';
+import {css, html, TemplateResult, LitElement, PropertyValues} from "lit";
+import {customElement} from "lit/decorators.js";
+import {property} from "lit/decorators.js";
+import {query} from "lit/decorators.js";
 
-@customElement('nidoca-template')
+@customElement("nidoca-template")
 export class NidocaTemplate extends LitElement {
   static styles = css`
     :host {
@@ -47,21 +47,21 @@ export class NidocaTemplate extends LitElement {
   @property({type: Boolean})
   prominent: boolean = false;
 
-  @query('#header')
+  @query("#header")
   private headerElement: HTMLElement | undefined;
 
-  @query('#left')
+  @query("#left")
   private leftElement: HTMLElement | undefined;
 
-  @query('#content')
+  @query("#content")
   private contentElement: HTMLElement | undefined;
 
   constructor() {
     super();
-    document.getElementsByTagName('html')[0].setAttribute('oncontextmenu', 'return false'); // avoid right click context menu
-    this.addEventListener('click', (event: MouseEvent) => {
+    document.getElementsByTagName("html")[0].setAttribute("oncontextmenu", "return false"); // avoid right click context menu
+    this.addEventListener("click", (event: MouseEvent) => {
       if (!this.hideLeft && this.leftElement) {
-        console.log('close');
+        console.log("close");
         const rect = this.leftElement.getBoundingClientRect();
         this.hideLeft = 641 > window.innerWidth && 0 <= event.x - rect.width;
       }
@@ -97,7 +97,7 @@ export class NidocaTemplate extends LitElement {
             this.hideLeft = true;
           }
         }}"
-        class="${this.hideLeft ? 'hideLeft' : ''}"
+        class="${this.hideLeft ? "hideLeft" : ""}"
         name="left"
       >
       </slot>

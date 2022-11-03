@@ -1,12 +1,12 @@
-import {css, html, TemplateResult, LitElement} from 'lit';
-import {customElement} from 'lit/decorators.js';
-import {property} from 'lit/decorators.js';
-import {guard} from 'lit/directives/guard.js';
-import {repeat} from 'lit/directives/repeat.js';
-import {NidocaTheme} from '.';
-import {NidocaIcon} from './nidoca-icon';
+import {css, html, TemplateResult, LitElement} from "lit";
+import {customElement} from "lit/decorators.js";
+import {property} from "lit/decorators.js";
+import {guard} from "lit/directives/guard.js";
+import {repeat} from "lit/directives/repeat.js";
+import {NidocaTheme} from ".";
+import {NidocaIcon} from "./nidoca-icon";
 
-@customElement('nidoca-table')
+@customElement("nidoca-table")
 export class NidocaTable extends LitElement {
   static styles = css`
     :host {
@@ -32,12 +32,12 @@ export class NidocaTable extends LitElement {
   `;
 
   @property({type: Array})
-  headers: any[] = ['column 1', 'column 2'];
+  headers: any[] = ["column 1", "column 2"];
 
   @property({type: Array})
   rows: any[] = [
-    ['row 1', new NidocaIcon()],
-    ['row 2', new NidocaIcon()],
+    ["row 1", new NidocaIcon()],
+    ["row 2", new NidocaIcon()],
   ];
 
   @property({type: NidocaTheme, converter: String})

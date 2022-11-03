@@ -1,13 +1,13 @@
-import {css, html, TemplateResult} from 'lit';
-import {customElement} from 'lit/decorators.js';
-import {property} from 'lit/decorators.js';
-import {query} from 'lit/decorators.js';
-import {repeat} from 'lit/directives/repeat.js';
-import {guard} from 'lit/directives/guard.js';
-import {FormOutputData, NidocaFormAbstractInputElement} from './nidoca-form-abstract-input-element';
-import {NidocaTheme} from './nidoca-meta';
+import {css, html, TemplateResult} from "lit";
+import {customElement} from "lit/decorators.js";
+import {property} from "lit/decorators.js";
+import {query} from "lit/decorators.js";
+import {repeat} from "lit/directives/repeat.js";
+import {guard} from "lit/directives/guard.js";
+import {FormOutputData, NidocaFormAbstractInputElement} from "./nidoca-form-abstract-input-element";
+import {NidocaTheme} from "./nidoca-meta";
 
-@customElement('nidoca-form-combobox')
+@customElement("nidoca-form-combobox")
 export class NidocaFormCombobox extends NidocaFormAbstractInputElement {
   static styles = css`
     :host,
@@ -69,28 +69,28 @@ export class NidocaFormCombobox extends NidocaFormAbstractInputElement {
   theme: string = NidocaTheme.surface;
 
   @property({type: String})
-  trailingIcon: string = '';
+  trailingIcon: string = "";
 
   @property({type: String})
-  label: string = '';
+  label: string = "";
 
   @property({type: String})
-  errorText: string = '';
+  errorText: string = "";
 
   @property({type: String})
-  infoText: string = '';
+  infoText: string = "";
 
   @property({type: String})
-  warningText: string = '';
+  warningText: string = "";
 
   @property()
-  value: string | string[] = '';
+  value: string | string[] = "";
 
   @property({type: Array})
   options: FormOutputData[] = [];
 
   @property({type: String})
-  name: string = '';
+  name: string = "";
 
   @property({type: Boolean})
   required: boolean = true;
@@ -101,7 +101,7 @@ export class NidocaFormCombobox extends NidocaFormAbstractInputElement {
   @property({type: Number})
   size: number = 1;
 
-  @query('#selectElement')
+  @query("#selectElement")
   private selectElement: HTMLSelectElement | undefined;
 
   render(): TemplateResult {
@@ -200,7 +200,7 @@ export class NidocaFormCombobox extends NidocaFormAbstractInputElement {
   }
 
   public validate(): boolean {
-    this.errorText = '';
+    this.errorText = "";
     if (
       this.selectElement != null &&
       !this.selectElement.validity.valid &&
@@ -227,7 +227,7 @@ export class NidocaFormCombobox extends NidocaFormAbstractInputElement {
   static enumToOptions(enumeration: any, emptyElement: boolean = true): FormOutputData[] {
     const options: FormOutputData[] = [];
     if (emptyElement) {
-      options.push(<FormOutputData>{key: '', value: ''});
+      options.push(<FormOutputData>{key: "", value: ""});
     }
     Object.keys(enumeration).forEach((key) => {
       options.push(<FormOutputData>{key: key, value: enumeration[key]});
@@ -238,7 +238,7 @@ export class NidocaFormCombobox extends NidocaFormAbstractInputElement {
   static stringArrayToOptions(stringArray: string[], emptyElement: boolean = true): FormOutputData[] {
     const options: FormOutputData[] = [];
     if (emptyElement) {
-      options.push(<FormOutputData>{key: '', value: ''});
+      options.push(<FormOutputData>{key: "", value: ""});
     }
     stringArray.forEach((key: string) => {
       options.push(<FormOutputData>{key: key, value: key});

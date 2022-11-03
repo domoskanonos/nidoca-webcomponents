@@ -1,7 +1,7 @@
-import {css, html, LitElement, TemplateResult} from 'lit';
-import {customElement} from 'lit/decorators.js';
+import {css, html, LitElement, TemplateResult} from "lit";
+import {customElement} from "lit/decorators.js";
 
-@customElement('nidoca-section')
+@customElement("nidoca-section")
 export class NidocaSection extends LitElement {
   static styles = css`
     :host {
@@ -29,7 +29,7 @@ export class NidocaSection extends LitElement {
     }
   `;
 
-  private flexBasis: string = 'auto';
+  private flexBasis: string = "auto";
 
   render(): TemplateResult {
     return html`
@@ -52,7 +52,7 @@ export class NidocaSection extends LitElement {
     let elementWidths: number = 0;
     for (let index = 0; index < elementSize; index++) {
       const element: Element = elements[index];
-      element.classList.add('item');
+      element.classList.add("item");
       if (element instanceof HTMLElement) {
         const elementWidthStyle = element.style.width;
         if (elementWidthStyle.length == 0) {
@@ -60,9 +60,9 @@ export class NidocaSection extends LitElement {
         } else {
           const elementWidthToUpperCase = elementWidthStyle.toUpperCase();
           const elementWidth: number =
-            elementWidthToUpperCase.indexOf('PX') > -1
-              ? Number(elementWidthToUpperCase.replace('PX', ''))
-              : (Number(elementWidthToUpperCase.replace('%', '')) / 100) * slotWidth;
+            elementWidthToUpperCase.indexOf("PX") > -1
+              ? Number(elementWidthToUpperCase.replace("PX", ""))
+              : (Number(elementWidthToUpperCase.replace("%", "")) / 100) * slotWidth;
           elementWidths += elementWidth;
         }
       }
@@ -76,7 +76,7 @@ export class NidocaSection extends LitElement {
       calculationPercent = 100 / elementSize;
     }
 
-    this.flexBasis = String(calculationPercent / modifyElements.length) + '%';
+    this.flexBasis = String(calculationPercent / modifyElements.length) + "%";
 
     this.requestUpdate();
   }
