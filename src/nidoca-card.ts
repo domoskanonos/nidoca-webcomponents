@@ -12,6 +12,7 @@ export class NidocaCard extends LitElement {
       border-style: solid;
       border-width: var(--border-width-min);
       box-shadow: 0 var(--space) var(--space) rgba(0, 0, 0, 0.08), 0 var(--space) var(--space) rgba(0, 0, 0, 0.16);
+      height: 100%;
     }
     slot {
       display: flex;
@@ -22,13 +23,13 @@ export class NidocaCard extends LitElement {
   `;
 
   @property({type: NidocaTheme, converter: String})
-  theme: string = NidocaTheme.plain;
+  theme: string = NidocaTheme.surface;
 
   render(): TemplateResult {
     return html`
       <style>
         :host {
-          background-color: var(--app-color-${this.theme}-background);
+          background-color: var(--app-color-${this.theme}-background-light);
           border-color: var(--app-color-${this.theme}-border);
         }
       </style>

@@ -52,7 +52,7 @@ export class NidocaSection extends LitElement {
     let elementWidths: number = 0;
     for (let index = 0; index < elementSize; index++) {
       const element: Element = elements[index];
-      element.setAttribute('class', 'item');
+      element.classList.add('item');
       if (element instanceof HTMLElement) {
         const elementWidthStyle = element.style.width;
         if (elementWidthStyle.length == 0) {

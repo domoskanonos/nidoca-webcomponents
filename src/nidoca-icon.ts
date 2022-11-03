@@ -56,13 +56,13 @@ export class NidocaIcon extends LitElement {
   deactivated: boolean = false;
 
   @property({type: String})
-  primaryText: string = '';
+  title: string = '';
 
   render(): TemplateResult {
     return html`
       <i
         class="material-icons ${this.deactivated ? 'deactivated' : ''} ${this.clickable ? 'clickable' : ''}"
-        title="${this.primaryText}"
+        title="${this.title}"
         @click="${this.clicked}"
         >${this.icon}</i
       >
@@ -85,7 +85,13 @@ export class NidocaIcon extends LitElement {
 
   static example(slotName: string = ''): TemplateResult {
     return html`
-      <nidoca-icon slot="${slotName}" style="padding-left:var(--space)" clickable icon="menu"></nidoca-icon>
+      <nidoca-icon
+        slot="${slotName}"
+        style="padding-left:var(--space)"
+        clickable
+        icon="menu"
+        title="Mein Icon"
+      ></nidoca-icon>
     `;
   }
 }

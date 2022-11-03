@@ -6,8 +6,11 @@ import {NidocaAvatar} from '../nidoca-avatar';
 import {NidocaButton} from '../nidoca-button';
 import {NidocaChip} from '../nidoca-chip';
 import {NidocaCode} from '../nidoca-code';
+import {NidocaIcon} from '../nidoca-icon';
+import {NidocaIconExtended} from '../nidoca-icon-extended';
 import {NidocaImg} from '../nidoca-img';
 import {NidocaImgRound} from '../nidoca-img-round';
+import { NidocaInfobox } from '../nidoca-infobox';
 import {NidocaList} from '../nidoca-list';
 import {NidocaListItem} from '../nidoca-list-item';
 import {NidocaListSection} from '../nidoca-list-section';
@@ -48,6 +51,10 @@ export class NidocaPageMain extends LitElement {
         <nidoca-text-h1 style="text-align:center;">Komponenten</nidoca-text-h1>
       </nidoca-container>
 
+      ${this.getComponentHtml(NidocaInfobox, new NidocaInfobox(), 'Infobox Komponente.')}
+      ${this.getComponentHtml(NidocaIconExtended, new NidocaIconExtended(), 'Standard Icon Komponente.')}
+      ${this.getComponentHtml(NidocaIcon, new NidocaIcon(), 'Standard Icon Komponente.')}
+      ${this.getComponentHtml(NidocaIcon, new NidocaIcon(), 'Standard Icon Komponente.')}
       ${this.getComponentHtml(NidocaCode, new NidocaCode(), 'Komponente um Quellcode darzustellen.')}
       ${this.getComponentHtml(NidocaTabs, new NidocaTabs(), 'Top App Bar Komponente')}
       ${this.getComponentHtml(NidocaText, new NidocaText(), 'Typography Komponenten')}

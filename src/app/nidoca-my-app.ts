@@ -27,9 +27,15 @@ export class NidocaMyApp extends LitElement implements NidocaRouteListener {
       case 'terms-of-use':
         this.content = html`<nidoca-page-terms-of-use></nidoca-page-terms-of-use>`;
         break;
+      case 'product-template':
+        this.content = html`<nidoca-page-product-template></nidoca-page-product-template>`;
+        break;
       case 'main':
-      default:
         this.content = html`<nidoca-page-main></nidoca-page-main>`;
+        break;
+      default:
+        //this.content = html`<nidoca-page-product-template></nidoca-page-product-template>`;
+      this.content = html`<nidoca-page-main></nidoca-page-main>`;
     }
   }
 
@@ -79,6 +85,13 @@ export class NidocaMyApp extends LitElement implements NidocaRouteListener {
             icon="home"
             text="Start"
           ></nidoca-menu-item>
+          <nidoca-menu-item
+            text="Produkt-Template"
+            @nidoca-event-menu-item-clicked="${() => {
+              NidocaRouter.getUniqueInstance().navigate('#product-template');
+            }}"
+          ></nidoca-menu-item>
+
           <nidoca-menu-area icon="gavel" text="Rechtliches"></nidoca-menu-area>
           <nidoca-menu-item
             text="Impressum"

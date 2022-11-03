@@ -81,7 +81,11 @@ export class NidocaPageSettings extends LitElement {
         </nidoca-article>
         <nidoca-article title="Google Fonts">
           <nidoca-text> Unser Framework und diese Seite verwenden Google Fonts: </nidoca-text>
-          <nidoca-link href=" https://fonts.google.com/" targetType="_blanck"> https://fonts.google.com/ </nidoca-link>
+          <nidoca-link href="https://fonts.google.com/" targetType="_blanck"> https://fonts.google.com/ </nidoca-link>
+        </nidoca-article>
+        <nidoca-article title="Bilder von Pixabay">
+          <nidoca-text> Diese Seite verwendet Bilder von Pixabay </nidoca-text>
+          <nidoca-link href="https://pixabay.com" targetType="_blanck">pixabay.com</nidoca-link>
         </nidoca-article>
       </nidoca-container>
     `;

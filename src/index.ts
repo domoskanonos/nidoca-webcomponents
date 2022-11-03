@@ -43,6 +43,7 @@ export * from './nidoca-ripple';
 
 export * from './nidoca-img';
 export * from './nidoca-img-round';
+export * from './nidoca-img-slider';
 
 export * from './nidoca-movie';
 export * from './nidoca-form-captcha';
@@ -82,6 +83,7 @@ export * from './nidoca-search-bar';
 export * from './nidoca-dialog';
 export * from './nidoca-dialog-decision';
 
+export * from './nidoca-infobox';
 export * from './nidoca-avatar';
 export * from './nidoca-card';
 export * from './nidoca-gallery';

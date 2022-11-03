@@ -17,7 +17,7 @@ export class NidocaArticle extends LitElement {
     }
 
     .paddingBottom {
-      padding-bottom: var(--space-2);
+      padding-bottom: var(--space);
     }
   `;
 
@@ -58,9 +58,9 @@ export class NidocaArticle extends LitElement {
     `;
   }
 
-  static example(slotName: string = ''): TemplateResult {
+  static example(slotName: string = '', theme: string = 'plain'): TemplateResult {
     return html`<nidoca-article
-      theme="plain"
+      theme="${theme}"
       slot="${slotName}"
       style="padding:25px;"
       overline="Lorem Ipsum Dolorem"

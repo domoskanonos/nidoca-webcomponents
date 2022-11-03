@@ -51,7 +51,7 @@ export class NidocaWizardStep extends LitElement {
         >
           <nidoca-icon
             icon="${this.icon}"
-            .iconShadowType="${NidocaIconShadowType.NONE}"
+            .iconShadowType="${NidocaIconShadowType.none}"
             .withIconSpace="${false}"
             .round="${true}"
             .clickable="${true}"

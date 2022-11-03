@@ -1,44 +1,44 @@
-import {css, html, TemplateResult, LitElement, PropertyValues} from 'lit';
-import {customElement, query} from 'lit/decorators.js';
+import {css, html, TemplateResult, LitElement} from 'lit';
+import {customElement} from 'lit/decorators.js';
 import {property} from 'lit/decorators.js';
-import {NidocaIcon, NidocaTheme} from '.';
+import {NidocaTheme} from '.';
 
-export class NidocaIconShadowType {
-  static readonly NONE = 'NONE';
-  static readonly DEFAULT_SHADOW = 'DEFAULT_SHADOW';
-  static readonly SHADOW_1 = 'SHADOW_1';
-  static readonly SHADOW_2 = 'SHADOW_2';
-  static readonly SHADOW_3 = 'SHADOW_3';
+export enum NidocaIconShadowType {
+  none = 'none',
+  shadow_1 = 'shadow_1',
+  shadow_2 = 'shadow_2',
+  shadow_3 = 'shadow_3',
 }
 
 @customElement('nidoca-icon-extended')
 export class NidocaIconExtended extends LitElement {
   static styles = css`
-    .round {
+    .icon {
+      padding: var(--space);
       -moz-border-radius: 50%;
       -webkit-border-radius: 50%;
       border-radius: 50%;
     }
 
-    .DEFAULT_SHADOW {
+    .default {
       -moz-box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.16), 0 3px 3px 0 rgba(0, 0, 0, 0.23);
       -webkit-box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.16), 0 3px 3px 0 rgba(0, 0, 0, 0.23);
       box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.16), 0 3px 3px 0 rgba(0, 0, 0, 0.23);
     }
 
-    .SHADOW_1 {
+    .shadow_1 {
       -moz-box-shadow: 0 1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24);
       -webkit-box-shadow: 0 1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24);
       box-shadow: 0 1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24);
     }
 
-    .SHADOW_2 {
+    .shadow_2 {
       -moz-box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.19), 0 6px 3px 0 rgba(0, 0, 0, 0.23);
       -webkit-box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.19), 0 6px 3px 0 rgba(0, 0, 0, 0.23);
       box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.19), 0 6px 3px 0 rgba(0, 0, 0, 0.23);
     }
 
-    .SHADOW_3 {
+    .shadow_3 {
       -moz-box-shadow: 0 14px 14px 0 rgba(0, 0, 0, 0.25), 0 10px 5px 0 rgba(0, 0, 0, 0.22);
       -webkit-box-shadow: 0 14px 14px 0 rgba(0, 0, 0, 0.25), 0 10px 5px 0 rgba(0, 0, 0, 0.22);
       box-shadow: 0 14px 14px 0 rgba(0, 0, 0, 0.25), 0 10px 5px 0 rgba(0, 0, 0, 0.22);
@@ -49,7 +49,7 @@ export class NidocaIconExtended extends LitElement {
   theme: string = NidocaTheme.primary;
 
   @property({type: Object})
-  shadowType: NidocaIconShadowType = NidocaIconShadowType.DEFAULT_SHADOW;
+  shadowType: NidocaIconShadowType = NidocaIconShadowType.shadow_1;
 
   @property({type: String})
   icon: string = '';
@@ -59,6 +59,9 @@ export class NidocaIconExtended extends LitElement {
 
   @property({type: Boolean})
   deactivated: boolean = false;
+  
+  @property({type: String})
+  title: string = '';
 
   render(): TemplateResult {
     return html`
@@ -70,12 +73,11 @@ export class NidocaIconExtended extends LitElement {
         }
       </style>
 
-      <span class="iconExtended round ${this.shadowType}">
+      <span class="iconExtended icon ${this.shadowType}">
         <nidoca-icon
           .deactivated="${this.deactivated}"
           .clickable="${this.clickable}"
           icon="${this.icon}"
-          style="font-size: inherit;"
         ></nidoca-icon>
       </span>
     `;
@@ -93,5 +95,17 @@ export class NidocaIconExtended extends LitElement {
         })
       );
     }
+  }
+
+  static example(slotName: string = ''): TemplateResult {
+    return html`
+      <nidoca-icon-extended
+        slot="${slotName}"
+        style="padding-left:var(--space)"
+        clickable
+        icon="home"
+        title="Mein Icon"
+      ></nidoca-icon-extended>
+    `;
   }
 }
