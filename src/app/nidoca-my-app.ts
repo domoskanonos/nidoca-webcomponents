@@ -6,7 +6,6 @@ import {customElement, property} from 'lit/decorators.js';
 
 @customElement('nidoca-my-app')
 export class NidocaMyApp extends NidocaHtml implements NidocaRouteListener {
-  
   @property({type: Object})
   content: any = html``;
 

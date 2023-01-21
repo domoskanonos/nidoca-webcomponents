@@ -1,6 +1,3 @@
-import { LitElement } from 'lit';
+import {LitElement} from 'lit';
 
-export abstract class NidocaHtml extends LitElement {
-
-
-}
+export abstract class NidocaHtml extends LitElement {}
