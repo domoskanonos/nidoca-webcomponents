@@ -1,4 +1,6 @@
 import {css, html, TemplateResult, LitElement} from 'lit';
+import {NidocaHtml} from './nidoca-html';
+
 import {customElement} from 'lit/decorators.js';
 import {property} from 'lit/decorators.js';
 import {NidocaTheme, NidocaThemeHelper} from '.';
@@ -7,7 +9,7 @@ import {NidocaTheme, NidocaThemeHelper} from '.';
  * state: stable
  */
 @customElement('nidoca-top-app-bar')
-export class NidocaTopAppBar extends LitElement {
+export class NidocaTopAppBar extends NidocaHtml {
   static styles = css`
     :host {
       display: block;

@@ -1,10 +1,12 @@
 import {css, html, LitElement, PropertyValues, TemplateResult} from 'lit';
+import {NidocaHtml} from './nidoca-html';
+
 import {customElement, property, query} from 'lit/decorators.js';
 import {NidocaListSection, NidocaTheme} from '.';
 import {NidocaListItem} from './nidoca-list-item';
 
 @customElement('nidoca-list')
-export class NidocaList extends LitElement {
+export class NidocaList extends NidocaHtml {
   static styles = css`
     :host {
       width: 100%;

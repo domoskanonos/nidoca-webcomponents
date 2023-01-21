@@ -1,4 +1,6 @@
 import {css} from 'lit';
+import {NidocaHtml} from './nidoca-html';
+
 import {customElement} from 'lit/decorators.js';
 import {NidocaText} from '.';
 

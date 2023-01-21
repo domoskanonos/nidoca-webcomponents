@@ -1,10 +1,12 @@
 import {css, html, LitElement, TemplateResult} from 'lit';
+import {NidocaHtml} from './nidoca-html';
+
 import {customElement} from 'lit/decorators.js';
 import {property} from 'lit/decorators.js';
 import {NidocaImgRound, NidocaTheme} from '.';
 
 @customElement('nidoca-list-item')
-export class NidocaListItem extends LitElement {
+export class NidocaListItem extends NidocaHtml {
   static styles = css`
     .container {
       display: grid;

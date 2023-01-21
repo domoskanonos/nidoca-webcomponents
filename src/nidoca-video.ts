@@ -1,8 +1,10 @@
 import {css, html, LitElement, PropertyValues} from 'lit';
+import {NidocaHtml} from './nidoca-html';
+
 import {customElement, query} from 'lit/decorators.js';
 
 @customElement('nidoca-video')
-export class NidocaVideo extends LitElement {
+export class NidocaVideo extends NidocaHtml {
   static styles = css``;
 
   @query('#video')

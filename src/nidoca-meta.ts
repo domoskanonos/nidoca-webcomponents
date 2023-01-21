@@ -1,4 +1,5 @@
 import {html, HTMLTemplateResult} from 'lit';
+import {NidocaHtml} from './nidoca-html';
 
 export enum NidocaTheme {
   primary = 'primary',

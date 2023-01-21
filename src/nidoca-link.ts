@@ -1,11 +1,13 @@
 import {css, html, TemplateResult, LitElement} from 'lit';
+import {NidocaHtml} from './nidoca-html';
+
 import {customElement} from 'lit/decorators.js';
 import {property} from 'lit/decorators.js';
 
 export type NidocaTargetType = '_blank' | '_self' | '_parent' | '_top';
 
 @customElement('nidoca-link')
-export class NidocaLink extends LitElement {
+export class NidocaLink extends NidocaHtml {
   static styles = css`
     :host,
     ::slotted(:host) {

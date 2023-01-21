@@ -1,8 +1,11 @@
 import {css, html, LitElement, TemplateResult} from 'lit';
+import {NidocaHtml} from '../nidoca-html';
+
+
 import {customElement} from 'lit/decorators.js';
 
 @customElement('nidoca-page-imprint')
-export class NidocaPageSettings extends LitElement {
+export class NidocaPageSettings extends NidocaHtml {
   static styles = css`
     nidoca-article {
       padding-bottom: var(--space-2);

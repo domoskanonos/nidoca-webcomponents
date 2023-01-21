@@ -1,4 +1,6 @@
 import {css, html, TemplateResult, LitElement} from 'lit';
+import {NidocaHtml} from './nidoca-html';
+
 import {customElement} from 'lit/decorators.js';
 import {query} from 'lit/decorators.js';
 
@@ -6,7 +8,7 @@ import {query} from 'lit/decorators.js';
  * check src: https://codepen.io/jakob-e/pen/XZoZWQ
  */
 @customElement('nidoca-ripple')
-export class NidocaRipple extends LitElement {
+export class NidocaRipple extends NidocaHtml {
   static styles = css`
     :host {
       display: inline-block;

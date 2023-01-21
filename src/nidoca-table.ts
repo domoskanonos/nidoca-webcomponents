@@ -1,4 +1,6 @@
 import {css, html, TemplateResult, LitElement} from 'lit';
+import {NidocaHtml} from './nidoca-html';
+
 import {customElement} from 'lit/decorators.js';
 import {property} from 'lit/decorators.js';
 import {guard} from 'lit/directives/guard.js';
@@ -7,7 +9,7 @@ import {NidocaTheme} from '.';
 import {NidocaIcon} from './nidoca-icon';
 
 @customElement('nidoca-table')
-export class NidocaTable extends LitElement {
+export class NidocaTable extends NidocaHtml {
   static styles = css`
     :host {
       display: block;

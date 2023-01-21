@@ -1,4 +1,6 @@
 import {css, html, TemplateResult, LitElement} from 'lit';
+import {NidocaHtml} from './nidoca-html';
+
 import {customElement} from 'lit/decorators.js';
 import {property} from 'lit/decorators.js';
 import {NidocaTheme} from './nidoca-meta';
@@ -9,7 +11,7 @@ export class ProgressType {
 }
 
 @customElement('nidoca-progress')
-export class NidocaProgress extends LitElement {
+export class NidocaProgress extends NidocaHtml {
   static styles = css``;
 
   @property({type: NidocaTheme, converter: String})

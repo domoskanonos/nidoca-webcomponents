@@ -1,11 +1,14 @@
 import {css, html, LitElement, PropertyValueMap, TemplateResult} from 'lit';
+import {NidocaHtml} from '../nidoca-html';
+
+
 import {customElement, property} from 'lit/decorators.js';
 import {guard} from 'lit/directives/guard.js';
 import {repeat} from 'lit/directives/repeat.js';
 import {NidocaFormText, NidocaFormTextType} from '../index';
 
 @customElement('nidoca-page-settings')
-export class NidocaPageSettings extends LitElement {
+export class NidocaPageSettings extends NidocaHtml {
   static styles = css``;
 
   @property({type: Array})

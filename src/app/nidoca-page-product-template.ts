@@ -1,9 +1,12 @@
 import {css, html, LitElement, TemplateResult} from 'lit';
+import {NidocaHtml} from '../nidoca-html';
+
+
 import {customElement} from 'lit/decorators.js';
 import {NidocaArticle} from '../nidoca-article';
 
 @customElement('nidoca-page-product-template')
-export class NidocaPageProductTemplate extends LitElement {
+export class NidocaPageProductTemplate extends NidocaHtml {
   static styles = css`
     .infobox {
       padding: var(--space-2);

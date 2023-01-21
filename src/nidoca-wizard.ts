@@ -1,9 +1,11 @@
 import {css, html, TemplateResult, LitElement} from 'lit';
+import {NidocaHtml} from './nidoca-html';
+
 import {customElement, query} from 'lit/decorators.js';
 import {NidocaWizardStep, WizardStepState} from './nidoca-wizard-step';
 
 @customElement('nidoca-wizard')
-export class NidocaWizard extends LitElement {
+export class NidocaWizard extends NidocaHtml {
   static styles = css``;
 
   @query('#wizardSlot')

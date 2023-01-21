@@ -1,9 +1,11 @@
 import {css, html, TemplateResult, LitElement, PropertyValues} from 'lit';
+import {NidocaHtml} from './nidoca-html';
+
 import {customElement, property, query} from 'lit/decorators.js';
 import {NidocaMenuItem, NidocaTheme} from '.';
 
 @customElement('nidoca-menu')
-export class NidocaMenu extends LitElement {
+export class NidocaMenu extends NidocaHtml {
   static styles = css`
     :host,
     slot {

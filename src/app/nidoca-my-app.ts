@@ -1,11 +1,14 @@
 import {NidocaRouteListener, NidocaRouter} from '@domoskanonos/nidoca-router';
-import {html, LitElement, HTMLTemplateResult} from 'lit';
+import {html} from 'lit';
+import {NidocaHtml} from '../nidoca-html';
+
 import {customElement, property} from 'lit/decorators.js';
 
 @customElement('nidoca-my-app')
-export class NidocaMyApp extends LitElement implements NidocaRouteListener {
+export class NidocaMyApp extends NidocaHtml implements NidocaRouteListener {
+  
   @property({type: Object})
-  content: TemplateResult = html``;
+  content: any = html``;
 
   constructor() {
     super();

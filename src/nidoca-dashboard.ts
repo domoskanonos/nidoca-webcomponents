@@ -1,9 +1,11 @@
 import {css, html, TemplateResult, LitElement} from 'lit';
+import {NidocaHtml} from './nidoca-html';
+
 import {customElement} from 'lit/decorators.js';
 import {property} from 'lit/decorators.js';
 
 @customElement('nidoca-dashboard')
-export class NidocaDashboard extends LitElement {
+export class NidocaDashboard extends NidocaHtml {
   static styles = css`
     :host {
       display: block;
@@ -32,7 +34,7 @@ export class NidocaDashboard extends LitElement {
 }
 
 @customElement('nidoca-dashboard-box-25')
-export class NidocaDashboardBox25 extends LitElement {
+export class NidocaDashboardBox25 extends NidocaHtml {
   static styles = css`
     :host {
       display: block;
@@ -52,7 +54,7 @@ export class NidocaDashboardBox25 extends LitElement {
 }
 
 @customElement('nidoca-dashboard-box-50')
-export class NidocaDashboardBox50 extends LitElement {
+export class NidocaDashboardBox50 extends NidocaHtml {
   static styles = css`
     :host {
       width: 50%;
@@ -71,7 +73,7 @@ export class NidocaDashboardBox50 extends LitElement {
 }
 
 @customElement('nidoca-dashboard-box-100')
-export class NidocaDashboardBox100 extends LitElement {
+export class NidocaDashboardBox100 extends NidocaHtml {
   static styles = css`
     :host {
       width: 100%;
@@ -85,7 +87,7 @@ export class NidocaDashboardBox100 extends LitElement {
 }
 
 @customElement('nidoca-dashboard-card')
-export class NidocaDashboardCard extends LitElement {
+export class NidocaDashboardCard extends NidocaHtml {
   static styles = css`
     :host {
       padding: var(--space-2);

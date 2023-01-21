@@ -1,4 +1,6 @@
 import {css, html, TemplateResult, LitElement} from 'lit';
+import {NidocaHtml} from './nidoca-html';
+
 import {customElement} from 'lit/decorators.js';
 import {property} from 'lit/decorators.js';
 import {NidocaTheme} from '.';
@@ -11,7 +13,7 @@ export enum NidocaIconShadowType {
 }
 
 @customElement('nidoca-icon-extended')
-export class NidocaIconExtended extends LitElement {
+export class NidocaIconExtended extends NidocaHtml {
   static styles = css`
     .icon {
       padding: var(--space);

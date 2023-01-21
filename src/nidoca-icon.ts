@@ -1,9 +1,11 @@
 import {css, html, TemplateResult, LitElement} from 'lit';
+import {NidocaHtml} from './nidoca-html';
+
 import {customElement} from 'lit/decorators.js';
 import {property} from 'lit/decorators.js';
 
 @customElement('nidoca-icon')
-export class NidocaIcon extends LitElement {
+export class NidocaIcon extends NidocaHtml {
   static styles = css`
     :host {
       display: inline-block;

@@ -1,9 +1,11 @@
 import {css, html, LitElement, PropertyValues} from 'lit';
+import {NidocaHtml} from './nidoca-html';
+
 import {customElement, query} from 'lit/decorators.js';
 import {property} from 'lit/decorators.js';
 
 @customElement('nidoca-svg-2-webp')
-export class NidocaSvg2Webp extends LitElement {
+export class NidocaSvg2Webp extends NidocaHtml {
   static styles = css``;
 
   @property({type: String})

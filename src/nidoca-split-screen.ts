@@ -1,9 +1,11 @@
 import {css, html, TemplateResult, LitElement} from 'lit';
+import {NidocaHtml} from './nidoca-html';
+
 import {customElement, property} from 'lit/decorators.js';
 import {NidocaTheme, NidocaThemeHelper} from '.';
 
 @customElement('nidoca-split-screen')
-export class NidocaSplitScreen extends LitElement {
+export class NidocaSplitScreen extends NidocaHtml {
   static styles = css`
     :host {
       display: flex;

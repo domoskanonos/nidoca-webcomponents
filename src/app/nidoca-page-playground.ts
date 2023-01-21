@@ -1,9 +1,12 @@
 import {css, html, LitElement, TemplateResult} from 'lit';
+import {NidocaHtml} from '../nidoca-html';
+
+
 import {customElement, property} from 'lit/decorators.js';
 import {Nidoca} from '..';
 
 @customElement('nidoca-page-playground')
-export class NidocaPagePlayground extends LitElement {
+export class NidocaPagePlayground extends NidocaHtml {
   static styles = css``;
 
   @property({type: String})

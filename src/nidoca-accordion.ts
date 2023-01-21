@@ -1,4 +1,6 @@
 import {css, html, LitElement, TemplateResult, PropertyValues} from 'lit';
+import {NidocaHtml} from './nidoca-html';
+
 import {customElement} from 'lit/decorators.js';
 import {property} from 'lit/decorators.js';
 import {query} from 'lit/decorators.js';
@@ -11,7 +13,7 @@ export enum AccordionType {
 }
 
 @customElement('nidoca-accordion')
-export class NidocaAccordion extends LitElement {
+export class NidocaAccordion extends NidocaHtml {
   static styles = css`
     :host {
       border-top-style: solid;

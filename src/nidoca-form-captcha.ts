@@ -1,4 +1,6 @@
 import {css, html, LitElement, PropertyValues, TemplateResult} from 'lit';
+import {NidocaHtml} from './nidoca-html';
+
 import {customElement} from 'lit/decorators.js';
 import {property} from 'lit/decorators.js';
 import {query} from 'lit/decorators.js';
@@ -7,7 +9,7 @@ import {NidocaTheme, NidocaThemeHelper} from '.';
 import {NidocaFormText, NidocaFormTextType} from './nidoca-form-text';
 
 @customElement('nidoca-form-captcha')
-export class NidocaFormCaptcha extends LitElement {
+export class NidocaFormCaptcha extends NidocaHtml {
   static styles = css`
     :host {
       display: block;

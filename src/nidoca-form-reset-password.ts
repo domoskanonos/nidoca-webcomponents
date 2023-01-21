@@ -1,9 +1,11 @@
 import {css, html, TemplateResult, LitElement} from 'lit';
+import {NidocaHtml} from './nidoca-html';
+
 import {customElement, property, query} from 'lit/decorators.js';
 import {NidocaForm, NidocaFormTextType, NidocaTheme, NidocaThemeHelper} from '.';
 
 @customElement('nidoca-form-reset-password')
-export class NidocaFormResetPassword extends LitElement {
+export class NidocaFormResetPassword extends NidocaHtml {
   static styles = css`
     :host {
       display: block;

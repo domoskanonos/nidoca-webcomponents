@@ -1,10 +1,12 @@
 import {css, html, TemplateResult, LitElement} from 'lit';
+import {NidocaHtml} from './nidoca-html';
+
 import {customElement} from 'lit/decorators.js';
 import {property} from 'lit/decorators.js';
 import {NidocaButtonType} from '.';
 
 @customElement('nidoca-dialog-decision')
-export class NidocaDialogDecision extends LitElement {
+export class NidocaDialogDecision extends NidocaHtml {
   static styles = css``;
 
   @property({type: Boolean})

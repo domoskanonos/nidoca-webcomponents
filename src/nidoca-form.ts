@@ -1,4 +1,6 @@
 import {css, html, TemplateResult, LitElement} from 'lit';
+import {NidocaHtml} from './nidoca-html';
+
 import {customElement} from 'lit/decorators.js';
 import {property} from 'lit/decorators.js';
 import {query} from 'lit/decorators.js';
@@ -11,7 +13,7 @@ export class NidocaFormOutputData {
 }
 
 @customElement('nidoca-form')
-export class NidocaForm extends LitElement {
+export class NidocaForm extends NidocaHtml {
   static styles = css`
     :host,
     slot {

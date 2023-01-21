@@ -1,10 +1,12 @@
 import {css, html, TemplateResult, LitElement} from 'lit';
+import {NidocaHtml} from './nidoca-html';
+
 import {customElement} from 'lit/decorators.js';
 import {property} from 'lit/decorators.js';
 import {NidocaTheme, NidocaThemeHelper} from './nidoca-meta';
 
 @customElement('nidoca-hr')
-export class NidocaHr extends LitElement {
+export class NidocaHr extends NidocaHtml {
   static styles = css`
     :host,
     ::slotted(:host) {

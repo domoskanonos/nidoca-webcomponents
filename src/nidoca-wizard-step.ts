@@ -1,4 +1,6 @@
 import {css, html, TemplateResult, LitElement} from 'lit';
+import {NidocaHtml} from './nidoca-html';
+
 import {customElement} from 'lit/decorators.js';
 import {property} from 'lit/decorators.js';
 import {NidocaIconShadowType} from '.';
@@ -11,7 +13,7 @@ export enum WizardStepState {
 }
 
 @customElement('nidoca-wizard-step')
-export class NidocaWizardStep extends LitElement {
+export class NidocaWizardStep extends NidocaHtml {
   static styles = css`
     .wizard-step-connector {
       color: var(--app-color-surface);

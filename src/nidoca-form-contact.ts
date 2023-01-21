@@ -1,10 +1,12 @@
 import {css, html, TemplateResult, LitElement} from 'lit';
+import {NidocaHtml} from './nidoca-html';
+
 import {customElement, property, query} from 'lit/decorators.js';
 import {ifDefined} from 'lit/directives/if-defined.js';
 import {NidocaButtonType, NidocaFormTextType, NidocaTheme, NidocaForm, NidocaThemeHelper} from '.';
 
 @customElement('nidoca-form-contact')
-export class NidocaFormContact extends LitElement {
+export class NidocaFormContact extends NidocaHtml {
   static styles = css`
     :host {
       display: block;

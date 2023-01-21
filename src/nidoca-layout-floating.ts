@@ -1,9 +1,11 @@
 import {css, html, LitElement, TemplateResult} from 'lit';
+import {NidocaHtml} from './nidoca-html';
+
 import {customElement} from 'lit/decorators.js';
 import {property} from 'lit/decorators.js';
 
 @customElement('nidoca-layout-floating')
-export class NidocaLayoutFloatingContainer extends LitElement {
+export class NidocaLayoutFloatingContainer extends NidocaHtml {
   static styles = css`
     .floatingContainer {
       position: fixed;

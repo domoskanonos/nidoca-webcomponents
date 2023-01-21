@@ -1,9 +1,11 @@
 import {css, html, LitElement, TemplateResult} from 'lit';
+import {NidocaHtml} from './nidoca-html';
+
 import {customElement, property} from 'lit/decorators.js';
 import {NidocaTheme} from './nidoca-meta';
 
 @customElement('nidoca-card')
-export class NidocaCard extends LitElement {
+export class NidocaCard extends NidocaHtml {
   static styles = css`
     :host {
       box-sizing: border-box;

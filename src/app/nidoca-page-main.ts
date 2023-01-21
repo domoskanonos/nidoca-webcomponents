@@ -1,4 +1,7 @@
 import {css, html, LitElement, TemplateResult} from 'lit';
+import {NidocaHtml} from '../nidoca-html';
+
+
 import {customElement} from 'lit/decorators.js';
 import {NidocaAccordion} from '../nidoca-accordion';
 import {NidocaArticle} from '../nidoca-article';
@@ -24,7 +27,7 @@ import {NidocaText} from '../nidoca-text';
 import {NidocaTopAppBar} from '../nidoca-top-app-bar';
 
 @customElement('nidoca-page-main')
-export class NidocaPageMain extends LitElement {
+export class NidocaPageMain extends NidocaHtml {
   static styles = css``;
   render(): TemplateResult {
     return html`

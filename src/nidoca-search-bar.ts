@@ -1,11 +1,13 @@
 import {css, html, TemplateResult, LitElement} from 'lit';
+import {NidocaHtml} from './nidoca-html';
+
 import {customElement} from 'lit/decorators.js';
 import {property} from 'lit/decorators.js';
 import {query} from 'lit/decorators.js';
 import {NidocaTheme} from '.';
 
 @customElement('nidoca-search-bar')
-export class NidocaSearchBar extends LitElement {
+export class NidocaSearchBar extends NidocaHtml {
   static styles = css`
     :host {
       width: 100%;

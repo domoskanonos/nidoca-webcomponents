@@ -1,10 +1,12 @@
 import {css, html, LitElement, TemplateResult} from 'lit';
+import {NidocaHtml} from './nidoca-html';
+
 import {customElement} from 'lit/decorators.js';
 import {property} from 'lit/decorators.js';
 import {NidocaTheme} from './nidoca-meta';
 
 @customElement('nidoca-chip')
-export class NidocaChip extends LitElement {
+export class NidocaChip extends NidocaHtml {
   static styles = css`
     .chip {
       display: inline-block;

@@ -1,8 +1,10 @@
 import {css, html, LitElement, TemplateResult} from 'lit';
+import {NidocaHtml} from './../nidoca-html';
+
 import {customElement} from 'lit/decorators.js';
 
 @customElement('nidoca-page-login')
-export class NidocaPageLogin extends LitElement {
+export class NidocaPageLogin extends NidocaHtml {
   static styles = css`
     :host {
       display: grid;

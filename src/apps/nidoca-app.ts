@@ -1,4 +1,6 @@
 import {html, LitElement, PropertyValues, TemplateResult} from 'lit';
+import {NidocaHtml} from '../nidoca-html';
+
 import {customElement} from 'lit/decorators.js';
 import {property} from 'lit/decorators.js';
 
@@ -23,7 +25,7 @@ export interface PageReference {
 }
 
 @customElement('nidoca-app')
-export class NidocaApp extends LitElement {
+export class NidocaApp extends NidocaHtml {
   @property({type: Array})
   root: PageReference | undefined;
 
