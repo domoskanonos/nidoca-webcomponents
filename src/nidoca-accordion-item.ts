@@ -1,5 +1,5 @@
-import {css, html, LitElement, TemplateResult} from 'lit';
-import {NidocaHtml} from './nidoca-html';
+import {css, html, TemplateResult} from 'lit';
+import {NidocaHtml} from './nidoca-html.js';
 
 import {customElement} from 'lit/decorators.js';
 import {property} from 'lit/decorators.js';
@@ -17,6 +17,7 @@ export class NidocaAccordionItem extends NidocaHtml {
       width: 100%;
     }
 
+    
     .header {
       height: var(--height-medium);
       box-sizing: border-box;

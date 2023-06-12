@@ -3,7 +3,8 @@ import {NidocaHtml} from './nidoca-html';
 
 import {customElement} from 'lit/decorators.js';
 import {property} from 'lit/decorators.js';
-import {NidocaImgRound, NidocaTheme} from '.';
+import { NidocaTheme } from './nidoca-meta';
+import { NidocaImgRound } from './nidoca-img-round';
 
 @customElement('nidoca-list-item')
 export class NidocaListItem extends NidocaHtml {

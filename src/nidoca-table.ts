@@ -5,8 +5,8 @@ import {customElement} from 'lit/decorators.js';
 import {property} from 'lit/decorators.js';
 import {guard} from 'lit/directives/guard.js';
 import {repeat} from 'lit/directives/repeat.js';
-import {NidocaTheme} from '.';
 import {NidocaIcon} from './nidoca-icon';
+import { NidocaTheme } from './nidoca-meta';
 
 @customElement('nidoca-table')
 export class NidocaTable extends NidocaHtml {

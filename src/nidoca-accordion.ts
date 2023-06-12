@@ -4,8 +4,10 @@ import {NidocaHtml} from './nidoca-html';
 import {customElement} from 'lit/decorators.js';
 import {property} from 'lit/decorators.js';
 import {query} from 'lit/decorators.js';
-import {NidocaArticle, NidocaTheme, NidocaThemeHelper} from '.';
+
 import {NidocaAccordionItem} from './nidoca-accordion-item';
+import { NidocaTheme, NidocaThemeHelper } from './nidoca-meta';
+import { NidocaArticle } from './nidoca-article';
 
 export enum AccordionType {
   single = 'single',

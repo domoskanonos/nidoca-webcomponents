@@ -3,7 +3,10 @@ import {NidocaHtml} from './nidoca-html';
 
 import {customElement, property, query} from 'lit/decorators.js';
 import {ifDefined} from 'lit/directives/if-defined.js';
-import {NidocaButtonType, NidocaFormTextType, NidocaTheme, NidocaForm, NidocaThemeHelper} from '.';
+import { NidocaForm } from './nidoca-form';
+import { NidocaTheme, NidocaThemeHelper } from './nidoca-meta';
+import { NidocaFormTextType } from './nidoca-form-text';
+import { NidocaButtonType } from './nidoca-button';
 
 @customElement('nidoca-form-contact')
 export class NidocaFormContact extends NidocaHtml {

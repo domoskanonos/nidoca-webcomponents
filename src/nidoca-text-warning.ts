@@ -2,7 +2,7 @@ import {html, TemplateResult} from 'lit';
 import {NidocaHtml} from './nidoca-html';
 
 import {customElement} from 'lit/decorators.js';
-import {NidocaTextCaption} from '.';
+import {NidocaTextCaption} from './nidoca-text-caption';
 
 @customElement('nidoca-text-warning')
 export class NidocaTextWarning extends NidocaTextCaption {

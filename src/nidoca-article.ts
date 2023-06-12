@@ -16,6 +16,7 @@ export class NidocaArticle extends NidocaHtml {
       flex-direction: column;
       flex-wrap: wrap;
       align-items: flex-start;
+
     }
 
     .paddingBottom {

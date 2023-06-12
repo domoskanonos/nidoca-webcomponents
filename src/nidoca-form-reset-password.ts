@@ -2,7 +2,9 @@ import {css, html, TemplateResult, LitElement} from 'lit';
 import {NidocaHtml} from './nidoca-html';
 
 import {customElement, property, query} from 'lit/decorators.js';
-import {NidocaForm, NidocaFormTextType, NidocaTheme, NidocaThemeHelper} from '.';
+import { NidocaForm } from './nidoca-form';
+import { NidocaTheme, NidocaThemeHelper } from './nidoca-meta';
+import { NidocaFormTextType } from './nidoca-form-text';
 
 @customElement('nidoca-form-reset-password')
 export class NidocaFormResetPassword extends NidocaHtml {

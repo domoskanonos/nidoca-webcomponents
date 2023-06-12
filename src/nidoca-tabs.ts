@@ -5,7 +5,8 @@ import {customElement, property} from 'lit/decorators.js';
 import {query} from 'lit/decorators.js';
 import {NidocaTabContent} from './nidoca-tab-content';
 import {NidocaTab} from './nidoca-tab';
-import {NidocaArticle, NidocaTheme} from '.';
+import { NidocaTheme } from './nidoca-meta';
+import { NidocaArticle } from './nidoca-article';
 
 @customElement('nidoca-tabs')
 export class NidocaTabs extends NidocaHtml {

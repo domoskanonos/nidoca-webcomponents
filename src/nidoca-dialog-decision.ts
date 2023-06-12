@@ -3,7 +3,7 @@ import {NidocaHtml} from './nidoca-html';
 
 import {customElement} from 'lit/decorators.js';
 import {property} from 'lit/decorators.js';
-import {NidocaButtonType} from '.';
+import { NidocaButtonType } from './nidoca-button';
 
 @customElement('nidoca-dialog-decision')
 export class NidocaDialogDecision extends NidocaHtml {

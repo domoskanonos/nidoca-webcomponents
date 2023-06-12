@@ -1,4 +1,4 @@
-import {css, html, TemplateResult, LitElement} from 'lit';
+import {css, html, TemplateResult} from 'lit';
 import {NidocaHtml} from './nidoca-html';
 
 import {customElement} from 'lit/decorators.js';

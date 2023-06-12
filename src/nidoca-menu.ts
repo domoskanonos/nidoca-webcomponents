@@ -2,7 +2,8 @@ import {css, html, TemplateResult, LitElement, PropertyValues} from 'lit';
 import {NidocaHtml} from './nidoca-html';
 
 import {customElement, property, query} from 'lit/decorators.js';
-import {NidocaMenuItem, NidocaTheme} from '.';
+import { NidocaTheme } from './nidoca-meta';
+import { NidocaMenuItem } from './nidoca-menu-item';
 
 @customElement('nidoca-menu')
 export class NidocaMenu extends NidocaHtml {

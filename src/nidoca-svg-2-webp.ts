@@ -1,16 +1,16 @@
-import {css, html, LitElement, PropertyValues} from 'lit';
-import {NidocaHtml} from './nidoca-html';
+import { css, html, LitElement, PropertyValues } from 'lit';
+import { NidocaHtml } from './nidoca-html';
 
-import {customElement, query} from 'lit/decorators.js';
-import {property} from 'lit/decorators.js';
+import { customElement, query } from 'lit/decorators.js';
+import { property } from 'lit/decorators.js';
 
 @customElement('nidoca-svg-2-webp')
 export class NidocaSvg2Webp extends NidocaHtml {
   static styles = css``;
 
-  @property({type: String})
-  src: string = 'https://raw.githubusercontent.com/domoskanonos/devbox/main/assets/logo-ink.svg';
-
+  @property({ type: String })
+  //src: string = 'https://raw.githubusercontent.com/domoskanonos/devbox/main/assets/logo-ink.svg';
+  src: string = '';
   canvasElements: HTMLCanvasElement[] = [];
 
   storeCanvasElements: HTMLCanvasElement[] = [];
@@ -23,8 +23,8 @@ export class NidocaSvg2Webp extends NidocaHtml {
       <img style="display: none;" id="img" src="${this.src}" />
 
       ${this.canvasElements.map((canvas: HTMLCanvasElement) => {
-        return html`${canvas}`;
-      })}
+      return html`${canvas}`;
+    })}
     `;
   }
 

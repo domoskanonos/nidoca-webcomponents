@@ -2,8 +2,9 @@ import {css, html, LitElement, PropertyValues, TemplateResult} from 'lit';
 import {NidocaHtml} from './nidoca-html';
 
 import {customElement, property, query} from 'lit/decorators.js';
-import {NidocaListSection, NidocaTheme} from '.';
 import {NidocaListItem} from './nidoca-list-item';
+import { NidocaTheme } from './nidoca-meta';
+import { NidocaListSection } from './nidoca-list-section';
 
 @customElement('nidoca-list')
 export class NidocaList extends NidocaHtml {

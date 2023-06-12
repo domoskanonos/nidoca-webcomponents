@@ -3,7 +3,9 @@ import {NidocaHtml} from './nidoca-html';
 
 import {customElement, property, query} from 'lit/decorators.js';
 import {ifDefined} from 'lit/directives/if-defined.js';
-import {NidocaForm, NidocaTheme, NidocaFormTextType, NidocaThemeHelper} from './index';
+import { NidocaTheme, NidocaThemeHelper } from './nidoca-meta';
+import { NidocaForm } from './nidoca-form';
+import { NidocaFormTextType } from './nidoca-form-text';
 
 @customElement('nidoca-form-register')
 export class NidocaFormRegister extends NidocaHtml {

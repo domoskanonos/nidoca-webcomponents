@@ -3,7 +3,7 @@ import {NidocaHtml} from './nidoca-html';
 
 import {customElement} from 'lit/decorators.js';
 import {property} from 'lit/decorators.js';
-import {NidocaTheme, NidocaThemeHelper} from '.';
+import { NidocaTheme, NidocaThemeHelper } from './nidoca-meta';
 
 @customElement('nidoca-container')
 export class NidocaContainer extends NidocaHtml {

@@ -3,7 +3,9 @@ import {NidocaHtml} from './nidoca-html';
 
 import {customElement, property, query} from 'lit/decorators.js';
 import {ifDefined} from 'lit/directives/if-defined.js';
-import {NidocaForm, NidocaFormTextType, NidocaTheme, NidocaThemeHelper} from '.';
+import { NidocaForm } from './nidoca-form';
+import { NidocaTheme, NidocaThemeHelper } from './nidoca-meta';
+import { NidocaFormTextType } from './nidoca-form-text';
 
 @customElement('nidoca-form-newsletter')
 export class NidocaFormNewsletter extends NidocaHtml {

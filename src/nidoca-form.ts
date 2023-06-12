@@ -1,11 +1,10 @@
-import {css, html, TemplateResult, LitElement} from 'lit';
+import {css, html, TemplateResult} from 'lit';
 import {NidocaHtml} from './nidoca-html';
 
 import {customElement} from 'lit/decorators.js';
 import {property} from 'lit/decorators.js';
 import {query} from 'lit/decorators.js';
-import {NidocaTheme, NidocaThemeHelper} from '.';
-import {NidocaFormAbstractInputElement} from './nidoca-form-abstract-input-element';
+import { NidocaFormAbstractInputElement } from './nidoca-form-abstract-input-element';
 
 export class NidocaFormOutputData {
   jsonObject: any;

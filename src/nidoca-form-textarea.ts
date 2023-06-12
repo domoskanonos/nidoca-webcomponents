@@ -1,11 +1,10 @@
 import {css, html, TemplateResult} from 'lit';
-import {NidocaHtml} from './nidoca-html';
 
 import {customElement} from 'lit/decorators.js';
 import {property} from 'lit/decorators.js';
 import {query} from 'lit/decorators.js';
-import {NidocaTheme, NidocaThemeHelper} from '.';
 import {FormOutputData, NidocaFormAbstractInputElement} from './nidoca-form-abstract-input-element';
+import { NidocaTheme } from './nidoca-meta';
 
 @customElement('nidoca-form-textarea')
 export class NidocaFormTextarea extends NidocaFormAbstractInputElement {

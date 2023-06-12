@@ -86,7 +86,7 @@ export class NidocaButton extends NidocaHtml {
         }}"
       >
         ${this.icon
-          ? html` <nidoca-icon
+          ? html`<nidoca-icon
               .clickable="${false}"
               .icon="${this.icon}"
               style="padding-right:var(--space);"
