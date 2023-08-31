@@ -9,26 +9,21 @@
   ],
   "description": "nidoca framework (nidoca-core)",
   "devDependencies": {
-    "@domoskanonos/nidoca-base": "1.1.5",
+    "esbuild": "0.18.11",
     "@domoskanonos/nidoca-router": "1.0.2"
   },
-  "dependencies": {},
+  "dependencies": {
+    "lit": "2.8.0"
+  },
   "author": "Dominik Bruhn",
   "scripts": {
     "check-updates": "ncu",
     "upgrade": "ncu -u",
-    "start": "webpack serve --config webpack.local.js",
+    "start": "esbuild  --bundle src/index.ts --outfile=public/nidoca.js --watch --servedir=public",
     "ts": "tsc -p ./",
-    "prettier:check": "npx prettier --check \"./**/*.{ts,json,js,html}\"",
-    "prettier:fix": "npx prettier --write \"./**/*.{ts,json,js,html}\"",
-    "eslint": "eslint src",
-    "eslint:fix": "eslint src --fix",
-    "lit-analyzer": "lit-analyzer \"src/**/*.{js,ts}\"",
-    "typedoc": "typedoc",
-    "cc": "custom-elements-manifest analyze --outdir public/cem",
-    "docs-webcomponents": "wca analyze \"src/**/*.{js,ts}\" --outDir public/webcomponents",
-    "docs": "npm run typedoc && npm run cc && npm run docs-webcomponents",
-    "build-frontend": "webpack --config ./webpack.js && webpack --config ./webpack.app.js",
-    "build": "npm i && npm run ts && npm run prettier:check && npm run eslint &&  npm run lit-analyzer && npm run docs && npm run build-frontend"
+    "build-webcomponents": "esbuild --minify --bundle src/index.ts --outfile=public/nidoca-webcomponents.js",
+    "build-app": "esbuild --minify --bundle src/app/index.ts --outfile=public/nidoca-app.js",
+    "build-frontend": "npm run build-app && npm run build-webcomponents",
+    "build": "npm i && npm run ts && npm run build-frontend"
   }
 }
