@@ -1,745 +1,25 @@
-"use strict";
-(() => {
-  var __defProp = Object.defineProperty;
-  var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
-  var __decorateClass = (decorators, target, key, kind) => {
-    var result = kind > 1 ? void 0 : kind ? __getOwnPropDesc(target, key) : target;
-    for (var i7 = decorators.length - 1, decorator; i7 >= 0; i7--)
-      if (decorator = decorators[i7])
-        result = (kind ? decorator(target, key, result) : decorator(result)) || result;
-    if (kind && result)
-      __defProp(target, key, result);
-    return result;
-  };
-
-  // node_modules/@lit/reactive-element/css-tag.js
-  var t = window;
-  var e = t.ShadowRoot && (void 0 === t.ShadyCSS || t.ShadyCSS.nativeShadow) && "adoptedStyleSheets" in Document.prototype && "replace" in CSSStyleSheet.prototype;
-  var s = Symbol();
-  var n = /* @__PURE__ */ new WeakMap();
-  var o = class {
-    constructor(t5, e9, n7) {
-      if (this._$cssResult$ = true, n7 !== s)
-        throw Error("CSSResult is not constructable. Use `unsafeCSS` or `css` instead.");
-      this.cssText = t5, this.t = e9;
-    }
-    get styleSheet() {
-      let t5 = this.o;
-      const s6 = this.t;
-      if (e && void 0 === t5) {
-        const e9 = void 0 !== s6 && 1 === s6.length;
-        e9 && (t5 = n.get(s6)), void 0 === t5 && ((this.o = t5 = new CSSStyleSheet()).replaceSync(this.cssText), e9 && n.set(s6, t5));
-      }
-      return t5;
-    }
-    toString() {
-      return this.cssText;
-    }
-  };
-  var r = (t5) => new o("string" == typeof t5 ? t5 : t5 + "", void 0, s);
-  var i = (t5, ...e9) => {
-    const n7 = 1 === t5.length ? t5[0] : e9.reduce((e10, s6, n8) => e10 + ((t6) => {
-      if (true === t6._$cssResult$)
-        return t6.cssText;
-      if ("number" == typeof t6)
-        return t6;
-      throw Error("Value passed to 'css' function must be a 'css' function result: " + t6 + ". Use 'unsafeCSS' to pass non-literal values, but take care to ensure page security.");
-    })(s6) + t5[n8 + 1], t5[0]);
-    return new o(n7, t5, s);
-  };
-  var S = (s6, n7) => {
-    e ? s6.adoptedStyleSheets = n7.map((t5) => t5 instanceof CSSStyleSheet ? t5 : t5.styleSheet) : n7.forEach((e9) => {
-      const n8 = document.createElement("style"), o6 = t.litNonce;
-      void 0 !== o6 && n8.setAttribute("nonce", o6), n8.textContent = e9.cssText, s6.appendChild(n8);
-    });
-  };
-  var c = e ? (t5) => t5 : (t5) => t5 instanceof CSSStyleSheet ? ((t6) => {
-    let e9 = "";
-    for (const s6 of t6.cssRules)
-      e9 += s6.cssText;
-    return r(e9);
-  })(t5) : t5;
-
-  // node_modules/@lit/reactive-element/reactive-element.js
-  var s2;
-  var e2 = window;
-  var r2 = e2.trustedTypes;
-  var h = r2 ? r2.emptyScript : "";
-  var o2 = e2.reactiveElementPolyfillSupport;
-  var n2 = { toAttribute(t5, i7) {
-    switch (i7) {
-      case Boolean:
-        t5 = t5 ? h : null;
-        break;
-      case Object:
-      case Array:
-        t5 = null == t5 ? t5 : JSON.stringify(t5);
-    }
-    return t5;
-  }, fromAttribute(t5, i7) {
-    let s6 = t5;
-    switch (i7) {
-      case Boolean:
-        s6 = null !== t5;
-        break;
-      case Number:
-        s6 = null === t5 ? null : Number(t5);
-        break;
-      case Object:
-      case Array:
-        try {
-          s6 = JSON.parse(t5);
-        } catch (t6) {
-          s6 = null;
-        }
-    }
-    return s6;
-  } };
-  var a = (t5, i7) => i7 !== t5 && (i7 == i7 || t5 == t5);
-  var l = { attribute: true, type: String, converter: n2, reflect: false, hasChanged: a };
-  var d = "finalized";
-  var u = class extends HTMLElement {
-    constructor() {
-      super(), this._$Ei = /* @__PURE__ */ new Map(), this.isUpdatePending = false, this.hasUpdated = false, this._$El = null, this._$Eu();
-    }
-    static addInitializer(t5) {
-      var i7;
-      this.finalize(), (null !== (i7 = this.h) && void 0 !== i7 ? i7 : this.h = []).push(t5);
-    }
-    static get observedAttributes() {
-      this.finalize();
-      const t5 = [];
-      return this.elementProperties.forEach((i7, s6) => {
-        const e9 = this._$Ep(s6, i7);
-        void 0 !== e9 && (this._$Ev.set(e9, s6), t5.push(e9));
-      }), t5;
-    }
-    static createProperty(t5, i7 = l) {
-      if (i7.state && (i7.attribute = false), this.finalize(), this.elementProperties.set(t5, i7), !i7.noAccessor && !this.prototype.hasOwnProperty(t5)) {
-        const s6 = "symbol" == typeof t5 ? Symbol() : "__" + t5, e9 = this.getPropertyDescriptor(t5, s6, i7);
-        void 0 !== e9 && Object.defineProperty(this.prototype, t5, e9);
-      }
-    }
-    static getPropertyDescriptor(t5, i7, s6) {
-      return { get() {
-        return this[i7];
-      }, set(e9) {
-        const r5 = this[t5];
-        this[i7] = e9, this.requestUpdate(t5, r5, s6);
-      }, configurable: true, enumerable: true };
-    }
-    static getPropertyOptions(t5) {
-      return this.elementProperties.get(t5) || l;
-    }
-    static finalize() {
-      if (this.hasOwnProperty(d))
-        return false;
-      this[d] = true;
-      const t5 = Object.getPrototypeOf(this);
-      if (t5.finalize(), void 0 !== t5.h && (this.h = [...t5.h]), this.elementProperties = new Map(t5.elementProperties), this._$Ev = /* @__PURE__ */ new Map(), this.hasOwnProperty("properties")) {
-        const t6 = this.properties, i7 = [...Object.getOwnPropertyNames(t6), ...Object.getOwnPropertySymbols(t6)];
-        for (const s6 of i7)
-          this.createProperty(s6, t6[s6]);
-      }
-      return this.elementStyles = this.finalizeStyles(this.styles), true;
-    }
-    static finalizeStyles(i7) {
-      const s6 = [];
-      if (Array.isArray(i7)) {
-        const e9 = new Set(i7.flat(1 / 0).reverse());
-        for (const i8 of e9)
-          s6.unshift(c(i8));
-      } else
-        void 0 !== i7 && s6.push(c(i7));
-      return s6;
-    }
-    static _$Ep(t5, i7) {
-      const s6 = i7.attribute;
-      return false === s6 ? void 0 : "string" == typeof s6 ? s6 : "string" == typeof t5 ? t5.toLowerCase() : void 0;
-    }
-    _$Eu() {
-      var t5;
-      this._$E_ = new Promise((t6) => this.enableUpdating = t6), this._$AL = /* @__PURE__ */ new Map(), this._$Eg(), this.requestUpdate(), null === (t5 = this.constructor.h) || void 0 === t5 || t5.forEach((t6) => t6(this));
-    }
-    addController(t5) {
-      var i7, s6;
-      (null !== (i7 = this._$ES) && void 0 !== i7 ? i7 : this._$ES = []).push(t5), void 0 !== this.renderRoot && this.isConnected && (null === (s6 = t5.hostConnected) || void 0 === s6 || s6.call(t5));
-    }
-    removeController(t5) {
-      var i7;
-      null === (i7 = this._$ES) || void 0 === i7 || i7.splice(this._$ES.indexOf(t5) >>> 0, 1);
-    }
-    _$Eg() {
-      this.constructor.elementProperties.forEach((t5, i7) => {
-        this.hasOwnProperty(i7) && (this._$Ei.set(i7, this[i7]), delete this[i7]);
-      });
-    }
-    createRenderRoot() {
-      var t5;
-      const s6 = null !== (t5 = this.shadowRoot) && void 0 !== t5 ? t5 : this.attachShadow(this.constructor.shadowRootOptions);
-      return S(s6, this.constructor.elementStyles), s6;
-    }
-    connectedCallback() {
-      var t5;
-      void 0 === this.renderRoot && (this.renderRoot = this.createRenderRoot()), this.enableUpdating(true), null === (t5 = this._$ES) || void 0 === t5 || t5.forEach((t6) => {
-        var i7;
-        return null === (i7 = t6.hostConnected) || void 0 === i7 ? void 0 : i7.call(t6);
-      });
-    }
-    enableUpdating(t5) {
-    }
-    disconnectedCallback() {
-      var t5;
-      null === (t5 = this._$ES) || void 0 === t5 || t5.forEach((t6) => {
-        var i7;
-        return null === (i7 = t6.hostDisconnected) || void 0 === i7 ? void 0 : i7.call(t6);
-      });
-    }
-    attributeChangedCallback(t5, i7, s6) {
-      this._$AK(t5, s6);
-    }
-    _$EO(t5, i7, s6 = l) {
-      var e9;
-      const r5 = this.constructor._$Ep(t5, s6);
-      if (void 0 !== r5 && true === s6.reflect) {
-        const h3 = (void 0 !== (null === (e9 = s6.converter) || void 0 === e9 ? void 0 : e9.toAttribute) ? s6.converter : n2).toAttribute(i7, s6.type);
-        this._$El = t5, null == h3 ? this.removeAttribute(r5) : this.setAttribute(r5, h3), this._$El = null;
-      }
-    }
-    _$AK(t5, i7) {
-      var s6;
-      const e9 = this.constructor, r5 = e9._$Ev.get(t5);
-      if (void 0 !== r5 && this._$El !== r5) {
-        const t6 = e9.getPropertyOptions(r5), h3 = "function" == typeof t6.converter ? { fromAttribute: t6.converter } : void 0 !== (null === (s6 = t6.converter) || void 0 === s6 ? void 0 : s6.fromAttribute) ? t6.converter : n2;
-        this._$El = r5, this[r5] = h3.fromAttribute(i7, t6.type), this._$El = null;
-      }
-    }
-    requestUpdate(t5, i7, s6) {
-      let e9 = true;
-      void 0 !== t5 && (((s6 = s6 || this.constructor.getPropertyOptions(t5)).hasChanged || a)(this[t5], i7) ? (this._$AL.has(t5) || this._$AL.set(t5, i7), true === s6.reflect && this._$El !== t5 && (void 0 === this._$EC && (this._$EC = /* @__PURE__ */ new Map()), this._$EC.set(t5, s6))) : e9 = false), !this.isUpdatePending && e9 && (this._$E_ = this._$Ej());
-    }
-    async _$Ej() {
-      this.isUpdatePending = true;
-      try {
-        await this._$E_;
-      } catch (t6) {
-        Promise.reject(t6);
-      }
-      const t5 = this.scheduleUpdate();
-      return null != t5 && await t5, !this.isUpdatePending;
-    }
-    scheduleUpdate() {
-      return this.performUpdate();
-    }
-    performUpdate() {
-      var t5;
-      if (!this.isUpdatePending)
-        return;
-      this.hasUpdated, this._$Ei && (this._$Ei.forEach((t6, i8) => this[i8] = t6), this._$Ei = void 0);
-      let i7 = false;
-      const s6 = this._$AL;
-      try {
-        i7 = this.shouldUpdate(s6), i7 ? (this.willUpdate(s6), null === (t5 = this._$ES) || void 0 === t5 || t5.forEach((t6) => {
-          var i8;
-          return null === (i8 = t6.hostUpdate) || void 0 === i8 ? void 0 : i8.call(t6);
-        }), this.update(s6)) : this._$Ek();
-      } catch (t6) {
-        throw i7 = false, this._$Ek(), t6;
-      }
-      i7 && this._$AE(s6);
-    }
-    willUpdate(t5) {
-    }
-    _$AE(t5) {
-      var i7;
-      null === (i7 = this._$ES) || void 0 === i7 || i7.forEach((t6) => {
-        var i8;
-        return null === (i8 = t6.hostUpdated) || void 0 === i8 ? void 0 : i8.call(t6);
-      }), this.hasUpdated || (this.hasUpdated = true, this.firstUpdated(t5)), this.updated(t5);
-    }
-    _$Ek() {
-      this._$AL = /* @__PURE__ */ new Map(), this.isUpdatePending = false;
-    }
-    get updateComplete() {
-      return this.getUpdateComplete();
-    }
-    getUpdateComplete() {
-      return this._$E_;
-    }
-    shouldUpdate(t5) {
-      return true;
-    }
-    update(t5) {
-      void 0 !== this._$EC && (this._$EC.forEach((t6, i7) => this._$EO(i7, this[i7], t6)), this._$EC = void 0), this._$Ek();
-    }
-    updated(t5) {
-    }
-    firstUpdated(t5) {
-    }
-  };
-  u[d] = true, u.elementProperties = /* @__PURE__ */ new Map(), u.elementStyles = [], u.shadowRootOptions = { mode: "open" }, null == o2 || o2({ ReactiveElement: u }), (null !== (s2 = e2.reactiveElementVersions) && void 0 !== s2 ? s2 : e2.reactiveElementVersions = []).push("1.6.3");
-
-  // node_modules/lit-html/lit-html.js
-  var t2;
-  var i2 = window;
-  var s3 = i2.trustedTypes;
-  var e3 = s3 ? s3.createPolicy("lit-html", { createHTML: (t5) => t5 }) : void 0;
-  var o3 = "$lit$";
-  var n3 = `lit$${(Math.random() + "").slice(9)}$`;
-  var l2 = "?" + n3;
-  var h2 = `<${l2}>`;
-  var r3 = document;
-  var u2 = () => r3.createComment("");
-  var d2 = (t5) => null === t5 || "object" != typeof t5 && "function" != typeof t5;
-  var c2 = Array.isArray;
-  var v = (t5) => c2(t5) || "function" == typeof (null == t5 ? void 0 : t5[Symbol.iterator]);
-  var a2 = "[ 	\n\f\r]";
-  var f = /<(?:(!--|\/[^a-zA-Z])|(\/?[a-zA-Z][^>\s]*)|(\/?$))/g;
-  var _ = /-->/g;
-  var m = />/g;
-  var p = RegExp(`>|${a2}(?:([^\\s"'>=/]+)(${a2}*=${a2}*(?:[^ 	
-\f\r"'\`<>=]|("|')|))|$)`, "g");
-  var g = /'/g;
-  var $ = /"/g;
-  var y = /^(?:script|style|textarea|title)$/i;
-  var w = (t5) => (i7, ...s6) => ({ _$litType$: t5, strings: i7, values: s6 });
-  var x = w(1);
-  var b = w(2);
-  var T = Symbol.for("lit-noChange");
-  var A = Symbol.for("lit-nothing");
-  var E = /* @__PURE__ */ new WeakMap();
-  var C = r3.createTreeWalker(r3, 129, null, false);
-  function P(t5, i7) {
-    if (!Array.isArray(t5) || !t5.hasOwnProperty("raw"))
-      throw Error("invalid template strings array");
-    return void 0 !== e3 ? e3.createHTML(i7) : i7;
-  }
-  var V = (t5, i7) => {
-    const s6 = t5.length - 1, e9 = [];
-    let l7, r5 = 2 === i7 ? "<svg>" : "", u4 = f;
-    for (let i8 = 0; i8 < s6; i8++) {
-      const s7 = t5[i8];
-      let d3, c5, v2 = -1, a4 = 0;
-      for (; a4 < s7.length && (u4.lastIndex = a4, c5 = u4.exec(s7), null !== c5); )
-        a4 = u4.lastIndex, u4 === f ? "!--" === c5[1] ? u4 = _ : void 0 !== c5[1] ? u4 = m : void 0 !== c5[2] ? (y.test(c5[2]) && (l7 = RegExp("</" + c5[2], "g")), u4 = p) : void 0 !== c5[3] && (u4 = p) : u4 === p ? ">" === c5[0] ? (u4 = null != l7 ? l7 : f, v2 = -1) : void 0 === c5[1] ? v2 = -2 : (v2 = u4.lastIndex - c5[2].length, d3 = c5[1], u4 = void 0 === c5[3] ? p : '"' === c5[3] ? $ : g) : u4 === $ || u4 === g ? u4 = p : u4 === _ || u4 === m ? u4 = f : (u4 = p, l7 = void 0);
-      const w2 = u4 === p && t5[i8 + 1].startsWith("/>") ? " " : "";
-      r5 += u4 === f ? s7 + h2 : v2 >= 0 ? (e9.push(d3), s7.slice(0, v2) + o3 + s7.slice(v2) + n3 + w2) : s7 + n3 + (-2 === v2 ? (e9.push(void 0), i8) : w2);
-    }
-    return [P(t5, r5 + (t5[s6] || "<?>") + (2 === i7 ? "</svg>" : "")), e9];
-  };
-  var N = class _N {
-    constructor({ strings: t5, _$litType$: i7 }, e9) {
-      let h3;
-      this.parts = [];
-      let r5 = 0, d3 = 0;
-      const c5 = t5.length - 1, v2 = this.parts, [a4, f3] = V(t5, i7);
-      if (this.el = _N.createElement(a4, e9), C.currentNode = this.el.content, 2 === i7) {
-        const t6 = this.el.content, i8 = t6.firstChild;
-        i8.remove(), t6.append(...i8.childNodes);
-      }
-      for (; null !== (h3 = C.nextNode()) && v2.length < c5; ) {
-        if (1 === h3.nodeType) {
-          if (h3.hasAttributes()) {
-            const t6 = [];
-            for (const i8 of h3.getAttributeNames())
-              if (i8.endsWith(o3) || i8.startsWith(n3)) {
-                const s6 = f3[d3++];
-                if (t6.push(i8), void 0 !== s6) {
-                  const t7 = h3.getAttribute(s6.toLowerCase() + o3).split(n3), i9 = /([.?@])?(.*)/.exec(s6);
-                  v2.push({ type: 1, index: r5, name: i9[2], strings: t7, ctor: "." === i9[1] ? H : "?" === i9[1] ? L : "@" === i9[1] ? z : k });
-                } else
-                  v2.push({ type: 6, index: r5 });
-              }
-            for (const i8 of t6)
-              h3.removeAttribute(i8);
-          }
-          if (y.test(h3.tagName)) {
-            const t6 = h3.textContent.split(n3), i8 = t6.length - 1;
-            if (i8 > 0) {
-              h3.textContent = s3 ? s3.emptyScript : "";
-              for (let s6 = 0; s6 < i8; s6++)
-                h3.append(t6[s6], u2()), C.nextNode(), v2.push({ type: 2, index: ++r5 });
-              h3.append(t6[i8], u2());
-            }
-          }
-        } else if (8 === h3.nodeType)
-          if (h3.data === l2)
-            v2.push({ type: 2, index: r5 });
-          else {
-            let t6 = -1;
-            for (; -1 !== (t6 = h3.data.indexOf(n3, t6 + 1)); )
-              v2.push({ type: 7, index: r5 }), t6 += n3.length - 1;
-          }
-        r5++;
-      }
-    }
-    static createElement(t5, i7) {
-      const s6 = r3.createElement("template");
-      return s6.innerHTML = t5, s6;
-    }
-  };
-  function S2(t5, i7, s6 = t5, e9) {
-    var o6, n7, l7, h3;
-    if (i7 === T)
-      return i7;
-    let r5 = void 0 !== e9 ? null === (o6 = s6._$Co) || void 0 === o6 ? void 0 : o6[e9] : s6._$Cl;
-    const u4 = d2(i7) ? void 0 : i7._$litDirective$;
-    return (null == r5 ? void 0 : r5.constructor) !== u4 && (null === (n7 = null == r5 ? void 0 : r5._$AO) || void 0 === n7 || n7.call(r5, false), void 0 === u4 ? r5 = void 0 : (r5 = new u4(t5), r5._$AT(t5, s6, e9)), void 0 !== e9 ? (null !== (l7 = (h3 = s6)._$Co) && void 0 !== l7 ? l7 : h3._$Co = [])[e9] = r5 : s6._$Cl = r5), void 0 !== r5 && (i7 = S2(t5, r5._$AS(t5, i7.values), r5, e9)), i7;
-  }
-  var M = class {
-    constructor(t5, i7) {
-      this._$AV = [], this._$AN = void 0, this._$AD = t5, this._$AM = i7;
-    }
-    get parentNode() {
-      return this._$AM.parentNode;
-    }
-    get _$AU() {
-      return this._$AM._$AU;
-    }
-    u(t5) {
-      var i7;
-      const { el: { content: s6 }, parts: e9 } = this._$AD, o6 = (null !== (i7 = null == t5 ? void 0 : t5.creationScope) && void 0 !== i7 ? i7 : r3).importNode(s6, true);
-      C.currentNode = o6;
-      let n7 = C.nextNode(), l7 = 0, h3 = 0, u4 = e9[0];
-      for (; void 0 !== u4; ) {
-        if (l7 === u4.index) {
-          let i8;
-          2 === u4.type ? i8 = new R(n7, n7.nextSibling, this, t5) : 1 === u4.type ? i8 = new u4.ctor(n7, u4.name, u4.strings, this, t5) : 6 === u4.type && (i8 = new Z(n7, this, t5)), this._$AV.push(i8), u4 = e9[++h3];
-        }
-        l7 !== (null == u4 ? void 0 : u4.index) && (n7 = C.nextNode(), l7++);
-      }
-      return C.currentNode = r3, o6;
-    }
-    v(t5) {
-      let i7 = 0;
-      for (const s6 of this._$AV)
-        void 0 !== s6 && (void 0 !== s6.strings ? (s6._$AI(t5, s6, i7), i7 += s6.strings.length - 2) : s6._$AI(t5[i7])), i7++;
-    }
-  };
-  var R = class _R {
-    constructor(t5, i7, s6, e9) {
-      var o6;
-      this.type = 2, this._$AH = A, this._$AN = void 0, this._$AA = t5, this._$AB = i7, this._$AM = s6, this.options = e9, this._$Cp = null === (o6 = null == e9 ? void 0 : e9.isConnected) || void 0 === o6 || o6;
-    }
-    get _$AU() {
-      var t5, i7;
-      return null !== (i7 = null === (t5 = this._$AM) || void 0 === t5 ? void 0 : t5._$AU) && void 0 !== i7 ? i7 : this._$Cp;
-    }
-    get parentNode() {
-      let t5 = this._$AA.parentNode;
-      const i7 = this._$AM;
-      return void 0 !== i7 && 11 === (null == t5 ? void 0 : t5.nodeType) && (t5 = i7.parentNode), t5;
-    }
-    get startNode() {
-      return this._$AA;
-    }
-    get endNode() {
-      return this._$AB;
-    }
-    _$AI(t5, i7 = this) {
-      t5 = S2(this, t5, i7), d2(t5) ? t5 === A || null == t5 || "" === t5 ? (this._$AH !== A && this._$AR(), this._$AH = A) : t5 !== this._$AH && t5 !== T && this._(t5) : void 0 !== t5._$litType$ ? this.g(t5) : void 0 !== t5.nodeType ? this.$(t5) : v(t5) ? this.T(t5) : this._(t5);
-    }
-    k(t5) {
-      return this._$AA.parentNode.insertBefore(t5, this._$AB);
-    }
-    $(t5) {
-      this._$AH !== t5 && (this._$AR(), this._$AH = this.k(t5));
-    }
-    _(t5) {
-      this._$AH !== A && d2(this._$AH) ? this._$AA.nextSibling.data = t5 : this.$(r3.createTextNode(t5)), this._$AH = t5;
-    }
-    g(t5) {
-      var i7;
-      const { values: s6, _$litType$: e9 } = t5, o6 = "number" == typeof e9 ? this._$AC(t5) : (void 0 === e9.el && (e9.el = N.createElement(P(e9.h, e9.h[0]), this.options)), e9);
-      if ((null === (i7 = this._$AH) || void 0 === i7 ? void 0 : i7._$AD) === o6)
-        this._$AH.v(s6);
-      else {
-        const t6 = new M(o6, this), i8 = t6.u(this.options);
-        t6.v(s6), this.$(i8), this._$AH = t6;
-      }
-    }
-    _$AC(t5) {
-      let i7 = E.get(t5.strings);
-      return void 0 === i7 && E.set(t5.strings, i7 = new N(t5)), i7;
-    }
-    T(t5) {
-      c2(this._$AH) || (this._$AH = [], this._$AR());
-      const i7 = this._$AH;
-      let s6, e9 = 0;
-      for (const o6 of t5)
-        e9 === i7.length ? i7.push(s6 = new _R(this.k(u2()), this.k(u2()), this, this.options)) : s6 = i7[e9], s6._$AI(o6), e9++;
-      e9 < i7.length && (this._$AR(s6 && s6._$AB.nextSibling, e9), i7.length = e9);
-    }
-    _$AR(t5 = this._$AA.nextSibling, i7) {
-      var s6;
-      for (null === (s6 = this._$AP) || void 0 === s6 || s6.call(this, false, true, i7); t5 && t5 !== this._$AB; ) {
-        const i8 = t5.nextSibling;
-        t5.remove(), t5 = i8;
-      }
-    }
-    setConnected(t5) {
-      var i7;
-      void 0 === this._$AM && (this._$Cp = t5, null === (i7 = this._$AP) || void 0 === i7 || i7.call(this, t5));
-    }
-  };
-  var k = class {
-    constructor(t5, i7, s6, e9, o6) {
-      this.type = 1, this._$AH = A, this._$AN = void 0, this.element = t5, this.name = i7, this._$AM = e9, this.options = o6, s6.length > 2 || "" !== s6[0] || "" !== s6[1] ? (this._$AH = Array(s6.length - 1).fill(new String()), this.strings = s6) : this._$AH = A;
-    }
-    get tagName() {
-      return this.element.tagName;
-    }
-    get _$AU() {
-      return this._$AM._$AU;
-    }
-    _$AI(t5, i7 = this, s6, e9) {
-      const o6 = this.strings;
-      let n7 = false;
-      if (void 0 === o6)
-        t5 = S2(this, t5, i7, 0), n7 = !d2(t5) || t5 !== this._$AH && t5 !== T, n7 && (this._$AH = t5);
-      else {
-        const e10 = t5;
-        let l7, h3;
-        for (t5 = o6[0], l7 = 0; l7 < o6.length - 1; l7++)
-          h3 = S2(this, e10[s6 + l7], i7, l7), h3 === T && (h3 = this._$AH[l7]), n7 || (n7 = !d2(h3) || h3 !== this._$AH[l7]), h3 === A ? t5 = A : t5 !== A && (t5 += (null != h3 ? h3 : "") + o6[l7 + 1]), this._$AH[l7] = h3;
-      }
-      n7 && !e9 && this.j(t5);
-    }
-    j(t5) {
-      t5 === A ? this.element.removeAttribute(this.name) : this.element.setAttribute(this.name, null != t5 ? t5 : "");
-    }
-  };
-  var H = class extends k {
-    constructor() {
-      super(...arguments), this.type = 3;
-    }
-    j(t5) {
-      this.element[this.name] = t5 === A ? void 0 : t5;
-    }
-  };
-  var I = s3 ? s3.emptyScript : "";
-  var L = class extends k {
-    constructor() {
-      super(...arguments), this.type = 4;
-    }
-    j(t5) {
-      t5 && t5 !== A ? this.element.setAttribute(this.name, I) : this.element.removeAttribute(this.name);
-    }
-  };
-  var z = class extends k {
-    constructor(t5, i7, s6, e9, o6) {
-      super(t5, i7, s6, e9, o6), this.type = 5;
-    }
-    _$AI(t5, i7 = this) {
-      var s6;
-      if ((t5 = null !== (s6 = S2(this, t5, i7, 0)) && void 0 !== s6 ? s6 : A) === T)
-        return;
-      const e9 = this._$AH, o6 = t5 === A && e9 !== A || t5.capture !== e9.capture || t5.once !== e9.once || t5.passive !== e9.passive, n7 = t5 !== A && (e9 === A || o6);
-      o6 && this.element.removeEventListener(this.name, this, e9), n7 && this.element.addEventListener(this.name, this, t5), this._$AH = t5;
-    }
-    handleEvent(t5) {
-      var i7, s6;
-      "function" == typeof this._$AH ? this._$AH.call(null !== (s6 = null === (i7 = this.options) || void 0 === i7 ? void 0 : i7.host) && void 0 !== s6 ? s6 : this.element, t5) : this._$AH.handleEvent(t5);
-    }
-  };
-  var Z = class {
-    constructor(t5, i7, s6) {
-      this.element = t5, this.type = 6, this._$AN = void 0, this._$AM = i7, this.options = s6;
-    }
-    get _$AU() {
-      return this._$AM._$AU;
-    }
-    _$AI(t5) {
-      S2(this, t5);
-    }
-  };
-  var j = { O: o3, P: n3, A: l2, C: 1, M: V, L: M, R: v, D: S2, I: R, V: k, H: L, N: z, U: H, F: Z };
-  var B = i2.litHtmlPolyfillSupport;
-  null == B || B(N, R), (null !== (t2 = i2.litHtmlVersions) && void 0 !== t2 ? t2 : i2.litHtmlVersions = []).push("2.8.0");
-  var D = (t5, i7, s6) => {
-    var e9, o6;
-    const n7 = null !== (e9 = null == s6 ? void 0 : s6.renderBefore) && void 0 !== e9 ? e9 : i7;
-    let l7 = n7._$litPart$;
-    if (void 0 === l7) {
-      const t6 = null !== (o6 = null == s6 ? void 0 : s6.renderBefore) && void 0 !== o6 ? o6 : null;
-      n7._$litPart$ = l7 = new R(i7.insertBefore(u2(), t6), t6, void 0, null != s6 ? s6 : {});
-    }
-    return l7._$AI(t5), l7;
-  };
-
-  // node_modules/lit-element/lit-element.js
-  var l3;
-  var o4;
-  var s4 = class extends u {
-    constructor() {
-      super(...arguments), this.renderOptions = { host: this }, this._$Do = void 0;
-    }
-    createRenderRoot() {
-      var t5, e9;
-      const i7 = super.createRenderRoot();
-      return null !== (t5 = (e9 = this.renderOptions).renderBefore) && void 0 !== t5 || (e9.renderBefore = i7.firstChild), i7;
-    }
-    update(t5) {
-      const i7 = this.render();
-      this.hasUpdated || (this.renderOptions.isConnected = this.isConnected), super.update(t5), this._$Do = D(i7, this.renderRoot, this.renderOptions);
-    }
-    connectedCallback() {
-      var t5;
-      super.connectedCallback(), null === (t5 = this._$Do) || void 0 === t5 || t5.setConnected(true);
-    }
-    disconnectedCallback() {
-      var t5;
-      super.disconnectedCallback(), null === (t5 = this._$Do) || void 0 === t5 || t5.setConnected(false);
-    }
-    render() {
-      return T;
-    }
-  };
-  s4.finalized = true, s4._$litElement$ = true, null === (l3 = globalThis.litElementHydrateSupport) || void 0 === l3 || l3.call(globalThis, { LitElement: s4 });
-  var n4 = globalThis.litElementPolyfillSupport;
-  null == n4 || n4({ LitElement: s4 });
-  (null !== (o4 = globalThis.litElementVersions) && void 0 !== o4 ? o4 : globalThis.litElementVersions = []).push("3.3.3");
-
-  // src/nidoca-meta.ts
-  var NidocaTheme = /* @__PURE__ */ ((NidocaTheme2) => {
-    NidocaTheme2["primary"] = "primary";
-    NidocaTheme2["secondary"] = "secondary";
-    NidocaTheme2["surface"] = "surface";
-    NidocaTheme2["plain"] = "plain";
-    return NidocaTheme2;
-  })(NidocaTheme || {});
-  var NidocaThemeHelper = class {
-    static getStyle(theme) {
-      return theme ? theme == "plain" /* plain */ ? x`` : x` <style>
+"use strict";(()=>{var Pi=Object.defineProperty;var Bi=Object.getOwnPropertyDescriptor;var i=(s,e,t,n)=>{for(var a=n>1?void 0:n?Bi(e,t):e,l=s.length-1,d;l>=0;l--)(d=s[l])&&(a=(n?d(e,t,a):d(a))||a);return n&&a&&Pi(e,t,a),a};var Ae=window,Ce=Ae.ShadowRoot&&(Ae.ShadyCSS===void 0||Ae.ShadyCSS.nativeShadow)&&"adoptedStyleSheets"in Document.prototype&&"replace"in CSSStyleSheet.prototype,Qe=Symbol(),ci=new WeakMap,ee=class{constructor(e,t,n){if(this._$cssResult$=!0,n!==Qe)throw Error("CSSResult is not constructable. Use `unsafeCSS` or `css` instead.");this.cssText=e,this.t=t}get styleSheet(){let e=this.o,t=this.t;if(Ce&&e===void 0){let n=t!==void 0&&t.length===1;n&&(e=ci.get(t)),e===void 0&&((this.o=e=new CSSStyleSheet).replaceSync(this.cssText),n&&ci.set(t,e))}return e}toString(){return this.cssText}},di=s=>new ee(typeof s=="string"?s:s+"",void 0,Qe),c=(s,...e)=>{let t=s.length===1?s[0]:e.reduce((n,a,l)=>n+(d=>{if(d._$cssResult$===!0)return d.cssText;if(typeof d=="number")return d;throw Error("Value passed to 'css' function must be a 'css' function result: "+d+". Use 'unsafeCSS' to pass non-literal values, but take care to ensure page security.")})(a)+s[l+1],s[0]);return new ee(t,s,Qe)},Fe=(s,e)=>{Ce?s.adoptedStyleSheets=e.map(t=>t instanceof CSSStyleSheet?t:t.styleSheet):e.forEach(t=>{let n=document.createElement("style"),a=Ae.litNonce;a!==void 0&&n.setAttribute("nonce",a),n.textContent=t.cssText,s.appendChild(n)})},Ie=Ce?s=>s:s=>s instanceof CSSStyleSheet?(e=>{let t="";for(let n of e.cssRules)t+=n.cssText;return di(t)})(s):s;var Ne,ze=window,pi=ze.trustedTypes,Ui=pi?pi.emptyScript:"",hi=ze.reactiveElementPolyfillSupport,ei={toAttribute(s,e){switch(e){case Boolean:s=s?Ui:null;break;case Object:case Array:s=s==null?s:JSON.stringify(s)}return s},fromAttribute(s,e){let t=s;switch(e){case Boolean:t=s!==null;break;case Number:t=s===null?null:Number(s);break;case Object:case Array:try{t=JSON.parse(s)}catch{t=null}}return t}},ui=(s,e)=>e!==s&&(e==e||s==s),ti={attribute:!0,type:String,converter:ei,reflect:!1,hasChanged:ui},ii="finalized",nt=class extends HTMLElement{constructor(){super(),this._$Ei=new Map,this.isUpdatePending=!1,this.hasUpdated=!1,this._$El=null,this._$Eu()}static addInitializer(e){var t;this.finalize(),((t=this.h)!==null&&t!==void 0?t:this.h=[]).push(e)}static get observedAttributes(){this.finalize();let e=[];return this.elementProperties.forEach((t,n)=>{let a=this._$Ep(n,t);a!==void 0&&(this._$Ev.set(a,n),e.push(a))}),e}static createProperty(e,t=ti){if(t.state&&(t.attribute=!1),this.finalize(),this.elementProperties.set(e,t),!t.noAccessor&&!this.prototype.hasOwnProperty(e)){let n=typeof e=="symbol"?Symbol():"__"+e,a=this.getPropertyDescriptor(e,n,t);a!==void 0&&Object.defineProperty(this.prototype,e,a)}}static getPropertyDescriptor(e,t,n){return{get(){return this[t]},set(a){let l=this[e];this[t]=a,this.requestUpdate(e,l,n)},configurable:!0,enumerable:!0}}static getPropertyOptions(e){return this.elementProperties.get(e)||ti}static finalize(){if(this.hasOwnProperty(ii))return!1;this[ii]=!0;let e=Object.getPrototypeOf(this);if(e.finalize(),e.h!==void 0&&(this.h=[...e.h]),this.elementProperties=new Map(e.elementProperties),this._$Ev=new Map,this.hasOwnProperty("properties")){let t=this.properties,n=[...Object.getOwnPropertyNames(t),...Object.getOwnPropertySymbols(t)];for(let a of n)this.createProperty(a,t[a])}return this.elementStyles=this.finalizeStyles(this.styles),!0}static finalizeStyles(e){let t=[];if(Array.isArray(e)){let n=new Set(e.flat(1/0).reverse());for(let a of n)t.unshift(Ie(a))}else e!==void 0&&t.push(Ie(e));return t}static _$Ep(e,t){let n=t.attribute;return n===!1?void 0:typeof n=="string"?n:typeof e=="string"?e.toLowerCase():void 0}_$Eu(){var e;this._$E_=new Promise(t=>this.enableUpdating=t),this._$AL=new Map,this._$Eg(),this.requestUpdate(),(e=this.constructor.h)===null||e===void 0||e.forEach(t=>t(this))}addController(e){var t,n;((t=this._$ES)!==null&&t!==void 0?t:this._$ES=[]).push(e),this.renderRoot!==void 0&&this.isConnected&&((n=e.hostConnected)===null||n===void 0||n.call(e))}removeController(e){var t;(t=this._$ES)===null||t===void 0||t.splice(this._$ES.indexOf(e)>>>0,1)}_$Eg(){this.constructor.elementProperties.forEach((e,t)=>{this.hasOwnProperty(t)&&(this._$Ei.set(t,this[t]),delete this[t])})}createRenderRoot(){var e;let t=(e=this.shadowRoot)!==null&&e!==void 0?e:this.attachShadow(this.constructor.shadowRootOptions);return Fe(t,this.constructor.elementStyles),t}connectedCallback(){var e;this.renderRoot===void 0&&(this.renderRoot=this.createRenderRoot()),this.enableUpdating(!0),(e=this._$ES)===null||e===void 0||e.forEach(t=>{var n;return(n=t.hostConnected)===null||n===void 0?void 0:n.call(t)})}enableUpdating(e){}disconnectedCallback(){var e;(e=this._$ES)===null||e===void 0||e.forEach(t=>{var n;return(n=t.hostDisconnected)===null||n===void 0?void 0:n.call(t)})}attributeChangedCallback(e,t,n){this._$AK(e,n)}_$EO(e,t,n=ti){var a;let l=this.constructor._$Ep(e,n);if(l!==void 0&&n.reflect===!0){let d=(((a=n.converter)===null||a===void 0?void 0:a.toAttribute)!==void 0?n.converter:ei).toAttribute(t,n.type);this._$El=e,d==null?this.removeAttribute(l):this.setAttribute(l,d),this._$El=null}}_$AK(e,t){var n;let a=this.constructor,l=a._$Ev.get(e);if(l!==void 0&&this._$El!==l){let d=a.getPropertyOptions(l),h=typeof d.converter=="function"?{fromAttribute:d.converter}:((n=d.converter)===null||n===void 0?void 0:n.fromAttribute)!==void 0?d.converter:ei;this._$El=l,this[l]=h.fromAttribute(t,d.type),this._$El=null}}requestUpdate(e,t,n){let a=!0;e!==void 0&&(((n=n||this.constructor.getPropertyOptions(e)).hasChanged||ui)(this[e],t)?(this._$AL.has(e)||this._$AL.set(e,t),n.reflect===!0&&this._$El!==e&&(this._$EC===void 0&&(this._$EC=new Map),this._$EC.set(e,n))):a=!1),!this.isUpdatePending&&a&&(this._$E_=this._$Ej())}async _$Ej(){this.isUpdatePending=!0;try{await this._$E_}catch(t){Promise.reject(t)}let e=this.scheduleUpdate();return e!=null&&await e,!this.isUpdatePending}scheduleUpdate(){return this.performUpdate()}performUpdate(){var e;if(!this.isUpdatePending)return;this.hasUpdated,this._$Ei&&(this._$Ei.forEach((a,l)=>this[l]=a),this._$Ei=void 0);let t=!1,n=this._$AL;try{t=this.shouldUpdate(n),t?(this.willUpdate(n),(e=this._$ES)===null||e===void 0||e.forEach(a=>{var l;return(l=a.hostUpdate)===null||l===void 0?void 0:l.call(a)}),this.update(n)):this._$Ek()}catch(a){throw t=!1,this._$Ek(),a}t&&this._$AE(n)}willUpdate(e){}_$AE(e){var t;(t=this._$ES)===null||t===void 0||t.forEach(n=>{var a;return(a=n.hostUpdated)===null||a===void 0?void 0:a.call(n)}),this.hasUpdated||(this.hasUpdated=!0,this.firstUpdated(e)),this.updated(e)}_$Ek(){this._$AL=new Map,this.isUpdatePending=!1}get updateComplete(){return this.getUpdateComplete()}getUpdateComplete(){return this._$E_}shouldUpdate(e){return!0}update(e){this._$EC!==void 0&&(this._$EC.forEach((t,n)=>this._$EO(n,this[n],t)),this._$EC=void 0),this._$Ek()}updated(e){}firstUpdated(e){}};nt[ii]=!0,nt.elementProperties=new Map,nt.elementStyles=[],nt.shadowRootOptions={mode:"open"},hi?.({ReactiveElement:nt}),((Ne=ze.reactiveElementVersions)!==null&&Ne!==void 0?Ne:ze.reactiveElementVersions=[]).push("1.6.3");var ni,He=window,jt=He.trustedTypes,fi=jt?jt.createPolicy("lit-html",{createHTML:s=>s}):void 0,Oe="$lit$",ot=`lit$${(Math.random()+"").slice(9)}$`,ri="?"+ot,ji=`<${ri}>`,wt=document,ne=()=>wt.createComment(""),oe=s=>s===null||typeof s!="object"&&typeof s!="function",$i=Array.isArray,ki=s=>$i(s)||typeof s?.[Symbol.iterator]=="function",oi=`[ 	
+\f\r]`,ie=/<(?:(!--|\/[^a-zA-Z])|(\/?[a-zA-Z][^>\s]*)|(\/?$))/g,gi=/-->/g,bi=/>/g,xt=RegExp(`>|${oi}(?:([^\\s"'>=/]+)(${oi}*=${oi}*(?:[^ 	
+\f\r"'\`<>=]|("|')|))|$)`,"g"),yi=/'/g,xi=/"/g,Ei=/^(?:script|style|textarea|title)$/i,Si=s=>(e,...t)=>({_$litType$:s,strings:e,values:t}),o=Si(1),tn=Si(2),U=Symbol.for("lit-noChange"),T=Symbol.for("lit-nothing"),vi=new WeakMap,vt=wt.createTreeWalker(wt,129,null,!1);function Ti(s,e){if(!Array.isArray(s)||!s.hasOwnProperty("raw"))throw Error("invalid template strings array");return fi!==void 0?fi.createHTML(e):e}var _i=(s,e)=>{let t=s.length-1,n=[],a,l=e===2?"<svg>":"",d=ie;for(let h=0;h<t;h++){let f=s[h],b,$,E=-1,x=0;for(;x<f.length&&(d.lastIndex=x,$=d.exec(f),$!==null);)x=d.lastIndex,d===ie?$[1]==="!--"?d=gi:$[1]!==void 0?d=bi:$[2]!==void 0?(Ei.test($[2])&&(a=RegExp("</"+$[2],"g")),d=xt):$[3]!==void 0&&(d=xt):d===xt?$[0]===">"?(d=a??ie,E=-1):$[1]===void 0?E=-2:(E=d.lastIndex-$[2].length,b=$[1],d=$[3]===void 0?xt:$[3]==='"'?xi:yi):d===xi||d===yi?d=xt:d===gi||d===bi?d=ie:(d=xt,a=void 0);let y=d===xt&&s[h+1].startsWith("/>")?" ":"";l+=d===ie?f+ji:E>=0?(n.push(b),f.slice(0,E)+Oe+f.slice(E)+ot+y):f+ot+(E===-2?(n.push(void 0),h):y)}return[Ti(s,l+(s[t]||"<?>")+(e===2?"</svg>":"")),n]},re=class s{constructor({strings:e,_$litType$:t},n){let a;this.parts=[];let l=0,d=0,h=e.length-1,f=this.parts,[b,$]=_i(e,t);if(this.el=s.createElement(b,n),vt.currentNode=this.el.content,t===2){let E=this.el.content,x=E.firstChild;x.remove(),E.append(...x.childNodes)}for(;(a=vt.nextNode())!==null&&f.length<h;){if(a.nodeType===1){if(a.hasAttributes()){let E=[];for(let x of a.getAttributeNames())if(x.endsWith(Oe)||x.startsWith(ot)){let y=$[d++];if(E.push(x),y!==void 0){let S=a.getAttribute(y.toLowerCase()+Oe).split(ot),L=/([.?@])?(.*)/.exec(y);f.push({type:1,index:l,name:L[2],strings:S,ctor:L[1]==="."?Me:L[1]==="?"?Pe:L[1]==="@"?Be:kt})}else f.push({type:6,index:l})}for(let x of E)a.removeAttribute(x)}if(Ei.test(a.tagName)){let E=a.textContent.split(ot),x=E.length-1;if(x>0){a.textContent=jt?jt.emptyScript:"";for(let y=0;y<x;y++)a.append(E[y],ne()),vt.nextNode(),f.push({type:2,index:++l});a.append(E[x],ne())}}}else if(a.nodeType===8)if(a.data===ri)f.push({type:2,index:l});else{let E=-1;for(;(E=a.data.indexOf(ot,E+1))!==-1;)f.push({type:7,index:l}),E+=ot.length-1}l++}}static createElement(e,t){let n=wt.createElement("template");return n.innerHTML=e,n}};function $t(s,e,t=s,n){var a,l,d,h;if(e===U)return e;let f=n!==void 0?(a=t._$Co)===null||a===void 0?void 0:a[n]:t._$Cl,b=oe(e)?void 0:e._$litDirective$;return f?.constructor!==b&&((l=f?._$AO)===null||l===void 0||l.call(f,!1),b===void 0?f=void 0:(f=new b(s),f._$AT(s,t,n)),n!==void 0?((d=(h=t)._$Co)!==null&&d!==void 0?d:h._$Co=[])[n]=f:t._$Cl=f),f!==void 0&&(e=$t(s,f._$AS(s,e.values),f,n)),e}var De=class{constructor(e,t){this._$AV=[],this._$AN=void 0,this._$AD=e,this._$AM=t}get parentNode(){return this._$AM.parentNode}get _$AU(){return this._$AM._$AU}u(e){var t;let{el:{content:n},parts:a}=this._$AD,l=((t=e?.creationScope)!==null&&t!==void 0?t:wt).importNode(n,!0);vt.currentNode=l;let d=vt.nextNode(),h=0,f=0,b=a[0];for(;b!==void 0;){if(h===b.index){let $;b.type===2?$=new qt(d,d.nextSibling,this,e):b.type===1?$=new b.ctor(d,b.name,b.strings,this,e):b.type===6&&($=new Ue(d,this,e)),this._$AV.push($),b=a[++f]}h!==b?.index&&(d=vt.nextNode(),h++)}return vt.currentNode=wt,l}v(e){let t=0;for(let n of this._$AV)n!==void 0&&(n.strings!==void 0?(n._$AI(e,n,t),t+=n.strings.length-2):n._$AI(e[t])),t++}},qt=class s{constructor(e,t,n,a){var l;this.type=2,this._$AH=T,this._$AN=void 0,this._$AA=e,this._$AB=t,this._$AM=n,this.options=a,this._$Cp=(l=a?.isConnected)===null||l===void 0||l}get _$AU(){var e,t;return(t=(e=this._$AM)===null||e===void 0?void 0:e._$AU)!==null&&t!==void 0?t:this._$Cp}get parentNode(){let e=this._$AA.parentNode,t=this._$AM;return t!==void 0&&e?.nodeType===11&&(e=t.parentNode),e}get startNode(){return this._$AA}get endNode(){return this._$AB}_$AI(e,t=this){e=$t(this,e,t),oe(e)?e===T||e==null||e===""?(this._$AH!==T&&this._$AR(),this._$AH=T):e!==this._$AH&&e!==U&&this._(e):e._$litType$!==void 0?this.g(e):e.nodeType!==void 0?this.$(e):ki(e)?this.T(e):this._(e)}k(e){return this._$AA.parentNode.insertBefore(e,this._$AB)}$(e){this._$AH!==e&&(this._$AR(),this._$AH=this.k(e))}_(e){this._$AH!==T&&oe(this._$AH)?this._$AA.nextSibling.data=e:this.$(wt.createTextNode(e)),this._$AH=e}g(e){var t;let{values:n,_$litType$:a}=e,l=typeof a=="number"?this._$AC(e):(a.el===void 0&&(a.el=re.createElement(Ti(a.h,a.h[0]),this.options)),a);if(((t=this._$AH)===null||t===void 0?void 0:t._$AD)===l)this._$AH.v(n);else{let d=new De(l,this),h=d.u(this.options);d.v(n),this.$(h),this._$AH=d}}_$AC(e){let t=vi.get(e.strings);return t===void 0&&vi.set(e.strings,t=new re(e)),t}T(e){$i(this._$AH)||(this._$AH=[],this._$AR());let t=this._$AH,n,a=0;for(let l of e)a===t.length?t.push(n=new s(this.k(ne()),this.k(ne()),this,this.options)):n=t[a],n._$AI(l),a++;a<t.length&&(this._$AR(n&&n._$AB.nextSibling,a),t.length=a)}_$AR(e=this._$AA.nextSibling,t){var n;for((n=this._$AP)===null||n===void 0||n.call(this,!1,!0,t);e&&e!==this._$AB;){let a=e.nextSibling;e.remove(),e=a}}setConnected(e){var t;this._$AM===void 0&&(this._$Cp=e,(t=this._$AP)===null||t===void 0||t.call(this,e))}},kt=class{constructor(e,t,n,a,l){this.type=1,this._$AH=T,this._$AN=void 0,this.element=e,this.name=t,this._$AM=a,this.options=l,n.length>2||n[0]!==""||n[1]!==""?(this._$AH=Array(n.length-1).fill(new String),this.strings=n):this._$AH=T}get tagName(){return this.element.tagName}get _$AU(){return this._$AM._$AU}_$AI(e,t=this,n,a){let l=this.strings,d=!1;if(l===void 0)e=$t(this,e,t,0),d=!oe(e)||e!==this._$AH&&e!==U,d&&(this._$AH=e);else{let h=e,f,b;for(e=l[0],f=0;f<l.length-1;f++)b=$t(this,h[n+f],t,f),b===U&&(b=this._$AH[f]),d||(d=!oe(b)||b!==this._$AH[f]),b===T?e=T:e!==T&&(e+=(b??"")+l[f+1]),this._$AH[f]=b}d&&!a&&this.j(e)}j(e){e===T?this.element.removeAttribute(this.name):this.element.setAttribute(this.name,e??"")}},Me=class extends kt{constructor(){super(...arguments),this.type=3}j(e){this.element[this.name]=e===T?void 0:e}},qi=jt?jt.emptyScript:"",Pe=class extends kt{constructor(){super(...arguments),this.type=4}j(e){e&&e!==T?this.element.setAttribute(this.name,qi):this.element.removeAttribute(this.name)}},Be=class extends kt{constructor(e,t,n,a,l){super(e,t,n,a,l),this.type=5}_$AI(e,t=this){var n;if((e=(n=$t(this,e,t,0))!==null&&n!==void 0?n:T)===U)return;let a=this._$AH,l=e===T&&a!==T||e.capture!==a.capture||e.once!==a.once||e.passive!==a.passive,d=e!==T&&(a===T||l);l&&this.element.removeEventListener(this.name,this,a),d&&this.element.addEventListener(this.name,this,e),this._$AH=e}handleEvent(e){var t,n;typeof this._$AH=="function"?this._$AH.call((n=(t=this.options)===null||t===void 0?void 0:t.host)!==null&&n!==void 0?n:this.element,e):this._$AH.handleEvent(e)}},Ue=class{constructor(e,t,n){this.element=e,this.type=6,this._$AN=void 0,this._$AM=t,this.options=n}get _$AU(){return this._$AM._$AU}_$AI(e){$t(this,e)}},Ri={O:Oe,P:ot,A:ri,C:1,M:_i,L:De,R:ki,D:$t,I:qt,V:kt,H:Pe,N:Be,U:Me,F:Ue},wi=He.litHtmlPolyfillSupport;wi?.(re,qt),((ni=He.litHtmlVersions)!==null&&ni!==void 0?ni:He.litHtmlVersions=[]).push("2.8.0");var Li=(s,e,t)=>{var n,a;let l=(n=t?.renderBefore)!==null&&n!==void 0?n:e,d=l._$litPart$;if(d===void 0){let h=(a=t?.renderBefore)!==null&&a!==void 0?a:null;l._$litPart$=d=new qt(e.insertBefore(ne(),h),h,void 0,t??{})}return d._$AI(s),d};var si,ai;var mt=class extends nt{constructor(){super(...arguments),this.renderOptions={host:this},this._$Do=void 0}createRenderRoot(){var e,t;let n=super.createRenderRoot();return(e=(t=this.renderOptions).renderBefore)!==null&&e!==void 0||(t.renderBefore=n.firstChild),n}update(e){let t=this.render();this.hasUpdated||(this.renderOptions.isConnected=this.isConnected),super.update(e),this._$Do=Li(t,this.renderRoot,this.renderOptions)}connectedCallback(){var e;super.connectedCallback(),(e=this._$Do)===null||e===void 0||e.setConnected(!0)}disconnectedCallback(){var e;super.disconnectedCallback(),(e=this._$Do)===null||e===void 0||e.setConnected(!1)}render(){return U}};mt.finalized=!0,mt._$litElement$=!0,(si=globalThis.litElementHydrateSupport)===null||si===void 0||si.call(globalThis,{LitElement:mt});var Ai=globalThis.litElementPolyfillSupport;Ai?.({LitElement:mt});((ai=globalThis.litElementVersions)!==null&&ai!==void 0?ai:globalThis.litElementVersions=[]).push("3.3.3");var u=(a=>(a.primary="primary",a.secondary="secondary",a.surface="surface",a.plain="plain",a))(u||{}),v=class{static getStyle(e){return e?e=="plain"?o``:o` <style>
             :host,
             *,
             ::slotted(*) {
-              color: var(--app-color-${theme});
-              background-color: var(--app-color-${theme}-background);
-              border-color: var(--app-color-${theme}-border);
+              color: var(--app-color-${e});
+              background-color: var(--app-color-${e}-background);
+              border-color: var(--app-color-${e}-border);
             }
 
             ::slotted(.h2),
             .h2 {
               color: #3f6796;
             }
-          </style>` : x``;
-    }
-    static getOposite(theme) {
-      return theme == "plain" /* plain */ ? "surface" /* surface */ : theme == "primary" /* primary */ ? "secondary" /* secondary */ : theme == "primary" /* primary */ ? "secondary" /* secondary */ : theme == "secondary" /* secondary */ ? "primary" /* primary */ : "plain" /* plain */;
-    }
-    getParentTheme(element) {
-      let parentComponent = element;
-      while (parentComponent != null) {
-        if (parentComponent.theme != void 0) {
-          return parentComponent.theme;
-        }
-        parentComponent = parentComponent.parentElement;
-      }
-      return void 0;
-    }
-  };
-
-  // src/nidoca-html.ts
-  var NidocaHtml = class extends s4 {
-  };
-
-  // node_modules/@lit/reactive-element/decorators/custom-element.js
-  var e4 = (e9) => (n7) => "function" == typeof n7 ? ((e10, n8) => (customElements.define(e10, n8), n8))(e9, n7) : ((e10, n8) => {
-    const { kind: t5, elements: s6 } = n8;
-    return { kind: t5, elements: s6, finisher(n9) {
-      customElements.define(e10, n9);
-    } };
-  })(e9, n7);
-
-  // node_modules/@lit/reactive-element/decorators/property.js
-  var i3 = (i7, e9) => "method" === e9.kind && e9.descriptor && !("value" in e9.descriptor) ? { ...e9, finisher(n7) {
-    n7.createProperty(e9.key, i7);
-  } } : { kind: "field", key: Symbol(), placement: "own", descriptor: {}, originalKey: e9.key, initializer() {
-    "function" == typeof e9.initializer && (this[e9.key] = e9.initializer.call(this));
-  }, finisher(n7) {
-    n7.createProperty(e9.key, i7);
-  } };
-  var e5 = (i7, e9, n7) => {
-    e9.constructor.createProperty(n7, i7);
-  };
-  function n5(n7) {
-    return (t5, o6) => void 0 !== o6 ? e5(n7, t5, o6) : i3(n7, t5);
-  }
-
-  // node_modules/@lit/reactive-element/decorators/state.js
-  function t3(t5) {
-    return n5({ ...t5, state: true });
-  }
-
-  // node_modules/@lit/reactive-element/decorators/base.js
-  var o5 = ({ finisher: e9, descriptor: t5 }) => (o6, n7) => {
-    var r5;
-    if (void 0 === n7) {
-      const n8 = null !== (r5 = o6.originalKey) && void 0 !== r5 ? r5 : o6.key, i7 = null != t5 ? { kind: "method", placement: "prototype", key: n8, descriptor: t5(o6.key) } : { ...o6, key: n8 };
-      return null != e9 && (i7.finisher = function(t6) {
-        e9(t6, n8);
-      }), i7;
-    }
-    {
-      const r6 = o6.constructor;
-      void 0 !== t5 && Object.defineProperty(o6, n7, t5(n7)), null == e9 || e9(r6, n7);
-    }
-  };
-
-  // node_modules/@lit/reactive-element/decorators/query.js
-  function i4(i7, n7) {
-    return o5({ descriptor: (o6) => {
-      const t5 = { get() {
-        var o7, n8;
-        return null !== (n8 = null === (o7 = this.renderRoot) || void 0 === o7 ? void 0 : o7.querySelector(i7)) && void 0 !== n8 ? n8 : null;
-      }, enumerable: true, configurable: true };
-      if (n7) {
-        const n8 = "symbol" == typeof o6 ? Symbol() : "__" + o6;
-        t5.get = function() {
-          var o7, t6;
-          return void 0 === this[n8] && (this[n8] = null !== (t6 = null === (o7 = this.renderRoot) || void 0 === o7 ? void 0 : o7.querySelector(i7)) && void 0 !== t6 ? t6 : null), this[n8];
-        };
-      }
-      return t5;
-    } });
-  }
-
-  // node_modules/@lit/reactive-element/decorators/query-assigned-elements.js
-  var n6;
-  var e6 = null != (null === (n6 = window.HTMLSlotElement) || void 0 === n6 ? void 0 : n6.prototype.assignedElements) ? (o6, n7) => o6.assignedElements(n7) : (o6, n7) => o6.assignedNodes(n7).filter((o7) => o7.nodeType === Node.ELEMENT_NODE);
-
-  // src/nidoca-accordion-item.ts
-  var NidocaAccordionItem = class extends NidocaHtml {
-    constructor() {
-      super(...arguments);
-      this.theme = "surface" /* surface */;
-      this.header = "";
-      this.opened = false;
-    }
-    render() {
-      return x`
-      <div @click="${() => this.toggle()}" class="header">
+          </style>`:o``}static getOposite(e){return e=="plain"?"surface":e=="primary"||e=="primary"?"secondary":e=="secondary"?"primary":"plain"}getParentTheme(e){let t=e;for(;t!=null;){if(t.theme!=null)return t.theme;t=t.parentElement}}};var p=class extends mt{};var m=s=>e=>typeof e=="function"?((t,n)=>(customElements.define(t,n),n))(s,e):((t,n)=>{let{kind:a,elements:l}=n;return{kind:a,elements:l,finisher(d){customElements.define(t,d)}}})(s,e);var Vi=(s,e)=>e.kind==="method"&&e.descriptor&&!("value"in e.descriptor)?{...e,finisher(t){t.createProperty(e.key,s)}}:{kind:"field",key:Symbol(),placement:"own",descriptor:{},originalKey:e.key,initializer(){typeof e.initializer=="function"&&(this[e.key]=e.initializer.call(this))},finisher(t){t.createProperty(e.key,s)}},Gi=(s,e,t)=>{e.constructor.createProperty(t,s)};function r(s){return(e,t)=>t!==void 0?Gi(s,e,t):Vi(s,e)}function Ci(s){return r({...s,state:!0})}var Et=({finisher:s,descriptor:e})=>(t,n)=>{var a;if(n===void 0){let l=(a=t.originalKey)!==null&&a!==void 0?a:t.key,d=e!=null?{kind:"method",placement:"prototype",key:l,descriptor:e(t.key)}:{...t,key:l};return s!=null&&(d.finisher=function(h){s(h,l)}),d}{let l=t.constructor;e!==void 0&&Object.defineProperty(t,n,e(n)),s?.(l,n)}};function g(s,e){return Et({descriptor:t=>{let n={get(){var a,l;return(l=(a=this.renderRoot)===null||a===void 0?void 0:a.querySelector(s))!==null&&l!==void 0?l:null},enumerable:!0,configurable:!0};if(e){let a=typeof t=="symbol"?Symbol():"__"+t;n.get=function(){var l,d;return this[a]===void 0&&(this[a]=(d=(l=this.renderRoot)===null||l===void 0?void 0:l.querySelector(s))!==null&&d!==void 0?d:null),this[a]}}return n}})}var li,zn=((li=window.HTMLSlotElement)===null||li===void 0?void 0:li.prototype.assignedElements)!=null?(s,e)=>s.assignedElements(e):(s,e)=>s.assignedNodes(e).filter(t=>t.nodeType===Node.ELEMENT_NODE);var W=class extends p{constructor(){super(...arguments);this.theme="surface";this.header="";this.opened=!1}render(){return o`
+      <div @click="${()=>this.toggle()}" class="header">
         <nidoca-text theme="${this.theme}" text="${this.header}"></nidoca-text>
-        <nidoca-icon icon="${this.opened ? "keyboard_arrow_down" : "keyboard_arrow_up"}"></nidoca-icon>
+        <nidoca-icon icon="${this.opened?"keyboard_arrow_down":"keyboard_arrow_up"}"></nidoca-icon>
       </div>
-      ${this.opened ? x` <slot></slot>` : x``}
-    `;
-    }
-    toggle() {
-      console.log("accordion clicked, state=" + this.opened);
-      this.opened = Boolean(!this.opened);
-      console.log("accordion clicked, after state=" + this.opened);
-      this.dispatchEvent(
-        new CustomEvent("nidoca-event-accordion-item-clicked", {
-          detail: this,
-          bubbles: true,
-          composed: true
-        })
-      );
-    }
-  };
-  NidocaAccordionItem.styles = i`
+      ${this.opened?o` <slot></slot>`:o``}
+    `}toggle(){console.log("accordion clicked, state="+this.opened),this.opened=!this.opened,console.log("accordion clicked, after state="+this.opened),this.dispatchEvent(new CustomEvent("nidoca-event-accordion-item-clicked",{detail:this,bubbles:!0,composed:!0}))}};W.styles=c`
     :host {
       border-left-style: solid;
       border-right-style: solid;
@@ -761,56 +41,25 @@
       align-content: center;
       cursor: pointer;
     }
-  `;
-  __decorateClass([
-    n5({ type: NidocaTheme, converter: String })
-  ], NidocaAccordionItem.prototype, "theme", 2);
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaAccordionItem.prototype, "header", 2);
-  __decorateClass([
-    n5({ type: Boolean })
-  ], NidocaAccordionItem.prototype, "opened", 2);
-  NidocaAccordionItem = __decorateClass([
-    e4("nidoca-accordion-item")
-  ], NidocaAccordionItem);
-
-  // src/nidoca-article.ts
-  var NidocaArticle = class extends NidocaHtml {
-    constructor() {
-      super(...arguments);
-      this.theme = "plain" /* plain */;
-      this.overline = "";
-      this.title = "";
-      this.summary = "";
-      this.text = "";
-    }
-    render() {
-      return x`
+  `,i([r({type:u,converter:String})],W.prototype,"theme",2),i([r({type:String})],W.prototype,"header",2),i([r({type:Boolean})],W.prototype,"opened",2),W=i([m("nidoca-accordion-item")],W);var R=class extends p{constructor(){super(...arguments);this.theme="plain";this.overline="";this.title="";this.summary="";this.text=""}render(){return o`
       <div style="background-color: var(--app-color-${this.theme}-background); display:flex; flex-direction:column;">
-        ${this.overline ? x` <nidoca-text-body theme="${this.theme}" class="paddingBottom">${this.overline}</nidoca-text-body> ` : x``}
-        ${this.title ? x` <nidoca-text-h2 theme="${this.theme}" class="paddingBottom">${this.title}</nidoca-text-h2> ` : x``}
-        ${this.summary ? x`
+        ${this.overline?o` <nidoca-text-body theme="${this.theme}" class="paddingBottom">${this.overline}</nidoca-text-body> `:o``}
+        ${this.title?o` <nidoca-text-h2 theme="${this.theme}" class="paddingBottom">${this.title}</nidoca-text-h2> `:o``}
+        ${this.summary?o`
               <nidoca-text-caption theme="${this.theme}" class="paddingBottom">${this.summary}</nidoca-text-caption>
-            ` : x``}
-        ${this.text ? x` <nidoca-text-body theme="${this.theme}" class="paddingBottom">${this.text}</nidoca-text-body>` : x``}
+            `:o``}
+        ${this.text?o` <nidoca-text-body theme="${this.theme}" class="paddingBottom">${this.text}</nidoca-text-body>`:o``}
         <slot></slot>
       </div>
-    `;
-    }
-    static example(slotName = "", theme = "plain") {
-      return x`<nidoca-article
-      theme="${theme}"
-      slot="${slotName}"
+    `}static example(t="",n="plain"){return o`<nidoca-article
+      theme="${n}"
+      slot="${t}"
       style="padding:25px;"
       overline="Lorem Ipsum Dolorem"
       title="Lorem Ipsum"
       summary="Lorem Ipsum Dolorem ipsum med en to."
       text="Lorem Ipsum Dolorem ipsum med en to. Lorem Ipsum Dolorem ipsum med en to. Lorem Ipsum Dolorem ipsum med en to. Lorem Ipsum Dolorem ipsum med en to."
-    ></nidoca-article>`;
-    }
-  };
-  NidocaArticle.styles = i`
+    ></nidoca-article>`}};R.styles=c`
     :host {
       display: block;
     }
@@ -825,92 +74,18 @@
     .paddingBottom {
       padding-bottom: var(--space);
     }
-  `;
-  __decorateClass([
-    n5({ type: NidocaTheme, converter: String })
-  ], NidocaArticle.prototype, "theme", 2);
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaArticle.prototype, "overline", 2);
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaArticle.prototype, "title", 2);
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaArticle.prototype, "summary", 2);
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaArticle.prototype, "text", 2);
-  NidocaArticle = __decorateClass([
-    e4("nidoca-article")
-  ], NidocaArticle);
-
-  // src/nidoca-accordion.ts
-  var AccordionType = /* @__PURE__ */ ((AccordionType2) => {
-    AccordionType2["single"] = "single";
-    AccordionType2["multi"] = "multi";
-    return AccordionType2;
-  })(AccordionType || {});
-  var NidocaAccordion = class extends NidocaHtml {
-    constructor() {
-      super(...arguments);
-      this.theme = "plain" /* plain */;
-      this.accordionType = "single" /* single */;
-    }
-    updated(changedProperties) {
-      super.updated(changedProperties);
-      changedProperties.forEach((_oldValue, propName) => {
-        if (propName == "theme") {
-          if (this.accordionSlot != null) {
-            const slottedElements = this.accordionSlot.assignedElements();
-            for (let index = 0; index < slottedElements.length; index++) {
-              const element = slottedElements[index];
-              if (element instanceof NidocaAccordionItem) {
-                element.theme = this.theme;
-              }
-            }
-          }
-        }
-      });
-    }
-    render() {
-      return x`
-      ${NidocaThemeHelper.getStyle(this.theme)}
+  `,i([r({type:u,converter:String})],R.prototype,"theme",2),i([r({type:String})],R.prototype,"overline",2),i([r({type:String})],R.prototype,"title",2),i([r({type:String})],R.prototype,"summary",2),i([r({type:String})],R.prototype,"text",2),R=i([m("nidoca-article")],R);var Ii=(t=>(t.single="single",t.multi="multi",t))(Ii||{}),ct=class extends p{constructor(){super(...arguments);this.theme="plain";this.accordionType="single"}updated(t){super.updated(t),t.forEach((n,a)=>{if(a=="theme"&&this.accordionSlot!=null){let l=this.accordionSlot.assignedElements();for(let d=0;d<l.length;d++){let h=l[d];h instanceof W&&(h.theme=this.theme)}}})}render(){return o`
+      ${v.getStyle(this.theme)}
       <slot
-        @nidoca-event-accordion-item-clicked="${(event) => this.accordionSwitched(event)}"
+        @nidoca-event-accordion-item-clicked="${t=>this.accordionSwitched(t)}"
         id="accordionSlot"
       ></slot>
-    `;
-    }
-    accordionSwitched(event) {
-      const accordionItemComponent = event.detail;
-      switch (this.accordionType) {
-        case "single" /* single */:
-          if (this.accordionSlot != null) {
-            const assignedElements = this.accordionSlot.assignedElements();
-            for (let index = 0; index < assignedElements.length; index++) {
-              const element = assignedElements[index];
-              if (element instanceof NidocaAccordionItem && element != accordionItemComponent) {
-                element.opened = false;
-              }
-            }
-          }
-          break;
-        case "multi" /* multi */:
-          break;
-      }
-      event.stopPropagation();
-    }
-    static example(slotName = "") {
-      return x`<nidoca-accordion slot="${slotName}" theme="plain">
-      <nidoca-accordion-item header="Lorem Ipsum" opened> ${NidocaArticle.example()} </nidoca-accordion-item>
-      <nidoca-accordion-item header="Lorem Ipsum 2"> ${NidocaArticle.example()} </nidoca-accordion-item>
-      <nidoca-accordion-item header="Lorem Ipsum 3"> ${NidocaArticle.example()} </nidoca-accordion-item>
-      <nidoca-accordion-item header="Lorem Ipsum 4"> ${NidocaArticle.example()} </nidoca-accordion-item>
-    </nidoca-accordion>`;
-    }
-  };
-  NidocaAccordion.styles = i`
+    `}accordionSwitched(t){let n=t.detail;switch(this.accordionType){case"single":if(this.accordionSlot!=null){let a=this.accordionSlot.assignedElements();for(let l=0;l<a.length;l++){let d=a[l];d instanceof W&&d!=n&&(d.opened=!1)}}break;case"multi":break}t.stopPropagation()}static example(t=""){return o`<nidoca-accordion slot="${t}" theme="plain">
+      <nidoca-accordion-item header="Lorem Ipsum" opened> ${R.example()} </nidoca-accordion-item>
+      <nidoca-accordion-item header="Lorem Ipsum 2"> ${R.example()} </nidoca-accordion-item>
+      <nidoca-accordion-item header="Lorem Ipsum 3"> ${R.example()} </nidoca-accordion-item>
+      <nidoca-accordion-item header="Lorem Ipsum 4"> ${R.example()} </nidoca-accordion-item>
+    </nidoca-accordion>`}};ct.styles=c`
     :host {
       border-top-style: solid;
       border-width: thin;
@@ -918,33 +93,7 @@
       width: 100%;
       box-sizing: border-box;
     }
-  `;
-  __decorateClass([
-    n5({ type: NidocaTheme, converter: String })
-  ], NidocaAccordion.prototype, "theme", 2);
-  __decorateClass([
-    n5({ type: AccordionType, converter: String })
-  ], NidocaAccordion.prototype, "accordionType", 2);
-  __decorateClass([
-    i4("#accordionSlot")
-  ], NidocaAccordion.prototype, "accordionSlot", 2);
-  NidocaAccordion = __decorateClass([
-    e4("nidoca-accordion")
-  ], NidocaAccordion);
-
-  // src/nidoca-icon-extended.ts
-  var NidocaIconExtended = class extends NidocaHtml {
-    constructor() {
-      super(...arguments);
-      this.theme = "primary" /* primary */;
-      this.shadowType = "shadow_1" /* shadow_1 */;
-      this.icon = "";
-      this.clickable = true;
-      this.deactivated = false;
-      this.title = "";
-    }
-    render() {
-      return x`
+  `,i([r({type:u,converter:String})],ct.prototype,"theme",2),i([r({type:Ii,converter:String})],ct.prototype,"accordionType",2),i([g("#accordionSlot")],ct.prototype,"accordionSlot",2),ct=i([m("nidoca-accordion")],ct);var X=class extends p{constructor(){super(...arguments);this.theme="primary";this.shadowType="shadow_1";this.icon="";this.clickable=!0;this.deactivated=!1;this.title=""}render(){return o`
       <style>
         .iconExtended {
           display: inline-block;
@@ -960,34 +109,15 @@
           icon="${this.icon}"
         ></nidoca-icon>
       </span>
-    `;
-    }
-    async clicked() {
-      if (this.clickable && !this.deactivated) {
-        const customEventName = "nidoca-event-icon-clicked";
-        console.log("dispatch custom event: %s", customEventName);
-        this.dispatchEvent(
-          new CustomEvent(customEventName, {
-            detail: this,
-            bubbles: true,
-            composed: true
-          })
-        );
-      }
-    }
-    static example(slotName = "") {
-      return x`
+    `}async clicked(){if(this.clickable&&!this.deactivated){let t="nidoca-event-icon-clicked";console.log("dispatch custom event: %s",t),this.dispatchEvent(new CustomEvent(t,{detail:this,bubbles:!0,composed:!0}))}}static example(t=""){return o`
       <nidoca-icon-extended
-        slot="${slotName}"
+        slot="${t}"
         style="padding-left:var(--space)"
         clickable
         icon="home"
         title="Mein Icon"
       ></nidoca-icon-extended>
-    `;
-    }
-  };
-  NidocaIconExtended.styles = i`
+    `}};X.styles=c`
     .icon {
       padding: var(--space);
       -moz-border-radius: 50%;
@@ -1018,40 +148,7 @@
       -webkit-box-shadow: 0 14px 14px 0 rgba(0, 0, 0, 0.25), 0 10px 5px 0 rgba(0, 0, 0, 0.22);
       box-shadow: 0 14px 14px 0 rgba(0, 0, 0, 0.25), 0 10px 5px 0 rgba(0, 0, 0, 0.22);
     }
-  `;
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaIconExtended.prototype, "theme", 2);
-  __decorateClass([
-    n5({ type: Object })
-  ], NidocaIconExtended.prototype, "shadowType", 2);
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaIconExtended.prototype, "icon", 2);
-  __decorateClass([
-    n5({ type: Boolean })
-  ], NidocaIconExtended.prototype, "clickable", 2);
-  __decorateClass([
-    n5({ type: Boolean })
-  ], NidocaIconExtended.prototype, "deactivated", 2);
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaIconExtended.prototype, "title", 2);
-  NidocaIconExtended = __decorateClass([
-    e4("nidoca-icon-extended")
-  ], NidocaIconExtended);
-
-  // src/nidoca-wizard-step.ts
-  var NidocaWizardStep = class extends NidocaHtml {
-    constructor() {
-      super(...arguments);
-      this.icon = "";
-      this.primaryText = "";
-      this.isLast = false;
-      this.first = false;
-    }
-    render() {
-      return x`
+  `,i([r({type:String})],X.prototype,"theme",2),i([r({type:Object})],X.prototype,"shadowType",2),i([r({type:String})],X.prototype,"icon",2),i([r({type:Boolean})],X.prototype,"clickable",2),i([r({type:Boolean})],X.prototype,"deactivated",2),i([r({type:String})],X.prototype,"title",2),X=i([m("nidoca-icon-extended")],X);var j=class extends p{constructor(){super(...arguments);this.icon="";this.primaryText="";this.isLast=!1;this.first=!1}render(){return o`
       <div
         style="display:flex;flex-direction:row;flex-wrap:nowrap;align-items:flex-start;justify-content:space-evenly;align-content:space-evenly;"
       >
@@ -1060,43 +157,25 @@
         >
           <nidoca-icon
             icon="${this.icon}"
-            .iconShadowType="${"none" /* none */}"
-            .withIconSpace="${false}"
-            .round="${true}"
-            .clickable="${true}"
-            .deactivated="${false}"
+            .iconShadowType="${"none"}"
+            .withIconSpace="${!1}"
+            .round="${!0}"
+            .clickable="${!0}"
+            .deactivated="${!1}"
             color="${this.determineColor(this.state)}"
             backgroundColor="${this.determineBackgroundColor(this.state)}"
             size="24"
-            @nidoca-event-icon-clicked="${() => this.stepClicked()}"
+            @nidoca-event-icon-clicked="${()=>this.stepClicked()}"
             sizeUnit="px"
           >
           </nidoca-icon>
 
-          ${this.isLast ? x`` : x`<nidoca-icon color="${this.determineBackgroundColor(this.state)}" icon="label_important">
+          ${this.isLast?o``:o`<nidoca-icon color="${this.determineBackgroundColor(this.state)}" icon="label_important">
               </nidoca-icon>`}
         </div>
         <nidoca-text style="width:48px;" text="${this.primaryText}"><slot></slot> </nidoca-text>
       </div>
-    `;
-    }
-    determineBackgroundColor(state2) {
-      return state2 == 1 /* completed */ ? "var(--app-color-text-primary)" : state2 == 0 /* current */ ? "var(--app-color-secondary-background)" : "var(--app-color-surface-background)";
-    }
-    determineColor(state2) {
-      return state2 == 3 /* finish */ ? "var(--app-color-success)" : state2 == 1 /* completed */ ? "var(--mdc-theme-on-primary)" : state2 == 0 /* current */ ? "var(--app-color-text-secondary)" : "var(--app-color-text-surface)";
-    }
-    stepClicked() {
-      const customEvent = new CustomEvent("nidoca-event-wizard-step-clicked", {
-        detail: this.index,
-        bubbles: true,
-        composed: true
-      });
-      console.debug("dispatch custom event type: %s, detail: %s", customEvent.type, JSON.stringify(customEvent.detail));
-      this.dispatchEvent(customEvent);
-    }
-  };
-  NidocaWizardStep.styles = i`
+    `}determineBackgroundColor(t){return t==1?"var(--app-color-text-primary)":t==0?"var(--app-color-secondary-background)":"var(--app-color-surface-background)"}determineColor(t){return t==3?"var(--app-color-success)":t==1?"var(--mdc-theme-on-primary)":t==0?"var(--app-color-text-secondary)":"var(--app-color-text-surface)"}stepClicked(){let t=new CustomEvent("nidoca-event-wizard-step-clicked",{detail:this.index,bubbles:!0,composed:!0});console.debug("dispatch custom event type: %s, detail: %s",t.type,JSON.stringify(t.detail)),this.dispatchEvent(t)}};j.styles=c`
     .wizard-step-connector {
       color: var(--app-color-surface);
       background-color: var(--app-color-surface-background);
@@ -1108,99 +187,14 @@
       color: var(--mdc-theme-on-primary);
       background-color: var(--app-text-color-primary);
     }
-  `;
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaWizardStep.prototype, "icon", 2);
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaWizardStep.prototype, "primaryText", 2);
-  __decorateClass([
-    n5({ type: Number })
-  ], NidocaWizardStep.prototype, "state", 2);
-  __decorateClass([
-    n5({ type: Boolean })
-  ], NidocaWizardStep.prototype, "isLast", 2);
-  NidocaWizardStep = __decorateClass([
-    e4("nidoca-wizard-step")
-  ], NidocaWizardStep);
-
-  // src/nidoca-wizard.ts
-  var NidocaWizard = class extends NidocaHtml {
-    render() {
-      return x`
+  `,i([r({type:String})],j.prototype,"icon",2),i([r({type:String})],j.prototype,"primaryText",2),i([r({type:Number})],j.prototype,"state",2),i([r({type:Boolean})],j.prototype,"isLast",2),j=i([m("nidoca-wizard-step")],j);var Vt=class extends p{render(){return o`
       <div
         style="display:flex;flex-direction:row;flex-wrap:nowrap;align-items:flex-start;justify-content:flex-start;align-content:space-evenly;"
-        @nidoca-event-wizard-step-clicked="${(event) => this.stepClicked(event)}"
+        @nidoca-event-wizard-step-clicked="${e=>this.stepClicked(e)}"
       >
-        <slot id="wizardSlot" @slotchange="${(event) => this.slotChanged(event)}"></slot>
+        <slot id="wizardSlot" @slotchange="${e=>this.slotChanged(e)}"></slot>
       </div>
-    `;
-    }
-    slotChanged(event) {
-      const slotElement = event.target;
-      if (slotElement == void 0) {
-        return;
-      }
-      const elements = slotElement.assignedElements();
-      let selectedStepIndex = 0;
-      for (let index = 0; index < elements.length; index++) {
-        const element = elements[index];
-        if (element instanceof NidocaWizardStep) {
-          element.index = index;
-          if (element.state == 0 /* current */) {
-            selectedStepIndex = index;
-          }
-          if (element.index == elements.length - 1) {
-            element.isLast = true;
-          }
-        }
-      }
-      this.changeState(selectedStepIndex);
-    }
-    stepClicked(event) {
-      const selectedStepIndex = event.detail;
-      console.debug("wizard step clicked, selectedStepIndex: %s", selectedStepIndex);
-      this.changeState(selectedStepIndex);
-    }
-    changeState(selectedStepIndex) {
-      if (this.wizardSlot) {
-        const elements = this.wizardSlot.assignedElements();
-        for (let index = 0; index < elements.length; index++) {
-          const element = elements[index];
-          if (element instanceof NidocaWizardStep) {
-            if (element.index !== void 0) {
-              if (element.index < selectedStepIndex) {
-                element.state = 1 /* completed */;
-              } else if (element.index == selectedStepIndex) {
-                element.state = 0 /* current */;
-              } else {
-                element.state = 2 /* open */;
-              }
-            }
-          }
-        }
-      }
-    }
-  };
-  NidocaWizard.styles = i``;
-  __decorateClass([
-    i4("#wizardSlot")
-  ], NidocaWizard.prototype, "wizardSlot", 2);
-  NidocaWizard = __decorateClass([
-    e4("nidoca-wizard")
-  ], NidocaWizard);
-
-  // src/nidoca-chip.ts
-  var NidocaChip = class extends NidocaHtml {
-    constructor() {
-      super(...arguments);
-      this.clickable = true;
-      this.theme = "surface" /* surface */;
-      this.text = "";
-    }
-    render() {
-      return x`
+    `}slotChanged(e){let t=e.target;if(t==null)return;let n=t.assignedElements(),a=0;for(let l=0;l<n.length;l++){let d=n[l];d instanceof j&&(d.index=l,d.state==0&&(a=l),d.index==n.length-1&&(d.isLast=!0))}this.changeState(a)}stepClicked(e){let t=e.detail;console.debug("wizard step clicked, selectedStepIndex: %s",t),this.changeState(t)}changeState(e){if(this.wizardSlot){let t=this.wizardSlot.assignedElements();for(let n=0;n<t.length;n++){let a=t[n];a instanceof j&&a.index!==void 0&&(a.index<e?a.state=1:a.index==e?a.state=0:a.state=2)}}}};Vt.styles=c``,i([g("#wizardSlot")],Vt.prototype,"wizardSlot",2),Vt=i([m("nidoca-wizard")],Vt);var dt=class extends p{constructor(){super(...arguments);this.clickable=!0;this.theme="surface";this.text=""}render(){return o`
       <style>
         .chip:hover {
           background-color: var(--app-color-${this.theme}-background-dark);
@@ -1209,17 +203,11 @@
           background-color: var(--app-color-${this.theme}-background-light);
         }
       </style>
-      <div class="chip ${this.clickable ? "clickable" : ""}">
+      <div class="chip ${this.clickable?"clickable":""}">
         <nidoca-text-body theme="${this.theme}">${this.text}</nidoca-text-body>
         <slot></slot>
       </div>
-    `;
-    }
-    static example(slotName = "") {
-      return x`<nidoca-chip slot="${slotName}" clickable text="Mein Chip"></nidoca-chip>`;
-    }
-  };
-  NidocaChip.styles = i`
+    `}static example(t=""){return o`<nidoca-chip slot="${t}" clickable text="Mein Chip"></nidoca-chip>`}};dt.styles=c`
     .chip {
       display: inline-block;
       padding: var(--space-2);
@@ -1230,29 +218,7 @@
     .clickable {
       cursor: pointer;
     }
-  `;
-  __decorateClass([
-    n5({ type: Boolean })
-  ], NidocaChip.prototype, "clickable", 2);
-  __decorateClass([
-    n5({ type: NidocaTheme, converter: String })
-  ], NidocaChip.prototype, "theme", 2);
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaChip.prototype, "text", 2);
-  NidocaChip = __decorateClass([
-    e4("nidoca-chip")
-  ], NidocaChip);
-
-  // src/nidoca-code.ts
-  var NidocaCode = class extends NidocaHtml {
-    constructor() {
-      super(...arguments);
-      this.code = "";
-      this.theme = "plain" /* plain */;
-    }
-    render() {
-      return x`
+  `,i([r({type:Boolean})],dt.prototype,"clickable",2),i([r({type:u,converter:String})],dt.prototype,"theme",2),i([r({type:String})],dt.prototype,"text",2),dt=i([m("nidoca-chip")],dt);var St=class extends p{constructor(){super(...arguments);this.code="";this.theme="plain"}render(){return o`
       <style>
         code {
           color: var(--app-color-text-${this.theme});
@@ -1263,13 +229,7 @@
       <pre>
                 <code>${this.code}<slot></slot></code>
             </pre>
-    `;
-    }
-    static example(slotName = "") {
-      return x`<nidoca-code slot="${slotName}" theme="surface"> my code </nidoca-code>`;
-    }
-  };
-  NidocaCode.styles = i`
+    `}static example(t=""){return o`<nidoca-code slot="${t}" theme="surface"> my code </nidoca-code>`}};St.styles=c`
     :host {
       display: block;
     }
@@ -1300,96 +260,18 @@
       right: 0;
       opacity: 0.2;
     }
-  `;
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaCode.prototype, "code", 2);
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaCode.prototype, "theme", 2);
-  NidocaCode = __decorateClass([
-    e4("nidoca-code")
-  ], NidocaCode);
-
-  // src/nidoca-elevation.ts
-  var NidocaElevation = class extends NidocaHtml {
-    constructor() {
-      super();
-      this.show = false;
-      addEventListener("click", (me) => {
-        const rect = this.associatedElement?.getBoundingClientRect();
-        if (rect) {
-          if (rect.top > me.clientY || rect.right < me.clientX || rect.left > me.clientX || rect.bottom < me.clientY) {
-            this.dispatchEvent(
-              new CustomEvent("nidoca-elevation-event-closeme", {
-                detail: this,
-                bubbles: true,
-                composed: true
-              })
-            );
-          }
-        }
-      });
-    }
-    render() {
-      return this.show ? x`
+  `,i([r({type:String})],St.prototype,"code",2),i([r({type:String})],St.prototype,"theme",2),St=i([m("nidoca-code")],St);var Tt=class extends p{constructor(){super();this.show=!1;addEventListener("click",t=>{let n=this.associatedElement?.getBoundingClientRect();n&&(n.top>t.clientY||n.right<t.clientX||n.left>t.clientX||n.bottom<t.clientY)&&this.dispatchEvent(new CustomEvent("nidoca-elevation-event-closeme",{detail:this,bubbles:!0,composed:!0}))})}render(){return this.show?o`
           <div class="container" style="${this.calculatePositionStyle(this.associatedElement)}">
             <nidoca-border>
               <slot id="slot"></slot>
             </nidoca-border>
           </div>
-        ` : x``;
-    }
-    calculatePositionStyle(basedOnComponent) {
-      let style = "";
-      if (basedOnComponent) {
-        const rect = basedOnComponent.getBoundingClientRect();
-        if (rect.right > window.innerWidth / 2) {
-          style += `right:${window.innerWidth - rect.right}px;`;
-        } else {
-          style += `left:${rect.left}px;`;
-        }
-        if (rect.top > window.innerHeight / 2) {
-          style += `bottom:${rect.height + window.innerHeight - rect.top}px;`;
-        } else {
-          style += `top:${rect.bottom}px;`;
-        }
-      }
-      return style;
-    }
-  };
-  NidocaElevation.styles = i`
+        `:o``}calculatePositionStyle(t){let n="";if(t){let a=t.getBoundingClientRect();a.right>window.innerWidth/2?n+=`right:${window.innerWidth-a.right}px;`:n+=`left:${a.left}px;`,a.top>window.innerHeight/2?n+=`bottom:${a.height+window.innerHeight-a.top}px;`:n+=`top:${a.bottom}px;`}return n}};Tt.styles=c`
     .container {
       position: fixed;
       z-index: 999;
     }
-  `;
-  __decorateClass([
-    n5({ type: Boolean })
-  ], NidocaElevation.prototype, "show", 2);
-  __decorateClass([
-    n5({ type: Object })
-  ], NidocaElevation.prototype, "associatedElement", 2);
-  NidocaElevation = __decorateClass([
-    e4("nidoca-elevation")
-  ], NidocaElevation);
-
-  // src/nidoca-progress.ts
-  var ProgressType = class {
-    static {
-      this.PROGRESS = "PROGRESS";
-    }
-    static {
-      this.PROGRESS_CIRCULAR = "PROGRESS_CIRCULAR";
-    }
-  };
-  var NidocaProgress = class extends NidocaHtml {
-    constructor() {
-      super(...arguments);
-      this.progressType = ProgressType.PROGRESS;
-    }
-    render() {
-      return x` <style>
+  `,i([r({type:Boolean})],Tt.prototype,"show",2),i([r({type:Object})],Tt.prototype,"associatedElement",2),Tt=i([m("nidoca-elevation")],Tt);var je=class{static{this.PROGRESS="PROGRESS"}static{this.PROGRESS_CIRCULAR="PROGRESS_CIRCULAR"}},_t=class extends p{constructor(){super(...arguments);this.progressType=je.PROGRESS}render(){return o` <style>
         :host {
           width: 100%;
           display: block;
@@ -1588,37 +470,7 @@
         }
       </style>
 
-      <progress class="${this.progressType}"></progress>`;
-    }
-  };
-  NidocaProgress.styles = i``;
-  __decorateClass([
-    n5({ type: NidocaTheme, converter: String })
-  ], NidocaProgress.prototype, "theme", 2);
-  __decorateClass([
-    n5({ type: ProgressType, converter: String })
-  ], NidocaProgress.prototype, "progressType", 2);
-  NidocaProgress = __decorateClass([
-    e4("nidoca-progress")
-  ], NidocaProgress);
-
-  // src/nidoca-button.ts
-  var NidocaButtonType = /* @__PURE__ */ ((NidocaButtonType2) => {
-    NidocaButtonType2["contained"] = "contained";
-    NidocaButtonType2["outlined"] = "outlined";
-    NidocaButtonType2["text"] = "text";
-    return NidocaButtonType2;
-  })(NidocaButtonType || {});
-  var NidocaButton = class extends NidocaHtml {
-    constructor() {
-      super(...arguments);
-      this.theme = "primary" /* primary */;
-      this.buttonType = "contained" /* contained */;
-      this.icon = "";
-      this.text = "";
-    }
-    render() {
-      return x`
+      <progress class="${this.progressType}"></progress>`}};_t.styles=c``,i([r({type:u,converter:String})],_t.prototype,"theme",2),i([r({type:je,converter:String})],_t.prototype,"progressType",2),_t=i([m("nidoca-progress")],_t);var qe=(n=>(n.contained="contained",n.outlined="outlined",n.text="text",n))(qe||{}),rt=class extends p{constructor(){super(...arguments);this.theme="primary";this.buttonType="contained";this.icon="";this.text=""}render(){return o`
       <style>
         .outlined {
           color: var(--app-color-${this.theme}-background);
@@ -1642,37 +494,20 @@
       </style>
       <div
         class="container ${this.buttonType}"
-        @click="${() => {
-        this.clicked();
-      }}"
+        @click="${()=>{this.clicked()}}"
       >
-        ${this.icon ? x`<nidoca-icon
-              .clickable="${false}"
+        ${this.icon?o`<nidoca-icon
+              .clickable="${!1}"
               .icon="${this.icon}"
               style="padding-right:var(--space);"
-            ></nidoca-icon>` : x``}
+            ></nidoca-icon>`:o``}
 
         <nidoca-text-button theme="${this.theme}"
           >${this.text}
           <slot></slot>
         </nidoca-text-button>
       </div>
-    `;
-    }
-    clicked() {
-      this.dispatchEvent(
-        new CustomEvent("nidoca-event-button-clicked", {
-          detail: this,
-          bubbles: true,
-          composed: true
-        })
-      );
-    }
-    static example(slotName = "") {
-      return x`<nidoca-button slot="${slotName}" text="Start" icon="home"></nidoca-button>`;
-    }
-  };
-  NidocaButton.styles = i`
+    `}clicked(){this.dispatchEvent(new CustomEvent("nidoca-event-button-clicked",{detail:this,bubbles:!0,composed:!0}))}static example(t=""){return o`<nidoca-button slot="${t}" text="Start" icon="home"></nidoca-button>`}};rt.styles=c`
     :host,
     .fullWidth {
       display: block;
@@ -1701,97 +536,11 @@
         width: 100%;
       }
     }
-  `;
-  __decorateClass([
-    n5({ type: NidocaTheme, converter: String })
-  ], NidocaButton.prototype, "theme", 2);
-  __decorateClass([
-    n5({ type: NidocaButtonType, converter: String })
-  ], NidocaButton.prototype, "buttonType", 2);
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaButton.prototype, "icon", 2);
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaButton.prototype, "text", 2);
-  NidocaButton = __decorateClass([
-    e4("nidoca-button")
-  ], NidocaButton);
-
-  // src/nidoca-form-abstract-input-element.ts
-  var NidocaFormAbstractInputElement = class extends NidocaHtml {
-  };
-
-  // src/nidoca-form.ts
-  var NidocaForm = class extends NidocaHtml {
-    constructor() {
-      super(...arguments);
-      this.autocomplete = true;
-    }
-    render() {
-      return x`
-      <form autocomplete="${this.autocomplete ? "on" : "off"}">
+  `,i([r({type:u,converter:String})],rt.prototype,"theme",2),i([r({type:qe,converter:String})],rt.prototype,"buttonType",2),i([r({type:String})],rt.prototype,"icon",2),i([r({type:String})],rt.prototype,"text",2),rt=i([m("nidoca-button")],rt);var O=class extends p{};var Rt=class extends p{constructor(){super(...arguments);this.autocomplete=!0}render(){return o`
+      <form autocomplete="${this.autocomplete?"on":"off"}">
         <slot id="slotElement"></slot>
       </form>
-    `;
-    }
-    getOutputData() {
-      const formData = new FormData();
-      const json = {};
-      for (const element of this.getInputElements(this.slotElement)) {
-        const elementOutputData = element.getOutputData();
-        json[elementOutputData.key] = elementOutputData.value;
-        formData.append(elementOutputData.key, elementOutputData.value);
-      }
-      const outputData = {};
-      outputData.jsonObject = json;
-      outputData.formData = formData;
-      return outputData;
-    }
-    validate() {
-      let valid = true;
-      for (const element of this.getInputElements(this.slotElement)) {
-        if (!element.validate()) {
-          if (valid) {
-          }
-          valid = false;
-        }
-      }
-      if (!valid) {
-        this.dispatchEvent(
-          new CustomEvent("nidoca-form-validation-failed", {
-            detail: this.getOutputData(),
-            bubbles: true,
-            composed: true
-          })
-        );
-      }
-      return valid;
-    }
-    getInputElements(slotElement) {
-      if (slotElement == null) {
-        return [];
-      }
-      const inputElements = [];
-      const elements = slotElement.assignedElements({ flatten: true });
-      for (let index = 0; index < elements.length; index++) {
-        const element = elements[index];
-        this.recursiveInputElementSearch(element, inputElements);
-      }
-      return inputElements;
-    }
-    recursiveInputElementSearch(element, inputElements) {
-      if (element instanceof NidocaFormAbstractInputElement) {
-        inputElements.push(element);
-      } else if (element.hasChildNodes()) {
-        const childrens = element.children;
-        for (const childElement of [].slice.call(childrens)) {
-          this.recursiveInputElementSearch(childElement, inputElements);
-        }
-      }
-    }
-  };
-  NidocaForm.styles = i`
+    `}getOutputData(){let t=new FormData,n={};for(let l of this.getInputElements(this.slotElement)){let d=l.getOutputData();n[d.key]=d.value,t.append(d.key,d.value)}let a={};return a.jsonObject=n,a.formData=t,a}validate(){let t=!0;for(let n of this.getInputElements(this.slotElement))n.validate()||(t=!1);return t||this.dispatchEvent(new CustomEvent("nidoca-form-validation-failed",{detail:this.getOutputData(),bubbles:!0,composed:!0})),t}getInputElements(t){if(t==null)return[];let n=[],a=t.assignedElements({flatten:!0});for(let l=0;l<a.length;l++){let d=a[l];this.recursiveInputElementSearch(d,n)}return n}recursiveInputElementSearch(t,n){if(t instanceof O)n.push(t);else if(t.hasChildNodes()){let a=t.children;for(let l of[].slice.call(a))this.recursiveInputElementSearch(l,n)}}};Rt.styles=c`
     :host,
     slot {
       display: block;
@@ -1800,184 +549,7 @@
     form {
       box-sizing: border-box;
     }
-  `;
-  __decorateClass([
-    n5({ type: Boolean })
-  ], NidocaForm.prototype, "autocomplete", 2);
-  __decorateClass([
-    i4("#slotElement")
-  ], NidocaForm.prototype, "slotElement", 2);
-  NidocaForm = __decorateClass([
-    e4("nidoca-form")
-  ], NidocaForm);
-
-  // node_modules/lit-html/directive.js
-  var t4 = { ATTRIBUTE: 1, CHILD: 2, PROPERTY: 3, BOOLEAN_ATTRIBUTE: 4, EVENT: 5, ELEMENT: 6 };
-  var e7 = (t5) => (...e9) => ({ _$litDirective$: t5, values: e9 });
-  var i5 = class {
-    constructor(t5) {
-    }
-    get _$AU() {
-      return this._$AM._$AU;
-    }
-    _$AT(t5, e9, i7) {
-      this._$Ct = t5, this._$AM = e9, this._$Ci = i7;
-    }
-    _$AS(t5, e9) {
-      return this.update(t5, e9);
-    }
-    update(t5, e9) {
-      return this.render(...e9);
-    }
-  };
-
-  // node_modules/lit-html/directive-helpers.js
-  var { I: l5 } = j;
-  var r4 = () => document.createComment("");
-  var c3 = (o6, i7, n7) => {
-    var t5;
-    const v2 = o6._$AA.parentNode, d3 = void 0 === i7 ? o6._$AB : i7._$AA;
-    if (void 0 === n7) {
-      const i8 = v2.insertBefore(r4(), d3), t6 = v2.insertBefore(r4(), d3);
-      n7 = new l5(i8, t6, o6, o6.options);
-    } else {
-      const l7 = n7._$AB.nextSibling, i8 = n7._$AM, u4 = i8 !== o6;
-      if (u4) {
-        let l8;
-        null === (t5 = n7._$AQ) || void 0 === t5 || t5.call(n7, o6), n7._$AM = o6, void 0 !== n7._$AP && (l8 = o6._$AU) !== i8._$AU && n7._$AP(l8);
-      }
-      if (l7 !== d3 || u4) {
-        let o7 = n7._$AA;
-        for (; o7 !== l7; ) {
-          const l8 = o7.nextSibling;
-          v2.insertBefore(o7, d3), o7 = l8;
-        }
-      }
-    }
-    return n7;
-  };
-  var f2 = (o6, l7, i7 = o6) => (o6._$AI(l7, i7), o6);
-  var s5 = {};
-  var a3 = (o6, l7 = s5) => o6._$AH = l7;
-  var m2 = (o6) => o6._$AH;
-  var p2 = (o6) => {
-    var l7;
-    null === (l7 = o6._$AP) || void 0 === l7 || l7.call(o6, false, true);
-    let i7 = o6._$AA;
-    const n7 = o6._$AB.nextSibling;
-    for (; i7 !== n7; ) {
-      const o7 = i7.nextSibling;
-      i7.remove(), i7 = o7;
-    }
-  };
-
-  // node_modules/lit-html/directives/repeat.js
-  var u3 = (e9, s6, t5) => {
-    const r5 = /* @__PURE__ */ new Map();
-    for (let l7 = s6; l7 <= t5; l7++)
-      r5.set(e9[l7], l7);
-    return r5;
-  };
-  var c4 = e7(class extends i5 {
-    constructor(e9) {
-      if (super(e9), e9.type !== t4.CHILD)
-        throw Error("repeat() can only be used in text expressions");
-    }
-    ct(e9, s6, t5) {
-      let r5;
-      void 0 === t5 ? t5 = s6 : void 0 !== s6 && (r5 = s6);
-      const l7 = [], o6 = [];
-      let i7 = 0;
-      for (const s7 of e9)
-        l7[i7] = r5 ? r5(s7, i7) : i7, o6[i7] = t5(s7, i7), i7++;
-      return { values: o6, keys: l7 };
-    }
-    render(e9, s6, t5) {
-      return this.ct(e9, s6, t5).values;
-    }
-    update(s6, [t5, r5, c5]) {
-      var d3;
-      const a4 = m2(s6), { values: p3, keys: v2 } = this.ct(t5, r5, c5);
-      if (!Array.isArray(a4))
-        return this.ut = v2, p3;
-      const h3 = null !== (d3 = this.ut) && void 0 !== d3 ? d3 : this.ut = [], m3 = [];
-      let y2, x2, j2 = 0, k2 = a4.length - 1, w2 = 0, A2 = p3.length - 1;
-      for (; j2 <= k2 && w2 <= A2; )
-        if (null === a4[j2])
-          j2++;
-        else if (null === a4[k2])
-          k2--;
-        else if (h3[j2] === v2[w2])
-          m3[w2] = f2(a4[j2], p3[w2]), j2++, w2++;
-        else if (h3[k2] === v2[A2])
-          m3[A2] = f2(a4[k2], p3[A2]), k2--, A2--;
-        else if (h3[j2] === v2[A2])
-          m3[A2] = f2(a4[j2], p3[A2]), c3(s6, m3[A2 + 1], a4[j2]), j2++, A2--;
-        else if (h3[k2] === v2[w2])
-          m3[w2] = f2(a4[k2], p3[w2]), c3(s6, a4[j2], a4[k2]), k2--, w2++;
-        else if (void 0 === y2 && (y2 = u3(v2, w2, A2), x2 = u3(h3, j2, k2)), y2.has(h3[j2]))
-          if (y2.has(h3[k2])) {
-            const e9 = x2.get(v2[w2]), t6 = void 0 !== e9 ? a4[e9] : null;
-            if (null === t6) {
-              const e10 = c3(s6, a4[j2]);
-              f2(e10, p3[w2]), m3[w2] = e10;
-            } else
-              m3[w2] = f2(t6, p3[w2]), c3(s6, a4[j2], t6), a4[e9] = null;
-            w2++;
-          } else
-            p2(a4[k2]), k2--;
-        else
-          p2(a4[j2]), j2++;
-      for (; w2 <= A2; ) {
-        const e9 = c3(s6, m3[A2 + 1]);
-        f2(e9, p3[w2]), m3[w2++] = e9;
-      }
-      for (; j2 <= k2; ) {
-        const e9 = a4[j2++];
-        null !== e9 && p2(e9);
-      }
-      return this.ut = v2, a3(s6, m3), T;
-    }
-  });
-
-  // node_modules/lit-html/directives/guard.js
-  var e8 = {};
-  var i6 = e7(class extends i5 {
-    constructor() {
-      super(...arguments), this.st = e8;
-    }
-    render(r5, t5) {
-      return t5();
-    }
-    update(t5, [s6, e9]) {
-      if (Array.isArray(s6)) {
-        if (Array.isArray(this.st) && this.st.length === s6.length && s6.every((r5, t6) => r5 === this.st[t6]))
-          return T;
-      } else if (this.st === s6)
-        return T;
-      return this.st = Array.isArray(s6) ? Array.from(s6) : s6, this.render(s6, e9);
-    }
-  });
-
-  // src/nidoca-form-combobox.ts
-  var NidocaFormCombobox = class extends NidocaFormAbstractInputElement {
-    constructor() {
-      super(...arguments);
-      this.theme = "surface" /* surface */;
-      this.trailingIcon = "";
-      this.label = "";
-      this.errorText = "";
-      this.infoText = "";
-      this.warningText = "";
-      this.value = "";
-      this.options = [];
-      this.name = "";
-      this.required = true;
-      this.multiple = false;
-      this.size = 1;
-    }
-    render() {
-      return x` <style>
+  `,i([r({type:Boolean})],Rt.prototype,"autocomplete",2),i([g("#slotElement")],Rt.prototype,"slotElement",2),Rt=i([m("nidoca-form")],Rt);var zi={ATTRIBUTE:1,CHILD:2,PROPERTY:3,BOOLEAN_ATTRIBUTE:4,EVENT:5,ELEMENT:6},Ve=s=>(...e)=>({_$litDirective$:s,values:e}),Gt=class{constructor(e){}get _$AU(){return this._$AM._$AU}_$AT(e,t,n){this._$Ct=e,this._$AM=t,this._$Ci=n}_$AS(e,t){return this.update(e,t)}update(e,t){return this.render(...t)}};var{I:Wi}=Ri;var Hi=()=>document.createComment(""),Wt=(s,e,t)=>{var n;let a=s._$AA.parentNode,l=e===void 0?s._$AB:e._$AA;if(t===void 0){let d=a.insertBefore(Hi(),l),h=a.insertBefore(Hi(),l);t=new Wi(d,h,s,s.options)}else{let d=t._$AB.nextSibling,h=t._$AM,f=h!==s;if(f){let b;(n=t._$AQ)===null||n===void 0||n.call(t,s),t._$AM=s,t._$AP!==void 0&&(b=s._$AU)!==h._$AU&&t._$AP(b)}if(d!==l||f){let b=t._$AA;for(;b!==d;){let $=b.nextSibling;a.insertBefore(b,l),b=$}}}return t},pt=(s,e,t=s)=>(s._$AI(e,t),s),Xi={},Oi=(s,e=Xi)=>s._$AH=e,Di=s=>s._$AH,Ge=s=>{var e;(e=s._$AP)===null||e===void 0||e.call(s,!1,!0);let t=s._$AA,n=s._$AB.nextSibling;for(;t!==n;){let a=t.nextSibling;t.remove(),t=a}};var Mi=(s,e,t)=>{let n=new Map;for(let a=e;a<=t;a++)n.set(s[a],a);return n},ht=Ve(class extends Gt{constructor(s){if(super(s),s.type!==zi.CHILD)throw Error("repeat() can only be used in text expressions")}ct(s,e,t){let n;t===void 0?t=e:e!==void 0&&(n=e);let a=[],l=[],d=0;for(let h of s)a[d]=n?n(h,d):d,l[d]=t(h,d),d++;return{values:l,keys:a}}render(s,e,t){return this.ct(s,e,t).values}update(s,[e,t,n]){var a;let l=Di(s),{values:d,keys:h}=this.ct(e,t,n);if(!Array.isArray(l))return this.ut=h,d;let f=(a=this.ut)!==null&&a!==void 0?a:this.ut=[],b=[],$,E,x=0,y=l.length-1,S=0,L=d.length-1;for(;x<=y&&S<=L;)if(l[x]===null)x++;else if(l[y]===null)y--;else if(f[x]===h[S])b[S]=pt(l[x],d[S]),x++,S++;else if(f[y]===h[L])b[L]=pt(l[y],d[L]),y--,L--;else if(f[x]===h[L])b[L]=pt(l[x],d[L]),Wt(s,b[L+1],l[x]),x++,L--;else if(f[y]===h[S])b[S]=pt(l[y],d[S]),Wt(s,l[x],l[y]),y--,S++;else if($===void 0&&($=Mi(h,S,L),E=Mi(f,x,y)),$.has(f[x]))if($.has(f[y])){let it=E.get(h[S]),Ze=it!==void 0?l[it]:null;if(Ze===null){let mi=Wt(s,l[x]);pt(mi,d[S]),b[S]=mi}else b[S]=pt(Ze,d[S]),Wt(s,l[x],Ze),l[it]=null;S++}else Ge(l[y]),y--;else Ge(l[x]),x++;for(;S<=L;){let it=Wt(s,b[L+1]);pt(it,d[S]),b[S++]=it}for(;x<=y;){let it=l[x++];it!==null&&Ge(it)}return this.ut=h,Oi(s,b),U}});var Yi={},Lt=Ve(class extends Gt{constructor(){super(...arguments),this.st=Yi}render(s,e){return e()}update(s,[e,t]){if(Array.isArray(e)){if(Array.isArray(this.st)&&this.st.length===e.length&&e.every((n,a)=>n===this.st[a]))return U}else if(this.st===e)return U;return this.st=Array.isArray(e)?Array.from(e):e,this.render(e,t)}});var A=class extends O{constructor(){super(...arguments);this.theme="surface";this.trailingIcon="";this.label="";this.errorText="";this.infoText="";this.warningText="";this.value="";this.options=[];this.name="";this.required=!0;this.multiple=!1;this.size=1}render(){return o` <style>
         .parentContainer,
         ::slotted(.parentContainer) {
           color: var(--app-color-text-${this.theme});
@@ -1997,10 +569,10 @@
         }
       </style>
       <div class="parentContainer">
-        ${this.trailingIcon ? x` <nidoca-icon
+        ${this.trailingIcon?o` <nidoca-icon
               style="font-size: var(--icon-size-big);padding-left:var(--space);padding-right:var(--space);"
               icon="${this.trailingIcon}"
-            ></nidoca-icon>` : x``}
+            ></nidoca-icon>`:o``}
         <div class="container">
           <nidoca-text-caption class="label" text="${this.label}"></nidoca-text-caption>
           <select
@@ -2010,112 +582,25 @@
             ?required="${this.required}"
             ?multiple="${this.multiple}"
           >
-            ${i6(
-        [this.value, this.options],
-        () => x`
-                ${c4(
-          this.options,
-          (option) => option == void 0 ? x` <option></option>` : this.isSelectedOption(option) ? x` <option value="${option.key}" selected>${option.value}</option> ` : x` <option value="${option.key}">${option.value}</option> `
-        )}
-              `
-      )}
+            ${Lt([this.value,this.options],()=>o`
+                ${ht(this.options,t=>t==null?o` <option></option>`:this.isSelectedOption(t)?o` <option value="${t.key}" selected>${t.value}</option> `:o` <option value="${t.key}">${t.value}</option> `)}
+              `)}
           </select>
         </div>
       </div>
-      ${this.infoText || this.warningText || this.errorText ? x`
+      ${this.infoText||this.warningText||this.errorText?o`
             <div style="display:flex;flex-direction:column;">
-              ${this.infoText ? x` <nidoca-text-info text="${this.infoText}"></nidoca-text-info>` : x``}
-              ${this.warningText ? x` <nidoca-text-warning
+              ${this.infoText?o` <nidoca-text-info text="${this.infoText}"></nidoca-text-info>`:o``}
+              ${this.warningText?o` <nidoca-text-warning
                     style="color:var(--app-color-warning-background)"
                     text="${this.warningText}"
-                  ></nidoca-text-warning>` : x``}
-              ${this.errorText ? x` <nidoca-text-error
+                  ></nidoca-text-warning>`:o``}
+              ${this.errorText?o` <nidoca-text-error
                     style="color:var(--app-color-error-background)"
                     text="${this.errorText}"
-                  ></nidoca-text-error>` : x``}
+                  ></nidoca-text-error>`:o``}
             </div>
-          ` : x``}`;
-    }
-    getOutputData() {
-      let outputValue = this.value;
-      if (this.selectElement != null && this.multiple) {
-        outputValue = [];
-        for (let i7 = 0, len = this.selectElement.options.length; i7 < len; i7++) {
-          const opt = this.selectElement.options[i7];
-          if (opt.selected) {
-            outputValue.push(this.options[i7].key);
-          }
-        }
-      } else if (this.selectElement != null) {
-        if (this.selectElement.value.length == 0) {
-          outputValue = null;
-        } else {
-          outputValue = this.selectElement.value;
-        }
-      }
-      return {
-        key: this.name,
-        value: outputValue
-      };
-    }
-    validate() {
-      this.errorText = "";
-      if (this.selectElement != null && !this.selectElement.validity.valid && this.selectElement.validationMessage != this.errorText) {
-        this.errorText = this.selectElement.validationMessage;
-      }
-      return this.errorText.length == 0;
-    }
-    isSelectedOption(option) {
-      if (this.multiple) {
-        let isSelected = false;
-        for (const val of this.value) {
-          isSelected = option.key === val;
-          if (isSelected) {
-            return true;
-          }
-        }
-      }
-      return this.value === option.key;
-    }
-    static enumToOptions(enumeration, emptyElement = true) {
-      const options = [];
-      if (emptyElement) {
-        options.push({ key: "", value: "" });
-      }
-      Object.keys(enumeration).forEach((key) => {
-        options.push({ key, value: enumeration[key] });
-      });
-      return options;
-    }
-    static stringArrayToOptions(stringArray, emptyElement = true) {
-      const options = [];
-      if (emptyElement) {
-        options.push({ key: "", value: "" });
-      }
-      stringArray.forEach((key) => {
-        options.push({ key, value: key });
-      });
-      return options;
-    }
-    static toComboboxOptions(type = null, typeName = null) {
-      if (type == null) {
-        return [];
-      }
-      const retval = [];
-      Object.values(type).forEach((item) => {
-        let value = String(Object.keys(type)[Object.values(type).indexOf(item)]);
-        if (typeName) {
-          value = value.concat(typeName);
-        }
-        retval.push({
-          key: item,
-          value
-        });
-      });
-      return retval;
-    }
-  };
-  NidocaFormCombobox.styles = i`
+          `:o``}`}getOutputData(){let t=this.value;if(this.selectElement!=null&&this.multiple){t=[];for(let n=0,a=this.selectElement.options.length;n<a;n++)this.selectElement.options[n].selected&&t.push(this.options[n].key)}else this.selectElement!=null&&(this.selectElement.value.length==0?t=null:t=this.selectElement.value);return{key:this.name,value:t}}validate(){return this.errorText="",this.selectElement!=null&&!this.selectElement.validity.valid&&this.selectElement.validationMessage!=this.errorText&&(this.errorText=this.selectElement.validationMessage),this.errorText.length==0}isSelectedOption(t){if(this.multiple){let n=!1;for(let a of this.value)if(n=t.key===a,n)return!0}return this.value===t.key}static enumToOptions(t,n=!0){let a=[];return n&&a.push({key:"",value:""}),Object.keys(t).forEach(l=>{a.push({key:l,value:t[l]})}),a}static stringArrayToOptions(t,n=!0){let a=[];return n&&a.push({key:"",value:""}),t.forEach(l=>{a.push({key:l,value:l})}),a}static toComboboxOptions(t=null,n=null){if(t==null)return[];let a=[];return Object.values(t).forEach(l=>{let d=String(Object.keys(t)[Object.values(t).indexOf(l)]);n&&(d=d.concat(n)),a.push({key:l,value:d})}),a}};A.styles=c`
     :host,
     slot {
       display: block;
@@ -2169,89 +654,7 @@
       outline: none;
       box-shadow: none;
     }
-  `;
-  __decorateClass([
-    n5({ type: NidocaTheme, converter: String })
-  ], NidocaFormCombobox.prototype, "theme", 2);
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaFormCombobox.prototype, "trailingIcon", 2);
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaFormCombobox.prototype, "label", 2);
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaFormCombobox.prototype, "errorText", 2);
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaFormCombobox.prototype, "infoText", 2);
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaFormCombobox.prototype, "warningText", 2);
-  __decorateClass([
-    n5()
-  ], NidocaFormCombobox.prototype, "value", 2);
-  __decorateClass([
-    n5({ type: Array })
-  ], NidocaFormCombobox.prototype, "options", 2);
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaFormCombobox.prototype, "name", 2);
-  __decorateClass([
-    n5({ type: Boolean })
-  ], NidocaFormCombobox.prototype, "required", 2);
-  __decorateClass([
-    n5({ type: Boolean })
-  ], NidocaFormCombobox.prototype, "multiple", 2);
-  __decorateClass([
-    n5({ type: Number })
-  ], NidocaFormCombobox.prototype, "size", 2);
-  __decorateClass([
-    i4("#selectElement")
-  ], NidocaFormCombobox.prototype, "selectElement", 2);
-  NidocaFormCombobox = __decorateClass([
-    e4("nidoca-form-combobox")
-  ], NidocaFormCombobox);
-
-  // node_modules/lit-html/directives/if-defined.js
-  var l6 = (l7) => null != l7 ? l7 : A;
-
-  // src/nidoca-form-text.ts
-  var NidocaFormTextType = /* @__PURE__ */ ((NidocaFormTextType2) => {
-    NidocaFormTextType2["color"] = "color";
-    NidocaFormTextType2["email"] = "email";
-    NidocaFormTextType2["hidden"] = "hidden";
-    NidocaFormTextType2["number"] = "number";
-    NidocaFormTextType2["password"] = "password";
-    NidocaFormTextType2["tel"] = "tel";
-    NidocaFormTextType2["text"] = "text";
-    NidocaFormTextType2["search"] = "search";
-    NidocaFormTextType2["url"] = "url";
-    NidocaFormTextType2["date"] = "date";
-    NidocaFormTextType2["month"] = "month";
-    NidocaFormTextType2["time"] = "time";
-    NidocaFormTextType2["week"] = "week";
-    return NidocaFormTextType2;
-  })(NidocaFormTextType || {});
-  var NidocaFormText = class extends NidocaFormAbstractInputElement {
-    constructor() {
-      super(...arguments);
-      this.type = "text" /* text */;
-      this.label = "";
-      this.placeholder = "";
-      this.trailingIcon = "";
-      this.errorText = "";
-      this.infoText = "";
-      this.warningText = "";
-      this.name = "";
-      this.value = "";
-      this.required = false;
-      this.disabled = false;
-      this.checked = false;
-      this.theme = "surface" /* surface */;
-    }
-    render() {
-      return this.type == "hidden" /* hidden */ ? x`<input id="inputElement" name="${this.name}" type="${this.type}" value="${this.value}" />` : x` <style>
+  `,i([r({type:u,converter:String})],A.prototype,"theme",2),i([r({type:String})],A.prototype,"trailingIcon",2),i([r({type:String})],A.prototype,"label",2),i([r({type:String})],A.prototype,"errorText",2),i([r({type:String})],A.prototype,"infoText",2),i([r({type:String})],A.prototype,"warningText",2),i([r()],A.prototype,"value",2),i([r({type:Array})],A.prototype,"options",2),i([r({type:String})],A.prototype,"name",2),i([r({type:Boolean})],A.prototype,"required",2),i([r({type:Boolean})],A.prototype,"multiple",2),i([r({type:Number})],A.prototype,"size",2),i([g("#selectElement")],A.prototype,"selectElement",2),A=i([m("nidoca-form-combobox")],A);var _=s=>s??T;var Z=(y=>(y.color="color",y.email="email",y.hidden="hidden",y.number="number",y.password="password",y.tel="tel",y.text="text",y.search="search",y.url="url",y.date="date",y.month="month",y.time="time",y.week="week",y))(Z||{}),k=class extends O{constructor(){super(...arguments);this.type="text";this.label="";this.placeholder="";this.trailingIcon="";this.errorText="";this.infoText="";this.warningText="";this.name="";this.value="";this.required=!1;this.disabled=!1;this.checked=!1;this.theme="surface"}render(){return this.type=="hidden"?o`<input id="inputElement" name="${this.name}" type="${this.type}" value="${this.value}" />`:o` <style>
             .parentContainer,
             ::slotted(.parentContainer) {
               color: var(--app-color-text-${this.theme});
@@ -2270,10 +673,10 @@
             }
           </style>
           <div class="parentContainer border">
-            ${this.trailingIcon ? x` <nidoca-icon
+            ${this.trailingIcon?o` <nidoca-icon
                   style="font-size: var(--icon-size-big);padding-left:var(--space);padding-right:var(--space);"
                   icon="${this.trailingIcon}"
-                ></nidoca-icon>` : x``}
+                ></nidoca-icon>`:o``}
             <div class="container">
               <nidoca-text-caption class="label" text="${this.label}"></nidoca-text-caption>
               <input
@@ -2282,13 +685,13 @@
                 .type="${this.type}"
                 value="${this.value}"
                 placeholder="${this.placeholder}"
-                size="${l6(this.size)}"
-                minlength="${l6(this.minlength)}"
-                maxlength="${l6(this.maxlength)}"
-                pattern="${l6(this.pattern)}"
-                min="${l6(this.min)}"
-                max="${l6(this.max)}"
-                step="${l6(this.step)}"
+                size="${_(this.size)}"
+                minlength="${_(this.minlength)}"
+                maxlength="${_(this.maxlength)}"
+                pattern="${_(this.pattern)}"
+                min="${_(this.min)}"
+                max="${_(this.max)}"
+                step="${_(this.step)}"
                 ?required="${this.required}"
                 ?disabled="${this.disabled}"
                 ?checked="${this.checked}"
@@ -2296,39 +699,19 @@
             </div>
           </div>
 
-          ${this.infoText || this.warningText || this.errorText ? x`
+          ${this.infoText||this.warningText||this.errorText?o`
                 <div style="display:flex;flex-direction:column;">
-                  ${this.infoText ? x` <nidoca-text-info text="${this.infoText}"></nidoca-text-info>` : x``}
-                  ${this.warningText ? x` <nidoca-text-warning
+                  ${this.infoText?o` <nidoca-text-info text="${this.infoText}"></nidoca-text-info>`:o``}
+                  ${this.warningText?o` <nidoca-text-warning
                         style="color:var(--app-color-warning-background)"
                         text="${this.warningText}"
-                      ></nidoca-text-warning>` : x``}
-                  ${this.errorText ? x` <nidoca-text-error
+                      ></nidoca-text-warning>`:o``}
+                  ${this.errorText?o` <nidoca-text-error
                         style="color:var(--app-color-error-background)"
                         text="${this.errorText}"
-                      ></nidoca-text-error>` : x``}
+                      ></nidoca-text-error>`:o``}
                 </div>
-              ` : x``}`;
-    }
-    getOutputData() {
-      const outputValue = this.inputElement?.value;
-      return {
-        key: this.name,
-        value: outputValue?.trim()
-      };
-    }
-    validate() {
-      this.errorText = "";
-      if (this.inputElement != null && !this.inputElement.validity.valid && this.inputElement.validationMessage != this.errorText) {
-        this.errorText = this.inputElement.validationMessage;
-        if (this.inputElement.validity.patternMismatch && this.pattern) {
-          this.errorText = this.errorText.concat(" Format: ").concat(this.pattern);
-        }
-      }
-      return this.errorText == "";
-    }
-  };
-  NidocaFormText.styles = i`
+              `:o``}`}getOutputData(){let t=this.inputElement?.value;return{key:this.name,value:t?.trim()}}validate(){return this.errorText="",this.inputElement!=null&&!this.inputElement.validity.valid&&this.inputElement.validationMessage!=this.errorText&&(this.errorText=this.inputElement.validationMessage,this.inputElement.validity.patternMismatch&&this.pattern&&(this.errorText=this.errorText.concat(" Format: ").concat(this.pattern))),this.errorText==""}};k.styles=c`
     :host,
     slot {
       display: block;
@@ -2372,103 +755,7 @@
     input:focus::placeholder {
       color: transparent;
     }
-  `;
-  __decorateClass([
-    n5({ type: NidocaFormTextType, converter: String })
-  ], NidocaFormText.prototype, "type", 2);
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaFormText.prototype, "label", 2);
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaFormText.prototype, "placeholder", 2);
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaFormText.prototype, "trailingIcon", 2);
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaFormText.prototype, "errorText", 2);
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaFormText.prototype, "infoText", 2);
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaFormText.prototype, "warningText", 2);
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaFormText.prototype, "name", 2);
-  __decorateClass([
-    n5()
-  ], NidocaFormText.prototype, "value", 2);
-  __decorateClass([
-    n5({ type: Boolean })
-  ], NidocaFormText.prototype, "required", 2);
-  __decorateClass([
-    n5({ type: Boolean })
-  ], NidocaFormText.prototype, "disabled", 2);
-  __decorateClass([
-    n5({ type: Boolean })
-  ], NidocaFormText.prototype, "checked", 2);
-  __decorateClass([
-    n5({ type: Number })
-  ], NidocaFormText.prototype, "maxlength", 2);
-  __decorateClass([
-    n5({ type: Number })
-  ], NidocaFormText.prototype, "minlength", 2);
-  __decorateClass([
-    n5({ type: Number })
-  ], NidocaFormText.prototype, "min", 2);
-  __decorateClass([
-    n5({ type: Number })
-  ], NidocaFormText.prototype, "max", 2);
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaFormText.prototype, "step", 2);
-  __decorateClass([
-    n5({ type: Number })
-  ], NidocaFormText.prototype, "size", 2);
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaFormText.prototype, "pattern", 2);
-  __decorateClass([
-    i4("#inputElement")
-  ], NidocaFormText.prototype, "inputElement", 2);
-  __decorateClass([
-    n5({ type: NidocaTheme, converter: String })
-  ], NidocaFormText.prototype, "theme", 2);
-  NidocaFormText = __decorateClass([
-    e4("nidoca-form-text")
-  ], NidocaFormText);
-
-  // src/nidoca-form-date.ts
-  var NidocaFormDate = class extends NidocaFormText {
-    constructor() {
-      super();
-      this.type = "date" /* date */;
-    }
-  };
-  NidocaFormDate = __decorateClass([
-    e4("nidoca-form-date")
-  ], NidocaFormDate);
-
-  // src/nidoca-form-textarea.ts
-  var NidocaFormTextarea = class extends NidocaFormAbstractInputElement {
-    constructor() {
-      super(...arguments);
-      this.theme = "surface" /* surface */;
-      this.infoText = "";
-      this.warningText = "";
-      this.errorText = "";
-      this.name = "";
-      this.value = "";
-      this.label = "";
-      this.required = false;
-      this.placeholder = "";
-      this.disabled = false;
-      this.rows = 5;
-    }
-    render() {
-      return x` <style>
+  `,i([r({type:Z,converter:String})],k.prototype,"type",2),i([r({type:String})],k.prototype,"label",2),i([r({type:String})],k.prototype,"placeholder",2),i([r({type:String})],k.prototype,"trailingIcon",2),i([r({type:String})],k.prototype,"errorText",2),i([r({type:String})],k.prototype,"infoText",2),i([r({type:String})],k.prototype,"warningText",2),i([r({type:String})],k.prototype,"name",2),i([r()],k.prototype,"value",2),i([r({type:Boolean})],k.prototype,"required",2),i([r({type:Boolean})],k.prototype,"disabled",2),i([r({type:Boolean})],k.prototype,"checked",2),i([r({type:Number})],k.prototype,"maxlength",2),i([r({type:Number})],k.prototype,"minlength",2),i([r({type:Number})],k.prototype,"min",2),i([r({type:Number})],k.prototype,"max",2),i([r({type:String})],k.prototype,"step",2),i([r({type:Number})],k.prototype,"size",2),i([r({type:String})],k.prototype,"pattern",2),i([g("#inputElement")],k.prototype,"inputElement",2),i([r({type:u,converter:String})],k.prototype,"theme",2),k=i([m("nidoca-form-text")],k);var We=class extends k{constructor(){super(),this.type="date"}};We=i([m("nidoca-form-date")],We);var C=class extends O{constructor(){super(...arguments);this.theme="surface";this.infoText="";this.warningText="";this.errorText="";this.name="";this.value="";this.label="";this.required=!1;this.placeholder="";this.disabled=!1;this.rows=5}render(){return o` <style>
         .parentContainer,
         ::slotted(.parentContainer) {
           color: var(--app-color-text-${this.theme});
@@ -2502,36 +789,19 @@ ${this.value}</textarea
         </div>
       </div>
 
-      ${this.infoText || this.warningText || this.errorText ? x`
+      ${this.infoText||this.warningText||this.errorText?o`
             <div style="display:flex;flex-direction:column;">
-              ${this.infoText ? x` <nidoca-text-info text="${this.infoText}"></nidoca-text-info>` : x``}
-              ${this.warningText ? x` <nidoca-text-warning
+              ${this.infoText?o` <nidoca-text-info text="${this.infoText}"></nidoca-text-info>`:o``}
+              ${this.warningText?o` <nidoca-text-warning
                     style="color:var(--app-color-warning-background)"
                     text="${this.warningText}"
-                  ></nidoca-text-warning>` : x``}
-              ${this.errorText ? x` <nidoca-text-error
+                  ></nidoca-text-warning>`:o``}
+              ${this.errorText?o` <nidoca-text-error
                     style="color:var(--app-color-error-background)"
                     text="${this.errorText}"
-                  ></nidoca-text-error>` : x``}
+                  ></nidoca-text-error>`:o``}
             </div>
-          ` : x``}`;
-    }
-    getOutputData() {
-      const outputValue = this.inputElement?.value;
-      return {
-        key: this.name,
-        value: outputValue
-      };
-    }
-    validate() {
-      this.errorText = "";
-      if (this.inputElement != null && !this.inputElement.validity.valid && this.inputElement.validationMessage != this.errorText) {
-        this.errorText = this.inputElement.validationMessage;
-      }
-      return this.errorText == "";
-    }
-  };
-  NidocaFormTextarea.styles = i`
+          `:o``}`}getOutputData(){let t=this.inputElement?.value;return{key:this.name,value:t}}validate(){return this.errorText="",this.inputElement!=null&&!this.inputElement.validity.valid&&this.inputElement.validationMessage!=this.errorText&&(this.errorText=this.inputElement.validationMessage),this.errorText==""}};C.styles=c`
     :host,
     slot {
       display: block;
@@ -2571,67 +841,13 @@ ${this.value}</textarea
     textarea:focus::placeholder {
       color: transparent;
     }
-  `;
-  __decorateClass([
-    n5({ type: NidocaTheme, converter: String })
-  ], NidocaFormTextarea.prototype, "theme", 2);
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaFormTextarea.prototype, "infoText", 2);
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaFormTextarea.prototype, "warningText", 2);
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaFormTextarea.prototype, "errorText", 2);
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaFormTextarea.prototype, "name", 2);
-  __decorateClass([
-    n5()
-  ], NidocaFormTextarea.prototype, "value", 2);
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaFormTextarea.prototype, "label", 2);
-  __decorateClass([
-    n5({ type: Boolean })
-  ], NidocaFormTextarea.prototype, "required", 2);
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaFormTextarea.prototype, "placeholder", 2);
-  __decorateClass([
-    n5({ type: Boolean })
-  ], NidocaFormTextarea.prototype, "disabled", 2);
-  __decorateClass([
-    n5({ type: Number })
-  ], NidocaFormTextarea.prototype, "rows", 2);
-  __decorateClass([
-    i4("#inputElement")
-  ], NidocaFormTextarea.prototype, "inputElement", 2);
-  NidocaFormTextarea = __decorateClass([
-    e4("nidoca-form-textarea")
-  ], NidocaFormTextarea);
-
-  // src/nidoca-form-upload.ts
-  var NidocaFormUpload = class extends NidocaFormAbstractInputElement {
-    constructor() {
-      super(...arguments);
-      this.theme = "primary" /* primary */;
-    }
-    validate() {
-      throw new Error("Method not implemented.");
-    }
-    getOutputData() {
-      throw new Error("Method not implemented.");
-    }
-    render() {
-      return x`
-      <nidoca-box theme="${l6(this.theme)}">
+  `,i([r({type:u,converter:String})],C.prototype,"theme",2),i([r({type:String})],C.prototype,"infoText",2),i([r({type:String})],C.prototype,"warningText",2),i([r({type:String})],C.prototype,"errorText",2),i([r({type:String})],C.prototype,"name",2),i([r()],C.prototype,"value",2),i([r({type:String})],C.prototype,"label",2),i([r({type:Boolean})],C.prototype,"required",2),i([r({type:String})],C.prototype,"placeholder",2),i([r({type:Boolean})],C.prototype,"disabled",2),i([r({type:Number})],C.prototype,"rows",2),i([g("#inputElement")],C.prototype,"inputElement",2),C=i([m("nidoca-form-textarea")],C);var At=class extends O{constructor(){super(...arguments);this.theme="primary"}validate(){throw new Error("Method not implemented.")}getOutputData(){throw new Error("Method not implemented.")}render(){return o`
+      <nidoca-box theme="${_(this.theme)}">
         <div class="container">
           <nidoca-icon
             clickable
             class="icon"
-            @nidoca-event-icon-clicked="${() => this.upload()}"
+            @nidoca-event-icon-clicked="${()=>this.upload()}"
             icon="cloud_upload"
           ></nidoca-icon>
 
@@ -2639,13 +855,7 @@ ${this.value}</textarea
           <input style="display:none;" id="inputElement" name="file" type="file" />
         </div>
       </nidoca-box>
-    `;
-    }
-    upload() {
-      this.inputElement?.click();
-    }
-  };
-  NidocaFormUpload.styles = i`
+    `}upload(){this.inputElement?.click()}};At.styles=c`
     :host,
     slot {
       display: block;
@@ -2663,34 +873,7 @@ ${this.value}</textarea
       font-size: 96px;
       align-self: center;
     }
-  `;
-  __decorateClass([
-    n5({ type: NidocaTheme, converter: String })
-  ], NidocaFormUpload.prototype, "theme", 2);
-  __decorateClass([
-    i4("#inputElement")
-  ], NidocaFormUpload.prototype, "inputElement", 2);
-  NidocaFormUpload = __decorateClass([
-    e4("nidoca-form-upload")
-  ], NidocaFormUpload);
-
-  // src/nidoca-form-switch.ts
-  var NidocaFormSwitch = class extends NidocaFormAbstractInputElement {
-    constructor() {
-      super();
-      this.name = "";
-      this.label = "";
-      this.infoText = "";
-      this.errorText = "";
-      this.warningText = "";
-      this.required = false;
-      this.disabled = false;
-      this.checked = false;
-      this.theme = "primary" /* primary */;
-      this.theme = NidocaThemeHelper.prototype.getParentTheme(this) || "plain" /* plain */;
-    }
-    render() {
-      return x`
+  `,i([r({type:u,converter:String})],At.prototype,"theme",2),i([g("#inputElement")],At.prototype,"inputElement",2),At=i([m("nidoca-form-upload")],At);var H=class extends O{constructor(){super();this.name="";this.label="";this.infoText="";this.errorText="";this.warningText="";this.required=!1;this.disabled=!1;this.checked=!1;this.theme="primary";this.theme=v.prototype.getParentTheme(this)||"plain"}render(){return o`
       <style>
         .slider {
           background-color: var(--app-color-${this.theme}-border);
@@ -2719,7 +902,7 @@ ${this.value}</textarea
           <slot></slot>
         </nidoca-text-subtitle>
 
-        ${this.infoText.length > 0 ? x` <nidoca-text-caption text="${this.infoText}"></nidoca-text-caption>` : x``}
+        ${this.infoText.length>0?o` <nidoca-text-caption text="${this.infoText}"></nidoca-text-caption>`:o``}
 
         <label class="switch" slot="meta">
           <input
@@ -2729,34 +912,15 @@ ${this.value}</textarea
             ?checked="${this.checked}"
             ?required="${this.required}"
             ?disabled="${this.disabled}"
-            @input="${(eventArg) => {
-        this.checked = eventArg.target.checked;
-        console.log(this.checked);
-      }}"
+            @input="${t=>{this.checked=t.target.checked,console.log(this.checked)}}"
           />
           <span class="slider round"></span>
         </label>
       </nidoca-list-item>
 
-      ${this.warningText ? x` <nidoca-text-error text="${this.warningText}"></nidoca-text-error>` : x``}
-      ${this.errorText ? x` <nidoca-text-error text="${this.errorText}"></nidoca-text-error>` : x``}
-    `;
-    }
-    getOutputData() {
-      return {
-        key: this.name,
-        value: this.checked
-      };
-    }
-    validate() {
-      this.errorText = "";
-      if (this.inputElement != null && !this.inputElement.validity.valid && this.inputElement.validationMessage != this.errorText) {
-        this.errorText = this.inputElement.validationMessage;
-      }
-      return this.errorText == "";
-    }
-  };
-  NidocaFormSwitch.styles = i`
+      ${this.warningText?o` <nidoca-text-error text="${this.warningText}"></nidoca-text-error>`:o``}
+      ${this.errorText?o` <nidoca-text-error text="${this.errorText}"></nidoca-text-error>`:o``}
+    `}getOutputData(){return{key:this.name,value:this.checked}}validate(){return this.errorText="",this.inputElement!=null&&!this.inputElement.validity.valid&&this.inputElement.validationMessage!=this.errorText&&(this.errorText=this.inputElement.validationMessage),this.errorText==""}};H.styles=c`
     :host {
       display: flex;
       flex-direction: column;
@@ -2814,60 +978,15 @@ ${this.value}</textarea
     .slider.round:before {
       border-radius: 50%;
     }
-  `;
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaFormSwitch.prototype, "name", 2);
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaFormSwitch.prototype, "label", 2);
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaFormSwitch.prototype, "infoText", 2);
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaFormSwitch.prototype, "errorText", 2);
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaFormSwitch.prototype, "warningText", 2);
-  __decorateClass([
-    n5({ type: Boolean })
-  ], NidocaFormSwitch.prototype, "required", 2);
-  __decorateClass([
-    n5({ type: Boolean })
-  ], NidocaFormSwitch.prototype, "disabled", 2);
-  __decorateClass([
-    n5({ type: Boolean })
-  ], NidocaFormSwitch.prototype, "checked", 2);
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaFormSwitch.prototype, "theme", 2);
-  __decorateClass([
-    i4("#inputElement")
-  ], NidocaFormSwitch.prototype, "inputElement", 2);
-  NidocaFormSwitch = __decorateClass([
-    e4("nidoca-form-switch")
-  ], NidocaFormSwitch);
-
-  // src/nidoca-form-newsletter.ts
-  var NidocaFormNewsletter = class extends NidocaHtml {
-    constructor() {
-      super(...arguments);
-      this.theme = "primary" /* primary */;
-      this.label = "Newsletter";
-      this.emailLabel = "Deine Emailadresse";
-      this.buttonLabel = "Registrieren";
-    }
-    render() {
-      return x`
-      <nidoca-box theme="${l6(this.theme)}">
+  `,i([r({type:String})],H.prototype,"name",2),i([r({type:String})],H.prototype,"label",2),i([r({type:String})],H.prototype,"infoText",2),i([r({type:String})],H.prototype,"errorText",2),i([r({type:String})],H.prototype,"warningText",2),i([r({type:Boolean})],H.prototype,"required",2),i([r({type:Boolean})],H.prototype,"disabled",2),i([r({type:Boolean})],H.prototype,"checked",2),i([r({type:String})],H.prototype,"theme",2),i([g("#inputElement")],H.prototype,"inputElement",2),H=i([m("nidoca-form-switch")],H);var Q=class extends p{constructor(){super(...arguments);this.theme="primary";this.label="Newsletter";this.emailLabel="Deine Emailadresse";this.buttonLabel="Registrieren"}render(){return o`
+      <nidoca-box theme="${_(this.theme)}">
         <nidoca-form id="form">
           <nidoca-text-h2 class="paddingBottom">${this.label}</nidoca-text-h2>
 
           <nidoca-form-text
-            theme="${NidocaThemeHelper.getOposite(this.theme)}"
+            theme="${v.getOposite(this.theme)}"
             class="paddingBottom"
-            textType="${"email" /* email */}"
+            textType="${"email"}"
             label="${this.emailLabel}"
             name="email"
             trailingIcon="email"
@@ -2877,30 +996,16 @@ ${this.value}</textarea
           ></nidoca-form-text>
 
           <nidoca-button
-            theme="${NidocaThemeHelper.getOposite(this.theme)}"
+            theme="${v.getOposite(this.theme)}"
             class="paddingBottom"
-            @nidoca-event-button-clicked="${() => this.register()}"
+            @nidoca-event-button-clicked="${()=>this.register()}"
             >${this.buttonLabel}
           </nidoca-button>
 
           <slot></slot>
         </nidoca-form>
       </nidoca-box>
-    `;
-    }
-    register() {
-      if (this.formComponent && this.formComponent.validate()) {
-        this.dispatchEvent(
-          new CustomEvent("nidoca-form-newsletter-submit", {
-            detail: this.formComponent.getOutputData(),
-            bubbles: true,
-            composed: true
-          })
-        );
-      }
-    }
-  };
-  NidocaFormNewsletter.styles = i`
+    `}register(){this.formComponent&&this.formComponent.validate()&&this.dispatchEvent(new CustomEvent("nidoca-form-newsletter-submit",{detail:this.formComponent.getOutputData(),bubbles:!0,composed:!0}))}};Q.styles=c`
     :host {
       display: block;
       width: 100%;
@@ -2909,45 +1014,15 @@ ${this.value}</textarea
     .paddingBottom {
       padding-bottom: var(--space-3);
     }
-  `;
-  __decorateClass([
-    n5({ type: NidocaTheme, converter: String })
-  ], NidocaFormNewsletter.prototype, "theme", 2);
-  __decorateClass([
-    n5({ type: String, converter: String })
-  ], NidocaFormNewsletter.prototype, "label", 2);
-  __decorateClass([
-    n5({ type: String, converter: String })
-  ], NidocaFormNewsletter.prototype, "emailLabel", 2);
-  __decorateClass([
-    n5({ type: String, converter: String })
-  ], NidocaFormNewsletter.prototype, "buttonLabel", 2);
-  __decorateClass([
-    i4("#form")
-  ], NidocaFormNewsletter.prototype, "formComponent", 2);
-  NidocaFormNewsletter = __decorateClass([
-    e4("nidoca-form-newsletter")
-  ], NidocaFormNewsletter);
-
-  // src/nidoca-form-reset-password.ts
-  var NidocaFormResetPassword = class extends NidocaHtml {
-    constructor() {
-      super(...arguments);
-      this.theme = "primary" /* primary */;
-      this.label = "Passwort zur\xFCcksetzen";
-      this.emailLabel = "Deine Emailadresse";
-      this.buttonLabel = "Zur\xFCcksetzen";
-    }
-    render() {
-      return x`
+  `,i([r({type:u,converter:String})],Q.prototype,"theme",2),i([r({type:String,converter:String})],Q.prototype,"label",2),i([r({type:String,converter:String})],Q.prototype,"emailLabel",2),i([r({type:String,converter:String})],Q.prototype,"buttonLabel",2),i([g("#form")],Q.prototype,"formComponent",2),Q=i([m("nidoca-form-newsletter")],Q);var F=class extends p{constructor(){super(...arguments);this.theme="primary";this.label="Passwort zur\xFCcksetzen";this.emailLabel="Deine Emailadresse";this.buttonLabel="Zur\xFCcksetzen"}render(){return o`
       <nidoca-box theme="${this.theme}">
         <nidoca-form id="form">
           <nidoca-text-h2 class="paddingBottom">${this.label}</nidoca-text-h2>
 
           <nidoca-form-text
-            theme="${NidocaThemeHelper.getOposite(this.theme)}"
+            theme="${v.getOposite(this.theme)}"
             class="paddingBottom"
-            textType="${"email" /* email */}"
+            textType="${"email"}"
             label="${this.emailLabel}"
             name="email"
             trailingIcon="email"
@@ -2957,30 +1032,16 @@ ${this.value}</textarea
           ></nidoca-form-text>
 
           <nidoca-button
-            theme="${NidocaThemeHelper.getOposite(this.theme)}"
+            theme="${v.getOposite(this.theme)}"
             class="paddingBottom"
-            @nidoca-event-button-clicked="${() => this.register()}"
+            @nidoca-event-button-clicked="${()=>this.register()}"
             >${this.buttonLabel}
           </nidoca-button>
 
           <slot></slot>
         </nidoca-form>
       </nidoca-box>
-    `;
-    }
-    register() {
-      if (this.formComponent && this.formComponent.validate()) {
-        this.dispatchEvent(
-          new CustomEvent("nidoca-form-reset-password-submit", {
-            detail: this.formComponent.getOutputData(),
-            bubbles: true,
-            composed: true
-          })
-        );
-      }
-    }
-  };
-  NidocaFormResetPassword.styles = i`
+    `}register(){this.formComponent&&this.formComponent.validate()&&this.dispatchEvent(new CustomEvent("nidoca-form-reset-password-submit",{detail:this.formComponent.getOutputData(),bubbles:!0,composed:!0}))}};F.styles=c`
     :host {
       display: block;
       width: 100%;
@@ -2989,52 +1050,16 @@ ${this.value}</textarea
     .paddingBottom {
       padding-bottom: var(--space-3);
     }
-  `;
-  __decorateClass([
-    n5({ type: NidocaTheme, converter: String })
-  ], NidocaFormResetPassword.prototype, "theme", 2);
-  __decorateClass([
-    n5({ type: String, converter: String })
-  ], NidocaFormResetPassword.prototype, "label", 2);
-  __decorateClass([
-    n5({ type: String, converter: String })
-  ], NidocaFormResetPassword.prototype, "emailLabel", 2);
-  __decorateClass([
-    n5({ type: String, converter: String })
-  ], NidocaFormResetPassword.prototype, "buttonLabel", 2);
-  __decorateClass([
-    i4("#form")
-  ], NidocaFormResetPassword.prototype, "formComponent", 2);
-  NidocaFormResetPassword = __decorateClass([
-    e4("nidoca-form-reset-password")
-  ], NidocaFormResetPassword);
-
-  // src/nidoca-form-change-password.ts
-  var NidocaFormChangePassword = class extends NidocaHtml {
-    constructor() {
-      super(...arguments);
-      this.theme = "surface" /* surface */;
-      this.label = "Passwort \xE4ndern";
-      this.oldPasswordLabel = "Altes Passwort";
-      this.newPasswordLabel = "Neues Passwort";
-      this.repeatNewPasswordLabel = "Wiederholen";
-      this.buttonLabel = "\xC4ndern";
-      this.showErrorMessageSamePassword = false;
-      this.errorMessageSamePasswordLabel = "Altes und neues Passwort d\xFCrfen nicht \xFCbereinstimmen.";
-      this.showErrorMessagePasswordDiff = false;
-      this.errorMessagePasswordDiffLabel = "Die Passw\xF6rter stimmen nicht \xFCberein";
-    }
-    render() {
-      return x`
+  `,i([r({type:u,converter:String})],F.prototype,"theme",2),i([r({type:String,converter:String})],F.prototype,"label",2),i([r({type:String,converter:String})],F.prototype,"emailLabel",2),i([r({type:String,converter:String})],F.prototype,"buttonLabel",2),i([g("#form")],F.prototype,"formComponent",2),F=i([m("nidoca-form-reset-password")],F);var I=class extends p{constructor(){super(...arguments);this.theme="surface";this.label="Passwort \xE4ndern";this.oldPasswordLabel="Altes Passwort";this.newPasswordLabel="Neues Passwort";this.repeatNewPasswordLabel="Wiederholen";this.buttonLabel="\xC4ndern";this.showErrorMessageSamePassword=!1;this.errorMessageSamePasswordLabel="Altes und neues Passwort d\xFCrfen nicht \xFCbereinstimmen.";this.showErrorMessagePasswordDiff=!1;this.errorMessagePasswordDiffLabel="Die Passw\xF6rter stimmen nicht \xFCberein"}render(){return o`
       <nidoca-box theme="${this.theme}">
         <nidoca-form id="form">
           <nidoca-text-h2 class="paddingBottom">${this.label}</nidoca-text-h2>
 
           <nidoca-form-text
             id="oldPassword"
-            theme="${NidocaThemeHelper.getOposite(this.theme)}"
+            theme="${v.getOposite(this.theme)}"
             class="paddingBottom"
-            textType="${"password" /* password */}"
+            textType="${"password"}"
             label="${this.oldPasswordLabel}"
             name="oldPassword"
             required
@@ -3042,9 +1067,9 @@ ${this.value}</textarea
 
           <nidoca-form-text
             id="newPassword"
-            theme="${NidocaThemeHelper.getOposite(this.theme)}"
+            theme="${v.getOposite(this.theme)}"
             class="paddingBottom"
-            textType="${"password" /* password */}"
+            textType="${"password"}"
             label="${this.newPasswordLabel}"
             name="newPassword"
             required
@@ -3052,60 +1077,33 @@ ${this.value}</textarea
 
           <nidoca-form-text
             id="repeatNewPassword"
-            theme="${NidocaThemeHelper.getOposite(this.theme)}"
+            theme="${v.getOposite(this.theme)}"
             class="paddingBottom"
-            textType="${"password" /* password */}"
+            textType="${"password"}"
             label="${this.repeatNewPasswordLabel}"
             name="repeatNewPassword"
             required
           ></nidoca-form-text>
 
           <nidoca-button
-            theme="${NidocaThemeHelper.getOposite(this.theme)}"
+            theme="${v.getOposite(this.theme)}"
             class="paddingBottom"
-            @nidoca-event-button-clicked="${() => this.changePassword()}"
+            @nidoca-event-button-clicked="${()=>this.changePassword()}"
             >${this.buttonLabel}
           </nidoca-button>
 
           <slot></slot>
         </nidoca-form>
-        ${this.showErrorMessageSamePassword ? x` <nidoca-text
+        ${this.showErrorMessageSamePassword?o` <nidoca-text
               style="color:var(--app-color-error-background)"
               text="${this.errorMessageSamePasswordLabel}"
-            ></nidoca-text>` : x``}
-        ${this.showErrorMessagePasswordDiff ? x` <nidoca-text
+            ></nidoca-text>`:o``}
+        ${this.showErrorMessagePasswordDiff?o` <nidoca-text
               style="color:var(--app-color-error-background)"
               text="${this.errorMessagePasswordDiffLabel}"
-            ></nidoca-text>` : x``}
+            ></nidoca-text>`:o``}
       </nidoca-box>
-    `;
-    }
-    changePassword() {
-      if (!this.formComponent?.validate()) {
-        return;
-      }
-      this.showErrorMessagePasswordDiff = false;
-      if (this.newPasswordInputField?.getOutputData().value != this.repeatNewPasswordInputField?.getOutputData().value) {
-        this.showErrorMessagePasswordDiff = true;
-      }
-      this.showErrorMessageSamePassword = false;
-      if (this.oldPasswordInputField?.getOutputData().value == this.newPasswordInputField?.getOutputData().value) {
-        this.showErrorMessageSamePassword = true;
-      }
-      if (!this.showErrorMessagePasswordDiff && !this.showErrorMessageSamePassword) {
-        this.dispatchEvent(
-          new CustomEvent("nidoca-form-change-password-submit", {
-            detail: this.formComponent.getOutputData(),
-            bubbles: true,
-            composed: true
-          })
-        );
-      } else {
-        this.requestUpdate();
-      }
-    }
-  };
-  NidocaFormChangePassword.styles = i`
+    `}changePassword(){this.formComponent?.validate()&&(this.showErrorMessagePasswordDiff=!1,this.newPasswordInputField?.getOutputData().value!=this.repeatNewPasswordInputField?.getOutputData().value&&(this.showErrorMessagePasswordDiff=!0),this.showErrorMessageSamePassword=!1,this.oldPasswordInputField?.getOutputData().value==this.newPasswordInputField?.getOutputData().value&&(this.showErrorMessageSamePassword=!0),!this.showErrorMessagePasswordDiff&&!this.showErrorMessageSamePassword?this.dispatchEvent(new CustomEvent("nidoca-form-change-password-submit",{detail:this.formComponent.getOutputData(),bubbles:!0,composed:!0})):this.requestUpdate())}};I.styles=c`
     :host {
       display: block;
       width: 100%;
@@ -3114,67 +1112,15 @@ ${this.value}</textarea
     .paddingBottom {
       padding-bottom: var(--space-3);
     }
-  `;
-  __decorateClass([
-    n5({ type: NidocaTheme, converter: String })
-  ], NidocaFormChangePassword.prototype, "theme", 2);
-  __decorateClass([
-    n5({ type: String, converter: String })
-  ], NidocaFormChangePassword.prototype, "label", 2);
-  __decorateClass([
-    n5({ type: String, converter: String })
-  ], NidocaFormChangePassword.prototype, "oldPasswordLabel", 2);
-  __decorateClass([
-    n5({ type: String, converter: String })
-  ], NidocaFormChangePassword.prototype, "newPasswordLabel", 2);
-  __decorateClass([
-    n5({ type: String, converter: String })
-  ], NidocaFormChangePassword.prototype, "repeatNewPasswordLabel", 2);
-  __decorateClass([
-    n5({ type: String, converter: String })
-  ], NidocaFormChangePassword.prototype, "buttonLabel", 2);
-  __decorateClass([
-    i4("#form")
-  ], NidocaFormChangePassword.prototype, "formComponent", 2);
-  __decorateClass([
-    i4("#oldPassword")
-  ], NidocaFormChangePassword.prototype, "oldPasswordInputField", 2);
-  __decorateClass([
-    i4("#newPassword")
-  ], NidocaFormChangePassword.prototype, "newPasswordInputField", 2);
-  __decorateClass([
-    i4("#repeatNewPassword")
-  ], NidocaFormChangePassword.prototype, "repeatNewPasswordInputField", 2);
-  __decorateClass([
-    n5()
-  ], NidocaFormChangePassword.prototype, "errorMessageSamePasswordLabel", 2);
-  __decorateClass([
-    n5()
-  ], NidocaFormChangePassword.prototype, "errorMessagePasswordDiffLabel", 2);
-  NidocaFormChangePassword = __decorateClass([
-    e4("nidoca-form-change-password")
-  ], NidocaFormChangePassword);
-
-  // src/nidoca-form-register.ts
-  var NidocaFormRegister = class extends NidocaHtml {
-    constructor() {
-      super(...arguments);
-      this.theme = "primary" /* primary */;
-      this.label = "Registrieren";
-      this.emailLabel = "Email";
-      this.passwordLabel = "Passwort";
-      this.buttonLabel = "Registrieren";
-    }
-    render() {
-      return x`
-      <nidoca-box theme="${l6(this.theme)}">
+  `,i([r({type:u,converter:String})],I.prototype,"theme",2),i([r({type:String,converter:String})],I.prototype,"label",2),i([r({type:String,converter:String})],I.prototype,"oldPasswordLabel",2),i([r({type:String,converter:String})],I.prototype,"newPasswordLabel",2),i([r({type:String,converter:String})],I.prototype,"repeatNewPasswordLabel",2),i([r({type:String,converter:String})],I.prototype,"buttonLabel",2),i([g("#form")],I.prototype,"formComponent",2),i([g("#oldPassword")],I.prototype,"oldPasswordInputField",2),i([g("#newPassword")],I.prototype,"newPasswordInputField",2),i([g("#repeatNewPassword")],I.prototype,"repeatNewPasswordInputField",2),i([r()],I.prototype,"errorMessageSamePasswordLabel",2),i([r()],I.prototype,"errorMessagePasswordDiffLabel",2),I=i([m("nidoca-form-change-password")],I);var Y=class extends p{constructor(){super(...arguments);this.theme="primary";this.label="Registrieren";this.emailLabel="Email";this.passwordLabel="Passwort";this.buttonLabel="Registrieren"}render(){return o`
+      <nidoca-box theme="${_(this.theme)}">
         <nidoca-form id="form">
           <nidoca-text-h2 class="paddingBottom">${this.label}</nidoca-text-h2>
 
           <nidoca-form-text
-            theme="${NidocaThemeHelper.getOposite(this.theme)}"
+            theme="${v.getOposite(this.theme)}"
             class="paddingBottom"
-            textType="${"email" /* email */}"
+            textType="${"email"}"
             label="${this.emailLabel}"
             name="email"
             trailingIcon="account_circle"
@@ -3184,9 +1130,9 @@ ${this.value}</textarea
           ></nidoca-form-text>
 
           <nidoca-form-text
-            theme="${NidocaThemeHelper.getOposite(this.theme)}"
+            theme="${v.getOposite(this.theme)}"
             class="paddingBottom"
-            textType="${"password" /* password */}"
+            textType="${"password"}"
             label="${this.passwordLabel}"
             name="password"
             trailingIcon="vpn_key"
@@ -3195,30 +1141,16 @@ ${this.value}</textarea
           ></nidoca-form-text>
 
           <nidoca-button
-            theme="${NidocaThemeHelper.getOposite(this.theme)}"
+            theme="${v.getOposite(this.theme)}"
             class="paddingBottom"
-            @nidoca-event-button-clicked="${() => this.register()}"
+            @nidoca-event-button-clicked="${()=>this.register()}"
             >${this.buttonLabel}
           </nidoca-button>
 
           <slot></slot>
         </nidoca-form>
       </nidoca-box>
-    `;
-    }
-    register() {
-      if (this.formComponent && this.formComponent.validate()) {
-        this.dispatchEvent(
-          new CustomEvent("nidoca-form-register-submit", {
-            detail: this.formComponent.getOutputData(),
-            bubbles: true,
-            composed: true
-          })
-        );
-      }
-    }
-  };
-  NidocaFormRegister.styles = i`
+    `}register(){this.formComponent&&this.formComponent.validate()&&this.dispatchEvent(new CustomEvent("nidoca-form-register-submit",{detail:this.formComponent.getOutputData(),bubbles:!0,composed:!0}))}};Y.styles=c`
     :host {
       display: block;
       width: 100%;
@@ -3227,56 +1159,7 @@ ${this.value}</textarea
     .paddingBottom {
       padding-bottom: var(--space-3);
     }
-  `;
-  __decorateClass([
-    n5({ type: NidocaTheme, converter: String })
-  ], NidocaFormRegister.prototype, "theme", 2);
-  __decorateClass([
-    n5({ type: String, converter: String })
-  ], NidocaFormRegister.prototype, "label", 2);
-  __decorateClass([
-    n5({ type: String, converter: String })
-  ], NidocaFormRegister.prototype, "emailLabel", 2);
-  __decorateClass([
-    n5({ type: String, converter: String })
-  ], NidocaFormRegister.prototype, "passwordLabel", 2);
-  __decorateClass([
-    n5({ type: String, converter: String })
-  ], NidocaFormRegister.prototype, "buttonLabel", 2);
-  __decorateClass([
-    i4("#form")
-  ], NidocaFormRegister.prototype, "formComponent", 2);
-  NidocaFormRegister = __decorateClass([
-    e4("nidoca-form-register")
-  ], NidocaFormRegister);
-
-  // src/nidoca-upload.ts
-  var NidocaUpload = class extends NidocaHtml {
-    constructor() {
-      super(...arguments);
-      this.code = "";
-    }
-    render() {
-      return x``;
-    }
-  };
-  NidocaUpload.styles = i``;
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaUpload.prototype, "code", 2);
-  NidocaUpload = __decorateClass([
-    e4("nidoca-upload")
-  ], NidocaUpload);
-
-  // src/nidoca-hr.ts
-  var NidocaHr = class extends NidocaHtml {
-    constructor() {
-      super(...arguments);
-      this.theme = "plain" /* plain */;
-      this.text = "";
-    }
-    render() {
-      return x`
+  `,i([r({type:u,converter:String})],Y.prototype,"theme",2),i([r({type:String,converter:String})],Y.prototype,"label",2),i([r({type:String,converter:String})],Y.prototype,"emailLabel",2),i([r({type:String,converter:String})],Y.prototype,"passwordLabel",2),i([r({type:String,converter:String})],Y.prototype,"buttonLabel",2),i([g("#form")],Y.prototype,"formComponent",2),Y=i([m("nidoca-form-register")],Y);var Xt=class extends p{constructor(){super(...arguments);this.code=""}render(){return o``}};Xt.styles=c``,i([r({type:String})],Xt.prototype,"code",2),Xt=i([m("nidoca-upload")],Xt);var Ct=class extends p{constructor(){super(...arguments);this.theme="plain";this.text=""}render(){return o`
       <style>
         .hr {
           border-color: var(--app-color-${this.theme}-border);
@@ -3286,10 +1169,7 @@ ${this.value}</textarea
       <nidoca-text-body>${this.text}</nidoca-text-body>
 
       <div class="hr"></div>
-    `;
-    }
-  };
-  NidocaHr.styles = i`
+    `}};Ct.styles=c`
     :host,
     ::slotted(:host) {
       display: block;
@@ -3308,42 +1188,17 @@ ${this.value}</textarea
       border-bottom-style: solid;
       border-width: thin;
     }
-  `;
-  __decorateClass([
-    n5({ type: NidocaTheme, converter: String })
-  ], NidocaHr.prototype, "theme", 2);
-  __decorateClass([
-    n5({ type: String, converter: String })
-  ], NidocaHr.prototype, "text", 2);
-  NidocaHr = __decorateClass([
-    e4("nidoca-hr")
-  ], NidocaHr);
-
-  // src/nidoca-menu-area.ts
-  var NidocaMenuArea = class extends NidocaHtml {
-    constructor() {
-      super(...arguments);
-      this.text = "";
-      this.icon = "";
-    }
-    render() {
-      return x`
+  `,i([r({type:u,converter:String})],Ct.prototype,"theme",2),i([r({type:String,converter:String})],Ct.prototype,"text",2),Ct=i([m("nidoca-hr")],Ct);var It=class extends p{constructor(){super(...arguments);this.text="";this.icon=""}render(){return o`
       <div class="container">
-        ${this.icon ? x` <nidoca-icon
+        ${this.icon?o` <nidoca-icon
               slot="graphic"
               icon="${this.icon}"
               style="padding-right:var(--space); font-size:var(--icon-size);"
-            ></nidoca-icon>` : x``}
-        ${this.text ? x` <nidoca-text-button>${this.text}</nidoca-text-button>` : x``}
+            ></nidoca-icon>`:o``}
+        ${this.text?o` <nidoca-text-button>${this.text}</nidoca-text-button>`:o``}
         <slot></slot>
       </div>
-    `;
-    }
-    static example(slotName = "") {
-      return x`<nidoca-menu-area slot="${slotName}" icon="gavel" text="Rechtliches"></nidoca-menu-area>`;
-    }
-  };
-  NidocaMenuArea.styles = i`
+    `}static example(t=""){return o`<nidoca-menu-area slot="${t}" icon="gavel" text="Rechtliches"></nidoca-menu-area>`}};It.styles=c`
     .container {
       display: flex;
       padding-left: var(--space-2);
@@ -3351,57 +1206,21 @@ ${this.value}</textarea
       padding-top: var(--space);
       padding-bottom: var(--space);
     }
-  `;
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaMenuArea.prototype, "text", 2);
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaMenuArea.prototype, "icon", 2);
-  NidocaMenuArea = __decorateClass([
-    e4("nidoca-menu-area")
-  ], NidocaMenuArea);
-
-  // src/nidoca-menu-item.ts
-  var NidocaMenuItem = class extends NidocaHtml {
-    constructor() {
-      super(...arguments);
-      this.text = "";
-      this.icon = "";
-      this.selected = false;
-      this.theme = "surface" /* surface */;
-    }
-    render() {
-      return x`
+  `,i([r({type:String})],It.prototype,"text",2),i([r({type:String})],It.prototype,"icon",2),It=i([m("nidoca-menu-area")],It);var q=class extends p{constructor(){super(...arguments);this.text="";this.icon="";this.selected=!1;this.theme="surface"}render(){return o`
       <style>
         .container:hover {
           background-color: var(--app-color-${this.theme}-hover);
         }
       </style>
-      <div class="container ${this.selected ? "selected" : ""}" @click="${() => this.clicked()}">
-        ${this.icon ? x` <nidoca-icon
+      <div class="container ${this.selected?"selected":""}" @click="${()=>this.clicked()}">
+        ${this.icon?o` <nidoca-icon
               slot="graphic"
               icon="${this.icon}"
               style="padding-right:var(--space); font-size:var(--icon-size);"
-            ></nidoca-icon>` : x``}
-        ${this.text ? x` <nidoca-text-body theme="${this.theme}">${this.text}</nidoca-text-body>` : x``}
+            ></nidoca-icon>`:o``}
+        ${this.text?o` <nidoca-text-body theme="${this.theme}">${this.text}</nidoca-text-body>`:o``}
       </div>
-    `;
-    }
-    clicked() {
-      this.dispatchEvent(
-        new CustomEvent("nidoca-event-menu-item-clicked", {
-          detail: this,
-          bubbles: true,
-          composed: true
-        })
-      );
-    }
-    static example(slotName = "") {
-      return x`<nidoca-menu-item slot="${slotName}" text="Start" icon="home"></nidoca-menu-item>`;
-    }
-  };
-  NidocaMenuItem.styles = i`
+    `}clicked(){this.dispatchEvent(new CustomEvent("nidoca-event-menu-item-clicked",{detail:this,bubbles:!0,composed:!0}))}static example(t=""){return o`<nidoca-menu-item slot="${t}" text="Start" icon="home"></nidoca-menu-item>`}};q.styles=c`
     .container {
       display: flex;
       cursor: pointer;
@@ -3414,31 +1233,7 @@ ${this.value}</textarea
     .selected {
       backdrop-filter: contrast(var(--app-color-percent-selected));
     }
-  `;
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaMenuItem.prototype, "text", 2);
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaMenuItem.prototype, "icon", 2);
-  __decorateClass([
-    n5({ type: Boolean })
-  ], NidocaMenuItem.prototype, "selected", 2);
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaMenuItem.prototype, "theme", 2);
-  NidocaMenuItem = __decorateClass([
-    e4("nidoca-menu-item")
-  ], NidocaMenuItem);
-
-  // src/nidoca-menu.ts
-  var NidocaMenu = class extends NidocaHtml {
-    constructor() {
-      super(...arguments);
-      this.theme = "surface" /* surface */;
-    }
-    render() {
-      return x` <style>
+  `,i([r({type:String})],q.prototype,"text",2),i([r({type:String})],q.prototype,"icon",2),i([r({type:Boolean})],q.prototype,"selected",2),i([r({type:String})],q.prototype,"theme",2),q=i([m("nidoca-menu-item")],q);var zt=class extends p{constructor(){super(...arguments);this.theme="surface"}render(){return o` <style>
         :host,
         *,
         ::slotted(*) {
@@ -3447,47 +1242,8 @@ ${this.value}</textarea
           border-color: var(--app-color-${this.theme}-border);
         }
       </style>
-      <slot id="slotElement"></slot>`;
-    }
-    updated(changedProperties) {
-      super.updated(changedProperties);
-      changedProperties.forEach((_oldValue, propName) => {
-        if (propName == "theme") {
-          if (this.slotElement != null) {
-            const slottedElements = this.slotElement.assignedElements();
-            for (let index = 0; index < slottedElements.length; index++) {
-              const element = slottedElements[index];
-              if (element instanceof NidocaMenuItem) {
-                element.theme = this.theme;
-              }
-            }
-          }
-        }
-      });
-    }
-    firstUpdated() {
-      this.addEventListener("click", (event) => {
-        if (this.slotElement != null) {
-          const slottedElements = this.slotElement.assignedElements();
-          for (let index = 0; index < slottedElements.length; index++) {
-            const element = slottedElements[index];
-            if (element instanceof NidocaMenuItem) {
-              const rect = element.getBoundingClientRect();
-              if (rect.left < event.x && rect.right > event.x) {
-                if (rect.top < event.y && rect.bottom > event.y) {
-                  element.selected = true;
-                } else {
-                  element.selected = false;
-                }
-              }
-            }
-          }
-        }
-      });
-    }
-    static example(slotName = "") {
-      return x`
-      <nidoca-menu slot="${slotName}" theme="primary">
+      <slot id="slotElement"></slot>`}updated(t){super.updated(t),t.forEach((n,a)=>{if(a=="theme"&&this.slotElement!=null){let l=this.slotElement.assignedElements();for(let d=0;d<l.length;d++){let h=l[d];h instanceof q&&(h.theme=this.theme)}}})}firstUpdated(){this.addEventListener("click",t=>{if(this.slotElement!=null){let n=this.slotElement.assignedElements();for(let a=0;a<n.length;a++){let l=n[a];if(l instanceof q){let d=l.getBoundingClientRect();d.left<t.x&&d.right>t.x&&(d.top<t.y&&d.bottom>t.y?l.selected=!0:l.selected=!1)}}}})}static example(t=""){return o`
+      <nidoca-menu slot="${t}" theme="primary">
         <nidoca-menu-item text="Start"></nidoca-menu-item>
         <nidoca-menu-area text="Framework"></nidoca-menu-area>
         <nidoca-menu-item text="Komponenten"></nidoca-menu-item>
@@ -3498,49 +1254,17 @@ ${this.value}</textarea
         <nidoca-menu-area text="Sonstiges"></nidoca-menu-area>
         <nidoca-menu-item icon="home" text="Einstellungen"></nidoca-menu-item>
       </nidoca-menu>
-    `;
-    }
-  };
-  NidocaMenu.styles = i`
+    `}};zt.styles=c`
     :host,
     slot {
       display: block;
     }
-  `;
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaMenu.prototype, "theme", 2);
-  __decorateClass([
-    i4("#slotElement")
-  ], NidocaMenu.prototype, "slotElement", 2);
-  NidocaMenu = __decorateClass([
-    e4("nidoca-menu")
-  ], NidocaMenu);
-
-  // src/nidoca-layout-floating.ts
-  var NidocaLayoutFloatingContainer = class extends NidocaHtml {
-    constructor() {
-      super(...arguments);
-      this.height = "auto";
-      this.width = "auto";
-      this.left = "auto";
-      this.top = "auto";
-      this.right = "auto";
-      this.bottom = "auto";
-    }
-    render() {
-      return x`
+  `,i([r({type:String})],zt.prototype,"theme",2),i([g("#slotElement")],zt.prototype,"slotElement",2),zt=i([m("nidoca-menu")],zt);var K=class extends p{constructor(){super(...arguments);this.height="auto";this.width="auto";this.left="auto";this.top="auto";this.right="auto";this.bottom="auto"}render(){return o`
       <slot
         class="floatingContainer"
-        style="${this.toStyle(this.height, this.width, this.left, this.right, this.top, this.bottom)}"
+        style="${this.toStyle(this.height,this.width,this.left,this.right,this.top,this.bottom)}"
       ></slot>
-    `;
-    }
-    toStyle(height, width, left, right, top, bottom) {
-      return "height:".concat(height).concat(";").concat("width:").concat(width).concat(";").concat("left:").concat(left).concat(";").concat("right:").concat(right).concat(";").concat("top:").concat(top).concat(";").concat("bottom:").concat(bottom).concat(";");
-    }
-  };
-  NidocaLayoutFloatingContainer.styles = i`
+    `}toStyle(t,n,a,l,d,h){return"height:".concat(t).concat(";").concat("width:").concat(n).concat(";").concat("left:").concat(a).concat(";").concat("right:").concat(l).concat(";").concat("top:").concat(d).concat(";").concat("bottom:").concat(h).concat(";")}};K.styles=c`
     .floatingContainer {
       position: fixed;
       display: inline;
@@ -3548,43 +1272,10 @@ ${this.value}</textarea
       background-color: inherit;
       color: inherit;
     }
-  `;
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaLayoutFloatingContainer.prototype, "height", 2);
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaLayoutFloatingContainer.prototype, "width", 2);
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaLayoutFloatingContainer.prototype, "left", 2);
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaLayoutFloatingContainer.prototype, "top", 2);
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaLayoutFloatingContainer.prototype, "right", 2);
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaLayoutFloatingContainer.prototype, "bottom", 2);
-  NidocaLayoutFloatingContainer = __decorateClass([
-    e4("nidoca-layout-floating")
-  ], NidocaLayoutFloatingContainer);
-
-  // src/nidoca-container.ts
-  var NidocaContainer = class extends NidocaHtml {
-    constructor() {
-      super(...arguments);
-      this.theme = "plain" /* plain */;
-    }
-    render() {
-      return x`
-      ${NidocaThemeHelper.getStyle(this.theme)}
+  `,i([r({type:String})],K.prototype,"height",2),i([r({type:String})],K.prototype,"width",2),i([r({type:String})],K.prototype,"left",2),i([r({type:String})],K.prototype,"top",2),i([r({type:String})],K.prototype,"right",2),i([r({type:String})],K.prototype,"bottom",2),K=i([m("nidoca-layout-floating")],K);var Yt=class extends p{constructor(){super(...arguments);this.theme="plain"}render(){return o`
+      ${v.getStyle(this.theme)}
       <slot></slot>
-    `;
-    }
-  };
-  NidocaContainer.styles = i`
+    `}};Yt.styles=c`
     :host {
       display: block;
     }
@@ -3595,23 +1286,7 @@ ${this.value}</textarea
       width: auto;
       max-width: var(--max-width);
     }
-  `;
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaContainer.prototype, "theme", 2);
-  NidocaContainer = __decorateClass([
-    e4("nidoca-container")
-  ], NidocaContainer);
-
-  // src/nidoca-split-screen.ts
-  var NidocaSplitScreen = class extends NidocaHtml {
-    constructor() {
-      super();
-      this.hideSidebox = true;
-      this.theme = NidocaThemeHelper.prototype.getParentTheme(this) || "plain" /* plain */;
-    }
-    render() {
-      return x` <style>
+  `,i([r({type:String})],Yt.prototype,"theme",2),Yt=i([m("nidoca-container")],Yt);var Ht=class extends p{constructor(){super();this.hideSidebox=!0;this.theme=v.prototype.getParentTheme(this)||"plain"}render(){return o` <style>
         .listbox,
         .sidebox {
           color: var(--app-color-text-${this.theme});
@@ -3625,10 +1300,7 @@ ${this.value}</textarea
         }
       </style>
       <slot class="listbox" name="left"></slot>
-      ${this.hideSidebox ? x`` : x` <slot class="sidebox" name="sidebox"></slot>`}`;
-    }
-  };
-  NidocaSplitScreen.styles = i`
+      ${this.hideSidebox?o``:o` <slot class="sidebox" name="sidebox"></slot>`}`}};Ht.styles=c`
     :host {
       display: flex;
       flex-direction: row;
@@ -3665,62 +1337,22 @@ ${this.value}</textarea
         width: 100%;
       }
     }
-  `;
-  __decorateClass([
-    n5({ type: NidocaTheme, converter: String })
-  ], NidocaSplitScreen.prototype, "theme", 2);
-  __decorateClass([
-    n5({ type: Boolean, converter: String })
-  ], NidocaSplitScreen.prototype, "hideSidebox", 2);
-  NidocaSplitScreen = __decorateClass([
-    e4("nidoca-split-screen")
-  ], NidocaSplitScreen);
-
-  // src/nidoca-icon.ts
-  var NidocaIcon = class extends NidocaHtml {
-    constructor() {
-      super(...arguments);
-      this.icon = "";
-      this.clickable = true;
-      this.deactivated = false;
-      this.title = "";
-    }
-    render() {
-      return x`
+  `,i([r({type:u,converter:String})],Ht.prototype,"theme",2),i([r({type:Boolean,converter:String})],Ht.prototype,"hideSidebox",2),Ht=i([m("nidoca-split-screen")],Ht);var V=class extends p{constructor(){super(...arguments);this.icon="";this.clickable=!0;this.deactivated=!1;this.title=""}render(){return o`
       <i
-        class="material-icons ${this.deactivated ? "deactivated" : ""} ${this.clickable ? "clickable" : ""}"
+        class="material-icons ${this.deactivated?"deactivated":""} ${this.clickable?"clickable":""}"
         title="${this.title}"
         @click="${this.clicked}"
         >${this.icon}</i
       >
-    `;
-    }
-    async clicked() {
-      if (this.clickable && !this.deactivated) {
-        const customEventName = "nidoca-event-icon-clicked";
-        console.log("dispatch custom event: %s", customEventName);
-        this.dispatchEvent(
-          new CustomEvent(customEventName, {
-            detail: this,
-            bubbles: true,
-            composed: true
-          })
-        );
-      }
-    }
-    static example(slotName = "") {
-      return x`
+    `}async clicked(){if(this.clickable&&!this.deactivated){let t="nidoca-event-icon-clicked";console.log("dispatch custom event: %s",t),this.dispatchEvent(new CustomEvent(t,{detail:this,bubbles:!0,composed:!0}))}}static example(t=""){return o`
       <nidoca-icon
-        slot="${slotName}"
+        slot="${t}"
         style="padding-left:var(--space)"
         clickable
         icon="menu"
         title="Mein Icon"
       ></nidoca-icon>
-    `;
-    }
-  };
-  NidocaIcon.styles = i`
+    `}};V.styles=c`
     :host {
       display: inline-block;
       font-size: var(--icon-size);
@@ -3760,47 +1392,11 @@ ${this.value}</textarea
     .clickable:hover {
       filter: brightness(var(--app-darken-2));
     }
-  `;
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaIcon.prototype, "icon", 2);
-  __decorateClass([
-    n5({ type: Boolean })
-  ], NidocaIcon.prototype, "clickable", 2);
-  __decorateClass([
-    n5({ type: Boolean })
-  ], NidocaIcon.prototype, "deactivated", 2);
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaIcon.prototype, "title", 2);
-  NidocaIcon = __decorateClass([
-    e4("nidoca-icon")
-  ], NidocaIcon);
-
-  // src/nidoca-ripple.ts
-  var NidocaRipple = class extends NidocaHtml {
-    render() {
-      return x`
-      <div id="rippleContainer" anim="ripple" @click="${(event) => this.clicked(event)}">
+  `,i([r({type:String})],V.prototype,"icon",2),i([r({type:Boolean})],V.prototype,"clickable",2),i([r({type:Boolean})],V.prototype,"deactivated",2),i([r({type:String})],V.prototype,"title",2),V=i([m("nidoca-icon")],V);var Kt=class extends p{render(){return o`
+      <div id="rippleContainer" anim="ripple" @click="${e=>this.clicked(e)}">
         <slot></slot>
       </div>
-    `;
-    }
-    clicked(event) {
-      if (this.rippleContainerElement != void 0) {
-        if (event instanceof TouchEvent) {
-          event = event.touches ? event.touches[0] : event;
-        }
-        const r5 = this.rippleContainerElement.getBoundingClientRect(), d3 = Math.sqrt(Math.pow(r5.width, 2) + Math.pow(r5.height, 2)) * 2;
-        this.rippleContainerElement.style.cssText = "--s: 0; --o: 1;";
-        this.rippleContainerElement.offsetTop;
-        if (event instanceof MouseEvent || event instanceof Touch) {
-          this.rippleContainerElement.style.cssText = `--t: 1; --o: 0; --d: ${d3}; --x:${event.clientX - r5.left}; --y:${event.clientY - r5.top};`;
-        }
-      }
-    }
-  };
-  NidocaRipple.styles = i`
+    `}clicked(e){if(this.rippleContainerElement!=null){e instanceof TouchEvent&&(e=e.touches?e.touches[0]:e);let t=this.rippleContainerElement.getBoundingClientRect(),n=Math.sqrt(Math.pow(t.width,2)+Math.pow(t.height,2))*2;this.rippleContainerElement.style.cssText="--s: 0; --o: 1;",this.rippleContainerElement.offsetTop,(e instanceof MouseEvent||e instanceof Touch)&&(this.rippleContainerElement.style.cssText=`--t: 1; --o: 0; --d: ${n}; --x:${e.clientX-t.left}; --y:${e.clientY-t.top};`)}}};Kt.styles=c`
     :host {
       display: inline-block;
     }
@@ -3849,31 +1445,7 @@ ${this.value}</textarea
       -webkit-transform-origin: center;
       transform-origin: center;
     }
-  `;
-  __decorateClass([
-    i4("#rippleContainer")
-  ], NidocaRipple.prototype, "rippleContainerElement", 2);
-  NidocaRipple = __decorateClass([
-    e4("nidoca-ripple")
-  ], NidocaRipple);
-
-  // src/nidoca-img.ts
-  var NidocaImg = class extends NidocaHtml {
-    constructor() {
-      super(...arguments);
-      this.src = "";
-      this.width = "auto";
-      this.height = "auto";
-      this.zoom = false;
-    }
-    render() {
-      return this.src ? x`<img class="${this.zoom ? "zoom" : ""}" width="${this.width}" height="${this.height}" src="${this.src}" />` : x``;
-    }
-    static example(slotName = "") {
-      return x`<nidoca-img width="64px" width="64px" slot="${slotName}" src="face.jpg"></nidoca-img>`;
-    }
-  };
-  NidocaImg.styles = i`
+  `,i([g("#rippleContainer")],Kt.prototype,"rippleContainerElement",2),Kt=i([m("nidoca-ripple")],Kt);var D=class extends p{constructor(){super(...arguments);this.src="";this.width="auto";this.height="auto";this.zoom=!1}render(){return this.src?o`<img class="${this.zoom?"zoom":""}" width="${this.width}" height="${this.height}" src="${this.src}" />`:o``}static example(t=""){return o`<nidoca-img width="64px" width="64px" slot="${t}" src="face.jpg"></nidoca-img>`}};D.styles=c`
     :host {
       font-size: 0;
     }
@@ -3886,30 +1458,7 @@ ${this.value}</textarea
       transform: scale(1.1, 1.1);
       transition: transform 0.5s;
     }
-  `;
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaImg.prototype, "src", 2);
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaImg.prototype, "width", 2);
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaImg.prototype, "height", 2);
-  __decorateClass([
-    n5({ type: Boolean })
-  ], NidocaImg.prototype, "zoom", 2);
-  NidocaImg = __decorateClass([
-    e4("nidoca-img")
-  ], NidocaImg);
-
-  // src/nidoca-img-round.ts
-  var NidocaImgRound = class extends NidocaImg {
-    static example(slotName = "") {
-      return x`<nidoca-img-round width="64px" width="64px" slot="${slotName}" src="face.jpg"></nidoca-img-round>`;
-    }
-  };
-  NidocaImgRound.styles = i`
+  `,i([r({type:String})],D.prototype,"src",2),i([r({type:String})],D.prototype,"width",2),i([r({type:String})],D.prototype,"height",2),i([r({type:Boolean})],D.prototype,"zoom",2),D=i([m("nidoca-img")],D);var Ot=class extends D{static example(e=""){return o`<nidoca-img-round width="64px" width="64px" slot="${e}" src="face.jpg"></nidoca-img-round>`}};Ot.styles=c`
     :host {
       font-size: 0;
       display: inline-block;
@@ -3926,57 +1475,17 @@ ${this.value}</textarea
       transform: scale(1.1, 1.1);
       transition: transform 0.5s;
     }
-  `;
-  NidocaImgRound = __decorateClass([
-    e4("nidoca-img-round")
-  ], NidocaImgRound);
-
-  // src/nidoca-img-slider.ts
-  var NidocaImgSlider = class extends NidocaHtml {
-    constructor() {
-      super(...arguments);
-      this.theme = "plain" /* plain */;
-    }
-    render() {
-      return x`
+  `,Ot=i([m("nidoca-img-round")],Ot);var Dt=class extends p{constructor(){super(...arguments);this.theme="plain"}render(){return o`
       <style>
         :host {
           background-color: var(--app-color-${this.theme}-background);
         }
       </style>
 
-      <div class="container">${this.selected ? this.selected : x``}</div>
+      <div class="container">${this.selected?this.selected:o``}</div>
 
-      <slot @slotchange="${(event) => this.slotChanged(event)}"></slot>
-    `;
-    }
-    slotChanged(event) {
-      const slotElement = event.target;
-      if (slotElement == void 0) {
-        return;
-      }
-      const elements = slotElement.assignedElements();
-      for (let index = 0; index < elements.length; index++) {
-        const element = elements[index];
-        if (element instanceof NidocaImg) {
-          if (this.selected == void 0 && index == 0) {
-            this.selected = element.cloneNode(true);
-          }
-          element.addEventListener("click", (event2) => {
-            if (event2.target) {
-              this.selected = event2.target.cloneNode(true);
-            }
-          });
-          element.width = "148px";
-          const classList = element.classList;
-          if (!classList.contains("img")) {
-            classList.add("img");
-          }
-        }
-      }
-    }
-  };
-  NidocaImgSlider.styles = i`
+      <slot @slotchange="${t=>this.slotChanged(t)}"></slot>
+    `}slotChanged(t){let n=t.target;if(n==null)return;let a=n.assignedElements();for(let l=0;l<a.length;l++){let d=a[l];if(d instanceof D){this.selected==null&&l==0&&(this.selected=d.cloneNode(!0)),d.addEventListener("click",f=>{f.target&&(this.selected=f.target.cloneNode(!0))}),d.width="148px";let h=d.classList;h.contains("img")||h.add("img")}}}};Dt.styles=c`
     :host,
     ::slotted(:host) {
       display: flex;
@@ -4001,25 +1510,7 @@ ${this.value}</textarea
     .container {
       text-align: center;
     }
-  `;
-  __decorateClass([
-    n5({ type: NidocaTheme, converter: String })
-  ], NidocaImgSlider.prototype, "theme", 2);
-  __decorateClass([
-    t3()
-  ], NidocaImgSlider.prototype, "selected", 2);
-  NidocaImgSlider = __decorateClass([
-    e4("nidoca-img-slider")
-  ], NidocaImgSlider);
-
-  // src/nidoca-movie.ts
-  var NidocaMovie = class extends NidocaHtml {
-    constructor() {
-      super(...arguments);
-      this.src = "";
-    }
-    render() {
-      return x`
+  `,i([r({type:u,converter:String})],Dt.prototype,"theme",2),i([Ci()],Dt.prototype,"selected",2),Dt=i([m("nidoca-img-slider")],Dt);var Jt=class extends p{constructor(){super(...arguments);this.src=""}render(){return o`
       <span>
         <iframe
           src="${this.src}"
@@ -4028,126 +1519,27 @@ ${this.value}</textarea
           allowfullscreen
         ></iframe
       ></span>
-    `;
-    }
-  };
-  NidocaMovie.styles = i``;
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaMovie.prototype, "src", 2);
-  NidocaMovie = __decorateClass([
-    e4("nidoca-movie")
-  ], NidocaMovie);
-
-  // src/nidoca-form-captcha.ts
-  var NidocaFormCaptcha = class extends NidocaHtml {
-    constructor() {
-      super(...arguments);
-      this.label = "";
-      this.placeholder = "";
-      this.name = "";
-      this.min = 1;
-      this.max = 10;
-      this.errorText = "";
-      this.numberOne = 1;
-      this.numberTwo = 1;
-    }
-    render() {
-      return x`
+    `}};Jt.styles=c``,i([r({type:String})],Jt.prototype,"src",2),Jt=i([m("nidoca-movie")],Jt);var M=class extends p{constructor(){super(...arguments);this.label="";this.placeholder="";this.name="";this.min=1;this.max=10;this.errorText="";this.numberOne=1;this.numberTwo=1}render(){return o`
       <nidoca-form-text
-        theme="${l6(this.theme)}"
+        theme="${_(this.theme)}"
         id="inputfield"
         placeholder="${this.placeholder}"
         label="${this.label.concat(" ").concat(String(this.numberOne)).concat(" + ").concat(String(this.numberTwo)).concat(" = ?")}"
-        @nidoca-form-text-focusout="${() => this.validate()}"
+        @nidoca-form-text-focusout="${()=>this.validate()}"
         name="${this.name}"
         trailingIcon="create"
-        type="${"number" /* number */}"
+        type="${"number"}"
         value=""
       ></nidoca-form-text>
-    `;
-    }
-    updated(_changedProperties) {
-      if (_changedProperties.has("min") || _changedProperties.has("max")) {
-        this.generateNewNumber();
-      }
-      super.updated(_changedProperties);
-    }
-    generateNewNumber() {
-      this.numberOne = Math.round(this.getRandomNumber(this.min, this.max));
-      this.numberTwo = Math.round(this.getRandomNumber(this.min, this.max));
-      this.requestUpdate();
-    }
-    getRandomNumber(min, max) {
-      return Math.random() * (max - min) + min;
-    }
-    isValid() {
-      if (this.inputfield != void 0) {
-        return this.numberOne + this.numberTwo == Number(this.inputfield.getOutputData().value);
-      } else {
-        return false;
-      }
-    }
-    validate() {
-      const isValid = this.isValid();
-      if (isValid && this.inputfield != void 0) {
-        this.inputfield.errorText = "";
-      } else if (this.inputfield != void 0) {
-        this.inputfield.errorText = this.errorText;
-      }
-      return isValid;
-    }
-  };
-  NidocaFormCaptcha.styles = i`
+    `}updated(t){(t.has("min")||t.has("max"))&&this.generateNewNumber(),super.updated(t)}generateNewNumber(){this.numberOne=Math.round(this.getRandomNumber(this.min,this.max)),this.numberTwo=Math.round(this.getRandomNumber(this.min,this.max)),this.requestUpdate()}getRandomNumber(t,n){return Math.random()*(n-t)+t}isValid(){return this.inputfield!=null?this.numberOne+this.numberTwo==Number(this.inputfield.getOutputData().value):!1}validate(){let t=this.isValid();return t&&this.inputfield!=null?this.inputfield.errorText="":this.inputfield!=null&&(this.inputfield.errorText=this.errorText),t}};M.styles=c`
     :host {
       display: block;
       width: 100%;
     }
-  `;
-  __decorateClass([
-    n5({ type: NidocaTheme, converter: String })
-  ], NidocaFormCaptcha.prototype, "theme", 2);
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaFormCaptcha.prototype, "label", 2);
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaFormCaptcha.prototype, "placeholder", 2);
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaFormCaptcha.prototype, "name", 2);
-  __decorateClass([
-    n5({ type: Number })
-  ], NidocaFormCaptcha.prototype, "min", 2);
-  __decorateClass([
-    n5({ type: Number })
-  ], NidocaFormCaptcha.prototype, "max", 2);
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaFormCaptcha.prototype, "errorText", 2);
-  __decorateClass([
-    i4("#inputfield")
-  ], NidocaFormCaptcha.prototype, "inputfield", 2);
-  NidocaFormCaptcha = __decorateClass([
-    e4("nidoca-form-captcha")
-  ], NidocaFormCaptcha);
-
-  // src/nidoca-link.ts
-  var NidocaLink = class extends NidocaHtml {
-    constructor() {
-      super(...arguments);
-      this.text = "";
-      this.href = "";
-      this.targetType = "_self";
-    }
-    render() {
-      return x`<a href="${this.href}" .target="${this.targetType}">
+  `,i([r({type:u,converter:String})],M.prototype,"theme",2),i([r({type:String})],M.prototype,"label",2),i([r({type:String})],M.prototype,"placeholder",2),i([r({type:String})],M.prototype,"name",2),i([r({type:Number})],M.prototype,"min",2),i([r({type:Number})],M.prototype,"max",2),i([r({type:String})],M.prototype,"errorText",2),i([g("#inputfield")],M.prototype,"inputfield",2),M=i([m("nidoca-form-captcha")],M);var ut=class extends p{constructor(){super(...arguments);this.text="";this.href="";this.targetType="_self"}render(){return o`<a href="${this.href}" .target="${this.targetType}">
       <nidoca-text>${this.text}</nidoca-text>
       <slot></slot>
-    </a> `;
-    }
-  };
-  NidocaLink.styles = i`
+    </a> `}};ut.styles=c`
     :host,
     ::slotted(:host) {
       display: inline-block;
@@ -4157,31 +1549,7 @@ ${this.value}</textarea
       color: inherit;
       background-color: inherit;
     }
-  `;
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaLink.prototype, "text", 2);
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaLink.prototype, "href", 2);
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaLink.prototype, "targetType", 2);
-  NidocaLink = __decorateClass([
-    e4("nidoca-link")
-  ], NidocaLink);
-
-  // src/nidoca-list-item.ts
-  var NidocaListItem = class extends NidocaHtml {
-    constructor() {
-      super(...arguments);
-      this.theme = "surface" /* surface */;
-      this.primaryText = "";
-      this.secondaryText = "";
-      this.selected = false;
-    }
-    render() {
-      return x`
+  `,i([r({type:String})],ut.prototype,"text",2),i([r({type:String})],ut.prototype,"href",2),i([r({type:String})],ut.prototype,"targetType",2),ut=i([m("nidoca-link")],ut);var z=class extends p{constructor(){super(...arguments);this.theme="surface";this.primaryText="";this.secondaryText="";this.selected=!1}render(){return o`
       <style>
         .container {
           color: var(--app-color-text-${this.theme});
@@ -4197,43 +1565,27 @@ ${this.value}</textarea
           background-color: var(--app-color-${this.theme}-selected);
         }
       </style>
-      <div @click="${() => this.switchSelected()}" class="container ${this.selected ? "selected" : ""}">
+      <div @click="${()=>this.switchSelected()}" class="container ${this.selected?"selected":""}">
         <slot name="left" class="item left"></slot>
         <div class="containerTypography">
-          ${this.primaryText ? x` <nidoca-text-body theme="${this.theme}" class="item">${this.primaryText} </nidoca-text-body>` : x``}
+          ${this.primaryText?o` <nidoca-text-body theme="${this.theme}" class="item">${this.primaryText} </nidoca-text-body>`:o``}
           <slot></slot>
-          ${this.secondaryText ? x` <nidoca-text-caption theme="${this.theme}" class="item"
+          ${this.secondaryText?o` <nidoca-text-caption theme="${this.theme}" class="item"
                 >${this.secondaryText}
-              </nidoca-text-caption>` : x``}
+              </nidoca-text-caption>`:o``}
           <slot name="secondary"></slot>
         </div>
         <slot name="right" class="item right"></slot>
       </div>
-    `;
-    }
-    switchSelected() {
-      this.selected = Boolean(!this.selected);
-      this.dispatchEvent(
-        new CustomEvent("nidoca-event-list-item-clicked", {
-          detail: this.selected,
-          bubbles: true,
-          composed: true
-        })
-      );
-    }
-    static example(slotName = "") {
-      return x`<nidoca-list-item
+    `}switchSelected(){this.selected=!this.selected,this.dispatchEvent(new CustomEvent("nidoca-event-list-item-clicked",{detail:this.selected,bubbles:!0,composed:!0}))}static example(t=""){return o`<nidoca-list-item
       theme="primary"
-      slot="${slotName}"
+      slot="${t}"
       primaryText="List Item"
       secondaryText="List Item Secondary Text"
     >
-      ${NidocaImgRound.example("left")}
+      ${Ot.example("left")}
       <nidoca-icon slot="right" icon="menu"></nidoca-icon>
-    </nidoca-list-item>`;
-    }
-  };
-  NidocaListItem.styles = i`
+    </nidoca-list-item>`}};z.styles=c`
     .container {
       display: grid;
       cursor: pointer;
@@ -4262,32 +1614,7 @@ ${this.value}</textarea
       flex-wrap: wrap;
       align-self: center;
     }
-  `;
-  __decorateClass([
-    n5({ type: NidocaTheme, converter: String })
-  ], NidocaListItem.prototype, "theme", 2);
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaListItem.prototype, "primaryText", 2);
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaListItem.prototype, "secondaryText", 2);
-  __decorateClass([
-    n5({ type: Boolean })
-  ], NidocaListItem.prototype, "selected", 2);
-  NidocaListItem = __decorateClass([
-    e4("nidoca-list-item")
-  ], NidocaListItem);
-
-  // src/nidoca-list-section.ts
-  var NidocaListSection = class extends NidocaHtml {
-    constructor() {
-      super(...arguments);
-      this.theme = "surface" /* surface */;
-      this.text = "";
-    }
-    render() {
-      return x`
+  `,i([r({type:u,converter:String})],z.prototype,"theme",2),i([r({type:String})],z.prototype,"primaryText",2),i([r({type:String})],z.prototype,"secondaryText",2),i([r({type:Boolean})],z.prototype,"selected",2),z=i([m("nidoca-list-item")],z);var st=class extends p{constructor(){super(...arguments);this.theme="surface";this.text=""}render(){return o`
       <style>
         :host {
           color: var(--app-color-text-${this.theme});
@@ -4306,122 +1633,20 @@ ${this.value}</textarea
       <nidoca-text-body theme="${this.theme}" style="flex-basis:100%;" text="${this.text}">
         <slot></slot>
       </nidoca-text-body>
-    `;
-    }
-    static example() {
-      return x`<nidoca-list-section theme="primary">Section A</nidoca-list-section>`;
-    }
-  };
-  NidocaListSection.styles = i`
+    `}static example(){return o`<nidoca-list-section theme="primary">Section A</nidoca-list-section>`}};st.styles=c`
   :host {
      display:block;
      padding-left: var(--space-2);  
      width:100%;
      box-sizing:border-box;
-  `;
-  __decorateClass([
-    n5({ type: NidocaTheme, converter: String })
-  ], NidocaListSection.prototype, "theme", 2);
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaListSection.prototype, "text", 2);
-  NidocaListSection = __decorateClass([
-    e4("nidoca-list-section")
-  ], NidocaListSection);
-
-  // src/nidoca-list.ts
-  var NidocaList = class extends NidocaHtml {
-    constructor() {
-      super(...arguments);
-      this.theme = "surface" /* surface */;
-      this.multiselect = false;
-    }
-    updated(changedProperties) {
-      super.updated(changedProperties);
-      changedProperties.forEach((_oldValue, propName) => {
-        if (propName == "theme") {
-          this.getItems().forEach((listItemComponent) => {
-            listItemComponent.theme = this.theme;
-          });
-        }
-      });
-    }
-    render() {
-      return x`
+  `,i([r({type:u,converter:String})],st.prototype,"theme",2),i([r({type:String})],st.prototype,"text",2),st=i([m("nidoca-list-section")],st);var ft=class extends p{constructor(){super(...arguments);this.theme="surface";this.multiselect=!1}updated(t){super.updated(t),t.forEach((n,a)=>{a=="theme"&&this.getItems().forEach(l=>{l.theme=this.theme})})}render(){return o`
       <slot
-        @nidoca-event-list-item-clicked="${(event) => {
-        if (!this.multiselect) {
-          this.unselectAll();
-          const nidocaListItem = event.target;
-          nidocaListItem.selected = true;
-        }
-      }}"
+        @nidoca-event-list-item-clicked="${t=>{if(!this.multiselect){this.unselectAll();let n=t.target;n.selected=!0}}}"
         id="slotElement"
       ></slot>
-    `;
-    }
-    getItems() {
-      const all = [];
-      if (this.slotElement != null) {
-        const slottedElements = this.slotElement.assignedElements();
-        for (let index = 0; index < slottedElements.length; index++) {
-          const element = slottedElements[index];
-          if (element instanceof NidocaListItem) {
-            all.push(element);
-          }
-        }
-      }
-      return all;
-    }
-    getSelectedItems() {
-      const selection = [];
-      if (this.slotElement != null) {
-        const slottedElements = this.slotElement.assignedElements();
-        for (let index = 0; index < slottedElements.length; index++) {
-          const element = slottedElements[index];
-          if (element instanceof NidocaListItem) {
-            if (element.selected) {
-              selection.push(element);
-            }
-          }
-        }
-      }
-      return selection;
-    }
-    getSelectedIndexes() {
-      const selection = [];
-      if (this.slotElement != null) {
-        const slottedElements = this.slotElement.assignedElements();
-        let nliIndex = 0;
-        for (let i7 = 0; i7 < slottedElements.length; i7++) {
-          const element = slottedElements[i7];
-          if (element instanceof NidocaListItem) {
-            if (element.selected) {
-              selection.push(nliIndex);
-            }
-            nliIndex++;
-          }
-        }
-      }
-      return selection;
-    }
-    selectAll() {
-      this.getItems().forEach((item) => {
-        item.selected = true;
-      });
-    }
-    unselectAll() {
-      this.getItems().forEach((item) => {
-        item.selected = false;
-      });
-    }
-    static example() {
-      return x`<nidoca-list theme="primary">
-      ${NidocaListSection.example()} ${NidocaListItem.example()} ${NidocaListItem.example()} ${NidocaListItem.example()}
-    </nidoca-list>`;
-    }
-  };
-  NidocaList.styles = i`
+    `}getItems(){let t=[];if(this.slotElement!=null){let n=this.slotElement.assignedElements();for(let a=0;a<n.length;a++){let l=n[a];l instanceof z&&t.push(l)}}return t}getSelectedItems(){let t=[];if(this.slotElement!=null){let n=this.slotElement.assignedElements();for(let a=0;a<n.length;a++){let l=n[a];l instanceof z&&l.selected&&t.push(l)}}return t}getSelectedIndexes(){let t=[];if(this.slotElement!=null){let n=this.slotElement.assignedElements(),a=0;for(let l=0;l<n.length;l++){let d=n[l];d instanceof z&&(d.selected&&t.push(a),a++)}}return t}selectAll(){this.getItems().forEach(t=>{t.selected=!0})}unselectAll(){this.getItems().forEach(t=>{t.selected=!1})}static example(){return o`<nidoca-list theme="primary">
+      ${st.example()} ${z.example()} ${z.example()} ${z.example()}
+    </nidoca-list>`}};ft.styles=c`
     :host {
       width: 100%;
     }
@@ -4430,29 +1655,7 @@ ${this.value}</textarea
       grid-template-rows: 1fr;
       grid-template-columns: 1fr;
     }
-  `;
-  __decorateClass([
-    n5({ type: NidocaTheme, converter: String })
-  ], NidocaList.prototype, "theme", 2);
-  __decorateClass([
-    n5({ type: Boolean })
-  ], NidocaList.prototype, "multiselect", 2);
-  __decorateClass([
-    i4("#slotElement")
-  ], NidocaList.prototype, "slotElement", 2);
-  NidocaList = __decorateClass([
-    e4("nidoca-list")
-  ], NidocaList);
-
-  // src/nidoca-top-app-bar.ts
-  var NidocaTopAppBar = class extends NidocaHtml {
-    constructor() {
-      super(...arguments);
-      this.theme = "primary" /* primary */;
-      this.prominent = false;
-    }
-    render() {
-      return x`
+  `,i([r({type:u,converter:String})],ft.prototype,"theme",2),i([r({type:Boolean})],ft.prototype,"multiselect",2),i([g("#slotElement")],ft.prototype,"slotElement",2),ft=i([m("nidoca-list")],ft);var Mt=class extends p{constructor(){super(...arguments);this.theme="primary";this.prominent=!1}render(){return o`
       <style>
         * {
           color: var(--app-color-text-${this.theme});
@@ -4466,22 +1669,16 @@ ${this.value}</textarea
         <slot name="center" style="justify-content:center;"></slot>
         <slot name="right" style="justify-content:flex-end;"></slot>
       </div>
-      ${this.prominent ? x` <slot class="prominent" name="prominent"></slot>` : x``}
-    `;
-    }
-    static example(slotName = "") {
-      return x`
-      <nidoca-top-app-bar slot="${slotName}" style="min-height: 48px;" theme="primary" prominent>
+      ${this.prominent?o` <slot class="prominent" name="prominent"></slot>`:o``}
+    `}static example(t=""){return o`
+      <nidoca-top-app-bar slot="${t}" style="min-height: 48px;" theme="primary" prominent>
         <nidoca-text-body slot="center">Toolbar</nidoca-text-body>
         <nidoca-icon slot="left" style="padding-left:var(--space)" clickable icon="menu"></nidoca-icon>
         <nidoca-icon slot="right" style="padding-right:var(--space)" icon="search"></nidoca-icon>
         <nidoca-icon slot="right" style="padding-right:var(--space)" icon="more_vert" clickable></nidoca-icon>
         <nidoca-search-bar theme="primary" slot="prominent" placeholder="Suche..."></nidoca-search-bar>
       </nidoca-top-app-bar>
-    `;
-    }
-  };
-  NidocaTopAppBar.styles = i`
+    `}};Mt.styles=c`
     :host {
       display: block;
       top: 0;
@@ -4510,30 +1707,7 @@ ${this.value}</textarea
     .prominent {
       display: block;
     }
-  `;
-  __decorateClass([
-    n5({ type: String, converter: String })
-  ], NidocaTopAppBar.prototype, "theme", 2);
-  __decorateClass([
-    n5({ type: Boolean })
-  ], NidocaTopAppBar.prototype, "prominent", 2);
-  NidocaTopAppBar = __decorateClass([
-    e4("nidoca-top-app-bar")
-  ], NidocaTopAppBar);
-
-  // src/nidoca-table.ts
-  var NidocaTable = class extends NidocaHtml {
-    constructor() {
-      super(...arguments);
-      this.headers = ["column 1", "column 2"];
-      this.rows = [
-        ["row 1", new NidocaIcon()],
-        ["row 2", new NidocaIcon()]
-      ];
-      this.theme = "plain" /* plain */;
-    }
-    render() {
-      return x`
+  `,i([r({type:String,converter:String})],Mt.prototype,"theme",2),i([r({type:Boolean})],Mt.prototype,"prominent",2),Mt=i([m("nidoca-top-app-bar")],Mt);var gt=class extends p{constructor(){super(...arguments);this.headers=["column 1","column 2"];this.rows=[["row 1",new V],["row 2",new V]];this.theme="plain"}render(){return o`
       <style>
         td,
         th {
@@ -4555,32 +1729,20 @@ ${this.value}</textarea
       <div>
         <table>
           <thead>
-            ${i6(
-        [this.headers],
-        () => x` ${c4(this.headers, (header) => x` <th colspan="1" rowspan="1">${header}</th> `)} `
-      )}
+            ${Lt([this.headers],()=>o` ${ht(this.headers,t=>o` <th colspan="1" rowspan="1">${t}</th> `)} `)}
           </thead>
           <tbody>
-            ${i6(
-        [this.rows],
-        () => x`
-                  ${c4(
-          this.rows,
-          (row) => x`
+            ${Lt([this.rows],()=>o`
+                  ${ht(this.rows,t=>o`
                         <tr>
-                          ${c4(row, (column) => x` <td colspan="1" rowspan="1">${column}</td> `)}
+                          ${ht(t,n=>o` <td colspan="1" rowspan="1">${n}</td> `)}
                         </tr>
-                      `
-        )}
-                `
-      )}
+                      `)}
+                `)}
           </tbody>
         </table>
       </div>
-    `;
-    }
-  };
-  NidocaTable.styles = i`
+    `}};gt.styles=c`
     :host {
       display: block;
       width: 100%;
@@ -4601,53 +1763,12 @@ ${this.value}</textarea
       box-sizing: border-box;
       text-align: left;
     }
-  `;
-  __decorateClass([
-    n5({ type: Array })
-  ], NidocaTable.prototype, "headers", 2);
-  __decorateClass([
-    n5({ type: Array })
-  ], NidocaTable.prototype, "rows", 2);
-  __decorateClass([
-    n5({ type: NidocaTheme, converter: String })
-  ], NidocaTable.prototype, "theme", 2);
-  NidocaTable = __decorateClass([
-    e4("nidoca-table")
-  ], NidocaTable);
-
-  // src/nidoca-tab-content.ts
-  var NidocaTabContent = class extends NidocaHtml {
-    constructor() {
-      super(...arguments);
-      this.selected = false;
-    }
-    render() {
-      return this.selected ? x` <slot></slot>` : x``;
-    }
-  };
-  NidocaTabContent.styles = i`
+  `,i([r({type:Array})],gt.prototype,"headers",2),i([r({type:Array})],gt.prototype,"rows",2),i([r({type:u,converter:String})],gt.prototype,"theme",2),gt=i([m("nidoca-table")],gt);var bt=class extends p{constructor(){super(...arguments);this.selected=!1}render(){return this.selected?o` <slot></slot>`:o``}};bt.styles=c`
     :host,
     slot {
       display: block;
     }
-  `;
-  __decorateClass([
-    n5({ type: Boolean })
-  ], NidocaTabContent.prototype, "selected", 2);
-  NidocaTabContent = __decorateClass([
-    e4("nidoca-tab-content")
-  ], NidocaTabContent);
-
-  // src/nidoca-tab.ts
-  var NidocaTab = class extends NidocaHtml {
-    constructor() {
-      super(...arguments);
-      this.selected = false;
-      this.text = "";
-      this.theme = "surface" /* surface */;
-    }
-    render() {
-      return x`
+  `,i([r({type:Boolean})],bt.prototype,"selected",2),bt=i([m("nidoca-tab-content")],bt);var J=class extends p{constructor(){super(...arguments);this.selected=!1;this.text="";this.theme="surface"}render(){return o`
       <style>
         .container {
           color: var(--app-color-text-${this.theme}-background);
@@ -4660,18 +1781,11 @@ ${this.value}</textarea
           border-color: var(--app-color-${this.theme}-hover);
         }
       </style>
-      <div class="container ${this.selected ? "selected" : ""}" @click="${() => this.tabClicked()}">
-        ${this.text ? x` <nidoca-text text="${this.text}"></nidoca-text> ` : x``}
+      <div class="container ${this.selected?"selected":""}" @click="${()=>this.tabClicked()}">
+        ${this.text?o` <nidoca-text text="${this.text}"></nidoca-text> `:o``}
         <slot></slot>
       </div>
-    `;
-    }
-    tabClicked() {
-      console.log("tab clicked.");
-      this.dispatchEvent(new CustomEvent("nidoca-event-tab-clicked", { detail: this, bubbles: true, composed: true }));
-    }
-  };
-  NidocaTab.styles = i`
+    `}tabClicked(){console.log("tab clicked."),this.dispatchEvent(new CustomEvent("nidoca-event-tab-clicked",{detail:this,bubbles:!0,composed:!0}))}};J.styles=c`
     :host {
       display: block;
       margin-right: var(--space);
@@ -4688,123 +1802,21 @@ ${this.value}</textarea
     slot {
       display: block;
     }
-  `;
-  __decorateClass([
-    n5({ type: Boolean })
-  ], NidocaTab.prototype, "selected", 2);
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaTab.prototype, "text", 2);
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaTab.prototype, "theme", 2);
-  NidocaTab = __decorateClass([
-    e4("nidoca-tab")
-  ], NidocaTab);
-
-  // src/nidoca-tabs.ts
-  var NidocaTabs = class extends NidocaHtml {
-    constructor() {
-      super(...arguments);
-      this.theme = "surface" /* surface */;
-      this.tabIndex = 0;
-    }
-    render() {
-      return x`
-      <div class="container" @nidoca-event-tab-clicked="${(event) => this.tabClicked(event)}">
+  `,i([r({type:Boolean})],J.prototype,"selected",2),i([r({type:String})],J.prototype,"text",2),i([r({type:String})],J.prototype,"theme",2),J=i([m("nidoca-tab")],J);var at=class extends p{constructor(){super(...arguments);this.theme="surface";this.tabIndex=0}render(){return o`
+      <div class="container" @nidoca-event-tab-clicked="${t=>this.tabClicked(t)}">
         <slot id="tabSlot" name="tab"></slot>
         <slot id="tabContentSlot" name="tabContent"></slot>
       </div>
-    `;
-    }
-    firstUpdated(_changedProperties) {
-      super.firstUpdated(_changedProperties);
-      this.tabIndexChanged();
-    }
-    update(changedProperties) {
-      super.update(changedProperties);
-      if (changedProperties.get("tabIndex") != void 0) {
-        this.tabIndexChanged();
-      }
-    }
-    tabIndexChanged() {
-      this.updateNidocaTabElements();
-      this.updateNidocaTabContentElemnts();
-    }
-    updateNidocaTabElements() {
-      if (this.tabSlot != null) {
-        const assignedElements = this.tabSlot.assignedElements();
-        const length = assignedElements.length;
-        const widthPerTab = 100 / length;
-        const selectedElement = assignedElements[this.tabIndex];
-        for (let index = 0; index < assignedElements.length; index++) {
-          const element = assignedElements[index];
-          if (element instanceof NidocaTab) {
-            element.theme = this.theme;
-            element.style.width = String(widthPerTab).concat("%");
-            if (element == selectedElement) {
-              element.selected = true;
-              element.classList.add("SELECTED");
-            } else {
-              element.selected = false;
-              element.classList.remove("SELECTED");
-            }
-          }
-        }
-      }
-    }
-    updateNidocaTabContentElemnts() {
-      let tabContentIndex = 0;
-      if (this.tabContentSlot != null) {
-        const assignedElements = this.tabContentSlot.assignedElements();
-        for (let index = 0; index < assignedElements.length; index++) {
-          const tabContentElement = assignedElements[index];
-          if (tabContentElement instanceof NidocaTabContent) {
-            if (this.tabIndex == tabContentIndex) {
-              tabContentElement.selected = true;
-            } else {
-              tabContentElement.selected = false;
-            }
-            tabContentIndex++;
-          }
-        }
-      }
-    }
-    tabClicked(event) {
-      const clickedTab = event.detail;
-      this.changeTabIndex(clickedTab);
-    }
-    changeTabIndex(newTab) {
-      if (newTab.selected) {
-        return;
-      }
-      if (this.tabSlot != null) {
-        const assignedElements = this.tabSlot.assignedElements();
-        for (let index = 0; index < assignedElements.length; index++) {
-          const element = assignedElements[index];
-          if (element instanceof NidocaTab) {
-            if (element == newTab) {
-              this.tabIndex = index;
-              break;
-            }
-          }
-        }
-      }
-    }
-    static example(slotName = "") {
-      return x`
-      <nidoca-tabs theme="surface" slot="${slotName}" tabIndex="0">
+    `}firstUpdated(t){super.firstUpdated(t),this.tabIndexChanged()}update(t){super.update(t),t.get("tabIndex")!=null&&this.tabIndexChanged()}tabIndexChanged(){this.updateNidocaTabElements(),this.updateNidocaTabContentElemnts()}updateNidocaTabElements(){if(this.tabSlot!=null){let t=this.tabSlot.assignedElements(),a=100/t.length,l=t[this.tabIndex];for(let d=0;d<t.length;d++){let h=t[d];h instanceof J&&(h.theme=this.theme,h.style.width=String(a).concat("%"),h==l?(h.selected=!0,h.classList.add("SELECTED")):(h.selected=!1,h.classList.remove("SELECTED")))}}}updateNidocaTabContentElemnts(){let t=0;if(this.tabContentSlot!=null){let n=this.tabContentSlot.assignedElements();for(let a=0;a<n.length;a++){let l=n[a];l instanceof bt&&(this.tabIndex==t?l.selected=!0:l.selected=!1,t++)}}}tabClicked(t){let n=t.detail;this.changeTabIndex(n)}changeTabIndex(t){if(!t.selected&&this.tabSlot!=null){let n=this.tabSlot.assignedElements();for(let a=0;a<n.length;a++){let l=n[a];if(l instanceof J&&l==t){this.tabIndex=a;break}}}}static example(t=""){return o`
+      <nidoca-tabs theme="surface" slot="${t}" tabIndex="0">
         <nidoca-tab slot="tab"><nidoca-text>Tab 1</nidoca-text></nidoca-tab>
         <nidoca-tab slot="tab"><nidoca-text>Tab 2</nidoca-text></nidoca-tab>
         <nidoca-tab slot="tab"><nidoca-text>Tab 3</nidoca-text></nidoca-tab>
-        <nidoca-tab-content slot="tabContent"> ${NidocaArticle.example()} </nidoca-tab-content>
-        <nidoca-tab-content slot="tabContent"> ${NidocaArticle.example()} </nidoca-tab-content>
-        <nidoca-tab-content slot="tabContent"> ${NidocaArticle.example()} </nidoca-tab-content>
+        <nidoca-tab-content slot="tabContent"> ${R.example()} </nidoca-tab-content>
+        <nidoca-tab-content slot="tabContent"> ${R.example()} </nidoca-tab-content>
+        <nidoca-tab-content slot="tabContent"> ${R.example()} </nidoca-tab-content>
       </nidoca-tabs>
-    `;
-    }
-  };
-  NidocaTabs.styles = i`
+    `}};at.styles=c`
     :host {
       display: block;
       width: 100%;
@@ -4827,51 +1839,11 @@ ${this.value}</textarea
       align-items: end;
       justify-content: center;
     }
-  `;
-  __decorateClass([
-    i4("#tabSlot")
-  ], NidocaTabs.prototype, "tabSlot", 2);
-  __decorateClass([
-    i4("#tabContentSlot")
-  ], NidocaTabs.prototype, "tabContentSlot", 2);
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaTabs.prototype, "theme", 2);
-  __decorateClass([
-    n5({ type: Number })
-  ], NidocaTabs.prototype, "tabIndex", 2);
-  NidocaTabs = __decorateClass([
-    e4("nidoca-tabs")
-  ], NidocaTabs);
-
-  // src/nidoca-template.ts
-  var NidocaTemplate = class extends NidocaHtml {
-    constructor() {
-      super();
-      this.hideLeft = true;
-      this.prominent = false;
-      document.getElementsByTagName("html")[0].setAttribute("oncontextmenu", "return false");
-      this.addEventListener("click", (event) => {
-        if (!this.hideLeft && this.leftElement) {
-          console.log("close");
-          const rect = this.leftElement.getBoundingClientRect();
-          this.hideLeft = 641 > window.innerWidth && 0 <= event.x - rect.width;
-        }
-      });
-    }
-    updated(_changedProperties) {
-      super.updated(_changedProperties);
-    }
-    render() {
-      return x`
+  `,i([g("#tabSlot")],at.prototype,"tabSlot",2),i([g("#tabContentSlot")],at.prototype,"tabContentSlot",2),i([r({type:String})],at.prototype,"theme",2),i([r({type:Number})],at.prototype,"tabIndex",2),at=i([m("nidoca-tabs")],at);var N=class extends p{constructor(){super();this.hideLeft=!0;this.prominent=!1;document.getElementsByTagName("html")[0].setAttribute("oncontextmenu","return false"),this.addEventListener("click",t=>{if(!this.hideLeft&&this.leftElement){console.log("close");let n=this.leftElement.getBoundingClientRect();this.hideLeft=641>window.innerWidth&&0<=t.x-n.width}})}updated(t){super.updated(t)}render(){return o`
       <slot
         id="left"
-        @nidoca-event-menu-item-clicked="${() => {
-        if (641 > window.innerWidth) {
-          this.hideLeft = true;
-        }
-      }}"
-        class="${this.hideLeft ? "hideLeft" : ""}"
+        @nidoca-event-menu-item-clicked="${()=>{641>window.innerWidth&&(this.hideLeft=!0)}}"
+        class="${this.hideLeft?"hideLeft":""}"
         name="left"
       >
       </slot>
@@ -4882,10 +1854,8 @@ ${this.value}</textarea
             slot="left"
             style="padding-left:var(--space-2);"
             icon="menu"
-            .clickable="${true}"
-            @nidoca-event-icon-clicked="${() => {
-        this.hideLeft = !this.hideLeft;
-      }}"
+            .clickable="${!0}"
+            @nidoca-event-icon-clicked="${()=>{this.hideLeft=!this.hideLeft}}"
           ></nidoca-icon>
 
           <span slot="left">
@@ -4903,10 +1873,7 @@ ${this.value}</textarea
         </nidoca-top-app-bar>
         <slot id="content" name="content"></slot>
       </div>
-    `;
-    }
-  };
-  NidocaTemplate.styles = i`
+    `}};N.styles=c`
     :host {
       display: flex;
       flex-direction: row;
@@ -4940,169 +1907,21 @@ ${this.value}</textarea
       height: 100vh;
       overflow: scroll;
     }
-  `;
-  __decorateClass([
-    n5({ type: Boolean })
-  ], NidocaTemplate.prototype, "hideLeft", 2);
-  __decorateClass([
-    n5({ type: Boolean })
-  ], NidocaTemplate.prototype, "prominent", 2);
-  __decorateClass([
-    i4("#header")
-  ], NidocaTemplate.prototype, "headerElement", 2);
-  __decorateClass([
-    i4("#left")
-  ], NidocaTemplate.prototype, "leftElement", 2);
-  __decorateClass([
-    i4("#content")
-  ], NidocaTemplate.prototype, "contentElement", 2);
-  NidocaTemplate = __decorateClass([
-    e4("nidoca-template")
-  ], NidocaTemplate);
-
-  // src/nidoca-video.ts
-  var NidocaVideo = class extends NidocaHtml {
-    firstUpdated(_changedProperties) {
-      super.firstUpdated(_changedProperties);
-      navigator.mediaDevices.getUserMedia({ video: true, audio: false }).then((stream) => {
-        if (this.videoElement) {
-          this.videoElement.srcObject = stream;
-        }
-      });
-    }
-    render() {
-      return x`
+  `,i([r({type:Boolean})],N.prototype,"hideLeft",2),i([r({type:Boolean})],N.prototype,"prominent",2),i([g("#header")],N.prototype,"headerElement",2),i([g("#left")],N.prototype,"leftElement",2),i([g("#content")],N.prototype,"contentElement",2),N=i([m("nidoca-template")],N);var yt=class extends p{firstUpdated(e){super.firstUpdated(e),navigator.mediaDevices.getUserMedia({video:!0,audio:!1}).then(t=>{this.videoElement&&(this.videoElement.srcObject=t)})}render(){return o`
       <video id="video" width="320" height="240" autoplay></video>
-      <button id="click-photo" @click="${() => this.makeFoto()}">Click Photo</button>
+      <button id="click-photo" @click="${()=>this.makeFoto()}">Click Photo</button>
       <canvas id="canvas" width="320" height="240"></canvas>
-    `;
-    }
-    makeFoto() {
-      if (this.canvasElement && this.videoElement) {
-        const context = this.canvasElement.getContext("2d");
-        if (context) {
-          context.drawImage(this.videoElement, 0, 0, this.canvasElement.width, this.canvasElement.height);
-          const image_data_url = this.canvasElement.toDataURL("image/jpeg");
-          console.log(image_data_url);
-        }
-      }
-    }
-  };
-  NidocaVideo.styles = i``;
-  __decorateClass([
-    i4("#video")
-  ], NidocaVideo.prototype, "videoElement", 2);
-  __decorateClass([
-    i4("#canvas")
-  ], NidocaVideo.prototype, "canvasElement", 2);
-  __decorateClass([
-    i4("#click-photo")
-  ], NidocaVideo.prototype, "buttonElement", 2);
-  NidocaVideo = __decorateClass([
-    e4("nidoca-video")
-  ], NidocaVideo);
-
-  // src/nidoca-svg-2-webp.ts
-  var NidocaSvg2Webp = class extends NidocaHtml {
-    constructor() {
-      super(...arguments);
-      //src: string = 'https://raw.githubusercontent.com/domoskanonos/devbox/main/assets/logo-ink.svg';
-      this.src = "";
-      this.canvasElements = [];
-      this.storeCanvasElements = [];
-    }
-    render() {
-      return x`
+    `}makeFoto(){if(this.canvasElement&&this.videoElement){let e=this.canvasElement.getContext("2d");if(e){e.drawImage(this.videoElement,0,0,this.canvasElement.width,this.canvasElement.height);let t=this.canvasElement.toDataURL("image/jpeg");console.log(t)}}}};yt.styles=c``,i([g("#video")],yt.prototype,"videoElement",2),i([g("#canvas")],yt.prototype,"canvasElement",2),i([g("#click-photo")],yt.prototype,"buttonElement",2),yt=i([m("nidoca-video")],yt);var Pt=class extends p{constructor(){super(...arguments);this.src="";this.canvasElements=[];this.storeCanvasElements=[]}render(){return o`
       <img style="display: none;" id="img" src="${this.src}" />
 
-      ${this.canvasElements.map((canvas) => {
-        return x`${canvas}`;
-      })}
-    `;
-    }
-    updated(changedProperties) {
-      super.updated(changedProperties);
-      changedProperties.forEach((oldValue, propName) => {
-        console.debug(`${this.tagName} : property ${String(propName)} changed. oldValue: ${oldValue}`);
-        if (propName == "src") {
-          this.convert();
-          const playstoreImages = [
-            ["App-Symbol", 512, 512],
-            ["Vorstellungsgrafik", 1024, 500],
-            ["screenshoot_dummy", 1920, 1080]
-          ];
-        }
-      });
-    }
-    convert() {
-      if (this.img) {
-        console.log("GO");
-        this.img.onload = () => {
-          [
-            [12, 12],
-            [16, 16],
-            [22, 22],
-            [24, 24],
-            [32, 32],
-            [36, 36],
-            [48, 48],
-            [64, 64],
-            [72, 72],
-            [96, 96],
-            [128, 128],
-            [144, 144],
-            [192, 192]
-          ].forEach((size) => {
-            const canvas = document.createElement("canvas");
-            canvas.width = size[0];
-            canvas.height = size[1];
-            const context = canvas.getContext("2d");
-            if (context) {
-              if (this.img) {
-                this.img.crossOrigin = "anonymous";
-                context.drawImage(this.img, 0, 0, size[0], size[1]);
-                canvas.toBlob((blob) => {
-                  if (blob) {
-                  }
-                }, "image/webp");
-              }
-            }
-            this.canvasElements.push(canvas);
-          });
-          this.requestUpdate();
-        };
-      }
-    }
-  };
-  NidocaSvg2Webp.styles = i``;
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaSvg2Webp.prototype, "src", 2);
-  __decorateClass([
-    i4("#img")
-  ], NidocaSvg2Webp.prototype, "img", 2);
-  NidocaSvg2Webp = __decorateClass([
-    e4("nidoca-svg-2-webp")
-  ], NidocaSvg2Webp);
-
-  // src/nidoca-text.ts
-  var NidocaText = class extends NidocaHtml {
-    constructor() {
-      super(...arguments);
-      this.theme = "surface" /* surface */;
-      this.text = "";
-    }
-    render() {
-      return x`<style>
+      ${this.canvasElements.map(t=>o`${t}`)}
+    `}updated(t){super.updated(t),t.forEach((n,a)=>{if(console.debug(`${this.tagName} : property ${String(a)} changed. oldValue: ${n}`),a=="src"){this.convert();let l=[["App-Symbol",512,512],["Vorstellungsgrafik",1024,500],["screenshoot_dummy",1920,1080]]}})}convert(){this.img&&(console.log("GO"),this.img.onload=()=>{[[12,12],[16,16],[22,22],[24,24],[32,32],[36,36],[48,48],[64,64],[72,72],[96,96],[128,128],[144,144],[192,192]].forEach(t=>{let n=document.createElement("canvas");n.width=t[0],n.height=t[1];let a=n.getContext("2d");a&&this.img&&(this.img.crossOrigin="anonymous",a.drawImage(this.img,0,0,t[0],t[1]),n.toBlob(l=>{},"image/webp")),this.canvasElements.push(n)}),this.requestUpdate()})}};Pt.styles=c``,i([r({type:String})],Pt.prototype,"src",2),i([g("#img")],Pt.prototype,"img",2),Pt=i([m("nidoca-svg-2-webp")],Pt);var w=class extends p{constructor(){super(...arguments);this.theme="surface";this.text=""}render(){return o`<style>
         slot {
           color: var(--app-color-text-${this.theme});
         }
       </style>
-      <slot>${this.text}</slot>`;
-    }
-    static example(slotName = "") {
-      return x`
-      <div slot="${slotName}">
+      <slot>${this.text}</slot>`}static example(t=""){return o`
+      <div slot="${t}">
         <nidoca-text-h1>nidoca-text-h1</nidoca-text-h1>
         <nidoca-text-h2>nidoca-text-h2</nidoca-text-h2>
         <nidoca-text-h3>nidoca-text-h3</nidoca-text-h3>
@@ -5120,10 +1939,7 @@ ${this.value}</textarea
         <nidoca-text-info>nidoca-text-info</nidoca-text-info>
         <nidoca-text-success>nidoca-text-success</nidoca-text-success>
       </div>
-    `;
-    }
-  };
-  NidocaText.styles = i`
+    `}};w.styles=c`
     :host,
     slot,
     ::slotted(:host),
@@ -5136,24 +1952,7 @@ ${this.value}</textarea
 
     slot {
     }
-  `;
-  __decorateClass([
-    n5({ type: NidocaTheme, converter: String })
-  ], NidocaText.prototype, "theme", 2);
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaText.prototype, "text", 2);
-  NidocaText = __decorateClass([
-    e4("nidoca-text")
-  ], NidocaText);
-
-  // src/nidoca-text-body.ts
-  var NidocaTextBody = class extends NidocaText {
-    render() {
-      return x` <slot style="color: var(--app-color-text-${this.theme});">${this.text}</slot>`;
-    }
-  };
-  NidocaTextBody.styles = i`
+  `,i([r({type:u,converter:String})],w.prototype,"theme",2),i([r({type:String})],w.prototype,"text",2),w=i([m("nidoca-text")],w);var se=class extends w{render(){return o` <slot style="color: var(--app-color-text-${this.theme});">${this.text}</slot>`}};se.styles=c`
     :host,
     slot,
     ::slotted(:host),
@@ -5163,18 +1962,7 @@ ${this.value}</textarea
       font-weight: 400;
       font-size: 105%;
     }
-  `;
-  NidocaTextBody = __decorateClass([
-    e4("nidoca-text-body")
-  ], NidocaTextBody);
-
-  // src/nidoca-text-button.ts
-  var NidocaTextButton = class extends NidocaText {
-    render() {
-      return x`${super.render()}`;
-    }
-  };
-  NidocaTextButton.styles = i`
+  `,se=i([m("nidoca-text-body")],se);var ae=class extends w{render(){return o`${super.render()}`}};ae.styles=c`
     :host,
     slot,
     ::slotted(:host),
@@ -5185,15 +1973,7 @@ ${this.value}</textarea
       line-height: 1.5em;
       filter: brightness(var(--app-lighten-3));
     }
-  `;
-  NidocaTextButton = __decorateClass([
-    e4("nidoca-text-button")
-  ], NidocaTextButton);
-
-  // src/nidoca-text-overline.ts
-  var NidocaTextOverline = class extends NidocaText {
-  };
-  NidocaTextOverline.styles = i`
+  `,ae=i([m("nidoca-text-button")],ae);var le=class extends w{};le.styles=c`
     :host,
     slot,
     ::slotted(:host),
@@ -5203,18 +1983,7 @@ ${this.value}</textarea
       font-weight: 400;
       text-transform: uppercase;
     }
-  `;
-  NidocaTextOverline = __decorateClass([
-    e4("nidoca-text-overline")
-  ], NidocaTextOverline);
-
-  // src/nidoca-text-subtitle.ts
-  var NidocaTextSubtitle = class extends NidocaText {
-    render() {
-      return x` <slot style="color: var(--app-color-text-${this.theme});">${this.text}</slot>`;
-    }
-  };
-  NidocaTextSubtitle.styles = i`
+  `,le=i([m("nidoca-text-overline")],le);var me=class extends w{render(){return o` <slot style="color: var(--app-color-text-${this.theme});">${this.text}</slot>`}};me.styles=c`
     :host,
     slot,
     ::slotted(:host),
@@ -5224,23 +1993,12 @@ ${this.value}</textarea
       font-weight: 600;
       font-size: 105%;
     }
-  `;
-  NidocaTextSubtitle = __decorateClass([
-    e4("nidoca-text-subtitle")
-  ], NidocaTextSubtitle);
-
-  // src/nidoca-text-caption.ts
-  var NidocaTextCaption = class extends NidocaText {
-    render() {
-      return x`<style>
+  `,me=i([m("nidoca-text-subtitle")],me);var P=class extends w{render(){return o`<style>
         slot {
           color: var(--app-color-subtext-${this.theme});
         }
       </style>
-      <slot>${this.text}</slot>`;
-    }
-  };
-  NidocaTextCaption.styles = i`
+      <slot>${this.text}</slot>`}};P.styles=c`
     :host,
     slot,
     ::slotted(:host),
@@ -5249,75 +2007,27 @@ ${this.value}</textarea
       font-weight: 400;
       line-height: 1.25em;
     }
-  `;
-  NidocaTextCaption = __decorateClass([
-    e4("nidoca-text-caption")
-  ], NidocaTextCaption);
-
-  // src/nidoca-text-error.ts
-  var NidocaTextError = class extends NidocaTextCaption {
-    render() {
-      return x`<style>
+  `,P=i([m("nidoca-text-caption")],P);var Xe=class extends P{render(){return o`<style>
         slot {
           color: var(--app-color-error-background);
         }
       </style>
-      <slot>${this.text}</slot>`;
-    }
-  };
-  NidocaTextError = __decorateClass([
-    e4("nidoca-text-error")
-  ], NidocaTextError);
-
-  // src/nidoca-text-success.ts
-  var NidocaTextSuccess = class extends NidocaTextCaption {
-    render() {
-      return x`<style>
+      <slot>${this.text}</slot>`}};Xe=i([m("nidoca-text-error")],Xe);var Ye=class extends P{render(){return o`<style>
         slot {
           color: var(--app-color-success-background);
         }
       </style>
-      <slot>${this.text}</slot>`;
-    }
-  };
-  NidocaTextSuccess = __decorateClass([
-    e4("nidoca-text-success")
-  ], NidocaTextSuccess);
-
-  // src/nidoca-text-warning.ts
-  var NidocaTextWarning = class extends NidocaTextCaption {
-    render() {
-      return x`<style>
+      <slot>${this.text}</slot>`}};Ye=i([m("nidoca-text-success")],Ye);var Ke=class extends P{render(){return o`<style>
         slot {
           color: var(--app-color-warning-background);
         }
       </style>
-      <slot>${this.text}</slot>`;
-    }
-  };
-  NidocaTextWarning = __decorateClass([
-    e4("nidoca-text-warning")
-  ], NidocaTextWarning);
-
-  // src/nidoca-text-info.ts
-  var NidocaTextInfo = class extends NidocaTextCaption {
-    render() {
-      return x`<style>
+      <slot>${this.text}</slot>`}};Ke=i([m("nidoca-text-warning")],Ke);var Je=class extends P{render(){return o`<style>
         slot {
           color: var(--app-color-info-background);
         }
       </style>
-      <slot>${this.text}</slot>`;
-    }
-  };
-  NidocaTextInfo = __decorateClass([
-    e4("nidoca-text-info")
-  ], NidocaTextInfo);
-
-  // src/nidoca-text-h1.ts
-  var NidocaTextH1 = class extends NidocaText {
-  };
-  NidocaTextH1.styles = i`
+      <slot>${this.text}</slot>`}};Je=i([m("nidoca-text-info")],Je);var ce=class extends w{};ce.styles=c`
     :host,
     slot,
     ::slotted(:host),
@@ -5327,15 +2037,7 @@ ${this.value}</textarea
       font-size: 200%;
       line-height: 1.1em;
     }
-  `;
-  NidocaTextH1 = __decorateClass([
-    e4("nidoca-text-h1")
-  ], NidocaTextH1);
-
-  // src/nidoca-text-h2.ts
-  var NidocaTextH2 = class extends NidocaText {
-  };
-  NidocaTextH2.styles = i`
+  `,ce=i([m("nidoca-text-h1")],ce);var de=class extends w{};de.styles=c`
     :host,
     slot,
     ::slotted(:host),
@@ -5345,15 +2047,7 @@ ${this.value}</textarea
       font-size: 170%;
       line-height: 1.2em;
     }
-  `;
-  NidocaTextH2 = __decorateClass([
-    e4("nidoca-text-h2")
-  ], NidocaTextH2);
-
-  // src/nidoca-text-h3.ts
-  var NidocaTextH3 = class extends NidocaText {
-  };
-  NidocaTextH3.styles = i`
+  `,de=i([m("nidoca-text-h2")],de);var pe=class extends w{};pe.styles=c`
     :host,
     slot,
     ::slotted(:host),
@@ -5363,15 +2057,7 @@ ${this.value}</textarea
       font-size: 150%;
       line-height: 1.5em;
     }
-  `;
-  NidocaTextH3 = __decorateClass([
-    e4("nidoca-text-h3")
-  ], NidocaTextH3);
-
-  // src/nidoca-text-h4.ts
-  var NidocaTextH4 = class extends NidocaText {
-  };
-  NidocaTextH4.styles = i`
+  `,pe=i([m("nidoca-text-h3")],pe);var he=class extends w{};he.styles=c`
     :host,
     slot,
     ::slotted(:host),
@@ -5381,15 +2067,7 @@ ${this.value}</textarea
       font-size: 130%;
       line-height: 1.5em;
     }
-  `;
-  NidocaTextH4 = __decorateClass([
-    e4("nidoca-text-h4")
-  ], NidocaTextH4);
-
-  // src/nidoca-text-h5.ts
-  var NidocaTextH5 = class extends NidocaText {
-  };
-  NidocaTextH5.styles = i`
+  `,he=i([m("nidoca-text-h4")],he);var ue=class extends w{};ue.styles=c`
     :host,
     slot,
     ::slotted(:host),
@@ -5399,15 +2077,7 @@ ${this.value}</textarea
       font-size: 120%;
       line-height: 1.5em;
     }
-  `;
-  NidocaTextH5 = __decorateClass([
-    e4("nidoca-text-h5")
-  ], NidocaTextH5);
-
-  // src/nidoca-text-h6.ts
-  var NidocaTextH6 = class extends NidocaText {
-  };
-  NidocaTextH6.styles = i`
+  `,ue=i([m("nidoca-text-h5")],ue);var fe=class extends w{};fe.styles=c`
     :host,
     slot,
     ::slotted(:host),
@@ -5417,22 +2087,7 @@ ${this.value}</textarea
       font-size: 110%;
       line-height: 1.5em;
     }
-  `;
-  NidocaTextH6 = __decorateClass([
-    e4("nidoca-text-h6")
-  ], NidocaTextH6);
-
-  // src/nidoca-search-bar.ts
-  var NidocaSearchBar = class extends NidocaHtml {
-    constructor() {
-      super(...arguments);
-      this.value = "";
-      this.placeholder = "";
-      this.disabled = false;
-      this.theme = "surface" /* surface */;
-    }
-    render() {
-      return x`
+  `,fe=i([m("nidoca-text-h6")],fe);var tt=class extends p{constructor(){super(...arguments);this.value="";this.placeholder="";this.disabled=!1;this.theme="surface"}render(){return o`
       <style>
         .container,
         input {
@@ -5455,34 +2110,15 @@ ${this.value}</textarea
           value="${this.value}"
           placeholder="${this.placeholder}"
           ?disabled="${this.disabled}"
-          @input="${() => this.valueChanged()}"
+          @input="${()=>this.valueChanged()}"
         />
         <nidoca-icon
           style="padding-right:var(--space);padding-left:var(--space);"
           icon="close"
-          @click="${() => this.clearValue()}"
+          @click="${()=>this.clearValue()}"
         ></nidoca-icon>
       </div>
-    `;
-    }
-    clearValue() {
-      this.value = "";
-    }
-    async valueChanged() {
-      const eventName = "nidoca-search-bar-event-value-changed";
-      const customEvent = new CustomEvent(eventName, {
-        detail: this.inputElement?.value,
-        bubbles: true,
-        composed: true
-      });
-      console.debug("dispatch custom event type: %s, detail: %s", customEvent.type, JSON.stringify(customEvent.detail));
-      this.dispatchEvent(customEvent);
-    }
-    static example(slotName = "") {
-      return x`<nidoca-search-bar slot="${slotName}" theme="primary" placeholder="Suche..."></nidoca-search-bar>`;
-    }
-  };
-  NidocaSearchBar.styles = i`
+    `}clearValue(){this.value=""}async valueChanged(){let t="nidoca-search-bar-event-value-changed",n=new CustomEvent(t,{detail:this.inputElement?.value,bubbles:!0,composed:!0});console.debug("dispatch custom event type: %s, detail: %s",n.type,JSON.stringify(n.detail)),this.dispatchEvent(n)}static example(t=""){return o`<nidoca-search-bar slot="${t}" theme="primary" placeholder="Suche..."></nidoca-search-bar>`}};tt.styles=c`
     :host {
       width: 100%;
       display: block;
@@ -5513,71 +2149,7 @@ ${this.value}</textarea
       outline: none;
       box-shadow: none;
     }
-  `;
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaSearchBar.prototype, "value", 2);
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaSearchBar.prototype, "placeholder", 2);
-  __decorateClass([
-    n5({ type: Boolean })
-  ], NidocaSearchBar.prototype, "disabled", 2);
-  __decorateClass([
-    i4("#inputElement")
-  ], NidocaSearchBar.prototype, "inputElement", 2);
-  __decorateClass([
-    n5({ type: NidocaTheme, converter: String })
-  ], NidocaSearchBar.prototype, "theme", 2);
-  NidocaSearchBar = __decorateClass([
-    e4("nidoca-search-bar")
-  ], NidocaSearchBar);
-
-  // src/nidoca-transition.ts
-  var NidocaTransitionType = class {
-    static {
-      this.CENTER = "CENTER";
-    }
-    static {
-      this.LEFT = "LEFT";
-    }
-    static {
-      this.RIGHT = "RIGHT";
-    }
-    static {
-      this.TOP = "TOP";
-    }
-    static {
-      this.BOTTOM = "BOTTOM";
-    }
-    static {
-      this.SLIDE_CENTER = "SLIDE_CENTER";
-    }
-    static {
-      this.SLIDE_LEFT = "SLIDE_LEFT";
-    }
-    static {
-      this.SLIDE_RIGHT = "SLIDE_RIGHT";
-    }
-    static {
-      this.SLIDE_TOP = "SLIDE_TOP";
-    }
-    static {
-      this.SLIDE_BOTTOM = "SLIDE_BOTTOM";
-    }
-  };
-  var NidocaTransition = class extends NidocaHtml {
-    constructor() {
-      super(...arguments);
-      this.transitionType = NidocaTransitionType.CENTER;
-      this.duration = 0.5;
-    }
-    render() {
-      return x` <div class="${l6(this.transitionType)}"><slot></slot></div> `;
-    }
-  };
-  // seconds
-  NidocaTransition.styles = i`
+  `,i([r({type:String})],tt.prototype,"value",2),i([r({type:String})],tt.prototype,"placeholder",2),i([r({type:Boolean})],tt.prototype,"disabled",2),i([g("#inputElement")],tt.prototype,"inputElement",2),i([r({type:u,converter:String})],tt.prototype,"theme",2),tt=i([m("nidoca-search-bar")],tt);var ge=class{static{this.CENTER="CENTER"}static{this.LEFT="LEFT"}static{this.RIGHT="RIGHT"}static{this.TOP="TOP"}static{this.BOTTOM="BOTTOM"}static{this.SLIDE_CENTER="SLIDE_CENTER"}static{this.SLIDE_LEFT="SLIDE_LEFT"}static{this.SLIDE_RIGHT="SLIDE_RIGHT"}static{this.SLIDE_TOP="SLIDE_TOP"}static{this.SLIDE_BOTTOM="SLIDE_BOTTOM"}},Bt=class extends p{constructor(){super(...arguments);this.transitionType=ge.CENTER;this.duration=.5}render(){return o` <div class="${_(this.transitionType)}"><slot></slot></div> `}};Bt.styles=c`
     /* Declaration of keyframes */
 
     @-webkit-keyframes fadeInLeft {
@@ -6073,40 +2645,19 @@ ${this.value}</textarea
       -webkit-animation-duration: 1s;
       -webkit-animation-fill-mode: both;
     }
-  `;
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaTransition.prototype, "transitionType", 2);
-  __decorateClass([
-    n5({ type: Number })
-  ], NidocaTransition.prototype, "duration", 2);
-  NidocaTransition = __decorateClass([
-    e4("nidoca-transition")
-  ], NidocaTransition);
-
-  // src/nidoca-dialog.ts
-  var NidocaDialog = class extends NidocaHtml {
-    constructor() {
-      super(...arguments);
-      this.show = false;
-    }
-    render() {
-      return this.show ? x`
+  `,i([r({type:String})],Bt.prototype,"transitionType",2),i([r({type:Number})],Bt.prototype,"duration",2),Bt=i([m("nidoca-transition")],Bt);var Zt=class extends p{constructor(){super(...arguments);this.show=!1}render(){return this.show?o`
           <div class="fullScreen opacScreen"></div>
           <div class="fullScreen wrapperOutside">
             <div class="wrapperInside">
               <!-- Dialog -->
-              <nidoca-transition .transitionType="${NidocaTransitionType.SLIDE_CENTER}">
+              <nidoca-transition .transitionType="${ge.SLIDE_CENTER}">
                 <div class="dialogContainer">
                   <slot></slot>
                 </div>
               </nidoca-transition>
             </div>
           </div>
-        ` : x``;
-    }
-  };
-  NidocaDialog.styles = i`
+        `:o``}};Zt.styles=c`
     .fullScreen {
       width: 100vw;
       height: 100vh;
@@ -6140,108 +2691,37 @@ ${this.value}</textarea
       padding: 0;
       margin: 0 auto;
     }
-  `;
-  __decorateClass([
-    n5({ type: Boolean })
-  ], NidocaDialog.prototype, "show", 2);
-  NidocaDialog = __decorateClass([
-    e4("nidoca-dialog")
-  ], NidocaDialog);
-
-  // src/nidoca-dialog-decision.ts
-  var NidocaDialogDecision = class extends NidocaHtml {
-    constructor() {
-      super(...arguments);
-      this.show = false;
-      this.title = "Ja oder Nein ?";
-      this.description = "Entscheide dich";
-      this.labelButtonYes = "Ja";
-      this.labelButtonNo = "Nein";
-    }
-    render() {
-      return x`<nidoca-dialog .show="${this.show}">
+  `,i([r({type:Boolean})],Zt.prototype,"show",2),Zt=i([m("nidoca-dialog")],Zt);var et=class extends p{constructor(){super(...arguments);this.show=!1;this.title="Ja oder Nein ?";this.description="Entscheide dich";this.labelButtonYes="Ja";this.labelButtonNo="Nein"}render(){return o`<nidoca-dialog .show="${this.show}">
       <nidoca-box style="width:300px;">
         <nidoca-text-h2 style="padding-bottom:var(--space-2);">${this.title}</nidoca-text-h2>
         <nidoca-text style="padding-bottom:var(--space-2);">${this.description} </nidoca-text>
         <nidoca-button
           style="padding-bottom:var(--space-2);"
-          type="${"text" /* text */}"
-          @click="${() => {
-        this.dispatchEvent(
-          new CustomEvent("nidoca-dialog-decision-yes", {
-            detail: this,
-            bubbles: true,
-            composed: true
-          })
-        );
-      }}"
+          type="${"text"}"
+          @click="${()=>{this.dispatchEvent(new CustomEvent("nidoca-dialog-decision-yes",{detail:this,bubbles:!0,composed:!0}))}}"
           >${this.labelButtonYes}
         </nidoca-button>
         <nidoca-button
           style="padding-bottom:var(--space-2);"
-          type="${"text" /* text */}"
-          @click="${() => {
-        this.dispatchEvent(
-          new CustomEvent("nidoca-dialog-decision-no", {
-            detail: this,
-            bubbles: true,
-            composed: true
-          })
-        );
-      }}"
+          type="${"text"}"
+          @click="${()=>{this.dispatchEvent(new CustomEvent("nidoca-dialog-decision-no",{detail:this,bubbles:!0,composed:!0}))}}"
           >${this.labelButtonNo}
         </nidoca-button>
       </nidoca-box>
-    </nidoca-dialog>`;
-    }
-  };
-  NidocaDialogDecision.styles = i``;
-  __decorateClass([
-    n5({ type: Boolean })
-  ], NidocaDialogDecision.prototype, "show", 2);
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaDialogDecision.prototype, "title", 2);
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaDialogDecision.prototype, "description", 2);
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaDialogDecision.prototype, "labelButtonYes", 2);
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaDialogDecision.prototype, "labelButtonNo", 2);
-  NidocaDialogDecision = __decorateClass([
-    e4("nidoca-dialog-decision")
-  ], NidocaDialogDecision);
-
-  // src/nidoca-infobox.ts
-  var NidocaInfobox = class extends NidocaHtml {
-    constructor() {
-      super(...arguments);
-      this.icon = "";
-    }
-    render() {
-      return x`
+    </nidoca-dialog>`}};et.styles=c``,i([r({type:Boolean})],et.prototype,"show",2),i([r({type:String})],et.prototype,"title",2),i([r({type:String})],et.prototype,"description",2),i([r({type:String})],et.prototype,"labelButtonYes",2),i([r({type:String})],et.prototype,"labelButtonNo",2),et=i([m("nidoca-dialog-decision")],et);var Qt=class extends p{constructor(){super(...arguments);this.icon=""}render(){return o`
       <nidoca-icon-extended class="icon" icon="${this.icon}"></nidoca-icon-extended>
       <nidoca-card class="card">
         <slot></slot>
       </nidoca-card>
-    `;
-    }
-    static example(slotName = "", theme = "surface") {
-      return x`
-      <nidoca-infobox slot="${slotName}" icon="handshake" style="width:250px; height:250px;">
-        <nidoca-text-h5 theme="${theme}">Community</nidoca-text-h5>
-        <nidoca-text-body theme="${theme}"
+    `}static example(t="",n="surface"){return o`
+      <nidoca-infobox slot="${t}" icon="handshake" style="width:250px; height:250px;">
+        <nidoca-text-h5 theme="${n}">Community</nidoca-text-h5>
+        <nidoca-text-body theme="${n}"
           >Gemeinsam sind wir stark. Wenn wir einander helfen, können wir alles erreichen. Wir wollen unsere Community
           stärken.</nidoca-text-body
         >
       </nidoca-infobox>
-    `;
-    }
-  };
-  NidocaInfobox.styles = i`
+    `}};Qt.styles=c`
     :host {
       display: block;
       text-align: center;
@@ -6258,25 +2738,7 @@ ${this.value}</textarea
       display: block;
       margin-top: calc(((var(--icon-size) / 2) +var(--space)) * -1);
     }
-  `;
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaInfobox.prototype, "icon", 2);
-  NidocaInfobox = __decorateClass([
-    e4("nidoca-infobox")
-  ], NidocaInfobox);
-
-  // src/nidoca-avatar.ts
-  var NidocaAvatar = class extends NidocaHtml {
-    constructor() {
-      super(...arguments);
-      this.theme = "surface" /* surface */;
-      this.src = "";
-      this.title = "";
-      this.subtitle = "";
-    }
-    render() {
-      return x`
+  `,i([r({type:String})],Qt.prototype,"icon",2),Qt=i([m("nidoca-infobox")],Qt);var lt=class extends p{constructor(){super(...arguments);this.theme="surface";this.src="";this.title="";this.subtitle=""}render(){return o`
             <div
                     style="display:flex;flex-direction:column;align-items:center;justify-content:space-between;align-content:center;"
             >
@@ -6287,49 +2749,19 @@ ${this.value}</textarea
 
   </div>
             </div>
-            </div>`;
-    }
-    static example(slotName = "") {
-      return x`<nidoca-avatar
+            </div>`}static example(t=""){return o`<nidoca-avatar
       width="64px"
       width="64px"
-      slot="${slotName}"
+      slot="${t}"
       title="Dominik Bruhn"
       subtitle="Softwareentwickler"
       src="face.jpg"
       >Dominik Bruhn</nidoca-avatar
-    >`;
-    }
-  };
-  NidocaAvatar.styles = i`
+    >`}};lt.styles=c`
     :host {
       display: block;
     }
-  `;
-  __decorateClass([
-    n5({ type: NidocaTheme, converter: String })
-  ], NidocaAvatar.prototype, "theme", 2);
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaAvatar.prototype, "src", 2);
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaAvatar.prototype, "title", 2);
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaAvatar.prototype, "subtitle", 2);
-  NidocaAvatar = __decorateClass([
-    e4("nidoca-avatar")
-  ], NidocaAvatar);
-
-  // src/nidoca-card.ts
-  var NidocaCard = class extends NidocaHtml {
-    constructor() {
-      super(...arguments);
-      this.theme = "surface" /* surface */;
-    }
-    render() {
-      return x`
+  `,i([r({type:u,converter:String})],lt.prototype,"theme",2),i([r({type:String})],lt.prototype,"src",2),i([r({type:String})],lt.prototype,"title",2),i([r({type:String})],lt.prototype,"subtitle",2),lt=i([m("nidoca-avatar")],lt);var Ft=class extends p{constructor(){super(...arguments);this.theme="surface"}render(){return o`
       <style>
         :host {
           background-color: var(--app-color-${this.theme}-background-light);
@@ -6337,10 +2769,7 @@ ${this.value}</textarea
         }
       </style>
       <slot></slot>
-    `;
-    }
-  };
-  NidocaCard.styles = i`
+    `}};Ft.styles=c`
     :host {
       box-sizing: border-box;
       display: block;
@@ -6356,42 +2785,11 @@ ${this.value}</textarea
       align-items: center;
       height: 100%;
     }
-  `;
-  __decorateClass([
-    n5({ type: NidocaTheme, converter: String })
-  ], NidocaCard.prototype, "theme", 2);
-  NidocaCard = __decorateClass([
-    e4("nidoca-card")
-  ], NidocaCard);
-
-  // src/nidoca-gallery.ts
-  var NidocaGallery = class extends NidocaHtml {
-    render() {
-      return x`
+  `,i([r({type:u,converter:String})],Ft.prototype,"theme",2),Ft=i([m("nidoca-card")],Ft);var be=class extends p{render(){return o`
       <nidoca-layout-spacer bottom="var(--space)" left="">
-        <slot id="slotElement" @slotchange="${(event) => this.slotChanged(event)}"></slot>
+        <slot id="slotElement" @slotchange="${e=>this.slotChanged(e)}"></slot>
       </nidoca-layout-spacer>
-    `;
-    }
-    slotChanged(event) {
-      const slotElement = event.target;
-      if (slotElement == void 0) {
-        return;
-      }
-      const elements = slotElement.assignedElements();
-      for (let index = 0; index < elements.length; index++) {
-        const element = elements[index];
-        const classList = element.classList;
-        if (!classList.contains("flexItem")) {
-          classList.add("flexItem");
-        }
-        if (!classList.contains("flexItemDevice")) {
-          classList.add("flexItemDevice");
-        }
-      }
-    }
-  };
-  NidocaGallery.styles = i`
+    `}slotChanged(e){let t=e.target;if(t==null)return;let n=t.assignedElements();for(let a=0;a<n.length;a++){let d=n[a].classList;d.contains("flexItem")||d.add("flexItem"),d.contains("flexItemDevice")||d.add("flexItemDevice")}}};be.styles=c`
     slot,
     ::slotted(slot) {
       display: flex;
@@ -6405,56 +2803,13 @@ ${this.value}</textarea
       flex-basis: 24%;
       padding-top: var(--space-3);
     }
-  `;
-  NidocaGallery = __decorateClass([
-    e4("nidoca-gallery")
-  ], NidocaGallery);
-
-  // src/nidoca-print.ts
-  var NidocaPrint = class extends NidocaHtml {
-    render() {
-      return x`<slot></slot>`;
-    }
-    print() {
-      const printWindow = window.open("");
-      if (printWindow) {
-        printWindow.document.write(this.innerHTML);
-        printWindow.print();
-        printWindow.close();
-      }
-    }
-  };
-  NidocaPrint.styles = i`
+  `,be=i([m("nidoca-gallery")],be);var ye=class extends p{render(){return o`<slot></slot>`}print(){let e=window.open("");e&&(e.document.write(this.innerHTML),e.print(),e.close())}};ye.styles=c`
     :host {
       display: none;
     }
-  `;
-  NidocaPrint = __decorateClass([
-    e4("nidoca-print")
-  ], NidocaPrint);
-
-  // src/nidoca-section.ts
-  var NidocaSection = class extends NidocaHtml {
-    render() {
-      return x`
-      <slot id="container" class="container" @slotchange="${(event) => this.slotChanged(event)}"></slot>
-    `;
-    }
-    slotChanged(event) {
-      const slotElement = event.target;
-      const elements = slotElement.assignedElements();
-      const elementSize = elements.length;
-      for (let index = 0; index < elementSize; index++) {
-        const element = elements[index];
-        const classList = element.classList;
-        const itemClazz = "item_count_" + elementSize;
-        if (!classList.contains(itemClazz)) {
-          classList.add(itemClazz);
-        }
-      }
-    }
-  };
-  NidocaSection.styles = i`
+  `,ye=i([m("nidoca-print")],ye);var xe=class extends p{render(){return o`
+      <slot id="container" class="container" @slotchange="${e=>this.slotChanged(e)}"></slot>
+    `}slotChanged(e){let n=e.target.assignedElements(),a=n.length;for(let l=0;l<a;l++){let h=n[l].classList,f="item_count_"+a;h.contains(f)||h.add(f)}}};xe.styles=c`
     :host {
       display: block;
       margin: auto;
@@ -6500,18 +2855,7 @@ ${this.value}</textarea
         width: 100%;
       }
     }
-  `;
-  NidocaSection = __decorateClass([
-    e4("nidoca-section")
-  ], NidocaSection);
-
-  // src/nidoca-dashboard.ts
-  var NidocaDashboard = class extends NidocaHtml {
-    render() {
-      return x` <slot></slot>`;
-    }
-  };
-  NidocaDashboard.styles = i`
+  `,xe=i([m("nidoca-section")],xe);var ve=class extends p{render(){return o` <slot></slot>`}};ve.styles=c`
     :host {
       display: block;
     }
@@ -6531,16 +2875,7 @@ ${this.value}</textarea
         width: 100%;
       }
     }
-  `;
-  NidocaDashboard = __decorateClass([
-    e4("nidoca-dashboard")
-  ], NidocaDashboard);
-  var NidocaDashboardBox25 = class extends NidocaHtml {
-    render() {
-      return x` <slot></slot>`;
-    }
-  };
-  NidocaDashboardBox25.styles = i`
+  `,ve=i([m("nidoca-dashboard")],ve);var we=class extends p{render(){return o` <slot></slot>`}};we.styles=c`
     :host {
       display: block;
       width: 25%;
@@ -6551,16 +2886,7 @@ ${this.value}</textarea
         width: 50%;
       }
     }
-  `;
-  NidocaDashboardBox25 = __decorateClass([
-    e4("nidoca-dashboard-box-25")
-  ], NidocaDashboardBox25);
-  var NidocaDashboardBox50 = class extends NidocaHtml {
-    render() {
-      return x` <slot></slot>`;
-    }
-  };
-  NidocaDashboardBox50.styles = i`
+  `,we=i([m("nidoca-dashboard-box-25")],we);var $e=class extends p{render(){return o` <slot></slot>`}};$e.styles=c`
     :host {
       width: 50%;
       display: block;
@@ -6570,53 +2896,19 @@ ${this.value}</textarea
         width: 100%;
       }
     }
-  `;
-  NidocaDashboardBox50 = __decorateClass([
-    e4("nidoca-dashboard-box-50")
-  ], NidocaDashboardBox50);
-  var NidocaDashboardBox100 = class extends NidocaHtml {
-    render() {
-      return x` <slot></slot>`;
-    }
-  };
-  NidocaDashboardBox100.styles = i`
+  `,$e=i([m("nidoca-dashboard-box-50")],$e);var ke=class extends p{render(){return o` <slot></slot>`}};ke.styles=c`
     :host {
       width: 100%;
       display: block;
     }
-  `;
-  NidocaDashboardBox100 = __decorateClass([
-    e4("nidoca-dashboard-box-100")
-  ], NidocaDashboardBox100);
-  var NidocaDashboardCard = class extends NidocaHtml {
-    constructor() {
-      super(...arguments);
-      this.clickable = true;
-      this.title = "";
-    }
-    render() {
-      return x`
-      <nidoca-card @click="${() => this.clicked()}" class="${this.clickable ? "clickable" : ""}">
+  `,ke=i([m("nidoca-dashboard-box-100")],ke);var Ut=class extends p{constructor(){super(...arguments);this.clickable=!0;this.title=""}render(){return o`
+      <nidoca-card @click="${()=>this.clicked()}" class="${this.clickable?"clickable":""}">
         <nidoca-box>
           <nidoca-text-h6 style="padding-bottom: var(--space-2);">${this.title}</nidoca-text-h6>
           <slot></slot>
         </nidoca-box>
       </nidoca-card>
-    `;
-    }
-    clicked() {
-      if (this.clickable) {
-        this.dispatchEvent(
-          new CustomEvent("nidoca-event-dashboard-card-clicked", {
-            detail: this,
-            bubbles: true,
-            composed: true
-          })
-        );
-      }
-    }
-  };
-  NidocaDashboardCard.styles = i`
+    `}clicked(){this.clickable&&this.dispatchEvent(new CustomEvent("nidoca-event-dashboard-card-clicked",{detail:this,bubbles:!0,composed:!0}))}};Ut.styles=c`
     :host {
       padding: var(--space-2);
       box-sizing: border-box;
@@ -6632,31 +2924,10 @@ ${this.value}</textarea
     .clickable {
       cursor: pointer;
     }
-  `;
-  __decorateClass([
-    n5({ type: Boolean })
-  ], NidocaDashboardCard.prototype, "clickable", 2);
-  __decorateClass([
-    n5({ type: String })
-  ], NidocaDashboardCard.prototype, "title", 2);
-  NidocaDashboardCard = __decorateClass([
-    e4("nidoca-dashboard-card")
-  ], NidocaDashboardCard);
-
-  // src/nidoca-box.ts
-  var NidocaBox = class extends NidocaHtml {
-    constructor() {
-      super(...arguments);
-      this.theme = "plain" /* plain */;
-    }
-    render() {
-      return x`
-      ${NidocaThemeHelper.getStyle(this.theme)}
+  `,i([r({type:Boolean})],Ut.prototype,"clickable",2),i([r({type:String})],Ut.prototype,"title",2),Ut=i([m("nidoca-dashboard-card")],Ut);var Nt=class extends p{constructor(){super(...arguments);this.theme="plain"}render(){return o`
+      ${v.getStyle(this.theme)}
       <slot></slot>
-    `;
-    }
-  };
-  NidocaBox.styles = i`
+    `}};Nt.styles=c`
     :host {
       display: block;
       padding: var(--space-6);
@@ -6678,44 +2949,23 @@ ${this.value}</textarea
         padding: var(--space-2);
       }
     }
-  `;
-  __decorateClass([
-    n5({ type: NidocaTheme, converter: String })
-  ], NidocaBox.prototype, "theme", 2);
-  NidocaBox = __decorateClass([
-    e4("nidoca-box")
-  ], NidocaBox);
-
-  // src/nidoca-form-contact.ts
-  var NidocaFormContact = class extends NidocaHtml {
-    constructor() {
-      super(...arguments);
-      this.theme = "primary" /* primary */;
-      this.label = "Deine Nachricht";
-      this.nameLabel = "Dein Name";
-      this.emailLabel = "Deine Email";
-      this.titleLabel = "Betreff";
-      this.messageLabel = "Deine Nachricht";
-      this.buttonLabel = "Senden";
-    }
-    render() {
-      return x`
-      <nidoca-box theme="${l6(this.theme)}">
+  `,i([r({type:u,converter:String})],Nt.prototype,"theme",2),Nt=i([m("nidoca-box")],Nt);var B=class extends p{constructor(){super(...arguments);this.theme="primary";this.label="Deine Nachricht";this.nameLabel="Dein Name";this.emailLabel="Deine Email";this.titleLabel="Betreff";this.messageLabel="Deine Nachricht";this.buttonLabel="Senden"}render(){return o`
+      <nidoca-box theme="${_(this.theme)}">
         <nidoca-form id="authenitcate-form">
           <nidoca-text-h2 class="paddingBottom">${this.label}</nidoca-text-h2>
           <nidoca-form-text
-            theme="${NidocaThemeHelper.getOposite(this.theme)}"
+            theme="${v.getOposite(this.theme)}"
             class="paddingBottom"
             name="name"
-            textType="${"text" /* text */}"
+            textType="${"text"}"
             value=""
             label="${this.nameLabel}"
             required
           ></nidoca-form-text>
           <nidoca-form-text
-            theme="${NidocaThemeHelper.getOposite(this.theme)}"
+            theme="${v.getOposite(this.theme)}"
             class="paddingBottom"
-            textType="${"email" /* email */}"
+            textType="${"email"}"
             label="${this.emailLabel}"
             name="email"
             pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$"
@@ -6723,45 +2973,31 @@ ${this.value}</textarea
           ></nidoca-form-text>
           <nidoca-form-text
             label="${this.titleLabel}"
-            theme="${NidocaThemeHelper.getOposite(this.theme)}"
+            theme="${v.getOposite(this.theme)}"
             class="paddingBottom"
-            textType="${"text" /* text */}"
+            textType="${"text"}"
             value=""
             label="title"
             required
           ></nidoca-form-text>
           <nidoca-form-textarea
             label="${this.messageLabel}"
-            theme="${NidocaThemeHelper.getOposite(this.theme)}"
+            theme="${v.getOposite(this.theme)}"
             class="paddingBottom"
             name="message"
             trailingIcon="vpn_key"
             required
           ></nidoca-form-textarea>
           <nidoca-button
-            theme="${NidocaThemeHelper.getOposite(this.theme)}"
+            theme="${v.getOposite(this.theme)}"
             class="paddingBottom"
-            @nidoca-event-button-clicked="${() => this.sendMessage()}"
-            .buttonType="${"contained" /* contained */}"
+            @nidoca-event-button-clicked="${()=>this.sendMessage()}"
+            .buttonType="${"contained"}"
             >${this.buttonLabel}
           </nidoca-button>
         </nidoca-form>
       </nidoca-box>
-    `;
-    }
-    sendMessage() {
-      if (this.formComponent && this.formComponent.validate()) {
-        this.dispatchEvent(
-          new CustomEvent("nidoca-form-contact-submit", {
-            detail: this.formComponent.getOutputData(),
-            bubbles: true,
-            composed: true
-          })
-        );
-      }
-    }
-  };
-  NidocaFormContact.styles = i`
+    `}sendMessage(){this.formComponent&&this.formComponent.validate()&&this.dispatchEvent(new CustomEvent("nidoca-form-contact-submit",{detail:this.formComponent.getOutputData(),bubbles:!0,composed:!0}))}};B.styles=c`
     :host {
       display: block;
       width: 100%;
@@ -6770,52 +3006,9 @@ ${this.value}</textarea
     .paddingBottom {
       padding-bottom: var(--space-3);
     }
-  `;
-  __decorateClass([
-    n5({ type: NidocaTheme, converter: String })
-  ], NidocaFormContact.prototype, "theme", 2);
-  __decorateClass([
-    n5({ type: String, converter: String })
-  ], NidocaFormContact.prototype, "label", 2);
-  __decorateClass([
-    n5({ type: String, converter: String })
-  ], NidocaFormContact.prototype, "nameLabel", 2);
-  __decorateClass([
-    n5({ type: String, converter: String })
-  ], NidocaFormContact.prototype, "emailLabel", 2);
-  __decorateClass([
-    n5({ type: String, converter: String })
-  ], NidocaFormContact.prototype, "titleLabel", 2);
-  __decorateClass([
-    n5({ type: String, converter: String })
-  ], NidocaFormContact.prototype, "messageLabel", 2);
-  __decorateClass([
-    n5({ type: String, converter: String })
-  ], NidocaFormContact.prototype, "buttonLabel", 2);
-  __decorateClass([
-    i4("#authenitcate-form")
-  ], NidocaFormContact.prototype, "formComponent", 2);
-  NidocaFormContact = __decorateClass([
-    e4("nidoca-form-contact")
-  ], NidocaFormContact);
-
-  // src/app/nidoca-page-main.ts
-  var NidocaPageMain = class extends NidocaHtml {
-    render() {
-      return x`
+  `,i([r({type:u,converter:String})],B.prototype,"theme",2),i([r({type:String,converter:String})],B.prototype,"label",2),i([r({type:String,converter:String})],B.prototype,"nameLabel",2),i([r({type:String,converter:String})],B.prototype,"emailLabel",2),i([r({type:String,converter:String})],B.prototype,"titleLabel",2),i([r({type:String,converter:String})],B.prototype,"messageLabel",2),i([r({type:String,converter:String})],B.prototype,"buttonLabel",2),i([g("#authenitcate-form")],B.prototype,"formComponent",2),B=i([m("nidoca-form-contact")],B);var Ee=class extends p{render(){return o`
      huhu xxx
-    `;
-    }
-  };
-  NidocaPageMain.styles = i``;
-  NidocaPageMain = __decorateClass([
-    e4("nidoca-page-main")
-  ], NidocaPageMain);
-
-  // src/app/nidoca-page-product-template.ts
-  var NidocaPageProductTemplate = class extends NidocaHtml {
-    render() {
-      return x`
+    `}};Ee.styles=c``,Ee=i([m("nidoca-page-main")],Ee);var Se=class extends p{render(){return o`
       <nidoca-container>
         <nidoca-section>
           <nidoca-img-slider>
@@ -6853,7 +3046,7 @@ ${this.value}</textarea
               <nidoca-button
                 style=""
                 icon="contact_support"
-                @click="${() => window.open("https://www.ebay.de/contact/sendmsg?&recipient=dortmund.digital", "_blanck")}"
+                @click="${()=>window.open("https://www.ebay.de/contact/sendmsg?&recipient=dortmund.digital","_blanck")}"
                 >Frage stellen</nidoca-button
               >
             </nidoca-section>
@@ -6947,11 +3140,11 @@ ${this.value}</textarea
             <nidoca-section style="padding-top:var(--space-2);">
               <nidoca-button
                 style="padding-right:var(--space-2);"
-                @click="${() => window.open("https://www.ebay.de/usr/dortmund.digital", "_blanck")}"
+                @click="${()=>window.open("https://www.ebay.de/usr/dortmund.digital","_blanck")}"
                 >Verkäuferprofil</nidoca-button
               >
               <nidoca-button
-                @click="${() => window.open("https://feedback.ebay.de/fdbk/feedback_profile/dortmund.digital", "_blanck")}"
+                @click="${()=>window.open("https://feedback.ebay.de/fdbk/feedback_profile/dortmund.digital","_blanck")}"
                 >Unsere Bewertungen</nidoca-button
               >
             </nidoca-section>
@@ -6963,22 +3156,11 @@ ${this.value}</textarea
           ></nidoca-img>
         </nidoca-section>
       </nidoca-container>
-    `;
-    }
-  };
-  NidocaPageProductTemplate.styles = i`
+    `}};Se.styles=c`
     .infobox {
       padding: var(--space-2);
     }
-  `;
-  NidocaPageProductTemplate = __decorateClass([
-    e4("nidoca-page-product-template")
-  ], NidocaPageProductTemplate);
-
-  // src/app/nidoca-page-imprint.ts
-  var NidocaPageSettings = class extends NidocaHtml {
-    render() {
-      return x`
+  `,Se=i([m("nidoca-page-product-template")],Se);var Te=class extends p{render(){return o`
       <nidoca-container>
         <nidoca-article title="Impressum" summary="Angaben gemäß § 5 TMG">
           <nidoca-text>Dominik Bruhn</nidoca-text>
@@ -7056,251 +3238,28 @@ ${this.value}</textarea
           <nidoca-link href="https://pixabay.com" targetType="_blanck">pixabay.com</nidoca-link>
         </nidoca-article>
       </nidoca-container>
-    `;
-    }
-  };
-  NidocaPageSettings.styles = i`
+    `}};Te.styles=c`
     nidoca-article {
       padding-bottom: var(--space-2);
     }
-  `;
-  NidocaPageSettings = __decorateClass([
-    e4("nidoca-page-imprint")
-  ], NidocaPageSettings);
-
-  // src/app/nidoca-page-settings.ts
-  var NidocaPageSettings2 = class extends NidocaHtml {
-    constructor() {
-      super(...arguments);
-      this.cssVars = [];
-    }
-    firstUpdated() {
-      const getAllCSSVariableNames = (styleSheets = document.styleSheets) => {
-        const cssVars = [];
-        Array.from(styleSheets).forEach((styleSheet) => {
-          Array.from(styleSheet.cssRules).forEach((rule) => {
-            if (!rule || !rule["style"]) {
-              return;
-            }
-            const styleArray = rule["style"];
-            Array.from(styleArray).forEach((style) => {
-              if (style.startsWith("--") && cssVars.indexOf(style) == -1) {
-                cssVars.push(style);
-              }
-            });
-          });
-        });
-        return cssVars;
-      };
-      this.cssVars = getAllCSSVariableNames();
-      console.log(this.cssVars);
-    }
-    render() {
-      return x`
+  `,Te=i([m("nidoca-page-imprint")],Te);var te=class extends p{constructor(){super(...arguments);this.cssVars=[]}firstUpdated(){let t=(n=document.styleSheets)=>{let a=[];return Array.from(n).forEach(l=>{Array.from(l.cssRules).forEach(d=>{if(!d||!d.style)return;let h=d.style;Array.from(h).forEach(f=>{f.startsWith("--")&&a.indexOf(f)==-1&&a.push(f)})})}),a};this.cssVars=t(),console.log(this.cssVars)}render(){return o`
       <nidoca-container>
         <nidoca-article title="CSS Variablen">
-          ${i6(
-        [this.cssVars],
-        () => x`
-                ${c4(
-          this.cssVars,
-          (cssVar) => x`
+          ${Lt([this.cssVars],()=>o`
+                ${ht(this.cssVars,t=>o`
                     <nidoca-form-text
                       style="width:100%;padding-bottom: var(--space-3);"
-                      @input="${(event) => {
-            document.documentElement.style.setProperty(
-              cssVar,
-              event.target ? event.target.getOutputData().value : ""
-            );
-          }}"
-                      type="${cssVar.indexOf("color") > -1 ? "color" /* color */ : "text" /* text */}"
-                      name="${cssVar}"
-                      value="${getComputedStyle(document.documentElement).getPropertyValue(cssVar).trim()}"
-                      label="${cssVar}"
+                      @input="${n=>{document.documentElement.style.setProperty(t,n.target?n.target.getOutputData().value:"")}}"
+                      type="${t.indexOf("color")>-1?"color":"text"}"
+                      name="${t}"
+                      value="${getComputedStyle(document.documentElement).getPropertyValue(t).trim()}"
+                      label="${t}"
                     ></nidoca-form-text>
-                  `
-        )}
-              `
-      )}
+                  `)}
+              `)}
         </nidoca-article>
       </nidoca-container>
-    `;
-    }
-  };
-  NidocaPageSettings2.styles = i``;
-  __decorateClass([
-    n5({ type: Array })
-  ], NidocaPageSettings2.prototype, "cssVars", 2);
-  NidocaPageSettings2 = __decorateClass([
-    e4("nidoca-page-settings")
-  ], NidocaPageSettings2);
-
-  // src/app/nidoca-page-privacy.ts
-  var NidocaPagePrivacy = class extends NidocaHtml {
-    render() {
-      return x``;
-    }
-  };
-  NidocaPagePrivacy.styles = i``;
-  NidocaPagePrivacy = __decorateClass([
-    e4("nidoca-page-privacy")
-  ], NidocaPagePrivacy);
-
-  // src/app/nidoca-page-terms-of-use.ts
-  var NidocaPageTermsOfUse = class extends NidocaHtml {
-    render() {
-      return x``;
-    }
-  };
-  NidocaPageTermsOfUse.styles = i``;
-  NidocaPageTermsOfUse = __decorateClass([
-    e4("nidoca-page-terms-of-use")
-  ], NidocaPageTermsOfUse);
-
-  // node_modules/@domoskanonos/nidoca-router/lib/nidoca-router.js
-  var NidocaRouter = class _NidocaRouter {
-    constructor() {
-      this.listeners = [];
-      window.onpopstate = (event) => {
-        console.trace("onpopstate event: location: " + document.location + ", state: " + JSON.stringify(event.state));
-        this.notifyListeners();
-      };
-      document.addEventListener("click", (event) => {
-        if (!this.shouldIgnoreEvent(event)) {
-          const anchor = this.getAnchor(event);
-          if (anchor && !this.shouldIgnoreAnchor(anchor)) {
-            event.preventDefault();
-            if (anchor.hash.length > 0) {
-              this.navigate(anchor.hash);
-            }
-          }
-        }
-      });
-    }
-    static getUniqueInstance() {
-      if (!_NidocaRouter.uniqueInstance) {
-        _NidocaRouter.uniqueInstance = new _NidocaRouter();
-      }
-      return _NidocaRouter.uniqueInstance;
-    }
-    subscribe(listener) {
-      console.trace("subscribe router listener");
-      this.listeners.push(listener);
-    }
-    back() {
-      history.back();
-    }
-    forward() {
-      history.forward();
-    }
-    navigate(url, state2 = null) {
-      if (url.indexOf("#") == -1) {
-        url = "#".concat(url);
-      }
-      console.trace("navigate to: %s", url);
-      if (state2 != null) {
-        console.trace("state: %s", JSON.stringify(state2));
-      }
-      if (document.location.hash === url) {
-        console.trace("you are already on page: " + url);
-        return;
-      }
-      history.pushState(state2, "", url);
-      this.notifyListeners();
-    }
-    getCurrentState() {
-      return history.state;
-    }
-    getStateProperty(key) {
-      const state2 = this.getCurrentState();
-      return state2 != null ? state2[key] : null;
-    }
-    getCurrentPage() {
-      const currentPage = document.location.hash.replace("#", "");
-      return currentPage;
-    }
-    getHash() {
-      return document.location.hash;
-    }
-    notifyListeners() {
-      const path = this.getCurrentPage();
-      this.listeners.forEach((listener) => listener.routeChanged(path));
-    }
-    shouldIgnoreEvent(event) {
-      return event.defaultPrevented || event.button !== 0 || event.shiftKey || event.ctrlKey || event.altKey || event.metaKey;
-    }
-    getAnchor(event) {
-      for (const target of event.composedPath ? event.composedPath() : []) {
-        if (this.isAnchor(target)) {
-          return target;
-        }
-      }
-      let elem = event.target;
-      while (elem && !this.isAnchor(elem)) {
-        elem = elem.parentNode;
-      }
-      return elem && this.isAnchor(elem) ? elem : null;
-    }
-    isAnchor(elem) {
-      return elem.nodeName && elem.nodeName.toLowerCase() === "a";
-    }
-    shouldIgnoreAnchor(anchor) {
-      if (anchor.target && anchor.target.toLowerCase() !== "_self") {
-        return true;
-      }
-      if (anchor.hasAttribute("download")) {
-        return true;
-      }
-      const origin = anchor.origin || this.getAnchorOrigin(anchor);
-      if (origin !== window.location.origin) {
-        return true;
-      }
-      return false;
-    }
-    getAnchorOrigin(anchor) {
-      const port = anchor.port;
-      const protocol = anchor.protocol;
-      const defaultHttp = protocol === "http:" && port === "80";
-      const defaultHttps = protocol === "https:" && port === "443";
-      const host = defaultHttp || defaultHttps ? anchor.hostname : anchor.host;
-      return `${protocol}//${host}`;
-    }
-  };
-
-  // src/app/nidoca-my-app.ts
-  var NidocaMyApp = class extends NidocaHtml {
-    constructor() {
-      super();
-      this.content = x``;
-      NidocaRouter.getUniqueInstance().subscribe(this);
-      this.routeChanged(NidocaRouter.getUniqueInstance().getCurrentPage());
-    }
-    routeChanged(relUrl) {
-      switch (relUrl) {
-        case "privacy":
-          this.content = x`<nidoca-page-privacy></nidoca-page-privacy>`;
-          break;
-        case "imprint":
-          this.content = x`<nidoca-page-imprint></nidoca-page-imprint>`;
-          break;
-        case "settings":
-          this.content = x`<nidoca-page-settings></nidoca-page-settings>`;
-          break;
-        case "terms-of-use":
-          this.content = x`<nidoca-page-terms-of-use></nidoca-page-terms-of-use>`;
-          break;
-        case "product-template":
-          this.content = x`<nidoca-page-product-template></nidoca-page-product-template>`;
-          break;
-        case "main":
-          this.content = x`<nidoca-page-main></nidoca-page-main>`;
-          break;
-        default:
-          this.content = x`<nidoca-page-main></nidoca-page-main>`;
-      }
-    }
-    render() {
-      return x`
+    `}};te.styles=c``,i([r({type:Array})],te.prototype,"cssVars",2),te=i([m("nidoca-page-settings")],te);var _e=class extends p{render(){return o``}};_e.styles=c``,_e=i([m("nidoca-page-privacy")],_e);var Re=class extends p{render(){return o``}};Re.styles=c``,Re=i([m("nidoca-page-terms-of-use")],Re);var G=class s{constructor(){this.listeners=[],window.onpopstate=e=>{console.trace("onpopstate event: location: "+document.location+", state: "+JSON.stringify(e.state)),this.notifyListeners()},document.addEventListener("click",e=>{if(!this.shouldIgnoreEvent(e)){let t=this.getAnchor(e);t&&!this.shouldIgnoreAnchor(t)&&(e.preventDefault(),t.hash.length>0&&this.navigate(t.hash))}})}static getUniqueInstance(){return s.uniqueInstance||(s.uniqueInstance=new s),s.uniqueInstance}subscribe(e){console.trace("subscribe router listener"),this.listeners.push(e)}back(){history.back()}forward(){history.forward()}navigate(e,t=null){if(e.indexOf("#")==-1&&(e="#".concat(e)),console.trace("navigate to: %s",e),t!=null&&console.trace("state: %s",JSON.stringify(t)),document.location.hash===e){console.trace("you are already on page: "+e);return}history.pushState(t,"",e),this.notifyListeners()}getCurrentState(){return history.state}getStateProperty(e){let t=this.getCurrentState();return t!=null?t[e]:null}getCurrentPage(){return document.location.hash.replace("#","")}getHash(){return document.location.hash}notifyListeners(){let e=this.getCurrentPage();this.listeners.forEach(t=>t.routeChanged(e))}shouldIgnoreEvent(e){return e.defaultPrevented||e.button!==0||e.shiftKey||e.ctrlKey||e.altKey||e.metaKey}getAnchor(e){for(let n of e.composedPath?e.composedPath():[])if(this.isAnchor(n))return n;let t=e.target;for(;t&&!this.isAnchor(t);)t=t.parentNode;return t&&this.isAnchor(t)?t:null}isAnchor(e){return e.nodeName&&e.nodeName.toLowerCase()==="a"}shouldIgnoreAnchor(e){return!!(e.target&&e.target.toLowerCase()!=="_self"||e.hasAttribute("download")||(e.origin||this.getAnchorOrigin(e))!==window.location.origin)}getAnchorOrigin(e){let t=e.port,n=e.protocol,d=n==="http:"&&t==="80"||n==="https:"&&t==="443"?e.hostname:e.host;return`${n}//${d}`}};var Le=class extends p{constructor(){super();this.content=o``;G.getUniqueInstance().subscribe(this),this.routeChanged(G.getUniqueInstance().getCurrentPage())}routeChanged(t){switch(t){case"privacy":this.content=o`<nidoca-page-privacy></nidoca-page-privacy>`;break;case"imprint":this.content=o`<nidoca-page-imprint></nidoca-page-imprint>`;break;case"settings":this.content=o`<nidoca-page-settings></nidoca-page-settings>`;break;case"terms-of-use":this.content=o`<nidoca-page-terms-of-use></nidoca-page-terms-of-use>`;break;case"product-template":this.content=o`<nidoca-page-product-template></nidoca-page-product-template>`;break;case"main":this.content=o`<nidoca-page-main></nidoca-page-main>`;break;default:this.content=o`<nidoca-page-main></nidoca-page-main>`}}render(){return o`
       <nidoca-template>
         <nidoca-link
           slot="topRight"
@@ -7339,57 +3298,36 @@ ${this.value}</textarea
         <div slot="left" style="height:var(--height-medium);"></div>
         <nidoca-menu slot="left" theme="primary">
           <nidoca-menu-item
-            @nidoca-event-menu-item-clicked="${() => {
-        NidocaRouter.getUniqueInstance().navigate("#main");
-      }}"
+            @nidoca-event-menu-item-clicked="${()=>{G.getUniqueInstance().navigate("#main")}}"
             icon="home"
             text="Start"
           ></nidoca-menu-item>
           <nidoca-menu-item
             text="Produkt-Template"
-            @nidoca-event-menu-item-clicked="${() => {
-        NidocaRouter.getUniqueInstance().navigate("#product-template");
-      }}"
+            @nidoca-event-menu-item-clicked="${()=>{G.getUniqueInstance().navigate("#product-template")}}"
           ></nidoca-menu-item>
 
           <nidoca-menu-area icon="gavel" text="Rechtliches"></nidoca-menu-area>
           <nidoca-menu-item
             text="Impressum"
-            @nidoca-event-menu-item-clicked="${() => {
-        NidocaRouter.getUniqueInstance().navigate("#imprint");
-      }}"
+            @nidoca-event-menu-item-clicked="${()=>{G.getUniqueInstance().navigate("#imprint")}}"
           ></nidoca-menu-item>
           <nidoca-menu-item
             text="Datenschutz"
-            @nidoca-event-menu-item-clicked="${() => {
-        NidocaRouter.getUniqueInstance().navigate("#privacy");
-      }}"
+            @nidoca-event-menu-item-clicked="${()=>{G.getUniqueInstance().navigate("#privacy")}}"
           ></nidoca-menu-item>
           <nidoca-menu-item
             text="Nutzungsbedingungen"
-            @nidoca-event-menu-item-clicked="${() => {
-        NidocaRouter.getUniqueInstance().navigate("#terms-of-use");
-      }}"
+            @nidoca-event-menu-item-clicked="${()=>{G.getUniqueInstance().navigate("#terms-of-use")}}"
           ></nidoca-menu-item>
           <nidoca-menu-area text="Sonstiges"></nidoca-menu-area>
           <nidoca-menu-item
             text="Einstellungen"
-            @nidoca-event-menu-item-clicked="${() => {
-        NidocaRouter.getUniqueInstance().navigate("#settings");
-      }}"
+            @nidoca-event-menu-item-clicked="${()=>{G.getUniqueInstance().navigate("#settings")}}"
           ></nidoca-menu-item>
         </nidoca-menu>
       </nidoca-template>
-    `;
-    }
-  };
-  __decorateClass([
-    n5({ type: Object })
-  ], NidocaMyApp.prototype, "content", 2);
-  NidocaMyApp = __decorateClass([
-    e4("nidoca-my-app")
-  ], NidocaMyApp);
-})();
+    `}};i([r({type:Object})],Le.prototype,"content",2),Le=i([m("nidoca-my-app")],Le);})();
 /*! Bundled license information:
 
 @lit/reactive-element/css-tag.js:
