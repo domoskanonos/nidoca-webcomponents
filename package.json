@@ -20,7 +20,7 @@
     "check-updates": "ncu",
     "upgrade": "ncu -u",
     "build": "npm i && node esbuild.mjs",
-    "start": "esbuild  --bundle src/index.ts --outfile=public/nidoca.js --watch --servedir=public",
+    "start": "esbuild  --bundle src/app/index.ts --outfile=public/app/index.js --watch --servedir=public",
     "ts": "tsc -p ./",
     "build-webcomponents": "esbuild --minify --bundle src/index.ts --outfile=public/nidoca-webcomponents.js",
     "build-app": "esbuild --minify --bundle src/app/index.ts --outfile=public/nidoca-app.js",
