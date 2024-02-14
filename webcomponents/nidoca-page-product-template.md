@@ -1,1 +1,0 @@
-# nidoca-page-product-template
