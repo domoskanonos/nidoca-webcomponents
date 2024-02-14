@@ -13,7 +13,6 @@ jobs:
           node-version: '16.x'
           registry-url: 'https://registry.npmjs.org'
       - run: npm run build
-      - run: npm run build-frontend
       - uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages

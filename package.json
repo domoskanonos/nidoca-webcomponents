@@ -19,12 +19,11 @@
   "scripts": {
     "check-updates": "ncu",
     "upgrade": "ncu -u",
-    "start1": "node esbuild.mjs",
+    "build": "npm i && npm ts && node esbuild.mjs",
     "start": "esbuild  --bundle src/index.ts --outfile=public/nidoca.js --watch --servedir=public",
     "ts": "tsc -p ./",
     "build-webcomponents": "esbuild --minify --bundle src/index.ts --outfile=public/nidoca-webcomponents.js",
     "build-app": "esbuild --minify --bundle src/app/index.ts --outfile=public/nidoca-app.js",
-    "build-frontend": "npm run build-app && npm run build-webcomponents",
-    "build": "npm i && npm run ts && npm run build-frontend"
+    "build-frontend": "npm run build-app && npm run build-webcomponents"
   }
 }
