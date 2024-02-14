@@ -3,6 +3,7 @@ import * as esbuild from 'esbuild'
 await esbuild.build({
     entryPoints: ['src/index.ts', 'src/app/index.ts'],
     bundle: true,
+    minify: true,
     outdir: 'public',
     logLevel: 'debug',
     loader: {
