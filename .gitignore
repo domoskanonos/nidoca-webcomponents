@@ -3,6 +3,7 @@ package-lock.json
 node_modules
 lib
 .vscode
-public
 coverage
 custom-elements.json
+public/*.js
+public/app/*.js
