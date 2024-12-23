@@ -81,7 +81,7 @@ body {
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 18px;
   letter-spacing: normal;
-  line-height: 0;
+  line-height: auto;
   font-style: normal;
   text-decoration: none;
 }

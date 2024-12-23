@@ -1,9 +1,9 @@
-import {css, html, TemplateResult, LitElement, PropertyValues} from 'lit';
-import {NidocaHtml} from './nidoca-html';
+import { css, html, TemplateResult, LitElement, PropertyValues } from 'lit';
+import { NidocaHtml } from './nidoca-html';
 
-import {customElement} from 'lit/decorators.js';
-import {property} from 'lit/decorators.js';
-import {query} from 'lit/decorators.js';
+import { customElement } from 'lit/decorators.js';
+import { property } from 'lit/decorators.js';
+import { query } from 'lit/decorators.js';
 
 @customElement('nidoca-template')
 export class NidocaTemplate extends NidocaHtml {
@@ -43,20 +43,14 @@ export class NidocaTemplate extends NidocaHtml {
     }
   `;
 
-  @property({type: Boolean})
+  @property({ type: Boolean })
   hideLeft: boolean = true;
 
-  @property({type: Boolean})
+  @property({ type: Boolean })
   prominent: boolean = false;
-
-  @query('#header')
-  private headerElement: HTMLElement | undefined;
 
   @query('#left')
   private leftElement: HTMLElement | undefined;
-
-  @query('#content')
-  private contentElement: HTMLElement | undefined;
 
   constructor() {
     super();
@@ -70,50 +64,30 @@ export class NidocaTemplate extends NidocaHtml {
     });
   }
 
-  protected updated(_changedProperties: PropertyValues): void {
-    super.updated(_changedProperties);
-    /*
-            new Promise((resolve) => requestAnimationFrame(resolve)).then(() => {
-              if (this.headerElement != undefined) {
-                const height = this.headerElement.offsetHeight;
-                const topStyle = "top:".concat(String(height)).concat("px;");
-                const paddingTopStyle = "padding-top:".concat(String(height)).concat("px;");
-                console.debug("set header height to corresponding elements: %s", topStyle);
-                if (this.leftElement != undefined) {
-                  this.leftElement.setAttribute("style", topStyle);
-                }
-                if (this.contentElement != undefined) {
-                  this.contentElement.setAttribute("style", paddingTopStyle);
-                }
-              }
-            });
-             */
-  }
-
   render(): TemplateResult {
     return html`
       <slot
         id="left"
         @nidoca-event-menu-item-clicked="${() => {
-          if (641 > window.innerWidth) {
-            this.hideLeft = true;
-          }
-        }}"
+        if (641 > window.innerWidth) {
+          this.hideLeft = true;
+        }
+      }}"
         class="${this.hideLeft ? 'hideLeft' : ''}"
         name="left"
       >
       </slot>
 
       <div class="right">
-        <nidoca-top-app-bar theme="primary" id="header" .prominent="${this.prominent}">
+        <nidoca-top-app-bar theme="primary" .prominent="${this.prominent}">
           <nidoca-icon
             slot="left"
             style="padding-left:var(--space-2);"
             icon="menu"
             .clickable="${true}"
             @nidoca-event-icon-clicked="${() => {
-              this.hideLeft = !this.hideLeft;
-            }}"
+        this.hideLeft = !this.hideLeft;
+      }}"
           ></nidoca-icon>
 
           <span slot="left">
@@ -129,7 +103,7 @@ export class NidocaTemplate extends NidocaHtml {
             <slot class="slotHeader" name="prominent"></slot>
           </span>
         </nidoca-top-app-bar>
-        <slot id="content" name="content"></slot>
+        <slot name="content"></slot>
       </div>
     `;
   }

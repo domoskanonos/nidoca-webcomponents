@@ -14,12 +14,26 @@ and [lit](https://lit.dev/).
 
 #### html
 ```html
-  <script src="https://domoskanonos.github.io/nidoca-webcomponents/nidoca-webcomponents.js"></script>
-  <style>@import url('https://domoskanonos.github.io/nidoca-webcomponents/nidoca-webcomponents.css');
-      @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;600;700;900&display=swap');
-      @import url('https://fonts.googleapis.com/css?family=Material+Icons&display=block');
-      @import './nidoca-webcomponents.css';
-    </style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Responsive Web Application with nidoca-webcomponents">
+    <meta name="author" content="Your Name">
+    <meta name="keywords" content="HTML, CSS, JavaScript, nidoca-webcomponents, responsive design">
+    <title>Responsive Nidoca Webcomponents</title>
 
+    <script src="https://domoskanonos.github.io/nidoca-webcomponents/nidoca-webcomponents.js"></script>
+    <style>
+        @import url('https://domoskanonos.github.io/nidoca-webcomponents/nidoca-webcomponents.css');
+        @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;600;700;900&display=swap');
+        @import url('https://fonts.googleapis.com/css?family=Material+Icons&display=block');
+    </style>
+</head>
+<body>
   <nidoca-button>Mein Button</nidoca-button>
+</body>
+</html>
+
 ```
