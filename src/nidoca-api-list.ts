@@ -16,7 +16,7 @@ export class NidocaApiList extends NidocaHtml {
     @property({ type: String }) secondaryTextField = '';
     @property({ type: String }) groupByField = '';
 
-    @property({ type: String }) imgSrc = '';
+    @property({ type: String }) imgSrcField = '';
     @property({ type: String }) rightIcon = '';
 
     @state() data: any[] = [];
@@ -57,7 +57,7 @@ export class NidocaApiList extends NidocaHtml {
                   primaryText="${item[this.primaryTextField] || ''}"
                   secondaryText="${item[this.secondaryTextField] || ''}"
                 >
-                  <nidoca-img-round width="64px" width="64px" slot="left" src="${this.imgSrc}"></nidoca-img-round>
+                  <nidoca-img-round width="64px" width="64px" slot="left" src="${this.imgSrcField}"></nidoca-img-round>
                   <nidoca-icon slot="right" icon="chevron_right"></nidoca-icon>
                 </nidoca-list-item>
               `)}
@@ -90,7 +90,7 @@ export class NidocaApiList extends NidocaHtml {
                       primaryText="${item[this.primaryTextField] || ''}"
                       secondaryText="${item[this.secondaryTextField] || ''}"
                     >
-                      <nidoca-img-round width="64px" width="64px" slot="left" src="${this.imgSrc}"></nidoca-img-round>
+                      <nidoca-img-round width="64px" width="64px" slot="left" src="${item[this.imgSrcField]}"></nidoca-img-round>
                       <nidoca-icon slot="right" icon="${this.rightIcon}"></nidoca-icon>
                     </nidoca-list-item>
                   `)}
@@ -121,7 +121,7 @@ export class NidocaApiList extends NidocaHtml {
             rightIcon="chevron_right"
             secondaryTextField="action_description"
             groupByField="goal_title"
-            imgSrc="${NidocaImg.exampleImage()}"
+            imgSrcField="action_image"
             groupByField="action_energy"
           >
           </nidoca-api-list>
