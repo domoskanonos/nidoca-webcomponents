@@ -14,8 +14,8 @@ and [lit](https://lit.dev/).
 
 #### html
 ```html
-  <script src="https://domoskanonos.github.io/nidoca-webcomponents/index.js"></script>
-  <style>@import url('https://domoskanonos.github.io/nidoca-webcomponents/nidoca.css');</style>
+  <script src="https://domoskanonos.github.io/nidoca-webcomponents/nidoca-webcomponents.js"></script>
+  <style>@import url('https://domoskanonos.github.io/nidoca-webcomponents/nidoca-webcomponents.css');</style>
 
   <nidoca-button>Mein Button</nidoca-button>
 ```
