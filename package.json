@@ -1,0 +1,24 @@
+{
+  "name": "@domoskanonos/nidoca-webcomponents",
+  "version": "1.0.97",
+  "homepage": "https://domoskanonos.github.io/nidoca-webcomponents/",
+  "repository": "https://github.com/domoskanonos/nidoca-webcomponents.git",
+  "license": "MIT",
+  "keywords": [
+    "webcomponent, html, typescript, shadow dom, slot, ui, frontend, lit element"
+  ],
+  "description": "nidoca framework (nidoca-core)",
+  "devDependencies": {
+    "esbuild": "0.20.0",
+    "@domoskanonos/nidoca-router": "1.0.2"
+  },
+  "dependencies": {
+    "lit": "2.8.0"
+  },
+  "author": "Dominik Bruhn",
+  "scripts": {
+    "build": "npm i && node esbuild.mjs",
+    "start": "esbuild  --bundle src/app/index.ts --outfile=public/app/index.js --watch --servedir=public",
+    "ts": "tsc -p ./"
+  }
+}

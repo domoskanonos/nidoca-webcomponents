@@ -1,0 +1,16 @@
+{
+  "entryPoints": ["src/index.ts"],
+  "categorizeByGroup": true,
+  "out": "public/typedoc",
+  "excludePrivate": true,
+  "excludeExternals": true,
+  "excludeNotDocumented": true,
+  "visibilityFilters": {
+    "protected": true,
+    "private": true,
+    "inherited": false,
+    "external": false,
+    "@alpha": false,
+    "@beta": false
+  }
+}
