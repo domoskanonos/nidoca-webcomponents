@@ -1,5 +1,5 @@
 import '../nidoca-webcomponents';
-
+import './lit-viewer';
 import './nidoca-page-main';
 import './nidoca-page-webcomponents';
 import './nidoca-page-imprint';

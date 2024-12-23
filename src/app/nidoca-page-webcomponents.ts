@@ -12,7 +12,7 @@ export class NidocaPageWebcomponents extends NidocaHtml {
   render(): TemplateResult {
     return html`
       <nidoca-container>
-        Hallo
+        <nidoca-viewer></nidoca-viewer>
       </nidoca-container>
     `;
   }
