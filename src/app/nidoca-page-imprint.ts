@@ -16,7 +16,7 @@ export class NidocaPageSettings extends NidocaHtml {
       <nidoca-container>
         <nidoca-article title="Impressum" summary="Angaben gemäß § 5 TMG">
           <nidoca-text>Dominik Bruhn</nidoca-text>
-          <nidoca-text>Holzwickeder Straße 109c</nidoca-text>
+          <nidoca-text>Arcostraße 54</nidoca-text>
           <nidoca-text>44309 Dortmund</nidoca-text>
           <nidoca-layout-spacer></nidoca-layout-spacer>
           <nidoca-text>Telefonnummer: +49 152 052 488 62</nidoca-text>

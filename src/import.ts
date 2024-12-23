@@ -5,6 +5,7 @@ import './nidoca-html';
 
 import './nidoca-accordion';
 import './nidoca-accordion-item';
+import './nidoca-api-list';
 import './nidoca-wizard-step';
 import './nidoca-wizard';
 import './nidoca-chip';

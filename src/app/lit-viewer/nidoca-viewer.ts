@@ -1,7 +1,7 @@
 import { html, LitElement, TemplateResult } from "lit";
 import { customElement } from "lit/decorators.js";
 import { NidocaList } from "../../nidoca-list";
-import { NidocaTabs } from "../../nidoca-tabs";
+import { NidocaApiList } from "../../nidoca-api-list";
 import { NidocaImgRound } from "../../nidoca-img-round";
 import { NidocaListItem } from "../../nidoca-list-item";
 import { NidocaListSection } from "../../nidoca-list-section";
@@ -13,7 +13,7 @@ export class NidocaViewer extends LitElement {
     return html`<nidoca-container>
       <nidoca-section>
         <webcomponent-viewer-container>
-          ${NidocaTabs.example()}${NidocaList.example()} ${NidocaListItem.example()} ${NidocaListSection.example()}
+          ${NidocaApiList.example()}${NidocaList.example()} ${NidocaListItem.example()} ${NidocaListSection.example()}
           ${NidocaImgRound.example()}
         </webcomponent-viewer-container>
       </nidoca-section>
