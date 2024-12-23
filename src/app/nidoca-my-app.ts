@@ -30,14 +30,14 @@ export class NidocaMyApp extends NidocaHtml implements NidocaRouteListener {
         this.content = html`<nidoca-page-terms-of-use></nidoca-page-terms-of-use>`;
         break;
       case 'product-template':
-        this.content = html`<nidoca-page-product-template></nidoca-page-product-template>`;
+        this.content = html`<nidoca-page-webcomponents></nidoca-page-webcomponents>`;
         break;
       case 'main':
         this.content = html`<nidoca-page-main></nidoca-page-main>`;
         break;
       default:
-        //this.content = html`<nidoca-page-product-template></nidoca-page-product-template>`;
-        this.content = html`<nidoca-page-main></nidoca-page-main>`;
+        this.content = html`<nidoca-page-webcomponents></nidoca-page-webcomponents>`;
+        //this.content = html`<nidoca-page-main></nidoca-page-main>`;
     }
   }
 
