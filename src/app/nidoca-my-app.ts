@@ -1,5 +1,5 @@
 import {NidocaRouteListener, NidocaRouter} from '@domoskanonos/nidoca-router';
-import {html} from 'lit';
+import {html, HTMLTemplateResult} from 'lit';
 import {NidocaHtml} from '../nidoca-html';
 
 import {customElement, property} from 'lit/decorators.js';
@@ -29,7 +29,7 @@ export class NidocaMyApp extends NidocaHtml implements NidocaRouteListener {
       case 'terms-of-use':
         this.content = html`<nidoca-page-terms-of-use></nidoca-page-terms-of-use>`;
         break;
-      case 'product-template':
+      case 'webcomponents':
         this.content = html`<nidoca-page-webcomponents></nidoca-page-webcomponents>`;
         break;
       case 'main':
@@ -88,9 +88,9 @@ export class NidocaMyApp extends NidocaHtml implements NidocaRouteListener {
             text="Start"
           ></nidoca-menu-item>
           <nidoca-menu-item
-            text="Produkt-Template"
+            text=">Webcomponents"
             @nidoca-event-menu-item-clicked="${() => {
-              NidocaRouter.getUniqueInstance().navigate('#product-template');
+              NidocaRouter.getUniqueInstance().navigate('#webcomponents');
             }}"
           ></nidoca-menu-item>
 
