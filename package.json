@@ -9,11 +9,11 @@
   ],
   "description": "nidoca framework (nidoca-core)",
   "devDependencies": {
-    "esbuild": "0.20.0",
+    "esbuild": "0.24.2",
     "@domoskanonos/nidoca-router": "1.0.2"
   },
   "dependencies": {
-    "lit": "2.8.0"
+    "lit": "3.2.1"
   },
   "author": "Dominik Bruhn",
   "scripts": {
