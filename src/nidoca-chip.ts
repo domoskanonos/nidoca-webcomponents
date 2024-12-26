@@ -1,9 +1,9 @@
-import {css, html, LitElement, TemplateResult} from 'lit';
-import {NidocaHtml} from './nidoca-html';
+import { css, html, LitElement, TemplateResult } from 'lit';
+import { NidocaHtml } from './nidoca-html';
 
-import {customElement} from 'lit/decorators.js';
-import {property} from 'lit/decorators.js';
-import {NidocaTheme} from './nidoca-meta';
+import { customElement } from 'lit/decorators.js';
+import { property } from 'lit/decorators.js';
+import { NidocaTheme } from './nidoca-meta';
 
 @customElement('nidoca-chip')
 export class NidocaChip extends NidocaHtml {
@@ -14,19 +14,18 @@ export class NidocaChip extends NidocaHtml {
       border-radius: 1rem;
       line-height: var(--height-medium);
     }
-
     .clickable {
       cursor: pointer;
     }
   `;
 
-  @property({type: Boolean})
+  @property({ type: Boolean })
   clickable: boolean = true;
 
-  @property({type: NidocaTheme, converter: String})
+  @property({ type: NidocaTheme, converter: String })
   theme: string = NidocaTheme.surface;
 
-  @property({type: String})
+  @property({ type: String })
   text: string = '';
 
   render(): TemplateResult {
