@@ -7,17 +7,25 @@
   "keywords": [
     "webcomponent, html, typescript, shadow dom, slot, ui, frontend, lit element"
   ],
+  "author": "Dominik Bruhn",
   "description": "nidoca framework (nidoca-core)",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "package.json",
+    "README.md"
+  ],
   "devDependencies": {
-    "esbuild": "0.24.2"
+    "esbuild": "0.24.2",
+    "typescript": "5.7.2"
   },
   "dependencies": {
     "lit": "3.2.1"
   },
-  "author": "Dominik Bruhn",
   "scripts": {
     "build": "npm i && node esbuild.mjs",
     "start": "esbuild  --bundle src/app/index.ts --outfile=public/app/index.js --watch --servedir=public",
-    "ts": "tsc -p ./"
+    "ts": "tsc"
   }
 }
