@@ -1,3 +1,4 @@
+import './router/nidoca-router'
 import './nidoca-layout-meta';
 
 import './nidoca-meta';

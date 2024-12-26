@@ -1,12 +1,13 @@
-import {NidocaRouteListener, NidocaRouter} from '@domoskanonos/nidoca-router';
-import {html, HTMLTemplateResult} from 'lit';
-import {NidocaHtml} from '../nidoca-html';
+import { NidocaRouteListener, NidocaRouter } from '../router/nidoca-router';
+import { html, HTMLTemplateResult } from 'lit';
+import { NidocaHtml } from '../nidoca-html';
 
-import {customElement, property} from 'lit/decorators.js';
+import { customElement, property } from 'lit/decorators.js';
 
 @customElement('nidoca-my-app')
 export class NidocaMyApp extends NidocaHtml implements NidocaRouteListener {
-  @property({type: Object})
+
+  @property({ type: Object })
   content: any = html``;
 
   constructor() {
@@ -37,7 +38,7 @@ export class NidocaMyApp extends NidocaHtml implements NidocaRouteListener {
         break;
       default:
         this.content = html`<nidoca-page-webcomponents></nidoca-page-webcomponents>`;
-        //this.content = html`<nidoca-page-main></nidoca-page-main>`;
+      //this.content = html`<nidoca-page-main></nidoca-page-main>`;
     }
   }
 
@@ -82,43 +83,43 @@ export class NidocaMyApp extends NidocaHtml implements NidocaRouteListener {
         <nidoca-menu slot="left" theme="primary">
           <nidoca-menu-item
             @nidoca-event-menu-item-clicked="${() => {
-              NidocaRouter.getUniqueInstance().navigate('#main');
-            }}"
+        NidocaRouter.getUniqueInstance().navigate('#main');
+      }}"
             icon="home"
             text="Start"
           ></nidoca-menu-item>
           <nidoca-menu-item
             text=">Webcomponents"
             @nidoca-event-menu-item-clicked="${() => {
-              NidocaRouter.getUniqueInstance().navigate('#webcomponents');
-            }}"
+        NidocaRouter.getUniqueInstance().navigate('#webcomponents');
+      }}"
           ></nidoca-menu-item>
 
           <nidoca-menu-area icon="gavel" text="Rechtliches"></nidoca-menu-area>
           <nidoca-menu-item
             text="Impressum"
             @nidoca-event-menu-item-clicked="${() => {
-              NidocaRouter.getUniqueInstance().navigate('#imprint');
-            }}"
+        NidocaRouter.getUniqueInstance().navigate('#imprint');
+      }}"
           ></nidoca-menu-item>
           <nidoca-menu-item
             text="Datenschutz"
             @nidoca-event-menu-item-clicked="${() => {
-              NidocaRouter.getUniqueInstance().navigate('#privacy');
-            }}"
+        NidocaRouter.getUniqueInstance().navigate('#privacy');
+      }}"
           ></nidoca-menu-item>
           <nidoca-menu-item
             text="Nutzungsbedingungen"
             @nidoca-event-menu-item-clicked="${() => {
-              NidocaRouter.getUniqueInstance().navigate('#terms-of-use');
-            }}"
+        NidocaRouter.getUniqueInstance().navigate('#terms-of-use');
+      }}"
           ></nidoca-menu-item>
           <nidoca-menu-area text="Sonstiges"></nidoca-menu-area>
           <nidoca-menu-item
             text="Einstellungen"
             @nidoca-event-menu-item-clicked="${() => {
-              NidocaRouter.getUniqueInstance().navigate('#settings');
-            }}"
+        NidocaRouter.getUniqueInstance().navigate('#settings');
+      }}"
           ></nidoca-menu-item>
         </nidoca-menu>
       </nidoca-template>
