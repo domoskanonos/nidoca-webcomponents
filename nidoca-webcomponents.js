@@ -258,7 +258,6 @@
       border-radius: 1rem;
       line-height: var(--height-medium);
     }
-
     .clickable {
       cursor: pointer;
     }
