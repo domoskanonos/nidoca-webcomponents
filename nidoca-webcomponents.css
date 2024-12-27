@@ -5,6 +5,10 @@ div {
 }
 
 :root {
+
+  --font-family: 'Roboto', sans-serif;
+  --font-size:18px;
+
   --max-width: 1280px;
 
   --height-min: 36px;
@@ -78,8 +82,8 @@ body {
   word-wrap: break-word;
   box-sizing: border-box;
   text-rendering: optimizelegibility;
-  font-family: 'Source Sans Pro', sans-serif;
-  font-size: 18px;
+  font-family: var(--font-family);
+  font-size: var(--font-size);
   letter-spacing: normal;
   line-height: auto;
   font-style: normal;
