@@ -1,4 +1,7 @@
 export * from './router/nidoca-router';
+
+export * from './util/nidoca-img';
+
 export * from './nidoca-layout-meta';
 
 export * from './nidoca-meta';
