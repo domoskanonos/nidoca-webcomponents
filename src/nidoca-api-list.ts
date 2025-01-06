@@ -15,6 +15,9 @@ export class NidocaApiList extends NidocaHtml {
 
   @property({ type: String }) primaryTextField = '';
   @property({ type: String }) secondaryTextField = '';
+  @property({ type: String }) tertiaryTextField = '';
+  @property({ type: String }) infoTextField = '';
+
   @property({ type: String }) groupByField = '';
 
   @property({ type: String }) imgSrcField = '';
@@ -57,6 +60,8 @@ export class NidocaApiList extends NidocaHtml {
                   theme="${this.theme}"
                   primaryText="${item[this.primaryTextField] || ''}"
                   secondaryText="${item[this.secondaryTextField] || ''}"
+                  tertiaryText="${item[this.tertiaryTextField] || ''}"
+                  infoText="${item[this.infoTextField] || ''}"
                 >
                   <nidoca-img-round width="64px" width="64px" slot="left" src="${this.imgSrcField}"></nidoca-img-round>
                   <nidoca-icon slot="right" icon="chevron_right"></nidoca-icon>
