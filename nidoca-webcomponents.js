@@ -103,6 +103,8 @@
                       theme="${this.theme}"
                       primaryText="${l[this.primaryTextField]||""}"
                       secondaryText="${l[this.secondaryTextField]||""}"
+                      tertiaryText="${l[this.tertiaryTextField]||""}"
+                      infoText="${l[this.infoTextField]||""}"
                     >
                       <nidoca-img-round width="64px" width="64px" slot="left" src="${this.renderImg(l[this.primaryTextField]||"",l[this.imgSrcField])}"></nidoca-img-round>
                       <nidoca-icon slot="right" icon="${this.rightIcon}"></nidoca-icon>
@@ -134,9 +136,10 @@
             primaryTextField="action_title"
             rightIcon="chevron_right"
             secondaryTextField="action_description"
+            infoTextField="action_energy"
             groupByField="goal_title"
             imgSrcField="action_image"
-            groupByField="action_energy"
+            groupByField="goal_title"
           >
           </nidoca-api-list>
         `}};r([i({type:u,converter:String})],j.prototype,"theme",2),r([i({type:String})],j.prototype,"endpoint",2),r([i({type:String})],j.prototype,"primaryTextField",2),r([i({type:String})],j.prototype,"secondaryTextField",2),r([i({type:String})],j.prototype,"tertiaryTextField",2),r([i({type:String})],j.prototype,"infoTextField",2),r([i({type:String})],j.prototype,"groupByField",2),r([i({type:String})],j.prototype,"imgSrcField",2),r([i({type:String})],j.prototype,"rightIcon",2),r([$e()],j.prototype,"data",2),j=r([m("nidoca-api-list")],j);var vr=(n=>(n.none="none",n.shadow_1="shadow_1",n.shadow_2="shadow_2",n.shadow_3="shadow_3",n))(vr||{}),Q=class extends d{constructor(){super(...arguments);this.theme="primary";this.shadowType="shadow_1";this.icon="";this.clickable=!0;this.deactivated=!1;this.title=""}render(){return s`
