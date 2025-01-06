@@ -95,6 +95,8 @@ export class NidocaApiList extends NidocaHtml {
                       theme="${this.theme}"
                       primaryText="${item[this.primaryTextField] || ''}"
                       secondaryText="${item[this.secondaryTextField] || ''}"
+                      tertiaryText="${item[this.tertiaryTextField] || ''}"
+                      infoText="${item[this.infoTextField] || ''}"
                     >
                       <nidoca-img-round width="64px" width="64px" slot="left" src="${this.renderImg(item[this.primaryTextField] || '', item[this.imgSrcField])}"></nidoca-img-round>
                       <nidoca-icon slot="right" icon="${this.rightIcon}"></nidoca-icon>
@@ -131,9 +133,10 @@ export class NidocaApiList extends NidocaHtml {
             primaryTextField="action_title"
             rightIcon="chevron_right"
             secondaryTextField="action_description"
+            infoTextField="action_energy"
             groupByField="goal_title"
             imgSrcField="action_image"
-            groupByField="action_energy"
+            groupByField="goal_title"
           >
           </nidoca-api-list>
         `;
