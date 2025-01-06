@@ -1,7 +1,7 @@
-import {css, html, TemplateResult} from 'lit';
+import { css, html, TemplateResult } from 'lit';
 
-import {customElement} from 'lit/decorators.js';
-import {NidocaText} from './nidoca-text';
+import { customElement } from 'lit/decorators.js';
+import { NidocaText } from './nidoca-text';
 
 @customElement('nidoca-text-body')
 export class NidocaTextBody extends NidocaText {
@@ -12,7 +12,7 @@ export class NidocaTextBody extends NidocaText {
     ::slotted(slot) {
       display: block;
       line-height: 1.25em;
-      font-weight: 400;
+      font-weight: 450;
       font-size: 105%;
     }
   `;

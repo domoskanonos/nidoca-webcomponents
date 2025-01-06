@@ -12,7 +12,7 @@ export class NidocaListItem extends NidocaHtml {
     .container {
       display: grid;
       cursor: pointer;
-      grid-template-columns: min-content 1fr min-content;
+      grid-template-columns: min-content 1fr min-content min-content;
       padding: var(--space-2);
     }
 
@@ -82,9 +82,9 @@ export class NidocaListItem extends NidocaHtml {
         : html``}
           <slot></slot>
           ${this.secondaryText
-        ? html` <nidoca-text-caption theme="${this.theme}" class="item"
+        ? html` <nidoca-text-subtitle theme="${this.theme}" class="item"
                 >${this.secondaryText}
-              </nidoca-text-caption>`
+              </nidoca-text-subtitle>`
         : html``}
           <slot name="secondary"></slot>
 
@@ -94,14 +94,12 @@ export class NidocaListItem extends NidocaHtml {
               </nidoca-text-caption>`
         : html``}
           <slot name="tertiary"></slot>
-
-          ${this.infoText
-        ? html` <nidoca-text-caption theme="${this.theme}" class="item right"
-                >${this.infoText}
-              </nidoca-text-caption>`
-        : html``}
-
         </div>
+         ${this.infoText
+        ? html` <nidoca-text-button theme="${this.theme}" class="item right"
+                >${this.infoText}
+              </nidoca-text-button>`
+        : html`<slot name="info"></slot>`}
         <slot name="right" class="item right"></slot>
       </div>
     `;

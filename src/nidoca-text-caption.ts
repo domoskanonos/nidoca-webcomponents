@@ -1,8 +1,8 @@
-import {css, html, TemplateResult} from 'lit';
-import {NidocaHtml} from './nidoca-html';
+import { css, html, TemplateResult } from 'lit';
+import { NidocaHtml } from './nidoca-html';
 
-import {customElement} from 'lit/decorators.js';
-import {NidocaText} from './nidoca-text';
+import { customElement } from 'lit/decorators.js';
+import { NidocaText } from './nidoca-text';
 
 @customElement('nidoca-text-caption')
 export class NidocaTextCaption extends NidocaText {
@@ -12,8 +12,9 @@ export class NidocaTextCaption extends NidocaText {
     ::slotted(:host),
     ::slotted(slot) {
       display: block;
-      font-weight: 400;
+      font-weight: 350;
       line-height: 1.25em;
+      font-size: 95%;
     }
   `;
 

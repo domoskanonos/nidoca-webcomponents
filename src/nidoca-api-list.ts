@@ -54,7 +54,7 @@ export class NidocaApiList extends NidocaHtml {
               ${this.data.map((item) => html`
                 <nidoca-list-item
                   @click="${() => this.itemClicked(item)}"
-                  theme="${this.theme}
+                  theme="${this.theme}"
                   primaryText="${item[this.primaryTextField] || ''}"
                   secondaryText="${item[this.secondaryTextField] || ''}"
                 >
