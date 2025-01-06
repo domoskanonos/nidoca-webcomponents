@@ -1,8 +1,8 @@
-import {css, html, LitElement, TemplateResult} from 'lit';
-import {NidocaHtml} from './nidoca-html';
+import { css, html, LitElement, TemplateResult } from 'lit';
+import { NidocaHtml } from './nidoca-html';
 
-import {customElement} from 'lit/decorators.js';
-import {property} from 'lit/decorators.js';
+import { customElement } from 'lit/decorators.js';
+import { property } from 'lit/decorators.js';
 import { NidocaTheme } from './nidoca-meta';
 import { NidocaImgRound } from './nidoca-img-round';
 
@@ -39,16 +39,22 @@ export class NidocaListItem extends NidocaHtml {
     }
   `;
 
-  @property({type: NidocaTheme, converter: String})
+  @property({ type: NidocaTheme, converter: String })
   theme: string = NidocaTheme.surface;
 
-  @property({type: String})
+  @property({ type: String })
   primaryText: string = '';
 
-  @property({type: String})
+  @property({ type: String })
   secondaryText: string = '';
 
-  @property({type: Boolean})
+  @property({ type: String })
+  tertiaryText: string = '';
+
+  @property({ type: String })
+  infoText: string = '';
+
+  @property({ type: Boolean })
   selected: boolean = false;
 
   render(): TemplateResult {
@@ -72,15 +78,29 @@ export class NidocaListItem extends NidocaHtml {
         <slot name="left" class="item left"></slot>
         <div class="containerTypography">
           ${this.primaryText
-            ? html` <nidoca-text-body theme="${this.theme}" class="item">${this.primaryText} </nidoca-text-body>`
-            : html``}
+        ? html` <nidoca-text-body theme="${this.theme}" class="item">${this.primaryText} </nidoca-text-body>`
+        : html``}
           <slot></slot>
           ${this.secondaryText
-            ? html` <nidoca-text-caption theme="${this.theme}" class="item"
+        ? html` <nidoca-text-caption theme="${this.theme}" class="item"
                 >${this.secondaryText}
               </nidoca-text-caption>`
-            : html``}
+        : html``}
           <slot name="secondary"></slot>
+
+          ${this.tertiaryText
+        ? html` <nidoca-text-caption theme="${this.theme}" class="item"
+                >${this.tertiaryText}
+              </nidoca-text-caption>`
+        : html``}
+          <slot name="tertiary"></slot>
+
+          ${this.infoText
+        ? html` <nidoca-text-caption theme="${this.theme}" class="item right"
+                >${this.infoText}
+              </nidoca-text-caption>`
+        : html``}
+
         </div>
         <slot name="right" class="item right"></slot>
       </div>
