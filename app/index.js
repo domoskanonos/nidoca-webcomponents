@@ -115,7 +115,7 @@
               ${this.data.map(t=>n`
                 <nidoca-list-item
                   @click="${()=>this.itemClicked(t)}"
-                  theme="${this.theme}
+                  theme="${this.theme}"
                   primaryText="${t[this.primaryTextField]||""}"
                   secondaryText="${t[this.secondaryTextField]||""}"
                 >
@@ -1613,21 +1613,19 @@ ${this.value}</textarea
         <div class="containerTypography">
           ${this.primaryText?n` <nidoca-text-body theme="${this.theme}" class="item">${this.primaryText} </nidoca-text-body>`:n``}
           <slot></slot>
-          ${this.secondaryText?n` <nidoca-text-caption theme="${this.theme}" class="item"
+          ${this.secondaryText?n` <nidoca-text-subtitle theme="${this.theme}" class="item"
                 >${this.secondaryText}
-              </nidoca-text-caption>`:n``}
+              </nidoca-text-subtitle>`:n``}
           <slot name="secondary"></slot>
 
           ${this.tertiaryText?n` <nidoca-text-caption theme="${this.theme}" class="item"
                 >${this.tertiaryText}
               </nidoca-text-caption>`:n``}
           <slot name="tertiary"></slot>
-
-          ${this.infoText?n` <nidoca-text-caption theme="${this.theme}" class="item right"
-                >${this.infoText}
-              </nidoca-text-caption>`:n``}
-
         </div>
+         ${this.infoText?n` <nidoca-text-button theme="${this.theme}" class="item right"
+                >${this.infoText}
+              </nidoca-text-button>`:n`<slot name="info"></slot>`}
         <slot name="right" class="item right"></slot>
       </div>
     `}switchSelected(){this.selected=!this.selected,this.dispatchEvent(new CustomEvent("nidoca-event-list-item-clicked",{detail:this.selected,bubbles:!0,composed:!0}))}static example(t=""){return n`<nidoca-list-item
@@ -1642,7 +1640,7 @@ ${this.value}</textarea
     .container {
       display: grid;
       cursor: pointer;
-      grid-template-columns: min-content 1fr min-content;
+      grid-template-columns: min-content 1fr min-content min-content;
       padding: var(--space-2);
     }
 
@@ -2012,7 +2010,7 @@ ${this.value}</textarea
     ::slotted(slot) {
       display: block;
       line-height: 1.25em;
-      font-weight: 400;
+      font-weight: 450;
       font-size: 105%;
     }
   `,pe=r([p("nidoca-text-body")],pe);var me=class extends v{render(){return n`${super.render()}`}};me.styles=m`
@@ -2043,8 +2041,8 @@ ${this.value}</textarea
     ::slotted(slot) {
       display: block;
       line-height: 1.25em;
-      font-weight: 600;
-      font-size: 105%;
+      font-weight: 400;
+      font-size: 100%;
     }
   `,de=r([p("nidoca-text-subtitle")],de);var U=class extends v{render(){return n`<style>
         slot {
@@ -2057,8 +2055,9 @@ ${this.value}</textarea
     ::slotted(:host),
     ::slotted(slot) {
       display: block;
-      font-weight: 400;
+      font-weight: 350;
       line-height: 1.25em;
+      font-size: 95%;
     }
   `,U=r([p("nidoca-text-caption")],U);var Fe=class extends U{render(){return n`<style>
         slot {
