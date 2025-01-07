@@ -2,6 +2,7 @@ import { html, TemplateResult } from "lit-html";
 import { property, state } from 'lit/decorators.js';
 import { NidocaHtml } from "./nidoca-html";
 import { NidocaTheme } from "../nidoca-meta";
+import { NidocaImgHelper } from "../util/nidoca-img";
 
 export abstract class NidocaAbstractGenericList<T> extends NidocaHtml {
 
