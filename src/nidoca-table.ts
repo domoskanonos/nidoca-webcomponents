@@ -1,11 +1,11 @@
-import {css, html, TemplateResult, LitElement} from 'lit';
-import {NidocaHtml} from './nidoca-html';
+import { css, html, TemplateResult, LitElement } from 'lit';
+import { NidocaHtml } from './abstract/nidoca-html';
 
-import {customElement} from 'lit/decorators.js';
-import {property} from 'lit/decorators.js';
-import {guard} from 'lit/directives/guard.js';
-import {repeat} from 'lit/directives/repeat.js';
-import {NidocaIcon} from './nidoca-icon';
+import { customElement } from 'lit/decorators.js';
+import { property } from 'lit/decorators.js';
+import { guard } from 'lit/directives/guard.js';
+import { repeat } from 'lit/directives/repeat.js';
+import { NidocaIcon } from './nidoca-icon';
 import { NidocaTheme } from './nidoca-meta';
 
 @customElement('nidoca-table')
@@ -33,16 +33,16 @@ export class NidocaTable extends NidocaHtml {
     }
   `;
 
-  @property({type: Array})
+  @property({ type: Array })
   headers: any[] = ['column 1', 'column 2'];
 
-  @property({type: Array})
+  @property({ type: Array })
   rows: any[] = [
     ['row 1', new NidocaIcon()],
     ['row 2', new NidocaIcon()],
   ];
 
-  @property({type: NidocaTheme, converter: String})
+  @property({ type: NidocaTheme, converter: String })
   theme: string = NidocaTheme.plain;
 
   render(): TemplateResult {
@@ -69,26 +69,26 @@ export class NidocaTable extends NidocaHtml {
         <table>
           <thead>
             ${guard(
-              [this.headers],
-              () => html` ${repeat(this.headers, (header) => html` <th colspan="1" rowspan="1">${header}</th> `)} `
-            )}
+      [this.headers],
+      () => html` ${repeat(this.headers, (header) => html` <th colspan="1" rowspan="1">${header}</th> `)} `
+    )}
           </thead>
           <tbody>
             ${guard(
-              [this.rows],
-              () =>
-                html`
+      [this.rows],
+      () =>
+        html`
                   ${repeat(
-                    this.rows,
-                    (row) =>
-                      html`
+          this.rows,
+          (row) =>
+            html`
                         <tr>
                           ${repeat(row, (column) => html` <td colspan="1" rowspan="1">${column}</td> `)}
                         </tr>
                       `
-                  )}
+        )}
                 `
-            )}
+    )}
           </tbody>
         </table>
       </div>

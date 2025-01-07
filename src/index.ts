@@ -7,7 +7,7 @@ export * from './util/nidoca-img';
 export * from './nidoca-layout-meta';
 
 export * from './nidoca-meta';
-export * from './nidoca-html';
+export * from './abstract/nidoca-html';
 
 export * from './nidoca-accordion';
 export * from './nidoca-accordion-item';

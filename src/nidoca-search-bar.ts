@@ -1,9 +1,9 @@
-import {css, html, TemplateResult, LitElement} from 'lit';
-import {NidocaHtml} from './nidoca-html';
+import { css, html, TemplateResult, LitElement } from 'lit';
+import { NidocaHtml } from './abstract/nidoca-html';
 
-import {customElement} from 'lit/decorators.js';
-import {property} from 'lit/decorators.js';
-import {query} from 'lit/decorators.js';
+import { customElement } from 'lit/decorators.js';
+import { property } from 'lit/decorators.js';
+import { query } from 'lit/decorators.js';
 import { NidocaTheme } from './nidoca-meta';
 
 @customElement('nidoca-search-bar')
@@ -41,19 +41,19 @@ export class NidocaSearchBar extends NidocaHtml {
     }
   `;
 
-  @property({type: String})
+  @property({ type: String })
   value: string = '';
 
-  @property({type: String})
+  @property({ type: String })
   placeholder: string = '';
 
-  @property({type: Boolean})
+  @property({ type: Boolean })
   disabled: boolean = false;
 
   @query('#inputElement')
   private inputElement: HTMLInputElement | undefined;
 
-  @property({type: NidocaTheme, converter: String})
+  @property({ type: NidocaTheme, converter: String })
   theme: string = NidocaTheme.surface;
 
   render(): TemplateResult {

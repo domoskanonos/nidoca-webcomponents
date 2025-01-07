@@ -1,8 +1,8 @@
-import {html, LitElement, TemplateResult, css} from 'lit';
-import {NidocaHtml} from './nidoca-html';
+import { html, LitElement, TemplateResult, css } from 'lit';
+import { NidocaHtml } from './abstract/nidoca-html';
 
-import {customElement} from 'lit/decorators.js';
-import {property} from 'lit/decorators.js';
+import { customElement } from 'lit/decorators.js';
+import { property } from 'lit/decorators.js';
 
 @customElement('nidoca-elevation')
 export class NidocaElevation extends NidocaHtml {
@@ -13,10 +13,10 @@ export class NidocaElevation extends NidocaHtml {
     }
   `;
 
-  @property({type: Boolean})
+  @property({ type: Boolean })
   show: boolean = false;
 
-  @property({type: Object})
+  @property({ type: Object })
   associatedElement: HTMLElement | undefined;
 
   constructor() {

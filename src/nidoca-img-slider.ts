@@ -1,10 +1,10 @@
-import {css, html, TemplateResult, LitElement} from 'lit';
-import {NidocaHtml} from './nidoca-html';
+import { css, html, TemplateResult, LitElement } from 'lit';
+import { NidocaHtml } from './abstract/nidoca-html';
 
-import {customElement} from 'lit/decorators.js';
-import {property, state} from 'lit/decorators.js';
-import {NidocaImg} from './nidoca-img';
-import {NidocaTheme} from './nidoca-meta';
+import { customElement } from 'lit/decorators.js';
+import { property, state } from 'lit/decorators.js';
+import { NidocaImg } from './nidoca-img';
+import { NidocaTheme } from './nidoca-meta';
 
 @customElement('nidoca-img-slider')
 export class NidocaImgSlider extends NidocaHtml {
@@ -35,7 +35,7 @@ export class NidocaImgSlider extends NidocaHtml {
     }
   `;
 
-  @property({type: NidocaTheme, converter: String})
+  @property({ type: NidocaTheme, converter: String })
   theme: string = NidocaTheme.plain;
 
   @state()

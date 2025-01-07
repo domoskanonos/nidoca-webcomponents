@@ -1,8 +1,8 @@
-import {css, html, LitElement, TemplateResult} from 'lit';
-import {NidocaHtml} from './nidoca-html';
+import { css, html, LitElement, TemplateResult } from 'lit';
+import { NidocaHtml } from './abstract/nidoca-html';
 
-import {customElement, property} from 'lit/decorators.js';
-import {NidocaTheme} from './nidoca-meta';
+import { customElement, property } from 'lit/decorators.js';
+import { NidocaTheme } from './nidoca-meta';
 
 @customElement('nidoca-card')
 export class NidocaCard extends NidocaHtml {
@@ -24,7 +24,7 @@ export class NidocaCard extends NidocaHtml {
     }
   `;
 
-  @property({type: NidocaTheme, converter: String})
+  @property({ type: NidocaTheme, converter: String })
   theme: string = NidocaTheme.surface;
 
   render(): TemplateResult {

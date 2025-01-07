@@ -1,7 +1,7 @@
-import {css, html, TemplateResult, LitElement} from 'lit';
-import {NidocaHtml} from './nidoca-html';
+import { css, html, TemplateResult, LitElement } from 'lit';
+import { NidocaHtml } from './abstract/nidoca-html';
 
-import {customElement, property} from 'lit/decorators.js';
+import { customElement, property } from 'lit/decorators.js';
 import { NidocaTheme, NidocaThemeHelper } from './nidoca-meta';
 
 @customElement('nidoca-split-screen')
@@ -45,10 +45,10 @@ export class NidocaSplitScreen extends NidocaHtml {
     }
   `;
 
-  @property({type: NidocaTheme, converter: String})
+  @property({ type: NidocaTheme, converter: String })
   theme: string;
 
-  @property({type: Boolean, converter: String})
+  @property({ type: Boolean, converter: String })
   hideSidebox: boolean = true;
 
   constructor() {

@@ -1,9 +1,9 @@
-import {css, html, TemplateResult, LitElement} from 'lit';
-import {NidocaHtml} from './nidoca-html';
+import { css, html, TemplateResult, LitElement } from 'lit';
+import { NidocaHtml } from './abstract/nidoca-html';
 
-import {customElement} from 'lit/decorators.js';
-import {property} from 'lit/decorators.js';
-import {ifDefined} from 'lit/directives/if-defined.js';
+import { customElement } from 'lit/decorators.js';
+import { property } from 'lit/decorators.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
 
 export class NidocaTransitionType {
   static readonly CENTER = 'CENTER';
@@ -20,10 +20,10 @@ export class NidocaTransitionType {
 
 @customElement('nidoca-transition')
 export class NidocaTransition extends NidocaHtml {
-  @property({type: String})
+  @property({ type: String })
   transitionType: string = NidocaTransitionType.CENTER;
 
-  @property({type: Number})
+  @property({ type: Number })
   duration: number = 0.5; // seconds
 
   static styles = css`

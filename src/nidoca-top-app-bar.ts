@@ -1,8 +1,8 @@
-import {css, html, TemplateResult, LitElement} from 'lit';
-import {NidocaHtml} from './nidoca-html';
+import { css, html, TemplateResult, LitElement } from 'lit';
+import { NidocaHtml } from './abstract/nidoca-html';
 
-import {customElement} from 'lit/decorators.js';
-import {property} from 'lit/decorators.js';
+import { customElement } from 'lit/decorators.js';
+import { property } from 'lit/decorators.js';
 import { NidocaTheme } from './nidoca-meta';
 
 /**
@@ -41,10 +41,10 @@ export class NidocaTopAppBar extends NidocaHtml {
     }
   `;
 
-  @property({type: String, converter: String})
+  @property({ type: String, converter: String })
   theme: string = NidocaTheme.primary;
 
-  @property({type: Boolean})
+  @property({ type: Boolean })
   prominent: boolean = false;
 
   render(): TemplateResult {

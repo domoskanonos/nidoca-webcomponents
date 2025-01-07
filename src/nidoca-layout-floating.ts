@@ -1,8 +1,8 @@
-import {css, html, LitElement, TemplateResult} from 'lit';
-import {NidocaHtml} from './nidoca-html';
+import { css, html, LitElement, TemplateResult } from 'lit';
+import { NidocaHtml } from './abstract/nidoca-html';
 
-import {customElement} from 'lit/decorators.js';
-import {property} from 'lit/decorators.js';
+import { customElement } from 'lit/decorators.js';
+import { property } from 'lit/decorators.js';
 
 @customElement('nidoca-layout-floating')
 export class NidocaLayoutFloatingContainer extends NidocaHtml {
@@ -16,22 +16,22 @@ export class NidocaLayoutFloatingContainer extends NidocaHtml {
     }
   `;
 
-  @property({type: String})
+  @property({ type: String })
   height: string = 'auto';
 
-  @property({type: String})
+  @property({ type: String })
   width: string = 'auto';
 
-  @property({type: String})
+  @property({ type: String })
   left: string = 'auto';
 
-  @property({type: String})
+  @property({ type: String })
   top: string = 'auto';
 
-  @property({type: String})
+  @property({ type: String })
   right: string = 'auto';
 
-  @property({type: String})
+  @property({ type: String })
   bottom: string = 'auto';
 
   render(): TemplateResult {

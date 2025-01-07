@@ -1,9 +1,9 @@
-import {css, html, TemplateResult} from 'lit';
-import {NidocaHtml} from './nidoca-html';
+import { css, html, TemplateResult } from 'lit';
+import { NidocaHtml } from './abstract/nidoca-html';
 
-import {customElement} from 'lit/decorators.js';
-import {property} from 'lit/decorators.js';
-import {NidocaTheme} from './nidoca-meta';
+import { customElement } from 'lit/decorators.js';
+import { property } from 'lit/decorators.js';
+import { NidocaTheme } from './nidoca-meta';
 
 @customElement('nidoca-list-section')
 export class NidocaListSection extends NidocaHtml {
@@ -15,10 +15,10 @@ export class NidocaListSection extends NidocaHtml {
      box-sizing:border-box;
   `;
 
-  @property({type: NidocaTheme, converter: String})
+  @property({ type: NidocaTheme, converter: String })
   theme: string = NidocaTheme.surface;
 
-  @property({type: String})
+  @property({ type: String })
   text: string = '';
 
   render(): TemplateResult {

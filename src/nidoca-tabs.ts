@@ -1,10 +1,10 @@
-import {css, html, TemplateResult, LitElement} from 'lit';
-import {NidocaHtml} from './nidoca-html';
+import { css, html, TemplateResult, LitElement } from 'lit';
+import { NidocaHtml } from './abstract/nidoca-html';
 
-import {customElement, property} from 'lit/decorators.js';
-import {query} from 'lit/decorators.js';
-import {NidocaTabContent} from './nidoca-tab-content';
-import {NidocaTab} from './nidoca-tab';
+import { customElement, property } from 'lit/decorators.js';
+import { query } from 'lit/decorators.js';
+import { NidocaTabContent } from './nidoca-tab-content';
+import { NidocaTab } from './nidoca-tab';
 import { NidocaTheme } from './nidoca-meta';
 import { NidocaArticle } from './nidoca-article';
 
@@ -41,10 +41,10 @@ export class NidocaTabs extends NidocaHtml {
   @query('#tabContentSlot')
   private tabContentSlot: HTMLSlotElement | undefined;
 
-  @property({type: String})
+  @property({ type: String })
   theme: string = NidocaTheme.surface;
 
-  @property({type: Number})
+  @property({ type: Number })
   tabIndex: number = 0;
 
   render(): TemplateResult {

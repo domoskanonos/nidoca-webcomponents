@@ -1,8 +1,8 @@
-import {css, html, TemplateResult, LitElement} from 'lit';
-import {NidocaHtml} from './nidoca-html';
+import { css, html, TemplateResult, LitElement } from 'lit';
+import { NidocaHtml } from './abstract/nidoca-html';
 
-import {customElement} from 'lit/decorators.js';
-import {property} from 'lit/decorators.js';
+import { customElement } from 'lit/decorators.js';
+import { property } from 'lit/decorators.js';
 import { NidocaTheme } from './nidoca-meta';
 
 @customElement('nidoca-tab')
@@ -26,13 +26,13 @@ export class NidocaTab extends NidocaHtml {
     }
   `;
 
-  @property({type: Boolean})
+  @property({ type: Boolean })
   selected: boolean = false;
 
-  @property({type: String})
+  @property({ type: String })
   text: string = '';
 
-  @property({type: String})
+  @property({ type: String })
   theme: string = NidocaTheme.surface;
 
   render(): TemplateResult {
@@ -58,6 +58,6 @@ export class NidocaTab extends NidocaHtml {
 
   private tabClicked(): void {
     console.log('tab clicked.');
-    this.dispatchEvent(new CustomEvent('nidoca-event-tab-clicked', {detail: this, bubbles: true, composed: true}));
+    this.dispatchEvent(new CustomEvent('nidoca-event-tab-clicked', { detail: this, bubbles: true, composed: true }));
   }
 }

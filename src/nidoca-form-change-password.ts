@@ -1,7 +1,7 @@
-import {css, html, TemplateResult, LitElement} from 'lit';
-import {NidocaHtml} from './nidoca-html';
+import { css, html, TemplateResult, LitElement } from 'lit';
+import { NidocaHtml } from './abstract/nidoca-html';
 
-import {customElement, property, query} from 'lit/decorators.js';
+import { customElement, property, query } from 'lit/decorators.js';
 import { NidocaTheme, NidocaThemeHelper } from './nidoca-meta';
 import { NidocaForm } from './nidoca-form';
 import { NidocaFormText, NidocaFormTextType } from './nidoca-form-text';
@@ -19,22 +19,22 @@ export class NidocaFormChangePassword extends NidocaHtml {
     }
   `;
 
-  @property({type: NidocaTheme, converter: String})
+  @property({ type: NidocaTheme, converter: String })
   theme: string = NidocaTheme.surface;
 
-  @property({type: String, converter: String})
+  @property({ type: String, converter: String })
   label: string = 'Passwort ändern';
 
-  @property({type: String, converter: String})
+  @property({ type: String, converter: String })
   oldPasswordLabel: string = 'Altes Passwort';
 
-  @property({type: String, converter: String})
+  @property({ type: String, converter: String })
   newPasswordLabel: string = 'Neues Passwort';
 
-  @property({type: String, converter: String})
+  @property({ type: String, converter: String })
   repeatNewPasswordLabel: string = 'Wiederholen';
 
-  @property({type: String, converter: String})
+  @property({ type: String, converter: String })
   buttonLabel: string = 'Ändern';
 
   @query('#form')
@@ -105,17 +105,17 @@ export class NidocaFormChangePassword extends NidocaHtml {
           <slot></slot>
         </nidoca-form>
         ${this.showErrorMessageSamePassword
-          ? html` <nidoca-text
+        ? html` <nidoca-text
               style="color:var(--app-color-error-background)"
               text="${this.errorMessageSamePasswordLabel}"
             ></nidoca-text>`
-          : html``}
+        : html``}
         ${this.showErrorMessagePasswordDiff
-          ? html` <nidoca-text
+        ? html` <nidoca-text
               style="color:var(--app-color-error-background)"
               text="${this.errorMessagePasswordDiffLabel}"
             ></nidoca-text>`
-          : html``}
+        : html``}
       </nidoca-box>
     `;
   }

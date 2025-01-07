@@ -1,8 +1,8 @@
-import {css, html, TemplateResult, LitElement} from 'lit';
-import {NidocaHtml} from './nidoca-html';
+import { css, html, TemplateResult, LitElement } from 'lit';
+import { NidocaHtml } from './abstract/nidoca-html';
 
-import {customElement} from 'lit/decorators.js';
-import {property} from 'lit/decorators.js';
+import { customElement } from 'lit/decorators.js';
+import { property } from 'lit/decorators.js';
 
 export type NidocaTargetType = '_blank' | '_self' | '_parent' | '_top';
 
@@ -20,13 +20,13 @@ export class NidocaLink extends NidocaHtml {
     }
   `;
 
-  @property({type: String})
+  @property({ type: String })
   text: string = '';
 
-  @property({type: String})
+  @property({ type: String })
   href: string = '';
 
-  @property({type: String})
+  @property({ type: String })
   targetType: string = '_self';
 
   render(): TemplateResult {

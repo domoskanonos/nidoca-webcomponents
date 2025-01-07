@@ -1,8 +1,8 @@
-import {css, html, TemplateResult, LitElement} from 'lit';
-import {NidocaHtml} from './nidoca-html';
+import { css, html, TemplateResult, LitElement } from 'lit';
+import { NidocaHtml } from './abstract/nidoca-html';
 
-import {customElement} from 'lit/decorators.js';
-import {query} from 'lit/decorators.js';
+import { customElement } from 'lit/decorators.js';
+import { query } from 'lit/decorators.js';
 
 /**
  * check src: https://codepen.io/jakob-e/pen/XZoZWQ
@@ -81,9 +81,8 @@ export class NidocaRipple extends NidocaHtml {
       this.rippleContainerElement.style.cssText = '--s: 0; --o: 1;';
       this.rippleContainerElement.offsetTop;
       if (event instanceof MouseEvent || event instanceof Touch) {
-        this.rippleContainerElement.style.cssText = `--t: 1; --o: 0; --d: ${d}; --x:${event.clientX - r.left}; --y:${
-          event.clientY - r.top
-        };`;
+        this.rippleContainerElement.style.cssText = `--t: 1; --o: 0; --d: ${d}; --x:${event.clientX - r.left}; --y:${event.clientY - r.top
+          };`;
       }
     }
   }

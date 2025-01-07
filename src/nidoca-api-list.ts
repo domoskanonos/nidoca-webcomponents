@@ -1,7 +1,7 @@
 import { LitElement, html, css, nothing, TemplateResult } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import { NidocaImg } from './nidoca-img';
-import { NidocaHtml } from './nidoca-html';
+import { NidocaHtml } from './abstract/nidoca-html';
 import { NidocaTheme } from './nidoca-meta';
 import { NidocaImgHelper } from './nidoca-webcomponents';
 

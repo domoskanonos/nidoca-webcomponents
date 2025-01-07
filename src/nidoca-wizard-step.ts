@@ -1,8 +1,8 @@
-import {css, html, TemplateResult, LitElement} from 'lit';
-import {NidocaHtml} from './nidoca-html';
+import { css, html, TemplateResult, LitElement } from 'lit';
+import { NidocaHtml } from './abstract/nidoca-html';
 
-import {customElement} from 'lit/decorators.js';
-import {property} from 'lit/decorators.js';
+import { customElement } from 'lit/decorators.js';
+import { property } from 'lit/decorators.js';
 import { NidocaIconShadowType } from './nidoca-icon-extended';
 
 
@@ -29,16 +29,16 @@ export class NidocaWizardStep extends NidocaHtml {
     }
   `;
 
-  @property({type: String})
+  @property({ type: String })
   icon: string = '';
 
-  @property({type: String})
+  @property({ type: String })
   primaryText: string = '';
 
-  @property({type: Number})
+  @property({ type: Number })
   state: WizardStepState | undefined;
 
-  @property({type: Boolean})
+  @property({ type: Boolean })
   isLast: boolean = false;
 
   index: number | undefined;
@@ -68,8 +68,8 @@ export class NidocaWizardStep extends NidocaHtml {
           </nidoca-icon>
 
           ${this.isLast
-            ? html``
-            : html`<nidoca-icon color="${this.determineBackgroundColor(this.state)}" icon="label_important">
+        ? html``
+        : html`<nidoca-icon color="${this.determineBackgroundColor(this.state)}" icon="label_important">
               </nidoca-icon>`}
         </div>
         <nidoca-text style="width:48px;" text="${this.primaryText}"><slot></slot> </nidoca-text>
@@ -81,18 +81,18 @@ export class NidocaWizardStep extends NidocaHtml {
     return state == WizardStepState.completed
       ? 'var(--app-color-text-primary)'
       : state == WizardStepState.current
-      ? 'var(--app-color-secondary-background)'
-      : 'var(--app-color-surface-background)';
+        ? 'var(--app-color-secondary-background)'
+        : 'var(--app-color-surface-background)';
   }
 
   private determineColor(state: WizardStepState | undefined): string {
     return state == WizardStepState.finish
       ? 'var(--app-color-success)'
       : state == WizardStepState.completed
-      ? 'var(--mdc-theme-on-primary)'
-      : state == WizardStepState.current
-      ? 'var(--app-color-text-secondary)'
-      : 'var(--app-color-text-surface)';
+        ? 'var(--mdc-theme-on-primary)'
+        : state == WizardStepState.current
+          ? 'var(--app-color-text-secondary)'
+          : 'var(--app-color-text-surface)';
   }
 
   stepClicked() {

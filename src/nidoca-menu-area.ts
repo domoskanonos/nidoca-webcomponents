@@ -1,8 +1,8 @@
-import {css, html, TemplateResult} from 'lit';
-import {NidocaHtml} from './nidoca-html';
+import { css, html, TemplateResult } from 'lit';
+import { NidocaHtml } from './abstract/nidoca-html';
 
-import {customElement} from 'lit/decorators.js';
-import {property} from 'lit/decorators.js';
+import { customElement } from 'lit/decorators.js';
+import { property } from 'lit/decorators.js';
 
 @customElement('nidoca-menu-area')
 export class NidocaMenuArea extends NidocaHtml {
@@ -16,22 +16,22 @@ export class NidocaMenuArea extends NidocaHtml {
     }
   `;
 
-  @property({type: String})
+  @property({ type: String })
   text: string = '';
 
-  @property({type: String})
+  @property({ type: String })
   icon: string = '';
 
   render(): TemplateResult {
     return html`
       <div class="container">
         ${this.icon
-          ? html` <nidoca-icon
+        ? html` <nidoca-icon
               slot="graphic"
               icon="${this.icon}"
               style="padding-right:var(--space); font-size:var(--icon-size);"
             ></nidoca-icon>`
-          : html``}
+        : html``}
         ${this.text ? html` <nidoca-text-button>${this.text}</nidoca-text-button>` : html``}
         <slot></slot>
       </div>

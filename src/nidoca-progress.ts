@@ -1,9 +1,9 @@
-import {css, html, TemplateResult, LitElement} from 'lit';
-import {NidocaHtml} from './nidoca-html';
+import { css, html, TemplateResult, LitElement } from 'lit';
+import { NidocaHtml } from './abstract/nidoca-html';
 
-import {customElement} from 'lit/decorators.js';
-import {property} from 'lit/decorators.js';
-import {NidocaTheme} from './nidoca-meta';
+import { customElement } from 'lit/decorators.js';
+import { property } from 'lit/decorators.js';
+import { NidocaTheme } from './nidoca-meta';
 
 export class ProgressType {
   static readonly PROGRESS = 'PROGRESS';
@@ -14,10 +14,10 @@ export class ProgressType {
 export class NidocaProgress extends NidocaHtml {
   static styles = css``;
 
-  @property({type: NidocaTheme, converter: String})
+  @property({ type: NidocaTheme, converter: String })
   theme: string | undefined;
 
-  @property({type: ProgressType, converter: String})
+  @property({ type: ProgressType, converter: String })
   progressType: string = ProgressType.PROGRESS;
 
   render(): TemplateResult {

@@ -1,9 +1,9 @@
-import {css, html, TemplateResult} from 'lit';
-import {NidocaHtml} from './nidoca-html';
+import { css, html, TemplateResult } from 'lit';
+import { NidocaHtml } from './abstract/nidoca-html';
 
-import {customElement} from 'lit/decorators.js';
-import {property} from 'lit/decorators.js';
-import {query} from 'lit/decorators.js';
+import { customElement } from 'lit/decorators.js';
+import { property } from 'lit/decorators.js';
+import { query } from 'lit/decorators.js';
 import { NidocaFormAbstractInputElement } from './nidoca-form-abstract-input-element';
 
 export class NidocaFormOutputData {
@@ -24,7 +24,7 @@ export class NidocaForm extends NidocaHtml {
     }
   `;
 
-  @property({type: Boolean})
+  @property({ type: Boolean })
   autocomplete: boolean = true;
 
   @query('#slotElement')
@@ -84,7 +84,7 @@ export class NidocaForm extends NidocaHtml {
       return [];
     }
     const inputElements: NidocaFormAbstractInputElement[] = [];
-    const elements: Element[] = slotElement.assignedElements({flatten: true});
+    const elements: Element[] = slotElement.assignedElements({ flatten: true });
     for (let index = 0; index < elements.length; index++) {
       const element: Element = elements[index];
       this.recursiveInputElementSearch(element, inputElements);

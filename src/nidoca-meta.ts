@@ -1,5 +1,5 @@
-import {html, HTMLTemplateResult} from 'lit';
-import {NidocaHtml} from './nidoca-html';
+import { html, HTMLTemplateResult } from 'lit';
+import { NidocaHtml } from './abstract/nidoca-html';
 
 export enum NidocaTheme {
   primary = 'primary',
@@ -33,12 +33,12 @@ export class NidocaThemeHelper {
     return theme == NidocaTheme.plain
       ? NidocaTheme.surface
       : theme == NidocaTheme.primary
-      ? NidocaTheme.secondary
-      : theme == NidocaTheme.primary
-      ? NidocaTheme.secondary
-      : theme == NidocaTheme.secondary
-      ? NidocaTheme.primary
-      : NidocaTheme.plain;
+        ? NidocaTheme.secondary
+        : theme == NidocaTheme.primary
+          ? NidocaTheme.secondary
+          : theme == NidocaTheme.secondary
+            ? NidocaTheme.primary
+            : NidocaTheme.plain;
   }
 
   getParentTheme(element: HTMLElement): string | undefined {

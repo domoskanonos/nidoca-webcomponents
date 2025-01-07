@@ -1,8 +1,8 @@
-import {css, html, TemplateResult, LitElement} from 'lit';
-import {NidocaHtml} from './nidoca-html';
+import { css, html, TemplateResult, LitElement } from 'lit';
+import { NidocaHtml } from './abstract/nidoca-html';
 
-import {customElement, property, query} from 'lit/decorators.js';
-import {ifDefined} from 'lit/directives/if-defined.js';
+import { customElement, property, query } from 'lit/decorators.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
 import { NidocaForm } from './nidoca-form';
 import { NidocaTheme, NidocaThemeHelper } from './nidoca-meta';
 import { NidocaFormTextType } from './nidoca-form-text';
@@ -21,25 +21,25 @@ export class NidocaFormContact extends NidocaHtml {
     }
   `;
 
-  @property({type: NidocaTheme, converter: String})
+  @property({ type: NidocaTheme, converter: String })
   theme: string | undefined = NidocaTheme.primary;
 
-  @property({type: String, converter: String})
+  @property({ type: String, converter: String })
   label: string = 'Deine Nachricht';
 
-  @property({type: String, converter: String})
+  @property({ type: String, converter: String })
   nameLabel: string = 'Dein Name';
 
-  @property({type: String, converter: String})
+  @property({ type: String, converter: String })
   emailLabel: string = 'Deine Email';
 
-  @property({type: String, converter: String})
+  @property({ type: String, converter: String })
   titleLabel: string = 'Betreff';
 
-  @property({type: String, converter: String})
+  @property({ type: String, converter: String })
   messageLabel: string = 'Deine Nachricht';
 
-  @property({type: String, converter: String})
+  @property({ type: String, converter: String })
   buttonLabel: string = 'Senden';
 
   @query('#authenitcate-form')

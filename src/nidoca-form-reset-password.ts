@@ -1,7 +1,7 @@
-import {css, html, TemplateResult, LitElement} from 'lit';
-import {NidocaHtml} from './nidoca-html';
+import { css, html, TemplateResult, LitElement } from 'lit';
+import { NidocaHtml } from './abstract/nidoca-html';
 
-import {customElement, property, query} from 'lit/decorators.js';
+import { customElement, property, query } from 'lit/decorators.js';
 import { NidocaForm } from './nidoca-form';
 import { NidocaTheme, NidocaThemeHelper } from './nidoca-meta';
 import { NidocaFormTextType } from './nidoca-form-text';
@@ -19,16 +19,16 @@ export class NidocaFormResetPassword extends NidocaHtml {
     }
   `;
 
-  @property({type: NidocaTheme, converter: String})
+  @property({ type: NidocaTheme, converter: String })
   theme: string = NidocaTheme.primary;
 
-  @property({type: String, converter: String})
+  @property({ type: String, converter: String })
   label: string = 'Passwort zurücksetzen';
 
-  @property({type: String, converter: String})
+  @property({ type: String, converter: String })
   emailLabel: string = 'Deine Emailadresse';
 
-  @property({type: String, converter: String})
+  @property({ type: String, converter: String })
   buttonLabel: string = 'Zurücksetzen';
 
   @query('#form')

@@ -1,10 +1,10 @@
-import {css, html, TemplateResult} from 'lit';
-import {NidocaHtml} from './nidoca-html';
+import { css, html, TemplateResult } from 'lit';
+import { NidocaHtml } from './abstract/nidoca-html';
 
-import {customElement} from 'lit/decorators.js';
-import {property} from 'lit/decorators.js';
-import {query} from 'lit/decorators.js';
-import {FormOutputData, NidocaFormAbstractInputElement} from './nidoca-form-abstract-input-element';
+import { customElement } from 'lit/decorators.js';
+import { property } from 'lit/decorators.js';
+import { query } from 'lit/decorators.js';
+import { FormOutputData, NidocaFormAbstractInputElement } from './nidoca-form-abstract-input-element';
 import { NidocaTheme, NidocaThemeHelper } from './nidoca-meta';
 
 @customElement('nidoca-form-switch')
@@ -69,31 +69,31 @@ export class NidocaFormSwitch extends NidocaFormAbstractInputElement {
     }
   `;
 
-  @property({type: String})
+  @property({ type: String })
   name: string = '';
 
-  @property({type: String})
+  @property({ type: String })
   label: string = '';
 
-  @property({type: String})
+  @property({ type: String })
   infoText: string = '';
 
-  @property({type: String})
+  @property({ type: String })
   errorText: string = '';
 
-  @property({type: String})
+  @property({ type: String })
   warningText: string = '';
 
-  @property({type: Boolean})
+  @property({ type: Boolean })
   required: boolean = false;
 
-  @property({type: Boolean})
+  @property({ type: Boolean })
   disabled: boolean = false;
 
-  @property({type: Boolean})
+  @property({ type: Boolean })
   checked: boolean = false;
 
-  @property({type: String})
+  @property({ type: String })
   theme: string = NidocaTheme.primary;
 
   @query('#inputElement')
@@ -135,8 +135,8 @@ export class NidocaFormSwitch extends NidocaFormAbstractInputElement {
         </nidoca-text-subtitle>
 
         ${this.infoText.length > 0
-          ? html` <nidoca-text-caption text="${this.infoText}"></nidoca-text-caption>`
-          : html``}
+        ? html` <nidoca-text-caption text="${this.infoText}"></nidoca-text-caption>`
+        : html``}
 
         <label class="switch" slot="meta">
           <input
@@ -147,9 +147,9 @@ export class NidocaFormSwitch extends NidocaFormAbstractInputElement {
             ?required="${this.required}"
             ?disabled="${this.disabled}"
             @input="${(eventArg: any) => {
-              this.checked = eventArg.target.checked;
-              console.log(this.checked);
-            }}"
+        this.checked = eventArg.target.checked;
+        console.log(this.checked);
+      }}"
           />
           <span class="slider round"></span>
         </label>

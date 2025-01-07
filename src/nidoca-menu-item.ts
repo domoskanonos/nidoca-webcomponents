@@ -1,9 +1,9 @@
-import {css, html, TemplateResult, LitElement} from 'lit';
-import {NidocaHtml} from './nidoca-html';
+import { css, html, TemplateResult, LitElement } from 'lit';
+import { NidocaHtml } from './abstract/nidoca-html';
 
-import {customElement} from 'lit/decorators.js';
-import {property} from 'lit/decorators.js';
-import {NidocaTheme} from './nidoca-meta';
+import { customElement } from 'lit/decorators.js';
+import { property } from 'lit/decorators.js';
+import { NidocaTheme } from './nidoca-meta';
 
 @customElement('nidoca-menu-item')
 export class NidocaMenuItem extends NidocaHtml {
@@ -22,16 +22,16 @@ export class NidocaMenuItem extends NidocaHtml {
     }
   `;
 
-  @property({type: String})
+  @property({ type: String })
   text: string = '';
 
-  @property({type: String})
+  @property({ type: String })
   icon: string = '';
 
-  @property({type: Boolean})
+  @property({ type: Boolean })
   selected: boolean = false;
 
-  @property({type: String})
+  @property({ type: String })
   theme: string = NidocaTheme.surface;
 
   render(): TemplateResult {
@@ -43,12 +43,12 @@ export class NidocaMenuItem extends NidocaHtml {
       </style>
       <div class="container ${this.selected ? 'selected' : ''}" @click="${() => this.clicked()}">
         ${this.icon
-          ? html` <nidoca-icon
+        ? html` <nidoca-icon
               slot="graphic"
               icon="${this.icon}"
               style="padding-right:var(--space); font-size:var(--icon-size);"
             ></nidoca-icon>`
-          : html``}
+        : html``}
         ${this.text ? html` <nidoca-text-body theme="${this.theme}">${this.text}</nidoca-text-body>` : html``}
       </div>
     `;

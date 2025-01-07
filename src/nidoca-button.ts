@@ -1,9 +1,9 @@
-import {css, html, LitElement, TemplateResult} from 'lit';
-import {NidocaHtml} from './nidoca-html';
+import { css, html, LitElement, TemplateResult } from 'lit';
+import { NidocaHtml } from './abstract/nidoca-html';
 
-import {customElement} from 'lit/decorators.js';
-import {property} from 'lit/decorators.js';
-import {NidocaTheme} from './nidoca-meta';
+import { customElement } from 'lit/decorators.js';
+import { property } from 'lit/decorators.js';
+import { NidocaTheme } from './nidoca-meta';
 
 export enum NidocaButtonType {
   contained = 'contained',
@@ -44,16 +44,16 @@ export class NidocaButton extends NidocaHtml {
     }
   `;
 
-  @property({type: NidocaTheme, converter: String})
+  @property({ type: NidocaTheme, converter: String })
   theme: string = NidocaTheme.primary;
 
-  @property({type: NidocaButtonType, converter: String})
+  @property({ type: NidocaButtonType, converter: String })
   buttonType: NidocaButtonType = NidocaButtonType.contained;
 
-  @property({type: String})
+  @property({ type: String })
   icon: string = '';
 
-  @property({type: String})
+  @property({ type: String })
   text: string = '';
 
   render(): TemplateResult {
@@ -82,16 +82,16 @@ export class NidocaButton extends NidocaHtml {
       <div
         class="container ${this.buttonType}"
         @click="${() => {
-          this.clicked();
-        }}"
+        this.clicked();
+      }}"
       >
         ${this.icon
-          ? html`<nidoca-icon
+        ? html`<nidoca-icon
               .clickable="${false}"
               .icon="${this.icon}"
               style="padding-right:var(--space);"
             ></nidoca-icon>`
-          : html``}
+        : html``}
 
         <nidoca-text-button theme="${this.theme}"
           >${this.text}

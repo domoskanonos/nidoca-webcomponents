@@ -1,11 +1,11 @@
-import {css, html, TemplateResult} from 'lit';
-import {NidocaHtml} from './nidoca-html';
+import { css, html, TemplateResult } from 'lit';
+import { NidocaHtml } from './abstract/nidoca-html';
 
-import {customElement} from 'lit/decorators.js';
-import {property} from 'lit/decorators.js';
-import {query} from 'lit/decorators.js';
-import {ifDefined} from 'lit/directives/if-defined.js';
-import {FormOutputData, NidocaFormAbstractInputElement} from './nidoca-form-abstract-input-element';
+import { customElement } from 'lit/decorators.js';
+import { property } from 'lit/decorators.js';
+import { query } from 'lit/decorators.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
+import { FormOutputData, NidocaFormAbstractInputElement } from './nidoca-form-abstract-input-element';
 import { NidocaTheme } from './nidoca-meta';
 
 @customElement('nidoca-form-upload')
@@ -36,7 +36,7 @@ export class NidocaFormUpload extends NidocaFormAbstractInputElement {
     }
   `;
 
-  @property({type: NidocaTheme, converter: String})
+  @property({ type: NidocaTheme, converter: String })
   theme: string | undefined = NidocaTheme.primary;
 
   @query('#inputElement')

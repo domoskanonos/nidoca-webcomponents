@@ -1,8 +1,8 @@
-import {css, html, LitElement, TemplateResult} from 'lit';
-import {NidocaHtml} from './nidoca-html';
+import { css, html, LitElement, TemplateResult } from 'lit';
+import { NidocaHtml } from './abstract/nidoca-html';
 
-import {customElement, property, query} from 'lit/decorators.js';
-import {ifDefined} from 'lit/directives/if-defined.js';
+import { customElement, property, query } from 'lit/decorators.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
 import { NidocaTheme, NidocaThemeHelper } from './nidoca-meta';
 import { NidocaForm } from './nidoca-form';
 import { NidocaFormTextType } from './nidoca-form-text';
@@ -20,19 +20,19 @@ export class NidocaFormLogin extends NidocaHtml {
     }
   `;
 
-  @property({type: NidocaTheme, converter: String})
+  @property({ type: NidocaTheme, converter: String })
   theme: string | undefined = NidocaTheme.plain;
 
-  @property({type: String, converter: String})
+  @property({ type: String, converter: String })
   label: string = 'Anmeldung';
 
-  @property({type: String, converter: String})
+  @property({ type: String, converter: String })
   usernameLabel: string = 'Benutzername/Email';
 
-  @property({type: String, converter: String})
+  @property({ type: String, converter: String })
   passwordLabel: string = 'Passwort';
 
-  @property({type: String, converter: String})
+  @property({ type: String, converter: String })
   buttonLabel: string = 'Anmelden';
 
   @query('#authenitcate-form')

@@ -1,11 +1,11 @@
-import {css, html, LitElement, PropertyValues, TemplateResult} from 'lit';
-import {NidocaHtml} from './nidoca-html';
+import { css, html, LitElement, PropertyValues, TemplateResult } from 'lit';
+import { NidocaHtml } from './abstract/nidoca-html';
 
-import {customElement} from 'lit/decorators.js';
-import {property} from 'lit/decorators.js';
-import {query} from 'lit/decorators.js';
-import {ifDefined} from 'lit/directives/if-defined.js';
-import {NidocaFormText, NidocaFormTextType} from './nidoca-form-text';
+import { customElement } from 'lit/decorators.js';
+import { property } from 'lit/decorators.js';
+import { query } from 'lit/decorators.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
+import { NidocaFormText, NidocaFormTextType } from './nidoca-form-text';
 import { NidocaTheme } from './nidoca-meta';
 
 @customElement('nidoca-form-captcha')
@@ -17,25 +17,25 @@ export class NidocaFormCaptcha extends NidocaHtml {
     }
   `;
 
-  @property({type: NidocaTheme, converter: String})
+  @property({ type: NidocaTheme, converter: String })
   theme: string | undefined;
 
-  @property({type: String})
+  @property({ type: String })
   label: string = '';
 
-  @property({type: String})
+  @property({ type: String })
   placeholder: string = '';
 
-  @property({type: String})
+  @property({ type: String })
   name: string = '';
 
-  @property({type: Number})
+  @property({ type: Number })
   min: number = 1;
 
-  @property({type: Number})
+  @property({ type: Number })
   max: number = 10;
 
-  @property({type: String})
+  @property({ type: String })
   errorText: string = '';
 
   private numberOne: number = 1;
@@ -51,11 +51,11 @@ export class NidocaFormCaptcha extends NidocaHtml {
         id="inputfield"
         placeholder="${this.placeholder}"
         label="${this.label
-          .concat(' ')
-          .concat(String(this.numberOne))
-          .concat(' + ')
-          .concat(String(this.numberTwo))
-          .concat(' = ?')}"
+        .concat(' ')
+        .concat(String(this.numberOne))
+        .concat(' + ')
+        .concat(String(this.numberTwo))
+        .concat(' = ?')}"
         @nidoca-form-text-focusout="${() => this.validate()}"
         name="${this.name}"
         trailingIcon="create"

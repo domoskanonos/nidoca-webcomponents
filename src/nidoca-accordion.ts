@@ -1,11 +1,11 @@
-import {css, html, LitElement, TemplateResult, PropertyValues} from 'lit';
-import {NidocaHtml} from './nidoca-html';
+import { css, html, LitElement, TemplateResult, PropertyValues } from 'lit';
+import { NidocaHtml } from './abstract/nidoca-html';
 
-import {customElement} from 'lit/decorators.js';
-import {property} from 'lit/decorators.js';
-import {query} from 'lit/decorators.js';
+import { customElement } from 'lit/decorators.js';
+import { property } from 'lit/decorators.js';
+import { query } from 'lit/decorators.js';
 
-import {NidocaAccordionItem} from './nidoca-accordion-item';
+import { NidocaAccordionItem } from './nidoca-accordion-item';
 import { NidocaTheme, NidocaThemeHelper } from './nidoca-meta';
 import { NidocaArticle } from './nidoca-article';
 
@@ -26,10 +26,10 @@ export class NidocaAccordion extends NidocaHtml {
     }
   `;
 
-  @property({type: NidocaTheme, converter: String})
+  @property({ type: NidocaTheme, converter: String })
   theme: string = NidocaTheme.plain;
 
-  @property({type: AccordionType, converter: String})
+  @property({ type: AccordionType, converter: String })
   accordionType: string = AccordionType.single;
 
   @query('#accordionSlot')

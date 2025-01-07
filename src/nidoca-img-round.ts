@@ -1,8 +1,8 @@
-import {css, html, TemplateResult} from 'lit';
-import {NidocaHtml} from './nidoca-html';
+import { css, html, TemplateResult } from 'lit';
+import { NidocaHtml } from './abstract/nidoca-html';
 
-import {customElement} from 'lit/decorators.js';
-import {NidocaImg} from './nidoca-img';
+import { customElement } from 'lit/decorators.js';
+import { NidocaImg } from './nidoca-img';
 
 @customElement('nidoca-img-round')
 export class NidocaImgRound extends NidocaImg {

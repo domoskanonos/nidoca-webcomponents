@@ -1,8 +1,8 @@
-import {css, html, LitElement, TemplateResult} from 'lit';
-import {NidocaHtml} from './nidoca-html';
+import { css, html, LitElement, TemplateResult } from 'lit';
+import { NidocaHtml } from './abstract/nidoca-html';
 
-import {customElement} from 'lit/decorators.js';
-import {property} from 'lit/decorators.js';
+import { customElement } from 'lit/decorators.js';
+import { property } from 'lit/decorators.js';
 
 @customElement('nidoca-tab-content')
 export class NidocaTabContent extends NidocaHtml {
@@ -13,7 +13,7 @@ export class NidocaTabContent extends NidocaHtml {
     }
   `;
 
-  @property({type: Boolean})
+  @property({ type: Boolean })
   selected: boolean = false;
 
   render(): TemplateResult {

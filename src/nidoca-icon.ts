@@ -1,8 +1,8 @@
-import {css, html, TemplateResult, LitElement} from 'lit';
-import {NidocaHtml} from './nidoca-html';
+import { css, html, TemplateResult, LitElement } from 'lit';
+import { NidocaHtml } from './abstract/nidoca-html';
 
-import {customElement} from 'lit/decorators.js';
-import {property} from 'lit/decorators.js';
+import { customElement } from 'lit/decorators.js';
+import { property } from 'lit/decorators.js';
 
 @customElement('nidoca-icon')
 export class NidocaIcon extends NidocaHtml {
@@ -48,16 +48,16 @@ export class NidocaIcon extends NidocaHtml {
     }
   `;
 
-  @property({type: String})
+  @property({ type: String })
   icon: string = '';
 
-  @property({type: Boolean})
+  @property({ type: Boolean })
   clickable: boolean = true;
 
-  @property({type: Boolean})
+  @property({ type: Boolean })
   deactivated: boolean = false;
 
-  @property({type: String})
+  @property({ type: String })
   title: string = '';
 
   render(): TemplateResult {

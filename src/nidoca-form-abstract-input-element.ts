@@ -1,5 +1,5 @@
-import {LitElement} from 'lit';
-import {NidocaHtml} from './nidoca-html';
+import { LitElement } from 'lit';
+import { NidocaHtml } from './abstract/nidoca-html';
 
 export class FormOutputData {
   key: string = '';

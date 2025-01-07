@@ -1,8 +1,8 @@
-import {css, html, TemplateResult} from 'lit';
-import {NidocaHtml} from './nidoca-html';
+import { css, html, TemplateResult } from 'lit';
+import { NidocaHtml } from './abstract/nidoca-html';
 
-import {customElement} from 'lit/decorators.js';
-import {NidocaText} from './nidoca-text';
+import { customElement } from 'lit/decorators.js';
+import { NidocaText } from './nidoca-text';
 
 @customElement('nidoca-text-button')
 export class NidocaTextButton extends NidocaText {

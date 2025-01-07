@@ -1,7 +1,7 @@
-import {css, html, LitElement, PropertyValues} from 'lit';
-import {NidocaHtml} from './nidoca-html';
+import { css, html, LitElement, PropertyValues } from 'lit';
+import { NidocaHtml } from './abstract/nidoca-html';
 
-import {customElement, query} from 'lit/decorators.js';
+import { customElement, query } from 'lit/decorators.js';
 
 @customElement('nidoca-video')
 export class NidocaVideo extends NidocaHtml {
@@ -18,7 +18,7 @@ export class NidocaVideo extends NidocaHtml {
 
   protected firstUpdated(_changedProperties: PropertyValues) {
     super.firstUpdated(_changedProperties);
-    navigator.mediaDevices.getUserMedia({video: true, audio: false}).then((stream) => {
+    navigator.mediaDevices.getUserMedia({ video: true, audio: false }).then((stream) => {
       if (this.videoElement) {
         this.videoElement.srcObject = stream;
       }

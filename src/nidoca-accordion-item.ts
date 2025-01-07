@@ -1,9 +1,9 @@
-import {css, html, TemplateResult} from 'lit';
-import {NidocaHtml} from './nidoca-html.js';
+import { css, html, TemplateResult } from 'lit';
+import { NidocaHtml } from './abstract/nidoca-html.js';
 
-import {customElement} from 'lit/decorators.js';
-import {property} from 'lit/decorators.js';
-import {NidocaTheme} from './nidoca-meta';
+import { customElement } from 'lit/decorators.js';
+import { property } from 'lit/decorators.js';
+import { NidocaTheme } from './nidoca-meta';
 
 @customElement('nidoca-accordion-item')
 export class NidocaAccordionItem extends NidocaHtml {
@@ -31,13 +31,13 @@ export class NidocaAccordionItem extends NidocaHtml {
     }
   `;
 
-  @property({type: NidocaTheme, converter: String})
+  @property({ type: NidocaTheme, converter: String })
   theme: string = NidocaTheme.surface;
 
-  @property({type: String})
+  @property({ type: String })
   header: string = '';
 
-  @property({type: Boolean})
+  @property({ type: Boolean })
   opened: boolean = false;
 
   render(): TemplateResult {

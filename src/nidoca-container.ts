@@ -1,8 +1,8 @@
-import {css, html, LitElement} from 'lit';
-import {NidocaHtml} from './nidoca-html';
+import { css, html, LitElement } from 'lit';
+import { NidocaHtml } from './abstract/nidoca-html';
 
-import {customElement} from 'lit/decorators.js';
-import {property} from 'lit/decorators.js';
+import { customElement } from 'lit/decorators.js';
+import { property } from 'lit/decorators.js';
 import { NidocaTheme, NidocaThemeHelper } from './nidoca-meta';
 
 @customElement('nidoca-container')
@@ -20,7 +20,7 @@ export class NidocaContainer extends NidocaHtml {
     }
   `;
 
-  @property({type: String})
+  @property({ type: String })
   theme: string = NidocaTheme.plain;
 
   render(): unknown {

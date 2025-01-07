@@ -1,7 +1,7 @@
-import {css, html, TemplateResult, LitElement} from 'lit';
-import {NidocaHtml} from './nidoca-html';
+import { css, html, TemplateResult, LitElement } from 'lit';
+import { NidocaHtml } from './abstract/nidoca-html';
 
-import {customElement} from 'lit/decorators.js';
+import { customElement } from 'lit/decorators.js';
 
 @customElement('nidoca-print')
 export class NidocaPrint extends NidocaHtml {

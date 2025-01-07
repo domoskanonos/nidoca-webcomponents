@@ -1,8 +1,8 @@
-import {css, html, LitElement, PropertyValues, TemplateResult} from 'lit';
-import {NidocaHtml} from './nidoca-html';
+import { css, html, LitElement, PropertyValues, TemplateResult } from 'lit';
+import { NidocaHtml } from './abstract/nidoca-html';
 
-import {customElement, property, query} from 'lit/decorators.js';
-import {NidocaListItem} from './nidoca-list-item';
+import { customElement, property, query } from 'lit/decorators.js';
+import { NidocaListItem } from './nidoca-list-item';
 import { NidocaTheme } from './nidoca-meta';
 import { NidocaListSection } from './nidoca-list-section';
 
@@ -19,10 +19,10 @@ export class NidocaList extends NidocaHtml {
     }
   `;
 
-  @property({type: NidocaTheme, converter: String})
+  @property({ type: NidocaTheme, converter: String })
   theme: string = NidocaTheme.surface;
 
-  @property({type: Boolean})
+  @property({ type: Boolean })
   multiselect: boolean = false;
 
   @query('#slotElement')
@@ -43,12 +43,12 @@ export class NidocaList extends NidocaHtml {
     return html`
       <slot
         @nidoca-event-list-item-clicked="${(event: CustomEvent) => {
-          if (!this.multiselect) {
-            this.unselectAll();
-            const nidocaListItem: NidocaListItem = <NidocaListItem>event.target;
-            nidocaListItem.selected = true;
-          }
-        }}"
+        if (!this.multiselect) {
+          this.unselectAll();
+          const nidocaListItem: NidocaListItem = <NidocaListItem>event.target;
+          nidocaListItem.selected = true;
+        }
+      }}"
         id="slotElement"
       ></slot>
     `;
