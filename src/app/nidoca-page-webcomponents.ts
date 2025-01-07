@@ -1,6 +1,6 @@
-import {css, html, LitElement, TemplateResult} from 'lit';
-import {NidocaHtml} from '../nidoca-html';
-import {customElement} from 'lit/decorators.js';
+import { css, html, LitElement, TemplateResult } from 'lit';
+import { NidocaHtml } from '../abstract/nidoca-html';
+import { customElement } from 'lit/decorators.js';
 
 @customElement('nidoca-page-webcomponents')
 export class NidocaPageWebcomponents extends NidocaHtml {

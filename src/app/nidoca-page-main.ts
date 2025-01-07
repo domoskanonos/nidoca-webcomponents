@@ -1,5 +1,5 @@
 import { css, html, LitElement, TemplateResult } from 'lit';
-import { NidocaHtml } from '../nidoca-html';
+import { NidocaHtml } from '../abstract/nidoca-html';
 
 import { customElement } from 'lit/decorators.js';
 import { NidocaAccordion } from '../nidoca-accordion';

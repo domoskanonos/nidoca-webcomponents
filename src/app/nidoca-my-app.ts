@@ -1,6 +1,6 @@
 import { NidocaRouteListener, NidocaRouter } from '../router/nidoca-router';
 import { html, HTMLTemplateResult } from 'lit';
-import { NidocaHtml } from '../nidoca-html';
+import { NidocaHtml } from '../abstract/nidoca-html';
 
 import { customElement, property } from 'lit/decorators.js';
 

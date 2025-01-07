@@ -1,14 +1,14 @@
-import {css, html, LitElement, TemplateResult} from 'lit';
-import {NidocaHtml} from '../nidoca-html';
+import { css, html, LitElement, TemplateResult } from 'lit';
+import { NidocaHtml } from '../abstract/nidoca-html';
 
-import {customElement, property} from 'lit/decorators.js';
-import {Nidoca} from '..';
+import { customElement, property } from 'lit/decorators.js';
+import { Nidoca } from '..';
 
 @customElement('nidoca-page-playground')
 export class NidocaPagePlayground extends NidocaHtml {
   static styles = css``;
 
-  @property({type: String})
+  @property({ type: String })
   elementName: string = 'nidoca-tabs';
 
   render(): TemplateResult {
@@ -23,8 +23,8 @@ export class NidocaPagePlayground extends NidocaHtml {
       <nidoca-section>
         <webcomponent-viewer-container>
           ${Nidoca.getUniqueInstance().registeredElementNames.map(
-            (elementName: string) => html` ${Nidoca.getUniqueInstance().registeredElementsMap.get(elementName)} `
-          )}
+      (elementName: string) => html` ${Nidoca.getUniqueInstance().registeredElementsMap.get(elementName)} `
+    )}
         </webcomponent-viewer-container>
       </nidoca-section>
     `;

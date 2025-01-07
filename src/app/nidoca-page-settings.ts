@@ -1,16 +1,16 @@
-import {css, html, LitElement, PropertyValueMap, TemplateResult} from 'lit';
-import {NidocaHtml} from '../nidoca-html';
+import { css, html, LitElement, PropertyValueMap, TemplateResult } from 'lit';
+import { NidocaHtml } from '../abstract/nidoca-html';
 
-import {customElement, property} from 'lit/decorators.js';
-import {guard} from 'lit/directives/guard.js';
-import {repeat} from 'lit/directives/repeat.js';
-import {NidocaFormText, NidocaFormTextType} from '../nidoca-form-text';
+import { customElement, property } from 'lit/decorators.js';
+import { guard } from 'lit/directives/guard.js';
+import { repeat } from 'lit/directives/repeat.js';
+import { NidocaFormText, NidocaFormTextType } from '../nidoca-form-text';
 
 @customElement('nidoca-page-settings')
 export class NidocaPageSettings extends NidocaHtml {
   static styles = css``;
 
-  @property({type: Array})
+  @property({ type: Array })
   cssVars: string[] = [];
 
   protected firstUpdated(): void {
@@ -44,29 +44,29 @@ export class NidocaPageSettings extends NidocaHtml {
       <nidoca-container>
         <nidoca-article title="CSS Variablen">
           ${guard(
-            [this.cssVars],
-            () =>
-              html`
+      [this.cssVars],
+      () =>
+        html`
                 ${repeat(
-                  this.cssVars,
-                  (cssVar) => html`
+          this.cssVars,
+          (cssVar) => html`
                     <nidoca-form-text
                       style="width:100%;padding-bottom: var(--space-3);"
                       @input="${(event: InputEvent) => {
-                        document.documentElement.style.setProperty(
-                          cssVar,
-                          event.target ? (<NidocaFormText>event.target).getOutputData().value : ''
-                        );
-                      }}"
+              document.documentElement.style.setProperty(
+                cssVar,
+                event.target ? (<NidocaFormText>event.target).getOutputData().value : ''
+              );
+            }}"
                       type="${cssVar.indexOf('color') > -1 ? NidocaFormTextType.color : NidocaFormTextType.text}"
                       name="${cssVar}"
                       value="${getComputedStyle(document.documentElement).getPropertyValue(cssVar).trim()}"
                       label="${cssVar}"
                     ></nidoca-form-text>
                   `
-                )}
+        )}
               `
-          )}
+    )}
         </nidoca-article>
       </nidoca-container>
     `;
