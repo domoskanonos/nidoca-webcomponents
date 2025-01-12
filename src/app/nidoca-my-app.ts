@@ -1,4 +1,4 @@
-import { NidocaRouteListener, NidocaRouter } from '../router/nidoca-router';
+import { NidocaRouteListener, NidocaRouter } from '../util/nidoca-router';
 import { html, HTMLTemplateResult } from 'lit';
 import { NidocaHtml } from '../abstract/nidoca-html';
 
