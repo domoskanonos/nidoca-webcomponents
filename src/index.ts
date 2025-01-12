@@ -1,8 +1,8 @@
 export * from './abstract/generic-list';
 
-export * from './router/nidoca-router';
-
+export * from './util/nidoca-router';
 export * from './util/nidoca-img';
+export * from './util/nidoca-client';
 
 export * from './nidoca-layout-meta';
 
@@ -11,7 +11,6 @@ export * from './abstract/nidoca-html';
 
 export * from './nidoca-accordion';
 export * from './nidoca-accordion-item';
-export * from './nidoca-api-list';
 export * from './nidoca-wizard-step';
 export * from './nidoca-wizard';
 export * from './nidoca-chip';
