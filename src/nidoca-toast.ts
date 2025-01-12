@@ -9,7 +9,8 @@ export class NidocaToast extends NidocaHtml {
     .toast {
       position: fixed;
       bottom: 20px;
-      right: 20px;
+      left: 50%;
+      transform: translateX(-50%);
       background-color: var(--toast-background-color, #323232);
       color: var(--toast-text-color, #ffffff);
       padding: 16px;
@@ -22,20 +23,12 @@ export class NidocaToast extends NidocaHtml {
       opacity: 0;
       visibility: hidden;
       transition: opacity 0.5s ease, visibility 0.5s ease;
+      z-index: 1000; /* Sicherstellen, dass der Toast über anderen Elementen liegt */
     }
 
     .toast.show {
       opacity: 1;
       visibility: visible;
-    }
-
-    .toast-button {
-      background: none;
-      border: none;
-      color: inherit;
-      font-size: 1.2em;
-      cursor: pointer;
-      margin-left: 16px;
     }
   `;
 
