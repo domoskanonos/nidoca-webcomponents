@@ -85,6 +85,8 @@ export * from './nidoca-text-h4';
 export * from './nidoca-text-h5';
 export * from './nidoca-text-h6';
 
+export * from './nidoca-toast';
+
 export * from './nidoca-search-bar';
 
 export * from './nidoca-dialog';

@@ -23,6 +23,7 @@ import { NidocaSearchBar } from '../nidoca-search-bar';
 import { NidocaTabs } from '../nidoca-tabs';
 import { NidocaText } from '../nidoca-text';
 import { NidocaTopAppBar } from '../nidoca-top-app-bar';
+import { NidocaToast } from '../nidoca-webcomponents';
 
 @customElement('nidoca-page-main')
 export class NidocaPageMain extends NidocaHtml {
@@ -52,6 +53,7 @@ export class NidocaPageMain extends NidocaHtml {
         <nidoca-text-h1 style="text-align:center;">Komponenten</nidoca-text-h1>
       </nidoca-container>
 
+      ${this.getComponentHtml(NidocaToast, new NidocaToast(), 'NidocaToast Komponente.')}
       ${this.getComponentHtml(NidocaInfobox, new NidocaInfobox(), 'Infobox Komponente.')}
       ${this.getComponentHtml(NidocaIconExtended, new NidocaIconExtended(), 'Standard Icon Komponente.')}
       ${this.getComponentHtml(NidocaIcon, new NidocaIcon(), 'Standard Icon Komponente.')}
