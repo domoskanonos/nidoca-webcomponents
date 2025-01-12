@@ -1,6 +1,7 @@
-import { css, html, LitElement, TemplateResult } from 'lit';
+import { css, html, LitElement, PropertyValues, TemplateResult } from 'lit';
 import { NidocaHtml } from '../abstract/nidoca-html';
-import { customElement } from 'lit/decorators.js';
+import { customElement, query } from 'lit/decorators.js';
+import { NidocaToast } from '../nidoca-toast';
 
 @customElement('nidoca-page-webcomponents')
 export class NidocaPageWebcomponents extends NidocaHtml {
@@ -9,6 +10,7 @@ export class NidocaPageWebcomponents extends NidocaHtml {
       padding: var(--space-2);
     }
   `;
+
   render(): TemplateResult {
     return html`
       <nidoca-container>

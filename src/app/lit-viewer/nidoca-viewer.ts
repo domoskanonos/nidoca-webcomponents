@@ -13,10 +13,10 @@ export class NidocaViewer extends LitElement {
     return html`<nidoca-container>
       <nidoca-section>
         <webcomponent-viewer-container>
-          ${NidocaToast.example()} ${NidocaList.example()} ${NidocaListItem.example()} ${NidocaListSection.example()}
+          ${NidocaList.example()} ${NidocaListItem.example()} ${NidocaListSection.example()}
           ${NidocaImgRound.example()}
-        </webcomponent-viewer-container>
+    </webcomponent-viewer-container>
       </nidoca-section>
-    </nidoca-container>`;
+      </nidoca-container>`;
   }
 }

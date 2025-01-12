@@ -1,5 +1,5 @@
 import { css, html, TemplateResult, LitElement } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { customElement, property, query } from 'lit/decorators.js';
 
 @customElement('nidoca-toast')
 export class NidocaToast extends LitElement {
@@ -31,26 +31,24 @@ export class NidocaToast extends LitElement {
   @property({ type: String })
   message: string = 'Dies ist eine Testnachricht';
 
+  @query('#toast')
+  private toastElement!: HTMLDivElement;
+
   showToast(duration: number = 3000): void {
-    const toast = this.shadowRoot?.querySelector('.toast') as HTMLElement;
-    if (toast) {
-      toast.classList.add('show');
-      setTimeout(() => {
-        this.hideToast();
-      }, duration);
-    }
+    this.toastElement.classList.add('show');
+    setTimeout(() => {
+      this.hideToast();
+    }, duration);
+
   }
 
   hideToast(): void {
-    const toast = this.shadowRoot?.querySelector('.toast') as HTMLElement;
-    if (toast) {
-      toast.classList.remove('show');
-    }
+    this.toastElement.classList.remove('show');
   }
 
   render(): TemplateResult {
     return html`
-      <div class="toast">
+      <div id="toast" class="toast">
         ${this.message}
       </div>
     `;
