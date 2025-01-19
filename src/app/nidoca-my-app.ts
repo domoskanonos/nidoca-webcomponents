@@ -30,6 +30,9 @@ export class NidocaMyApp extends NidocaHtml implements NidocaRouteListener {
       case 'terms-of-use':
         this.content = html`<nidoca-page-terms-of-use></nidoca-page-terms-of-use>`;
         break;
+      case 'genericapp':
+        this.content = html`<nidoca-page-generic-app></nidoca-page-generic-app>`;
+        break;
       case 'webcomponents':
         this.content = html`<nidoca-page-webcomponents></nidoca-page-webcomponents>`;
         break;
@@ -89,9 +92,16 @@ export class NidocaMyApp extends NidocaHtml implements NidocaRouteListener {
             text="Start"
           ></nidoca-menu-item>
           <nidoca-menu-item
-            text=">Webcomponents"
+            text="Webcomponents"
             @nidoca-event-menu-item-clicked="${() => {
         NidocaRouter.getUniqueInstance().navigate('#webcomponents');
+      }}"
+          ></nidoca-menu-item>
+
+          <nidoca-menu-item
+            text="Generic App"
+            @nidoca-event-menu-item-clicked="${() => {
+        NidocaRouter.getUniqueInstance().navigate('#genericapp');
       }}"
           ></nidoca-menu-item>
 
