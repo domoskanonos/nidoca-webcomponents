@@ -3,6 +3,7 @@ export class GenericIndexedDB<T> {
     private dbName: string;
     private storeName: string;
     private keyField: keyof T;
+    private db: IDBDatabase | null = null;
 
     // Achte darauf, die Version zu erhöhen, wenn du neue Stores hinzufügst!
     private static readonly DB_VERSION = 2;
@@ -14,102 +15,117 @@ export class GenericIndexedDB<T> {
     }
 
     /**
-     * Öffnet (und erstellt ggf.) die Datenbank. 
+     * Öffnet (und erstellt ggf.) die Datenbank.
      * Im onupgradeneeded-Event werden alle relevanten Stores erstellt.
      */
-    async openDatabase(): Promise<IDBDatabase> {
-        return new Promise((resolve, reject) => {
+    async openDatabase() {
+        this.db = await new Promise<IDBDatabase>((resolve, reject) => {
             const request = indexedDB.open(this.dbName, GenericIndexedDB.DB_VERSION);
 
-            request.onupgradeneeded = (event) => {
+            request.onupgradeneeded = () => {
                 const db = request.result;
                 console.log(`onupgradeneeded triggered. Aktuelle Version: ${db.version}`);
                 if (!db.objectStoreNames.contains(this.storeName)) {
-                    db.createObjectStore(this.storeName, { keyPath: "id" });
-                    console.log("Object Store '" + this.storeName + "' erstellt.");
+                    db.createObjectStore(this.storeName, { keyPath: this.keyField as string });
+                    console.log(`Object Store '${this.storeName}' mit KeyPath '${String(this.keyField)}' erstellt.`);
                 }
             };
 
             request.onsuccess = () => {
-                console.log(`IndexedDB '${this.dbName}' (Version ${request.result.version}) geöffnet.`);
+                console.log(`IndexedDB '${this.dbName}' geöffnet.`);
                 resolve(request.result);
             };
+
             request.onerror = () => {
                 console.error("Fehler beim Öffnen der Datenbank:", request.error);
-                reject(request.error);
+                reject(new Error(request.error?.message || "Unknown error"));
+            };
+
+            request.onblocked = () => {
+                console.warn("Datenbank wird von einer anderen Verbindung blockiert.");
+                reject(new Error("Datenbank ist blockiert."));
             };
         });
     }
 
+
     async add(item: T): Promise<void> {
-        const db = await this.openDatabase();
         return new Promise((resolve, reject) => {
-            const transaction = db.transaction(this.storeName, "readwrite");
-            const store = transaction.objectStore(this.storeName);
-            const request = store.add(item);
+            if (this.db) {
+                console.log("add() called");
+                const transaction = this.db.transaction(this.storeName, "readwrite");
+                const store = transaction.objectStore(this.storeName);
+                const request = store.add(item);
 
-            request.onsuccess = () => resolve();
-            request.onerror = () => reject(request.error);
-
-            transaction.oncomplete = () => db.close();
+                request.onsuccess = () => resolve();
+                request.onerror = () => reject(request.error);
+            }
+            //transaction.oncomplete = () => this.db.close();
         });
     }
 
     async update(item: T): Promise<void> {
         const db = await this.openDatabase();
         return new Promise((resolve, reject) => {
-            const transaction = db.transaction(this.storeName, "readwrite");
-            const store = transaction.objectStore(this.storeName);
-            const request = store.put(item);
+            if (this.db) {
+                const transaction = this.db.transaction(this.storeName, "readwrite");
+                const store = transaction.objectStore(this.storeName);
+                const request = store.put(item);
 
-            request.onsuccess = () => resolve();
-            request.onerror = () => reject(request.error);
-
-            transaction.oncomplete = () => db.close();
+                request.onsuccess = () => resolve();
+                request.onerror = () => reject(request.error);
+            }
+            //transaction.oncomplete = () => db.close();
         });
     }
 
     async delete(key: IDBValidKey): Promise<void> {
-        const db = await this.openDatabase();
         return new Promise((resolve, reject) => {
-            const transaction = db.transaction(this.storeName, "readwrite");
-            const store = transaction.objectStore(this.storeName);
-            const request = store.delete(key);
+            if (this.db) {
+                const transaction = this.db.transaction(this.storeName, "readwrite");
+                const store = transaction.objectStore(this.storeName);
+                const request = store.delete(key);
 
-            request.onsuccess = () => resolve();
-            request.onerror = () => reject(request.error);
-
-            transaction.oncomplete = () => db.close();
+                request.onsuccess = () => resolve();
+                request.onerror = () => reject(request.error);
+            }
+            //transaction.oncomplete = () => db.close();
         });
     }
 
     async get(key: IDBValidKey): Promise<T | undefined> {
-        const db = await this.openDatabase();
         return new Promise((resolve, reject) => {
-            const transaction = db.transaction(this.storeName, "readonly");
-            const store = transaction.objectStore(this.storeName);
-            const request = store.get(key);
+            if (this.db) {
+                const transaction = this.db.transaction(this.storeName, "readonly");
+                const store = transaction.objectStore(this.storeName);
+                const request = store.get(key);
 
-            request.onsuccess = () => resolve(request.result);
-            request.onerror = () => reject(request.error);
-
-            transaction.oncomplete = () => db.close();
+                request.onsuccess = () => resolve(request.result);
+                request.onerror = () => reject(request.error);
+            }
+            //transaction.oncomplete = () => db.close();
         });
     }
 
     async getAll(): Promise<T[]> {
-        const db = await this.openDatabase();
         return new Promise((resolve, reject) => {
-            const transaction = db.transaction(this.storeName, "readonly");
-            const store = transaction.objectStore(this.storeName);
-            const request = store.getAll();
+            if (this.db) {
+                const transaction = this.db.transaction(this.storeName, "readonly");
+                const store = transaction.objectStore(this.storeName);
+                const request = store.getAll();
 
-            request.onsuccess = () => resolve(request.result);
-            request.onerror = () => reject(request.error);
-
-            transaction.oncomplete = () => db.close();
+                request.onsuccess = () => resolve(request.result);
+                request.onerror = () => reject(request.error);
+            }
+            //transaction.oncomplete = () => db.close();
         });
     }
+
+    close() {
+        this.db?.close();
+    }
+
+
 }
 
 
@@ -164,7 +180,7 @@ export interface Goal {
     // Testdaten
     const karmatica: Karmatica =
     {
-        id: null,
+        id: 1,
         myself: {
             name: 'Dominik Bruhn',
             email: 'dominikbruhn@googlemail.com',
@@ -309,7 +325,9 @@ export interface Goal {
     }
         ;
 
-    karmaticaDB.add(karmatica);
+    //karmaticaDB.add(karmatica);
+
+    karmaticaDB.close()
 
     console.log("Karmatica erfolgreich in die IndexedDB eingefügt!");
 

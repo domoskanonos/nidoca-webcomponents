@@ -15,11 +15,11 @@ export class NidocaCard extends NidocaHtml {
       border-width: var(--border-width-min);
       box-shadow: 0 var(--space) var(--space) rgba(0, 0, 0, 0.08), 0 var(--space) var(--space) rgba(0, 0, 0, 0.16);
       height: 100%;
+      overflow:hidden;
     }
     slot {
       display: flex;
-      justify-content: center;
-      align-items: center;
+      flex-direction: column;
       height: 100%;
     }
   `;

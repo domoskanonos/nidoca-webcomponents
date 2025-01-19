@@ -2,7 +2,7 @@ export * from './abstract/generic-list';
 
 export * from './util/nidoca-router';
 export * from './util/nidoca-img';
-export * from './util/nidoca-indexeddb';
+export * from './util/nidoca-indexdb';
 export * from './util/nidoca-client';
 
 export * from './nidoca-layout-meta';

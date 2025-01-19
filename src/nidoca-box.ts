@@ -10,7 +10,7 @@ export class NidocaBox extends NidocaHtml {
   static styles = css`
     :host {
       display: block;
-      padding: var(--space-6);
+      padding: var(--space-2);
       box-sizing: border-box;
     }
     slot {
@@ -20,13 +20,13 @@ export class NidocaBox extends NidocaHtml {
 
     @media only screen and (min-width: 641px) and (max-width: 1007px) {
       :host {
-        padding: var(--space-4);
+        padding: var(--space);
       }
     }
 
     @media only screen and (max-width: 640px) {
       :host {
-        padding: var(--space-2);
+        padding: var(--space);
       }
     }
   `;

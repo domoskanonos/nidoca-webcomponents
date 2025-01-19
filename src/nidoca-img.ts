@@ -25,7 +25,7 @@ export class NidocaImg extends NidocaHtml {
   src: string = '';
 
   @property({ type: String })
-  width: string = 'auto';
+  width: string = '100%';
 
   @property({ type: String })
   height: string = 'auto';
