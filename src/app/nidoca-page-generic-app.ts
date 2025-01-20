@@ -73,6 +73,17 @@ export class NidocaPageGenericApp extends NidocaHtml {
             </nidoca-box>
       </nidoca-card>
     
+      <nidoca-card class="item" @click="${() => this.clicked()}">
+          <nidoca-img 
+            src="https://raw.githubusercontent.com/domoskanonos/nidoca-webcomponents/refs/heads/main/public/routine.webp" 
+            alt="Routines" ></nidoca-img>
+          <nidoca-box>
+            <nidoca-text-h6>Routinen</nidoca-text-h6>
+            <nidoca-text-body>Wir haben Routinen, die wir einhalten wollen</nidoca-text-body>
+            </nidoca-box>
+      </nidoca-card>
+
+      
     
     </div>
     
