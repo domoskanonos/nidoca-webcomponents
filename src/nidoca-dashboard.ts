@@ -1,137 +1,72 @@
 import { css, html, TemplateResult, LitElement } from 'lit';
 import { NidocaHtml } from './abstract/nidoca-html';
-
 import { customElement } from 'lit/decorators.js';
 import { property } from 'lit/decorators.js';
+
+export interface Card {
+  imgSrc: string;
+  title: string;
+  description: string;
+}
 
 @customElement('nidoca-dashboard')
 export class NidocaDashboard extends NidocaHtml {
   static styles = css`
+    
     :host {
       display: block;
     }
 
-    slot {
+    .container {
       display: flex;
-      flex-direction: row;
+      justify-content: center;
+      align-items: center;
       flex-wrap: wrap;
-      align-content: stretch;
-      align-items: stretch;
-      width: 50%;
-      margin: auto;
+      gap: var(--space-2);
+      max-width:1007px;
+      margin: 0 auto;
     }
 
-    @media only screen and (max-width: 1007px) {
-      slot {
-        width: 100%;
-      }
-    }
-  `;
-
-  render(): TemplateResult {
-    return html` <slot></slot>`;
-  }
-}
-
-@customElement('nidoca-dashboard-box-25')
-export class NidocaDashboardBox25 extends NidocaHtml {
-  static styles = css`
-    :host {
-      display: block;
-      width: 25%;
-    }
-
-    @media only screen and (max-width: 1919px) {
-      :host {
-        width: 50%;
-      }
-    }
-  `;
-
-  render(): TemplateResult {
-    return html` <slot></slot>`;
-  }
-}
-
-@customElement('nidoca-dashboard-box-50')
-export class NidocaDashboardBox50 extends NidocaHtml {
-  static styles = css`
-    :host {
-      width: 50%;
-      display: block;
-    }
-    @media only screen and (max-width: 1919px) {
-      :host {
-        width: 100%;
-      }
-    }
-  `;
-
-  render(): TemplateResult {
-    return html` <slot></slot>`;
-  }
-}
-
-@customElement('nidoca-dashboard-box-100')
-export class NidocaDashboardBox100 extends NidocaHtml {
-  static styles = css`
-    :host {
-      width: 100%;
-      display: block;
-    }
-  `;
-
-  render(): TemplateResult {
-    return html` <slot></slot>`;
-  }
-}
-
-@customElement('nidoca-dashboard-card')
-export class NidocaDashboardCard extends NidocaHtml {
-  static styles = css`
-    :host {
-      padding: var(--space-2);
+    .item {
+      flex: 0 0 calc(50% - var(--space-2));
       box-sizing: border-box;
-    }
-
-    :host,
-    nidoca-card {
-      display: block;
-      height: 100%;
-      width: 100%;
-    }
-
-    .clickable {
       cursor: pointer;
     }
+
+    @media only screen and (max-width: 512px) {
+      .item {
+        flex: 0 0 calc(100% - var(--space-2));
+      }
+    }
+
   `;
 
-  @property({ type: Boolean })
-  clickable: boolean = true;
-
-  @property({ type: String })
-  title: string = '';
+  @property({ type: Array })
+  cards: Card[] = [];
 
   render(): TemplateResult {
     return html`
-      <nidoca-card @click="${() => this.clicked()}" class="${this.clickable ? 'clickable' : ''}">
-        <nidoca-box>
-          <nidoca-text-h6 style="padding-bottom: var(--space-2);">${this.title}</nidoca-text-h6>
-          <slot></slot>
-        </nidoca-box>
+      <div class="container">
+        ${this.cards.map((card) => html`
+          <nidoca-card class="item" @click="${() => this.clicked()}">
+          <nidoca-ripple>
+          <nidoca-img 
+            src="${card.imgSrc}" 
+            alt="${card.title}" ></nidoca-img>
+          <nidoca-box>
+            <nidoca-text-h6>${card.title}</nidoca-text-h6>
+            <nidoca-text-body>${card.description}</nidoca-text-body>
+            </nidoca-box>
+            </nidoca-ripple>
       </nidoca-card>
+      `)}
+      </div>
     `;
   }
 
-  private clicked() {
-    if (this.clickable) {
-      this.dispatchEvent(
-        new CustomEvent('nidoca-event-dashboard-card-clicked', {
-          detail: this,
-          bubbles: true,
-          composed: true,
-        })
-      );
-    }
+  clicked() {
+    throw new Error('Method not implemented.');
   }
+
+
 }

@@ -1,95 +1,25 @@
 import { customElement } from 'lit/decorators.js';
 import { NidocaHtml } from '../abstract/nidoca-html';
-import { css, html, TemplateResult } from 'lit';
+import { Card } from '../nidoca-dashboard';
+import { html, TemplateResult } from 'lit';
+import { property } from 'lit/decorators.js';
 
 @customElement('nidoca-page-generic-app')
 export class NidocaPageGenericApp extends NidocaHtml {
-  static styles = css`
-  
-  
-  .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: var(--space-2);
 
+  @property({ type: Array })
+  cards: Card[] = [
+    { imgSrc: 'https://raw.githubusercontent.com/domoskanonos/nidoca-webcomponents/refs/heads/main/public/goal.webp', title: 'Ziele', description: 'Wir haben uns Ziele gesetzt, die wir erreichen wollen' },
+    { imgSrc: 'https://raw.githubusercontent.com/domoskanonos/nidoca-webcomponents/refs/heads/main/public/friend.webp', title: 'Freunde', description: 'Wir haben Freunde, die uns bei unseren Plänen unterstützen' },
+    { imgSrc: 'https://raw.githubusercontent.com/domoskanonos/nidoca-webcomponents/refs/heads/main/public/action.webp', title: 'Aktionen', description: 'Wir haben Aktionen geplant, die wir durchführen wollen' },
+    { imgSrc: 'https://raw.githubusercontent.com/domoskanonos/nidoca-webcomponents/refs/heads/main/public/routine.webp', title: 'Routinen', description: 'Wir haben Routinen, die wir einhalten wollen' },
+    { imgSrc: 'https://raw.githubusercontent.com/domoskanonos/nidoca-webcomponents/refs/heads/main/public/next_action.webp', title: 'Nächste Aktion', description: 'Hier gehts zu deinen nächsten Aktionen' },
+    { imgSrc: 'https://raw.githubusercontent.com/domoskanonos/nidoca-webcomponents/refs/heads/main/public/habit.webp', title: 'Gewohnheiten', description: 'Hier gehts zu deinen Gewohnheiten' },
+    { imgSrc: 'https://raw.githubusercontent.com/domoskanonos/nidoca-webcomponents/refs/heads/main/public/happiness.webp', title: 'Glück', description: 'Was ist eigentlich Glück' },
+  ]
 
-    }
-
-    .item {
-
-
-    item-align: center;
-  flex: 0 0 calc(50% - var(--space-2));
-    
-    }
-  
-  `;
   render(): TemplateResult {
-    return html`
-    
-    
-    <div class="container">
-    
-   <nidoca-card class="item" @click="${() => this.clicked()}">
-          <nidoca-img 
-            src="https://raw.githubusercontent.com/domoskanonos/nidoca-webcomponents/refs/heads/main/public/goal.webp" 
-            alt="Goals" ></nidoca-img>
-          <nidoca-box>
-            <nidoca-text-h6>Ziele</nidoca-text-h6>
-            <nidoca-text-body>Wir haben uns Ziele gesetzt, die wir erreichen wollen</nidoca-text-body>
-            </nidoca-box>
-      </nidoca-card>
-
-      <nidoca-card class="item" @click="${() => this.clicked()}">
-          <nidoca-img 
-            src="https://raw.githubusercontent.com/domoskanonos/nidoca-webcomponents/refs/heads/main/public/friend.webp" 
-            alt="Firends" ></nidoca-img>
-          <nidoca-box>
-            <nidoca-text-h6>Freunde</nidoca-text-h6>
-            <nidoca-text-body>Wir haben Freunde, die uns bei unseren Plänen unterstützen</nidoca-text-body>
-            </nidoca-box>
-      </nidoca-card>
-
-
-      <nidoca-card class="item" @click="${() => this.clicked()}">
-          <nidoca-img 
-            src="https://raw.githubusercontent.com/domoskanonos/nidoca-webcomponents/refs/heads/main/public/action.webp" 
-            alt="Actions" ></nidoca-img>
-          <nidoca-box>
-            <nidoca-text-h6>Aktionen</nidoca-text-h6>
-            <nidoca-text-body>Wir haben Aktionen geplant, die wir durchführen wollen</nidoca-text-body>
-            </nidoca-box>
-      </nidoca-card>
-
-      <nidoca-card class="item" @click="${() => this.clicked()}">
-          <nidoca-img 
-            src="https://raw.githubusercontent.com/domoskanonos/nidoca-webcomponents/refs/heads/main/public/routine.webp" 
-            alt="Routines" ></nidoca-img>
-          <nidoca-box>
-            <nidoca-text-h6>Routinen</nidoca-text-h6>
-            <nidoca-text-body>Wir haben Routinen, die wir einhalten wollen</nidoca-text-body>
-            </nidoca-box>
-      </nidoca-card>
-    
-      <nidoca-card class="item" @click="${() => this.clicked()}">
-          <nidoca-img 
-            src="https://raw.githubusercontent.com/domoskanonos/nidoca-webcomponents/refs/heads/main/public/routine.webp" 
-            alt="Routines" ></nidoca-img>
-          <nidoca-box>
-            <nidoca-text-h6>Routinen</nidoca-text-h6>
-            <nidoca-text-body>Wir haben Routinen, die wir einhalten wollen</nidoca-text-body>
-            </nidoca-box>
-      </nidoca-card>
-
-      
-    
-    </div>
-    
-    `;
+    return html`<nidoca-dashboard .cards="${this.cards}"></nidoca-dashboard>`;
   }
-  clicked() {
-    throw new Error('Method not implemented.');
-  }
+
 }
