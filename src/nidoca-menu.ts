@@ -15,7 +15,7 @@ export class NidocaMenu extends NidocaHtml {
   `;
 
   @property({ type: String })
-  theme: string = NidocaTheme.surface;
+  theme: string = NidocaTheme.plain;
 
   @query('#slotElement')
   private slotElement: HTMLSlotElement | undefined;

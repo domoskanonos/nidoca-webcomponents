@@ -17,8 +17,6 @@ export class NidocaTemplate extends NidocaHtml {
 
     #left {
       display: block;
-      color: var(--app-color-text-primary);
-      background-color: var(--app-color-primary-background);
       min-width: 280px;
       min-height: 100%;
       max-height: 100%;
@@ -79,7 +77,7 @@ export class NidocaTemplate extends NidocaHtml {
       </slot>
 
       <div class="right">
-        <nidoca-top-app-bar theme="primary" .prominent="${this.prominent}">
+        <nidoca-top-app-bar .prominent="${this.prominent}">
           <nidoca-icon
             slot="left"
             style="padding-left:var(--space-2);"

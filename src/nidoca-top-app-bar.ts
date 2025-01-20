@@ -42,7 +42,7 @@ export class NidocaTopAppBar extends NidocaHtml {
   `;
 
   @property({ type: String, converter: String })
-  theme: string = NidocaTheme.primary;
+  theme: string = NidocaTheme.plain;
 
   @property({ type: Boolean })
   prominent: boolean = false;

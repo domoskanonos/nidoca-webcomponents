@@ -83,7 +83,7 @@ export class NidocaMyApp extends NidocaHtml implements NidocaRouteListener {
         <div slot="content">${this.content}</div>
 
         <div slot="left" style="height:var(--height-medium);"></div>
-        <nidoca-menu slot="left" theme="primary">
+        <nidoca-menu slot="left">
           <nidoca-menu-item
             @nidoca-event-menu-item-clicked="${() => {
         NidocaRouter.getUniqueInstance().navigate('#main');
