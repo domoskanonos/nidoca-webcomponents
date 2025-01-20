@@ -1255,7 +1255,7 @@ ${this.value}</textarea
     .selected {
       backdrop-filter: contrast(var(--app-color-percent-selected));
     }
-  `,r([s({type:String})],D.prototype,"text",2),r([s({type:String})],D.prototype,"icon",2),r([s({type:Boolean})],D.prototype,"selected",2),r([s({type:String})],D.prototype,"theme",2),D=r([m("nidoca-menu-item")],D);var pt=class extends d{constructor(){super(...arguments);this.theme="surface"}render(){return o` <style>
+  `,r([s({type:String})],D.prototype,"text",2),r([s({type:String})],D.prototype,"icon",2),r([s({type:Boolean})],D.prototype,"selected",2),r([s({type:String})],D.prototype,"theme",2),D=r([m("nidoca-menu-item")],D);var pt=class extends d{constructor(){super(...arguments);this.theme="plain"}render(){return o` <style>
         :host,
         *,
         ::slotted(*) {
@@ -1685,7 +1685,7 @@ ${this.value}</textarea
       grid-template-rows: 1fr;
       grid-template-columns: 1fr;
     }
-  `,r([s({type:g,converter:String})],G.prototype,"theme",2),r([s({type:Boolean})],G.prototype,"multiselect",2),r([f("#slotElement")],G.prototype,"slotElement",2),G=r([m("nidoca-list")],G);var ct=class extends d{constructor(){super(...arguments);this.theme="primary";this.prominent=!1}render(){return o`
+  `,r([s({type:g,converter:String})],G.prototype,"theme",2),r([s({type:Boolean})],G.prototype,"multiselect",2),r([f("#slotElement")],G.prototype,"slotElement",2),G=r([m("nidoca-list")],G);var ct=class extends d{constructor(){super(...arguments);this.theme="plain";this.prominent=!1}render(){return o`
       <style>
         * {
           color: var(--app-color-text-${this.theme});
@@ -1879,7 +1879,7 @@ ${this.value}</textarea
       </slot>
 
       <div class="right">
-        <nidoca-top-app-bar theme="primary" .prominent="${this.prominent}">
+        <nidoca-top-app-bar .prominent="${this.prominent}">
           <nidoca-icon
             slot="left"
             style="padding-left:var(--space-2);"
@@ -1913,8 +1913,6 @@ ${this.value}</textarea
 
     #left {
       display: block;
-      color: var(--app-color-text-primary);
-      background-color: var(--app-color-primary-background);
       min-width: 280px;
       min-height: 100%;
       max-height: 100%;
@@ -3518,7 +3516,7 @@ ${this.getPropertyGuiWrappers().map(t=>t.getAsAngular(this)).join("  ")}></${thi
         <div slot="content">${this.content}</div>
 
         <div slot="left" style="height:var(--height-medium);"></div>
-        <nidoca-menu slot="left" theme="primary">
+        <nidoca-menu slot="left">
           <nidoca-menu-item
             @nidoca-event-menu-item-clicked="${()=>{Y.getUniqueInstance().navigate("#main")}}"
             icon="home"
