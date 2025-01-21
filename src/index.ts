@@ -59,6 +59,7 @@ export * from './nidoca-form-captcha';
 export * from './nidoca-link';
 export * from './nidoca-list';
 export * from './nidoca-list-item';
+export * from './nidoca-list-crud';
 export * from './nidoca-list-section';
 export * from './nidoca-top-app-bar';
 export * from './nidoca-table';

@@ -9,6 +9,11 @@ export interface Card {
   description: string;
 }
 
+export interface CardEvent {
+  index:number;
+  card:Card;
+}
+
 @customElement('nidoca-dashboard')
 export class NidocaDashboard extends NidocaHtml {
   static styles = css`
@@ -47,8 +52,8 @@ export class NidocaDashboard extends NidocaHtml {
   render(): TemplateResult {
     return html`
       <div class="container">
-        ${this.cards.map((card) => html`
-          <nidoca-card class="item" @click="${() => this.clicked()}">
+        ${this.cards.map((card:Card) => html`
+          <nidoca-card class="item" @click="${(card) => this.clicked()}">
           <nidoca-ripple>
           <nidoca-img 
             src="${card.imgSrc}" 
@@ -64,8 +69,14 @@ export class NidocaDashboard extends NidocaHtml {
     `;
   }
 
-  clicked() {
-    throw new Error('Method not implemented.');
+  clicked(card: Card) {
+    this.dispatchEvent(
+      new CustomEvent('nidoca-event-dashboard-card-clicked', {
+        detail: <CardEvent>{index:-1,card: card},
+        bubbles: true,
+        composed: true,
+      })
+    );
   }
 
 

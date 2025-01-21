@@ -1,6 +1,6 @@
 import { customElement } from 'lit/decorators.js';
 import { NidocaHtml } from '../abstract/nidoca-html';
-import { Card } from '../nidoca-dashboard';
+import { Card, CardEvent } from '../nidoca-dashboard';
 import { html, TemplateResult } from 'lit';
 import { property } from 'lit/decorators.js';
 
@@ -19,7 +19,18 @@ export class NidocaPageGenericApp extends NidocaHtml {
   ]
 
   render(): TemplateResult {
-    return html`<nidoca-dashboard .cards="${this.cards}"></nidoca-dashboard>`;
+    return html`
+    
+    
+    <nidoca-dashboard @nidoca-event-dashboard-card-clicked="${(event: CustomEvent)=>this.cardClicked(event)}" .cards="${this.cards}">
+    
+    </nidoca-dashboard>`;
+  }
+
+
+  private cardClicked(event: CustomEvent) {
+    const cardEvent: CardEvent = event.detail;
+
   }
 
 }
