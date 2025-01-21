@@ -2,7 +2,11 @@ import '../nidoca-webcomponents';
 import './lit-viewer';
 import './nidoca-page-main';
 import './nidoca-page-webcomponents';
+
 import './nidoca-page-generic-app';
+export * from './nidoca-list-crud';
+
+
 import './nidoca-page-imprint';
 import './nidoca-page-settings';
 import './nidoca-page-privacy';

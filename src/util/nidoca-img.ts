@@ -38,4 +38,8 @@ export class NidocaImgHelper {
         // Return the image as a base64 string
         return canvas.toDataURL('image/png');
     }
+
+    static renderImgText(text: string): string {
+        return NidocaImgHelper.generateImageBase64(text, '#555555', '#ffffff');
+    }
 }
