@@ -1,8 +1,8 @@
 import { customElement, property, state } from 'lit/decorators.js';
-import { NidocaHtml } from '../abstract/nidoca-html';
+import { NidocaHtml } from '../../abstract/nidoca-html';
 import { PropertyValues, TemplateResult, html } from 'lit';
-import { Card, CardEvent } from '../nidoca-dashboard';
-import { GenericIndexedDB, Karmatica, Person } from '../nidoca-webcomponents';
+import { Card, CardEvent } from '../../nidoca-dashboard';
+import { GenericIndexedDB, Karmatica, Person } from '../../nidoca-webcomponents';
 
 @customElement('nidoca-page-generic-app')
 export class NidocaPageGenericApp extends NidocaHtml {

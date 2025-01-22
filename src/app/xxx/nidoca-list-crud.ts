@@ -1,8 +1,8 @@
 import { css, html, PropertyValues, TemplateResult } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import { NidocaAbstractGenericListCRUD } from '../abstract/generic-list-crud';
-import { Person } from '../util/nidoca-indexdb';
-import { NidocaImgHelper } from '../nidoca-webcomponents';
+import { NidocaAbstractGenericListCRUD } from '../../abstract/generic-list-crud';
+import { Person } from '../../util/nidoca-indexdb';
+import { NidocaImgHelper } from '../../nidoca-webcomponents';
 
 @customElement('person-list-crud')
 export class NidocaListCRUD extends NidocaAbstractGenericListCRUD<Person> {
