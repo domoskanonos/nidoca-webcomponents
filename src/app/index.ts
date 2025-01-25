@@ -5,6 +5,7 @@ import './nidoca-page-webcomponents';
 
 import './xxx/nidoca-page-generic-app';
 export * from './xxx/nidoca-list-crud';
+export * from './xxx/nidoca-edit';
 
 import './nidoca-page-imprint';
 import './nidoca-page-settings';

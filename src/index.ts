@@ -1,4 +1,5 @@
 export * from './abstract/generic-list';
+export * from './abstract/generic-edit';
 
 export * from './util/nidoca-router';
 export * from './util/nidoca-img';

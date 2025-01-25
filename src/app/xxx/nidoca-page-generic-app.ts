@@ -67,6 +67,11 @@ export class NidocaPageGenericApp extends NidocaHtml {
   render(): TemplateResult {
     return this.listView
       ? html`
+
+      <nidoca-edit></nidoca-edit>
+
+
+
           <person-list-crud 
             imgSrc="${this.selectedCard?.imgSrc}"
             .persons="${this.karmatica?.friends}">

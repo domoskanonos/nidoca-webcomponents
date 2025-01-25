@@ -1,12 +1,31 @@
 import { html, TemplateResult } from 'lit-element';
 import { NidocaForm, NidocaHtml, NidocaRouter } from '../nidoca-webcomponents';
-import { property, query } from 'lit/decorators';
+import { property, query } from 'lit/decorators.js';
 
-export abstract class NidocaAbstractComponentEdit<T> extends NidocaHtml {
+export abstract class NidocaGenericEdit<T> extends NidocaHtml {
 
   identifier: any = null;
 
   item: T = <T>{};
+
+  protected constructor() {
+    super();
+    this.init();
+  }
+  init() {
+    this.identifier = this.getIdentifier();
+    this.item = this.initObject();
+  }
+
+  abstract getIdentifier(): any;
+
+  abstract initObject(): T;
+
+
+
+
+
+
 
   @property()
   dialogDeleteTitle: string = "";
@@ -35,6 +54,71 @@ export abstract class NidocaAbstractComponentEdit<T> extends NidocaHtml {
     `;
   }
 
+  /**
+   * Hier erfolgt die dynamische Erzeugung der Eingabefelder.
+   */
+  renderFormFields(): TemplateResult {
+    const fields: TemplateResult[] = [];
+
+    console.log('item', this.item);
+    // Per Object.entries(this.item) kannst du Schlüssel und Wert iterieren.
+    for (const [propertyKey, propertyValue] of Object.entries(this.item as Record<string, unknown>)) {
+      // Wir prüfen den Typ des Wertes, um das passende Eingabefeld zu generieren
+      let field: TemplateResult;
+
+      switch (typeof propertyValue) {
+        case 'boolean':
+          // Beispiel: Checkbox / Switch
+          field = html`
+            <nidoca-form-switch
+              label="${propertyKey}"
+              name="${propertyKey}"
+              .value="${propertyValue as boolean}"
+            ></nidoca-form-switch>
+          `;
+          break;
+
+        case 'string':
+          // Beispiel: Textfeld
+          field = html`
+            <nidoca-form-text
+              label="${propertyKey}"
+              name="${propertyKey}"
+              .value="${propertyValue as string}"
+            ></nidoca-form-text>
+          `;
+          break;
+
+        case 'number':
+          // Beispiel: Zahlenfeld (falls gewünscht)
+          field = html`
+            <nidoca-form-text
+              label="${propertyKey}"
+              name="${propertyKey}"
+              type="number"
+              .value="${propertyValue as number}"
+            ></nidoca-form-text>
+          `;
+          break;
+
+        default:
+          // Fallback: für komplexere Strukturen, Arrays, Objekte etc.
+          field = html`
+            <nidoca-form-text
+              label="${propertyKey}"
+              name="${propertyKey}"
+              .value="${JSON.stringify(propertyValue)}"
+            ></nidoca-form-text>
+          `;
+      }
+
+      fields.push(field);
+    }
+
+    // Rückgabe der erzeugten Felder als TemplateResult
+    return html`${fields}`;
+  }
+
   abstract getItemById(identifier: any): Promise<T>;
 
   abstract executeSave(item: T): Promise<T>;
@@ -43,11 +127,8 @@ export abstract class NidocaAbstractComponentEdit<T> extends NidocaHtml {
 
   abstract executeDelete(identifier: any): Promise<void>;
 
-  abstract renderFormFields(): TemplateResult;
-
   abstract itemToProperties(item: T): void;
 
-  abstract getIdentifier(item: T): any;
 
   deleteItemHideDialog() {
     if (this.identifier != null) {
@@ -83,8 +164,8 @@ export abstract class NidocaAbstractComponentEdit<T> extends NidocaHtml {
       this.item = this.formComponent.getOutputData().jsonObject;
       if (this.identifier == null) {
         console.log('save item, identifier {}', this.identifier);
-        this.executeSave(this.item).then((item) => {
-          this.identifier = this.getIdentifier(item);
+        this.executeSave(this.item).then((item: T) => {
+          this.identifier = (item as any)[this.getIdentifier()];
           this.item = item;
           NidocaRouter.getUniqueInstance().back();
         });

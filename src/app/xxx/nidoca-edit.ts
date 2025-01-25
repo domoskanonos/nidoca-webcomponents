@@ -1,9 +1,38 @@
 import { LitElement, html, css } from 'lit';
-import { property } from 'lit/decorators.js';
+import { customElement, property } from 'lit/decorators.js';
+import { NidocaGenericEdit } from './../../abstract/generic-edit';
+import { Person } from '../../nidoca-webcomponents';
 
-export class NidocaEdit extends LitElement {
+@customElement('nidoca-edit')
+export class NidocaEdit extends NidocaGenericEdit<Person> {
 
-    @property({ type: String }) value: string = '';
+    getIdentifier() {
+        return "id";
+    }
+
+    initObject(): Person {
+        return <Person>{ name: "", email: "", phone: "", energy: 0, image: "" };
+    }
+
+
+    //Weiter machen hier...
+
+    getItemById(identifier: any): Promise<Person> {
+        throw new Error('Method not implemented.');
+    }
+    executeSave(item: Person): Promise<Person> {
+        throw new Error('Method not implemented.');
+    }
+    executeUpdate(identifier: any, item: Person): Promise<Person> {
+        throw new Error('Method not implemented.');
+    }
+    executeDelete(identifier: any): Promise<void> {
+        throw new Error('Method not implemented.');
+    }
+    itemToProperties(item: Person): void {
+        throw new Error('Method not implemented.');
+    }
+
 
     static styles = css`
         :host {
@@ -18,17 +47,7 @@ export class NidocaEdit extends LitElement {
         }
     `;
 
-    render() {
-        return html`
-            <input type="text" .value=${this.value} @input=${this._onInput} />
-        `;
-    }
-
     private _onInput(event: Event) {
         const input = event.target as HTMLInputElement;
-        this.value = input.value;
-        this.dispatchEvent(new CustomEvent('value-changed', { detail: this.value }));
     }
 }
-
-customElements.define('nidoca-edit', NidocaEdit);
