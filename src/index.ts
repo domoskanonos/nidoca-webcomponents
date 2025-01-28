@@ -1,10 +1,12 @@
 export * from './abstract/generic-list';
 export * from './abstract/generic-edit';
+export * from './abstract/generic-crud';
 
 export * from './util/nidoca-router';
 export * from './util/nidoca-img';
 export * from './util/nidoca-indexdb';
 export * from './util/nidoca-client';
+export * from './util/nidoca-util';
 
 export * from './nidoca-layout-meta';
 

@@ -2,16 +2,14 @@ import { customElement, property, state } from 'lit/decorators.js';
 import { NidocaHtml } from '../../abstract/nidoca-html';
 import { PropertyValues, TemplateResult, html } from 'lit';
 import { Card, CardEvent } from '../../nidoca-dashboard';
-import { GenericIndexedDB, Karmatica, Person } from '../../nidoca-webcomponents';
+import { GenericIndexedDB, Karmatica } from '../../nidoca-webcomponents';
+import { Person } from './person';
 
 @customElement('nidoca-page-generic-app')
 export class NidocaPageGenericApp extends NidocaHtml {
 
   @state()
   karmatica: Karmatica | undefined = undefined;
-
-  @state()
-  listView: boolean = true;
 
   @property({ type: Array })
   cards: Card[] = [
@@ -65,17 +63,17 @@ export class NidocaPageGenericApp extends NidocaHtml {
   }
 
   render(): TemplateResult {
-    return this.listView
+    return true
       ? html`
+      
+      <nidoca-generic-crud 
+         imgSrc="${this.selectedCard?.imgSrc}"
+        .data="${this.karmatica?.friends}">
+        .item="${new Person()}"
+        key="id">       
+      </nidoca-generic-crud>
 
-      <nidoca-edit></nidoca-edit>
-
-
-
-          <person-list-crud 
-            imgSrc="${this.selectedCard?.imgSrc}"
-            .persons="${this.karmatica?.friends}">
-          </person-list-crud>
+      
         `
       : html`
           <nidoca-dashboard

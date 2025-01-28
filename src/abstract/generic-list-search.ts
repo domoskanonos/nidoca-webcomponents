@@ -1,9 +1,9 @@
 import { html, TemplateResult } from "lit-html";
 import { property, state } from 'lit/decorators.js';
-import { NidocaAbstractGenericList } from "./generic-list";
+import { NidocaGenericList } from "./generic-list";
 import { css } from "lit";
 
-export abstract class NidocaAbstractGenericListCRUD<T> extends NidocaAbstractGenericList<T> {
+export abstract class NidocaGenericListSearch<T> extends NidocaGenericList<T> {
 
   static styles = css`
     :host {

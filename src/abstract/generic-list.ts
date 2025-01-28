@@ -2,8 +2,9 @@ import { html, TemplateResult } from "lit-html";
 import { property, state } from 'lit/decorators.js';
 import { NidocaHtml } from "./nidoca-html";
 import { NidocaTheme } from "../nidoca-meta";
+import { NidocaGenericHtml } from "./generic-html";
 
-export abstract class NidocaAbstractGenericList<T> extends NidocaHtml {
+export abstract class NidocaGenericList<T> extends NidocaGenericHtml<T> {
 
   @property({ type: NidocaTheme, converter: String })
   theme: string = NidocaTheme.plain;

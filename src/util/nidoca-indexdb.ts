@@ -142,14 +142,6 @@ export interface Karmatica {
     goals: Goal[];
 }
 
-export interface Person {
-    name: string;
-    email: string | null;
-    phone: string | null;
-    energy: number;
-    image: string | null;
-}
-
 export interface Action {
     description: string;
     time_min: number | null;
