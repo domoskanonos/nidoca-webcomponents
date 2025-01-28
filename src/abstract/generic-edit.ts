@@ -4,7 +4,7 @@ import { property, query } from 'lit/decorators.js';
 
 export abstract class NidocaGenericEdit<T> extends NidocaHtml {
 
-  identifier: any = null;
+  key: any = null;
 
   item: T = <T>{};
 
@@ -13,18 +13,15 @@ export abstract class NidocaGenericEdit<T> extends NidocaHtml {
     this.init();
   }
   init() {
-    this.identifier = this.getIdentifier();
+    this.key = this.getKey();
     this.item = this.initObject();
   }
 
-  abstract getIdentifier(): any;
+  abstract getKey(): any;
 
   abstract initObject(): T;
 
-
-
-
-
+  abstract cancel(): void;
 
 
   @property()
@@ -41,16 +38,22 @@ export abstract class NidocaGenericEdit<T> extends NidocaHtml {
 
   render() {
     return html`
-      <nidoca-form id="form">
-        ${this.renderFormFields()}
-      </nidoca-form>
-      <decision-dialog-component
-        @decision-dialog-component-ok-event="${() => this.deleteItemHideDialog()}"
-        @decision-dialog-component-cancel-event="${() => (this.showDeleteDialog = false)}"
-        title="${this.dialogDeleteTitle}"
-        description="${this.dialogDeleteDescription}"
-        .showDialog="${this.showDeleteDialog}"
-      ></decision-dialog-component>
+    <h2>Person</h2>
+    <nidoca-form id="form">
+      ${this.renderFormFields()}
+      <input type="hidden" name="${this.key}" value="${this.item[this.key]}"/>
+      <nidoca-button style="padding-bottom:var(--space-2);" @click="${()=>this.saveItem()}">Speichern</nidoca-button>
+      <nidoca-button style="padding-bottom:var(--space-2);" @click="${()=>this.cancel()}">Abbrechen</nidoca-button>
+      <nidoca-button style="padding-bottom:var(--space-2);" @click="${()=>this.deleteItem()}">Löschen</nidoca-button>
+    </nidoca-form>
+
+    <decision-dialog-component
+      @decision-dialog-component-ok-event="${() => this.deleteItemHideDialog()}"
+      @decision-dialog-component-cancel-event="${() => (this.showDeleteDialog = false)}"
+      title="${this.dialogDeleteTitle}"
+      description="${this.dialogDeleteDescription}"
+      .showDialog="${this.showDeleteDialog}"
+    ></decision-dialog-component>
     `;
   }
 
@@ -71,6 +74,7 @@ export abstract class NidocaGenericEdit<T> extends NidocaHtml {
           // Beispiel: Checkbox / Switch
           field = html`
             <nidoca-form-switch
+              style="padding-bottom:var(--space-2);"
               label="${propertyKey}"
               name="${propertyKey}"
               .value="${propertyValue as boolean}"
@@ -82,6 +86,7 @@ export abstract class NidocaGenericEdit<T> extends NidocaHtml {
           // Beispiel: Textfeld
           field = html`
             <nidoca-form-text
+              style="padding-bottom:var(--space-2);"
               label="${propertyKey}"
               name="${propertyKey}"
               .value="${propertyValue as string}"
@@ -93,6 +98,7 @@ export abstract class NidocaGenericEdit<T> extends NidocaHtml {
           // Beispiel: Zahlenfeld (falls gewünscht)
           field = html`
             <nidoca-form-text
+              style="padding-bottom:var(--space-2);"
               label="${propertyKey}"
               name="${propertyKey}"
               type="number"
@@ -105,6 +111,7 @@ export abstract class NidocaGenericEdit<T> extends NidocaHtml {
           // Fallback: für komplexere Strukturen, Arrays, Objekte etc.
           field = html`
             <nidoca-form-text
+              style="padding-bottom:var(--space-2);"
               label="${propertyKey}"
               name="${propertyKey}"
               .value="${JSON.stringify(propertyValue)}"
@@ -121,55 +128,34 @@ export abstract class NidocaGenericEdit<T> extends NidocaHtml {
 
   abstract getItemById(identifier: any): Promise<T>;
 
-  abstract executeSave(item: T): Promise<T>;
-
-  abstract executeUpdate(identifier: any, item: T): Promise<T>;
-
-  abstract executeDelete(identifier: any): Promise<void>;
-
   abstract itemToProperties(item: T): void;
 
 
   deleteItemHideDialog() {
-    if (this.identifier != null) {
       this.showDeleteDialog = false;
       this.deleteItem();
-    }
   }
 
   deleteItem() {
-    if (this.identifier != null) {
-      this.executeDelete(this.identifier).then(() => {
-        console.log('item deleted.');
-        NidocaRouter.getUniqueInstance().back();
-      });
+    if (this.formComponent != null) {
+      console.log('item deleted.');
+      this.item = this.formComponent.getOutputData().jsonObject;
+      this.throwCustomEvent("nidoca-event-generic-edit-item-deleted", this.item);
     }
   }
 
   updateItem() {
     if (this.formComponent != null && this.formComponent.validate()) {
       this.item = this.formComponent.getOutputData().jsonObject;
-      if (this.identifier != null) {
-        console.log('save item, identifier {}', this.identifier);
-        this.executeUpdate(this.identifier, this.item).then((item) => {
-          this.item = item;
-          NidocaRouter.getUniqueInstance().back();
-        });
-      }
+      this.throwCustomEvent("nidoca-event-generic-edit-item-updated", this.item);
     }
   }
 
   saveItem() {
     if (this.formComponent != null && this.formComponent.validate()) {
       this.item = this.formComponent.getOutputData().jsonObject;
-      if (this.identifier == null) {
-        console.log('save item, identifier {}', this.identifier);
-        this.executeSave(this.item).then((item: T) => {
-          this.identifier = (item as any)[this.getIdentifier()];
-          this.item = item;
-          NidocaRouter.getUniqueInstance().back();
-        });
-      }
+      this.throwCustomEvent("nidoca-event-generic-edit-item-saved", this.item);
     }
   }
+
 }

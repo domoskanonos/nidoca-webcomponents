@@ -6,12 +6,16 @@ import { Person } from '../../nidoca-webcomponents';
 @customElement('nidoca-edit')
 export class NidocaEdit extends NidocaGenericEdit<Person> {
 
-    getIdentifier() {
+    getKey() {
         return "id";
     }
 
     initObject(): Person {
-        return <Person>{ name: "", email: "", phone: "", energy: 0, image: "" };
+        return <Person>{ name: "", email: "", phone: "", energy: 0 };
+    }
+
+    cancel(){
+        console.log("cancel");
     }
 
 
@@ -20,15 +24,8 @@ export class NidocaEdit extends NidocaGenericEdit<Person> {
     getItemById(identifier: any): Promise<Person> {
         throw new Error('Method not implemented.');
     }
-    executeSave(item: Person): Promise<Person> {
-        throw new Error('Method not implemented.');
-    }
-    executeUpdate(identifier: any, item: Person): Promise<Person> {
-        throw new Error('Method not implemented.');
-    }
-    executeDelete(identifier: any): Promise<void> {
-        throw new Error('Method not implemented.');
-    }
+
+
     itemToProperties(item: Person): void {
         throw new Error('Method not implemented.');
     }

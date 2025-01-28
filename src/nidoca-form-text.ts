@@ -132,7 +132,7 @@ export class NidocaFormText extends NidocaFormAbstractInputElement {
   private inputElement: HTMLInputElement | undefined;
 
   @property({type: NidocaTheme, converter: String})
-  theme: string = NidocaTheme.surface;
+  theme: string = NidocaTheme.plain;
 
   render(): TemplateResult {
     return this.type == NidocaFormTextType.hidden

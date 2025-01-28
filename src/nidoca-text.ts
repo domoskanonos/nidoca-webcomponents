@@ -23,7 +23,7 @@ export class NidocaText extends NidocaHtml {
   `;
 
   @property({ type: NidocaTheme, converter: String })
-  theme: string | undefined = NidocaTheme.surface;
+  theme: string | undefined = NidocaTheme.plain;
 
   @property({ type: String })
   text: string = '';
