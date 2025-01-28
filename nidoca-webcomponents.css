@@ -31,9 +31,9 @@ div {
   --app-color-plain-background: #ffffff;
   --app-color-plain-background-light: #f0f0f0;
   --app-color-plain-background-dark: #494949;
-  --app-color-plain-border: #c9c9c9;
-  --app-color-plain-hover: #b4b2b2;
-  --app-color-plain-selected: #c7c7c7;
+  --app-color-plain-border: #e2e2e2;
+  --app-color-plain-hover: #e2e2e2;
+  --app-color-plain-selected: #e2e2e2;
 
   --app-color-text-primary: #ececec;
   --app-color-subtext-primary: #ececec;
