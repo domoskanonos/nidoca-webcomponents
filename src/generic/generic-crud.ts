@@ -1,7 +1,7 @@
 import { customElement, property, state } from "lit/decorators.js";
-import { Person } from "./../app/xxx/person"; // Adjust the path as necessary
+import { Person } from "../app/xxx/person"; // Adjust the path as necessary
 import { html } from "lit";
-import { NidocaHtml } from "./nidoca-html";
+import { NidocaHtml } from "../abstract/nidoca-html";
 
 @customElement('nidoca-generic-crud')
 export class NidocaGenericCRUD extends NidocaHtml {

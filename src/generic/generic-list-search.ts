@@ -3,7 +3,7 @@ import { property, state } from 'lit/decorators.js';
 import { NidocaGenericList } from "./generic-list";
 import { css } from "lit";
 
-export abstract class NidocaGenericListSearch<T> extends NidocaGenericList<T> {
+export abstract class NidocaGenericListSearch extends NidocaGenericList {
 
   static styles = css`
     :host {
@@ -29,7 +29,7 @@ export abstract class NidocaGenericListSearch<T> extends NidocaGenericList<T> {
     this.data = this.search(searchText);
   }
 
-  protected abstract search(searchText: string): T[];
+  protected abstract search(searchText: string): any[];
 
 }
 

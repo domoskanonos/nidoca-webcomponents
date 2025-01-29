@@ -1,6 +1,7 @@
-export * from './abstract/generic-list';
-export * from './abstract/generic-edit';
-export * from './abstract/generic-crud';
+export * from './generic/generic-list';
+export * from './generic/generic-list-search';
+export * from './generic/generic-edit';
+export * from './generic/generic-crud';
 
 export * from './util/nidoca-router';
 export * from './util/nidoca-img';

@@ -1,4 +1,4 @@
-export * from '../abstract/generic-edit';
+export * from '../generic/generic-edit';
 export * from './nidoca-abstract-component-search-list';
 export * from './nidoca-abstract-page-search-list';
 export * from './nidoca-i18n-selector';

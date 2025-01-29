@@ -3,13 +3,13 @@ import { NidocaForm, NidocaHtml, NidocaUtil } from '../nidoca-webcomponents';
 import { customElement, property, query } from 'lit/decorators.js';
 
 @customElement('nidoca-generic-edit')
-export class NidocaGenericEdit<T> extends NidocaHtml {
+export class NidocaGenericEdit extends NidocaHtml {
 
   @property({ type: Object })
-  key: keyof T | null = null;
+  key: keyof any | null = null;
 
   @property({ type: Object })
-  item: T = <T>{};
+  item: any = {};
 
   @property({ type: String })
   title: string = "";
@@ -28,7 +28,7 @@ export class NidocaGenericEdit<T> extends NidocaHtml {
     <h2>${this.title}</h2>
     <nidoca-form id="form">
       ${this.renderFormFields()}
-      <input type="hidden" name="${this.key}" value="${this.item[this.key as keyof T]}"/>
+      <input type="hidden" name="${this.key}" value="${this.item[this.key as keyof any]}"/>
       <nidoca-button style="padding-bottom:var(--space-2);" @click="${() => this.saveItem()}">Speichern</nidoca-button>
       <nidoca-button style="padding-bottom:var(--space-2);" @click="${() => this.cancel()}">Abbrechen</nidoca-button>
       <nidoca-button style="padding-bottom:var(--space-2);" @click="${() => this.deleteItem()}">Löschen</nidoca-button>
