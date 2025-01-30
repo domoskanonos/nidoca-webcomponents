@@ -11,8 +11,7 @@ export * from './abstract/nidoca-html';
 export * from './nidoca-layout-meta';
 
 export * from './generic/generic-edit';
-export * from './generic/generic-list';
-export * from './generic/generic-list-search';
+export * from './nidoca-list-search';
 export * from './generic/generic-crud';
 
 

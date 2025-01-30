@@ -13,8 +13,10 @@ export class NidocaContainer extends NidocaHtml {
     }
 
     slot {
+      max-width: 768px;
       display: block;
-      margin: auto;
+      margin: 0 auto;
+      line-height: 0;
       width: auto;
       max-width: var(--max-width);
     }
@@ -24,9 +26,6 @@ export class NidocaContainer extends NidocaHtml {
   theme: string = NidocaTheme.plain;
 
   render(): unknown {
-    return html`
-      ${NidocaThemeHelper.getStyle(this.theme)}
-      <slot></slot>
-    `;
+    return html`<slot></slot>`;
   }
 }

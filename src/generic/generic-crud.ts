@@ -1,64 +1,64 @@
-import { customElement, property, state } from "lit/decorators.js";
-import { html } from "lit";
+import { customElement, state } from "lit/decorators.js";
+import { html, PropertyValues } from "lit";
 import { NidocaHtml } from "../abstract/nidoca-html";
+import { NidocaGenericEdit, NidocaListSearch } from "../nidoca-webcomponents";
 
-@customElement('nidoca-generic-crud')
+@customElement('nidoca-crud')
 export class NidocaGenericCRUD extends NidocaHtml {
 
     @state()
     listView: boolean = true;
 
-    @property({})
-    data: any[] = [];
+    @state()
+    edit: NidocaGenericEdit|null = null;
 
-    @property({ type: Object })
-    key: keyof any | null = null;
+    @state()
+    listSearch: NidocaListSearch|null = null;
 
-    @property({ type: Object })
-    item: any = {};
 
-    @property({ type: String })
-    title: string = "";
+    
 
-    // Überwachen und Reagieren auf Änderungen an `key` oder `initObject`
-    updated(changedProperties: Map<string | number | symbol, unknown>): void {
-        if (changedProperties.has('item')) {
-            console.log('Item changed crud:', this.item);
-            this.title = (this.item as any).constructor.name;
-        }
-        if (changedProperties.has('key')) {
-            // TODO: Implement key change
-        }
+
+    render(): unknown {
+        return html`<slot @slotchange="${(event: Event) => this.slotChanged(event)}"></slot>`;
     }
 
-    protected render(): unknown {
-        console.log('render generic crud' + JSON.stringify(this.data));
-        return html`
-        <nidoca-generic-edit .item="${this.item}" key="${this.key}" title="${this.title}"></nidoca-generic-edit>
-        <nidoca-generic-list-search .data="${this.data}"></nidoca-generic-list-search>`;
-    }
+    updated(changedProperties: PropertyValues): void {
+        super.updated(changedProperties);
+        if (changedProperties.has('listSearch')) {
+        }
+
+        if(this.listView){
+                
+        } else {
+            
+        }
+
+        
+      }
+
+    slotChanged(event: Event): void {
+        const slotElement: HTMLSlotElement = <HTMLSlotElement>event.target;
+        if (slotElement == undefined) {
+          return;
+        }
+        const elements: Element[] = slotElement.assignedElements();
+        for (let index = 0; index < elements.length; index++) {
+          const element: Element = elements[index];
+
+          if(element instanceof NidocaListSearch){
+            this.listSearch = element;
+          }
+
+          if(element instanceof NidocaGenericEdit){
+            this.edit = element;
+          }
+
+        }
+
+      }
 
 
 
-    /**
-     * 
-     *         <nidoca-list-item
-        @click="${() => this.itemClicked(item)}"
-        theme="${this.theme}"
-        primaryText="${item.name || ''}"
-        secondaryText="${item.email || ''}"
-        tertiaryText="${item.phone || ''}"
-        infoText="${item.energy || ''}"
-      >
-        <nidoca-img-round
-          width="64px"
-          height="64px"
-          slot="left"
-          src="${item.image ? item.image : NidocaImgHelper.renderImgText(item.name)}"
-        ></nidoca-img-round>
-        <nidoca-icon slot="right" icon=""></nidoca-icon>
-      </nidoca-list-item>
-     * 
-     */
 
 }

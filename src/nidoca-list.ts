@@ -19,9 +19,6 @@ export class NidocaList extends NidocaHtml {
     }
   `;
 
-  @property({ type: NidocaTheme, converter: String })
-  theme: string = NidocaTheme.surface;
-
   @property({ type: Boolean })
   multiselect: boolean = false;
 

@@ -24,21 +24,18 @@ export class NidocaGenericEdit extends NidocaHtml {
 
   render() {
     return html`
-    <nidoca-top-app-bar style="min-height: 48px;" prominent>
-        <nidoca-text-body slot="left">${this.title}</nidoca-text-body>
-        <nidoca-icon slot="right" style="padding-right:var(--space)" icon="delete"></nidoca-icon>
-        <nidoca-icon slot="right" style="padding-right:var(--space)" icon="cancel" clickable></nidoca-icon>
-      </nidoca-top-app-bar>
-
-
-
-    <nidoca-form id="form">
-      ${this.renderFormFields()}
-      <input type="hidden" name="${this.key}" value="${this.item[this.key as keyof any]}"/>
-      <nidoca-button style="padding-bottom:var(--space-2);" @click="${() => this.saveItem()}">Speichern</nidoca-button>
-      <nidoca-button style="padding-bottom:var(--space-2);" @click="${() => this.cancel()}">Abbrechen</nidoca-button>
-      <nidoca-button style="padding-bottom:var(--space-2);" @click="${() => this.deleteItem()}">Löschen</nidoca-button>
-    </nidoca-form>
+    <nidoca-container>
+      <nidoca-top-app-bar style="min-height: 48px;" prominent>
+          <nidoca-text-body slot="left">${this.title}</nidoca-text-body>
+          <nidoca-icon slot="right" style="padding-right:var(--space)" icon="save" @click="${() => this.saveItem()}"></nidoca-icon>
+          <nidoca-icon slot="right" style="padding-right:var(--space)" icon="delete" @click="${() => this.deleteItem()}"></nidoca-icon>
+          <nidoca-icon slot="right" style="padding-right:var(--space)" icon="cancel" @click="${() => this.cancel()}" clickable ></nidoca-icon>
+        </nidoca-top-app-bar>
+      <nidoca-form id="form">
+        ${this.renderFormFields()}
+        <input type="hidden" name="${this.key}" value="${this.item[this.key as keyof any]}"/>
+      </nidoca-form>
+    </nidoca-container>
     `;
   }
 
@@ -54,7 +51,7 @@ export class NidocaGenericEdit extends NidocaHtml {
               style="padding-bottom:var(--space-2);"
               label="${propertyName}"
               name="${propertyKey}"
-              .value="${propertyValue as boolean}"
+              .value="${propertyValue ? propertyValue as boolean:""}"
             ></nidoca-form-switch>
           `;
           break;
@@ -64,7 +61,7 @@ export class NidocaGenericEdit extends NidocaHtml {
               style="padding-bottom:var(--space-2);"
               label="${propertyName}"
               name="${propertyKey}"
-              .value="${propertyValue as string}"
+              .value="${propertyValue ? propertyValue as string:""}"
             ></nidoca-form-text>
           `;
           break;
@@ -75,7 +72,7 @@ export class NidocaGenericEdit extends NidocaHtml {
               label="${propertyName}"
               name="${propertyKey}"
               type="number"
-              .value="${propertyValue as number}"
+              .value="${propertyValue ? propertyValue as number: ""}"
             ></nidoca-form-text>
           `;
           break;
@@ -85,7 +82,7 @@ export class NidocaGenericEdit extends NidocaHtml {
               style="padding-bottom:var(--space-2);"
               label="${propertyName}"
               name="${propertyKey}"
-              .value="${JSON.stringify(propertyValue)}"
+              .value="${propertyValue ?JSON.stringify(propertyValue): propertyValue}"
             ></nidoca-form-text>
           `;
       }

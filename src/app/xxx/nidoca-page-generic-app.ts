@@ -2,7 +2,7 @@ import { customElement, property, state } from 'lit/decorators.js';
 import { NidocaHtml } from '../../abstract/nidoca-html';
 import { PropertyValues, TemplateResult, html } from 'lit';
 import { Card, CardEvent } from '../../nidoca-dashboard';
-import { GenericIndexedDB } from '../../nidoca-webcomponents';
+import { GenericIndexedDB, NidocaImgHelper } from '../../nidoca-webcomponents';
 import { Karmatica, Person } from './../../util/nidoca-indexdb';
 
 @customElement('nidoca-page-generic-app')
@@ -10,6 +10,10 @@ export class NidocaPageGenericApp extends NidocaHtml {
 
   @state()
   karmatica: Karmatica | undefined = undefined;
+
+
+  @state()
+  listData: Person[] = [];
 
   @property({ type: Array })
   cards: Card[] = [
@@ -58,7 +62,7 @@ export class NidocaPageGenericApp extends NidocaHtml {
     console.log('Open karmatica');
     karmaticaDB.openDatabase().then(async () => {
       this.karmatica = await karmaticaDB.get(1)
-      console.log('Load karmatica'+ JSON.stringify(this.karmatica));
+      this.listData = this.karmatica?.friends ? this.karmatica.friends: [];
       this.requestUpdate();
     });
   }
@@ -66,14 +70,31 @@ export class NidocaPageGenericApp extends NidocaHtml {
   render(): TemplateResult {
     return true
       ? html`
-
-      <nidoca-generic-crud .item="${new Person()}" .data="${this.karmatica? this.karmatica.friends: []}" imgSrc="${this.selectedCard?.imgSrc}"></nidoca-generic-crud>
-
-               
-        >
-
-      
-        `
+      <nidoca-crud>   
+        <nidoca-generic-edit .item="${new Person()}" key="id"></nidoca-generic-edit>
+        <nidoca-list-search @nidoca-search-bar-event-value-changed="${(event: CustomEvent) => {
+          const searchValue = event.detail;
+          this.listData = (this.karmatica? this.karmatica.friends: []).filter((value: Person)=> {return value.name.indexOf(searchValue)>-1;})
+        }}">
+        ${(this.listData).map((item: Person) => 
+                  html`
+                  <nidoca-list-item
+                    theme="${this.theme}"
+                    primaryText="${item.name || ''}"
+                    secondaryText="${item.email || ''}"
+                    tertiaryText="${item.phone || ''}"
+                    infoText="${item.energy || ''}"
+                      >
+                      <nidoca-img-round
+                        width="64px"
+                        height="64px"
+                        slot="left"
+                        src="${item.image ? item.image : NidocaImgHelper.renderImgText(item.name)}"
+                      ></nidoca-img-round>
+                  <nidoca-icon slot="right" icon=""></nidoca-icon>
+                </nidoca-list-item>`)}
+        </nidoca-list-search>
+      </nidoca-crud>`
       : html`
           <nidoca-dashboard
             @nidoca-event-dashboard-card-clicked="${(event: CustomEvent) => this.cardClicked(event)}"
