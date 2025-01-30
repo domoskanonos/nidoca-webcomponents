@@ -23,9 +23,15 @@ export class NidocaGenericEdit extends NidocaHtml {
   formComponent: NidocaForm | undefined;
 
   render() {
-    console.log('render');
     return html`
-    <h2>${this.title}</h2>
+    <nidoca-top-app-bar style="min-height: 48px;" prominent>
+        <nidoca-text-body slot="left">${this.title}</nidoca-text-body>
+        <nidoca-icon slot="right" style="padding-right:var(--space)" icon="delete"></nidoca-icon>
+        <nidoca-icon slot="right" style="padding-right:var(--space)" icon="cancel" clickable></nidoca-icon>
+      </nidoca-top-app-bar>
+
+
+
     <nidoca-form id="form">
       ${this.renderFormFields()}
       <input type="hidden" name="${this.key}" value="${this.item[this.key as keyof any]}"/>

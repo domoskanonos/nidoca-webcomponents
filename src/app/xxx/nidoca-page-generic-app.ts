@@ -2,8 +2,8 @@ import { customElement, property, state } from 'lit/decorators.js';
 import { NidocaHtml } from '../../abstract/nidoca-html';
 import { PropertyValues, TemplateResult, html } from 'lit';
 import { Card, CardEvent } from '../../nidoca-dashboard';
-import { GenericIndexedDB, Karmatica } from '../../nidoca-webcomponents';
-import { Person } from './person';
+import { GenericIndexedDB } from '../../nidoca-webcomponents';
+import { Karmatica, Person } from './../../util/nidoca-indexdb';
 
 @customElement('nidoca-page-generic-app')
 export class NidocaPageGenericApp extends NidocaHtml {
@@ -57,21 +57,20 @@ export class NidocaPageGenericApp extends NidocaHtml {
     const karmaticaDB = new GenericIndexedDB<Karmatica>("AppDatabase", "Karmatica", "id");
     console.log('Open karmatica');
     karmaticaDB.openDatabase().then(async () => {
-      console.log('Load karmatica');
-      this.karmatica = await karmaticaDB.get(1);
+      this.karmatica = await karmaticaDB.get(1)
+      console.log('Load karmatica'+ JSON.stringify(this.karmatica));
+      this.requestUpdate();
     });
   }
 
   render(): TemplateResult {
     return true
       ? html`
-      
-      <nidoca-generic-crud 
-         imgSrc="${this.selectedCard?.imgSrc}"
-        .data="${this.karmatica?.friends}">
-        .item="${new Person()}"
-        key="id">       
-      </nidoca-generic-crud>
+
+      <nidoca-generic-crud .item="${new Person()}" .data="${this.karmatica? this.karmatica.friends: []}" imgSrc="${this.selectedCard?.imgSrc}"></nidoca-generic-crud>
+
+               
+        >
 
       
         `
@@ -88,6 +87,5 @@ export class NidocaPageGenericApp extends NidocaHtml {
     console.log('cardClicked');
     const cardEvent: CardEvent = event.detail;
     this.selectedCard = cardEvent.card;
-    this.listView = true;
   }
 }

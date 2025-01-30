@@ -1,9 +1,10 @@
 import { html, TemplateResult } from "lit-html";
-import { property, state } from 'lit/decorators.js';
 import { NidocaGenericList } from "./generic-list";
 import { css } from "lit";
+import { customElement, property } from 'lit/decorators.js';
 
-export abstract class NidocaGenericListSearch extends NidocaGenericList {
+@customElement('nidoca-generic-list-search')
+export class NidocaGenericListSearch extends NidocaGenericList {
 
   static styles = css`
     :host {
@@ -14,12 +15,8 @@ export abstract class NidocaGenericListSearch extends NidocaGenericList {
     }
   `;
 
-  @property({ type: String })
-  imgSrc: string = '';
-
   render() {
     return html`
-    <nidoca-img src="${this.imgSrc}" alt=""></nidoca-img>
     <nidoca-search-bar @nidoca-search-bar-event-value-changed="${(event: CustomEvent) => this.internSearch(event.detail)}"></nidoca-search-bar>
     ${super.render()}
             `;
@@ -29,7 +26,16 @@ export abstract class NidocaGenericListSearch extends NidocaGenericList {
     this.data = this.search(searchText);
   }
 
-  protected abstract search(searchText: string): any[];
+  protected search(searchText: string): any[] {
+    
+  }
+
+  protected renderListItem(item: any): TemplateResult {
+    throw new Error("Method not implemented.");
+  }
+  itemClicked(item: any): void {
+    throw new Error("Method not implemented.");
+  }
 
 }
 

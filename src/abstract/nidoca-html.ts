@@ -2,7 +2,7 @@ import {LitElement} from 'lit';
 import { property } from 'lit/decorators.js';
 import { NidocaTheme } from "../nidoca-meta";
 
-export abstract class NidocaHtml extends LitElement {
+export class NidocaHtml extends LitElement {
 
   @property({ type: NidocaTheme, converter: String })
   theme: string = NidocaTheme.plain;

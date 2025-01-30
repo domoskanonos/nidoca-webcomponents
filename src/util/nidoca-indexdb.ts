@@ -133,34 +133,40 @@ export class GenericIndexedDB<T> {
  *  TESTDATEN & EINFÜGUNG
  * =============================== */
 
-
-
-export interface Karmatica {
-    id: number | null;
-    myself: Person;
-    friends: Person[];
-    goals: Goal[];
+export class Person {
+    name: string = "";
+    email: string | null = null;
+    phone: string | null = null
+    energy: number = 0;
+    image: string | null = null
 }
 
-export interface Action {
-    description: string;
-    time_min: number | null;
-    time_max: number | null;
-    energy: number;
-    image: string | null;
+export class Karmatica {
+    id: number | null = null;
+    myself: Person | null = null;
+    friends: Person[] = [];
+    goals: Goal[] = [];
 }
 
-export interface Routine {
-    name: string;
-    actions: Action[];
+export class Action {
+    description: string="";
+    time_min: number | null = 0;
+    time_max: number | null = 0;
+    energy: number = 0;
+    image: string | null="";
 }
 
-export interface Goal {
-    title: string;
-    description: string;
-    image: string | null;
-    actions: Action[];
-    routines: Routine[];
+export class Routine {
+    name: string ="";
+    actions: Action[] = [];
+}
+
+export class Goal {
+    title: string ="";
+    description: string="";
+    image: string | null = "";
+    actions: Action[] = [];
+    routines: Routine[] = [];
 }
 
 
@@ -317,7 +323,7 @@ export interface Goal {
     }
         ;
 
-    //karmaticaDB.add(karmatica);
+    karmaticaDB.add(karmatica);
 
     karmaticaDB.close()
 

@@ -1,5 +1,5 @@
 import { html, TemplateResult } from "lit-html";
-import { property, state } from 'lit/decorators.js';
+import { customElement, property } from 'lit/decorators.js';
 import { NidocaHtml } from "../abstract/nidoca-html";
 
 export abstract class NidocaGenericList extends NidocaHtml {

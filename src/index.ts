@@ -1,18 +1,20 @@
-export * from './generic/generic-list';
-export * from './generic/generic-list-search';
-export * from './generic/generic-edit';
-export * from './generic/generic-crud';
-
 export * from './util/nidoca-router';
 export * from './util/nidoca-img';
 export * from './util/nidoca-indexdb';
 export * from './util/nidoca-client';
 export * from './util/nidoca-util';
 
-export * from './nidoca-layout-meta';
 
 export * from './nidoca-meta';
 export * from './abstract/nidoca-html';
+
+export * from './nidoca-layout-meta';
+
+export * from './generic/generic-edit';
+export * from './generic/generic-list';
+export * from './generic/generic-list-search';
+export * from './generic/generic-crud';
+
 
 export * from './nidoca-accordion';
 export * from './nidoca-accordion-item';
