@@ -82,7 +82,7 @@ export class NidocaTemplate extends NidocaHtml {
             slot="left"
             style="padding-left:var(--space-2);"
             icon="menu"
-            .clickable="${true}"
+            ?clickable="${true}"
             @nidoca-event-icon-clicked="${() => {
         this.hideLeft = !this.hideLeft;
       }}"
