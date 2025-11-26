@@ -1,19 +1,19 @@
-"use strict";(()=>{var Mr=Object.defineProperty;var Vr=Object.getOwnPropertyDescriptor;var r=(a,e,t,n)=>{for(var i=n>1?void 0:n?Vr(e,t):e,l=a.length-1,p;l>=0;l--)(p=a[l])&&(i=(n?p(e,t,i):p(i))||i);return n&&i&&Mr(e,t,i),i};var K=class a{constructor(){this.listeners=[];window.onpopstate=e=>{console.trace("onpopstate event: location: "+document.location+", state: "+JSON.stringify(e.state)),this.notifyListeners()},document.addEventListener("click",e=>{if(!this.shouldIgnoreEvent(e)){let t=this.getAnchor(e);t&&!this.shouldIgnoreAnchor(t)&&(e.preventDefault(),t.hash.length>0&&this.navigate(t.hash))}})}static getUniqueInstance(){return a.uniqueInstance||(a.uniqueInstance=new a),a.uniqueInstance}subscribe(e){console.trace("subscribe router listener"),this.listeners.push(e)}back(){history.back()}forward(){history.forward()}navigate(e,t=null){if(e.indexOf("#")==-1&&(e="#".concat(e)),console.trace("navigate to: %s",e),t!=null&&console.trace("state: %s",JSON.stringify(t)),document.location.hash===e){console.trace("you are already on page: "+e);return}history.pushState(t,"",e),this.notifyListeners()}getCurrentState(){return history.state}getStateProperty(e){let t=this.getCurrentState();return t!=null?t[e]:null}getCurrentPage(){return document.location.hash.replace("#","")}getHash(){return document.location.hash}notifyListeners(){let e=this.getCurrentPage();this.listeners.forEach(t=>t.routeChanged(e))}shouldIgnoreEvent(e){return e.defaultPrevented||e.button!==0||e.shiftKey||e.ctrlKey||e.altKey||e.metaKey}getAnchor(e){for(let n of e.composedPath?e.composedPath():[])if(this.isAnchor(n))return n;let t=e.target;for(;t&&!this.isAnchor(t);)t=t.parentNode;return t&&this.isAnchor(t)?t:null}isAnchor(e){return e.nodeName&&e.nodeName.toLowerCase()==="a"}shouldIgnoreAnchor(e){return!!(e.target&&e.target.toLowerCase()!=="_self"||e.hasAttribute("download")||(e.origin||this.getAnchorOrigin(e))!==window.location.origin)}getAnchorOrigin(e){let t=e.port,n=e.protocol,p=n==="http:"&&t==="80"||n==="https:"&&t==="443"?e.hostname:e.host;return`${n}//${p}`}};var ze=class a{static generateImageBase64(e,t,n){let i=document.createElement("canvas");i.width=128,i.height=128;let l=i.getContext("2d");if(!l)throw new Error("Canvas context is not available");l.fillStyle=n,l.fillRect(0,0,i.width,i.height),l.fillStyle=t;let p=document.body,h=getComputedStyle(p).getPropertyValue("--font-family")||"Arial";l.font=`bold 64px ${h}`,l.textAlign="center",l.textBaseline="alphabetic";let A=e.charAt(0).toUpperCase(),S=l.measureText(A),y=S.actualBoundingBoxAscent-S.actualBoundingBoxDescent;return l.fillText(A,i.width/2,i.height/2+y/2),i.toDataURL("image/png")}static renderImgText(e){return a.generateImageBase64(e,"#555555","#ffffff")}};var se=class a{constructor(e,t,n){this.db=null;this.dbName=e,this.storeName=t,this.keyField=n}static{this.DB_VERSION=2}async openDatabase(){this.db=await new Promise((e,t)=>{let n=indexedDB.open(this.dbName,a.DB_VERSION);n.onupgradeneeded=()=>{let i=n.result;console.log(`onupgradeneeded triggered. Aktuelle Version: ${i.version}`),i.objectStoreNames.contains(this.storeName)||(i.createObjectStore(this.storeName,{keyPath:this.keyField}),console.log(`Object Store '${this.storeName}' mit KeyPath '${String(this.keyField)}' erstellt.`))},n.onsuccess=()=>{console.log(`IndexedDB '${this.dbName}' ge\xF6ffnet.`),e(n.result)},n.onerror=()=>{console.error("Fehler beim \xD6ffnen der Datenbank:",n.error),t(new Error(n.error?.message||"Unknown error"))},n.onblocked=()=>{console.warn("Datenbank wird von einer anderen Verbindung blockiert."),t(new Error("Datenbank ist blockiert."))}})}async add(e){return new Promise((t,n)=>{if(this.db){console.log("add() called");let p=this.db.transaction(this.storeName,"readwrite").objectStore(this.storeName).add(e);p.onsuccess=()=>t(),p.onerror=()=>n(p.error)}})}async update(e){let t=await this.openDatabase();return new Promise((n,i)=>{if(this.db){let u=this.db.transaction(this.storeName,"readwrite").objectStore(this.storeName).put(e);u.onsuccess=()=>n(),u.onerror=()=>i(u.error)}})}async delete(e){return new Promise((t,n)=>{if(this.db){let p=this.db.transaction(this.storeName,"readwrite").objectStore(this.storeName).delete(e);p.onsuccess=()=>t(),p.onerror=()=>n(p.error)}})}async get(e){return new Promise((t,n)=>{if(this.db){let p=this.db.transaction(this.storeName,"readonly").objectStore(this.storeName).get(e);p.onsuccess=()=>t(p.result),p.onerror=()=>n(p.error)}})}async getAll(){return new Promise((e,t)=>{if(this.db){let l=this.db.transaction(this.storeName,"readonly").objectStore(this.storeName).getAll();l.onsuccess=()=>e(l.result),l.onerror=()=>t(l.error)}})}close(){this.db?.close()}},Pe=class{constructor(){this.name="";this.email=null;this.phone=null;this.energy=0;this.image=null}};(async()=>{let a=new se("AppDatabase","Karmatica","id");await a.openDatabase();let e={id:1,myself:{name:"Dominik Bruhn",email:"dominikbruhn@googlemail.com",phone:"015205248862",energy:1,image:null},friends:[{name:"Nico Bruhn",email:null,phone:null,energy:1,image:null},{name:"Christoph Juretko",email:null,phone:null,energy:.6,image:null},{name:"Tim Poloczek",email:null,phone:null,energy:.5,image:null},{name:"Dennis Ratzer",email:null,phone:null,energy:.4,image:null},{name:"Nicole Eckert",email:null,phone:null,energy:.4,image:null},{name:"Stefan Harzke",email:null,phone:null,energy:.6,image:null},{name:"Denis Ergashbaev",email:null,phone:null,energy:.6,image:null},{name:"Bastian \xDCckermann",email:null,phone:null,energy:.2,image:null},{name:"Daniela Meyer zu Ummeln",email:null,phone:null,energy:0,image:null},{name:"Mark Enger",email:null,phone:null,energy:.3,image:null},{name:"Matthias Manasterni",email:null,phone:null,energy:.6,image:null},{name:"Dejan Guberinic",email:null,phone:null,energy:.5,image:null},{name:"Carina Bruhn",email:null,phone:null,energy:0,image:null}],goals:[{title:"Intellektuelle Steigerung",description:"Wachstum und Entwicklung der intellektuellen F\xE4higkeiten einer Person.",image:null,actions:[{description:"Neue Themen lernen",time_min:15,time_max:240,energy:.9,image:null},{description:"Ein Buch lesen",time_min:15,time_max:180,energy:.8,image:null},{description:"Objektive Nachrichten lesen",time_min:15,time_max:30,energy:0,image:null}],routines:[]},{title:"Fit und gesund",description:"Einen gesunden Lebensstil und k\xF6rperliche Fitness aufrechterhalten.",image:null,actions:[{description:"Gesund einkaufen und essen",time_min:30,time_max:null,energy:1,image:null},{description:"Vitamin-D-Tablette im Winter einnehmen",time_min:0,time_max:null,energy:.4,image:null},{description:"Schlafen",time_min:480,time_max:480,energy:1,image:null},{description:"Koffein, Alkohol und Rauchen vermeiden",time_min:0,time_max:null,energy:.8,image:null},{description:"Laufen",time_min:120,time_max:120,energy:1,image:null},{description:"Gym",time_min:120,time_max:120,energy:1,image:null},{description:"Fu\xDFball spielen",time_min:90,time_max:90,energy:1,image:null},{description:"Schwimmen gehen",time_min:120,time_max:240,energy:.5,image:null},{description:"Fitness-Workout",time_min:30,time_max:30,energy:.9,image:null},{description:"Regelm\xE4\xDFige Gesundheitschecks",time_min:60,time_max:60,energy:.8,image:null}],routines:[]},{title:"Guter Papa",description:"Ein unterst\xFCtzender und pr\xE4senter Papa sein.",image:null,actions:[{description:"Lego spielen",time_min:10,time_max:120,energy:.9,image:null},{description:"Gesellschaftsspiele spielen",time_min:30,time_max:180,energy:.8,image:null},{description:"Ins Kino gehen",time_min:120,time_max:180,energy:.7,image:null},{description:"Einen gem\xFCtlichen Filmabend machen",time_min:100,time_max:180,energy:.2,image:null}],routines:[]},{title:"Gl\xFCcklich sein",description:"Langfristiges Gl\xFCck und Zufriedenheit erreichen.",image:null,actions:[{description:"Einen gem\xFCtlichen Filmabend machen",time_min:100,time_max:180,energy:.2,image:null},{description:"Urlaub machen",time_min:1440,time_max:40320,energy:1,image:null},{description:"Flohmarkt besuchen",time_min:45,time_max:120,energy:.6,image:null},{description:"Spazieren gehen",time_min:30,time_max:180,energy:.4,image:null},{description:"Massage bekommen",time_min:80,time_max:200,energy:.9,image:null},{description:"Computerspiele spielen",time_min:20,time_max:180,energy:0,image:null},{description:"Ein Buch lesen",time_min:15,time_max:180,energy:.8,image:null},{description:"In die Sauna gehen zur Entspannung",time_min:60,time_max:120,energy:.9,image:null},{description:"Gute Musik h\xF6ren",time_min:0,time_max:null,energy:.8,image:null},{description:"Meditation",time_min:10,time_max:60,energy:.9,image:null},{description:"Boden wischen",time_min:45,time_max:45,energy:.7,image:null},{description:"Fitness-Workout",time_min:30,time_max:30,energy:.9,image:null},{description:"Kurzer Schlaf zur Wiederherstellung der Energie",time_min:10,time_max:30,energy:.8,image:null},{description:"\xDCber Dinge nachdenken, f\xFCr die man dankbar ist",time_min:5,time_max:20,energy:.9,image:null},{description:"Mit geliebten Menschen in Kontakt bleiben",time_min:10,time_max:120,energy:.8,image:null}],routines:[]},{title:"Resiliente Person",description:"Eine resiliente und entspannte Person sein.",image:null,actions:[{description:"Einen gem\xFCtlichen Filmabend machen",time_min:100,time_max:180,energy:.2,image:null},{description:"Spazieren gehen",time_min:30,time_max:180,energy:.4,image:null},{description:"Massage bekommen",time_min:80,time_max:200,energy:.9,image:null},{description:"In die Sauna gehen zur Entspannung",time_min:60,time_max:120,energy:.9,image:null},{description:"Gute Musik h\xF6ren",time_min:0,time_max:null,energy:.8,image:null},{description:"Meditation",time_min:10,time_max:60,energy:.9,image:null},{description:"Kurzer Schlaf zur Wiederherstellung der Energie",time_min:10,time_max:30,energy:.8,image:null},{description:"\xDCber Dinge nachdenken, f\xFCr die man dankbar ist",time_min:5,time_max:20,energy:.9,image:null},{description:"Regelm\xE4\xDFige Gesundheitschecks",time_min:60,time_max:60,energy:.8,image:null}],routines:[]},{title:"Sicherheit",description:"Ein gutes Gef\xFChl von Sicherheit haben.",image:null,actions:[{description:"Vorr\xE4te und Krisenwerkzeuge einrichten",time_min:0,time_max:120,energy:.6,image:null},{description:"Finanzen kontinuierlich optimieren",time_min:10,time_max:60,energy:.2,image:null},{description:"In Verm\xF6genswerte f\xFCr Wachstum investieren",time_min:10,time_max:60,energy:.2,image:null}],routines:[]},{title:"Finanzielle Freiheit",description:"Finanzielle Unabh\xE4ngigkeit erreichen.",image:null,actions:[{description:"Minimalistisch leben. Konsum minimieren.",time_min:0,time_max:null,energy:.7,image:null},{description:"Finanzen kontinuierlich optimieren",time_min:10,time_max:60,energy:.2,image:null},{description:"In Verm\xF6genswerte f\xFCr Wachstum investieren",time_min:10,time_max:60,energy:.2,image:null}],routines:[]},{title:"F\xFCr immer leben",description:"In der Lage sein, f\xFCr immer zu leben.",image:null,actions:[{description:"Gesund einkaufen und essen",time_min:30,time_max:null,energy:1,image:null},{description:"Schlafen",time_min:480,time_max:480,energy:1,image:null},{description:"Koffein, Alkohol und Rauchen vermeiden",time_min:0,time_max:null,energy:.8,image:null},{description:"In die Sauna gehen zur Entspannung",time_min:60,time_max:120,energy:.9,image:null},{description:"Meditation",time_min:10,time_max:60,energy:.9,image:null},{description:"Regelm\xE4\xDFige Gesundheitschecks",time_min:60,time_max:60,energy:.8,image:null}],routines:[]}]};a.add(e),a.close(),console.log("Karmatica erfolgreich in die IndexedDB eingef\xFCgt!")})();var De=class{static capitalizeFirstLetter(e){return e&&e.charAt(0).toUpperCase()+e.slice(1)}};var je=globalThis,We=je.ShadowRoot&&(je.ShadyCSS===void 0||je.ShadyCSS.nativeShadow)&&"adoptedStyleSheets"in Document.prototype&&"replace"in CSSStyleSheet.prototype,mr=Symbol(),br=new WeakMap,ae=class{constructor(e,t,n){if(this._$cssResult$=!0,n!==mr)throw Error("CSSResult is not constructable. Use `unsafeCSS` or `css` instead.");this.cssText=e,this.t=t}get styleSheet(){let e=this.o,t=this.t;if(We&&e===void 0){let n=t!==void 0&&t.length===1;n&&(e=br.get(t)),e===void 0&&((this.o=e=new CSSStyleSheet).replaceSync(this.cssText),n&&br.set(t,e))}return e}toString(){return this.cssText}},xr=a=>new ae(typeof a=="string"?a:a+"",void 0,mr),c=(a,...e)=>{let t=a.length===1?a[0]:e.reduce((n,i,l)=>n+(p=>{if(p._$cssResult$===!0)return p.cssText;if(typeof p=="number")return p;throw Error("Value passed to 'css' function must be a 'css' function result: "+p+". Use 'unsafeCSS' to pass non-literal values, but take care to ensure page security.")})(i)+a[l+1],a[0]);return new ae(t,a,mr)},pr=(a,e)=>{if(We)a.adoptedStyleSheets=e.map(t=>t instanceof CSSStyleSheet?t:t.styleSheet);else for(let t of e){let n=document.createElement("style"),i=je.litNonce;i!==void 0&&n.setAttribute("nonce",i),n.textContent=t.cssText,a.appendChild(n)}},Le=We?a=>a:a=>a instanceof CSSStyleSheet?(e=>{let t="";for(let n of e.cssRules)t+=n.cssText;return xr(t)})(a):a;var{is:Gr,defineProperty:qr,getOwnPropertyDescriptor:Ur,getOwnPropertyNames:Kr,getOwnPropertySymbols:Qr,getPrototypeOf:Yr}=Object,Me=globalThis,vr=Me.trustedTypes,Xr=vr?vr.emptyScript:"",Zr=Me.reactiveElementPolyfillSupport,le=(a,e)=>a,me={toAttribute(a,e){switch(e){case Boolean:a=a?Xr:null;break;case Object:case Array:a=a==null?a:JSON.stringify(a)}return a},fromAttribute(a,e){let t=a;switch(e){case Boolean:t=a!==null;break;case Number:t=a===null?null:Number(a);break;case Object:case Array:try{t=JSON.parse(a)}catch{t=null}}return t}},Ve=(a,e)=>!Gr(a,e),Ar={attribute:!0,type:String,converter:me,reflect:!1,hasChanged:Ve};Symbol.metadata??=Symbol("metadata"),Me.litPropertyMetadata??=new WeakMap;var ft=class extends HTMLElement{static addInitializer(e){this._$Ei(),(this.l??=[]).push(e)}static get observedAttributes(){return this.finalize(),this._$Eh&&[...this._$Eh.keys()]}static createProperty(e,t=Ar){if(t.state&&(t.attribute=!1),this._$Ei(),this.elementProperties.set(e,t),!t.noAccessor){let n=Symbol(),i=this.getPropertyDescriptor(e,n,t);i!==void 0&&qr(this.prototype,e,i)}}static getPropertyDescriptor(e,t,n){let{get:i,set:l}=Ur(this.prototype,e)??{get(){return this[t]},set(p){this[t]=p}};return{get(){return i?.call(this)},set(p){let u=i?.call(this);l.call(this,p),this.requestUpdate(e,u,n)},configurable:!0,enumerable:!0}}static getPropertyOptions(e){return this.elementProperties.get(e)??Ar}static _$Ei(){if(this.hasOwnProperty(le("elementProperties")))return;let e=Yr(this);e.finalize(),e.l!==void 0&&(this.l=[...e.l]),this.elementProperties=new Map(e.elementProperties)}static finalize(){if(this.hasOwnProperty(le("finalized")))return;if(this.finalized=!0,this._$Ei(),this.hasOwnProperty(le("properties"))){let t=this.properties,n=[...Kr(t),...Qr(t)];for(let i of n)this.createProperty(i,t[i])}let e=this[Symbol.metadata];if(e!==null){let t=litPropertyMetadata.get(e);if(t!==void 0)for(let[n,i]of t)this.elementProperties.set(n,i)}this._$Eh=new Map;for(let[t,n]of this.elementProperties){let i=this._$Eu(t,n);i!==void 0&&this._$Eh.set(i,t)}this.elementStyles=this.finalizeStyles(this.styles)}static finalizeStyles(e){let t=[];if(Array.isArray(e)){let n=new Set(e.flat(1/0).reverse());for(let i of n)t.unshift(Le(i))}else e!==void 0&&t.push(Le(e));return t}static _$Eu(e,t){let n=t.attribute;return n===!1?void 0:typeof n=="string"?n:typeof e=="string"?e.toLowerCase():void 0}constructor(){super(),this._$Ep=void 0,this.isUpdatePending=!1,this.hasUpdated=!1,this._$Em=null,this._$Ev()}_$Ev(){this._$ES=new Promise(e=>this.enableUpdating=e),this._$AL=new Map,this._$E_(),this.requestUpdate(),this.constructor.l?.forEach(e=>e(this))}addController(e){(this._$EO??=new Set).add(e),this.renderRoot!==void 0&&this.isConnected&&e.hostConnected?.()}removeController(e){this._$EO?.delete(e)}_$E_(){let e=new Map,t=this.constructor.elementProperties;for(let n of t.keys())this.hasOwnProperty(n)&&(e.set(n,this[n]),delete this[n]);e.size>0&&(this._$Ep=e)}createRenderRoot(){let e=this.shadowRoot??this.attachShadow(this.constructor.shadowRootOptions);return pr(e,this.constructor.elementStyles),e}connectedCallback(){this.renderRoot??=this.createRenderRoot(),this.enableUpdating(!0),this._$EO?.forEach(e=>e.hostConnected?.())}enableUpdating(e){}disconnectedCallback(){this._$EO?.forEach(e=>e.hostDisconnected?.())}attributeChangedCallback(e,t,n){this._$AK(e,n)}_$EC(e,t){let n=this.constructor.elementProperties.get(e),i=this.constructor._$Eu(e,n);if(i!==void 0&&n.reflect===!0){let l=(n.converter?.toAttribute!==void 0?n.converter:me).toAttribute(t,n.type);this._$Em=e,l==null?this.removeAttribute(i):this.setAttribute(i,l),this._$Em=null}}_$AK(e,t){let n=this.constructor,i=n._$Eh.get(e);if(i!==void 0&&this._$Em!==i){let l=n.getPropertyOptions(i),p=typeof l.converter=="function"?{fromAttribute:l.converter}:l.converter?.fromAttribute!==void 0?l.converter:me;this._$Em=i,this[i]=p.fromAttribute(t,l.type),this._$Em=null}}requestUpdate(e,t,n){if(e!==void 0){if(n??=this.constructor.getPropertyOptions(e),!(n.hasChanged??Ve)(this[e],t))return;this.P(e,t,n)}this.isUpdatePending===!1&&(this._$ES=this._$ET())}P(e,t,n){this._$AL.has(e)||this._$AL.set(e,t),n.reflect===!0&&this._$Em!==e&&(this._$Ej??=new Set).add(e)}async _$ET(){this.isUpdatePending=!0;try{await this._$ES}catch(t){Promise.reject(t)}let e=this.scheduleUpdate();return e!=null&&await e,!this.isUpdatePending}scheduleUpdate(){return this.performUpdate()}performUpdate(){if(!this.isUpdatePending)return;if(!this.hasUpdated){if(this.renderRoot??=this.createRenderRoot(),this._$Ep){for(let[i,l]of this._$Ep)this[i]=l;this._$Ep=void 0}let n=this.constructor.elementProperties;if(n.size>0)for(let[i,l]of n)l.wrapped!==!0||this._$AL.has(i)||this[i]===void 0||this.P(i,this[i],l)}let e=!1,t=this._$AL;try{e=this.shouldUpdate(t),e?(this.willUpdate(t),this._$EO?.forEach(n=>n.hostUpdate?.()),this.update(t)):this._$EU()}catch(n){throw e=!1,this._$EU(),n}e&&this._$AE(t)}willUpdate(e){}_$AE(e){this._$EO?.forEach(t=>t.hostUpdated?.()),this.hasUpdated||(this.hasUpdated=!0,this.firstUpdated(e)),this.updated(e)}_$EU(){this._$AL=new Map,this.isUpdatePending=!1}get updateComplete(){return this.getUpdateComplete()}getUpdateComplete(){return this._$ES}shouldUpdate(e){return!0}update(e){this._$Ej&&=this._$Ej.forEach(t=>this._$EC(t,this[t])),this._$EU()}updated(e){}firstUpdated(e){}};ft.elementStyles=[],ft.shadowRootOptions={mode:"open"},ft[le("elementProperties")]=new Map,ft[le("finalized")]=new Map,Zr?.({ReactiveElement:ft}),(Me.reactiveElementVersions??=[]).push("2.0.4");var dr=globalThis,Ge=dr.trustedTypes,wr=Ge?Ge.createPolicy("lit-html",{createHTML:a=>a}):void 0,hr="$lit$",yt=`lit$${Math.random().toFixed(9).slice(2)}$`,ur="?"+yt,Jr=`<${ur}>`,$t=document,ce=()=>$t.createComment(""),de=a=>a===null||typeof a!="object"&&typeof a!="function",gr=Array.isArray,Rr=a=>gr(a)||typeof a?.[Symbol.iterator]=="function",cr=`[ 	
-\f\r]`,pe=/<(?:(!--|\/[^a-zA-Z])|(\/?[a-zA-Z][^>\s]*)|(\/?$))/g,kr=/-->/g,Er=/>/g,Rt=RegExp(`>|${cr}(?:([^\\s"'>=/]+)(${cr}*=${cr}*(?:[^ 	
-\f\r"'\`<>=]|("|')|))|$)`,"g"),Tr=/'/g,Sr=/"/g,Or=/^(?:script|style|textarea|title)$/i,fr=a=>(e,...t)=>({_$litType$:a,strings:e,values:t}),o=fr(1),gn=fr(2),fn=fr(3),Q=Symbol.for("lit-noChange"),R=Symbol.for("lit-nothing"),Hr=new WeakMap,Ot=$t.createTreeWalker($t,129);function $r(a,e){if(!gr(a)||!a.hasOwnProperty("raw"))throw Error("invalid template strings array");return wr!==void 0?wr.createHTML(e):e}var Ir=(a,e)=>{let t=a.length-1,n=[],i,l=e===2?"<svg>":e===3?"<math>":"",p=pe;for(let u=0;u<t;u++){let h=a[u],A,S,y=-1,k=0;for(;k<h.length&&(p.lastIndex=k,S=p.exec(h),S!==null);)k=p.lastIndex,p===pe?S[1]==="!--"?p=kr:S[1]!==void 0?p=Er:S[2]!==void 0?(Or.test(S[2])&&(i=RegExp("</"+S[2],"g")),p=Rt):S[3]!==void 0&&(p=Rt):p===Rt?S[0]===">"?(p=i??pe,y=-1):S[1]===void 0?y=-2:(y=p.lastIndex-S[2].length,A=S[1],p=S[3]===void 0?Rt:S[3]==='"'?Sr:Tr):p===Sr||p===Tr?p=Rt:p===kr||p===Er?p=pe:(p=Rt,i=void 0);let b=p===Rt&&a[u+1].startsWith("/>")?" ":"";l+=p===pe?h+Jr:y>=0?(n.push(A),h.slice(0,y)+hr+h.slice(y)+yt+b):h+yt+(y===-2?u:b)}return[$r(a,l+(a[t]||"<?>")+(e===2?"</svg>":e===3?"</math>":"")),n]},he=class a{constructor({strings:e,_$litType$:t},n){let i;this.parts=[];let l=0,p=0,u=e.length-1,h=this.parts,[A,S]=Ir(e,t);if(this.el=a.createElement(A,n),Ot.currentNode=this.el.content,t===2||t===3){let y=this.el.content.firstChild;y.replaceWith(...y.childNodes)}for(;(i=Ot.nextNode())!==null&&h.length<u;){if(i.nodeType===1){if(i.hasAttributes())for(let y of i.getAttributeNames())if(y.endsWith(hr)){let k=S[p++],b=i.getAttribute(y).split(yt),$=/([.?@])?(.*)/.exec(k);h.push({type:1,index:l,name:$[2],strings:b,ctor:$[1]==="."?Ue:$[1]==="?"?Ke:$[1]==="@"?Qe:Bt}),i.removeAttribute(y)}else y.startsWith(yt)&&(h.push({type:6,index:l}),i.removeAttribute(y));if(Or.test(i.tagName)){let y=i.textContent.split(yt),k=y.length-1;if(k>0){i.textContent=Ge?Ge.emptyScript:"";for(let b=0;b<k;b++)i.append(y[b],ce()),Ot.nextNode(),h.push({type:2,index:++l});i.append(y[k],ce())}}}else if(i.nodeType===8)if(i.data===ur)h.push({type:2,index:l});else{let y=-1;for(;(y=i.data.indexOf(yt,y+1))!==-1;)h.push({type:7,index:l}),y+=yt.length-1}l++}}static createElement(e,t){let n=$t.createElement("template");return n.innerHTML=e,n}};function It(a,e,t=a,n){if(e===Q)return e;let i=n!==void 0?t._$Co?.[n]:t._$Cl,l=de(e)?void 0:e._$litDirective$;return i?.constructor!==l&&(i?._$AO?.(!1),l===void 0?i=void 0:(i=new l(a),i._$AT(a,t,n)),n!==void 0?(t._$Co??=[])[n]=i:t._$Cl=i),i!==void 0&&(e=It(a,i._$AS(a,e.values),i,n)),e}var qe=class{constructor(e,t){this._$AV=[],this._$AN=void 0,this._$AD=e,this._$AM=t}get parentNode(){return this._$AM.parentNode}get _$AU(){return this._$AM._$AU}u(e){let{el:{content:t},parts:n}=this._$AD,i=(e?.creationScope??$t).importNode(t,!0);Ot.currentNode=i;let l=Ot.nextNode(),p=0,u=0,h=n[0];for(;h!==void 0;){if(p===h.index){let A;h.type===2?A=new Qt(l,l.nextSibling,this,e):h.type===1?A=new h.ctor(l,h.name,h.strings,this,e):h.type===6&&(A=new Ye(l,this,e)),this._$AV.push(A),h=n[++u]}p!==h?.index&&(l=Ot.nextNode(),p++)}return Ot.currentNode=$t,i}p(e){let t=0;for(let n of this._$AV)n!==void 0&&(n.strings!==void 0?(n._$AI(e,n,t),t+=n.strings.length-2):n._$AI(e[t])),t++}},Qt=class a{get _$AU(){return this._$AM?._$AU??this._$Cv}constructor(e,t,n,i){this.type=2,this._$AH=R,this._$AN=void 0,this._$AA=e,this._$AB=t,this._$AM=n,this.options=i,this._$Cv=i?.isConnected??!0}get parentNode(){let e=this._$AA.parentNode,t=this._$AM;return t!==void 0&&e?.nodeType===11&&(e=t.parentNode),e}get startNode(){return this._$AA}get endNode(){return this._$AB}_$AI(e,t=this){e=It(this,e,t),de(e)?e===R||e==null||e===""?(this._$AH!==R&&this._$AR(),this._$AH=R):e!==this._$AH&&e!==Q&&this._(e):e._$litType$!==void 0?this.$(e):e.nodeType!==void 0?this.T(e):Rr(e)?this.k(e):this._(e)}O(e){return this._$AA.parentNode.insertBefore(e,this._$AB)}T(e){this._$AH!==e&&(this._$AR(),this._$AH=this.O(e))}_(e){this._$AH!==R&&de(this._$AH)?this._$AA.nextSibling.data=e:this.T($t.createTextNode(e)),this._$AH=e}$(e){let{values:t,_$litType$:n}=e,i=typeof n=="number"?this._$AC(e):(n.el===void 0&&(n.el=he.createElement($r(n.h,n.h[0]),this.options)),n);if(this._$AH?._$AD===i)this._$AH.p(t);else{let l=new qe(i,this),p=l.u(this.options);l.p(t),this.T(p),this._$AH=l}}_$AC(e){let t=Hr.get(e.strings);return t===void 0&&Hr.set(e.strings,t=new he(e)),t}k(e){gr(this._$AH)||(this._$AH=[],this._$AR());let t=this._$AH,n,i=0;for(let l of e)i===t.length?t.push(n=new a(this.O(ce()),this.O(ce()),this,this.options)):n=t[i],n._$AI(l),i++;i<t.length&&(this._$AR(n&&n._$AB.nextSibling,i),t.length=i)}_$AR(e=this._$AA.nextSibling,t){for(this._$AP?.(!1,!0,t);e&&e!==this._$AB;){let n=e.nextSibling;e.remove(),e=n}}setConnected(e){this._$AM===void 0&&(this._$Cv=e,this._$AP?.(e))}},Bt=class{get tagName(){return this.element.tagName}get _$AU(){return this._$AM._$AU}constructor(e,t,n,i,l){this.type=1,this._$AH=R,this._$AN=void 0,this.element=e,this.name=t,this._$AM=i,this.options=l,n.length>2||n[0]!==""||n[1]!==""?(this._$AH=Array(n.length-1).fill(new String),this.strings=n):this._$AH=R}_$AI(e,t=this,n,i){let l=this.strings,p=!1;if(l===void 0)e=It(this,e,t,0),p=!de(e)||e!==this._$AH&&e!==Q,p&&(this._$AH=e);else{let u=e,h,A;for(e=l[0],h=0;h<l.length-1;h++)A=It(this,u[n+h],t,h),A===Q&&(A=this._$AH[h]),p||=!de(A)||A!==this._$AH[h],A===R?e=R:e!==R&&(e+=(A??"")+l[h+1]),this._$AH[h]=A}p&&!i&&this.j(e)}j(e){e===R?this.element.removeAttribute(this.name):this.element.setAttribute(this.name,e??"")}},Ue=class extends Bt{constructor(){super(...arguments),this.type=3}j(e){this.element[this.name]=e===R?void 0:e}},Ke=class extends Bt{constructor(){super(...arguments),this.type=4}j(e){this.element.toggleAttribute(this.name,!!e&&e!==R)}},Qe=class extends Bt{constructor(e,t,n,i,l){super(e,t,n,i,l),this.type=5}_$AI(e,t=this){if((e=It(this,e,t,0)??R)===Q)return;let n=this._$AH,i=e===R&&n!==R||e.capture!==n.capture||e.once!==n.once||e.passive!==n.passive,l=e!==R&&(n===R||i);i&&this.element.removeEventListener(this.name,this,n),l&&this.element.addEventListener(this.name,this,e),this._$AH=e}handleEvent(e){typeof this._$AH=="function"?this._$AH.call(this.options?.host??this.element,e):this._$AH.handleEvent(e)}},Ye=class{constructor(e,t,n){this.element=e,this.type=6,this._$AN=void 0,this._$AM=t,this.options=n}get _$AU(){return this._$AM._$AU}_$AI(e){It(this,e)}},Br={M:hr,P:yt,A:ur,C:1,L:Ir,R:qe,D:Rr,V:It,I:Qt,H:Bt,N:Ke,U:Qe,B:Ue,F:Ye},Fr=dr.litHtmlPolyfillSupport;Fr?.(he,Qt),(dr.litHtmlVersions??=[]).push("3.2.1");var Cr=(a,e,t)=>{let n=t?.renderBefore??e,i=n._$litPart$;if(i===void 0){let l=t?.renderBefore??null;n._$litPart$=i=new Qt(e.insertBefore(ce(),l),l,void 0,t??{})}return i._$AI(a),i};var I=class extends ft{constructor(){super(...arguments),this.renderOptions={host:this},this._$Do=void 0}createRenderRoot(){let e=super.createRenderRoot();return this.renderOptions.renderBefore??=e.firstChild,e}update(e){let t=this.render();this.hasUpdated||(this.renderOptions.isConnected=this.isConnected),super.update(e),this._$Do=Cr(t,this.renderRoot,this.renderOptions)}connectedCallback(){super.connectedCallback(),this._$Do?.setConnected(!0)}disconnectedCallback(){super.disconnectedCallback(),this._$Do?.setConnected(!1)}render(){return Q}};I._$litElement$=!0,I.finalized=!0,globalThis.litElementHydrateSupport?.({LitElement:I});var Nr=globalThis.litElementPolyfillSupport;Nr?.({LitElement:I});(globalThis.litElementVersions??=[]).push("4.1.1");var g=(i=>(i.primary="primary",i.secondary="secondary",i.surface="surface",i.plain="plain",i))(g||{}),v=class{static getStyle(e){return e?e=="plain"?o``:o` <style>
+"use strict";(()=>{var xr=Object.defineProperty;var Ur=Object.getOwnPropertyDescriptor;var Vr=(a,t,e)=>t in a?xr(a,t,{enumerable:!0,configurable:!0,writable:!0,value:e}):a[t]=e;var r=(a,t,e,n)=>{for(var i=n>1?void 0:n?Ur(t,e):t,l=a.length-1,d;l>=0;l--)(d=a[l])&&(i=(n?d(t,e,i):d(i))||i);return n&&i&&xr(t,e,i),i};var c=(a,t,e)=>Vr(a,typeof t!="symbol"?t+"":t,e);var K=class a{static uniqueInstance;static getUniqueInstance(){return a.uniqueInstance||(a.uniqueInstance=new a),a.uniqueInstance}listeners=[];constructor(){window.onpopstate=t=>{console.trace("onpopstate event: location: "+document.location+", state: "+JSON.stringify(t.state)),this.notifyListeners()},document.addEventListener("click",t=>{if(!this.shouldIgnoreEvent(t)){let e=this.getAnchor(t);e&&!this.shouldIgnoreAnchor(e)&&(t.preventDefault(),e.hash.length>0&&this.navigate(e.hash))}})}subscribe(t){console.trace("subscribe router listener"),this.listeners.push(t)}back(){history.back()}forward(){history.forward()}navigate(t,e=null){if(t.indexOf("#")==-1&&(t="#".concat(t)),console.trace("navigate to: %s",t),e!=null&&console.trace("state: %s",JSON.stringify(e)),document.location.hash===t){console.trace("you are already on page: "+t);return}history.pushState(e,"",t),this.notifyListeners()}getCurrentState(){return history.state}getStateProperty(t){let e=this.getCurrentState();return e!=null?e[t]:null}getCurrentPage(){return document.location.hash.replace("#","")}getHash(){return document.location.hash}notifyListeners(){let t=this.getCurrentPage();this.listeners.forEach(e=>e.routeChanged(t))}shouldIgnoreEvent(t){return t.defaultPrevented||t.button!==0||t.shiftKey||t.ctrlKey||t.altKey||t.metaKey}getAnchor(t){for(let n of t.composedPath?t.composedPath():[])if(this.isAnchor(n))return n;let e=t.target;for(;e&&!this.isAnchor(e);)e=e.parentNode;return e&&this.isAnchor(e)?e:null}isAnchor(t){return t.nodeName&&t.nodeName.toLowerCase()==="a"}shouldIgnoreAnchor(t){return!!(t.target&&t.target.toLowerCase()!=="_self"||t.hasAttribute("download")||(t.origin||this.getAnchorOrigin(t))!==window.location.origin)}getAnchorOrigin(t){let e=t.port,n=t.protocol,d=n==="http:"&&e==="80"||n==="https:"&&e==="443"?t.hostname:t.host;return`${n}//${d}`}};var ze=class a{static generateImageBase64(t,e,n){let i=document.createElement("canvas");i.width=128,i.height=128;let l=i.getContext("2d");if(!l)throw new Error("Canvas context is not available");l.fillStyle=n,l.fillRect(0,0,i.width,i.height),l.fillStyle=e;let d=document.body,u=getComputedStyle(d).getPropertyValue("--font-family")||"Arial";l.font=`bold 64px ${u}`,l.textAlign="center",l.textBaseline="alphabetic";let $=t.charAt(0).toUpperCase(),_=l.measureText($),b=_.actualBoundingBoxAscent-_.actualBoundingBoxDescent;return l.fillText($,i.width/2,i.height/2+b/2),i.toDataURL("image/png")}static renderImgText(t){return a.generateImageBase64(t,"#555555","#ffffff")}};var ae=class a{dbName;storeName;keyField;db=null;static DB_VERSION=2;constructor(t,e,n){this.dbName=t,this.storeName=e,this.keyField=n}async openDatabase(){this.db=await new Promise((t,e)=>{let n=indexedDB.open(this.dbName,a.DB_VERSION);n.onupgradeneeded=()=>{let i=n.result;console.log(`onupgradeneeded triggered. Aktuelle Version: ${i.version}`),i.objectStoreNames.contains(this.storeName)||(i.createObjectStore(this.storeName,{keyPath:this.keyField}),console.log(`Object Store '${this.storeName}' mit KeyPath '${String(this.keyField)}' erstellt.`))},n.onsuccess=()=>{console.log(`IndexedDB '${this.dbName}' ge\xF6ffnet.`),t(n.result)},n.onerror=()=>{console.error("Fehler beim \xD6ffnen der Datenbank:",n.error),e(new Error(n.error?.message||"Unknown error"))},n.onblocked=()=>{console.warn("Datenbank wird von einer anderen Verbindung blockiert."),e(new Error("Datenbank ist blockiert."))}})}async add(t){return new Promise((e,n)=>{if(this.db){console.log("add() called");let d=this.db.transaction(this.storeName,"readwrite").objectStore(this.storeName).add(t);d.onsuccess=()=>e(),d.onerror=()=>n(d.error)}})}async update(t){let e=await this.openDatabase();return new Promise((n,i)=>{if(this.db){let g=this.db.transaction(this.storeName,"readwrite").objectStore(this.storeName).put(t);g.onsuccess=()=>n(),g.onerror=()=>i(g.error)}})}async delete(t){return new Promise((e,n)=>{if(this.db){let d=this.db.transaction(this.storeName,"readwrite").objectStore(this.storeName).delete(t);d.onsuccess=()=>e(),d.onerror=()=>n(d.error)}})}async get(t){return new Promise((e,n)=>{if(this.db){let d=this.db.transaction(this.storeName,"readonly").objectStore(this.storeName).get(t);d.onsuccess=()=>e(d.result),d.onerror=()=>n(d.error)}})}async getAll(){return new Promise((t,e)=>{if(this.db){let l=this.db.transaction(this.storeName,"readonly").objectStore(this.storeName).getAll();l.onsuccess=()=>t(l.result),l.onerror=()=>e(l.error)}})}close(){this.db?.close()}},Me=class{name="";email=null;phone=null;energy=0;image=null};(async()=>{let a=new ae("AppDatabase","Karmatica","id");await a.openDatabase();let t={id:1,myself:{name:"Dominik Bruhn",email:"dominikbruhn@googlemail.com",phone:"015205248862",energy:1,image:null},friends:[{name:"Nico Bruhn",email:null,phone:null,energy:1,image:null},{name:"Christoph Juretko",email:null,phone:null,energy:.6,image:null},{name:"Tim Poloczek",email:null,phone:null,energy:.5,image:null},{name:"Dennis Ratzer",email:null,phone:null,energy:.4,image:null},{name:"Nicole Eckert",email:null,phone:null,energy:.4,image:null},{name:"Stefan Harzke",email:null,phone:null,energy:.6,image:null},{name:"Denis Ergashbaev",email:null,phone:null,energy:.6,image:null},{name:"Bastian \xDCckermann",email:null,phone:null,energy:.2,image:null},{name:"Daniela Meyer zu Ummeln",email:null,phone:null,energy:0,image:null},{name:"Mark Enger",email:null,phone:null,energy:.3,image:null},{name:"Matthias Manasterni",email:null,phone:null,energy:.6,image:null},{name:"Dejan Guberinic",email:null,phone:null,energy:.5,image:null},{name:"Carina Bruhn",email:null,phone:null,energy:0,image:null}],goals:[{title:"Intellektuelle Steigerung",description:"Wachstum und Entwicklung der intellektuellen F\xE4higkeiten einer Person.",image:null,actions:[{description:"Neue Themen lernen",time_min:15,time_max:240,energy:.9,image:null},{description:"Ein Buch lesen",time_min:15,time_max:180,energy:.8,image:null},{description:"Objektive Nachrichten lesen",time_min:15,time_max:30,energy:0,image:null}],routines:[]},{title:"Fit und gesund",description:"Einen gesunden Lebensstil und k\xF6rperliche Fitness aufrechterhalten.",image:null,actions:[{description:"Gesund einkaufen und essen",time_min:30,time_max:null,energy:1,image:null},{description:"Vitamin-D-Tablette im Winter einnehmen",time_min:0,time_max:null,energy:.4,image:null},{description:"Schlafen",time_min:480,time_max:480,energy:1,image:null},{description:"Koffein, Alkohol und Rauchen vermeiden",time_min:0,time_max:null,energy:.8,image:null},{description:"Laufen",time_min:120,time_max:120,energy:1,image:null},{description:"Gym",time_min:120,time_max:120,energy:1,image:null},{description:"Fu\xDFball spielen",time_min:90,time_max:90,energy:1,image:null},{description:"Schwimmen gehen",time_min:120,time_max:240,energy:.5,image:null},{description:"Fitness-Workout",time_min:30,time_max:30,energy:.9,image:null},{description:"Regelm\xE4\xDFige Gesundheitschecks",time_min:60,time_max:60,energy:.8,image:null}],routines:[]},{title:"Guter Papa",description:"Ein unterst\xFCtzender und pr\xE4senter Papa sein.",image:null,actions:[{description:"Lego spielen",time_min:10,time_max:120,energy:.9,image:null},{description:"Gesellschaftsspiele spielen",time_min:30,time_max:180,energy:.8,image:null},{description:"Ins Kino gehen",time_min:120,time_max:180,energy:.7,image:null},{description:"Einen gem\xFCtlichen Filmabend machen",time_min:100,time_max:180,energy:.2,image:null}],routines:[]},{title:"Gl\xFCcklich sein",description:"Langfristiges Gl\xFCck und Zufriedenheit erreichen.",image:null,actions:[{description:"Einen gem\xFCtlichen Filmabend machen",time_min:100,time_max:180,energy:.2,image:null},{description:"Urlaub machen",time_min:1440,time_max:40320,energy:1,image:null},{description:"Flohmarkt besuchen",time_min:45,time_max:120,energy:.6,image:null},{description:"Spazieren gehen",time_min:30,time_max:180,energy:.4,image:null},{description:"Massage bekommen",time_min:80,time_max:200,energy:.9,image:null},{description:"Computerspiele spielen",time_min:20,time_max:180,energy:0,image:null},{description:"Ein Buch lesen",time_min:15,time_max:180,energy:.8,image:null},{description:"In die Sauna gehen zur Entspannung",time_min:60,time_max:120,energy:.9,image:null},{description:"Gute Musik h\xF6ren",time_min:0,time_max:null,energy:.8,image:null},{description:"Meditation",time_min:10,time_max:60,energy:.9,image:null},{description:"Boden wischen",time_min:45,time_max:45,energy:.7,image:null},{description:"Fitness-Workout",time_min:30,time_max:30,energy:.9,image:null},{description:"Kurzer Schlaf zur Wiederherstellung der Energie",time_min:10,time_max:30,energy:.8,image:null},{description:"\xDCber Dinge nachdenken, f\xFCr die man dankbar ist",time_min:5,time_max:20,energy:.9,image:null},{description:"Mit geliebten Menschen in Kontakt bleiben",time_min:10,time_max:120,energy:.8,image:null}],routines:[]},{title:"Resiliente Person",description:"Eine resiliente und entspannte Person sein.",image:null,actions:[{description:"Einen gem\xFCtlichen Filmabend machen",time_min:100,time_max:180,energy:.2,image:null},{description:"Spazieren gehen",time_min:30,time_max:180,energy:.4,image:null},{description:"Massage bekommen",time_min:80,time_max:200,energy:.9,image:null},{description:"In die Sauna gehen zur Entspannung",time_min:60,time_max:120,energy:.9,image:null},{description:"Gute Musik h\xF6ren",time_min:0,time_max:null,energy:.8,image:null},{description:"Meditation",time_min:10,time_max:60,energy:.9,image:null},{description:"Kurzer Schlaf zur Wiederherstellung der Energie",time_min:10,time_max:30,energy:.8,image:null},{description:"\xDCber Dinge nachdenken, f\xFCr die man dankbar ist",time_min:5,time_max:20,energy:.9,image:null},{description:"Regelm\xE4\xDFige Gesundheitschecks",time_min:60,time_max:60,energy:.8,image:null}],routines:[]},{title:"Sicherheit",description:"Ein gutes Gef\xFChl von Sicherheit haben.",image:null,actions:[{description:"Vorr\xE4te und Krisenwerkzeuge einrichten",time_min:0,time_max:120,energy:.6,image:null},{description:"Finanzen kontinuierlich optimieren",time_min:10,time_max:60,energy:.2,image:null},{description:"In Verm\xF6genswerte f\xFCr Wachstum investieren",time_min:10,time_max:60,energy:.2,image:null}],routines:[]},{title:"Finanzielle Freiheit",description:"Finanzielle Unabh\xE4ngigkeit erreichen.",image:null,actions:[{description:"Minimalistisch leben. Konsum minimieren.",time_min:0,time_max:null,energy:.7,image:null},{description:"Finanzen kontinuierlich optimieren",time_min:10,time_max:60,energy:.2,image:null},{description:"In Verm\xF6genswerte f\xFCr Wachstum investieren",time_min:10,time_max:60,energy:.2,image:null}],routines:[]},{title:"F\xFCr immer leben",description:"In der Lage sein, f\xFCr immer zu leben.",image:null,actions:[{description:"Gesund einkaufen und essen",time_min:30,time_max:null,energy:1,image:null},{description:"Schlafen",time_min:480,time_max:480,energy:1,image:null},{description:"Koffein, Alkohol und Rauchen vermeiden",time_min:0,time_max:null,energy:.8,image:null},{description:"In die Sauna gehen zur Entspannung",time_min:60,time_max:120,energy:.9,image:null},{description:"Meditation",time_min:10,time_max:60,energy:.9,image:null},{description:"Regelm\xE4\xDFige Gesundheitschecks",time_min:60,time_max:60,energy:.8,image:null}],routines:[]}]};a.add(t),a.close(),console.log("Karmatica erfolgreich in die IndexedDB eingef\xFCgt!")})();var Pe=class{static capitalizeFirstLetter(t){return t&&t.charAt(0).toUpperCase()+t.slice(1)}};var De=globalThis,Be=De.ShadowRoot&&(De.ShadyCSS===void 0||De.ShadyCSS.nativeShadow)&&"adoptedStyleSheets"in Document.prototype&&"replace"in CSSStyleSheet.prototype,mr=Symbol(),vr=new WeakMap,le=class{constructor(t,e,n){if(this._$cssResult$=!0,n!==mr)throw Error("CSSResult is not constructable. Use `unsafeCSS` or `css` instead.");this.cssText=t,this.t=e}get styleSheet(){let t=this.o,e=this.t;if(Be&&t===void 0){let n=e!==void 0&&e.length===1;n&&(t=vr.get(e)),t===void 0&&((this.o=t=new CSSStyleSheet).replaceSync(this.cssText),n&&vr.set(e,t))}return t}toString(){return this.cssText}},wr=a=>new le(typeof a=="string"?a:a+"",void 0,mr),p=(a,...t)=>{let e=a.length===1?a[0]:t.reduce((n,i,l)=>n+(d=>{if(d._$cssResult$===!0)return d.cssText;if(typeof d=="number")return d;throw Error("Value passed to 'css' function must be a 'css' function result: "+d+". Use 'unsafeCSS' to pass non-literal values, but take care to ensure page security.")})(i)+a[l+1],a[0]);return new le(e,a,mr)},$r=(a,t)=>{if(Be)a.adoptedStyleSheets=t.map(e=>e instanceof CSSStyleSheet?e:e.styleSheet);else for(let e of t){let n=document.createElement("style"),i=De.litNonce;i!==void 0&&n.setAttribute("nonce",i),n.textContent=e.cssText,a.appendChild(n)}},pr=Be?a=>a:a=>a instanceof CSSStyleSheet?(t=>{let e="";for(let n of t.cssRules)e+=n.cssText;return wr(e)})(a):a;var{is:Gr,defineProperty:Kr,getOwnPropertyDescriptor:Xr,getOwnPropertyNames:Yr,getOwnPropertySymbols:Jr,getPrototypeOf:Zr}=Object,We=globalThis,Er=We.trustedTypes,Qr=Er?Er.emptyScript:"",Fr=We.reactiveElementPolyfillSupport,me=(a,t)=>a,pe={toAttribute(a,t){switch(t){case Boolean:a=a?Qr:null;break;case Object:case Array:a=a==null?a:JSON.stringify(a)}return a},fromAttribute(a,t){let e=a;switch(t){case Boolean:e=a!==null;break;case Number:e=a===null?null:Number(a);break;case Object:case Array:try{e=JSON.parse(a)}catch{e=null}}return e}},qe=(a,t)=>!Gr(a,t),kr={attribute:!0,type:String,converter:pe,reflect:!1,useDefault:!1,hasChanged:qe};Symbol.metadata??=Symbol("metadata"),We.litPropertyMetadata??=new WeakMap;var yt=class extends HTMLElement{static addInitializer(t){this._$Ei(),(this.l??=[]).push(t)}static get observedAttributes(){return this.finalize(),this._$Eh&&[...this._$Eh.keys()]}static createProperty(t,e=kr){if(e.state&&(e.attribute=!1),this._$Ei(),this.prototype.hasOwnProperty(t)&&((e=Object.create(e)).wrapped=!0),this.elementProperties.set(t,e),!e.noAccessor){let n=Symbol(),i=this.getPropertyDescriptor(t,n,e);i!==void 0&&Kr(this.prototype,t,i)}}static getPropertyDescriptor(t,e,n){let{get:i,set:l}=Xr(this.prototype,t)??{get(){return this[e]},set(d){this[e]=d}};return{get:i,set(d){let g=i?.call(this);l?.call(this,d),this.requestUpdate(t,g,n)},configurable:!0,enumerable:!0}}static getPropertyOptions(t){return this.elementProperties.get(t)??kr}static _$Ei(){if(this.hasOwnProperty(me("elementProperties")))return;let t=Zr(this);t.finalize(),t.l!==void 0&&(this.l=[...t.l]),this.elementProperties=new Map(t.elementProperties)}static finalize(){if(this.hasOwnProperty(me("finalized")))return;if(this.finalized=!0,this._$Ei(),this.hasOwnProperty(me("properties"))){let e=this.properties,n=[...Yr(e),...Jr(e)];for(let i of n)this.createProperty(i,e[i])}let t=this[Symbol.metadata];if(t!==null){let e=litPropertyMetadata.get(t);if(e!==void 0)for(let[n,i]of e)this.elementProperties.set(n,i)}this._$Eh=new Map;for(let[e,n]of this.elementProperties){let i=this._$Eu(e,n);i!==void 0&&this._$Eh.set(i,e)}this.elementStyles=this.finalizeStyles(this.styles)}static finalizeStyles(t){let e=[];if(Array.isArray(t)){let n=new Set(t.flat(1/0).reverse());for(let i of n)e.unshift(pr(i))}else t!==void 0&&e.push(pr(t));return e}static _$Eu(t,e){let n=e.attribute;return n===!1?void 0:typeof n=="string"?n:typeof t=="string"?t.toLowerCase():void 0}constructor(){super(),this._$Ep=void 0,this.isUpdatePending=!1,this.hasUpdated=!1,this._$Em=null,this._$Ev()}_$Ev(){this._$ES=new Promise(t=>this.enableUpdating=t),this._$AL=new Map,this._$E_(),this.requestUpdate(),this.constructor.l?.forEach(t=>t(this))}addController(t){(this._$EO??=new Set).add(t),this.renderRoot!==void 0&&this.isConnected&&t.hostConnected?.()}removeController(t){this._$EO?.delete(t)}_$E_(){let t=new Map,e=this.constructor.elementProperties;for(let n of e.keys())this.hasOwnProperty(n)&&(t.set(n,this[n]),delete this[n]);t.size>0&&(this._$Ep=t)}createRenderRoot(){let t=this.shadowRoot??this.attachShadow(this.constructor.shadowRootOptions);return $r(t,this.constructor.elementStyles),t}connectedCallback(){this.renderRoot??=this.createRenderRoot(),this.enableUpdating(!0),this._$EO?.forEach(t=>t.hostConnected?.())}enableUpdating(t){}disconnectedCallback(){this._$EO?.forEach(t=>t.hostDisconnected?.())}attributeChangedCallback(t,e,n){this._$AK(t,n)}_$ET(t,e){let n=this.constructor.elementProperties.get(t),i=this.constructor._$Eu(t,n);if(i!==void 0&&n.reflect===!0){let l=(n.converter?.toAttribute!==void 0?n.converter:pe).toAttribute(e,n.type);this._$Em=t,l==null?this.removeAttribute(i):this.setAttribute(i,l),this._$Em=null}}_$AK(t,e){let n=this.constructor,i=n._$Eh.get(t);if(i!==void 0&&this._$Em!==i){let l=n.getPropertyOptions(i),d=typeof l.converter=="function"?{fromAttribute:l.converter}:l.converter?.fromAttribute!==void 0?l.converter:pe;this._$Em=i;let g=d.fromAttribute(e,l.type);this[i]=g??this._$Ej?.get(i)??g,this._$Em=null}}requestUpdate(t,e,n){if(t!==void 0){let i=this.constructor,l=this[t];if(n??=i.getPropertyOptions(t),!((n.hasChanged??qe)(l,e)||n.useDefault&&n.reflect&&l===this._$Ej?.get(t)&&!this.hasAttribute(i._$Eu(t,n))))return;this.C(t,e,n)}this.isUpdatePending===!1&&(this._$ES=this._$EP())}C(t,e,{useDefault:n,reflect:i,wrapped:l},d){n&&!(this._$Ej??=new Map).has(t)&&(this._$Ej.set(t,d??e??this[t]),l!==!0||d!==void 0)||(this._$AL.has(t)||(this.hasUpdated||n||(e=void 0),this._$AL.set(t,e)),i===!0&&this._$Em!==t&&(this._$Eq??=new Set).add(t))}async _$EP(){this.isUpdatePending=!0;try{await this._$ES}catch(e){Promise.reject(e)}let t=this.scheduleUpdate();return t!=null&&await t,!this.isUpdatePending}scheduleUpdate(){return this.performUpdate()}performUpdate(){if(!this.isUpdatePending)return;if(!this.hasUpdated){if(this.renderRoot??=this.createRenderRoot(),this._$Ep){for(let[i,l]of this._$Ep)this[i]=l;this._$Ep=void 0}let n=this.constructor.elementProperties;if(n.size>0)for(let[i,l]of n){let{wrapped:d}=l,g=this[i];d!==!0||this._$AL.has(i)||g===void 0||this.C(i,void 0,l,g)}}let t=!1,e=this._$AL;try{t=this.shouldUpdate(e),t?(this.willUpdate(e),this._$EO?.forEach(n=>n.hostUpdate?.()),this.update(e)):this._$EM()}catch(n){throw t=!1,this._$EM(),n}t&&this._$AE(e)}willUpdate(t){}_$AE(t){this._$EO?.forEach(e=>e.hostUpdated?.()),this.hasUpdated||(this.hasUpdated=!0,this.firstUpdated(t)),this.updated(t)}_$EM(){this._$AL=new Map,this.isUpdatePending=!1}get updateComplete(){return this.getUpdateComplete()}getUpdateComplete(){return this._$ES}shouldUpdate(t){return!0}update(t){this._$Eq&&=this._$Eq.forEach(e=>this._$ET(e,this[e])),this._$EM()}updated(t){}firstUpdated(t){}};yt.elementStyles=[],yt.shadowRootOptions={mode:"open"},yt[me("elementProperties")]=new Map,yt[me("finalized")]=new Map,Fr?.({ReactiveElement:yt}),(We.reactiveElementVersions??=[]).push("2.1.1");var dr=globalThis,je=dr.trustedTypes,Tr=je?je.createPolicy("lit-html",{createHTML:a=>a}):void 0,hr="$lit$",bt=`lit$${Math.random().toFixed(9).slice(2)}$`,ur="?"+bt,Nr=`<${ur}>`,At=document,de=()=>At.createComment(""),he=a=>a===null||typeof a!="object"&&typeof a!="function",fr=Array.isArray,Ar=a=>fr(a)||typeof a?.[Symbol.iterator]=="function",cr=`[ 	
+\f\r]`,ce=/<(?:(!--|\/[^a-zA-Z])|(\/?[a-zA-Z][^>\s]*)|(\/?$))/g,Sr=/-->/g,_r=/>/g,Lt=RegExp(`>|${cr}(?:([^\\s"'>=/]+)(${cr}*=${cr}*(?:[^ 	
+\f\r"'\`<>=]|("|')|))|$)`,"g"),Rr=/'/g,Lr=/"/g,Ir=/^(?:script|style|textarea|title)$/i,gr=a=>(t,...e)=>({_$litType$:a,strings:t,values:e}),o=gr(1),bn=gr(2),xn=gr(3),X=Symbol.for("lit-noChange"),L=Symbol.for("lit-nothing"),Cr=new WeakMap,Ct=At.createTreeWalker(At,129);function Hr(a,t){if(!fr(a)||!a.hasOwnProperty("raw"))throw Error("invalid template strings array");return Tr!==void 0?Tr.createHTML(t):t}var Or=(a,t)=>{let e=a.length-1,n=[],i,l=t===2?"<svg>":t===3?"<math>":"",d=ce;for(let g=0;g<e;g++){let u=a[g],$,_,b=-1,k=0;for(;k<u.length&&(d.lastIndex=k,_=d.exec(u),_!==null);)k=d.lastIndex,d===ce?_[1]==="!--"?d=Sr:_[1]!==void 0?d=_r:_[2]!==void 0?(Ir.test(_[2])&&(i=RegExp("</"+_[2],"g")),d=Lt):_[3]!==void 0&&(d=Lt):d===Lt?_[0]===">"?(d=i??ce,b=-1):_[1]===void 0?b=-2:(b=d.lastIndex-_[2].length,$=_[1],d=_[3]===void 0?Lt:_[3]==='"'?Lr:Rr):d===Lr||d===Rr?d=Lt:d===Sr||d===_r?d=ce:(d=Lt,i=void 0);let x=d===Lt&&a[g+1].startsWith("/>")?" ":"";l+=d===ce?u+Nr:b>=0?(n.push($),u.slice(0,b)+hr+u.slice(b)+bt+x):u+bt+(b===-2?g:x)}return[Hr(a,l+(a[e]||"<?>")+(t===2?"</svg>":t===3?"</math>":"")),n]},ue=class a{constructor({strings:t,_$litType$:e},n){let i;this.parts=[];let l=0,d=0,g=t.length-1,u=this.parts,[$,_]=Or(t,e);if(this.el=a.createElement($,n),Ct.currentNode=this.el.content,e===2||e===3){let b=this.el.content.firstChild;b.replaceWith(...b.childNodes)}for(;(i=Ct.nextNode())!==null&&u.length<g;){if(i.nodeType===1){if(i.hasAttributes())for(let b of i.getAttributeNames())if(b.endsWith(hr)){let k=_[d++],x=i.getAttribute(b).split(bt),A=/([.?@])?(.*)/.exec(k);u.push({type:1,index:l,name:A[2],strings:x,ctor:A[1]==="."?Ve:A[1]==="?"?Ge:A[1]==="@"?Ke:Ht}),i.removeAttribute(b)}else b.startsWith(bt)&&(u.push({type:6,index:l}),i.removeAttribute(b));if(Ir.test(i.tagName)){let b=i.textContent.split(bt),k=b.length-1;if(k>0){i.textContent=je?je.emptyScript:"";for(let x=0;x<k;x++)i.append(b[x],de()),Ct.nextNode(),u.push({type:2,index:++l});i.append(b[k],de())}}}else if(i.nodeType===8)if(i.data===ur)u.push({type:2,index:l});else{let b=-1;for(;(b=i.data.indexOf(bt,b+1))!==-1;)u.push({type:7,index:l}),b+=bt.length-1}l++}}static createElement(t,e){let n=At.createElement("template");return n.innerHTML=t,n}};function It(a,t,e=a,n){if(t===X)return t;let i=n!==void 0?e._$Co?.[n]:e._$Cl,l=he(t)?void 0:t._$litDirective$;return i?.constructor!==l&&(i?._$AO?.(!1),l===void 0?i=void 0:(i=new l(a),i._$AT(a,e,n)),n!==void 0?(e._$Co??=[])[n]=i:e._$Cl=i),i!==void 0&&(t=It(a,i._$AS(a,t.values),i,n)),t}var Ue=class{constructor(t,e){this._$AV=[],this._$AN=void 0,this._$AD=t,this._$AM=e}get parentNode(){return this._$AM.parentNode}get _$AU(){return this._$AM._$AU}u(t){let{el:{content:e},parts:n}=this._$AD,i=(t?.creationScope??At).importNode(e,!0);Ct.currentNode=i;let l=Ct.nextNode(),d=0,g=0,u=n[0];for(;u!==void 0;){if(d===u.index){let $;u.type===2?$=new Xt(l,l.nextSibling,this,t):u.type===1?$=new u.ctor(l,u.name,u.strings,this,t):u.type===6&&($=new Xe(l,this,t)),this._$AV.push($),u=n[++g]}d!==u?.index&&(l=Ct.nextNode(),d++)}return Ct.currentNode=At,i}p(t){let e=0;for(let n of this._$AV)n!==void 0&&(n.strings!==void 0?(n._$AI(t,n,e),e+=n.strings.length-2):n._$AI(t[e])),e++}},Xt=class a{get _$AU(){return this._$AM?._$AU??this._$Cv}constructor(t,e,n,i){this.type=2,this._$AH=L,this._$AN=void 0,this._$AA=t,this._$AB=e,this._$AM=n,this.options=i,this._$Cv=i?.isConnected??!0}get parentNode(){let t=this._$AA.parentNode,e=this._$AM;return e!==void 0&&t?.nodeType===11&&(t=e.parentNode),t}get startNode(){return this._$AA}get endNode(){return this._$AB}_$AI(t,e=this){t=It(this,t,e),he(t)?t===L||t==null||t===""?(this._$AH!==L&&this._$AR(),this._$AH=L):t!==this._$AH&&t!==X&&this._(t):t._$litType$!==void 0?this.$(t):t.nodeType!==void 0?this.T(t):Ar(t)?this.k(t):this._(t)}O(t){return this._$AA.parentNode.insertBefore(t,this._$AB)}T(t){this._$AH!==t&&(this._$AR(),this._$AH=this.O(t))}_(t){this._$AH!==L&&he(this._$AH)?this._$AA.nextSibling.data=t:this.T(At.createTextNode(t)),this._$AH=t}$(t){let{values:e,_$litType$:n}=t,i=typeof n=="number"?this._$AC(t):(n.el===void 0&&(n.el=ue.createElement(Hr(n.h,n.h[0]),this.options)),n);if(this._$AH?._$AD===i)this._$AH.p(e);else{let l=new Ue(i,this),d=l.u(this.options);l.p(e),this.T(d),this._$AH=l}}_$AC(t){let e=Cr.get(t.strings);return e===void 0&&Cr.set(t.strings,e=new ue(t)),e}k(t){fr(this._$AH)||(this._$AH=[],this._$AR());let e=this._$AH,n,i=0;for(let l of t)i===e.length?e.push(n=new a(this.O(de()),this.O(de()),this,this.options)):n=e[i],n._$AI(l),i++;i<e.length&&(this._$AR(n&&n._$AB.nextSibling,i),e.length=i)}_$AR(t=this._$AA.nextSibling,e){for(this._$AP?.(!1,!0,e);t!==this._$AB;){let n=t.nextSibling;t.remove(),t=n}}setConnected(t){this._$AM===void 0&&(this._$Cv=t,this._$AP?.(t))}},Ht=class{get tagName(){return this.element.tagName}get _$AU(){return this._$AM._$AU}constructor(t,e,n,i,l){this.type=1,this._$AH=L,this._$AN=void 0,this.element=t,this.name=e,this._$AM=i,this.options=l,n.length>2||n[0]!==""||n[1]!==""?(this._$AH=Array(n.length-1).fill(new String),this.strings=n):this._$AH=L}_$AI(t,e=this,n,i){let l=this.strings,d=!1;if(l===void 0)t=It(this,t,e,0),d=!he(t)||t!==this._$AH&&t!==X,d&&(this._$AH=t);else{let g=t,u,$;for(t=l[0],u=0;u<l.length-1;u++)$=It(this,g[n+u],e,u),$===X&&($=this._$AH[u]),d||=!he($)||$!==this._$AH[u],$===L?t=L:t!==L&&(t+=($??"")+l[u+1]),this._$AH[u]=$}d&&!i&&this.j(t)}j(t){t===L?this.element.removeAttribute(this.name):this.element.setAttribute(this.name,t??"")}},Ve=class extends Ht{constructor(){super(...arguments),this.type=3}j(t){this.element[this.name]=t===L?void 0:t}},Ge=class extends Ht{constructor(){super(...arguments),this.type=4}j(t){this.element.toggleAttribute(this.name,!!t&&t!==L)}},Ke=class extends Ht{constructor(t,e,n,i,l){super(t,e,n,i,l),this.type=5}_$AI(t,e=this){if((t=It(this,t,e,0)??L)===X)return;let n=this._$AH,i=t===L&&n!==L||t.capture!==n.capture||t.once!==n.once||t.passive!==n.passive,l=t!==L&&(n===L||i);i&&this.element.removeEventListener(this.name,this,n),l&&this.element.addEventListener(this.name,this,t),this._$AH=t}handleEvent(t){typeof this._$AH=="function"?this._$AH.call(this.options?.host??this.element,t):this._$AH.handleEvent(t)}},Xe=class{constructor(t,e,n){this.element=t,this.type=6,this._$AN=void 0,this._$AM=e,this.options=n}get _$AU(){return this._$AM._$AU}_$AI(t){It(this,t)}},zr={M:hr,P:bt,A:ur,C:1,L:Or,R:Ue,D:Ar,V:It,I:Xt,H:Ht,N:Ge,U:Ke,B:Ve,F:Xe},tn=dr.litHtmlPolyfillSupport;tn?.(ue,Xt),(dr.litHtmlVersions??=[]).push("3.3.1");var Mr=(a,t,e)=>{let n=e?.renderBefore??t,i=n._$litPart$;if(i===void 0){let l=e?.renderBefore??null;n._$litPart$=i=new Xt(t.insertBefore(de(),l),l,void 0,e??{})}return i._$AI(a),i};var yr=globalThis,I=class extends yt{constructor(){super(...arguments),this.renderOptions={host:this},this._$Do=void 0}createRenderRoot(){let t=super.createRenderRoot();return this.renderOptions.renderBefore??=t.firstChild,t}update(t){let e=this.render();this.hasUpdated||(this.renderOptions.isConnected=this.isConnected),super.update(t),this._$Do=Mr(e,this.renderRoot,this.renderOptions)}connectedCallback(){super.connectedCallback(),this._$Do?.setConnected(!0)}disconnectedCallback(){super.disconnectedCallback(),this._$Do?.setConnected(!1)}render(){return X}};I._$litElement$=!0,I.finalized=!0,yr.litElementHydrateSupport?.({LitElement:I});var en=yr.litElementPolyfillSupport;en?.({LitElement:I});(yr.litElementVersions??=[]).push("4.2.1");var f=(i=>(i.primary="primary",i.secondary="secondary",i.surface="surface",i.plain="plain",i))(f||{}),w=class{static getStyle(t){return t?t=="plain"?o``:o` <style>
             :host,
             *,
             ::slotted(*) {
-              color: var(--app-color-${e});
-              background-color: var(--app-color-${e}-background);
-              border-color: var(--app-color-${e}-border);
+              color: var(--app-color-${t});
+              background-color: var(--app-color-${t}-background);
+              border-color: var(--app-color-${t}-border);
             }
 
             ::slotted(.h2),
             .h2 {
               color: #3f6796;
             }
-          </style>`:o``}static getOposite(e){return e=="plain"?"surface":e=="primary"||e=="primary"?"secondary":e=="secondary"?"primary":"plain"}getParentTheme(e){let t=e;for(;t!=null;){if(t.theme!=null)return t.theme;t=t.parentElement}}};var m=a=>(e,t)=>{t!==void 0?t.addInitializer(()=>{customElements.define(a,e)}):customElements.define(a,e)};var _r={attribute:!0,type:String,converter:me,reflect:!1,hasChanged:Ve},tn=(a=_r,e,t)=>{let{kind:n,metadata:i}=t,l=globalThis.litPropertyMetadata.get(i);if(l===void 0&&globalThis.litPropertyMetadata.set(i,l=new Map),l.set(t.name,a),n==="accessor"){let{name:p}=t;return{set(u){let h=e.get.call(this);e.set.call(this,u),this.requestUpdate(p,h,a)},init(u){return u!==void 0&&this.P(p,void 0,a),u}}}if(n==="setter"){let{name:p}=t;return function(u){let h=this[p];e.call(this,u),this.requestUpdate(p,h,a)}}throw Error("Unsupported decorator location: "+n)};function s(a){return(e,t)=>typeof t=="object"?tn(a,e,t):((n,i,l)=>{let p=i.hasOwnProperty(l);return i.constructor.createProperty(l,p?{...n,wrapped:!0}:n),p?Object.getOwnPropertyDescriptor(i,l):void 0})(a,e,t)}function bt(a){return s({...a,state:!0,attribute:!1})}var Ct=(a,e,t)=>(t.configurable=!0,t.enumerable=!0,Reflect.decorate&&typeof e!="object"&&Object.defineProperty(a,e,t),t);function f(a,e){return(t,n,i)=>{let l=p=>p.renderRoot?.querySelector(a)??null;if(e){let{get:p,set:u}=typeof n=="object"?t:i??(()=>{let h=Symbol();return{get(){return this[h]},set(A){this[h]=A}}})();return Ct(t,n,{get(){let h=p.call(this);return h===void 0&&(h=l(this),(h!==null||this.hasUpdated)&&u.call(this,h)),h}})}return Ct(t,n,{get(){return l(this)}})}}var d=class extends I{constructor(){super(...arguments);this.theme="plain"}throwCustomEvent(t,n){this.dispatchEvent(new CustomEvent(t,{detail:n,bubbles:!0,composed:!0}))}};r([s({type:g,converter:String})],d.prototype,"theme",2);var st=class extends d{constructor(){super(...arguments);this.key=null;this.item={};this.title=""}updated(t){t.has("item")&&(this.title=this.item.constructor.name)}render(){return o`
+          </style>`:o``}static getOposite(t){return t=="plain"?"surface":t=="primary"||t=="primary"?"secondary":t=="secondary"?"primary":"plain"}getParentTheme(t){let e=t;for(;e!=null;){if(e.theme!=null)return e.theme;e=e.parentElement}}};var m=a=>(t,e)=>{e!==void 0?e.addInitializer(()=>{customElements.define(a,t)}):customElements.define(a,t)};var rn={attribute:!0,type:String,converter:pe,reflect:!1,hasChanged:qe},nn=(a=rn,t,e)=>{let{kind:n,metadata:i}=e,l=globalThis.litPropertyMetadata.get(i);if(l===void 0&&globalThis.litPropertyMetadata.set(i,l=new Map),n==="setter"&&((a=Object.create(a)).wrapped=!0),l.set(e.name,a),n==="accessor"){let{name:d}=e;return{set(g){let u=t.get.call(this);t.set.call(this,g),this.requestUpdate(d,u,a)},init(g){return g!==void 0&&this.C(d,void 0,a,g),g}}}if(n==="setter"){let{name:d}=e;return function(g){let u=this[d];t.call(this,g),this.requestUpdate(d,u,a)}}throw Error("Unsupported decorator location: "+n)};function s(a){return(t,e)=>typeof e=="object"?nn(a,t,e):((n,i,l)=>{let d=i.hasOwnProperty(l);return i.constructor.createProperty(l,n),d?Object.getOwnPropertyDescriptor(i,l):void 0})(a,t,e)}function xt(a){return s({...a,state:!0,attribute:!1})}var Ot=(a,t,e)=>(e.configurable=!0,e.enumerable=!0,Reflect.decorate&&typeof t!="object"&&Object.defineProperty(a,t,e),e);function y(a,t){return(e,n,i)=>{let l=d=>d.renderRoot?.querySelector(a)??null;if(t){let{get:d,set:g}=typeof n=="object"?e:i??(()=>{let u=Symbol();return{get(){return this[u]},set($){this[u]=$}}})();return Ot(e,n,{get(){let u=d.call(this);return u===void 0&&(u=l(this),(u!==null||this.hasUpdated)&&g.call(this,u)),u}})}return Ot(e,n,{get(){return l(this)}})}}var h=class extends I{theme="plain";throwCustomEvent(t,e){this.dispatchEvent(new CustomEvent(t,{detail:e,bubbles:!0,composed:!0}))}};r([s({type:f,converter:String})],h.prototype,"theme",2);var at=class extends h{key=null;item={};title="";updated(t){t.has("item")&&(this.title=this.item.constructor.name)}formComponent;render(){return o`
     <nidoca-container>
       <nidoca-top-app-bar style="min-height: 48px;" prominent>
           <nidoca-text-body slot="left">${this.title}</nidoca-text-body>
@@ -26,49 +26,49 @@
         <input type="hidden" name="${this.key}" value="${this.item[this.key]}"/>
       </nidoca-form>
     </nidoca-container>
-    `}renderFormFields(){let t=[];for(let[n,i]of Object.entries(this.item)){let l=De.capitalizeFirstLetter(n),p;switch(typeof i){case"boolean":p=o`
+    `}renderFormFields(){let t=[];for(let[e,n]of Object.entries(this.item)){let i=Pe.capitalizeFirstLetter(e),l;switch(typeof n){case"boolean":l=o`
             <nidoca-form-switch
               style="padding-bottom:var(--space-2);"
-              label="${l}"
-              name="${n}"
-              .value="${i||""}"
+              label="${i}"
+              name="${e}"
+              .value="${n||""}"
             ></nidoca-form-switch>
-          `;break;case"string":p=o`
+          `;break;case"string":l=o`
             <nidoca-form-text
               style="padding-bottom:var(--space-2);"
-              label="${l}"
-              name="${n}"
-              .value="${i||""}"
+              label="${i}"
+              name="${e}"
+              .value="${n||""}"
             ></nidoca-form-text>
-          `;break;case"number":p=o`
+          `;break;case"number":l=o`
             <nidoca-form-text
               style="padding-bottom:var(--space-2);"
-              label="${l}"
-              name="${n}"
+              label="${i}"
+              name="${e}"
               type="number"
-              .value="${i||""}"
+              .value="${n||""}"
             ></nidoca-form-text>
-          `;break;default:p=o`
+          `;break;default:l=o`
             <nidoca-form-text
               style="padding-bottom:var(--space-2);"
-              label="${l}"
-              name="${n}"
-              .value="${i&&JSON.stringify(i)}"
+              label="${i}"
+              name="${e}"
+              .value="${n&&JSON.stringify(n)}"
             ></nidoca-form-text>
-          `}t.push(p)}return o`${t}`}deleteItem(){this.formComponent!=null&&(console.log("item deleted."),this.item=this.formComponent.getOutputData().jsonObject,this.throwCustomEvent("nidoca-event-generic-edit-item-deleted",this.item))}updateItem(){this.formComponent!=null&&this.formComponent.validate()&&(this.item=this.formComponent.getOutputData().jsonObject,this.throwCustomEvent("nidoca-event-generic-edit-item-updated",this.item))}saveItem(){this.formComponent!=null&&this.formComponent.validate()&&(this.item=this.formComponent.getOutputData().jsonObject,this.throwCustomEvent("nidoca-event-generic-edit-item-saved",this.item))}cancel(){this.throwCustomEvent("nidoca-event-generic-edit-cancel",this.item)}};r([s({type:Object})],st.prototype,"key",2),r([s({type:Object})],st.prototype,"item",2),r([s({type:String})],st.prototype,"title",2),r([f("#form")],st.prototype,"formComponent",2),st=r([m("nidoca-generic-edit")],st);var zt=class extends d{render(){return o`
+          `}t.push(l)}return o`${t}`}deleteItem(){this.formComponent!=null&&(console.log("item deleted."),this.item=this.formComponent.getOutputData().jsonObject,this.throwCustomEvent("nidoca-event-generic-edit-item-deleted",this.item))}updateItem(){this.formComponent!=null&&this.formComponent.validate()&&(this.item=this.formComponent.getOutputData().jsonObject,this.throwCustomEvent("nidoca-event-generic-edit-item-updated",this.item))}saveItem(){this.formComponent!=null&&this.formComponent.validate()&&(this.item=this.formComponent.getOutputData().jsonObject,this.throwCustomEvent("nidoca-event-generic-edit-item-saved",this.item))}cancel(){this.throwCustomEvent("nidoca-event-generic-edit-cancel",this.item)}};r([s({type:Object})],at.prototype,"key",2),r([s({type:Object})],at.prototype,"item",2),r([s({type:String})],at.prototype,"title",2),r([y("#form")],at.prototype,"formComponent",2),at=r([m("nidoca-generic-edit")],at);var zt=class extends h{slotElement;render(){return o`
     <nidoca-container>
       <nidoca-search-bar></nidoca-search-bar>
       <nidoca-list id="listElement">
         <slot></slot>
       </nidoca-list>
     </nidoca-container>
-    `}};r([f("#listElement")],zt.prototype,"slotElement",2),zt=r([m("nidoca-list-search")],zt);var Pt=class extends d{constructor(){super(...arguments);this.listView=!0;this.edit=null;this.listSearch=null}render(){return o`<slot @slotchange="${t=>this.slotChanged(t)}"></slot>`}updated(t){super.updated(t),t.has("listSearch"),this.listView}slotChanged(t){let n=t.target;if(n==null)return;let i=n.assignedElements();for(let l=0;l<i.length;l++){let p=i[l];p instanceof zt&&(this.listSearch=p),p instanceof st&&(this.edit=p)}}};r([bt()],Pt.prototype,"listView",2),r([bt()],Pt.prototype,"edit",2),r([bt()],Pt.prototype,"listSearch",2),Pt=r([m("nidoca-crud")],Pt);var _=class extends d{constructor(){super(...arguments);this.theme="surface";this.header="";this.opened=!1}render(){return o`
+    `}};r([y("#listElement")],zt.prototype,"slotElement",2),zt=r([m("nidoca-list-search")],zt);var Mt=class extends h{listView=!0;edit=null;listSearch=null;render(){return o`<slot @slotchange="${t=>this.slotChanged(t)}"></slot>`}updated(t){super.updated(t),t.has("listSearch"),this.listView}slotChanged(t){let e=t.target;if(e==null)return;let n=e.assignedElements();for(let i=0;i<n.length;i++){let l=n[i];l instanceof zt&&(this.listSearch=l),l instanceof at&&(this.edit=l)}}};r([xt()],Mt.prototype,"listView",2),r([xt()],Mt.prototype,"edit",2),r([xt()],Mt.prototype,"listSearch",2),Mt=r([m("nidoca-crud")],Mt);var tt=class extends h{theme="surface";header="";opened=!1;render(){return o`
       <div @click="${()=>this.toggle()}" class="header">
         <nidoca-text theme="${this.theme}" text="${this.header}"></nidoca-text>
         <nidoca-icon icon="${this.opened?"keyboard_arrow_down":"keyboard_arrow_up"}"></nidoca-icon>
       </div>
       ${this.opened?o` <slot></slot>`:o``}
-    `}toggle(){console.log("accordion clicked, state="+this.opened),this.opened=!this.opened,console.log("accordion clicked, after state="+this.opened),this.dispatchEvent(new CustomEvent("nidoca-event-accordion-item-clicked",{detail:this,bubbles:!0,composed:!0}))}};_.styles=c`
+    `}toggle(){console.log("accordion clicked, state="+this.opened),this.opened=!this.opened,console.log("accordion clicked, after state="+this.opened),this.dispatchEvent(new CustomEvent("nidoca-event-accordion-item-clicked",{detail:this,bubbles:!0,composed:!0}))}};c(tt,"styles",p`
     :host {
       border-left-style: solid;
       border-right-style: solid;
@@ -90,7 +90,7 @@
       align-content: center;
       cursor: pointer;
     }
-  `,r([s({type:g,converter:String})],_.prototype,"theme",2),r([s({type:String})],_.prototype,"header",2),r([s({type:Boolean})],_.prototype,"opened",2),_=r([m("nidoca-accordion-item")],_);var H=class extends d{constructor(){super(...arguments);this.theme="plain";this.overline="";this.title="";this.summary="";this.text=""}render(){return o`
+  `),r([s({type:f,converter:String})],tt.prototype,"theme",2),r([s({type:String})],tt.prototype,"header",2),r([s({type:Boolean})],tt.prototype,"opened",2),tt=r([m("nidoca-accordion-item")],tt);var R=class extends h{theme="plain";overline="";title="";summary="";text="";render(){return o`
       <div style="background-color: var(--app-color-${this.theme}-background); display:flex; flex-direction:column;">
         ${this.overline?o` <nidoca-text-body theme="${this.theme}" class="paddingBottom">${this.overline}</nidoca-text-body> `:o``}
         ${this.title?o` <nidoca-text-h2 theme="${this.theme}" class="paddingBottom">${this.title}</nidoca-text-h2> `:o``}
@@ -100,15 +100,15 @@
         ${this.text?o` <nidoca-text-body theme="${this.theme}" class="paddingBottom">${this.text}</nidoca-text-body>`:o``}
         <slot></slot>
       </div>
-    `}static example(t="",n="plain"){return o`<nidoca-article
-      theme="${n}"
+    `}static example(t="",e="plain"){return o`<nidoca-article
+      theme="${e}"
       slot="${t}"
       style="padding:25px;"
       overline="Lorem Ipsum Dolorem"
       title="Lorem Ipsum"
       summary="Lorem Ipsum Dolorem ipsum med en to."
       text="Lorem Ipsum Dolorem ipsum med en to. Lorem Ipsum Dolorem ipsum med en to. Lorem Ipsum Dolorem ipsum med en to. Lorem Ipsum Dolorem ipsum med en to."
-    ></nidoca-article>`}};H.styles=c`
+    ></nidoca-article>`}};c(R,"styles",p`
     :host {
       display: block;
     }
@@ -123,18 +123,18 @@
     .paddingBottom {
       padding-bottom: var(--space);
     }
-  `,r([s({type:g,converter:String})],H.prototype,"theme",2),r([s({type:String})],H.prototype,"overline",2),r([s({type:String})],H.prototype,"title",2),r([s({type:String})],H.prototype,"summary",2),r([s({type:String})],H.prototype,"text",2),H=r([m("nidoca-article")],H);var zr=(t=>(t.single="single",t.multi="multi",t))(zr||{}),tt=class extends d{constructor(){super(...arguments);this.theme="plain";this.accordionType="single"}updated(t){super.updated(t),t.forEach((n,i)=>{if(i=="theme"&&this.accordionSlot!=null){let l=this.accordionSlot.assignedElements();for(let p=0;p<l.length;p++){let u=l[p];u instanceof _&&(u.theme=this.theme)}}})}render(){return o`
-      ${v.getStyle(this.theme)}
+  `),r([s({type:f,converter:String})],R.prototype,"theme",2),r([s({type:String})],R.prototype,"overline",2),r([s({type:String})],R.prototype,"title",2),r([s({type:String})],R.prototype,"summary",2),r([s({type:String})],R.prototype,"text",2),R=r([m("nidoca-article")],R);var Pr=(e=>(e.single="single",e.multi="multi",e))(Pr||{}),et=class extends h{theme="plain";accordionType="single";accordionSlot;updated(t){super.updated(t),t.forEach((e,n)=>{if(n=="theme"&&this.accordionSlot!=null){let i=this.accordionSlot.assignedElements();for(let l=0;l<i.length;l++){let d=i[l];d instanceof tt&&(d.theme=this.theme)}}})}render(){return o`
+      ${w.getStyle(this.theme)}
       <slot
         @nidoca-event-accordion-item-clicked="${t=>this.accordionSwitched(t)}"
         id="accordionSlot"
       ></slot>
-    `}accordionSwitched(t){let n=t.detail;switch(this.accordionType){case"single":if(this.accordionSlot!=null){let i=this.accordionSlot.assignedElements();for(let l=0;l<i.length;l++){let p=i[l];p instanceof _&&p!=n&&(p.opened=!1)}}break;case"multi":break}t.stopPropagation()}static example(t=""){return o`<nidoca-accordion slot="${t}" theme="plain">
-      <nidoca-accordion-item header="Lorem Ipsum" opened> ${H.example()} </nidoca-accordion-item>
-      <nidoca-accordion-item header="Lorem Ipsum 2"> ${H.example()} </nidoca-accordion-item>
-      <nidoca-accordion-item header="Lorem Ipsum 3"> ${H.example()} </nidoca-accordion-item>
-      <nidoca-accordion-item header="Lorem Ipsum 4"> ${H.example()} </nidoca-accordion-item>
-    </nidoca-accordion>`}};tt.styles=c`
+    `}accordionSwitched(t){let e=t.detail;switch(this.accordionType){case"single":if(this.accordionSlot!=null){let n=this.accordionSlot.assignedElements();for(let i=0;i<n.length;i++){let l=n[i];l instanceof tt&&l!=e&&(l.opened=!1)}}break;case"multi":break}t.stopPropagation()}static example(t=""){return o`<nidoca-accordion slot="${t}" theme="plain">
+      <nidoca-accordion-item header="Lorem Ipsum" opened> ${R.example()} </nidoca-accordion-item>
+      <nidoca-accordion-item header="Lorem Ipsum 2"> ${R.example()} </nidoca-accordion-item>
+      <nidoca-accordion-item header="Lorem Ipsum 3"> ${R.example()} </nidoca-accordion-item>
+      <nidoca-accordion-item header="Lorem Ipsum 4"> ${R.example()} </nidoca-accordion-item>
+    </nidoca-accordion>`}};c(et,"styles",p`
     :host {
       border-top-style: solid;
       border-width: thin;
@@ -142,7 +142,7 @@
       width: 100%;
       box-sizing: border-box;
     }
-  `,r([s({type:g,converter:String})],tt.prototype,"theme",2),r([s({type:zr,converter:String})],tt.prototype,"accordionType",2),r([f("#accordionSlot")],tt.prototype,"accordionSlot",2),tt=r([m("nidoca-accordion")],tt);var W=class extends d{constructor(){super(...arguments);this.theme="primary";this.shadowType="shadow_1";this.icon="";this.clickable=!0;this.deactivated=!1;this.title=""}render(){return o`
+  `),r([s({type:f,converter:String})],et.prototype,"theme",2),r([s({type:Pr,converter:String})],et.prototype,"accordionType",2),r([y("#accordionSlot")],et.prototype,"accordionSlot",2),et=r([m("nidoca-accordion")],et);var B=class extends h{theme="primary";shadowType="shadow_1";icon="";clickable=!0;deactivated=!1;title="";render(){return o`
       <style>
         .iconExtended {
           display: inline-block;
@@ -166,7 +166,7 @@
         icon="home"
         title="Mein Icon"
       ></nidoca-icon-extended>
-    `}};W.styles=c`
+    `}};c(B,"styles",p`
     .icon {
       padding: var(--space);
       -moz-border-radius: 50%;
@@ -197,7 +197,7 @@
       -webkit-box-shadow: 0 14px 14px 0 rgba(0, 0, 0, 0.25), 0 10px 5px 0 rgba(0, 0, 0, 0.22);
       box-shadow: 0 14px 14px 0 rgba(0, 0, 0, 0.25), 0 10px 5px 0 rgba(0, 0, 0, 0.22);
     }
-  `,r([s({type:String})],W.prototype,"theme",2),r([s({type:Object})],W.prototype,"shadowType",2),r([s({type:String})],W.prototype,"icon",2),r([s({type:Boolean})],W.prototype,"clickable",2),r([s({type:Boolean})],W.prototype,"deactivated",2),r([s({type:String})],W.prototype,"title",2),W=r([m("nidoca-icon-extended")],W);var Y=class extends d{constructor(){super(...arguments);this.icon="";this.primaryText="";this.isLast=!1;this.first=!1}render(){return o`
+  `),r([s({type:String})],B.prototype,"theme",2),r([s({type:Object})],B.prototype,"shadowType",2),r([s({type:String})],B.prototype,"icon",2),r([s({type:Boolean})],B.prototype,"clickable",2),r([s({type:Boolean})],B.prototype,"deactivated",2),r([s({type:String})],B.prototype,"title",2),B=r([m("nidoca-icon-extended")],B);var Y=class extends h{icon="";primaryText="";state;isLast=!1;index;first=!1;render(){return o`
       <div
         style="display:flex;flex-direction:row;flex-wrap:nowrap;align-items:flex-start;justify-content:space-evenly;align-content:space-evenly;"
       >
@@ -224,7 +224,7 @@
         </div>
         <nidoca-text style="width:48px;" text="${this.primaryText}"><slot></slot> </nidoca-text>
       </div>
-    `}determineBackgroundColor(t){return t==1?"var(--app-color-text-primary)":t==0?"var(--app-color-secondary-background)":"var(--app-color-surface-background)"}determineColor(t){return t==3?"var(--app-color-success)":t==1?"var(--mdc-theme-on-primary)":t==0?"var(--app-color-text-secondary)":"var(--app-color-text-surface)"}stepClicked(){let t=new CustomEvent("nidoca-event-wizard-step-clicked",{detail:this.index,bubbles:!0,composed:!0});console.debug("dispatch custom event type: %s, detail: %s",t.type,JSON.stringify(t.detail)),this.dispatchEvent(t)}};Y.styles=c`
+    `}determineBackgroundColor(t){return t==1?"var(--app-color-text-primary)":t==0?"var(--app-color-secondary-background)":"var(--app-color-surface-background)"}determineColor(t){return t==3?"var(--app-color-success)":t==1?"var(--mdc-theme-on-primary)":t==0?"var(--app-color-text-secondary)":"var(--app-color-text-surface)"}stepClicked(){let t=new CustomEvent("nidoca-event-wizard-step-clicked",{detail:this.index,bubbles:!0,composed:!0});console.debug("dispatch custom event type: %s, detail: %s",t.type,JSON.stringify(t.detail)),this.dispatchEvent(t)}};c(Y,"styles",p`
     .wizard-step-connector {
       color: var(--app-color-surface);
       background-color: var(--app-color-surface-background);
@@ -236,14 +236,14 @@
       color: var(--mdc-theme-on-primary);
       background-color: var(--app-text-color-primary);
     }
-  `,r([s({type:String})],Y.prototype,"icon",2),r([s({type:String})],Y.prototype,"primaryText",2),r([s({type:Number})],Y.prototype,"state",2),r([s({type:Boolean})],Y.prototype,"isLast",2),Y=r([m("nidoca-wizard-step")],Y);var Yt=class extends d{render(){return o`
+  `),r([s({type:String})],Y.prototype,"icon",2),r([s({type:String})],Y.prototype,"primaryText",2),r([s({type:Number})],Y.prototype,"state",2),r([s({type:Boolean})],Y.prototype,"isLast",2),Y=r([m("nidoca-wizard-step")],Y);var Yt=class extends h{wizardSlot;render(){return o`
       <div
         style="display:flex;flex-direction:row;flex-wrap:nowrap;align-items:flex-start;justify-content:flex-start;align-content:space-evenly;"
-        @nidoca-event-wizard-step-clicked="${e=>this.stepClicked(e)}"
+        @nidoca-event-wizard-step-clicked="${t=>this.stepClicked(t)}"
       >
-        <slot id="wizardSlot" @slotchange="${e=>this.slotChanged(e)}"></slot>
+        <slot id="wizardSlot" @slotchange="${t=>this.slotChanged(t)}"></slot>
       </div>
-    `}slotChanged(e){let t=e.target;if(t==null)return;let n=t.assignedElements(),i=0;for(let l=0;l<n.length;l++){let p=n[l];p instanceof Y&&(p.index=l,p.state==0&&(i=l),p.index==n.length-1&&(p.isLast=!0))}this.changeState(i)}stepClicked(e){let t=e.detail;console.debug("wizard step clicked, selectedStepIndex: %s",t),this.changeState(t)}changeState(e){if(this.wizardSlot){let t=this.wizardSlot.assignedElements();for(let n=0;n<t.length;n++){let i=t[n];i instanceof Y&&i.index!==void 0&&(i.index<e?i.state=1:i.index==e?i.state=0:i.state=2)}}}};Yt.styles=c``,r([f("#wizardSlot")],Yt.prototype,"wizardSlot",2),Yt=r([m("nidoca-wizard")],Yt);var et=class extends d{constructor(){super(...arguments);this.clickable=!0;this.theme="surface";this.text=""}render(){return o`
+    `}slotChanged(t){let e=t.target;if(e==null)return;let n=e.assignedElements(),i=0;for(let l=0;l<n.length;l++){let d=n[l];d instanceof Y&&(d.index=l,d.state==0&&(i=l),d.index==n.length-1&&(d.isLast=!0))}this.changeState(i)}stepClicked(t){let e=t.detail;console.debug("wizard step clicked, selectedStepIndex: %s",e),this.changeState(e)}changeState(t){if(this.wizardSlot){let e=this.wizardSlot.assignedElements();for(let n=0;n<e.length;n++){let i=e[n];i instanceof Y&&i.index!==void 0&&(i.index<t?i.state=1:i.index==t?i.state=0:i.state=2)}}}};c(Yt,"styles",p``),r([y("#wizardSlot")],Yt.prototype,"wizardSlot",2),Yt=r([m("nidoca-wizard")],Yt);var rt=class extends h{clickable=!0;theme="surface";text="";render(){return o`
       <style>
         .chip:hover {
           background-color: var(--app-color-${this.theme}-background-dark);
@@ -256,7 +256,7 @@
         <nidoca-text-body theme="${this.theme}">${this.text}</nidoca-text-body>
         <slot></slot>
       </div>
-    `}static example(t=""){return o`<nidoca-chip slot="${t}" clickable text="Mein Chip"></nidoca-chip>`}};et.styles=c`
+    `}static example(t=""){return o`<nidoca-chip slot="${t}" clickable text="Mein Chip"></nidoca-chip>`}};c(rt,"styles",p`
     .chip {
       display: inline-block;
       padding: var(--space-2);
@@ -266,7 +266,7 @@
     .clickable {
       cursor: pointer;
     }
-  `,r([s({type:Boolean})],et.prototype,"clickable",2),r([s({type:g,converter:String})],et.prototype,"theme",2),r([s({type:String})],et.prototype,"text",2),et=r([m("nidoca-chip")],et);var at=class extends d{constructor(){super(...arguments);this.code="";this.theme="plain"}render(){return o`
+  `),r([s({type:Boolean})],rt.prototype,"clickable",2),r([s({type:f,converter:String})],rt.prototype,"theme",2),r([s({type:String})],rt.prototype,"text",2),rt=r([m("nidoca-chip")],rt);var lt=class extends h{code="";theme="plain";render(){return o`
       <style>
         code {
           color: var(--app-color-text-${this.theme});
@@ -277,7 +277,7 @@
       <pre>
                 <code>${this.code}<slot></slot></code>
             </pre>
-    `}static example(t=""){return o`<nidoca-code slot="${t}" theme="surface"> my code </nidoca-code>`}};at.styles=c`
+    `}static example(t=""){return o`<nidoca-code slot="${t}" theme="surface"> my code </nidoca-code>`}};c(lt,"styles",p`
     :host {
       display: block;
     }
@@ -308,7 +308,7 @@
       right: 0;
       opacity: 0.2;
     }
-  `,r([s({type:String})],at.prototype,"code",2),r([s({type:String})],at.prototype,"theme",2),at=r([m("nidoca-code")],at);var Xe=class{static{this.PROGRESS="PROGRESS"}static{this.PROGRESS_CIRCULAR="PROGRESS_CIRCULAR"}},Dt=class extends d{constructor(){super(...arguments);this.progressType=Xe.PROGRESS}render(){return o` <style>
+  `),r([s({type:String})],lt.prototype,"code",2),r([s({type:String})],lt.prototype,"theme",2),lt=r([m("nidoca-code")],lt);var Ye=class{static PROGRESS="PROGRESS";static PROGRESS_CIRCULAR="PROGRESS_CIRCULAR"},Pt=class extends h{theme;progressType=Ye.PROGRESS;render(){return o` <style>
         :host {
           width: 100%;
           display: block;
@@ -507,7 +507,7 @@
         }
       </style>
 
-      <progress class="${this.progressType}"></progress>`}};Dt.styles=c``,r([s({type:g,converter:String})],Dt.prototype,"theme",2),r([s({type:Xe,converter:String})],Dt.prototype,"progressType",2),Dt=r([m("nidoca-progress")],Dt);var Ze=(n=>(n.contained="contained",n.outlined="outlined",n.text="text",n))(Ze||{}),X=class extends d{constructor(){super(...arguments);this.theme="primary";this.buttonType="contained";this.icon="";this.text=""}render(){return o`
+      <progress class="${this.progressType}"></progress>`}};c(Pt,"styles",p``),r([s({type:f,converter:String})],Pt.prototype,"theme",2),r([s({type:Ye,converter:String})],Pt.prototype,"progressType",2),Pt=r([m("nidoca-progress")],Pt);var Je=(n=>(n.contained="contained",n.outlined="outlined",n.text="text",n))(Je||{}),J=class extends h{theme="primary";buttonType="contained";icon="";text="";render(){return o`
       <style>
         .outlined {
           color: var(--app-color-${this.theme}-background);
@@ -544,7 +544,7 @@
           <slot></slot>
         </nidoca-text-button>
       </div>
-    `}clicked(){this.dispatchEvent(new CustomEvent("nidoca-event-button-clicked",{detail:this,bubbles:!0,composed:!0}))}static example(t=""){return o`<nidoca-button slot="${t}" text="Start" icon="home"></nidoca-button>`}};X.styles=c`
+    `}clicked(){this.dispatchEvent(new CustomEvent("nidoca-event-button-clicked",{detail:this,bubbles:!0,composed:!0}))}static example(t=""){return o`<nidoca-button slot="${t}" text="Start" icon="home"></nidoca-button>`}};c(J,"styles",p`
     :host,
     .fullWidth {
       display: block;
@@ -573,11 +573,11 @@
         width: 100%;
       }
     }
-  `,r([s({type:g,converter:String})],X.prototype,"theme",2),r([s({type:Ze,converter:String})],X.prototype,"buttonType",2),r([s({type:String})],X.prototype,"icon",2),r([s({type:String})],X.prototype,"text",2),X=r([m("nidoca-button")],X);var L=class extends d{};var jt=class extends d{constructor(){super(...arguments);this.autocomplete=!0}render(){return o`
+  `),r([s({type:f,converter:String})],J.prototype,"theme",2),r([s({type:Je,converter:String})],J.prototype,"buttonType",2),r([s({type:String})],J.prototype,"icon",2),r([s({type:String})],J.prototype,"text",2),J=r([m("nidoca-button")],J);var W=class extends h{};var Dt=class extends h{autocomplete=!0;slotElement;render(){return o`
       <form autocomplete="${this.autocomplete?"on":"off"}">
         <slot id="slotElement"></slot>
       </form>
-    `}getOutputData(){let t=new FormData,n={};for(let l of this.getInputElements(this.slotElement)){let p=l.getOutputData();n[p.key]=p.value,t.append(p.key,p.value)}let i={};return i.jsonObject=n,i.formData=t,i}validate(){let t=!0;for(let n of this.getInputElements(this.slotElement))n.validate()||(t=!1);return t||this.dispatchEvent(new CustomEvent("nidoca-form-validation-failed",{detail:this.getOutputData(),bubbles:!0,composed:!0})),t}getInputElements(t){if(t==null)return[];let n=[],i=t.assignedElements({flatten:!0});for(let l=0;l<i.length;l++){let p=i[l];this.recursiveInputElementSearch(p,n)}return n}recursiveInputElementSearch(t,n){if(t instanceof L)n.push(t);else if(t.hasChildNodes()){let i=t.children;for(let l of[].slice.call(i))this.recursiveInputElementSearch(l,n)}}};jt.styles=c`
+    `}getOutputData(){let t=new FormData,e={};for(let i of this.getInputElements(this.slotElement)){let l=i.getOutputData();e[l.key]=l.value,t.append(l.key,l.value)}let n={};return n.jsonObject=e,n.formData=t,n}validate(){let t=!0;for(let e of this.getInputElements(this.slotElement))e.validate()||(t=!1);return t||this.dispatchEvent(new CustomEvent("nidoca-form-validation-failed",{detail:this.getOutputData(),bubbles:!0,composed:!0})),t}getInputElements(t){if(t==null)return[];let e=[],n=t.assignedElements({flatten:!0});for(let i=0;i<n.length;i++){let l=n[i];this.recursiveInputElementSearch(l,e)}return e}recursiveInputElementSearch(t,e){if(t instanceof W)e.push(t);else if(t.hasChildNodes()){let n=t.children;for(let i of[].slice.call(n))this.recursiveInputElementSearch(i,e)}}};c(Dt,"styles",p`
     :host,
     slot {
       display: block;
@@ -586,7 +586,7 @@
     form {
       box-sizing: border-box;
     }
-  `,r([s({type:Boolean})],jt.prototype,"autocomplete",2),r([f("#slotElement")],jt.prototype,"slotElement",2),jt=r([m("nidoca-form")],jt);var Pr={ATTRIBUTE:1,CHILD:2,PROPERTY:3,BOOLEAN_ATTRIBUTE:4,EVENT:5,ELEMENT:6},Je=a=>(...e)=>({_$litDirective$:a,values:e}),Xt=class{constructor(e){}get _$AU(){return this._$AM._$AU}_$AT(e,t,n){this._$Ct=e,this._$AM=t,this._$Ci=n}_$AS(e,t){return this.update(e,t)}update(e,t){return this.render(...t)}};var{I:en}=Br;var Dr=()=>document.createComment(""),Zt=(a,e,t)=>{let n=a._$AA.parentNode,i=e===void 0?a._$AB:e._$AA;if(t===void 0){let l=n.insertBefore(Dr(),i),p=n.insertBefore(Dr(),i);t=new en(l,p,a,a.options)}else{let l=t._$AB.nextSibling,p=t._$AM,u=p!==a;if(u){let h;t._$AQ?.(a),t._$AM=a,t._$AP!==void 0&&(h=a._$AU)!==p._$AU&&t._$AP(h)}if(l!==i||u){let h=t._$AA;for(;h!==l;){let A=h.nextSibling;n.insertBefore(h,i),h=A}}}return t},vt=(a,e,t=a)=>(a._$AI(e,t),a),rn={},jr=(a,e=rn)=>a._$AH=e,Wr=a=>a._$AH,Fe=a=>{a._$AP?.(!1,!0);let e=a._$AA,t=a._$AB.nextSibling;for(;e!==t;){let n=e.nextSibling;e.remove(),e=n}};var Lr=(a,e,t)=>{let n=new Map;for(let i=e;i<=t;i++)n.set(a[i],i);return n},At=Je(class extends Xt{constructor(a){if(super(a),a.type!==Pr.CHILD)throw Error("repeat() can only be used in text expressions")}dt(a,e,t){let n;t===void 0?t=e:e!==void 0&&(n=e);let i=[],l=[],p=0;for(let u of a)i[p]=n?n(u,p):p,l[p]=t(u,p),p++;return{values:l,keys:i}}render(a,e,t){return this.dt(a,e,t).values}update(a,[e,t,n]){let i=Wr(a),{values:l,keys:p}=this.dt(e,t,n);if(!Array.isArray(i))return this.ut=p,l;let u=this.ut??=[],h=[],A,S,y=0,k=i.length-1,b=0,$=l.length-1;for(;y<=k&&b<=$;)if(i[y]===null)y++;else if(i[k]===null)k--;else if(u[y]===p[b])h[b]=vt(i[y],l[b]),y++,b++;else if(u[k]===p[$])h[$]=vt(i[k],l[$]),k--,$--;else if(u[y]===p[$])h[$]=vt(i[y],l[$]),Zt(a,h[$+1],i[y]),y++,$--;else if(u[k]===p[b])h[b]=vt(i[k],l[b]),Zt(a,i[y],i[k]),k--,b++;else if(A===void 0&&(A=Lr(p,b,$),S=Lr(u,y,k)),A.has(u[y]))if(A.has(u[k])){let gt=S.get(p[b]),lr=gt!==void 0?i[gt]:null;if(lr===null){let yr=Zt(a,i[y]);vt(yr,l[b]),h[b]=yr}else h[b]=vt(lr,l[b]),Zt(a,i[y],lr),i[gt]=null;b++}else Fe(i[k]),k--;else Fe(i[y]),y++;for(;b<=$;){let gt=Zt(a,h[$+1]);vt(gt,l[b]),h[b++]=gt}for(;y<=k;){let gt=i[y++];gt!==null&&Fe(gt)}return this.ut=p,jr(a,h),Q}});var nn={},Wt=Je(class extends Xt{constructor(){super(...arguments),this.ot=nn}render(a,e){return e()}update(a,[e,t]){if(Array.isArray(e)){if(Array.isArray(this.ot)&&this.ot.length===e.length&&e.every((n,i)=>n===this.ot[i]))return Q}else if(this.ot===e)return Q;return this.ot=Array.isArray(e)?Array.from(e):e,this.render(e,t)}});var E=class extends L{constructor(){super(...arguments);this.theme="surface";this.trailingIcon="";this.label="";this.errorText="";this.infoText="";this.warningText="";this.value="";this.options=[];this.name="";this.required=!0;this.multiple=!1;this.size=1}render(){return o` <style>
+  `),r([s({type:Boolean})],Dt.prototype,"autocomplete",2),r([y("#slotElement")],Dt.prototype,"slotElement",2),Dt=r([m("nidoca-form")],Dt);var Dr={ATTRIBUTE:1,CHILD:2,PROPERTY:3,BOOLEAN_ATTRIBUTE:4,EVENT:5,ELEMENT:6},Ze=a=>(...t)=>({_$litDirective$:a,values:t}),Jt=class{constructor(t){}get _$AU(){return this._$AM._$AU}_$AT(t,e,n){this._$Ct=t,this._$AM=e,this._$Ci=n}_$AS(t,e){return this.update(t,e)}update(t,e){return this.render(...e)}};var{I:on}=zr;var Br=()=>document.createComment(""),Zt=(a,t,e)=>{let n=a._$AA.parentNode,i=t===void 0?a._$AB:t._$AA;if(e===void 0){let l=n.insertBefore(Br(),i),d=n.insertBefore(Br(),i);e=new on(l,d,a,a.options)}else{let l=e._$AB.nextSibling,d=e._$AM,g=d!==a;if(g){let u;e._$AQ?.(a),e._$AM=a,e._$AP!==void 0&&(u=a._$AU)!==d._$AU&&e._$AP(u)}if(l!==i||g){let u=e._$AA;for(;u!==l;){let $=u.nextSibling;n.insertBefore(u,i),u=$}}}return e},wt=(a,t,e=a)=>(a._$AI(t,e),a),sn={},Wr=(a,t=sn)=>a._$AH=t,qr=a=>a._$AH,Qe=a=>{a._$AR(),a._$AA.remove()};var jr=(a,t,e)=>{let n=new Map;for(let i=t;i<=e;i++)n.set(a[i],i);return n},$t=Ze(class extends Jt{constructor(a){if(super(a),a.type!==Dr.CHILD)throw Error("repeat() can only be used in text expressions")}dt(a,t,e){let n;e===void 0?e=t:t!==void 0&&(n=t);let i=[],l=[],d=0;for(let g of a)i[d]=n?n(g,d):d,l[d]=e(g,d),d++;return{values:l,keys:i}}render(a,t,e){return this.dt(a,t,e).values}update(a,[t,e,n]){let i=qr(a),{values:l,keys:d}=this.dt(t,e,n);if(!Array.isArray(i))return this.ut=d,l;let g=this.ut??=[],u=[],$,_,b=0,k=i.length-1,x=0,A=l.length-1;for(;b<=k&&x<=A;)if(i[b]===null)b++;else if(i[k]===null)k--;else if(g[b]===d[x])u[x]=wt(i[b],l[x]),b++,x++;else if(g[k]===d[A])u[A]=wt(i[k],l[A]),k--,A--;else if(g[b]===d[A])u[A]=wt(i[b],l[A]),Zt(a,u[A+1],i[b]),b++,A--;else if(g[k]===d[x])u[x]=wt(i[k],l[x]),Zt(a,i[b],i[k]),k--,x++;else if($===void 0&&($=jr(d,x,A),_=jr(g,b,k)),$.has(g[b]))if($.has(g[k])){let gt=_.get(d[x]),lr=gt!==void 0?i[gt]:null;if(lr===null){let br=Zt(a,i[b]);wt(br,l[x]),u[x]=br}else u[x]=wt(lr,l[x]),Zt(a,i[b],lr),i[gt]=null;x++}else Qe(i[k]),k--;else Qe(i[b]),b++;for(;x<=A;){let gt=Zt(a,u[A+1]);wt(gt,l[x]),u[x++]=gt}for(;b<=k;){let gt=i[b++];gt!==null&&Qe(gt)}return this.ut=d,Wr(a,u),X}});var an={},Bt=Ze(class extends Jt{constructor(){super(...arguments),this.ot=an}render(a,t){return t()}update(a,[t,e]){if(Array.isArray(t)){if(Array.isArray(this.ot)&&this.ot.length===t.length&&t.every((n,i)=>n===this.ot[i]))return X}else if(this.ot===t)return X;return this.ot=Array.isArray(t)?Array.from(t):t,this.render(t,e)}});var T=class extends W{theme="surface";trailingIcon="";label="";errorText="";infoText="";warningText="";value="";options=[];name="";required=!0;multiple=!1;size=1;selectElement;render(){return o` <style>
         .parentContainer,
         ::slotted(.parentContainer) {
           color: var(--app-color-text-${this.theme});
@@ -619,8 +619,8 @@
             ?required="${this.required}"
             ?multiple="${this.multiple}"
           >
-            ${Wt([this.value,this.options],()=>o`
-                ${At(this.options,t=>t==null?o` <option></option>`:this.isSelectedOption(t)?o` <option value="${t.key}" selected>${t.value}</option> `:o` <option value="${t.key}">${t.value}</option> `)}
+            ${Bt([this.value,this.options],()=>o`
+                ${$t(this.options,t=>t==null?o` <option></option>`:this.isSelectedOption(t)?o` <option value="${t.key}" selected>${t.value}</option> `:o` <option value="${t.key}">${t.value}</option> `)}
               `)}
           </select>
         </div>
@@ -637,7 +637,7 @@
                     text="${this.errorText}"
                   ></nidoca-text-error>`:o``}
             </div>
-          `:o``}`}getOutputData(){let t=this.value;if(this.selectElement!=null&&this.multiple){t=[];for(let n=0,i=this.selectElement.options.length;n<i;n++)this.selectElement.options[n].selected&&t.push(this.options[n].key)}else this.selectElement!=null&&(this.selectElement.value.length==0?t=null:t=this.selectElement.value);return{key:this.name,value:t}}validate(){return this.errorText="",this.selectElement!=null&&!this.selectElement.validity.valid&&this.selectElement.validationMessage!=this.errorText&&(this.errorText=this.selectElement.validationMessage),this.errorText.length==0}isSelectedOption(t){if(this.multiple){let n=!1;for(let i of this.value)if(n=t.key===i,n)return!0}return this.value===t.key}static enumToOptions(t,n=!0){let i=[];return n&&i.push({key:"",value:""}),Object.keys(t).forEach(l=>{i.push({key:l,value:t[l]})}),i}static stringArrayToOptions(t,n=!0){let i=[];return n&&i.push({key:"",value:""}),t.forEach(l=>{i.push({key:l,value:l})}),i}static toComboboxOptions(t=null,n=null){if(t==null)return[];let i=[];return Object.values(t).forEach(l=>{let p=String(Object.keys(t)[Object.values(t).indexOf(l)]);n&&(p=p.concat(n)),i.push({key:l,value:p})}),i}};E.styles=c`
+          `:o``}`}getOutputData(){let t=this.value;if(this.selectElement!=null&&this.multiple){t=[];for(let e=0,n=this.selectElement.options.length;e<n;e++)this.selectElement.options[e].selected&&t.push(this.options[e].key)}else this.selectElement!=null&&(this.selectElement.value.length==0?t=null:t=this.selectElement.value);return{key:this.name,value:t}}validate(){return this.errorText="",this.selectElement!=null&&!this.selectElement.validity.valid&&this.selectElement.validationMessage!=this.errorText&&(this.errorText=this.selectElement.validationMessage),this.errorText.length==0}isSelectedOption(t){if(this.multiple){let e=!1;for(let n of this.value)if(e=t.key===n,e)return!0}return this.value===t.key}static enumToOptions(t,e=!0){let n=[];return e&&n.push({key:"",value:""}),Object.keys(t).forEach(i=>{n.push({key:i,value:t[i]})}),n}static stringArrayToOptions(t,e=!0){let n=[];return e&&n.push({key:"",value:""}),t.forEach(i=>{n.push({key:i,value:i})}),n}static toComboboxOptions(t=null,e=null){if(t==null)return[];let n=[];return Object.values(t).forEach(i=>{let l=String(Object.keys(t)[Object.values(t).indexOf(i)]);e&&(l=l.concat(e)),n.push({key:i,value:l})}),n}};c(T,"styles",p`
     :host,
     slot {
       display: block;
@@ -691,7 +691,7 @@
       outline: none;
       box-shadow: none;
     }
-  `,r([s({type:g,converter:String})],E.prototype,"theme",2),r([s({type:String})],E.prototype,"trailingIcon",2),r([s({type:String})],E.prototype,"label",2),r([s({type:String})],E.prototype,"errorText",2),r([s({type:String})],E.prototype,"infoText",2),r([s({type:String})],E.prototype,"warningText",2),r([s()],E.prototype,"value",2),r([s({type:Array})],E.prototype,"options",2),r([s({type:String})],E.prototype,"name",2),r([s({type:Boolean})],E.prototype,"required",2),r([s({type:Boolean})],E.prototype,"multiple",2),r([s({type:Number})],E.prototype,"size",2),r([f("#selectElement")],E.prototype,"selectElement",2),E=r([m("nidoca-form-combobox")],E);var O=a=>a??R;var rt=(b=>(b.color="color",b.email="email",b.hidden="hidden",b.number="number",b.password="password",b.tel="tel",b.text="text",b.search="search",b.url="url",b.date="date",b.month="month",b.time="time",b.week="week",b))(rt||{}),w=class extends L{constructor(){super(...arguments);this.type="text";this.label="";this.placeholder="";this.trailingIcon="";this.errorText="";this.infoText="";this.warningText="";this.name="";this.value="";this.required=!1;this.disabled=!1;this.checked=!1;this.theme="plain"}render(){return this.type=="hidden"?o`<input id="inputElement" name="${this.name}" type="${this.type}" value="${this.value}" />`:o` <style>
+  `),r([s({type:f,converter:String})],T.prototype,"theme",2),r([s({type:String})],T.prototype,"trailingIcon",2),r([s({type:String})],T.prototype,"label",2),r([s({type:String})],T.prototype,"errorText",2),r([s({type:String})],T.prototype,"infoText",2),r([s({type:String})],T.prototype,"warningText",2),r([s()],T.prototype,"value",2),r([s({type:Array})],T.prototype,"options",2),r([s({type:String})],T.prototype,"name",2),r([s({type:Boolean})],T.prototype,"required",2),r([s({type:Boolean})],T.prototype,"multiple",2),r([s({type:Number})],T.prototype,"size",2),r([y("#selectElement")],T.prototype,"selectElement",2),T=r([m("nidoca-form-combobox")],T);var C=a=>a??L;var nt=(x=>(x.color="color",x.email="email",x.hidden="hidden",x.number="number",x.password="password",x.tel="tel",x.text="text",x.search="search",x.url="url",x.date="date",x.month="month",x.time="time",x.week="week",x))(nt||{}),E=class extends W{type="text";label="";placeholder="";trailingIcon="";errorText="";infoText="";warningText="";name="";value="";required=!1;disabled=!1;checked=!1;maxlength;minlength;min;max;step;size;pattern;inputElement;theme="plain";render(){return this.type=="hidden"?o`<input id="inputElement" name="${this.name}" type="${this.type}" value="${this.value}" />`:o` <style>
             .parentContainer,
             ::slotted(.parentContainer) {
               color: var(--app-color-text-${this.theme});
@@ -722,13 +722,13 @@
                 .type="${this.type}"
                 value="${this.value}"
                 placeholder="${this.placeholder}"
-                size="${O(this.size)}"
-                minlength="${O(this.minlength)}"
-                maxlength="${O(this.maxlength)}"
-                pattern="${O(this.pattern)}"
-                min="${O(this.min)}"
-                max="${O(this.max)}"
-                step="${O(this.step)}"
+                size="${C(this.size)}"
+                minlength="${C(this.minlength)}"
+                maxlength="${C(this.maxlength)}"
+                pattern="${C(this.pattern)}"
+                min="${C(this.min)}"
+                max="${C(this.max)}"
+                step="${C(this.step)}"
                 ?required="${this.required}"
                 ?disabled="${this.disabled}"
                 ?checked="${this.checked}"
@@ -748,7 +748,7 @@
                         text="${this.errorText}"
                       ></nidoca-text-error>`:o``}
                 </div>
-              `:o``}`}getOutputData(){let t=this.inputElement?.value;return{key:this.name,value:t?.trim()}}validate(){return this.errorText="",this.inputElement!=null&&!this.inputElement.validity.valid&&this.inputElement.validationMessage!=this.errorText&&(this.errorText=this.inputElement.validationMessage,this.inputElement.validity.patternMismatch&&this.pattern&&(this.errorText=this.errorText.concat(" Format: ").concat(this.pattern))),this.errorText==""}};w.styles=c`
+              `:o``}`}getOutputData(){let t=this.inputElement?.value;return{key:this.name,value:t?.trim()}}validate(){return this.errorText="",this.inputElement!=null&&!this.inputElement.validity.valid&&this.inputElement.validationMessage!=this.errorText&&(this.errorText=this.inputElement.validationMessage,this.inputElement.validity.patternMismatch&&this.pattern&&(this.errorText=this.errorText.concat(" Format: ").concat(this.pattern))),this.errorText==""}};c(E,"styles",p`
     :host,
     slot {
       display: block;
@@ -792,7 +792,7 @@
     input:focus::placeholder {
       color: transparent;
     }
-  `,r([s({type:rt,converter:String})],w.prototype,"type",2),r([s({type:String})],w.prototype,"label",2),r([s({type:String})],w.prototype,"placeholder",2),r([s({type:String})],w.prototype,"trailingIcon",2),r([s({type:String})],w.prototype,"errorText",2),r([s({type:String})],w.prototype,"infoText",2),r([s({type:String})],w.prototype,"warningText",2),r([s({type:String})],w.prototype,"name",2),r([s()],w.prototype,"value",2),r([s({type:Boolean})],w.prototype,"required",2),r([s({type:Boolean})],w.prototype,"disabled",2),r([s({type:Boolean})],w.prototype,"checked",2),r([s({type:Number})],w.prototype,"maxlength",2),r([s({type:Number})],w.prototype,"minlength",2),r([s({type:Number})],w.prototype,"min",2),r([s({type:Number})],w.prototype,"max",2),r([s({type:String})],w.prototype,"step",2),r([s({type:Number})],w.prototype,"size",2),r([s({type:String})],w.prototype,"pattern",2),r([f("#inputElement")],w.prototype,"inputElement",2),r([s({type:g,converter:String})],w.prototype,"theme",2),w=r([m("nidoca-form-text")],w);var Ne=class extends w{constructor(){super(),this.type="date"}};Ne=r([m("nidoca-form-date")],Ne);var B=class extends L{constructor(){super(...arguments);this.theme="surface";this.infoText="";this.warningText="";this.errorText="";this.name="";this.value="";this.label="";this.required=!1;this.placeholder="";this.disabled=!1;this.rows=5}render(){return o` <style>
+  `),r([s({type:nt,converter:String})],E.prototype,"type",2),r([s({type:String})],E.prototype,"label",2),r([s({type:String})],E.prototype,"placeholder",2),r([s({type:String})],E.prototype,"trailingIcon",2),r([s({type:String})],E.prototype,"errorText",2),r([s({type:String})],E.prototype,"infoText",2),r([s({type:String})],E.prototype,"warningText",2),r([s({type:String})],E.prototype,"name",2),r([s()],E.prototype,"value",2),r([s({type:Boolean})],E.prototype,"required",2),r([s({type:Boolean})],E.prototype,"disabled",2),r([s({type:Boolean})],E.prototype,"checked",2),r([s({type:Number})],E.prototype,"maxlength",2),r([s({type:Number})],E.prototype,"minlength",2),r([s({type:Number})],E.prototype,"min",2),r([s({type:Number})],E.prototype,"max",2),r([s({type:String})],E.prototype,"step",2),r([s({type:Number})],E.prototype,"size",2),r([s({type:String})],E.prototype,"pattern",2),r([y("#inputElement")],E.prototype,"inputElement",2),r([s({type:f,converter:String})],E.prototype,"theme",2),E=r([m("nidoca-form-text")],E);var Fe=class extends E{constructor(){super(),this.type="date"}};Fe=r([m("nidoca-form-date")],Fe);var H=class extends W{theme="surface";infoText="";warningText="";errorText="";name="";value="";label="";required=!1;placeholder="";disabled=!1;rows=5;inputElement;render(){return o` <style>
         .parentContainer,
         ::slotted(.parentContainer) {
           color: var(--app-color-text-${this.theme});
@@ -838,7 +838,7 @@ ${this.value}</textarea
                     text="${this.errorText}"
                   ></nidoca-text-error>`:o``}
             </div>
-          `:o``}`}getOutputData(){let t=this.inputElement?.value;return{key:this.name,value:t}}validate(){return this.errorText="",this.inputElement!=null&&!this.inputElement.validity.valid&&this.inputElement.validationMessage!=this.errorText&&(this.errorText=this.inputElement.validationMessage),this.errorText==""}};B.styles=c`
+          `:o``}`}getOutputData(){let t=this.inputElement?.value;return{key:this.name,value:t}}validate(){return this.errorText="",this.inputElement!=null&&!this.inputElement.validity.valid&&this.inputElement.validationMessage!=this.errorText&&(this.errorText=this.inputElement.validationMessage),this.errorText==""}};c(H,"styles",p`
     :host,
     slot {
       display: block;
@@ -878,8 +878,8 @@ ${this.value}</textarea
     textarea:focus::placeholder {
       color: transparent;
     }
-  `,r([s({type:g,converter:String})],B.prototype,"theme",2),r([s({type:String})],B.prototype,"infoText",2),r([s({type:String})],B.prototype,"warningText",2),r([s({type:String})],B.prototype,"errorText",2),r([s({type:String})],B.prototype,"name",2),r([s()],B.prototype,"value",2),r([s({type:String})],B.prototype,"label",2),r([s({type:Boolean})],B.prototype,"required",2),r([s({type:String})],B.prototype,"placeholder",2),r([s({type:Boolean})],B.prototype,"disabled",2),r([s({type:Number})],B.prototype,"rows",2),r([f("#inputElement")],B.prototype,"inputElement",2),B=r([m("nidoca-form-textarea")],B);var Lt=class extends L{constructor(){super(...arguments);this.theme="primary"}validate(){throw new Error("Method not implemented.")}getOutputData(){throw new Error("Method not implemented.")}render(){return o`
-      <nidoca-box theme="${O(this.theme)}">
+  `),r([s({type:f,converter:String})],H.prototype,"theme",2),r([s({type:String})],H.prototype,"infoText",2),r([s({type:String})],H.prototype,"warningText",2),r([s({type:String})],H.prototype,"errorText",2),r([s({type:String})],H.prototype,"name",2),r([s()],H.prototype,"value",2),r([s({type:String})],H.prototype,"label",2),r([s({type:Boolean})],H.prototype,"required",2),r([s({type:String})],H.prototype,"placeholder",2),r([s({type:Boolean})],H.prototype,"disabled",2),r([s({type:Number})],H.prototype,"rows",2),r([y("#inputElement")],H.prototype,"inputElement",2),H=r([m("nidoca-form-textarea")],H);var Wt=class extends W{validate(){throw new Error("Method not implemented.")}getOutputData(){throw new Error("Method not implemented.")}theme="primary";inputElement;render(){return o`
+      <nidoca-box theme="${C(this.theme)}">
         <div class="container">
           <nidoca-icon
             clickable
@@ -892,7 +892,7 @@ ${this.value}</textarea
           <input style="display:none;" id="inputElement" name="file" type="file" />
         </div>
       </nidoca-box>
-    `}upload(){this.inputElement?.click()}};Lt.styles=c`
+    `}upload(){this.inputElement?.click()}};c(Wt,"styles",p`
     :host,
     slot {
       display: block;
@@ -910,7 +910,7 @@ ${this.value}</textarea
       font-size: 96px;
       align-self: center;
     }
-  `,r([s({type:g,converter:String})],Lt.prototype,"theme",2),r([f("#inputElement")],Lt.prototype,"inputElement",2),Lt=r([m("nidoca-form-upload")],Lt);var D=class extends L{constructor(){super();this.name="";this.label="";this.infoText="";this.errorText="";this.warningText="";this.required=!1;this.disabled=!1;this.checked=!1;this.theme="primary";this.theme=v.prototype.getParentTheme(this)||"plain"}render(){return o`
+  `),r([s({type:f,converter:String})],Wt.prototype,"theme",2),r([y("#inputElement")],Wt.prototype,"inputElement",2),Wt=r([m("nidoca-form-upload")],Wt);var P=class extends W{name="";label="";infoText="";errorText="";warningText="";required=!1;disabled=!1;checked=!1;theme="primary";inputElement;constructor(){super(),this.theme=w.prototype.getParentTheme(this)||"plain"}render(){return o`
       <style>
         .slider {
           background-color: var(--app-color-${this.theme}-border);
@@ -957,7 +957,7 @@ ${this.value}</textarea
 
       ${this.warningText?o` <nidoca-text-error text="${this.warningText}"></nidoca-text-error>`:o``}
       ${this.errorText?o` <nidoca-text-error text="${this.errorText}"></nidoca-text-error>`:o``}
-    `}getOutputData(){return{key:this.name,value:this.checked}}validate(){return this.errorText="",this.inputElement!=null&&!this.inputElement.validity.valid&&this.inputElement.validationMessage!=this.errorText&&(this.errorText=this.inputElement.validationMessage),this.errorText==""}};D.styles=c`
+    `}getOutputData(){return{key:this.name,value:this.checked}}validate(){return this.errorText="",this.inputElement!=null&&!this.inputElement.validity.valid&&this.inputElement.validationMessage!=this.errorText&&(this.errorText=this.inputElement.validationMessage),this.errorText==""}};c(P,"styles",p`
     :host {
       display: flex;
       flex-direction: column;
@@ -1015,13 +1015,13 @@ ${this.value}</textarea
     .slider.round:before {
       border-radius: 50%;
     }
-  `,r([s({type:String})],D.prototype,"name",2),r([s({type:String})],D.prototype,"label",2),r([s({type:String})],D.prototype,"infoText",2),r([s({type:String})],D.prototype,"errorText",2),r([s({type:String})],D.prototype,"warningText",2),r([s({type:Boolean})],D.prototype,"required",2),r([s({type:Boolean})],D.prototype,"disabled",2),r([s({type:Boolean})],D.prototype,"checked",2),r([s({type:String})],D.prototype,"theme",2),r([f("#inputElement")],D.prototype,"inputElement",2),D=r([m("nidoca-form-switch")],D);var lt=class extends d{constructor(){super(...arguments);this.theme="primary";this.label="Newsletter";this.emailLabel="Deine Emailadresse";this.buttonLabel="Registrieren"}render(){return o`
-      <nidoca-box theme="${O(this.theme)}">
+  `),r([s({type:String})],P.prototype,"name",2),r([s({type:String})],P.prototype,"label",2),r([s({type:String})],P.prototype,"infoText",2),r([s({type:String})],P.prototype,"errorText",2),r([s({type:String})],P.prototype,"warningText",2),r([s({type:Boolean})],P.prototype,"required",2),r([s({type:Boolean})],P.prototype,"disabled",2),r([s({type:Boolean})],P.prototype,"checked",2),r([s({type:String})],P.prototype,"theme",2),r([y("#inputElement")],P.prototype,"inputElement",2),P=r([m("nidoca-form-switch")],P);var mt=class extends h{theme="primary";label="Newsletter";emailLabel="Deine Emailadresse";buttonLabel="Registrieren";formComponent;render(){return o`
+      <nidoca-box theme="${C(this.theme)}">
         <nidoca-form id="form">
           <nidoca-text-h2 class="paddingBottom">${this.label}</nidoca-text-h2>
 
           <nidoca-form-text
-            theme="${v.getOposite(this.theme)}"
+            theme="${w.getOposite(this.theme)}"
             class="paddingBottom"
             textType="${"email"}"
             label="${this.emailLabel}"
@@ -1033,7 +1033,7 @@ ${this.value}</textarea
           ></nidoca-form-text>
 
           <nidoca-button
-            theme="${v.getOposite(this.theme)}"
+            theme="${w.getOposite(this.theme)}"
             class="paddingBottom"
             @nidoca-event-button-clicked="${()=>this.register()}"
             >${this.buttonLabel}
@@ -1042,7 +1042,7 @@ ${this.value}</textarea
           <slot></slot>
         </nidoca-form>
       </nidoca-box>
-    `}register(){this.formComponent&&this.formComponent.validate()&&this.dispatchEvent(new CustomEvent("nidoca-form-newsletter-submit",{detail:this.formComponent.getOutputData(),bubbles:!0,composed:!0}))}};lt.styles=c`
+    `}register(){this.formComponent&&this.formComponent.validate()&&this.dispatchEvent(new CustomEvent("nidoca-form-newsletter-submit",{detail:this.formComponent.getOutputData(),bubbles:!0,composed:!0}))}};c(mt,"styles",p`
     :host {
       display: block;
       width: 100%;
@@ -1051,13 +1051,13 @@ ${this.value}</textarea
     .paddingBottom {
       padding-bottom: var(--space-3);
     }
-  `,r([s({type:g,converter:String})],lt.prototype,"theme",2),r([s({type:String,converter:String})],lt.prototype,"label",2),r([s({type:String,converter:String})],lt.prototype,"emailLabel",2),r([s({type:String,converter:String})],lt.prototype,"buttonLabel",2),r([f("#form")],lt.prototype,"formComponent",2),lt=r([m("nidoca-form-newsletter")],lt);var mt=class extends d{constructor(){super(...arguments);this.theme="primary";this.label="Passwort zur\xFCcksetzen";this.emailLabel="Deine Emailadresse";this.buttonLabel="Zur\xFCcksetzen"}render(){return o`
+  `),r([s({type:f,converter:String})],mt.prototype,"theme",2),r([s({type:String,converter:String})],mt.prototype,"label",2),r([s({type:String,converter:String})],mt.prototype,"emailLabel",2),r([s({type:String,converter:String})],mt.prototype,"buttonLabel",2),r([y("#form")],mt.prototype,"formComponent",2),mt=r([m("nidoca-form-newsletter")],mt);var pt=class extends h{theme="primary";label="Passwort zur\xFCcksetzen";emailLabel="Deine Emailadresse";buttonLabel="Zur\xFCcksetzen";formComponent;render(){return o`
       <nidoca-box theme="${this.theme}">
         <nidoca-form id="form">
           <nidoca-text-h2 class="paddingBottom">${this.label}</nidoca-text-h2>
 
           <nidoca-form-text
-            theme="${v.getOposite(this.theme)}"
+            theme="${w.getOposite(this.theme)}"
             class="paddingBottom"
             textType="${"email"}"
             label="${this.emailLabel}"
@@ -1069,7 +1069,7 @@ ${this.value}</textarea
           ></nidoca-form-text>
 
           <nidoca-button
-            theme="${v.getOposite(this.theme)}"
+            theme="${w.getOposite(this.theme)}"
             class="paddingBottom"
             @nidoca-event-button-clicked="${()=>this.register()}"
             >${this.buttonLabel}
@@ -1078,7 +1078,7 @@ ${this.value}</textarea
           <slot></slot>
         </nidoca-form>
       </nidoca-box>
-    `}register(){this.formComponent&&this.formComponent.validate()&&this.dispatchEvent(new CustomEvent("nidoca-form-reset-password-submit",{detail:this.formComponent.getOutputData(),bubbles:!0,composed:!0}))}};mt.styles=c`
+    `}register(){this.formComponent&&this.formComponent.validate()&&this.dispatchEvent(new CustomEvent("nidoca-form-reset-password-submit",{detail:this.formComponent.getOutputData(),bubbles:!0,composed:!0}))}};c(pt,"styles",p`
     :host {
       display: block;
       width: 100%;
@@ -1087,14 +1087,14 @@ ${this.value}</textarea
     .paddingBottom {
       padding-bottom: var(--space-3);
     }
-  `,r([s({type:g,converter:String})],mt.prototype,"theme",2),r([s({type:String,converter:String})],mt.prototype,"label",2),r([s({type:String,converter:String})],mt.prototype,"emailLabel",2),r([s({type:String,converter:String})],mt.prototype,"buttonLabel",2),r([f("#form")],mt.prototype,"formComponent",2),mt=r([m("nidoca-form-reset-password")],mt);var C=class extends d{constructor(){super(...arguments);this.theme="surface";this.label="Passwort \xE4ndern";this.oldPasswordLabel="Altes Passwort";this.newPasswordLabel="Neues Passwort";this.repeatNewPasswordLabel="Wiederholen";this.buttonLabel="\xC4ndern";this.showErrorMessageSamePassword=!1;this.errorMessageSamePasswordLabel="Altes und neues Passwort d\xFCrfen nicht \xFCbereinstimmen.";this.showErrorMessagePasswordDiff=!1;this.errorMessagePasswordDiffLabel="Die Passw\xF6rter stimmen nicht \xFCberein"}render(){return o`
+  `),r([s({type:f,converter:String})],pt.prototype,"theme",2),r([s({type:String,converter:String})],pt.prototype,"label",2),r([s({type:String,converter:String})],pt.prototype,"emailLabel",2),r([s({type:String,converter:String})],pt.prototype,"buttonLabel",2),r([y("#form")],pt.prototype,"formComponent",2),pt=r([m("nidoca-form-reset-password")],pt);var O=class extends h{theme="surface";label="Passwort \xE4ndern";oldPasswordLabel="Altes Passwort";newPasswordLabel="Neues Passwort";repeatNewPasswordLabel="Wiederholen";buttonLabel="\xC4ndern";formComponent;oldPasswordInputField;newPasswordInputField;repeatNewPasswordInputField;showErrorMessageSamePassword=!1;errorMessageSamePasswordLabel="Altes und neues Passwort d\xFCrfen nicht \xFCbereinstimmen.";showErrorMessagePasswordDiff=!1;errorMessagePasswordDiffLabel="Die Passw\xF6rter stimmen nicht \xFCberein";render(){return o`
       <nidoca-box theme="${this.theme}">
         <nidoca-form id="form">
           <nidoca-text-h2 class="paddingBottom">${this.label}</nidoca-text-h2>
 
           <nidoca-form-text
             id="oldPassword"
-            theme="${v.getOposite(this.theme)}"
+            theme="${w.getOposite(this.theme)}"
             class="paddingBottom"
             textType="${"password"}"
             label="${this.oldPasswordLabel}"
@@ -1104,7 +1104,7 @@ ${this.value}</textarea
 
           <nidoca-form-text
             id="newPassword"
-            theme="${v.getOposite(this.theme)}"
+            theme="${w.getOposite(this.theme)}"
             class="paddingBottom"
             textType="${"password"}"
             label="${this.newPasswordLabel}"
@@ -1114,7 +1114,7 @@ ${this.value}</textarea
 
           <nidoca-form-text
             id="repeatNewPassword"
-            theme="${v.getOposite(this.theme)}"
+            theme="${w.getOposite(this.theme)}"
             class="paddingBottom"
             textType="${"password"}"
             label="${this.repeatNewPasswordLabel}"
@@ -1123,7 +1123,7 @@ ${this.value}</textarea
           ></nidoca-form-text>
 
           <nidoca-button
-            theme="${v.getOposite(this.theme)}"
+            theme="${w.getOposite(this.theme)}"
             class="paddingBottom"
             @nidoca-event-button-clicked="${()=>this.changePassword()}"
             >${this.buttonLabel}
@@ -1140,7 +1140,7 @@ ${this.value}</textarea
               text="${this.errorMessagePasswordDiffLabel}"
             ></nidoca-text>`:o``}
       </nidoca-box>
-    `}changePassword(){this.formComponent?.validate()&&(this.showErrorMessagePasswordDiff=!1,this.newPasswordInputField?.getOutputData().value!=this.repeatNewPasswordInputField?.getOutputData().value&&(this.showErrorMessagePasswordDiff=!0),this.showErrorMessageSamePassword=!1,this.oldPasswordInputField?.getOutputData().value==this.newPasswordInputField?.getOutputData().value&&(this.showErrorMessageSamePassword=!0),!this.showErrorMessagePasswordDiff&&!this.showErrorMessageSamePassword?this.dispatchEvent(new CustomEvent("nidoca-form-change-password-submit",{detail:this.formComponent.getOutputData(),bubbles:!0,composed:!0})):this.requestUpdate())}};C.styles=c`
+    `}changePassword(){this.formComponent?.validate()&&(this.showErrorMessagePasswordDiff=!1,this.newPasswordInputField?.getOutputData().value!=this.repeatNewPasswordInputField?.getOutputData().value&&(this.showErrorMessagePasswordDiff=!0),this.showErrorMessageSamePassword=!1,this.oldPasswordInputField?.getOutputData().value==this.newPasswordInputField?.getOutputData().value&&(this.showErrorMessageSamePassword=!0),!this.showErrorMessagePasswordDiff&&!this.showErrorMessageSamePassword?this.dispatchEvent(new CustomEvent("nidoca-form-change-password-submit",{detail:this.formComponent.getOutputData(),bubbles:!0,composed:!0})):this.requestUpdate())}};c(O,"styles",p`
     :host {
       display: block;
       width: 100%;
@@ -1149,13 +1149,13 @@ ${this.value}</textarea
     .paddingBottom {
       padding-bottom: var(--space-3);
     }
-  `,r([s({type:g,converter:String})],C.prototype,"theme",2),r([s({type:String,converter:String})],C.prototype,"label",2),r([s({type:String,converter:String})],C.prototype,"oldPasswordLabel",2),r([s({type:String,converter:String})],C.prototype,"newPasswordLabel",2),r([s({type:String,converter:String})],C.prototype,"repeatNewPasswordLabel",2),r([s({type:String,converter:String})],C.prototype,"buttonLabel",2),r([f("#form")],C.prototype,"formComponent",2),r([f("#oldPassword")],C.prototype,"oldPasswordInputField",2),r([f("#newPassword")],C.prototype,"newPasswordInputField",2),r([f("#repeatNewPassword")],C.prototype,"repeatNewPasswordInputField",2),r([s()],C.prototype,"errorMessageSamePasswordLabel",2),r([s()],C.prototype,"errorMessagePasswordDiffLabel",2),C=r([m("nidoca-form-change-password")],C);var nt=class extends d{constructor(){super(...arguments);this.theme="primary";this.label="Registrieren";this.emailLabel="Email";this.passwordLabel="Passwort";this.buttonLabel="Registrieren"}render(){return o`
-      <nidoca-box theme="${O(this.theme)}">
+  `),r([s({type:f,converter:String})],O.prototype,"theme",2),r([s({type:String,converter:String})],O.prototype,"label",2),r([s({type:String,converter:String})],O.prototype,"oldPasswordLabel",2),r([s({type:String,converter:String})],O.prototype,"newPasswordLabel",2),r([s({type:String,converter:String})],O.prototype,"repeatNewPasswordLabel",2),r([s({type:String,converter:String})],O.prototype,"buttonLabel",2),r([y("#form")],O.prototype,"formComponent",2),r([y("#oldPassword")],O.prototype,"oldPasswordInputField",2),r([y("#newPassword")],O.prototype,"newPasswordInputField",2),r([y("#repeatNewPassword")],O.prototype,"repeatNewPasswordInputField",2),r([s()],O.prototype,"errorMessageSamePasswordLabel",2),r([s()],O.prototype,"errorMessagePasswordDiffLabel",2),O=r([m("nidoca-form-change-password")],O);var ot=class extends h{theme="primary";label="Registrieren";emailLabel="Email";passwordLabel="Passwort";buttonLabel="Registrieren";formComponent;render(){return o`
+      <nidoca-box theme="${C(this.theme)}">
         <nidoca-form id="form">
           <nidoca-text-h2 class="paddingBottom">${this.label}</nidoca-text-h2>
 
           <nidoca-form-text
-            theme="${v.getOposite(this.theme)}"
+            theme="${w.getOposite(this.theme)}"
             class="paddingBottom"
             textType="${"email"}"
             label="${this.emailLabel}"
@@ -1167,7 +1167,7 @@ ${this.value}</textarea
           ></nidoca-form-text>
 
           <nidoca-form-text
-            theme="${v.getOposite(this.theme)}"
+            theme="${w.getOposite(this.theme)}"
             class="paddingBottom"
             textType="${"password"}"
             label="${this.passwordLabel}"
@@ -1178,7 +1178,7 @@ ${this.value}</textarea
           ></nidoca-form-text>
 
           <nidoca-button
-            theme="${v.getOposite(this.theme)}"
+            theme="${w.getOposite(this.theme)}"
             class="paddingBottom"
             @nidoca-event-button-clicked="${()=>this.register()}"
             >${this.buttonLabel}
@@ -1187,7 +1187,7 @@ ${this.value}</textarea
           <slot></slot>
         </nidoca-form>
       </nidoca-box>
-    `}register(){this.formComponent&&this.formComponent.validate()&&this.dispatchEvent(new CustomEvent("nidoca-form-register-submit",{detail:this.formComponent.getOutputData(),bubbles:!0,composed:!0}))}};nt.styles=c`
+    `}register(){this.formComponent&&this.formComponent.validate()&&this.dispatchEvent(new CustomEvent("nidoca-form-register-submit",{detail:this.formComponent.getOutputData(),bubbles:!0,composed:!0}))}};c(ot,"styles",p`
     :host {
       display: block;
       width: 100%;
@@ -1196,7 +1196,7 @@ ${this.value}</textarea
     .paddingBottom {
       padding-bottom: var(--space-3);
     }
-  `,r([s({type:g,converter:String})],nt.prototype,"theme",2),r([s({type:String,converter:String})],nt.prototype,"label",2),r([s({type:String,converter:String})],nt.prototype,"emailLabel",2),r([s({type:String,converter:String})],nt.prototype,"passwordLabel",2),r([s({type:String,converter:String})],nt.prototype,"buttonLabel",2),r([f("#form")],nt.prototype,"formComponent",2),nt=r([m("nidoca-form-register")],nt);var Jt=class extends d{constructor(){super(...arguments);this.code=""}render(){return o``}};Jt.styles=c``,r([s({type:String})],Jt.prototype,"code",2),Jt=r([m("nidoca-upload")],Jt);var Mt=class extends d{constructor(){super(...arguments);this.theme="plain";this.text=""}render(){return o`
+  `),r([s({type:f,converter:String})],ot.prototype,"theme",2),r([s({type:String,converter:String})],ot.prototype,"label",2),r([s({type:String,converter:String})],ot.prototype,"emailLabel",2),r([s({type:String,converter:String})],ot.prototype,"passwordLabel",2),r([s({type:String,converter:String})],ot.prototype,"buttonLabel",2),r([y("#form")],ot.prototype,"formComponent",2),ot=r([m("nidoca-form-register")],ot);var Qt=class extends h{code="";render(){return o``}};c(Qt,"styles",p``),r([s({type:String})],Qt.prototype,"code",2),Qt=r([m("nidoca-upload")],Qt);var qt=class extends h{theme="plain";text="";render(){return o`
       <style>
         .hr {
           border-color: var(--app-color-${this.theme}-border);
@@ -1206,7 +1206,7 @@ ${this.value}</textarea
       <nidoca-text-body>${this.text}</nidoca-text-body>
 
       <div class="hr"></div>
-    `}};Mt.styles=c`
+    `}};c(qt,"styles",p`
     :host,
     ::slotted(:host) {
       display: block;
@@ -1225,7 +1225,7 @@ ${this.value}</textarea
       border-bottom-style: solid;
       border-width: thin;
     }
-  `,r([s({type:g,converter:String})],Mt.prototype,"theme",2),r([s({type:String,converter:String})],Mt.prototype,"text",2),Mt=r([m("nidoca-hr")],Mt);var pt=class extends d{constructor(){super(...arguments);this.text="";this.icon=""}render(){return o`
+  `),r([s({type:f,converter:String})],qt.prototype,"theme",2),r([s({type:String,converter:String})],qt.prototype,"text",2),qt=r([m("nidoca-hr")],qt);var ct=class extends h{text="";icon="";render(){return o`
       <div class="container">
         ${this.icon?o` <nidoca-icon
               slot="graphic"
@@ -1235,7 +1235,7 @@ ${this.value}</textarea
         ${this.text?o` <nidoca-text-button>${this.text}</nidoca-text-button>`:o``}
         <slot></slot>
       </div>
-    `}static example(t=""){return o`<nidoca-menu-area slot="${t}" icon="gavel" text="Rechtliches"></nidoca-menu-area>`}};pt.styles=c`
+    `}static example(t=""){return o`<nidoca-menu-area slot="${t}" icon="gavel" text="Rechtliches"></nidoca-menu-area>`}};c(ct,"styles",p`
     .container {
       display: flex;
       padding-left: var(--space-2);
@@ -1243,7 +1243,7 @@ ${this.value}</textarea
       padding-top: var(--space);
       padding-bottom: var(--space);
     }
-  `,r([s({type:String})],pt.prototype,"text",2),r([s({type:String})],pt.prototype,"icon",2),pt=r([m("nidoca-menu-area")],pt);var j=class extends d{constructor(){super(...arguments);this.text="";this.icon="";this.selected=!1;this.theme="surface"}render(){return o`
+  `),r([s({type:String})],ct.prototype,"text",2),r([s({type:String})],ct.prototype,"icon",2),ct=r([m("nidoca-menu-area")],ct);var D=class extends h{text="";icon="";selected=!1;theme="surface";render(){return o`
       <style>
         .container:hover {
           background-color: var(--app-color-${this.theme}-hover);
@@ -1257,7 +1257,7 @@ ${this.value}</textarea
             ></nidoca-icon>`:o``}
         ${this.text?o` <nidoca-text-body theme="${this.theme}">${this.text}</nidoca-text-body>`:o``}
       </div>
-    `}clicked(){this.dispatchEvent(new CustomEvent("nidoca-event-menu-item-clicked",{detail:this,bubbles:!0,composed:!0}))}static example(t=""){return o`<nidoca-menu-item slot="${t}" text="Start" icon="home"></nidoca-menu-item>`}};j.styles=c`
+    `}clicked(){this.dispatchEvent(new CustomEvent("nidoca-event-menu-item-clicked",{detail:this,bubbles:!0,composed:!0}))}static example(t=""){return o`<nidoca-menu-item slot="${t}" text="Start" icon="home"></nidoca-menu-item>`}};c(D,"styles",p`
     .container {
       display: flex;
       cursor: pointer;
@@ -1270,7 +1270,7 @@ ${this.value}</textarea
     .selected {
       backdrop-filter: contrast(var(--app-color-percent-selected));
     }
-  `,r([s({type:String})],j.prototype,"text",2),r([s({type:String})],j.prototype,"icon",2),r([s({type:Boolean})],j.prototype,"selected",2),r([s({type:String})],j.prototype,"theme",2),j=r([m("nidoca-menu-item")],j);var ct=class extends d{constructor(){super(...arguments);this.theme="plain"}render(){return o` <style>
+  `),r([s({type:String})],D.prototype,"text",2),r([s({type:String})],D.prototype,"icon",2),r([s({type:Boolean})],D.prototype,"selected",2),r([s({type:String})],D.prototype,"theme",2),D=r([m("nidoca-menu-item")],D);var dt=class extends h{theme="plain";slotElement;render(){return o` <style>
         :host,
         *,
         ::slotted(*) {
@@ -1279,7 +1279,7 @@ ${this.value}</textarea
           border-color: var(--app-color-${this.theme}-border);
         }
       </style>
-      <slot id="slotElement"></slot>`}updated(t){super.updated(t),t.forEach((n,i)=>{if(i=="theme"&&this.slotElement!=null){let l=this.slotElement.assignedElements();for(let p=0;p<l.length;p++){let u=l[p];u instanceof j&&(u.theme=this.theme)}}})}firstUpdated(){this.addEventListener("click",t=>{if(this.slotElement!=null){let n=this.slotElement.assignedElements();for(let i=0;i<n.length;i++){let l=n[i];if(l instanceof j){let p=l.getBoundingClientRect();p.left<t.x&&p.right>t.x&&(p.top<t.y&&p.bottom>t.y?l.selected=!0:l.selected=!1)}}}})}static example(t=""){return o`
+      <slot id="slotElement"></slot>`}updated(t){super.updated(t),t.forEach((e,n)=>{if(n=="theme"&&this.slotElement!=null){let i=this.slotElement.assignedElements();for(let l=0;l<i.length;l++){let d=i[l];d instanceof D&&(d.theme=this.theme)}}})}firstUpdated(){this.addEventListener("click",t=>{if(this.slotElement!=null){let e=this.slotElement.assignedElements();for(let n=0;n<e.length;n++){let i=e[n];if(i instanceof D){let l=i.getBoundingClientRect();l.left<t.x&&l.right>t.x&&(l.top<t.y&&l.bottom>t.y?i.selected=!0:i.selected=!1)}}}})}static example(t=""){return o`
       <nidoca-menu slot="${t}" theme="primary">
         <nidoca-menu-item text="Start"></nidoca-menu-item>
         <nidoca-menu-area text="Framework"></nidoca-menu-area>
@@ -1291,17 +1291,17 @@ ${this.value}</textarea
         <nidoca-menu-area text="Sonstiges"></nidoca-menu-area>
         <nidoca-menu-item icon="home" text="Einstellungen"></nidoca-menu-item>
       </nidoca-menu>
-    `}};ct.styles=c`
+    `}};c(dt,"styles",p`
     :host,
     slot {
       display: block;
     }
-  `,r([s({type:String})],ct.prototype,"theme",2),r([f("#slotElement")],ct.prototype,"slotElement",2),ct=r([m("nidoca-menu")],ct);var ot=class extends d{constructor(){super(...arguments);this.height="auto";this.width="auto";this.left="auto";this.top="auto";this.right="auto";this.bottom="auto"}render(){return o`
+  `),r([s({type:String})],dt.prototype,"theme",2),r([y("#slotElement")],dt.prototype,"slotElement",2),dt=r([m("nidoca-menu")],dt);var it=class extends h{height="auto";width="auto";left="auto";top="auto";right="auto";bottom="auto";render(){return o`
       <slot
         class="floatingContainer"
         style="${this.toStyle(this.height,this.width,this.left,this.right,this.top,this.bottom)}"
       ></slot>
-    `}toStyle(t,n,i,l,p,u){return"height:".concat(t).concat(";").concat("width:").concat(n).concat(";").concat("left:").concat(i).concat(";").concat("right:").concat(l).concat(";").concat("top:").concat(p).concat(";").concat("bottom:").concat(u).concat(";")}};ot.styles=c`
+    `}toStyle(t,e,n,i,l,d){return"height:".concat(t).concat(";").concat("width:").concat(e).concat(";").concat("left:").concat(n).concat(";").concat("right:").concat(i).concat(";").concat("top:").concat(l).concat(";").concat("bottom:").concat(d).concat(";")}};c(it,"styles",p`
     .floatingContainer {
       position: fixed;
       display: inline;
@@ -1309,7 +1309,7 @@ ${this.value}</textarea
       background-color: inherit;
       color: inherit;
     }
-  `,r([s({type:String})],ot.prototype,"height",2),r([s({type:String})],ot.prototype,"width",2),r([s({type:String})],ot.prototype,"left",2),r([s({type:String})],ot.prototype,"top",2),r([s({type:String})],ot.prototype,"right",2),r([s({type:String})],ot.prototype,"bottom",2),ot=r([m("nidoca-layout-floating")],ot);var Ft=class extends d{constructor(){super(...arguments);this.theme="plain"}render(){return o`<slot></slot>`}};Ft.styles=c`
+  `),r([s({type:String})],it.prototype,"height",2),r([s({type:String})],it.prototype,"width",2),r([s({type:String})],it.prototype,"left",2),r([s({type:String})],it.prototype,"top",2),r([s({type:String})],it.prototype,"right",2),r([s({type:String})],it.prototype,"bottom",2),it=r([m("nidoca-layout-floating")],it);var Ft=class extends h{theme="plain";render(){return o`<slot></slot>`}};c(Ft,"styles",p`
     :host {
       display: block;
     }
@@ -1322,7 +1322,7 @@ ${this.value}</textarea
       width: auto;
       max-width: var(--max-width);
     }
-  `,r([s({type:String})],Ft.prototype,"theme",2),Ft=r([m("nidoca-container")],Ft);var Vt=class extends d{constructor(){super();this.hideSidebox=!0;this.theme=v.prototype.getParentTheme(this)||"plain"}render(){return o` <style>
+  `),r([s({type:String})],Ft.prototype,"theme",2),Ft=r([m("nidoca-container")],Ft);var jt=class extends h{theme;hideSidebox=!0;constructor(){super(),this.theme=w.prototype.getParentTheme(this)||"plain"}render(){return o` <style>
         .listbox,
         .sidebox {
           color: var(--app-color-text-${this.theme});
@@ -1336,7 +1336,7 @@ ${this.value}</textarea
         }
       </style>
       <slot class="listbox" name="left"></slot>
-      ${this.hideSidebox?o``:o` <slot class="sidebox" name="sidebox"></slot>`}`}};Vt.styles=c`
+      ${this.hideSidebox?o``:o` <slot class="sidebox" name="sidebox"></slot>`}`}};c(jt,"styles",p`
     :host {
       display: flex;
       flex-direction: row;
@@ -1373,7 +1373,7 @@ ${this.value}</textarea
         width: 100%;
       }
     }
-  `,r([s({type:g,converter:String})],Vt.prototype,"theme",2),r([s({type:Boolean,converter:String})],Vt.prototype,"hideSidebox",2),Vt=r([m("nidoca-split-screen")],Vt);var z=class extends d{constructor(){super(...arguments);this.icon="";this.clickable=!0;this.deactivated=!1;this.title=""}render(){return o`
+  `),r([s({type:f,converter:String})],jt.prototype,"theme",2),r([s({type:Boolean,converter:String})],jt.prototype,"hideSidebox",2),jt=r([m("nidoca-split-screen")],jt);var z=class extends h{icon="";clickable=!0;deactivated=!1;title="";render(){return o`
       <i
         class="material-icons ${this.deactivated?"deactivated":""} ${this.clickable?"clickable":""}"
         title="${this.title}"
@@ -1388,7 +1388,7 @@ ${this.value}</textarea
         icon="menu"
         title="Mein Icon"
       ></nidoca-icon>
-    `}};z.styles=c`
+    `}};c(z,"styles",p`
     :host {
       display: inline-block;
       font-size: var(--icon-size);
@@ -1428,11 +1428,11 @@ ${this.value}</textarea
     .clickable:hover {
       filter: brightness(var(--app-darken-2));
     }
-  `,r([s({type:String})],z.prototype,"icon",2),r([s({type:Boolean})],z.prototype,"clickable",2),r([s({type:Boolean})],z.prototype,"deactivated",2),r([s({type:String})],z.prototype,"title",2),z=r([m("nidoca-icon")],z);var Nt=class extends d{render(){return o`
-      <div id="rippleContainer" anim="ripple" @click="${e=>this.clicked(e)}">
+  `),r([s({type:String})],z.prototype,"icon",2),r([s({type:Boolean})],z.prototype,"clickable",2),r([s({type:Boolean})],z.prototype,"deactivated",2),r([s({type:String})],z.prototype,"title",2),z=r([m("nidoca-icon")],z);var Nt=class extends h{rippleContainerElement;render(){return o`
+      <div id="rippleContainer" anim="ripple" @click="${t=>this.clicked(t)}">
         <slot></slot>
       </div>
-    `}clicked(e){if(this.rippleContainerElement!=null){e instanceof TouchEvent&&(e=e.touches?e.touches[0]:e);let t=this.rippleContainerElement.getBoundingClientRect(),n=Math.sqrt(Math.pow(t.width,2)+Math.pow(t.height,2))*2;this.rippleContainerElement.style.cssText="--s: 0; --o: 1;",this.rippleContainerElement.offsetTop,(e instanceof MouseEvent||e instanceof Touch)&&(this.rippleContainerElement.style.cssText=`--t: 1; --o: 0; --d: ${n}; --x:${e.clientX-t.left}; --y:${e.clientY-t.top};`)}}};Nt.styles=c`
+    `}clicked(t){if(this.rippleContainerElement!=null){t instanceof TouchEvent&&(t=t.touches?t.touches[0]:t);let e=this.rippleContainerElement.getBoundingClientRect(),n=Math.sqrt(Math.pow(e.width,2)+Math.pow(e.height,2))*2;this.rippleContainerElement.style.cssText="--s: 0; --o: 1;",this.rippleContainerElement.offsetTop,(t instanceof MouseEvent||t instanceof Touch)&&(this.rippleContainerElement.style.cssText=`--t: 1; --o: 0; --d: ${n}; --x:${t.clientX-e.left}; --y:${t.clientY-e.top};`)}}};c(Nt,"styles",p`
     :host {
       display: inline-block;
     }
@@ -1481,7 +1481,7 @@ ${this.value}</textarea
       -webkit-transform-origin: center;
       transform-origin: center;
     }
-  `,r([f("#rippleContainer")],Nt.prototype,"rippleContainerElement",2),Nt=r([m("nidoca-ripple")],Nt);var P=class extends d{constructor(){super(...arguments);this.src="";this.width="100%";this.height="auto";this.zoom=!1}render(){return this.src?o`<img class="${this.zoom?"zoom":""}" width="${this.width}" height="${this.height}" src="${this.src}" />`:o``}static exampleImage(){return"data:image/jpeg;base64,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"}static example(t=""){return o`<nidoca-img width="64px" width="64px" slot="${t}" src="${this.exampleImage()} "></nidoca-img>`}};P.styles=c`
+  `),r([y("#rippleContainer")],Nt.prototype,"rippleContainerElement",2),Nt=r([m("nidoca-ripple")],Nt);var M=class extends h{src="";width="100%";height="auto";zoom=!1;render(){return this.src?o`<img class="${this.zoom?"zoom":""}" width="${this.width}" height="${this.height}" src="${this.src}" />`:o``}static exampleImage(){return"data:image/jpeg;base64,IMG"}static example(t=""){return o`<nidoca-img width="64px" width="64px" slot="${t}" src="${this.exampleImage()} "></nidoca-img>`}};c(M,"styles",p`
     :host {
       font-size: 0;
     }
@@ -1494,7 +1494,7 @@ ${this.value}</textarea
       transform: scale(1.1, 1.1);
       transition: transform 0.5s;
     }
-  `,r([s({type:String})],P.prototype,"src",2),r([s({type:String})],P.prototype,"width",2),r([s({type:String})],P.prototype,"height",2),r([s({type:Boolean})],P.prototype,"zoom",2),P=r([m("nidoca-img")],P);var Z=class extends P{static example(e=""){return o`<nidoca-img-round width="64px" width="64px" slot="${e}" src="face.jpg"></nidoca-img-round>`}};Z.styles=c`
+  `),r([s({type:String})],M.prototype,"src",2),r([s({type:String})],M.prototype,"width",2),r([s({type:String})],M.prototype,"height",2),r([s({type:Boolean})],M.prototype,"zoom",2),M=r([m("nidoca-img")],M);var Z=class extends M{static example(t=""){return o`<nidoca-img-round width="64px" width="64px" slot="${t}" src="face.jpg"></nidoca-img-round>`}};c(Z,"styles",p`
     :host {
       font-size: 0;
       display: inline-block;
@@ -1511,7 +1511,7 @@ ${this.value}</textarea
       transform: scale(1.1, 1.1);
       transition: transform 0.5s;
     }
-  `,Z=r([m("nidoca-img-round")],Z);var Gt=class extends d{constructor(){super(...arguments);this.theme="plain"}render(){return o`
+  `),Z=r([m("nidoca-img-round")],Z);var Ut=class extends h{theme="plain";selected;render(){return o`
       <style>
         :host {
           background-color: var(--app-color-${this.theme}-background);
@@ -1521,7 +1521,7 @@ ${this.value}</textarea
       <div class="container">${this.selected?this.selected:o``}</div>
 
       <slot @slotchange="${t=>this.slotChanged(t)}"></slot>
-    `}slotChanged(t){let n=t.target;if(n==null)return;let i=n.assignedElements();for(let l=0;l<i.length;l++){let p=i[l];if(p instanceof P){this.selected==null&&l==0&&(this.selected=p.cloneNode(!0)),p.addEventListener("click",h=>{h.target&&(this.selected=h.target.cloneNode(!0))}),p.width="148px";let u=p.classList;u.contains("img")||u.add("img")}}}};Gt.styles=c`
+    `}slotChanged(t){let e=t.target;if(e==null)return;let n=e.assignedElements();for(let i=0;i<n.length;i++){let l=n[i];if(l instanceof M){this.selected==null&&i==0&&(this.selected=l.cloneNode(!0)),l.addEventListener("click",g=>{g.target&&(this.selected=g.target.cloneNode(!0))}),l.width="148px";let d=l.classList;d.contains("img")||d.add("img")}}}};c(Ut,"styles",p`
     :host,
     ::slotted(:host) {
       display: flex;
@@ -1546,7 +1546,7 @@ ${this.value}</textarea
     .container {
       text-align: center;
     }
-  `,r([s({type:g,converter:String})],Gt.prototype,"theme",2),r([bt()],Gt.prototype,"selected",2),Gt=r([m("nidoca-img-slider")],Gt);var _t=class extends d{constructor(){super(...arguments);this.src=""}render(){return o`
+  `),r([s({type:f,converter:String})],Ut.prototype,"theme",2),r([xt()],Ut.prototype,"selected",2),Ut=r([m("nidoca-img-slider")],Ut);var te=class extends h{src="";render(){return o`
       <span>
         <iframe
           src="${this.src}"
@@ -1555,9 +1555,9 @@ ${this.value}</textarea
           allowfullscreen
         ></iframe
       ></span>
-    `}};_t.styles=c``,r([s({type:String})],_t.prototype,"src",2),_t=r([m("nidoca-movie")],_t);var V=class extends d{constructor(){super(...arguments);this.label="";this.placeholder="";this.name="";this.min=1;this.max=10;this.errorText="";this.numberOne=1;this.numberTwo=1}render(){return o`
+    `}};c(te,"styles",p``),r([s({type:String})],te.prototype,"src",2),te=r([m("nidoca-movie")],te);var j=class extends h{theme;label="";placeholder="";name="";min=1;max=10;errorText="";numberOne=1;numberTwo=1;inputfield;render(){return o`
       <nidoca-form-text
-        theme="${O(this.theme)}"
+        theme="${C(this.theme)}"
         id="inputfield"
         placeholder="${this.placeholder}"
         label="${this.label.concat(" ").concat(String(this.numberOne)).concat(" + ").concat(String(this.numberTwo)).concat(" = ?")}"
@@ -1567,15 +1567,15 @@ ${this.value}</textarea
         type="${"number"}"
         value=""
       ></nidoca-form-text>
-    `}updated(t){(t.has("min")||t.has("max"))&&this.generateNewNumber(),super.updated(t)}generateNewNumber(){this.numberOne=Math.round(this.getRandomNumber(this.min,this.max)),this.numberTwo=Math.round(this.getRandomNumber(this.min,this.max)),this.requestUpdate()}getRandomNumber(t,n){return Math.random()*(n-t)+t}isValid(){return this.inputfield!=null?this.numberOne+this.numberTwo==Number(this.inputfield.getOutputData().value):!1}validate(){let t=this.isValid();return t&&this.inputfield!=null?this.inputfield.errorText="":this.inputfield!=null&&(this.inputfield.errorText=this.errorText),t}};V.styles=c`
+    `}updated(t){(t.has("min")||t.has("max"))&&this.generateNewNumber(),super.updated(t)}generateNewNumber(){this.numberOne=Math.round(this.getRandomNumber(this.min,this.max)),this.numberTwo=Math.round(this.getRandomNumber(this.min,this.max)),this.requestUpdate()}getRandomNumber(t,e){return Math.random()*(e-t)+t}isValid(){return this.inputfield!=null?this.numberOne+this.numberTwo==Number(this.inputfield.getOutputData().value):!1}validate(){let t=this.isValid();return t&&this.inputfield!=null?this.inputfield.errorText="":this.inputfield!=null&&(this.inputfield.errorText=this.errorText),t}};c(j,"styles",p`
     :host {
       display: block;
       width: 100%;
     }
-  `,r([s({type:g,converter:String})],V.prototype,"theme",2),r([s({type:String})],V.prototype,"label",2),r([s({type:String})],V.prototype,"placeholder",2),r([s({type:String})],V.prototype,"name",2),r([s({type:Number})],V.prototype,"min",2),r([s({type:Number})],V.prototype,"max",2),r([s({type:String})],V.prototype,"errorText",2),r([f("#inputfield")],V.prototype,"inputfield",2),V=r([m("nidoca-form-captcha")],V);var wt=class extends d{constructor(){super(...arguments);this.text="";this.href="";this.targetType="_self"}render(){return o`<a href="${this.href}" .target="${this.targetType}">
+  `),r([s({type:f,converter:String})],j.prototype,"theme",2),r([s({type:String})],j.prototype,"label",2),r([s({type:String})],j.prototype,"placeholder",2),r([s({type:String})],j.prototype,"name",2),r([s({type:Number})],j.prototype,"min",2),r([s({type:Number})],j.prototype,"max",2),r([s({type:String})],j.prototype,"errorText",2),r([y("#inputfield")],j.prototype,"inputfield",2),j=r([m("nidoca-form-captcha")],j);var Et=class extends h{text="";href="";targetType="_self";render(){return o`<a href="${this.href}" .target="${this.targetType}">
       <nidoca-text>${this.text}</nidoca-text>
       <slot></slot>
-    </a> `}};wt.styles=c`
+    </a> `}};c(Et,"styles",p`
     :host,
     ::slotted(:host) {
       display: inline-block;
@@ -1585,7 +1585,7 @@ ${this.value}</textarea
       color: inherit;
       background-color: inherit;
     }
-  `,r([s({type:String})],wt.prototype,"text",2),r([s({type:String})],wt.prototype,"href",2),r([s({type:String})],wt.prototype,"targetType",2),wt=r([m("nidoca-link")],wt);var T=class extends d{constructor(){super(...arguments);this.theme="surface";this.primaryText="";this.secondaryText="";this.tertiaryText="";this.infoText="";this.selected=!1}render(){return o`
+  `),r([s({type:String})],Et.prototype,"text",2),r([s({type:String})],Et.prototype,"href",2),r([s({type:String})],Et.prototype,"targetType",2),Et=r([m("nidoca-link")],Et);var S=class extends h{theme="surface";primaryText="";secondaryText="";tertiaryText="";infoText="";selected=!1;render(){return o`
       <style>
         .container {
           color: var(--app-color-text-${this.theme});
@@ -1629,7 +1629,7 @@ ${this.value}</textarea
     >
       ${Z.example("left")}
       <nidoca-icon slot="right" icon="menu"></nidoca-icon>
-    </nidoca-list-item>`}};T.styles=c`
+    </nidoca-list-item>`}};c(S,"styles",p`
     .container {
       display: grid;
       cursor: pointer;
@@ -1658,7 +1658,7 @@ ${this.value}</textarea
       flex-wrap: wrap;
       align-self: center;
     }
-  `,r([s({type:g,converter:String})],T.prototype,"theme",2),r([s({type:String})],T.prototype,"primaryText",2),r([s({type:String})],T.prototype,"secondaryText",2),r([s({type:String})],T.prototype,"tertiaryText",2),r([s({type:String})],T.prototype,"infoText",2),r([s({type:Boolean})],T.prototype,"selected",2),T=r([m("nidoca-list-item")],T);var M=class extends d{constructor(){super(...arguments);this.theme="surface";this.text=""}render(){return o`
+  `),r([s({type:f,converter:String})],S.prototype,"theme",2),r([s({type:String})],S.prototype,"primaryText",2),r([s({type:String})],S.prototype,"secondaryText",2),r([s({type:String})],S.prototype,"tertiaryText",2),r([s({type:String})],S.prototype,"infoText",2),r([s({type:Boolean})],S.prototype,"selected",2),S=r([m("nidoca-list-item")],S);var q=class extends h{theme="surface";text="";render(){return o`
       <style>
         :host {
           color: var(--app-color-text-${this.theme});
@@ -1677,20 +1677,20 @@ ${this.value}</textarea
       <nidoca-text-body theme="${this.theme}" style="flex-basis:100%;" text="${this.text}">
         <slot></slot>
       </nidoca-text-body>
-    `}static example(){return o`<nidoca-list-section theme="primary">Section A</nidoca-list-section>`}};M.styles=c`
+    `}static example(){return o`<nidoca-list-section theme="primary">Section A</nidoca-list-section>`}};c(q,"styles",p`
   :host {
      display:block;
      padding-left: var(--space-2);  
      width:100%;
      box-sizing:border-box;
-  `,r([s({type:g,converter:String})],M.prototype,"theme",2),r([s({type:String})],M.prototype,"text",2),M=r([m("nidoca-list-section")],M);var J=class extends d{constructor(){super(...arguments);this.multiselect=!1}updated(t){super.updated(t),t.forEach((n,i)=>{i=="theme"&&this.getItems().forEach(l=>{l.theme=this.theme})})}render(){return o`
+  `),r([s({type:f,converter:String})],q.prototype,"theme",2),r([s({type:String})],q.prototype,"text",2),q=r([m("nidoca-list-section")],q);var Q=class extends h{multiselect=!1;slotElement;updated(t){super.updated(t),t.forEach((e,n)=>{n=="theme"&&this.getItems().forEach(i=>{i.theme=this.theme})})}render(){return o`
       <slot
-        @nidoca-event-list-item-clicked="${t=>{if(!this.multiselect){this.unselectAll();let n=t.target;n.selected=!0}}}"
+        @nidoca-event-list-item-clicked="${t=>{if(!this.multiselect){this.unselectAll();let e=t.target;e.selected=!0}}}"
         id="slotElement"
       ></slot>
-    `}getItems(){let t=[];if(this.slotElement!=null){let n=this.slotElement.assignedElements();for(let i=0;i<n.length;i++){let l=n[i];l instanceof T&&t.push(l)}}return t}getSelectedItems(){let t=[];if(this.slotElement!=null){let n=this.slotElement.assignedElements();for(let i=0;i<n.length;i++){let l=n[i];l instanceof T&&l.selected&&t.push(l)}}return t}getSelectedIndexes(){let t=[];if(this.slotElement!=null){let n=this.slotElement.assignedElements(),i=0;for(let l=0;l<n.length;l++){let p=n[l];p instanceof T&&(p.selected&&t.push(i),i++)}}return t}selectAll(){this.getItems().forEach(t=>{t.selected=!0})}unselectAll(){this.getItems().forEach(t=>{t.selected=!1})}static example(){return o`<nidoca-list theme="primary">
-      ${M.example()} ${T.example()} ${T.example()} ${T.example()}
-    </nidoca-list>`}};J.styles=c`
+    `}getItems(){let t=[];if(this.slotElement!=null){let e=this.slotElement.assignedElements();for(let n=0;n<e.length;n++){let i=e[n];i instanceof S&&t.push(i)}}return t}getSelectedItems(){let t=[];if(this.slotElement!=null){let e=this.slotElement.assignedElements();for(let n=0;n<e.length;n++){let i=e[n];i instanceof S&&i.selected&&t.push(i)}}return t}getSelectedIndexes(){let t=[];if(this.slotElement!=null){let e=this.slotElement.assignedElements(),n=0;for(let i=0;i<e.length;i++){let l=e[i];l instanceof S&&(l.selected&&t.push(n),n++)}}return t}selectAll(){this.getItems().forEach(t=>{t.selected=!0})}unselectAll(){this.getItems().forEach(t=>{t.selected=!1})}static example(){return o`<nidoca-list theme="primary">
+      ${q.example()} ${S.example()} ${S.example()} ${S.example()}
+    </nidoca-list>`}};c(Q,"styles",p`
     :host {
       width: 100%;
     }
@@ -1699,7 +1699,7 @@ ${this.value}</textarea
       grid-template-rows: 1fr;
       grid-template-columns: 1fr;
     }
-  `,r([s({type:Boolean})],J.prototype,"multiselect",2),r([f("#slotElement")],J.prototype,"slotElement",2),J=r([m("nidoca-list")],J);var dt=class extends d{constructor(){super(...arguments);this.theme="plain";this.prominent=!1}render(){return o`
+  `),r([s({type:Boolean})],Q.prototype,"multiselect",2),r([y("#slotElement")],Q.prototype,"slotElement",2),Q=r([m("nidoca-list")],Q);var ht=class extends h{theme="plain";prominent=!1;render(){return o`
       <style>
         * {
           color: var(--app-color-text-${this.theme});
@@ -1722,7 +1722,7 @@ ${this.value}</textarea
         <nidoca-icon slot="right" style="padding-right:var(--space)" icon="more_vert" clickable></nidoca-icon>
         <nidoca-search-bar theme="primary" slot="prominent" placeholder="Suche..."></nidoca-search-bar>
       </nidoca-top-app-bar>
-    `}};dt.styles=c`
+    `}};c(ht,"styles",p`
     :host {
       display: block;
       top: 0;
@@ -1751,7 +1751,7 @@ ${this.value}</textarea
     .prominent {
       display: block;
     }
-  `,r([s({type:String,converter:String})],dt.prototype,"theme",2),r([s({type:Boolean})],dt.prototype,"prominent",2),dt=r([m("nidoca-top-app-bar")],dt);var kt=class extends d{constructor(){super(...arguments);this.headers=["column 1","column 2"];this.rows=[["row 1",new z],["row 2",new z]];this.theme="plain"}render(){return o`
+  `),r([s({type:String,converter:String})],ht.prototype,"theme",2),r([s({type:Boolean})],ht.prototype,"prominent",2),ht=r([m("nidoca-top-app-bar")],ht);var kt=class extends h{headers=["column 1","column 2"];rows=[["row 1",new z],["row 2",new z]];theme="plain";render(){return o`
       <style>
         td,
         th {
@@ -1773,20 +1773,20 @@ ${this.value}</textarea
       <div>
         <table>
           <thead>
-            ${Wt([this.headers],()=>o` ${At(this.headers,t=>o` <th colspan="1" rowspan="1">${t}</th> `)} `)}
+            ${Bt([this.headers],()=>o` ${$t(this.headers,t=>o` <th colspan="1" rowspan="1">${t}</th> `)} `)}
           </thead>
           <tbody>
-            ${Wt([this.rows],()=>o`
-                  ${At(this.rows,t=>o`
+            ${Bt([this.rows],()=>o`
+                  ${$t(this.rows,t=>o`
                         <tr>
-                          ${At(t,n=>o` <td colspan="1" rowspan="1">${n}</td> `)}
+                          ${$t(t,e=>o` <td colspan="1" rowspan="1">${e}</td> `)}
                         </tr>
                       `)}
                 `)}
           </tbody>
         </table>
       </div>
-    `}};kt.styles=c`
+    `}};c(kt,"styles",p`
     :host {
       display: block;
       width: 100%;
@@ -1807,12 +1807,12 @@ ${this.value}</textarea
       box-sizing: border-box;
       text-align: left;
     }
-  `,r([s({type:Array})],kt.prototype,"headers",2),r([s({type:Array})],kt.prototype,"rows",2),r([s({type:g,converter:String})],kt.prototype,"theme",2),kt=r([m("nidoca-table")],kt);var Et=class extends d{constructor(){super(...arguments);this.selected=!1}render(){return this.selected?o` <slot></slot>`:o``}};Et.styles=c`
+  `),r([s({type:Array})],kt.prototype,"headers",2),r([s({type:Array})],kt.prototype,"rows",2),r([s({type:f,converter:String})],kt.prototype,"theme",2),kt=r([m("nidoca-table")],kt);var Tt=class extends h{selected=!1;render(){return this.selected?o` <slot></slot>`:o``}};c(Tt,"styles",p`
     :host,
     slot {
       display: block;
     }
-  `,r([s({type:Boolean})],Et.prototype,"selected",2),Et=r([m("nidoca-tab-content")],Et);var it=class extends d{constructor(){super(...arguments);this.selected=!1;this.text="";this.theme="surface"}render(){return o`
+  `),r([s({type:Boolean})],Tt.prototype,"selected",2),Tt=r([m("nidoca-tab-content")],Tt);var st=class extends h{selected=!1;text="";theme="surface";render(){return o`
       <style>
         .container {
           color: var(--app-color-text-${this.theme}-background);
@@ -1829,7 +1829,7 @@ ${this.value}</textarea
         ${this.text?o` <nidoca-text text="${this.text}"></nidoca-text> `:o``}
         <slot></slot>
       </div>
-    `}tabClicked(){console.log("tab clicked."),this.dispatchEvent(new CustomEvent("nidoca-event-tab-clicked",{detail:this,bubbles:!0,composed:!0}))}};it.styles=c`
+    `}tabClicked(){console.log("tab clicked."),this.dispatchEvent(new CustomEvent("nidoca-event-tab-clicked",{detail:this,bubbles:!0,composed:!0}))}};c(st,"styles",p`
     :host {
       display: block;
       margin-right: var(--space);
@@ -1846,21 +1846,21 @@ ${this.value}</textarea
     slot {
       display: block;
     }
-  `,r([s({type:Boolean})],it.prototype,"selected",2),r([s({type:String})],it.prototype,"text",2),r([s({type:String})],it.prototype,"theme",2),it=r([m("nidoca-tab")],it);var F=class extends d{constructor(){super(...arguments);this.theme="surface";this.tabIndex=0}render(){return o`
+  `),r([s({type:Boolean})],st.prototype,"selected",2),r([s({type:String})],st.prototype,"text",2),r([s({type:String})],st.prototype,"theme",2),st=r([m("nidoca-tab")],st);var F=class extends h{tabSlot;tabContentSlot;theme="surface";tabIndex=0;render(){return o`
       <div class="container" @nidoca-event-tab-clicked="${t=>this.tabClicked(t)}">
         <slot id="tabSlot" name="tab"></slot>
         <slot id="tabContentSlot" name="tabContent"></slot>
       </div>
-    `}firstUpdated(t){super.firstUpdated(t),this.tabIndexChanged()}update(t){super.update(t),t.get("tabIndex")!=null&&this.tabIndexChanged()}tabIndexChanged(){this.updateNidocaTabElements(),this.updateNidocaTabContentElemnts()}updateNidocaTabElements(){if(this.tabSlot!=null){let t=this.tabSlot.assignedElements(),i=100/t.length,l=t[this.tabIndex];for(let p=0;p<t.length;p++){let u=t[p];u instanceof it&&(u.theme=this.theme,u.style.width=String(i).concat("%"),u==l?(u.selected=!0,u.classList.add("SELECTED")):(u.selected=!1,u.classList.remove("SELECTED")))}}}updateNidocaTabContentElemnts(){let t=0;if(this.tabContentSlot!=null){let n=this.tabContentSlot.assignedElements();for(let i=0;i<n.length;i++){let l=n[i];l instanceof Et&&(this.tabIndex==t?l.selected=!0:l.selected=!1,t++)}}}tabClicked(t){let n=t.detail;this.changeTabIndex(n)}changeTabIndex(t){if(!t.selected&&this.tabSlot!=null){let n=this.tabSlot.assignedElements();for(let i=0;i<n.length;i++){let l=n[i];if(l instanceof it&&l==t){this.tabIndex=i;break}}}}static example(t=""){return o`
+    `}firstUpdated(t){super.firstUpdated(t),this.tabIndexChanged()}update(t){super.update(t),t.get("tabIndex")!=null&&this.tabIndexChanged()}tabIndexChanged(){this.updateNidocaTabElements(),this.updateNidocaTabContentElemnts()}updateNidocaTabElements(){if(this.tabSlot!=null){let t=this.tabSlot.assignedElements(),n=100/t.length,i=t[this.tabIndex];for(let l=0;l<t.length;l++){let d=t[l];d instanceof st&&(d.theme=this.theme,d.style.width=String(n).concat("%"),d==i?(d.selected=!0,d.classList.add("SELECTED")):(d.selected=!1,d.classList.remove("SELECTED")))}}}updateNidocaTabContentElemnts(){let t=0;if(this.tabContentSlot!=null){let e=this.tabContentSlot.assignedElements();for(let n=0;n<e.length;n++){let i=e[n];i instanceof Tt&&(this.tabIndex==t?i.selected=!0:i.selected=!1,t++)}}}tabClicked(t){let e=t.detail;this.changeTabIndex(e)}changeTabIndex(t){if(!t.selected&&this.tabSlot!=null){let e=this.tabSlot.assignedElements();for(let n=0;n<e.length;n++){let i=e[n];if(i instanceof st&&i==t){this.tabIndex=n;break}}}}static example(t=""){return o`
       <nidoca-tabs theme="surface" slot="${t}" tabIndex="0">
         <nidoca-tab slot="tab"><nidoca-text>Tab 1</nidoca-text></nidoca-tab>
         <nidoca-tab slot="tab"><nidoca-text>Tab 2</nidoca-text></nidoca-tab>
         <nidoca-tab slot="tab"><nidoca-text>Tab 3</nidoca-text></nidoca-tab>
-        <nidoca-tab-content slot="tabContent"> ${H.example()} </nidoca-tab-content>
-        <nidoca-tab-content slot="tabContent"> ${H.example()} </nidoca-tab-content>
-        <nidoca-tab-content slot="tabContent"> ${H.example()} </nidoca-tab-content>
+        <nidoca-tab-content slot="tabContent"> ${R.example()} </nidoca-tab-content>
+        <nidoca-tab-content slot="tabContent"> ${R.example()} </nidoca-tab-content>
+        <nidoca-tab-content slot="tabContent"> ${R.example()} </nidoca-tab-content>
       </nidoca-tabs>
-    `}};F.styles=c`
+    `}};c(F,"styles",p`
     :host {
       display: block;
       width: 100%;
@@ -1883,7 +1883,7 @@ ${this.value}</textarea
       align-items: end;
       justify-content: center;
     }
-  `,r([f("#tabSlot")],F.prototype,"tabSlot",2),r([f("#tabContentSlot")],F.prototype,"tabContentSlot",2),r([s({type:String})],F.prototype,"theme",2),r([s({type:Number})],F.prototype,"tabIndex",2),F=r([m("nidoca-tabs")],F);var Tt=class extends d{constructor(){super();this.hideLeft=!0;this.prominent=!1;document.getElementsByTagName("html")[0].setAttribute("oncontextmenu","return false"),this.addEventListener("click",t=>{if(!this.hideLeft&&this.leftElement){console.log("close");let n=this.leftElement.getBoundingClientRect();this.hideLeft=641>window.innerWidth&&0<=t.x-n.width}})}render(){return o`
+  `),r([y("#tabSlot")],F.prototype,"tabSlot",2),r([y("#tabContentSlot")],F.prototype,"tabContentSlot",2),r([s({type:String})],F.prototype,"theme",2),r([s({type:Number})],F.prototype,"tabIndex",2),F=r([m("nidoca-tabs")],F);var St=class extends h{hideLeft=!0;prominent=!1;leftElement;constructor(){super(),document.getElementsByTagName("html")[0].setAttribute("oncontextmenu","return false"),this.addEventListener("click",t=>{if(!this.hideLeft&&this.leftElement){console.log("close");let e=this.leftElement.getBoundingClientRect();this.hideLeft=641>window.innerWidth&&0<=t.x-e.width}})}render(){return o`
       <slot
         id="left"
         @nidoca-event-menu-item-clicked="${()=>{641>window.innerWidth&&(this.hideLeft=!0)}}"
@@ -1917,7 +1917,7 @@ ${this.value}</textarea
         </nidoca-top-app-bar>
         <slot name="content"></slot>
       </div>
-    `}};Tt.styles=c`
+    `}};c(St,"styles",p`
     :host {
       display: flex;
       flex-direction: row;
@@ -1949,15 +1949,15 @@ ${this.value}</textarea
       height: 100vh;
       overflow: scroll;
     }
-  `,r([s({type:Boolean})],Tt.prototype,"hideLeft",2),r([s({type:Boolean})],Tt.prototype,"prominent",2),r([f("#left")],Tt.prototype,"leftElement",2),Tt=r([m("nidoca-template")],Tt);var St=class extends d{firstUpdated(e){super.firstUpdated(e),navigator.mediaDevices.getUserMedia({video:!0,audio:!1}).then(t=>{this.videoElement&&(this.videoElement.srcObject=t)})}render(){return o`
+  `),r([s({type:Boolean})],St.prototype,"hideLeft",2),r([s({type:Boolean})],St.prototype,"prominent",2),r([y("#left")],St.prototype,"leftElement",2),St=r([m("nidoca-template")],St);var _t=class extends h{videoElement;canvasElement;buttonElement;firstUpdated(t){super.firstUpdated(t),navigator.mediaDevices.getUserMedia({video:!0,audio:!1}).then(e=>{this.videoElement&&(this.videoElement.srcObject=e)})}render(){return o`
       <video id="video" width="320" height="240" autoplay></video>
       <button id="click-photo" @click="${()=>this.makeFoto()}">Click Photo</button>
       <canvas id="canvas" width="320" height="240"></canvas>
-    `}makeFoto(){if(this.canvasElement&&this.videoElement){let e=this.canvasElement.getContext("2d");if(e){e.drawImage(this.videoElement,0,0,this.canvasElement.width,this.canvasElement.height);let t=this.canvasElement.toDataURL("image/jpeg");console.log(t)}}}};St.styles=c``,r([f("#video")],St.prototype,"videoElement",2),r([f("#canvas")],St.prototype,"canvasElement",2),r([f("#click-photo")],St.prototype,"buttonElement",2),St=r([m("nidoca-video")],St);var qt=class extends d{constructor(){super(...arguments);this.src="";this.canvasElements=[];this.storeCanvasElements=[]}render(){return o`
+    `}makeFoto(){if(this.canvasElement&&this.videoElement){let t=this.canvasElement.getContext("2d");if(t){t.drawImage(this.videoElement,0,0,this.canvasElement.width,this.canvasElement.height);let e=this.canvasElement.toDataURL("image/jpeg");console.log(e)}}}};c(_t,"styles",p``),r([y("#video")],_t.prototype,"videoElement",2),r([y("#canvas")],_t.prototype,"canvasElement",2),r([y("#click-photo")],_t.prototype,"buttonElement",2),_t=r([m("nidoca-video")],_t);var Vt=class extends h{src="";canvasElements=[];storeCanvasElements=[];img;render(){return o`
       <img style="display: none;" id="img" src="${this.src}" />
 
       ${this.canvasElements.map(t=>o`${t}`)}
-    `}updated(t){super.updated(t),t.forEach((n,i)=>{if(console.debug(`${this.tagName} : property ${String(i)} changed. oldValue: ${n}`),i=="src"){this.convert();let l=[["App-Symbol",512,512],["Vorstellungsgrafik",1024,500],["screenshoot_dummy",1920,1080]]}})}convert(){this.img&&(console.log("GO"),this.img.onload=()=>{[[12,12],[16,16],[22,22],[24,24],[32,32],[36,36],[48,48],[64,64],[72,72],[96,96],[128,128],[144,144],[192,192]].forEach(t=>{let n=document.createElement("canvas");n.width=t[0],n.height=t[1];let i=n.getContext("2d");i&&this.img&&(this.img.crossOrigin="anonymous",i.drawImage(this.img,0,0,t[0],t[1]),n.toBlob(l=>{},"image/webp")),this.canvasElements.push(n)}),this.requestUpdate()})}};qt.styles=c``,r([s({type:String})],qt.prototype,"src",2),r([f("#img")],qt.prototype,"img",2),qt=r([m("nidoca-svg-2-webp")],qt);var x=class extends d{constructor(){super(...arguments);this.theme="plain";this.text=""}render(){return o`<style>
+    `}updated(t){super.updated(t),t.forEach((e,n)=>{if(console.debug(`${this.tagName} : property ${String(n)} changed. oldValue: ${e}`),n=="src"){this.convert();let i=[["App-Symbol",512,512],["Vorstellungsgrafik",1024,500],["screenshoot_dummy",1920,1080]]}})}convert(){this.img&&(console.log("GO"),this.img.onload=()=>{[[12,12],[16,16],[22,22],[24,24],[32,32],[36,36],[48,48],[64,64],[72,72],[96,96],[128,128],[144,144],[192,192]].forEach(t=>{let e=document.createElement("canvas");e.width=t[0],e.height=t[1];let n=e.getContext("2d");n&&this.img&&(this.img.crossOrigin="anonymous",n.drawImage(this.img,0,0,t[0],t[1]),e.toBlob(i=>{},"image/webp")),this.canvasElements.push(e)}),this.requestUpdate()})}};c(Vt,"styles",p``),r([s({type:String})],Vt.prototype,"src",2),r([y("#img")],Vt.prototype,"img",2),Vt=r([m("nidoca-svg-2-webp")],Vt);var v=class extends h{theme="plain";text="";render(){return o`<style>
         slot {
           color: var(--app-color-text-${this.theme});
         }
@@ -1981,7 +1981,7 @@ ${this.value}</textarea
         <nidoca-text-info>nidoca-text-info</nidoca-text-info>
         <nidoca-text-success>nidoca-text-success</nidoca-text-success>
       </div>
-    `}};x.styles=c`
+    `}};c(v,"styles",p`
     :host,
     slot,
     ::slotted(:host),
@@ -1994,7 +1994,7 @@ ${this.value}</textarea
 
     slot {
     }
-  `,r([s({type:g,converter:String})],x.prototype,"theme",2),r([s({type:String})],x.prototype,"text",2),x=r([m("nidoca-text")],x);var ue=class extends x{render(){return o` <slot style="color: var(--app-color-text-${this.theme});">${this.text}</slot>`}};ue.styles=c`
+  `),r([s({type:f,converter:String})],v.prototype,"theme",2),r([s({type:String})],v.prototype,"text",2),v=r([m("nidoca-text")],v);var fe=class extends v{render(){return o` <slot style="color: var(--app-color-text-${this.theme});">${this.text}</slot>`}};c(fe,"styles",p`
     :host,
     slot,
     ::slotted(:host),
@@ -2004,7 +2004,7 @@ ${this.value}</textarea
       font-weight: 450;
       font-size: 105%;
     }
-  `,ue=r([m("nidoca-text-body")],ue);var ge=class extends x{render(){return o`${super.render()}`}};ge.styles=c`
+  `),fe=r([m("nidoca-text-body")],fe);var ge=class extends v{render(){return o`${super.render()}`}};c(ge,"styles",p`
     :host,
     slot,
     ::slotted(:host),
@@ -2015,7 +2015,7 @@ ${this.value}</textarea
       line-height: 1.5em;
       filter: brightness(var(--app-lighten-3));
     }
-  `,ge=r([m("nidoca-text-button")],ge);var fe=class extends x{};fe.styles=c`
+  `),ge=r([m("nidoca-text-button")],ge);var ye=class extends v{};c(ye,"styles",p`
     :host,
     slot,
     ::slotted(:host),
@@ -2025,7 +2025,7 @@ ${this.value}</textarea
       font-weight: 400;
       text-transform: uppercase;
     }
-  `,fe=r([m("nidoca-text-overline")],fe);var ye=class extends x{render(){return o` <slot style="color: var(--app-color-text-${this.theme});">${this.text}</slot>`}};ye.styles=c`
+  `),ye=r([m("nidoca-text-overline")],ye);var be=class extends v{render(){return o` <slot style="color: var(--app-color-text-${this.theme});">${this.text}</slot>`}};c(be,"styles",p`
     :host,
     slot,
     ::slotted(:host),
@@ -2035,12 +2035,12 @@ ${this.value}</textarea
       font-weight: 400;
       font-size: 100%;
     }
-  `,ye=r([m("nidoca-text-subtitle")],ye);var G=class extends x{render(){return o`<style>
+  `),be=r([m("nidoca-text-subtitle")],be);var U=class extends v{render(){return o`<style>
         slot {
           color: var(--app-color-subtext-${this.theme});
         }
       </style>
-      <slot>${this.text}</slot>`}};G.styles=c`
+      <slot>${this.text}</slot>`}};c(U,"styles",p`
     :host,
     slot,
     ::slotted(:host),
@@ -2050,27 +2050,27 @@ ${this.value}</textarea
       line-height: 1.25em;
       font-size: 95%;
     }
-  `,G=r([m("nidoca-text-caption")],G);var _e=class extends G{render(){return o`<style>
+  `),U=r([m("nidoca-text-caption")],U);var Ne=class extends U{render(){return o`<style>
         slot {
           color: var(--app-color-error-background);
         }
       </style>
-      <slot>${this.text}</slot>`}};_e=r([m("nidoca-text-error")],_e);var tr=class extends G{render(){return o`<style>
+      <slot>${this.text}</slot>`}};Ne=r([m("nidoca-text-error")],Ne);var tr=class extends U{render(){return o`<style>
         slot {
           color: var(--app-color-success-background);
         }
       </style>
-      <slot>${this.text}</slot>`}};tr=r([m("nidoca-text-success")],tr);var er=class extends G{render(){return o`<style>
+      <slot>${this.text}</slot>`}};tr=r([m("nidoca-text-success")],tr);var er=class extends U{render(){return o`<style>
         slot {
           color: var(--app-color-warning-background);
         }
       </style>
-      <slot>${this.text}</slot>`}};er=r([m("nidoca-text-warning")],er);var rr=class extends G{render(){return o`<style>
+      <slot>${this.text}</slot>`}};er=r([m("nidoca-text-warning")],er);var rr=class extends U{render(){return o`<style>
         slot {
           color: var(--app-color-info-background);
         }
       </style>
-      <slot>${this.text}</slot>`}};rr=r([m("nidoca-text-info")],rr);var be=class extends x{};be.styles=c`
+      <slot>${this.text}</slot>`}};rr=r([m("nidoca-text-info")],rr);var xe=class extends v{};c(xe,"styles",p`
     :host,
     slot,
     ::slotted(:host),
@@ -2080,7 +2080,7 @@ ${this.value}</textarea
       font-size: 200%;
       line-height: 1.1em;
     }
-  `,be=r([m("nidoca-text-h1")],be);var xe=class extends x{};xe.styles=c`
+  `),xe=r([m("nidoca-text-h1")],xe);var ve=class extends v{};c(ve,"styles",p`
     :host,
     slot,
     ::slotted(:host),
@@ -2090,7 +2090,7 @@ ${this.value}</textarea
       font-size: 170%;
       line-height: 1.2em;
     }
-  `,xe=r([m("nidoca-text-h2")],xe);var ve=class extends x{};ve.styles=c`
+  `),ve=r([m("nidoca-text-h2")],ve);var we=class extends v{};c(we,"styles",p`
     :host,
     slot,
     ::slotted(:host),
@@ -2100,7 +2100,7 @@ ${this.value}</textarea
       font-size: 150%;
       line-height: 1.5em;
     }
-  `,ve=r([m("nidoca-text-h3")],ve);var Ae=class extends x{};Ae.styles=c`
+  `),we=r([m("nidoca-text-h3")],we);var $e=class extends v{};c($e,"styles",p`
     :host,
     slot,
     ::slotted(:host),
@@ -2110,7 +2110,7 @@ ${this.value}</textarea
       font-size: 130%;
       line-height: 1.5em;
     }
-  `,Ae=r([m("nidoca-text-h4")],Ae);var we=class extends x{};we.styles=c`
+  `),$e=r([m("nidoca-text-h4")],$e);var Ee=class extends v{};c(Ee,"styles",p`
     :host,
     slot,
     ::slotted(:host),
@@ -2120,7 +2120,7 @@ ${this.value}</textarea
       font-size: 120%;
       line-height: 1.5em;
     }
-  `,we=r([m("nidoca-text-h5")],we);var ke=class extends x{};ke.styles=c`
+  `),Ee=r([m("nidoca-text-h5")],Ee);var ke=class extends v{};c(ke,"styles",p`
     :host,
     slot,
     ::slotted(:host),
@@ -2130,11 +2130,11 @@ ${this.value}</textarea
       font-size: 110%;
       line-height: 1.5em;
     }
-  `,ke=r([m("nidoca-text-h6")],ke);var ht=class extends I{constructor(){super(...arguments);this.message="Dies ist eine Testnachricht"}showToast(t=3e3){this.toastElement.classList.add("show"),setTimeout(()=>{this.hideToast()},t)}hideToast(){this.toastElement.classList.remove("show")}render(){return o`
+  `),ke=r([m("nidoca-text-h6")],ke);var ut=class extends I{message="Dies ist eine Testnachricht";toastElement;showToast(t=3e3){this.toastElement.classList.add("show"),setTimeout(()=>{this.hideToast()},t)}hideToast(){this.toastElement.classList.remove("show")}render(){return o`
       <div id="toast" class="toast">
         ${this.message}
       </div>
-    `}};ht.styles=c`
+    `}};c(ut,"styles",p`
     .toast {
       position: fixed;
       bottom: 20px;
@@ -2157,7 +2157,7 @@ ${this.value}</textarea
       opacity: 1;
       visibility: visible;
     }
-  `,r([s({type:String})],ht.prototype,"message",2),r([f("#toast")],ht.prototype,"toastElement",2),ht=r([m("nidoca-toast")],ht);var q=class extends d{constructor(){super(...arguments);this.value="";this.placeholder="";this.disabled=!1;this.theme="plain"}render(){return o`
+  `),r([s({type:String})],ut.prototype,"message",2),r([y("#toast")],ut.prototype,"toastElement",2),ut=r([m("nidoca-toast")],ut);var V=class extends h{value="";placeholder="";disabled=!1;inputElement;theme="plain";render(){return o`
       <style>
         .container,
         input {
@@ -2188,7 +2188,7 @@ ${this.value}</textarea
           @click="${()=>this.clearValue()}"
         ></nidoca-icon>
       </div>
-    `}clearValue(){this.value=""}async valueChanged(){let t="nidoca-search-bar-event-value-changed",n=new CustomEvent(t,{detail:this.inputElement?.value,bubbles:!0,composed:!0});console.debug("dispatch custom event type: %s, detail: %s",n.type,JSON.stringify(n.detail)),this.dispatchEvent(n)}static example(t=""){return o`<nidoca-search-bar slot="${t}" theme="primary" placeholder="Suche..."></nidoca-search-bar>`}};q.styles=c`
+    `}clearValue(){this.value=""}async valueChanged(){let t="nidoca-search-bar-event-value-changed",e=new CustomEvent(t,{detail:this.inputElement?.value,bubbles:!0,composed:!0});console.debug("dispatch custom event type: %s, detail: %s",e.type,JSON.stringify(e.detail)),this.dispatchEvent(e)}static example(t=""){return o`<nidoca-search-bar slot="${t}" theme="primary" placeholder="Suche..."></nidoca-search-bar>`}};c(V,"styles",p`
     :host {
       width: 100%;
       display: block;
@@ -2219,7 +2219,7 @@ ${this.value}</textarea
       outline: none;
       box-shadow: none;
     }
-  `,r([s({type:String})],q.prototype,"value",2),r([s({type:String})],q.prototype,"placeholder",2),r([s({type:Boolean})],q.prototype,"disabled",2),r([f("#inputElement")],q.prototype,"inputElement",2),r([s({type:g,converter:String})],q.prototype,"theme",2),q=r([m("nidoca-search-bar")],q);var Ee=class{static{this.CENTER="CENTER"}static{this.LEFT="LEFT"}static{this.RIGHT="RIGHT"}static{this.TOP="TOP"}static{this.BOTTOM="BOTTOM"}static{this.SLIDE_CENTER="SLIDE_CENTER"}static{this.SLIDE_LEFT="SLIDE_LEFT"}static{this.SLIDE_RIGHT="SLIDE_RIGHT"}static{this.SLIDE_TOP="SLIDE_TOP"}static{this.SLIDE_BOTTOM="SLIDE_BOTTOM"}},Ut=class extends d{constructor(){super(...arguments);this.transitionType=Ee.CENTER;this.duration=.5}render(){return o` <div class="${O(this.transitionType)}"><slot></slot></div> `}};Ut.styles=c`
+  `),r([s({type:String})],V.prototype,"value",2),r([s({type:String})],V.prototype,"placeholder",2),r([s({type:Boolean})],V.prototype,"disabled",2),r([y("#inputElement")],V.prototype,"inputElement",2),r([s({type:f,converter:String})],V.prototype,"theme",2),V=r([m("nidoca-search-bar")],V);var Te=class{static CENTER="CENTER";static LEFT="LEFT";static RIGHT="RIGHT";static TOP="TOP";static BOTTOM="BOTTOM";static SLIDE_CENTER="SLIDE_CENTER";static SLIDE_LEFT="SLIDE_LEFT";static SLIDE_RIGHT="SLIDE_RIGHT";static SLIDE_TOP="SLIDE_TOP";static SLIDE_BOTTOM="SLIDE_BOTTOM"},Gt=class extends h{transitionType=Te.CENTER;duration=.5;render(){return o` <div class="${C(this.transitionType)}"><slot></slot></div> `}};c(Gt,"styles",p`
     /* Declaration of keyframes */
 
     @-webkit-keyframes fadeInLeft {
@@ -2715,19 +2715,19 @@ ${this.value}</textarea
       -webkit-animation-duration: 1s;
       -webkit-animation-fill-mode: both;
     }
-  `,r([s({type:String})],Ut.prototype,"transitionType",2),r([s({type:Number})],Ut.prototype,"duration",2),Ut=r([m("nidoca-transition")],Ut);var te=class extends d{constructor(){super(...arguments);this.show=!1}render(){return this.show?o`
+  `),r([s({type:String})],Gt.prototype,"transitionType",2),r([s({type:Number})],Gt.prototype,"duration",2),Gt=r([m("nidoca-transition")],Gt);var ee=class extends h{show=!1;render(){return this.show?o`
           <div class="fullScreen opacScreen"></div>
           <div class="fullScreen wrapperOutside">
             <div class="wrapperInside">
               <!-- Dialog -->
-              <nidoca-transition .transitionType="${Ee.SLIDE_CENTER}">
+              <nidoca-transition .transitionType="${Te.SLIDE_CENTER}">
                 <div class="dialogContainer">
                   <slot></slot>
                 </div>
               </nidoca-transition>
             </div>
           </div>
-        `:o``}};te.styles=c`
+        `:o``}};c(ee,"styles",p`
     .fullScreen {
       width: 100vw;
       height: 100vh;
@@ -2761,7 +2761,7 @@ ${this.value}</textarea
       padding: 0;
       margin: 0 auto;
     }
-  `,r([s({type:Boolean})],te.prototype,"show",2),te=r([m("nidoca-dialog")],te);var ut=class extends d{constructor(){super(...arguments);this.show=!1;this.title="Ja oder Nein ?";this.description="Entscheide dich";this.labelButtonYes="Ja";this.labelButtonNo="Nein"}render(){return o`<nidoca-dialog .show="${this.show}">
+  `),r([s({type:Boolean})],ee.prototype,"show",2),ee=r([m("nidoca-dialog")],ee);var ft=class extends h{show=!1;title="Ja oder Nein ?";description="Entscheide dich";labelButtonYes="Ja";labelButtonNo="Nein";render(){return o`<nidoca-dialog .show="${this.show}">
       <nidoca-box style="width:300px;">
         <nidoca-text-h2 style="padding-bottom:var(--space-2);">${this.title}</nidoca-text-h2>
         <nidoca-text style="padding-bottom:var(--space-2);">${this.description} </nidoca-text>
@@ -2778,20 +2778,20 @@ ${this.value}</textarea
           >${this.labelButtonNo}
         </nidoca-button>
       </nidoca-box>
-    </nidoca-dialog>`}};ut.styles=c``,r([s({type:Boolean})],ut.prototype,"show",2),r([s({type:String})],ut.prototype,"title",2),r([s({type:String})],ut.prototype,"description",2),r([s({type:String})],ut.prototype,"labelButtonYes",2),r([s({type:String})],ut.prototype,"labelButtonNo",2),ut=r([m("nidoca-dialog-decision")],ut);var xt=class extends d{constructor(){super(...arguments);this.icon=""}render(){return o`
+    </nidoca-dialog>`}};c(ft,"styles",p``),r([s({type:Boolean})],ft.prototype,"show",2),r([s({type:String})],ft.prototype,"title",2),r([s({type:String})],ft.prototype,"description",2),r([s({type:String})],ft.prototype,"labelButtonYes",2),r([s({type:String})],ft.prototype,"labelButtonNo",2),ft=r([m("nidoca-dialog-decision")],ft);var vt=class extends h{icon="";render(){return o`
       <nidoca-icon-extended class="icon" icon="${this.icon}"></nidoca-icon-extended>
       <nidoca-card class="card">
         <slot></slot>
       </nidoca-card>
-    `}static example(t="",n="surface"){return o`
+    `}static example(t="",e="surface"){return o`
       <nidoca-infobox slot="${t}" icon="handshake" style="width:250px; height:250px;">
-        <nidoca-text-h5 theme="${n}">Community</nidoca-text-h5>
-        <nidoca-text-body theme="${n}"
+        <nidoca-text-h5 theme="${e}">Community</nidoca-text-h5>
+        <nidoca-text-body theme="${e}"
           >Gemeinsam sind wir stark. Wenn wir einander helfen, können wir alles erreichen. Wir wollen unsere Community
           stärken.</nidoca-text-body
         >
       </nidoca-infobox>
-    `}};xt.styles=c`
+    `}};c(vt,"styles",p`
     :host {
       display: block;
       text-align: center;
@@ -2808,7 +2808,7 @@ ${this.value}</textarea
       display: block;
       margin-top: calc(((var(--icon-size) / 2) +var(--space)) * -1);
     }
-  `,r([s({type:String})],xt.prototype,"icon",2),xt=r([m("nidoca-infobox")],xt);var N=class extends d{constructor(){super(...arguments);this.theme="surface";this.src="";this.title="";this.subtitle=""}render(){return o`
+  `),r([s({type:String})],vt.prototype,"icon",2),vt=r([m("nidoca-infobox")],vt);var N=class extends h{theme="surface";src="";title="";subtitle="";render(){return o`
             <div
                     style="display:flex;flex-direction:column;align-items:center;justify-content:space-between;align-content:center;"
             >
@@ -2827,11 +2827,11 @@ ${this.value}</textarea
       subtitle="Softwareentwickler"
       src="face.jpg"
       >Dominik Bruhn</nidoca-avatar
-    >`}};N.styles=c`
+    >`}};c(N,"styles",p`
     :host {
       display: block;
     }
-  `,r([s({type:g,converter:String})],N.prototype,"theme",2),r([s({type:String})],N.prototype,"src",2),r([s({type:String})],N.prototype,"title",2),r([s({type:String})],N.prototype,"subtitle",2),N=r([m("nidoca-avatar")],N);var ee=class extends d{constructor(){super(...arguments);this.theme="surface"}render(){return o`
+  `),r([s({type:f,converter:String})],N.prototype,"theme",2),r([s({type:String})],N.prototype,"src",2),r([s({type:String})],N.prototype,"title",2),r([s({type:String})],N.prototype,"subtitle",2),N=r([m("nidoca-avatar")],N);var re=class extends h{theme="surface";render(){return o`
       <style>
         :host {
           background-color: var(--app-color-${this.theme}-background-light);
@@ -2839,7 +2839,7 @@ ${this.value}</textarea
         }
       </style>
       <slot></slot>
-    `}};ee.styles=c`
+    `}};c(re,"styles",p`
     :host {
       box-sizing: border-box;
       display: block;
@@ -2855,11 +2855,11 @@ ${this.value}</textarea
       flex-direction: column;
       height: 100%;
     }
-  `,r([s({type:g,converter:String})],ee.prototype,"theme",2),ee=r([m("nidoca-card")],ee);var Te=class extends d{render(){return o`
+  `),r([s({type:f,converter:String})],re.prototype,"theme",2),re=r([m("nidoca-card")],re);var Se=class extends h{render(){return o`
       <nidoca-layout-spacer bottom="var(--space)" left="">
-        <slot id="slotElement" @slotchange="${e=>this.slotChanged(e)}"></slot>
+        <slot id="slotElement" @slotchange="${t=>this.slotChanged(t)}"></slot>
       </nidoca-layout-spacer>
-    `}slotChanged(e){let t=e.target;if(t==null)return;let n=t.assignedElements();for(let i=0;i<n.length;i++){let p=n[i].classList;p.contains("flexItem")||p.add("flexItem"),p.contains("flexItemDevice")||p.add("flexItemDevice")}}};Te.styles=c`
+    `}slotChanged(t){let e=t.target;if(e==null)return;let n=e.assignedElements();for(let i=0;i<n.length;i++){let d=n[i].classList;d.contains("flexItem")||d.add("flexItem"),d.contains("flexItemDevice")||d.add("flexItemDevice")}}};c(Se,"styles",p`
     slot,
     ::slotted(slot) {
       display: flex;
@@ -2873,13 +2873,13 @@ ${this.value}</textarea
       flex-basis: 24%;
       padding-top: var(--space-3);
     }
-  `,Te=r([m("nidoca-gallery")],Te);var Se=class extends d{render(){return o`<slot></slot>`}print(){let e=window.open("");e&&(e.document.write(this.innerHTML),e.print(),e.close())}};Se.styles=c`
+  `),Se=r([m("nidoca-gallery")],Se);var _e=class extends h{render(){return o`<slot></slot>`}print(){let t=window.open("");t&&(t.document.write(this.innerHTML),t.print(),t.close())}};c(_e,"styles",p`
     :host {
       display: none;
     }
-  `,Se=r([m("nidoca-print")],Se);var He=class extends d{render(){return o`
-      <slot id="container" class="container" @slotchange="${e=>this.slotChanged(e)}"></slot>
-    `}slotChanged(e){let n=e.target.assignedElements(),i=n.length;for(let l=0;l<i;l++){let u=n[l].classList,h="item_count_"+i;u.contains(h)||u.add(h)}}};He.styles=c`
+  `),_e=r([m("nidoca-print")],_e);var Re=class extends h{render(){return o`
+      <slot id="container" class="container" @slotchange="${t=>this.slotChanged(t)}"></slot>
+    `}slotChanged(t){let n=t.target.assignedElements(),i=n.length;for(let l=0;l<i;l++){let g=n[l].classList,u="item_count_"+i;g.contains(u)||g.add(u)}}};c(Re,"styles",p`
     :host {
       display: block;
       margin: auto;
@@ -2925,7 +2925,7 @@ ${this.value}</textarea
         width: 100%;
       }
     }
-  `,He=r([m("nidoca-section")],He);var re=class extends d{constructor(){super(...arguments);this.cards=[]}render(){return o`
+  `),Re=r([m("nidoca-section")],Re);var ne=class extends h{cards=[];render(){return o`
       <div class="container">
         ${this.cards.map(t=>o`
             <nidoca-card class="item" @click="${()=>this.clicked(t)}">
@@ -2939,7 +2939,7 @@ ${this.value}</textarea
             </nidoca-card>
           `)}
       </div>
-    `}clicked(t){this.dispatchEvent(new CustomEvent("nidoca-event-dashboard-card-clicked",{detail:{index:-1,card:t},bubbles:!0,composed:!0}))}};re.styles=c`
+    `}clicked(t){this.dispatchEvent(new CustomEvent("nidoca-event-dashboard-card-clicked",{detail:{index:-1,card:t},bubbles:!0,composed:!0}))}};c(ne,"styles",p`
     :host {
       display: block;
     }
@@ -2965,10 +2965,10 @@ ${this.value}</textarea
         flex: 0 0 calc(100% - var(--space-2));
       }
     }
-  `,r([s({type:Array})],re.prototype,"cards",2),re=r([m("nidoca-dashboard")],re);var ne=class extends d{constructor(){super(...arguments);this.theme="plain"}render(){return o`
-      ${v.getStyle(this.theme)}
+  `),r([s({type:Array})],ne.prototype,"cards",2),ne=r([m("nidoca-dashboard")],ne);var oe=class extends h{theme="plain";render(){return o`
+      ${w.getStyle(this.theme)}
       <slot></slot>
-    `}};ne.styles=c`
+    `}};c(oe,"styles",p`
     :host {
       display: block;
       padding: var(--space-2);
@@ -2990,12 +2990,12 @@ ${this.value}</textarea
         padding: var(--space);
       }
     }
-  `,r([s({type:g,converter:String})],ne.prototype,"theme",2),ne=r([m("nidoca-box")],ne);var U=class extends d{constructor(){super(...arguments);this.theme="primary";this.label="Deine Nachricht";this.nameLabel="Dein Name";this.emailLabel="Deine Email";this.titleLabel="Betreff";this.messageLabel="Deine Nachricht";this.buttonLabel="Senden"}render(){return o`
-      <nidoca-box theme="${O(this.theme)}">
+  `),r([s({type:f,converter:String})],oe.prototype,"theme",2),oe=r([m("nidoca-box")],oe);var G=class extends h{theme="primary";label="Deine Nachricht";nameLabel="Dein Name";emailLabel="Deine Email";titleLabel="Betreff";messageLabel="Deine Nachricht";buttonLabel="Senden";formComponent;render(){return o`
+      <nidoca-box theme="${C(this.theme)}">
         <nidoca-form id="authenitcate-form">
           <nidoca-text-h2 class="paddingBottom">${this.label}</nidoca-text-h2>
           <nidoca-form-text
-            theme="${v.getOposite(this.theme)}"
+            theme="${w.getOposite(this.theme)}"
             class="paddingBottom"
             name="name"
             textType="${"text"}"
@@ -3004,7 +3004,7 @@ ${this.value}</textarea
             required
           ></nidoca-form-text>
           <nidoca-form-text
-            theme="${v.getOposite(this.theme)}"
+            theme="${w.getOposite(this.theme)}"
             class="paddingBottom"
             textType="${"email"}"
             label="${this.emailLabel}"
@@ -3014,7 +3014,7 @@ ${this.value}</textarea
           ></nidoca-form-text>
           <nidoca-form-text
             label="${this.titleLabel}"
-            theme="${v.getOposite(this.theme)}"
+            theme="${w.getOposite(this.theme)}"
             class="paddingBottom"
             textType="${"text"}"
             value=""
@@ -3023,14 +3023,14 @@ ${this.value}</textarea
           ></nidoca-form-text>
           <nidoca-form-textarea
             label="${this.messageLabel}"
-            theme="${v.getOposite(this.theme)}"
+            theme="${w.getOposite(this.theme)}"
             class="paddingBottom"
             name="message"
             trailingIcon="vpn_key"
             required
           ></nidoca-form-textarea>
           <nidoca-button
-            theme="${v.getOposite(this.theme)}"
+            theme="${w.getOposite(this.theme)}"
             class="paddingBottom"
             @nidoca-event-button-clicked="${()=>this.sendMessage()}"
             .buttonType="${"contained"}"
@@ -3038,7 +3038,7 @@ ${this.value}</textarea
           </nidoca-button>
         </nidoca-form>
       </nidoca-box>
-    `}sendMessage(){this.formComponent&&this.formComponent.validate()&&this.dispatchEvent(new CustomEvent("nidoca-form-contact-submit",{detail:this.formComponent.getOutputData(),bubbles:!0,composed:!0}))}};U.styles=c`
+    `}sendMessage(){this.formComponent&&this.formComponent.validate()&&this.dispatchEvent(new CustomEvent("nidoca-form-contact-submit",{detail:this.formComponent.getOutputData(),bubbles:!0,composed:!0}))}};c(G,"styles",p`
     :host {
       display: block;
       width: 100%;
@@ -3047,72 +3047,72 @@ ${this.value}</textarea
     .paddingBottom {
       padding-bottom: var(--space-3);
     }
-  `,r([s({type:g,converter:String})],U.prototype,"theme",2),r([s({type:String,converter:String})],U.prototype,"label",2),r([s({type:String,converter:String})],U.prototype,"nameLabel",2),r([s({type:String,converter:String})],U.prototype,"emailLabel",2),r([s({type:String,converter:String})],U.prototype,"titleLabel",2),r([s({type:String,converter:String})],U.prototype,"messageLabel",2),r([s({type:String,converter:String})],U.prototype,"buttonLabel",2),r([f("#authenitcate-form")],U.prototype,"formComponent",2),U=r([m("nidoca-form-contact")],U);var nr=class{getClassName(){return this.getTypeName()?this.getTypeName():this.getConverterTypeName()}constructor(e,t){this.propertyName=e,this.propertyValue=t}getRenderType(){return this.isConverterTypeArray()||this.isArray()?"Array":this.getTypeName()==null?"Class":this.getTypeName()}getEnumValues(){let e=[];return Object.values(this.getType()).forEach(t=>{e.push({key:t,value:String(Object.keys(this.getType())[Object.values(this.getType()).indexOf(t)])})}),e}getEnumValue(e){return Object.values(this.getType())[Object.keys(this.getType()).indexOf(e)]}getEnumKey(e){let t=this.getEnumValues();for(let n=0;n<t.length;n++){let i=t[n];if(i.key==e)return i.value}}isConverterTypeArray(){return this.getConverterTypeName()=="Array"}isArray(){return this.getTypeName()=="Array"}isPrimitive(){return this.getTypeName()=="String"||this.getTypeName()=="Boolean"||this.getTypeName()=="Number"}getType(){return this.propertyValue?.type}getTypeName(){return this.getType().name}getConverterType(){return this.propertyValue.converter}getConverterTypeName(){return this.getConverterType()?.name}getTypeOf(){return typeof this.propertyValue}toString(){return JSON.stringify({name:this.propertyValue.type.name,prototype:this.propertyValue},null,2)}};var or=class{constructor(e){this.instance=e}getClassName(){return this.instance.constructor.name}getTagName(){return this.instance.localName}getHTMLTag(){return"<".concat(this.getTagName()).concat(">").concat("</").concat(this.getTagName()).concat(">")}getClazz(){return this.instance.constructor}getSlotNames(){return this.getSlots().map(e=>e.name?e.name:"default")}getSlots(){return this.getElementsByTagName("SLOT",this.instance.shadowRoot)}hasSlots(){return this.getSlots().length>0}getElementsByTagName(e,t){let n=[];if(t&&(t.tagName==e&&n.push(t),t.children.length>0)){let l=t?.children;for(let p=0;p<l.length;p++)n=n.concat(this.getElementsByTagName(e,l.item(p)))}return n}getElementProperties(){let e=this.instance.constructor.elementProperties;e||(e=new Map);let t=[];for(let n of Array.from(e.keys()))t.push(new nr(n,e.get(n)));return t}getOwnPropertieNames(){let e=this.instance.constructor;return Object.getOwnPropertyNames(e)}};var ir=class{constructor(e){this.propertyWrapper=e}getInputElement(e){if(e==null)return o``;let t=e.webcomponentWrapper;if(t==null)return o``;switch(this.propertyWrapper.getRenderType()){case"String":return o`
+  `),r([s({type:f,converter:String})],G.prototype,"theme",2),r([s({type:String,converter:String})],G.prototype,"label",2),r([s({type:String,converter:String})],G.prototype,"nameLabel",2),r([s({type:String,converter:String})],G.prototype,"emailLabel",2),r([s({type:String,converter:String})],G.prototype,"titleLabel",2),r([s({type:String,converter:String})],G.prototype,"messageLabel",2),r([s({type:String,converter:String})],G.prototype,"buttonLabel",2),r([y("#authenitcate-form")],G.prototype,"formComponent",2),G=r([m("nidoca-form-contact")],G);var nr=class{getClassName(){return this.getTypeName()?this.getTypeName():this.getConverterTypeName()}propertyName;propertyValue;constructor(t,e){this.propertyName=t,this.propertyValue=e}getRenderType(){return this.isConverterTypeArray()||this.isArray()?"Array":this.getTypeName()==null?"Class":this.getTypeName()}getEnumValues(){let t=[];return Object.values(this.getType()).forEach(e=>{t.push({key:e,value:String(Object.keys(this.getType())[Object.values(this.getType()).indexOf(e)])})}),t}getEnumValue(t){return Object.values(this.getType())[Object.keys(this.getType()).indexOf(t)]}getEnumKey(t){let e=this.getEnumValues();for(let n=0;n<e.length;n++){let i=e[n];if(i.key==t)return i.value}}isConverterTypeArray(){return this.getConverterTypeName()=="Array"}isArray(){return this.getTypeName()=="Array"}isPrimitive(){return this.getTypeName()=="String"||this.getTypeName()=="Boolean"||this.getTypeName()=="Number"}getType(){return this.propertyValue?.type}getTypeName(){return this.getType().name}getConverterType(){return this.propertyValue.converter}getConverterTypeName(){return this.getConverterType()?.name}getTypeOf(){return typeof this.propertyValue}toString(){return JSON.stringify({name:this.propertyValue.type.name,prototype:this.propertyValue},null,2)}};var or=class{instance;constructor(t){this.instance=t}getClassName(){return this.instance.constructor.name}getTagName(){return this.instance.localName}getHTMLTag(){return"<".concat(this.getTagName()).concat(">").concat("</").concat(this.getTagName()).concat(">")}getClazz(){return this.instance.constructor}getSlotNames(){return this.getSlots().map(t=>t.name?t.name:"default")}getSlots(){return this.getElementsByTagName("SLOT",this.instance.shadowRoot)}hasSlots(){return this.getSlots().length>0}getElementsByTagName(t,e){let n=[];if(e&&(e.tagName==t&&n.push(e),e.children.length>0)){let l=e?.children;for(let d=0;d<l.length;d++)n=n.concat(this.getElementsByTagName(t,l.item(d)))}return n}getElementProperties(){let t=this.instance.constructor.elementProperties;t||(t=new Map);let e=[];for(let n of Array.from(t.keys()))e.push(new nr(n,t.get(n)));return e}getOwnPropertieNames(){let t=this.instance.constructor;return Object.getOwnPropertyNames(t)}};var ir=class{propertyWrapper;constructor(t){this.propertyWrapper=t}getInputElement(t){if(t==null)return o``;let e=t.webcomponentWrapper;if(e==null)return o``;switch(this.propertyWrapper.getRenderType()){case"String":return o`
                     <nidoca-form-text .textType="${"text"}"
                                       label="${this.propertyWrapper.propertyName}"
-                                      value="${t.instance[this.propertyWrapper.propertyName]}"
-                                      @input="${i=>{t.instance[this.propertyWrapper.propertyName]=i.target.getOutputData().value,e.parent.requestUpdate()}}"
+                                      value="${e.instance[this.propertyWrapper.propertyName]}"
+                                      @input="${i=>{e.instance[this.propertyWrapper.propertyName]=i.target.getOutputData().value,t.parent.requestUpdate()}}"
                     /></nidoca-form-text>`;case"Number":return o` <nidoca-form-text
           label="${this.propertyWrapper.propertyName}"
           .textType="${"number"}"
-          value="${t.instance[this.propertyWrapper.propertyName]}"
-          @input="${i=>{t.instance[this.propertyWrapper.propertyName]=i.target.getOutputData().value,e.parent.requestUpdate()}}"
+          value="${e.instance[this.propertyWrapper.propertyName]}"
+          @input="${i=>{e.instance[this.propertyWrapper.propertyName]=i.target.getOutputData().value,t.parent.requestUpdate()}}"
         ></nidoca-form-text>`;case"Boolean":return o` <nidoca-form-switch
           label="${this.propertyWrapper.propertyName}"
           type="checkbox"
-          .checked="${t.instance[this.propertyWrapper.propertyName]}"
-          @input="${i=>{t.instance[this.propertyWrapper.propertyName]=i.target.getOutputData().value,e.parent.requestUpdate()}}"
+          .checked="${e.instance[this.propertyWrapper.propertyName]}"
+          @input="${i=>{e.instance[this.propertyWrapper.propertyName]=i.target.getOutputData().value,t.parent.requestUpdate()}}"
         ></nidoca-form-switch>`;case"Class":return o` <nidoca-form-combobox
           label="${this.propertyWrapper.propertyName}"
-          .options="${E.enumToOptions(this.propertyWrapper.getType(),!1)}"
-          value="${Object.keys(this.propertyWrapper.getType()).filter(i=>this.propertyWrapper.getType()[i]==t.instance[this.propertyWrapper.propertyName])[0]}"
-          @input="${i=>{t.instance[this.propertyWrapper.propertyName]=this.propertyWrapper.getEnumValue(i.target.getOutputData().value),e.parent.requestUpdate()}}"
+          .options="${T.enumToOptions(this.propertyWrapper.getType(),!1)}"
+          value="${Object.keys(this.propertyWrapper.getType()).filter(i=>this.propertyWrapper.getType()[i]==e.instance[this.propertyWrapper.propertyName])[0]}"
+          @input="${i=>{e.instance[this.propertyWrapper.propertyName]=this.propertyWrapper.getEnumValue(i.target.getOutputData().value),t.parent.requestUpdate()}}"
         >
         </nidoca-form-combobox>`;case"Array":return o`
           <nidoca-form-combobox
             label="${this.propertyWrapper.propertyName}"
-            .options="${E.toComboboxOptions(this.propertyWrapper.getType(),this.propertyWrapper.getTypeName())}"
+            .options="${T.toComboboxOptions(this.propertyWrapper.getType(),this.propertyWrapper.getTypeName())}"
             .multiple="${!0}"
             size="5"
-            .value="${t.instance[this.propertyWrapper.propertyName]}"
-            @input="${i=>{t.instance[this.propertyWrapper.propertyName]=i.target.getOutputData().value,t.instance.requestUpdate()}}"
+            .value="${e.instance[this.propertyWrapper.propertyName]}"
+            @input="${i=>{e.instance[this.propertyWrapper.propertyName]=i.target.getOutputData().value,e.instance.requestUpdate()}}"
           >
           </nidoca-form-combobox>
-        `;default:return o``}}getAsHtml(e){switch(this.propertyWrapper.getRenderType()){case"Boolean":return`${this.propertyWrapper.propertyName}
-`;case"Array":return"";default:return`${this.propertyWrapper.propertyName}="${e.webcomponentWrapper.instance[this.propertyWrapper.propertyName]}"
-`}}getAsLit(e){switch(this.propertyWrapper.getRenderType()){case"Class":case"String":return`${this.propertyWrapper.propertyName}="${e.webcomponentWrapper.instance[this.propertyWrapper.propertyName]}"
+        `;default:return o``}}getAsHtml(t){switch(this.propertyWrapper.getRenderType()){case"Boolean":return`${this.propertyWrapper.propertyName}
+`;case"Array":return"";default:return`${this.propertyWrapper.propertyName}="${t.webcomponentWrapper.instance[this.propertyWrapper.propertyName]}"
+`}}getAsLit(t){switch(this.propertyWrapper.getRenderType()){case"Class":case"String":return`${this.propertyWrapper.propertyName}="${t.webcomponentWrapper.instance[this.propertyWrapper.propertyName]}"
 `;case"Boolean":return`${this.propertyWrapper.propertyName}
 `;case"Array":return`.${this.propertyWrapper.propertyName}="\${[]}"
 `;default:return`.${this.propertyWrapper.propertyName}="\${}"
-`}}getAsAngular(e){switch(this.propertyWrapper.getRenderType()){case"Class":case"String":return`[${this.propertyWrapper.propertyName}]="${e.webcomponentWrapper.instance[this.propertyWrapper.propertyName]}"
+`}}getAsAngular(t){switch(this.propertyWrapper.getRenderType()){case"Class":case"String":return`[${this.propertyWrapper.propertyName}]="${t.webcomponentWrapper.instance[this.propertyWrapper.propertyName]}"
 `;case"Array":return`[${this.propertyWrapper.propertyName}]="\${[]}"
 `;default:return`[${this.propertyWrapper.propertyName}]="\${}"
-`}}getAsJavascript(e){switch(this.propertyWrapper.getRenderType()){case"Class":case"Array":return"";case"String":return`element.${this.propertyWrapper.propertyName}="${e.webcomponentWrapper.instance[this.propertyWrapper.propertyName]}";
-`;default:return`element.${this.propertyWrapper.propertyName}=${e.webcomponentWrapper.instance[this.propertyWrapper.propertyName]};
-`}}getAsTypescript(e){switch(this.propertyWrapper.getRenderType()){case"Array":return"";case"Class":case"String":return`element.${this.propertyWrapper.propertyName}="${e.webcomponentWrapper.instance[this.propertyWrapper.propertyName]}";
-`;default:return`element.${this.propertyWrapper.propertyName}=${e.webcomponentWrapper.instance[this.propertyWrapper.propertyName]};
-`}}};var sr=class{constructor(e,t){this.parent=e;this.webcomponentWrapper=t}getAsHtml(){return`<${this.webcomponentWrapper.getTagName()}
-${this.getPropertyGuiWrappers().map(t=>t.getAsHtml(this)).join("")}></${this.webcomponentWrapper.getTagName()}>
+`}}getAsJavascript(t){switch(this.propertyWrapper.getRenderType()){case"Class":case"Array":return"";case"String":return`element.${this.propertyWrapper.propertyName}="${t.webcomponentWrapper.instance[this.propertyWrapper.propertyName]}";
+`;default:return`element.${this.propertyWrapper.propertyName}=${t.webcomponentWrapper.instance[this.propertyWrapper.propertyName]};
+`}}getAsTypescript(t){switch(this.propertyWrapper.getRenderType()){case"Array":return"";case"Class":case"String":return`element.${this.propertyWrapper.propertyName}="${t.webcomponentWrapper.instance[this.propertyWrapper.propertyName]}";
+`;default:return`element.${this.propertyWrapper.propertyName}=${t.webcomponentWrapper.instance[this.propertyWrapper.propertyName]};
+`}}};var sr=class{constructor(t,e){this.parent=t;this.webcomponentWrapper=e}getAsHtml(){return`<${this.webcomponentWrapper.getTagName()}
+${this.getPropertyGuiWrappers().map(e=>e.getAsHtml(this)).join("")}></${this.webcomponentWrapper.getTagName()}>
 `.trim()}getAsJavascript(){return`<${this.webcomponentWrapper.getTagName()} id="meinElement"></${this.webcomponentWrapper.getTagName()}>
 <script>
   const element = document.getElementById("meinElement");
-  ${this.getPropertyGuiWrappers().map(t=>t.getAsJavascript(this)).join("  ")}<\/script>
+  ${this.getPropertyGuiWrappers().map(e=>e.getAsJavascript(this)).join("  ")}<\/script>
 `.trim()}getTypescript(){return`
 const element : ${this.webcomponentWrapper.getClassName()} = document.getElementById("meinElement");
-  ${this.getPropertyGuiWrappers().map(t=>t.getAsTypescript(this)).join("  ")}
+  ${this.getPropertyGuiWrappers().map(e=>e.getAsTypescript(this)).join("  ")}
 `.trim()}getAsLit(){return`
 <${this.webcomponentWrapper.getTagName()}
-  ${this.getPropertyGuiWrappers().map(t=>t.getAsLit(this)).join("  ")}>
+  ${this.getPropertyGuiWrappers().map(e=>e.getAsLit(this)).join("  ")}>
 `.trim()}getAsAngular(){return`<${this.webcomponentWrapper.getTagName()}
-${this.getPropertyGuiWrappers().map(t=>t.getAsAngular(this)).join("  ")}></${this.webcomponentWrapper.getTagName()}>
-`.trim()}renderPropertyGui(){let e=[];for(let t of this.getPropertyGuiWrappers())e.push(o`
+${this.getPropertyGuiWrappers().map(e=>e.getAsAngular(this)).join("  ")}></${this.webcomponentWrapper.getTagName()}>
+`.trim()}renderPropertyGui(){let t=[];for(let e of this.getPropertyGuiWrappers())t.push(o`
           <div>
-            <b>${t.propertyWrapper.propertyName}</b>
+            <b>${e.propertyWrapper.propertyName}</b>
 
-            <pre>${t.propertyWrapper.getTypeName()}</pre>
-            <div>${t.getInputElement(this)}</div>
+            <pre>${e.propertyWrapper.getTypeName()}</pre>
+            <div>${e.getInputElement(this)}</div>
           </div>
-        `);return e}getPropertyGuiWrappers(){let e=[];for(let t of this.webcomponentWrapper.getElementProperties())e.push(new ir(t));return e}getPropertieNames(){let e=[];return this.getPropertyGuiWrappers().map(t=>{e.push(t.propertyWrapper.propertyName)}),e}hasProperties(){return this.getPropertieNames().length>0}};var Kt=class extends I{constructor(){super(...arguments);this.webcomponentGuiWrapper=null;this.customEventNames=[]}updated(t){t.has("element")&&this.element!=null&&(this.element.style.flexBasis="auto",this.webcomponentGuiWrapper=new sr(this,new or(this.element)),this.requestUpdate())}render(){return this.element?o` <nidoca-section theme="primary">
+        `);return t}getPropertyGuiWrappers(){let t=[];for(let e of this.webcomponentWrapper.getElementProperties())t.push(new ir(e));return t}getPropertieNames(){let t=[];return this.getPropertyGuiWrappers().map(e=>{t.push(e.propertyWrapper.propertyName)}),t}hasProperties(){return this.getPropertieNames().length>0}};var Kt=class extends I{webcomponentGuiWrapper=null;customEventNames=[];element;updated(t){t.has("element")&&this.element!=null&&(this.element.style.flexBasis="auto",this.webcomponentGuiWrapper=new sr(this,new or(this.element)),this.requestUpdate())}render(){return this.element?o` <nidoca-section theme="primary">
             <div>
               <nidoca-text-h2 class="paddingTopBottom">Tag</nidoca-text-h2>
               <nidoca-code
@@ -3189,7 +3189,7 @@ ${this.getPropertyGuiWrappers().map(t=>t.getAsAngular(this)).join("  ")}></${thi
             .rows="${this.toAttributeRows(this.webcomponentGuiWrapper?.getPropertyGuiWrappers())}"
           >
           </nidoca-table>
-          <slot @slotchange="${t=>this.slotChanged(t)}"></slot>`:o`Kein Element ausgewählt.`}slotChanged(t){let n=t.target;if(n==null)return;let l=n.assignedElements()[0];l instanceof HTMLElement&&(this.element=l)}toAttributeRows(t){let n=[[]];return t&&t.map(i=>{let l=[];return l.push(i.propertyWrapper.propertyName),l.push(i.propertyWrapper.getTypeName()),l.push(i.propertyWrapper.getConverterTypeName()),l.push(i.propertyWrapper.getRenderType()),n.push(l),l}),n}toSlotRows(t){let n=[[]];return t&&t.map(i=>{let l=[];return l.push(i),n.push(l),l}),n}toCustomEventRows(t){let n=[[]];return t&&t.map(i=>{let l=[];return l.push(i),n.push(l),l}),n}};Kt.styles=c`
+          <slot @slotchange="${t=>this.slotChanged(t)}"></slot>`:o`Kein Element ausgewählt.`}slotChanged(t){let e=t.target;if(e==null)return;let i=e.assignedElements()[0];i instanceof HTMLElement&&(this.element=i)}toAttributeRows(t){let e=[[]];return t&&t.map(n=>{let i=[];return i.push(n.propertyWrapper.propertyName),i.push(n.propertyWrapper.getTypeName()),i.push(n.propertyWrapper.getConverterTypeName()),i.push(n.propertyWrapper.getRenderType()),e.push(i),i}),e}toSlotRows(t){let e=[[]];return t&&t.map(n=>{let i=[];return i.push(n),e.push(i),i}),e}toCustomEventRows(t){let e=[[]];return t&&t.map(n=>{let i=[];return i.push(n),e.push(i),i}),e}};c(Kt,"styles",p`
     .container {
       display: grid;
       grid-template-columns: 1fr;
@@ -3199,31 +3199,31 @@ ${this.getPropertyGuiWrappers().map(t=>t.getAsAngular(this)).join("  ")}></${thi
       padding-top: var(--space-2);
       padding-bottom: var(--space-2);
     }
-  `,r([s({type:Array})],Kt.prototype,"customEventNames",2),r([s({type:Object})],Kt.prototype,"element",2),Kt=r([m("webcomponent-viewer")],Kt);var oe=class extends I{constructor(){super(...arguments);this.componentMap=new Map;this.value="";this.options=[]}render(){return o`
+  `),r([s({type:Array})],Kt.prototype,"customEventNames",2),r([s({type:Object})],Kt.prototype,"element",2),Kt=r([m("webcomponent-viewer")],Kt);var ie=class extends I{webcomponentViewer;componentMap=new Map;value="";options=[];render(){return o`
       <nidoca-form-combobox
         name="components"
         label="Komponenten"
         value="${this.value}"
         .options="${this.options}"
-        @input="${t=>{let n=t.target.getOutputData().value,i=this.componentMap.get(n);this.webcomponentViewer&&(console.log(`change element: ${n}`),this.webcomponentViewer.element=i)}}"
+        @input="${t=>{let e=t.target.getOutputData().value,n=this.componentMap.get(e);this.webcomponentViewer&&(console.log(`change element: ${e}`),this.webcomponentViewer.element=n)}}"
       ></nidoca-form-combobox>
 
       <nidoca-hr></nidoca-hr>
 
       <webcomponent-viewer id="webcomponentViewer"></webcomponent-viewer>
       <slot @slotchange="${t=>this.slotChanged(t)}"></slot>
-    `}slotChanged(t){let i=t.target.assignedElements(),l=i.length;for(let p=0;p<l;p++){let u=i[p];u instanceof HTMLElement&&(this.webcomponentViewer&&this.webcomponentViewer.element==null&&(this.webcomponentViewer.element=u,this.value=u.tagName),this.componentMap.set(u.tagName,u.cloneNode(!0)))}this.options=E.stringArrayToOptions(Array.from(this.componentMap.keys())),this.requestUpdate()}};oe.styles=c`
+    `}slotChanged(t){let n=t.target.assignedElements(),i=n.length;for(let l=0;l<i;l++){let d=n[l];d instanceof HTMLElement&&(this.webcomponentViewer&&this.webcomponentViewer.element==null&&(this.webcomponentViewer.element=d,this.value=d.tagName),this.componentMap.set(d.tagName,d.cloneNode(!0)))}this.options=T.stringArrayToOptions(Array.from(this.componentMap.keys())),this.requestUpdate()}};c(ie,"styles",p`
     slot {
       display: none;
     }
-  `,r([f("#webcomponentViewer")],oe.prototype,"webcomponentViewer",2),oe=r([m("webcomponent-viewer-container")],oe);var ar=class extends I{render(){return o`<nidoca-container>
+  `),r([y("#webcomponentViewer")],ie.prototype,"webcomponentViewer",2),ie=r([m("webcomponent-viewer-container")],ie);var ar=class extends I{render(){return o`<nidoca-container>
       <nidoca-section>
         <webcomponent-viewer-container>
-          ${J.example()} ${T.example()} ${M.example()}
+          ${Q.example()} ${S.example()} ${q.example()}
           ${Z.example()}
     </webcomponent-viewer-container>
       </nidoca-section>
-      </nidoca-container>`}};ar=r([m("nidoca-viewer")],ar);var Re=class extends d{render(){return o`
+      </nidoca-container>`}};ar=r([m("nidoca-viewer")],ar);var Le=class extends h{render(){return o`
       <nidoca-container style="">
         <div style="display:flex;align-items:center;justify-content:center;align-content:flex-start;">
           <nidoca-img src="logo.svg" width="128px"></nidoca-img>
@@ -3247,37 +3247,37 @@ ${this.getPropertyGuiWrappers().map(t=>t.getAsAngular(this)).join("  ")}></${thi
         <nidoca-text-h1 style="text-align:center;">Komponenten</nidoca-text-h1>
       </nidoca-container>
 
-      ${this.getComponentHtml(ht,new ht,"NidocaToast Komponente.")}
-      ${this.getComponentHtml(xt,new xt,"Infobox Komponente.")}
-      ${this.getComponentHtml(W,new W,"Standard Icon Komponente.")}
+      ${this.getComponentHtml(ut,new ut,"NidocaToast Komponente.")}
+      ${this.getComponentHtml(vt,new vt,"Infobox Komponente.")}
+      ${this.getComponentHtml(B,new B,"Standard Icon Komponente.")}
       ${this.getComponentHtml(z,new z,"Standard Icon Komponente.")}
       ${this.getComponentHtml(z,new z,"Standard Icon Komponente.")}
-      ${this.getComponentHtml(at,new at,"Komponente um Quellcode darzustellen.")}
+      ${this.getComponentHtml(lt,new lt,"Komponente um Quellcode darzustellen.")}
       ${this.getComponentHtml(F,new F,"Top App Bar Komponente")}
-      ${this.getComponentHtml(x,new x,"Typography Komponenten")}
-      ${this.getComponentHtml(dt,new dt,"Top App Bar Komponente")}
-      ${this.getComponentHtml(et,new et,"Chip Komponente")}
-      ${this.getComponentHtml(H,new H,"Artikel Komponente")}
-      ${this.getComponentHtml(tt,new tt,"Accordion Komponente")}
-      ${this.getComponentHtml(X,new X,"Button")}
-      ${this.getComponentHtml(ct,new ct,"Men\xFC")}
-      ${this.getComponentHtml(j,new j,"Men\xFCelement")}
-      ${this.getComponentHtml(pt,new pt,"Men\xFCbereich")}
-      ${this.getComponentHtml(q,new q,"Suchfeld")}
-      ${this.getComponentHtml(P,new P,"Einfaches Bild")}
+      ${this.getComponentHtml(v,new v,"Typography Komponenten")}
+      ${this.getComponentHtml(ht,new ht,"Top App Bar Komponente")}
+      ${this.getComponentHtml(rt,new rt,"Chip Komponente")}
+      ${this.getComponentHtml(R,new R,"Artikel Komponente")}
+      ${this.getComponentHtml(et,new et,"Accordion Komponente")}
+      ${this.getComponentHtml(J,new J,"Button")}
+      ${this.getComponentHtml(dt,new dt,"Men\xFC")}
+      ${this.getComponentHtml(D,new D,"Men\xFCelement")}
+      ${this.getComponentHtml(ct,new ct,"Men\xFCbereich")}
+      ${this.getComponentHtml(V,new V,"Suchfeld")}
+      ${this.getComponentHtml(M,new M,"Einfaches Bild")}
       ${this.getComponentHtml(Z,new Z,"Rundes Bild")}
       ${this.getComponentHtml(N,new N,"Avatar Komponente, Bild mit Text")}
-      ${this.getComponentHtml(M,new M,"Unterkomponente f\xFCr die Komponente <nidoca-list/>")}
-      ${this.getComponentHtml(T,new T,"Unterkomponente f\xFCr die Komponente <nidoca-list/>")}
-      ${this.getComponentHtml(J,new J,"Listenkomponente f\xFCr mobile und Desktop Anwendungen. Unterkomponenten dieser Komponente sind nidoca-list-section und nidoca-list-item")}
-    `}getComponentHtml(e,t,n){return o` <nidoca-container>
+      ${this.getComponentHtml(q,new q,"Unterkomponente f\xFCr die Komponente <nidoca-list/>")}
+      ${this.getComponentHtml(S,new S,"Unterkomponente f\xFCr die Komponente <nidoca-list/>")}
+      ${this.getComponentHtml(Q,new Q,"Listenkomponente f\xFCr mobile und Desktop Anwendungen. Unterkomponenten dieser Komponente sind nidoca-list-section und nidoca-list-item")}
+    `}getComponentHtml(t,e,n){return o` <nidoca-container>
       <nidoca-section style="padding:var(--space-4);">
-        <nidoca-card style="padding:var(--space-4); heigth:500px;"> ${e.example()} </nidoca-card>
+        <nidoca-card style="padding:var(--space-4); heigth:500px;"> ${t.example()} </nidoca-card>
         <nidoca-article
           style="padding:var(--space-4);"
           theme="plain"
-          overline="<${t.tagName}></${t.tagName}>"
-          title="${t.tagName}"
+          overline="<${e.tagName}></${e.tagName}>"
+          title="${e.tagName}"
           text="${n}"
         >
           <nidoca-button
@@ -3287,18 +3287,18 @@ ${this.getPropertyGuiWrappers().map(t=>t.getAsAngular(this)).join("  ")}></${thi
           >
         </nidoca-article>
       </nidoca-section>
-    </nidoca-container>`}};Re.styles=c``,Re=r([m("nidoca-page-main")],Re);var Oe=class extends d{render(){return o`
+    </nidoca-container>`}};c(Le,"styles",p``),Le=r([m("nidoca-page-main")],Le);var Ce=class extends h{render(){return o`
       <nidoca-container>
         <nidoca-viewer></nidoca-viewer>
       </nidoca-container>
-    `}};Oe.styles=c`
+    `}};c(Ce,"styles",p`
     .infobox {
       padding: var(--space-2);
     }
-  `,Oe=r([m("nidoca-page-webcomponents")],Oe);var Ht=class extends d{constructor(){super(...arguments);this.karmatica=void 0;this.listData=[];this.cards=[{imgSrc:"https://raw.githubusercontent.com/domoskanonos/nidoca-webcomponents/refs/heads/main/public/goal.webp",title:"Ziele",description:"Wir haben uns Ziele gesetzt, die wir erreichen wollen"},{imgSrc:"https://raw.githubusercontent.com/domoskanonos/nidoca-webcomponents/refs/heads/main/public/friend.webp",title:"Freunde",description:"Wir haben Freunde, die uns bei unseren Pl\xE4nen unterst\xFCtzen"},{imgSrc:"https://raw.githubusercontent.com/domoskanonos/nidoca-webcomponents/refs/heads/main/public/action.webp",title:"Aktionen",description:"Wir haben Aktionen geplant, die wir durchf\xFChren wollen"},{imgSrc:"https://raw.githubusercontent.com/domoskanonos/nidoca-webcomponents/refs/heads/main/public/routine.webp",title:"Routinen",description:"Wir haben Routinen, die wir einhalten wollen"},{imgSrc:"https://raw.githubusercontent.com/domoskanonos/nidoca-webcomponents/refs/heads/main/public/next_action.webp",title:"N\xE4chste Aktion",description:"Hier gehts zu deinen n\xE4chsten Aktionen"},{imgSrc:"https://raw.githubusercontent.com/domoskanonos/nidoca-webcomponents/refs/heads/main/public/habit.webp",title:"Gewohnheiten",description:"Hier gehts zu deinen Gewohnheiten"},{imgSrc:"https://raw.githubusercontent.com/domoskanonos/nidoca-webcomponents/refs/heads/main/public/happiness.webp",title:"Gl\xFCck",description:"Was ist eigentlich Gl\xFCck"}];this.selectedCard=this.cards[0]}firstUpdated(t){let n=new se("AppDatabase","Karmatica","id");console.log("Open karmatica"),n.openDatabase().then(async()=>{this.karmatica=await n.get(1),this.listData=this.karmatica?.friends?this.karmatica.friends:[],this.requestUpdate()})}render(){return o`
+  `),Ce=r([m("nidoca-page-webcomponents")],Ce);var Rt=class extends h{karmatica=void 0;listData=[];cards=[{imgSrc:"https://raw.githubusercontent.com/domoskanonos/nidoca-webcomponents/refs/heads/main/public/goal.webp",title:"Ziele",description:"Wir haben uns Ziele gesetzt, die wir erreichen wollen"},{imgSrc:"https://raw.githubusercontent.com/domoskanonos/nidoca-webcomponents/refs/heads/main/public/friend.webp",title:"Freunde",description:"Wir haben Freunde, die uns bei unseren Pl\xE4nen unterst\xFCtzen"},{imgSrc:"https://raw.githubusercontent.com/domoskanonos/nidoca-webcomponents/refs/heads/main/public/action.webp",title:"Aktionen",description:"Wir haben Aktionen geplant, die wir durchf\xFChren wollen"},{imgSrc:"https://raw.githubusercontent.com/domoskanonos/nidoca-webcomponents/refs/heads/main/public/routine.webp",title:"Routinen",description:"Wir haben Routinen, die wir einhalten wollen"},{imgSrc:"https://raw.githubusercontent.com/domoskanonos/nidoca-webcomponents/refs/heads/main/public/next_action.webp",title:"N\xE4chste Aktion",description:"Hier gehts zu deinen n\xE4chsten Aktionen"},{imgSrc:"https://raw.githubusercontent.com/domoskanonos/nidoca-webcomponents/refs/heads/main/public/habit.webp",title:"Gewohnheiten",description:"Hier gehts zu deinen Gewohnheiten"},{imgSrc:"https://raw.githubusercontent.com/domoskanonos/nidoca-webcomponents/refs/heads/main/public/happiness.webp",title:"Gl\xFCck",description:"Was ist eigentlich Gl\xFCck"}];selectedCard=this.cards[0];firstUpdated(t){let e=new ae("AppDatabase","Karmatica","id");console.log("Open karmatica"),e.openDatabase().then(async()=>{this.karmatica=await e.get(1),this.listData=this.karmatica?.friends?this.karmatica.friends:[],this.requestUpdate()})}render(){return o`
       <nidoca-crud>   
-        <nidoca-generic-edit .item="${new Pe}" key="id"></nidoca-generic-edit>
-        <nidoca-list-search @nidoca-search-bar-event-value-changed="${t=>{let n=t.detail;this.listData=(this.karmatica?this.karmatica.friends:[]).filter(i=>i.name.indexOf(n)>-1)}}">
+        <nidoca-generic-edit .item="${new Me}" key="id"></nidoca-generic-edit>
+        <nidoca-list-search @nidoca-search-bar-event-value-changed="${t=>{let e=t.detail;this.listData=(this.karmatica?this.karmatica.friends:[]).filter(n=>n.name.indexOf(e)>-1)}}">
         ${this.listData.map(t=>o`
                   <nidoca-list-item
                     theme="${this.theme}"
@@ -3316,7 +3316,7 @@ ${this.getPropertyGuiWrappers().map(t=>t.getAsAngular(this)).join("  ")}></${thi
                   <nidoca-icon slot="right" icon=""></nidoca-icon>
                 </nidoca-list-item>`)}
         </nidoca-list-search>
-      </nidoca-crud>`}cardClicked(t){console.log("cardClicked");let n=t.detail;this.selectedCard=n.card}};r([bt()],Ht.prototype,"karmatica",2),r([bt()],Ht.prototype,"listData",2),r([s({type:Array})],Ht.prototype,"cards",2),r([s({type:Object})],Ht.prototype,"selectedCard",2),Ht=r([m("nidoca-page-generic-app")],Ht);var $e=class extends d{render(){return o`
+      </nidoca-crud>`}cardClicked(t){console.log("cardClicked");let e=t.detail;this.selectedCard=e.card}};r([xt()],Rt.prototype,"karmatica",2),r([xt()],Rt.prototype,"listData",2),r([s({type:Array})],Rt.prototype,"cards",2),r([s({type:Object})],Rt.prototype,"selectedCard",2),Rt=r([m("nidoca-page-generic-app")],Rt);var Ae=class extends h{render(){return o`
       <nidoca-container>
         <nidoca-article title="Impressum" summary="Angaben gemäß § 5 TMG">
           <nidoca-text>Dominik Bruhn</nidoca-text>
@@ -3394,18 +3394,18 @@ ${this.getPropertyGuiWrappers().map(t=>t.getAsAngular(this)).join("  ")}></${thi
           <nidoca-link href="https://pixabay.com" targetType="_blanck">pixabay.com</nidoca-link>
         </nidoca-article>
       </nidoca-container>
-    `}};$e.styles=c`
+    `}};c(Ae,"styles",p`
     nidoca-article {
       padding-bottom: var(--space-2);
     }
-  `,$e=r([m("nidoca-page-imprint")],$e);var ie=class extends d{constructor(){super(...arguments);this.cssVars=[]}firstUpdated(){let t=(n=document.styleSheets)=>{let i=[];return Array.from(n).forEach(l=>{Array.from(l.cssRules).forEach(p=>{if(!p||!p.style)return;let u=p.style;Array.from(u).forEach(h=>{h.startsWith("--")&&i.indexOf(h)==-1&&i.push(h)})})}),i};this.cssVars=t(),console.log(this.cssVars)}render(){return o`
+  `),Ae=r([m("nidoca-page-imprint")],Ae);var se=class extends h{cssVars=[];firstUpdated(){let t=(e=document.styleSheets)=>{let n=[];return Array.from(e).forEach(i=>{Array.from(i.cssRules).forEach(l=>{if(!l||!l.style)return;let d=l.style;Array.from(d).forEach(g=>{g.startsWith("--")&&n.indexOf(g)==-1&&n.push(g)})})}),n};this.cssVars=t(),console.log(this.cssVars)}render(){return o`
       <nidoca-container>
         <nidoca-article title="CSS Variablen">
-          ${Wt([this.cssVars],()=>o`
-                ${At(this.cssVars,t=>o`
+          ${Bt([this.cssVars],()=>o`
+                ${$t(this.cssVars,t=>o`
                     <nidoca-form-text
                       style="width:100%;padding-bottom: var(--space-3);"
-                      @input="${n=>{document.documentElement.style.setProperty(t,n.target?n.target.getOutputData().value:"")}}"
+                      @input="${e=>{document.documentElement.style.setProperty(t,e.target?e.target.getOutputData().value:"")}}"
                       type="${t.indexOf("color")>-1?"color":"text"}"
                       name="${t}"
                       value="${getComputedStyle(document.documentElement).getPropertyValue(t).trim()}"
@@ -3415,7 +3415,7 @@ ${this.getPropertyGuiWrappers().map(t=>t.getAsAngular(this)).join("  ")}></${thi
               `)}
         </nidoca-article>
       </nidoca-container>
-    `}};ie.styles=c``,r([s({type:Array})],ie.prototype,"cssVars",2),ie=r([m("nidoca-page-settings")],ie);var Ie=class extends d{render(){return o``}};Ie.styles=c``,Ie=r([m("nidoca-page-privacy")],Ie);var Be=class extends d{render(){return o``}};Be.styles=c``,Be=r([m("nidoca-page-terms-of-use")],Be);var Ce=class extends d{constructor(){super();this.content=o``;K.getUniqueInstance().subscribe(this),this.routeChanged(K.getUniqueInstance().getCurrentPage())}routeChanged(t){switch(t){case"privacy":this.content=o`<nidoca-page-privacy></nidoca-page-privacy>`;break;case"imprint":this.content=o`<nidoca-page-imprint></nidoca-page-imprint>`;break;case"settings":this.content=o`<nidoca-page-settings></nidoca-page-settings>`;break;case"terms-of-use":this.content=o`<nidoca-page-terms-of-use></nidoca-page-terms-of-use>`;break;case"genericapp":this.content=o`<nidoca-page-generic-app></nidoca-page-generic-app>`;break;case"webcomponents":this.content=o`<nidoca-page-webcomponents></nidoca-page-webcomponents>`;break;case"main":this.content=o`<nidoca-page-main></nidoca-page-main>`;break;default:this.content=o`<nidoca-page-webcomponents></nidoca-page-webcomponents>`}}render(){return o`
+    `}};c(se,"styles",p``),r([s({type:Array})],se.prototype,"cssVars",2),se=r([m("nidoca-page-settings")],se);var Ie=class extends h{render(){return o``}};c(Ie,"styles",p``),Ie=r([m("nidoca-page-privacy")],Ie);var He=class extends h{render(){return o``}};c(He,"styles",p``),He=r([m("nidoca-page-terms-of-use")],He);var Oe=class extends h{content=o``;constructor(){super(),K.getUniqueInstance().subscribe(this),this.routeChanged(K.getUniqueInstance().getCurrentPage())}routeChanged(t){switch(t){case"privacy":this.content=o`<nidoca-page-privacy></nidoca-page-privacy>`;break;case"imprint":this.content=o`<nidoca-page-imprint></nidoca-page-imprint>`;break;case"settings":this.content=o`<nidoca-page-settings></nidoca-page-settings>`;break;case"terms-of-use":this.content=o`<nidoca-page-terms-of-use></nidoca-page-terms-of-use>`;break;case"genericapp":this.content=o`<nidoca-page-generic-app></nidoca-page-generic-app>`;break;case"webcomponents":this.content=o`<nidoca-page-webcomponents></nidoca-page-webcomponents>`;break;case"main":this.content=o`<nidoca-page-main></nidoca-page-main>`;break;default:this.content=o`<nidoca-page-webcomponents></nidoca-page-webcomponents>`}}render(){return o`
       <nidoca-template>
         <nidoca-link
           slot="topRight"
@@ -3488,7 +3488,7 @@ ${this.getPropertyGuiWrappers().map(t=>t.getAsAngular(this)).join("  ")}></${thi
           ></nidoca-menu-item>
         </nidoca-menu>
       </nidoca-template>
-    `}};r([s({type:Object})],Ce.prototype,"content",2),Ce=r([m("nidoca-my-app")],Ce);})();
+    `}};r([s({type:Object})],Oe.prototype,"content",2),Oe=r([m("nidoca-my-app")],Oe);})();
 /*! Bundled license information:
 
 @lit/reactive-element/css-tag.js:
