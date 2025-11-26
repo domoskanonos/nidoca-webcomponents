@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
+    "target": "ES2022",
     "declaration": true,
     "outDir": "dist",
-    "module": "ES2020",
+    "module": "ES2022",
     "rootDir": "./src",
     "downlevelIteration": true,
     "strict": true,
@@ -16,10 +16,18 @@
     "emitDecoratorMetadata": true,
     "skipLibCheck": true
   },
-  "include": ["src/**/*.ts", "src/__test__/**/*.ts"],
-  "exclude": ["node_modules", "src/app"],
+  "include": [
+    "src/**/*.ts",
+    "src/__test__/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "src/app"
+  ],
   "typedocOptions": {
-    "entryPoints": ["./src"],
+    "entryPoints": [
+      "./src"
+    ],
     "out": "public/docs"
   }
 }
